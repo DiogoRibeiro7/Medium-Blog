@@ -56,6 +56,72 @@ sensitivity checks before publication.
 
 Work from the parent `neoliberalism-evidence-synthesis/` folder.
 
+### Source retrieval now implemented
+
+The repository includes two independent, network-enabled source commands:
+
+```bash
+python -m causal_tax_cuts.event_source --output-dir /tmp/hope-limberg-events
+python -m causal_tax_cuts.wid --output-dir /tmp/wid-top1
+```
+
+The first checks whether the *original authors' public CSV* is actually
+downloadable, validates the CSV format and writes its unmodified bytes only
+to the chosen output directory. `author_event_probe.json` records the **true
+headings**, observed examples, row count and SHA-256; on a sign-in wall it
+records `status=unavailable` and never creates fictional events.
+
+The WID downloader streams the official semicolon-delimited bulk CSV for
+each of the paper's 18 countries, selects `sptinc992j` / `p99p100`
+(top 1% of pre-tax national income among equal-split adults), and multiplies
+WID's 0–1 fractions by 100. It emits `wid_top1_pretax.csv` and
+`wid_top1_provenance.json`, with each source's original SHA-256, actual
+country-year coverage and missing years. **It neither extrapolates missing
+years nor claims to reproduce the WID vintage used in the 2022 paper.**
+
+The separate [source-probe GitHub Action](../../.github/workflows/causal-tax-source-probe.yml)
+tests public access and processes the full 18-country WID sample. The live
+author file was verified to have **969 rows** (19 countries × 51 years) and
+the actual fields `iso3`, `year`, `taxcut_2SD` and `taxcut_1SD`, plus an
+unnamed original row-index column. The runner configures the **2-SD** series
+without guessing the layout. All 18 country files downloaded successfully
+in the extended live probe; coverage differs across countries, as quantified
+below. The live source audit must be rerun for each new data vintage.
+
+The Action uploads only author-source **metadata**, not the authors' raw CSV.
+It attempts to produce a short-lived, audited joined panel and **exploratory
+treatment-history-only** matching output. These are not licensed as published
+paper replication and cannot be treated as a full causal result. A failed
+live download, paper-sample audit or estimation step is recorded in CI and
+must not be described as empirical verification.
+
+### First observed coverage audit (13 November 2026)
+
+The networked workflow successfully downloaded all 18 WID country files and
+the authors' 19-country event panel. Its source and join audit found:
+
+| Check | Observed result |
+| --- | ---: |
+| Original author CSV | 969 country-year rows (19 countries × 51 years) |
+| Paper-sample tax-cut events (`taxcut_2SD`) | 30 (as published) |
+| Extra author-file country excluded from paper sample | South Korea (`KOR`, 51 rows) |
+| Possible paper-sample outcome country-years | 918 (18 × 51) |
+| Current-vintage WID top-share country-years present | 853 |
+| Missing current-vintage WID values | 65 |
+| Tax-cut years lost to outcome missingness | 1 |
+
+The current WID extraction has an **approximately 7.1% missing country-year
+rate** in the 1965–2015 paper window. This is not automatically comparable
+to the authors' 2022-vintage dataset; the working paper used a documented
+interpolation procedure for some top-income observations. Our pipeline does
+**not** impute them. Treat this as a real-coverage finding, not an ATT.
+
+The fully completed live run also produced **exploratory** matched contrasts.
+The frozen source-provenance manifest, six observed horizon means and limits
+of the identification strategy are documented in
+[`results/README.md`](results/README.md). The matched comparison is **not**
+a replication of the published PanelMatch method or proof of causality.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
@@ -63,9 +129,10 @@ Work from the parent `neoliberalism-evidence-synthesis/` folder.
    ```
 
 2. Obtain a verified CSV of annual WID **top-1% shares of pre-tax national
-   income** for the same countries and years, with a `country`, `year`,
-   `top1_share_pct` heading. For example, a share of 12.5% is `12.5`, not
-   `0.125`. Log the WID indicator, version, extraction date and transformations.
+   income** for the same countries and years, either using the downloader
+   above or a documented WID export. The result needs a `country`, `year`,
+   `top1_share_pct` heading. For example, 12.5% must be `12.5`, not `0.125`.
+   Record the WID source vintage, interpolation and series metadata.
 
 3. After inspecting the actual author headings, prepare the panel (replace
    heading placeholders; no guesses about author column names):

@@ -1,0 +1,236 @@
+{
+  "conversion": "100 times the original WID fraction of 1",
+  "countries": [
+    {
+      "country": "AUS",
+      "downloaded_bytes": 41481389,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "a5c4881e4eee12676affc749cca8b8a519cf7f1b8683aa88eacbc8cb37677261",
+      "source_url": "https://wid.world/bulk_download/WID_data_AU.csv"
+    },
+    {
+      "country": "AUT",
+      "downloaded_bytes": 22170757,
+      "missing_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974,
+        1975,
+        1976,
+        1977,
+        1978,
+        1979
+      ],
+      "n_observations": 36,
+      "sha256": "1071768e612d9e7283738ac78366f20ef588f2008bdf46e61da13c3f022358c2",
+      "source_url": "https://wid.world/bulk_download/WID_data_AT.csv"
+    },
+    {
+      "country": "BEL",
+      "downloaded_bytes": 22340740,
+      "missing_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974,
+        1975,
+        1976,
+        1977,
+        1978,
+        1979
+      ],
+      "n_observations": 36,
+      "sha256": "bbed7ecd74c25523249937db8ed81faf16b3b90fd82d079842b03ceb1af05570",
+      "source_url": "https://wid.world/bulk_download/WID_data_BE.csv"
+    },
+    {
+      "country": "CAN",
+      "downloaded_bytes": 40857605,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "2067255c0053d8256be3c248140d661ae9133fca9e26c24dfda9b7e2c19e173d",
+      "source_url": "https://wid.world/bulk_download/WID_data_CA.csv"
+    },
+    {
+      "country": "CHE",
+      "downloaded_bytes": 24886116,
+      "missing_years": [
+        1966,
+        1968,
+        1970,
+        1972,
+        1974,
+        1976,
+        1978
+      ],
+      "n_observations": 44,
+      "sha256": "9d6f29565a1f2c102a61dce3ffe9686c3f3b9e7aba7d5c52488c479071a63af2",
+      "source_url": "https://wid.world/bulk_download/WID_data_CH.csv"
+    },
+    {
+      "country": "DEU",
+      "downloaded_bytes": 36391759,
+      "missing_years": [
+        1966,
+        1967,
+        1969,
+        1972,
+        1973,
+        1975,
+        1976,
+        1978,
+        1979
+      ],
+      "n_observations": 42,
+      "sha256": "68acf03ac428487e73ff0a8bcd5c25cda47bbd9c1b3c5645262d91d8bbcb7cb0",
+      "source_url": "https://wid.world/bulk_download/WID_data_DE.csv"
+    },
+    {
+      "country": "DNK",
+      "downloaded_bytes": 33929360,
+      "missing_years": [
+        1969
+      ],
+      "n_observations": 50,
+      "sha256": "60e4c6ef56f38210e86c01fab9d5e6a27cda2e6ca420354814f6cf7f363f0e60",
+      "source_url": "https://wid.world/bulk_download/WID_data_DK.csv"
+    },
+    {
+      "country": "FIN",
+      "downloaded_bytes": 29332285,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "8e5e25b153ec1bbfaab6df5cc2d2ec76c2287f4887c4e439e467954d6825d6fc",
+      "source_url": "https://wid.world/bulk_download/WID_data_FI.csv"
+    },
+    {
+      "country": "FRA",
+      "downloaded_bytes": 68985580,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "21c76df8a3fa253f024fea9274fcac7fa650509a50569d55ec0c1085e35b6c38",
+      "source_url": "https://wid.world/bulk_download/WID_data_FR.csv"
+    },
+    {
+      "country": "GBR",
+      "downloaded_bytes": 43232374,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "94f64eae33c3759e92a29aad966f7c8d1dea4778a1b2f7964b30a160e260231f",
+      "source_url": "https://wid.world/bulk_download/WID_data_GB.csv"
+    },
+    {
+      "country": "IRL",
+      "downloaded_bytes": 26480520,
+      "missing_years": [
+        1974
+      ],
+      "n_observations": 50,
+      "sha256": "7f0b613a9eae49b0c8f69c29901db81de3e6450ea22b007b5f4338d7fdf06196",
+      "source_url": "https://wid.world/bulk_download/WID_data_IE.csv"
+    },
+    {
+      "country": "ITA",
+      "downloaded_bytes": 29719705,
+      "missing_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1971,
+        1972,
+        1973
+      ],
+      "n_observations": 43,
+      "sha256": "a70ae93f5c1b39cc088942ab374dae075a190b5b89cde2f21fe0788cee0aa473",
+      "source_url": "https://wid.world/bulk_download/WID_data_IT.csv"
+    },
+    {
+      "country": "JPN",
+      "downloaded_bytes": 35808495,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "e4f250ee5cbc1e0a245c74c79f97b4870e485bed8d05a135d7af3ef2633fb93b",
+      "source_url": "https://wid.world/bulk_download/WID_data_JP.csv"
+    },
+    {
+      "country": "NLD",
+      "downloaded_bytes": 38619755,
+      "missing_years": [
+        1965,
+        1968,
+        1969,
+        1971,
+        1972,
+        1974,
+        1976,
+        1978,
+        1979
+      ],
+      "n_observations": 42,
+      "sha256": "7a9ae572044dbafc450155cdafab39a942acdee31fd81093e765756829112608",
+      "source_url": "https://wid.world/bulk_download/WID_data_NL.csv"
+    },
+    {
+      "country": "NOR",
+      "downloaded_bytes": 32945268,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "f87d44975b052848c2271349f0c247203f6b55c41d4d88cb070dd11790078c96",
+      "source_url": "https://wid.world/bulk_download/WID_data_NO.csv"
+    },
+    {
+      "country": "NZL",
+      "downloaded_bytes": 38053531,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "f15b2c7260a4eee74a44a30e78e31241da58460a49a3aa539697a49949b0e630",
+      "source_url": "https://wid.world/bulk_download/WID_data_NZ.csv"
+    },
+    {
+      "country": "SWE",
+      "downloaded_bytes": 37160365,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "8c86e98b2978679b3668ee6dc8730ff84f950d7f42269a785b82f16faa2c3399",
+      "source_url": "https://wid.world/bulk_download/WID_data_SE.csv"
+    },
+    {
+      "country": "USA",
+      "downloaded_bytes": 53383748,
+      "missing_years": [],
+      "n_observations": 51,
+      "sha256": "5daf54acd9fe5e949c453e2f85ce089c8754b436ba9dff7dd6a7397022cb4cce",
+      "source_url": "https://wid.world/bulk_download/WID_data_US.csv"
+    }
+  ],
+  "extrapolation_flag": "WID source metadata not yet assessed",
+  "fetched_at_utc": "2026-11-13T14:47:28.640879+00:00",
+  "measurement": "top 1% pre-tax national income, equal-split adults, percent",
+  "n_rows": 853,
+  "sample_years": [
+    1965,
+    2015
+  ],
+  "series": {
+    "percentile": "p99p100",
+    "variable": "sptinc992j"
+  },
+  "source": "World Inequality Database (WID.world) country bulk CSV",
+  "status": "downloaded_official_wid_bulk_source"
+}
