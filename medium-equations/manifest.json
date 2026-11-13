@@ -1,0 +1,3462 @@
+{
+ "causal-inference-in-statistics/part-01-regression-wrong-effect": [
+  {
+   "name": "eq01",
+   "tex": "X=U+\\varepsilon_X,"
+  },
+  {
+   "name": "eq02",
+   "tex": "Y=X+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq03",
+   "tex": "Y(x)=x+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq04",
+   "tex": "Y(x+1)=x+1+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq05",
+   "tex": "Y(x+1)-Y(x)=1."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\beta_{\\mathrm{OLS}}=\n\\frac{\\operatorname{Cov}(X,Y)}{\\operatorname{Var}(X)}."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{Cov}(X,Y)\n=\\operatorname{Cov}(X,X+2U+\\varepsilon_Y)."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\operatorname{Cov}(X,Y)\n=\\operatorname{Var}(X)+2\\operatorname{Cov}(X,U)."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\beta_{\\mathrm{OLS}}\n=1+2\\frac{\\operatorname{Cov}(X,U)}{\\operatorname{Var}(X)}."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\beta_{\\mathrm{OLS}}=2."
+  },
+  {
+   "name": "eq11",
+   "tex": "E[Y\\mid X=x]=x+2E[U\\mid X=x]."
+  },
+  {
+   "name": "eq12",
+   "tex": "E[U\\mid X=x]=x/2."
+  },
+  {
+   "name": "eq13",
+   "tex": "E[Y\\mid X=x]=2x."
+  },
+  {
+   "name": "eq14",
+   "tex": "E[Y(x)]=x."
+  },
+  {
+   "name": "eq15",
+   "tex": "Y=\\beta_0+\\tau X+\\gamma U+\\varepsilon."
+  },
+  {
+   "name": "eq16",
+   "tex": "Y_R=X_R+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\operatorname{MSE}(\\widehat{\\tau})\n=\\operatorname{Bias}(\\widehat{\\tau})^2+\n\\operatorname{Var}(\\widehat{\\tau})."
+  },
+  {
+   "name": "eq18",
+   "tex": "E[Y\\mid X=x,U=u]=x+2u."
+  }
+ ],
+ "causal-inference-in-statistics/part-02-randomization": [
+  {
+   "name": "eq01",
+   "tex": "\\tau=E\\{Y(1)-Y(0)\\}."
+  },
+  {
+   "name": "eq02",
+   "tex": "Y_i=A_iY_i(1)+(1-A_i)Y_i(0)."
+  },
+  {
+   "name": "eq03",
+   "tex": "D=E[Y\\mid A=1]-E[Y\\mid A=0]."
+  },
+  {
+   "name": "eq04",
+   "tex": "D=E[Y(1)\\mid A=1]-E[Y(0)\\mid A=0]."
+  },
+  {
+   "name": "eq05",
+   "tex": "D=E[Y(1)-Y(0)\\mid A=1]\n +E[Y(0)\\mid A=1]-E[Y(0)\\mid A=0]."
+  },
+  {
+   "name": "eq06",
+   "tex": "Y(0)=2U+\\varepsilon,\\qquad\nY(1)=-1+2U+\\varepsilon."
+  },
+  {
+   "name": "eq07",
+   "tex": "Y(1)-Y(0)=-1."
+  },
+  {
+   "name": "eq08",
+   "tex": "p(U)=\\frac{1}{1+\\exp(-1.5U)}."
+  },
+  {
+   "name": "eq09",
+   "tex": "Y=-A+2U+\\varepsilon."
+  },
+  {
+   "name": "eq10",
+   "tex": "D_{\\mathrm{obs}}=-1+\n2\\{E[U\\mid A=1]-E[U\\mid A=0]\\}."
+  },
+  {
+   "name": "eq11",
+   "tex": "Y_R=-A_R+2U+\\varepsilon."
+  },
+  {
+   "name": "eq12",
+   "tex": "Y_R=\\beta_0+\\tau A_R+\\gamma U+\\varepsilon."
+  }
+ ],
+ "causal-inference-in-statistics/part-03-matching-propensity-scores": [
+  {
+   "name": "eq01",
+   "tex": "Y_i=A_iY_i(1)+(1-A_i)Y_i(0)."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\operatorname{ATE}=E[Y(1)-Y(0)]."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\operatorname{ATT}=E[Y(1)-Y(0)\\mid A=1]."
+  },
+  {
+   "name": "eq04",
+   "tex": "Y(0)=1.5X+1.5U+\\varepsilon,"
+  },
+  {
+   "name": "eq05",
+   "tex": "Y(1)=1+1.5X+1.5U+\\varepsilon,"
+  },
+  {
+   "name": "eq06",
+   "tex": "Y(1)-Y(0)=1"
+  },
+  {
+   "name": "eq07",
+   "tex": "e(X)=P(A=1\\mid X)."
+  },
+  {
+   "name": "eq08",
+   "tex": "(Y(0),Y(1))\\perp A\\mid X."
+  },
+  {
+   "name": "eq09",
+   "tex": "0<P(A=1\\mid X=x)<1"
+  },
+  {
+   "name": "eq10",
+   "tex": "P(A=1\\mid X,U)\n=\\operatorname{expit}(0.9X),"
+  },
+  {
+   "name": "eq11",
+   "tex": "\\operatorname{expit}(z)=\\frac{1}{1+\\exp(-z)}."
+  },
+  {
+   "name": "eq12",
+   "tex": "P(A=1\\mid X,U)\n=\\operatorname{expit}(0.9X+1.2U)."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\operatorname{logit}P(A=1\\mid X)=\\alpha_0+\\alpha_1X."
+  },
+  {
+   "name": "eq14",
+   "tex": "Y=A+1.5X+1.5U+\\varepsilon."
+  },
+  {
+   "name": "eq15",
+   "tex": "Y_T-Y_C\n=1+1.5(X_T-X_C)+1.5(U_T-U_C)\n+(\\varepsilon_T-\\varepsilon_C)."
+  }
+ ],
+ "causal-inference-in-statistics/part-04-inverse-probability-weighting": [
+  {
+   "name": "eq01",
+   "tex": "\\tau=E[Y(1)-Y(0)]."
+  },
+  {
+   "name": "eq02",
+   "tex": "(Y(0),Y(1))\\perp A\\mid X."
+  },
+  {
+   "name": "eq03",
+   "tex": "0<P(A=1\\mid X=x)<1."
+  },
+  {
+   "name": "eq04",
+   "tex": "e(x)=P(A=1\\mid X=x)."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\widehat{\\tau}_{HT}\n=\n\\frac{1}{n}\\sum_{i=1}^{n}\n\\left[\n\\frac{A_iY_i}{\\widehat e(X_i)}\n-\n\\frac{(1-A_i)Y_i}{1-\\widehat e(X_i)}\n\\right]."
+  },
+  {
+   "name": "eq06",
+   "tex": "E\\left[\\frac{AY}{e(X)}\\mid X\\right]\n=\nE[Y(1)\\mid X]."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\widehat{\\tau}_{H}\n=\n\\frac{\\sum_i A_iY_i/\\widehat e_i}\n{\\sum_i A_i/\\widehat e_i}\n-\n\\frac{\\sum_i(1-A_i)Y_i/(1-\\widehat e_i)}\n{\\sum_i(1-A_i)/(1-\\widehat e_i)}."
+  },
+  {
+   "name": "eq08",
+   "tex": "X\\sim N(0,1),\\qquad \\varepsilon\\sim N(0,1)."
+  },
+  {
+   "name": "eq09",
+   "tex": "Y(0)=2X+\\varepsilon,"
+  },
+  {
+   "name": "eq10",
+   "tex": "Y(1)=1+2X+\\varepsilon."
+  },
+  {
+   "name": "eq11",
+   "tex": "Y(1)-Y(0)=1"
+  },
+  {
+   "name": "eq12",
+   "tex": "P(A=1\\mid X)=\\operatorname{expit}(\\lambda X),"
+  },
+  {
+   "name": "eq13",
+   "tex": "\\operatorname{expit}(z)=\\frac{1}{1+e^{-z}}."
+  },
+  {
+   "name": "eq14",
+   "tex": "Y=A+2X+\\varepsilon."
+  },
+  {
+   "name": "eq15",
+   "tex": "n_{\\mathrm{eff}}\n=\n\\frac{(\\sum_i w_i)^2}{\\sum_i w_i^2}."
+  }
+ ],
+ "causal-inference-in-statistics/part-05-dags-controlling-for-everything": [
+  {
+   "name": "eq01",
+   "tex": "U\\longrightarrow A,\\qquad U\\longrightarrow Y,\\qquad A\\longrightarrow Y."
+  },
+  {
+   "name": "eq02",
+   "tex": "A=U+\\varepsilon_A,\\qquad\nY=A+U+\\varepsilon_Y,"
+  },
+  {
+   "name": "eq03",
+   "tex": "\\frac{\\operatorname{Cov}(A,Y)}{\\operatorname{Var}(A)}\n=1+\\frac{\\operatorname{Cov}(A,U)}{\\operatorname{Var}(A)}\n=1+\\frac12=1.5."
+  },
+  {
+   "name": "eq04",
+   "tex": "A\\longrightarrow Y,\\qquad\nA\\longrightarrow C\\longleftarrow U\\longrightarrow Y."
+  },
+  {
+   "name": "eq05",
+   "tex": "C=A+U+\\varepsilon_C,"
+  },
+  {
+   "name": "eq06",
+   "tex": "Y=A+U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{Var}(C)=3,\\quad\n\\operatorname{Cov}(A,C)=1,\\quad\n\\operatorname{Cov}(Y,C)=2."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\beta_{A\\mid C}\n=\n\\frac{\\operatorname{Cov}(A,Y)\\operatorname{Var}(C)\n-\\operatorname{Cov}(Y,C)\\operatorname{Cov}(A,C)}\n{\\operatorname{Var}(A)\\operatorname{Var}(C)\n-\\operatorname{Cov}(A,C)^2}\n=\\frac{3-2}{3-1}=\\frac12."
+  },
+  {
+   "name": "eq09",
+   "tex": "A\\longrightarrow Y,\\qquad A\\longrightarrow M\\longrightarrow Y."
+  },
+  {
+   "name": "eq10",
+   "tex": "M=A+\\varepsilon_M,\\qquad\nY=A+M+\\varepsilon_Y."
+  },
+  {
+   "name": "eq11",
+   "tex": "Y(a)=a+(a+\\varepsilon_M)+\\varepsilon_Y\n=2a+\\varepsilon_M+\\varepsilon_Y."
+  },
+  {
+   "name": "eq12",
+   "tex": "Y=A+\\varepsilon_Y."
+  }
+ ],
+ "causal-inference-in-statistics/part-08-regression-discontinuity": [
+  {
+   "name": "eq01",
+   "tex": "Y=D Y(1)+(1-D)Y(0)."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\tau_{RD}=E[Y(1)-Y(0)\\mid X=c]."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\tau_{RD}=\\lim_{x\\downarrow c}E[Y\\mid X=x]\n-\\lim_{x\\uparrow c}E[Y\\mid X=x]."
+  },
+  {
+   "name": "eq04",
+   "tex": "Y(0)=1+0.6X+U."
+  },
+  {
+   "name": "eq05",
+   "tex": "Y(1)=Y(0)-1."
+  },
+  {
+   "name": "eq06",
+   "tex": "Y(0)=1+0.6X+2X^2\\mathbf 1\\{X\\geq0\\}+U."
+  },
+  {
+   "name": "eq07",
+   "tex": "Y(0)=1+0.6X+0.7\\mathbf 1\\{X\\geq0\\}+U."
+  },
+  {
+   "name": "eq08",
+   "tex": "w_i(h)=\\left(1-\\frac{|X_i|}{h}\\right)\\mathbf 1\\{|X_i|<h\\}."
+  },
+  {
+   "name": "eq09",
+   "tex": "Y_i=\\alpha+\\beta X_i+\\tau D_i+\\gamma(D_iX_i)+\\varepsilon_i."
+  }
+ ],
+ "causal-inference-in-statistics/part-09-synthetic-controls": [
+  {
+   "name": "eq01",
+   "tex": "\\tau_{1t}=Y_{1t}(1)-Y_{1t}(0),\\qquad t>T_0."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\widehat{Y}_{1t}(0)=\\sum_{j=2}^{J+1}w_jY_{jt},"
+  },
+  {
+   "name": "eq03",
+   "tex": "Y_{it}(0)=\\delta_t+\\lambda_t^{\\mathsf T}\\mu_i+\\theta_t^{\\mathsf T}Z_i+\\varepsilon_{it},"
+  },
+  {
+   "name": "eq04",
+   "tex": "\\widehat{w}=\\arg\\min_{w\\ge 0,\\;\\mathbf 1^{\\mathsf T}w=1}\n\\frac{1}{T_0}\\sum_{t=1}^{T_0}\n\\left(Y_{1t}-\\sum_{j=2}^{J+1}w_jY_{jt}\\right)^2."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\text{Observed gap}\\approx -2+1.5=-0.5."
+  },
+  {
+   "name": "eq06",
+   "tex": "Y_{1t}(0)=\\sum_j w_j^*Y_{jt}+u_{1t}+s_t,"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{RMSPE}_{pre}=\n\\sqrt{\\frac{1}{T_0}\\sum_{t\\le T_0}\n\\left(Y_{1t}-\\widehat Y_{1t}(0)\\right)^2}."
+  }
+ ],
+ "causal-inference-in-statistics/part-10-doubly-robust-estimation": [
+  {
+   "name": "eq01",
+   "tex": "\\tau=E[Y(1)-Y(0)]."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\mu_a(x)=E[Y\\mid A=a,X=x], \\qquad a\\in\\{0,1\\}."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\tau=E[\\mu_1(X)-\\mu_0(X)]."
+  },
+  {
+   "name": "eq04",
+   "tex": "e(x)=P(A=1\\mid X=x)"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\tau=E\\left[\\frac{AY}{e(X)}-\\frac{(1-A)Y}{1-e(X)}\\right]."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\psi(O;\\eta)=\n\\mu_1(X)-\\mu_0(X)\n+\\frac{A\\{Y-\\mu_1(X)\\}}{e(X)}\n-\\frac{(1-A)\\{Y-\\mu_0(X)\\}}{1-e(X)},"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\left(1-\\frac{p}{\\widehat p}\\right)(\\widehat m_1-m_1)\n-\\left(1-\\frac{1-p}{1-\\widehat p}\\right)(\\widehat m_0-m_0)."
+  },
+  {
+   "name": "eq08",
+   "tex": "e(X)=\\operatorname{expit}(-0.3+0.8X-0.45X^2)."
+  },
+  {
+   "name": "eq09",
+   "tex": "Y(0)=1+0.7X+0.8X^2+\\varepsilon,"
+  },
+  {
+   "name": "eq10",
+   "tex": "Y(1)=Y(0)+1,"
+  }
+ ],
+ "causal-inference-in-statistics/part-11-g-formula": [
+  {
+   "name": "eq01",
+   "tex": "L_1=0.8L_0+1.2A_0+\\varepsilon_L."
+  },
+  {
+   "name": "eq02",
+   "tex": "Y=1+0.5L_0+1.3L_1+0.7A_0+1.1A_1+\\varepsilon_Y."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\tau=0.7+(1.2)(1.3)+1.1=3.36."
+  },
+  {
+   "name": "eq04",
+   "tex": "E[Y(a_0,a_1)] = \\int\\!\\int E[Y\\mid L_0=l_0,A_0=a_0,L_1=l_1,A_1=a_1] \\, f(l_1\\mid l_0,a_0) f(l_0)\\,dl_1\\,dl_0."
+  },
+  {
+   "name": "eq05",
+   "tex": "E[Y(a_0,a_1)\\mid L_0]=1+0.5L_0+1.3(0.8L_0+1.2a_0)+0.7a_0+1.1a_1."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\widehat\\tau_{g}=\\widehat\\beta_{A_0}+\\widehat\\beta_{A_1}+\\widehat\\gamma_{A_0}\\widehat\\beta_{L_1}."
+  }
+ ],
+ "causal-inference-in-statistics/part-12-heterogeneous-effects": [
+  {
+   "name": "eq01",
+   "tex": "\\tau_i=Y_i(1)-Y_i(0)."
+  },
+  {
+   "name": "eq02",
+   "tex": "ATE=E[Y(1)-Y(0)]."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\tau(x)=E[Y(1)-Y(0)\\mid X=x]."
+  },
+  {
+   "name": "eq04",
+   "tex": "V(d)=E[Y(0)+d(X)\\{Y(1)-Y(0)\\}]."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\mu_0(X)=2-1.5X+0.3X^2."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\tau(X)=0.5+1.2X+0.4(X^2-1)."
+  },
+  {
+   "name": "eq07",
+   "tex": "Y=\\mu_0(X)+A\\tau(X)+\\varepsilon,\n\\qquad \\varepsilon\\sim N(0,1),"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\widehat\\tau_1(x)=\\widehat\\beta_A+\\widehat\\beta_{AX}x."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\widehat\\tau_2(x)=\\widehat\\beta_A+\\widehat\\beta_{AX}x+\n\\widehat\\beta_{AX^2}(x^2-1)."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\Delta V(d)=E[d(X)\\tau(X)]."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\tau(x)=0.4(x+1.5)^2-0.8."
+  },
+  {
+   "name": "eq12",
+   "tex": "E[\\tau(X)\\mid X>c]\n=0.5+\\frac{\\phi(c)}{0.2}\\left(1.2+0.4c\\right)\n\\approx 2.651015,\n\\quad c=\\Phi^{-1}(0.8)."
+  }
+ ],
+ "causal-inference-in-statistics/part-13-double-machine-learning": [
+  {
+   "name": "eq01",
+   "tex": "\\tau_{\\mathrm{linear}}^*\n=\\tau+\\frac{E[m_\\perp g_\\perp]}{E[m_\\perp^2]+\\operatorname{Var}(V)}."
+  },
+  {
+   "name": "eq02",
+   "tex": "v_{\\sin}=\\frac{1-e^{-2}}{2}-e^{-1}\\approx0.0644529172."
+  },
+  {
+   "name": "eq03",
+   "tex": "E[m_\\perp^2]=1.4^2v_{\\sin}+0.9^2(2)+0.5^2\n\\approx1.996327718,"
+  },
+  {
+   "name": "eq04",
+   "tex": "E[m_\\perp g_\\perp]=1.4(1.2)v_{\\sin}+0.9(1.3)(2)+0.5(0.8)\n\\approx2.848280901."
+  }
+ ],
+ "causal-inference-in-statistics/part-14-bayesian-causal-inference": [
+  {
+   "name": "eq01",
+   "tex": "X=U+\\varepsilon_X,\n\\qquad\nY=X+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq02",
+   "tex": "Y(x)=x+2U+\\varepsilon_Y."
+  },
+  {
+   "name": "eq03",
+   "tex": "Y(x+1)-Y(x)=1."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\beta_{\\mathrm{obs}}=\n\\frac{\\operatorname{Cov}(X,Y)}{\\operatorname{Var}(X)}\n=1+2\\frac{\\operatorname{Cov}(X,U)}{\\operatorname{Var}(X)}=2."
+  },
+  {
+   "name": "eq05",
+   "tex": "Y\\mid\\theta,D\\sim N(D\\theta,\\sigma^2 I)."
+  },
+  {
+   "name": "eq06",
+   "tex": "V_\\theta=\\sigma^2(D^\\top D+P)^{-1},\n\\qquad\nm_\\theta=(D^\\top D+P)^{-1}D^\\top Y."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\beta_{\\mathrm{unadj}}^*(n,\\lambda)=\\frac{4n}{2n+\\lambda}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\beta_{\\mathrm{adj}}^*(n,\\lambda)=\n\\frac{n^2+4n\\lambda}{n^2+3n\\lambda+\\lambda^2}."
+  },
+  {
+   "name": "eq09",
+   "tex": "E[Y(a)]=\\int E[Y\\mid A=a,L=l]p(l)\\,dl."
+  }
+ ],
+ "causal-inference-in-statistics/part-15-marginal-structural-models": [
+  {
+   "name": "eq01",
+   "tex": "\\psi=E\\{Y(1,1)-Y(0,0)\\}."
+  },
+  {
+   "name": "eq02",
+   "tex": "P(A_0=1\\mid L_0)=\\operatorname{expit}(0.8L_0),"
+  },
+  {
+   "name": "eq03",
+   "tex": "L_1=0.8L_0+1.2A_0+\\varepsilon_L,"
+  },
+  {
+   "name": "eq04",
+   "tex": "P(A_1=1\\mid L_1)=\\operatorname{expit}(0.8L_1)."
+  },
+  {
+   "name": "eq05",
+   "tex": "Y=1+0.5L_0+1.3L_1+0.7A_0+1.1A_1+\\varepsilon_Y,"
+  },
+  {
+   "name": "eq06",
+   "tex": "E[L_1(a_0)]=0.8E[L_0]+1.2a_0+E[\\varepsilon_L]=1.2a_0."
+  },
+  {
+   "name": "eq07",
+   "tex": "E[Y(a_0,a_1)]\n=1+1.3(1.2a_0)+0.7a_0+1.1a_1."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\psi=1.3(1.2)+0.7+1.1=3.36."
+  },
+  {
+   "name": "eq09",
+   "tex": "w_i=\\frac{1}{p_0(A_{0i}\\mid L_{0i})\\,p_1(A_{1i}\\mid L_{0i},A_{0i},L_{1i})}."
+  },
+  {
+   "name": "eq10",
+   "tex": "E[L_0(a_0)]=0,\\qquad E[L_1(a_0)]=1.2a_0."
+  },
+  {
+   "name": "eq11",
+   "tex": "E[Y(a,a)]=1+(0.7+1.3\\cdot1.2+1.1)a=1+3.36a."
+  },
+  {
+   "name": "eq12",
+   "tex": "E[Y^{a_0,a_1}]=\\beta_0+\\beta_1 a_0+\\beta_2 a_1+\\beta_3 a_0a_1."
+  }
+ ],
+ "causal-inference-in-statistics/part-16-sensitivity-analysis": [
+  {
+   "name": "eq01",
+   "tex": "X=0.7W+\\lambda U+\\varepsilon_X,"
+  },
+  {
+   "name": "eq02",
+   "tex": "Y=\\tau X+0.8W+1.5U+\\varepsilon_Y,\n\\qquad \\tau=1."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\widetilde X=\\lambda U+\\varepsilon_X."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\beta_{X\\mid W}\n=\\tau+1.5\\frac{\\operatorname{Cov}(\\widetilde X,U)}{\\operatorname{Var}(\\widetilde X)}\n=1+\\frac{1.5\\lambda}{1+\\lambda^2}."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\operatorname{Var}(U\\mid X,W)=\\frac{1}{1+\\lambda^2}."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\sigma_{\\mathrm{obs}}^2(\\lambda)=\n1+\\frac{1.5^2}{1+\\lambda^2}\n=1+\\frac{2.25}{1+\\lambda^2}."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{SE}_{\\mathrm{obs}}(\\lambda)\n\\approx\n\\sqrt{\\frac{1+2.25/(1+\\lambda^2)}{n(1+\\lambda^2)}}."
+  },
+  {
+   "name": "eq08",
+   "tex": "P\\!\\left(\n-1.96\\leq Z+\\frac{\\beta_{\\mathrm{obs}}(\\lambda)-\\tau}\n{\\operatorname{SE}_{\\mathrm{obs}}(\\lambda)}\n\\leq1.96\n\\right),\\qquad Z\\sim N(0,1)."
+  }
+ ],
+ "causal-inference-in-statistics/part-17-negative-controls-placebos": [
+  {
+   "name": "eq01",
+   "tex": "\\tau(a)=E\\{Y(a+1)-Y(a)\\}=1"
+  },
+  {
+   "name": "eq02",
+   "tex": "N=U+\\varepsilon_N."
+  },
+  {
+   "name": "eq03",
+   "tex": "Y=A+U+V+\\varepsilon_Y."
+  },
+  {
+   "name": "eq04",
+   "tex": "A=U+\\varepsilon_X,\\qquad\nY=A+1.5U+V+\\varepsilon_Y."
+  },
+  {
+   "name": "eq05",
+   "tex": "A=V+\\varepsilon_X,\\qquad\nY=A+U+1.5V+\\varepsilon_Y."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\beta_{AY}=1+1.5\\frac{\\operatorname{Cov}(A,U)}{\\operatorname{Var}(A)}\n=1+\\frac{1.5}{2}=1.75."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\beta_{AN}=\\frac{\\operatorname{Cov}(A,N)}{\\operatorname{Var}(A)}\n=\\frac{\\operatorname{Cov}(U+\\varepsilon_X,U+\\varepsilon_N)}{2}\n=\\frac12."
+  }
+ ],
+ "causal-inference-in-statistics/part-18-missing-outcomes-selection": [
+  {
+   "name": "eq01",
+   "tex": "\\tau=E\\{Y(1)-Y(0)\\}."
+  },
+  {
+   "name": "eq02",
+   "tex": "Y=A+1.5X+\\varepsilon."
+  },
+  {
+   "name": "eq03",
+   "tex": "P(R=1\\mid A,X,Y)=\\operatorname{expit}(0.8-X+0.6A),"
+  },
+  {
+   "name": "eq04",
+   "tex": "P(R=1\\mid A,X,Y)=\\operatorname{expit}(0.8-X+0.6A-0.9Y)."
+  },
+  {
+   "name": "eq05",
+   "tex": "E[Y\\mid A,X]=A+1.5X."
+  },
+  {
+   "name": "eq06",
+   "tex": "E[Y\\mid A,X,R=1]=E[Y\\mid A,X]."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\pi(A,X)=P(R=1\\mid A,X)."
+  },
+  {
+   "name": "eq08",
+   "tex": "E\\left[\\frac{RY}{\\pi(A,X)}\\right]=E[Y]."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\Pr(R=1\\mid A,X,Y)=\\operatorname{expit}(0.8-X+0.6A-\\gamma Y)."
+  }
+ ],
+ "causal-inference-in-statistics/part-19-external-validity-transportability": [
+  {
+   "name": "eq01",
+   "tex": "\\tau_S=E\\{Y(1)-Y(0)\\mid S=1\\},"
+  },
+  {
+   "name": "eq02",
+   "tex": "\\tau_T=E\\{Y(1)-Y(0)\\mid S=0\\}."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\tau(x)=E[Y\\mid A=1,X=x,S=1]-E[Y\\mid A=0,X=x,S=1]."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\tau_T=\\int \\tau(x)\\,dF_T(x)."
+  },
+  {
+   "name": "eq05",
+   "tex": "Y=0.5X+A(1+X)+\\varepsilon,"
+  },
+  {
+   "name": "eq06",
+   "tex": "Y(1)-Y(0)=1+X."
+  },
+  {
+   "name": "eq07",
+   "tex": "Y(1)-Y(0)=1+U."
+  },
+  {
+   "name": "eq08",
+   "tex": "Y=0.5X+A(1+U)+\\varepsilon."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\tau_\\delta(x)=1+x+\\delta\\max(x-1,0)^2."
+  },
+  {
+   "name": "eq10",
+   "tex": "E_T[\\max(X-1,0)^2]=\\frac{1}{2}\\int_1^{2.5}(x-1)^2\\,dx=\\frac{9}{16},\n\\qquad \\operatorname{ATE}_T=2.5+\\frac{9}{16}\\delta."
+  }
+ ],
+ "causal-inference-in-statistics/part-20-causal-decisions": [
+  {
+   "name": "eq01",
+   "tex": "B=Y(0)-Y(1)."
+  },
+  {
+   "name": "eq02",
+   "tex": "V(\\pi)=E[\\pi(X)B]."
+  },
+  {
+   "name": "eq03",
+   "tex": "b(x)=E[B\\mid X=x]."
+  },
+  {
+   "name": "eq04",
+   "tex": "Y(0)=3-1.2X+\\varepsilon,"
+  },
+  {
+   "name": "eq05",
+   "tex": "Y(1)=Y(0)-B(X),"
+  },
+  {
+   "name": "eq06",
+   "tex": "B(X)=0.5+1.5X."
+  },
+  {
+   "name": "eq07",
+   "tex": "E[B(X)]=0.5+1.5E[X]=0.5."
+  },
+  {
+   "name": "eq08",
+   "tex": "Y=\\beta_0+\\beta_1X+\\beta_2A+\\beta_3AX+\\varepsilon."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\widehat b(x)=-(\\widehat\\beta_2+\\widehat\\beta_3x)."
+  }
+ ],
+ "midterm-2026-forecast/part-01-forecast-vs-fit": [
+  {
+   "name": "eq01",
+   "tex": "R^2=1-\\frac{\\sum_{t=1}^{n}(y_t-\\widehat y_t)^2}\n{\\sum_{t=1}^{n}(y_t-\\bar y)^2}."
+  },
+  {
+   "name": "eq02",
+   "tex": "Y_t=\\beta_0+\\beta_1G_t+\\beta_2S_t+\\varepsilon_t,\n\\quad t=1,\\ldots,18."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\widehat\\beta=(X^\\top X)^{-1}X^\\top y,\n\\qquad\n\\widehat y=X\\widehat\\beta."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\boxed{\\widehat Y_t\n=106.998+2.70846G_t-0.534787S_t.}"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\begin{aligned}\n\\widehat Y_{2026}\n&=106.998+2.70846(-8)-0.534787(220)\\\\\n&\\approx-32.32\\text{ House seats}.\n\\end{aligned}"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\operatorname{RMSE}_{\\rm LOO}\n=\\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\widehat y_{(-i),i}\\right)^2}."
+  },
+  {
+   "name": "eq07",
+   "tex": "y_i-\\widehat y_{(-i),i}\n=\\frac{y_i-\\widehat y_i}{1-h_{ii}}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\widehat y_0\\pm\nt_{1-\\alpha/2,\\,n-p}\\,\\widehat\\sigma\n\\sqrt{1+x_0^\\top(X^\\top X)^{-1}x_0}."
+  },
+  {
+   "name": "eq09",
+   "tex": "D_i=\\frac{e_i^2}{p\\widehat\\sigma^2}\n\\frac{h_{ii}}{(1-h_{ii})^2},"
+  },
+  {
+   "name": "eq10",
+   "tex": "Y_t=\\beta_0+\\beta_1G_t^{(P)}+\\beta_2S_t+\\varepsilon_t,\n\\qquad \\varepsilon_t\\sim t_{\\nu}(0,\\sigma),\\quad\\nu=4."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\mathcal L(\\beta,\\sigma)=n\\log\\sigma\n+\\frac{\\nu+1}{2}\\sum_{t=1}^{n}\n\\log\\!\\left(1+\\frac{(Y_t-X_t^\\top\\beta)^2}{\\nu\\sigma^2}\\right)."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\sum_{t\\in\\mathcal T}\n\\big(Y_t-a-\\theta_1Z_{t1}-\\theta_2Z_{t2}\\big)^2\n+2\\big(\\theta_1^2+\\theta_2^2\\big)."
+  },
+  {
+   "name": "eq13",
+   "tex": "w_t(T)=2^{-(T-t)/24},\\qquad\n\\widehat\\beta_T=\\operatorname*{arg\\,min}_{\\beta}\n\\sum_{t<T}w_t(T)\\big(Y_t-X_t^\\top\\beta\\big)^2."
+  },
+  {
+   "name": "eq14",
+   "tex": "d_{j,t}=e_{j,t}^{2}-e_{\\mathrm{OLS},t}^{2}."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\underbrace{\\operatorname{MSE}_{j}-\\operatorname{MSE}_{\\mathrm{OLS}}}_{\\text{exact difference on the ten elections}}\n=\\frac{1}{10}\\sum_{t=1}^{10}d_{j,t}."
+  }
+ ],
+ "economics-and-society/civility-and-political-change": [
+  {
+   "name": "eq01",
+   "tex": "x_m=\\frac{x_0+x_1}{2}=0.5."
+  },
+  {
+   "name": "eq02",
+   "tex": "x^*=\\frac{x_0+x_1}{2}."
+  },
+  {
+   "name": "eq03",
+   "tex": "r+i=1,\\qquad r\\geq0,\\qquad i\\geq0."
+  },
+  {
+   "name": "eq04",
+   "tex": "d_R\\leq r\\leq 1-d_I."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\max_{r\\in[d_R,\\,1-d_I]}\n\\quad (r-d_R)^\\alpha\n\\bigl(1-r-d_I\\bigr)^{1-\\alpha}."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\frac{\\alpha}{r-d_R}\n-\\frac{1-\\alpha}{1-r-d_I}=0."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\boxed{r^*=d_R+\\alpha(1-d_R-d_I),\\qquad i^*=1-r^*.}"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\frac{\\partial r^*}{\\partial d_R}=1-\\alpha,\\qquad\n\\frac{\\partial r^*}{\\partial d_I}=-\\alpha,\\qquad\n\\frac{\\partial r^*}{\\partial\\alpha}=1-d_R-d_I."
+  },
+  {
+   "name": "eq09",
+   "tex": "d_R(c)=\\max\\{0,\\ 0.35-0.30c\\},\n\\qquad\nd_I=0.45,\\qquad \\alpha=0.5."
+  },
+  {
+   "name": "eq10",
+   "tex": "r^*(c)=d_R(c)+0.5\\bigl[1-d_R(c)-0.45\\bigr]\n=0.45-0.15c."
+  },
+  {
+   "name": "eq11",
+   "tex": "L(T;\\rho,h)\n=\\int_0^T h e^{-\\rho t}\\,dt\n=\n\\begin{cases}\nhT,&\\rho=0,\\\\[4pt]\n\\dfrac{h(1-e^{-\\rho T})}{\\rho},&\\rho>0.\n\\end{cases}"
+  },
+  {
+   "name": "eq12",
+   "tex": "\\frac{\\partial L}{\\partial T}\n=h e^{-\\rho T}>0."
+  },
+  {
+   "name": "eq13",
+   "tex": "Y_{it}\n=\\mu_i+\\lambda_t+\\sum_{k=-K}^{L}\\beta_k\n\\mathbf{1}\\{t-t_i^*=k\\}+\\gamma^\\top X_{it}+\\varepsilon_{it},"
+  }
+ ],
+ "housing/urban-affordability-cascade": [
+  {
+   "name": "eq01",
+   "tex": "\\Delta \\ln p_i\n\\;\\approx\\;\n\\frac{\\Delta A_i/q_i}{\\varepsilon_i^S+|\\varepsilon_i^D|}."
+  },
+  {
+   "name": "eq02",
+   "tex": "H_i(t+1)=H_i(t)+\\sum_{j\\ne i}M_{ji}(t)-\\sum_{j\\ne i}M_{ij}(t)+B_i(t),"
+  },
+  {
+   "name": "eq03",
+   "tex": "U_{hi}=Y_h-R_{hi}-T_{hi}-V_{hi}+A_{hi}+\\eta_{hi},"
+  },
+  {
+   "name": "eq04",
+   "tex": "\\mathbf f_{t+1}\n=W^\\top \\operatorname{diag}(1-\\mathbf a)\\,\\mathbf f_t,"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\sum_{t=0}^{\\infty}\\mathbf f_t\n=\n\\left[I-W^\\top\\operatorname{diag}(1-\\mathbf a)\\right]^{-1}\\mathbf f_0."
+  },
+  {
+   "name": "eq06",
+   "tex": "C_{hi}=R_{hi}+T_{hi}+v_h\\tau_{hi}+F_{hi},"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\Delta \\ln R_{it}=\\alpha_i+\\lambda_t+\n\\sum_{\\ell=1}^{L}\\beta_\\ell\n\\sum_{j\\ne i}w_{ij}\\Delta\\ln R_{j,t-\\ell}\n+X_{it}'\\gamma+\\epsilon_{it}."
+  },
+  {
+   "name": "eq08",
+   "tex": "0\\leq x\\leq108{,}894,\\qquad 0\\leq y\\leq15{,}724."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\boxed{-15{,}724\\leq N\\leq108{,}894}."
+  },
+  {
+   "name": "eq10",
+   "tex": "g_{i,t}=100\\log\\left(\\frac{P_{i,t}}{P_{i,t-1}}\\right),"
+  },
+  {
+   "name": "eq11",
+   "tex": "x^{W}_{i,t-1}\n=\\frac{\\sum_{j\\ne i}W_{ij}g_{j,t-1}}{\\sum_{j\\ne i}W_{ij}}\n-\\bar g_{t-1}."
+  },
+  {
+   "name": "eq12",
+   "tex": "g^{\\mathrm{HICP}}_{i,t;b}\n=100\\left(\\frac{P_{i,t}/P_{i,b}}{H_t/H_b}-1\\right)."
+  },
+  {
+   "name": "eq13",
+   "tex": "Q_{i,t}(A)=100\\,\\frac{12A R_{i,t}}{Y_{i,t}}."
+  },
+  {
+   "name": "eq14",
+   "tex": "100\\left[\\frac{Q_{i,t}(A)}{Q_{i,2020}(A)}-1\\right]\n=100\\left[\\frac{R_{i,t}/R_{i,2020}}{Y_{i,t}/Y_{i,2020}}-1\\right]."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\frac{R_{i,t}/H_t}{Y_{i,t}/H_t}\n=\\frac{R_{i,t}}{Y_{i,t}}."
+  },
+  {
+   "name": "eq16",
+   "tex": "D_{j,t}=100\\left(1-\\frac{R_{j,t}}{R_{P,t}}\\right),\\qquad\nS_{j,t}(A)=A(R_{P,t}-R_{j,t})."
+  },
+  {
+   "name": "eq17",
+   "tex": "S^{2020€}_{j,t}(A)=S_{j,t}(A)\\frac{H_{2020}}{H_t}."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\rho_{XY\\cdot Z}=\\frac{\\rho_{XY}-\\rho_{XZ}\\rho_{YZ}}\n{\\sqrt{(1-\\rho_{XZ}^{2})(1-\\rho_{YZ}^{2})}}."
+  },
+  {
+   "name": "eq19",
+   "tex": "S_j(A)=A(R_{P}-R_j)."
+  },
+  {
+   "name": "eq20",
+   "tex": "K(\\tau)=M+n\\,d\\,w\\frac{2\\tau}{60},\n\\qquad\nN_j(A,\\tau)=S_j(A)-K(\\tau)."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\tau_j^*(A)=\\frac{60\\max\\{0,S_j(A)-M\\}}{2ndw}."
+  },
+  {
+   "name": "eq22",
+   "tex": "d_k\\leq d_j,\\quad r_{kt}\\leq r_{jt},\\quad\n(d_k<d_j\\ \\text{or}\\ r_{kt}<r_{jt})."
+  },
+  {
+   "name": "eq23",
+   "tex": "X_{ij}=1000\\,W_{ij}/P_j,\\qquad j\\neq i."
+  },
+  {
+   "name": "eq24",
+   "tex": "G_j=100\\left(\\frac{R_{j,2025}}{R_{j,2020}}-1\\right),"
+  },
+  {
+   "name": "eq25",
+   "tex": "D_{ij,t}=100\\left(1-\\frac{R_{jt}}{R_{it}}\\right),\\qquad\nC_{ij}=D_{ij,2020}-D_{ij,2025}."
+  },
+  {
+   "name": "eq26",
+   "tex": "G_{j,s\\rightarrow2025}\n=100\\left(\\frac{R_{j,2025}}{R_{j,s}}-1\\right)."
+  },
+  {
+   "name": "eq27",
+   "tex": "C_{ij,s\\rightarrow2025}\n=100\\left(\\frac{R_{j,2025}}{R_{i,2025}}\n-\\frac{R_{j,s}}{R_{i,s}}\\right)."
+  },
+  {
+   "name": "eq28",
+   "tex": "4\\ \\text{baselines}\\times17\\ \\text{references}\n\\times3\\ \\text{exposures}\\times2\\ \\text{outcomes}=408."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\Delta\\rho_{a,s}\n=\\rho_{a,s}^{\\text{same 15}}\n-\\rho_{\\mathrm{Porto},s}^{\\text{same 15}}."
+  },
+  {
+   "name": "eq30",
+   "tex": "\\rho_{P\\mid Z}=\\operatorname{cor}\\bigl((I-P_Z)r(X_P),\n                         (I-P_Z)r(Y)\\bigr),\\qquad\n\\rho_{a\\mid Z}=\\operatorname{cor}\\bigl((I-P_Z)r(X_a),\n                         (I-P_Z)r(Y)\\bigr)."
+  }
+ ],
+ "ml-and-statistical-methods/secom-negative-holdout": [
+  {
+   "name": "eq01",
+   "tex": "V_{\\mathrm{model}}=bc-ak,\\qquad\nE[V_{\\mathrm{random}}]=b\\frac{kF}{N}-ak."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\Delta V=b\\left(c-\\frac{kF}{N}\\right)."
+  }
+ ],
+ "statistics-for-data-scientists/a-label-is-not-ground-truth": [
+  {
+   "name": "eq01",
+   "tex": "D_{\\mathrm{obs}}=\\{(X_i,R_i,R_i\\widetilde Y_i):i=1,\\ldots,n\\},"
+  },
+  {
+   "name": "eq02",
+   "tex": "\\eta_0=P(\\widetilde Y=1\\mid Y=0),\\qquad\n\\eta_1=P(\\widetilde Y=0\\mid Y=1)."
+  },
+  {
+   "name": "eq03",
+   "tex": "P(\\widetilde Y\\ne Y)=(1-\\pi)\\eta_0+\\pi\\eta_1,\n\\qquad \\pi=P(Y=1)."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\begin{aligned}\nq(x)\n&=P(\\widetilde Y=1\\mid Y=1,x)p(x)\n+P(\\widetilde Y=1\\mid Y=0,x)[1-p(x)]\\\\\n&=(1-\\eta)p(x)+\\eta[1-p(x)]\\\\\n&=\\eta+(1-2\\eta)p(x).\n\\end{aligned}"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\operatorname{Brier}(\\widehat p,Y)\n=\\frac{1}{n}\\sum_{i=1}^n(\\widehat p_i-Y_i)^2,"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\widehat p(x)=\\frac{\\widehat q(x)-\\eta}{1-2\\eta}."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\widetilde\\pi=(1-\\eta_1)\\pi+\\eta_0(1-\\pi)\n=\\eta_0+(1-\\eta_0-\\eta_1)\\pi."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\pi=\\frac{\\widetilde\\pi-\\eta_0}{1-\\eta_0-\\eta_1}."
+  },
+  {
+   "name": "eq09",
+   "tex": "q(x)=\\eta_0+[1-\\eta_0-\\eta_1]p(x)."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\widetilde\\pi=.05+(1-.05-.30)(.25)\n=.05+.65(.25)=.2125."
+  },
+  {
+   "name": "eq11",
+   "tex": "P(\\widetilde Y\\ne Y\\mid X=x,Y=y)=\\eta_y(x)."
+  },
+  {
+   "name": "eq12",
+   "tex": "s_j=P(A_{ij}=1\\mid Y_i=1),\\qquad\nt_j=P(A_{ij}=0\\mid Y_i=0)."
+  },
+  {
+   "name": "eq13",
+   "tex": "P(a_i)=\\sum_{y=0}^{1}P(Y_i=y)\n\\prod_{j=1}^{k}P(A_{ij}=a_{ij}\\mid Y_i=y)."
+  },
+  {
+   "name": "eq14",
+   "tex": "q_i=\\frac{\\pi\\prod_jP(A_{ij}\\mid Y_i=1)}\n{\\pi\\prod_jP(A_{ij}\\mid Y_i=1)\n+(1-\\pi)\\prod_jP(A_{ij}\\mid Y_i=0)}."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\widehat s_j=\\frac{\\sum_i q_iA_{ij}}{\\sum_i q_i}."
+  },
+  {
+   "name": "eq16",
+   "tex": "A_{ij}=Y_i\\oplus S_i\\oplus E_{ij},"
+  },
+  {
+   "name": "eq17",
+   "tex": "\\eta=P(S_i\\oplus E_{ij}=1)\n=\\rho(1-u)+(1-\\rho)u\n=\\rho+u-2\\rho u."
+  },
+  {
+   "name": "eq18",
+   "tex": "P(K\\ge3)=\\sum_{k=3}^{5}\\binom{5}{k}e^k(1-e)^{5-k}\n=0.05792."
+  },
+  {
+   "name": "eq19",
+   "tex": "P(Y=1\\mid X=x)=\\operatorname{logit}^{-1}(1.4x-1.3),"
+  },
+  {
+   "name": "eq20",
+   "tex": "\\pi_i^{\\mathrm{inc}}=\n\\begin{cases}\n1,&\\text{if the case is in the routine review group},\\\\\na,&\\text{otherwise},\n\\end{cases}\n\\qquad a=0.10."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\widehat\\mu_{\\mathrm{HT}}=\\frac{1}{n}\n\\left(\\sum_{i\\in\\mathrm{review}}Y_i\n+\\frac{1}{a}\\sum_{i\\in\\mathrm{audit}}Y_i\\right)."
+  },
+  {
+   "name": "eq22",
+   "tex": "\\begin{aligned}\n&P(A=T),\\qquad P(B=T),\\\\\n&P(A=L),\\qquad P(B=L).\n\\end{aligned}"
+  }
+ ],
+ "statistics-for-data-scientists/causal-transportability-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "\\psi_1=\\mathbb E\\left[Y(1)-Y(0)\\mid S=1\\right]."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\boxed{\\psi_0=\\mathbb E\\left[Y(1)-Y(0)\\mid S=0\\right].}"
+  },
+  {
+   "name": "eq03",
+   "tex": "A\\ \\perp\\ \\{Y(0),Y(1)\\}\\mid S=1,\n\\qquad 0<P(A=1\\mid S=1)<1."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\mathbb E[Y\\mid A=1,S=1]-\\mathbb E[Y\\mid A=0,S=1]\n=\\psi_1."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\psi_1=\\psi_0."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\tau_s(w)=\\mathbb E[Y(1)-Y(0)\\mid W=w,S=s]."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\psi_1=\\int\\tau_1(w)\\,dF_1(w),\\qquad\n\\psi_0=\\int\\tau_0(w)\\,dF_0(w)."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\Pr(S=1\\mid X=x,Z=z,U=u)\n=\\operatorname{expit}(-0.85-1.1z-\\lambda x+\\gamma u),"
+  },
+  {
+   "name": "eq09",
+   "tex": "\\begin{aligned}\nY(0)&=1+0.5Z+0.4X+0.15X^2+\\varepsilon,\\\\\nY(1)&=Y(0)+\\tau(X,Z,U),\\\\\n\\tau(X,Z,U)&=0.4+0.9Z+0.5X+0.35ZX+\\delta_U U,\\\\\n\\varepsilon&\\sim N(0,0.8^2).\n\\end{aligned}"
+  },
+  {
+   "name": "eq10",
+   "tex": "\\psi_1=\n\\frac{\\mathbb E_f[\\tau(X,Z,U)p(X,Z,U)]}\n{\\mathbb E_f[p(X,Z,U)]},\n\\quad\n\\psi_0=\n\\frac{\\mathbb E_f[\\tau(X,Z,U)\\{1-p(X,Z,U)\\}]}\n{\\mathbb E_f[1-p(X,Z,U)]}."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\psi_0-\\psi_1\n=\\underbrace{\\int\\tau_1(w)\\{dF_0(w)-dF_1(w)\\}}_{\\text{difference in population composition}}\n+\\underbrace{\\int\\{\\tau_0(w)-\\tau_1(w)\\}\\,dF_0(w)}_{\\text{difference in conditional effects}}."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\mathbb E[Y(a)\\mid W=w,S=1]\n=\\mathbb E[Y(a)\\mid W=w,S=0],\\quad a\\in\\{0,1\\}."
+  },
+  {
+   "name": "eq13",
+   "tex": "f_0(w)>0\\quad\\Longrightarrow\\quad f_1(w)>0."
+  },
+  {
+   "name": "eq14",
+   "tex": "m_a(w)=\\mathbb E[Y\\mid A=a,W=w,S=1],\\qquad a\\in\\{0,1\\}."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\boxed{\\psi_0=\\mathbb E\\left[m_1(W)-m_0(W)\\mid S=0\\right].}"
+  },
+  {
+   "name": "eq16",
+   "tex": "\\widehat\\psi_{\\mathrm{G}}\n=\\frac{1}{n_0}\\sum_{j:S_j=0}\n\\{\\widehat m_1(W_j)-\\widehat m_0(W_j)\\}."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\begin{aligned}\n\\frac{f_0(w)}{f_1(w)}\n&=\\frac{f_{W\\mid S}(w\\mid S=0)}{f_{W\\mid S}(w\\mid S=1)}\\\\\n&=\\frac{P(S=0\\mid W=w)}{P(S=1\\mid W=w)}\n\\frac{P(S=1)}{P(S=0)}\\\\\n&\\propto\\frac{1-\\pi(w)}{\\pi(w)}.\n\\end{aligned}"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\boxed{\\omega(w)=\\frac{1-\\pi(w)}{\\pi(w)}}"
+  },
+  {
+   "name": "eq19",
+   "tex": "\\mathbb E[h(W)\\mid S=0]\n=\\frac{\\mathbb E[\\omega(W)h(W)\\mid S=1]}\n{\\mathbb E[\\omega(W)\\mid S=1]}."
+  },
+  {
+   "name": "eq20",
+   "tex": "\\widehat\\psi_{\\mathrm{W}}=\n\\frac{\\sum_{i:S_i=1}\\widehat\\omega_i A_iY_i}\n{\\sum_{i:S_i=1}\\widehat\\omega_i A_i}\n-\\frac{\\sum_{i:S_i=1}\\widehat\\omega_i(1-A_i)Y_i}\n{\\sum_{i:S_i=1}\\widehat\\omega_i(1-A_i)}."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\begin{aligned}\n\\widehat\\psi_{\\mathrm{DR}}={}&\n\\frac{1}{n_0}\\sum_{j:S_j=0}\n\\{\\widehat m_1(W_j)-\\widehat m_0(W_j)\\}\\\\[4pt]\n&+\\frac{1}{\\sum_{i:S_i=1}\\widehat\\omega_i}\n\\sum_{i:S_i=1}\\widehat\\omega_i\\left[\n\\frac{A_i}{e_A}(Y_i-\\widehat m_1(W_i))\n-\\frac{1-A_i}{1-e_A}(Y_i-\\widehat m_0(W_i))\n\\right].\n\\end{aligned}"
+  },
+  {
+   "name": "eq22",
+   "tex": "\\mathbb E\\left[\\frac{A}{e_A}\\{Y-m_1(W)\\}\n-\\frac{1-A}{1-e_A}\\{Y-m_0(W)\\}\n\\mid W,S=1\\right]=0."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\{m_1(W)-\\widetilde m_1(W)\\}\n-\\{m_0(W)-\\widetilde m_0(W)\\}."
+  },
+  {
+   "name": "eq24",
+   "tex": "n_{\\mathrm{eff}}=\\frac{(\\sum_i w_i)^2}{\\sum_iw_i^2}."
+  },
+  {
+   "name": "eq25",
+   "tex": "P(S=1\\mid x,z,u)=\\operatorname{expit}(-0.85-1.1z-0.8x+\\gamma u),"
+  },
+  {
+   "name": "eq26",
+   "tex": "\\tau(x,z,u)=0.4+0.9z+0.5x+0.35zx+\\delta_Uu."
+  },
+  {
+   "name": "eq27",
+   "tex": "\\tau_1(x,z)=\\tau_{\\mathrm{base}}(x,z)\n+\\delta_U P(U=1\\mid x,z,S=1),"
+  },
+  {
+   "name": "eq28",
+   "tex": "\\tau_0(x,z)=\\tau_{\\mathrm{base}}(x,z)\n+\\delta_U P(U=1\\mid x,z,S=0)."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\begin{aligned}\nq_1(x,z)&=P(U=1\\mid x,z,S=1)\n=\\frac{q p_1(x,z)}{(1-q)p_0(x,z)+q p_1(x,z)},\\\\\nq_0(x,z)&=P(U=1\\mid x,z,S=0)\n=\\frac{q\\{1-p_1(x,z)\\}}\n{(1-q)\\{1-p_0(x,z)\\}+q\\{1-p_1(x,z)\\}}.\n\\end{aligned}"
+  },
+  {
+   "name": "eq30",
+   "tex": "\\psi_{\\mathrm{observed\\ oracle}}\n=\\mathbb E[\\tau_1(X,Z)\\mid S=0]."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\boxed{B_U=\\delta_U\\,\n\\mathbb E\\left[q_1(X,Z)-q_0(X,Z)\\mid S=0\\right].}"
+  }
+ ],
+ "statistics-for-data-scientists/clustering-is-not-a-population": [
+  {
+   "name": "eq01",
+   "tex": "p(x)=\\sum_{j=1}^{k}\\pi_j f_j(x;\\theta_j),\n \\qquad \\pi_j\\geq0,\\quad\\sum_j\\pi_j=1."
+  },
+  {
+   "name": "eq02",
+   "tex": "W_k(X)=\\min_{\\mu,z}\n \\sum_{i=1}^{n}\\|x_i-\\mu_{z_i}\\|_2^2."
+  },
+  {
+   "name": "eq03",
+   "tex": "-2\\sum_{i:z_i=j}(x_i-\\mu_j)=0\n \\quad\\Longrightarrow\\quad\n \\mu_j=\\frac{1}{|C_j|}\\sum_{i\\in C_j}x_i."
+  },
+  {
+   "name": "eq04",
+   "tex": "2x^\\top(\\mu_b-\\mu_a)\n \\leq \\|\\mu_b\\|^2-\\|\\mu_a\\|^2."
+  },
+  {
+   "name": "eq05",
+   "tex": "W_{k+1}(X)\\leq W_k(X)."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\|Dx-Dy\\|_2^2\n =\\sum_{j=1}^{p}d_j^2(x_j-y_j)^2."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\mathbb E\\|N_a-N_b\\|_2^2=2q\\sigma^2."
+  },
+  {
+   "name": "eq08",
+   "tex": "s_i=\\frac{b_i-a_i}{\\max(a_i,b_i)},"
+  },
+  {
+   "name": "eq09",
+   "tex": "\\operatorname{ARI}\n =\\frac{C-AB/M}{\\tfrac12(A+B)-AB/M},"
+  },
+  {
+   "name": "eq10",
+   "tex": "p(x\\mid\\Theta)\n =\\sum_{j=1}^{k}\\pi_j\\,\n   \\phi_p(x;\\mu_j,\\Sigma_j),\n \\qquad\n \\sum_{j=1}^{k}\\pi_j=1,"
+  },
+  {
+   "name": "eq11",
+   "tex": "\\ell(\\Theta)\n =\\sum_{i=1}^{n}\\log\n   \\left[\n   \\sum_{j=1}^{k}\\pi_j\n   \\phi_p(x_i;\\mu_j,\\Sigma_j)\n   \\right]."
+  },
+  {
+   "name": "eq12",
+   "tex": "r_{ij}\n =P(Z_i=j\\mid x_i,\\Theta)\n =\\frac{\\pi_j\\phi_p(x_i;\\mu_j,\\Sigma_j)}\n {\\sum_{h=1}^{k}\\pi_h\\phi_p(x_i;\\mu_h,\\Sigma_h)}."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\pi_j^{\\mathrm{new}}=\\frac{N_j}{n},\n \\qquad\n \\mu_j^{\\mathrm{new}}\n =\\frac{1}{N_j}\\sum_i r_{ij}x_i,"
+  },
+  {
+   "name": "eq14",
+   "tex": "\\Sigma_j^{\\mathrm{new}}\n =\\frac{1}{N_j}\\sum_i\n r_{ij}(x_i-\\mu_j^{\\mathrm{new}})\n (x_i-\\mu_j^{\\mathrm{new}})^\\top."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\operatorname{BIC}\n =-2\\ell(\\widehat\\Theta)+d\\log n,"
+  },
+  {
+   "name": "eq16",
+   "tex": "d=(k-1)+kp+\n k\\,\\frac{p(p+1)}{2}."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\sum_{j=1}^{k}\n \\pi_j\\phi_p(x;\\mu_j,\\Sigma_j)\n =\n \\sum_{j=1}^{k}\n \\pi_{\\sigma(j)}\n \\phi_p(x;\\mu_{\\sigma(j)},\\Sigma_{\\sigma(j)})."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\bar T=\\frac1R\\sum_{r=1}^{R}T_r,\\qquad\n s_T^2=\\frac{1}{R-1}\n \\sum_{r=1}^{R}(T_r-\\bar T)^2,\n \\qquad\n \\widehat{\\operatorname{MCSE}}(\\bar T)\n =\\frac{s_T}{\\sqrt R}."
+  }
+ ],
+ "statistics-for-data-scientists/conformal-prediction-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "\\mu(x)=\\mathbb E[Y\\mid X=x]."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\Pr\\left\\{Y_{\\mathrm{new}}\\in\\mathcal C(X_{\\mathrm{new}})\\right\\}\n\\geq 1-\\alpha."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\Pr\\left\\{Y_{\\mathrm{new}}\\in\\mathcal C(x)\n\\mid X_{\\mathrm{new}}=x\\right\\}\\geq 0.90\n\\quad\\text{for every }x."
+  },
+  {
+   "name": "eq04",
+   "tex": "X\\sim U(0,1),\\qquad\n\\Pr(G=1)=0.20,"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\mu(x,g)=1.25\\sin(2\\pi x)+0.50\\cos(4\\pi x)+0.30g."
+  },
+  {
+   "name": "eq06",
+   "tex": "Y=\\mu(X,G)+\\sigma(X,G)Z,\\qquad Z\\sim N(0,1),"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\begin{aligned}\n\\sigma(x,0)&=0.35+0.35x,\\\\\n\\sigma(x,1)&=1.25+0.65x.\n\\end{aligned}"
+  },
+  {
+   "name": "eq08",
+   "tex": "(1,\\ \\sin(2\\pi X),\\ \\cos(4\\pi X),\\ G)."
+  },
+  {
+   "name": "eq09",
+   "tex": "S_i=\\left|Y_i-\\widehat\\mu(X_i,G_i)\\right|,\n\\quad i=1,\\ldots,n."
+  },
+  {
+   "name": "eq10",
+   "tex": "k=\\left\\lceil(n+1)(1-\\alpha)\\right\\rceil."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\widehat q=\n\\begin{cases}\nS_{(k)},&k\\leq n,\\\\\n+\\infty,&k>n.\n\\end{cases}"
+  },
+  {
+   "name": "eq12",
+   "tex": "\\mathcal C(x,g)=\n[\\widehat\\mu(x,g)-\\widehat q,\\\n\\widehat\\mu(x,g)+\\widehat q]."
+  },
+  {
+   "name": "eq13",
+   "tex": "1-\\alpha\n\\leq\n\\Pr\\{Y_{\\mathrm{new}}\\in\\mathcal C(X_{\\mathrm{new}})\\}\n\\leq 1-\\alpha+\\frac{1}{n+1}."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\widehat q_g=\nS^{(g)}_{\\left(\\left\\lceil(n_g+1)(1-\\alpha)\\right\\rceil\\right)},"
+  },
+  {
+   "name": "eq15",
+   "tex": "\\Pr\\{Y_{\\mathrm{new}}\\in\\mathcal C(X_{\\mathrm{new}},g)\n\\mid G_{\\mathrm{new}}=g\\}\\geq1-\\alpha"
+  },
+  {
+   "name": "eq16",
+   "tex": "R_i=\n\\frac{|Y_i-\\widehat\\mu(X_i,G_i)|}\n{\\widehat\\sigma(X_i,G_i)}."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\mathcal C_{\\mathrm{norm}}(x,g)\n=\n[\\widehat\\mu(x,g)-\\widehat q_R\\widehat\\sigma(x,g),\\\n\\widehat\\mu(x,g)+\\widehat q_R\\widehat\\sigma(x,g)]."
+  },
+  {
+   "name": "eq18",
+   "tex": "P_{\\mathrm{deployment}}(Y\\mid X,G)\n=P_{\\mathrm{calibration}}(Y\\mid X,G)."
+  },
+  {
+   "name": "eq19",
+   "tex": "P_{\\mathrm{deployment}}(G=1)=0.60\n\\ne P_{\\mathrm{calibration}}(G=1)=0.20."
+  },
+  {
+   "name": "eq20",
+   "tex": "c_g=\\Pr\\{Y\\in\\mathcal C(X,G)\\mid G=g\\}."
+  },
+  {
+   "name": "eq21",
+   "tex": "c_{\\mathrm{pooled}}=(1-p_B)c_0+p_Bc_1."
+  },
+  {
+   "name": "eq22",
+   "tex": "w(z)=\n\\frac{p_{\\mathrm{deployment}}(z)}\n{p_{\\mathrm{calibration}}(z)},"
+  },
+  {
+   "name": "eq23",
+   "tex": "w(g)=\n\\begin{cases}\n(1-0.60)/(1-0.20)=0.50,&g=0,\\\\\n0.60/0.20=3.00,&g=1.\n\\end{cases}"
+  },
+  {
+   "name": "eq24",
+   "tex": "p_i(z_*)=\n\\frac{w(Z_i)}\n{\\sum_{j=1}^{n}w(Z_j)+w(z_*)},\n\\qquad\np_{\\infty}(z_*)=\n\\frac{w(z_*)}\n{\\sum_{j=1}^{n}w(Z_j)+w(z_*)}."
+  },
+  {
+   "name": "eq25",
+   "tex": "\\sigma_{\\mathrm{new}}(x,1)\n=1.65\\,\\sigma_{\\mathrm{old}}(x,1),\n\\qquad\n\\sigma_{\\mathrm{new}}(x,0)\n=\\sigma_{\\mathrm{old}}(x,0)."
+  },
+  {
+   "name": "eq26",
+   "tex": "e_t=\\rho e_{t-1}\n+\\sqrt{1-\\rho^2}\\,\\sigma_t\\varepsilon_t,\n\\qquad\n\\varepsilon_t\\overset{\\mathrm{iid}}{\\sim}N(0,1),"
+  },
+  {
+   "name": "eq27",
+   "tex": "\\Pr(A_j)\\geq0.90,\\qquad j=1,2,3,"
+  },
+  {
+   "name": "eq28",
+   "tex": "\\Pr(A_1\\cap A_2\\cap A_3)\\geq0.90."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\Pr(A_1\\cap A_2\\cap A_3)=0.9^3=0.729."
+  },
+  {
+   "name": "eq30",
+   "tex": "\\begin{aligned}\n\\Pr\\{\\text{at least one miss}\\}\n&=\\Pr(A_1^c\\cup A_2^c\\cup A_3^c)\\\\\n&\\leq\\sum_{j=1}^3\\Pr(A_j^c)\\\\\n&\\leq 3\\left(\\frac{\\alpha}{3}\\right)=\\alpha.\n\\end{aligned}"
+  },
+  {
+   "name": "eq31",
+   "tex": "\\mathcal L(a,Y)\n=c_{\\mathrm{under}}(Y-a)_+\n+c_{\\mathrm{over}}(a-Y)_+,"
+  }
+ ],
+ "statistics-for-data-scientists/decision-focused-optimization-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "R(f)=\\mathbb E[(Y-f(X))^2]."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\begin{aligned}\n\\mathbb E[(Y-a)^2\\mid X=x]\n&=\\operatorname{Var}(Y\\mid X=x)\\\\\n&\\quad+\\left(\\mathbb E[Y\\mid X=x]-a\\right)^2.\n\\end{aligned}"
+  },
+  {
+   "name": "eq03",
+   "tex": "a_{\\mathrm{MSE}}^*(x)=\\mathbb E[Y\\mid X=x]."
+  },
+  {
+   "name": "eq04",
+   "tex": "L(a,Y)=c_u(Y-a)_++c_o(a-Y)_+,"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\frac{\\partial}{\\partial a}\\mathbb E[L(a,Y)\\mid X=x]\n=-c_u[1-F(a\\mid x)]+c_oF(a\\mid x)."
+  },
+  {
+   "name": "eq06",
+   "tex": "F(a^*\\mid x)=\\frac{c_u}{c_u+c_o}."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\boxed{\na^*(x)=F^{-1}\\left(\\frac{c_u}{c_u+c_o}\\mid x\\right).\n}"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\log D\\mid X=x\n=m(x)+\\sigma Z,\\qquad\nZ\\sim N(0,1),"
+  },
+  {
+   "name": "eq09",
+   "tex": "m(x)=\\log(85)+0.20\\sin(2\\pi x)+0.12x,\n\\qquad \\sigma=0.45."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\mathbb E[D\\mid X=x]=\\exp\\left(m(x)+\\frac{\\sigma^2}{2}\\right),"
+  },
+  {
+   "name": "eq11",
+   "tex": "Q_\\tau(D\\mid X=x)=\n\\exp\\left(m(x)+\\sigma\\Phi^{-1}(\\tau)\\right)."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\tau(c_u)=\\frac{c_u}{c_u+2}."
+  },
+  {
+   "name": "eq13",
+   "tex": "a^*=\\arg\\min_{a\\in\\mathcal A}\\mathbb E[L(a,\\xi)]"
+  },
+  {
+   "name": "eq14",
+   "tex": "\\widehat a_N\n=\\arg\\min_{a\\in\\mathcal A}\n\\frac{1}{N}\\sum_{s=1}^{N}L(a,\\xi_s),"
+  },
+  {
+   "name": "eq15",
+   "tex": "N\\in\\{8,16,32,64,128,256,512,1024\\}."
+  },
+  {
+   "name": "eq16",
+   "tex": "L(q,D)=\\sum_{i=1}^{2}\n\\left[c_{u,i}(D_i-q_i)_+\n+c_{o,i}(q_i-D_i)_+\\right]."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\mathcal Q=\\{q\\in\\mathbb R_+^2:q_1+q_2\\leq190\\}."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\begin{aligned}\n\\min_{q\\geq0}\\quad&\n\\frac1N\\sum_{s=1}^N\\sum_{i=1}^2\n\\left[c_{u,i}(d_{si}-q_i)_+\n+c_{o,i}(q_i-d_{si})_+\\right],\\\\\n\\text{subject to}\\quad&q_1+q_2\\leq190.\n\\end{aligned}"
+  },
+  {
+   "name": "eq19",
+   "tex": "\\begin{aligned}\n\\min_{q,u,v}\\quad&\n\\frac1N\\sum_{s=1}^N\\sum_{i=1}^{2}\n\\left(c_{u,i}u_{si}+c_{o,i}v_{si}\\right),\\\\\n\\text{subject to}\\quad&\nu_{si}\\geq d_{si}-q_i,\\qquad\nv_{si}\\geq q_i-d_{si},\\\\\n&u_{si},v_{si}\\geq0,\\qquad\nq_1,q_2\\geq0,\\qquad\nq_1+q_2\\leq190.\n\\end{aligned}"
+  },
+  {
+   "name": "eq20",
+   "tex": "\\widehat q_{\\mathrm{SAA}}=(111.806,\\ 78.194),"
+  },
+  {
+   "name": "eq21",
+   "tex": "\\mathcal R(q;q^{\\mathrm{ref}})\n=\\mathbb E[L(q,D)]-\\mathbb E[L(q^{\\mathrm{ref}},D)]."
+  },
+  {
+   "name": "eq22",
+   "tex": "\\operatorname{CVaR}_{\\alpha}(Z)\n=\\min_{\\eta\\in\\mathbb R}\n\\left\\{\\eta+\\frac{1}{1-\\alpha}\n\\mathbb E[(Z-\\eta)_+]\\right\\}."
+  },
+  {
+   "name": "eq23",
+   "tex": "z_s\\geq L(q,d_s)-\\eta,\\qquad z_s\\geq0."
+  },
+  {
+   "name": "eq24",
+   "tex": "\\eta+\\frac{1}{(1-\\alpha)N}\\sum_{s=1}^Nz_s."
+  },
+  {
+   "name": "eq25",
+   "tex": "\\min_{q\\in\\mathcal Q}\n\\bigl(1-\\lambda\\bigr)\\widehat{\\mathbb E}[L(q,D)]\n+\\lambda\\,\\widehat{\\operatorname{CVaR}}_{0.90}[L(q,D)],\n\\qquad \\lambda\\in[0,1]."
+  },
+  {
+   "name": "eq26",
+   "tex": "\\mathbb E[L(q,D)]\n=\\sum_{i=1}^{2}\\mathbb E[\\ell_i(q_i,D_i)]."
+  },
+  {
+   "name": "eq27",
+   "tex": "z_{\\mathrm{SP}}=\\min_{q\\in Q}\\mathbb E[L(q,D)]."
+  },
+  {
+   "name": "eq28",
+   "tex": "z_{\\mathrm{EEV}}=\\mathbb E[L(q_{\\mathrm{EV}},D)]."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\operatorname{VSS}=z_{\\mathrm{EEV}}-z_{\\mathrm{SP}}\\geq0,"
+  },
+  {
+   "name": "eq30",
+   "tex": "z_{\\mathrm{WS}}=\\mathbb E\\left[\\min_{q\\in Q}L(q,D)\\right]."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\operatorname{EVPI}=z_{\\mathrm{SP}}-z_{\\mathrm{WS}}\\geq0."
+  },
+  {
+   "name": "eq32",
+   "tex": "\\mathbb E\\left[\\min_{q\\in Q}L(q,D)\\right]\n\\leq \\min_{q\\in Q}\\mathbb E[L(q,D)]."
+  },
+  {
+   "name": "eq33",
+   "tex": "\\begin{aligned}\n\\widehat{\\operatorname{VSS}}&=231.272-204.000=27.272,\\\\\n\\widehat{\\operatorname{EVPI}}&=204.000-72.900=131.100.\n\\end{aligned}"
+  },
+  {
+   "name": "eq34",
+   "tex": "\\min_\\theta\n\\frac1n\\sum_{j=1}^{n}\nL\\bigl(q_\\theta(x_j),y_j\\bigr)\n+\\operatorname{penalty}(\\theta),"
+  }
+ ],
+ "statistics-for-data-scientists/dependent-data-uncertainty-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "\\gamma(k)=\\operatorname{Cov}(X_t,X_{t+k}),\n\\qquad\n\\rho(k)=\\frac{\\gamma(k)}{\\gamma_0}."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\bar X=\\frac{1}{n}\\sum_{t=1}^n X_t."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\operatorname{Var}(\\bar X)=\\frac{\\gamma_0}{n}."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\begin{aligned}\n\\operatorname{Var}(\\bar X)\n&=\\operatorname{Var}\\left(\\frac{1}{n}\\sum_{t=1}^nX_t\\right)\\\\\n&=\\frac{1}{n^2}\\sum_{s=1}^n\\sum_{t=1}^n\n\\operatorname{Cov}(X_s,X_t)\\\\\n&=\\frac{1}{n^2}\n\\left[n\\gamma_0+2\\sum_{k=1}^{n-1}(n-k)\\gamma(k)\\right].\n\\end{aligned}"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\boxed{\n\\operatorname{Var}(\\bar X)=\n\\frac{\\gamma_0}{n}\n\\left[1+2\\sum_{k=1}^{n-1}\n\\left(1-\\frac{k}{n}\\right)\\rho(k)\\right].\n}"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\operatorname{Var}(\\bar X)=\n\\frac{\\mathbf{1}^{\\mathsf T}\\Sigma\\mathbf{1}}{n^2}."
+  },
+  {
+   "name": "eq07",
+   "tex": "X_t=\\phi X_{t-1}+\\sqrt{1-\\phi^2}\\,\\varepsilon_t,\n\\qquad\n\\varepsilon_t\\overset{\\mathrm{iid}}{\\sim}N(0,1),\n\\qquad |\\phi|<1."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\rho(k)=\\phi^{|k|}."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\operatorname{Var}(\\bar X)=\n\\frac{1}{n}\\left[\n1+2\\sum_{k=1}^{n-1}\\left(1-\\frac{k}{n}\\right)\\phi^k\n\\right]."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\frac{1}{n_{\\mathrm{eff}}}\n=\\operatorname{Var}(\\bar X),\n\\qquad\nn_{\\mathrm{eff}}\n=\\frac{1}{\\operatorname{Var}(\\bar X)}."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\operatorname{Var}(\\bar X)\\approx\\frac{\\Omega}{n},\n\\qquad\n\\Omega=\\gamma_0+2\\sum_{k=1}^{\\infty}\\gamma(k)."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\Omega\n=1+2\\sum_{k=1}^{\\infty}\\phi^k\n=1+\\frac{2\\phi}{1-\\phi}\n=\\frac{1+\\phi}{1-\\phi}."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\boxed{\nn_{\\mathrm{eff},\\infty}\n\\approx n\\,\\frac{1-\\phi}{1+\\phi}.\n}"
+  },
+  {
+   "name": "eq14",
+   "tex": "\\sqrt{n}(\\bar X-\\mu)\\;\\Rightarrow\\;N(0,\\gamma_0)."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\sqrt{n}(\\bar X-\\mu)\\;\\Rightarrow\\;N(0,\\Omega)."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\widehat{\\operatorname{SE}}_{\\mathrm{iid}}(\\bar X)\n=\\frac{s}{\\sqrt n},"
+  },
+  {
+   "name": "eq17",
+   "tex": "\\bar X\\pm 1.96\\frac{s}{\\sqrt n}."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\widehat{\\gamma}(k)=\n\\frac{1}{n}\\sum_{t=1}^{n-k}\n(X_t-\\bar X)(X_{t+k}-\\bar X)."
+  },
+  {
+   "name": "eq19",
+   "tex": "\\boxed{\n\\widehat{\\Omega}_{\\mathrm{HAC}}=\n\\widehat{\\gamma}(0)+\n2\\sum_{k=1}^{L}\n\\left(1-\\frac{k}{L+1}\\right)\\widehat{\\gamma}(k).\n}"
+  },
+  {
+   "name": "eq20",
+   "tex": "\\widehat{\\operatorname{SE}}_{\\mathrm{HAC}}(\\bar X)\n=\\sqrt{\\frac{\\widehat{\\Omega}_{\\mathrm{HAC}}}{n}}."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\bar X\\pm z_{0.975}\n\\widehat{\\operatorname{SE}}_{\\mathrm{HAC}}(\\bar X)."
+  },
+  {
+   "name": "eq22",
+   "tex": "L=\\left\\lceil 2n^{1/3}\\right\\rceil,"
+  },
+  {
+   "name": "eq23",
+   "tex": "D_b^*=\\bar X_b^*-\\bar X."
+  },
+  {
+   "name": "eq24",
+   "tex": "\\left[\n\\bar X-q_{0.975}^*,\n\\;\\bar X-q_{0.025}^*\n\\right]."
+  },
+  {
+   "name": "eq25",
+   "tex": "B_j=(X_j,X_{j+1},\\ldots,X_{j+\\ell-1}),\n\\qquad\nj=1,\\ldots,n-\\ell+1."
+  },
+  {
+   "name": "eq26",
+   "tex": "\\ell\\rightarrow\\infty,\n\\qquad\n\\frac{\\ell}{n}\\rightarrow0."
+  },
+  {
+   "name": "eq27",
+   "tex": "\\operatorname{MCSE}(\\widehat p)\\approx\n\\sqrt{\\frac{\\widehat p(1-\\widehat p)}{R}}."
+  },
+  {
+   "name": "eq28",
+   "tex": "X_t=\\mu_t+\\phi(X_{t-1}-\\mu_t)\n+\\sqrt{1-\\phi^2}\\,\\varepsilon_t,"
+  },
+  {
+   "name": "eq29",
+   "tex": "\\mu_t=\n\\begin{cases}\n0,&t<800,\\\\\n2.5,&t\\ge 800.\n\\end{cases}"
+  },
+  {
+   "name": "eq30",
+   "tex": "\\mathbb E[X_t\\mid X_{t-1}]=0.55X_{t-1}."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\mathbb E[X_t\\mid X_{t-1}]\n=1.125+0.55X_{t-1}."
+  }
+ ],
+ "statistics-for-data-scientists/extreme-value-theory-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "M_n=\\max(X_1,\\ldots,X_n)."
+  },
+  {
+   "name": "eq02",
+   "tex": "P(M_n\\leq x)\n=P(X_1\\leq x,\\ldots,X_n\\leq x)\n=F(x)^n."
+  },
+  {
+   "name": "eq03",
+   "tex": "1-(1-0.01)^{100}\\approx 0.634,"
+  },
+  {
+   "name": "eq04",
+   "tex": "G_\\xi(z)\n=\\exp\\left\\{-\\left(1+\\xi z\\right)^{-1/\\xi}\\right\\},\n\\qquad 1+\\xi z>0,"
+  },
+  {
+   "name": "eq05",
+   "tex": "P(Y>y\\mid X>u)\n\\approx\n\\left(1+\\frac{\\xi y}{\\beta_u}\\right)^{-1/\\xi},\n\\qquad 1+\\frac{\\xi y}{\\beta_u}>0,"
+  },
+  {
+   "name": "eq06",
+   "tex": "P(X>x)\n\\approx\np_u\\left(1+\\frac{\\xi(x-u)}{\\beta_u}\\right)^{-1/\\xi}."
+  },
+  {
+   "name": "eq07",
+   "tex": "x_p\n\\approx\nu+\\frac{\\beta_u}{\\xi}\n\\left[\n\\left(\\frac{p_u}{1-p}\\right)^\\xi-1\n\\right],\n\\qquad \\xi\\ne0."
+  },
+  {
+   "name": "eq08",
+   "tex": "x_p\\approx u+\\beta_u\\log\\frac{p_u}{1-p}."
+  },
+  {
+   "name": "eq09",
+   "tex": "u=10,\\qquad p_u=0.10,\\qquad \\xi=0.30,\\qquad \\beta_u=3."
+  },
+  {
+   "name": "eq10",
+   "tex": "P(X>x)\n=0.10\\left(1+\\frac{0.30(x-10)}{3}\\right)^{-1/0.30},\n\\qquad x\\geq10."
+  },
+  {
+   "name": "eq11",
+   "tex": "P(\\text{at least one exceedance in }n)\n=1-\\left(1-\\frac1T\\right)^n."
+  },
+  {
+   "name": "eq12",
+   "tex": "e(v)=E[X-v\\mid X>v]."
+  },
+  {
+   "name": "eq13",
+   "tex": "e(v)=\\frac{\\beta_u+\\xi(v-u)}{1-\\xi}."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\xi_v=\\xi_u,\\qquad\n\\beta_v=\\beta_u+\\xi_u(v-u)."
+  },
+  {
+   "name": "eq15",
+   "tex": "E[X-x\\mid X>x]\n=\\frac{\\beta_u+\\xi(x-u)}{1-\\xi}."
+  },
+  {
+   "name": "eq16",
+   "tex": "E[X\\mid X>x]\n=x+\\frac{\\beta_u+\\xi(x-u)}{1-\\xi}."
+  },
+  {
+   "name": "eq17",
+   "tex": "P(Z_t>z)=z^{-3},\\qquad z\\geq1."
+  },
+  {
+   "name": "eq18",
+   "tex": "X_t^{\\mathrm{dep}}=\\max(Z_t,Z_{t-1})."
+  },
+  {
+   "name": "eq19",
+   "tex": "F_X(x)=\\left(1-x^{-3}\\right)^2,\\qquad x\\geq1."
+  },
+  {
+   "name": "eq20",
+   "tex": "P\\left(\\max_{1\\leq t\\leq n} X_t^{\\mathrm{iid}}>v\\right)\n=1-(0.99)^n."
+  },
+  {
+   "name": "eq21",
+   "tex": "P\\left(\\max_{1\\leq t\\leq n} X_t^{\\mathrm{dep}}>v\\right)\n=1-(0.99)^{(n+1)/2}."
+  },
+  {
+   "name": "eq22",
+   "tex": "P(M_n\\leq u_n)\\longrightarrow\\exp(-\\theta\\tau),\n\\qquad 0\\leq\\theta\\leq1."
+  }
+ ],
+ "statistics-for-data-scientists/feature-importance-is-not-causality": [
+  {
+   "name": "eq01",
+   "tex": "R_P(f)=\\mathbb E_P[(Y-f(X))^2]."
+  },
+  {
+   "name": "eq02",
+   "tex": "X^{\\pi(j)}=(X_1,\\ldots,X_{j-1},X'_j,X_{j+1},\\ldots,X_p)."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\Delta^{\\mathrm{marg}}_j(f;P)\n=\\mathbb E\\left[\\ell\\{Y,f(X^{\\pi(j)})\\}\n                 -\\ell\\{Y,f(X)\\}\\right].\n\\tag{1}"
+  },
+  {
+   "name": "eq04",
+   "tex": "\\Delta^{\\mathrm{cond}}_j(f;P)\n=\\mathbb E\\left[\\ell\\{Y,f(X_{-j},\\widetilde X_j)\\}\n                 -\\ell\\{Y,f(X)\\}\\right].\n\\tag{2}"
+  },
+  {
+   "name": "eq05",
+   "tex": "Y=\\beta X_1+\\varepsilon,\\qquad\n\\varepsilon\\perp (X_1,X_2),\\quad\n\\mathbb E\\varepsilon=0."
+  },
+  {
+   "name": "eq06",
+   "tex": "Y-f(X'_1,X_2)=\\beta(X_1-X'_1)+\\varepsilon."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\Delta^{\\mathrm{marg}}_1=2\\beta^2.\n\\tag{3}"
+  },
+  {
+   "name": "eq08",
+   "tex": "X_1\\mid X_2=x_2\n\\sim \\mathcal N(\\rho x_2,\\,1-\\rho^2)."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\Delta^{\\mathrm{cond}}_1=2\\beta^2(1-\\rho^2).\n\\tag{4}"
+  },
+  {
+   "name": "eq10",
+   "tex": "X_1=Z+\\eta_1,\\quad X_2=Z+\\eta_2,\\quad\nY=Z+\\varepsilon,"
+  },
+  {
+   "name": "eq11",
+   "tex": "I(t,j)=w_t\\,H(t)-w_{t_L}H(t_L)-w_{t_R}H(t_R),"
+  },
+  {
+   "name": "eq12",
+   "tex": "\\phi_j=\\sum_{S\\subseteq N\\setminus\\{j\\}}\n\\frac{|S|!(p-|S|-1)!}{p!}\n\\left[v(S\\cup\\{j\\})-v(S)\\right],\n\\tag{5}"
+  },
+  {
+   "name": "eq13",
+   "tex": "v_{\\mathrm{marg}}(S)\n=\\mathbb E_{X_{\\bar S}}[f(x_S,X_{\\bar S})].\n\\tag{6}"
+  },
+  {
+   "name": "eq14",
+   "tex": "v_{\\mathrm{cond}}(S)\n=\\mathbb E[f(X)\\mid X_S=x_S].\n\\tag{7}"
+  },
+  {
+   "name": "eq15",
+   "tex": "f(x_1,x_2)=x_1."
+  },
+  {
+   "name": "eq16",
+   "tex": "(\\phi_1^{\\mathrm{marg}},\\phi_2^{\\mathrm{marg}})=(x_1,0).\n\\tag{8}"
+  },
+  {
+   "name": "eq17",
+   "tex": "(\\phi_1^{\\mathrm{cond}},\\phi_2^{\\mathrm{cond}})\n=\\left(x_1-\\frac{\\rho x_2}{2},\\frac{\\rho x_2}{2}\\right).\n\\tag{9}"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\mathbb E|\\phi_2^{\\mathrm{cond}}|\n=\\frac{|\\rho|}{2}\\sqrt{\\frac{2}{\\pi}}\n=\\frac{|\\rho|}{\\sqrt{2\\pi}}.\n\\tag{10}"
+  },
+  {
+   "name": "eq19",
+   "tex": "Y=X_1X_2+\\varepsilon,"
+  },
+  {
+   "name": "eq20",
+   "tex": "\\operatorname{Cov}(X_1,Y)\n=\\mathbb E[X_1^2X_2]\n=\\mathbb E[X_2]=0,"
+  },
+  {
+   "name": "eq21",
+   "tex": "Y=1.8X+\\varepsilon,\\qquad \\varepsilon\\sim\\mathcal N(0,1)."
+  },
+  {
+   "name": "eq22",
+   "tex": "f(x_1,x_2)=1.5x_1+0.7x_2,\\qquad\nY=f(X)+\\varepsilon."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\Delta^{\\mathrm{marg}}_j\n=2\\beta_j^2\\,\\operatorname{Var}(X_j)\n=2(\\beta_js_j)^2.\n\\tag{11}"
+  },
+  {
+   "name": "eq24",
+   "tex": "f(X,G)=2(1-G)X_1+2GX_2,\\qquad\nY=f(X,G)+\\varepsilon."
+  },
+  {
+   "name": "eq25",
+   "tex": "\\Delta^{\\mathrm{global}}_2=8q,\n\\tag{12}"
+  },
+  {
+   "name": "eq26",
+   "tex": "\\Delta^{G=1}_2=8.\n\\tag{13}"
+  },
+  {
+   "name": "eq27",
+   "tex": "\\widehat\\Delta_j=\\Delta_j+\\epsilon_j,"
+  },
+  {
+   "name": "eq28",
+   "tex": "\\max_{1\\le j\\le p}\\widehat\\Delta_j"
+  },
+  {
+   "name": "eq29",
+   "tex": "\\tau=\\mathbb E[Y(1)-Y(0)].\n\\tag{14}"
+  },
+  {
+   "name": "eq30",
+   "tex": "\\tau=\n\\mathbb E_C\\!\\left[\n  \\mathbb E(Y\\mid A=1,C)\n -\\mathbb E(Y\\mid A=0,C)\n\\right],\n\\tag{15}"
+  },
+  {
+   "name": "eq31",
+   "tex": "A=g(C,U_A),\\qquad Y=h(A,C,U_Y)."
+  },
+  {
+   "name": "eq32",
+   "tex": "\\mathcal F_{\\epsilon}\n=\\{f\\in\\mathcal F:R_P(f)\\le R_P^*+\\epsilon\\},"
+  },
+  {
+   "name": "eq33",
+   "tex": "\\left[\n\\inf_{f\\in\\mathcal F_{\\epsilon}}\\Delta_j(f;P),\\,\n\\sup_{f\\in\\mathcal F_{\\epsilon}}\\Delta_j(f;P)\n\\right].\n\\tag{16}"
+  },
+  {
+   "name": "eq34",
+   "tex": "\\overline D_c=\\frac1{m_c}\\sum_{r=1}^{m_c}D_{cr},\n\\qquad\n\\operatorname{MCSE}(\\overline D_c)\n=\\frac{s_c}{\\sqrt{m_c}},\n\\tag{17}"
+  }
+ ],
+ "statistics-for-data-scientists/gaussian-graphical-models-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "X\\sim N_p(\\mu,\\Sigma),\\qquad\\Sigma\\succ0."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\Omega=\\Sigma^{-1},"
+  },
+  {
+   "name": "eq03",
+   "tex": "\\log f(x)=-\\frac12\\log\\det\\Sigma\n-\\frac12(x-\\mu)^\\top\\Omega(x-\\mu)+C."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\log f(x)=\\frac12\\log\\det\\Omega\n-\\frac12\\sum_{i=1}^{p}\\sum_{j=1}^{p}\n\\Omega_{ij}(x_i-\\mu_i)(x_j-\\mu_j)+C."
+  },
+  {
+   "name": "eq05",
+   "tex": "X_i\\perp\\!\\!\\!\\perp X_j\\mid X_{-\\{i,j\\}}\n\\quad\\Longleftrightarrow\\quad \\Omega_{ij}=0."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\Sigma=\\begin{pmatrix}\n\\Sigma_{AA}&\\Sigma_{AB}\\\\\n\\Sigma_{BA}&\\Sigma_{BB}\n\\end{pmatrix},\\qquad\n\\Omega=\\Sigma^{-1}."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\operatorname{Var}(A\\mid B)=\n\\Sigma_{AA}-\\Sigma_{AB}\\Sigma_{BB}^{-1}\\Sigma_{BA}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\rho_{ij\\cdot -\\{i,j\\}}\n=-\\frac{\\Omega_{ij}}{\\sqrt{\\Omega_{ii}\\Omega_{jj}}}."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\beta_{ij\\cdot -i}=-\\frac{\\Omega_{ij}}{\\Omega_{ii}}."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\Omega_{\\mathrm{chain}}=\n\\begin{pmatrix}\n1&-0.42&0\\\\\n-0.42&1&-0.42\\\\\n0&-0.42&1\n\\end{pmatrix}."
+  },
+  {
+   "name": "eq11",
+   "tex": "C=0.9X_1+0.9X_2+\\varepsilon."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\operatorname{Var}(C)=0.9^2+0.9^2+1=2.62,"
+  },
+  {
+   "name": "eq13",
+   "tex": "\\operatorname{Corr}(X_1,X_2\\mid C)\n=-\\frac{0.9^2}{1+0.9^2}\n\\approx-0.4475."
+  },
+  {
+   "name": "eq14",
+   "tex": "X_i=\\lambda_iH+\\varepsilon_i,\n\\qquad i=1,2,3,4,"
+  },
+  {
+   "name": "eq15",
+   "tex": "\\Sigma_X=D+\\lambda\\lambda^\\top."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\Omega_X\n=D^{-1}-\\frac{D^{-1}\\lambda\\lambda^\\top D^{-1}}\n{1+\\lambda^\\top D^{-1}\\lambda}."
+  },
+  {
+   "name": "eq17",
+   "tex": "S=\\frac1n\\sum_{t=1}^{n}\n(X_t-\\overline X)(X_t-\\overline X)^\\top."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\operatorname{rank}(S)\\le\\min(p,n-1)."
+  },
+  {
+   "name": "eq19",
+   "tex": "\\mathcal L(\\Omega;S)=-\\log\\det\\Omega+\\operatorname{tr}(S\\Omega)."
+  },
+  {
+   "name": "eq20",
+   "tex": "\\widehat\\Omega_\\alpha\n=\\arg\\min_{\\Omega\\succ0}\n\\left\\{-\\log\\det\\Omega+\\operatorname{tr}(S\\Omega)\n+\\alpha\\sum_{i\\ne j}|\\Omega_{ij}|\\right\\}."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\operatorname{Precision}=\\frac{TP}{TP+FP},\\qquad\n\\operatorname{Recall}=\\frac{TP}{TP+FN},"
+  },
+  {
+   "name": "eq22",
+   "tex": "F_1=\\frac{2PR}{P+R},\\qquad\n\\operatorname{FPR}=\\frac{FP}{FP+TN},\\qquad\n\\operatorname{SHD}=FP+FN."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\operatorname{NLL}(\\widehat\\Omega)\n=\\frac12\\left\\{p\\log(2\\pi)-\\log\\det\\widehat\\Omega\n+\\frac1m\\sum_{t=1}^{m}z_t^\\top\\widehat\\Omega z_t\\right\\}."
+  },
+  {
+   "name": "eq24",
+   "tex": "X\\sim N(0,1),\\qquad\nY=X^2-1+\\varepsilon,\\qquad\n\\varepsilon\\sim N(0,0.7^2),"
+  },
+  {
+   "name": "eq25",
+   "tex": "\\operatorname{Cov}(X,Y)\n=\\mathbb E[X(X^2-1)]\n+\\mathbb E[X\\varepsilon]\n=\\mathbb E[X^3]-\\mathbb E[X]=0."
+  },
+  {
+   "name": "eq26",
+   "tex": "R^2_{\\mathrm{optimal}}=\\frac{2}{2+0.49}\\approx0.8032."
+  },
+  {
+   "name": "eq27",
+   "tex": "X=\\varepsilon_X,\\qquad\nY=0.8X+\\varepsilon_Y,"
+  },
+  {
+   "name": "eq28",
+   "tex": "Y=\\widetilde\\varepsilon_Y,\\qquad\nX=0.8Y+\\widetilde\\varepsilon_X,"
+  },
+  {
+   "name": "eq29",
+   "tex": "\\Sigma=\\begin{pmatrix}1&0.8\\\\0.8&1\\end{pmatrix}."
+  }
+ ],
+ "statistics-for-data-scientists/industrial-statistics-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "\\mathrm{LSL}=9.2,\\qquad T=10.0,\\qquad \\mathrm{USL}=10.8."
+  },
+  {
+   "name": "eq02",
+   "tex": "X_{t,i}\\overset{\\mathrm{iid}}{\\sim}N(10.04,0.20^2),\n\\qquad t=0,\\ldots,69."
+  },
+  {
+   "name": "eq03",
+   "tex": "X_{t,i}\\overset{\\mathrm{iid}}{\\sim}N(10.40,0.20^2),\n\\qquad t=70,\\ldots,119."
+  },
+  {
+   "name": "eq04",
+   "tex": "Y_{t,i}=X_{t,i}+0.10+\\varepsilon_{t,i},\n\\qquad\n\\varepsilon_{t,i}\\sim N(0,0.09^2)."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\sigma_Y=\\sqrt{\\sigma_X^2+\\sigma_\\varepsilon^2}\n=\\sqrt{0.20^2+0.09^2}\n\\approx0.2193,"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\bar Y_t=\\frac{1}{n}\\sum_{i=1}^{n}Y_{t,i},\n\\qquad\nR_t=\\max_iY_{t,i}-\\min_iY_{t,i},\n\\qquad n=5."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\bar{\\bar Y}=\\frac1m\\sum_{t=0}^{m-1}\\bar Y_t,\n\\qquad\n\\bar R=\\frac1m\\sum_{t=0}^{m-1}R_t."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\hat\\sigma_{\\mathrm{within}}=\\frac{\\bar R}{d_2}."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\begin{aligned}\n\\mathrm{CL}_{\\bar X}&=\\bar{\\bar Y},\\\\\n\\mathrm{UCL}_{\\bar X}&=\\bar{\\bar Y}+A_2\\bar R,\\\\\n\\mathrm{LCL}_{\\bar X}&=\\bar{\\bar Y}-A_2\\bar R.\n\\end{aligned}"
+  },
+  {
+   "name": "eq10",
+   "tex": "\\mathrm{CL}_{R}=\\bar R,\\qquad\n\\mathrm{UCL}_{R}=D_4\\bar R,\\qquad\n\\mathrm{LCL}_{R}=D_3\\bar R,"
+  },
+  {
+   "name": "eq11",
+   "tex": "C_p=\\frac{\\mathrm{USL}-\\mathrm{LSL}}{6\\sigma},"
+  },
+  {
+   "name": "eq12",
+   "tex": "C_{pk}=\\min\\left(\n\\frac{\\mathrm{USL}-\\mu}{3\\sigma},\n\\frac{\\mu-\\mathrm{LSL}}{3\\sigma}\n\\right),"
+  },
+  {
+   "name": "eq13",
+   "tex": "C_{pm}=\\frac{\\mathrm{USL}-\\mathrm{LSL}}\n{6\\sqrt{\\sigma^2+(\\mu-T)^2}}."
+  },
+  {
+   "name": "eq14",
+   "tex": "C_p=\\frac{1.6}{1.2}\\approx1.333,"
+  },
+  {
+   "name": "eq15",
+   "tex": "C_{pk}\n=\\min\\left(\\frac{10.8-10.04}{0.6},\n\\frac{10.04-9.2}{0.6}\\right)\n\\approx1.267."
+  },
+  {
+   "name": "eq16",
+   "tex": "C_{pk,\\mathrm{post}}\n=\\frac{10.8-10.40}{3(0.20)}\n\\approx0.667."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\widehat P_{pk,\\mathrm{descriptive}}\n=\\min\\left(\n\\frac{\\mathrm{USL}-\\bar Y_{\\mathrm{all}}}{3s_{\\mathrm{all}}},\n\\frac{\\bar Y_{\\mathrm{all}}-\\mathrm{LSL}}{3s_{\\mathrm{all}}}\n\\right)."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\operatorname{Var}(Y)\n=E[\\operatorname{Var}(Y\\mid S)]\n+\\operatorname{Var}(E[Y\\mid S]),"
+  },
+  {
+   "name": "eq19",
+   "tex": "p_{\\mathrm{bad}}(\\mu,\\sigma)\n=\\Phi\\left(\\frac{\\mathrm{LSL}-\\mu}{\\sigma}\\right)\n+1-\\Phi\\left(\\frac{\\mathrm{USL}-\\mu}{\\sigma}\\right)."
+  },
+  {
+   "name": "eq20",
+   "tex": "p\\times o\\times r=20\\times3\\times3=180"
+  },
+  {
+   "name": "eq21",
+   "tex": "Y_{ijk}=P_i+b+O_j+(PO)_{ij}+\\varepsilon_{ijk},"
+  },
+  {
+   "name": "eq22",
+   "tex": "\\sigma_O=0.08,\\qquad\n\\sigma_{PO}=0.04,\\qquad\n\\sigma_\\varepsilon=0.09."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\sigma_{\\mathrm{gauge}}^2\n=\\sigma_O^2+\\sigma_{PO}^2+\\sigma_\\varepsilon^2\n=0.08^2+0.04^2+0.09^2\n=0.0161,"
+  },
+  {
+   "name": "eq24",
+   "tex": "\\sigma_{\\mathrm{gauge}}\\approx0.1269."
+  },
+  {
+   "name": "eq25",
+   "tex": "\\begin{aligned}\nE[MS_E]&=\\sigma_\\varepsilon^2,\\\\\nE[MS_{PO}]&=\\sigma_\\varepsilon^2+r\\sigma_{PO}^2,\\\\\nE[MS_O]&=\\sigma_\\varepsilon^2+r\\sigma_{PO}^2+pr\\sigma_O^2,\\\\\nE[MS_P]&=\\sigma_\\varepsilon^2+r\\sigma_{PO}^2+or\\sigma_P^2.\n\\end{aligned}"
+  },
+  {
+   "name": "eq26",
+   "tex": "\\hat\\sigma_\\varepsilon^2=MS_E,"
+  },
+  {
+   "name": "eq27",
+   "tex": "\\hat\\sigma_{PO}^2=\n\\frac{MS_{PO}-MS_E}{r},\n\\qquad\n\\hat\\sigma_O^2=\n\\frac{MS_O-MS_{PO}}{pr},"
+  },
+  {
+   "name": "eq28",
+   "tex": "\\hat\\sigma_P^2=\n\\frac{MS_P-MS_{PO}}{or}."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\%\\,\\mathrm{StudyVariation}_{\\mathrm{gauge}}\n=100\\,\n\\frac{\\hat\\sigma_{\\mathrm{gauge}}}\n{\\sqrt{\\hat\\sigma_{\\mathrm{gauge}}^2+\\hat\\sigma_P^2}}."
+  },
+  {
+   "name": "eq30",
+   "tex": "(P_i+c)+(b-c)+O_j+(PO)_{ij}+\\varepsilon_{ijk}\n=Y_{ijk}."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\hat b=\\bar Y_{\\mathrm{master}}-10.0."
+  },
+  {
+   "name": "eq32",
+   "tex": "Y_{\\mathrm{corrected}}=Y_{\\mathrm{raw}}-\\hat b."
+  },
+  {
+   "name": "eq33",
+   "tex": "\\text{Accept if}\\qquad\n9.2\\leq Y\\leq10.8."
+  },
+  {
+   "name": "eq34",
+   "tex": "X_{\\mathrm{inspection}}\\sim N(10.20,0.25^2)."
+  },
+  {
+   "name": "eq35",
+   "tex": "P(\\mathrm{accept}\\mid\\mathrm{defective})\n\\approx\\frac{481}{1681}\n\\approx0.286."
+  },
+  {
+   "name": "eq36",
+   "tex": "\\mathrm{LSL}+g\n\\leq Y_{\\mathrm{corrected}}\n\\leq\\mathrm{USL}-g."
+  },
+  {
+   "name": "eq37",
+   "tex": "L(g)\n=50\\,N_{\\mathrm{FA},10k}(g)\n+N_{\\mathrm{FR},10k}(g)."
+  },
+  {
+   "name": "eq38",
+   "tex": "\\mu(a,b)\n=10.05+0.14a-0.10b+0.18ab."
+  },
+  {
+   "name": "eq39",
+   "tex": "\\mu(+1,-1)-\\mu(-1,-1)\n=2(0.14-0.18)=-0.08."
+  },
+  {
+   "name": "eq40",
+   "tex": "\\mu(+1,+1)-\\mu(-1,+1)\n=2(0.14+0.18)=+0.64."
+  },
+  {
+   "name": "eq41",
+   "tex": "\\bar Y_r^{\\mathrm{corrected}}\n=\\beta_0+\\beta_a a_r+\\beta_b b_r\n+\\beta_{ab}a_rb_r+e_r."
+  },
+  {
+   "name": "eq42",
+   "tex": "\\begin{aligned}\n\\hat\\beta_0&=10.074,\\\\\n\\hat\\beta_a&=0.170,\\\\\n\\hat\\beta_b&=-0.090,\\\\\n\\hat\\beta_{ab}&=0.213.\n\\end{aligned}"
+  },
+  {
+   "name": "eq43",
+   "tex": "2(\\hat\\beta_a-\\hat\\beta_{ab})\n\\approx-0.086,"
+  },
+  {
+   "name": "eq44",
+   "tex": "2(\\hat\\beta_a+\\hat\\beta_{ab})\n\\approx+0.766."
+  },
+  {
+   "name": "eq45",
+   "tex": "p_{\\mathrm{out}}(\\mu)\n=\\Phi\\!\\left(\\frac{9.2-\\mu}{0.20}\\right)\n+1-\\Phi\\!\\left(\\frac{10.8-\\mu}{0.20}\\right),"
+  }
+ ],
+ "statistics-for-data-scientists/inverse-problems-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "y=Ax+\\varepsilon."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\hat y=Ax."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\hat x=A^{-1}y."
+  },
+  {
+   "name": "eq04",
+   "tex": "V^\\mathsf TV=VV^\\mathsf T=I."
+  },
+  {
+   "name": "eq05",
+   "tex": "A=V\\operatorname{diag}(s_0,\\ldots,s_{63})V^\\mathsf T,\n\\qquad\ns_k=\\exp\\!\\left[-\\frac12\\left(\\frac{k}{13}\\right)^2\\right]."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\varepsilon_j\\overset{\\mathrm{iid}}{\\sim}N(0,0.012^2)."
+  },
+  {
+   "name": "eq07",
+   "tex": "B=SA\\in\\mathbb R^{20\\times64}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\dim\\ker(B)=64-\\operatorname{rank}(B)\\geq44."
+  },
+  {
+   "name": "eq09",
+   "tex": "B(x+cv)=Bx+cBv=Bx."
+  },
+  {
+   "name": "eq10",
+   "tex": "x_{\\mathrm{alternative}}=x_{\\mathrm{true}}+5v."
+  },
+  {
+   "name": "eq11",
+   "tex": "s_{63}=\\exp\\!\\left[-\\frac12(63/13)^2\\right]\n\\approx7.95\\times10^{-6}."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\kappa_2(A)=\\frac{s_0}{s_{63}}\\approx1.26\\times10^5."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\theta=V^\\mathsf Tx,\\qquad z=V^\\mathsf Ty."
+  },
+  {
+   "name": "eq14",
+   "tex": "z_k=s_k\\theta_k+\\eta_k,\n\\qquad\n\\eta_k=(V^\\mathsf T\\varepsilon)_k."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\hat\\theta_k^{\\,\\mathrm{direct}}=\\frac{z_k}{s_k}\n=\\theta_k+\\frac{\\eta_k}{s_k}."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\operatorname{Var}\n\\bigl(\\hat\\theta_k^{\\,\\mathrm{direct}}-\\theta_k\\bigr)\n=\\frac{0.012^2}{s_k^2}."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\hat x_{\\mathrm{direct}}=V\n\\operatorname{diag}(s_k^{-1})V^\\mathsf Ty."
+  },
+  {
+   "name": "eq18",
+   "tex": "\\|A\\hat x_{\\mathrm{direct}}-y\\|_2\\approx0,"
+  },
+  {
+   "name": "eq19",
+   "tex": "\\hat x_{\\mathrm{direct}}\n=\\sum_{k=0}^{63}\\frac{z_k}{s_k}v_k,"
+  },
+  {
+   "name": "eq20",
+   "tex": "\\hat x_{\\mathrm{TSVD},r}\n=\\sum_{k=0}^{r-1}\\frac{z_k}{s_k}v_k."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\hat x_\\alpha\n=\\arg\\min_x\n\\left\\{\n\\|Ax-y\\|_2^2+\\alpha\\|x\\|_2^2\n\\right\\},\n\\qquad \\alpha>0."
+  },
+  {
+   "name": "eq22",
+   "tex": "(A^\\mathsf TA+\\alpha I)\\hat x_\\alpha=A^\\mathsf Ty."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\hat x_\\alpha\n=\\sum_{k=0}^{63}\n\\frac{s_k}{s_k^2+\\alpha}z_kv_k."
+  },
+  {
+   "name": "eq24",
+   "tex": "\\hat x_\\alpha\n=\\sum_{k=0}^{63}\n\\underbrace{\\frac{s_k^2}{s_k^2+\\alpha}}_{f_k(\\alpha)}\n\\frac{z_k}{s_k}v_k."
+  },
+  {
+   "name": "eq25",
+   "tex": "E_{\\mathrm{oracle}}(\\alpha)\n=\\sqrt{\\frac1{64}\\|\\hat x_\\alpha-x_{\\mathrm{true}}\\|_2^2}."
+  },
+  {
+   "name": "eq26",
+   "tex": "\\hat y_\\alpha=H_\\alpha y,\n\\qquad\nH_\\alpha=A(A^\\mathsf TA+\\alpha I)^{-1}A^\\mathsf T,"
+  },
+  {
+   "name": "eq27",
+   "tex": "\\operatorname{GCV}(\\alpha)\n=\\frac{\\|(I-H_\\alpha)y\\|_2^2/n}\n{\\left[1-\\operatorname{tr}(H_\\alpha)/n\\right]^2},\n\\qquad n=64."
+  },
+  {
+   "name": "eq28",
+   "tex": "f_k(\\alpha)=\\frac{s_k^2}{s_k^2+\\alpha}."
+  },
+  {
+   "name": "eq29",
+   "tex": "\\hat\\alpha_{\\mathrm{GCV}}=0.00286."
+  },
+  {
+   "name": "eq30",
+   "tex": "\\hat\\alpha_{\\mathrm{oracle}}=0.01625."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\mathbb E\\|\\hat x_\\alpha-x\\|_2^2\n=\\sum_{k=0}^{63}\n\\left[\n\\left(1-f_k(\\alpha)\\right)^2\\theta_k^2\n+\\frac{\\sigma_\\varepsilon^2s_k^2}{(s_k^2+\\alpha)^2}\n\\right]."
+  },
+  {
+   "name": "eq32",
+   "tex": "\\theta_k\\sim N(0,\\tau_k^2),\n\\qquad\n\\tau_k=\\frac{0.7}{1+(k/4)^2}."
+  },
+  {
+   "name": "eq33",
+   "tex": "z_k\\mid\\theta_k\n\\sim N(s_k\\theta_k,\\sigma_\\varepsilon^2),\n\\qquad \\sigma_\\varepsilon=0.012,"
+  },
+  {
+   "name": "eq34",
+   "tex": "v_k\n=\\left(\n\\frac1{\\tau_k^2}+\\frac{s_k^2}{\\sigma_\\varepsilon^2}\n\\right)^{-1},"
+  },
+  {
+   "name": "eq35",
+   "tex": "m_k\n=v_k\\,\\frac{s_kz_k}{\\sigma_\\varepsilon^2}."
+  },
+  {
+   "name": "eq36",
+   "tex": "\\begin{aligned}\n\\mathbb E[x\\mid y]&=Vm,\\\\\n\\operatorname{Cov}(x\\mid y)\n&=V\\operatorname{diag}(v_k)V^\\mathsf T.\n\\end{aligned}"
+  },
+  {
+   "name": "eq37",
+   "tex": "\\operatorname{Var}(x_j\\mid y)\n=\\sum_{k=0}^{63}V_{jk}^2v_k."
+  },
+  {
+   "name": "eq38",
+   "tex": "\\mathbb E[x_j\\mid y]\n\\pm1.96\\sqrt{\\operatorname{Var}(x_j\\mid y)}."
+  },
+  {
+   "name": "eq39",
+   "tex": "\\|Ax-y\\|_2^2+\n\\frac{\\sigma_\\varepsilon^2}{\\tau^2}\\|x\\|_2^2."
+  },
+  {
+   "name": "eq40",
+   "tex": "C_0\n=V\\operatorname{diag}(\\tau_k^2)V^\\mathsf T."
+  },
+  {
+   "name": "eq41",
+   "tex": "C_S\n=C_0-\nC_0B_S^\\mathsf T\n\\left(B_SC_0B_S^\\mathsf T+\\sigma_\\varepsilon^2I\\right)^{-1}\nB_SC_0."
+  },
+  {
+   "name": "eq42",
+   "tex": "\\Delta(a)\n=\\frac{aC^2a^\\mathsf T}\n{\\sigma_\\varepsilon^2+aCa^\\mathsf T}."
+  },
+  {
+   "name": "eq43",
+   "tex": "\\hat x_S\n=C_0B_S^\\mathsf T\n\\left(B_SC_0B_S^\\mathsf T+\\sigma_\\varepsilon^2I\\right)^{-1}\ny_S."
+  },
+  {
+   "name": "eq44",
+   "tex": "\\mathrm{RMSE}_{\\mathrm{latent}}\n=\\sqrt{\\frac1{64}\\|\\hat x_S-x_{\\mathrm{true}}\\|_2^2}."
+  },
+  {
+   "name": "eq45",
+   "tex": "\\mathrm{RMSE}_{\\mathrm{forward}}\n=\\sqrt{\\frac1{64}\\|A\\hat x_S-Ax_{\\mathrm{true}}\\|_2^2}."
+  }
+ ],
+ "statistics-for-data-scientists/missing-data-is-not-zero": [
+  {
+   "name": "eq01",
+   "tex": "R=\n\\begin{cases}\n1,&\\text{if }Y\\text{ is observed},\\\\\n0,&\\text{if }Y\\text{ is missing}.\n\\end{cases}\n\\tag{1}"
+  },
+  {
+   "name": "eq02",
+   "tex": "p(y\\mid R=1)\n=\\frac{P(R=1\\mid Y=y)\\,p(y)}{P(R=1)}.\n\\tag{2}"
+  },
+  {
+   "name": "eq03",
+   "tex": "\\mu=P(R=1)\\,\\mathbb E(Y\\mid R=1)\n   +P(R=0)\\,\\mathbb E(Y\\mid R=0).\n\\tag{3}"
+  },
+  {
+   "name": "eq04",
+   "tex": "R\\perp(Y,Z).\n\\tag{4}"
+  },
+  {
+   "name": "eq05",
+   "tex": "P(R=1\\mid Y,Z)=P(R=1\\mid Z)=\\pi(Z).\n\\tag{5}"
+  },
+  {
+   "name": "eq06",
+   "tex": "P(R=1\\mid Y,Z)\\ne P(R=1\\mid Z).\n\\tag{6}"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\mathbb E(X^0)\n=\\mathbb E(R)\\mathbb E(X)\n=(1-q)\\mu.\n\\tag{7}"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\mathbb E(Y\\mid R=1)-\\mu\n=\\frac{\\operatorname{Cov}(Y,R)}{P(R=1)}.\n\\tag{8}"
+  },
+  {
+   "name": "eq09",
+   "tex": "Y=1+Z+\\varepsilon,\\qquad\n\\varepsilon\\sim\\mathcal N(0,0.8^2)."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\begin{aligned}\n\\text{MCAR:}\\quad &P(R=1\\mid Y,Z)=0.62,\\\\\n\\text{MAR:}\\quad &P(R=1\\mid Y,Z)=\\operatorname{logit}^{-1}(0.5-1.2Z),\\\\\n\\text{MNAR:}\\quad &P(R=1\\mid Y,Z)=\\operatorname{logit}^{-1}(0.5-1.2Y).\n\\end{aligned}\n\\tag{9}"
+  },
+  {
+   "name": "eq11",
+   "tex": "\\mathbb E\\!\\left[\\frac{RY}{\\pi(Z)}\\mid Z\\right]\n=\\mathbb E(Y\\mid Z).\n\\tag{10}"
+  },
+  {
+   "name": "eq12",
+   "tex": "\\mathbb E\\!\\left[\\frac{RY}{\\pi(Z)}\\mid Z\\right]\n=\\frac{1}{\\pi(Z)}\n\\mathbb E\\left[Y\\,\\mathbb E(R\\mid Y,Z)\\mid Z\\right]\n=\\mathbb E(Y\\mid Z)."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\hat\\mu_{\\mathrm H}\n=\\frac{\\sum_i R_iY_i/\\hat\\pi(Z_i)}\n       {\\sum_i R_i/\\hat\\pi(Z_i)}.\n\\tag{11}"
+  },
+  {
+   "name": "eq14",
+   "tex": "\\mu=\\mathbb E_Z[m(Z)].\n\\tag{12}"
+  },
+  {
+   "name": "eq15",
+   "tex": "\\pi(Z)=\\operatorname{logit}^{-1}(0.2-1.5Z)."
+  },
+  {
+   "name": "eq16",
+   "tex": "X^{\\mathrm{fill}}=RX+(1-R)\\mu."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\operatorname{Var}(X^{\\mathrm{fill}})\n=p\\,\\sigma^2.\n\\tag{13}"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\operatorname{SE}_{\\mathrm{CC}}\n=\\frac{\\sigma}{\\sqrt{n_{\\mathrm{obs}}}}.\n\\tag{14}"
+  },
+  {
+   "name": "eq19",
+   "tex": "\\bar Q=\\frac1m\\sum_{k=1}^{m}Q_k,\\qquad\n\\bar U=\\frac1m\\sum_{k=1}^{m}U_k,"
+  },
+  {
+   "name": "eq20",
+   "tex": "B=\\frac{1}{m-1}\\sum_{k=1}^{m}(Q_k-\\bar Q)^2,\\qquad\nT=\\bar U+\\left(1+\\frac1m\\right)B.\n\\tag{15}"
+  },
+  {
+   "name": "eq21",
+   "tex": "\\mu\\mid Y_{\\mathrm{obs}}\n\\sim\\mathcal N\\left(\\bar Y_{\\mathrm{obs}},\\,1/n_{\\mathrm{obs}}\\right).\n\\tag{16}"
+  },
+  {
+   "name": "eq22",
+   "tex": "Y=\\alpha+\\beta X+\\varepsilon,\\qquad\n\\mathbb E(\\varepsilon\\mid X)=0,"
+  },
+  {
+   "name": "eq23",
+   "tex": "\\mathbb E(Y\\mid X,R=1)\n=\\mathbb E(Y\\mid X)=\\alpha+\\beta X.\n\\tag{17}"
+  },
+  {
+   "name": "eq24",
+   "tex": "\\mathbb E(Y\\mid R=1)\n=\\alpha+\\beta\\,\\mathbb E(X\\mid R=1),"
+  },
+  {
+   "name": "eq25",
+   "tex": "\\pi(X)=\\operatorname{logit}^{-1}(0.5-bX)"
+  },
+  {
+   "name": "eq26",
+   "tex": "\\delta=\\mu_0-\\mu_1."
+  },
+  {
+   "name": "eq27",
+   "tex": "\\mu=p\\mu_1+(1-p)(\\mu_1+\\delta)\n=\\mu_1+(1-p)\\delta.\n\\tag{18}"
+  },
+  {
+   "name": "eq28",
+   "tex": "P(R=1\\mid Y)\n=\\operatorname{logit}^{-1}(0.3+1.2Y)."
+  },
+  {
+   "name": "eq29",
+   "tex": "Y=1.2Z+2U+\\varepsilon."
+  },
+  {
+   "name": "eq30",
+   "tex": "\\pi(z)=P(R=1\\mid Z=z)>0"
+  },
+  {
+   "name": "eq31",
+   "tex": "n_{\\mathrm{eff}}\n=\\frac{\\left(\\sum_{i:R_i=1}w_i\\right)^2}\n       {\\sum_{i:R_i=1}w_i^2}.\n\\tag{19}"
+  },
+  {
+   "name": "eq32",
+   "tex": "\\pi(Z)=\\operatorname{logit}^{-1}(-bZ),\n\\qquad b\\in\\{0,0.8,1.6,2.4\\}.\n\\tag{20}"
+  },
+  {
+   "name": "eq33",
+   "tex": "\\bar D_c=\\frac{1}{m_c}\\sum_{r=1}^{m_c}D_{cr},\\qquad\n\\operatorname{MCSE}(\\bar D_c)\n=\\frac{s_c}{\\sqrt{m_c}},\n\\tag{21}"
+  }
+ ],
+ "statistics-for-data-scientists/nearest-neighbor-geometry-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "d_{\\mathrm{PR}}(\\Sigma)\n =\\frac{\\left(\\sum_{j=1}^{p}\\lambda_j\\right)^2}\n {\\sum_{j=1}^{p}\\lambda_j^2}\n =\\frac{\\{\\operatorname{tr}(\\Sigma)\\}^2}\n {\\operatorname{tr}(\\Sigma^2)}."
+  },
+  {
+   "name": "eq02",
+   "tex": "D=\\|X-Y\\|_2\n \\overset{d}{=}\\sqrt{2}\\,\\chi_p,\n \\qquad\n \\frac{D^2}{2}=\\sum_{j=1}^{p}Z_j^2\\sim\\chi^2_p,"
+  },
+  {
+   "name": "eq03",
+   "tex": "\\mathbb E[D^2]=2p,\n \\qquad\n \\mathbb E[D]\n =2\\,\\frac{\\Gamma\\{(p+1)/2\\}}{\\Gamma(p/2)},\n \\qquad\n \\operatorname{Var}(D)\n =2p-\\bigl(\\mathbb E[D]\\bigr)^2."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\operatorname{CV}(D)\n =\\frac{\\sqrt{\\operatorname{Var}(D)}}{\\mathbb E[D]}\n =\\frac{1}{\\sqrt{2p}}\\{1+O(p^{-1})\\}."
+  },
+  {
+   "name": "eq05",
+   "tex": "C(q)=\\frac{D_{(m)}(q)-D_{(1)}(q)}{D_{(1)}(q)}."
+  },
+  {
+   "name": "eq06",
+   "tex": "X_1\\mid Y=y\\sim\\mathcal N\\bigl((2y-1)a,1\\bigr),\\qquad a=0.85,"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\log\\frac{f(X_1\\mid Y=1)}{f(X_1\\mid Y=0)}\n =-\\frac{(X_1-a)^2-(X_1+a)^2}{2}\n =2aX_1."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\Pr\\{g^*(X)=Y\\}=\\Phi(0.85)\\approx0.80234"
+  },
+  {
+   "name": "eq09",
+   "tex": "\\|x-x'\\|_2^2\n =(x_1-x_1')^2\n +\\sum_{j=2}^{p}(x_j-x'_j)^2."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\|Sx-Sx'\\|_2^2\n =\\sum_{j=1}^{p}s_j^2(x_j-x'_j)^2."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\|Ax-Ax'\\|_2^2\n =(x-x')^\\top A^\\top A(x-x'),"
+  },
+  {
+   "name": "eq12",
+   "tex": "d_s(x,x')^2=(x_1-x_1')^2\n +s^2\\sum_{j=2}^{128}(x_j-x'_j)^2."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\frac{\\|vR\\|_2^2}{\\|v\\|_2^2}\n \\overset d=\\frac{\\chi_k^2}{k},\n \\qquad \\mathbb E\\|vR\\|_2^2=\\|v\\|_2^2."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\Pr\\left(\\left|\\frac{\\|vR\\|_2^2}{\\|v\\|_2^2}-1\\right|>\n \\varepsilon\\right)\n \\le 2\\exp(-c k\\varepsilon^2)"
+  },
+  {
+   "name": "eq15",
+   "tex": "n(n-1)\\exp(-c k\\varepsilon^2)."
+  },
+  {
+   "name": "eq16",
+   "tex": "E_{ij}=\\frac{\\big|\\|f(x_i)-f(x_j)\\|_2-\n                      \\|x_i-x_j\\|_2\\big|}{\\|x_i-x_j\\|_2},"
+  },
+  {
+   "name": "eq17",
+   "tex": "N_k(i)=\\sum_{j=1}^{n}\\mathbf 1\\{i\\in\\operatorname{kNN}(j)\\},"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\sum_{i=1}^{n}N_k(i)=nk,\n \\qquad\n \\frac1n\\sum_{i=1}^{n}N_k(i)=k."
+  },
+  {
+   "name": "eq19",
+   "tex": "X=BZ+\\varepsilon,\n \\qquad \\Sigma_X=3BB^\\top+\\sigma^2 I_{120}."
+  },
+  {
+   "name": "eq20",
+   "tex": "d_{\\mathrm{PR}}(\\sigma)\n =\\frac{\\left[5(3+\\sigma^2)+115\\sigma^2\\right]^2}\n {5(3+\\sigma^2)^2+115\\sigma^4}\n =\\frac{(15+120\\sigma^2)^2}\n {5(3+\\sigma^2)^2+115\\sigma^4}."
+  },
+  {
+   "name": "eq21",
+   "tex": "d_E(x,y)=\\sqrt{\\sum_{j=1}^p(x_j-y_j)^2},"
+  },
+  {
+   "name": "eq22",
+   "tex": "d_C(x,y)=1-\\frac{x^\\top y}{\\|x\\|_2\\|y\\|_2},\n \\qquad\n d_R(x,y)=\\big|\\|x\\|_2-\\|y\\|_2\\big|."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\overline T_R=\\frac1R\\sum_{r=1}^R T_r,\\qquad\n \\widehat{\\operatorname{MCSE}}(\\overline T_R)\n =\\frac{s_T}{\\sqrt R},\\qquad\n s_T^2=\\frac1{R-1}\\sum_{r=1}^R(T_r-\\overline T_R)^2."
+  }
+ ],
+ "statistics-for-data-scientists/outlier-is-not-an-error": [
+  {
+   "name": "eq01",
+   "tex": "F_\\varepsilon=(1-\\varepsilon)F_0+\\varepsilon G,"
+  },
+  {
+   "name": "eq02",
+   "tex": "X\\sim(1-\\varepsilon)N(0,1)+\\varepsilon N(K,1),\\qquad K=10."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\mu_\\varepsilon=E[X]=(1-\\varepsilon)\\cdot0+\\varepsilon\\cdot10=10\\varepsilon."
+  },
+  {
+   "name": "eq04",
+   "tex": "(1-\\varepsilon)\\Phi(m_\\varepsilon)\n+\\varepsilon\\Phi(m_\\varepsilon-10)=1/2."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\psi_c(u)=\\begin{cases}-c,&u<-c,\\\\u,&|u|\\le c,\\\\c,&u>c,\\end{cases}\n\\quad\\text{and solve}\\quad\n\\sum_{i=1}^n\\psi_c\\!\\left(\\frac{x_i-\\hat\\theta}{s}\\right)=0."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\operatorname{IF}(z;T,F)=\\lim_{\\varepsilon\\downarrow0}\n\\frac{T((1-\\varepsilon)F+\\varepsilon\\delta_z)-T(F)}{\\varepsilon}."
+  },
+  {
+   "name": "eq07",
+   "tex": "F_\\varepsilon=(1-\\varepsilon)N(0,1)+\\varepsilon N(20,1),\n\\qquad \\varepsilon\\in\\{0,.02,.05\\}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\Pr\\{B\\le k-1\\}\\le .025,\\qquad B\\sim\\operatorname{Binomial}(n,1/2),"
+  },
+  {
+   "name": "eq09",
+   "tex": "X\\sim N(0,1),\\qquad Y=1+2X+U,\\quad U\\sim N(0,.7^2)."
+  },
+  {
+   "name": "eq10",
+   "tex": "E[Y\\mid X=x]=1+18\\varepsilon+2x."
+  },
+  {
+   "name": "eq11",
+   "tex": "X^T(Y-X\\hat\\beta)=0."
+  },
+  {
+   "name": "eq12",
+   "tex": "h_{ii}=\\frac1n+\\frac{(x_i-\\bar x)^2}{\\sum_j(x_j-\\bar x)^2}."
+  },
+  {
+   "name": "eq13",
+   "tex": "D_i=\\frac{e_i^2}{p\\widehat\\sigma^2}\\frac{h_{ii}}{(1-h_{ii})^2}."
+  },
+  {
+   "name": "eq14",
+   "tex": "d^2(x)=(x-\\hat\\mu)^T\\hat\\Sigma^{-1}(x-\\hat\\mu),"
+  },
+  {
+   "name": "eq15",
+   "tex": "\\Sigma=\\begin{pmatrix}1&.65\\\\.65&1\\end{pmatrix}."
+  },
+  {
+   "name": "eq16",
+   "tex": "q_p=\\exp(1.1z_p),\\qquad\n\\operatorname{ES}_p=E[Y\\mid Y\\ge q_p]\n=\\frac{\\exp(1.1^2/2)\\,[1-\\Phi(z_p-1.1)]}{1-p}."
+  }
+ ],
+ "statistics-for-data-scientists/pca-vs-latent-factors-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "S=\\frac{1}{n-1}X_c^\\top X_c."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\frac{\\|X_cv\\|_2^2}{n-1}\n =\\frac{v^\\top X_c^\\top X_cv}{n-1}\n =v^\\top Sv."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\operatorname{PVE}(k)\n =\\frac{\\sum_{j=1}^{k}\\lambda_j}\n {\\sum_{j=1}^{p}\\lambda_j}."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\|X_c-\\widehat X_c\\|_F^2\n =(n-1)\\sum_{j>k}\\lambda_j."
+  },
+  {
+   "name": "eq05",
+   "tex": "X=\\mu+\\Lambda F+\\varepsilon,\\qquad\n \\mathbb E[F]=0,\\quad\n \\operatorname{Cov}(F)=I_q,\\quad\n \\operatorname{Cov}(\\varepsilon)=\\Psi,"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\Sigma_X=\\Lambda\\Lambda^\\top+\\Psi."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\Lambda F=(\\Lambda Q)(Q^\\top F),\\qquad\n (\\Lambda Q)(\\Lambda Q)^\\top=\\Lambda\\Lambda^\\top."
+  },
+  {
+   "name": "eq08",
+   "tex": "a_\\gamma=(1-\\sqrt\\gamma)^2,\\qquad\n b_\\gamma=(1+\\sqrt\\gamma)^2."
+  },
+  {
+   "name": "eq09",
+   "tex": "\\Sigma=I_p+\\theta uu^\\top,\\qquad\n \\|u\\|_2=1,\\quad\\theta>0,"
+  },
+  {
+   "name": "eq10",
+   "tex": "\\lambda_{\\mathrm{top}}^{(\\infty)}\n =(1+\\theta)\\left(1+\\frac{\\gamma}{\\theta}\\right),"
+  },
+  {
+   "name": "eq11",
+   "tex": "A_\\infty(\\theta,\\gamma)\n =\\frac{1-\\gamma/\\theta^2}{1+\\gamma/\\theta},\n \\qquad\\theta>\\sqrt\\gamma."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\|X-P_kX\\|_2^2=\\|(I-P_k)X\\|_2^2."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\|\\widehat X_k-S\\|_2^2\n =\\|P_kS-S+P_k\\varepsilon\\|_2^2."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\mathbb E_\\varepsilon\\|\\widehat X_k-S\\|_2^2\n =\\|(I-P_k)S\\|_2^2\n +\\sigma^2\\operatorname{tr}(P_k)\n =\\|(I-P_k)S\\|_2^2+k\\sigma^2."
+  },
+  {
+   "name": "eq15",
+   "tex": "X_{14}\\mid Y=y\n \\sim\\mathcal N((2y-1)\\,0.19,\\;0.17^2)."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\Phi(0.19/0.17)\\approx0.868."
+  },
+  {
+   "name": "eq17",
+   "tex": "Z'{B'}^\\top\n =ZQQ^\\top B^\\top=ZB^\\top=X,"
+  },
+  {
+   "name": "eq18",
+   "tex": "B'{B'}^\\top=BQQ^\\top B^\\top=BB^\\top."
+  },
+  {
+   "name": "eq19",
+   "tex": "A_{\\mathrm{subspace}}\n =\\frac{1}{3}\\|\\widehat U^\\top U\\|_F^2\n =\\frac{1}{3}\\operatorname{tr}\n   (\\widehat U\\widehat U^\\top UU^\\top)."
+  },
+  {
+   "name": "eq20",
+   "tex": "\\bar T_R=\\frac{1}{R}\\sum_{r=1}^RT_r,\\quad\n \\widehat{\\mathrm{MCSE}}(\\bar T_R)\n =\\frac{s_T}{\\sqrt R},\\quad\n s_T^2=\\frac{1}{R-1}\\sum_{r=1}^R(T_r-\\bar T_R)^2."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\Sigma_{\\mathrm{pooled}}\n =\\pi\\Sigma_1+(1-\\pi)\\Sigma_2\n +\\pi(1-\\pi)(\\mu_1-\\mu_2)(\\mu_1-\\mu_2)^\\top."
+  }
+ ],
+ "statistics-for-data-scientists/queueing-theory-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "\\rho=\\frac{\\lambda E[S]}{c}."
+  },
+  {
+   "name": "eq02",
+   "tex": "L=\\lambda W."
+  },
+  {
+   "name": "eq03",
+   "tex": "L_q=\\lambda W_q."
+  },
+  {
+   "name": "eq04",
+   "tex": "W_{n+1}=\\max\\left(0,\\,W_n+S_n-A_{n+1}\\right)."
+  },
+  {
+   "name": "eq05",
+   "tex": "E[\\max(0,X)]\\ne\\max(0,E[X])."
+  },
+  {
+   "name": "eq06",
+   "tex": "E[W_q]\n=\\frac{\\lambda E[S^2]}{2(1-\\rho)}\n=\\frac{\\lambda E[S]^2(1+c_s^2)}{2(1-\\rho)},"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\sigma^2=\\log(5),\\qquad\n\\mu_{\\log S}=-\\frac{\\sigma^2}{2},"
+  },
+  {
+   "name": "eq08",
+   "tex": "P(W_q>t)=\\rho\\,e^{-(\\mu-\\lambda)t},"
+  },
+  {
+   "name": "eq09",
+   "tex": "E[W_q]=\\frac{\\rho}{\\mu-\\lambda}\n=\\frac{\\rho\\,E[S]}{1-\\rho}."
+  },
+  {
+   "name": "eq10",
+   "tex": "E[W_q]\\approx\n\\frac{\\rho}{1-\\rho}\n\\frac{c_a^2+c_s^2}{2}E[S],"
+  },
+  {
+   "name": "eq11",
+   "tex": "J(\\pi)=C_{\\text{capacity}}(\\pi)\n+c_w\\,E[W_q(\\pi)]\n+c_s\\,P\\{W_q(\\pi)>\\tau\\}."
+  }
+ ],
+ "statistics-for-data-scientists/rare-event-detection-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "p_\\pi(z)=P_\\pi(Y=1\\mid Z=z)."
+  },
+  {
+   "name": "eq02",
+   "tex": "Z\\mid Y=0\\sim N(0,1),\\qquad\nZ\\mid Y=1\\sim N(\\mu,1),\\qquad \\mu=2.\n\\tag{1}"
+  },
+  {
+   "name": "eq03",
+   "tex": "\\Lambda(z)=\\frac{f_1(z)}{f_0(z)}\n  =\\exp\\!\\left(\\mu z-\\frac{\\mu^2}{2}\\right),\n\\qquad\n\\log\\Lambda(z)=\\mu z-\\frac{\\mu^2}{2}.\n\\tag{2}"
+  },
+  {
+   "name": "eq04",
+   "tex": "\\frac{p_\\pi(z)}{1-p_\\pi(z)}\n  =\\frac{\\pi}{1-\\pi}\\Lambda(z).\n\\tag{3}"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\operatorname{logit}p_\\pi(z)\n  =\\operatorname{logit}(\\pi)+\\mu z-\\frac{\\mu^2}{2}.\n\\tag{4}"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\pi_s=0.20,"
+  },
+  {
+   "name": "eq07",
+   "tex": "\\pi_t=0.01."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\operatorname{TPR}(t)=P(Z\\ge t\\mid Y=1)\n  =1-\\Phi(t-\\mu),\n\\tag{5}"
+  },
+  {
+   "name": "eq09",
+   "tex": "\\operatorname{FPR}(t)=P(Z\\ge t\\mid Y=0)\n  =1-\\Phi(t).\n\\tag{6}"
+  },
+  {
+   "name": "eq10",
+   "tex": "\\operatorname{AUC}\n=P(Z_1>Z_0)\n=P(Z_1-Z_0>0)\n=\\Phi\\!\\left(\\frac{\\mu}{\\sqrt 2}\\right)\n\\approx 0.92135.\n\\tag{7}"
+  },
+  {
+   "name": "eq11",
+   "tex": "\\operatorname{PPV}_{\\pi}(t)\n=P_\\pi(Y=1\\mid Z\\ge t)."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\operatorname{PPV}_{\\pi}(t)\n=\\frac{\\pi\\operatorname{TPR}(t)}\n{\\pi\\operatorname{TPR}(t)+(1-\\pi)\\operatorname{FPR}(t)}.\n\\tag{8}"
+  },
+  {
+   "name": "eq13",
+   "tex": "\\operatorname{TPR}(1.5)\\approx 0.69146,\\qquad\n\\operatorname{FPR}(1.5)\\approx 0.06681."
+  },
+  {
+   "name": "eq14",
+   "tex": "E[Y\\mid \\widehat p(Z)]=\\widehat p(Z).\n\\tag{9}"
+  },
+  {
+   "name": "eq15",
+   "tex": "\\frac{p_{\\pi_t}(z)}{1-p_{\\pi_t}(z)}\n\\bigg/\n\\frac{p_{\\pi_s}(z)}{1-p_{\\pi_s}(z)}\n=\\frac{\\pi_t/(1-\\pi_t)}{\\pi_s/(1-\\pi_s)}.\n\\tag{10}"
+  },
+  {
+   "name": "eq16",
+   "tex": "\\boxed{\\operatorname{logit}p_{\\pi_t}(z)\n=\\operatorname{logit}p_{\\pi_s}(z)\n +\\operatorname{logit}(\\pi_t)-\\operatorname{logit}(\\pi_s).}\n\\tag{11}"
+  },
+  {
+   "name": "eq17",
+   "tex": "f_t(z)=\\pi_t f_1(z)+(1-\\pi_t)f_0(z).\n\\tag{12}"
+  },
+  {
+   "name": "eq18",
+   "tex": "f_1(z)=\\frac{p_s(z)f_s(z)}{\\pi_s},\n\\qquad\nf_0(z)=\\frac{[1-p_s(z)]f_s(z)}{1-\\pi_s}.\n\\tag{13}"
+  },
+  {
+   "name": "eq19",
+   "tex": "\\ell(\\pi)=\\sum_{i=1}^{n}\n\\log\\!\\left[\n\\frac{\\pi}{\\pi_s}p_s(z_i)\n+\\frac{1-\\pi}{1-\\pi_s}\\{1-p_s(z_i)\\}\n\\right].\n\\tag{14}"
+  },
+  {
+   "name": "eq20",
+   "tex": "q_t=\\pi_t\\operatorname{TPR}(t)+(1-\\pi_t)\\operatorname{FPR}(t),"
+  },
+  {
+   "name": "eq21",
+   "tex": "\\widehat\\pi_{\\mathrm{BB}}\n=\\frac{\\widehat q_t-\\widehat{\\operatorname{FPR}}}\n{\\widehat{\\operatorname{TPR}}-\\widehat{\\operatorname{FPR}}}.\n\\tag{15}"
+  },
+  {
+   "name": "eq22",
+   "tex": "L(a=1\\mid p)=c_{\\mathrm{FP}}(1-p),"
+  },
+  {
+   "name": "eq23",
+   "tex": "L(a=0\\mid p)=c_{\\mathrm{FN}}p."
+  },
+  {
+   "name": "eq24",
+   "tex": "c_{\\mathrm{FP}}(1-p)\\le c_{\\mathrm{FN}}p\n\\quad\\Longleftrightarrow\\quad\np\\ge\\frac{c_{\\mathrm{FP}}}{c_{\\mathrm{FP}}+c_{\\mathrm{FN}}}.\n\\tag{16}"
+  },
+  {
+   "name": "eq25",
+   "tex": "p^\\star=\\frac{c_{\\mathrm{FP}}}{c_{\\mathrm{FP}}+c_{\\mathrm{FN}}}.\n\\tag{17}"
+  },
+  {
+   "name": "eq26",
+   "tex": "t^\\star(\\pi)\n=\\frac{\\operatorname{logit}(p^\\star)-\\operatorname{logit}(\\pi)\n+\\mu^2/2}{\\mu}.\n\\tag{18}"
+  },
+  {
+   "name": "eq27",
+   "tex": "\\mathcal R_{\\pi_t}(t)\n=c_{\\mathrm{FP}}(1-\\pi_t)\\operatorname{FPR}(t)\n+c_{\\mathrm{FN}}\\pi_t[1-\\operatorname{TPR}(t)].\n\\tag{19}"
+  },
+  {
+   "name": "eq28",
+   "tex": "q_\\pi(t)=\\pi\\operatorname{TPR}(t)\n+(1-\\pi)\\operatorname{FPR}(t).\n\\tag{20}"
+  },
+  {
+   "name": "eq29",
+   "tex": "\\boxed{t^\\star_b=\\max\\{t^\\star(\\pi_t),t_b\\}.}\n\\tag{21}"
+  },
+  {
+   "name": "eq30",
+   "tex": "e(A)=P(V=1\\mid A)=\n\\begin{cases}\n1,&A=1,\\\\\n0.04,&A=0.\n\\end{cases}\n\\tag{22}"
+  },
+  {
+   "name": "eq31",
+   "tex": "V\\perp Y\\mid A,\n\\tag{23}"
+  },
+  {
+   "name": "eq32",
+   "tex": "\\widehat\\pi_{\\mathrm{HT}}\n=\\frac{1}{N}\\sum_{i=1}^N\\frac{V_iY_i}{e(A_i)}.\n\\tag{24}"
+  },
+  {
+   "name": "eq33",
+   "tex": "E\\!\\left[\\frac{V_iY_i}{e(A_i)}\\biggm|A_i,Y_i\\right]\n=Y_i\\frac{E[V_i\\mid A_i,Y_i]}{e(A_i)}\n=Y_i.\n\\tag{25}"
+  },
+  {
+   "name": "eq34",
+   "tex": "\\underbrace{Z}_{\\text{score}}\n\\;\\longrightarrow\\;\n\\underbrace{p_\\pi(Z)}_{\\text{population risk}}\n\\;\\longrightarrow\\;\n\\underbrace{a^\\star(Z)}_{\\text{decision under loss and capacity}}\n\\;\\longrightarrow\\;\n\\underbrace{V}_{\\text{observed verification process}}.\n\\tag{26}"
+  }
+ ],
+ "statistics-for-data-scientists/reliability-statistics-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "F(t)=P(T\\leq t)"
+  },
+  {
+   "name": "eq02",
+   "tex": "S(t)=P(T>t)=1-F(t)."
+  },
+  {
+   "name": "eq03",
+   "tex": "h(t)=\\lim_{\\Delta t\\downarrow0}\n\\frac{P(t<T\\leq t+\\Delta t\\mid T>t)}{\\Delta t}\n=\\frac{f(t)}{S(t)}."
+  },
+  {
+   "name": "eq04",
+   "tex": "H(t)=\\int_0^t h(u)\\,du."
+  },
+  {
+   "name": "eq05",
+   "tex": "S(t)=\\exp[-H(t)]."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\operatorname{MTTF}=\\mathbb E[T]\n=\\int_0^\\infty S(t)\\,dt,"
+  },
+  {
+   "name": "eq07",
+   "tex": "S(t)=\\exp\\left[-\\left(\\frac{t}{\\eta}\\right)^\\beta\\right],\n\\quad\nH(t)=\\left(\\frac{t}{\\eta}\\right)^\\beta,"
+  },
+  {
+   "name": "eq08",
+   "tex": "h(t)=\\frac{\\beta}{\\eta}\n\\left(\\frac{t}{\\eta}\\right)^{\\beta-1},\n\\qquad\n\\mathbb E[T]=\\eta\\Gamma\\left(1+\\frac1\\beta\\right)."
+  },
+  {
+   "name": "eq09",
+   "tex": "Y=\\min(T,C),\n\\qquad\n\\delta=\\mathbf 1(T\\leq C)."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\widehat S(t)=\n\\prod_{t_j\\leq t}\\left(1-\\frac{d_j}{n_j}\\right)."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\widehat H(t)=\\sum_{t_j\\leq t}\\frac{d_j}{n_j}."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\widehat{\\operatorname{Var}}\\{\\widehat S(t)\\}\n\\approx \\widehat S(t)^2\n\\sum_{t_j\\leq t}\\frac{d_j}{n_j(n_j-d_j)}."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\mathcal L(\\beta,\\eta)=\n\\prod_{i=1}^{n}\nf(y_i;\\beta,\\eta)^{\\delta_i}\nS(y_i;\\beta,\\eta)^{1-\\delta_i}."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\ell(\\beta,\\eta)=\n\\sum_{i=1}^{n}\\delta_i\\log f(y_i;\\beta,\\eta)\n+\\sum_{i=1}^{n}(1-\\delta_i)\\log S(y_i;\\beta,\\eta)."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\ell(\\beta,\\eta)=\n\\sum_i\\delta_i\\left[\n\\log\\beta-\\beta\\log\\eta\n+(\\beta-1)\\log y_i\\right]\n-\\sum_i\\left(\\frac{y_i}{\\eta}\\right)^\\beta."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\begin{aligned}\np(a,\\Delta)\n&=P(a<T\\leq a+\\Delta\\mid T>a)\\\\\n&=1-\\frac{S(a+\\Delta)}{S(a)}\\\\\n&=1-\\exp\\left[-\\int_a^{a+\\Delta}h(u)\\,du\\right].\n\\end{aligned}"
+  },
+  {
+   "name": "eq17",
+   "tex": "p(a,\\Delta)=\n1-\\exp\\left\\{\n-\\frac{(a+\\Delta)^\\beta-a^\\beta}{\\eta^\\beta}\n\\right\\}."
+  },
+  {
+   "name": "eq18",
+   "tex": "X_\\tau=\\min(T,\\tau)."
+  },
+  {
+   "name": "eq19",
+   "tex": "\\mathbb E[C_\\tau]\n=c_p P(T>\\tau)+c_f P(T\\leq\\tau)\n=c_pS(\\tau)+c_f[1-S(\\tau)]."
+  },
+  {
+   "name": "eq20",
+   "tex": "\\mathbb E[X_\\tau]\n=\\mathbb E[\\min(T,\\tau)]\n=\\int_0^\\tau S(u)\\,du."
+  },
+  {
+   "name": "eq21",
+   "tex": "\\boxed{\nJ(\\tau)=\n\\frac{c_pS(\\tau)+c_f[1-S(\\tau)]}\n{\\displaystyle\\int_0^\\tau S(u)\\,du}.\n}"
+  },
+  {
+   "name": "eq22",
+   "tex": "J(\\infty)=\\frac{c_f}{\\mathbb E[T]}."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\tau^*=\\arg\\min_{\\tau\\in(0,\\infty]}J(\\tau)."
+  },
+  {
+   "name": "eq24",
+   "tex": "T=\\min(T_1,T_2)."
+  },
+  {
+   "name": "eq25",
+   "tex": "F_k(t)=P(T\\leq t,\\ K=k)."
+  },
+  {
+   "name": "eq26",
+   "tex": "S_{\\mathrm{all}}(t)=\n\\exp\\left[-\\int_0^t\\{h_1(u)+h_2(u)\\}\\,du\\right]."
+  },
+  {
+   "name": "eq27",
+   "tex": "F_1(t)=\\int_0^t S_{\\mathrm{all}}(u)h_1(u)\\,du."
+  },
+  {
+   "name": "eq28",
+   "tex": "\\Delta\\widehat F_k(t_j)\n=\\widehat S_{\\mathrm{all}}(t_j^-)\n\\frac{d_{kj}}{n_j},"
+  }
+ ],
+ "statistics-for-data-scientists/sequential-change-detection-for-data-scientists": [
+  {
+   "name": "eq01",
+   "tex": "X_1,X_2,\\ldots,X_t,\\ldots"
+  },
+  {
+   "name": "eq02",
+   "tex": "X_t\\sim\n\\begin{cases}\nF_0,&t<\\nu,\\\\\nF_1,&t\\geq\\nu.\n\\end{cases}"
+  },
+  {
+   "name": "eq03",
+   "tex": "T_h=\\inf\\{t\\geq1:S_t>h\\},"
+  },
+  {
+   "name": "eq04",
+   "tex": "S_t^{\\mathrm{Sh}}=X_t,\\qquad\nT_{\\mathrm{Sh}}=\\inf\\{t:X_t>h_{\\mathrm{Sh}}\\}."
+  },
+  {
+   "name": "eq05",
+   "tex": "\\ell_t=\\log\\frac{f_1(X_t)}{f_0(X_t)}."
+  },
+  {
+   "name": "eq06",
+   "tex": "G_t=\\max\\{0,G_{t-1}+\\ell_t\\},\\qquad G_0=0."
+  },
+  {
+   "name": "eq07",
+   "tex": "H_0:X_t\\sim N(0,1),\\qquad\nH_1:X_t\\sim N(\\delta,1),\\quad\\delta>0,"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\ell_t\n=\\log\\frac{\\phi(X_t-\\delta)}{\\phi(X_t)}\n=\\delta X_t-\\frac{\\delta^2}{2}."
+  },
+  {
+   "name": "eq09",
+   "tex": "C_t=\\max\\left\\{0,C_{t-1}+X_t-\\frac{\\delta}{2}\\right\\},\n\\qquad C_0=0."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\boxed{C_t=\\max(0,C_{t-1}+X_t-0.5).}"
+  },
+  {
+   "name": "eq11",
+   "tex": "Z_t=\\alpha X_t+(1-\\alpha)Z_{t-1},\n\\qquad Z_0=0,\\quad 0<\\alpha\\leq1."
+  },
+  {
+   "name": "eq12",
+   "tex": "Z_t=\\alpha\\sum_{j=0}^{t-1}(1-\\alpha)^j X_{t-j},"
+  },
+  {
+   "name": "eq13",
+   "tex": "\\operatorname{Var}(Z_t)\n=\\alpha^2\\sigma^2\\sum_{j=0}^{t-1}(1-\\alpha)^{2j}\n=\\sigma^2\\frac{\\alpha}{2-\\alpha}\n\\left[1-(1-\\alpha)^{2t}\\right]."
+  },
+  {
+   "name": "eq14",
+   "tex": "H_0:X_t\\sim N(0,1),\n\\qquad\nH_1:X_t\\sim N(0,r^2),\n\\quad r=1.7."
+  },
+  {
+   "name": "eq15",
+   "tex": "\\ell_t^{(v)}\n=\\log\\frac{f_1(X_t)}{f_0(X_t)}\n=-\\log r+\\frac{X_t^2}{2}\n\\left(1-\\frac{1}{r^2}\\right)."
+  },
+  {
+   "name": "eq16",
+   "tex": "V_t=\\max\\{0,V_{t-1}+\\ell_t^{(v)}\\},\n\\qquad V_0=0."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\begin{aligned}\nS_t^{\\mathrm{Sh}}&=X_t,\\\\\nC_t&=\\max(0,C_{t-1}+X_t-0.5),\\\\\nZ_t&=0.20X_t+0.80Z_{t-1},\\\\\nV_t&=\\max\\left(0,V_{t-1}-\\log1.7+\n\\frac{X_t^2}{2}(1-1/1.7^2)\\right).\n\\end{aligned}"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\boxed{P_0(T_h\\leq200)=0.10.}"
+  },
+  {
+   "name": "eq19",
+   "tex": "M_m^{(b)}=\\max_{1\\leq t\\leq H} S_{m,t}^{(b)}."
+  },
+  {
+   "name": "eq20",
+   "tex": "h_m=\\widehat Q_{0.90}\n\\left(M_m^{(1)},\\ldots,M_m^{(B)}\\right)."
+  },
+  {
+   "name": "eq21",
+   "tex": "p_m(d)=\nP_{\\nu,m}\\left(\n\\nu\\leq T_m<\\nu+d\\mid T_m\\geq\\nu\n\\right)."
+  },
+  {
+   "name": "eq22",
+   "tex": "\\hat p_m(d)=\n\\frac{\n\\sum_{b=1}^{B}\n\\mathbf 1\\{\nT_m^{(b)}\\geq\\nu,\\,\nT_m^{(b)}<\\nu+d\n\\}\n}{\n\\sum_{b=1}^{B}\n\\mathbf 1\\{T_m^{(b)}\\geq\\nu\\}\n}."
+  },
+  {
+   "name": "eq23",
+   "tex": "D_m=T_m-\\nu,\\qquad \\text{when }T_m\\geq\\nu."
+  },
+  {
+   "name": "eq24",
+   "tex": "X_t=\\phi X_{t-1}+\\sqrt{1-\\phi^2}\\,\\varepsilon_t,\n\\qquad\n\\varepsilon_t\\overset{\\mathrm{iid}}{\\sim}N(0,1),\n\\quad\\phi=0.6."
+  },
+  {
+   "name": "eq25",
+   "tex": "E[X_t]=0,\\qquad\n\\operatorname{Var}(X_t)=1,\\qquad\n\\operatorname{Corr}(X_t,X_{t+k})=\\phi^{|k|}."
+  },
+  {
+   "name": "eq26",
+   "tex": "n_{\\mathrm{eff}}\\approx n\\frac{1-\\phi}{1+\\phi}."
+  },
+  {
+   "name": "eq27",
+   "tex": "\\min_{K,\\tau_1,\\ldots,\\tau_K}\n\\left[\n\\sum_{j=0}^{K}\n\\mathcal C(x_{\\tau_j+1:\\tau_{j+1}})\n+\\beta K\n\\right],"
+  }
+ ],
+ "statistics-for-data-scientists/significance-selection-winners-curse": [
+  {
+   "name": "eq01",
+   "tex": "\\widehat\\theta\\mid\\theta\n\\sim N(\\theta,s^2),"
+  },
+  {
+   "name": "eq02",
+   "tex": "\\delta=\\frac{\\theta}{s},\n\\qquad\nZ=\\frac{\\widehat\\theta}{s}."
+  },
+  {
+   "name": "eq03",
+   "tex": "S=\\{|Z|>c_\\alpha\\},\n\\qquad\nc_\\alpha=\\Phi^{-1}(1-\\alpha/2)."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\boxed{\nf(x\\mid\\theta,S)=\n\\frac{f(x\\mid\\theta)\\,\\mathbf{1}\\{|x|>c_\\alpha s\\}}\n{\\Pr_\\theta(S)}.\n}"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\mathbb{E}_\\theta[\\widehat\\theta]=\\theta"
+  },
+  {
+   "name": "eq06",
+   "tex": "\\mathbb{E}_\\theta[\\widehat\\theta\\mid S]=\\theta."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\begin{aligned}\n\\operatorname{Power}(\\delta)\n&=\\Pr_\\delta(|Z|>c_\\alpha)\\\\\n&=\\Pr_\\delta(Z<-c_\\alpha)+\\Pr_\\delta(Z>c_\\alpha)\\\\\n&=\\Phi(-c_\\alpha-\\delta)\n+1-\\Phi(c_\\alpha-\\delta).\n\\end{aligned}"
+  },
+  {
+   "name": "eq08",
+   "tex": "\\delta=\\frac{\\theta\\sqrt n}{\\sigma}."
+  },
+  {
+   "name": "eq09",
+   "tex": "n\\approx\n\\frac{(z_{1-\\alpha/2}+z_{1-\\beta})^2\\,\\sigma^2}\n{\\theta^2},"
+  },
+  {
+   "name": "eq10",
+   "tex": "\\begin{aligned}\n\\Pr(\\widehat\\theta<0\\mid S,\\theta>0)\n&=\\Pr(Z<-c_\\alpha\\mid |Z|>c_\\alpha)\\\\\n&=\\frac{\\Phi(-c_\\alpha-\\delta)}\n{\\Phi(-c_\\alpha-\\delta)+1-\\Phi(c_\\alpha-\\delta)}.\n\\end{aligned}"
+  },
+  {
+   "name": "eq11",
+   "tex": "\\boxed{\nM(\\delta)=\n\\mathbb E\\left[\n\\frac{|\\widehat\\theta|}{|\\theta|}\n\\;\\middle|\\;\n|\\widehat\\theta/s|>c_\\alpha\n\\right].\n}"
+  },
+  {
+   "name": "eq12",
+   "tex": "M(\\delta)=\n\\frac{\\mathbb E[|Z|\\,\\mathbf{1}\\{|Z|>c_\\alpha\\}]}\n{|\\delta|\\,\\Pr(|Z|>c_\\alpha)}."
+  },
+  {
+   "name": "eq13",
+   "tex": "\\begin{aligned}\nA_+&=\\delta\\,[1-\\Phi(c_\\alpha-\\delta)]\n+\\varphi(c_\\alpha-\\delta),\\\\\nA_-&=-\\delta\\,\\Phi(-c_\\alpha-\\delta)\n+\\varphi(c_\\alpha+\\delta),\\\\\nM(\\delta)&=\\frac{A_++A_-}\n{\\delta\\,\\operatorname{Power}(\\delta)},\n\\end{aligned}"
+  },
+  {
+   "name": "eq14",
+   "tex": "\\widehat\\theta_1,\\widehat\\theta_2\n\\overset{\\mathrm{ind}}{\\sim}N(\\theta,s^2)."
+  },
+  {
+   "name": "eq15",
+   "tex": "S_1=\\{|\\widehat\\theta_1/s|>c_\\alpha\\}."
+  },
+  {
+   "name": "eq16",
+   "tex": "\\mathbb E[\\widehat\\theta_2\\mid S_1]\n=\\mathbb E[\\widehat\\theta_2]\n=\\theta."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\Pr(V\\ge 1)=1-(1-\\alpha)^m,"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\operatorname{FDP}=\\frac{V}{\\max(R,1)}."
+  },
+  {
+   "name": "eq19",
+   "tex": "\\boxed{\\operatorname{FDR}=\\mathbb E(\\operatorname{FDP}).}"
+  },
+  {
+   "name": "eq20",
+   "tex": "p_{(1)}\\le p_{(2)}\\le\\cdots\\le p_{(m)}."
+  },
+  {
+   "name": "eq21",
+   "tex": "p_{(k)}\\le \\frac{kq}{m},"
+  },
+  {
+   "name": "eq22",
+   "tex": "\\theta_j\\overset{\\mathrm{iid}}{\\sim}N(0,\\tau^2),\n\\qquad\n\\widehat\\theta_j\\mid\\theta_j\\sim N(\\theta_j,s^2)."
+  },
+  {
+   "name": "eq23",
+   "tex": "\\boxed{\n\\mathbb E[\\theta_j\\mid\\widehat\\theta_j]\n=\\frac{\\tau^2}{\\tau^2+s^2}\\widehat\\theta_j.\n}"
+  },
+  {
+   "name": "eq24",
+   "tex": "B=\\frac{\\tau^2}{\\tau^2+s^2}"
+  },
+  {
+   "name": "eq25",
+   "tex": "B=\\frac{0.20^2}{0.20^2+0.30^2}\n=\\frac{0.04}{0.13}\\approx0.3077."
+  },
+  {
+   "name": "eq26",
+   "tex": "C(Z)=[\\widehat\\theta-c_\\alpha s,\\ \\widehat\\theta+c_\\alpha s]."
+  },
+  {
+   "name": "eq27",
+   "tex": "\\Pr_\\theta(\\theta\\in C(Z))=1-\\alpha."
+  },
+  {
+   "name": "eq28",
+   "tex": "\\Pr_\\theta(\\theta\\in C(Z)\\mid |Z|>c_\\alpha)."
+  },
+  {
+   "name": "eq29",
+   "tex": "|\\varepsilon|\\le c_\\alpha."
+  },
+  {
+   "name": "eq30",
+   "tex": "\\max(-c_\\alpha,c_\\alpha-\\delta)\n<\\varepsilon<c_\\alpha."
+  },
+  {
+   "name": "eq31",
+   "tex": "\\boxed{\n\\Pr_\\delta(\\theta\\in C(Z)\\mid S)\n=\\frac{\n\\Phi(c_\\alpha)-\n\\Phi\\left(\\max(-c_\\alpha,c_\\alpha-|\\delta|)\\right)\n}{\n\\operatorname{Power}(|\\delta|)\n}.\n}"
+  }
+ ],
+ "statistics-for-data-scientists/spurious-regression-cointegration": [
+  {
+   "name": "eq01",
+   "tex": "Y_t=\\alpha+\\beta X_t+\\varepsilon_t,\n\\qquad t=1,\\ldots,T."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\mathbb E[Z_t]=\\mu,\n\\quad \\operatorname{Var}(Z_t)=\\sigma^2,\n\\quad \\operatorname{Cov}(Z_t,Z_{t-h})=\\gamma(h)."
+  },
+  {
+   "name": "eq03",
+   "tex": "X_t=X_{t-1}+\\eta_t,\\qquad\n\\eta_t\\overset{\\mathrm{iid}}\\sim N(0,\\sigma_\\eta^2),\n\\quad X_0=0."
+  },
+  {
+   "name": "eq04",
+   "tex": "U_t=\\rho U_{t-1}+\\xi_t,\n\\qquad |\\rho|<1,\n\\qquad \\xi_t\\overset{\\mathrm{iid}}\\sim N(0,\\sigma_\\xi^2)"
+  },
+  {
+   "name": "eq05",
+   "tex": "X_t=\\sum_{j=1}^{t}\\eta_j,\n\\qquad\nY_t=\\sum_{j=1}^{t}\\zeta_j,\n\\qquad\n\\eta_j\\perp\\!\\!\\!\\perp\\zeta_k\\ \\text{for all }j,k."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\widehat\\beta\n=\\frac{\\sum_t(X_t-\\overline X)(Y_t-\\overline Y)}\n       {\\sum_t(X_t-\\overline X)^2},"
+  },
+  {
+   "name": "eq07",
+   "tex": "DW=\\frac{\\sum_{t=2}^{T}(\\widehat e_t-\\widehat e_{t-1})^2}\n        {\\sum_{t=1}^{T}\\widehat e_t^2},"
+  },
+  {
+   "name": "eq08",
+   "tex": "T^{-1/2}X_{\\lfloor Tr\\rfloor}\\Rightarrow W_x(r),\n\\qquad\nT^{-1/2}Y_{\\lfloor Tr\\rfloor}\\Rightarrow W_y(r),"
+  },
+  {
+   "name": "eq09",
+   "tex": "\\widehat\\beta\n\\Rightarrow\n\\frac{\\int_0^1 W_x^c(r)W_y^c(r)\\,dr}\n     {\\int_0^1[W_x^c(r)]^2\\,dr},\n\\qquad\nW^c(r)=W(r)-\\int_0^1W(s)\\,ds."
+  },
+  {
+   "name": "eq10",
+   "tex": "Z_t=\\phi Z_{t-1}+\\varepsilon_t."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\Delta Z_t=(\\phi-1)Z_{t-1}+\\varepsilon_t\n=\\gamma Z_{t-1}+\\varepsilon_t."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\Delta Z_t=c+\\gamma Z_{t-1}+\\epsilon_t,\n\\qquad t=2,\\ldots,250,"
+  },
+  {
+   "name": "eq13",
+   "tex": "Y_t=\\widehat\\alpha+\\widehat\\beta X_t+\\widehat u_t."
+  },
+  {
+   "name": "eq14",
+   "tex": "\\Delta\\widehat u_t=\\gamma\\widehat u_{t-1}+v_t"
+  },
+  {
+   "name": "eq15",
+   "tex": "X_t=X_{t-1}+\\eta_t,\n\\qquad\nU_t=\\rho U_{t-1}+\\xi_t,\n\\qquad\nY_t=\\beta X_t+U_t,"
+  },
+  {
+   "name": "eq16",
+   "tex": "Y_t-\\beta X_t=U_t\\sim I(0)."
+  },
+  {
+   "name": "eq17",
+   "tex": "\\begin{aligned}\n\\Delta Y_t\n&=\\beta\\Delta X_t+(U_t-U_{t-1})\\\\\n&=\\beta\\Delta X_t+(\\rho-1)U_{t-1}+\\xi_t\\\\\n&=\\beta\\Delta X_t+(\\rho-1)\n   (Y_{t-1}-\\beta X_{t-1})+\\xi_t.\n\\end{aligned}"
+  },
+  {
+   "name": "eq18",
+   "tex": "\\Delta Y_t=c+b\\Delta X_t+\\lambda\\widehat u_{t-1}+e_t."
+  },
+  {
+   "name": "eq19",
+   "tex": "Y_t=\\beta_tX_t+U_t,\n\\qquad\n\\beta_t=\\begin{cases}\n1.6,&t<252,\\\\\n2.3,&t\\ge252.\n\\end{cases}"
+  }
+ ],
+ "statistics-for-data-scientists/the-test-set-is-not-an-oracle": [
+  {
+   "name": "eq01",
+   "tex": "R_P(f)=\\mathbb E_{Z\\sim P}\\big[L(f,Z)\\mid f\\big]."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\mathcal R_n(A)=\\mathbb E_{D\\sim P^n}\\mathbb E_{Z\\sim P}\n\\big[L(A(D),Z)\\big]."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\widehat R_{\\mathrm{CV}}(A)=\n\\frac{1}{K}\\sum_{k=1}^K\n\\frac{1}{|V_k|}\\sum_{i\\in V_k}\nL\\big(A(D\\setminus V_k),Z_i\\big)."
+  },
+  {
+   "name": "eq04",
+   "tex": "\\widehat j=\\arg\\min_{j\\in\\{1,\\ldots,M\\}}\\widehat R_j,"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\operatorname{Brier}(p,y)=(p-y)^2,\\qquad y\\in\\{0,1\\},\\quad 0\\leq p\\leq1."
+  },
+  {
+   "name": "eq06",
+   "tex": "\\mathbb E\\left[\\min_j\\widehat R_j\\right]\n\\leq \\min_j\\mathbb E[\\widehat R_j]."
+  },
+  {
+   "name": "eq07",
+   "tex": "\\text{held-out labels}\n\\longrightarrow\\text{selected columns}\n\\longrightarrow\\text{fold model}\n\\longrightarrow\\text{reported fold score}."
+  },
+  {
+   "name": "eq08",
+   "tex": "\\Pr(Y_t=1\\mid X_t)=\\operatorname{logit}^{-1}\n\\big((1.7-\\delta t)X_t\\big),"
+  },
+  {
+   "name": "eq09",
+   "tex": "X_t=\\rho X_{t-1}+\\sqrt{1-\\rho^2}\\epsilon_t,\\qquad\n\\rho=0.9,\\quad \\epsilon_t\\sim N(0,1)."
+  },
+  {
+   "name": "eq10",
+   "tex": "\\Pr(Y_{t,h}=1\\mid X_{t+h})=\n\\operatorname{logit}^{-1}(1.8X_{t+h})."
+  },
+  {
+   "name": "eq11",
+   "tex": "\\Pr(Y_{ig}=1\\mid X_{ig},b_g)\n=\\operatorname{logit}^{-1}(0.35X_{ig}+b_g)."
+  },
+  {
+   "name": "eq12",
+   "tex": "\\widehat{\\operatorname{SE}}_{\\mathrm{fold}}=\n\\frac{\\operatorname{SD}(\\widehat R_1,\\ldots,\\widehat R_5)}\n{\\sqrt{5}}."
+  },
+  {
+   "name": "eq13",
+   "tex": "a_j-a_0=\\frac{2y_j-1}{120}."
+  },
+  {
+   "name": "eq14",
+   "tex": "y_j=\\frac{1+120(a_j-a_0)}{2}."
+  }
+ ]
+}
