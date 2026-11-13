@@ -1,0 +1,2445 @@
+[ {
+  "IndicadorCod" : "0012340",
+  "IndicadorDsg" : "Movimentos pendulares (Interações na unidade territorial - N.º) da população residente empregada ou estudante por Local de residência à data dos Censos [2021] ou destino (NUTS 2024 - Município) e Local de destino ou residência à data dos Censos [2021] (NUTS 2024 - Município); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012340&lingua=PT",
+  "DataExtracao" : "2026-11-13T11:44:14.831Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0206",
+      "dim_3_t" : "Castro Verde",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0309",
+      "dim_3_t" : "Póvoa de Lanhoso",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0403",
+      "dim_3_t" : "Carrazeda de Ansiães",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0405",
+      "dim_3_t" : "Macedo de Cavaleiros",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0406",
+      "dim_3_t" : "Miranda do Douro",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0510",
+      "dim_3_t" : "Vila de Rei",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0608",
+      "dim_3_t" : "Mira",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0610",
+      "dim_3_t" : "Montemor-o-Velho",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0803",
+      "dim_3_t" : "Aljezur",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0811",
+      "dim_3_t" : "Portimão",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0905",
+      "dim_3_t" : "Fornos de Algodres",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0906",
+      "dim_3_t" : "Gouveia",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1010",
+      "dim_3_t" : "Marinha Grande",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1011",
+      "dim_3_t" : "Nazaré",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1111",
+      "dim_3_t" : "Sintra",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1113",
+      "dim_3_t" : "Torres Vedras",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1114",
+      "dim_3_t" : "Vila Franca de Xira",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1115",
+      "dim_3_t" : "Amadora",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1210",
+      "dim_3_t" : "Marvão",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1214",
+      "dim_3_t" : "Portalegre",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1302",
+      "dim_3_t" : "Baião",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1410",
+      "dim_3_t" : "Entroncamento",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1413",
+      "dim_3_t" : "Mação",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1416",
+      "dim_3_t" : "Santarém",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1419",
+      "dim_3_t" : "Torres Novas",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1421",
+      "dim_3_t" : "Ourém",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1504",
+      "dim_3_t" : "Barreiro",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1508",
+      "dim_3_t" : "Palmela",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1509",
+      "dim_3_t" : "Santiago do Cacém",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1608",
+      "dim_3_t" : "Valença",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1701",
+      "dim_3_t" : "Alijó",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1704",
+      "dim_3_t" : "Mesão Frio",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1807",
+      "dim_3_t" : "Moimenta da Beira",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1809",
+      "dim_3_t" : "Nelas",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1811",
+      "dim_3_t" : "Penalva do Castelo",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1818",
+      "dim_3_t" : "Sernancelhe",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1819",
+      "dim_3_t" : "Tabuaço",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3110",
+      "dim_3_t" : "São Vicente",
+      "ind_string" : "1",
+      "valor" : "1"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0211",
+      "dim_3_t" : "Odemira",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0305",
+      "dim_3_t" : "Celorico de Basto",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0504",
+      "dim_3_t" : "Fundão",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0602",
+      "dim_3_t" : "Cantanhede",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0607",
+      "dim_3_t" : "Lousã",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0611",
+      "dim_3_t" : "Oliveira do Hospital",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0912",
+      "dim_3_t" : "Seia",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0913",
+      "dim_3_t" : "Trancoso",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1006",
+      "dim_3_t" : "Caldas da Rainha",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1009",
+      "dim_3_t" : "Leiria",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1014",
+      "dim_3_t" : "Peniche",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1015",
+      "dim_3_t" : "Pombal",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1105",
+      "dim_3_t" : "Cascais",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1107",
+      "dim_3_t" : "Loures",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1116",
+      "dim_3_t" : "Odivelas",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1603",
+      "dim_3_t" : "Melgaço",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1607",
+      "dim_3_t" : "Ponte de Lima",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1709",
+      "dim_3_t" : "Ribeira de Pena",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1801",
+      "dim_3_t" : "Armamar",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1813",
+      "dim_3_t" : "Resende",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1821",
+      "dim_3_t" : "Tondela",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4203",
+      "dim_3_t" : "Ponta Delgada",
+      "ind_string" : "2",
+      "valor" : "2"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0314",
+      "dim_3_t" : "Vizela",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0407",
+      "dim_3_t" : "Mirandela",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0502",
+      "dim_3_t" : "Castelo Branco",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0705",
+      "dim_3_t" : "Évora",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1110",
+      "dim_3_t" : "Oeiras",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1414",
+      "dim_3_t" : "Rio Maior",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1418",
+      "dim_3_t" : "Tomar",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1503",
+      "dim_3_t" : "Almada",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1510",
+      "dim_3_t" : "Seixal",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1814",
+      "dim_3_t" : "Santa Comba Dão",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1816",
+      "dim_3_t" : "São Pedro do Sul",
+      "ind_string" : "3",
+      "valor" : "3"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0604",
+      "dim_3_t" : "Condeixa-a-Nova",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0805",
+      "dim_3_t" : "Faro",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1109",
+      "dim_3_t" : "Mafra",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1301",
+      "dim_3_t" : "Amarante",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1512",
+      "dim_3_t" : "Setúbal",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1708",
+      "dim_3_t" : "Peso da Régua",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1806",
+      "dim_3_t" : "Mangualde",
+      "ind_string" : "4",
+      "valor" : "4"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1305",
+      "dim_3_t" : "Lousada",
+      "ind_string" : "5",
+      "valor" : "5"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1307",
+      "dim_3_t" : "Marco de Canaveses",
+      "ind_string" : "6",
+      "valor" : "6"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1805",
+      "dim_3_t" : "Lamego",
+      "ind_string" : "6",
+      "valor" : "6"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1810",
+      "dim_3_t" : "Oliveira de Frades",
+      "ind_string" : "6",
+      "valor" : "6"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0402",
+      "dim_3_t" : "Bragança",
+      "ind_string" : "7",
+      "valor" : "7"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1609",
+      "dim_3_t" : "Viana do Castelo",
+      "ind_string" : "7",
+      "valor" : "7"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0302",
+      "dim_3_t" : "Barcelos",
+      "ind_string" : "8",
+      "valor" : "8"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1804",
+      "dim_3_t" : "Cinfães",
+      "ind_string" : "10",
+      "valor" : "10"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1311",
+      "dim_3_t" : "Penafiel",
+      "ind_string" : "11",
+      "valor" : "11"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0503",
+      "dim_3_t" : "Covilhã",
+      "ind_string" : "12",
+      "valor" : "12"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1303",
+      "dim_3_t" : "Felgueiras",
+      "ind_string" : "12",
+      "valor" : "12"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1309",
+      "dim_3_t" : "Paços de Ferreira",
+      "ind_string" : "12",
+      "valor" : "12"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0103",
+      "dim_3_t" : "Anadia",
+      "ind_string" : "13",
+      "valor" : "13"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0114",
+      "dim_3_t" : "Oliveira do Bairro",
+      "ind_string" : "13",
+      "valor" : "13"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1714",
+      "dim_3_t" : "Vila Real",
+      "ind_string" : "13",
+      "valor" : "13"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1824",
+      "dim_3_t" : "Vouzela",
+      "ind_string" : "13",
+      "valor" : "13"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0907",
+      "dim_3_t" : "Guarda",
+      "ind_string" : "14",
+      "valor" : "14"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0118",
+      "dim_3_t" : "Vagos",
+      "ind_string" : "15",
+      "valor" : "15"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0312",
+      "dim_3_t" : "Vila Nova de Famalicão",
+      "ind_string" : "18",
+      "valor" : "18"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0308",
+      "dim_3_t" : "Guimarães",
+      "ind_string" : "19",
+      "valor" : "19"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0303",
+      "dim_3_t" : "Braga",
+      "ind_string" : "21",
+      "valor" : "21"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0110",
+      "dim_3_t" : "Ílhavo",
+      "ind_string" : "24",
+      "valor" : "24"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0112",
+      "dim_3_t" : "Murtosa",
+      "ind_string" : "31",
+      "valor" : "31"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1823",
+      "dim_3_t" : "Viseu",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1313",
+      "dim_3_t" : "Póvoa de Varzim",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0101",
+      "dim_3_t" : "Águeda",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0117",
+      "dim_3_t" : "Sever do Vouga",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1318",
+      "dim_3_t" : "Trofa",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1106",
+      "dim_3_t" : "Lisboa",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1316",
+      "dim_3_t" : "Vila do Conde",
+      "ind_string" : "75",
+      "valor" : "75"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0106",
+      "dim_3_t" : "Castelo de Paiva",
+      "ind_string" : "92",
+      "valor" : "92"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1314",
+      "dim_3_t" : "Santo Tirso",
+      "ind_string" : "94",
+      "valor" : "94"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1315",
+      "dim_3_t" : "Valongo",
+      "ind_string" : "96",
+      "valor" : "96"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0603",
+      "dim_3_t" : "Coimbra",
+      "ind_string" : "99",
+      "valor" : "99"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1310",
+      "dim_3_t" : "Paredes",
+      "ind_string" : "119",
+      "valor" : "119"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0102",
+      "dim_3_t" : "Albergaria-a-Velha",
+      "ind_string" : "132",
+      "valor" : "132"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0108",
+      "dim_3_t" : "Estarreja",
+      "ind_string" : "146",
+      "valor" : "146"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1304",
+      "dim_3_t" : "Gondomar",
+      "ind_string" : "171",
+      "valor" : "171"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0107",
+      "dim_3_t" : "Espinho",
+      "ind_string" : "173",
+      "valor" : "173"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1308",
+      "dim_3_t" : "Matosinhos",
+      "ind_string" : "183",
+      "valor" : "183"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1306",
+      "dim_3_t" : "Maia",
+      "ind_string" : "187",
+      "valor" : "187"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0105",
+      "dim_3_t" : "Aveiro",
+      "ind_string" : "231",
+      "valor" : "231"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0104",
+      "dim_3_t" : "Arouca",
+      "ind_string" : "441",
+      "valor" : "441"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0119",
+      "dim_3_t" : "Vale de Cambra",
+      "ind_string" : "497",
+      "valor" : "497"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1317",
+      "dim_3_t" : "Vila Nova de Gaia",
+      "ind_string" : "697",
+      "valor" : "697"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1312",
+      "dim_3_t" : "Porto",
+      "ind_string" : "786",
+      "valor" : "786"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0115",
+      "dim_3_t" : "Ovar",
+      "ind_string" : "816",
+      "valor" : "816"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0113",
+      "dim_3_t" : "Oliveira de Azeméis",
+      "ind_string" : "5 443",
+      "valor" : "5443"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0109",
+      "dim_3_t" : "Santa Maria da Feira",
+      "ind_string" : "6 174",
+      "valor" : "6174"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1702",
+      "dim_3_t" : "Boticas",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1112",
+      "dim_3_t" : "Sobral de Monte Agraço",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0306",
+      "dim_3_t" : "Esposende",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "200",
+      "dim_3_t" : "Região Autónoma dos Açores",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "119",
+      "dim_3_t" : "Ave",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1604",
+      "dim_3_t" : "Monção",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "193",
+      "dim_3_t" : "Região de Leiria",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1007",
+      "dim_3_t" : "Castanheira de Pêra",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0404",
+      "dim_3_t" : "Freixo de Espada à Cinta",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3106",
+      "dim_3_t" : "Porto Moniz",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0408",
+      "dim_3_t" : "Mogadouro",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "19",
+      "dim_3_t" : "Centro",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1409",
+      "dim_3_t" : "Coruche",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3102",
+      "dim_3_t" : "Câmara de Lobos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "191",
+      "dim_3_t" : "Região de Aveiro",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4502",
+      "dim_3_t" : "Velas",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1012",
+      "dim_3_t" : "Óbidos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1420",
+      "dim_3_t" : "Vila Nova da Barquinha",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0808",
+      "dim_3_t" : "Loulé",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0708",
+      "dim_3_t" : "Mourão",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1013",
+      "dim_3_t" : "Pedrógão Grande",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0903",
+      "dim_3_t" : "Celorico da Beira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1103",
+      "dim_3_t" : "Azambuja",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0601",
+      "dim_3_t" : "Arganil",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0802",
+      "dim_3_t" : "Alcoutim",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1602",
+      "dim_3_t" : "Caminha",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0709",
+      "dim_3_t" : "Portel",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1102",
+      "dim_3_t" : "Arruda dos Vinhos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1711",
+      "dim_3_t" : "Santa Marta de Penaguião",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0910",
+      "dim_3_t" : "Pinhel",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11D",
+      "dim_3_t" : "Douro",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1005",
+      "dim_3_t" : "Bombarral",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4602",
+      "dim_3_t" : "Madalena",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0509",
+      "dim_3_t" : "Sertã",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0606",
+      "dim_3_t" : "Góis",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "112",
+      "dim_3_t" : "Cávado",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11B",
+      "dim_3_t" : "Alto Tâmega e Barroso",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1803",
+      "dim_3_t" : "Castro Daire",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1C1",
+      "dim_3_t" : "Alentejo Litoral",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4202",
+      "dim_3_t" : "Nordeste",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "150",
+      "dim_3_t" : "Algarve",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3201",
+      "dim_3_t" : "Porto Santo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0807",
+      "dim_3_t" : "Lagos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "111",
+      "dim_3_t" : "Alto Minho",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0311",
+      "dim_3_t" : "Vieira do Minho",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0301",
+      "dim_3_t" : "Amares",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1209",
+      "dim_3_t" : "Gavião",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0804",
+      "dim_3_t" : "Castro Marim",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1710",
+      "dim_3_t" : "Sabrosa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1203",
+      "dim_3_t" : "Avis",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1A",
+      "dim_3_t" : "Grande Lisboa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0810",
+      "dim_3_t" : "Olhão",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1405",
+      "dim_3_t" : "Benavente",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4501",
+      "dim_3_t" : "Calheta (R.A.A.)",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0614",
+      "dim_3_t" : "Penela",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0313",
+      "dim_3_t" : "Vila Verde",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0612",
+      "dim_3_t" : "Pampilhosa da Serra",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1817",
+      "dim_3_t" : "Sátão",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11C",
+      "dim_3_t" : "Tâmega e Sousa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1402",
+      "dim_3_t" : "Alcanena",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1206",
+      "dim_3_t" : "Crato",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0209",
+      "dim_3_t" : "Mértola",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3107",
+      "dim_3_t" : "Ribeira Brava",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4603",
+      "dim_3_t" : "São Roque do Pico",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1B0",
+      "dim_3_t" : "Península de Setúbal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1C4",
+      "dim_3_t" : "Alentejo Central",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1D1",
+      "dim_3_t" : "Oeste",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0410",
+      "dim_3_t" : "Vila Flor",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0901",
+      "dim_3_t" : "Aguiar da Beira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0704",
+      "dim_3_t" : "Estremoz",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0203",
+      "dim_3_t" : "Alvito",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1205",
+      "dim_3_t" : "Castelo de Vide",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "PT",
+      "dim_3_t" : "Portugal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "20",
+      "dim_3_t" : "Região Autónoma dos Açores",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4802",
+      "dim_3_t" : "Santa Cruz das Flores",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0711",
+      "dim_3_t" : "Reguengos de Monsaraz",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0411",
+      "dim_3_t" : "Vimioso",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1407",
+      "dim_3_t" : "Chamusca",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1B",
+      "dim_3_t" : "Península de Setúbal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1412",
+      "dim_3_t" : "Golegã",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0909",
+      "dim_3_t" : "Mêda",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "Região Autónoma da Madeira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "196",
+      "dim_3_t" : "Beiras e Serra da Estrela",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3109",
+      "dim_3_t" : "Santana",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0706",
+      "dim_3_t" : "Montemor-o-Novo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0609",
+      "dim_3_t" : "Miranda do Corvo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1822",
+      "dim_3_t" : "Vila Nova de Paiva",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0812",
+      "dim_3_t" : "São Brás de Alportel",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1108",
+      "dim_3_t" : "Lourinhã",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1706",
+      "dim_3_t" : "Montalegre",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1505",
+      "dim_3_t" : "Grândola",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0702",
+      "dim_3_t" : "Arraiolos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1215",
+      "dim_3_t" : "Sousel",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1606",
+      "dim_3_t" : "Ponte da Barca",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4201",
+      "dim_3_t" : "Lagoa (R.A.A.)",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0201",
+      "dim_3_t" : "Aljustrel",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1003",
+      "dim_3_t" : "Ansião",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1507",
+      "dim_3_t" : "Montijo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0304",
+      "dim_3_t" : "Cabeceiras de Basto",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0701",
+      "dim_3_t" : "Alandroal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4204",
+      "dim_3_t" : "Povoação",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "300",
+      "dim_3_t" : "Região Autónoma da Madeira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1610",
+      "dim_3_t" : "Vila Nova de Cerveira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1208",
+      "dim_3_t" : "Fronteira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0713",
+      "dim_3_t" : "Viana do Alentejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0213",
+      "dim_3_t" : "Serpa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1417",
+      "dim_3_t" : "Sardoal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "Continente",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1202",
+      "dim_3_t" : "Arronches",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1D",
+      "dim_3_t" : "Oeste e Vale do Tejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0116",
+      "dim_3_t" : "São João da Madeira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0815",
+      "dim_3_t" : "Vila do Bispo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1101",
+      "dim_3_t" : "Alenquer",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1802",
+      "dim_3_t" : "Carregal do Sal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0904",
+      "dim_3_t" : "Figueira de Castelo Rodrigo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3108",
+      "dim_3_t" : "Santa Cruz",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0809",
+      "dim_3_t" : "Monchique",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "195",
+      "dim_3_t" : "Beira Baixa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4901",
+      "dim_3_t" : "Corvo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0506",
+      "dim_3_t" : "Oleiros",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0507",
+      "dim_3_t" : "Penamacor",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0207",
+      "dim_3_t" : "Cuba",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1703",
+      "dim_3_t" : "Chaves",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0902",
+      "dim_3_t" : "Almeida",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1506",
+      "dim_3_t" : "Moita",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3104",
+      "dim_3_t" : "Machico",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0914",
+      "dim_3_t" : "Vila Nova de Foz Côa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "194",
+      "dim_3_t" : "Viseu Dão Lafões",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0710",
+      "dim_3_t" : "Redondo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0412",
+      "dim_3_t" : "Vinhais",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1408",
+      "dim_3_t" : "Constância",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1212",
+      "dim_3_t" : "Nisa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4302",
+      "dim_3_t" : "Vila da Praia da Vitória",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0605",
+      "dim_3_t" : "Figueira da Foz",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0615",
+      "dim_3_t" : "Soure",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1008",
+      "dim_3_t" : "Figueiró dos Vinhos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1403",
+      "dim_3_t" : "Almeirim",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1C2",
+      "dim_3_t" : "Baixo Alentejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11",
+      "dim_3_t" : "Norte",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0908",
+      "dim_3_t" : "Manteigas",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0617",
+      "dim_3_t" : "Vila Nova de Poiares",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1002",
+      "dim_3_t" : "Alvaiázere",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4401",
+      "dim_3_t" : "Santa Cruz da Graciosa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0511",
+      "dim_3_t" : "Vila Velha de Ródão",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0210",
+      "dim_3_t" : "Moura",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0202",
+      "dim_3_t" : "Almodôvar",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1712",
+      "dim_3_t" : "Valpaços",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4205",
+      "dim_3_t" : "Ribeira Grande",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1812",
+      "dim_3_t" : "Penedono",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1204",
+      "dim_3_t" : "Campo Maior",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1605",
+      "dim_3_t" : "Paredes de Coura",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11E",
+      "dim_3_t" : "Terras de Trás-os-Montes",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1404",
+      "dim_3_t" : "Alpiarça",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0707",
+      "dim_3_t" : "Mora",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0214",
+      "dim_3_t" : "Vidigueira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3101",
+      "dim_3_t" : "Calheta (R.A.M.)",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1406",
+      "dim_3_t" : "Cartaxo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1601",
+      "dim_3_t" : "Arcos de Valdevez",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4101",
+      "dim_3_t" : "Vila do Porto",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1415",
+      "dim_3_t" : "Salvaterra de Magos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1820",
+      "dim_3_t" : "Tarouca",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4801",
+      "dim_3_t" : "Lajes das Flores",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0409",
+      "dim_3_t" : "Torre de Moncorvo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0714",
+      "dim_3_t" : "Vila Viçosa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3105",
+      "dim_3_t" : "Ponta do Sol",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0703",
+      "dim_3_t" : "Borba",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "15",
+      "dim_3_t" : "Algarve",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1C3",
+      "dim_3_t" : "Alto Alentejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1D3",
+      "dim_3_t" : "Lezíria do Tejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1213",
+      "dim_3_t" : "Ponte de Sor",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0508",
+      "dim_3_t" : "Proença-a-Nova",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1713",
+      "dim_3_t" : "Vila Pouca de Aguiar",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1211",
+      "dim_3_t" : "Monforte",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "30",
+      "dim_3_t" : "Região Autónoma da Madeira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1016",
+      "dim_3_t" : "Porto de Mós",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0208",
+      "dim_3_t" : "Ferreira do Alentejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0307",
+      "dim_3_t" : "Fafe",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1104",
+      "dim_3_t" : "Cadaval",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0806",
+      "dim_3_t" : "Lagoa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0401",
+      "dim_3_t" : "Alfândega da Fé",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0205",
+      "dim_3_t" : "Beja",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1815",
+      "dim_3_t" : "São João da Pesqueira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0816",
+      "dim_3_t" : "Vila Real de Santo António",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0813",
+      "dim_3_t" : "Silves",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0501",
+      "dim_3_t" : "Belmonte",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "11A",
+      "dim_3_t" : "Área Metropolitana do Porto",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4601",
+      "dim_3_t" : "Lajes do Pico",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0616",
+      "dim_3_t" : "Tábua",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1501",
+      "dim_3_t" : "Alcácer do Sal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1511",
+      "dim_3_t" : "Sesimbra",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0505",
+      "dim_3_t" : "Idanha-a-Nova",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1D2",
+      "dim_3_t" : "Médio Tejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1411",
+      "dim_3_t" : "Ferreira do Zêzere",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1401",
+      "dim_3_t" : "Abrantes",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1001",
+      "dim_3_t" : "Alcobaça",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0212",
+      "dim_3_t" : "Ourique",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0814",
+      "dim_3_t" : "Tavira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1707",
+      "dim_3_t" : "Murça",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "3103",
+      "dim_3_t" : "Funchal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1502",
+      "dim_3_t" : "Alcochete",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "192",
+      "dim_3_t" : "Região de Coimbra",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1513",
+      "dim_3_t" : "Sines",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0204",
+      "dim_3_t" : "Barrancos",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0911",
+      "dim_3_t" : "Sabugal",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0801",
+      "dim_3_t" : "Albufeira",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1207",
+      "dim_3_t" : "Elvas",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4301",
+      "dim_3_t" : "Angra do Heroísmo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4701",
+      "dim_3_t" : "Horta",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0712",
+      "dim_3_t" : "Vendas Novas",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1C",
+      "dim_3_t" : "Alentejo",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1705",
+      "dim_3_t" : "Mondim de Basto",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1808",
+      "dim_3_t" : "Mortágua",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1201",
+      "dim_3_t" : "Alter do Chão",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0613",
+      "dim_3_t" : "Penacova",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1A0",
+      "dim_3_t" : "Grande Lisboa",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0310",
+      "dim_3_t" : "Terras de Bouro",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "0111",
+      "dim_3_t" : "Mealhada",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1004",
+      "dim_3_t" : "Batalha",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "Região Autónoma dos Açores",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "4206",
+      "dim_3_t" : "Vila Franca do Campo",
+      "ind_string" : "0",
+      "valor" : "0"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

@@ -1,10 +1,10 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
 **Status (13 November 2026): independently captured official Arouca, Espinho,
-Santa Maria da Feira and Oliveira de Azeméis slices have been preserved and
-checked against 58 of the 136 frozen pairs.** All 64 observed off-diagonal
-source views match the pinned third-party counts; all six reciprocal links
-among these municipalities agree in both directions. The remaining **78 pairs** and
+Santa Maria da Feira, Oliveira de Azeméis and São João da Madeira slices have
+been preserved and checked against 70 of the 136 frozen pairs.** All 80 observed
+off-diagonal source views match the pinned third-party counts; all ten reciprocal links
+among these municipalities agree in both directions. The remaining **66 pairs** and
 full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
@@ -398,3 +398,52 @@ python ine_commuting_partition_reconciliation.py \
 
 This is **source agreement for work/study interactions**, not evidence of
 residential migration, involuntary displacement or causal price spillovers.
+
+### Fifth successful probe: São João da Madeira
+
+Two attempts of the fourth-index bounded probe in
+[#43417791833](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43417791833)
+timed out after the earlier 35-second per-request limit. Neither produced
+official data. A reviewed CLI timeout bound (`>0` and `<=120` seconds) and
+the 75-second workflow setting allowed the subsequent bounded run
+[#43419199498](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43419199498)
+to capture exactly `start_index=4`, `count=1`, `dimension=Dim2`, corresponding
+to DICO **0116 (São João da Madeira)**. The run preserved the raw 63,022-byte
+JSON response and original capture manifest. The response SHA-256 is
+`0e653d1cfe16d8561baf4be8351c3d8dc057af4448080070b167a908370607bf`.
+Those bytes and a separately generated offline audit are archived at
+[`data/ine_0012340_pr_run_43419199498/`](data/ine_0012340_pr_run_43419199498/).
+
+The source has a single 2021 period, 347 unique `dim_3` codes, all 17 AMP
+counterparts, `geocod=0116`, a zero diagonal and successful API status.
+The deterministic checker reconciles **16 of 16** nonself AMP counts to the
+frozen, checksummed third-party pairs, with no discrepancies. Each of its four
+previously observed reciprocal counts agrees with the earlier official slice:
+
+| Pair | Previous official slice | São João da Madeira slice |
+| --- | ---: | ---: |
+| Arouca–São João da Madeira | 441 | 441 |
+| Espinho–São João da Madeira | 173 | 173 |
+| Santa Maria da Feira–São João da Madeira | 6,174 | 6,174 |
+| Oliveira de Azeméis–São João da Madeira | 5,443 | 5,443 |
+
+The five municipality captures now supply **80 off-diagonal source views**,
+covering `5 × 16 − 10 = 70` distinct AMP pairs. All ten reciprocal links
+among captured municipalities agree. **66 of 136 pairs remain unverified**
+from independently captured official data, and symmetry of those links and
+the full official matrix remain unverified.
+
+Reproduce the fifth comparison offline from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43419199498/ine_0012340_dim2_0116_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43419199498/partition_manifest.json \
+  --municipality-code 0116 \
+  --output-json /tmp/ine-0012340-sao-joao-partial-audit.json
+```
+
+Offline regression tests pin its exact raw SHA-256, deterministic report,
+all 16 matches, all ten observed reciprocal links and the 70-pair count.
+These work/study interaction counts do **not** observe households changing
+residence, displaced tenants, commuting direction or causal housing effects.
