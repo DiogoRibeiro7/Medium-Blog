@@ -135,6 +135,11 @@ def main() -> None:
                         "share_of_total": o["slope"] / total, "mean_weight": shares.get(f"share_{col}", pd.Series(np.nan)).mean()})
         L.append(f"{label}: {f2(o['slope'])} (se {f2(o['se'])}), {pct(o['slope'] / total)} of {f2(total)}")
     pd.DataFrame(contrib).to_csv(OUT / "decomposition.csv", index=False)
+    for g in ("BG", "PT", "DE", "DK"):
+        kk = {k: v[g] for k, v in kind_sums(T).items()}
+        L.append(f"Economy {g} (2005 price level {pli[g]:.0f}): drift {f1(T.drift[g])} = goods {f1(kk['goods'])} + services "
+                 f"{f1(kk['services'])} (housing {f1(T.CP04[g])}, communication {f1(T.CP08[g])}) + mixed {f1(kk['mixed'])} "
+                 f"+ health and education {f1(kk['public'])} + aggregation {f1(kk['aggregation'])} (PPP term {f1(T.B_ppp[g])})")
     ks = kind_sums(T)
     for k, s in ks.items():
         o = C.ols(s, x)
@@ -151,10 +156,19 @@ def main() -> None:
     L.append(f"Correlation of the PPP aggregation term with the composition term: {f2(np.corrcoef(T.B_ppp.loc[K.index], K)[0, 1])}; "
              f"slope of the PPP term on the composition term {f2(C.ols(T.B_ppp, K)['slope'])} (se {f2(C.ols(T.B_ppp, K)['se'])})")
     L.append(f"Composition term slope as a share of the PPP aggregation slope: {pct(oK['slope'] / C.ols(T.B_ppp, x)['slope'])}")
+    Bs = T.B_ppp.sort_values()
+    L.append(f"PPP aggregation term, lowest: {', '.join(f'{g} {f1(v)}' for g, v in Bs.head(2).items())}; highest: "
+             f"{', '.join(f'{g} {f1(v)}' for g, v in Bs.tail(2).items())}")
+    keep = [g for g in T.index if g not in Bs.index[[0, -1]]]
+    o_b = C.ols(T.B_ppp.loc[keep], x.loc[keep])
+    L.append(f"PPP aggregation slope without {Bs.index[0]} and {Bs.index[-1]}: {f2(o_b['slope'])} (se {f2(o_b['se'])}, t {f1(o_b['t'])})")
     spread = C.relative_price_spread(d)
     L.append(fit_line("Spread of division price levels within each economy, 2005 (log points)", C.ols(spread, x)))
     L.append(f"Spread: smallest {spread.idxmin()} {f1(spread.min())}, largest {spread.idxmax()} {f1(spread.max())}; "
              f"median of the eight cheapest {f1(spread[cheap].median())}, of the eight dearest {f1(spread[dear].median())}")
+    sp_years = {yr: C.relative_price_spread(d, yr) for yr in (2005, 2010, 2019)}
+    L.append("Median spread of the eight cheapest of 2005: " + ", ".join(f"{yr} {f1(v[cheap].median())}" for yr, v in sp_years.items())
+             + "; of the eight dearest: " + ", ".join(f"{yr} {f1(v[dear].median())}" for yr, v in sp_years.items()))
     sv = shares[[f"share_{co}" for _, co, _, k in C.DIVISIONS if k in ("services", "public")]].sum(axis=1)
     dsv = 100 * pd.Series({g: sum(C.nominal(d, g, co)[C.END] for _, co, _, k in C.DIVISIONS if k in ("services", "public"))
                            / sum(C.nominal(d, g, co)[C.END] for _, co, _, _ in C.DIVISIONS)
