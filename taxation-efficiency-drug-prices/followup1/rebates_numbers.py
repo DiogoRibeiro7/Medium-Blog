@@ -491,6 +491,16 @@ def main() -> None:
     print(f"  Portugal at the middle of its 2024 band ({pt_mid:.1%}) and the all-four list ratio: net / France net "
           f"{list_rel['PT'] * (1 - pt_mid) / (1 - fr_n):.3f}, net / Belgium net "
           f"{list_rel['PT'] / L_be * (1 - pt_mid) / (1 - be_n):.3f}")
+    floor16 = agr[2016] / bill.loc[2016, "sns"]
+    floor19 = 200 / bill.loc[2019, "sns"]
+    early_fr = [x * (1 - floor16) / (1 - fr_series[2016]) for x in L_fr]
+    early_be = [x / L_be * (1 - floor19) / (1 - be_series[2019]) for x in L_fr]
+    print(f"Earlier years, holding the list ratios of Part 3 fixed and taking the agreement alone as Portugal's return "
+          f"rate (a floor, so the ratios are upper bounds):")
+    print(f"  2016: France {fr_series[2016]:.1%}, Portugal at least {floor16:.1%}: Portugal net / France net at most "
+          f"{min(early_fr):.3f}-{max(early_fr):.3f} (2024: {figure['net']['ratio_fr'][0]:.3f})")
+    print(f"  2019: Belgium {be_series[2019]:.1%}, Portugal at least {floor19:.1%} (EUR 200 million): Portugal net / "
+          f"Belgium net at most {min(early_be):.3f}-{max(early_be):.3f} (2024: {figure['net']['ratio_be'][0]:.3f})")
 
     # ------------------------------------------------------------------ 9
     section("9. What the referenced countries' rebates do to Portugal's ceiling, and who pays the list price")
