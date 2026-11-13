@@ -47,6 +47,29 @@ GDP: residual SD after group and price level (points): 7.7
 HFCE, Eurostat group: mean drift of the 8 cheapest / 8 dearest economies in 2005 (points): 13.0 / 4.5
 Eight cheapest; eight dearest (price level of household consumption, US = 100, 2005): BGR 45, MKD 49, SRB 50, ROU 56, ALB 57, LTU 59, SVK 60, LVA 61; ISL 161, NOR 154, DNK 151, CHE 143, GBR 139, FIN 133, IRL 133, SWE 128
 
+== Robustness of the gap between the groups, 2005-2019 (points) ==
+HFCE gap variants: as estimated 13.0; medians 14.7; EU27 only 13.4; without candidate countries 12.5; weighted by size at 2020 PPPs 11.6; without the US 13.3
+HFCE gap and R2 over 2005-2017: 9.2; 0.26
+HFCE gap and R2 over 2008-2019: 9.9; 0.32
+HFCE gap and R2 over 2010-2019: 7.7; 0.29
+GDP gap variants: as estimated 12.2; medians 11.9; EU27 only 13.1; without candidate countries 12.4; weighted by size at 2020 PPPs 16.2; without the US 11.7
+GDP gap and R2 over 2005-2017: 8.5; 0.21
+GDP gap and R2 over 2008-2019: 7.7; 0.21
+GDP gap and R2 over 2010-2019: 6.0; 0.19
+
+== Selected pairs, household consumption, drift 2005-2019 (row against column, points) ==
+DEU against JPN: 15.9
+FRA against USA: 4.7
+DEU against USA: 13.0
+POL against DEU: 3.2
+ROU against DEU: 6.3
+SWE against NOR: 1.0
+ITA against ESP: 4.8
+GBR against DEU: -9.9
+CAN against USA: -9.0
+KOR against JPN: -3.9
+AUS against NZL: -2.6
+
 == Same gap in three aggregates ==
 Household consumption as share of GDP, Eurostat group, mean 2005-2019: 0.55
 GDP gap expected if the gap came only from consumer deflators; observed GDP gap (points): 7.2; 12.2

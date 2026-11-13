@@ -107,6 +107,33 @@ def main() -> None:
         ", ".join(f"{c} {e.loc[c, 'pli_2005']:.0f}" for c in lo) + "; " +
         ", ".join(f"{c} {e.loc[c, 'pli_2005']:.0f}" for c in hi))
 
+    # ------------------------------------------------------------------ robustness of the gap
+    section("Robustness of the gap between the groups, 2005-2019 (points)")
+    candidates = ["TUR", "SRB", "MKD", "ALB", "MNE", "BIH"]
+    for agg in ("HFCE", "GDP"):
+        sc = scores[agg]
+        e, o = sc[sc.group == "Eurostat"].drift, sc[sc.group == "OECD"].drift
+        size = (d["V"][agg] / d["PPP"][agg]).loc[pr.BASE]          # US dollars at 2020 PPPs
+        wmean = lambda s: float((s * size.reindex(s.index)).sum() / size.reindex(s.index).sum())  # noqa: E731
+        variants = {
+            "as estimated": e.mean() - o.mean(),
+            "medians": e.median() - o.median(),
+            "EU27 only": e.reindex(pr.EU27).dropna().mean() - o.mean(),
+            "without candidate countries": e.drop([c for c in candidates if c in e.index]).mean() - o.mean(),
+            "weighted by size at 2020 PPPs": wmean(e) - wmean(o),
+            "without the US": e.mean() - o.drop("USA").mean(),
+        }
+        say(f"{agg} gap variants", "; ".join(f"{k} {v:.1f}" for k, v in variants.items()))
+        for a_, b_ in ((2005, 2017), (2008, 2019), (2010, 2019)):
+            s2 = pr.programme_scores(cds[agg], a_, b_)
+            say(f"{agg} gap and R2 over {a_}-{b_}", f"{pr.block_model(s2)['beta'][1]:.1f}; {pr.block_model(s2)['r2']:.2f}")
+
+    section("Selected pairs, household consumption, drift 2005-2019 (row against column, points)")
+    h = scores["HFCE"].drift
+    for i, j in (("DEU", "JPN"), ("FRA", "USA"), ("DEU", "USA"), ("POL", "DEU"), ("ROU", "DEU"), ("SWE", "NOR"),
+                 ("ITA", "ESP"), ("GBR", "DEU"), ("CAN", "USA"), ("KOR", "JPN"), ("AUS", "NZL")):
+        say(f"{i} against {j}", f"{h[i] - h[j]:.1f}")
+
     # ------------------------------------------------------------------ the gap is the same in all three aggregates
     section("Same gap in three aggregates")
     eg = [c for c in scores["GDP"].index if scores["GDP"].loc[c, "group"] == "Eurostat"]
