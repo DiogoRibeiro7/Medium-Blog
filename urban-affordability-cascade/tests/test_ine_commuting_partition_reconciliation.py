@@ -32,6 +32,8 @@ FOURTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43414048813"
 FOURTH_SOURCE_SHA256 = "57e7b37e81e9190a2edd0aa996318aab26a97ccff0b42f409afaf2dc930ccae8"
 FIFTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43419199498"
 FIFTH_SOURCE_SHA256 = "0e653d1cfe16d8561baf4be8351c3d8dc057af4448080070b167a908370607bf"
+SIXTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43422198121"
+SIXTH_SOURCE_SHA256 = "6714b33cedeb7ce0275b5207d06d05598082cd628f0615d0c858964215b3c73e"
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -361,6 +363,63 @@ class FiveMunicipalityINESliceAuditTests(unittest.TestCase):
             if first != second
         }
         self.assertEqual(len(unique_pairs), 70)
+
+
+class SixMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Verify Vale de Cambra and all fifteen independently observed reciprocals."""
+
+    def test_vale_de_cambra_extends_coverage_to_81_pairs(self) -> None:
+        code = "0119"
+        codes = municipality_codes_from_panel()
+        source = SIXTH_RUN / "ine_0012340_dim2_0119_candidate.json"
+        raw = source.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), SIXTH_SOURCE_SHA256)
+        vale, source_records = parse_dim2_slice(raw, code, codes)
+        self.assertEqual(source_records, 347)
+        self.assertEqual(len(vale), 17)
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(
+                source, SIXTH_RUN / "partition_manifest.json", code,
+                Path(folder) / "audit_0119.json",
+            )
+            self.assertEqual(report["status"], "partial_match")
+            self.assertEqual(report["matched_pairs"], 16)
+            self.assertEqual(report["mismatched_pairs"], 0)
+            self.assertFalse(report["full_17_municipality_matrix_reconciled"])
+            self.assertEqual(
+                json.loads((SIXTH_RUN / "audit_0119.json").read_text(encoding="utf-8")),
+                report,
+            )
+
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+            "0113": FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json",
+            "0116": FIFTH_RUN / "ine_0012340_dim2_0116_candidate.json",
+        }
+        observed: dict[str, dict[str, int]] = {code: vale}
+        for previous, path in source_paths.items():
+            observed[previous], _ = parse_dim2_slice(path.read_bytes(), previous, codes)
+
+        reciprocal_pairs = 0
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+                    reciprocal_pairs += 1
+        self.assertEqual(reciprocal_pairs, 15)
+        self.assertEqual(
+            {previous: vale[previous] for previous in source_paths},
+            {"0104": 1014, "0107": 80, "0109": 715, "0113": 2147, "0116": 497},
+        )
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 81)
 
 
 if __name__ == "__main__":
