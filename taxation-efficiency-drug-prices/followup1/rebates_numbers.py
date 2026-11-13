@@ -491,6 +491,19 @@ def main() -> None:
     print(f"  Portugal at the middle of its 2024 band ({pt_mid:.1%}) and the all-four list ratio: net / France net "
           f"{list_rel['PT'] * (1 - pt_mid) / (1 - fr_n):.3f}, net / Belgium net "
           f"{list_rel['PT'] / L_be * (1 - pt_mid) / (1 - be_n):.3f}")
+    h_rule = rules["lowest of the four (hospital rule)"]
+    h_hi = a600 / bill.loc[2024, "hospital"]
+    a = rng.uniform(pt24_lo, h_hi, REPS)
+    b = rng.uniform(fr_hosp_lo, fr_hosp_hi, REPS)
+    vs_h = h_rule * (1 - a) / (1 - b)
+    ends = [h_rule * (1 - x) / (1 - y) for x, y in corners((pt24_lo, h_hi), (fr_hosp_lo, fr_hosp_hi))]
+    print(f"Hospital medicines: Portugal's ceiling is the lowest of the four list prices, {h_rule:.3f} of France's on the "
+          f"Part 3 basket; Portugal's hospital return rate between its overall rate ({pt24_lo:.1%}) and all of the upper "
+          f"returns on hospital spending ({h_hi:.1%}); France's expensive hospital products {fr_hosp_lo:.1%}-{fr_hosp_hi:.1%}")
+    print(f"  Portugal net / France net {np.median(vs_h):.3f} [{np.percentile(vs_h, 5):.3f}, {np.percentile(vs_h, 95):.3f}]; "
+          f"extremes {min(ends):.3f}-{max(ends):.3f}; share of draws above 1: {np.mean(vs_h > 1):.1%}")
+    figure["hospital"] = {"rule": h_rule, "ratio": [float(np.median(vs_h)), float(np.percentile(vs_h, 5)),
+                                                    float(np.percentile(vs_h, 95))]}
     floor16 = agr[2016] / bill.loc[2016, "sns"]
     floor19 = 200 / bill.loc[2019, "sns"]
     early_fr = [x * (1 - floor16) / (1 - fr_series[2016]) for x in L_fr]
@@ -522,6 +535,27 @@ def main() -> None:
     print("  weight of each country in the ceiling (its list over the sum): "
           + ", ".join(f"{k} {v:.1%}" for k, v in w.items()))
     figure["ceiling"] = cf
+    mols = json.loads((ROOT / "part3" / "figure_data.json").read_text())["molecules"]
+    lowest = {}
+    for mol in mols:
+        v = {"FR": 1.0, "ES": mol["ES"], "IT": mol["IT"], "BE": mol["BE"]}
+        k = min(v, key=v.get)
+        lowest[k] = lowest.get(k, 0) + 1
+    p3 = (ROOT / "part3" / "output.txt").read_text(encoding="utf-8")
+    cheap = {k: float(find(rf"  {k:8s} cheapest ([\d.]+)", p3, f"Part 3 cheapest {k}").group(1))
+             for k in ("France", "Spain", "Italy", "Belgium")}
+    print("Hospital rule (lowest of the four). Part 3, presentations priced in all four: cheapest in "
+          + ", ".join(f"{k} {v:.1%}" for k, v in cheap.items()))
+    print(f"  the {len(mols)} molecules of that basket (most sold presentation of each): lowest list price in "
+          + ", ".join(f"{k} {n}" for k, n in sorted(lowest.items(), key=lambda x: -x[1])))
+    for label, cut in cases[:2]:
+        ratios = []
+        for mol in mols:
+            v = {"FR": 1.0, "ES": mol["ES"], "IT": mol["IT"], "BE": mol["BE"]}
+            new = min(v[k] * (1 - cut.get(k, 0.0)) for k in v)
+            ratios.append(new / min(v.values()))
+        print(f"  {label}: lowest-price ceiling {np.exp(np.mean(np.log(ratios))) - 1:+.1%} (geometric mean), "
+              f"unchanged for {sum(r > 0.9999 for r in ratios)} of {len(mols)}")
     p25, sp25 = bill.loc[2025, "patients"], bill.loc[2025, "pharmacy"]
     print(f"Patients' co-payments at the pharmacy are a share of the list price; returns go to the SNS only. "
           f"2025: patients EUR {p25:,.1f} million, SNS pharmacy charges {sp25:,.1f} million")
