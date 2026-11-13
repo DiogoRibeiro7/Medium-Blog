@@ -1,0 +1,30 @@
+objection,study,default,lenient,strict
+Top-1% wealth share predicts slower growth within countries,audit,failed,failed,failed
+Inherited control goes with slower TFP growth,audit,open,open,open
+Inherited control goes with slower TFP growth,panel,passed,passed,passed
+Inherited control goes with slower TFP growth,successions,passed,passed,passed
+Not a reflection of earlier growth,panel,open,open,open
+Not a reflection of earlier growth,sectors,open,open,open
+Not a reflection of earlier growth,pandemic,open,open,open
+Not a reflection of earlier growth,successions,open,open,open
+Not driven by one country,panel,passed,passed,passed
+Not driven by one country,sectors,passed,passed,passed
+Not driven by one country,successions,passed,passed,open
+Not explained by the sector mix,sectors,passed,passed,passed
+Not explained by pandemic exposure,pandemic,passed,passed,passed
+Not explained by pandemic exposure,successions,open,open,failed
+Survives without the 2020 list,panel,failed,failed,failed
+Survives without the 2020 list,sectors,open,open,failed
+Survives without the 2020 list,pandemic,passed,passed,passed
+Survives without the 2020 list,successions,failed,failed,failed
+Not an artefact of one list's valuations,pandemic,passed,passed,passed
+Also shows in GDP per capita growth,panel,failed,failed,failed
+Also shows in GDP per capita growth,sectors,failed,open,failed
+Also shows in GDP per capita growth,pandemic,failed,open,failed
+Also shows in GDP per capita growth,successions,passed,passed,passed
+Holds across the whole specification set,panel,passed,passed,passed
+Holds across the whole specification set,sectors,passed,passed,passed
+Holds across the whole specification set,pandemic,passed,passed,passed
+Beats randomly reshuffled timing,successions,open,passed,failed
+Founder exits without heirs show no drop,successions,passed,passed,passed
+Event study and panel agree on size,successions,failed,open,failed

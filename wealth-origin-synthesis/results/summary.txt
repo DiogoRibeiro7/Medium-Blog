@@ -77,3 +77,18 @@ Event study and panel agree on size / successions: event-study effect vs panel p
   successions: passed 4, open 3, failed 2
   all: tests 29, objections 13; passed 14, open 8, failed 7
   by objection: Top-1% wealth share predicts slower growth within countries: failed; Inherited control goes with slower TFP growth: open,passed,passed; Not a reflection of earlier growth: open,open,open,open; Not driven by one country: passed,passed,passed; Not explained by the sector mix: passed; Not explained by pandemic exposure: passed,open; Survives without the 2020 list: failed,open,passed,failed; Not an artefact of one list's valuations: passed; Also shows in GDP per capita growth: failed,failed,failed,passed; Holds across the whole specification set: passed,passed,passed; Beats randomly reshuffled timing: open; Founder exits without heirs show no drop: passed; Event study and panel agree on size: failed
+
+## Sensitivity of the verdicts to the thresholds
+lenient: keep_share=0.33, p_pass=0.1, p_open=0.2, pretrend_bound=1.0, placebo_share=0.75, loo_share=0.8, ratio_pass=3.0, ratio_open=5.0
+strict: keep_share=0.67, p_pass=0.01, p_open=0.05, pretrend_bound=0.25, placebo_share=0.25, loo_share=1.0, ratio_pass=1.5, ratio_open=2.0
+  default: passed 14, open 8, failed 7
+  lenient: passed 15, open 10, failed 4
+  strict: passed 13, open 6, failed 10
+  tests whose verdict changes under either variant: 7
+    Not driven by one country / successions: default passed, lenient passed, strict open
+    Not explained by pandemic exposure / successions: default open, lenient open, strict failed
+    Survives without the 2020 list / sectors: default open, lenient open, strict failed
+    Also shows in GDP per capita growth / sectors: default failed, lenient open, strict failed
+    Also shows in GDP per capita growth / pandemic: default failed, lenient open, strict failed
+    Beats randomly reshuffled timing / successions: default open, lenient passed, strict failed
+    Event study and panel agree on size / successions: default failed, lenient open, strict failed

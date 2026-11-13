@@ -52,6 +52,19 @@ Z80 = 0.8416212335729143  # one-sided 80% power quantile
 
 PASSED, OPEN, FAILED = "passed", "open", "failed"
 
+# Thresholds used by the verdict rules. rule_sensitivity() reruns the ledger with other values.
+DEFAULT_RULES = {
+    "keep_share": 0.5,     # a re-estimate keeping less than this share of its reference fails
+    "p_pass": 0.05,        # joint and permutation tests pass below this p-value
+    "p_open": 0.10,        # and are open below this one
+    "pretrend_bound": 0.5, # pre-event interval must lie within this share of the post effect
+    "placebo_share": 0.5,  # a placebo under this share of the main effect passes
+    "loo_share": 0.9,      # share of leave-one-out intervals that must exclude zero
+    "ratio_pass": 2.0,     # designs agree on size within this factor
+    "ratio_open": 3.0,     # and are open within this one
+}
+RULES = dict(DEFAULT_RULES)
+
 
 def read(study: str, name: str) -> pd.DataFrame:
     return pd.read_csv(SOURCES[study] / name)
@@ -99,7 +112,7 @@ def verdict_estimate(b: float, lo: float, hi: float, reference: float | None = N
     """
     if b < 0 and hi < 0:
         return PASSED
-    if reference is not None and b / reference < 0.5:
+    if reference is not None and b / reference < RULES["keep_share"]:
         return FAILED
     if reference is None and b > 0:
         return FAILED
@@ -108,9 +121,9 @@ def verdict_estimate(b: float, lo: float, hi: float, reference: float | None = N
 
 def verdict_p(p: float) -> str:
     """A one-sided p-value in the expected direction: below 0.05 passed, below 0.10 open."""
-    if p < 0.05:
+    if p < RULES["p_pass"]:
         return PASSED
-    if p < 0.10:
+    if p < RULES["p_open"]:
         return OPEN
     return FAILED
 
@@ -138,7 +151,7 @@ def verdict_pretrend(b: float, lo: float, hi: float, post: float) -> str:
     failed: the interval excludes zero.
     open:   anything else.
     """
-    bound = abs(post) / 2
+    bound = abs(post) * RULES["pretrend_bound"]
     if -bound <= lo and hi <= bound:
         return PASSED
     if lo > 0 or hi < 0:
@@ -156,7 +169,7 @@ def verdict_placebo_event(b: float, lo: float, hi: float, main: float) -> str:
     """
     if hi < 0:
         return FAILED
-    if b >= 0 or abs(b) < abs(main) / 2:
+    if b >= 0 or abs(b) < abs(main) * RULES["placebo_share"]:
         return PASSED
     return OPEN
 
@@ -168,7 +181,7 @@ def verdict_leave_one_out(share_ci_excl_zero: float, all_negative: bool) -> str:
     open:   every estimate negative.
     failed: some estimate not negative.
     """
-    if all_negative and share_ci_excl_zero >= 0.9:
+    if all_negative and share_ci_excl_zero >= RULES["loo_share"]:
         return PASSED
     if all_negative:
         return OPEN
@@ -179,9 +192,9 @@ def verdict_ratio(ratio: float) -> str:
     """Two designs' estimates of the same quantity. passed within a factor of 2, open
     within a factor of 3, failed beyond."""
     r = max(ratio, 1 / ratio) if ratio > 0 else math.inf
-    if r <= 2:
+    if r <= RULES["ratio_pass"]:
         return PASSED
-    if r <= 3:
+    if r <= RULES["ratio_open"]:
         return OPEN
     return FAILED
 
@@ -648,11 +661,33 @@ def _sectors_joint(coef: str, subset: str) -> dict[str, float]:
     return {"median": float(r["median"]), "p": float(r["p_stouffer"])}
 
 
+RULE_VARIANTS = {
+    "lenient": {"keep_share": 0.33, "p_pass": 0.10, "p_open": 0.20, "pretrend_bound": 1.0,
+                "placebo_share": 0.75, "loo_share": 0.8, "ratio_pass": 3.0, "ratio_open": 5.0},
+    "strict": {"keep_share": 0.67, "p_pass": 0.01, "p_open": 0.05, "pretrend_bound": 0.25,
+               "placebo_share": 0.25, "loo_share": 1.0, "ratio_pass": 1.5, "ratio_open": 2.0},
+}
+
+
+def rule_sensitivity(est: pd.DataFrame, power: dict[str, float]) -> pd.DataFrame:
+    """The ledger under lenient and strict thresholds, one column of verdicts per rule set."""
+    out = None
+    for name, rules in [("default", DEFAULT_RULES), *RULE_VARIANTS.items()]:
+        RULES.clear()
+        RULES.update(DEFAULT_RULES | rules)
+        led = ledger_frame(est, power)[["objection", "study", "verdict"]].rename(columns={"verdict": name})
+        out = led if out is None else out.merge(led, on=["objection", "study"])
+    RULES.clear()
+    RULES.update(DEFAULT_RULES)
+    return out
+
+
 # --------------------------------------------------------------------------------------
 # Summary
 # --------------------------------------------------------------------------------------
 
-def summary_lines(est: pd.DataFrame, led: pd.DataFrame, power: dict[str, float]) -> list[str]:
+def summary_lines(est: pd.DataFrame, led: pd.DataFrame, power: dict[str, float],
+                  sens: pd.DataFrame) -> list[str]:
     L = ["# Synthesis of the wealth-origin series (every number quoted in the closing article)", ""]
 
     L.append("## Headline coefficient under each design (TFP, 3 years, billionaire countries, fixed effects;")
@@ -718,6 +753,17 @@ def summary_lines(est: pd.DataFrame, led: pd.DataFrame, power: dict[str, float])
              f"open {int(tot.get(OPEN, 0))}, failed {int(tot.get(FAILED, 0))}")
     by_obj = led.groupby("objection", sort=False)["verdict"].agg(lambda v: ",".join(v))
     L.append("  by objection: " + "; ".join(f"{k}: {v}" for k, v in by_obj.items()))
+    L.append("")
+    L.append("## Sensitivity of the verdicts to the thresholds")
+    for name, rules in RULE_VARIANTS.items():
+        L.append(f"{name}: " + ", ".join(f"{k}={v}" for k, v in rules.items()))
+    for name in ["default", *RULE_VARIANTS]:
+        c = sens[name].value_counts()
+        L.append(f"  {name}: passed {int(c.get(PASSED, 0))}, open {int(c.get(OPEN, 0))}, failed {int(c.get(FAILED, 0))}")
+    changed = sens[(sens["default"] != sens["lenient"]) | (sens["default"] != sens["strict"])]
+    L.append(f"  tests whose verdict changes under either variant: {len(changed)}")
+    for _, r in changed.iterrows():
+        L.append(f"    {r['objection']} / {r['study']}: default {r['default']}, lenient {r['lenient']}, strict {r['strict']}")
     return L
 
 
@@ -729,7 +775,9 @@ def main() -> None:
     est.to_csv(RES / "estimates.csv", index=False, float_format="%.6f")
     led.to_csv(RES / "ledger.csv", index=False)
     (RES / "power.json").write_text(json.dumps({k: round(float(v), 6) for k, v in power.items()}, indent=1) + "\n")
-    lines = summary_lines(est, led, power)
+    sens = rule_sensitivity(est, power)
+    sens.to_csv(RES / "rule_sensitivity.csv", index=False)
+    lines = summary_lines(est, led, power, sens)
     (RES / "summary.txt").write_text("\n".join(lines) + "\n")
     print("\n".join(lines))
 

@@ -26,11 +26,12 @@ python -m pytest -q tests
 - `results/estimates.csv`: the inherited-minus-self-made coefficient (TFP growth over three years, the 63 countries with billionaires in at least 7 of 13 lists, country and year fixed effects) under six designs, each with and, where computed, without the 2020 Forbes list; and the succession event-study effect under five variants.
 - `results/ledger.csv`: 29 tests grouped into 13 questions. For each: the study that ran it, the test, the statistic, the verdict (`passed`, `open`, `failed`) and the rule that produced it.
 - `results/power.json`: the panel-implied effect for the 38 successions with a prediction, the power of the event design against it, the sign-error rate and exaggeration ratio among significant estimates, and the number of events that 80% power would need.
+- `results/rule_sensitivity.csv`: the verdict of every test under the default thresholds and under a lenient and a strict set (listed in `RULE_VARIANTS`).
 - `results/summary.txt`: every number quoted in the article. CI reruns the script and fails if this file changes.
 
 ## Verdict rules
 
-All in `synthesis.py` under `VERDICT RULES`, so a reader who disagrees with one can change it in one place and rerun. In short:
+All in `synthesis.py` under `VERDICT RULES`, with their thresholds in `DEFAULT_RULES`, so a reader who disagrees with one can change it in one place and rerun. In short:
 
 - **Re-estimated coefficient** (a new control or sample): passed if negative with a 95% interval below zero; failed if it keeps less than half of the reference estimate (or changes sign) and the interval includes zero; open otherwise.
 - **Joint tests and permutation tests**: passed below p = 0.05, open below 0.10, failed above.

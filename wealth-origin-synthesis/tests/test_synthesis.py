@@ -140,3 +140,16 @@ def test_one_returns_a_single_row_or_raises():
     assert S.one(df, subset="tfp")["n_specs"] == 72
     with pytest.raises(ValueError):
         S.one(df, subset="no such subset")
+
+
+def test_rule_sensitivity_restores_defaults_and_matches_ledger(est, led):
+    power = S.succession_power()
+    sens = S.rule_sensitivity(est, power)
+    assert S.RULES == S.DEFAULT_RULES
+    merged = led.merge(sens, on=["objection", "study"])
+    assert len(merged) == len(led)
+    assert (merged["verdict"] == merged["default"]).all()
+    # the lenient variant never turns a default pass into a failure, and the strict one never
+    # turns a default failure into a pass
+    assert not ((merged["default"] == S.PASSED) & (merged["lenient"] == S.FAILED)).any()
+    assert not ((merged["default"] == S.FAILED) & (merged["strict"] == S.PASSED)).any()
