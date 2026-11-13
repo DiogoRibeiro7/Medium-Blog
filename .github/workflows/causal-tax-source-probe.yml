@@ -59,6 +59,15 @@ jobs:
             --outcome top1_share_pct \
             --lags 5 --horizon 5 --min-events 5 \
             --output "$RUNNER_TEMP/tax-study/results"
+      - name: Run balanced pre-reform placebo event study
+        id: placebo
+        if: steps.estimate.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.event_study \
+            --panel "$RUNNER_TEMP/tax-study/panel.csv" \
+            --outcome top1_share_pct \
+            --lags 5 --horizon 5 --min-events 5 \
+            --output "$RUNNER_TEMP/tax-study/placebo"
       - name: Publish WID values and SHA-256 source manifest
         if: always()
         uses: actions/upload-artifact@v4
@@ -80,5 +89,8 @@ jobs:
             ${{ runner.temp }}/tax-study/results/event_effects.csv
             ${{ runner.temp }}/tax-study/results/att_by_horizon.csv
             ${{ runner.temp }}/tax-study/results/run_metadata.json
+            ${{ runner.temp }}/tax-study/placebo/event_time_contrasts.csv
+            ${{ runner.temp }}/tax-study/placebo/event_time_summary.csv
+            ${{ runner.temp }}/tax-study/placebo/event_study_audit.json
           retention-days: 7
           if-no-files-found: warn

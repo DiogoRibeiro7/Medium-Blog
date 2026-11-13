@@ -128,7 +128,7 @@ def _covariate_trajectory(
     return np.asarray([value for group in values for value in group], dtype=float)
 
 
-def _rank_donors(
+def rank_donors(
     panel: dict[Key, Observation],
     treated_country: str,
     donors: list[str],
@@ -231,7 +231,7 @@ def estimate(
                 donors.append(candidate)
             if not donors:
                 continue
-            selected = _rank_donors(panel, country, donors, year, lags, max_donors)
+            selected = rank_donors(panel, country, donors, year, lags, max_donors)
             donor_countries = tuple(name for name, _ in selected)
             treated_change = (
                 panel[(country, year + horizon)].outcome
