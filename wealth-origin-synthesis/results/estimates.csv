@@ -1,0 +1,19 @@
+key,study,panel,label,without_2020,b,se,lo,hi,n_obs
+panel,panel,composition,"Within-country panel, income controlled",False,-1.166864,0.441282,-2.031777,-0.301951,560.000000
+panel_pre2020,panel,composition,"Within-country panel, income controlled",True,-0.269232,0.358228,-0.971359,0.432895,336.000000
+sectors6,sectors,composition,+ six sector-group shares,False,-1.047877,0.419276,-1.869658,-0.226096,536.000000
+sectors6_no2020,sectors,composition,+ six sector-group shares,True,-0.650050,0.341617,-1.319619,0.019519,
+sectors18,sectors,composition,+ all 18 sector shares,False,-1.245234,0.482268,-2.190479,-0.299989,
+exposure,pandemic,composition,+ four pandemic exposures x list year,False,-1.109351,0.486931,-2.063736,-0.154966,560.000000
+exposure_no2020,pandemic,composition,+ four pandemic exposures x list year,True,-0.689123,0.382931,-1.439668,0.061422,504.000000
+twolist,pandemic,composition,"Two-list average, exposures controlled",False,-1.474604,0.601758,-2.654050,-0.295158,504.000000
+twolist_no2020,pandemic,composition,"Two-list average, exposures controlled",True,-1.155857,0.503693,-2.143095,-0.168619,448.000000
+headcount,pandemic,composition,"Headcount measure, exposures controlled",False,-1.022315,0.458977,-1.921910,-0.122720,560.000000
+headcount_no2020,pandemic,composition,"Headcount measure, exposures controlled",True,-0.930675,0.444735,-1.802356,-0.058994,504.000000
+succ_all,successions,event,All matched successions,False,-2.785280,1.109283,-4.959475,-0.611085,504.000000
+succ_all_no2020,successions,event,All matched successions,True,0.529305,1.304417,-2.027352,3.085962,392.000000
+succ_old,successions,event,Founders aged 70 or more,False,-3.110335,1.127947,-5.321111,-0.899559,504.000000
+succ_old_no2020,successions,event,Founders aged 70 or more,True,-0.332105,1.430636,-3.136152,2.471942,392.000000
+succ_exposure,successions,event,"All successions, pandemic exposure x year",False,-1.686199,2.227221,-6.051552,2.679154,504.000000
+succ_old_any,successions,event,Any exit of a founder aged 70+,False,-0.606905,0.895286,-2.361666,1.147856,504.000000
+succ_old_noheir,successions,event,"Exit aged 70+, no heir listed",False,0.837728,1.150049,-1.416368,3.091824,504.000000
