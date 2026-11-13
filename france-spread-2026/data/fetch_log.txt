@@ -172,3 +172,6 @@ ecb irs	ROWS	4191	last period 2026-09
 # fetch.py run 2026-11-13T10:02:16+00:00
 eurostat yields_monthly	200	3e115405be66dd2e4cb4ab730c3ed6290ca6f5ae95a44cc3ab66ba1bcc61b2e5	106028 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?format=JSON&lang=EN&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
 eurostat yields_monthly	ROWS	5625	columns ['freq', 'int_rt', 'geo', 'time', 'value']	last period 2026-10	filters []
+# fetch.py run 2026-11-13T10:03:13+00:00
+ecb irs	200	59ff44ff147d2ad61e5087466b6e0bfdbd61fd1252dda463e69c3b27944189db	1515336 bytes	https://data-api.ecb.europa.eu/service/data/IRS/M.DE+FR+IT+ES+BE+AT+NL+FI+PT+IE+GR.L.L40.CI.0000.EUR.N.Z?startPeriod=1995-01&format=csvdata
+ecb irs	ROWS	4202	last period 2026-10
