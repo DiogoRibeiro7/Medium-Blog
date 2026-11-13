@@ -13,6 +13,7 @@ Public reproducibility companion for a series on Medium by Diogo Ribeiro. The ed
 Follow-ups test conjectures left open by the parts.
 
 - **Follow-up 1 — confidential returns in Portugal and the countries it references** ([`followup1/`](followup1)). Tests the conjecture of Part 7: that reference pricing turns list prices into something other payers use, so that a small country that is both referenced and referencing should bargain through confidential returns, more so over time and in hospitals, and should have a wider gap between list and net prices than the countries it references. Puts together every published piece on Portugal's returns (the State–industry agreements 2013–2025, the extraordinary contribution on the industry, Infarmed's figures for 2023–2025 and the industry's own studies, with the rounding of each figure carried through), France's rebates 2016–2024 by setting (DREES, IGAS-IGF), Belgium's compensations under article 81/111 conventions and levies 2015–2024 by setting (INAMI), and what Italy and Spain publish. Compares the share returned in 2024, turns it into net prices with Part 3's list-price ratios (with a simulation over the uncertain inputs), and computes what the referenced countries' own rebates do to Portugal's price ceiling.
+- **Follow-up 2 — where the rise in the US share of drugmakers' revenue comes from** ([`followup2/`](followup2)). Tests the second conjecture of Part 6: that the US share rises because new medicines are launched first, and priced highest, in the United States, so that the rise is concentrated in medicines launched in the period and the share is higher for companies with more revenue from medicines under five years old. Rebuilds, from the XBRL instances of the seventeen companies' annual reports, the revenue of each medicine in the United States and in total (2016–2025 for the companies that tag revenue by product and country), dates each medicine by its first US approval (Drugs@FDA and the Purple Book), and splits the change in the pooled US share exactly, medicine by medicine (Griliches and Regev 1995), by launch cohort and by age. Adds the life cycle of a medicine's US share from launch and the relation, across and within companies, between revenue from new medicines and the US share.
 
 ## Running
 
@@ -43,6 +44,9 @@ python ledger_numbers.py > output.txt     # a few seconds; reads data/ and the r
 python figures.py
 cd ../followup1
 python rebates_numbers.py > output.txt    # a few seconds; reads data/, ../part7/data and Parts 3 and 7
+python figures.py
+cd ../followup2
+python portfolio_numbers.py > output.txt  # about ten seconds; reads data/ and ../part6/data, ../part6/output.txt
 python figures.py
 cd ..
 python -m unittest discover -s tests      # tests of the shared tools
@@ -130,6 +134,13 @@ A GitHub Actions workflow (`.github/workflows/taxation-efficiency-drug-prices.ym
 
   The Spanish deductions (Real Decreto-ley 8/2010, as amended by Real Decreto-ley 9/2011) and the Italian rule that companies repay half of the overrun of the ceiling on direct purchases (Law 145/2018, art. 1, c. 580) are quoted from the law in `followup1/rebates_numbers.py`. No source splits Portugal's returns between hospitals and pharmacies, and the APIFARMA newsletter does not state the base of its 2018 and 2022 shares; the script shows both readings.
 
+- **Follow-up 2** uses the snapshot in `followup2/data`, taken on 13 November 2026, with the exchange rates and output of Part 6:
+  - SEC EDGAR: the annual reports (10-K and 20-F) of the seventeen companies of Part 6, fiscal years 2015–2025; every annual revenue fact of each XBRL instance is kept with its dimensions (product, geography, segment), for the year reported and the comparative years. Thirteen companies tag revenue by product and by country in some years (most from fiscal 2016, through the comparatives of their 2018 reports); Bristol-Myers Squibb, GSK, Pfizer and Takeda tag products without countries.
+  - openFDA, Drugs@FDA bulk file: brand names, applications and the date of the original approval of each NDA and BLA.
+  - FDA Purple Book, January 2026 extract: licensed biological products of CDER and CBER, with the licence date of each product.
+
+  A product member of a filing is matched to a US brand name by its words (the leftmost word that begins a brand name; four names used outside the US or misspelt are aliased); members that name a group, a business or a kind of revenue stay out. The decomposition covers the medicines a company reports one by one with US and total revenue, not the company's whole revenue; the script prints how much of each company's revenue that is.
+
 ## References
 
 Acemoglu, D., & Linn, J. (2004). Market size in innovation: theory and evidence from the pharmaceutical industry. *Quarterly Journal of Economics*, 119(3), 1049–1090.
@@ -204,6 +215,10 @@ EURIPID & Gesundheit Österreich (2018). *Purchasing power parities of pharmaceu
 
 European Commission, Directorate-General for Health and Food Safety (2018). Paper on the obligation of continuous supply to tackle the problem of shortages of medicines. Agreed by the ad-hoc technical meeting under the Pharmaceutical Committee on shortages of medicines, 25 May 2018.
 
+FDA (2026). *Drugs@FDA*, via openFDA bulk download (drug/drugsfda), November 2026.
+
+FDA (2026). *Purple Book: Database of Licensed Biological Products*, data download, January 2026.
+
 Fehr, E., & Gächter, S. (2000). Cooperation and punishment in public goods experiments. *American Economic Review*, 90(4), 980–994.
 
 Fehr, E., & Williams, T. (2017). Creating an efficient culture of cooperation. IZA Discussion Paper No. 11131.
@@ -217,6 +232,8 @@ Gächter, S., Renner, E., & Sefton, M. (2008). The long-run benefits of punishme
 Ganslandt, M., & Maskus, K. E. (2004). Parallel imports and the pricing of pharmaceutical products: evidence from the European Union. *Journal of Health Economics*, 23(5), 1035–1057.
 
 Goldman, D., & Lakdawalla, D. (2018). *The Global Burden of Medical Innovation*. USC Schaeffer Center White Paper, January 2018.
+
+Griliches, Z., & Regev, H. (1995). Firm productivity in Israeli industry 1979–1988. *Journal of Econometrics*, 65(1), 175–203.
 
 Herrmann, B., Thöni, C., & Gächter, S. (2008). Antisocial punishment across societies. *Science*, 319(5868), 1362–1367.
 
