@@ -1,0 +1,198 @@
+HOUSING LOSSES AND INFLATION: every number used in the article
+========================================================================
+
+[0] Data
+JST R6 price set (KSS national nominal index + CPI): 18 countries, 2026 country-years of annual changes, 1871-2020
+JST R6 returns set (returns price series + net rent + CPI): 16 countries, 1909 country-years
+Country-years where the two JST nominal price series differ by more than 2 pp: DEU 34, DNK 1, ESP 17, ITA 29, JPN 4, PRT 19, SWE 2
+OECD quarterly set: 37 OECD members, 5929 country-quarters, 1970-Q1 to 2026-Q3
+
+[1] Single years, JST price set
+Nominal price fell in 24.2% of country-years; real price fell in 39.6%; 43.6% of real falls had no nominal fall
+  era       1871-1913  n= 383  infl(med) 0.1%  nominal fall 39.2%  real fall 44.1%  hidden 20.7%
+  era       1914-1945  n= 412  infl(med) 1.4%  nominal fall 33.0%  real fall 50.5%  hidden 44.7%
+  era       1946-1972  n= 383  infl(med) 3.6%  nominal fall 11.5%  real fall 30.8%  hidden 62.7%
+  era       1973-1991  n= 326  infl(med) 7.1%  nominal fall 13.2%  real fall 40.8%  hidden 67.7%
+  era       1992-2020  n= 522  infl(med) 1.8%  nominal fall 22.4%  real fall 33.5%  hidden 33.1%
+  inflation <=0%       n= 413  infl(med) -1.5%  nominal fall 42.4%  real fall 33.4%  hidden 0.0%
+  inflation 0-2%       n= 508  infl(med) 1.2%  nominal fall 23.6%  real fall 33.3%  hidden 29.0%
+  inflation 2-5%       n= 587  infl(med) 3.0%  nominal fall 19.9%  real fall 35.8%  hidden 44.3%
+  inflation 5-10%      n= 291  infl(med) 6.7%  nominal fall 15.5%  real fall 47.1%  hidden 67.2%
+  inflation >10%       n= 227  infl(med) 15.2%  nominal fall 14.5%  real fall 65.6%  hidden 77.9%
+
+[2] Holding periods: share of purchases showing a loss after h years
+    (95% intervals: countries resampled with replacement)
+  JST price set      1y n= 2026  nominal 24.2%  real 39.6% [37.9%, 41.3%]  hidden/real 43.6% [38.0%, 48.8%]
+  JST price set      5y n= 1930  nominal 20.1%  real 36.5% [33.4%, 39.6%]  hidden/real 54.8% [48.7%, 60.5%]
+  JST price set     10y n= 1810  nominal 14.7%  real 34.2% [29.7%, 38.3%]  hidden/real 66.1% [56.9%, 75.3%]
+  JST price set     20y n= 1577  nominal 6.0%  real 25.0% [20.5%, 29.1%]  hidden/real 82.8% [69.2%, 94.0%]
+  JST returns set    1y n= 1909  nominal 23.0%  real 40.6% [38.9%, 42.6%]  hidden/real 48.1% [43.0%, 53.4%]  total return 17.9% [15.4%, 20.6%]
+  JST returns set    5y n= 1813  nominal 19.5%  real 37.7% [34.6%, 40.4%]  hidden/real 57.0% [50.2%, 63.2%]  total return 10.0% [7.5%, 13.0%]
+  JST returns set   10y n= 1695  nominal 13.8%  real 35.3% [31.3%, 38.8%]  hidden/real 68.4% [58.8%, 77.6%]  total return 3.8% [1.5%, 6.7%]
+  JST returns set   20y n= 1485  nominal 5.2%  real 28.1% [23.5%, 31.9%]  hidden/real 86.1% [73.2%, 96.8%]  total return 0.9% [0.1%, 2.1%]
+  OECD quarterly     1y n= 5818  nominal 17.6%  real 35.7% [32.7%, 38.6%]  hidden/real 51.1% [45.1%, 57.0%]
+  OECD quarterly     5y n= 5226  nominal 13.2%  real 30.4% [26.3%, 34.3%]  hidden/real 56.8% [48.5%, 64.8%]
+  OECD quarterly    10y n= 4486  nominal 8.2%  real 26.4% [20.9%, 31.7%]  hidden/real 68.9% [56.9%, 80.6%]
+  10-year holdings by average inflation over the holding period:
+    JST price set    <=0%   n= 274  nominal 58.8%  real 38.3%  hidden/real 0.0%
+    JST price set    0-2%   n= 439  nominal 16.2%  real 29.2%  hidden/real 44.5%
+    JST price set    2-5%   n= 595  nominal 4.5%  real 28.6%  hidden/real 84.1%
+    JST price set    5-10%  n= 359  nominal 1.1%  real 33.1%  hidden/real 96.6%
+    JST price set    >10%   n= 143  nominal 2.1%  real 67.8%  hidden/real 96.9%
+    JST returns set  <=0%   n= 234  nominal 59.4%  real 40.2%  hidden/real 0.0%  total return 1.7%
+    JST returns set  0-2%   n= 418  nominal 17.7%  real 32.1%  hidden/real 44.8%  total return 1.2%
+    JST returns set  2-5%   n= 541  nominal 3.1%  real 28.8%  hidden/real 89.1%  total return 0.6%
+    JST returns set  5-10%  n= 367  nominal 0.8%  real 33.8%  hidden/real 97.6%  total return 4.1%
+    JST returns set  >10%   n= 135  nominal 0.7%  real 66.7%  hidden/real 98.9%  total return 28.1%
+    OECD quarterly   <=0%   n= 111  nominal 66.7%  real 64.9%  hidden/real 0.0%
+    OECD quarterly   0-2%   n=1617  nominal 14.0%  real 25.6%  hidden/real 45.4%
+    OECD quarterly   2-5%   n=1767  nominal 3.5%  real 19.9%  hidden/real 82.4%
+    OECD quarterly   5-10%  n= 682  nominal 1.2%  real 28.7%  hidden/real 95.9%
+    OECD quarterly   >10%   n= 309  nominal 0.0%  real 48.5%  hidden/real 100.0%
+  10-year holdings by era of purchase (JST):
+    JST price set    1871-1913  n= 374  nominal 22.7%  real 43.0%  hidden/real 57.1%
+    JST price set    1914-1945  n= 371  nominal 29.4%  real 49.6%  hidden/real 62.5%
+    JST price set    1946-1972  n= 379  nominal 1.6%  real 16.6%  hidden/real 90.5%
+    JST price set    1973-1991  n= 326  nominal 2.5%  real 36.2%  hidden/real 93.2%
+    JST price set    1992-2020  n= 360  nominal 16.1%  real 25.8%  hidden/real 37.6%
+    JST returns set  1871-1913  n= 336  nominal 21.4%  real 46.7%  hidden/real 63.1%  total return 6.5%
+    JST returns set  1914-1945  n= 357  nominal 28.9%  real 52.9%  hidden/real 61.9%  total return 9.8%
+    JST returns set  1946-1972  n= 381  nominal 0.3%  real 17.8%  hidden/real 98.5%  total return 0.0%
+    JST returns set  1973-1991  n= 301  nominal 2.7%  real 34.2%  hidden/real 92.2%  total return 0.7%
+    JST returns set  1992-2020  n= 320  nominal 15.6%  real 25.3%  hidden/real 38.3%  total return 1.9%
+
+[3] Real price drawdowns of at least 10% (peak to trough)
+  JST price set    all        episodes  80 (18 countries)  median fall 26.6%  median hidden share 78.9%  mostly hidden 49  nominal up at trough 32  no nominal fall inside 13  log-weighted hidden share 74.8% (69.9% without 2 hyperinflation episodes)  median years to trough 5.50  median inflation 4.1%
+  JST price set    1871-1913  episodes  25 (12 countries)  median fall 19.8%  median hidden share 18.1%  mostly hidden 10  nominal up at trough 7  no nominal fall inside 0  log-weighted hidden share 68.2% (68.2% without 0 hyperinflation episodes)  median years to trough 5.00  median inflation 2.0%
+  JST price set    1914-1945  episodes  14 (7 countries)  median fall 39.7%  median hidden share 100.0%  mostly hidden 10  nominal up at trough 8  no nominal fall inside 3  log-weighted hidden share 91.6% (84.4% without 2 hyperinflation episodes)  median years to trough 6.00  median inflation 13.5%
+  JST price set    1946-1972  episodes   7 (6 countries)  median fall 21.3%  median hidden share 100.0%  mostly hidden 5  nominal up at trough 4  no nominal fall inside 0  log-weighted hidden share 74.3% (74.3% without 0 hyperinflation episodes)  median years to trough 8.00  median inflation 4.4%
+  JST price set    1973-1991  episodes  20 (15 countries)  median fall 30.9%  median hidden share 100.0%  mostly hidden 17  nominal up at trough 11  no nominal fall inside 8  log-weighted hidden share 76.9% (76.9% without 0 hyperinflation episodes)  median years to trough 4.50  median inflation 9.7%
+  JST price set    1992-2020  episodes  14 (10 countries)  median fall 26.2%  median hidden share 52.6%  mostly hidden 7  nominal up at trough 2  no nominal fall inside 2  log-weighted hidden share 38.9% (38.9% without 0 hyperinflation episodes)  median years to trough 6.00  median inflation 2.1%
+  JST returns set  all        episodes  80 (16 countries)  median fall 26.4%  median hidden share 79.4%  mostly hidden 47  nominal up at trough 31  no nominal fall inside 10  log-weighted hidden share 75.9% (73.2% without 1 hyperinflation episodes)  median years to trough 6.00  median inflation 3.8%
+  OECD quarterly   all        episodes  74 (35 countries)  median fall 26.1%  median hidden share 76.4%  mostly hidden 49  nominal up at trough 27  no nominal fall inside 9  log-weighted hidden share 60.6% (60.6% without 0 hyperinflation episodes)  median years to trough 4.62  median inflation 4.6%
+  OECD quarterly   1970s      episodes  18 (15 countries)  median fall 29.6%  median hidden share 100.0%  mostly hidden 17  nominal up at trough 14  no nominal fall inside 4  log-weighted hidden share 88.9% (88.9% without 0 hyperinflation episodes)  median years to trough 4.25  median inflation 12.4%
+  OECD quarterly   1980s      episodes  10 (10 countries)  median fall 31.1%  median hidden share 91.6%  mostly hidden 6  nominal up at trough 5  no nominal fall inside 2  log-weighted hidden share 65.2% (65.2% without 0 hyperinflation episodes)  median years to trough 6.25  median inflation 4.1%
+  OECD quarterly   1990s      episodes   8 (8 countries)  median fall 26.4%  median hidden share 80.3%  mostly hidden 6  nominal up at trough 3  no nominal fall inside 1  log-weighted hidden share 68.0% (68.0% without 0 hyperinflation episodes)  median years to trough 6.62  median inflation 4.6%
+  OECD quarterly   2000s      episodes  21 (21 countries)  median fall 30.6%  median hidden share 36.6%  mostly hidden 5  nominal up at trough 0  no nominal fall inside 0  log-weighted hidden share 30.4% (30.4% without 0 hyperinflation episodes)  median years to trough 5.50  median inflation 2.3%
+  OECD quarterly   2010s      episodes   3 (3 countries)  median fall 15.2%  median hidden share 100.0%  mostly hidden 2  nominal up at trough 2  no nominal fall inside 1  log-weighted hidden share 85.1% (85.1% without 0 hyperinflation episodes)  median years to trough 2.50  median inflation 2.0%
+  OECD quarterly   2020s      episodes  14 (14 countries)  median fall 16.0%  median hidden share 77.9%  mostly hidden 13  nominal up at trough 3  no nominal fall inside 1  log-weighted hidden share 72.7% (72.7% without 0 hyperinflation episodes)  median years to trough 2.88  median inflation 5.6%
+  Threshold sensitivity:
+    JST price set    >= 10%:  80 episodes, median hidden share 78.9%, mostly hidden 49, Spearman(hidden share, inflation) 0.76
+    OECD quarterly   >= 10%:  74 episodes, median hidden share 76.4%, mostly hidden 49, Spearman(hidden share, inflation) 0.75
+    JST price set    >= 5%: 106 episodes, median hidden share 78.1%, mostly hidden 63, Spearman(hidden share, inflation) 0.80
+    OECD quarterly   >= 5%: 106 episodes, median hidden share 83.1%, mostly hidden 75, Spearman(hidden share, inflation) 0.73
+    JST price set    >= 20%:  52 episodes, median hidden share 85.1%, mostly hidden 34, Spearman(hidden share, inflation) 0.67
+    OECD quarterly   >= 20%:  47 episodes, median hidden share 66.3%, mostly hidden 28, Spearman(hidden share, inflation) 0.73
+
+[4] Inflation during the fall, visibility and speed of the real correction
+  JST price set: Spearman(hidden share, annual inflation during the fall) = 0.76 [0.67, 0.82] (countries resampled; n = 80 episodes, 18 countries)
+    log(years to trough) = a + 0.95 (se 0.12) log(real log fall) -3.98 (se 0.92) x annual log inflation   [all but hyperinflation, n=78, 18 countries, SE clustered by country]; +5 pp inflation -> -18.0% time to trough
+    log(years to trough) = a + 1.02 (se 0.12) log(real log fall) -4.49 (se 1.06) x annual log inflation   [completed only, n=67, 18 countries, SE clustered by country]; +5 pp inflation -> -20.1% time to trough
+    log(years to trough) = a + 0.90 (se 0.12) log(real log fall) -2.54 (se 0.34) x annual log inflation   [all episodes, n=80, 18 countries, SE clustered by country]; +5 pp inflation -> -11.9% time to trough
+    inflation <=0%  :  11 episodes, median hidden share 0.0%, median real fall per year 8.1%, median years to trough 3.00
+    inflation 0-2%  :  11 episodes, median hidden share 31.9%, median real fall per year 3.5%, median years to trough 6.00
+    inflation 2-5%  :  28 episodes, median hidden share 64.6%, median real fall per year 5.0%, median years to trough 6.00
+    inflation 5-10% :   9 episodes, median hidden share 100.0%, median real fall per year 6.8%, median years to trough 6.00
+    inflation >10%  :  21 episodes, median hidden share 100.0%, median real fall per year 8.5%, median years to trough 4.00
+  OECD quarterly: Spearman(hidden share, annual inflation during the fall) = 0.75 [0.60, 0.86] (countries resampled; n = 74 episodes, 35 countries)
+    log(years to trough) = a + 0.64 (se 0.13) log(real log fall) -3.83 (se 1.33) x annual log inflation   [all but hyperinflation, n=74, 35 countries, SE clustered by country]; +5 pp inflation -> -17.4% time to trough
+    log(years to trough) = a + 0.70 (se 0.15) log(real log fall) -4.62 (se 1.70) x annual log inflation   [completed only, n=56, 31 countries, SE clustered by country]; +5 pp inflation -> -20.6% time to trough
+    log(years to trough) = a + 0.64 (se 0.13) log(real log fall) -3.83 (se 1.33) x annual log inflation   [all episodes, n=74, 35 countries, SE clustered by country]; +5 pp inflation -> -17.4% time to trough
+    inflation <=0%  :   2 episodes, median hidden share 0.0%, median real fall per year 7.4%, median years to trough 12.25
+    inflation 0-2%  :  13 episodes, median hidden share 38.9%, median real fall per year 4.6%, median years to trough 6.25
+    inflation 2-5%  :  27 episodes, median hidden share 53.1%, median real fall per year 6.3%, median years to trough 4.50
+    inflation 5-10% :  12 episodes, median hidden share 83.1%, median real fall per year 8.0%, median years to trough 3.38
+    inflation >10%  :  20 episodes, median hidden share 100.0%, median real fall per year 9.0%, median years to trough 3.62
+
+[5] Two busts in the OECD data: real peaks 2005-2009 versus real peaks 2020 or later
+  peak 2005-2009: 19 episodes >= 10%, median real fall 30.6%, median hidden share 35.9%, mostly hidden 4, median inflation 2.3%, nominal up at trough 0, still below the real peak 5
+  peak 2020+: 14 episodes >= 10%, median real fall 16.0%, median hidden share 77.9%, mostly hidden 13, median inflation 5.6%, nominal up at trough 3, still below the real peak 10
+  countries with a >= 10% fall in both: 6 (CZE, DNK, GBR, NLD, NZL, SVK); hidden share higher in the 2020s fall in 6 of them
+  All 37 OECD members since 2020-Q1: real fall from post-2020 peak >= 10% in 12, >= 5% in 16; nominal index lower at the real trough than at the real peak in 11
+    NZL real peak 2021-Q4 trough 2026-Q1: real -26.5%, nominal -13.5%, deflator 17.8%, hidden 53.1%; latest (2026-Q1) real -26.5% vs peak
+    FIN real peak 2021-Q1 trough 2026-Q2: real -24.8%, nominal -11.2%, deflator 18.1%, hidden 58.4%; latest (2026-Q2) real -24.8% vs peak
+    LUX real peak 2022-Q3 trough 2025-Q4: real -23.8%, nominal -14.8%, deflator 11.8%, hidden 41.0%; latest (2026-Q2) real -23.6% vs peak
+    DEU real peak 2021-Q4 trough 2026-Q2: real -21.5%, nominal -5.6%, deflator 20.3%, hidden 76.2%; latest (2026-Q2) real -21.5% vs peak
+    SWE real peak 2022-Q1 trough 2025-Q3: real -20.7%, nominal -6.6%, deflator 17.8%, hidden 70.4%; latest (2026-Q2) real -17.8% vs peak
+    TUR real peak 2023-Q4 trough 2026-Q2: real -20.6%, nominal 86.3%, deflator 134.7%, hidden 100.0%; latest (2026-Q2) real -20.6% vs peak
+    CAN real peak 2022-Q2 trough 2026-Q3: real -18.1%, nominal -7.7%, deflator 12.6%, hidden 59.8%; latest (2026-Q3) real -18.1% vs peak
+    KOR real peak 2021-Q4 trough 2026-Q2: real -17.1%, nominal -5.5%, deflator 14.1%, hidden 70.1%; latest (2026-Q2) real -17.1% vs peak
+    FRA real peak 2022-Q1 trough 2026-Q2: real -16.1%, nominal -3.5%, deflator 15.0%, hidden 79.9%; latest (2026-Q2) real -16.1% vs peak
+    AUT real peak 2022-Q1 trough 2024-Q1: real -16.0%, nominal -2.9%, deflator 15.6%, hidden 83.1%; latest (2026-Q2) real -14.1% vs peak
+    CZE real peak 2021-Q4 trough 2023-Q4: real -13.6%, nominal 5.8%, deflator 22.4%, hidden 100.0%; latest (2026-Q2) real -0.2% vs peak
+    GBR real peak 2022-Q1 trough 2025-Q2: real -10.4%, nominal 5.8%, deflator 18.0%, hidden 100.0%; latest (2026-Q2) real -10.0% vs peak
+    NOR real peak 2021-Q4 trough 2023-Q4: real -9.3%, nominal 2.1%, deflator 12.6%, hidden 100.0%; latest (2026-Q2) real -4.8% vs peak
+    BEL real peak 2021-Q3 trough 2023-Q3: real -9.3%, nominal 6.8%, deflator 17.7%, hidden 100.0%; latest (2026-Q2) real -8.0% vs peak
+    ISR real peak 2022-Q3 trough 2023-Q4: real -7.3%, nominal -0.2%, deflator 7.7%, hidden 97.6%; latest (2026-Q2) real -7.0% vs peak
+    ITA real peak 2021-Q3 trough 2024-Q1: real -7.1%, nominal 5.5%, deflator 13.5%, hidden 100.0%; latest (2026-Q2) real -2.3% vs peak
+    HUN real peak 2025-Q4 trough 2026-Q2: real -2.7%, nominal -2.4%, deflator 0.3%, hidden 12.6%; latest (2026-Q2) real -2.7% vs peak
+    ISL real peak 2024-Q4 trough 2026-Q2: real -2.2%, nominal 5.3%, deflator 7.6%, hidden 100.0%; latest (2026-Q2) real -2.2% vs peak
+    USA real peak 2024-Q4 trough 2026-Q2: real -2.0%, nominal 3.0%, deflator 5.0%, hidden 100.0%; latest (2026-Q2) real -2.0% vs peak
+    GRC real peak 2025-Q4 trough 2026-Q2: real -1.0%, nominal 1.5%, deflator 2.6%, hidden 100.0%; latest (2026-Q2) real -1.0% vs peak
+
+[6] Rents: the real total return lens (JST returns set)
+  Mean annual real capital gain 1.7%, mean annual net rental return 5.4%, mean annual real total return 6.9% (1909 country-years)
+  rent return cut 0%,  5y: mean real TR 6.9%; P(real price loss) 37.7%; P(real TR loss) 10.0%; if inflation > 10% 39.2%; if <= 5% 5.5%; TR losses with inflation > 5% 60.2%
+  rent return cut 0%, 10y: mean real TR 6.9%; P(real price loss) 35.3%; P(real TR loss) 3.8%; if inflation > 10% 28.1%; if <= 5% 1.0%; TR losses with inflation > 5% 81.5%
+  rent return cut 25%,  5y: mean real TR 5.6%; P(real price loss) 37.7%; P(real TR loss) 13.8%; if inflation > 10% 44.4%; if <= 5% 8.9%; TR losses with inflation > 5% 53.8%
+  rent return cut 25%, 10y: mean real TR 5.6%; P(real price loss) 35.3%; P(real TR loss) 6.1%; if inflation > 10% 34.8%; if <= 5% 3.0%; TR losses with inflation > 5% 65.0%
+  rent return cut 50%,  5y: mean real TR 4.3%; P(real price loss) 37.7%; P(real TR loss) 18.9%; if inflation > 10% 51.9%; if <= 5% 12.8%; TR losses with inflation > 5% 50.9%
+  rent return cut 50%, 10y: mean real TR 4.3%; P(real price loss) 35.3%; P(real TR loss) 10.7%; if inflation > 10% 46.7%; if <= 5% 6.5%; TR losses with inflation > 5% 57.5%
+  Real total-return drawdowns >= 10%: 59 in 16 countries (vs 80 real price drawdowns on the same price series)
+    nominal price higher at the trough than at the peak in 19 of 59; inflation above 5% a year during the fall in 33; median inflation during the fall 7.1% (all country-years: 2.3%); peak in 1914-1945: 24
+    median rent offset over the fall 14.9% of the peak value
+    1871-1913: 9 episodes, median fall 13.0%, median inflation 1.8%
+    1914-1945: 24 episodes, median fall 24.2%, median inflation 13.4%
+    1946-1972: 9 episodes, median fall 14.8%, median inflation 8.2%
+    1973-1991: 11 episodes, median fall 19.1%, median inflation 7.7%
+    1992-2020: 6 episodes, median fall 15.3%, median inflation 2.2%
+    with rent return cut 25%: 73 real total-return drawdowns >= 10%
+    with rent return cut 50%: 80 real total-return drawdowns >= 10%
+  Of 68 real price drawdowns with complete returns data, real total return over the same peak-to-trough window was still negative in 39; median real TR over the window -5.5%
+
+[7] 2021-2025, JST returns countries extended with OECD annual averages
+  price-to-rent ratio not yet published, last value carried forward: AUS [2025]; USA [2025]
+  16 countries. Cumulative 2020->2025: nominal price up in 15; real price down in 7; real total return down in 0
+  Annual real price drawdown inside 2020-2025 >= 10% in 4; annual real total-return drawdown >= 10% in 1
+    FIN: nominal -6.2%, real -19.4%, real TR 8.6%; worst real price drawdown 21.3%, worst real TR drawdown 4.6%; mean net yield 6.2%
+    DEU: nominal 10.1%, real -10.6%, real TR 4.3%; worst real price drawdown 17.9%, worst real TR drawdown 11.9%; mean net yield 3.1%
+    SWE: nominal 9.3%, real -11.1%, real TR 2.8%; worst real price drawdown 17.5%, worst real TR drawdown 8.8%; mean net yield 3.0%
+    FRA: nominal 8.7%, real -7.2%, real TR 4.2%; worst real price drawdown 13.1%, worst real TR drawdown 8.7%; mean net yield 2.4%
+    DNK: nominal 25.1%, real 6.0%, real TR 20.9%; worst real price drawdown 9.4%, worst real TR drawdown 4.5%; mean net yield 2.7%
+    GBR: nominal 22.5%, real -3.3%, real TR 7.4%; worst real price drawdown 8.8%, worst real TR drawdown 4.3%; mean net yield 2.1%
+    NLD: nominal 49.3%, real 18.0%, real TR 36.1%; worst real price drawdown 8.4%, worst real TR drawdown 5.7%; mean net yield 2.9%
+    BEL: nominal 22.7%, real -2.1%, real TR 12.9%; worst real price drawdown 8.0%, worst real TR drawdown 2.6%; mean net yield 2.9%
+    NOR: nominal 25.2%, real 4.4%, real TR 20.7%; worst real price drawdown 6.2%, worst real TR drawdown 2.8%; mean net yield 2.9%
+    ITA: nominal 15.7%, real -1.5%, real TR 19.6%; worst real price drawdown 6.2%, worst real TR drawdown 0.0%; mean net yield 4.0%
+    AUS: nominal 44.0%, real 17.9%, real TR 26.4%; worst real price drawdown 4.3%, worst real TR drawdown 2.9%; mean net yield 1.4%
+    ESP: nominal 41.6%, real 17.0%, real TR 27.4%; worst real price drawdown 1.1%, worst real TR drawdown 0.0%; mean net yield 1.7%
+    JPN: nominal 27.0%, real 11.5%, real TR 35.8%; worst real price drawdown 0.4%, worst real TR drawdown 0.0%; mean net yield 4.0%
+    CHE: nominal 26.2%, real 19.1%, real TR 39.1%; worst real price drawdown 0.0%, worst real TR drawdown 0.0%; mean net yield 3.1%
+    PRT: nominal 71.0%, real 41.0%, real TR 55.1%; worst real price drawdown 0.0%, worst real TR drawdown 0.0%; mean net yield 1.9%
+    USA: nominal 49.5%, real 23.4%, real TR 47.1%; worst real price drawdown 0.0%, worst real TR drawdown 0.0%; mean net yield 3.6%
+
+[8] Portugal, 1948-2025 (annual)
+  Two JST price series for Portugal, 1989-2013: national index (hpnom = OECD) 126.1% cumulative, JST returns series 407.9%; they coincide from 2014. The national index is used from 1989.
+  1948-1973: nominal 326.5%, consumer prices 115.9%, real price 97.5%, real total return 399.8% (rents J) / 399.8% (rents O)
+  1973-1985: nominal 655.1%, consumer prices 1241.3%, real price -43.7%, real total return 11.3% (rents J) / 11.3% (rents O)
+  1973-1990: nominal 1669.5%, consumer prices 2197.9%, real price -23.0%, real total return 82.5% (rents J) / 76.7% (rents O)
+  1990-2007: nominal 106.4%, consumer prices 97.7%, real price 4.4%, real total return 100.1% (rents J) / 55.6% (rents O)
+  2007-2013: nominal -18.0%, consumer prices 10.3%, real price -25.6%, real total return -12.1% (rents J) / -11.6% (rents O)
+  2013-2020: nominal 65.8%, consumer prices 3.9%, real price 59.5%, real total return 94.1% (rents J) / 94.1% (rents O)
+  2020-2025: nominal 71.0%, consumer prices 21.3%, real price 41.0%, real total return 55.1% (rents J) / 55.1% (rents O)
+  1948-2025: nominal 36116.3%, consumer prices 13527.5%, real price 165.8%, real total return 4728.4% (rents J) / 3557.2% (rents O)
+  real drawdown 1961-1967 (recovered 1973): real -17.6%, nominal peak-to-trough -2.2%, max nominal fall inside 11.9%, hidden share 88.6%, inflation 2.9% a year
+  real drawdown 1973-1979 (recovered 2021): real -54.0%, nominal peak-to-trough 89.8%, max nominal fall inside 17.4%, hidden share 100.0%, inflation 26.6% a year
+  real total-return drawdown (rents J) 1973-1976: -33.2%, recovered 1981
+  real total-return drawdown (rents J) 2007-2012: -12.9%, recovered 2015
+  real total-return drawdown (rents O) 1973-1976: -33.2%, recovered 1981
+  real total-return drawdown (rents O) 2007-2012: -12.4%, recovered 2015
+  5-year holdings from 1948 on: nominal loss 11.0%, real loss 39.7%, hidden 28.8% (n = 73)
+  10-year holdings from 1948 on: nominal loss 8.8%, real loss 33.8%, hidden 25.0% (n = 68)
+  Portugal after 2020 (OECD quarterly): no real fall; the highest real level since 2020-Q1 is the latest quarter (2026-Q2)
+  OECD quarterly episode 1992-Q2 to 1996-Q3 (recovered 2001-Q2): real -13.6%, nominal 6.2%, max nominal fall inside 0.3%, hidden 100.0%
+  OECD quarterly episode 2001-Q2 to 2013-Q2 (recovered 2020-Q1): real -33.6%, nominal -12.9%, max nominal fall inside 19.3%, hidden 66.3%
+
+[9] Gains: share of cumulative nominal appreciation that was consumer-price inflation
+  JST price set, whole sample per country: median inflation share 71.4% (range 53.0% to 141.4%); median real price growth 1.16% a year
+  Portugal 1948-2025: inflation share 83.4%; real price growth 1.28% a year
