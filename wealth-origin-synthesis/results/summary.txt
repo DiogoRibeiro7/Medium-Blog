@@ -34,6 +34,7 @@ standard error needed for 80% power at the 5% level: 0.225
 multiple of the current number of succession events needed: 24.3
 power of the current design against the panel-implied effect: 0.088
 if the true effect were the panel-implied one: significant estimates have the wrong sign with probability 0.065 and overstate it by a factor of 4.23 on average; the observed estimate is 4.42 times it
+allowing for attenuation of the panel coefficient (two-list over single-list estimate on the same country-years: 1.277): target -0.805, power 0.112, exaggeration 3.36, observed 3.46 times the target, events needed 14.9 times, about 209 years of lists
 country-years with a matched succession (all countries): 39 over 14 list years; needed at the same event sizes: 948, about 340 years of lists at the current rate
 median succession: event-implied -0.1306 pp a year, panel-predicted -0.0347; ratio 3.76
 

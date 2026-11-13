@@ -362,6 +362,18 @@ def succession_power() -> dict[str, float]:
     n_list_years = int(strict["year"].max()) - 2012 + 1
 
     tm = type_s_m(target, se_now)
+
+    # Sensitivity: the single-list panel coefficient behind the predictions may be attenuated
+    # by noise in one list's valuations. On the same country-years, the two-list average is
+    # larger than the single-list estimate by this factor; scale the target by it.
+    mc = read("pandemic", "measurement_checks.csv")
+    same = one(mc, sample="billionaire_countries", horizon=3, without_2020_list=False,
+               measure="wealth, lists 2012 onwards (same sample as the two-list average)")
+    avg = one(mc, sample="billionaire_countries", horizon=3, without_2020_list=False,
+              measure="wealth averaged over lists t-1 and t")
+    attenuation = float(avg["b"] / same["b"])
+    target_adj = target * attenuation
+    tm_adj = type_s_m(target_adj, se_now)
     event_median = float((post / 3) * pe["d"].median())
     panel_median = float(pe["predicted"].median())
     return {
@@ -375,6 +387,13 @@ def succession_power() -> dict[str, float]:
         "type_s": tm["type_s"],
         "exaggeration": tm["exaggeration"],
         "observed_ratio": post / target,
+        "attenuation_factor": attenuation,
+        "panel_implied_post_adjusted": target_adj,
+        "power_adjusted": tm_adj["power"],
+        "exaggeration_adjusted": tm_adj["exaggeration"],
+        "observed_ratio_adjusted": post / target_adj,
+        "multiple_of_events_adjusted": (se_now / (abs(target_adj) / (Z95 + Z80))) ** 2,
+        "years_of_lists_needed_adjusted": n_list_years * (se_now / (abs(target_adj) / (Z95 + Z80))) ** 2,
         "shock_country_years": n_shock_cy,
         "list_years": n_list_years,
         "shock_country_years_needed": n_shock_cy * multiple,
@@ -673,6 +692,10 @@ def summary_lines(est: pd.DataFrame, led: pd.DataFrame, power: dict[str, float])
     L.append(f"if the true effect were the panel-implied one: significant estimates have the wrong sign with "
              f"probability {power['type_s']:.3f} and overstate it by a factor of {power['exaggeration']:.2f} on average; "
              f"the observed estimate is {power['observed_ratio']:.2f} times it")
+    L.append(f"allowing for attenuation of the panel coefficient (two-list over single-list estimate on the same "
+             f"country-years: {power['attenuation_factor']:.3f}): target {power['panel_implied_post_adjusted']:+.3f}, "
+             f"power {power['power_adjusted']:.3f}, exaggeration {power['exaggeration_adjusted']:.2f}, observed "
+             f"{power['observed_ratio_adjusted']:.2f} times the target, events needed {power['multiple_of_events_adjusted']:.1f} times, about {power['years_of_lists_needed_adjusted']:.0f} years of lists")
     L.append(f"country-years with a matched succession (all countries): {power['shock_country_years']} over "
              f"{power['list_years']} list years; needed at the same event sizes: "
              f"{power['shock_country_years_needed']:.0f}, about {power['years_of_lists_needed']:.0f} years of lists at the current rate")
