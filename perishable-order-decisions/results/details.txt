@@ -1,0 +1,120 @@
+Descriptive analyses added after the results (not part of the registered test).
+
+1. Strength of the recovery. Demand d(s) = sales + s x (recovered - sales) on the test days: s = 0 treats
+   recorded sales as demand (a lower bound on censored days), s = 1 is the registered evaluation.
+   s = 0.0: demand / sales 1.0000
+     H1: 2 of 4 established, 2 of 4 in the stated direction
+     H2: 1 of 2 established, 1 of 2 in the stated direction
+     H3: 8 of 24 established, 8 of 24 in the stated direction
+       tau 0.7: lgbm_l2 default - ma4w full: -0.0137 [-0.0161, -0.0113]
+       tau 0.7: lgbm_tweedie default - ma4w full: -0.0120 [-0.0145, -0.0096]
+       tau 0.7: layer share - algorithm share of the variation over the 4 x 6 table: -0.6018 [-0.6140, -0.5876]
+       tau 0.7: lgbm_l2 point: sales - recovered: +0.0259 [+0.0250, +0.0268]
+       tau 0.7: lgbm_l2 pooled: sales - recovered: -0.0098 [-0.0108, -0.0087]
+       tau 0.7: lgbm_l2 series: sales - recovered: -0.0115 [-0.0124, -0.0105]
+       tau 0.9: lgbm_l2 default - ma4w full: +0.0808 [+0.0785, +0.0830]
+       tau 0.9: lgbm_tweedie default - ma4w full: +0.0840 [+0.0818, +0.0863]
+       tau 0.9: layer share - algorithm share of the variation over the 4 x 6 table: +0.7839 [+0.7741, +0.7932]
+       tau 0.9: lgbm_l2 point: sales - recovered: +0.0620 [+0.0610, +0.0630]
+       tau 0.9: lgbm_l2 pooled: sales - recovered: -0.0153 [-0.0162, -0.0144]
+       tau 0.9: lgbm_l2 series: sales - recovered: -0.0121 [-0.0128, -0.0113]
+   s = 0.25: demand / sales 1.0550
+     H1: 4 of 4 established, 4 of 4 in the stated direction
+     H2: 1 of 2 established, 1 of 2 in the stated direction
+     H3: 8 of 24 established, 11 of 24 in the stated direction
+       tau 0.7: lgbm_l2 default - ma4w full: +0.0054 [+0.0031, +0.0076]
+       tau 0.7: lgbm_tweedie default - ma4w full: +0.0073 [+0.0050, +0.0096]
+       tau 0.7: layer share - algorithm share of the variation over the 4 x 6 table: -0.4513 [-0.4788, -0.4224]
+       tau 0.7: lgbm_l2 point: sales - recovered: +0.0346 [+0.0337, +0.0354]
+       tau 0.7: lgbm_l2 pooled: sales - recovered: +0.0006 [-0.0005, +0.0016]
+       tau 0.7: lgbm_l2 series: sales - recovered: -0.0002 [-0.0011, +0.0008]
+       tau 0.9: lgbm_l2 default - ma4w full: +0.1037 [+0.1015, +0.1058]
+       tau 0.9: lgbm_tweedie default - ma4w full: +0.1071 [+0.1049, +0.1093]
+       tau 0.9: layer share - algorithm share of the variation over the 4 x 6 table: +0.8556 [+0.8491, +0.8618]
+       tau 0.9: lgbm_l2 point: sales - recovered: +0.0688 [+0.0678, +0.0698]
+       tau 0.9: lgbm_l2 pooled: sales - recovered: -0.0071 [-0.0081, -0.0061]
+       tau 0.9: lgbm_l2 series: sales - recovered: -0.0022 [-0.0030, -0.0014]
+   s = 0.5: demand / sales 1.1101
+     H1: 4 of 4 established, 4 of 4 in the stated direction
+     H2: 1 of 2 established, 1 of 2 in the stated direction
+     H3: 19 of 24 established, 19 of 24 in the stated direction
+       tau 0.7: lgbm_l2 default - ma4w full: +0.0220 [+0.0198, +0.0240]
+       tau 0.7: lgbm_tweedie default - ma4w full: +0.0240 [+0.0218, +0.0260]
+       tau 0.7: layer share - algorithm share of the variation over the 4 x 6 table: -0.1659 [-0.2033, -0.1287]
+       tau 0.7: lgbm_l2 point: sales - recovered: +0.0408 [+0.0400, +0.0416]
+       tau 0.7: lgbm_l2 pooled: sales - recovered: +0.0096 [+0.0086, +0.0106]
+       tau 0.7: lgbm_l2 series: sales - recovered: +0.0092 [+0.0083, +0.0101]
+       tau 0.9: lgbm_l2 default - ma4w full: +0.1264 [+0.1242, +0.1286]
+       tau 0.9: lgbm_tweedie default - ma4w full: +0.1299 [+0.1277, +0.1320]
+       tau 0.9: layer share - algorithm share of the variation over the 4 x 6 table: +0.9087 [+0.9044, +0.9127]
+       tau 0.9: lgbm_l2 point: sales - recovered: +0.0734 [+0.0723, +0.0744]
+       tau 0.9: lgbm_l2 pooled: sales - recovered: +0.0035 [+0.0024, +0.0046]
+       tau 0.9: lgbm_l2 series: sales - recovered: +0.0101 [+0.0092, +0.0110]
+   s = 0.75: demand / sales 1.1651
+     H1: 4 of 4 established, 4 of 4 in the stated direction
+     H2: 2 of 2 established, 2 of 2 in the stated direction
+     H3: 21 of 24 established, 21 of 24 in the stated direction
+       tau 0.7: lgbm_l2 default - ma4w full: +0.0358 [+0.0339, +0.0377]
+       tau 0.7: lgbm_tweedie default - ma4w full: +0.0379 [+0.0360, +0.0397]
+       tau 0.7: layer share - algorithm share of the variation over the 4 x 6 table: +0.1363 [+0.0990, +0.1735]
+       tau 0.7: lgbm_l2 point: sales - recovered: +0.0458 [+0.0450, +0.0467]
+       tau 0.7: lgbm_l2 pooled: sales - recovered: +0.0170 [+0.0161, +0.0179]
+       tau 0.7: lgbm_l2 series: sales - recovered: +0.0166 [+0.0157, +0.0174]
+       tau 0.9: lgbm_l2 default - ma4w full: +0.1462 [+0.1441, +0.1484]
+       tau 0.9: lgbm_tweedie default - ma4w full: +0.1497 [+0.1475, +0.1518]
+       tau 0.9: layer share - algorithm share of the variation over the 4 x 6 table: +0.9424 [+0.9396, +0.9450]
+       tau 0.9: lgbm_l2 point: sales - recovered: +0.0769 [+0.0758, +0.0779]
+       tau 0.9: lgbm_l2 pooled: sales - recovered: +0.0137 [+0.0126, +0.0149]
+       tau 0.9: lgbm_l2 series: sales - recovered: +0.0213 [+0.0203, +0.0222]
+   s = 1.0: demand / sales 1.2201
+     H1: 4 of 4 established, 4 of 4 in the stated direction
+     H2: 2 of 2 established, 2 of 2 in the stated direction
+     H3: 23 of 24 established, 24 of 24 in the stated direction
+       tau 0.7: lgbm_l2 default - ma4w full: +0.0476 [+0.0459, +0.0494]
+       tau 0.7: lgbm_tweedie default - ma4w full: +0.0498 [+0.0480, +0.0515]
+       tau 0.7: layer share - algorithm share of the variation over the 4 x 6 table: +0.3957 [+0.3644, +0.4269]
+       tau 0.7: lgbm_l2 point: sales - recovered: +0.0499 [+0.0490, +0.0507]
+       tau 0.7: lgbm_l2 pooled: sales - recovered: +0.0236 [+0.0227, +0.0244]
+       tau 0.7: lgbm_l2 series: sales - recovered: +0.0226 [+0.0218, +0.0233]
+       tau 0.9: lgbm_l2 default - ma4w full: +0.1633 [+0.1612, +0.1654]
+       tau 0.9: lgbm_tweedie default - ma4w full: +0.1668 [+0.1646, +0.1688]
+       tau 0.9: layer share - algorithm share of the variation over the 4 x 6 table: +0.9634 [+0.9616, +0.9652]
+       tau 0.9: lgbm_l2 point: sales - recovered: +0.0795 [+0.0784, +0.0806]
+       tau 0.9: lgbm_l2 pooled: sales - recovered: +0.0233 [+0.0222, +0.0244]
+       tau 0.9: lgbm_l2 series: sales - recovered: +0.0308 [+0.0298, +0.0318]
+
+2. Variation over algorithms and layers with the point rule left out (4 algorithms x 4 quantile layers)
+   tau 0.5: layer 0.068, algorithm 0.875, remainder 0.056; layer - algorithm -0.807 [-0.827, -0.784]
+   tau 0.7: layer 0.224, algorithm 0.716, remainder 0.060; layer - algorithm -0.491 [-0.537, -0.442]
+   tau 0.9: layer 0.756, algorithm 0.189, remainder 0.056; layer - algorithm +0.567 [+0.521, +0.609]
+
+3. Three-way additive decomposition of the 4 x 2 x 3 table (algorithm, target, rule), shares of variation
+   tau 0.5: algorithm 0.856, target 0.086, rule 0.001, remainder 0.057
+   tau 0.7: algorithm 0.288, target 0.240, rule 0.376, remainder 0.097
+   tau 0.9: algorithm 0.015, target 0.101, rule 0.833, remainder 0.051
+
+4. Order of the algorithms by cost and by WAPE under each layer at tau 0.9
+   sales/point: by cost lgbm_l2, lgbm_tweedie, naive7, ma4w; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (different)
+   sales/pooled: by cost lgbm_l2, lgbm_tweedie, naive7, ma4w; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (different)
+   sales/series: by cost lgbm_l2, lgbm_tweedie, naive7, ma4w; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (different)
+   recovered/point: by cost lgbm_l2, lgbm_tweedie, naive7, ma4w; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (different)
+   recovered/pooled: by cost lgbm_l2, lgbm_tweedie, ma4w, naive7; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (same)
+   recovered/series: by cost lgbm_l2, lgbm_tweedie, ma4w, naive7; by WAPE lgbm_l2, lgbm_tweedie, ma4w, naive7 (same)
+
+5. Coverage (share of test series-days with demand at or below the order), LightGBM l2 and ma4w
+   ma4w sales/pooled tau 0.7: coverage 0.546
+   ma4w sales/pooled tau 0.9: coverage 0.775
+   ma4w sales/series tau 0.7: coverage 0.544
+   ma4w sales/series tau 0.9: coverage 0.734
+   lgbm_l2 sales/pooled tau 0.7: coverage 0.529
+   lgbm_l2 sales/pooled tau 0.9: coverage 0.747
+   lgbm_l2 sales/series tau 0.7: coverage 0.534
+   lgbm_l2 sales/series tau 0.9: coverage 0.725
+   ma4w recovered/pooled tau 0.7: coverage 0.694
+   ma4w recovered/pooled tau 0.9: coverage 0.893
+   ma4w recovered/series tau 0.7: coverage 0.693
+   ma4w recovered/series tau 0.9: coverage 0.880
+   lgbm_l2 recovered/pooled tau 0.7: coverage 0.681
+   lgbm_l2 recovered/pooled tau 0.9: coverage 0.888
+   lgbm_l2 recovered/series tau 0.7: coverage 0.684
+   lgbm_l2 recovered/series tau 0.9: coverage 0.877
