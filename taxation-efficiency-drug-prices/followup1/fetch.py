@@ -15,7 +15,8 @@ Documents
             report of SNS spending in 2024 (gross and net of returns).
   France    DREES, Les Dossiers de la Drees n.º 139 (reimbursable medicines and rebates, 2016-2024);
             DREES, Les établissements de santé 2026, fiche 23 (expensive hospital medicines, gross and net);
-            IGAS-IGF 2026 mission report on the regulation of medicine spending (rebates 2019 and 2023).
+            IGAS-IGF 2026 mission report on the regulation of medicine spending (rebates 2019 and 2023), from the
+            vie-publique.fr copy.
   Belgium   INAMI/RIZIV, MORSE reports (data 2022-2023 and data 2024): gross and net expenditure on
             reimbursable specialties, and the compensations paid under article 81/111 conventions.
   Italy     AIFA, monitoring of pharmaceutical spending, January-December 2024 (final) and its summary:
@@ -76,10 +77,10 @@ DOCS = {
                         r"dépense nette totale à 32,0 milliards", r"prix facial, dont le niveau sert de référence"]),
     "fr_drees_es2026_fiche23": ("https://drees.solidarites-sante.gouv.fr/sites/default/files/2026-07/ES%202026%20-%20Fiche%2023%20-%20Les%20m%C3%A9dicaments%20et%20dispositifs%20m%C3%A9dicaux%20on%C3%A9reux.pdf",
                                 "pdf", [r"11,4 milliards d’euros, et 7,6 milliards après déduction"]),
-    "fr_igf_2026": ("https://www.igf.finances.gouv.fr/files/live/sites/igf/files/contributed/Rapports%20de%20mission/2026/M%C3%A9dicaments%20rapport%20seul%20WEB.pdf",
+    "fr_igf_2026": ("https://www.vie-publique.fr/files/rapport/pdf/303194.pdf",
                     "pdf", [r"remises ayant atteint 8,3 Mds€ en 2023", r"36,5 Mds", r"3,2 Mds€ en 2019"]),
     "be_morse_2022_2023": ("https://www.riziv.fgov.be/SiteCollectionDocuments/morse_rapport_donnees_2022_2023.pdf", "pdf",
-                           [r"chiffre d'affaires de 11,7 milliards", r"4,5 milliards à l’Institut, soit 38,5%"]),
+                           [r"chiffre d.affaires de 11,7 milliards", r"4,5 milliards à l’Institut, soit 38,5%"]),
     "be_morse_2024": ("https://www.inami.fgov.be/SiteCollectionDocuments/MORSE_rapport_2024_FR.pdf", "pdf",
                       [r"dépenses brutes de l’INAMI atteignent 7,9 Md€", r"dépenses nettes s’élèvent à 5,6 Md€",
                        r"1,8 Md€ de rétrocessions", r"17,3 milliards d’euros", r"7,8 milliards à l’Institut, soit 45,4%"]),
