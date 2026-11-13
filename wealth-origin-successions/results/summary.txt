@@ -96,7 +96,7 @@ strict / previous year's growth as a control (n=504): post -2.872 [-5.055, -0.68
 strict / change in billionaire wealth, same leads and lags, as controls (n=392): post -2.232 [-5.772, +1.307]; pre -0.078 [-2.093, +1.937]; k=-1 +0.551 [-2.732, +3.833]
 strict / growth years 2020 and 2021 left out (n=392): post +0.529 [-2.027, +3.086]; pre +0.809 [-1.005, +2.623]; k=-1 +0.558 [-0.632, +1.748]
 strict / United States left out (n=495): post -2.732 [-4.908, -0.557]; pre +0.203 [-1.061, +1.468]; k=-1 +1.281 [-0.245, +2.807]
-strict / pandemic exposure x year as controls (n=504): post -1.686 [-6.111, +2.739]; pre +1.719 [-0.499, +3.937]; k=-1 +2.076 [+0.532, +3.620]
+strict / pandemic exposure x year as controls (n=504): post -1.686 [-6.052, +2.679]; pre +1.719 [-0.470, +3.908]; k=-1 +2.076 [+0.552, +3.600]
 strict / indicator: successions above 0.1% of GDP (n=504): post -2.337 [-4.854, +0.181]; pre +0.817 [-0.469, +2.102]; k=-1 +1.203 [+0.015, +2.392]
 strict / leave one country with a succession out: 19 countries; full -2.785; closest to zero -2.287 [-4.395, -0.179] without BRA; furthest -4.186 without PHL; intervals excluding zero 18 of 19
 old founders / baseline (n=504): post -3.110 [-5.321, -0.900]; pre +0.255 [-0.799, +1.309]; k=-1 +1.382 [-0.305, +3.068]
@@ -104,7 +104,7 @@ old founders / previous year's growth as a control (n=504): post -3.218 [-5.587,
 old founders / change in billionaire wealth, same leads and lags, as controls (n=392): post -2.925 [-5.617, -0.233]; pre +0.350 [-1.861, +2.562]; k=-1 +0.653 [-3.138, +4.445]
 old founders / growth years 2020 and 2021 left out (n=392): post -0.332 [-3.136, +2.472]; pre +0.699 [-0.720, +2.119]; k=-1 +0.690 [-0.505, +1.886]
 old founders / United States left out (n=495): post -3.054 [-5.268, -0.840]; pre +0.272 [-0.781, +1.324]; k=-1 +1.361 [-0.321, +3.043]
-old founders / pandemic exposure x year as controls (n=504): post -1.778 [-7.353, +3.797]; pre +2.027 [-0.387, +4.440]; k=-1 +2.231 [+0.474, +3.988]
+old founders / pandemic exposure x year as controls (n=504): post -1.778 [-7.275, +3.719]; pre +2.027 [-0.353, +4.407]; k=-1 +2.231 [+0.497, +3.964]
 old founders / indicator: successions above 0.1% of GDP (n=504): post -3.227 [-5.823, -0.630]; pre +1.174 [-0.417, +2.765]; k=-1 +1.569 [+0.216, +2.922]
 old founders / leave one country with a succession out: 15 countries; full -3.110; closest to zero -2.505 [-4.384, -0.627] without BRA; furthest -5.966 without PHL; intervals excluding zero 15 of 15
 GDP per capita (billionaire countries):

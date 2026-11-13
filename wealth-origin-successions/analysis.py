@@ -473,7 +473,9 @@ def add_exposure_years(a: pd.DataFrame) -> pd.DataFrame:
     base = e.loc[e.index.isin(a.loc[a["billionaire_country"], "iso3"])]
     z = (e - base.mean()) / base.std()
     a = a.merge(z.add_prefix("z_"), left_on="iso3", right_index=True, how="left")
-    years = sorted(a["year"].unique())
+    # only the years that enter the estimation (all leads and lags observed); interactions for other
+    # years would be columns of zeros, which leave the fit singular and its standard errors unstable
+    years = sorted(a.loc[a[es_regs("strict")].notna().all(axis=1), "year"].unique())
     cols = {}
     for k in EXPOSURE:
         for t in years[1:]:
