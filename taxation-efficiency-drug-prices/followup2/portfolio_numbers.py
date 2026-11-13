@@ -254,14 +254,6 @@ def main() -> None:
            .sort_values("total").groupby(["company", "py", "key"]).tail(1).copy())
     med["us"] = med["us"].clip(upper=med["total"])
     print(f"Medicine-years with US and total revenue: {len(med):,}; distinct medicines {med[['company', 'key']].drop_duplicates().shape[0]}")
-    big = med[med["py"] == END].sort_values("total", ascending=False).head(12)
-    print(f"Largest medicines in {END} (company, approval year, US share):")
-    for r in big.itertuples():
-        print(f"  {r.key:18s} {r.company:18s} approved {int(r.approval)}  US {r.us / r.total:5.1%}  ({r.source})")
-
-    # ------------------------------------------------------------------ 3
-    section("3. The US share to explain")
-
     def usd(v, cur, year):
         if cur == "USD":
             return v
@@ -272,6 +264,14 @@ def main() -> None:
     med["cur"] = med["company"].map(ccy)
     med["total_usd"] = [usd(v, c, y) for v, c, y in zip(med["total"], med["cur"], med["py"])]
     med["us_usd"] = [usd(v, c, y) for v, c, y in zip(med["us"], med["cur"], med["py"])]
+    big = med[med["py"] == END].sort_values("total_usd", ascending=False).head(12)
+    print(f"Largest medicines in {END} (company, approval year, US share, revenue in US dollars at ECB rates):")
+    for r in big.itertuples():
+        print(f"  {r.key:18s} {r.company:18s} approved {int(r.approval)}  US {r.us / r.total:5.1%}  $ {r.total_usd / 1e9:4.1f} bn  ({r.source})")
+
+    # ------------------------------------------------------------------ 3
+    section("3. The US share to explain")
+
     comp["total_usd"] = [usd(v, c, y) for v, c, y in zip(comp["total"], comp["currency"], comp["py"])]
     comp["us_usd"] = [usd(v, c, y) for v, c, y in zip(comp["us"], comp["currency"], comp["py"])]
     print(f"Currencies: " + ", ".join(f"{c} {k}" for c, k in ccy.items() if k != "USD") + "; the rest report in US "
@@ -424,6 +424,23 @@ def main() -> None:
         r_21 = t21.loc[(t21["year"] - t21["approval"]) <= k, "total"].sum()
         print(f"  under {k + 1} years old: {START}-{END} {100 * r_main:+.2f} of {100 * d:+.2f} ({r_main / d:.0%}); "
               f"2021-{END} {100 * r_21:+.2f} of {100 * (b21 - a21):+.2f} ({r_21 / (b21 - a21):.0%})")
+    print(f"The 2021-{END} window by launch cohort:")
+    for c, r in t21.groupby("cohort")[["within", "between", "entry", "exit", "total"]].sum().iterrows():
+        print(f"  {c:24s} total {100 * r['total']:+.2f}: within {100 * r['within']:+.2f}, between {100 * r['between']:+.2f}, "
+              f"entry {100 * r['entry']:+.2f}, exit {100 * r['exit']:+.2f}")
+    k21 = t21.groupby(["company", "key", "approval"])[["entry", "between", "within", "exit", "total"]].sum().sort_values("total")
+    m21 = med[med["company"].isin(samples["2021"]) & med["py"].between(2021, END)]
+    print(f"  medicines in the 2021-{END} window (total; entry, between, within, exit; first and last year US share, $ bn):")
+    named = list(k21.tail(6).index[::-1]) + list(k21.head(3).index) + \
+        [i for i in k21.index if i[1] in ("ozempic", "wegovy", "mounjaro") and i not in k21.tail(6).index]
+    for co, k, a in named:
+        r = k21.loc[(co, k, a)]
+        g = m21[(m21["company"] == co) & (m21["key"] == k)].sort_values("py")
+        f0, f1 = g.iloc[0], g.iloc[-1]
+        print(f"    {k:14s} {co:18s} approved {int(a)}  {100 * r['total']:+.2f}  ({100 * r['entry']:+.2f}, "
+              f"{100 * r['between']:+.2f}, {100 * r['within']:+.2f}, {100 * r['exit']:+.2f})  {int(f0.py)} "
+              f"{f0.us_usd / f0.total_usd:5.1%} $ {f0.total_usd / 1e9:4.1f}  {int(f1.py)} {f1.us_usd / f1.total_usd:5.1%} "
+              f"$ {f1.total_usd / 1e9:4.1f}")
 
     # ------------------------------------------------------------------ 5
     section("5. The same by launch cohort, between the end years")
