@@ -37,6 +37,13 @@ def flags(rows: pd.DataFrame, table: str, year: int, band: int | None = None) ->
     return sorted(int(f) for f, n in zip(s["links"], s.n) for _ in range(n))
 
 
+def bit(rule: str, k: int) -> int:
+    return 1 << (4 * ffa.RULES.index(rule) + k)
+
+
+HEIR, FELL, INC, PLACEBO = 0, 1, 2, 3
+
+
 def other(k: int, worth: float = 8000) -> dict:
     return rec(f"bg{k}", worth, f"Zz{k}", source=f"Company {k}", country="Japan")
 
@@ -58,19 +65,20 @@ class HeirTests(unittest.TestCase):
         heirs = flags(self.rows, "entry", 2011)
         self.assertEqual(len(heirs), 2)
         for f in heirs:
-            self.assertTrue(f & 1 and f & 16)        # strict and loose family member left at this transition
-            self.assertFalse(f & 16384)              # not the same person relisted
+            for rule in ffa.RULES:                   # every rule finds the departed relative
+                self.assertTrue(f & bit(rule, HEIR))
+            self.assertFalse(f & ffa.E_RELISTED)     # not the same person relisted
         ex = flags(self.rows, "exit", 2011)
         self.assertEqual(len(ex), 1)
-        self.assertTrue(ex[0] & 1 and ex[0] & 8)
-        self.assertFalse(ex[0] & 1024)               # never returns
+        self.assertTrue(ex[0] & bit("strict", HEIR) and ex[0] & bit("loose", HEIR))
+        self.assertFalse(ex[0] & ffa.X_RETURNS)      # never returns
 
     def test_co_entry_between_heirs(self) -> None:
-        self.assertTrue(all(f & 128 for f in flags(self.rows, "entry", 2011)))
+        self.assertTrue(all(f & ffa.E_CO_ENTRY for f in flags(self.rows, "entry", 2011)))
 
     def test_stock_family_prevalence(self) -> None:
         st = self.rows[(self.rows.table == "stock") & (self.rows.year == 2012)]
-        self.assertEqual(int(st[st["links"].astype(int) & 1 > 0].n.sum()), 2)
+        self.assertEqual(int(st[st["links"].astype(int) & 1 > 0].n.sum()), 2)   # bit 0 = strict rule
 
 
 class DivisionAndCompanyTests(unittest.TestCase):
@@ -97,18 +105,18 @@ class DivisionAndCompanyTests(unittest.TestCase):
 
     def test_division_among_the_living(self) -> None:
         f = self.by_band[3000]
-        self.assertTrue(f & 4 and f & 8)
-        self.assertFalse(f & 1)
+        self.assertTrue(f & bit("strict", INC) and f & bit("strict", FELL))
+        self.assertFalse(f & bit("strict", HEIR))
 
     def test_revaluation_of_a_company(self) -> None:
         f = self.by_band[2500]
-        self.assertTrue(f & 256 and f & 4096)     # co-owner on the list rose by more than 0.1
-        self.assertFalse(f & 4)                   # but no family link
+        self.assertTrue(f & ffa.E_CO_RISE and f & ffa.E_CO_INC)   # co-owner on the list rose by more than 0.1
+        self.assertFalse(f & bit("loose", INC))                    # but no family link
 
     def test_generic_label_gives_no_company_link(self) -> None:
         f = self.by_band[1500]
-        self.assertTrue(f & 8192)
-        self.assertFalse(f & (128 | 256 | 4096 | 1 | 4))
+        self.assertTrue(f & ffa.E_GENERIC)
+        self.assertFalse(f & (ffa.E_CO_ENTRY | ffa.E_CO_RISE | ffa.E_CO_INC | bit("strict", HEIR) | bit("strict", INC)))
 
 
 class PlaceboAndSelfTests(unittest.TestCase):
@@ -123,9 +131,9 @@ class PlaceboAndSelfTests(unittest.TestCase):
             spec[y].append(niece)                  # niece enters at 2011 -> 2012 and stays
         rows = pd.DataFrame(ffa.aggregate(*build(spec))[0])
         f = flags(rows, "entry", 2011)[0]
-        self.assertTrue(f & 2048 and f & 512)      # uncle leaves two transitions later: placebo, not heir
-        self.assertFalse(f & 1 or f & 2)
-        self.assertTrue(f & 4)                     # he is an incumbent family member when she enters
+        self.assertTrue(f & ffa.E_WINDOW and f & bit("strict", PLACEBO))   # uncle leaves two transitions later
+        self.assertFalse(f & bit("strict", HEIR))
+        self.assertTrue(f & bit("strict", INC))    # he is an incumbent family member when she enters
 
     def test_relisted_person_is_not_their_own_heir(self) -> None:
         base = [other(k) for k in range(3)]
@@ -135,9 +143,27 @@ class PlaceboAndSelfTests(unittest.TestCase):
         a["birthDate"], b["birthDate"] = -315619200000, -283996800000   # a corrected birth date breaks every key
         rows = pd.DataFrame(ffa.aggregate(*build({2010: base + [a], 2011: base + [b]}))[0])
         f = flags(rows, "entry", 2010)[0]
-        self.assertTrue(f & 16384)
-        self.assertFalse(f & (1 | 16))
-        self.assertTrue(flags(rows, "exit", 2010)[0] & 4096)
+        self.assertTrue(f & ffa.E_RELISTED)
+        self.assertFalse(f & (bit("strict", HEIR) | bit("loose", HEIR)))
+        self.assertTrue(flags(rows, "exit", 2010)[0] & ffa.X_RELISTED)
+
+
+class RuleTests(unittest.TestCase):
+    def test_generic_label_and_rare_surname_rules(self) -> None:
+        base = [other(k) for k in range(3)]
+        # a "diversified" family: the strict rule cannot see it, the label and rare rules can
+        common = [rec(f"li{k}", 2000 + 100 * k, "Li", source=f"Firm {k}", country="China") for k in range(8)]
+        spec = {2010: base + common + [rec("dad", 9000, "Okonkwo", source="diversified", country="Nigeria", age=90)],
+                2011: base + common + [rec("kid", 4000, "Okonkwo", source="diversified", country="Nigeria", self_made=False),
+                                       rec("li-new", 3000, "Li", source="Other Firm", country="China")]}
+        rows = pd.DataFrame(ffa.aggregate(*build(spec))[0])
+        e = rows[(rows.table == "entry") & (rows.year == 2010)]
+        kid = int(e[e.band_lo_musd == 4000]["links"].iloc[0])
+        self.assertFalse(kid & bit("strict", HEIR))
+        self.assertTrue(kid & bit("label", HEIR) and kid & bit("rare", HEIR) and kid & bit("loose", HEIR))
+        li = int(e[e.band_lo_musd == 3000]["links"].iloc[0])
+        self.assertFalse(li & bit("rare", INC))     # "Li" in China is common: only the loose rule links it
+        self.assertTrue(li & bit("loose", INC))
 
 
 class Part4TotalsTests(unittest.TestCase):
