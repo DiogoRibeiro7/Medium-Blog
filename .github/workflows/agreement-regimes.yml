@@ -1,0 +1,70 @@
+name: Agreement regimes
+
+# Companion of the follow-up on the p95 rule after a change of regime: lint and tests, then the registered test
+# (evaluate.py) and the figures, committed on pushes. No data are fetched: the input is the ratio series of
+# second-count-prediction.
+
+on:
+  push:
+    branches:
+      - agreement-regimes
+    paths:
+      - 'agreement-regimes/**'
+      - '!agreement-regimes/results/**'
+      - '!agreement-regimes/figures/**'
+      - '.github/workflows/agreement-regimes.yml'
+  pull_request:
+    paths:
+      - 'agreement-regimes/**'
+      - '.github/workflows/agreement-regimes.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: agreement-regimes-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agreement-regimes
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: agreement-regimes/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint
+        run: ruff check . && ruff format --check .
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: The registered test
+        run: python evaluate.py --ratios ../second-count-prediction/results/corrected/ratios.csv --out results
+      - name: Figures
+        run: python figures.py
+      - name: Results unchanged on pull requests
+        if: github.event_name == 'pull_request'
+        run: git diff --exit-code -- results
+      - name: Commit results and figures
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add results figures
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "agreement-regimes: results and figures from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
