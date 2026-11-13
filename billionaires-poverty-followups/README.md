@@ -9,7 +9,7 @@ Six follow-ups to the reanalysis of the "Where billionaires are common, poverty 
 | 3 | Within countries over time: when billionaire density rises, does poverty fall faster than the country's own trend? | Article drafted (manuscript #145) |
 | 4 | Are a country's year-to-year changes in billionaires mostly fortunes crossing the $1 billion line? Entries and exits by net worth, a crossing model, and what it means for the count as an indicator | Article drafted (manuscript #150) |
 | 5 | Are fortunes near $1 billion more volatile, and is that why they leave the list? Rounding, volatility estimated from rises, an age-adjusted floor of deaths and reassessments, and newcomers | Article drafted (manuscript #158) |
-| 6 | Is volatility a stable property of each fortune, and does a fortune's own past volatility predict its departure better than its distance from the line? Persistence, out-of-sample departure models, a distance-to-default index and simulated lists | Article drafted |
+| 6 | Is volatility a stable property of each fortune, and does a fortune's own past volatility predict its departure better than its distance from the line? Persistence, out-of-sample departure models, a distance-to-default index and simulated lists | Article drafted (manuscript #162) |
 
 ## Data
 
