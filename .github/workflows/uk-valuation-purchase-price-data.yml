@@ -1,0 +1,83 @@
+name: Run uk-valuation-purchase-price on the Price Paid Data
+
+on:
+  push:
+    branches:
+      - uk-valuation-purchase-price
+    paths:
+      - 'uk-valuation-purchase-price/fetch.py'
+      - 'uk-valuation-purchase-price/build.py'
+      - 'uk-valuation-purchase-price/model.py'
+      - '.github/workflows/uk-valuation-purchase-price-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: uk-valuation-purchase-price-data
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    defaults:
+      run:
+        working-directory: uk-valuation-purchase-price
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-valuation-purchase-price/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Disk, memory and processors available
+        run: df -h . "$RUNNER_TEMP" && free -g && nproc
+
+      - name: Download HM Land Registry Price Paid Data (about 5.3 GB, not committed)
+        run: python fetch.py --ppd "$RUNNER_TEMP/ppd" --log data/fetch_log.txt
+
+      - name: Build the pairs (scratch) and the area index (committed)
+        run: |
+          mkdir -p "$RUNNER_TEMP/duck"
+          python build.py --ppd "$RUNNER_TEMP/ppd/pp-complete.csv" --pairs "$RUNNER_TEMP/pairs.parquet" \
+            --out data --memory-limit 12GB --temp "$RUNNER_TEMP/duck"
+          rm -rf "$RUNNER_TEMP/ppd" "$RUNNER_TEMP/duck"
+          cat data/build_log.txt
+
+      - name: Fit and evaluate the valuation models (aggregates only)
+        run: |
+          python model.py --pairs "$RUNNER_TEMP/pairs.parquet" --data data --out results --threads "$(nproc)"
+          rm -f "$RUNNER_TEMP/pairs.parquet"
+
+      - name: Summary and figures from the aggregates
+        continue-on-error: true
+        run: |
+          if [ -f analysis.py ]; then python analysis.py > /dev/null; fi
+          if [ -f figures.py ]; then python figures.py; fi
+
+      - name: Commit the index, results and figures if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data results figures 2>/dev/null || true
+          if git diff --cached --quiet -- data/area_index.csv data/area_year_median.csv results; then
+            echo "Results unchanged; nothing to commit."
+          else
+            git commit -m "uk-valuation-purchase-price: results from the Price Paid Data ($(date -u +%Y-%m-%d))"
+            git pull --rebase
+            git push
+          fi
