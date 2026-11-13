@@ -1,0 +1,82 @@
+Does the agreement of two counts on clean months predict the smallest random loss they can catch?
+Post hoc, after the registered run: Citi Bike months built with the corrected rule
+(feed/layout.py, PLAN.md 'After the registered run'). Everything else as registered.
+
+Registered rule recomputed from every recorded CSV: 0 months differ from the registered counts
+Operator reports without a usable total (left out): 1 2023-12
+
+citibike / operator reports  [TEST]
+  evaluated months 140 (2014-06 to 2026-09); matched threshold |z| > 6.512
+  95th percentile of |r - median of previous 12|: 8.027% (log x 100); median robust scale 0.088%
+  predicted smallest loss caught 90%: p95 rule 14.83%; Gaussian rule 0.35%
+  observed: 25.12%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.527; Gaussian rule 4.285
+  real months flagged at the matched threshold: 2015-03 (+9.31%, z 34.7), 2015-06 (+0.01%, z 10.2), 2015-07 (+0.02%, z 7.6), 2018-11 (+6.80%, z 13.2), 2018-12 (-20.36%, z 45.5), 2021-07 (-90.20%, z 462.7), 2022-04 (-17.55%, z 19.6)
+  detection: 0.01% 1; 0.013% 1; 0.016% 1; 0.02% 1; 0.025% 1; 0.032% 1; 0.04% 1; 0.05% 1; 0.063% 1; 0.079% 1; 0.1% 1; 0.13% 1; 0.16% 1; 0.2% 1; 0.25% 1; 0.32% 1; 0.4% 1; 0.5% 1; 0.63% 1; 0.79% 3; 1% 6; 1.3% 6; 1.6% 6; 2% 7; 2.5% 9; 3.2% 15; 4% 70; 5% 77; 6.3% 81; 7.9% 81; 10% 84; 13% 88; 16% 88; 20% 89; 25% 92; 32% 94; 40% 95; 50% 95
+
+citibike / DOT table  [TEST]
+  evaluated months 148 (2014-06 to 2026-09); matched threshold |z| > 3.161
+  95th percentile of |r - median of previous 12|: 5.652% (log x 100); median robust scale 0.056%
+  predicted smallest loss caught 90%: p95 rule 10.69%; Gaussian rule 0.22%
+  observed: 3.16%; within a factor of two of the p95 rule: no
+  |log(observed / predicted)|: p95 rule 1.218; Gaussian rule 2.667
+  real months flagged at the matched threshold: 2014-06 (-7.60%, z 4.8), 2014-10 (-8.72%, z 3.2), 2015-05 (-2.86%, z 6.9), 2015-06 (-0.76%, z 10.1), 2015-07 (-0.28%, z 9.1), 2015-08 (-0.20%, z 8.8), 2015-09 (-0.24%, z 5.0)
+  detection: 0.01% 1; 0.013% 1; 0.016% 1; 0.02% 1; 0.025% 1; 0.032% 1; 0.04% 1; 0.05% 1; 0.063% 1; 0.079% 1; 0.1% 1; 0.13% 1; 0.16% 1; 0.2% 1; 0.25% 1; 0.32% 1; 0.4% 2; 0.5% 3; 0.63% 3; 0.79% 3; 1% 3; 1.3% 5; 1.6% 55; 2% 89; 2.5% 90; 3.2% 91; 4% 92; 5% 92; 6.3% 92; 7.9% 93; 10% 93; 13% 94; 16% 95; 20% 95; 25% 95; 32% 95; 40% 95; 50% 95
+
+chicago / vehicles  [TEST]
+  evaluated months 72 (2020-05 to 2026-08); matched threshold |z| > 2.540
+  95th percentile of |r - median of previous 12|: 1.817% (log x 100); median robust scale 0.563%
+  predicted smallest loss caught 90%: p95 rule 3.57%; Gaussian rule 2.18%
+  observed: 5.01%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.340; Gaussian rule 0.831
+  real months flagged at the matched threshold: 2022-08 (-5.33%, z 3.5), 2022-09 (-5.51%, z 3.8), 2026-05 (-2.92%, z 2.9)
+  detection: 0.01% 0; 0.013% 0; 0.016% 0; 0.02% 0; 0.025% 0; 0.032% 0; 0.04% 0; 0.05% 0; 0.063% 0; 0.079% 0; 0.1% 0; 0.13% 0; 0.16% 0; 0.2% 0; 0.25% 0; 0.32% 3; 0.4% 6; 0.5% 10; 0.63% 14; 0.79% 17; 1% 19; 1.3% 35; 1.6% 50; 2% 61; 2.5% 72; 3.2% 79; 4% 89; 5% 94; 6.3% 96; 7.9% 96; 10% 96; 13% 96; 16% 96; 20% 96; 25% 96; 32% 96; 40% 96; 50% 96
+
+chicago / drivers  [TEST]
+  evaluated months 72 (2020-05 to 2026-08); matched threshold |z| > 0.754
+  95th percentile of |r - median of previous 12|: 0.366% (log x 100); median robust scale 0.127%
+  predicted smallest loss caught 90%: p95 rule 0.73%; Gaussian rule 0.50%
+  observed: 0.79%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.085; Gaussian rule 0.467
+  real months flagged at the matched threshold: 2021-09 (+0.89%, z 1.6), 2023-10 (+0.89%, z 1.0), 2025-09 (+0.44%, z 0.8)
+  detection: 0.01% 0; 0.013% 0; 0.016% 0; 0.02% 0; 0.025% 0; 0.032% 0; 0.04% 0; 0.05% 0; 0.063% 0; 0.079% 0; 0.1% 0; 0.13% 3; 0.16% 4; 0.2% 4; 0.25% 6; 0.32% 15; 0.4% 35; 0.5% 62; 0.63% 86; 0.79% 96; 1% 96; 1.3% 96; 1.6% 96; 2% 96; 2.5% 96; 3.2% 96; 4% 96; 5% 96; 6.3% 96; 7.9% 96; 10% 96; 13% 96; 16% 96; 20% 96; 25% 96; 32% 96; 40% 96; 50% 96
+
+TLC yellow / monthly report  [calibration (Part 4, already seen)]
+  evaluated months 65 (2021-05 to 2026-09); matched threshold |z| > 3.480
+  95th percentile of |r - median of previous 12|: 2.695% (log x 100); median robust scale 0.115%
+  predicted smallest loss caught 90%: p95 rule 5.25%; Gaussian rule 0.45%
+  observed: 3.98%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.276; Gaussian rule 2.181
+  real months flagged at the matched threshold: 2022-11 (-6.84%, z 14.8), 2023-09 (-8.85%, z 19.4), 2026-09 (+12.05%, z 8.5)
+  detection: 0.01% 0; 0.013% 0; 0.016% 0; 0.02% 0; 0.025% 0; 0.032% 0; 0.04% 0; 0.05% 0; 0.063% 0; 0.079% 0; 0.1% 0; 0.13% 0; 0.16% 0; 0.2% 0; 0.25% 0; 0.32% 0; 0.4% 0; 0.5% 0; 0.63% 0; 0.79% 0; 1% 5; 1.3% 5; 1.6% 6; 2% 60; 2.5% 80; 3.2% 85; 4% 91; 5% 92; 6.3% 95; 7.9% 95; 10% 95; 13% 95; 16% 95; 20% 95; 25% 95; 32% 95; 40% 95; 50% 95
+
+TLC green / monthly report  [calibration (Part 4, already seen)]
+  evaluated months 65 (2021-05 to 2026-09); matched threshold |z| > 2.212
+  95th percentile of |r - median of previous 12|: 1.105% (log x 100); median robust scale 0.025%
+  predicted smallest loss caught 90%: p95 rule 2.19%; Gaussian rule 0.10%
+  observed: 2.51%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.139; Gaussian rule 3.232
+  real months flagged at the matched threshold: 2022-11 (-3.35%, z 6.8), 2026-05 (-1.96%, z 4.0), 2026-09 (+4.70%, z 9.2)
+  detection: 0.01% 0; 0.013% 0; 0.016% 0; 0.02% 0; 0.025% 0; 0.032% 0; 0.04% 0; 0.05% 0; 0.063% 0; 0.079% 0; 0.1% 0; 0.13% 0; 0.16% 0; 0.2% 0; 0.25% 0; 0.32% 0; 0.4% 0; 0.5% 0; 0.63% 0; 0.79% 0; 1% 14; 1.3% 85; 1.6% 88; 2% 89; 2.5% 95; 3.2% 95; 4% 95; 5% 95; 6.3% 95; 7.9% 95; 10% 95; 13% 95; 16% 95; 20% 95; 25% 95; 32% 95; 40% 95; 50% 95
+
+TLC fhv / monthly report  [calibration (Part 4, already seen)]
+  evaluated months 64 (2021-05 to 2026-08); matched threshold |z| > 4.288
+  95th percentile of |r - median of previous 12|: 15.029% (log x 100); median robust scale 4.660%
+  predicted smallest loss caught 90%: p95 rule 25.96%; Gaussian rule 16.69%
+  observed: 39.81%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.428; Gaussian rule 0.869
+  real months flagged at the matched threshold: 2022-01 (-4.58%, z 6.2), 2024-05 (-29.32%, z 4.3), 2026-08 (+7.61%, z 12.1)
+  detection: 0.01% 3; 0.013% 3; 0.016% 3; 0.02% 3; 0.025% 3; 0.032% 3; 0.04% 3; 0.05% 3; 0.063% 3; 0.079% 3; 0.1% 5; 0.13% 5; 0.16% 5; 0.2% 5; 0.25% 5; 0.32% 5; 0.4% 6; 0.5% 6; 0.63% 8; 0.79% 8; 1% 8; 1.3% 9; 1.6% 14; 2% 16; 2.5% 19; 3.2% 19; 4% 19; 5% 22; 6.3% 25; 7.9% 28; 10% 31; 13% 39; 16% 50; 20% 59; 25% 67; 32% 80; 40% 92; 50% 95
+
+TLC fhvhv / monthly report  [calibration (Part 4, already seen)]
+  evaluated months 64 (2021-05 to 2026-08); matched threshold |z| > 0.038
+  95th percentile of |r - median of previous 12|: 0.019% (log x 100); median robust scale 0.001%
+  predicted smallest loss caught 90%: p95 rule 0.04%; Gaussian rule 0.00%
+  observed: 0.03%; within a factor of two of the p95 rule: yes
+  |log(observed / predicted)|: p95 rule 0.168; Gaussian rule 2.251
+  real months flagged at the matched threshold: 2022-10 (+0.03%, z 0.1), 2025-10 (+0.03%, z 0.1), 2026-06 (-2.15%, z 4.3)
+  detection: 0.01% 0; 0.013% 2; 0.016% 11; 0.02% 81; 0.025% 86; 0.032% 92; 0.04% 95; 0.05% 95; 0.063% 95; 0.079% 95; 0.1% 95; 0.13% 95; 0.16% 95; 0.2% 95; 0.25% 95; 0.32% 95; 0.4% 95; 0.5% 95; 0.63% 95; 0.79% 95; 1% 95; 1.3% 95; 1.6% 95; 2% 95; 2.5% 95; 3.2% 95; 4% 95; 5% 95; 6.3% 95; 7.9% 95; 10% 95; 13% 95; 16% 95; 20% 95; 25% 95; 32% 95; 40% 95; 50% 95
+
+H1 (observed within a factor of two of the p95 rule in all four new pairs): not supported
+    pairs within: 3 of 4
+H2 (the p95 rule closer than the Gaussian rule in at least three of four new pairs): supported (4 of 4)

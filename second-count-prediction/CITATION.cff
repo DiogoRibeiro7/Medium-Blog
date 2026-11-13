@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Does the agreement of two counts predict the smallest random loss they can catch? Citi Bike and Chicago rideshare counts"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-12
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/second-count-prediction"
+references:
+  - type: data
+    title: "Citi Bike System Data (trip histories) and monthly operating reports"
+    authors:
+      - name: "NYC Bike Share, LLC"
+    url: "https://citibikenyc.com/system-data"
+  - type: data
+    title: "Bike Share Usage Data Report (quarterly)"
+    authors:
+      - name: "New York City Department of Transportation"
+    url: "https://home4.nyc.gov/html/dot/html/bicyclists/bikestats.shtml"
+  - type: data
+    title: "Transportation Network Providers: Trips, Vehicles and Drivers"
+    authors:
+      - name: "City of Chicago"
+    url: "https://data.cityofchicago.org"

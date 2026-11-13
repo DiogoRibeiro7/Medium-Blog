@@ -1,0 +1,114 @@
+== Economies, groups and transitivity ==
+HFCE: economies with data in 2005 and 2019 (Eurostat group, OECD group): 44 (35, 9)
+AIC: economies with data in 2005 and 2019 (Eurostat group, OECD group): 43 (35, 8)
+GDP: economies with data in 2005 and 2019 (Eurostat group, OECD group): 46 (35, 11)
+HFCE economies, Eurostat group: ALB AUT BEL BGR CHE CYP CZE DEU DNK ESP EST FIN FRA GBR GRC HRV HUN IRL ISL ITA LTU LUX LVA MKD MLT NLD NOR POL PRT ROU SRB SVK SVN SWE TUR
+HFCE economies, OECD group: AUS CAN COL ISR JPN KOR MEX NZL USA
+OECD-group members without household-consumption PPPs for both years: CHL CRI
+Largest gap between a pair computed directly and through the US (log points x 100): 3.4e-14
+HFCE: pairs; independent numbers behind them: 946; 43
+
+== Pairs, drift 2005-2019 (log points x 100) ==
+HFCE within Eurostat: pairs, mean |drift|, median |drift|, share above 10 points: 595, 7.6, 6.6, 0.30
+HFCE within OECD: pairs, mean |drift|, median |drift|, share above 10 points: 36, 5.7, 5.2, 0.11
+HFCE across: pairs, mean |drift|, median |drift|, share above 10 points: 315, 13.4, 13.4, 0.67
+HFCE: mean |drift| across groups / within groups: 1.79
+AIC within Eurostat: pairs, mean |drift|, median |drift|, share above 10 points: 595, 8.5, 7.3, 0.35
+AIC within OECD: pairs, mean |drift|, median |drift|, share above 10 points: 28, 7.9, 6.1, 0.36
+AIC across: pairs, mean |drift|, median |drift|, share above 10 points: 280, 13.4, 12.9, 0.61
+AIC: mean |drift| across groups / within groups: 1.58
+GDP within Eurostat: pairs, mean |drift|, median |drift|, share above 10 points: 595, 7.9, 6.4, 0.27
+GDP within OECD: pairs, mean |drift|, median |drift|, share above 10 points: 55, 11.6, 10.6, 0.51
+GDP across: pairs, mean |drift|, median |drift|, share above 10 points: 385, 13.9, 13.0, 0.60
+GDP: mean |drift| across groups / within groups: 1.70
+
+== Block model: country drift on Eurostat-group membership ==
+HFCE: gap Eurostat minus OECD group (points); R2; n: 13.0; 0.42; 44
+HFCE: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 10.3, -2.7; 6.7, 4.7
+HFCE: permutation p-value of the gap (10,000 relabellings): 0.0001
+HFCE: with ln price level 2005 as control: gap; slope per log point of price level; R2: 12.9; -7.5; 0.53
+HFCE: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.49
+HFCE: same correlation inside the OECD group (n, r): 9, -0.05
+HFCE: residual SD after group and price level (points): 5.8
+AIC: gap Eurostat minus OECD group (points); R2; n: 12.3; 0.31; 43
+AIC: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 11.1, -1.2; 7.3, 6.8
+AIC: permutation p-value of the gap (10,000 relabellings): 0.0001
+AIC: with ln price level 2005 as control: gap; slope per log point of price level; R2: 11.4; -8.6; 0.45
+AIC: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.48
+AIC: same correlation inside the OECD group (n, r): 8, -0.26
+AIC: residual SD after group and price level (points): 6.6
+GDP: gap Eurostat minus OECD group (points); R2; n: 12.2; 0.31; 46
+GDP: group mean (Eurostat, OECD); within-group SD (Eurostat, OECD): 17.4, 5.1; 7.3, 9.8
+GDP: permutation p-value of the gap (10,000 relabellings): 0.0002
+GDP: with ln price level 2005 as control: gap; slope per log point of price level; R2: 12.5; -5.2; 0.36
+GDP: correlation of drift with ln price level 2005 inside the Eurostat group (n, r): 35, -0.19
+GDP: same correlation inside the OECD group (n, r): 11, -0.46
+GDP: residual SD after group and price level (points): 7.7
+HFCE, Eurostat group: mean drift of the 8 cheapest / 8 dearest economies in 2005 (points): 13.0 / 4.5
+Eight cheapest; eight dearest (price level of household consumption, US = 100, 2005): BGR 45, MKD 49, SRB 50, ROU 56, ALB 57, LTU 59, SVK 60, LVA 61; ISL 161, NOR 154, DNK 151, CHE 143, GBR 139, FIN 133, IRL 133, SWE 128
+
+== Robustness of the gap between the groups, 2005-2019 (points) ==
+HFCE gap variants: as estimated 13.0; medians 14.7; EU27 only 13.4; without candidate countries 12.5; weighted by size at 2020 PPPs 11.6; without the US 13.3
+HFCE gap and R2 over 2005-2017: 9.2; 0.26
+HFCE gap and R2 over 2008-2019: 9.9; 0.32
+HFCE gap and R2 over 2010-2019: 7.7; 0.29
+GDP gap variants: as estimated 12.2; medians 11.9; EU27 only 13.1; without candidate countries 12.4; weighted by size at 2020 PPPs 16.2; without the US 11.7
+GDP gap and R2 over 2005-2017: 8.5; 0.21
+GDP gap and R2 over 2008-2019: 7.7; 0.21
+GDP gap and R2 over 2010-2019: 6.0; 0.19
+
+== Selected pairs, household consumption, drift 2005-2019 (row against column, points) ==
+DEU against JPN: 15.9
+FRA against USA: 4.7
+DEU against USA: 13.0
+POL against DEU: 3.2
+ROU against DEU: 6.3
+SWE against NOR: 1.0
+ITA against ESP: 4.8
+GBR against DEU: -9.9
+CAN against USA: -9.0
+KOR against JPN: -3.9
+AUS against NZL: -2.6
+
+== Same gap in three aggregates ==
+Household consumption as share of GDP, Eurostat group, mean 2005-2019: 0.55
+GDP gap expected if the gap came only from consumer deflators; observed GDP gap (points): 7.2; 12.2
+Correlation across economies between HFCE and GDP drift 2005-2019 (n, r): 44, 0.75
+
+== Annual steps against the US: how the PPP series were built ==
+OECD-group economies with HFCE PPPs for every year 1995-2015 (excluding the US): 8: JPN KOR CAN AUS NZL ISR MEX COL
+Eurostat-group economies with the same coverage: 31
+Years 1996-2012 in which at least two-thirds of OECD-group steps were below 0.3 points: 1996, 1997, 1998, 2001, 2004, 2007
+Share of steps below 0.3 points in those years: OECD group; Eurostat group: 0.83; 0.28
+Share of steps below 0.3 points, all years 1996-2012: OECD group; Eurostat group: 0.43; 0.18
+Share of steps below 0.3 points, 2016-2024: OECD group; Eurostat group: 0.14; 0.11
+OECD group, steps in the year after a benchmark vs in the next benchmark year (2000/02, 2003/05, 2006/08, 2009/11): median absolute difference; median size (points): 0.12; 1.51
+Same comparison, Eurostat group (median absolute difference; median size): 1.38; 1.51
+Japan HFCE steps 1999-2008 (points): 2000: 2.0, 2001: 0.0, 2002: 2.0, 2003: 1.6, 2004: -0.1, 2005: 1.6, 2006: 1.1, 2007: -0.0, 2008: 1.1
+
+== The gap between the groups over time (group means of drift against the US, points, 2020 = 0) ==
+HFCE: economies with every year 1995-2024 (Eurostat, OECD): 30, 9
+AIC: economies with every year 1995-2024 (Eurostat, OECD): 30, 7
+GDP: economies with every year 1995-2024 (Eurostat, OECD): 31, 11
+HFCE gap: 1995, 2005, 2019, 2024; change 1995-2005, 2005-2019, 2019-2024: -9.1, -11.4, 1.3, 3.1; -2.3, 12.7, 1.8
+HFCE gap steps 2006-2019: in benchmark years [2008, 2011, 2014, 2017]; in other years (points; share): 4.8; 7.9 (0.38)
+HFCE gap: largest steps 2006-2019: 2019: 3.3; 2008: 2.6; 2013: 1.9; 2010: 1.4
+HFCE gap per year: 2005-2015 (triennial OECD calculation); 2015-2019; 2019-2024 (points a year): 0.71; 1.39; 0.37
+AIC gap: 1995, 2005, 2019, 2024; change 1995-2005, 2005-2019, 2019-2024: -12.9, -13.5, 0.2, 3.1; -0.6, 13.7, 2.9
+AIC gap steps 2006-2019: in benchmark years [2008, 2011, 2014, 2017]; in other years (points; share): 4.0; 9.8 (0.29)
+AIC gap: largest steps 2006-2019: 2019: 4.7; 2008: 2.2; 2010: 1.6; 2017: 1.3
+AIC gap per year: 2005-2015 (triennial OECD calculation); 2015-2019; 2019-2024 (points a year): 0.64; 1.84; 0.58
+GDP gap: 1995, 2005, 2019, 2024; change 1995-2005, 2005-2019, 2019-2024: -12.5, -12.8, -0.1, 2.4; -0.3, 12.7, 2.5
+GDP gap steps 2006-2019: in benchmark years [2008, 2011, 2014, 2017]; in other years (points; share): 5.3; 7.4 (0.41)
+GDP gap: largest steps 2006-2019: 2008: 3.9; 2019: 2.6; 2012: 1.4; 2009: 1.3
+GDP gap per year: 2005-2015 (triennial OECD calculation); 2015-2019; 2019-2024 (points a year): 0.89; 0.96; 0.50
+
+== The United Kingdom ==
+HFCE UK drift 2005-2019: against the Eurostat-group mean; against the OECD-group mean (points): -7.2; 5.7
+HFCE UK drift 2019-2024: against the Eurostat-group mean; against the OECD-group mean (points): 4.7; 6.4
+GDP UK drift 2005-2019: against the Eurostat-group mean; against the OECD-group mean (points): -8.5; 4.5
+GDP UK drift 2019-2024: against the Eurostat-group mean; against the OECD-group mean (points): -2.6; 0.0
+HFCE drift 2005-2019 against the US: UK; Eurostat-group mean; OECD-group mean: 3.0; 10.3; -2.7
+
+== Cross-check: Eurostat's own PPPs give the same European pairs ==
+Largest difference 2005-2019 in PPP change against Germany, Eurostat vs OECD (log points x 100): 0.00
