@@ -70,5 +70,9 @@ Forward windows, rule computed on the window's own months (in-period; added afte
   test pairs: in-period rule within a factor of two in 15 of 17
   motivating pair: in-period rule within a factor of two in 8 of 8
 
+Rolling rule of the article's code block (36 rows ending at each month):
+  citibike / operator reports: above 10% 2017-04 to 2019-02, 2021-07 to 2021-11, 2022-04 to 2024-07; below 1% none
+  citibike / DOT table: above 10% 2016-11 to 2018-07; below 1% 2021-12 to 2026-09
+
 Order statistics: the 95th percentile of 36 deviations sits at position 33.25 of 0..35: between the deviations ranked 3 and 2 from the top
 Over 24 months the matched budget allows 1 clean alarm(s), and 90% detection needs 22 of 24 months caught, so at most 2 months may be missed

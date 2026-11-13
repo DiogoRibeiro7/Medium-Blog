@@ -12,11 +12,34 @@ import math
 from pathlib import Path
 from statistics import median, pstdev
 
+import numpy as np
+import pandas as pd
+
 from evaluate import load
 from feed import detect as D
 from feed import regimes as R
 
 MOTIVATING = "citibike / DOT table"
+
+
+def reach_over_time(r: pd.Series, trail: int = 36) -> pd.Series:
+    """The rolling rule, exactly as printed in the article."""
+    dev = (r - r.shift(1).rolling(12).median()).abs()
+    return 1 - np.exp(-2 * dev.rolling(trail, min_periods=30).quantile(0.95))
+
+
+def spells(x: pd.Series, keep) -> str:
+    runs, start, prev = [], None, None
+    for m, v in x.items():
+        if keep(v):
+            start = start or m
+            prev = m
+        elif start:
+            runs.append(f"{start} to {prev}")
+            start = None
+    if start:
+        runs.append(f"{start} to {prev}")
+    return ", ".join(runs) or "none"
 
 
 def top(devs: list[float], k: int = 3) -> str:
@@ -98,6 +121,13 @@ def main() -> None:
             L.append(f"      largest deviations, trailing: {top(trail)}; forward: {top(ahead)}")
     for label, (n, ok) in count.items():
         L.append(f"  {label}: in-period rule within a factor of two in {ok} of {n}")
+    L.append("")
+
+    L.append("Rolling rule of the article's code block (36 rows ending at each month):")
+    for name in ("citibike / operator reports", MOTIVATING):
+        r = pd.Series(series[name]).sort_index()
+        x = reach_over_time(r).dropna()
+        L.append(f"  {name}: above 10% {spells(x, lambda v: v > 0.10)}; below 1% {spells(x, lambda v: v < 0.01)}")
     L.append("")
 
     n_trail, n_ahead = R.TRAIL, R.AHEAD
