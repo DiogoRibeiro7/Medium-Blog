@@ -164,6 +164,9 @@ python -m causal_tax_cuts.country_influence \
 
 Leave-one-country-out ranges are **descriptive sensitivity checks**, not
 bootstrap confidence intervals or a substitute for economic controls.
+The first audited 18-country live result, including the influence of each
+omitted country, is preserved in
+[`results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md`](results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md).
 
 1. Download the authors' file via the link above. Inspect the true headings:
 

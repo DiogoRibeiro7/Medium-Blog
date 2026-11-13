@@ -137,6 +137,67 @@ class CountryInfluenceTests(unittest.TestCase):
             self.assertIn("no bootstrap", metadata["inference"])
             self.assertIn("not_cluster_confidence_interval", metadata["status"])
 
+    def test_frozen_real_deletion_extrema_reconcile_with_individual_refits(
+        self,
+    ) -> None:
+        """Recompute reported ranges from committed rows, without raw data."""
+        folder = Path(__file__).resolve().parents[1] / "results"
+        with (folder / "country_deletions_2026-11-13.csv").open(
+            "r", newline="", encoding="utf-8"
+        ) as handle:
+            deletions = list(csv.DictReader(handle))
+        with (folder / "country_influence_summary_2026-11-13.csv").open(
+            "r", newline="", encoding="utf-8"
+        ) as handle:
+            summaries = list(csv.DictReader(handle))
+        with (folder / "pretrend_event_time_2026-11-13.csv").open(
+            "r", newline="", encoding="utf-8"
+        ) as handle:
+            event_times = {
+                int(row["event_time"]): float(row["mean_contrast"])
+                for row in csv.DictReader(handle)
+            }
+
+        self.assertEqual(len(deletions), 180)
+        self.assertEqual(len(summaries), 10)
+        self.assertEqual(len({row["excluded_country"] for row in deletions}), 18)
+        self.assertTrue(all(row["status"] == "success" for row in deletions))
+
+        for summary in summaries:
+            event_time = int(summary["event_time"])
+            rows = [row for row in deletions if int(row["event_time"]) == event_time]
+            self.assertEqual(len(rows), 18)
+            values = [float(row["mean_contrast"]) for row in rows]
+            shifts = [float(row["shift_from_full"]) for row in rows]
+            full = float(summary["full_mean_contrast"])
+            most_influential = min(
+                rows,
+                key=lambda row: (
+                    -abs(float(row["shift_from_full"])),
+                    row["excluded_country"],
+                ),
+            )["excluded_country"]
+            self.assertAlmostEqual(full, event_times[event_time])
+            self.assertAlmostEqual(min(values), float(summary["minimum_deletion_mean"]))
+            self.assertAlmostEqual(max(values), float(summary["maximum_deletion_mean"]))
+            self.assertAlmostEqual(
+                max(abs(shift) for shift in shifts),
+                float(summary["max_absolute_shift"]),
+            )
+            self.assertEqual(
+                sum(full * value < 0 for value in values),
+                int(summary["n_sign_reversals"]),
+            )
+            self.assertEqual(summary["most_influential_country"], most_influential)
+            self.assertEqual(
+                min(int(row["n_matched_events"]) for row in rows),
+                int(summary["min_matched_events"]),
+            )
+            self.assertEqual(
+                max(int(row["n_matched_events"]) for row in rows),
+                int(summary["max_matched_events"]),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

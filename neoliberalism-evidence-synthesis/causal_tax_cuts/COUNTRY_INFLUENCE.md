@@ -77,7 +77,8 @@ Generated files:
 CI obtains the same authors' public reform CSV and original WID bulk files
 as the previous research steps. It publishes the diagnostic outputs as
 short-lived artifacts, and the first verified real-data summary is frozen
-separately after the live run succeeds.
+in [`results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md`](results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md)
+with all 180 event-time/country-deletion rows.
 
 This checks fragility of **one major-tax-cut inequality contrast**. It does
 not identify the causal effect of neoliberalism on the distribution of wages
