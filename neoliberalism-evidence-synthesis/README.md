@@ -1,5 +1,11 @@
 # Neoliberalism, work, distribution and housing: an evidence audit
 
+**Causal work in progress:** [major-tax-cut identification and auditable
+matching code](causal_tax_cuts/README.md). The implementation is validated on
+synthetic inputs, but the authors' actual treatment-event file and harmonised
+outcomes have not been imported; **no independently replicated causal effect
+is claimed**.
+
 A reproducible empirical companion to two Medium essays by Diogo Ribeiro:
 
 1. [The Forty-Five-Year Experiment: What Neoliberalism Did to Work, Wealth and Everyday Life](https://github.com/DiogoRibeiro7/research-articles-medium/blob/main/themes/economics-and-society/neoliberalism-forty-five-year-experiment/article.md)
