@@ -115,6 +115,22 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 )
                 self.assertFalse(row["filter_effect_verified"])
 
+    def test_third_amp_index_targets_only_santa_maria_da_feira(self) -> None:
+        """Pin the next bounded source-probe selection without network access."""
+        with tempfile.TemporaryDirectory() as temp:
+            result = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=2, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(result["requested_codes"], ["0109"])
+            self.assertEqual(result["completed_json_captures"], 1)
+            self.assertEqual(result["items"][0]["municipality"], "Santa Maria da Feira")
+            self.assertEqual(
+                result["items"][0]["candidate_url"],
+                candidate_slice_url("0109", dimension="Dim2"),
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
