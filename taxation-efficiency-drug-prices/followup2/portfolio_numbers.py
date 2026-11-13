@@ -257,7 +257,7 @@ def main() -> None:
     big = med[med["py"] == END].sort_values("total", ascending=False).head(12)
     print(f"Largest medicines in {END} (company, approval year, US share):")
     for r in big.itertuples():
-        print(f"  {r.key:18s} {r.company:18s} approved {r.approval}  US {r.us / r.total:5.1%}  ({r.source})")
+        print(f"  {r.key:18s} {r.company:18s} approved {int(r.approval)}  US {r.us / r.total:5.1%}  ({r.source})")
 
     # ------------------------------------------------------------------ 3
     section("3. The US share to explain")
