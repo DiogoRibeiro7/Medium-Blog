@@ -17,6 +17,7 @@ jobs:
     timeout-minutes: 120
     defaults:
       run:
+        shell: bash
         working-directory: storm-clustering-portugal
     steps:
       - name: Check out the branch

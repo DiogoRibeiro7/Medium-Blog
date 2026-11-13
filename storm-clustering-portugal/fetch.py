@@ -185,7 +185,16 @@ def main(argv=None) -> int:
         fetcher.write_log()
         print("could not download the ISD station history", file=sys.stderr)
         return 1
-    stations = parse_history(history.decode("utf-8", errors="replace"))
+    text = history.decode("utf-8-sig", errors="replace")
+    stations = parse_history(text)
+    if not stations:
+        lines = text.splitlines()
+        print(f"no station selected; {len(lines)} lines; header: {lines[0][:200]!r}", file=sys.stderr)
+        for line in lines:
+            if '"PO"' in line or ",PO," in line:
+                print("  PO row:", line[:200], file=sys.stderr)
+        fetcher.write_log()
+        return 1
     with open(out / "stations.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(stations[0]))
         w.writeheader()
