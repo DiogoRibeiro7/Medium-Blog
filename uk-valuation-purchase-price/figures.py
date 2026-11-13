@@ -67,30 +67,33 @@ def _curve(split: str, lo: int = -15, hi: int = 14) -> pd.DataFrame:
 
 
 # ----------------------------------------------------------------------------- fig 1
-def fig1_near_purchase_price():
-    """Observed shares just below, at and just above the old price, against an indexed model."""
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.8), sharey=True)
-    for ax, split in zip(axes, ["2008-2012", "2022-2025"]):
-        c = _curve(split)
-        ax.plot(c.x, 100 * c.obs_loss_within_2, color=ORANGE, label="Observed: within 2% below")
-        ax.plot(c.x, 100 * c["M0-dist_loss_within_2"], color=ORANGE, linestyle=(0, (4, 3)),
-                linewidth=1.6, label="Indexed valuation: within 2% below")
-        ax.plot(c.x, 100 * (c.obs_gain_within_2 + c.obs_exact), color=BLUE,
-                label="Observed: at or within 2% above")
-        ax.plot(c.x, 100 * c["M0-dist_gain_within_2"], color=BLUE, linestyle=(0, (4, 3)),
-                linewidth=1.6, label="Indexed valuation: within 2% above")
-        ax.set_title(f"Resales {split}", loc="left")
-        _xpct(ax)
-        _grid(ax)
-    axes[0].set_ylabel("Share of resales in each 1% band of m")
-    axes[0].yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:.0f}%"))
-    h, lab = axes[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="upper left", bbox_to_anchor=(0.01, 0.9), ncol=2, fontsize=9)
-    _titles(fig, "Sales land just above the purchase price more often than an indexed valuation implies",
-            "Share of resales within 2% below the old price, and at or within 2% above it, by the gain "
-            "the area index implies.\nDashed: the same shares implied by the index plus the spread of "
-            "its errors in the calibration year.")
-    _finish(fig, "fig1_near_purchase_price", top=0.72)
+def fig1_error_by_year():
+    met = pd.read_csv(RES / "metrics.csv")
+    met = met[met.group_type == "year"].assign(year=lambda d: d.group.astype(int))
+    fig, ax = plt.subplots(figsize=(10.5, 5.2))
+    styles = {"M0": (MUTED, "Indexed valuation (M0)"), "M1": (ORANGE, "Correction without m (M1)"),
+              "M2": (BLUE, "Correction with m (M2)")}
+    for split in ["2008-2012", "2017-2019", "2022-2025"]:
+        sub = met[met.split == split]
+        for model, (col, lab) in styles.items():
+            s_ = sub[sub.model == model].sort_values("year")
+            ax.plot(s_.year, 100 * s_.mdae, color=col, marker="o", ms=5,
+                    label=lab if split == "2008-2012" else None)
+        a, b = split.split("-")
+        ax.text((int(a) + int(b)) / 2, 11.75, f"trained to {int(a) - 2}", ha="center",
+                color=INK2, fontsize=9)
+    ax.set_ylabel("Median absolute error, %")
+    ax.set_ylim(8.0, 12.0)
+    ax.set_xticks(range(2008, 2026))
+    ax.set_xticklabels([str(y) if y in (2008, 2010, 2012, 2017, 2019, 2022, 2025) else ""
+                        for y in range(2008, 2026)])
+    ax.set_xlabel("Year of resale (test years only)")
+    _grid(ax)
+    ax.legend(loc="lower left", ncol=3, fontsize=9)
+    _titles(fig, "Out-of-time error of three valuation models, by year of resale",
+            "Each test period is valued by models trained only on earlier resales and calibrated on the "
+            "year before it.")
+    _finish(fig, "fig1_error_by_year", top=0.88)
 
 
 # ----------------------------------------------------------------------------- fig 2
@@ -108,69 +111,45 @@ def fig2_partial_dependence():
     ax.set_ylabel("Change in predicted price, % (relative to m = 0)")
     ax.set_xlim(-31, 39)
     _grid(ax)
-    _titles(fig, "What the model with the purchase price learned about it",
-            "Average change in M2's predicted price as the purchase price varies with the indexed value "
-            "held fixed, by test period.\nEach model was trained only on resales before its test period.")
+    _titles(fig, "What the model learned about the purchase price",
+            "Average change in M2's predicted price when the purchase price varies and the indexed value "
+            "is held fixed.\nThe model tested on 2008-2012 was trained on 1996-2006, when 0.3% of resales "
+            "had m below zero.")
     _finish(fig, "fig2_partial_dependence", top=0.84)
 
 
 # ----------------------------------------------------------------------------- fig 3
 def fig3_loss_probability():
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.8), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 5.0), sharey=True)
+    lines = [("M0-dist", MUTED, "Indexed valuation + one error spread"),
+             ("M2-dist-h", BLUE, "M2 + error spread by holding period"),
+             ("C2", AQUA, "Classifier trained on earlier resales")]
     for ax, split in zip(axes, ["2008-2012", "2022-2025"]):
         c = _curve(split, -20, 19)
-        obs = 100 * (c.obs_loss_over_2 + c.obs_loss_within_2)
-        dist = 100 * (c["M0-dist_loss_over_2"] + c["M0-dist_loss_within_2"])
-        clf = 100 * (c["C2_loss_over_2"] + c["C2_loss_within_2"])
-        ax.scatter(c.x, obs, s=16, color=INK, zorder=3, label="Observed")
-        ax.plot(c.x, dist, color=BLUE, label="Indexed valuation + error distribution")
-        ax.plot(c.x, clf, color=ORANGE, label="Classifier trained on earlier sales")
+        c = c[c.n >= 1000]
+        ax.scatter(c.x, 100 * (c.obs_loss_over_2 + c.obs_loss_within_2), s=16, color=INK, zorder=3,
+                   label="Observed")
+        for key, col, lab in lines:
+            if f"{key}_loss_over_2" in c:
+                ax.plot(c.x, 100 * (c[f"{key}_loss_over_2"] + c[f"{key}_loss_within_2"]), color=col,
+                        label=lab)
         ax.set_title(f"Resales {split}", loc="left")
         _xpct(ax)
         _grid(ax)
     axes[0].set_ylabel("Share of resales below the purchase price")
     axes[0].yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:.0f}%"))
     h, lab = axes[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="upper left", bbox_to_anchor=(0.01, 0.885), ncol=3, fontsize=9)
+    fig.legend(h, lab, loc="upper left", bbox_to_anchor=(0.01, 0.875), ncol=2, fontsize=9)
     _titles(fig, "Predicting a sale below the purchase price",
-            "Observed share of resales below the old price, and two predictions of it, by the gain the "
-            "area index implies.")
-    _finish(fig, "fig3_loss_probability", top=0.78)
-
-
-# ----------------------------------------------------------------------------- fig 4
-def fig4_interval_coverage():
-    cov = pd.read_csv(RES / "coverage.csv")
-    bands = ["below -10%", "-10% to 0", "0 to +10%", "+10% to +25%", "above +25%"]
-    fig, axes = plt.subplots(1, 3, figsize=(11.5, 4.6), sharey=True)
-    for ax, split in zip(axes, ["2008-2012", "2017-2019", "2022-2025"]):
-        sub = cov[(cov.split == split) & (cov.group_type == "mband")]
-        x = np.arange(len(bands))
-        for k, (model, method, col, lab) in enumerate([
-                ("M1", "global", BLUE, "M1, one correction"),
-                ("M2", "global", ORANGE, "M2, one correction"),
-                ("M2", "mondrian", AQUA, "M2, one correction per band")]):
-            s = sub[(sub.model == model) & (sub.method == method)].set_index("group").reindex(bands)
-            ax.plot(x, 100 * s.coverage, color=col, marker="o", ms=5, label=lab)
-        ax.axhline(80, color=AXIS, linewidth=1)
-        ax.set_xticks(x, ["< -10%", "-10–0", "0–10%", "10–25%", "> 25%"], fontsize=8.5)
-        ax.set_title(f"Resales {split}", loc="left")
-        ax.set_xlabel("Band of m")
-        _grid(ax)
-    axes[0].set_ylabel("Coverage of the 80% interval")
-    axes[0].yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:.0f}%"))
-    h, lab = axes[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="upper left", bbox_to_anchor=(0.01, 0.885), ncol=3, fontsize=9)
-    _titles(fig, "Interval coverage by distance from the purchase price",
-            "Conformalised 80% intervals calibrated on the year before each test period.")
-    _finish(fig, "fig4_interval_coverage", top=0.78)
+            "Observed share of resales below the old price and three predictions of it, by the gain the "
+            "area index implies (1% bands with at least 1,000 resales).")
+    _finish(fig, "fig3_loss_probability", top=0.74)
 
 
 def main() -> int:
-    fig1_near_purchase_price()
+    fig1_error_by_year()
     fig2_partial_dependence()
     fig3_loss_probability()
-    fig4_interval_coverage()
     return 0
 
 
