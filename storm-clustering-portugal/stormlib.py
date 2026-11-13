@@ -10,14 +10,15 @@ from __future__ import annotations
 import gzip
 import io
 import math
+import os
 from dataclasses import dataclass
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy import optimize, stats
+from scipy import optimize, special, stats
 
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(os.environ.get("STORM_DATA", Path(__file__).resolve().parent / "data"))
 
 WINTER_MONTHS = (10, 11, 12, 1, 2, 3)
 REF_PERIOD = ("1981-01-01", "2010-12-31")
@@ -55,28 +56,30 @@ def load_stations(data: Path = DATA, min_syn: int = 6) -> tuple[pd.DataFrame, pd
     return wide, st
 
 
+TELE_NAMES = ["NAO", "EA", "WP", "EP_NP", "PNA", "EA_WR", "SCA", "TNH", "POL", "PT"]
+
+
 def load_teleconnections(data: Path = DATA) -> pd.DataFrame:
-    """Monthly CPC teleconnection indices indexed by (year, month). Falls back to the
-    NAO-only file if the full table is not on disk. Missing values (-99.9) become NaN."""
+    """Monthly CPC teleconnection indices indexed by (year, month). The file is fixed
+    width and adjacent fields can touch ("-0.71-99.90"), so numbers are read with a
+    regular expression. -99.9 (pattern not a leading mode that month) becomes NaN.
+    Falls back to the NAO-only file if the table is not on disk."""
+    import re
     path = data / "cpc_tele_index_nh.txt"
+    num = re.compile(r"-?\d+\.\d+")
     if path.exists():
-        lines = path.read_text(errors="replace").splitlines()
-        header = None
         rows = []
-        for line in lines:
-            tok = line.split()
-            if not tok:
+        for line in path.read_text(errors="replace").splitlines():
+            m = re.match(r"^\s*(\d{4})\s+(\d{1,2})\s(.*)$", line)
+            if not m:
                 continue
-            if header is None and "NAO" in tok and "EA" in tok:
-                header = [t for t in tok if t not in ("yyyy", "mm")]
+            vals = [float(x) for x in num.findall(m.group(3))]
+            if len(vals) < len(TELE_NAMES):
                 continue
-            if header is not None and len(tok) >= 2 + 5 and tok[0].isdigit() and len(tok[0]) == 4:
-                vals = [float(x) for x in tok[2:2 + len(header)]]
-                rows.append([int(tok[0]), int(tok[1])] + vals)
-        if header and rows:
-            df = pd.DataFrame(rows, columns=["year", "month"] + header)
-            df = df.replace(-99.9, np.nan).replace(-99.90, np.nan)
-            df.columns = [c.replace("/", "_") for c in df.columns]
+            rows.append([int(m.group(1)), int(m.group(2))] + vals[:len(TELE_NAMES)])
+        if rows:
+            df = pd.DataFrame(rows, columns=["year", "month"] + TELE_NAMES)
+            df = df.mask(df <= -99.0)
             return df.set_index(["year", "month"])
     df = pd.read_csv(data / "nao_monthly.csv")
     return df.rename(columns={"nao": "NAO"}).set_index(["year", "month"])
@@ -198,11 +201,6 @@ def season_bounds(season: int) -> tuple[pd.Timestamp, pd.Timestamp]:
     return pd.Timestamp(season, 10, 1), pd.Timestamp(season + 1, 3, 31)
 
 
-def season_time(t: pd.Timestamp, season: int) -> float:
-    """Days since 1 October of the season, at the middle of the day."""
-    return (t - pd.Timestamp(season, 10, 1)).days + 0.5
-
-
 def season_length(season: int) -> int:
     a, b = season_bounds(season)
     return (b - a).days + 1
@@ -226,49 +224,52 @@ def dispersion_test(counts: np.ndarray) -> float:
     return float(min(1.0, 2 * min(p_hi, 1 - p_hi)))
 
 
-def block_counts(ep: pd.DataFrame, seasons: np.ndarray, length: int) -> np.ndarray:
-    """Counts of episodes in consecutive non-overlapping blocks of `length` days within
-    each season (the incomplete final block of a season is dropped)."""
-    out = []
-    for s in seasons:
-        L = season_length(s)
-        nb = L // length
-        if nb == 0:
-            continue
-        t = np.array([season_time(p, s) for p in ep.peak[ep.season == s]])
-        c = np.histogram(t, bins=np.arange(0, (nb + 1) * length, length))[0]
-        out.extend(c[:nb])
-    return np.array(out)
-
-
 # ----------------------------------------------------------------------------
-# Hawkes process with a covariate-driven background (days as the time unit)
+# A self-exciting model on the daily grid of the catalogue
 # ----------------------------------------------------------------------------
+#
+# The events are episode START days. On each "live" day of a winter an episode starts
+# with probability 1 - exp(-lambda_d), where
+#
+#     lambda_d = Z_s * mu_d + n * (1 - e^-b) * sum_{j < d} e^{-b (d - j - 1)} y_j
+#
+# mu_d is the background (season and circulation), Z_s an unobserved multiplier for
+# winter s with a Gamma(k, 1/k) distribution (the "stormy winter" frailty, optional),
+# y_j = 1 if an episode started on day j, and the excitation kernel puts total mass n
+# (the branching ratio) on lags of 1, 2, ... days with time scale 1/b. Days on which a
+# new episode cannot start, because one is under way or because the catalogue forces a
+# calm day after it, are "dead" and drop out of the likelihood. Without the dead time a
+# kernel that peaks at lag zero would predict follow-on storms exactly where the
+# catalogue cannot contain them, and the fit would understate the excitation.
+
 
 @dataclass
-class PPData:
-    """Episode times for a set of seasons, stacked for a vectorised likelihood."""
-    seasons: np.ndarray           # season labels, in order
-    T: np.ndarray                 # season lengths (days)
-    X: np.ndarray                 # stacked per-day background design, all seasons
-    day_offset: np.ndarray        # first row of each season in X
-    times: np.ndarray             # event times (days since 1 Oct), grouped by season
-    ev_season: np.ndarray         # position (0..S-1) of each event's season
-    ev_row: np.ndarray            # row of X for each event's day
+class DayData:
+    seasons: np.ndarray            # (S,) season labels
+    X: np.ndarray                  # (D, p) background design, all seasons stacked
+    y: np.ndarray                  # (D,) 1 on episode start days
+    live: np.ndarray               # (D,) True where an episode could start
+    day_offset: np.ndarray         # (S,) first row of each season
+    T: np.ndarray                  # (S,) days per season
 
     @property
     def p(self) -> int:
         return self.X.shape[1]
 
     @property
+    def season_of_day(self) -> np.ndarray:
+        return np.repeat(np.arange(len(self.seasons)), self.T.astype(int))
+
+    @property
     def n_events(self) -> int:
-        return len(self.times)
+        return int(self.y.sum())
 
 
 def background_design(seasons, tele: pd.DataFrame | None, covars: list[str],
                       trend_center: float | None = None, daily_cov: pd.Series | None = None):
     """Per-day design matrix for each season: intercept, annual harmonic, monthly
-    teleconnection indices, optionally a daily covariate and a linear trend (per decade)."""
+    teleconnection indices, optionally a daily covariate (aligned by date) and a linear
+    trend (per decade from trend_center)."""
     out = {}
     for s in seasons:
         a, b = season_bounds(s)
@@ -286,48 +287,61 @@ def background_design(seasons, tele: pd.DataFrame | None, covars: list[str],
     return out
 
 
-def build_data(times_by_season: dict, seasons, design: dict) -> PPData:
+def season_arrays(ep: pd.DataFrame, s: int, gap: int):
+    """Start indicator and live mask for one season from an episode table."""
+    T = season_length(s)
+    y = np.zeros(T, dtype=np.int8)
+    live = np.ones(T, dtype=bool)
+    for _, r in ep[ep.season == s].iterrows():
+        i0 = (r.start - pd.Timestamp(s, 10, 1)).days
+        i1 = (r.end - pd.Timestamp(s, 10, 1)).days
+        y[i0] = 1
+        live[i0 + 1:min(T, i1 + gap + 2)] = False
+    return y, live
+
+
+def build_days(ep: pd.DataFrame, seasons, design: dict, gap: int) -> DayData:
     seasons = np.asarray(list(seasons))
-    T = np.array([design[s].shape[0] for s in seasons], float)
-    X = np.vstack([design[s] for s in seasons])
+    ys, lives = zip(*(season_arrays(ep, int(s), gap) for s in seasons))
+    T = np.array([len(v) for v in ys], float)
     off = np.concatenate([[0], np.cumsum(T[:-1])]).astype(int)
-    tt, es, er = [], [], []
-    for i, s in enumerate(seasons):
-        t = np.sort(np.asarray(times_by_season.get(s, []), float))
-        tt.append(t)
-        es.append(np.full(len(t), i))
-        er.append(off[i] + np.minimum(t.astype(int), int(T[i]) - 1))
-    return PPData(seasons, T, X, off, np.concatenate(tt) if tt else np.array([]),
-                  np.concatenate(es).astype(int), np.concatenate(er).astype(int))
+    return DayData(seasons, np.vstack([design[s] for s in seasons]), np.concatenate(ys),
+                   np.concatenate(lives), off, T)
 
 
-def episode_times(ep: pd.DataFrame) -> dict:
-    out = {}
-    for s, g in ep.groupby("season"):
-        out[int(s)] = [season_time(t, int(s)) for t in g.peak]
+def from_arrays(seasons, design, ys, lives) -> DayData:
+    seasons = np.asarray(list(seasons))
+    T = np.array([len(v) for v in ys], float)
+    off = np.concatenate([[0], np.cumsum(T[:-1])]).astype(int)
+    return DayData(seasons, np.vstack([design[s] for s in seasons]), np.concatenate(ys).astype(np.int8),
+                   np.concatenate(lives).astype(bool), off, T)
+
+
+def _excitation(d: DayData, beta: float) -> np.ndarray:
+    """K_d = (1 - e^-b) * sum_{j<d, same season} e^{-b (d - j - 1)} y_j (sums to 1 per event)."""
+    from scipy.signal import lfilter
+    q = math.exp(-beta)
+    out = np.empty(len(d.y))
+    for i in range(len(d.seasons)):
+        a0, a1 = d.day_offset[i], d.day_offset[i] + int(d.T[i])
+        yy = d.y[a0:a1].astype(float)
+        # K_d = q K_{d-1} + (1-q) y_{d-1}
+        out[a0:a1] = lfilter([0.0, 1.0 - q], [1.0, -q], yy)
     return out
 
 
-def _excitation_sums(times, ev_season, beta):
-    """A_k = sum over earlier events j of the same season of exp(-beta (t_k - t_j)),
-    by an exclusive cumulative sum within each season (no cross-season subtraction)."""
-    A = np.zeros(len(times))
-    if len(times) == 0:
-        return A
-    cut = np.flatnonzero(np.r_[True, ev_season[1:] != ev_season[:-1], True])
-    for a, b in zip(cut[:-1], cut[1:]):
-        t = times[a:b]
-        E = np.exp(beta * (t - t[0]))
-        excl = np.concatenate([[0.0], np.cumsum(E[:-1])])
-        A[a:b] = excl * np.exp(-beta * (t - t[0]))
-    return A
-
-
-def _unpack(theta, p, hawkes, trend_n):
+def _unpack(theta, p, hawkes, trend_n, frailty=False):
     gamma = theta[:p]
-    if not hawkes:
-        return gamma, -np.inf, 1.0, 0.0
-    return gamma, theta[p], math.exp(theta[p + 1]), (theta[p + 2] if trend_n else 0.0)
+    i = p
+    if hawkes:
+        a, beta = theta[i], math.exp(theta[i + 1])
+        i += 2
+        delta = theta[i] if trend_n else 0.0
+        i += 1 if trend_n else 0
+    else:
+        a, beta, delta = -np.inf, 1.0, 0.0
+    shape = math.exp(theta[i]) if frailty else None
+    return gamma, a, beta, delta, shape
 
 
 def branching(a, delta, season, center):
@@ -335,22 +349,58 @@ def branching(a, delta, season, center):
     return 1.0 / (1.0 + np.exp(-z))
 
 
-def negloglik(theta, d: PPData, hawkes: bool, trend_n: bool = False, center: float = 1988.0) -> float:
+N_QUAD = 24
+N_MAX = 0.9
+
+
+def gamma_quadrature(shape: float, n: int = N_QUAD):
+    """Nodes and normalised weights for E[f(Z)], Z ~ Gamma(shape, 1/shape), by generalised
+    Gauss-Laguerre quadrature computed with the Golub-Welsch eigenvalue method, so the
+    weights stay finite for large shapes (scipy's unnormalised weights overflow)."""
+    from scipy.linalg import eigh_tridiagonal
+    alpha = shape - 1.0
+    i = np.arange(n)
+    diag = 2 * i + alpha + 1
+    off = np.sqrt(np.arange(1, n) * (np.arange(1, n) + alpha))
+    u, V = eigh_tridiagonal(diag, off)
+    w = V[0, :] ** 2
+    return u / shape, w / w.sum()   # branching ratios above this are treated as implausible (near-explosive)
+
+
+def _day_ll(lam, y):
+    """Bernoulli log-likelihood with complementary log-log link, per day."""
+    return np.where(y == 1, np.log(-np.expm1(-lam)), -lam)
+
+
+def negloglik(theta, d: DayData, hawkes: bool, trend_n: bool = False, center: float = 1988.0,
+              frailty: bool = False, _cache: dict | None = None) -> float:
     p = d.p
-    gamma, a, beta, delta = _unpack(theta, p, hawkes, trend_n)
+    gamma, a, beta, delta, shape = _unpack(theta, p, hawkes, trend_n, frailty)
     eta = d.X @ gamma
-    if np.any(eta > 50):
+    if np.any(eta > 5):
         return 1e12
     mu = np.exp(eta)
-    comp = mu.sum()
-    lam = mu[d.ev_row]
+    exc = np.zeros(len(mu))
     if hawkes:
         nb_s = branching(a, delta, d.seasons, center)
-        nb = nb_s[d.ev_season]
-        A = _excitation_sums(d.times, d.ev_season, beta)
-        lam = lam + nb * beta * A
-        comp += np.sum(nb * (1.0 - np.exp(-beta * (d.T[d.ev_season] - d.times))))
-    return float(comp - np.sum(np.log(lam)))
+        if np.any(nb_s > N_MAX):
+            return 1e12
+        exc = np.repeat(nb_s, d.T.astype(int)) * _excitation(d, beta)
+    live = d.live
+    if not frailty:
+        lam = mu + exc
+        return float(-np.sum(_day_ll(lam[live], d.y[live])))
+    z, w = gamma_quadrature(shape)
+    sod = d.season_of_day[live]
+    S = len(d.seasons)
+    m, e, y = mu[live], exc[live], d.y[live]
+    ll = np.empty((S, len(z)))
+    for j in range(len(z)):
+        ll[:, j] = np.bincount(sod, weights=_day_ll(z[j] * m + e, y), minlength=S)
+    with np.errstate(divide="ignore"):
+        lw = np.log(w)
+    tot = special.logsumexp(ll + lw[None, :], axis=1)
+    return float(-tot.sum())
 
 
 @dataclass
@@ -362,6 +412,7 @@ class Fit:
     trend_n: bool
     center: float
     cov: np.ndarray | None
+    frailty: bool = False
 
     @property
     def k(self) -> int:
@@ -371,14 +422,20 @@ class Fit:
     def aic(self) -> float:
         return 2 * self.nll + 2 * self.k
 
+    def parts(self):
+        return _unpack(self.theta, self.p, self.hawkes, self.trend_n, self.frailty)
+
     def branching_ratio(self, season: float | None = None) -> float:
         if not self.hawkes:
             return 0.0
-        g, a, beta, delta = _unpack(self.theta, self.p, True, self.trend_n)
+        g, a, beta, delta, _ = self.parts()
         return float(branching(a, delta, self.center if season is None else season, self.center))
 
     def timescale(self) -> float:
         return math.exp(-self.theta[self.p + 1]) if self.hawkes else float("nan")
+
+    def frailty_shape(self) -> float:
+        return self.parts()[4] if self.frailty else float("inf")
 
     def se(self) -> np.ndarray:
         if self.cov is None:
@@ -386,33 +443,41 @@ class Fit:
         return np.sqrt(np.clip(np.diag(self.cov), 0, None))
 
 
-def fit(d: PPData, hawkes: bool, trend_n: bool = False, center: float = 1988.0,
-        hessian: bool = True, quick: bool = False) -> Fit:
+def fit(d: DayData, hawkes: bool, trend_n: bool = False, center: float = 1988.0,
+        hessian: bool = True, quick: bool = False, frailty: bool = False) -> Fit:
     p = d.p
     start = np.zeros(p)
-    start[0] = math.log(max(d.n_events, 1) / d.T.sum())
+    start[0] = math.log(max(d.n_events, 1) / max(d.live.sum(), 1))
     bounds = [(-20, 20)] * p
     starts = [start]
     if hawkes:
-        bounds += [(-9, 4), (math.log(1 / 60.0), math.log(2.0))] + ([(-6, 6)] if trend_n else [])
-        grid = ((-1.0, math.log(1 / 3.0)), (-2.5, math.log(1 / 1.5)), (0.0, math.log(1 / 8.0)), (-1.0, math.log(1 / 20.0)))
+        bounds += [(-9, 2), (math.log(1 / 60.0), math.log(2.0))] + ([(-1.5, 1.5)] if trend_n else [])
+        grid = ((-2.0, math.log(1 / 5.0)), (-1.0, math.log(1 / 2.0)), (-2.0, math.log(1 / 15.0)), (-3.0, math.log(1 / 40.0)))
         if quick:
             grid = grid[:2]
         starts = [np.concatenate([start, [a0, b0] + ([0.0] if trend_n else [])]) for a0, b0 in grid]
+    if frailty:
+        base = fit(d, hawkes, trend_n, center, hessian=False, quick=quick)
+        bounds += [(math.log(0.5), math.log(2000.0))]
+        starts = [np.concatenate([base.theta, [math.log(k0)]]) for k0 in (10.0, 100.0)]
     best = None
     for s0 in starts:
-        r = optimize.minimize(negloglik, s0, args=(d, hawkes, trend_n, center),
+        r = optimize.minimize(negloglik, s0, args=(d, hawkes, trend_n, center, frailty),
                               method="L-BFGS-B", bounds=bounds)
         if best is None or r.fun < best.fun:
             best = r
+    # Round the estimates so that last-bit differences between machines (BLAS kernels)
+    # cannot change the random draws of the simulations that use them.
+    x = np.round(best.x, 6)
+    best_fun = negloglik(x, d, hawkes, trend_n, center, frailty)
     cov = None
     if hessian:
-        H = numerical_hessian(lambda th: negloglik(th, d, hawkes, trend_n, center), best.x)
+        H = numerical_hessian(lambda th: negloglik(th, d, hawkes, trend_n, center, frailty), x)
         try:
             cov = np.linalg.inv(H)
         except np.linalg.LinAlgError:
             cov = None
-    return Fit(best.x, float(best.fun), p, hawkes, trend_n, center, cov)
+    return Fit(x, float(best_fun), p, hawkes, trend_n, center, cov, frailty)
 
 
 def numerical_hessian(f, x, eps=1e-4):
@@ -430,77 +495,126 @@ def numerical_hessian(f, x, eps=1e-4):
     return H
 
 
-def rescaled_intervals(f: Fit, d: PPData) -> np.ndarray:
-    """Time-rescaled intervals between successive episodes within each season (the first
-    measured from 1 October); Exp(1) and independent if the model is right."""
-    gamma, a, beta, delta = _unpack(f.theta, f.p, f.hawkes, f.trend_n)
+def posterior_frailty(f: Fit, d: DayData) -> np.ndarray:
+    """Posterior mean of each winter's multiplier Z (ones without a frailty)."""
+    if not f.frailty:
+        return np.ones(len(d.seasons))
+    gamma, a, beta, delta, shape = f.parts()
     mu = np.exp(d.X @ gamma)
-    out = []
-    for i, s in enumerate(d.seasons):
-        m = mu[d.day_offset[i]:d.day_offset[i] + int(d.T[i])]
-        cm = np.concatenate([[0.0], np.cumsum(m)])
-        t = d.times[d.ev_season == i]
-        day = np.minimum(np.floor(t).astype(int), len(m) - 1)
-        L = cm[day] + m[day] * (t - day)
-        if f.hawkes:
-            nb = float(branching(a, delta, s, f.center))
-            L = L + np.array([nb * np.sum(1.0 - np.exp(-beta * (tk - t[:k]))) for k, tk in enumerate(t)])
-        out.extend(np.diff(np.concatenate([[0.0], L])))
-    return np.array(out)
+    exc = np.zeros(len(mu))
+    if f.hawkes:
+        exc = np.repeat(branching(a, delta, d.seasons, f.center), d.T.astype(int)) * _excitation(d, beta)
+    live = d.live
+    z, w = gamma_quadrature(shape)
+    sod = d.season_of_day[live]
+    S = len(d.seasons)
+    ll = np.empty((S, len(z)))
+    for j in range(len(z)):
+        ll[:, j] = np.bincount(sod, weights=_day_ll(z[j] * mu[live] + exc[live], d.y[live]), minlength=S)
+    with np.errstate(divide="ignore"):
+        lp = ll + np.log(w)[None, :]
+    lp -= special.logsumexp(lp, axis=1, keepdims=True)
+    return np.exp(lp) @ z
 
 
-def intensity_path(f: Fit, d: PPData, season: int, step: float = 0.1):
-    """Background and total conditional intensity through one season."""
-    gamma, a, beta, delta = _unpack(f.theta, f.p, f.hawkes, f.trend_n)
+def intensity_path(f: Fit, d: DayData, season: int, z: float = 1.0):
+    """Daily background (times the winter's multiplier) and total rate through one season."""
+    gamma, a, beta, delta, _ = f.parts()
     i = int(np.where(d.seasons == season)[0][0])
-    m = np.exp(d.X[d.day_offset[i]:d.day_offset[i] + int(d.T[i])] @ gamma)
-    grid = np.arange(0, d.T[i], step)
-    bg = m[np.minimum(grid.astype(int), len(m) - 1)]
-    t = d.times[d.ev_season == i]
+    a0, a1 = d.day_offset[i], d.day_offset[i] + int(d.T[i])
+    bg = z * np.exp(d.X[a0:a1] @ gamma)
     tot = bg.copy()
     if f.hawkes:
-        nb = float(branching(a, delta, season, f.center))
-        for tk in t:
-            after = grid > tk
-            tot[after] += nb * beta * np.exp(-beta * (grid[after] - tk))
-    return grid, bg, tot
+        tot = tot + float(branching(a, delta, season, f.center)) * _excitation(d, beta)[a0:a1]
+    return bg, tot, d.y[a0:a1], d.live[a0:a1]
 
 
-def simulate_season(f: Fit, X: np.ndarray, season: int, rng: np.random.Generator) -> np.ndarray:
-    """Event times for one season by the cluster (branching) representation."""
-    gamma, a, beta, delta = _unpack(f.theta, f.p, f.hawkes, f.trend_n)
+def simulate(f: Fit, X: np.ndarray, season: int, R: int, rng: np.random.Generator,
+             pool_len: np.ndarray, pool_sev: np.ndarray, gap: int):
+    """R replicate winters on the daily grid. Each new episode draws its length and
+    severity jointly from the observed catalogue, which sets its dead time.
+    Returns (starts, severity, live): (R, T) arrays."""
+    gamma, a, beta, delta, shape = f.parts()
     mu = np.exp(X @ gamma)
     T = len(mu)
-    counts = rng.poisson(mu)
-    imm = (np.repeat(np.arange(T), counts) + rng.random(counts.sum())).astype(float)
-    if not f.hawkes:
-        return np.sort(imm)
-    nb = float(branching(a, delta, season, f.center))
-    events = [imm]
-    frontier = imm
-    while len(frontier):
-        k = rng.poisson(nb, len(frontier))
-        if k.sum() == 0:
-            break
-        kids = np.repeat(frontier, k) + rng.exponential(1.0 / beta, k.sum())
-        kids = kids[kids < T]
-        events.append(kids)
-        frontier = kids
-    return np.sort(np.concatenate(events))
+    Z = rng.gamma(shape, 1.0 / shape, R) if shape is not None else np.ones(R)
+    nb = float(branching(a, delta, season, f.center)) if f.hawkes else 0.0
+    q = math.exp(-beta) if f.hawkes else 0.0
+    K = np.zeros(R)
+    dead_until = np.full(R, -1)
+    starts = np.zeros((R, T), dtype=bool)
+    sev = np.zeros((R, T))
+    live = np.zeros((R, T), dtype=bool)
+    for dday in range(T):
+        lv = dday > dead_until
+        live[:, dday] = lv
+        lam = Z * mu[dday] + nb * K
+        y = lv & (rng.random(R) < -np.expm1(-lam))
+        idx = np.flatnonzero(y)
+        if len(idx):
+            k = rng.integers(0, len(pool_len), len(idx))
+            starts[idx, dday] = True
+            sev[idx, dday] = pool_sev[k]
+            dead_until[idx] = dday + pool_len[k] - 1 + gap + 1
+        K = q * K + (1 - q) * y
+    return starts, sev, live
 
 
-def to_day_events(times: np.ndarray) -> np.ndarray:
-    """Simulated continuous times on the daily grid the catalogue uses: at most one
-    episode peak per day, and episodes on consecutive days merge (as in the catalogue,
-    where an episode is a run of storm days)."""
-    if len(times) == 0:
-        return times
-    d = np.unique(np.floor(times).astype(int))
-    keep = [d[0]]
-    for x in d[1:]:
-        if x - keep[-1] > 1:
-            keep.append(x)
-    return np.array(keep) + 0.5
+def fit_continuous(ep: pd.DataFrame, seasons, design: dict, center_day: str = "peak"):
+    """For comparison only: the textbook continuous-time Hawkes process on episode peak
+    times (middle of the peak day), with an exponential kernel that starts at lag zero and
+    no dead time. Returns (Poisson log-lik, Hawkes log-lik, branching ratio, time scale)."""
+    seasons = np.asarray(list(seasons))
+    X = np.vstack([design[s] for s in seasons])
+    T = np.array([design[s].shape[0] for s in seasons], float)
+    off = np.concatenate([[0], np.cumsum(T[:-1])]).astype(int)
+    tt, es, er = [], [], []
+    for i, s in enumerate(seasons):
+        t = np.sort([(x - pd.Timestamp(int(s), 10, 1)).days + 0.5 for x in ep[ep.season == s][center_day]])
+        tt.append(np.asarray(t, float))
+        es.append(np.full(len(t), i))
+        er.append(off[i] + np.asarray(t, float).astype(int))
+    t, es, er = np.concatenate(tt), np.concatenate(es).astype(int), np.concatenate(er).astype(int)
+    p = X.shape[1]
+
+    def exc_sums(beta):
+        A = np.zeros(len(t))
+        cut = np.flatnonzero(np.r_[True, es[1:] != es[:-1], True])
+        for a0, a1 in zip(cut[:-1], cut[1:]):
+            tk = t[a0:a1]
+            E = np.exp(beta * (tk - tk[0]))
+            A[a0:a1] = np.concatenate([[0.0], np.cumsum(E[:-1])]) * np.exp(-beta * (tk - tk[0]))
+        return A
+
+    def nll(th, hawkes):
+        mu = np.exp(X @ th[:p])
+        lam = mu[er]
+        comp = mu.sum()
+        if hawkes:
+            n, beta = 1 / (1 + math.exp(-th[p])), math.exp(th[p + 1])
+            lam = lam + n * beta * exc_sums(beta)
+            comp += n * np.sum(1 - np.exp(-beta * (T[es] - t)))
+        return comp - np.sum(np.log(lam))
+
+    x0 = np.zeros(p)
+    x0[0] = math.log(len(t) / T.sum())
+    r0 = optimize.minimize(nll, x0, args=(False,), method="L-BFGS-B")
+    best = None
+    for a0, b0 in ((-1.0, math.log(1 / 3.0)), (-2.5, math.log(1 / 1.5)), (0.0, math.log(1 / 8.0)), (-1.0, math.log(1 / 20.0))):
+        r = optimize.minimize(nll, np.r_[r0.x, a0, b0], args=(True,), method="L-BFGS-B",
+                              bounds=[(-20, 20)] * p + [(-9, 4), (math.log(1 / 60.0), math.log(2.0))])
+        if best is None or r.fun < best.fun:
+            best = r
+    x = np.round(best.x, 6)
+    return (-float(r0.fun), -float(nll(x, True)), 1 / (1 + math.exp(-x[p])), math.exp(-x[p + 1]))
+
+
+def window_max(arr: np.ndarray, w: int) -> np.ndarray:
+    """Largest sum over any w consecutive days, row by row."""
+    c = np.concatenate([np.zeros((arr.shape[0], 1)), np.cumsum(arr, axis=1)], axis=1)
+    if arr.shape[1] <= w:
+        return c[:, -1]
+    return np.max(c[:, w:] - c[:, :-w], axis=1)
 
 
 def mann_kendall(x: np.ndarray) -> tuple[float, float]:

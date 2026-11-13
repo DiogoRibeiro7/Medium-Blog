@@ -1,0 +1,204 @@
+Storm clustering in Portugal: printed results
+=============================================
+
+1. Data and the storm severity index
+------------------------------------
+ERA5 nodes: 38, days 1950-10-01 to 2026-03-31, missing values 0
+98th percentile of daily maximum 10 m wind (1981-2010), across nodes: median 8.1 m/s, range 6.7-13.4 m/s
+  nodes north of 40N: 18, south: 20
+Stations used for the independent check (synoptic-hour maxima, >= 6 of 8 reports a day):
+  POMU0068545 PORTO PORTUGAL (PEDRAS RUBRAS): 98th percentile 11.0 m/s, 19570 valid days
+  POMU0068554 FARO PORTUGAL: 98th percentile 11.3 m/s, 19558 valid days
+  POI0000LPBJ BEJA: 98th percentile 10.3 m/s, 17890 valid days
+Stations with >50% valid days in 2015-2022: 16; of those with >90% valid days in Oct 2025-Mar 2026: 5
+
+2. Episode catalogue and validation
+-----------------------------------
+Seasons 1950/51 to 2025/26: 76
+Storm-day threshold (96th percentile of the winter index): 0.36; storm days per season 7.29
+Episodes: 402, per season 5.29; mean length 1.38 days; share lasting one day 72%
+Twenty most severe episodes (severity = summed daily index):
+  1981-12-30  3 d  severity   297.2  peak area 100%
+  2010-02-27  1 d  severity   211.8  peak area 100%
+  2026-01-28  4 d  severity   175.5  peak area 58%
+  1959-11-30  2 d  severity   143.1  peak area 100%
+  2013-01-19  1 d  severity   108.6  peak area 97%
+  2019-12-19  3 d  severity   108.0  peak area 100%
+  1972-02-05  4 d  severity   107.9  peak area 100%
+  2025-03-20  2 d  severity    91.8  peak area 97%
+  1989-02-25  3 d  severity    91.1  peak area 100%
+  1958-12-16  2 d  severity    82.9  peak area 100%
+  2014-02-09  2 d  severity    74.4  peak area 95%
+  2000-12-07  2 d  severity    73.0  peak area 100%
+  1952-03-28  1 d  severity    71.2  peak area 95%
+  1973-01-17  2 d  severity    69.9  peak area 82%
+  1979-02-14  4 d  severity    63.2  peak area 97%
+  1969-01-13  2 d  severity    61.9  peak area 100%
+  1982-11-07  2 d  severity    60.5  peak area 100%
+  1978-12-11  1 d  severity    59.1  peak area 100%
+  1967-03-08  1 d  severity    52.3  peak area 100%
+  1997-11-05  2 d  severity    51.6  peak area 47%
+Named and documented storms (rank of the day's index among all winter days since 1950):
+  Klaus                  2009-01-24  max index   36.92 on 2009-01-23, above 99.8% of winter days; in an episode: yes
+  Oeste storm            2009-12-23  max index   43.22 on 2009-12-23, above 99.8% of winter days; in an episode: yes
+  Xynthia                2010-02-27  max index  211.83 on 2010-02-27, above 100.0% of winter days; in an episode: yes
+  Gong                   2013-01-19  max index  108.62 on 2013-01-19, above 100.0% of winter days; in an episode: yes
+  Emma                   2018-02-28  max index    6.45 on 2018-03-01, above 98.9% of winter days; in an episode: yes
+  Leslie                 2018-10-13  max index    0.43 on 2018-10-13, above 96.2% of winter days; in an episode: yes
+  Daniel                 2019-12-16  max index    0.02 on 2019-12-16, above 91.8% of winter days; in an episode: no
+  Elsa                   2019-12-19  max index   69.57 on 2019-12-19, above 99.9% of winter days; in an episode: yes
+  Fabien                 2019-12-21  max index   28.76 on 2019-12-21, above 99.8% of winter days; in an episode: yes
+  Ingrid                 2026-01-23  max index    0.05 on 2026-01-23, above 93.0% of winter days; in an episode: no
+  Joseph                 2026-01-26  max index    7.37 on 2026-01-27, above 99.0% of winter days; in an episode: yes
+  Kristin                2026-01-28  max index  166.11 on 2026-01-28, above 100.0% of winter days; in an episode: yes
+  Leonardo               2026-02-05  max index   20.66 on 2026-02-05, above 99.7% of winter days; in an episode: yes
+  Marta                  2026-02-07  max index   19.95 on 2026-02-07, above 99.6% of winter days; in an episode: yes
+Documented storms inside an episode (+/- 1 day): 12 of 14
+Winter days with both indices: 8814; Spearman correlation 0.54
+Of the 50 most severe station episodes (1973/74 onwards), 42 coincide with an ERA5 episode (+/- 1 day)
+Seasonal episode counts, ERA5 vs stations, 48 common seasons: correlation 0.52
+Episodes in 2025/26: 9 (average 5.29)
+  2025-11-13 to 2025-11-13  peak 2025-11-13  severity    10.6 (rank 99 of 402)  
+  2025-11-15 to 2025-11-15  peak 2025-11-15  severity     5.6 (rank 147 of 402)  
+  2025-12-16 to 2025-12-16  peak 2025-12-16  severity     1.1 (rank 293 of 402)  
+  2026-01-25 to 2026-01-28  peak 2026-01-28  severity   175.5 (rank 3 of 402)  Joseph, Kristin
+  2026-01-30 to 2026-01-30  peak 2026-01-30  severity     3.2 (rank 192 of 402)  
+  2026-02-02 to 2026-02-05  peak 2026-02-05  severity    24.7 (rank 41 of 402)  Leonardo
+  2026-02-07 to 2026-02-07  peak 2026-02-07  severity    20.0 (rank 53 of 402)  Marta
+  2026-02-11 to 2026-02-11  peak 2026-02-11  severity     3.0 (rank 201 of 402)  
+  2026-02-13 to 2026-02-13  peak 2026-02-13  severity     3.5 (rank 186 of 402)  
+
+3. Dispersion of storm counts and the circulation
+-------------------------------------------------
+Episodes per season: mean 5.29, variance 8.93, dispersion psi = 0.69, Poisson test p = 0.00037
+Most active seasons: 2000/01 (15), 1965/66 (13), 1959/60 (12), 1995/96 (11), 1989/90 (11), 2023/24 (11)
+Seasons with no episode: 0
+2025/26 count 9: more than in 87% of seasons, at least as many as in 92%
+Monthly counts (456 months): dispersion after month-of-season means only: Pearson chi2/df = 1.33
+  + NAO  : coefficient -0.351 (se 0.046), rate ratio per unit 0.70, deviance drop 58.9
+  + EA   : coefficient +0.221 (se 0.044), rate ratio per unit 1.25, deviance drop 25.5
+  + SCA  : coefficient +0.164 (se 0.050), rate ratio per unit 1.18, deviance drop 10.8
+  + EA_WR: coefficient -0.099 (se 0.047), rate ratio per unit 0.91, deviance drop 4.4
+  + POL  : coefficient -0.028 (se 0.044), rate ratio per unit 0.97, deviance drop 0.4
+Indices kept by AIC (forward selection): NAO, EA, SCA, POL
+  NAO: rate ratio per standard deviation 0.69 (95% CI 0.63-0.76)
+  EA: rate ratio per standard deviation 1.26 (95% CI 1.16-1.38)
+  SCA: rate ratio per standard deviation 1.21 (95% CI 1.09-1.34)
+  POL: rate ratio per standard deviation 0.94 (95% CI 0.86-1.02)
+Monthly dispersion after the indices: Pearson chi2/df = 1.17 (p = 0.0089 against Poisson)
+Share of the extra-Poisson variance of monthly counts removed by the indices: 49%
+Seasonal counts after the seasonal-mean indices: Pearson chi2/df = 1.29
+2025/26 season means: NAO -0.06, EA +0.50, SCA -0.07, POL -0.96; expected episodes given those 5.5, observed 9
+
+4. Storms that bring storms: a self-exciting model on the daily grid
+--------------------------------------------------------------------
+Winter days 13851, of which days on which an episode could start 13300 (the rest are inside an episode or the calm day after it)
+  No excitation: seasonal cycle                  log-lik  -1791.36  AIC   3588.7
+  No excitation: + circulation indices           log-lik  -1732.99  AIC   3480.0
+  No excitation: + indices + stormy winters      log-lik  -1730.73  AIC   3477.5; winter-to-winter SD of the background multiplier 0.26
+  Self-exciting: seasonal cycle                  log-lik  -1744.63  AIC   3499.3; n = 0.41 (95% CI 0.30-0.52), time scale 2.7 d (1.7-4.1)
+  Self-exciting: + indices                       log-lik  -1704.03  AIC   3426.1; n = 0.33 (95% CI 0.23-0.46), time scale 2.3 d (1.4-3.8)
+  Self-exciting: + indices + stormy winters      log-lik  -1704.03  AIC   3428.1; n = 0.33 (95% CI 0.23-0.46), time scale 2.3 d (1.4-3.8); winter-to-winter SD of the background multiplier 0.02
+  Background rate ratios per standard deviation of each index (self-exciting model with indices):
+    NAO: 0.68 (95% CI 0.62-0.76)
+    EA: 1.29 (95% CI 1.16-1.43)
+    SCA: 1.21 (95% CI 1.08-1.37)
+    POL: 0.93 (95% CI 0.84-1.03)
+  LR, circulation indices: 116.7, p = 2.6e-24
+  LR, stormy winters beyond the indices: 4.5, p (chi-bar approx.) = 0.017
+  LR, self-excitation, seasonal cycle only: 93.5, p (chi-bar approx.) = 2.5e-21
+  LR, self-excitation beyond the indices: 57.9, p (chi-bar approx.) = 1.3e-13
+  LR, self-excitation beyond indices and stormy winters: 53.4, p (chi-bar approx.) = 1.3e-12
+  LR, stormy winters, given self-excitation: 0.0, p (chi-bar approx.) = 0.5
+  Simulation check (200 histories from the model with indices and stormy winters, no excitation): LR of self-excitation 1.8 median, 8.5 at the 95th percentile, 15.8 at most, against 57.9 observed; p = 0.005; branching ratio fitted to the simulated histories: median 0.10, 95th percentile 0.26
+  Adding the daily NAO (mean of the previous 7 days) to the background: rate ratio per unit 0.68 without excitation; branching ratio 0.32 (95% CI 0.22-0.45), time scale 2.2 d; LR 53.1, p = 1.5e-12
+  Episodes starting within 5 days of the end of the previous one: 113 of 402; median severity 3.5 against 2.9 for the others (Mann-Whitney p = 0.13); share in the top quarter 27% against 25%
+  Branching ratio 0.33: about 33% of episodes are triggered by an earlier one; a background episode starts a family of 1.50 episodes on average
+    share of the triggered episodes expected within 3 days of their parent: 73%
+    share of the triggered episodes expected within 7 days of their parent: 95%
+    share of the triggered episodes expected within 14 days of their parent: 100%
+Pairs of episode starts by separation, observed and expected (no excitation: indices and stormy winters):
+   2- 4 days: observed 93; no excitation 44.3 (ratio 2.10, histories with as many 0.0%); self-exciting 85.4
+   5- 9 days: observed 88; no excitation 78.4 (ratio 1.12, histories with as many 22.2%); self-exciting 94.9
+  10-19 days: observed 130; no excitation 147.0 (ratio 0.88, histories with as many 80.2%); self-exciting 142.4
+  20-30 days: observed 142; no excitation 144.9 (ratio 0.98, histories with as many 56.2%); self-exciting 135.2
+Dispersion of episode counts by block length (observed; 90% ranges without and with excitation):
+    7 days: +0.09   no excitation -0.09 to +0.00   self-exciting +0.04 to +0.16
+   14 days: +0.24   no excitation -0.06 to +0.10   self-exciting +0.14 to +0.32
+   30 days: +0.33   no excitation +0.07 to +0.35   self-exciting +0.29 to +0.59
+   61 days: +0.35   no excitation +0.11 to +0.65   self-exciting +0.29 to +0.82
+   91 days: +0.51   no excitation +0.21 to +0.87   self-exciting +0.32 to +0.96
+  182 days: +0.69   no excitation +0.28 to +1.30   self-exciting +0.30 to +1.25
+Share of episodes followed by another within 5 days: observed 26%; no excitation 15% (90% range 12%-18%); self-exciting 24% (21%-28%)
+Share of episodes followed by another within 10 days: observed 36%; no excitation 29% (90% range 25%-33%); self-exciting 37% (34%-41%)
+
+5. How rare was 2025/26?
+------------------------
+Strong episode: severity in the top quarter of all episodes (at least 10.4)
+  episodes in the winter: 9; rank 7 of 76 (tied with 3); at least as high in 10 winters; highest: 2000/01 (15), 1965/66 (13), 1959/60 (12), 1995/96 (11)
+  most episodes in any 21 days: 6; rank 1 of 76 (tied with 1); at least as high in 2 winters; highest: 2000/01 (6), 2025/26 (6), 2017/18 (5), 1965/66 (5)
+  most episodes in any 30 days: 6; rank 1 of 76 (tied with 5); at least as high in 6 winters; highest: 1959/60 (6), 2000/01 (6), 2025/26 (6), 1965/66 (6)
+  largest 30-day severity: 229.9; rank 2 of 76; at least as high in 2 winters; highest: 1981/82 (297.8), 2025/26 (229.9), 2009/10 (216.0), 1959/60 (167.0)
+  winter total severity: 247.2; rank 3 of 76; at least as high in 3 winters; highest: 1981/82 (300.7), 2009/10 (283.8), 2025/26 (247.2), 1959/60 (194.3)
+  strong episodes in the winter: 4; rank 1 of 76 (tied with 4); at least as high in 5 winters; highest: 1950/51 (4), 2013/14 (4), 2025/26 (4), 1968/69 (4)
+  most strong episodes in any 30 days: 3; rank 1 of 76 (tied with 1); at least as high in 2 winters; highest: 1958/59 (3), 2025/26 (3), 1955/56 (2), 1950/51 (2)
+  most strong episodes in any 14 days: 3; rank 1 of 76 (tied with 1); at least as high in 2 winters; highest: 1958/59 (3), 2025/26 (3), 1955/56 (2), 1950/51 (2)
+Return periods in winters, from 20,000 simulated winters per scenario (any: circulation of a random past winter; 2025/26: the circulation of 2025/26):
+  episodes in the winter: no excitation/any 7, no excitation/2025/26 4, self-exciting/any 7, self-exciting/2025/26 5
+  most episodes in any 21 days: no excitation/any 215, no excitation/2025/26 294, self-exciting/any 76, self-exciting/2025/26 57
+  most episodes in any 30 days: no excitation/any 45, no excitation/2025/26 37, self-exciting/any 24, self-exciting/2025/26 16
+  largest 30-day severity: no excitation/any 56, no excitation/2025/26 43, self-exciting/any 47, self-exciting/2025/26 44
+  winter total severity: no excitation/any 34, no excitation/2025/26 26, self-exciting/any 32, self-exciting/2025/26 29
+  strong episodes in the winter: no excitation/any 17, no excitation/2025/26 12, self-exciting/any 18, self-exciting/2025/26 12
+  most strong episodes in any 30 days: no excitation/any 36, no excitation/2025/26 21, self-exciting/any 28, self-exciting/2025/26 19
+  most strong episodes in any 14 days: no excitation/any 172, no excitation/2025/26 122, self-exciting/any 98, self-exciting/2025/26 72
+Winters with at least three episodes within w days, and with at least three strong ones (observed; self-exciting model, any circulation; no-excitation model):
+    4 days: any three 0 of 76 winters (never); self-exciting never; no excitation never | strong three 0 winters (never); self-exciting never; no excitation never; 2025/26: no/no
+    6 days: any three 8 of 76 winters (once in 9.5); self-exciting once in 13.3; no excitation once in 45.5 | strong three 1 winters (once in 76.0); self-exciting once in 800.0; no excitation once in 4000.0; 2025/26: no/no
+    7 days: any three 11 of 76 winters (once in 6.9); self-exciting once in 7.8; no excitation once in 23.4 | strong three 1 winters (once in 76.0); self-exciting once in 571.4; no excitation once in 2000.0; 2025/26: yes/no
+   14 days: any three 23 of 76 winters (once in 3.3); self-exciting once in 2.9; no excitation once in 4.5 | strong three 2 winters (once in 38.0); self-exciting once in 95.2; no excitation once in 250.0; 2025/26: yes/yes
+   28 days: any three 38 of 76 winters (once in 2.0); self-exciting once in 1.9; no excitation once in 2.1 | strong three 2 winters (once in 38.0); self-exciting once in 33.6; no excitation once in 40.4; 2025/26: yes/yes
+  182 days: any three 64 of 76 winters (once in 1.2); self-exciting once in 1.2; no excitation once in 1.2 | strong three 14 winters (once in 5.4); self-exciting once in 6.6; no excitation once in 6.1; 2025/26: yes/yes
+
+6. Has clustering increased? (ERA5, 1950/51 to 2025/26)
+-------------------------------------------------------
+Episodes per winter, Poisson trend: -0.4% per decade (95% CI -4.8% to +4.1%)
+Mann-Kendall on episodes per winter: tau -0.013, p = 0.87
+Self-exciting model with a trend in the background: -1.4% per decade (95% CI -7.3% to +4.8%); branching ratio 0.33
+Adding a trend in the branching ratio: logit change per decade -0.06 (se 0.12); LR 0.27, p = 0.60; implied branching ratio 1950/51 0.39, 2025/26 0.28
+  first half (1950/51 to 1987/88): branching ratio 0.34 (95% CI 0.19-0.53), time scale 2.0 days, 202 episodes
+  second half (1988/89 to 2025/26): branching ratio 0.33 (95% CI 0.19-0.50), time scale 2.7 days, 200 episodes
+Moving 31-winter windows: branching ratio between 0.26 and 0.38; window centred on 1965: 0.37; centred on 2010: 0.31
+  dispersion of episodes per winter between +0.48 and +1.42 across windows
+
+6. Has clustering increased? (stations, 1973/74 to 2025/26)
+-----------------------------------------------------------
+Episodes per winter, Poisson trend: -7.3% per decade (95% CI -14.5% to +0.4%)
+Mann-Kendall on episodes per winter: tau -0.097, p = 0.35
+Self-exciting model with a trend in the background: -13.2% per decade (95% CI -21.5% to -3.9%); branching ratio 0.23
+Adding a trend in the branching ratio: logit change per decade +0.12 (se 0.26); LR 0.21, p = 0.64; implied branching ratio 1973/74 0.18, 2025/26 0.29
+  first half (1973/74 to 2001/02): branching ratio 0.29 (95% CI 0.14-0.53), time scale 2.3 days, 143 episodes
+  second half (2002/03 to 2025/26): branching ratio 0.18 (95% CI 0.06-0.44), time scale 8.9 days, 130 episodes
+
+6b. Statistical power for a change in clustering
+------------------------------------------------
+  branching ratio 0.33 -> 0.33 across the record: detected in 4% of 200 simulated records
+  branching ratio 0.28 -> 0.38 across the record: detected in 6% of 200 simulated records
+  branching ratio 0.23 -> 0.43 across the record: detected in 20% of 200 simulated records
+  branching ratio 0.18 -> 0.48 across the record: detected in 42% of 200 simulated records
+  branching ratio 0.13 -> 0.53 across the record: detected in 60% of 200 simulated records
+
+7. Robustness
+-------------
+variant | episodes per winter | psi | n (95% CI) | time scale | p, self-excitation | branching trend per decade (p) | 2025/26 strong in 30 d | return period, self-exciting
+  main: 96th percentile, gap 0, all nodes, 1950-2025 | 5.29 | +0.69 | 0.33 (0.23-0.46) | 2.3 d | 1.3e-13 | -0.06 (0.60) | 3 | 30 winters
+  threshold at the 94th percentile | 7.61 | +0.55 | 0.34 (0.23-0.48) | 1.7 d | 1.4e-13 | -0.14 (0.22) | 3 | 16 winters
+  threshold at the 98th percentile | 3.04 | +0.62 | 0.33 (0.19-0.50) | 1.7 d | 8.2e-11 | +0.06 (0.63) | 3 | 93 winters
+  episodes merged across one calm day | 4.74 | +0.29 | 0.36 (0.16-0.62) | 2.2 d | 2.1e-06 | -0.18 (0.36) | 2 | 6 winters
+  episodes merged across two calm days | 4.30 | +0.10 | 0.20 (0.04-0.58) | 3.0 d | 0.041 | -0.53 (0.11) | 1 | 2 winters
+  northern nodes only (40N and above) | 5.51 | +0.85 | 0.39 (0.25-0.55) | 1.6 d | 1e-15 | -0.05 (0.66) | 2 | 5 winters
+  southern nodes only (below 40N) | 5.49 | +0.59 | 0.32 (0.21-0.45) | 1.9 d | 2.2e-12 | -0.01 (0.94) | 3 | 27 winters
+  satellite era only (1979/80 onwards) | 5.34 | +0.89 | 0.27 (0.16-0.42) | 2.6 d | 8.7e-07 | -0.09 (0.75) | 3 | 30 winters
+  stations Porto, Faro, Beja (1973/74 onwards) | 5.69 | +0.83 | 0.23 (0.12-0.40) | 4.4 d | 2.3e-05 | +0.12 (0.64) | 2 | 4 winters
+
+Figures written to figures/, equation images to figures/equations/.
