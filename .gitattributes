@@ -142,3 +142,5 @@ ppp-drift-pairs/**/*.csv -filter -diff -merge text
 ppp-drift-pairs/**/*.gz -filter -diff -merge binary
 ie-lu-fund-intermediation/**/*.csv -filter -diff -merge text
 ie-lu-fund-intermediation/**/*.gz -filter -diff -merge binary
+ppp-drift-by-category/**/*.csv -filter -diff -merge text
+ppp-drift-by-category/**/*.gz -filter -diff -merge binary
