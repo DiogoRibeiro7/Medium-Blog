@@ -11,6 +11,7 @@ import argparse
 import csv
 import json
 from pathlib import Path
+from statistics import NormalDist
 
 import numpy as np
 
@@ -141,6 +142,29 @@ def main() -> None:
     for x in rows:
         if x["algo"] in ("lgbm_l2", "ma4w") and x["rule"] != "point" and float(x["tau"]) in (0.7, 0.9):
             L.append(f"   {x['algo']} {x['target']}/{x['rule']} tau {x['tau']}: coverage {float(x['coverage']):.3f}")
+    L.append("")
+
+    L.append("6. Cost of ordering the forecast over the cost of the per-series quantile, models trained on recovered")
+    L.append("   demand, against phi(0) / phi(z_tau), the same ratio for unbiased normal errors")
+    nd = NormalDist()
+    js["point_penalty"] = []
+    for tau in K.TAUS:
+        gauss = nd.pdf(0) / nd.pdf(nd.inv_cdf(tau))
+        parts = []
+        for alg in F.ALGOS:
+            c = {
+                r: float(
+                    next(
+                        x["cost"]
+                        for x in rows
+                        if (x["algo"], x["target"], x["rule"], float(x["tau"])) == (alg, "recovered", r, tau)
+                    )
+                )
+                for r in ("point", "series")
+            }
+            parts.append(f"{alg} {c['point'] / c['series']:.3f}")
+            js["point_penalty"].append({"tau": tau, "algo": alg, "ratio": c["point"] / c["series"], "gauss": gauss})
+        L.append(f"   tau {tau}: normal {gauss:.3f}; " + "; ".join(parts))
     a.out.write_text("\n".join(L) + "\n", encoding="utf-8")
     (a.out.parent / "details.json").write_text(json.dumps(js, indent=1), encoding="utf-8")
     print("\n".join(L))

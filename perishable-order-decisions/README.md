@@ -7,6 +7,19 @@ out-of-stock status, and scores every order by the cost of waste and of lost sal
 
 `PLAN.md` is the pre-registration, committed before the data were downloaded.
 
+## Results in one paragraph
+
+With a symmetric cost (0.5), the algorithm explained 86% of the variation in cost over the 24 combinations of
+algorithm and decision layer, and LightGBM was clearly cheapest. When a lost sale costs more than a wasted unit, the
+decision layer took over: 68% of the variation at 0.7 and 98% at 0.9. The 4-week mean with the full layer (recovered
+demand, per-series quantile) cost less than either LightGBM model with the default layer (sales, order the forecast)
+at both ratios (H1 supported), and the layer explained more of the variation than the algorithm (H2 supported).
+Training on recovered demand lowered cost in all 24 comparisons, but one interval touched zero (H3 not supported);
+the algorithms ranked the same by cost and by WAPE under the full layer (H4 not supported). Most of the layer effect
+is the order rule. Descriptive analyses added after the results show that the cost ratio 0.9 conclusions hold
+however strongly demand is recovered, while those at 0.7 and the benefit of the recovered target under quantile
+rules need a substantial part of the recovery to be right.
+
 ## Files
 
 - `PLAN.md`: the pre-registration.
@@ -15,7 +28,10 @@ out-of-stock status, and scores every order by the cost of waste and of lost sal
 - `feed/recover.py`: the coding of the hourly out-of-stock status, hourly profiles and recovered demand.
 - `feed/forecast.py`: the four algorithms (two simple rules, two LightGBM models).
 - `feed/decide.py`: training targets, order rules and the cost of an order.
-- `evaluate.py`: the registered test; writes `results/`.
+- `evaluate.py`: the registered test; writes `results/` (`summary.txt` holds every registered number).
+- `details.py`: descriptive analyses added after the results (`results/details.txt`); not part of the registered
+  test.
+- `figures.py`, `figures/`: the figures of the article.
 - `tests/`: unit tests on synthetic data with the dataset's column layout.
 
 ## Run
@@ -24,7 +40,9 @@ out-of-stock status, and scores every order by the cost of waste and of lost sal
 python -m pip install -r requirements.txt
 python -m pytest -q
 python fetch.py --data data --sources sources
-python evaluate.py --data data --out results
+python evaluate.py --data data --out results --orders data/orders.npz
+python details.py --orders data/orders.npz --results results --out results/details.txt
+python figures.py --results results --out figures
 ```
 
 `.github/workflows/perishable-order-decisions.yml` runs the same steps and commits the sources, results and

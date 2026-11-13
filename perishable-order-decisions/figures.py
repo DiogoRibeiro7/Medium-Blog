@@ -105,8 +105,10 @@ def fig1(res: Path, out: Path) -> None:
     ax.plot(t, sales / scale, color=INK2, lw=1.6, label="recorded sales")
     ax.plot(t, rec / scale, color="#1baf7a", lw=2.0, label="recovered demand")
     for name, lo, hi in (("fit", 0, 75), ("calibration", 76, 89), ("test", 90, 96)):
+        if name == "test":
+            ax.axvspan(lo - 0.5, hi + 0.5, color=GRID, alpha=0.8, lw=0)
         if name != "fit":
-            ax.axvspan(lo - 0.5, hi + 0.5, color=GRID, alpha=0.6, lw=0)
+            ax.axvline(lo - 0.5, color=INK2, lw=0.8, ls=":")
         ax.text(
             (lo + hi) / 2,
             1.0,

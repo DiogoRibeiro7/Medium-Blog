@@ -158,4 +158,6 @@ Not part of the registered test, and labelled as such in the article; `details.p
   since ordering a forecast of the mean is wrong by construction when tau is not 0.5.
 - **Target and rule apart.** A three-way additive decomposition of the 4 x 2 x 3 table (algorithm, target, rule).
 - **Orders by cost and by WAPE under every layer**, and the coverage of the quantile rules.
+- **The penalty for ordering the forecast.** The cost of the point rule over the cost of the per-series quantile,
+  for models trained on recovered demand, against phi(0) / phi(z_tau), the same ratio for unbiased normal errors.
 
