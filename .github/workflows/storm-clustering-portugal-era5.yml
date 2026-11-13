@@ -1,0 +1,65 @@
+name: Storm clustering in Portugal — fetch ERA5 wind
+
+on:
+  push:
+    branches: [storm-clustering-portugal]
+    paths:
+      - 'storm-clustering-portugal/fetch_era5.py'
+      - '.github/workflows/storm-clustering-portugal-era5.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: storm-clustering-portugal-era5
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    defaults:
+      run:
+        shell: bash
+        working-directory: storm-clustering-portugal
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Offline tests
+        run: python -m unittest discover -s tests -p "test_fetch_era5.py" -v
+
+      - name: Download ERA5 daily maximum wind (resumes where the last run stopped)
+        id: fetch
+        continue-on-error: true
+        run: python fetch_era5.py --out data --max-minutes 320 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit what was downloaded
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data/era5 data/era5_points.csv data/era5_fetch_log.txt
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+          else
+            git commit -m "Storm clustering in Portugal: ERA5 daily wind ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
+          fi
+
+      - name: Fail if the download failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          tail -n 20 data/era5_fetch_log.txt || true
+          exit 1
