@@ -18,6 +18,7 @@ jobs:
       CAPTURE_START_INDEX: "4"
       CAPTURE_COUNT: "1"
       CAPTURE_DIMENSION: "Dim2"
+      CAPTURE_TIMEOUT_SECONDS: "75"
       EXPECTED_CODES: "0116"
     defaults:
       run:
@@ -42,7 +43,8 @@ jobs:
             --output candidate-capture \
             --start-index "$CAPTURE_START_INDEX" \
             --count "$CAPTURE_COUNT" \
-            --dimension "$CAPTURE_DIMENSION"
+            --dimension "$CAPTURE_DIMENSION" \
+            --timeout-seconds "$CAPTURE_TIMEOUT_SECONDS"
           code=$?
           echo "capture_exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
