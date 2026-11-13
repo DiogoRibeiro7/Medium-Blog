@@ -25,9 +25,11 @@ python -m pytest -q tests
 - **Jordà–Schularick–Taylor Macrohistory Database, release 6** (annual, 1870–2020, 18 countries). The script keeps only the columns used here: CPI, the Knoll–Schularick–Steger nominal house price index (`hpnom`), and the housing-returns series (`housing_capgain`, `housing_rent_rtn`, `housing_rent_yd`, `housing_tr`).
 - **OECD analytical house price indicators** (quarterly, seasonally adjusted, 2015 = 100, 1970-Q1 to 2026-Q3). The series used are the nominal index (HPI), the real index (RHP, deflated by the private consumption deflator), the rent index (RPI) and the price-to-rent ratio. The analysis keeps the 37 OECD members that report the index.
 
-macrohistory.net cannot be reached from the workspace where the analysis was written. The committed JST extract was therefore built from a copy of `JSTdatasetR6.csv` published in a public GitHub repository. Before it was used, it was checked against a second, independent public copy: all 2,718 rows match, with numeric differences below 1e-7. `data/fetch_log.txt` records each source with its size and SHA-256.
+`.github/workflows/housing-losses-inflation-data.yml` runs `fetch.py` on GitHub's runners. It downloads JST R6 from macrohistory.net and a fresh OECD extract, then reruns the analysis and the figures. It commits only if the data or the results changed. `data/fetch_log.txt` records each source with its size and SHA-256. The JST download is best effort; if it fails, the committed extract is kept. The OECD request is required.
 
-`.github/workflows/housing-losses-inflation-data.yml` runs `fetch.py` on GitHub's runners. There it downloads the official `JSTdatasetR6.xlsx` and a fresh OECD extract, then reruns the analysis and the figures, and commits whatever changed. The JST download is best effort, because macrohistory.net sometimes refuses scripted requests; if it fails, the committed extract is kept. The OECD request is required.
+The committed JST extract comes from macrohistory.net. Its download link is named `JSTdatasetR6.xlsx` but serves a Stata file, and `fetch.py` reads either format. That file stores the series in single precision (about seven significant digits).
+
+The first run, before the official file was reached, used a copy of `JSTdatasetR6.csv` from a public GitHub repository. It was checked against a second, independent public copy: all 2,718 rows matched, with differences below 1e-7. The official file differs from that copy by at most 1e-5 in relative terms. Switching to it moved a few country-years across inflation-bin edges and removed one 20% episode. No share in `results/summary.txt` moved by more than one percentage point.
 
 ## Two price series inside JST
 
