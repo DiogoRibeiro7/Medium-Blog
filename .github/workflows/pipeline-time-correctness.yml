@@ -35,6 +35,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Fetch the forecast hub's forecasts (Part 8; not redistributed in this repository)
+        run: python part8/fetch_hub.py --forecasts-only
+
       - name: Tests
         run: python -m unittest discover -s tests -v
 
