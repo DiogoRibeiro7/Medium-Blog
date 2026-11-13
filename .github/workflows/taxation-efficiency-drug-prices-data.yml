@@ -8,13 +8,16 @@ on:
   push:
     branches:
       - 'taxation-efficiency-drug-prices-part*'
+      - 'taxation-efficiency-drug-prices-followup*'
     paths:
       - 'taxation-efficiency-drug-prices/part*/fetch.py'
       - 'taxation-efficiency-drug-prices/part*/probe.py'
+      - 'taxation-efficiency-drug-prices/followup*/fetch.py'
+      - 'taxation-efficiency-drug-prices/followup*/probe.py'
   workflow_dispatch:
     inputs:
       part:
-        description: 'Part number, for example 3'
+        description: 'Folder, for example part3 or followup1'
         required: true
       script:
         description: 'fetch.py or probe.py'
@@ -60,14 +63,14 @@ jobs:
           IN_SCRIPT: ${{ github.event.inputs.script }}
         run: |
           if [ "$EVENT" = "workflow_dispatch" ]; then
-            list="part${IN_PART}/${IN_SCRIPT}"
+            list="${IN_PART}/${IN_SCRIPT}"
           else
             if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
               changed=$(git diff --name-only origin/main...HEAD)
             else
               changed=$(git diff --name-only "$BEFORE" HEAD)
             fi
-            list=$(echo "$changed" | grep -E '^taxation-efficiency-drug-prices/part[0-9]+/(fetch|probe)\.py$' \
+            list=$(echo "$changed" | grep -E '^taxation-efficiency-drug-prices/(part|followup)[0-9]+/(fetch|probe)\.py$' \
                    | sed 's|^taxation-efficiency-drug-prices/||' | sort -u | tr '\n' ' ')
           fi
           echo "Scripts to run: $list"
@@ -94,7 +97,7 @@ jobs:
           set +e
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
-          git add part*/data
+          git add part*/data followup*/data 2>/dev/null || git add part*/data
           if git diff --cached --quiet; then
             echo "Snapshot unchanged."
             exit 0
@@ -112,5 +115,5 @@ jobs:
       - name: Fail if a download failed
         if: steps.fetch.outcome == 'failure'
         run: |
-          cat part*/data/fetch_log.txt 2>/dev/null | tail -50 || true
+          cat part*/data/fetch_log.txt followup*/data/fetch_log.txt 2>/dev/null | tail -50 || true
           exit 1
