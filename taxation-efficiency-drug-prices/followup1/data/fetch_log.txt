@@ -15,26 +15,9 @@
 [pt_eco_2025_05_29] wrote pt_eco_2025_05_29.txt.gz: 28790 characters
 [fr_drees_dd139] wrote fr_drees_dd139.txt.gz: 187133 characters
 [fr_drees_es2026_fiche23] wrote fr_drees_es2026_fiche23.txt.gz: 49833 characters
-== fr_igf_2026 FAILED
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup1/fetch.py", line 142, in main
-    text = pdf_text(r.content) if kind == "pdf" else html_text(r.text)
-           ~~~~~~~~^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup1/fetch.py", line 117, in pdf_text
-    subprocess.run(["pdftotext", "-layout", str(pdf), str(pdf.with_suffix(".txt"))], check=True)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.13.18/x64/lib/python3.13/subprocess.py", line 578, in run
-    raise CalledProcessError(retcode, process.args,
-                             output=stdout, stderr=stderr)
-subprocess.CalledProcessError: Command '['pdftotext', '-layout', '/tmp/tmpqsltsfyj/in.pdf', '/tmp/tmpqsltsfyj/in.txt']' returned non-zero exit status 1.
-
-== be_morse_2022_2023 FAILED
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup1/fetch.py", line 146, in main
-    raise RuntimeError(f"expected text not found: {missing}")
-RuntimeError: expected text not found: ["chiffre d'affaires de 11,7 milliards"]
-
+[fr_igf_2026] wrote fr_igf_2026.txt.gz: 141413 characters
+[be_morse_2022_2023] wrote be_morse_2022_2023.txt.gz: 357607 characters
 [be_morse_2024] wrote be_morse_2024.txt.gz: 441693 characters
 [it_aifa_sintesi_2024] wrote it_aifa_sintesi_2024.txt.gz: 12410 characters
 [it_aifa_monitoraggio_2024] wrote it_aifa_monitoraggio_2024.txt.gz: 188416 characters
-failed: ['fr_igf_2026', 'be_morse_2022_2023']
+failed: []
