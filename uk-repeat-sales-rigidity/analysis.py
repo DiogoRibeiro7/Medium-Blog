@@ -339,6 +339,23 @@ def main() -> None:
         line(f"  12 months to {a}: {va:,.0f}; to {b_}: {vb:,.0f}; change {pct(vb / va - 1)}")
     (pd.DataFrame({"sales_12m": roll})).to_csv(RESULTS / "volume_12m.csv", float_format="%.6g")
 
+    # ---- [6] does the estimator recover a known floor? -------------------------------------
+    line("")
+    line("[6] Simulation check: normal log changes, a share q of would-be nominal losses sold at exactly "
+         "the old price (800,000 draws each)")
+    for mu, sd in [(-0.05, 0.08), (0.0, 0.05), (0.02, 0.15), (0.10, 0.10)]:
+        res = []
+        for q in (0.0, 0.3):
+            rng = np.random.default_rng(SEED)
+            x = rng.normal(mu, sd, 800_000)
+            anch = (x < 0) & (rng.random(x.size) < q)
+            x = np.where(anch, 0.0, x)
+            cnt = pd.Series(np.floor(x / BIN).astype(int)).value_counts().sort_index()
+            th = density_jump(cnt, 0.0, drop_exact=float(anch.sum()))[0]
+            res.append(missing_share(th))
+        line(f"  mean {mu:+.2f}, sd {sd:.2f}: estimated missing share {pct(res[0])} when q = 0, "
+             f"{pct(res[1])} when q = 30%")
+
     (RESULTS / "summary.txt").write_text("\n".join(S) + "\n")
     print("\n".join(S))
 
