@@ -1,0 +1,89 @@
+{
+ "year": 2014,
+ "keys": {
+  "2014-citibike-tripdata.zip": {
+   "size": 224608955,
+   "monthly": false,
+   "file_month": null,
+   "months": {
+    "2014-01": 300400,
+    "2014-02": 224736,
+    "2014-03": 439117,
+    "2014-04": 670780,
+    "2014-05": 866117,
+    "2014-06": 936880,
+    "2014-07": 968842,
+    "2014-08": 963489,
+    "2014-09": 953887,
+    "2014-10": 828711,
+    "2014-11": 529188,
+    "2014-12": 399069
+   },
+   "rows": 8081216,
+   "unparsed": 0,
+   "inner": {
+    "2014-citibike-tripdata/4_April/201404-citibike-tripdata_1.csv": {
+     "rows": 670780,
+     "unparsed": 0,
+     "lines": 670781
+    },
+    "2014-citibike-tripdata/12_December/201412-citibike-tripdata_1.csv": {
+     "rows": 399069,
+     "unparsed": 0,
+     "lines": 399070
+    },
+    "2014-citibike-tripdata/11_November/201411-citibike-tripdata_1.csv": {
+     "rows": 529188,
+     "unparsed": 0,
+     "lines": 529189
+    },
+    "2014-citibike-tripdata/7_July/201407-citibike-tripdata_1.csv": {
+     "rows": 968842,
+     "unparsed": 0,
+     "lines": 968843
+    },
+    "2014-citibike-tripdata/10_October/201410-citibike-tripdata_1.csv": {
+     "rows": 828711,
+     "unparsed": 0,
+     "lines": 828712
+    },
+    "2014-citibike-tripdata/9_September/201409-citibike-tripdata_1.csv": {
+     "rows": 953887,
+     "unparsed": 0,
+     "lines": 953888
+    },
+    "2014-citibike-tripdata/8_August/201408-citibike-tripdata_1.csv": {
+     "rows": 963489,
+     "unparsed": 0,
+     "lines": 963490
+    },
+    "2014-citibike-tripdata/6_June/201406-citibike-tripdata_1.csv": {
+     "rows": 936880,
+     "unparsed": 0,
+     "lines": 936881
+    },
+    "2014-citibike-tripdata/3_March/201403-citibike-tripdata_1.csv": {
+     "rows": 439117,
+     "unparsed": 0,
+     "lines": 439118
+    },
+    "2014-citibike-tripdata/1_January/201401-citibike-tripdata_1.csv": {
+     "rows": 300400,
+     "unparsed": 0,
+     "lines": 300401
+    },
+    "2014-citibike-tripdata/2_February/201402-citibike-tripdata_1.csv": {
+     "rows": 224736,
+     "unparsed": 0,
+     "lines": 224737
+    },
+    "2014-citibike-tripdata/5_May/201405-citibike-tripdata_1.csv": {
+     "rows": 866117,
+     "unparsed": 0,
+     "lines": 866118
+    }
+   },
+   "duplicate_names": []
+  }
+ }
+}

@@ -1,0 +1,646 @@
+{
+ "year": 2025,
+ "keys": {
+  "202501-citibike-tripdata.zip": {
+   "size": 414213312,
+   "monthly": true,
+   "file_month": "2025-01",
+   "files": [
+    {
+     "path": "202501-citibike-tripdata_1.csv",
+     "months": {
+      "2025-01": 999793,
+      "2024-12": 207
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "310f70bac15747d0b9a3a85e9e6187cdd47d699c538978c9d84ddc599de2ae77"
+    },
+    {
+     "path": "202501-citibike-tripdata_3.csv",
+     "months": {
+      "2025-01": 124475
+     },
+     "rows": 124475,
+     "unparsed": 0,
+     "lines": 124476,
+     "sha256": "c083e5adce266c4238a7e5fb8bcf655753c91370d4f74e97c433f130e43c6a25"
+    },
+    {
+     "path": "202501-citibike-tripdata_2.csv",
+     "months": {
+      "2025-01": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "8f753271cf8349a5685cd7f1c16af81bc053aab3e7d7bb330543a795b7006274"
+    }
+   ]
+  },
+  "202502-citibike-tripdata.zip": {
+   "size": 396008433,
+   "monthly": true,
+   "file_month": "2025-02",
+   "files": [
+    {
+     "path": "202502-citibike-tripdata_3.csv",
+     "months": {
+      "2025-02": 31257
+     },
+     "rows": 31257,
+     "unparsed": 0,
+     "lines": 31258,
+     "sha256": "da4e1f86825813b1f5de6aee08287fab36f4b5a72a318ee35aea1e1df587c5b1"
+    },
+    {
+     "path": "202502-citibike-tripdata_2.csv",
+     "months": {
+      "2025-02": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "faebdeb1a832412dbe4ca8afd315828a99c96a754bd453a1355e3fc6e6d16dae"
+    },
+    {
+     "path": "202502-citibike-tripdata_1.csv",
+     "months": {
+      "2025-02": 999727,
+      "2025-01": 273
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "35190c6e1537fa726047e90eecde55174dcd0515ede7d154c0a52894ebd8504d"
+    }
+   ]
+  },
+  "202503-citibike-tripdata.zip": {
+   "size": 618260276,
+   "monthly": true,
+   "file_month": "2025-03",
+   "files": [
+    {
+     "path": "202503-citibike-tripdata_1.csv",
+     "months": {
+      "2025-03": 999711,
+      "2025-02": 289
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "a17718a88359990419769deafd5bc8d886e2473c1e3772bab1bbe799e0458939"
+    },
+    {
+     "path": "202503-citibike-tripdata_2.csv",
+     "months": {
+      "2025-03": 999879,
+      "2025-02": 121
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "cf89d48d8dab7d7c4ae07c616b16ef2e29d19bf78914141cc890a11f34599994"
+    },
+    {
+     "path": "202503-citibike-tripdata_3.csv",
+     "months": {
+      "2025-03": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "4917c4c019f5ee4bfc12167d8377b82b665667f2b5702b623c93da4ad1af872d"
+    },
+    {
+     "path": "202503-citibike-tripdata_4.csv",
+     "months": {
+      "2025-03": 168271
+     },
+     "rows": 168271,
+     "unparsed": 0,
+     "lines": 168272,
+     "sha256": "add648c6c1516a89cdab1159a798d910eb234625501d4f3634bb693fa94145b1"
+    }
+   ]
+  },
+  "202504-citibike-tripdata.zip": {
+   "size": 727249076,
+   "monthly": true,
+   "file_month": "2025-04",
+   "files": [
+    {
+     "path": "202504-citibike-tripdata_3.csv",
+     "months": {
+      "2025-04": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "a355ee0ea43dfc47b13636395ac3ec98d29c7451b3e967439a44c7afed558a52"
+    },
+    {
+     "path": "202504-citibike-tripdata_2.csv",
+     "months": {
+      "2025-04": 999982,
+      "2025-03": 18
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "a959c1d8b5d6ee457fa7ead3160da54b0092232ed351182519d42da04bcfd5df"
+    },
+    {
+     "path": "202504-citibike-tripdata_1.csv",
+     "months": {
+      "2025-04": 999917,
+      "2025-03": 83
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "1ce4acd36b6341f28f533008fcfe445ebe62b3554aac81222776f987286f2257"
+    },
+    {
+     "path": "202504-citibike-tripdata_4.csv",
+     "months": {
+      "2025-04": 724596
+     },
+     "rows": 724596,
+     "unparsed": 0,
+     "lines": 724597,
+     "sha256": "4db745192ffb792c9afa3036bf170bec9cd80f5ef117491cf5beb615c72bea24"
+    }
+   ]
+  },
+  "202505-citibike-tripdata.zip": {
+   "size": 844446636,
+   "monthly": true,
+   "file_month": "2025-05",
+   "files": [
+    {
+     "path": "202505-citibike-tripdata_4.csv",
+     "months": {
+      "2025-05": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "4d8793488516e8ca887cd06e93510f7f1868ef9e8e47a0b9192d816a6d778234"
+    },
+    {
+     "path": "202505-citibike-tripdata_5.csv",
+     "months": {
+      "2025-05": 325553
+     },
+     "rows": 325553,
+     "unparsed": 0,
+     "lines": 325554,
+     "sha256": "34952a54a5555356b495257f0709301ff940a7e97f3f01be02f3c2129263eca8"
+    },
+    {
+     "path": "202505-citibike-tripdata_1.csv",
+     "months": {
+      "2025-05": 999666,
+      "2025-04": 334
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "910957635ed800aae8c8064157231d11a388fbccf4f1e8c475ed208a01ed802f"
+    },
+    {
+     "path": "202505-citibike-tripdata_2.csv",
+     "months": {
+      "2025-05": 999792,
+      "2025-04": 208
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "806fbda6a0f251a16a065cd3f1343996893522e34eba5cddc07fc375d1b53c27"
+    },
+    {
+     "path": "202505-citibike-tripdata_3.csv",
+     "months": {
+      "2025-05": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "05385a696cee971ec1adb7cc44006c11944fb64d9a7ae04e2f578004e349eda6"
+    }
+   ]
+  },
+  "202506-citibike-tripdata.zip": {
+   "size": 929043436,
+   "monthly": true,
+   "file_month": "2025-06",
+   "files": [
+    {
+     "path": "202506-citibike-tripdata_2.csv",
+     "months": {
+      "2025-05": 325,
+      "2025-06": 999675
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "7905e0d6d228a36d67bcd49be4153965a7469d804993ea14fd6f9ea0da3a71d2"
+    },
+    {
+     "path": "202506-citibike-tripdata_3.csv",
+     "months": {
+      "2025-06": 999919,
+      "2025-05": 81
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "566c901388f75049dcd8b16c6b194fdd50004e52557e0930cac1e1d037d55e4f"
+    },
+    {
+     "path": "202506-citibike-tripdata_1.csv",
+     "months": {
+      "2025-05": 480,
+      "2025-06": 999520
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "8125c54488f27e24158d514e30c27f20094ad4c640abb6036d56dd8b2d785ed7"
+    },
+    {
+     "path": "202506-citibike-tripdata_4.csv",
+     "months": {
+      "2025-06": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "80b693a39acd5942a2c85a771721f8dd5b9cf2c4fd923213a2a69b7cd740e444"
+    },
+    {
+     "path": "202506-citibike-tripdata_5.csv",
+     "months": {
+      "2025-06": 759345
+     },
+     "rows": 759345,
+     "unparsed": 0,
+     "lines": 759346,
+     "sha256": "46576869b108495914cc26ab5f03e122278545a6383c9cf9e5202bc2aa585de3"
+    }
+   ]
+  },
+  "202507-citibike-tripdata.zip": {
+   "size": 973875638,
+   "monthly": true,
+   "file_month": "2025-07",
+   "files": [
+    {
+     "path": "202507-citibike-tripdata_5.csv",
+     "months": {
+      "2025-07": 988053
+     },
+     "rows": 988053,
+     "unparsed": 0,
+     "lines": 988054,
+     "sha256": "00a57efd7788906e5b8e6e015047e963799f36ad83994dcb01a868ebb763b5c5"
+    },
+    {
+     "path": "202507-citibike-tripdata_4.csv",
+     "months": {
+      "2025-07": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "73ae6019e4f7508b6eb29a99897d99223b23e14e5aa56c04cc1fc7a6ba6fea4e"
+    },
+    {
+     "path": "202507-citibike-tripdata_1.csv",
+     "months": {
+      "2025-07": 999576,
+      "2025-06": 424
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "bc4804cb678c857f33152f3c8cb73faf6177a05dc4dfe6c7494d1d0bfa39e1a0"
+    },
+    {
+     "path": "202507-citibike-tripdata_3.csv",
+     "months": {
+      "2025-07": 999967,
+      "2025-06": 33
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "fdefe72d5ccddbbd102e8d8ed791535e985bb66c27016104c5510b7ffa76fc1d"
+    },
+    {
+     "path": "202507-citibike-tripdata_2.csv",
+     "months": {
+      "2025-07": 999677,
+      "2025-06": 323
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "c000cf5f4074996a967dbc57e78dfe9909ee38cdaa9cbbc0c62cb047565b8259"
+    }
+   ]
+  },
+  "202508-citibike-tripdata.zip": {
+   "size": 1000258641,
+   "monthly": true,
+   "file_month": "2025-08",
+   "files": [
+    {
+     "path": "202508-citibike-tripdata_6.csv",
+     "months": {
+      "2025-08": 121533
+     },
+     "rows": 121533,
+     "unparsed": 0,
+     "lines": 121534,
+     "sha256": "4c47744d72f6dbe78b7410e5aabd23b6a58157f8971f46d006c2132245cb77a1"
+    },
+    {
+     "path": "202508-citibike-tripdata_4.csv",
+     "months": {
+      "2025-08": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "8122986a601b2c041d6afdaf054382534df235afc00312ff25d62a8a7083d0fb"
+    },
+    {
+     "path": "202508-citibike-tripdata_5.csv",
+     "months": {
+      "2025-08": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "4adcc163b3c0282f30f007fab5b546183f631aaad05c384d65304b5e23cf899d"
+    },
+    {
+     "path": "202508-citibike-tripdata_1.csv",
+     "months": {
+      "2025-08": 999862,
+      "2025-07": 138
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "7eee2a2fbac203273467243fa297d0bb549d06568168209056c245fa7ab2f145"
+    },
+    {
+     "path": "202508-citibike-tripdata_2.csv",
+     "months": {
+      "2025-07": 98,
+      "2025-08": 999902
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "e3bb14e30425cdebfeaf508d3ddbfb8a806e3d34a2d6870004829d31e12b75e8"
+    },
+    {
+     "path": "202508-citibike-tripdata_3.csv",
+     "months": {
+      "2025-08": 999946,
+      "2025-07": 54
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "ca0ae14732817851008cf1e89359cd0b7ecccf409e20e21aa3b10f17e6235736"
+    }
+   ]
+  },
+  "202509-citibike-tripdata.zip": {
+   "size": 1032411368,
+   "monthly": true,
+   "file_month": "2025-09",
+   "files": [
+    {
+     "path": "202509-citibike-tripdata_3.csv",
+     "months": {
+      "2025-09": 999846,
+      "2025-08": 154
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "964defaa33c5fe29ab55a0b89220021aef2b00c72769c9fe146078a056013903"
+    },
+    {
+     "path": "202509-citibike-tripdata_2.csv",
+     "months": {
+      "2025-09": 999659,
+      "2025-08": 341
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "c3e5eebdeb7c0bc56558db86cdc7584a9cd94e7e1da9d3122fb64b95b7dadd4d"
+    },
+    {
+     "path": "202509-citibike-tripdata_1.csv",
+     "months": {
+      "2025-08": 436,
+      "2025-09": 999564
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "f1de0ee02e78040fb804e7d5f984bf5565643c4f357e470378c898955faeedae"
+    },
+    {
+     "path": "202509-citibike-tripdata_5.csv",
+     "months": {
+      "2025-09": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "a7396a68f40677bcaf9052f56bf5ea801529aa306af023e58dfbc5bd3766fe46"
+    },
+    {
+     "path": "202509-citibike-tripdata_4.csv",
+     "months": {
+      "2025-09": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "a7023d62e4b5bffaeda2690b92e5c9139038255a349ac24b4b7b3fecfb6820d8"
+    },
+    {
+     "path": "202509-citibike-tripdata_6.csv",
+     "months": {
+      "2025-09": 287447
+     },
+     "rows": 287447,
+     "unparsed": 0,
+     "lines": 287448,
+     "sha256": "0be5d132bfdf9198c06e3553b6030d66d1544ec0834a176c5b1098f144ae4a92"
+    }
+   ]
+  },
+  "202510-citibike-tripdata.zip": {
+   "size": 924115389,
+   "monthly": true,
+   "file_month": "2025-10",
+   "files": [
+    {
+     "path": "202510-citibike-tripdata_3.csv",
+     "months": {
+      "2025-10": 999957,
+      "2025-09": 43
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "20875468f4f9b06060ee87b735782c1c042974c7acd249c906d85963fed0ba29"
+    },
+    {
+     "path": "202510-citibike-tripdata_2.csv",
+     "months": {
+      "2025-10": 999683,
+      "2025-09": 317
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "e24cf6171b28da2348de156c355e9a6ed3e566252c38b0b6f5b54a614c705737"
+    },
+    {
+     "path": "202510-citibike-tripdata_1.csv",
+     "months": {
+      "2025-10": 999721,
+      "2025-09": 279
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "4664d837c9cc8c1bdc54bfcfebfbe33ebcb1a2fe4447fcce3c7b57c07a9af907"
+    },
+    {
+     "path": "202510-citibike-tripdata_5.csv",
+     "months": {
+      "2025-10": 731900
+     },
+     "rows": 731900,
+     "unparsed": 0,
+     "lines": 731901,
+     "sha256": "e69b2cafaf653ce4fb04f800bcab65e905be16f2ff71bda6099cc289aea6a67d"
+    },
+    {
+     "path": "202510-citibike-tripdata_4.csv",
+     "months": {
+      "2025-10": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "7bab4861f0227505170ea341b4667dd43e97622bb7b9bf358dada86aae84480f"
+    }
+   ]
+  },
+  "202511-citibike-tripdata.zip": {
+   "size": 667113932,
+   "monthly": true,
+   "file_month": "2025-11",
+   "files": [
+    {
+     "path": "202511-citibike-tripdata_4.csv",
+     "months": {
+      "2025-11": 417052
+     },
+     "rows": 417052,
+     "unparsed": 0,
+     "lines": 417053,
+     "sha256": "676e750ad3d60167d9651127f0fd96f14e21cbda857a06c5481dc254dabd2495"
+    },
+    {
+     "path": "202511-citibike-tripdata_1.csv",
+     "months": {
+      "2025-11": 999408,
+      "2025-10": 592
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "ecc2be71d7669d426e93fe33f7b1a4de34165ccc518aeec227faf7089700405a"
+    },
+    {
+     "path": "202511-citibike-tripdata_2.csv",
+     "months": {
+      "2025-11": 999495,
+      "2025-10": 505
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "c9f31687170b666ed615d1f2899dd2c3702adb866d27364926aefbce3ea6ca57"
+    },
+    {
+     "path": "202511-citibike-tripdata_3.csv",
+     "months": {
+      "2025-11": 1000000
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "34e77979c4e7e56023277123b46e7b26912e7f27d8121b3cf03868629df30e59"
+    }
+   ]
+  },
+  "202512-citibike-tripdata.zip": {
+   "size": 407790791,
+   "monthly": true,
+   "file_month": "2025-12",
+   "files": [
+    {
+     "path": "202512-citibike-tripdata_2.csv",
+     "months": {
+      "2025-12": 999980,
+      "2025-11": 20
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "40b298cb851b9d43fe78a58d40a93fb631bac94ea195f85e9a08d86683ec048c"
+    },
+    {
+     "path": "202512-citibike-tripdata_3.csv",
+     "months": {
+      "2025-12": 91620
+     },
+     "rows": 91620,
+     "unparsed": 0,
+     "lines": 91621,
+     "sha256": "de5522878fa4400467e42949f1710318c9ecb212361c908d11ff7b63fb488dce"
+    },
+    {
+     "path": "202512-citibike-tripdata_1.csv",
+     "months": {
+      "2025-12": 999883,
+      "2025-11": 117
+     },
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001,
+     "sha256": "e24a7993ea16a120279e7380e920cb5108d46305086faf820643254daa1a402f"
+    }
+   ]
+  }
+ }
+}

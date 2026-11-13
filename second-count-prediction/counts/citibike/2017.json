@@ -1,0 +1,129 @@
+{
+ "year": 2017,
+ "keys": {
+  "2017-citibike-tripdata.zip": {
+   "size": 557126574,
+   "monthly": false,
+   "file_month": null,
+   "months": {
+    "2017-01": 726676,
+    "2017-02": 791647,
+    "2017-03": 727665,
+    "2017-04": 1315399,
+    "2017-05": 1523268,
+    "2017-06": 1731594,
+    "2017-07": 1735464,
+    "2017-08": 1816498,
+    "2017-09": 1878098,
+    "2017-10": 1897592,
+    "2017-11": 1330649,
+    "2017-12": 889967
+   },
+   "rows": 16364517,
+   "unparsed": 0,
+   "inner": {
+    "2017-citibike-tripdata/4_April/201704-citibike-tripdata.csv_1.csv": {
+     "rows": 999995,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/4_April/201704-citibike-tripdata.csv_2.csv": {
+     "rows": 315404,
+     "unparsed": 0,
+     "lines": 315405
+    },
+    "2017-citibike-tripdata/12_December/201712-citibike-tripdata.csv_1.csv": {
+     "rows": 889967,
+     "unparsed": 0,
+     "lines": 889968
+    },
+    "2017-citibike-tripdata/11_November/201711-citibike-tripdata.csv_2.csv": {
+     "rows": 330649,
+     "unparsed": 0,
+     "lines": 330650
+    },
+    "2017-citibike-tripdata/11_November/201711-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/7_July/201707-citibike-tripdata.csv_2.csv": {
+     "rows": 735599,
+     "unparsed": 0,
+     "lines": 735600
+    },
+    "2017-citibike-tripdata/7_July/201707-citibike-tripdata.csv_1.csv": {
+     "rows": 999865,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/10_October/201710-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/10_October/201710-citibike-tripdata.csv_2.csv": {
+     "rows": 897592,
+     "unparsed": 0,
+     "lines": 897593
+    },
+    "2017-citibike-tripdata/9_September/201709-citibike-tripdata.csv_2.csv": {
+     "rows": 878098,
+     "unparsed": 0,
+     "lines": 878099
+    },
+    "2017-citibike-tripdata/9_September/201709-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/8_August/201708-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/8_August/201708-citibike-tripdata.csv_2.csv": {
+     "rows": 816498,
+     "unparsed": 0,
+     "lines": 816499
+    },
+    "2017-citibike-tripdata/6_June/201706-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "2017-citibike-tripdata/6_June/201706-citibike-tripdata.csv_2.csv": {
+     "rows": 731594,
+     "unparsed": 0,
+     "lines": 731595
+    },
+    "2017-citibike-tripdata/3_March/201703-citibike-tripdata.csv_1.csv": {
+     "rows": 727665,
+     "unparsed": 0,
+     "lines": 727666
+    },
+    "2017-citibike-tripdata/1_January/201701-citibike-tripdata.csv_1.csv": {
+     "rows": 726676,
+     "unparsed": 0,
+     "lines": 726677
+    },
+    "2017-citibike-tripdata/2_February/201702-citibike-tripdata.csv_1.csv": {
+     "rows": 791647,
+     "unparsed": 0,
+     "lines": 791648
+    },
+    "2017-citibike-tripdata/5_May/201705-citibike-tripdata.csv_2.csv": {
+     "rows": 523268,
+     "unparsed": 0,
+     "lines": 523269
+    },
+    "2017-citibike-tripdata/5_May/201705-citibike-tripdata.csv_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    }
+   },
+   "duplicate_names": []
+  }
+ }
+}

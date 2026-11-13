@@ -1,0 +1,176 @@
+{
+ "year": 2020,
+ "keys": {
+  "2020-citibike-tripdata.zip": {
+   "size": 751199232,
+   "monthly": false,
+   "file_month": null,
+   "months": {
+    "2019-01": 1,
+    "2019-02": 1,
+    "2019-03": 1,
+    "2019-04": 11,
+    "2019-05": 12,
+    "2019-06": 15,
+    "2019-07": 27,
+    "2019-08": 36,
+    "2019-09": 151,
+    "2019-10": 44,
+    "2019-11": 27,
+    "2019-12": 184,
+    "2020-01": 1243390,
+    "2020-02": 1149562,
+    "2020-03": 1071428,
+    "2020-04": 684566,
+    "2020-05": 1492304,
+    "2020-06": 1888512,
+    "2020-07": 2112389,
+    "2020-08": 2335672,
+    "2020-09": 2495313,
+    "2020-10": 2255067,
+    "2020-11": 1741704,
+    "2020-12": 1091897
+   },
+   "rows": 19562314,
+   "unparsed": 0,
+   "inner": {
+    "202004-citibike-tripdata_1.csv": {
+     "rows": 684521,
+     "unparsed": 0,
+     "lines": 684522
+    },
+    "202012-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202012-citibike-tripdata_2.csv": {
+     "rows": 92416,
+     "unparsed": 0,
+     "lines": 92417
+    },
+    "202006-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202006-citibike-tripdata_2.csv": {
+     "rows": 888316,
+     "unparsed": 0,
+     "lines": 888317
+    },
+    "202010-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202010-citibike-tripdata_2.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202010-citibike-tripdata_3.csv": {
+     "rows": 255225,
+     "unparsed": 0,
+     "lines": 255226
+    },
+    "202008-citibike-tripdata_3.csv": {
+     "rows": 336096,
+     "unparsed": 0,
+     "lines": 336097
+    },
+    "202008-citibike-tripdata_2.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202008-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202002-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202002-citibike-tripdata_2.csv": {
+     "rows": 149589,
+     "unparsed": 0,
+     "lines": 149590
+    },
+    "202005-citibike-tripdata_2.csv": {
+     "rows": 491554,
+     "unparsed": 0,
+     "lines": 491555
+    },
+    "202005-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202011-citibike-tripdata_2.csv": {
+     "rows": 742298,
+     "unparsed": 0,
+     "lines": 742299
+    },
+    "202011-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202007-citibike-tripdata_2.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202007-citibike-tripdata_3.csv": {
+     "rows": 111951,
+     "unparsed": 0,
+     "lines": 111952
+    },
+    "202007-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202009-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202009-citibike-tripdata_2.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202009-citibike-tripdata_3.csv": {
+     "rows": 495520,
+     "unparsed": 0,
+     "lines": 495521
+    },
+    "202001-citibike-tripdata_2.csv": {
+     "rows": 243407,
+     "unparsed": 0,
+     "lines": 243408
+    },
+    "202001-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    },
+    "202003-citibike-tripdata_2.csv": {
+     "rows": 71421,
+     "unparsed": 0,
+     "lines": 71422
+    },
+    "202003-citibike-tripdata_1.csv": {
+     "rows": 1000000,
+     "unparsed": 0,
+     "lines": 1000001
+    }
+   },
+   "duplicate_names": []
+  }
+ }
+}
