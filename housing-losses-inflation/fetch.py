@@ -22,6 +22,7 @@ request is required.
 from __future__ import annotations
 
 import argparse
+import gzip
 import hashlib
 import io
 import sys
@@ -55,7 +56,10 @@ def _get(url: str, timeout: int = 180) -> tuple[int, bytes]:
     req = urllib.request.Request(url, headers=UA)
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
-            return r.status, r.read()
+            body = r.read()
+            if r.headers.get("Content-Encoding", "").lower() == "gzip" or body[:2] == b"\x1f\x8b":
+                body = gzip.decompress(body)
+            return r.status, body
     except urllib.error.HTTPError as e:
         return e.code, b""
     except Exception as e:  # network refused, timeout, TLS
@@ -90,9 +94,16 @@ def fetch_jst(out: Path, log: list[str], local: Path | None) -> bool:
         status, body = _get(url)
         _log(log, url, status, body)
         if status == 200 and body[:2] == b"PK":  # xlsx is a zip archive
-            raw = pd.read_excel(io.BytesIO(body))
-            _tidy_jst(raw).to_csv(out / "jst_housing.csv", index=False, float_format="%.12g")
+            try:
+                raw = pd.read_excel(io.BytesIO(body))
+                tidy = _tidy_jst(raw)
+            except Exception as e:  # unexpected layout: keep the committed extract
+                log.append(f"# {url}: could not parse ({type(e).__name__}: {e})")
+                continue
+            tidy.to_csv(out / "jst_housing.csv", index=False, float_format="%.12g")
             return True
+        if status == 200:
+            log.append(f"# {url}: not an xlsx archive, first bytes {body[:16]!r}")
     return False
 
 

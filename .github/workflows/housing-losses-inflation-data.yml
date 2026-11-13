@@ -54,7 +54,7 @@ jobs:
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
           git add data results figures
-          if git diff --cached --quiet -- data/jst_housing.csv data/oecd_house_prices.csv results figures; then
+          if git diff --cached --quiet -- data/jst_housing.csv data/oecd_house_prices.csv results; then
             echo "Data unchanged; nothing to commit."
           else
             git commit -m "Refresh data snapshot and results for housing-losses-inflation ($(date -u +%Y-%m-%d))"
