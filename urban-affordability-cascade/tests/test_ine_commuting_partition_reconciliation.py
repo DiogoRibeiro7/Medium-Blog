@@ -26,6 +26,10 @@ SOURCE = ROOT / "data" / "ine_0012340_2021_dim2_0104_raw.json"
 MANIFEST = ROOT / "data" / "ine_0012340_2021_dim2_first_two_manifest.json"
 AUDIT = ROOT / "data" / "ine_0012340_2021_dim2_0104_audit.json"
 SECOND_RUN = ROOT / "data" / "ine_0012340_pr_run_43404869490"
+THIRD_RUN = ROOT / "data" / "ine_0012340_pr_run_43412012492"
+THIRD_SOURCE_SHA256 = "f2062a66f2a3bb9d3f5217c13ecde623c1a76f506374c2516a8b5034a4fd95df"
+FOURTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43414048813"
+FOURTH_SOURCE_SHA256 = "57e7b37e81e9190a2edd0aa996318aab26a97ccff0b42f409afaf2dc930ccae8"
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -204,6 +208,101 @@ class TwoMunicipalityINESliceAuditTests(unittest.TestCase):
         self.assertEqual(observed["0104"]["0107"], 34)
         self.assertEqual(observed["0107"]["0104"], 34)
         self.assertEqual(len(unique_pairs), 31)
+
+
+class ThreeMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Verify the third official capture and all reciprocal observed links."""
+
+    def test_santa_maria_da_feira_extends_coverage_to_45_pairs(self) -> None:
+        code = "0109"
+        codes = municipality_codes_from_panel()
+        source = THIRD_RUN / "ine_0012340_dim2_0109_candidate.json"
+        raw = source.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), THIRD_SOURCE_SHA256)
+        feira, source_records = parse_dim2_slice(raw, code, codes)
+        self.assertEqual(source_records, 347)
+        self.assertEqual(len(feira), 17)
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(
+                source, THIRD_RUN / "partition_manifest.json", code,
+                Path(folder) / "audit_0109.json",
+            )
+            self.assertEqual(report["status"], "partial_match")
+            self.assertEqual(report["matched_pairs"], 16)
+            self.assertEqual(report["mismatched_pairs"], 0)
+            self.assertEqual(
+                json.loads((THIRD_RUN / "audit_0109.json").read_text(encoding="utf-8")),
+                report,
+            )
+
+        prior: dict[str, dict[str, int]] = {}
+        for previous in ("0104", "0107"):
+            saved = SECOND_RUN / f"ine_0012340_dim2_{previous}_candidate.json"
+            prior[previous], _ = parse_dim2_slice(saved.read_bytes(), previous, codes)
+            self.assertEqual(feira[previous], prior[previous][code])
+        self.assertEqual(feira["0104"], 826)
+        self.assertEqual(feira["0107"], 3910)
+        self.assertEqual(prior["0104"]["0107"], prior["0107"]["0104"])
+
+        slices = {**prior, code: feira}
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, observations in slices.items()
+            for second in observations
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 45)
+
+
+class FourMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Pin the fourth source row and check all six observed reciprocal links."""
+
+    def test_oliveira_de_azemeis_extends_coverage_to_58_pairs(self) -> None:
+        code = "0113"
+        codes = municipality_codes_from_panel()
+        source = FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json"
+        raw = source.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), FOURTH_SOURCE_SHA256)
+        oliveira, source_records = parse_dim2_slice(raw, code, codes)
+        self.assertEqual(source_records, 347)
+        self.assertEqual(len(oliveira), 17)
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(
+                source, FOURTH_RUN / "partition_manifest.json", code,
+                Path(folder) / "audit_0113.json",
+            )
+            self.assertEqual(report["status"], "partial_match")
+            self.assertEqual(report["matched_pairs"], 16)
+            self.assertEqual(report["mismatched_pairs"], 0)
+            self.assertEqual(
+                json.loads((FOURTH_RUN / "audit_0113.json").read_text(encoding="utf-8")),
+                report,
+            )
+
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+        }
+        observed: dict[str, dict[str, int]] = {code: oliveira}
+        for previous, path in source_paths.items():
+            observed[previous], _ = parse_dim2_slice(path.read_bytes(), previous, codes)
+
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+        self.assertEqual(
+            {previous: oliveira[previous] for previous in source_paths},
+            {"0104": 1194, "0107": 231, "0109": 4414},
+        )
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 58)
 
 
 if __name__ == "__main__":

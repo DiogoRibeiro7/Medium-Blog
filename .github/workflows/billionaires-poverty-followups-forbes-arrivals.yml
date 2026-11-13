@@ -1,0 +1,42 @@
+name: Billionaire-poverty follow-ups — Forbes arrivals, families and co-owners
+
+on:
+  push:
+    branches: [billionaires-poverty-arrivals]
+    paths:
+      - ".github/workflows/billionaires-poverty-followups-forbes-arrivals.yml"
+      - "billionaires-poverty-followups/fetch_forbes_arrivals.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-forbes-arrivals:
+    name: Family, company and return links for arrivals and departures, 2010-2025
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install -r billionaires-poverty-followups/requirements.txt
+      - name: Test the aggregation before fetching
+        working-directory: billionaires-poverty-followups
+        run: python -m unittest tests.test_fetch_forbes_arrivals -v
+      - name: Fetch and link the lists (no person-level records kept)
+        working-directory: billionaires-poverty-followups
+        run: |
+          python fetch_forbes_arrivals.py --first 2010 --last 2025 --output-dir data
+          echo "::notice title=Forbes arrivals::$(python -c "import json;m=json.load(open('data/forbes_arrivals_manifest.json'));print({y:(e.get('n_persons'),e.get('same_as_part6'),(e.get('error') or '')[:60]) for y,e in sorted(m['years'].items())})")"
+      - name: Commit the aggregates to the branch
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add billionaires-poverty-followups/data/forbes_arrivals.csv.gz \
+                  billionaires-poverty-followups/data/forbes_arrivals_manifest.json
+          git commit -m "Billionaire-poverty follow-ups: Forbes arrivals, families and co-owners, aggregates only" || echo "no changes"
+          git push origin HEAD:${GITHUB_REF_NAME}

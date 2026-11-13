@@ -1,0 +1,67 @@
+{
+  "all_136_pairs_reconciled": false,
+  "candidate_slice_semantics_verified": false,
+  "capture_count": 1,
+  "capture_protocol": "ine_0012340_2021_dico_partition_candidate_v1",
+  "captured_at_utc": "2026-11-13T11:05:19.930245+00:00",
+  "completed_json_captures": 1,
+  "dimension": "Dim2",
+  "items": [
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=0113&lang=PT",
+      "code": "0113",
+      "filename": "ine_0012340_dim2_0113_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Oliveira de Azeméis",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "0113",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=0113&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "57e7b37e81e9190a2edd0aa996318aab26a97ccff0b42f409afaf2dc930ccae8",
+      "size_bytes": 62734,
+      "status": "captured_unverified"
+    }
+  ],
+  "metadata_dimensions_checked_against_panel": true,
+  "metadata_matches_archived_2026_11_12_sha256": false,
+  "requested_codes": [
+    "0113"
+  ],
+  "source_data_is_residential_migration": false,
+  "source_metadata": {
+    "amp_municipalities_validated_in_both_dimensions": 17,
+    "geographic_dimensions": [
+      2,
+      3
+    ],
+    "indicator": "0012340",
+    "metadata_sha256": "04bace76280c63ec4e59cca28f193f4bb9ac638768558ebcb00f7c1e0574cee1",
+    "metadata_unit": "Número (N.º)",
+    "period": "2021"
+  },
+  "source_metadata_sha256": "04bace76280c63ec4e59cca28f193f4bb9ac638768558ebcb00f7c1e0574cee1"
+}

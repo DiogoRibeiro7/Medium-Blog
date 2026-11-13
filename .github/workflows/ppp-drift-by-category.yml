@@ -1,0 +1,57 @@
+name: Reproduce ppp-drift-by-category
+
+on:
+  pull_request:
+    paths:
+      - 'ppp-drift-by-category/**'
+      - '.github/workflows/ppp-drift-by-category.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'ppp-drift-by-category/**'
+      - '.github/workflows/ppp-drift-by-category.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ppp-drift-by-category
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: ppp-drift-by-category/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/analysis_summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_drift_slope_by_category fig2_decomposition_of_the_slope \
+                   fig3_composition_and_aggregation; do
+            test -s "figures/$f.png"
+          done
