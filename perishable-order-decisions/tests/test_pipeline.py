@@ -110,13 +110,13 @@ def test_recovery_restores_cut_afternoon(panel):
 
 def test_forecasts_align_and_never_leak(panel):
     y = panel.sales.copy()
-    f = F.forecasts(panel, y, list(range(28, FIT_END)), list(range(FIT_END, panel.days)), {"n_estimators": 5})
+    f = F.forecasts(panel, y, list(range(28, FIT_END)), list(range(FIT_END, panel.days)), {"num_boost_round": 5})
     t = 90
     assert np.allclose(f["naive7"][:, t], y[:, t - 7])
     assert np.allclose(f["ma4w"][:, t], y[:, [t - 7, t - 14, t - 21, t - 28]].mean(axis=1))
     y2 = y.copy()
     y2[:, t:] = 1e6  # changing day t and later must not change the forecast for day t
-    f2 = F.forecasts(panel, y2, list(range(28, FIT_END)), [t], {"n_estimators": 5})
+    f2 = F.forecasts(panel, y2, list(range(28, FIT_END)), [t], {"num_boost_round": 5})
     for a in F.ALGOS:
         assert np.allclose(f[a][:, t], f2[a][:, t])
 
@@ -146,7 +146,7 @@ def test_shares_add_up_and_separate_effects():
 
 
 def test_end_to_end(panel):
-    res = run(panel, {"n_estimators": 10}, boot=50)
+    res = run(panel, {"num_boost_round": 10}, boot=50)
     assert len(res["rows"]) == 72
     comp = comparisons(res)
     assert {x["hypothesis"] for x in comp} == {"H1", "H2", "H3"}

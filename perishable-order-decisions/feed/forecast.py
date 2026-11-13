@@ -20,18 +20,18 @@ CATEGORICAL = (
     "third_category_id",
 )
 LGBM = {
-    "n_estimators": 500,
+    "num_boost_round": 500,
     "learning_rate": 0.05,
     "num_leaves": 63,
-    "min_child_samples": 100,
-    "colsample_bytree": 0.8,
-    "subsample": 0.8,
-    "subsample_freq": 1,
-    "random_state": 7,
+    "min_data_in_leaf": 100,
+    "feature_fraction": 0.8,
+    "bagging_fraction": 0.8,
+    "bagging_freq": 1,
+    "seed": 7,
     "deterministic": True,
     "force_row_wise": True,
-    "n_jobs": 4,
-    "verbose": -1,
+    "num_threads": 4,
+    "verbosity": -1,
 }
 OBJECTIVES = {
     "lgbm_l2": {"objective": "regression"},
@@ -48,7 +48,7 @@ def ma4w(y: np.ndarray, t: int) -> np.ndarray:
 
 
 def weekday(dates: np.ndarray) -> np.ndarray:
-    return pd.to_datetime(pd.Series(dates)).dt.dayofweek.to_numpy()
+    return pd.to_datetime(pd.Series(dates)).dt.day_of_week.to_numpy()
 
 
 def features(panel: Panel, y: np.ndarray, days: list[int]) -> pd.DataFrame:
@@ -84,10 +84,11 @@ def lgbm_forecasts(
     import lightgbm as lgb
 
     params = {**LGBM, **OBJECTIVES[algo], **(settings or {})}
+    rounds = params.pop("num_boost_round")
     train = features(panel, y, fit_days)
     target = np.concatenate([y[:, t] for t in fit_days])
-    model = lgb.LGBMRegressor(**params)
-    model.fit(train, target, categorical_feature=[*CATEGORICAL, "dow"])
+    data = lgb.Dataset(train, target, categorical_feature=[*CATEGORICAL, "dow"], free_raw_data=False)
+    model = lgb.train(params, data, num_boost_round=rounds)
     cats = {c: train[c].cat.categories for c in (*CATEGORICAL, "dow")}
     out = np.full(y.shape, np.nan)
     for t in predict_days:

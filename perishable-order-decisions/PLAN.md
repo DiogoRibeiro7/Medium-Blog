@@ -141,4 +141,6 @@ Asymmetric ratios are those where a forecast of the mean is the wrong order by c
 
 ## Changes after registration
 
-None yet.
+- 13 November 2026, before the data were downloaded: the first workflow run stopped in the unit tests because the
+  LightGBM scikit-learn wrapper needs scikit-learn, which is not installed. LightGBM is now called through its native
+  interface with the same settings (500 rounds, and the parameters listed above under their native names).
