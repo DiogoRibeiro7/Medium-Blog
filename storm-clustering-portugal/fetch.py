@@ -14,9 +14,13 @@ Sources (public domain, U.S. National Oceanic and Atmospheric Administration):
 
 Outputs in --out:
   stations.csv        mainland Portuguese GHCNh stations with any hourly wind data
-  daily_wind.csv.gz   one row per station-day (UTC): hourly reports with a valid wind
-                      speed, maximum wind speed (m/s), maximum gust (m/s), minimum
-                      sea-level pressure (hPa)
+  daily_wind.csv.gz   one row per station-day (UTC): reports with a valid wind speed,
+                      maximum wind speed (m/s), maximum gust (m/s), minimum sea-level
+                      pressure (hPa), and the same wind and pressure statistics taken
+                      only at the eight synoptic times (00, 03, ..., 21 UTC, report
+                      within 15 minutes of the hour). Reporting frequency rose from
+                      one or two a day in the 1950s to eight in the 1970s and 24-48
+                      after 2000, so only the synoptic columns are comparable over time.
   qc_codes.csv        how often each quality code appeared for wind speed, and whether
                       it was accepted
   nao_monthly.csv     year, month, NAO index
@@ -142,10 +146,30 @@ def _float(x: str):
         return None
 
 
+SYN_TOL_MIN = 15  # a report counts for a synoptic time if within 15 minutes of it
+
+
+def _minutes(r, i_date, i_hh, i_mm):
+    if i_date is not None and i_date < len(r) and len(r[i_date]) >= 16:
+        try:
+            return int(r[i_date][11:13]) * 60 + int(r[i_date][14:16])
+        except ValueError:
+            return None
+    if i_hh is not None and i_hh < len(r):
+        try:
+            mm = int(r[i_mm]) if i_mm is not None and i_mm < len(r) and r[i_mm] else 0
+            return int(r[i_hh]) * 60 + mm
+        except ValueError:
+            return None
+    return None
+
+
 def parse_psv(raw: bytes, qc_counter: Counter | None = None) -> dict[str, list]:
     """Daily aggregates (UTC) from one GHCNh pipe-separated station file.
 
-    Returns {date: [n_valid_wind, wind_max, gust_max, slp_min]}.
+    Returns {date: [n_valid_wind, wind_max, gust_max, slp_min, synoptic]} where
+    synoptic maps each 3-hourly slot (0..7) to (|offset| in minutes, wind, slp) for the
+    report closest to that synoptic time.
     """
     text = io.TextIOWrapper(io.BytesIO(raw), encoding="utf-8", errors="replace")
     reader = csv.reader(text, delimiter="|")
@@ -153,6 +177,7 @@ def parse_psv(raw: bytes, qc_counter: Counter | None = None) -> dict[str, list]:
     idx = {h: i for i, h in enumerate(header)}
     i_date = idx.get("DATE")
     i_y, i_m, i_d = idx.get("Year"), idx.get("Month"), idx.get("Day")
+    i_hh, i_mm = idx.get("Hour"), idx.get("Minute")
     cols = {var: (idx.get(var), idx.get(f"{var}_Quality_Code"))
             for var in ("wind_speed", "wind_gust", "sea_level_pressure")}
     days: dict[str, list] = {}
@@ -168,8 +193,9 @@ def parse_psv(raw: bytes, qc_counter: Counter | None = None) -> dict[str, list]:
                 continue
         else:
             continue
-        rec = days.setdefault(key, [0, None, None, None])
-        for slot, var in ((1, "wind_speed"), (2, "wind_gust"), (3, "sea_level_pressure")):
+        rec = days.setdefault(key, [0, None, None, None, {}])
+        good = {}
+        for var in ("wind_speed", "wind_gust", "sea_level_pressure"):
             iv, iq = cols[var]
             if iv is None or iv >= len(r):
                 continue
@@ -181,16 +207,47 @@ def parse_psv(raw: bytes, qc_counter: Counter | None = None) -> dict[str, list]:
                 qc_counter[q] += 1
             if q not in ACCEPT_QC:
                 continue
-            if var == "wind_speed":
-                if 0 <= v <= 75:
-                    rec[0] += 1
-                    rec[1] = v if rec[1] is None else max(rec[1], v)
-            elif var == "wind_gust":
-                if 0 <= v <= 100:
-                    rec[2] = v if rec[2] is None else max(rec[2], v)
-            elif 900 <= v <= 1080:
-                rec[3] = v if rec[3] is None else min(rec[3], v)
+            if var == "wind_speed" and 0 <= v <= 75:
+                good[var] = v
+            elif var == "wind_gust" and 0 <= v <= 100:
+                good[var] = v
+            elif var == "sea_level_pressure" and 900 <= v <= 1080:
+                good[var] = v
+        if "wind_speed" in good:
+            v = good["wind_speed"]
+            rec[0] += 1
+            rec[1] = v if rec[1] is None else max(rec[1], v)
+        if "wind_gust" in good:
+            v = good["wind_gust"]
+            rec[2] = v if rec[2] is None else max(rec[2], v)
+        if "sea_level_pressure" in good:
+            v = good["sea_level_pressure"]
+            rec[3] = v if rec[3] is None else min(rec[3], v)
+        if "wind_speed" in good or "sea_level_pressure" in good:
+            m = _minutes(r, i_date, i_hh, i_mm)
+            if m is None:
+                continue
+            slot = int(round(m / 180))
+            off = abs(m - 180 * slot)
+            if slot > 7 or off > SYN_TOL_MIN:
+                continue
+            w, p = good.get("wind_speed"), good.get("sea_level_pressure")
+            prev = rec[4].get(slot)
+            if prev is None or off < prev[0]:
+                rec[4][slot] = (off, w, p)
+            elif off == prev[0]:  # two reports at the same time (e.g. SYNOP and METAR)
+                pw, pp = prev[1], prev[2]
+                rec[4][slot] = (off,
+                                w if pw is None else (pw if w is None else max(pw, w)),
+                                p if pp is None else (pp if p is None else min(pp, p)))
     return days
+
+
+def synoptic_summary(syn: dict) -> tuple[int, float | None, float | None]:
+    """Number of synoptic slots with a wind, maximum synoptic wind, minimum synoptic SLP."""
+    winds = [w for _, w, _ in syn.values() if w is not None]
+    slps = [p for _, _, p in syn.values() if p is not None]
+    return len(winds), (max(winds) if winds else None), (min(slps) if slps else None)
 
 
 def parse_nao(text: str) -> list[tuple[int, int, float]]:
@@ -253,11 +310,12 @@ def main(argv=None) -> int:
                 continue
             first, last = min(wind_days), max(wind_days)
             kept.append({**s, "first_wind_day": first, "last_wind_day": last, "wind_days": len(wind_days)})
-            for day, (n, w, g, p) in days.items():
+            for day, (n, w, g, p, syn) in days.items():
                 if n == 0 and g is None and p is None:
                     continue
-                rows.append((s["id"], day, n, "" if w is None else w, "" if g is None else g,
-                             "" if p is None else p))
+                ns, ws, ps = synoptic_summary(syn)
+                blank = lambda x: "" if x is None else x
+                rows.append((s["id"], day, n, blank(w), blank(g), blank(p), ns, blank(ws), blank(ps)))
             print(f"  {s['id']} {s['name'][:28]:<28} {first} to {last}, {len(wind_days)} days with wind")
     rows.sort()
     kept.sort(key=lambda s: s["id"])
@@ -267,7 +325,8 @@ def main(argv=None) -> int:
         w.writerows(kept)
     with gzip.open(out / "daily_wind.csv.gz", "wt", newline="", compresslevel=9) as fh:
         w = csv.writer(fh)
-        w.writerow(["station", "date", "n_wind_obs", "wind_max_ms", "gust_max_ms", "slp_min_hpa"])
+        w.writerow(["station", "date", "n_wind_obs", "wind_max_ms", "gust_max_ms", "slp_min_hpa",
+                    "n_syn_wind", "wind_max_syn_ms", "slp_min_syn_hpa"])
         w.writerows(rows)
     with open(out / "qc_codes.csv", "w", newline="") as fh:
         w = csv.writer(fh)

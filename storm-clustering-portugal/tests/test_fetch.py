@@ -24,14 +24,32 @@ class Parsers(unittest.TestCase):
         raw = ("\n".join([header] + rows) + "\n").encode()
         qc = Counter()
         days = fetch.parse_psv(raw, qc)
-        self.assertEqual(days["2026-01-28"], [2, 21.5, 30.1, 986.1])
-        self.assertEqual(days["2026-01-29"], [1, 4.0, None, 1010.2])
+        self.assertEqual(days["2026-01-28"][:4], [2, 21.5, 30.1, 986.1])
+        self.assertEqual(days["2026-01-29"][:4], [1, 4.0, None, 1010.2])
         self.assertEqual(qc, Counter({"": 2, "5": 1, "L": 1}))
+        self.assertEqual(fetch.synoptic_summary(days["2026-01-28"][4]), (2, 21.5, 986.1))
+
+    def test_synoptic_times_only(self):
+        header = "Station_ID|DATE|wind_speed|wind_speed_Quality_Code|sea_level_pressure|sea_level_pressure_Quality_Code"
+        rows = [
+            "P|2026-01-28T05:30:00|30.0||990.0|",   # half-hourly METAR: not a synoptic time
+            "P|2026-01-28T06:10:00|12.0||995.0|",   # 10 minutes after 06 UTC
+            "P|2026-01-28T06:00:00|11.0||996.0|",   # closer to 06 UTC: wins the slot
+            "P|2026-01-28T09:00:00|14.0||992.0|",   # SYNOP ...
+            "P|2026-01-28T09:00:00|15.4||993.0|",   # ... and METAR at the same time: max wind, min SLP
+            "P|2026-01-28T23:50:00|20.0||980.0|",   # nearest synoptic time is 00 UTC next day: dropped
+        ]
+        days = fetch.parse_psv(("\n".join([header] + rows) + "\n").encode())
+        d = days["2026-01-28"]
+        self.assertEqual(d[:2], [6, 30.0])
+        self.assertEqual(fetch.synoptic_summary(d[4]), (2, 15.4, 992.0))
 
     def test_psv_with_separate_date_columns(self):
         header = "Station_ID|Year|Month|Day|Hour|wind_speed|wind_speed_Quality_Code"
         raw = (header + "\nPOX|2026|2|7|19|17.2|\n").encode()
-        self.assertEqual(fetch.parse_psv(raw)["2026-02-07"], [1, 17.2, None, None])
+        d = fetch.parse_psv(raw)["2026-02-07"]
+        self.assertEqual(d[:4], [1, 17.2, None, None])
+        self.assertEqual(fetch.synoptic_summary(d[4]), (0, None, None))  # 19 UTC is not synoptic
 
     def test_station_list_csv(self):
         text = ("GHCN_ID,LATITUDE,LONGITUDE,ELEVATION,STATE,NAME,GSN,HCN_CRN,WMO_ID,ICAO\n"
