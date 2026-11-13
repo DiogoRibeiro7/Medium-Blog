@@ -33,7 +33,7 @@ jobs:
       - name: Offline parser tests
         run: python -m unittest discover -s tests -p "test_fetch.py" -v
 
-      - name: Download NOAA station records and the NAO index
+      - name: Download GHCNh station records and the NAO index
         id: fetch
         continue-on-error: true
         run: python fetch.py --out data | tee -a "$GITHUB_STEP_SUMMARY"
