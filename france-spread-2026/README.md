@@ -33,7 +33,8 @@ answered a scripted request: Eurostat's daily table is not disseminated through 
 daily benchmark yields return no series, Stooq answers 404, and the Banque de France's daily
 constant-maturity rate needs a Webstat API key. The fetch log of that day records the attempts. The
 monthly series ended in September 2026 at that date; rerunning the data workflow picks up later
-months as they are published.
+months as they are published. On 13 November 2026 both monthly series reached October 2026, and the
+results and figures were rerun on that snapshot.
 
 ## Method
 
