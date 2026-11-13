@@ -118,3 +118,9 @@ Descriptive analyses added after the results (not part of the registered test).
    lgbm_l2 recovered/pooled tau 0.9: coverage 0.888
    lgbm_l2 recovered/series tau 0.7: coverage 0.684
    lgbm_l2 recovered/series tau 0.9: coverage 0.877
+
+6. Cost of ordering the forecast over the cost of the per-series quantile, models trained on recovered
+   demand, against phi(0) / phi(z_tau), the same ratio for unbiased normal errors
+   tau 0.5: normal 1.000; naive7 0.989; ma4w 1.002; lgbm_l2 0.998; lgbm_tweedie 0.998
+   tau 0.7: normal 1.147; naive7 1.063; ma4w 1.162; lgbm_l2 1.138; lgbm_tweedie 1.155
+   tau 0.9: normal 2.273; naive7 1.819; ma4w 2.092; lgbm_l2 1.990; lgbm_tweedie 2.040
