@@ -1,0 +1,78 @@
+# Synthesis of the wealth-origin series (every number quoted in the closing article)
+
+## Headline coefficient under each design (TFP, 3 years, billionaire countries, fixed effects;
+## pp of annual growth per log point of inherited relative to self-made billionaire wealth)
+  panel     Within-country panel, income controlled (all lists, n=560): -1.167 [-2.032, -0.302]
+  panel     Within-country panel, income controlled (lists 2011-2016 only, n=336): -0.269 [-0.971, +0.433]
+  sectors   + six sector-group shares (all lists, n=536): -1.048 [-1.870, -0.226]
+  sectors   + six sector-group shares (without the 2020 list): -0.650 [-1.320, +0.020]
+  sectors   + all 18 sector shares (all lists): -1.245 [-2.190, -0.300]
+  pandemic  + four pandemic exposures x list year (all lists, n=560): -1.109 [-2.064, -0.155]
+  pandemic  + four pandemic exposures x list year (without the 2020 list, n=504): -0.689 [-1.440, +0.061]
+  pandemic  Two-list average, exposures controlled (all lists, n=504): -1.475 [-2.654, -0.295]
+  pandemic  Two-list average, exposures controlled (without the 2020 list, n=448): -1.156 [-2.143, -0.169]
+  pandemic  Headcount measure, exposures controlled (all lists, n=560): -1.022 [-1.922, -0.123]
+  pandemic  Headcount measure, exposures controlled (without the 2020 list, n=504): -0.931 [-1.802, -0.059]
+full-sample estimates: 6; range -1.475 to -1.022; all intervals exclude zero: True
+estimates without the 2020 list (or before it): 5; intervals excluding zero 2 (twolist_no2020, headcount_no2020)
+share of the full-sample estimate kept when the 2020 list is dropped: exposure 0.62; headcount 0.91; panel 0.23; sectors6 0.62; twolist 0.78
+
+## Succession event study (cumulative change in TFP growth over the event year and the two after, pp per log point of the shock)
+  All matched successions (all years, n=504): -2.785 [-4.959, -0.611]
+  All matched successions (growth years 2020-21 left out, n=392): +0.529 [-2.027, +3.086]
+  Founders aged 70 or more (all years, n=504): -3.110 [-5.321, -0.900]
+  Founders aged 70 or more (growth years 2020-21 left out, n=392): -0.332 [-3.136, +2.472]
+  All successions, pandemic exposure x year (all years, n=504): -1.686 [-6.052, +2.679]
+  Any exit of a founder aged 70+ (all years, n=504): -0.607 [-2.362, +1.148]
+  Exit aged 70+, no heir listed (all years, n=504): +0.838 [-1.416, +3.092]
+
+## Power of the succession design for an effect of the size the panel implies
+successions with a panel prediction: 38
+panel-implied post coefficient (median over events of 3 x predicted / shock): -0.630
+event-study post coefficient: -2.785, standard error 1.109
+standard error needed for 80% power at the 5% level: 0.225
+multiple of the current number of succession events needed: 24.3
+power of the current design against the panel-implied effect: 0.088
+if the true effect were the panel-implied one: significant estimates have the wrong sign with probability 0.065 and overstate it by a factor of 4.23 on average; the observed estimate is 4.42 times it
+country-years with a matched succession (all countries): 39 over 14 list years; needed at the same event sizes: 948, about 340 years of lists at the current rate
+median succession: event-implied -0.1306 pp a year, panel-predicted -0.0347; ratio 3.76
+
+## Ledger (objection / study: test -> statistic -> verdict [rule])
+Top-1% wealth share predicts slower growth within countries / audit: within-country estimator, 108 wealth specifications -> median +0.132; significant 3 negative, 17 positive; source-based wealth data median +0.048 (joint p=0.374) -> failed [sign test]
+Inherited control goes with slower TFP growth / audit: pooled 5-year windows, 331 country-waves in 112 countries -> -0.38 [-1.29, +0.48] -> open [estimate]
+Inherited control goes with slower TFP growth / panel: country and year fixed effects, 13 annual lists -> -1.17 [-2.03, -0.30] -> passed [estimate]
+Inherited control goes with slower TFP growth / successions: TFP growth over the three years after control passes to heirs -> -2.79 [-4.96, -0.61] -> passed [estimate]
+Not a reflection of earlier growth / panel: same coefficient on growth t-3 to t; forward minus backward -> backward -0.00; forward minus backward -1.16 [-3.44, +0.22] -> open [reverse timing]
+Not a reflection of earlier growth / sectors: sector-controlled coefficient, forward minus backward -> backward +0.26; forward minus backward -1.31 [-3.50, +0.22] -> open [reverse timing]
+Not a reflection of earlier growth / pandemic: two-list average, exposures controlled, forward minus backward -> backward -0.36; forward minus backward -1.12 [-3.33, +0.68] -> open [reverse timing]
+Not a reflection of earlier growth / successions: growth in the year before the founder leaves the list (k=-1) -> +1.30 [-0.23, +2.83] against a post effect of -2.79 -> open [pre-trend equivalence]
+Not driven by one country / panel: drop each of 56 countries -> range -1.35 to -0.89; interval excludes zero in 56 of 56 -> passed [leave one out]
+Not driven by one country / sectors: drop each of 56 countries, sector-controlled -> range -1.25 to -0.87; interval excludes zero in 56 of 56 -> passed [leave one out]
+Not driven by one country / successions: drop each of 19 countries with a succession -> range -4.19 to -2.29; interval excludes zero in 18 of 19 -> passed [leave one out]
+Not explained by the sector mix / sectors: all 18 sector shares as controls -> -1.25 [-2.19, -0.30] (six groups -1.05); required sector coefficient outside its interval in 12 of 12 -> passed [estimate vs reference]
+Not explained by pandemic exposure / pandemic: four exposures x list year -> -1.11 [-2.06, -0.15] (without exposures -1.05) -> passed [estimate vs reference]
+Not explained by pandemic exposure / successions: exposure x year in the event study -> -1.69 [-6.05, +2.68] (baseline -2.79) -> open [estimate vs reference]
+Survives without the 2020 list / panel: lists 2011-2016 only (windows end by 2019) -> -0.27 [-0.97, +0.43] (all lists -1.17) -> failed [estimate vs reference]
+Survives without the 2020 list / sectors: 2020 list dropped -> -0.65 [-1.32, +0.02] (all lists -1.05) -> open [estimate vs reference]
+Survives without the 2020 list / pandemic: two-list average, 2020 list dropped -> -1.16 [-2.14, -0.17] (single list without 2020: -0.69) -> passed [estimate vs reference]
+Survives without the 2020 list / successions: growth years 2020 and 2021 left out -> +0.53 [-2.03, +3.09] (baseline -2.79) -> failed [estimate vs reference]
+Not an artefact of one list's valuations / pandemic: average of lists t-1 and t -> -1.47 [-2.65, -0.30] (headcount measure -1.02) -> passed [estimate vs reference]
+Also shows in GDP per capita growth / panel: joint test over 72 GDP specifications -> median -0.064, Stouffer p=0.235 -> failed [joint test]
+Also shows in GDP per capita growth / sectors: joint test over 12 GDP specifications -> median -0.657, Stouffer p=0.122 -> failed [joint test]
+Also shows in GDP per capita growth / pandemic: joint test, two-list average, 12 GDP specifications -> median -0.301, Stouffer p=0.156 -> failed [joint test]
+Also shows in GDP per capita growth / successions: event study on GDP per capita growth -> -3.96 [-7.32, -0.61] -> passed [estimate]
+Holds across the whole specification set / panel: joint test over 72 TFP specifications -> median -0.145, Stouffer p=0.008 -> passed [joint test]
+Holds across the whole specification set / sectors: joint test, sector-controlled, 12 TFP specifications -> median -0.668, Stouffer p=0.003 -> passed [joint test]
+Holds across the whole specification set / pandemic: joint test, two-list average, 12 TFP specifications -> median -0.615, Stouffer p=0.004 -> passed [joint test]
+Beats randomly reshuffled timing / successions: 1,000 within-country reshuffles of shock years -> share of draws at or below -2.79: 0.083 -> open [permutation]
+Founder exits without heirs show no drop / successions: founders aged 70+ leaving with no heir listed -> +0.84 [-1.42, +3.09] (successions -2.79) -> passed [placebo events]
+Event study and panel agree on size / successions: event-study effect vs panel prediction, median succession -> -0.131 vs -0.035 pp a year (ratio 3.8) -> failed [ratio]
+
+## Verdict counts
+  audit: passed 0, open 1, failed 1
+  panel: passed 3, open 1, failed 2
+  sectors: passed 3, open 2, failed 1
+  pandemic: passed 4, open 1, failed 1
+  successions: passed 4, open 3, failed 2
+  all: tests 29, objections 13; passed 14, open 8, failed 7
+  by objection: Top-1% wealth share predicts slower growth within countries: failed; Inherited control goes with slower TFP growth: open,passed,passed; Not a reflection of earlier growth: open,open,open,open; Not driven by one country: passed,passed,passed; Not explained by the sector mix: passed; Not explained by pandemic exposure: passed,open; Survives without the 2020 list: failed,open,passed,failed; Not an artefact of one list's valuations: passed; Also shows in GDP per capita growth: failed,failed,failed,passed; Holds across the whole specification set: passed,passed,passed; Beats randomly reshuffled timing: open; Founder exits without heirs show no drop: passed; Event study and panel agree on size: failed
