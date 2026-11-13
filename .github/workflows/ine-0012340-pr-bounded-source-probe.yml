@@ -47,7 +47,7 @@ jobs:
         run: |
           {
             echo "## INE 0012340 first two-municipality probe"
-            echo "The capture is exploratory. Dim2 filter effectiveness is not established."
+            echo "Each captured municipality filter must be validated against official metadata and the frozen pairs."
             echo "No observed residential migration or causal price transmission is inferred."
             echo "Inspect the raw responses and partition_manifest.json before broader queries."
           } >> "$GITHUB_STEP_SUMMARY"
@@ -59,6 +59,57 @@ jobs:
           path: urban-affordability-cascade/candidate-capture/
           if-no-files-found: error
           retention-days: 30
-      - name: Report capture failure after artifact upload
-        if: always() && steps.capture.outputs.capture_exit_code != '0'
-        run: exit 1
+      - name: Classify external network failures after artifact upload
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          path = Path("candidate-capture/partition_manifest.json")
+          if not path.is_file():
+              sys.exit("Missing partition manifest: capture did not produce auditable evidence")
+
+          manifest = json.loads(path.read_text(encoding="utf-8"))
+          rows = manifest.get("items")
+          if (manifest.get("capture_protocol") != "ine_0012340_2021_dico_partition_candidate_v1"
+                  or manifest.get("requested_codes") != ["0104", "0107"]
+                  or manifest.get("dimension") != "Dim2"
+                  or not isinstance(rows, list) or len(rows) != 2
+                  or any(not isinstance(row, dict) for row in rows)):
+              sys.exit("Unexpected partition manifest schema or municipality scope")
+
+          captured = sum(row.get("status") == "captured_unverified" for row in rows)
+          failed = [row for row in rows if row.get("status") == "failed"]
+          if (captured + len(failed) != 2
+                  or captured != manifest.get("completed_json_captures")
+                  or any(row.get("code") != code
+                         for code, row in zip(manifest["requested_codes"], rows))):
+              sys.exit("Partition manifest counts or requested identities are inconsistent")
+
+          summary = f"INE capture outcome: {captured}/2 candidate municipality slices saved."
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as stream:
+              stream.write(f"\n### {summary}\n")
+              for row in failed:
+                  stream.write(
+                      f"- {row['code']} {row.get('municipality')}: "
+                      f"{row.get('error_type')} ({row.get('error')})\n"
+                  )
+
+          transient_http_codes = ("HTTP Error 429:", "HTTP Error 500:",
+                                  "HTTP Error 502:", "HTTP Error 503:",
+                                  "HTTP Error 504:")
+          if any(not (row.get("error_type") in {"URLError", "TimeoutError"}
+                      or (row.get("error_type") == "HTTPError"
+                          and str(row.get("error", "")).startswith(transient_http_codes)))
+                 for row in failed):
+              sys.exit("Capture failed for a reason other than external network availability")
+          if failed:
+              print(f"::warning title=INE source unavailable::{summary} "
+                    "See the uploaded partition manifest for the network timeout(s).")
+          else:
+              print(summary)
+          PY

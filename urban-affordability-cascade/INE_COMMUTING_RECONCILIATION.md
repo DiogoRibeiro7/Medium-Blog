@@ -254,6 +254,13 @@ nonzero diagonal. It reports any numerical disagreement without changing
 research inputs. Offline tests pin the captured raw hash and independently
 check all 16 pair values; mutation tests demonstrate the rejection paths.
 
+The PR source probe also distinguishes **external INE availability** from
+validation failures. A timeout or transient HTTP 429/5xx response is
+recorded in the uploaded manifest, the job summary and a workflow warning;
+it does not invalidate otherwise passing code checks. A missing/corrupt
+manifest, changed municipality scope or non-network capture failure still
+fails the job. A warning does **not** mean that a missing slice was obtained.
+
 **Scope of inference:** this proves a successful response shape and
 source-count agreement for **one of 17 municipalities**, contingent on the
 recorded GitHub Actions capture and official source metadata. The original
