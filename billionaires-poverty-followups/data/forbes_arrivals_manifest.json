@@ -1,5 +1,5 @@
 {
-  "retrieved_utc": "2026-11-13T09:38:04+00:00",
+  "retrieved_utc": "2026-11-13T09:53:03+00:00",
   "url_pattern": "https://www.forbes.com/forbesapi/person/billionaires/{year}/position/true.json?limit=5000",
   "flow_edges_musd": [
     0,
@@ -45,8 +45,8 @@
     "2011": {
       "url": "https://www.forbes.com/forbesapi/person/billionaires/2011/position/true.json?limit=5000",
       "bytes": 2441602,
-      "sha256": "3c3c5caa3f097f56e99cddc60aaa85950c0fefe3cc277b2e1bfaaf961d090e07",
-      "same_as_part6": false,
+      "sha256": "a9c0520e96f33273aac15ce1db6fb59b6b273d5e44918ccd0d594af47f6b4aa7",
+      "same_as_part6": true,
       "n_persons": 1209,
       "fields": {
         "n": 1209,
@@ -344,6 +344,7 @@
     }
   },
   "generic_labels": 138,
-  "arrivals_sha256": "ace1d8ff5f8d9fe42b55dd7e1aa30604d5866aeb0e4cccf6af815dc89dfc9321",
+  "rare_surname_pairs": 3154,
+  "arrivals_sha256": "ca0035445f318671e73f3c7a773129de3ba331890b0d2be46e232e6b250ecee5",
   "n_years_ok": 16
 }
