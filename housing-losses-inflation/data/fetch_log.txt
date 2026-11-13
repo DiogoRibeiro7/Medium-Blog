@@ -1,7 +1,8 @@
-# fetched 2026-11-13T08:42Z
+# fetched 2026-11-13T08:44Z
 source	status	bytes	sha256
 https://sdmx.oecd.org/public/rest/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.Q.HPI+RHP+RPI+HPI_RPI.IX?startPeriod=1970-Q1&dimensionAtObservation=AllDimensions&format=csvfilewithlabels	200	8082646	45bf1f2a0c5885dec48e52a5290303b8bb75a25eaaa6ccc6154371382e98ac31
 https://www.macrohistory.net/app/download/9834512469/JSTdatasetR6.xlsx	200	1098335	b0ebb74a8d1b5b1bc9033fc46a6dcc578736afff8ce1e1086b7840f2649e79b3
+# https://www.macrohistory.net/app/download/9834512469/JSTdatasetR6.xlsx: not an xlsx archive, first bytes b'<stata_dta><head'
 https://www.macrohistory.net/app/download/9834512049/JSTdatasetR6.xlsx	404	0	-
 https://data.macrohistory.net/JSTdatasetR6.xlsx	0	0	-
 # JST: no official download succeeded; the committed data/jst_housing.csv is kept
