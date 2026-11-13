@@ -85,17 +85,18 @@ def fig1(ratios: pd.DataFrame, pairs: dict) -> None:
         ax.set_ylim(-1.0, 1.3)
         ax.yaxis.set_major_locator(mticker.FixedLocator([-0.5, -0.1, -0.01, 0, 0.01, 0.1, 0.5]))
         ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{100 * v:+.0f}%" if v else "0"))
-        tag = "" if p["test"] else " (motivating pair)"
-        ax.set_title(f"{SHORT[name]}{tag}: split {sp['month']}, {100 * sp['reduction']:.0f}% of deviation", loc="left")
+        tag = "" if p["test"] else " (motivating)"
+        ax.set_title(f"{SHORT[name]}{tag}: split {sp['month']}, -{100 * sp['reduction']:.0f}%", loc="left")
         ax.grid(axis="y", color=GRID, lw=0.7)
     fig.suptitle(
-        "Delivered / outside count - 1, with the split at the largest level shift (dashed) and each segment's median",
+        "Delivered / outside count - 1, the split at the largest level shift (dashed), each segment's median, and the\n"
+        "share of the absolute deviation the split removes",
         x=0.01,
         ha="left",
         fontweight="bold",
     )
     fig.text(0.99, 0.004, CREDIT, ha="right", fontsize=7.5, color=INK2)
-    fig.tight_layout(rect=(0, 0.015, 1, 0.97))
+    fig.tight_layout(rect=(0, 0.015, 1, 0.955))
     fig.savefig(FIG / "fig1_splits.png", dpi=150)
     plt.close(fig)
 
@@ -113,6 +114,14 @@ def band(ax, lo=0.0001, hi=1.0) -> None:
     ax.grid(color=GRID, lw=0.6)
 
 
+OFFSET = {
+    "chicago / vehicles": (8, -12),
+    "TLC green / monthly report": (-118, 6),
+    "chicago / drivers": (8, -12),
+    "citibike / DOT table": (-140, 6),
+}
+
+
 def fig2(pairs: dict) -> None:
     fig, ax = plt.subplots(figsize=(7.4, 6.6))
     band(ax)
@@ -128,7 +137,12 @@ def fig2(pairs: dict) -> None:
         ax.scatter(p["pred_full"], obs, s=40, color=SURFACE, edgecolor=c, lw=1.3, zorder=3)
         ax.scatter(p["pred_segment"], obs, s=70, color=c, edgecolor=c, zorder=4, marker="o" if p["test"] else "D")
         ax.annotate(
-            SHORT[name], (p["pred_segment"], obs), xytext=(6, 5), textcoords="offset points", fontsize=7.5, color=INK2
+            SHORT[name],
+            (p["pred_segment"], obs),
+            xytext=OFFSET.get(name, (6, 5)),
+            textcoords="offset points",
+            fontsize=7.5,
+            color=INK2,
         )
     ax.set_xlabel("predicted smallest loss caught 90% of the time")
     ax.set_ylabel("observed on the later segment")
