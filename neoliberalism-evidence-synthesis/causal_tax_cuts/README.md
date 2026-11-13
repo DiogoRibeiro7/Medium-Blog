@@ -84,9 +84,9 @@ tests public access and processes the full 18-country WID sample. The live
 author file was verified to have **969 rows** (19 countries × 51 years) and
 the actual fields `iso3`, `year`, `taxcut_2SD` and `taxcut_1SD`, plus an
 unnamed original row-index column. The runner configures the **2-SD** series
-without guessing the layout. Three initial WID downloads (USA, GBR, FRA)
-successfully yielded 51 annual rows each; the full 18-country coverage still
-needs to be checked on the extended run.
+without guessing the layout. All 18 country files downloaded successfully
+in the extended live probe; coverage differs across countries, as quantified
+below. The live source audit must be rerun for each new data vintage.
 
 The Action uploads only author-source **metadata**, not the authors' raw CSV.
 It attempts to produce a short-lived, audited joined panel and **exploratory
@@ -94,6 +94,27 @@ treatment-history-only** matching output. These are not licensed as published
 paper replication and cannot be treated as a full causal result. A failed
 live download, paper-sample audit or estimation step is recorded in CI and
 must not be described as empirical verification.
+
+### First observed coverage audit (13 November 2026)
+
+The networked workflow successfully downloaded all 18 WID country files and
+the authors' 19-country event panel. Its source and join audit found:
+
+| Check | Observed result |
+| --- | ---: |
+| Original author CSV | 969 country-year rows (19 countries × 51 years) |
+| Paper-sample tax-cut events (`taxcut_2SD`) | 30 (as published) |
+| Extra author-file country excluded from paper sample | South Korea (`KOR`, 51 rows) |
+| Possible paper-sample outcome country-years | 918 (18 × 51) |
+| Current-vintage WID top-share country-years present | 853 |
+| Missing current-vintage WID values | 65 |
+| Tax-cut years lost to outcome missingness | 1 |
+
+The current WID extraction has an **approximately 7.1% missing country-year
+rate** in the 1965–2015 paper window. This is not automatically comparable
+to the authors' 2022-vintage dataset; the working paper used a documented
+interpolation procedure for some top-income observations. Our pipeline does
+**not** impute them. Treat this as a real-coverage finding, not an ATT.
 
 1. Download the authors' file via the link above. Inspect the true headings:
 
