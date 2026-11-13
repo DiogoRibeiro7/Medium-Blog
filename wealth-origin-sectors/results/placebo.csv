@@ -1,0 +1,25 @@
+outcome,sample,offset,window,resid,se_resid,pred,se_pred
+gdppc,billionaire_countries,-5,t-5 to t,2.254811,1.805228,5.091434,6.320223
+gdppc,billionaire_countries,-3,t-3 to t,1.803270,1.353678,4.337999,5.107020
+gdppc,billionaire_countries,-1,t-1 to t,0.670786,0.967639,2.737677,4.149591
+gdppc,billionaire_countries,1,t to t+1,0.321249,0.798113,0.485289,2.677984
+gdppc,billionaire_countries,3,t to t+3,0.376016,0.590223,2.305558,1.998303
+gdppc,billionaire_countries,5,t to t+5,0.094673,0.583706,2.491248,1.808423
+gdppc,with_billionaires,-5,t-5 to t,2.254257,1.804703,5.146522,6.311316
+gdppc,with_billionaires,-3,t-3 to t,1.790012,1.352586,4.424866,5.107041
+gdppc,with_billionaires,-1,t-1 to t,0.600530,0.972857,2.923100,4.153089
+gdppc,with_billionaires,1,t to t+1,0.282630,0.796218,0.420236,2.647143
+gdppc,with_billionaires,3,t to t+3,0.350020,0.585967,2.229943,1.980775
+gdppc,with_billionaires,5,t to t+5,0.093476,0.583582,2.489660,1.807731
+tfp,billionaire_countries,-5,t-5 to t,2.086607,1.624460,2.874780,6.687288
+tfp,billionaire_countries,-3,t-3 to t,1.548605,1.284676,1.714570,5.784719
+tfp,billionaire_countries,-1,t-1 to t,0.910411,1.015461,2.033396,5.151232
+tfp,billionaire_countries,1,t to t+1,-0.318747,0.704132,-2.416596,2.609131
+tfp,billionaire_countries,3,t to t+3,-0.835645,0.524502,0.395599,1.698136
+tfp,billionaire_countries,5,t to t+5,-0.541182,0.515927,0.739469,1.767731
+tfp,with_billionaires,-5,t-5 to t,2.081602,1.622546,2.873210,6.664769
+tfp,with_billionaires,-3,t-3 to t,1.533204,1.282979,1.689117,5.774353
+tfp,with_billionaires,-1,t-1 to t,0.835528,1.017231,2.029359,5.140762
+tfp,with_billionaires,1,t to t+1,-0.356448,0.703923,-2.449252,2.573934
+tfp,with_billionaires,3,t to t+3,-0.857193,0.522025,0.356266,1.675687
+tfp,with_billionaires,5,t to t+5,-0.542228,0.516224,0.740556,1.766793

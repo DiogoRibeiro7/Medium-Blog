@@ -1,0 +1,152 @@
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+Infarmed export-control documents found: 96 ({('lnp', 'deliberation'): 16, ('lnp', 'list'): 19, ('prohibited', 'list'): 5, ('regulation', 'deliberation'): 1, ('suspended', 'deliberation'): 25, ('suspended', 'list'): 30})
+  lists: 54 found, 51 read; the 2021 deliberation's two annexes read as the first lists; deliberations kept as dates only
+  could not be downloaded (connection refused by Infarmed's server): lnp 2024-04-09, lnp 2024-08-14, suspended 2026-01-14
+  parsed rows (one per presentation and document): 5135
+EMA register of parallel distribution notices: 47526 notices
+Comext: Portugal's trade in medicaments (HS 3004), 2015-2025
+
+==============================================================================================
+2. How much leaves, and to where
+==============================================================================================
+Requests to export medicines on the prior-notification list (Infarmed, SIEXP):
+  2021: 7233 intentions notified, 3152 prohibited (44%); 3,015,970 packs, of which 1,392,324 prohibited (46%)
+  2024: 9559 prohibited, 17486 authorised (35% prohibited)
+  2025: 8753 prohibited, 8035 authorised (52% prohibited); Infarmed reports a 38% fall in export intentions, which it attributes possibly to its meetings and thematic inspections with the sector
+  total requests 2024 27045, 2025 16788 (-38%)
+  top exported LNP medicines 2024 (packs): Epione 1,616,778; Aranka 595,493; Diprogenta 553,709; Diprogenta 404,996; Jardiance 396,464; Celestone 315,870; Lantus 275,505; Atrovent Unidose 266,910; Duphaston 213,694; Betaserc 191,692
+    the ten together: 4,831,111 packs, 2.5% of the 194 million packs of SNS-reimbursed medicines dispensed by community pharmacies that year (Part 3, SNS transparency portal)
+  top exported LNP medicines 2025 (packs): Forxiga 140,367; Edistride 97,884; Celestone 94,612; Jardiance 64,542; Gutron 58,920; Jardiance 55,126; Ferro-Tardyferon Fol 52,977; Eliquis 43,913; Lixiana 38,524; Haldol Decanoato 31,333
+    the ten together: 678,198 packs, 0.3% of the 204 million packs of SNS-reimbursed medicines dispensed by community pharmacies that year (Part 3, SNS transparency portal)
+  destinations 2021 (share of export intentions): {'Alemanha': 31, 'Reino Unido': 20, 'França': 13, 'Holanda': 12, 'República Checa': 9, 'Irlanda': 5, 'Angola': 4, 'Dinamarca': 2, 'Hungria': 1, 'Cabo Verde': 1}
+  destinations 2024 (share of exports, Infarmed's chart): {'Alemanha': 39, 'Reino Unido': 12, 'República Checa': 10, 'Holanda': 8, 'Angola': 7, 'Outros': 7, 'Itália': 4, 'França': 4, 'Dinamarca': 4, 'Polónia': 3, 'Hungria': 2}
+  destinations 2025 (share of exports, Infarmed's chart): {'Alemanha': 35, 'Chéquia': 15, 'Reino Unido': 14, 'Dinamarca': 8, 'Polónia': 7, 'Outros': 21}
+Eurostat Comext, Portugal's exports of medicaments in measured doses (HS 3004), EUR million:
+  world: 2015 743, 2019 827, 2021 963, 2023 1,256, 2024 1,374, 2025 1,424
+  imports, world: 2015 1,821, 2019 1,952, 2021 1,986, 2023 2,438, 2024 2,607, 2025 2,947
+  largest destinations in 2025 (EUR million, share of world, 2015 value):
+    DE   290.6  20.4%   2015   119.0
+    US   224.7  15.8%   2015   153.2
+    FR   149.2  10.5%   2015    39.8
+    BE   117.1   8.2%   2015    37.0
+    ES    95.9   6.7%   2015    26.5
+    IT    62.1   4.4%   2015    10.0
+    AO    51.5   3.6%   2015    66.8
+    IE    34.2   2.4%   2015     7.1
+    CZ    32.3   2.3%   2015    16.1
+    GB    30.3   2.1%   2015    88.2
+    NL    26.4   1.9%   2015    19.1
+    PL    23.8   1.7%   2015     7.6
+
+==============================================================================================
+3. The European register of parallel distribution notices
+==============================================================================================
+Notices: 47526; status {'Active': 23724, 'Dormant': 15034, 'Cancelled': 5336, 'Withdrawn': 3432}
+  years of notice: 1997-2026; products 1209, distributors 302; notices per year 2021-2026: 2021 2461, 2022 1758, 2023 2023, 2024 2574, 2025 2956, 2026 2902
+Active notices: 23724. Destinations named (a notice can name several):
+  Germany 13189 (56%), Austria 3086 (13%), Sweden 2265 (10%), Denmark 2260 (10%), Netherlands 1740 (7%), Finland 818 (3%), Spain 750 (3%), Ireland 689 (3%), Malta 542 (2%), Italy 311 (1%), Belgium 278 (1%), Luxembourg 153 (1%)
+  Portugal as a destination: 137 active notices (0.6%)
+Origins named per notice: median 29; naming 25 or more 76%; naming 10 or fewer 471 notices (2.0%)
+  notices naming Portugal among the possible origins: 97.8%
+  among the 21763 notices naming 15 or more origins, share leaving each country out (least first):
+   Greece 0.1%, Portugal 0.6%, France 0.7%, Belgium 0.8%, Italy 1.3%, Ireland 1.5%, Austria 2.9%, Spain 3.6%, Finland 4.0%, Netherlands 7.7% ... Estonia 13.3%, Luxembourg 13.9%, Cyprus 16.5%, Croatia 22.4%, Germany 45.2%, UK (Northern Ireland) 98.8%
+Selective notices (ten origins or fewer): 471; how often each country is named:
+  Belgium 261, Austria 253, France 203, Italy 199, Greece 178, Spain 175, Portugal 147, Netherlands 115, Germany 108, Ireland 85, Romania 62, Poland 58, Norway 51, Lithuania 45
+  price level against destination notices per million people: Spearman +0.25 [-0.22, +0.72] (n=23)
+  price level against mentions as an origin in selective notices, per million people: Spearman -0.03 [-0.47, +0.45] (n=23)
+  price level against share of broad notices leaving the country out as an origin: Spearman -0.08 [-0.56, +0.38] (n=23)
+  countries (price level 2017 | destination notices per million | selective-origin mentions per million | left out):
+    Luxembourg        n/a    224.3    27.9  13.9%
+    Austria           116    335.5    27.5   2.9%
+    Belgium           124     23.4    22.0   0.8%
+    Greece             84      1.6    17.2   0.1%
+    Cyprus            132      1.0    16.3  16.5%
+    Ireland           n/a    126.6    15.6   1.5%
+    Latvia             91     49.4    15.6  12.0%
+    Lithuania          86     50.2    15.6  12.1%
+    Portugal           97     12.0    12.9   0.6%
+    Estonia            92     79.6    11.7  13.3%
+    Norway            126      0.0     9.1   1.0%
+    Malta             n/a    943.8     8.7  11.5%
+    Slovakia           75      0.2     7.7  11.6%
+    Slovenia          n/a      3.3     7.5  13.3%
+    Netherlands        90     96.4     6.4   7.7%
+    Bulgaria           81      1.4     5.4  12.1%
+    Czech Republic    103      3.2     3.9   9.6%
+    Croatia           n/a      9.0     3.9  22.4%
+    Spain             101     15.3     3.6   3.6%
+    Italy             130      5.3     3.4   1.3%
+    Romania            72      1.1     3.3  10.9%
+    France             85      2.0     2.9   0.7%
+    Denmark           158    377.1     2.5  11.3%
+    Hungary            78      0.0     2.3  12.5%
+    Poland             64      3.9     1.6  12.9%
+    Finland           129    145.1     1.4   4.0%
+    Sweden            115    213.9     1.4  11.4%
+    Germany           n/a    157.8     1.3  45.2%
+    Iceland           160      0.0     0.0  14.2%
+  active notices per product: median 11, mean 22.3, products 1066
+
+==============================================================================================
+4. What Portugal restricts: prior-notification and suspended-export lists, 2021-2026
+==============================================================================================
+lnp: 17 lists, 2021-05 to 2026-10; presentations per list median 97, range 60-265
+   2021-05 66, 2021-08 64, 2021-12 66, 2022-02 67, 2022-05 60, 2022-12 98, 2023-03 130, 2023-04 133, 2023-10 144, 2024-01 265, 2024-12 124, 2025-03 97, 2025-07 86, 2025-10 83, 2026-01 80, 2026-04 99, 2026-10 97
+suspended: 30 lists, 2021-05 to 2026-11; presentations per list median 82, range 32-330
+   2021-05 83, 2021-06 57, 2021-08 47, 2021-10 56, 2021-11 50, 2021-12 52, 2022-03 53, 2022-04 46, 2022-05 54, 2023-01 109, 2023-03 137, 2023-05 105, 2023-11 142, 2023-12 140, 2024-01 136, 2024-05 109, 2024-06 112, 2024-09 98, 2024-10 81, 2024-12 73, 2024-12 66, 2025-02 68, 2025-04 99, 2025-07 59, 2025-10 39, 2026-02 330/34, 2026-04 32/28, 2026-06 138/39, 2026-10 216/53, 2026-11 227/49
+prohibited: 5 lists, 2026-01 to 2026-10; presentations per list median 59, range 49-67
+   2026-01 58, 2026-02 59, 2026-04 67, 2026-06 63, 2026-10 49
+Distinct presentations ever listed: LNP 456, suspended 1196, prohibited (2026) 105
+  on both the LNP and a suspended list at some point: 139 (30% of LNP presentations, 12% of suspended)
+  lnp: sold under a substance name (generic-style) 15%; most frequent substances: Metilfenidato 39, Paracetamol 15, Insulina lispro 14, Messalazina 13, Atomoxetina 12, Ibuprofeno 11, Amoxicilina 9, Insulina humana 8
+  suspended: sold under a substance name (generic-style) 48%; most frequent substances: Quetiapina 296, Metilfenidato 38, Galantamina 17, Estradiol 15, Diazepam 15, Ibuprofeno 11, Cefuroxima 11, Atomoxetina 11
+  suspended lists observed: 30; a presentation appears on a median of 2 of them, on one only for 42%, on five or more for 10%
+  LNP reasons by list: 2024-12: Exportação 58, Escassez 35, Criticidade 31 (export 47%); 2025-03: Exportação 59, Escassez 23, Criticidade 15 (export 61%); 2025-07: Exportação 56, Escassez 18, Criticidade 12 (export 65%); 2025-10: Exportação 59, Escassez 13, Criticidade 11 (export 71%); 2026-01: Exportação 58, Criticidade 11, Escassez 11 (export 72%); 2026-04: Criticidade 50, Exportação 38, Escassez 11 (export 38%); 2026-10: Criticidade 47, Exportação 38, Escassez 12 (export 39%)
+  latest LNP with reasons (2026-10-17): {'Criticidade': 47, 'Exportação': 38, 'Escassez': 12}
+   export-motive presentations: Betmiga, Bevespi Aerosphere, Brintellix, Celestone, Edistride, Eliquis, Ferro-Tardyferon, Ferro-Tardyferon Fol, Forxiga, Jardiance, Lixiana, Mestinon, Metex PEN, Microginon, Nocdurna, Pentasa, Priadel, Rotarix, Salofalk enemas, Spiriva Respimat, Testoviron Depot, Timogel, Tobradex, Tobrex, Trivastal 50 Retard, Trixeo Aerosphere, Vipidia, Zentel
+
+==============================================================================================
+5. The monthly prohibitions of 2026 and Infarmed's indicators
+==============================================================================================
+Prohibition lists: 5 (2026-01-14, 2026-02-10, 2026-04-15, 2026-06-09, 2026-10-17); rows 296, distinct presentations 105
+  reason: {'Exportação': 161, 'Criticidade': 90, 'Escassez': 45}
+  indicators, as Infarmed names them: export intentions and exports over 'Taxa 0.4' (the quantity declared for the 0.4% sales levy, i.e. packs the company sold); '% satisfação prescrição' and '% satisfação consumos' are ratios that exceed 1 in 53 and 253 of 296 rows, so they are read as ratios, not shares
+  Criticidade  n= 90  median export intentions / quantity sold 0.00, exports / quantity sold 0.000, prescription-satisfaction ratio 0.58, consumption-satisfaction ratio 1.14, pharmacy shortage reports 6, no export intentions 50%, no exports 56%
+  Escassez     n= 45  median export intentions / quantity sold 0.00, exports / quantity sold 0.000, prescription-satisfaction ratio 0.55, consumption-satisfaction ratio 1.06, pharmacy shortage reports 138, no export intentions 40%, no exports 91%
+  Exportação   n=161  median export intentions / quantity sold 0.67, exports / quantity sold 0.239, prescription-satisfaction ratio 0.76, consumption-satisfaction ratio 1.12, pharmacy shortage reports 6, no export intentions 5%, no exports 17%
+  export intentions against the prescription-satisfaction ratio: Spearman +0.36 [+0.25, +0.47] (n=294)
+  exports carried out against the prescription-satisfaction ratio: Spearman +0.41 (n=294)
+  within reason Criticidade: intentions against the prescription-satisfaction ratio, Spearman +0.00 (n=88)
+  within reason Escassez: intentions against the prescription-satisfaction ratio, Spearman +0.39 (n=45)
+  within reason Exportação: intentions against the prescription-satisfaction ratio, Spearman +0.30 (n=161)
+  export-reason rows: exports above 10% of the quantity sold 69%, above 25% 45%, above 50% 9%; intentions above 100% 32%
+  by list: 2026-01: Exportação 41, Escassez 9, Criticidade 8; 2026-02: Exportação 43, Escassez 9, Criticidade 7; 2026-04: Exportação 34, Criticidade 23, Escassez 10; 2026-06: Criticidade 27, Exportação 27, Escassez 9; 2026-10: Criticidade 25, Exportação 16, Escassez 8
+  export-reason presentations most often prohibited (lists, median exports / quantity sold, median intentions / quantity sold):
+   Trivastal 50 Retard 5 0.50 1.63; Tobrex 5 0.36 0.84; Vipidia 5 0.25 1.22; Jardiance 5 0.24 0.57; Testoviron Depot 5 0.16 0.66; Eliquis 5 0.14 0.52; Betmiga 5 0.05 0.18; Bevespi Aerosphere 5 0.00 0.68; Forxiga 5 0.00 0.20; Salofalk enemas 4 0.51 1.02; Mestinon 4 0.29 0.86; Budenofalk 4 0.26 2.42
+  LNP with reason Criticidade: 47 distinct names, 49% have active EU parallel distribution notices; median notices among those 42
+  LNP with reason Escassez: 26 distinct names, 38% have active EU parallel distribution notices; median notices among those 31
+  LNP with reason Exportação: 74 distinct names, 39% have active EU parallel distribution notices; median notices among those 34
+
+==============================================================================================
+6. Why medicines run short: reasons reported by companies
+==============================================================================================
+2021 (shortages notified, counts): {'Fabrico': 754, 'Aumento da procura': 301, 'Comercial': 233, 'Fabrico da substância ativa': 160, 'Qualidade': 140, 'Logístico': 112, 'Regulamentar': 59, 'Preço': 13, 'Inesperado ou desastres naturais': 7}; total 1779; manufacturing share 51%
+  2021 as shares: Fabrico 42.4%, Aumento da procura 16.9%, Comercial 13.1%, Fabrico da substância ativa 9.0%, Qualidade 7.9%, Logístico 6.3%, Regulamentar 3.3%, Preço 0.7%, Inesperado ou desastres naturais 0.4%
+2024 (share of presentations in shortage, Infarmed's chart): {'Fabrico': 57.44, 'Aumento da procura': 21.17, 'Logístico': 6.01, 'Comercial': 4.94, 'Qualidade': 4.15, 'Fabrico da substância ativa': 3.07, 'Regulamentar': 2.47, 'Preço': 0.47, 'Inesperado ou desastres naturais': 0.28}; manufacturing 60.5%, demand 21.2%, price 0.47%
+2025 (share of presentations in shortage, Infarmed's chart): {'Fabrico': 54.28, 'Aumento da procura': 21.67, 'Logístico': 8.03, 'Comercial': 6.34, 'Qualidade': 3.89, 'Regulamentar': 3.2, 'Fabrico da substância ativa': 1.76, 'Inesperado ou desastres naturais': 0.47, 'Preço': 0.36}; manufacturing 56.0%, demand 21.7%, price 0.36%
+2024: effective shortages notified 3160
+
+==============================================================================================
+7. The price of the exported brands in Part 3's rebuilt rule
+==============================================================================================
+Brands that Infarmed lists for export reasons and that Part 3 priced (ex-factory euros per pack):
+  eliquis      5 mg x60: France 51.00, Spain 23.10, Italy 63.62, Belgium 55.90; Portuguese ceiling 48.41 (0.95 x France)
+  forxiga      10 mg x30: France 31.50, Spain 31.55, Italy 34.56, Belgium 37.20; Portuguese ceiling 33.70 (1.07 x France)
+  jardiance    10 mg x30: France 31.52, Spain 31.59, Italy 38.40, Belgium 37.80; Portuguese ceiling 34.83 (1.11 x France)
+  brintellix   10 mg x28: France 18.04, Spain 21.84, Italy 14.00, Belgium 28.00; Portuguese ceiling 20.47 (1.13 x France)
+  brilique     90 mg x60: France 28.48, Spain 33.18, Italy 37.94, Belgium 41.96; Portuguese ceiling 35.39 (1.24 x France)
+  synjardy     5 mg + 1000 mg x60: France 31.52, Spain n/a, Italy 38.40, Belgium 37.80; Portuguese ceiling 35.91 (1.14 x France)
+  brands found: 6

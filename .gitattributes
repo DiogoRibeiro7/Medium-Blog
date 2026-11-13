@@ -8,6 +8,7 @@ portugal-labour-share/**/*.csv -filter -diff -merge text
 portugal-labour-share-industries/**/*.csv -filter -diff -merge text
 robust-regression/**/*.csv -filter -diff -merge text
 measurement-error/**/*.csv -filter -diff -merge text
+heteroscedasticity/**/*.csv -filter -diff -merge text
 agent-eval-runs/**/*.csv -filter -diff -merge text
 portugal-wage-counterfactual/**/*.csv -filter -diff -merge text
 portugal-household-spending/**/*.csv -filter -diff -merge text
@@ -118,3 +119,18 @@ second-count-prediction/**/*.csv -filter -diff -merge text
 second-count-prediction/**/*.json -filter -diff -merge text
 second-count-prediction/**/*.pdf -filter -diff -merge binary
 second-count-prediction/**/*.xlsx -filter -diff -merge binary
+wealth-origin-sectors/**/*.csv -filter -diff -merge text
+minimum-wage-in-work-poverty/**/*.csv -filter -diff -merge text
+minimum-wage-in-work-poverty/**/*.gz -filter -diff -merge binary
+eu-capital-exports/**/*.csv -filter -diff -merge text
+eu-capital-exports/**/*.gz -filter -diff -merge binary
+wealth-origin-pandemic/**/*.csv -filter -diff -merge text
+eu-us-surplus-by-industry/**/*.csv -filter -diff -merge text
+eu-us-surplus-by-industry/**/*.gz -filter -diff -merge binary
+china-capital-deepening/**/*.csv -filter -diff -merge text
+china-capital-deepening/**/*.gz -filter -diff -merge binary
+china-capital-deepening/**/*.xlsx -filter -diff -merge binary
+eu-us-ppp-drift/**/*.csv -filter -diff -merge text
+eu-us-ppp-drift/**/*.gz -filter -diff -merge binary
+storm-train-recovery/**/*.csv -filter -diff -merge text
+wealth-origin-successions/**/*.csv -filter -diff -merge text

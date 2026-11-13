@@ -1,0 +1,2807 @@
+{
+ "comext": {
+  "DE": [
+   119.0,
+   139.1,
+   135.8,
+   132.5,
+   146.4,
+   169.4,
+   182.6,
+   234.0,
+   214.8,
+   255.5,
+   290.6
+  ],
+  "FR": [
+   39.8,
+   49.7,
+   51.5,
+   54.5,
+   50.0,
+   59.0,
+   74.2,
+   74.0,
+   104.4,
+   131.0,
+   149.2
+  ],
+  "BE": [
+   37.0,
+   38.0,
+   48.3,
+   50.8,
+   52.2,
+   51.9,
+   50.7,
+   67.1,
+   104.5,
+   121.9,
+   117.1
+  ],
+  "ES": [
+   26.5,
+   32.7,
+   39.5,
+   42.3,
+   46.6,
+   56.0,
+   63.4,
+   75.6,
+   82.4,
+   95.8,
+   95.9
+  ],
+  "CZ": [
+   16.1,
+   14.8,
+   17.5,
+   15.8,
+   18.0,
+   19.2,
+   26.8,
+   23.6,
+   28.1,
+   37.6,
+   32.3
+  ],
+  "NL": [
+   19.1,
+   21.9,
+   23.6,
+   19.4,
+   18.9,
+   19.3,
+   22.6,
+   27.5,
+   36.3,
+   32.5,
+   26.4
+  ],
+  "DK": [
+   7.7,
+   11.8,
+   8.8,
+   6.9,
+   8.3,
+   13.5,
+   18.5,
+   10.1,
+   11.6,
+   14.7,
+   12.9
+  ],
+  "UK": [
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "GB": [
+   88.2,
+   106.5,
+   105.3,
+   106.2,
+   96.7,
+   86.8,
+   31.9,
+   41.5,
+   37.9,
+   36.4,
+   30.3
+  ]
+ },
+ "register": [
+  {
+   "geo": "AT",
+   "country": "Austria",
+   "pli": 115.94,
+   "dest_pm": 335.54,
+   "orig_pm": 27.508,
+   "dest_share": 0.1301,
+   "left_out": 0.0289
+  },
+  {
+   "geo": "BE",
+   "country": "Belgium",
+   "pli": 124.13,
+   "dest_pm": 23.39,
+   "orig_pm": 21.963,
+   "dest_share": 0.0117,
+   "left_out": 0.0078
+  },
+  {
+   "geo": "BG",
+   "country": "Bulgaria",
+   "pli": 81.23,
+   "dest_pm": 1.4,
+   "orig_pm": 5.437,
+   "dest_share": 0.0004,
+   "left_out": 0.1212
+  },
+  {
+   "geo": "HR",
+   "country": "Croatia",
+   "pli": null,
+   "dest_pm": 9.03,
+   "orig_pm": 3.872,
+   "dest_share": 0.0015,
+   "left_out": 0.2243
+  },
+  {
+   "geo": "CY",
+   "country": "Cyprus",
+   "pli": 131.77,
+   "dest_pm": 1.02,
+   "orig_pm": 16.277,
+   "dest_share": 0.0,
+   "left_out": 0.1655
+  },
+  {
+   "geo": "CZ",
+   "country": "Czech Republic",
+   "pli": 102.78,
+   "dest_pm": 3.21,
+   "orig_pm": 3.942,
+   "dest_share": 0.0015,
+   "left_out": 0.0957
+  },
+  {
+   "geo": "DK",
+   "country": "Denmark",
+   "pli": 157.85,
+   "dest_pm": 377.12,
+   "orig_pm": 2.503,
+   "dest_share": 0.0953,
+   "left_out": 0.1126
+  },
+  {
+   "geo": "EE",
+   "country": "Estonia",
+   "pli": 92.01,
+   "dest_pm": 79.56,
+   "orig_pm": 11.679,
+   "dest_share": 0.0046,
+   "left_out": 0.1328
+  },
+  {
+   "geo": "FI",
+   "country": "Finland",
+   "pli": 129.21,
+   "dest_pm": 145.14,
+   "orig_pm": 1.419,
+   "dest_share": 0.0345,
+   "left_out": 0.0402
+  },
+  {
+   "geo": "FR",
+   "country": "France",
+   "pli": 85.24,
+   "dest_pm": 1.99,
+   "orig_pm": 2.947,
+   "dest_share": 0.0058,
+   "left_out": 0.0067
+  },
+  {
+   "geo": "DE",
+   "country": "Germany",
+   "pli": null,
+   "dest_pm": 157.81,
+   "orig_pm": 1.292,
+   "dest_share": 0.5559,
+   "left_out": 0.4522
+  },
+  {
+   "geo": "EL",
+   "country": "Greece",
+   "pli": 84.14,
+   "dest_pm": 1.64,
+   "orig_pm": 17.161,
+   "dest_share": 0.0007,
+   "left_out": 0.0007
+  },
+  {
+   "geo": "HU",
+   "country": "Hungary",
+   "pli": 77.75,
+   "dest_pm": 0.0,
+   "orig_pm": 2.306,
+   "dest_share": 0.0,
+   "left_out": 0.1252
+  },
+  {
+   "geo": "IS",
+   "country": "Iceland",
+   "pli": 159.55,
+   "dest_pm": 0.0,
+   "orig_pm": 0.0,
+   "dest_share": 0.0,
+   "left_out": 0.1424
+  },
+  {
+   "geo": "IE",
+   "country": "Ireland",
+   "pli": null,
+   "dest_pm": 126.65,
+   "orig_pm": 15.624,
+   "dest_share": 0.029,
+   "left_out": 0.0155
+  },
+  {
+   "geo": "IT",
+   "country": "Italy",
+   "pli": 130.47,
+   "dest_pm": 5.28,
+   "orig_pm": 3.376,
+   "dest_share": 0.0131,
+   "left_out": 0.0131
+  },
+  {
+   "geo": "LV",
+   "country": "Latvia",
+   "pli": 90.62,
+   "dest_pm": 49.45,
+   "orig_pm": 15.587,
+   "dest_share": 0.0039,
+   "left_out": 0.1201
+  },
+  {
+   "geo": "LT",
+   "country": "Lithuania",
+   "pli": 86.25,
+   "dest_pm": 50.16,
+   "orig_pm": 15.567,
+   "dest_share": 0.0061,
+   "left_out": 0.1205
+  },
+  {
+   "geo": "LU",
+   "country": "Luxembourg",
+   "pli": null,
+   "dest_pm": 224.35,
+   "orig_pm": 27.86,
+   "dest_share": 0.0064,
+   "left_out": 0.1388
+  },
+  {
+   "geo": "MT",
+   "country": "Malta",
+   "pli": null,
+   "dest_pm": 943.84,
+   "orig_pm": 8.707,
+   "dest_share": 0.0228,
+   "left_out": 0.1153
+  },
+  {
+   "geo": "NL",
+   "country": "Netherlands",
+   "pli": 89.69,
+   "dest_pm": 96.43,
+   "orig_pm": 6.373,
+   "dest_share": 0.0733,
+   "left_out": 0.0769
+  },
+  {
+   "geo": "NO",
+   "country": "Norway",
+   "pli": 125.57,
+   "dest_pm": 0.0,
+   "orig_pm": 9.116,
+   "dest_share": 0.0,
+   "left_out": 0.01
+  },
+  {
+   "geo": "PL",
+   "country": "Poland",
+   "pli": 64.11,
+   "dest_pm": 3.92,
+   "orig_pm": 1.589,
+   "dest_share": 0.006,
+   "left_out": 0.1291
+  },
+  {
+   "geo": "PT",
+   "country": "Portugal",
+   "pli": 96.93,
+   "dest_pm": 12.03,
+   "orig_pm": 12.909,
+   "dest_share": 0.0058,
+   "left_out": 0.0061
+  },
+  {
+   "geo": "RO",
+   "country": "Romania",
+   "pli": 72.29,
+   "dest_pm": 1.05,
+   "orig_pm": 3.256,
+   "dest_share": 0.0008,
+   "left_out": 0.1089
+  },
+  {
+   "geo": "SK",
+   "country": "Slovakia",
+   "pli": 75.13,
+   "dest_pm": 0.18,
+   "orig_pm": 7.75,
+   "dest_share": 0.0,
+   "left_out": 0.1164
+  },
+  {
+   "geo": "SI",
+   "country": "Slovenia",
+   "pli": null,
+   "dest_pm": 3.29,
+   "orig_pm": 7.509,
+   "dest_share": 0.0003,
+   "left_out": 0.1326
+  },
+  {
+   "geo": "ES",
+   "country": "Spain",
+   "pli": 100.63,
+   "dest_pm": 15.27,
+   "orig_pm": 3.562,
+   "dest_share": 0.0316,
+   "left_out": 0.0358
+  },
+  {
+   "geo": "SE",
+   "country": "Sweden",
+   "pli": 115.28,
+   "dest_pm": 213.93,
+   "orig_pm": 1.417,
+   "dest_share": 0.0955,
+   "left_out": 0.1143
+  }
+ ],
+ "sizes": [
+  {
+   "type": "lnp",
+   "date": "2021-05-01",
+   "n": 66,
+   "n_named": 66
+  },
+  {
+   "type": "lnp",
+   "date": "2021-08-02",
+   "n": 64,
+   "n_named": 64
+  },
+  {
+   "type": "lnp",
+   "date": "2021-12-14",
+   "n": 66,
+   "n_named": 66
+  },
+  {
+   "type": "lnp",
+   "date": "2022-02-01",
+   "n": 67,
+   "n_named": 67
+  },
+  {
+   "type": "lnp",
+   "date": "2022-05-19",
+   "n": 60,
+   "n_named": 60
+  },
+  {
+   "type": "lnp",
+   "date": "2022-12-15",
+   "n": 98,
+   "n_named": 98
+  },
+  {
+   "type": "lnp",
+   "date": "2023-03-14",
+   "n": 130,
+   "n_named": 130
+  },
+  {
+   "type": "lnp",
+   "date": "2023-04-11",
+   "n": 133,
+   "n_named": 133
+  },
+  {
+   "type": "lnp",
+   "date": "2023-10-11",
+   "n": 144,
+   "n_named": 144
+  },
+  {
+   "type": "lnp",
+   "date": "2024-01-11",
+   "n": 265,
+   "n_named": 265
+  },
+  {
+   "type": "lnp",
+   "date": "2024-12-17",
+   "n": 124,
+   "n_named": 124
+  },
+  {
+   "type": "lnp",
+   "date": "2025-03-12",
+   "n": 97,
+   "n_named": 97
+  },
+  {
+   "type": "lnp",
+   "date": "2025-07-10",
+   "n": 86,
+   "n_named": 86
+  },
+  {
+   "type": "lnp",
+   "date": "2025-10-10",
+   "n": 83,
+   "n_named": 83
+  },
+  {
+   "type": "lnp",
+   "date": "2026-01-14",
+   "n": 80,
+   "n_named": 80
+  },
+  {
+   "type": "lnp",
+   "date": "2026-04-15",
+   "n": 99,
+   "n_named": 99
+  },
+  {
+   "type": "lnp",
+   "date": "2026-10-17",
+   "n": 97,
+   "n_named": 97
+  },
+  {
+   "type": "prohibited",
+   "date": "2026-01-14",
+   "n": 58,
+   "n_named": 58
+  },
+  {
+   "type": "prohibited",
+   "date": "2026-02-10",
+   "n": 59,
+   "n_named": 59
+  },
+  {
+   "type": "prohibited",
+   "date": "2026-04-15",
+   "n": 67,
+   "n_named": 67
+  },
+  {
+   "type": "prohibited",
+   "date": "2026-06-09",
+   "n": 63,
+   "n_named": 63
+  },
+  {
+   "type": "prohibited",
+   "date": "2026-10-17",
+   "n": 49,
+   "n_named": 49
+  },
+  {
+   "type": "suspended",
+   "date": "2021-05-01",
+   "n": 83,
+   "n_named": 83
+  },
+  {
+   "type": "suspended",
+   "date": "2021-06-02",
+   "n": 57,
+   "n_named": 57
+  },
+  {
+   "type": "suspended",
+   "date": "2021-08-02",
+   "n": 47,
+   "n_named": 47
+  },
+  {
+   "type": "suspended",
+   "date": "2021-10-11",
+   "n": 56,
+   "n_named": 56
+  },
+  {
+   "type": "suspended",
+   "date": "2021-11-08",
+   "n": 50,
+   "n_named": 50
+  },
+  {
+   "type": "suspended",
+   "date": "2021-12-14",
+   "n": 52,
+   "n_named": 52
+  },
+  {
+   "type": "suspended",
+   "date": "2022-03-10",
+   "n": 53,
+   "n_named": 53
+  },
+  {
+   "type": "suspended",
+   "date": "2022-04-01",
+   "n": 46,
+   "n_named": 46
+  },
+  {
+   "type": "suspended",
+   "date": "2022-05-19",
+   "n": 54,
+   "n_named": 54
+  },
+  {
+   "type": "suspended",
+   "date": "2023-01-09",
+   "n": 109,
+   "n_named": 109
+  },
+  {
+   "type": "suspended",
+   "date": "2023-03-14",
+   "n": 137,
+   "n_named": 137
+  },
+  {
+   "type": "suspended",
+   "date": "2023-05-15",
+   "n": 105,
+   "n_named": 105
+  },
+  {
+   "type": "suspended",
+   "date": "2023-11-16",
+   "n": 142,
+   "n_named": 142
+  },
+  {
+   "type": "suspended",
+   "date": "2023-12-15",
+   "n": 140,
+   "n_named": 140
+  },
+  {
+   "type": "suspended",
+   "date": "2024-01-11",
+   "n": 136,
+   "n_named": 136
+  },
+  {
+   "type": "suspended",
+   "date": "2024-05-04",
+   "n": 109,
+   "n_named": 109
+  },
+  {
+   "type": "suspended",
+   "date": "2024-06-12",
+   "n": 112,
+   "n_named": 112
+  },
+  {
+   "type": "suspended",
+   "date": "2024-09-02",
+   "n": 98,
+   "n_named": 98
+  },
+  {
+   "type": "suspended",
+   "date": "2024-10-16",
+   "n": 81,
+   "n_named": 81
+  },
+  {
+   "type": "suspended",
+   "date": "2024-12-17",
+   "n": 73,
+   "n_named": 73
+  },
+  {
+   "type": "suspended",
+   "date": "2024-12-31",
+   "n": 66,
+   "n_named": 66
+  },
+  {
+   "type": "suspended",
+   "date": "2025-02-05",
+   "n": 68,
+   "n_named": 68
+  },
+  {
+   "type": "suspended",
+   "date": "2025-04-09",
+   "n": 99,
+   "n_named": 99
+  },
+  {
+   "type": "suspended",
+   "date": "2025-07-10",
+   "n": 59,
+   "n_named": 59
+  },
+  {
+   "type": "suspended",
+   "date": "2025-10-10",
+   "n": 39,
+   "n_named": 39
+  },
+  {
+   "type": "suspended",
+   "date": "2026-02-10",
+   "n": 330,
+   "n_named": 34
+  },
+  {
+   "type": "suspended",
+   "date": "2026-04-15",
+   "n": 32,
+   "n_named": 28
+  },
+  {
+   "type": "suspended",
+   "date": "2026-06-09",
+   "n": 138,
+   "n_named": 39
+  },
+  {
+   "type": "suspended",
+   "date": "2026-10-17",
+   "n": 216,
+   "n_named": 53
+  },
+  {
+   "type": "suspended",
+   "date": "2026-11-13",
+   "n": 227,
+   "n_named": 49
+  }
+ ],
+ "prohibited": [
+  {
+   "name": "Trulicity",
+   "motive": "Escassez",
+   "intent": 0.0006760697810064,
+   "export": 0.0,
+   "sat_presc": 0.561458002540489
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0089079649529538,
+   "export": 0.0,
+   "sat_presc": 0.5641758332400474
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0808920559514383,
+   "export": 0.0,
+   "sat_presc": 0.3846700507614213
+  },
+  {
+   "name": "Prevenar 20",
+   "motive": "Criticidade",
+   "intent": 0.0608062245462315,
+   "export": 0.0,
+   "sat_presc": 1.135370805117703
+  },
+  {
+   "name": "Ovestin",
+   "motive": "Escassez",
+   "intent": 0.0111290681582843,
+   "export": 0.0,
+   "sat_presc": 0.4091326623536026
+  },
+  {
+   "name": "Tresiba",
+   "motive": "Escassez",
+   "intent": 0.0055652876970758,
+   "export": 0.0,
+   "sat_presc": 0.3892983606557377
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Fiasp",
+   "motive": "Criticidade",
+   "intent": 0.0091897748705806,
+   "export": 0.0,
+   "sat_presc": 0.2976575844810492
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.0387716027611225,
+   "export": 0.0,
+   "sat_presc": 0.6546168181143526
+  },
+  {
+   "name": "Forxiga",
+   "motive": "Exportação",
+   "intent": 0.2017209837360627,
+   "export": 0.0,
+   "sat_presc": 0.5918429703088056
+  },
+  {
+   "name": "NovoRapid Penfill",
+   "motive": "Exportação",
+   "intent": 1.138401156785788,
+   "export": 0.0,
+   "sat_presc": 0.1820883171594072
+  },
+  {
+   "name": "Pylera",
+   "motive": "Escassez",
+   "intent": 0.1812717308032294,
+   "export": 0.0,
+   "sat_presc": 1.2374389265660322
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.0799223026664312,
+   "export": 0.0,
+   "sat_presc": 0.6352642914834425
+  },
+  {
+   "name": "Bevespi Aerosphere",
+   "motive": "Exportação",
+   "intent": 1.5834693401725344,
+   "export": 0.5285031475868501,
+   "sat_presc": 0.6739736790414457
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.3387204856320706,
+   "export": 0.0,
+   "sat_presc": 0.6377966613032985
+  },
+  {
+   "name": "Kreon 25000",
+   "motive": "Escassez",
+   "intent": 0.0061423581837889,
+   "export": 0.0,
+   "sat_presc": 0.652648954566892
+  },
+  {
+   "name": "Testoviron Depot",
+   "motive": "Exportação",
+   "intent": 0.6222197631957508,
+   "export": 0.1641861237136218,
+   "sat_presc": 0.8000354115485913
+  },
+  {
+   "name": "Kreon 35000",
+   "motive": "Escassez",
+   "intent": 0.0365853658536585,
+   "export": 0.0,
+   "sat_presc": 0.5159141376757957
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.599102340355327,
+   "export": 0.2313163156995026,
+   "sat_presc": 0.7607369570279776
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.0949484648723458,
+   "export": 0.0081096502409828,
+   "sat_presc": 0.6175200539770598
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.3633331810498424,
+   "export": 0.1042532779021426,
+   "sat_presc": 0.5978804184534703
+  },
+  {
+   "name": "Zentel",
+   "motive": "Exportação",
+   "intent": 0.9863090472377902,
+   "export": 0.2590758320942468,
+   "sat_presc": 1.7598631239935587
+  },
+  {
+   "name": "Nocdurna",
+   "motive": "Exportação",
+   "intent": 0.0833995234312946,
+   "export": 0.3713264495631453,
+   "sat_presc": 0.481637337413925
+  },
+  {
+   "name": "Nocdurna",
+   "motive": "Exportação",
+   "intent": 2.174272675413577,
+   "export": 0.5068454078722191,
+   "sat_presc": 0.4561540463179807
+  },
+  {
+   "name": "Jaydess",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.1570552147239264,
+   "sat_presc": 1.2357846853677028
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.7411077864127046,
+   "export": 0.2909567816300156,
+   "sat_presc": 0.7530382320152141
+  },
+  {
+   "name": "Caverject",
+   "motive": "Exportação",
+   "intent": 0.8831145314622001,
+   "export": 0.288909008601177,
+   "sat_presc": 0.991917377638078
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.914867959955002,
+   "export": 0.2441223363358988,
+   "sat_presc": 0.834781374986488
+  },
+  {
+   "name": "Timogel",
+   "motive": "Exportação",
+   "intent": 0.4084261481344737,
+   "export": 0.2413184829651508,
+   "sat_presc": 0.79657859908828
+  },
+  {
+   "name": "Celestone",
+   "motive": "Exportação",
+   "intent": 1.4240976645435244,
+   "export": 0.472736923373866,
+   "sat_presc": 1.4812379386748624
+  },
+  {
+   "name": "Enstilar",
+   "motive": "Exportação",
+   "intent": 0.7150715071507151,
+   "export": 0.077007700770077,
+   "sat_presc": 0.3380781714903976
+  },
+  {
+   "name": "Simbrinza",
+   "motive": "Exportação",
+   "intent": 0.7567079773793768,
+   "export": 0.3367524966911322,
+   "sat_presc": 0.8313286153692265
+  },
+  {
+   "name": "Ultibro Breezhaler",
+   "motive": "Exportação",
+   "intent": 0.6651769240231252,
+   "export": 0.2704087908483332,
+   "sat_presc": 0.5209098675779581
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 2.420995079278294,
+   "export": 0.2640787315472936,
+   "sat_presc": 0.8574777308954524
+  },
+  {
+   "name": "Salofalk enemas",
+   "motive": "Exportação",
+   "intent": 1.4936192839418645,
+   "export": 0.9002126905352712,
+   "sat_presc": 0.3188291139240506
+  },
+  {
+   "name": "Tobradex",
+   "motive": "Exportação",
+   "intent": 1.3435743307174264,
+   "export": 0.1774920687927867,
+   "sat_presc": 1.684353613949564
+  },
+  {
+   "name": "Duphaston",
+   "motive": "Exportação",
+   "intent": 3.003897984185321,
+   "export": 0.2353268738166833,
+   "sat_presc": 1.1325681130171543
+  },
+  {
+   "name": "Rotarix",
+   "motive": "Exportação",
+   "intent": 0.7438930143476362,
+   "export": 0.3392359127717482,
+   "sat_presc": 1.588354592517479
+  },
+  {
+   "name": "Depo-Provera 150",
+   "motive": "Criticidade",
+   "intent": 12.55444502893214,
+   "export": 0.1362440820620725,
+   "sat_presc": 2.443444730077121
+  },
+  {
+   "name": "Tobrex",
+   "motive": "Exportação",
+   "intent": 0.8388090349075975,
+   "export": 0.6478439425051334,
+   "sat_presc": 1.5030864197530864
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 2.096054204862495,
+   "export": 0.2644479872459147,
+   "sat_presc": 1.2362650899236265
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 0.6712827988338192,
+   "export": 0.239067055393586,
+   "sat_presc": 0.8499961279330907
+  },
+  {
+   "name": "Xoterna Breezhaler",
+   "motive": "Exportação",
+   "intent": 0.6295439524124257,
+   "export": 0.3573694646397885,
+   "sat_presc": 0.3231524989320803
+  },
+  {
+   "name": "Trivastal 50 Retard",
+   "motive": "Exportação",
+   "intent": 3.521057909250439,
+   "export": 0.5003760340937579,
+   "sat_presc": 1.6746431570109153
+  },
+  {
+   "name": "Refero",
+   "motive": "Exportação",
+   "intent": 1.494070425104908,
+   "export": 0.3108921729611384,
+   "sat_presc": 0.755895738518825
+  },
+  {
+   "name": "Zentel",
+   "motive": "Exportação",
+   "intent": 0.2308790332217008,
+   "export": 0.0213598064893249,
+   "sat_presc": 3.0629612044236056
+  },
+  {
+   "name": "Adalat CR",
+   "motive": "Exportação",
+   "intent": 0.2697958486375673,
+   "export": 0.1442192705219099,
+   "sat_presc": 0.6006670087224217
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Mylan",
+   "motive": "Criticidade",
+   "intent": 0.7147540983606557,
+   "export": 0.0,
+   "sat_presc": 0.0676125027710042
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Farmoz",
+   "motive": "Criticidade",
+   "intent": 0.049625468164794,
+   "export": 0.0,
+   "sat_presc": 0.2367545998669918
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Teva",
+   "motive": "Criticidade",
+   "intent": 0.052,
+   "export": 0.0,
+   "sat_presc": 0.2771004211926402
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Krka",
+   "motive": "Criticidade",
+   "intent": 0.0119746949841843,
+   "export": 0.0,
+   "sat_presc": 0.9811571713589003
+  },
+  {
+   "name": "Tegretol Cr",
+   "motive": "Exportação",
+   "intent": 0.6271415309308802,
+   "export": 0.4364081357076546,
+   "sat_presc": 0.9064412484700124
+  },
+  {
+   "name": "Mestinon",
+   "motive": "Exportação",
+   "intent": 1.1653225806451613,
+   "export": 0.2652649769585253,
+   "sat_presc": 0.622891998564765
+  },
+  {
+   "name": "Salofalk Grânulos",
+   "motive": "Exportação",
+   "intent": 1.3582629674306392,
+   "export": 0.2352231604342581,
+   "sat_presc": 0.7994214079074252
+  },
+  {
+   "name": "Gutron",
+   "motive": "Exportação",
+   "intent": 1.5936678843812089,
+   "export": 0.6476959559059156,
+   "sat_presc": 1.433835691968388
+  },
+  {
+   "name": "NovoMix 30 Penfill",
+   "motive": "Exportação",
+   "intent": 1.8681521605318232,
+   "export": 0.304936599778407,
+   "sat_presc": 0.797310561444837
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 2.7797450424929178,
+   "export": 0.3406515580736544,
+   "sat_presc": 0.8542044767090139
+  },
+  {
+   "name": "Budenofalk OD",
+   "motive": "Exportação",
+   "intent": 2.9186721991701243,
+   "export": 0.4099585062240664,
+   "sat_presc": 0.94140625
+  },
+  {
+   "name": "Ferro-Tardyferon Fol",
+   "motive": "Exportação",
+   "intent": 5.794085480554705,
+   "export": 0.4374644560129489,
+   "sat_presc": 1.4567295437165435
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.3633331810498424,
+   "export": 0.1042532779021426,
+   "sat_presc": 0.5978804184534703
+  },
+  {
+   "name": "Bevespi Aerosphere",
+   "motive": "Exportação",
+   "intent": 1.5834693401725344,
+   "export": 0.5285031475868501,
+   "sat_presc": 0.6739736790414457
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.3387204856320706,
+   "export": 0.0,
+   "sat_presc": 0.6377966613032985
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.0387716027611225,
+   "export": 0.0,
+   "sat_presc": 0.6546168181143526
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.0799223026664312,
+   "export": 0.0,
+   "sat_presc": 0.6352642914834425
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 2.420995079278294,
+   "export": 0.2640787315472936,
+   "sat_presc": 0.8574777308954524
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 2.7797450424929178,
+   "export": 0.3406515580736544,
+   "sat_presc": 0.8542044767090139
+  },
+  {
+   "name": "Budenofalk OD",
+   "motive": "Exportação",
+   "intent": 2.9186721991701243,
+   "export": 0.4099585062240664,
+   "sat_presc": 0.94140625
+  },
+  {
+   "name": "Caverject",
+   "motive": "Exportação",
+   "intent": 0.8831145314622001,
+   "export": 0.288909008601177,
+   "sat_presc": 0.991917377638078
+  },
+  {
+   "name": "Celestone",
+   "motive": "Exportação",
+   "intent": 1.4240976645435244,
+   "export": 0.472736923373866,
+   "sat_presc": 1.4812379386748624
+  },
+  {
+   "name": "Depo-Provera 150",
+   "motive": "Criticidade",
+   "intent": 12.55444502893214,
+   "export": 0.1362440820620725,
+   "sat_presc": 2.443444730077121
+  },
+  {
+   "name": "Duphaston",
+   "motive": "Exportação",
+   "intent": 3.003897984185321,
+   "export": 0.2353268738166833,
+   "sat_presc": 1.1325681130171543
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.599102340355327,
+   "export": 0.2313163156995026,
+   "sat_presc": 0.7607369570279776
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Krka",
+   "motive": "Criticidade",
+   "intent": 0.0119746949841843,
+   "export": 0.0,
+   "sat_presc": 0.9811571713589003
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Mylan",
+   "motive": "Criticidade",
+   "intent": 0.7147540983606557,
+   "export": 0.0,
+   "sat_presc": 0.0676125027710042
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Farmoz",
+   "motive": "Criticidade",
+   "intent": 0.049625468164794,
+   "export": 0.0,
+   "sat_presc": 0.2367545998669918
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Teva",
+   "motive": "Criticidade",
+   "intent": 0.052,
+   "export": 0.0,
+   "sat_presc": 0.2771004211926402
+  },
+  {
+   "name": "Enstilar",
+   "motive": "Exportação",
+   "intent": 0.7150715071507151,
+   "export": 0.077007700770077,
+   "sat_presc": 0.3380781714903976
+  },
+  {
+   "name": "Ferro-Tardyferon",
+   "motive": "Exportação",
+   "intent": 1.0994028974158183,
+   "export": 0.0,
+   "sat_presc": 1.0735603194619587
+  },
+  {
+   "name": "Ferro-Tardyferon Fol",
+   "motive": "Exportação",
+   "intent": 5.794085480554705,
+   "export": 0.4374644560129489,
+   "sat_presc": 1.4567295437165435
+  },
+  {
+   "name": "Fiasp",
+   "motive": "Criticidade",
+   "intent": 0.0091897748705806,
+   "export": 0.0,
+   "sat_presc": 0.2976575844810492
+  },
+  {
+   "name": "Forxiga",
+   "motive": "Exportação",
+   "intent": 0.2017209837360627,
+   "export": 0.0,
+   "sat_presc": 0.5918429703088056
+  },
+  {
+   "name": "Gardasil 9",
+   "motive": "Exportação",
+   "intent": 0.2875244668795714,
+   "export": 0.092499112896764,
+   "sat_presc": 3.248661311914324
+  },
+  {
+   "name": "Gutron",
+   "motive": "Exportação",
+   "intent": 1.5936678843812089,
+   "export": 0.6476959559059156,
+   "sat_presc": 1.433835691968388
+  },
+  {
+   "name": "Havrix 1440 Adulto",
+   "motive": "Criticidade",
+   "intent": 0.1462380978589905,
+   "export": 0.0001100776047113,
+   "sat_presc": 0.9257617446244776
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.7411077864127046,
+   "export": 0.2909567816300156,
+   "sat_presc": 0.7530382320152141
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.914867959955002,
+   "export": 0.2441223363358988,
+   "sat_presc": 0.834781374986488
+  },
+  {
+   "name": "Jaydess",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.1570552147239264,
+   "sat_presc": 1.2357846853677028
+  },
+  {
+   "name": "Kreon 25000",
+   "motive": "Escassez",
+   "intent": 0.0061423581837889,
+   "export": 0.0,
+   "sat_presc": 0.652648954566892
+  },
+  {
+   "name": "Kreon 35000",
+   "motive": "Escassez",
+   "intent": 0.0365853658536585,
+   "export": 0.0,
+   "sat_presc": 0.5159141376757957
+  },
+  {
+   "name": "Mestinon",
+   "motive": "Exportação",
+   "intent": 1.1653225806451613,
+   "export": 0.2652649769585253,
+   "sat_presc": 0.622891998564765
+  },
+  {
+   "name": "Nocdurna",
+   "motive": "Exportação",
+   "intent": 0.0833995234312946,
+   "export": 0.3713264495631453,
+   "sat_presc": 0.481637337413925
+  },
+  {
+   "name": "Nocdurna",
+   "motive": "Exportação",
+   "intent": 2.174272675413577,
+   "export": 0.5068454078722191,
+   "sat_presc": 0.4561540463179807
+  },
+  {
+   "name": "NovoMix 30 Penfill",
+   "motive": "Exportação",
+   "intent": 1.8681521605318232,
+   "export": 0.304936599778407,
+   "sat_presc": 0.797310561444837
+  },
+  {
+   "name": "NovoRapid Penfill",
+   "motive": "Exportação",
+   "intent": 1.138401156785788,
+   "export": 0.0,
+   "sat_presc": 0.1820883171594072
+  },
+  {
+   "name": "Ovestin",
+   "motive": "Escassez",
+   "intent": 0.0111290681582843,
+   "export": 0.0,
+   "sat_presc": 0.4091326623536026
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0808920559514383,
+   "export": 0.0,
+   "sat_presc": 0.3846700507614213
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0089079649529538,
+   "export": 0.0,
+   "sat_presc": 0.5641758332400474
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Prevenar 20",
+   "motive": "Criticidade",
+   "intent": 0.0608062245462315,
+   "export": 0.0,
+   "sat_presc": 1.135370805117703
+  },
+  {
+   "name": "Pylera",
+   "motive": "Escassez",
+   "intent": 0.1812717308032294,
+   "export": 0.0,
+   "sat_presc": 1.2374389265660322
+  },
+  {
+   "name": "Refero",
+   "motive": "Exportação",
+   "intent": 1.494070425104908,
+   "export": 0.3108921729611384,
+   "sat_presc": 0.755895738518825
+  },
+  {
+   "name": "Rotarix",
+   "motive": "Exportação",
+   "intent": 0.7438930143476362,
+   "export": 0.3392359127717482,
+   "sat_presc": 1.588354592517479
+  },
+  {
+   "name": "Salofalk enemas",
+   "motive": "Exportação",
+   "intent": 1.4936192839418645,
+   "export": 0.9002126905352712,
+   "sat_presc": 0.3188291139240506
+  },
+  {
+   "name": "Salofalk Grânulos",
+   "motive": "Exportação",
+   "intent": 1.3582629674306392,
+   "export": 0.2352231604342581,
+   "sat_presc": 0.7994214079074252
+  },
+  {
+   "name": "Simbrinza",
+   "motive": "Exportação",
+   "intent": 0.7567079773793768,
+   "export": 0.3367524966911322,
+   "sat_presc": 0.8313286153692265
+  },
+  {
+   "name": "Tegretol Cr",
+   "motive": "Exportação",
+   "intent": 0.6271415309308802,
+   "export": 0.4364081357076546,
+   "sat_presc": 0.9064412484700124
+  },
+  {
+   "name": "Testoviron Depot",
+   "motive": "Exportação",
+   "intent": 0.6222197631957508,
+   "export": 0.1641861237136218,
+   "sat_presc": 0.8000354115485913
+  },
+  {
+   "name": "Timogel",
+   "motive": "Exportação",
+   "intent": 0.4084261481344737,
+   "export": 0.2413184829651508,
+   "sat_presc": 0.79657859908828
+  },
+  {
+   "name": "Tobradex",
+   "motive": "Exportação",
+   "intent": 1.3435743307174264,
+   "export": 0.1774920687927867,
+   "sat_presc": 1.684353613949564
+  },
+  {
+   "name": "Tobrex",
+   "motive": "Exportação",
+   "intent": 0.8388090349075975,
+   "export": 0.6478439425051334,
+   "sat_presc": 1.5030864197530864
+  },
+  {
+   "name": "Tresiba",
+   "motive": "Escassez",
+   "intent": 0.0055652876970758,
+   "export": 0.0,
+   "sat_presc": 0.3892983606557377
+  },
+  {
+   "name": "Trivastal 50 Retard",
+   "motive": "Exportação",
+   "intent": 3.521057909250439,
+   "export": 0.5003760340937579,
+   "sat_presc": 1.6746431570109153
+  },
+  {
+   "name": "Trulicity",
+   "motive": "Escassez",
+   "intent": 0.0006760697810064,
+   "export": 0.0,
+   "sat_presc": 0.561458002540489
+  },
+  {
+   "name": "Ultibro Breezhaler",
+   "motive": "Exportação",
+   "intent": 0.6651769240231252,
+   "export": 0.2704087908483332,
+   "sat_presc": 0.5209098675779581
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 2.096054204862495,
+   "export": 0.2644479872459147,
+   "sat_presc": 1.2362650899236265
+  },
+  {
+   "name": "Xoterna Breezhaler",
+   "motive": "Exportação",
+   "intent": 0.6295439524124257,
+   "export": 0.3573694646397885,
+   "sat_presc": 0.3231524989320803
+  },
+  {
+   "name": "Zentel",
+   "motive": "Exportação",
+   "intent": 0.9863090472377902,
+   "export": 0.2590758320942468,
+   "sat_presc": 1.7598631239935587
+  },
+  {
+   "name": "Actrapid Penfill",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3664804469273743
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.1558103178738926,
+   "export": 0.0,
+   "sat_presc": 0.6026718848142243
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.1754892748175733,
+   "export": 0.0512650958827828,
+   "sat_presc": 0.5829219470630401
+  },
+  {
+   "name": "Bevespi Aerosphere",
+   "motive": "Exportação",
+   "intent": 0.6848583582224635,
+   "export": 0.0,
+   "sat_presc": 0.7226764340375433
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.0090100379436809,
+   "export": 0.0,
+   "sat_presc": 0.6136384874158983
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 1.079912424740011,
+   "export": 0.1784345922276956,
+   "sat_presc": 0.7618849040867389
+  },
+  {
+   "name": "Edistride",
+   "motive": "Exportação",
+   "intent": 0.995555148900104,
+   "export": 0.2812343491158454,
+   "sat_presc": 0.2070367530715629
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.2401871588250584,
+   "export": 0.0470572944540436,
+   "sat_presc": 0.7593299449361265
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.8513168686776633,
+   "export": 0.3937782348882321,
+   "sat_presc": 0.759579917526181
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0112037462526532,
+   "sat_presc": 0.6237494028526581
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0142096484475237,
+   "sat_presc": 0.6098830157674401
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0145623998835008,
+   "sat_presc": 0.6277539080354694
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Krka",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 1.39484206317473
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Mylan",
+   "motive": "Criticidade",
+   "intent": 2.5,
+   "export": 0.0,
+   "sat_presc": 0.0131947221111555
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Farmoz",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.2215113954418232
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Teva",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.1659336265493802
+  },
+  {
+   "name": "Epipen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0830312446055584,
+   "sat_presc": 0.689068633281789
+  },
+  {
+   "name": "Ferro-Tardyferon",
+   "motive": "Exportação",
+   "intent": 1.2145478812145478,
+   "export": 0.333667000333667,
+   "sat_presc": 0.6692421062033853
+  },
+  {
+   "name": "Ferro-Tardyferon Fol",
+   "motive": "Exportação",
+   "intent": 5.969187675070028,
+   "export": 4.363211951447245,
+   "sat_presc": 0.476158719573191
+  },
+  {
+   "name": "Fiasp",
+   "motive": "Criticidade",
+   "intent": 0.015402464394303,
+   "export": 0.0,
+   "sat_presc": 0.2979367557838778
+  },
+  {
+   "name": "Forxiga",
+   "motive": "Exportação",
+   "intent": 0.1106548121879208,
+   "export": 0.0,
+   "sat_presc": 0.5960222973087496
+  },
+  {
+   "name": "Havrix 1440 Adulto",
+   "motive": "Criticidade",
+   "intent": 0.1517225747960108,
+   "export": 0.013780598368087,
+   "sat_presc": 1.332688938560986
+  },
+  {
+   "name": "Humalog Mix25",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.2687034860947904,
+   "sat_presc": 0.9937718956792526
+  },
+  {
+   "name": "Humalog Mix25 KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.1372248248414244,
+   "sat_presc": 0.7149293102937254
+  },
+  {
+   "name": "Humalog Mix50 KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.3110122940099398,
+   "sat_presc": 0.7661322645290581
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.2439881801508049,
+   "export": 0.0589192310305006,
+   "sat_presc": 0.7467433649866082
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.242526678597468,
+   "export": 0.2463213362497514,
+   "sat_presc": 0.8073581056222616
+  },
+  {
+   "name": "Kreon",
+   "motive": "Escassez",
+   "intent": 0.0711204918784986,
+   "export": 0.0535009635679544,
+   "sat_presc": 0.8708891108891109
+  },
+  {
+   "name": "Kreon 25000",
+   "motive": "Escassez",
+   "intent": 0.000121891760117,
+   "export": 0.0,
+   "sat_presc": 0.6483667017913594
+  },
+  {
+   "name": "Kreon 35000",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4761103633916554
+  },
+  {
+   "name": "Lantus",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.4941290531078315,
+   "sat_presc": 1.3789364230540702
+  },
+  {
+   "name": "Lixiana",
+   "motive": "Exportação",
+   "intent": 0.2749985372418231,
+   "export": 0.242677432566848,
+   "sat_presc": 0.7409125392868755
+  },
+  {
+   "name": "Lixiana",
+   "motive": "Exportação",
+   "intent": 0.3949926711501983,
+   "export": 0.3613877392653906,
+   "sat_presc": 0.8055355390986517
+  },
+  {
+   "name": "Lyumjev",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4072657743785851
+  },
+  {
+   "name": "Lyumjev",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.583725305738476
+  },
+  {
+   "name": "Lyumjev KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3408406850025947
+  },
+  {
+   "name": "Mestinon",
+   "motive": "Exportação",
+   "intent": 0.5519081932212436,
+   "export": 0.3138510808646917,
+   "sat_presc": 0.6690474064815641
+  },
+  {
+   "name": "Metex PEN",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.1898450244698205,
+   "sat_presc": 0.7828863346104725
+  },
+  {
+   "name": "Nocdurna",
+   "motive": "Exportação",
+   "intent": 0.4985655737704918,
+   "export": 0.0471311475409836,
+   "sat_presc": 0.6590141796083727
+  },
+  {
+   "name": "NovoMix 30 Penfill",
+   "motive": "Criticidade",
+   "intent": 1.1602414090405222,
+   "export": 0.1005049882990516,
+   "sat_presc": 0.764716963360648
+  },
+  {
+   "name": "NovoRapid Penfill",
+   "motive": "Criticidade",
+   "intent": 0.879315157718433,
+   "export": 0.0,
+   "sat_presc": 0.1994099528704494
+  },
+  {
+   "name": "Ovestin",
+   "motive": "Escassez",
+   "intent": 0.0349369057297373,
+   "export": 0.0,
+   "sat_presc": 0.5458695593450569
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.5578700060702804
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4376941099547758
+  },
+  {
+   "name": "Pentasa",
+   "motive": "Exportação",
+   "intent": 0.674652872311462,
+   "export": 0.2286958889191396,
+   "sat_presc": 0.5895666131621188
+  },
+  {
+   "name": "Pentasa",
+   "motive": "Exportação",
+   "intent": 0.6992316136114161,
+   "export": 0.4285001496856601,
+   "sat_presc": 0.5695368002273373
+  },
+  {
+   "name": "Priadel",
+   "motive": "Exportação",
+   "intent": 1.0048484020759356,
+   "export": 0.3583720295001366,
+   "sat_presc": 0.5548651106395878
+  },
+  {
+   "name": "Pylera",
+   "motive": "Escassez",
+   "intent": 0.0966716663095493,
+   "export": 0.0,
+   "sat_presc": 1.0178474064919487
+  },
+  {
+   "name": "Rotarix",
+   "motive": "Exportação",
+   "intent": 0.411114096363962,
+   "export": 0.0594662367902561,
+   "sat_presc": 1.1784696569920845
+  },
+  {
+   "name": "Salofalk",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.1079553483114314,
+   "sat_presc": 0.6615255187885586
+  },
+  {
+   "name": "Salofalk enemas",
+   "motive": "Exportação",
+   "intent": 0.5551496582606646,
+   "export": 0.1186660381805326,
+   "sat_presc": 0.5026655609524938
+  },
+  {
+   "name": "Semglee",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 1.099959855479727,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Simbrinza",
+   "motive": "Exportação",
+   "intent": 0.2675923746763944,
+   "export": 0.3969169216286185,
+   "sat_presc": 0.8285073608267525
+  },
+  {
+   "name": "Spiriva Respimat",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.23680966469428,
+   "sat_presc": 0.8973451327433628
+  },
+  {
+   "name": "Testoviron Depot",
+   "motive": "Exportação",
+   "intent": 0.658256880733945,
+   "export": 0.0,
+   "sat_presc": 0.764846825260996
+  },
+  {
+   "name": "Timogel",
+   "motive": "Exportação",
+   "intent": 0.4522877467693732,
+   "export": 0.0994654207181041,
+   "sat_presc": 0.726225048145997
+  },
+  {
+   "name": "Tobradex",
+   "motive": "Exportação",
+   "intent": 0.57191818684356,
+   "export": 0.273852957435047,
+   "sat_presc": 1.568814500043361
+  },
+  {
+   "name": "Tobrex",
+   "motive": "Exportação",
+   "intent": 0.777552400270453,
+   "export": 0.3580121703853955,
+   "sat_presc": 1.5560231457127829
+  },
+  {
+   "name": "Trelegy Ellipta",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.1188034862168237,
+   "sat_presc": 0.3843163406815753
+  },
+  {
+   "name": "Tresiba",
+   "motive": "Criticidade",
+   "intent": 0.004373368146214,
+   "export": 0.0,
+   "sat_presc": 0.3998809753754757
+  },
+  {
+   "name": "Trivastal 50 Retard",
+   "motive": "Exportação",
+   "intent": 1.629776021080369,
+   "export": 0.5695463956333522,
+   "sat_presc": 1.1822429906542056
+  },
+  {
+   "name": "Trixeo Aerosphere",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.0299105962016611,
+   "sat_presc": 0.4406047214141866
+  },
+  {
+   "name": "Trulicity",
+   "motive": "Escassez",
+   "intent": 0.0002130760511041,
+   "export": 0.0,
+   "sat_presc": 0.6433339821742384
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 0.5596207174165847,
+   "export": 0.2041327489041953,
+   "sat_presc": 0.8623110151187905
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 1.2167789344764235,
+   "export": 0.3884466217595427,
+   "sat_presc": 1.2868400315208826
+  },
+  {
+   "name": "Zentel",
+   "motive": "Exportação",
+   "intent": 0.6547704406152423,
+   "export": 0.059280675378744,
+   "sat_presc": 0.9529949853970352
+  },
+  {
+   "name": "Apidra",
+   "motive": "Criticidade",
+   "intent": 2.18925935352507,
+   "export": 0.7767370832272843,
+   "sat_presc": 0.5551630588368281
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.3300054184295777,
+   "export": 0.0683644412676819,
+   "sat_presc": 0.6425973256287736
+  },
+  {
+   "name": "Bevespi Aerosphere",
+   "motive": "Exportação",
+   "intent": 0.3942038353803059,
+   "export": 0.0,
+   "sat_presc": 0.601535919121221
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.2999947649460789,
+   "export": 0.1328133179771751,
+   "sat_presc": 0.7466385240775485
+  },
+  {
+   "name": "Brintellix",
+   "motive": "Exportação",
+   "intent": 0.1104413211079031,
+   "export": 0.0409594213014372,
+   "sat_presc": 0.6874273002210073
+  },
+  {
+   "name": "Dalzior",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.0815217290572738
+  },
+  {
+   "name": "Edistride",
+   "motive": "Exportação",
+   "intent": 0.3775063388821519,
+   "export": 0.0406526292580751,
+   "sat_presc": 0.2101593791644965
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.4402320745345683,
+   "export": 0.020194632594137,
+   "sat_presc": 0.856834868821026
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.2726684892587678,
+   "export": 0.0,
+   "sat_presc": 0.8310992554311204
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0009993129723315,
+   "export": 0.0,
+   "sat_presc": 0.6813481424741479
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0003737339761557,
+   "export": 0.0,
+   "sat_presc": 0.6482695126530909
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Krka",
+   "motive": "Criticidade",
+   "intent": 0.0002413709872073,
+   "export": 0.0,
+   "sat_presc": 0.6270622067504162
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Farmoz",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.2400484334796428
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Teva",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.8386559709399122
+  },
+  {
+   "name": "Epipen",
+   "motive": "Criticidade",
+   "intent": 0.3199191635181442,
+   "export": 0.0,
+   "sat_presc": 0.8623929680988104
+  },
+  {
+   "name": "Forxiga",
+   "motive": "Exportação",
+   "intent": 0.2696178014978049,
+   "export": 0.0,
+   "sat_presc": 0.645949908346323
+  },
+  {
+   "name": "Havrix 1440 Adulto",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.8684437974798708
+  },
+  {
+   "name": "Humalog KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.4007690032534753,
+   "export": 0.1380508725229222,
+   "sat_presc": 0.3043752250630176
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.5677360448771003,
+   "export": 0.0,
+   "sat_presc": 0.722213920258452
+  },
+  {
+   "name": "Kreon 25000",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.6897310854117319
+  },
+  {
+   "name": "Kreon 35000",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.5074254172690236
+  },
+  {
+   "name": "Lantus",
+   "motive": "Criticidade",
+   "intent": 15.963822894168466,
+   "export": 0.0,
+   "sat_presc": 0.8027741655830082
+  },
+  {
+   "name": "Lantus",
+   "motive": "Criticidade",
+   "intent": 0.9120621656448904,
+   "export": 0.4549897822380153,
+   "sat_presc": 0.6091603598174747
+  },
+  {
+   "name": "Levemir",
+   "motive": "Criticidade",
+   "intent": 0.1823498830257343,
+   "export": 0.1606446581752014,
+   "sat_presc": 0.5320701220566371
+  },
+  {
+   "name": "Lixiana",
+   "motive": "Exportação",
+   "intent": 0.3837045901171407,
+   "export": 0.0,
+   "sat_presc": 0.7905004903364663
+  },
+  {
+   "name": "Lyumjev",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.5033129904097646
+  },
+  {
+   "name": "Lyumjev Junior KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4230681904185272
+  },
+  {
+   "name": "Lyumjev KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.1660965070219661
+  },
+  {
+   "name": "Metex PEN",
+   "motive": "Exportação",
+   "intent": 1.1355538342370255,
+   "export": 0.4221533694810224,
+   "sat_presc": 1.2552260573650948
+  },
+  {
+   "name": "Ontozry",
+   "motive": "Criticidade",
+   "intent": 1.0638297872340423,
+   "export": 0.0,
+   "sat_presc": 0.706766917293233
+  },
+  {
+   "name": "Ontozry",
+   "motive": "Criticidade",
+   "intent": 0.5532170775706554,
+   "export": 0.0414912808177991,
+   "sat_presc": 0.6926280716368179
+  },
+  {
+   "name": "Ontozry",
+   "motive": "Criticidade",
+   "intent": 0.465869456900847,
+   "export": 0.0318883906327852,
+   "sat_presc": 0.5798902051430223
+  },
+  {
+   "name": "Ontozry",
+   "motive": "Criticidade",
+   "intent": 0.2533951639615767,
+   "export": 0.0337860218615435,
+   "sat_presc": 0.5337694483734088
+  },
+  {
+   "name": "Ontozry",
+   "motive": "Criticidade",
+   "intent": 0.8268215417106652,
+   "export": 0.0422386483632523,
+   "sat_presc": 0.5135574837310195
+  },
+  {
+   "name": "Ovestin",
+   "motive": "Escassez",
+   "intent": 0.0146202640150865,
+   "export": 0.0,
+   "sat_presc": 0.4940289658677056
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.6064795167450722
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.5748473886502374
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3736126920887877
+  },
+  {
+   "name": "Pentasa",
+   "motive": "Exportação",
+   "intent": 0.9778042603902874,
+   "export": 0.1856100104275286,
+   "sat_presc": 0.4140249167386209
+  },
+  {
+   "name": "Permadoze Oral",
+   "motive": "Criticidade",
+   "intent": null,
+   "export": null,
+   "sat_presc": null
+  },
+  {
+   "name": "Pneumovax 23",
+   "motive": "Criticidade",
+   "intent": null,
+   "export": null,
+   "sat_presc": null
+  },
+  {
+   "name": "Prevenar 20",
+   "motive": "Criticidade",
+   "intent": 0.211148574681438,
+   "export": 0.106118516943056,
+   "sat_presc": 2.219585682152676
+  },
+  {
+   "name": "Semglee",
+   "motive": "Criticidade",
+   "intent": 2.163317321831193,
+   "export": 0.0,
+   "sat_presc": 0.0404418032104472
+  },
+  {
+   "name": "Sinemet 25/100",
+   "motive": "Escassez",
+   "intent": 0.0461349331235247,
+   "export": 0.0023996852871754,
+   "sat_presc": 0.6173686543330561
+  },
+  {
+   "name": "Testoviron Depot",
+   "motive": "Exportação",
+   "intent": 0.9089200949367088,
+   "export": 0.2193433544303797,
+   "sat_presc": 0.5999288059170194
+  },
+  {
+   "name": "Tobrex",
+   "motive": "Exportação",
+   "intent": 1.6454054054054057,
+   "export": 0.0,
+   "sat_presc": 1.3916750250752257
+  },
+  {
+   "name": "Trivastal 50 Retard",
+   "motive": "Exportação",
+   "intent": 1.220366163303488,
+   "export": 0.0,
+   "sat_presc": 1.6064834693001289
+  },
+  {
+   "name": "Trulicity",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.6841511407942678
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 1.5747016706443917,
+   "export": 0.0,
+   "sat_presc": 1.176305446378439
+  },
+  {
+   "name": "Actrapid Penfill",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3664804469273743
+  },
+  {
+   "name": "Anafranil",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0251286506716567,
+   "sat_presc": 0.7334084893637879
+  },
+  {
+   "name": "Betmiga",
+   "motive": "Exportação",
+   "intent": 0.1558103178738926,
+   "export": 0.0,
+   "sat_presc": 0.6026718848142243
+  },
+  {
+   "name": "Bevespi Aerosphere",
+   "motive": "Exportação",
+   "intent": 0.6848583582224635,
+   "export": 0.0,
+   "sat_presc": 0.7226764340375433
+  },
+  {
+   "name": "Budenofalk",
+   "motive": "Exportação",
+   "intent": 1.079912424740011,
+   "export": 0.1784345922276956,
+   "sat_presc": 0.7618849040867389
+  },
+  {
+   "name": "Edistride",
+   "motive": "Exportação",
+   "intent": 0.995555148900104,
+   "export": 0.2812343491158454,
+   "sat_presc": 0.2070367530715629
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.2401871588250584,
+   "export": 0.0470572944540436,
+   "sat_presc": 0.7593299449361265
+  },
+  {
+   "name": "Eliquis",
+   "motive": "Exportação",
+   "intent": 0.8513168686776633,
+   "export": 0.3937782348882321,
+   "sat_presc": 0.759579917526181
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0112037462526532,
+   "sat_presc": 0.6237494028526581
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0142096484475237,
+   "sat_presc": 0.6098830157674401
+  },
+  {
+   "name": "Elvanse",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0145623998835008,
+   "sat_presc": 0.6277539080354694
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Krka",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 1.39484206317473
+  },
+  {
+   "name": "Emtricitabina + Tenofovir disoproxil Mylan",
+   "motive": "Criticidade",
+   "intent": 2.5,
+   "export": 0.0,
+   "sat_presc": 0.0131947221111555
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Farmoz",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.2215113954418232
+  },
+  {
+   "name": "Emtricitabina + Tenofovir Teva",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.1659336265493802
+  },
+  {
+   "name": "Epipen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0830312446055584,
+   "sat_presc": 0.689068633281789
+  },
+  {
+   "name": "Ferro-Tardyferon",
+   "motive": "Exportação",
+   "intent": 1.2145478812145478,
+   "export": 0.333667000333667,
+   "sat_presc": 0.6692421062033853
+  },
+  {
+   "name": "Fiasp",
+   "motive": "Criticidade",
+   "intent": 0.015402464394303,
+   "export": 0.0,
+   "sat_presc": 0.2979367557838778
+  },
+  {
+   "name": "Forxiga",
+   "motive": "Exportação",
+   "intent": 0.1106548121879208,
+   "export": 0.0,
+   "sat_presc": 0.5960222973087496
+  },
+  {
+   "name": "Havrix 1440 Adulto",
+   "motive": "Criticidade",
+   "intent": 0.1517225747960108,
+   "export": 0.013780598368087,
+   "sat_presc": 1.332688938560986
+  },
+  {
+   "name": "Humalog KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0235072872590503,
+   "sat_presc": 0.3195773025492062
+  },
+  {
+   "name": "Humalog Mix25",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.2687034860947904,
+   "sat_presc": 0.9937718956792526
+  },
+  {
+   "name": "Humalog Mix25 KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.1372248248414244,
+   "sat_presc": 0.7149293102937254
+  },
+  {
+   "name": "Humalog Mix50 KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.3110122940099398,
+   "sat_presc": 0.7661322645290581
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.2439881801508049,
+   "export": 0.0589192310305006,
+   "sat_presc": 0.7467433649866082
+  },
+  {
+   "name": "Jardiance",
+   "motive": "Exportação",
+   "intent": 0.242526678597468,
+   "export": 0.2463213362497514,
+   "sat_presc": 0.8073581056222616
+  },
+  {
+   "name": "Kreon 25000",
+   "motive": "Escassez",
+   "intent": 0.000121891760117,
+   "export": 0.0,
+   "sat_presc": 0.6483667017913594
+  },
+  {
+   "name": "Kreon 35000",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4761103633916554
+  },
+  {
+   "name": "Lantus",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.4941290531078315,
+   "sat_presc": 1.3789364230540702
+  },
+  {
+   "name": "Lixiana",
+   "motive": "Exportação",
+   "intent": 0.2749985372418231,
+   "export": 0.242677432566848,
+   "sat_presc": 0.7409125392868755
+  },
+  {
+   "name": "Lixiana",
+   "motive": "Exportação",
+   "intent": 0.3949926711501983,
+   "export": 0.3613877392653906,
+   "sat_presc": 0.8055355390986517
+  },
+  {
+   "name": "Lyumjev",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4072657743785851
+  },
+  {
+   "name": "Lyumjev",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.583725305738476
+  },
+  {
+   "name": "Lyumjev Junior KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3198086356204203
+  },
+  {
+   "name": "Lyumjev KwikPen",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3408406850025947
+  },
+  {
+   "name": "Mestinon",
+   "motive": "Exportação",
+   "intent": 0.5519081932212436,
+   "export": 0.3138510808646917,
+   "sat_presc": 0.6690474064815641
+  },
+  {
+   "name": "Metex PEN",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.1898450244698205,
+   "sat_presc": 0.7828863346104725
+  },
+  {
+   "name": "NovoMix 30 Penfill",
+   "motive": "Criticidade",
+   "intent": 1.1602414090405222,
+   "export": 0.1005049882990516,
+   "sat_presc": 0.764716963360648
+  },
+  {
+   "name": "NovoRapid Penfill",
+   "motive": "Criticidade",
+   "intent": 0.879315157718433,
+   "export": 0.0,
+   "sat_presc": 0.1994099528704494
+  },
+  {
+   "name": "Ovestin",
+   "motive": "Escassez",
+   "intent": 0.0349369057297373,
+   "export": 0.0,
+   "sat_presc": 0.5458695593450569
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.5578700060702804
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Ozempic",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.4376941099547758
+  },
+  {
+   "name": "Pentasa",
+   "motive": "Exportação",
+   "intent": 0.674652872311462,
+   "export": 0.2286958889191396,
+   "sat_presc": 0.5895666131621188
+  },
+  {
+   "name": "Priadel",
+   "motive": "Exportação",
+   "intent": 1.0048484020759356,
+   "export": 0.3583720295001366,
+   "sat_presc": 0.5548651106395878
+  },
+  {
+   "name": "Pylera",
+   "motive": "Escassez",
+   "intent": 0.0966716663095493,
+   "export": 0.0,
+   "sat_presc": 1.0178474064919487
+  },
+  {
+   "name": "Salofalk",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.1079553483114314,
+   "sat_presc": 0.6615255187885586
+  },
+  {
+   "name": "Salofalk enemas",
+   "motive": "Exportação",
+   "intent": 0.5551496582606646,
+   "export": 0.1186660381805326,
+   "sat_presc": 0.5026655609524938
+  },
+  {
+   "name": "Semglee",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 1.099959855479727,
+   "sat_presc": 0.0
+  },
+  {
+   "name": "Spiriva Respimat",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.23680966469428,
+   "sat_presc": 0.8973451327433628
+  },
+  {
+   "name": "Testoviron Depot",
+   "motive": "Exportação",
+   "intent": 0.658256880733945,
+   "export": 0.0,
+   "sat_presc": 0.764846825260996
+  },
+  {
+   "name": "Timogel",
+   "motive": "Exportação",
+   "intent": 0.4522877467693732,
+   "export": 0.0994654207181041,
+   "sat_presc": 0.726225048145997
+  },
+  {
+   "name": "Tobradex",
+   "motive": "Exportação",
+   "intent": 0.57191818684356,
+   "export": 0.273852957435047,
+   "sat_presc": 1.568814500043361
+  },
+  {
+   "name": "Tobrex",
+   "motive": "Exportação",
+   "intent": 0.777552400270453,
+   "export": 0.3580121703853955,
+   "sat_presc": 1.5560231457127829
+  },
+  {
+   "name": "Toujeo",
+   "motive": "Criticidade",
+   "intent": 0.0,
+   "export": 0.0,
+   "sat_presc": 0.3598408929727729
+  },
+  {
+   "name": "Trelegy Ellipta",
+   "motive": "Escassez",
+   "intent": 0.0,
+   "export": 0.1188034862168237,
+   "sat_presc": 0.3843163406815753
+  },
+  {
+   "name": "Tresiba",
+   "motive": "Criticidade",
+   "intent": 0.004373368146214,
+   "export": 0.0,
+   "sat_presc": 0.3998809753754757
+  },
+  {
+   "name": "Trivastal 50 Retard",
+   "motive": "Exportação",
+   "intent": 1.629776021080369,
+   "export": 0.5695463956333522,
+   "sat_presc": 1.1822429906542056
+  },
+  {
+   "name": "Trixeo Aerosphere",
+   "motive": "Exportação",
+   "intent": 0.0,
+   "export": 0.0299105962016611,
+   "sat_presc": 0.4406047214141866
+  },
+  {
+   "name": "Trulicity",
+   "motive": "Escassez",
+   "intent": 0.0002130760511041,
+   "export": 0.0,
+   "sat_presc": 0.6433339821742384
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 0.5596207174165847,
+   "export": 0.2041327489041953,
+   "sat_presc": 0.8623110151187905
+  },
+  {
+   "name": "Vipidia",
+   "motive": "Exportação",
+   "intent": 1.2167789344764235,
+   "export": 0.3884466217595427,
+   "sat_presc": 1.2868400315208826
+  },
+  {
+   "name": "Zentel",
+   "motive": "Exportação",
+   "intent": 0.6547704406152423,
+   "export": 0.059280675378744,
+   "sat_presc": 0.9529949853970352
+  }
+ ],
+ "reasons": {
+  "2021": {
+   "Fabrico": 754,
+   "Aumento da procura": 301,
+   "Comercial": 233,
+   "Fabrico da substância ativa": 160,
+   "Qualidade": 140,
+   "Logístico": 112,
+   "Regulamentar": 59,
+   "Preço": 13,
+   "Inesperado ou desastres naturais": 7
+  },
+  "2024": {
+   "Fabrico": 57.44,
+   "Aumento da procura": 21.17,
+   "Logístico": 6.01,
+   "Comercial": 4.94,
+   "Qualidade": 4.15,
+   "Fabrico da substância ativa": 3.07,
+   "Regulamentar": 2.47,
+   "Preço": 0.47,
+   "Inesperado ou desastres naturais": 0.28
+  },
+  "2025": {
+   "Fabrico": 54.28,
+   "Aumento da procura": 21.67,
+   "Logístico": 8.03,
+   "Comercial": 6.34,
+   "Qualidade": 3.89,
+   "Regulamentar": 3.2,
+   "Fabrico da substância ativa": 1.76,
+   "Inesperado ou desastres naturais": 0.47,
+   "Preço": 0.36
+  }
+ }
+}

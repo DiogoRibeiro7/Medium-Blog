@@ -1,12 +1,15 @@
 # Billionaire density and poverty — follow-up series
 
-Three follow-ups to the reanalysis of the "Where billionaires are common, poverty is rare" chart (companion: [`../billionaires-poverty-audit`](../billionaires-poverty-audit)). Each part runs a check the first article could not.
+Six follow-ups to the reanalysis of the "Where billionaires are common, poverty is rare" chart (companion: [`../billionaires-poverty-audit`](../billionaires-poverty-audit)). Each part runs a check the first article could not.
 
 | Part | Question | Status |
 | --- | --- | --- |
 | 1 | Does the association depend on the poverty line and on income versus consumption surveys? Is it about the level of welfare or its distribution? | Article drafted (manuscript #132) |
 | 2 | Does billionaire density measure wealth concentration? Billionaire counts against WID top wealth shares, and citizenship against residence counts | Article drafted (manuscript #134) |
 | 3 | Within countries over time: when billionaire density rises, does poverty fall faster than the country's own trend? | Article drafted (manuscript #145) |
+| 4 | Are a country's year-to-year changes in billionaires mostly fortunes crossing the $1 billion line? Entries and exits by net worth, a crossing model, and what it means for the count as an indicator | Article drafted (manuscript #150) |
+| 5 | Are fortunes near $1 billion more volatile, and is that why they leave the list? Rounding, volatility estimated from rises, an age-adjusted floor of deaths and reassessments, and newcomers | Article drafted (manuscript #158) |
+| 6 | Is volatility a stable property of each fortune, and does a fortune's own past volatility predict its departure better than its distance from the line? Persistence, out-of-sample departure models, a distance-to-default index and simulated lists | Article drafted |
 
 ## Data
 
@@ -15,6 +18,9 @@ Three follow-ups to the reanalysis of the "Where billionaires are common, povert
 - Each panel country is matched to the PIP survey that reproduces its $30 headcount (all 54 match to within 0.000003 points), so every line describes the same survey.
 - **WID (Part 2):** World Inequality Database bulk file of 6 November 2026 (903 MB, SHA-256 in [`data/wid_manifest.json`](data/wid_manifest.json)), read by [`fetch_wid.py`](fetch_wid.py) in [`billionaires-poverty-followups-wid.yml`](../.github/workflows/billionaires-poverty-followups-wid.yml). Kept: net personal wealth shares, pre-tax income shares, Ginis and averages for adults with equal splitting within couples (`992j`), from 1980, with WID's per-observation `data_quality` grade.
 - **Forbes lists by year (Part 3):** country totals of the Forbes annual lists from the `forbesapi` annual endpoint, fetched by [`fetch_forbes_history.py`](fetch_forbes_history.py) in [`billionaires-poverty-followups-forbes-history.yml`](../.github/workflows/billionaires-poverty-followups-forbes-history.yml). Only country aggregates (people and net worth by citizenship and by the `country` field) are kept; the lists are complete from 2010 to 2025.
+- **Linked Forbes lists (Part 4):** the same annual lists, fetched by [`fetch_forbes_flows.py`](fetch_forbes_flows.py) in [`billionaires-poverty-followups-forbes-flows.yml`](../.github/workflows/billionaires-poverty-followups-forbes-flows.yml), linked from one year to the next in memory (by `uri`, then `naturalId`, then name and birth date). Only aggregates are written: counts and net worth by citizenship and $100 million band, entries, exits and citizenship changes by net-worth band, and global tables of annual changes in net worth and of exits by age. No person-level record is stored.
+- **Tenure and rounding (Part 5):** the same lists, fetched again by [`fetch_forbes_tenure.py`](fetch_forbes_tenure.py) in [`billionaires-poverty-followups-forbes-tenure.yml`](../.github/workflows/billionaires-poverty-followups-forbes-tenure.yml) and linked with Part 4's rules. Aggregates only: people, departures and annual changes by net-worth band and tenure (incumbent, returning, new) and by the previous year's change, and how many fortunes are reported in multiples of $100 million. The tables reproduce Part 4's exactly.
+- **Past volatility by person (Part 6):** the same lists, fetched again by [`fetch_forbes_persistence.py`](fetch_forbes_persistence.py) in [`billionaires-poverty-followups-forbes-persistence.yml`](../.github/workflows/billionaires-poverty-followups-forbes-persistence.yml) and linked with Part 4's rules. For each person on list t the links are followed back up to four lists; only counts (and sums of squared changes) are written, by net-worth band, age group, tenure, number of earlier lists, the latest change, a class of the root mean square of the earlier changes, their direction, and Forbes's industry category. Summed over the new dimensions, the tables reproduce Part 5's exactly.
 - **WDI (Part 3):** GDP, GNI and household consumption per person (PPP, constant 2021 dollars), population, PPP factor and exchange rate, fetched by [`fetch_wdi.py`](fetch_wdi.py) in [`billionaires-poverty-followups-wdi.yml`](../.github/workflows/billionaires-poverty-followups-wdi.yml).
 - **Forbes primary counts (Part 2):** the frozen aggregate output of the 5 November 2026 Forbes person-list audit, [`../billionaires-poverty-audit/evidence/forbes-2026-run-42099896845`](../billionaires-poverty-audit/evidence/forbes-2026-run-42099896845), hash-checked against its `SHA256SUMS.txt`: `countryOfCitizenship` (citizenship) and `country` (used as residence; see the article for the evidence).
 
@@ -53,3 +59,36 @@ python part3_within_country.py --check    # fail if any number differs from resu
 Outputs: [`results/part3/summary.txt`](results/part3/summary.txt), [`results/part3/numbers.json`](results/part3/numbers.json) and four figures in [`figures/part3/`](figures/part3/).
 
 Methods: national PIP surveys 2010-2024 in countries with a Forbes billionaire in any list 2010-2025, matched to the same year's list; billionaire density is log10 of (billionaires + 0.5) per ten million people. Within-country models use comparable-survey-spell and year fixed effects with errors clustered by country; also long differences, removal of each spell's own linear trend, a fractional logit with fixed effects, leads and lags, changes between consecutive surveys and leave-one-country-out error.
+
+## Part 4 — reproduce
+
+```bash
+python part4_threshold_crossings.py            # print every number, write results/part4 and figures/part4
+python part4_threshold_crossings.py --check    # fail if any number differs from results/part4/numbers.json
+```
+
+Outputs: [`results/part4/summary.txt`](results/part4/summary.txt), [`results/part4/numbers.json`](results/part4/numbers.json) and five figures in [`figures/part4/`](figures/part4/).
+
+Methods: the Forbes lists 2010-2025 linked year to year; country changes split into entries and exits below and above a cutoff and citizenship changes, with covariance shares of the variance of one- to ten-year changes; a crossing model that applies each year's distribution of changes in fortunes above $3 billion to the stock near the line (exits) and to a Pareto tail extrapolated below $1 billion (entries); counts above fixed, indexed and rank-based thresholds compared by within-country reversal and GDP elasticity; Part 3's within-country poverty estimate rerun with the alternative counts.
+
+## Part 5 — reproduce
+
+```bash
+python part5_volatility.py            # print every number, write results/part5 and figures/part5
+python part5_volatility.py --check    # fail if any number differs from results/part5/numbers.json
+```
+
+Outputs: [`results/part5/summary.txt`](results/part5/summary.txt), [`results/part5/numbers.json`](results/part5/numbers.json) and three figures in [`figures/part5/`](figures/part5/).
+
+Methods: upper-tail ratios against the same year's fortunes above $3 billion; a scale factor per band estimated by multinomial likelihood from rises of at least 0.1 in log10 only (never cut off by the line, barely affected by rounding), with a floor of departures unrelated to market value taken from the age-specific exit rates above $3 billion; the Part 4 crossing model rerun with that scale and floor under three rounding rules; departures of new and returning people against incumbents in the same band and year; a bootstrap over years.
+
+## Part 6 — reproduce
+
+```bash
+python part6_past_volatility.py            # print every number, write results/part6 and figures/part6
+python part6_past_volatility.py --check    # fail if any number differs from results/part6/numbers.json
+```
+
+Outputs: [`results/part6/summary.txt`](results/part6/summary.txt), [`results/part6/numbers.json`](results/part6/numbers.json) and four figures in [`figures/part6/`](figures/part6/).
+
+Methods: large moves and rises by class of earlier volatility (the latest change left out), indirectly standardised by year and net-worth band; logits of large moves on earlier volatility and the latest change; departure logits below $3 billion on distance, past volatility, both, and Part 5's predictors, compared by leaving one pair of lists out at a time (log loss, Brier score and within-year AUC; a weak ridge for held-out predictions); a one-number index of distance divided by own volatility, with a likelihood-ratio test of the ratio restriction; rises near the line split by history; departure logits within Forbes's industry categories; simulated lists with and without a volatility trait run through the same aggregation and models; a bootstrap over years.

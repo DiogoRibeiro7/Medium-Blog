@@ -1,0 +1,694 @@
+{
+ "correlations": [
+  {
+   "var": "lpop",
+   "label": "size (log population)",
+   "n": 29,
+   "r": -0.124,
+   "lo": -0.481,
+   "hi": 0.225
+  },
+  {
+   "var": "dist_km",
+   "label": "distance to Brussels",
+   "n": 29,
+   "r": 0.309,
+   "lo": 0.049,
+   "hi": 0.545
+  },
+  {
+   "var": "aic",
+   "label": "AIC per head",
+   "n": 29,
+   "r": -0.56,
+   "lo": -0.738,
+   "hi": -0.408
+  },
+  {
+   "var": "gdp",
+   "label": "GDP per head",
+   "n": 29,
+   "r": -0.351,
+   "lo": -0.69,
+   "hi": -0.113
+  },
+  {
+   "var": "pli",
+   "label": "price level, all medicines",
+   "n": 24,
+   "r": -0.698,
+   "lo": -0.845,
+   "hi": -0.517
+  },
+  {
+   "var": "pli_L",
+   "label": "price level, ATC L",
+   "n": 20,
+   "r": -0.735,
+   "lo": -0.861,
+   "hi": -0.556
+  }
+ ],
+ "models": [
+  {
+   "model": "size",
+   "n": 29,
+   "r2": 0.015,
+   "pt_fit": 575.0,
+   "pt_resid": 264.0,
+   "pt_pred_out": 564.6,
+   "mean": 582.4
+  },
+  {
+   "model": "distance",
+   "n": 29,
+   "r2": 0.096,
+   "pt_fit": 631.4,
+   "pt_resid": 207.6,
+   "pt_pred_out": 618.0,
+   "mean": 582.4
+  },
+  {
+   "model": "size + distance",
+   "n": 29,
+   "r2": 0.096,
+   "pt_fit": 629.3,
+   "pt_resid": 209.7,
+   "pt_pred_out": 612.0,
+   "mean": 582.4
+  },
+  {
+   "model": "size + distance + AIC",
+   "n": 29,
+   "r2": 0.331,
+   "pt_fit": 646.1,
+   "pt_resid": 192.9,
+   "pt_pred_out": 629.8,
+   "mean": 582.4
+  },
+  {
+   "model": "price + AIC",
+   "n": 24,
+   "r2": 0.499,
+   "pt_fit": 644.5,
+   "pt_resid": 194.5,
+   "pt_pred_out": 632.0,
+   "mean": 592.1
+  },
+  {
+   "model": "size + distance + AIC + price",
+   "n": 24,
+   "r2": 0.558,
+   "pt_fit": 655.7,
+   "pt_resid": 183.3,
+   "pt_pred_out": 636.8,
+   "mean": 592.1
+  },
+  {
+   "model": "size + distance + AIC + price L",
+   "n": 20,
+   "r2": 0.621,
+   "pt_fit": 666.4,
+   "pt_resid": 172.6,
+   "pt_pred_out": 629.7,
+   "mean": 555.2
+  }
+ ],
+ "countries": [
+  {
+   "geo": "AT",
+   "country": "Austria",
+   "days": 363.0,
+   "pop_m": 9.2,
+   "dist_km": 915.0,
+   "pli": 115.94,
+   "available": 143
+  },
+  {
+   "geo": "BE",
+   "country": "Belgium",
+   "days": 552.0,
+   "pop_m": 11.88,
+   "dist_km": 0.0,
+   "pli": 124.13,
+   "available": 82
+  },
+  {
+   "geo": "BG",
+   "country": "Bulgaria",
+   "days": 650.0,
+   "pop_m": 6.44,
+   "dist_km": 1698.0,
+   "pli": 81.23,
+   "available": 77
+  },
+  {
+   "geo": "CH",
+   "country": "Switzerland",
+   "days": 285.0,
+   "pop_m": 9.05,
+   "dist_km": 489.0,
+   "pli": 181.76,
+   "available": 128
+  },
+  {
+   "geo": "CY",
+   "country": "Cyprus",
+   "days": 528.0,
+   "pop_m": 0.98,
+   "dist_km": 2902.0,
+   "pli": 131.77,
+   "available": 66
+  },
+  {
+   "geo": "CZ",
+   "country": "Czechia",
+   "days": 659.0,
+   "pop_m": 10.91,
+   "dist_km": 719.0,
+   "pli": 102.78,
+   "available": 84
+  },
+  {
+   "geo": "DE",
+   "country": "Germany",
+   "days": 158.0,
+   "pop_m": 83.58,
+   "dist_km": 650.0,
+   "pli": null,
+   "available": 156
+  },
+  {
+   "geo": "DK",
+   "country": "Denmark",
+   "days": 369.0,
+   "pop_m": 5.99,
+   "dist_km": 765.0,
+   "pli": 157.85,
+   "available": 93
+  },
+  {
+   "geo": "EE",
+   "country": "Estonia",
+   "days": 707.0,
+   "pop_m": 1.37,
+   "dist_km": 1600.0,
+   "pli": 92.01,
+   "available": 38
+  },
+  {
+   "geo": "EL",
+   "country": "Greece",
+   "days": 641.0,
+   "pop_m": 10.37,
+   "dist_km": 2090.0,
+   "pli": 84.14,
+   "available": 69
+  },
+  {
+   "geo": "ES",
+   "country": "Spain",
+   "days": 537.0,
+   "pop_m": 49.13,
+   "dist_km": 1316.0,
+   "pli": 100.63,
+   "available": 116
+  },
+  {
+   "geo": "FI",
+   "country": "Finland",
+   "days": 448.0,
+   "pop_m": 5.64,
+   "dist_km": 1648.0,
+   "pli": 129.21,
+   "available": 74
+  },
+  {
+   "geo": "FR",
+   "country": "France",
+   "days": 633.0,
+   "pop_m": 68.88,
+   "dist_km": 264.0,
+   "pli": 85.24,
+   "available": 100
+  },
+  {
+   "geo": "HR",
+   "country": "Croatia",
+   "days": 734.0,
+   "pop_m": 3.87,
+   "dist_km": 1024.0,
+   "pli": null,
+   "available": 58
+  },
+  {
+   "geo": "HU",
+   "country": "Hungary",
+   "days": 514.0,
+   "pop_m": 9.54,
+   "dist_km": 1129.0,
+   "pli": 77.75,
+   "available": 35
+  },
+  {
+   "geo": "IE",
+   "country": "Ireland",
+   "days": 685.0,
+   "pop_m": 5.44,
+   "dist_km": 775.0,
+   "pli": null,
+   "available": 53
+  },
+  {
+   "geo": "IS",
+   "country": "Iceland",
+   "days": 535.0,
+   "pop_m": 0.39,
+   "dist_km": 2129.0,
+   "pli": 159.55,
+   "available": 48
+  },
+  {
+   "geo": "IT",
+   "country": "Italy",
+   "days": 441.0,
+   "pop_m": 58.94,
+   "dist_km": 1174.0,
+   "pli": 130.47,
+   "available": 133
+  },
+  {
+   "geo": "LT",
+   "country": "Lithuania",
+   "days": 821.0,
+   "pop_m": 2.89,
+   "dist_km": 1465.0,
+   "pli": 86.25,
+   "available": 37
+  },
+  {
+   "geo": "LU",
+   "country": "Luxembourg",
+   "days": 507.0,
+   "pop_m": 0.68,
+   "dist_km": 187.0,
+   "pli": null,
+   "available": 112
+  },
+  {
+   "geo": "LV",
+   "country": "Latvia",
+   "days": 619.0,
+   "pop_m": 1.86,
+   "dist_km": 1454.0,
+   "pli": 90.62,
+   "available": 25
+  },
+  {
+   "geo": "NL",
+   "country": "Netherlands",
+   "days": 493.0,
+   "pop_m": 18.04,
+   "dist_km": 173.0,
+   "pli": 89.69,
+   "available": 91
+  },
+  {
+   "geo": "NO",
+   "country": "Norway",
+   "days": 543.0,
+   "pop_m": 5.59,
+   "dist_km": 1084.0,
+   "pli": 125.57,
+   "available": 59
+  },
+  {
+   "geo": "PL",
+   "country": "Poland",
+   "days": 714.0,
+   "pop_m": 36.5,
+   "dist_km": 1160.0,
+   "pli": 64.11,
+   "available": 77
+  },
+  {
+   "geo": "PT",
+   "country": "Portugal",
+   "days": 839.0,
+   "pop_m": 11.39,
+   "dist_km": 1713.0,
+   "pli": 96.93,
+   "available": 89
+  },
+  {
+   "geo": "RO",
+   "country": "Romania",
+   "days": 1110.0,
+   "pop_m": 19.04,
+   "dist_km": 1771.0,
+   "pli": 72.29,
+   "available": 28
+  },
+  {
+   "geo": "SE",
+   "country": "Sweden",
+   "days": 459.0,
+   "pop_m": 10.59,
+   "dist_km": 1280.0,
+   "pli": 115.28,
+   "available": 82
+  },
+  {
+   "geo": "SI",
+   "country": "Slovenia",
+   "days": 596.0,
+   "pop_m": 2.13,
+   "dist_km": 918.0,
+   "pli": null,
+   "available": 85
+  },
+  {
+   "geo": "SK",
+   "country": "Slovakia",
+   "days": 751.0,
+   "pop_m": 5.42,
+   "dist_km": 968.0,
+   "pli": 75.13,
+   "available": 35
+  }
+ ],
+ "pipeline": {
+  "europe": {
+   "filing": 189,
+   "decision": 333
+  },
+  "portugal_report": {
+   "filing": 272,
+   "infarmed": 332,
+   "company_negotiation": 319
+  }
+ },
+ "tracker": [
+  {
+   "name": "Voranigo",
+   "setting": "hospital",
+   "infarmed": 100,
+   "company": 64,
+   "negotiation": 30
+  },
+  {
+   "name": "Attrogy",
+   "setting": "hospital",
+   "infarmed": 112,
+   "company": 95,
+   "negotiation": 46
+  },
+  {
+   "name": "Tryngolza",
+   "setting": "hospital",
+   "infarmed": 84,
+   "company": 92,
+   "negotiation": 83
+  },
+  {
+   "name": "HETRONIFLY",
+   "setting": "hospital",
+   "infarmed": 86,
+   "company": 60,
+   "negotiation": 139
+  },
+  {
+   "name": "Obgemsa",
+   "setting": "ambulatory",
+   "infarmed": 78,
+   "company": 100,
+   "negotiation": 107
+  },
+  {
+   "name": "Beyonttra",
+   "setting": "hospital",
+   "infarmed": 123,
+   "company": 32,
+   "negotiation": 141
+  },
+  {
+   "name": "Alyftrek",
+   "setting": "hospital",
+   "infarmed": 195,
+   "company": 81,
+   "negotiation": 126
+  },
+  {
+   "name": "Wainzua",
+   "setting": "hospital",
+   "infarmed": 157,
+   "company": 94,
+   "negotiation": 156
+  },
+  {
+   "name": "Velsipity",
+   "setting": "hospital",
+   "infarmed": 129,
+   "company": 77,
+   "negotiation": 204
+  },
+  {
+   "name": "Voraxaze",
+   "setting": "hospital",
+   "infarmed": 278,
+   "company": 109,
+   "negotiation": 71
+  },
+  {
+   "name": "Zolgensma",
+   "setting": "hospital",
+   "infarmed": 201,
+   "company": 134,
+   "negotiation": 125
+  },
+  {
+   "name": "Hympavzi",
+   "setting": "hospital",
+   "infarmed": 113,
+   "company": 172,
+   "negotiation": 206
+  },
+  {
+   "name": "Piasky",
+   "setting": "hospital",
+   "infarmed": 179,
+   "company": 227,
+   "negotiation": 98
+  },
+  {
+   "name": "Vyloy",
+   "setting": "hospital",
+   "infarmed": 197,
+   "company": 288,
+   "negotiation": 57
+  },
+  {
+   "name": "Vanflyta",
+   "setting": "hospital",
+   "infarmed": 252,
+   "company": 120,
+   "negotiation": 187
+  },
+  {
+   "name": "Elahere",
+   "setting": "hospital",
+   "infarmed": 220,
+   "company": 104,
+   "negotiation": 247
+  },
+  {
+   "name": "Litfulo",
+   "setting": "hospital",
+   "infarmed": 231,
+   "company": 138,
+   "negotiation": 245
+  },
+  {
+   "name": "Winrevair",
+   "setting": "hospital",
+   "infarmed": 190,
+   "company": 32,
+   "negotiation": 433
+  },
+  {
+   "name": "Balversa",
+   "setting": "hospital",
+   "infarmed": 304,
+   "company": 199,
+   "negotiation": 155
+  },
+  {
+   "name": "Tevimbra",
+   "setting": "hospital",
+   "infarmed": 279,
+   "company": 157,
+   "negotiation": 224
+  },
+  {
+   "name": "Altuvoct",
+   "setting": "hospital",
+   "infarmed": 214,
+   "company": 300,
+   "negotiation": 200
+  },
+  {
+   "name": "Leqvio",
+   "setting": "hospital",
+   "infarmed": 203,
+   "company": 113,
+   "negotiation": 411
+  },
+  {
+   "name": "Ebglyss",
+   "setting": "hospital",
+   "infarmed": 226,
+   "company": 436,
+   "negotiation": 153
+  },
+  {
+   "name": "Skyclarys",
+   "setting": "hospital",
+   "infarmed": 302,
+   "company": 164,
+   "negotiation": 356
+  },
+  {
+   "name": "Briumvi",
+   "setting": "hospital",
+   "infarmed": 285,
+   "company": 440,
+   "negotiation": 117
+  },
+  {
+   "name": "Elfabrio",
+   "setting": "hospital",
+   "infarmed": 686,
+   "company": 102,
+   "negotiation": 119
+  },
+  {
+   "name": "Sogroya",
+   "setting": "hospital",
+   "infarmed": 305,
+   "company": 269,
+   "negotiation": 340
+  },
+  {
+   "name": "Jaypirca",
+   "setting": "hospital",
+   "infarmed": 250,
+   "company": 342,
+   "negotiation": 349
+  },
+  {
+   "name": "Elrexfio",
+   "setting": "hospital",
+   "infarmed": 323,
+   "company": 118,
+   "negotiation": 510
+  },
+  {
+   "name": "Tecvayli",
+   "setting": "hospital",
+   "infarmed": 545,
+   "company": 222,
+   "negotiation": 209
+  },
+  {
+   "name": "Camzyos",
+   "setting": "hospital",
+   "infarmed": 517,
+   "company": 70,
+   "negotiation": 414
+  },
+  {
+   "name": "Abrysvo",
+   "setting": "ambulatory",
+   "infarmed": 360,
+   "company": 114,
+   "negotiation": 538
+  },
+  {
+   "name": "Omvoh",
+   "setting": "hospital",
+   "infarmed": 234,
+   "company": 298,
+   "negotiation": 494
+  },
+  {
+   "name": "Abrysvo",
+   "setting": "ambulatory",
+   "infarmed": 384,
+   "company": 125,
+   "negotiation": 538
+  },
+  {
+   "name": "Arexvy",
+   "setting": "ambulatory",
+   "infarmed": 414,
+   "company": 95,
+   "negotiation": 595
+  },
+  {
+   "name": "Akeega",
+   "setting": "hospital",
+   "infarmed": 304,
+   "company": 613,
+   "negotiation": 314
+  },
+  {
+   "name": "Padcev",
+   "setting": "hospital",
+   "infarmed": 519,
+   "company": 287,
+   "negotiation": 574
+  },
+  {
+   "name": "Ondexxya",
+   "setting": "hospital",
+   "infarmed": 500,
+   "company": 453,
+   "negotiation": 453
+  },
+  {
+   "name": "Rybrevant",
+   "setting": "hospital",
+   "infarmed": 940,
+   "company": 60,
+   "negotiation": 592
+  },
+  {
+   "name": "Slenyto",
+   "setting": "ambulatory",
+   "infarmed": 816,
+   "company": 648,
+   "negotiation": 485
+  },
+  {
+   "name": "Retsevmo",
+   "setting": "hospital",
+   "infarmed": 910,
+   "company": 351,
+   "negotiation": 718
+  },
+  {
+   "name": "Retsevmo",
+   "setting": "hospital",
+   "infarmed": 1416,
+   "company": 219,
+   "negotiation": 718
+  }
+ ],
+ "tracker_means": {
+  "infarmed": 337.2,
+  "company": 195.6,
+  "negotiation": 292.3,
+  "lag": 207.6,
+  "n": 42
+ }
+}

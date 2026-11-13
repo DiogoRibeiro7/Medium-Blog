@@ -1,0 +1,244 @@
+# Results (every number quoted in the article)
+
+## Exposure measures
+stringency: lockdown stringency, mean 2020-2021 (OxCGRT index, 0-100); billionaire countries with a value 63 of 63; median 57.03, 10th-90th pct 47.07-65.36
+deaths_pm: confirmed COVID deaths per million by end-2021 (OxCGRT, PWT population); billionaire countries with a value 63 of 63; median 952.13, 10th-90th pct 92.46-2635.73
+tourism_gdp: travel credits in the balance of payments, % of GDP, mean 2015-2019 (WDI; UNWTO receipts where missing); billionaire countries with a value 63 of 63; median 2.00, 10th-90th pct 0.46-7.33
+contact_emp: employment share in trade, transport and communication, accommodation and food, and other services, 2019 (ILO modelled estimates); billionaire countries with a value 63 of 63; median 33.17, 10th-90th pct 28.02-42.65
+billionaire countries with all four measures: 63; missing at least one: 
+tourism source among billionaire countries: balance of payments 61, UNWTO receipts 2, none 0
+BoP travel vs UNWTO receipts where both exist (n=56): Spearman 0.981
+modelled vs survey contact-intensive employment where both exist (n=54): Spearman 0.798; median difference +4.72 pp
+Spearman correlations between exposure measures (billionaire countries): stringency-deaths_pm +0.06; stringency-tourism_gdp -0.16; stringency-contact_emp +0.27; deaths_pm-tourism_gdp +0.04; deaths_pm-contact_emp +0.08; tourism_gdp-contact_emp -0.05
+  USA: stringency 56.8, deaths per million 2444, tourism 1.00% of GDP, contact-intensive employment 34.9%; inherited share of billionaire wealth (mean of lists) 0.309
+  CHN: stringency 71.2, deaths per million 3, tourism 0.33% of GDP, contact-intensive employment 27.9%; inherited share of billionaire wealth (mean of lists) 0.025
+  DEU: stringency 56.5, deaths per million 1336, tourism 1.06% of GDP, contact-intensive employment 30.5%; inherited share of billionaire wealth (mean of lists) 0.704
+  FRA: stringency 53.5, deaths per million 1785, tourism 2.27% of GDP, contact-intensive employment 31.1%; inherited share of billionaire wealth (mean of lists) 0.763
+  ITA: stringency 64.7, deaths per million 2285, tourism 2.27% of GDP, contact-intensive employment 35.8%; inherited share of billionaire wealth (mean of lists) 0.531
+  ESP: stringency 55.9, deaths per million 1885, tourism 5.53% of GDP, contact-intensive employment 39.9%; inherited share of billionaire wealth (mean of lists) 0.271
+  GBR: stringency 57.4, deaths per million 2643, tourism 2.05% of GDP, contact-intensive employment 32.7%; inherited share of billionaire wealth (mean of lists) 0.205
+  IND: stringency 65.9, deaths per million 347, tourism 1.03% of GDP, contact-intensive employment 23.7%; inherited share of billionaire wealth (mean of lists) 0.611
+  THA: stringency 50.9, deaths per million 303, tourism 10.94% of GDP, contact-intensive employment 32.3%; inherited share of billionaire wealth (mean of lists) 0.466
+  RUS: stringency 47.1, deaths per million 2066, tourism 0.63% of GDP, contact-intensive employment 33.1%; inherited share of billionaire wealth (mean of lists) 0.001
+  SWE: stringency 47.6, deaths per million 1489, tourism 1.77% of GDP, contact-intensive employment 29.5%; inherited share of billionaire wealth (mean of lists) 0.744
+  KOR: stringency 50.4, deaths per million 109, tourism 1.00% of GDP, contact-intensive employment 37.3%; inherited share of billionaire wealth (mean of lists) 0.694
+  JPN: stringency 40.7, deaths per million 145, tourism 0.70% of GDP, contact-intensive employment 37.2%; inherited share of billionaire wealth (mean of lists) 0.156
+alternative sources among the 63 billionaire countries: UN Tourism receipts for 2015-2019 available for 58 (missing: CAN, CHN, ESP, GBR, SWE); survey-based contact-intensive employment for 2014-2019 available for 54 (missing: CAN, CHN, COL, HKG, MAR, OMN, SAU, VEN, ZAF); both available for 51
+
+## How exposure relates to billionaire composition (country level, billionaire countries; Spearman)
+stringency vs inh_share: -0.001 (n=63)
+stringency vs gap: -0.057 (n=63)
+stringency vs dgap_2016_2019: +0.123 (n=63)
+stringency vs dgap_2019_2020: -0.005 (n=63)
+stringency vs dgap_2017_2020: +0.020 (n=63)
+deaths_pm vs inh_share: -0.155 (n=63)
+deaths_pm vs gap: -0.122 (n=63)
+deaths_pm vs dgap_2016_2019: -0.067 (n=63)
+deaths_pm vs dgap_2019_2020: +0.280 (n=63)
+deaths_pm vs dgap_2017_2020: +0.139 (n=63)
+tourism_gdp vs inh_share: +0.113 (n=63)
+tourism_gdp vs gap: +0.117 (n=63)
+tourism_gdp vs dgap_2016_2019: +0.017 (n=63)
+tourism_gdp vs dgap_2019_2020: +0.065 (n=63)
+tourism_gdp vs dgap_2017_2020: +0.032 (n=63)
+contact_emp vs inh_share: +0.174 (n=63)
+contact_emp vs gap: +0.084 (n=63)
+contact_emp vs dgap_2016_2019: +0.085 (n=63)
+contact_emp vs dgap_2019_2020: +0.090 (n=63)
+contact_emp vs dgap_2017_2020: +0.163 (n=63)
+
+## Main fits: inherited-minus-self-made coefficient, sector controls as in wealth-origin-sectors; each exposure set without (base) and with exposure x list-year, on the same country-years
+gdppc h=1 billionaire_countries fe: previous sample (n=756, countries=63) -0.133 [-1.424, +1.158]; stringency (countries=63) base -0.133 [-1.424, +1.158] with -0.258 [-1.584, +1.069]; deaths (countries=63) base -0.133 [-1.424, +1.158] with -0.073 [-1.259, +1.114]; tourism (countries=63) base -0.133 [-1.424, +1.158] with -0.079 [-1.346, +1.188]; contact (countries=63) base -0.133 [-1.424, +1.158] with -0.311 [-1.700, +1.077]; all_four (countries=63) base -0.133 [-1.424, +1.158] with -0.175 [-1.395, +1.046]
+gdppc h=1 billionaire_countries pooled: previous sample (n=756, countries=63) -0.659 [-1.581, +0.262]; stringency (countries=63) base -0.659 [-1.581, +0.262] with -0.673 [-1.615, +0.270]; deaths (countries=63) base -0.659 [-1.581, +0.262] with -0.639 [-1.520, +0.242]; tourism (countries=63) base -0.659 [-1.581, +0.262] with -0.652 [-1.555, +0.251]; contact (countries=63) base -0.659 [-1.581, +0.262] with -0.241 [-1.059, +0.578]; all_four (countries=63) base -0.659 [-1.581, +0.262] with -0.149 [-0.918, +0.621]
+gdppc h=1 with_billionaires fe: previous sample (n=729, countries=67) -0.655 [-2.517, +1.207]; stringency (countries=67) base -0.655 [-2.517, +1.207] with -0.774 [-2.517, +0.968]; deaths (countries=67) base -0.655 [-2.517, +1.207] with -0.616 [-2.257, +1.024]; tourism (countries=67) base -0.655 [-2.517, +1.207] with -0.592 [-2.553, +1.369]; contact (countries=67) base -0.655 [-2.517, +1.207] with -0.913 [-2.942, +1.117]; all_four (countries=67) base -0.655 [-2.517, +1.207] with -0.767 [-2.530, +0.995]
+gdppc h=1 with_billionaires pooled: previous sample (n=734, countries=72) -0.766 [-1.696, +0.164]; stringency (countries=71) base -0.745 [-1.679, +0.188] with -0.784 [-1.720, +0.153]; deaths (countries=71) base -0.745 [-1.679, +0.188] with -0.720 [-1.612, +0.172]; tourism (countries=72) base -0.766 [-1.696, +0.164] with -0.754 [-1.661, +0.153]; contact (countries=72) base -0.766 [-1.696, +0.164] with -0.360 [-1.185, +0.465]; all_four (countries=71) base -0.745 [-1.679, +0.188] with -0.275 [-1.019, +0.468]
+gdppc h=3 billionaire_countries fe: previous sample (n=630, countries=63) -0.303 [-1.055, +0.449]; stringency (countries=63) base -0.303 [-1.055, +0.449] with -0.468 [-1.277, +0.341]; deaths (countries=63) base -0.303 [-1.055, +0.449] with -0.213 [-0.912, +0.486]; tourism (countries=63) base -0.303 [-1.055, +0.449] with -0.166 [-0.870, +0.539]; contact (countries=63) base -0.303 [-1.055, +0.449] with -0.425 [-1.267, +0.418]; all_four (countries=63) base -0.303 [-1.055, +0.449] with -0.245 [-0.978, +0.487]
+gdppc h=3 billionaire_countries pooled: previous sample (n=630, countries=63) -0.780 [-1.810, +0.250]; stringency (countries=63) base -0.780 [-1.810, +0.250] with -0.780 [-1.826, +0.265]; deaths (countries=63) base -0.780 [-1.810, +0.250] with -0.724 [-1.685, +0.237]; tourism (countries=63) base -0.780 [-1.810, +0.250] with -0.762 [-1.760, +0.236]; contact (countries=63) base -0.780 [-1.810, +0.250] with -0.282 [-1.152, +0.588]; all_four (countries=63) base -0.780 [-1.810, +0.250] with -0.148 [-0.984, +0.687]
+gdppc h=3 with_billionaires fe: previous sample (n=605, countries=67) -0.140 [-1.197, +0.918]; stringency (countries=67) base -0.140 [-1.197, +0.918] with -0.275 [-1.314, +0.764]; deaths (countries=67) base -0.140 [-1.197, +0.918] with -0.064 [-0.978, +0.850]; tourism (countries=67) base -0.140 [-1.197, +0.918] with -0.067 [-1.164, +1.031]; contact (countries=67) base -0.140 [-1.197, +0.918] with -0.279 [-1.433, +0.874]; all_four (countries=67) base -0.140 [-1.197, +0.918] with -0.149 [-1.125, +0.827]
+gdppc h=3 with_billionaires pooled: previous sample (n=606, countries=68) -0.878 [-1.919, +0.162]; stringency (countries=68) base -0.878 [-1.919, +0.162] with -0.899 [-1.941, +0.142]; deaths (countries=68) base -0.878 [-1.919, +0.162] with -0.826 [-1.807, +0.155]; tourism (countries=68) base -0.878 [-1.919, +0.162] with -0.857 [-1.863, +0.149]; contact (countries=68) base -0.878 [-1.919, +0.162] with -0.372 [-1.248, +0.505]; all_four (countries=68) base -0.878 [-1.919, +0.162] with -0.250 [-1.067, +0.566]
+gdppc h=5 billionaire_countries fe: previous sample (n=504, countries=63) -0.044 [-0.523, +0.436]; stringency (countries=63) base -0.044 [-0.523, +0.436] with -0.136 [-0.616, +0.345]; deaths (countries=63) base -0.044 [-0.523, +0.436] with +0.010 [-0.492, +0.512]; tourism (countries=63) base -0.044 [-0.523, +0.436] with +0.066 [-0.371, +0.503]; contact (countries=63) base -0.044 [-0.523, +0.436] with -0.112 [-0.598, +0.373]; all_four (countries=63) base -0.044 [-0.523, +0.436] with +0.056 [-0.434, +0.546]
+gdppc h=5 billionaire_countries pooled: previous sample (n=504, countries=63) -0.926 [-2.122, +0.269]; stringency (countries=63) base -0.926 [-2.122, +0.269] with -0.884 [-2.050, +0.282]; deaths (countries=63) base -0.926 [-2.122, +0.269] with -0.869 [-1.976, +0.238]; tourism (countries=63) base -0.926 [-2.122, +0.269] with -0.904 [-2.051, +0.243]; contact (countries=63) base -0.926 [-2.122, +0.269] with -0.355 [-1.270, +0.560]; all_four (countries=63) base -0.926 [-2.122, +0.269] with -0.212 [-1.090, +0.666]
+gdppc h=5 with_billionaires fe: previous sample (n=475, countries=65) +0.380 [-0.483, +1.242]; stringency (countries=65) base +0.380 [-0.483, +1.242] with +0.446 [-0.417, +1.309]; deaths (countries=65) base +0.380 [-0.483, +1.242] with +0.474 [-0.390, +1.337]; tourism (countries=65) base +0.380 [-0.483, +1.242] with +0.506 [-0.349, +1.362]; contact (countries=65) base +0.380 [-0.483, +1.242] with +0.379 [-0.506, +1.263]; all_four (countries=65) base +0.380 [-0.483, +1.242] with +0.692 [-0.149, +1.533]
+gdppc h=5 with_billionaires pooled: previous sample (n=478, countries=68) -1.061 [-2.266, +0.143]; stringency (countries=68) base -1.061 [-2.266, +0.143] with -1.032 [-2.194, +0.130]; deaths (countries=68) base -1.061 [-2.266, +0.143] with -1.017 [-2.151, +0.118]; tourism (countries=68) base -1.061 [-2.266, +0.143] with -1.039 [-2.197, +0.119]; contact (countries=68) base -1.061 [-2.266, +0.143] with -0.480 [-1.399, +0.439]; all_four (countries=68) base -1.061 [-2.266, +0.143] with -0.360 [-1.218, +0.498]
+tfp h=1 billionaire_countries fe: previous sample (n=672, countries=56) -0.579 [-1.952, +0.794]; stringency (countries=56) base -0.579 [-1.952, +0.794] with -0.744 [-2.226, +0.738]; deaths (countries=56) base -0.579 [-1.952, +0.794] with -0.361 [-1.555, +0.834]; tourism (countries=56) base -0.579 [-1.952, +0.794] with -0.645 [-2.088, +0.799]; contact (countries=56) base -0.579 [-1.952, +0.794] with -0.718 [-2.276, +0.841]; all_four (countries=56) base -0.579 [-1.952, +0.794] with -0.566 [-1.908, +0.775]
+tfp h=1 billionaire_countries pooled: previous sample (n=672, countries=56) -0.458 [-1.042, +0.127]; stringency (countries=56) base -0.458 [-1.042, +0.127] with -0.441 [-1.018, +0.135]; deaths (countries=56) base -0.458 [-1.042, +0.127] with -0.428 [-0.961, +0.104]; tourism (countries=56) base -0.458 [-1.042, +0.127] with -0.522 [-1.117, +0.073]; contact (countries=56) base -0.458 [-1.042, +0.127] with -0.298 [-0.869, +0.273]; all_four (countries=56) base -0.458 [-1.042, +0.127] with -0.304 [-0.796, +0.188]
+tfp h=1 with_billionaires fe: previous sample (n=654, countries=59) -1.193 [-3.093, +0.707]; stringency (countries=59) base -1.193 [-3.093, +0.707] with -1.267 [-3.172, +0.638]; deaths (countries=59) base -1.193 [-3.093, +0.707] with -0.946 [-2.545, +0.652]; tourism (countries=59) base -1.193 [-3.093, +0.707] with -1.210 [-3.303, +0.883]; contact (countries=59) base -1.193 [-3.093, +0.707] with -1.280 [-3.395, +0.836]; all_four (countries=59) base -1.193 [-3.093, +0.707] with -0.984 [-2.916, +0.947]
+tfp h=1 with_billionaires pooled: previous sample (n=659, countries=64) -0.606 [-1.172, -0.041]; stringency (countries=63) base -0.574 [-1.139, -0.009] with -0.571 [-1.140, -0.002]; deaths (countries=63) base -0.574 [-1.139, -0.009] with -0.534 [-1.074, +0.006]; tourism (countries=64) base -0.606 [-1.172, -0.041] with -0.630 [-1.219, -0.040]; contact (countries=64) base -0.606 [-1.172, -0.041] with -0.481 [-1.008, +0.045]; all_four (countries=63) base -0.574 [-1.139, -0.009] with -0.439 [-0.929, +0.052]
+tfp h=3 billionaire_countries fe: previous sample (n=560, countries=56) -1.048 [-1.870, -0.226]; stringency (countries=56) base -1.048 [-1.870, -0.226] with -1.234 [-2.179, -0.290]; deaths (countries=56) base -1.048 [-1.870, -0.226] with -0.929 [-1.683, -0.175]; tourism (countries=56) base -1.048 [-1.870, -0.226] with -1.050 [-1.935, -0.164]; contact (countries=56) base -1.048 [-1.870, -0.226] with -1.090 [-2.142, -0.038]; all_four (countries=56) base -1.048 [-1.870, -0.226] with -1.109 [-2.064, -0.155]
+tfp h=3 billionaire_countries pooled: previous sample (n=560, countries=56) -0.623 [-1.297, +0.051]; stringency (countries=56) base -0.623 [-1.297, +0.051] with -0.581 [-1.228, +0.066]; deaths (countries=56) base -0.623 [-1.297, +0.051] with -0.586 [-1.222, +0.049]; tourism (countries=56) base -0.623 [-1.297, +0.051] with -0.662 [-1.354, +0.029]; contact (countries=56) base -0.623 [-1.297, +0.051] with -0.387 [-0.940, +0.166]; all_four (countries=56) base -0.623 [-1.297, +0.051] with -0.361 [-0.890, +0.168]
+tfp h=3 with_billionaires fe: previous sample (n=544, countries=59) -1.267 [-2.394, -0.140]; stringency (countries=59) base -1.267 [-2.394, -0.140] with -1.318 [-2.521, -0.116]; deaths (countries=59) base -1.267 [-2.394, -0.140] with -1.076 [-2.089, -0.064]; tourism (countries=59) base -1.267 [-2.394, -0.140] with -1.212 [-2.421, -0.003]; contact (countries=59) base -1.267 [-2.394, -0.140] with -1.177 [-2.528, +0.174]; all_four (countries=59) base -1.267 [-2.394, -0.140] with -0.918 [-2.225, +0.388]
+tfp h=3 with_billionaires pooled: previous sample (n=545, countries=60) -0.712 [-1.360, -0.065]; stringency (countries=60) base -0.712 [-1.360, -0.065] with -0.677 [-1.308, -0.046]; deaths (countries=60) base -0.712 [-1.360, -0.065] with -0.667 [-1.295, -0.038]; tourism (countries=60) base -0.712 [-1.360, -0.065] with -0.728 [-1.399, -0.057]; contact (countries=60) base -0.712 [-1.360, -0.065] with -0.496 [-1.013, +0.021]; all_four (countries=60) base -0.712 [-1.360, -0.065] with -0.460 [-0.979, +0.059]
+tfp h=5 billionaire_countries fe: previous sample (n=448, countries=56) -0.572 [-1.024, -0.119]; stringency (countries=56) base -0.572 [-1.024, -0.119] with -0.611 [-1.086, -0.136]; deaths (countries=56) base -0.572 [-1.024, -0.119] with -0.571 [-1.045, -0.098]; tourism (countries=56) base -0.572 [-1.024, -0.119] with -0.528 [-1.001, -0.055]; contact (countries=56) base -0.572 [-1.024, -0.119] with -0.489 [-1.005, +0.026]; all_four (countries=56) base -0.572 [-1.024, -0.119] with -0.538 [-1.018, -0.058]
+tfp h=5 billionaire_countries pooled: previous sample (n=448, countries=56) -0.793 [-1.662, +0.077]; stringency (countries=56) base -0.793 [-1.662, +0.077] with -0.694 [-1.472, +0.085]; deaths (countries=56) base -0.793 [-1.662, +0.077] with -0.765 [-1.589, +0.058]; tourism (countries=56) base -0.793 [-1.662, +0.077] with -0.811 [-1.676, +0.053]; contact (countries=56) base -0.793 [-1.662, +0.077] with -0.479 [-1.096, +0.138]; all_four (countries=56) base -0.793 [-1.662, +0.077] with -0.421 [-0.987, +0.144]
+tfp h=5 with_billionaires fe: previous sample (n=428, countries=57) -0.230 [-1.149, +0.689]; stringency (countries=57) base -0.230 [-1.149, +0.689] with -0.018 [-0.965, +0.928]; deaths (countries=57) base -0.230 [-1.149, +0.689] with -0.159 [-1.127, +0.810]; tourism (countries=57) base -0.230 [-1.149, +0.689] with -0.122 [-1.059, +0.815]; contact (countries=57) base -0.230 [-1.149, +0.689] with -0.009 [-0.862, +0.844]; all_four (countries=57) base -0.230 [-1.149, +0.689] with +0.313 [-0.566, +1.192]
+tfp h=5 with_billionaires pooled: previous sample (n=431, countries=60) -0.871 [-1.692, -0.049]; stringency (countries=60) base -0.871 [-1.692, -0.049] with -0.771 [-1.519, -0.023]; deaths (countries=60) base -0.871 [-1.692, -0.049] with -0.842 [-1.640, -0.044]; tourism (countries=60) base -0.871 [-1.692, -0.049] with -0.869 [-1.688, -0.050]; contact (countries=60) base -0.871 [-1.692, -0.049] with -0.579 [-1.158, +0.001]; all_four (countries=60) base -0.871 [-1.692, -0.049] with -0.519 [-1.071, +0.032]
+  tfp / stringency: with exposure negative 12 of 12, sig- 6 (base sig- 6), sig+ 0; median -0.6856 (base -0.6677); fixed-effects median ratio with/base 1.065
+  tfp / deaths: with exposure negative 12 of 12, sig- 5 (base sig- 6), sig+ 0; median -0.6264 (base -0.6677); fixed-effects median ratio with/base 0.821
+  tfp / tourism: with exposure negative 12 of 12, sig- 6 (base sig- 6), sig+ 0; median -0.6952 (base -0.6677); fixed-effects median ratio with/base 0.979
+  tfp / contact: with exposure negative 12 of 12, sig- 1 (base sig- 6), sig+ 0; median -0.4927 (base -0.6677); fixed-effects median ratio with/base 0.985
+  tfp / all_four: with exposure negative 11 of 12, sig- 2 (base sig- 6), sig+ 0; median -0.4897 (base -0.6677); fixed-effects median ratio with/base 0.883
+  gdppc / stringency: with exposure negative 11 of 12, sig- 0 (base sig- 0), sig+ 0; median -0.7234 (base -0.6571); fixed-effects median ratio with/base 1.742
+  gdppc / deaths: with exposure negative 10 of 12, sig- 0 (base sig- 0), sig+ 0; median -0.6278 (base -0.6571); fixed-effects median ratio with/base 0.625
+  gdppc / tourism: with exposure negative 10 of 12, sig- 0 (base sig- 0), sig+ 0; median -0.6222 (base -0.6571); fixed-effects median ratio with/base 0.571
+  gdppc / contact: with exposure negative 11 of 12, sig- 0 (base sig- 0), sig+ 0; median -0.3331 (base -0.6571); fixed-effects median ratio with/base 1.699
+  gdppc / all_four: with exposure negative 10 of 12, sig- 0 (base sig- 0), sig+ 0; median -0.1933 (base -0.6571); fixed-effects median ratio with/base 1.118
+joint test for the coefficient with all four exposures (null imposed, countries resampled jointly):
+  all: 24 fits, median -0.3321 (p=0.129); sig- 2 (null 95th pct 5, p=0.195); sig+ 0 (null 95th pct 7, p=1.000); Stouffer Z -4.07 (p=0.094)
+  tfp: 12 fits, median -0.4897 (p=0.040); sig- 2 (null 95th pct 2, p=0.084); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -4.71 (p=0.020)
+  gdp_per_capita: 12 fits, median -0.1933 (p=0.315); sig- 0 (null 95th pct 3, p=1.000); sig+ 0 (null 95th pct 5, p=1.000); Stouffer Z -1.04 (p=0.371)
+  tfp_fixed_effects: 6 fits, median -0.7422 (p=0.077); sig- 2 (null 95th pct 1, p=0.050); sig+ 0 (null 95th pct 2, p=1.000); Stouffer Z -2.85 (p=0.068)
+  tfp_pooled: 6 fits, median -0.4298 (p=0.077); sig- 0 (null 95th pct 0, p=1.000); sig+ 0 (null 95th pct 4, p=1.000); Stouffer Z -3.81 (p=0.051)
+
+## Exposure x list-year coefficients in the headline fit (TFP, fixed effects, billionaire countries; pp per SD, relative to 2011)
+h=1 contact_emp: 2012 +0.06 [-0.70, +0.82]; 2013 -0.61 [-1.65, +0.43]; 2014 -0.95 [-2.14, +0.23]; 2015 -1.33 [-2.90, +0.25]; 2016 -1.59 [-3.63, +0.44]; 2017 -1.19 [-2.81, +0.43]; 2018 -1.41 [-3.64, +0.81]; 2019 -1.11 [-3.55, +1.34]; 2020 +0.15 [-0.91, +1.20]; 2021 +0.48 [-0.65, +1.61]; 2022 -0.38 [-1.56, +0.80]
+h=1 deaths_pm: 2012 +0.31 [-0.13, +0.75]; 2013 +0.29 [-0.39, +0.96]; 2014 +0.47 [-0.30, +1.24]; 2015 +0.82 [-0.11, +1.74]; 2016 +0.94 [-0.22, +2.11]; 2017 +0.98 [+0.04, +1.91]; 2018 +1.14 [-0.14, +2.42]; 2019 +0.30 [-1.90, +2.49]; 2020 +1.08 [+0.23, +1.92]; 2021 -0.04 [-1.26, +1.18]; 2022 +0.21 [-0.46, +0.88]
+h=1 stringency: 2012 +0.41 [-0.18, +0.99]; 2013 +0.17 [-0.65, +0.99]; 2014 -0.19 [-1.07, +0.69]; 2015 -0.89 [-2.28, +0.51]; 2016 -0.83 [-2.47, +0.81]; 2017 -0.88 [-2.46, +0.70]; 2018 -1.16 [-3.31, +1.00]; 2019 -1.47 [-3.61, +0.68]; 2020 +0.34 [-0.51, +1.19]; 2021 +0.74 [-0.11, +1.58]; 2022 +0.07 [-0.54, +0.68]
+h=1 tourism_gdp: 2012 +0.45 [-0.70, +1.60]; 2013 +0.99 [-0.62, +2.60]; 2014 +1.67 [-0.06, +3.39]; 2015 +1.92 [+0.15, +3.70]; 2016 +1.84 [-0.13, +3.80]; 2017 +1.46 [-0.32, +3.24]; 2018 +1.74 [-0.75, +4.24]; 2019 +0.76 [-1.88, +3.40]; 2020 +0.88 [-0.79, +2.55]; 2021 +1.54 [-0.67, +3.76]; 2022 +1.40 [-0.03, +2.83]
+h=3 contact_emp: 2012 -0.29 [-0.75, +0.17]; 2013 -0.74 [-1.42, -0.05]; 2014 -1.00 [-2.00, +0.01]; 2015 -1.12 [-2.31, +0.08]; 2016 -1.25 [-2.74, +0.23]; 2017 -1.03 [-2.75, +0.69]; 2018 -0.56 [-1.81, +0.69]; 2019 +0.04 [-0.45, +0.54]; 2020 +0.28 [-0.52, +1.09]
+h=3 deaths_pm: 2012 +0.25 [+0.02, +0.49]; 2013 +0.40 [-0.10, +0.90]; 2014 +0.59 [-0.03, +1.22]; 2015 +0.72 [+0.03, +1.41]; 2016 +0.86 [+0.05, +1.67]; 2017 +0.62 [-0.46, +1.71]; 2018 +0.63 [-0.09, +1.35]; 2019 +0.28 [-0.21, +0.78]; 2020 +0.24 [-0.40, +0.89]
+h=3 stringency: 2012 -0.03 [-0.33, +0.27]; 2013 -0.41 [-0.97, +0.16]; 2014 -0.67 [-1.52, +0.17]; 2015 -0.97 [-2.03, +0.10]; 2016 -1.12 [-2.46, +0.21]; 2017 -1.32 [-2.85, +0.21]; 2018 -0.88 [-2.02, +0.26]; 2019 -0.26 [-0.73, +0.22]; 2020 +0.20 [-0.40, +0.80]
+h=3 tourism_gdp: 2012 +0.55 [-0.02, +1.12]; 2013 +1.13 [+0.24, +2.01]; 2014 +1.40 [+0.31, +2.49]; 2015 +1.33 [+0.15, +2.52]; 2016 +1.27 [-0.08, +2.62]; 2017 +0.90 [-0.64, +2.45]; 2018 +0.75 [-0.58, +2.07]; 2019 +0.70 [-0.31, +1.70]; 2020 +0.89 [+0.12, +1.66]
+
+## Cross-sections around 2020 (billionaire countries; HC1; TFP growth in pp a year; sector shares and income controlled)
+dip 2019-2020 / exposure none (n=56; mean growth -2.36, SD 4.89): inherited minus self-made +0.029 [-1.962, +2.020]
+dip 2019-2020 / exposure all four (n=56; mean growth -2.36, SD 4.89): inherited minus self-made +0.256 [-1.669, +2.182]
+rebound 2020-2023 / exposure none (n=56; mean growth -0.02, SD 2.10): inherited minus self-made -0.069 [-0.897, +0.758]
+rebound 2020-2023 / exposure all four (n=56; mean growth -0.02, SD 2.10): inherited minus self-made -0.192 [-1.118, +0.734]
+net 2019-2022 / exposure none (n=56; mean growth -0.51, SD 2.03): inherited minus self-made +0.324 [-0.679, +1.328]
+net 2019-2022 / exposure all four (n=56; mean growth -0.51, SD 2.03): inherited minus self-made +0.350 [-0.687, +1.387]
+net 2019-2023 / exposure none (n=56; mean growth -0.61, SD 1.42): inherited minus self-made +0.060 [-0.547, +0.666]
+net 2019-2023 / exposure all four (n=56; mean growth -0.61, SD 1.42): inherited minus self-made +0.032 [-0.602, +0.666]
+pre 2016-2019 / exposure none (n=56; mean growth -0.35, SD 3.29): inherited minus self-made -0.980 [-2.214, +0.255]
+pre 2016-2019 / exposure all four (n=56; mean growth -0.35, SD 3.29): inherited minus self-made -1.025 [-2.104, +0.055]
+
+## Period split (TFP, fixed effects)
+billionaire_countries h=1 ends by 2019 (lists 2011-2018, n=448) exposure none: +0.801 [-0.647, +2.249]
+billionaire_countries h=1 ends by 2019 (lists 2011-2018, n=448) exposure all four: +0.873 [-0.381, +2.126]
+billionaire_countries h=1 includes 2020 (lists 2019-2022, n=224) exposure none: +0.155 [-5.531, +5.841]
+billionaire_countries h=1 includes 2020 (lists 2019-2022, n=224) exposure all four: +0.144 [-5.601, +5.888]
+billionaire_countries h=3 ends by 2019 (lists 2011-2016, n=336) exposure none: -0.041 [-0.841, +0.760]
+billionaire_countries h=3 ends by 2019 (lists 2011-2016, n=336) exposure all four: -0.039 [-0.878, +0.801]
+billionaire_countries h=3 includes 2020 (lists 2017-2020, n=224) exposure none: -2.154 [-4.235, -0.073]
+billionaire_countries h=3 includes 2020 (lists 2017-2020, n=224) exposure all four: -2.002 [-4.160, +0.156]
+billionaire_countries h=5 ends by 2019 (lists 2011-2014, n=224) exposure none: +0.167 [-0.607, +0.941]
+billionaire_countries h=5 ends by 2019 (lists 2011-2014, n=224) exposure all four: +0.032 [-0.497, +0.560]
+billionaire_countries h=5 includes 2020 (lists 2015-2018, n=224) exposure none: +0.254 [-1.118, +1.626]
+billionaire_countries h=5 includes 2020 (lists 2015-2018, n=224) exposure all four: +0.306 [-1.015, +1.627]
+with_billionaires h=1 ends by 2019 (lists 2011-2018, n=428) exposure none: +0.921 [-0.640, +2.482]
+with_billionaires h=1 ends by 2019 (lists 2011-2018, n=428) exposure all four: +1.351 [-0.000, +2.702]
+with_billionaires h=1 includes 2020 (lists 2019-2022, n=224) exposure none: +0.292 [-5.363, +5.948]
+with_billionaires h=1 includes 2020 (lists 2019-2022, n=224) exposure all four: +0.408 [-5.385, +6.201]
+with_billionaires h=3 ends by 2019 (lists 2011-2016, n=316) exposure none: +1.033 [-0.427, +2.493]
+with_billionaires h=3 ends by 2019 (lists 2011-2016, n=316) exposure all four: +1.411 [+0.289, +2.533]
+with_billionaires h=3 includes 2020 (lists 2017-2020, n=226) exposure none: -2.888 [-5.504, -0.272]
+with_billionaires h=3 includes 2020 (lists 2017-2020, n=226) exposure all four: -2.678 [-5.019, -0.337]
+with_billionaires h=5 ends by 2019 (lists 2011-2014, n=206) exposure none: +0.574 [-0.855, +2.003]
+with_billionaires h=5 ends by 2019 (lists 2011-2014, n=206) exposure all four: +0.514 [-0.382, +1.410]
+with_billionaires h=5 includes 2020 (lists 2015-2018, n=219) exposure none: -0.380 [-2.454, +1.694]
+with_billionaires h=5 includes 2020 (lists 2015-2018, n=219) exposure all four: -0.118 [-2.203, +1.967]
+
+## Leave one list year out (TFP, fixed effects)
+billionaire_countries h=3 exposure all four: full -1.109 [-2.064, -0.155]; without 2011 -1.155 [-2.280, -0.029]; without 2012 -1.342 [-2.570, -0.114]; without 2013 -1.151 [-2.129, -0.173]; without 2014 -1.135 [-2.119, -0.150]; without 2015 -1.089 [-2.111, -0.067]; without 2016 -1.197 [-2.131, -0.264]; without 2017 -1.122 [-1.933, -0.312]; without 2018 -1.257 [-2.253, -0.261]; without 2019 -0.836 [-1.821, +0.148]; without 2020 -0.689 [-1.440, +0.061]
+billionaire_countries h=3 exposure none: full -1.048 [-1.870, -0.226]; without 2011 -1.169 [-2.015, -0.324]; without 2012 -1.217 [-2.235, -0.200]; without 2013 -1.057 [-1.922, -0.192]; without 2014 -0.996 [-1.874, -0.119]; without 2015 -0.974 [-1.856, -0.092]; without 2016 -1.292 [-2.104, -0.480]; without 2017 -1.083 [-1.836, -0.330]; without 2018 -1.143 [-2.006, -0.281]; without 2019 -0.808 [-1.753, +0.136]; without 2020 -0.650 [-1.320, +0.020]
+billionaire_countries h=5 exposure all four: full -0.538 [-1.018, -0.058]; without 2011 -0.508 [-0.993, -0.023]; without 2012 -0.602 [-1.197, -0.007]; without 2013 -0.576 [-1.069, -0.082]; without 2014 -0.507 [-1.006, -0.009]; without 2015 -0.526 [-0.999, -0.053]; without 2016 -0.438 [-0.940, +0.064]; without 2017 -0.590 [-1.104, -0.076]; without 2018 -0.478 [-0.988, +0.033]
+billionaire_countries h=5 exposure none: full -0.572 [-1.024, -0.119]; without 2011 -0.651 [-1.096, -0.207]; without 2012 -0.636 [-1.174, -0.098]; without 2013 -0.580 [-1.063, -0.096]; without 2014 -0.469 [-0.957, +0.020]; without 2015 -0.548 [-0.998, -0.099]; without 2016 -0.548 [-1.034, -0.062]; without 2017 -0.591 [-1.027, -0.156]; without 2018 -0.521 [-0.979, -0.064]
+with_billionaires h=3 exposure all four: full -0.918 [-2.225, +0.388]; without 2011 -1.047 [-2.459, +0.364]; without 2012 -1.232 [-2.820, +0.356]; without 2013 -0.968 [-2.341, +0.405]; without 2014 -1.054 [-2.419, +0.311]; without 2015 -0.943 [-2.396, +0.510]; without 2016 -1.198 [-2.580, +0.185]; without 2017 -0.861 [-1.923, +0.202]; without 2018 -1.087 [-2.435, +0.261]; without 2019 -0.577 [-1.952, +0.798]; without 2020 +0.102 [-1.020, +1.223]
+with_billionaires h=3 exposure none: full -1.267 [-2.394, -0.140]; without 2011 -1.427 [-2.610, -0.244]; without 2012 -1.508 [-2.842, -0.174]; without 2013 -1.293 [-2.467, -0.119]; without 2014 -1.358 [-2.653, -0.064]; without 2015 -1.211 [-2.428, +0.006]; without 2016 -1.601 [-2.848, -0.353]; without 2017 -1.222 [-2.146, -0.298]; without 2018 -1.384 [-2.619, -0.149]; without 2019 -0.968 [-2.347, +0.411]; without 2020 -0.411 [-1.370, +0.547]
+with_billionaires h=5 exposure all four: full +0.313 [-0.566, +1.192]; without 2011 +0.068 [-0.862, +0.998]; without 2012 +0.174 [-0.680, +1.028]; without 2013 +0.410 [-0.531, +1.352]; without 2014 +0.445 [-0.517, +1.407]; without 2015 +0.269 [-0.597, +1.135]; without 2016 +0.224 [-0.745, +1.193]; without 2017 +0.369 [-0.484, +1.223]; without 2018 +0.518 [-0.521, +1.556]
+with_billionaires h=5 exposure none: full -0.230 [-1.149, +0.689]; without 2011 -0.482 [-1.312, +0.349]; without 2012 -0.342 [-1.300, +0.617]; without 2013 -0.153 [-1.135, +0.829]; without 2014 -0.043 [-1.051, +0.966]; without 2015 -0.232 [-1.137, +0.672]; without 2016 -0.371 [-1.315, +0.573]; without 2017 -0.131 [-1.008, +0.747]; without 2018 -0.062 [-1.160, +1.036]
+
+## Forward minus backward with all four exposures (fixed effects, country bootstrap, 1,000 draws)
+gdppc / billionaire_countries / h=3: forward -0.245, backward +0.148, difference -0.393 [-2.050, +0.981], share of draws >= 0 0.274
+gdppc / billionaire_countries / h=5: forward +0.056, backward +0.671, difference -0.615 [-1.915, +0.620], share of draws >= 0 0.176
+gdppc / with_billionaires / h=3: forward -0.149, backward +0.475, difference -0.624 [-2.728, +1.143], share of draws >= 0 0.301
+gdppc / with_billionaires / h=5: forward +0.692, backward +1.114, difference -0.422 [-1.935, +1.172], share of draws >= 0 0.373
+tfp / billionaire_countries / h=3: forward -1.109, backward -0.081, difference -1.028 [-3.111, +0.624], share of draws >= 0 0.145
+tfp / billionaire_countries / h=5: forward -0.538, backward +0.373, difference -0.911 [-2.318, +0.471], share of draws >= 0 0.144
+tfp / with_billionaires / h=3: forward -0.918, backward -0.134, difference -0.784 [-3.112, +0.774], share of draws >= 0 0.211
+tfp / with_billionaires / h=5: forward +0.313, backward +0.533, difference -0.220 [-1.660, +0.979], share of draws >= 0 0.364
+
+## How composition is measured (TFP, fixed effects, sector shares and all four exposures controlled)
+billionaire_countries h=3 wealth, as in the main fits (n=560): -1.109 [-2.064, -0.155]
+billionaire_countries h=3 wealth, as in the main fits / without the 2020 list (n=504): -0.689 [-1.440, +0.061]
+billionaire_countries h=3 headcount per 10 million people (n=560): -1.022 [-1.922, -0.123]
+billionaire_countries h=3 headcount per 10 million people / without the 2020 list (n=504): -0.931 [-1.802, -0.059]
+billionaire_countries h=3 wealth, lists 2012 onwards (same sample as the two-list average) (n=504): -1.155 [-2.280, -0.029]
+billionaire_countries h=3 wealth, lists 2012 onwards (same sample as the two-list average) / without the 2020 list (n=448): -0.574 [-1.452, +0.304]
+billionaire_countries h=3 wealth averaged over lists t-1 and t (n=504): -1.475 [-2.654, -0.295]
+billionaire_countries h=3 wealth averaged over lists t-1 and t / without the 2020 list (n=448): -1.156 [-2.143, -0.169]
+billionaire_countries h=5 wealth, as in the main fits (n=448): -0.538 [-1.018, -0.058]
+billionaire_countries h=5 headcount per 10 million people (n=448): -0.563 [-1.170, +0.043]
+billionaire_countries h=5 wealth, lists 2012 onwards (same sample as the two-list average) (n=392): -0.508 [-0.993, -0.023]
+billionaire_countries h=5 wealth averaged over lists t-1 and t (n=392): -0.880 [-1.492, -0.268]
+with_billionaires h=3 wealth, as in the main fits (n=544): -0.918 [-2.225, +0.388]
+with_billionaires h=3 wealth, as in the main fits / without the 2020 list (n=487): +0.102 [-1.020, +1.223]
+with_billionaires h=3 headcount per 10 million people (n=544): -0.530 [-1.563, +0.503]
+with_billionaires h=3 headcount per 10 million people / without the 2020 list (n=487): +0.048 [-1.119, +1.215]
+with_billionaires h=3 wealth, lists 2012 onwards (same sample as the two-list average) (n=495): -1.047 [-2.459, +0.364]
+with_billionaires h=3 wealth, lists 2012 onwards (same sample as the two-list average) / without the 2020 list (n=438): +0.043 [-1.190, +1.277]
+with_billionaires h=3 wealth averaged over lists t-1 and t (n=495): -1.500 [-3.003, +0.003]
+with_billionaires h=3 wealth averaged over lists t-1 and t / without the 2020 list (n=438): -0.879 [-2.191, +0.433]
+with_billionaires h=5 wealth, as in the main fits (n=428): +0.313 [-0.566, +1.192]
+with_billionaires h=5 headcount per 10 million people (n=428): +0.326 [-0.814, +1.466]
+with_billionaires h=5 wealth, lists 2012 onwards (same sample as the two-list average) (n=379): +0.068 [-0.862, +0.998]
+with_billionaires h=5 wealth averaged over lists t-1 and t (n=379): -0.607 [-1.501, +0.288]
+all 24 specifications with the two-list average (sector shares controlled; base = no exposures, with = all four):
+  gdppc h=1 billionaire_countries fe (n=693, countries=63): base -0.415 [-1.972, +1.141]; with -0.447 [-1.910, +1.016]
+  gdppc h=1 billionaire_countries pooled (n=693, countries=63): base -0.712 [-1.706, +0.283]; with -0.138 [-0.942, +0.666]
+  gdppc h=1 with_billionaires fe (n=678, countries=67): base -1.098 [-3.161, +0.964]; with -1.131 [-2.998, +0.737]
+  gdppc h=1 with_billionaires pooled (n=682, countries=71): base -0.818 [-1.829, +0.193]; with -0.288 [-1.069, +0.493]
+  gdppc h=3 billionaire_countries fe (n=567, countries=63): base -0.307 [-1.194, +0.580]; with -0.322 [-1.216, +0.572]
+  gdppc h=3 billionaire_countries pooled (n=567, countries=63): base -0.851 [-1.984, +0.283]; with -0.161 [-1.039, +0.717]
+  gdppc h=3 with_billionaires fe (n=554, countries=67): base -0.488 [-1.702, +0.726]; with -0.359 [-1.403, +0.684]
+  gdppc h=3 with_billionaires pooled (n=555, countries=68): base -0.963 [-2.107, +0.181]; with -0.281 [-1.136, +0.574]
+  gdppc h=5 billionaire_countries fe (n=441, countries=63): base -0.380 [-0.940, +0.180]; with -0.247 [-0.811, +0.317]
+  gdppc h=5 billionaire_countries pooled (n=441, countries=63): base -1.105 [-2.444, +0.235]; with -0.315 [-1.237, +0.607]
+  gdppc h=5 with_billionaires fe (n=424, countries=65): base -0.501 [-1.220, +0.218]; with -0.059 [-0.875, +0.756]
+  gdppc h=5 with_billionaires pooled (n=427, countries=68): base -1.259 [-2.614, +0.097]; with -0.488 [-1.379, +0.403]
+  tfp h=1 billionaire_countries fe (n=616, countries=56): base -1.398 [-3.067, +0.270]; with -1.374 [-2.948, +0.200]
+  tfp h=1 billionaire_countries pooled (n=616, countries=56): base -0.552 [-1.202, +0.099]; with -0.350 [-0.848, +0.148]
+  tfp h=1 with_billionaires fe (n=605, countries=59): base -2.177 [-4.478, +0.124]; with -2.068 [-4.384, +0.247]
+  tfp h=1 with_billionaires pooled (n=609, countries=63): base -0.677 [-1.310, -0.043]; with -0.506 [-1.036, +0.023]
+  tfp h=3 billionaire_countries fe (n=504, countries=56): base -1.499 [-2.428, -0.570]; with -1.475 [-2.654, -0.295]
+  tfp h=3 billionaire_countries pooled (n=504, countries=56): base -0.684 [-1.462, +0.094]; with -0.371 [-0.941, +0.199]
+  tfp h=3 with_billionaires fe (n=495, countries=59): base -1.822 [-3.126, -0.519]; with -1.500 [-3.003, +0.003]
+  tfp h=3 with_billionaires pooled (n=496, countries=60): base -0.785 [-1.527, -0.043]; with -0.497 [-1.068, +0.073]
+  tfp h=5 billionaire_countries fe (n=392, countries=56): base -1.132 [-1.727, -0.537]; with -0.880 [-1.492, -0.268]
+  tfp h=5 billionaire_countries pooled (n=392, countries=56): base -0.924 [-1.938, +0.089]; with -0.495 [-1.116, +0.125]
+  tfp h=5 with_billionaires fe (n=379, countries=57): base -1.180 [-1.994, -0.367]; with -0.607 [-1.501, +0.288]
+  tfp h=5 with_billionaires pooled (n=382, countries=60): base -1.016 [-1.979, -0.052]; with -0.624 [-1.237, -0.011]
+  tfp: negative 12 of 12; sig- 3; sig+ 0; median -0.6153
+  gdppc: negative 12 of 12; sig- 0; sig+ 0; median -0.3014
+  joint test, two-list average with all four exposures:
+    all: 24 fits, median -0.4674 (p=0.070); sig- 3 (null 95th pct 3, p=0.061); sig+ 0 (p=1.000); Stouffer Z -6.08 (p=0.017)
+    tfp: 12 fits, median -0.6153 (p=0.037); sig- 3 (null 95th pct 1, p=0.023); sig+ 0 (p=1.000); Stouffer Z -6.30 (p=0.004)
+    gdp_per_capita: 12 fits, median -0.3014 (p=0.206); sig- 0 (null 95th pct 2, p=1.000); sig+ 0 (p=1.000); Stouffer Z -2.30 (p=0.156)
+    tfp_fixed_effects: 6 fits, median -1.4243 (p=0.029); sig- 2 (null 95th pct 1, p=0.022); sig+ 0 (p=1.000); Stouffer Z -4.91 (p=0.000)
+    tfp_pooled: 6 fits, median -0.4964 (p=0.068); sig- 1 (null 95th pct 0, p=0.038); sig+ 0 (p=1.000); Stouffer Z -4.00 (p=0.035)
+period split, by measure (billionaire countries):
+  wealth h=3 ends by 2019 (lists 2011-2016, n=336): -0.039 [-0.878, +0.801]
+  wealth h=3 includes 2020 (lists 2017-2020, n=224): -2.002 [-4.160, +0.156]
+  wealth h=5 ends by 2019 (lists 2011-2014, n=224): +0.032 [-0.497, +0.560]
+  wealth h=5 includes 2020 (lists 2015-2018, n=224): +0.306 [-1.015, +1.627]
+  headcount h=3 ends by 2019 (lists 2011-2016, n=336): -0.508 [-1.689, +0.672]
+  headcount h=3 includes 2020 (lists 2017-2020, n=224): -0.741 [-2.739, +1.257]
+  headcount h=5 ends by 2019 (lists 2011-2014, n=224): +0.101 [-0.972, +1.175]
+  headcount h=5 includes 2020 (lists 2015-2018, n=224): -0.005 [-0.693, +0.684]
+  two-list average h=3 ends by 2019 (lists 2012-2016, n=280): -0.431 [-1.740, +0.879]
+  two-list average h=3 includes 2020 (lists 2017-2020, n=224): -2.757 [-6.276, +0.762]
+  two-list average h=5 ends by 2019 (lists 2012-2014, n=168): -0.679 [-1.552, +0.195]
+  two-list average h=5 includes 2020 (lists 2015-2018, n=224): -0.635 [-2.312, +1.043]
+leave one list year out, by measure (billionaire countries):
+  wealth h=3: full -1.109 [-2.064, -0.155]; closest to zero -0.689 without 2020 [-1.440, +0.061]; furthest -1.342 without 2012; intervals excluding zero 8 of 10; 2011 -1.155; 2012 -1.342; 2013 -1.151; 2014 -1.135; 2015 -1.089; 2016 -1.197; 2017 -1.122; 2018 -1.257; 2019 -0.836; 2020 -0.689
+  wealth h=5: full -0.538 [-1.018, -0.058]; closest to zero -0.438 without 2016 [-0.940, +0.064]; furthest -0.602 without 2012; intervals excluding zero 6 of 8; 2011 -0.508; 2012 -0.602; 2013 -0.576; 2014 -0.507; 2015 -0.526; 2016 -0.438; 2017 -0.590; 2018 -0.478
+  headcount h=3: full -1.022 [-1.922, -0.123]; closest to zero -0.508 without 2019 [-1.305, +0.290]; furthest -1.214 without 2018; intervals excluding zero 9 of 10; 2011 -1.006; 2012 -1.155; 2013 -1.017; 2014 -0.987; 2015 -0.986; 2016 -1.194; 2017 -1.175; 2018 -1.214; 2019 -0.508; 2020 -0.931
+  headcount h=5: full -0.563 [-1.170, +0.043]; closest to zero -0.322 without 2016 [-1.232, +0.589]; furthest -0.665 without 2015; intervals excluding zero 2 of 8; 2011 -0.581; 2012 -0.550; 2013 -0.556; 2014 -0.514; 2015 -0.665; 2016 -0.322; 2017 -0.620; 2018 -0.631
+  two-list average h=3: full -1.475 [-2.654, -0.295]; closest to zero -1.156 without 2020 [-2.143, -0.169]; furthest -1.990 without 2012; intervals excluding zero 9 of 9; 2012 -1.990; 2013 -1.574; 2014 -1.485; 2015 -1.379; 2016 -1.490; 2017 -1.188; 2018 -1.779; 2019 -1.248; 2020 -1.156
+  two-list average h=5: full -0.880 [-1.492, -0.268]; closest to zero -0.727 without 2017 [-1.392, -0.063]; furthest -0.979 without 2018; intervals excluding zero 7 of 7; 2012 -0.936; 2013 -0.936; 2014 -0.829; 2015 -0.886; 2016 -0.831; 2017 -0.727; 2018 -0.979
+forward minus backward, by measure (billionaire countries, country bootstrap):
+  wealth h=3: forward -1.109 [-2.064, -0.155]; backward -0.081 [-1.275, +1.113]; difference -1.028 [-3.117, +0.577], share of draws >= 0 0.120
+  wealth h=5: forward -0.538 [-1.018, -0.058]; backward +0.373 [-0.891, +1.636]; difference -0.911 [-2.192, +0.567], share of draws >= 0 0.146
+  headcount h=3: forward -1.022 [-1.922, -0.123]; backward -0.539 [-1.600, +0.522]; difference -0.484 [-2.192, +0.801], share of draws >= 0 0.233
+  headcount h=5: forward -0.563 [-1.170, +0.043]; backward -0.351 [-1.604, +0.902]; difference -0.212 [-1.500, +1.039], share of draws >= 0 0.302
+  two-list average h=3: forward -1.475 [-2.654, -0.295]; backward -0.358 [-1.404, +0.688]; difference -1.117 [-3.329, +0.682], share of draws >= 0 0.138
+  two-list average h=5: forward -0.880 [-1.492, -0.268]; backward +0.352 [-0.944, +1.648]; difference -1.232 [-2.821, +0.290], share of draws >= 0 0.050

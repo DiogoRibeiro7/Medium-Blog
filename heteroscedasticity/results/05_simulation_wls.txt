@@ -1,0 +1,90 @@
+Slope estimators under four variance functions (2000 samples per cell; Monte Carlo SE of a 95% coverage ~ 0.0049)
+-- gamma -0.5, n 50
+   OLS               RMSE/OLS 1.000; bias +0.00003; coverage classical 0.9765, HC3 0.9605; mean SE / SD classical 1.093, HC3 1.003
+   WLS 1/x           RMSE/OLS 1.551; bias -0.00007; coverage classical 0.9605, HC3 0.9565; mean SE / SD classical 1.018, HC3 0.984
+   WLS 1/x^2         RMSE/OLS 2.655; bias -0.00018; coverage classical 0.9085, HC3 0.9345; mean SE / SD classical 0.856, HC3 0.977
+   FGLS power        RMSE/OLS 0.903; bias +0.00010; coverage classical 0.9280, HC3 0.9225; mean SE / SD classical 0.903, HC3 0.995
+   FGLS exponential  RMSE/OLS 0.918; bias +0.00008; coverage classical 0.8790, HC3 0.9120; mean SE / SD classical 0.814, HC3 0.991
+-- gamma -0.5, n 200
+   OLS               RMSE/OLS 1.000; bias -0.00012; coverage classical 0.9820, HC3 0.9550; mean SE / SD classical 1.198, HC3 1.009
+   WLS 1/x           RMSE/OLS 1.652; bias -0.00027; coverage classical 0.9695, HC3 0.9555; mean SE / SD classical 1.086, HC3 1.015
+   WLS 1/x^2         RMSE/OLS 2.956; bias -0.00044; coverage classical 0.9130, HC3 0.9425; mean SE / SD classical 0.891, HC3 1.009
+   FGLS power        RMSE/OLS 0.858; bias -0.00003; coverage classical 0.9410, HC3 0.9275; mean SE / SD classical 0.958, HC3 0.976
+   FGLS exponential  RMSE/OLS 0.886; bias -0.00004; coverage classical 0.8620, HC3 0.9160; mean SE / SD classical 0.788, HC3 0.977
+-- gamma -0.5, n 1000
+   OLS               RMSE/OLS 1.000; bias +0.00002; coverage classical 0.9840, HC3 0.9525; mean SE / SD classical 1.208, HC3 1.000
+   WLS 1/x           RMSE/OLS 1.673; bias +0.00006; coverage classical 0.9635, HC3 0.9490; mean SE / SD classical 1.092, HC3 1.015
+   WLS 1/x^2         RMSE/OLS 3.002; bias +0.00011; coverage classical 0.9175, HC3 0.9485; mean SE / SD classical 0.900, HC3 1.019
+   FGLS power        RMSE/OLS 0.826; bias +0.00000; coverage classical 0.9450, HC3 0.9410; mean SE / SD classical 0.985, HC3 0.990
+   FGLS exponential  RMSE/OLS 0.887; bias +0.00002; coverage classical 0.8570, HC3 0.9375; mean SE / SD classical 0.754, HC3 0.983
+-- gamma +0.0, n 50
+   OLS               RMSE/OLS 1.000; bias +0.00008; coverage classical 0.9525, HC3 0.9395; mean SE / SD classical 1.001, HC3 1.052
+   WLS 1/x           RMSE/OLS 1.189; bias -0.00014; coverage classical 0.9720, HC3 0.9615; mean SE / SD classical 1.115, HC3 1.039
+   WLS 1/x^2         RMSE/OLS 1.836; bias -0.00039; coverage classical 0.9415, HC3 0.9460; mean SE / SD classical 0.969, HC3 1.001
+   FGLS power        RMSE/OLS 1.056; bias +0.00016; coverage classical 0.9225, HC3 0.9250; mean SE / SD classical 0.940, HC3 0.987
+   FGLS exponential  RMSE/OLS 1.069; bias +0.00016; coverage classical 0.9075, HC3 0.9155; mean SE / SD classical 0.913, HC3 0.958
+-- gamma +0.0, n 200
+   OLS               RMSE/OLS 1.000; bias -0.00002; coverage classical 0.9510, HC3 0.9455; mean SE / SD classical 0.982, HC3 0.993
+   WLS 1/x           RMSE/OLS 1.205; bias -0.00005; coverage classical 0.9755, HC3 0.9560; mean SE / SD classical 1.107, HC3 0.994
+   WLS 1/x^2         RMSE/OLS 1.863; bias -0.00010; coverage classical 0.9465, HC3 0.9485; mean SE / SD classical 0.977, HC3 0.995
+   FGLS power        RMSE/OLS 1.022; bias -0.00005; coverage classical 0.9415, HC3 0.9400; mean SE / SD classical 0.959, HC3 0.973
+   FGLS exponential  RMSE/OLS 1.038; bias -0.00008; coverage classical 0.9295, HC3 0.9315; mean SE / SD classical 0.937, HC3 0.957
+-- gamma +0.0, n 1000
+   OLS               RMSE/OLS 1.000; bias +0.00003; coverage classical 0.9520, HC3 0.9535; mean SE / SD classical 1.014, HC3 1.018
+   WLS 1/x           RMSE/OLS 1.225; bias +0.00006; coverage classical 0.9730, HC3 0.9470; mean SE / SD classical 1.132, HC3 1.009
+   WLS 1/x^2         RMSE/OLS 1.953; bias +0.00012; coverage classical 0.9475, HC3 0.9515; mean SE / SD classical 0.973, HC3 0.989
+   FGLS power        RMSE/OLS 1.000; bias +0.00003; coverage classical 0.9500, HC3 0.9485; mean SE / SD classical 1.015, HC3 1.019
+   FGLS exponential  RMSE/OLS 1.002; bias +0.00003; coverage classical 0.9485, HC3 0.9485; mean SE / SD classical 1.011, HC3 1.017
+-- gamma +0.5, n 50
+   OLS               RMSE/OLS 1.000; bias -0.00045; coverage classical 0.8445, HC3 0.9185; mean SE / SD classical 0.731, HC3 1.008
+   WLS 1/x           RMSE/OLS 0.864; bias -0.00047; coverage classical 0.9570, HC3 0.9505; mean SE / SD classical 1.008, HC3 1.037
+   WLS 1/x^2         RMSE/OLS 1.005; bias -0.00046; coverage classical 0.9645, HC3 0.9555; mean SE / SD classical 1.061, HC3 1.038
+   FGLS power        RMSE/OLS 0.914; bias -0.00053; coverage classical 0.9260, HC3 0.9305; mean SE / SD classical 0.926, HC3 0.972
+   FGLS exponential  RMSE/OLS 0.928; bias -0.00055; coverage classical 0.9260, HC3 0.9220; mean SE / SD classical 0.950, HC3 0.954
+-- gamma +0.5, n 200
+   OLS               RMSE/OLS 1.000; bias +0.00028; coverage classical 0.8430, HC3 0.9355; mean SE / SD classical 0.703, HC3 0.998
+   WLS 1/x           RMSE/OLS 0.849; bias +0.00021; coverage classical 0.9495, HC3 0.9445; mean SE / SD classical 1.000, HC3 1.008
+   WLS 1/x^2         RMSE/OLS 1.015; bias +0.00022; coverage classical 0.9630, HC3 0.9490; mean SE / SD classical 1.035, HC3 0.992
+   FGLS power        RMSE/OLS 0.862; bias +0.00017; coverage classical 0.9440, HC3 0.9435; mean SE / SD classical 0.981, HC3 0.994
+   FGLS exponential  RMSE/OLS 0.878; bias +0.00012; coverage classical 0.9550, HC3 0.9435; mean SE / SD classical 1.023, HC3 0.991
+-- gamma +0.5, n 1000
+   OLS               RMSE/OLS 1.000; bias -0.00007; coverage classical 0.8275, HC3 0.9535; mean SE / SD classical 0.700, HC3 0.998
+   WLS 1/x           RMSE/OLS 0.835; bias -0.00006; coverage classical 0.9550, HC3 0.9535; mean SE / SD classical 1.017, HC3 1.018
+   WLS 1/x^2         RMSE/OLS 0.994; bias -0.00008; coverage classical 0.9570, HC3 0.9490; mean SE / SD classical 1.060, HC3 1.011
+   FGLS power        RMSE/OLS 0.838; bias -0.00005; coverage classical 0.9535, HC3 0.9535; mean SE / SD classical 1.012, HC3 1.015
+   FGLS exponential  RMSE/OLS 0.860; bias -0.00004; coverage classical 0.9585, HC3 0.9500; mean SE / SD classical 1.054, HC3 1.011
+-- gamma +1.0, n 50
+   OLS               RMSE/OLS 1.000; bias +0.00019; coverage classical 0.6915, HC3 0.8970; mean SE / SD classical 0.515, HC3 0.970
+   WLS 1/x           RMSE/OLS 0.719; bias +0.00043; coverage classical 0.8715, HC3 0.9305; mean SE / SD classical 0.764, HC3 0.986
+   WLS 1/x^2         RMSE/OLS 0.618; bias +0.00043; coverage classical 0.9445, HC3 0.9460; mean SE / SD classical 0.980, HC3 1.003
+   FGLS power        RMSE/OLS 0.674; bias +0.00054; coverage classical 0.9090, HC3 0.9255; mean SE / SD classical 0.868, HC3 0.933
+   FGLS exponential  RMSE/OLS 0.673; bias +0.00065; coverage classical 0.9215, HC3 0.9240; mean SE / SD classical 0.927, HC3 0.944
+-- gamma +1.0, n 200
+   OLS               RMSE/OLS 1.000; bias +0.00013; coverage classical 0.6805, HC3 0.9400; mean SE / SD classical 0.502, HC3 0.993
+   WLS 1/x           RMSE/OLS 0.686; bias +0.00015; coverage classical 0.8610, HC3 0.9405; mean SE / SD classical 0.775, HC3 1.000
+   WLS 1/x^2         RMSE/OLS 0.592; bias +0.00017; coverage classical 0.9500, HC3 0.9505; mean SE / SD classical 0.990, HC3 0.993
+   FGLS power        RMSE/OLS 0.602; bias +0.00016; coverage classical 0.9385, HC3 0.9465; mean SE / SD classical 0.965, HC3 0.981
+   FGLS exponential  RMSE/OLS 0.615; bias +0.00018; coverage classical 0.9560, HC3 0.9510; mean SE / SD classical 1.014, HC3 0.999
+-- gamma +1.0, n 1000
+   OLS               RMSE/OLS 1.000; bias -0.00001; coverage classical 0.6525, HC3 0.9440; mean SE / SD classical 0.480, HC3 0.980
+   WLS 1/x           RMSE/OLS 0.661; bias -0.00004; coverage classical 0.8590, HC3 0.9470; mean SE / SD classical 0.767, HC3 0.996
+   WLS 1/x^2         RMSE/OLS 0.551; bias -0.00005; coverage classical 0.9565, HC3 0.9570; mean SE / SD classical 1.011, HC3 1.012
+   FGLS power        RMSE/OLS 0.553; bias -0.00005; coverage classical 0.9570, HC3 0.9580; mean SE / SD classical 1.005, HC3 1.009
+   FGLS exponential  RMSE/OLS 0.576; bias -0.00006; coverage classical 0.9575, HC3 0.9545; mean SE / SD classical 1.037, HC3 1.014
+Coverage ranges over the four variance functions, by estimator and n (classical; HC3):
+   OLS               n   50: classical 0.6915-0.9765; HC3 0.8970-0.9605
+   OLS               n  200: classical 0.6805-0.9820; HC3 0.9355-0.9550
+   OLS               n 1000: classical 0.6525-0.9840; HC3 0.9440-0.9535
+   WLS 1/x           n   50: classical 0.8715-0.9720; HC3 0.9305-0.9615
+   WLS 1/x           n  200: classical 0.8610-0.9755; HC3 0.9405-0.9560
+   WLS 1/x           n 1000: classical 0.8590-0.9730; HC3 0.9470-0.9535
+   WLS 1/x^2         n   50: classical 0.9085-0.9645; HC3 0.9345-0.9555
+   WLS 1/x^2         n  200: classical 0.9130-0.9630; HC3 0.9425-0.9505
+   WLS 1/x^2         n 1000: classical 0.9175-0.9570; HC3 0.9485-0.9570
+   FGLS power        n   50: classical 0.9090-0.9280; HC3 0.9225-0.9305
+   FGLS power        n  200: classical 0.9385-0.9440; HC3 0.9275-0.9465
+   FGLS power        n 1000: classical 0.9450-0.9570; HC3 0.9410-0.9580
+   FGLS exponential  n   50: classical 0.8790-0.9260; HC3 0.9120-0.9240
+   FGLS exponential  n  200: classical 0.8620-0.9560; HC3 0.9160-0.9510
+   FGLS exponential  n 1000: classical 0.8570-0.9585; HC3 0.9375-0.9545
+HC3 coverage of the four weighted estimators over all cells: 0.9120-0.9615; classical 0.8570-0.9755

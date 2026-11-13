@@ -1,0 +1,56 @@
+name: Reproduce wealth-origin-sectors
+
+on:
+  pull_request:
+    paths:
+      - 'wealth-origin-sectors/**'
+      - '.github/workflows/wealth-origin-sectors.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'wealth-origin-sectors/**'
+      - '.github/workflows/wealth-origin-sectors.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: wealth-origin-sectors
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: wealth-origin-sectors/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: python analysis.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_sector_inheritance fig2_observed_vs_predicted fig3_with_without fig4_list_years; do
+            test -s "figures/$f.png"
+          done

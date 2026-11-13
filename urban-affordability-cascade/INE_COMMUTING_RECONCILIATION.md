@@ -167,3 +167,40 @@ sets `source_semantics_verified=false`,
 matrix remains a later step requiring official indicator metadata and
 a reviewed geographic-code mapping. The current pinned matrix must not
 be upgraded merely because this integrity review succeeds.
+
+
+## Capturing the 2021 indicator in small municipality slices
+
+The one-shot PR #625 capture on **12 November 2026** obtained valid metadata
+from INE indicator `0012340` but the candidate all-municipality 2021
+request timed out. The archived official metadata identifies **three**
+dimensions: period (2021, `S7A2021`), geographic dimension 2 (residence
+or destination), and geographic dimension 3 (destination or residence).
+All **17 AMP DICO municipality codes** are present in both dimensions
+and agree with the fixed municipal panel.
+
+The [manual partition workflow](../../.github/workflows/ine-0012340-partitioned-capture.yml)
+attempts a smaller candidate API request with `Dim2=<municipality DICO>`
+or `Dim3=<municipality DICO>`. These **filter arguments remain hypotheses**
+until an actual INE data response demonstrates they work. Select
+**Actions → INE 0012340 municipality-slice capture (manual) → Run workflow**.
+Specify `start_index` (zero-based among sorted DICO codes), `count` (1–3),
+and `dimension` (`Dim2` or `Dim3`). Start with 0 and count 2.
+For each requested code, the runner saves raw JSON bytes if returned,
+SHA-256, effective URL, observed period-key hints and errors in
+`partition_manifest.json`; the artifact is retained for 30 days.
+
+The official metadata is fetched and checked against the 17 expected
+municipality names and codes. Its exact SHA-256 is recorded and compared
+with the archived November 12 capture, **but a mismatch alone is not a
+failure**, because INE includes a varying extraction timestamp. A changed
+indicator, period, measurement unit, dimension or municipality identity
+does fail validation. The candidate geographic-slice responses are
+never silently combined, assigned an official origin/destination
+direction, or used to replace the existing commuting matrix.
+
+Only after one or more real data slices have been inspected and their
+filter behavior established should the study proceed to the full
+136-pair reconciliation. A successful transfer remains
+**unverified source-shape evidence, not residential mobility or
+causal displacement evidence**.
