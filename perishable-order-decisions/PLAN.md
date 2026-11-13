@@ -144,3 +144,18 @@ Asymmetric ratios are those where a forecast of the mean is the wrong order by c
 - 13 November 2026, before the data were downloaded: the first workflow run stopped in the unit tests because the
   LightGBM scikit-learn wrapper needs scikit-learn, which is not installed. LightGBM is now called through its native
   interface with the same settings (500 rounds, and the parameters listed above under their native names).
+
+## Descriptive analyses added after the results (13 November 2026)
+
+Not part of the registered test, and labelled as such in the article; `details.py`, from the test orders that
+`evaluate.py` saves with `--orders` (no change to how anything registered is computed).
+
+- **Strength of the recovery.** The in-stock robustness check reversed part of the result, and in-stock days are
+  selected on demand staying below the stock on the shelf. The registered costs are recomputed against
+  d(s) = sales + s x (recovered demand - sales) for s = 0, 0.25, 0.5, 0.75 and 1: s = 0 treats recorded sales as
+  demand, a lower bound on days with out-of-stock hours; s = 1 is the registered evaluation.
+- **The point rule left out.** The H2 decomposition repeated on the 4 x 4 table of algorithms and quantile layers,
+  since ordering a forecast of the mean is wrong by construction when tau is not 0.5.
+- **Target and rule apart.** A three-way additive decomposition of the 4 x 2 x 3 table (algorithm, target, rule).
+- **Orders by cost and by WAPE under every layer**, and the coverage of the quantile rules.
+

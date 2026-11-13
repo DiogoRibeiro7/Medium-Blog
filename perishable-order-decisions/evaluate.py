@@ -33,7 +33,7 @@ def cell(algo: str, target: str, rule: str, tau: float) -> str:
     return f"{algo}|{target}|{rule}|{tau}"
 
 
-def run(panel: Panel, settings: dict | None = None, boot: int = BOOT) -> dict:
+def run(panel: Panel, settings: dict | None = None, boot: int = BOOT, keep_orders: bool = False) -> dict:
     fit, cal, test = windows(panel.days)
     if not np.array_equal(test, panel.test):
         raise ValueError("the test window is not the eval split")
@@ -51,7 +51,7 @@ def run(panel: Panel, settings: dict | None = None, boot: int = BOOT) -> dict:
 
     demand_all = by_store(d)
     demand_in = by_store(np.where(instock, d, 0.0))
-    names, sums_all, sums_in, rows = [], [], [], []
+    names, sums_all, sums_in, rows, orders = [], [], [], [], []
     fit_days = list(range(F.MAX_LAG, FIT_END))
     predict_days = list(range(FIT_END, panel.days))
     for target in K.TARGETS:
@@ -66,6 +66,8 @@ def run(panel: Panel, settings: dict | None = None, boot: int = BOOT) -> dict:
             for rule, tau in product(K.RULES, K.TAUS):
                 q = K.order(ft, rule, tau, calib)
                 c = K.cost(q, d, tau)
+                if keep_orders:
+                    orders.append(q.astype(np.float32))
                 names.append(cell(algo, target, rule, tau))
                 sums_all.append(by_store(c))
                 sums_in.append(by_store(np.where(instock, c, 0.0)))
@@ -105,6 +107,8 @@ def run(panel: Panel, settings: dict | None = None, boot: int = BOOT) -> dict:
         "point": {"all": point_all, "instock": point_in},
         "boot": {"all": boot_all, "instock": boot_in},
         "stores": S,
+        "store_idx": store_idx,
+        "orders": np.array(orders) if keep_orders else None,
     }
 
 
@@ -342,10 +346,22 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--data", type=Path, default=Path("data"))
     ap.add_argument("--out", type=Path, default=Path("results"))
+    ap.add_argument("--orders", type=Path, help="also save every test order here, for details.py (not committed)")
     a = ap.parse_args()
     panel, structure = load(a.data)
-    res = run(panel)
+    res = run(panel, keep_orders=a.orders is not None)
     write(panel, res, structure, a.out)
+    if a.orders is not None:
+        _, _, test = windows(panel.days)
+        np.savez(
+            a.orders,
+            cells=np.array(list(res["index"])),
+            orders=res["orders"],
+            demand=res["rec"].demand[:, test],
+            sales=panel.sales[:, test],
+            instock=res["instock"],
+            store_idx=res["store_idx"],
+        )
 
 
 if __name__ == "__main__":

@@ -157,3 +157,16 @@ def test_end_to_end(panel):
     assert abs(dec["algorithm"] + dec["layer"] + dec["remainder"] - 1) < 1e-9
     assert set(h4(res["rows"])["by_cost"]) == set(F.ALGOS)
     assert CAL_END - FIT_END == 14
+
+
+def test_three_way_shares_add_up():
+    from details import three_way
+
+    index, costs = {}, []
+    for a_i, a in enumerate(F.ALGOS):
+        for g_i, g in enumerate(K.TARGETS):
+            for r_i, r in enumerate(K.RULES):
+                index[f"{a}|{g}|{r}|0.9"] = len(costs)
+                costs.append(1.0 * a_i + 2.0 * g_i + 0.5 * r_i)
+    tw = three_way(np.array(costs), index, 0.9)
+    assert abs(sum(tw.values()) - 1) < 1e-9 and abs(tw["remainder"]) < 1e-9

@@ -62,10 +62,10 @@ jobs:
         run: python fetch.py --data data --sources sources
       - name: The registered test
         if: github.event_name != 'pull_request'
-        run: python evaluate.py --data data --out results
+        run: python evaluate.py --data data --out results --orders data/orders.npz
       - name: Descriptive numbers quoted in the article
         if: github.event_name != 'pull_request' && hashFiles('perishable-order-decisions/details.py') != ''
-        run: python details.py --data data --results results --out results/details.txt
+        run: python details.py --orders data/orders.npz --results results --out results/details.txt
       - name: Figures
         if: github.event_name != 'pull_request' && hashFiles('perishable-order-decisions/figures.py') != ''
         run: python figures.py --results results --out figures
