@@ -73,7 +73,7 @@ jobs:
         run: |
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
-          git add data results figures 2>/dev/null || true
+          for d in data results figures; do if [ -d "$d" ]; then git add "$d"; fi; done
           if git diff --cached --quiet -- data/area_index.csv data/area_year_median.csv results; then
             echo "Results unchanged; nothing to commit."
           else
