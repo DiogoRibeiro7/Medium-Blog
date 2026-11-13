@@ -1,0 +1,9 @@
+hourly status coding: out of stock = 1; stock_hour6_22_cnt counts hours 6 to 21; agreement 1.0000
+days with out-of-stock hours between 6 and 22: fit 0.4441, calibration 0.4352, test 0.4098
+days with any out-of-stock hour (24 h): fit 0.6021, test 0.5659
+days recovered with the fallback (observed share < 0.2): fit 0.0618, test 0.0517
+profile source: own 0.9900, third category 0.0100, all series 0.0000
+recovered demand / sales, fit: 1.2886
+recovered demand / sales, calibration: 1.2389
+recovered demand / sales, test: 1.2201
+test: share of demand on days with out-of-stock hours 6-22: 0.4964
