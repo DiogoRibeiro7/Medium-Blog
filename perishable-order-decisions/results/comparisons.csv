@@ -1,0 +1,61 @@
+hypothesis,comparison,tau,convention,estimate,lo,hi,established
+H1,lgbm_l2 default - ma4w full,0.7,all,0.047644,0.045870,0.049372,True
+H1,lgbm_l2 default - ma4w full,0.7,instock,-0.005643,-0.008533,-0.002817,False
+H1,lgbm_tweedie default - ma4w full,0.7,all,0.049815,0.047967,0.051513,True
+H1,lgbm_tweedie default - ma4w full,0.7,instock,-0.004196,-0.007071,-0.001465,False
+H2,layer share - algorithm share of the variation over the 4 x 6 table,0.7,all,0.395679,0.364351,0.426915,True
+H2,layer share - algorithm share of the variation over the 4 x 6 table,0.7,instock,-0.589851,-0.613559,-0.562664,False
+H3,naive7 point: sales - recovered,0.7,all,0.037189,0.036069,0.038272,True
+H3,naive7 point: sales - recovered,0.7,instock,0.011383,0.010185,0.012559,True
+H3,naive7 pooled: sales - recovered,0.7,all,0.000942,-0.000049,0.001942,False
+H3,naive7 pooled: sales - recovered,0.7,instock,-0.030536,-0.031712,-0.029441,False
+H3,naive7 series: sales - recovered,0.7,all,0.003199,0.002140,0.004277,True
+H3,naive7 series: sales - recovered,0.7,instock,-0.030323,-0.031805,-0.029019,False
+H3,ma4w point: sales - recovered,0.7,all,0.052747,0.051735,0.053713,True
+H3,ma4w point: sales - recovered,0.7,instock,0.033611,0.032417,0.034870,True
+H3,ma4w pooled: sales - recovered,0.7,all,0.018146,0.017035,0.019275,True
+H3,ma4w pooled: sales - recovered,0.7,instock,-0.009090,-0.010353,-0.007772,False
+H3,ma4w series: sales - recovered,0.7,all,0.020032,0.018968,0.021118,True
+H3,ma4w series: sales - recovered,0.7,instock,-0.010505,-0.011827,-0.009155,False
+H3,lgbm_l2 point: sales - recovered,0.7,all,0.049857,0.049021,0.050690,True
+H3,lgbm_l2 point: sales - recovered,0.7,instock,0.029179,0.028123,0.030273,True
+H3,lgbm_l2 pooled: sales - recovered,0.7,all,0.023588,0.022720,0.024435,True
+H3,lgbm_l2 pooled: sales - recovered,0.7,instock,-0.001309,-0.002428,-0.000127,False
+H3,lgbm_l2 series: sales - recovered,0.7,all,0.022557,0.021751,0.023334,True
+H3,lgbm_l2 series: sales - recovered,0.7,instock,-0.005611,-0.006671,-0.004505,False
+H3,lgbm_tweedie point: sales - recovered,0.7,all,0.049061,0.048247,0.049879,True
+H3,lgbm_tweedie point: sales - recovered,0.7,instock,0.028837,0.027803,0.029863,True
+H3,lgbm_tweedie pooled: sales - recovered,0.7,all,0.022964,0.022110,0.023793,True
+H3,lgbm_tweedie pooled: sales - recovered,0.7,instock,-0.001694,-0.002811,-0.000569,False
+H3,lgbm_tweedie series: sales - recovered,0.7,all,0.022724,0.021888,0.023504,True
+H3,lgbm_tweedie series: sales - recovered,0.7,instock,-0.005264,-0.006303,-0.004251,False
+H1,lgbm_l2 default - ma4w full,0.9,all,0.163301,0.161164,0.165387,True
+H1,lgbm_l2 default - ma4w full,0.9,instock,0.086002,0.083378,0.088605,True
+H1,lgbm_tweedie default - ma4w full,0.9,all,0.166775,0.164606,0.168849,True
+H1,lgbm_tweedie default - ma4w full,0.9,instock,0.089003,0.086425,0.091556,True
+H2,layer share - algorithm share of the variation over the 4 x 6 table,0.9,all,0.963428,0.961609,0.965234,True
+H2,layer share - algorithm share of the variation over the 4 x 6 table,0.9,instock,0.820107,0.809404,0.830418,True
+H3,naive7 point: sales - recovered,0.9,all,0.075470,0.073977,0.076852,True
+H3,naive7 point: sales - recovered,0.9,instock,0.050388,0.049096,0.051660,True
+H3,naive7 pooled: sales - recovered,0.9,all,0.007831,0.006840,0.008901,True
+H3,naive7 pooled: sales - recovered,0.9,instock,-0.021103,-0.022001,-0.020188,False
+H3,naive7 series: sales - recovered,0.9,all,0.016875,0.015927,0.017842,True
+H3,naive7 series: sales - recovered,0.9,instock,-0.019767,-0.020703,-0.018926,False
+H3,ma4w point: sales - recovered,0.9,all,0.086405,0.085269,0.087598,True
+H3,ma4w point: sales - recovered,0.9,instock,0.068806,0.067538,0.070192,True
+H3,ma4w pooled: sales - recovered,0.9,all,0.017182,0.015899,0.018516,True
+H3,ma4w pooled: sales - recovered,0.9,instock,-0.012971,-0.014140,-0.011681,False
+H3,ma4w series: sales - recovered,0.9,all,0.028610,0.027537,0.029687,True
+H3,ma4w series: sales - recovered,0.9,instock,-0.010674,-0.011610,-0.009772,False
+H3,lgbm_l2 point: sales - recovered,0.9,all,0.079482,0.078446,0.080585,True
+H3,lgbm_l2 point: sales - recovered,0.9,instock,0.058027,0.056778,0.059329,True
+H3,lgbm_l2 pooled: sales - recovered,0.9,all,0.023280,0.022177,0.024370,True
+H3,lgbm_l2 pooled: sales - recovered,0.9,instock,-0.010559,-0.011495,-0.009579,False
+H3,lgbm_l2 series: sales - recovered,0.9,all,0.030787,0.029782,0.031763,True
+H3,lgbm_l2 series: sales - recovered,0.9,instock,-0.008643,-0.009553,-0.007698,False
+H3,lgbm_tweedie point: sales - recovered,0.9,all,0.077672,0.076619,0.078773,True
+H3,lgbm_tweedie point: sales - recovered,0.9,instock,0.056430,0.055234,0.057629,True
+H3,lgbm_tweedie pooled: sales - recovered,0.9,all,0.022932,0.021816,0.024056,True
+H3,lgbm_tweedie pooled: sales - recovered,0.9,instock,-0.010561,-0.011570,-0.009493,False
+H3,lgbm_tweedie series: sales - recovered,0.9,all,0.031165,0.030175,0.032111,True
+H3,lgbm_tweedie series: sales - recovered,0.9,instock,-0.008686,-0.009549,-0.007876,False

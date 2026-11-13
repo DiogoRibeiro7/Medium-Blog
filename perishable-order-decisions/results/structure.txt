@@ -1,0 +1,4 @@
+rows 4850000; series 50000; dates 97 (2024-03-28 to 2024-07-02); train dates 90, eval dates 7 (from 2024-06-26)
+stores 898; products 865; cities 18
+every hourly list has 24 values; every series has the same dates; eval dates follow train dates
+daily sales against the sum of hourly sales: median absolute gap 0.000000, 99th percentile 0.000000, share above 1e-3: 0.0000
