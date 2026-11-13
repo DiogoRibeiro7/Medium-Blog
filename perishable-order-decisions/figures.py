@@ -4,8 +4,8 @@ python figures.py --results results --out figures
 
 fig1  when products run out: hourly sales share and out-of-stock share, and daily sales against recovered demand
 fig2  the 72 costs: four algorithms on each of six decision layers, at three cost ratios
-fig3  how the main comparisons move with the strength of the recovery (descriptive, added after the results)
-fig4  coverage of the orders: share of series-days with demand at or below the order
+fig3  coverage of the orders: share of series-days with demand at or below the order
+fig4  how the main comparisons move with the strength of the recovery (descriptive, added after the results)
 """
 
 from __future__ import annotations
@@ -155,7 +155,7 @@ def fig2(res: Path, out: Path) -> None:
     plt.close(fig)
 
 
-def fig3(res: Path, out: Path) -> None:
+def fig4(res: Path, out: Path) -> None:
     js = json.loads((res / "details.json").read_text(encoding="utf-8"))
     series = [
         ("H1", "lgbm_l2 default - ma4w full", "LightGBM (default layer) minus\n4-week mean (full layer)", "#2a78d6"),
@@ -196,11 +196,11 @@ def fig3(res: Path, out: Path) -> None:
     fig.legend(handles, labels, frameon=False, fontsize=8.5, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.1))
     fig.tight_layout()
     credit(fig)
-    fig.savefig(out / "fig3_strength.png", dpi=160, bbox_inches="tight")
+    fig.savefig(out / "fig4_strength.png", dpi=160, bbox_inches="tight")
     plt.close(fig)
 
 
-def fig4(res: Path, out: Path) -> None:
+def fig3(res: Path, out: Path) -> None:
     rows = read_csv(res / "cells.csv")
     fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.8), sharey=True)
     x = np.arange(len(LAYERS))
@@ -246,7 +246,7 @@ def fig4(res: Path, out: Path) -> None:
     fig.legend(handles=handles, loc="upper center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 1.05))
     fig.tight_layout()
     credit(fig)
-    fig.savefig(out / "fig4_coverage.png", dpi=160, bbox_inches="tight")
+    fig.savefig(out / "fig3_coverage.png", dpi=160, bbox_inches="tight")
     plt.close(fig)
 
 
@@ -258,9 +258,9 @@ def main() -> None:
     a.out.mkdir(parents=True, exist_ok=True)
     fig1(a.results, a.out)
     fig2(a.results, a.out)
+    fig3(a.results, a.out)
     if (a.results / "details.json").exists():
-        fig3(a.results, a.out)
-    fig4(a.results, a.out)
+        fig4(a.results, a.out)
 
 
 if __name__ == "__main__":
