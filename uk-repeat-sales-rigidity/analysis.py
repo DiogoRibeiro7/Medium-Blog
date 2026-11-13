@@ -241,6 +241,13 @@ def main() -> None:
          f"(se {allr['se_real']:.3f})")
     line("  nominal placebo cutoffs: " + ", ".join(
         f"{100 * c:+.1f}%: {allr[f'theta_{c:+.2f}']:.3f} (se {allr[f'se_{c:+.2f}']:.3f})" for c in PLACEBO_CUTS))
+    hn_all = hist_series(h, "nominal", y=sorted(h.y.unique()), hold=NEAR_HOLDS)
+    ex_all = exact_for(sorted(h.y.unique()))
+    sens = []
+    for bw in (0.025, 0.05, 0.075, 0.10):
+        th, se, _, _ = density_jump(hn_all, 0.0, bw=bw, drop_exact=ex_all)
+        sens.append(f"{100 * bw:.1f}%: {th:.3f} (se {se:.3f}) = missing {pct(missing_share(th))}")
+    line("  bandwidth sensitivity (without exact): " + "; ".join(sens))
     for p_lo, p_hi, p_ in PERIODS:
         r = jumps(range(p_lo, p_hi + 1))
         line(f"  {p_}: theta {r['theta']:.3f} ({r['se']:.3f}), without exact {r['theta_ex']:.3f} "

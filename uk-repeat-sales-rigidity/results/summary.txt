@@ -64,6 +64,7 @@ By holding period: 0.5-2y 1,321,449, 2-5y 3,630,942, 5-10y 3,507,646, 10-20y 2,5
 [3] Jump in density at a nominal change of zero (log, bandwidth 5% each side; holdings under 10 years)
   all years: theta 1.056 (se 0.005) -> density 187.5% higher just above zero; without exact old-price resales 0.269 (se 0.005), i.e. 23.6% of the resales that would have landed just below the old price are missing; real zero (placebo) -0.002 (se 0.005)
   nominal placebo cutoffs: -15.0%: -0.014 (se 0.011), -10.0%: 0.017 (se 0.008), -7.5%: -0.017 (se 0.007), +7.5%: -0.005 (se 0.004), +10.0%: -0.010 (se 0.004), +15.0%: 0.005 (se 0.003)
+  bandwidth sensitivity (without exact): 2.5%: 0.305 (se 0.008) = missing 26.3%; 5.0%: 0.269 (se 0.005) = missing 23.6%; 7.5%: 0.295 (se 0.004) = missing 25.5%; 10.0%: 0.333 (se 0.004) = missing 28.3%
   1996-2007: theta 1.365 (0.011), without exact 0.374 (0.012) = missing 31.2%, real-zero placebo -0.017 (0.038), nominal placebos -15.0% -0.062, -10.0% 0.017, -7.5% -0.013, +7.5% -0.001, +10.0% -0.011, +15.0% 0.010  [n=1,843,990]
   2008-2012: theta 0.886 (0.009), without exact 0.163 (0.010) = missing 15.1%, real-zero placebo -0.009 (0.014), nominal placebos -15.0% 0.015, -10.0% 0.025, -7.5% -0.021, +7.5% 0.013, +10.0% -0.009, +15.0% 0.033  [n=824,113]
   2013-2021: theta 0.983 (0.008), without exact 0.283 (0.009) = missing 24.7%, real-zero placebo 0.001 (0.007), nominal placebos -15.0% -0.031, -10.0% 0.015, -7.5% -0.027, +7.5% -0.002, +10.0% -0.019, +15.0% -0.004  [n=1,849,772]
