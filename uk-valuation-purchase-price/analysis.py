@@ -58,6 +58,35 @@ def main() -> int:
           f"{pct(s['test_share_m_negative'])}; m in [-10%, 0): train "
           f"{pct(s['train_share_m_minus10_0'])}, test {pct(s['test_share_m_minus10_0'])}")
 
+    idx = pd.read_csv(DATA / "area_index.csv").pivot(index="t", columns="area", values="log_index")
+
+    def t(y, m):
+        return (y - 1995) * 12 + m - 1
+
+    def falls(a0, a1, b1):
+        out = {}
+        for a in idx.columns:
+            s_ = idx[a]
+            pk = s_.loc[a0:a1].idxmax()
+            out[a] = float(np.expm1(s_.loc[pk:b1].min() - s_.loc[pk]))
+        return pd.Series(out)
+
+    growth = (idx.loc[t(2006, 12)] - idx.loc[t(1996, 1)]) / (131 / 12)
+    bust = falls(t(2006, 1), t(2008, 12), t(2013, 12))
+    stall = falls(t(2015, 1), t(2018, 12), t(2020, 12))
+    recent = falls(t(2021, 6), t(2023, 12), t(2025, 12))
+    london = ["E", "EC", "N", "NW", "SE", "SW", "W", "WC"]
+    w("")
+    w("[0b] Area index")
+    w(f"  1996-01 to 2006-12, annual log growth across areas: median {pct(growth.median())}, "
+      f"range {pct(growth.min())} to {pct(growth.max())}")
+    w(f"  peak (2006-2008) to trough (to 2013): median area {pct(bust.median())}, range "
+      f"{pct(bust.max())} to {pct(bust.min())}")
+    w(f"  peak (2015-2018) to trough (to 2020): London areas {pct(stall[london].max())} to "
+      f"{pct(stall[london].min())}; other areas median {pct(stall.drop(london).median())}")
+    w(f"  peak (2021-06 to 2023) to trough (to 2025): median area {pct(recent.median())}, range "
+      f"{pct(recent.max())} to {pct(recent.min())}")
+
     met = pd.read_csv(RES / "metrics.csv")
     w("")
     w("[1] Point accuracy (d = log predicted - log actual; MdAE = median |d|; PE10 = share within 10%)")
@@ -72,6 +101,15 @@ def main() -> int:
             parts = [f"{m}: MdAE {pct(sub.loc[m, 'mdae'], 2)} mean {pct(sub.loc[m, 'mean_err'], 2)} "
                      f"PE10 {pct(sub.loc[m, 'pe10'])}" for m in MODELS]
             w(f"    {g:>13} n={n:>9,}  " + " | ".join(parts))
+    for gt, label in [("year", "year of resale"), ("hold", "holding band"),
+                      ("first_sale", "first sale")]:
+        w(f"  by {label}: MdAE and mean error")
+        sub = met[met.group_type == gt]
+        for sp in SPLITS:
+            for g in sorted(sub[sub.split == sp].group.astype(str).unique()):
+                r = sub[(sub.split == sp) & (sub.group.astype(str) == g)].set_index("model")
+                w(f"    {sp} {g:>10} n={int(r.n.iloc[0]):>9,}  " + " | ".join(
+                    f"{m}: {pct(r.loc[m, 'mdae'], 2)} ({pct(r.loc[m, 'mean_err'], 2)})" for m in MODELS))
     w("  M2 against M1, change in MdAE (percentage points) by region and band of m")
     rm = met[met.group_type == "region_mband"].copy()
     for sp in SPLITS:
@@ -147,7 +185,8 @@ def main() -> int:
             w(f"    m in [{r.bin:+d}%, {r.bin + 1:+d}%): n={int(r.n):>8,} mean r {100 * r.mean_r:+.2f} "
               f"median r {100 * r.r_p50:+.2f} p10 {100 * r.r_p10:+.1f} p90 {100 * r.r_p90:+.1f} "
               f"loss {pct(r.share_nominal_loss)} below2 {pct(r.share_within_2pct_below, 2)} "
-              f"exact {pct(r.share_exact, 2)} above2 {pct(r.share_within_2pct_above, 2)}")
+              f"exact {pct(r.share_exact, 2)} above2 {pct(r.share_within_2pct_above, 2)} "
+              f"mean hold {r.mean_hold_y:.1f}y")
 
     dis = pd.read_csv(RES / "discontinuity.csv")
     w("")
