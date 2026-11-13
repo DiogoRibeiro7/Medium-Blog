@@ -24,7 +24,8 @@ EUR million: hospital SNS charges | pharmacy SNS charges | SNS total | patients'
   2024   2,273.0   1,685.4   3,958.4    920.7
   2025   2,523.3   1,893.8   4,417.0    966.1
 2025: SNS EUR 4,417.0 million (+11.6%; +458.6); hospital 2,523.3 (+250.3), pharmacy 1,893.8 (+208.4); average growth 2015-2025 6.3% a year
-  patients paid 33.8% of the retail value of SNS-reimbursed pharmacy medicines (EUR 966.1 million)
+  patients paid 33.8% of the retail value of SNS-reimbursed pharmacy medicines (EUR 966.1 million); 37.5% in 2015
+  average growth of the SNS bill: 2015-2019 2.4% a year, 2019-2025 8.9% a year; hospital share of the bill 50.8% in 2015, 57.1% in 2025
 Industry returns, Infarmed estimate for 2025: EUR 500-600 million = 11.3% to 13.6% of SNS charges; net SNS spending EUR 3,817-3,917 million
 Share of pharmacy sales value with no generic competition (APIFARMA): 51.8%
 SNS spending on medicines without generic competition (hospital share assumed, pharmacy share from APIFARMA):
@@ -38,6 +39,7 @@ SNS spending on medicines without generic competition (hospital share assumed, p
 Part 2: US over French prices, single-source oral medicines, Fisher index 5.820 (US gross); 3.655 with US rebates of 37.2% (RAND 2024) and French list prices
 Part 3: Portugal's reference ceiling over the French price 1.037 (presentations priced by all four countries), 1.060 (all pharmacy medicines priced)
 RAND 2024: US over 33 OECD countries, brand-name originators, 4.22 gross, 3.08 net
+Part 3 check of the rule against Infarmed's published prices (original brands priced by three or more reference countries): median Portuguese price over the rebuilt ceiling 1.051; within half a percent 7.3%, below 33.8%, above 58.9%; brands over 30 euros with the same pack everywhere (n=22): at the ceiling 31.8%, within 2 percent 45.5%
 Log decomposition of the US price over Portugal's net price, ln(US/PT net) = ln(US/reference) - ln(PT list/reference) - ln(1 - own return rate):
   Part 2, US gross / France       own returns 11.3%: US/PT net  6.33; reference countries' prices  95.5%, Portugal's formula premium  -2.0%, SNS's own returns  6.5%
   Part 2, US gross / France       own returns 13.6%: US/PT net  6.49; reference countries' prices  94.2%, Portugal's formula premium  -2.0%, SNS's own returns  7.8%
@@ -126,3 +128,8 @@ Draws 5000: US over Portuguese list price uniform 3.08-5.61; hospital share with
   share of the saving against US prices that is the SNS's own: 3.6% [2.7%, 5.4%]
   industry returns over what France's size would be worth: 1.49 [0.94, 3.35]
   administration gap over industry returns: 2.5 to 3.0
+One input at a time, the others at the middle of their ranges (saving against US prices, EUR million | SNS's own share of it):
+  all at the middle: 9,969 | 3.6%
+  US over Portuguese list price from 3.08 to 5.61: 6,334 to 13,604 | 5.6% to 2.6%
+  hospital share without competition from 0.60 to 0.90: 8,656 to 11,282 | 3.6% to 3.6%
+  industry returns from 500.00 to 600.00: 9,937 to 10,002 | 3.3% to 3.9%

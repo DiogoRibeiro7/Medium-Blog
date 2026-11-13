@@ -148,7 +148,11 @@ def main() -> None:
           f"{b.hospital:,.1f} (+{b.hospital - prev.hospital:,.1f}), pharmacy {b.pharmacy_sns:,.1f} "
           f"(+{b.pharmacy_sns - prev.pharmacy_sns:,.1f}); average growth {last - 10}-{last} {g10:.1%} a year")
     print(f"  patients paid {b.patients / b.retail:.1%} of the retail value of SNS-reimbursed pharmacy medicines "
-          f"(EUR {b.patients:,.1f} million)")
+          f"(EUR {b.patients:,.1f} million); {bill.loc[2015].patients / bill.loc[2015].retail:.1%} in 2015")
+    g1 = (bill.loc[2019].sns / bill.loc[2015].sns) ** 0.25 - 1
+    g2 = (bill.loc[last].sns / bill.loc[2019].sns) ** (1 / (last - 2019)) - 1
+    print(f"  average growth of the SNS bill: 2015-2019 {g1:.1%} a year, 2019-{last} {g2:.1%} a year; hospital share of the "
+          f"bill {bill.loc[2015].hospital / bill.loc[2015].sns:.1%} in 2015, {b.hospital / b.sns:.1%} in {last}")
     r_lo, r_hi = returns_lo / b.sns, returns_hi / b.sns
     print(f"Industry returns, Infarmed estimate for {last}: EUR {returns_lo:.0f}-{returns_hi:.0f} million = "
           f"{pct(r_lo, r_hi)} of SNS charges; net SNS spending EUR {b.sns - returns_hi:,.0f}-{b.sns - returns_lo:,.0f} million")
@@ -176,6 +180,16 @@ def main() -> None:
     print(f"Part 3: Portugal's reference ceiling over the French price {c_all:.3f} (presentations priced by all four "
           f"countries), {c_pharm:.3f} (all pharmacy medicines priced)")
     print(f"RAND 2024: US over 33 OECD countries, brand-name originators, {RAND_GROSS:.2f} gross, {RAND_NET:.2f} net")
+    o3 = out_text(3)
+    m1 = find(r"Portuguese maximum ex-factory price over the rebuilt ceiling: median ([\d.]+)\s+within half a percent of the "
+              r"ceiling ([\d.]+); below ([\d.]+); above ([\d.]+)", o3, "Part 3 check")
+    m2 = find(r"retail above 30 euros, the same pack in every country that sells it, n (\d+): at the ceiling ([\d.]+), "
+              r"within 2 percent ([\d.]+)", o3, "Part 3 check 2")
+    print(f"Part 3 check of the rule against Infarmed's published prices (original brands priced by three or more reference "
+          f"countries): median Portuguese price over the rebuilt ceiling {m1.group(1)}; within half a percent "
+          f"{float(m1.group(2)):.1%}, below {float(m1.group(3)):.1%}, above {float(m1.group(4)):.1%}; brands over 30 euros "
+          f"with the same pack everywhere (n={m2.group(1)}): at the ceiling {float(m2.group(2)):.1%}, within 2 percent "
+          f"{float(m2.group(3)):.1%}")
     benchmarks = [
         ("Part 2, US gross / France", us_fr_gross, c_all),
         ("Part 2, US net / France", us_fr_net, c_all),
@@ -428,6 +442,28 @@ def main() -> None:
     ratio = summary(ret_draw / size_fr)
     print(f"  industry returns over what France's size would be worth: {ratio[0]:.2f} [{ratio[1]:.2f}, {ratio[2]:.2f}]")
     print(f"  administration gap over industry returns: {admin_gap / returns_hi:.1f} to {admin_gap / returns_lo:.1f}")
+    print("One input at a time, the others at the middle of their ranges (saving against US prices, EUR million | "
+          "SNS's own share of it):")
+    mid = {"k": (RAND_NET + us_fr_gross / c_all) / 2, "h": sum(HOSPITAL_PROTECTED) / 2, "ret": (returns_lo + returns_hi) / 2}
+    ranges = {"k": (RAND_NET, us_fr_gross / c_all), "h": HOSPITAL_PROTECTED, "ret": (returns_lo, returns_hi)}
+    names_in = {"k": "US over Portuguese list price", "h": "hospital share without competition",
+                "ret": "industry returns"}
+
+    def ledger_point(k, hshare, ret):
+        sp_ = b.hospital * hshare + b.pharmacy_sns * prot_pharm
+        own_ = sp_ * ret / b.sns
+        return sp_ * (k - 1) + own_, own_ / (sp_ * (k - 1) + own_)
+
+    base_sav, base_share = ledger_point(mid["k"], mid["h"], mid["ret"])
+    print(f"  all at the middle: {base_sav:,.0f} | {base_share:.1%}")
+    for key in ("k", "h", "ret"):
+        vals = []
+        for v in ranges[key]:
+            args = dict(mid)
+            args[key] = v
+            vals.append(ledger_point(args["k"], args["h"], args["ret"]))
+        print(f"  {names_in[key]} from {ranges[key][0]:.2f} to {ranges[key][1]:.2f}: {vals[0][0]:,.0f} to {vals[1][0]:,.0f} | "
+              f"{vals[0][1]:.1%} to {vals[1][1]:.1%}")
     figure["ledger"] = ledger
     figure["pop_pt"] = pop_pt
 
