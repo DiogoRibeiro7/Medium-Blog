@@ -25,6 +25,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "data" / "ine_0012340_2021_dim2_0104_raw.json"
 MANIFEST = ROOT / "data" / "ine_0012340_2021_dim2_first_two_manifest.json"
 AUDIT = ROOT / "data" / "ine_0012340_2021_dim2_0104_audit.json"
+SECOND_RUN = ROOT / "data" / "ine_0012340_pr_run_43404869490"
+SECOND_SOURCE_HASHES = {
+    "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
+    "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
+}
 PINNED_SOURCE_SHA256 = "abbe42d2e98dd1522609da8d058663430f9b42fee99591634371379446c22635"
 CODE = "0104"
 
@@ -167,6 +172,38 @@ class PinnedINESliceAuditTests(unittest.TestCase):
         source[0]["Dados"]["2022"] = source[0]["Dados"].pop("2021")
         with self.assertRaisesRegex(ValueError, "reference period"):
             parse_dim2_slice(self.encode(source), CODE, self.codes)
+
+
+class TwoMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Check the later two-success artifact independently of the first run."""
+
+    def test_second_capture_matches_31_unique_amp_pairs(self) -> None:
+        manifest = SECOND_RUN / "partition_manifest.json"
+        codes = municipality_codes_from_panel()
+        observed: dict[str, dict[str, int]] = {}
+        unique_pairs: set[tuple[str, str]] = set()
+        with tempfile.TemporaryDirectory() as folder:
+            for code, expected_hash in SECOND_SOURCE_HASHES.items():
+                source = SECOND_RUN / f"ine_0012340_dim2_{code}_candidate.json"
+                raw = source.read_bytes()
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected_hash)
+                validated, record_count = parse_dim2_slice(raw, code, codes)
+                self.assertEqual(record_count, 347)
+                observed[code] = validated
+                unique_pairs.update(
+                    tuple(sorted((code, other))) for other in validated if other != code
+                )
+                report = run(source, manifest, code, Path(folder) / f"audit_{code}.json")
+                self.assertEqual(report["status"], "partial_match")
+                self.assertEqual(report["matched_pairs"], 16)
+                self.assertEqual(report["mismatched_pairs"], 0)
+                self.assertEqual(
+                    json.loads((SECOND_RUN / f"audit_{code}.json").read_text(encoding="utf-8")),
+                    report,
+                )
+        self.assertEqual(observed["0104"]["0107"], 34)
+        self.assertEqual(observed["0107"]["0104"], 34)
+        self.assertEqual(len(unique_pairs), 31)
 
 
 if __name__ == "__main__":
