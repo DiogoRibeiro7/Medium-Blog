@@ -1,0 +1,139 @@
+
+==============================================================================
+P0. The data
+==============================================================================
+source https://github.com/CSSEGISandData/COVID-19.git at commit 4360e50239b4eb6b22f3a1759323748f36752177
+US daily reports: 1062 files, 2020-04-12 to 2023-03-09; 51 states and DC; 54,162 state rows
+  landing time (commit), hours after the start of the file's date in UTC: 5th percentile 27.8, median 28.9, 95th 29.8, max 47.1
+  versions per file: median 184, max 240; files never changed after landing: 1
+  state rows whose count in the final version differs from the first: 18.5% (10019 of 54162)
+global time series: 1081 dates, 2020-03-24 to 2023-03-09, 204 countries; 210,226 rows
+holidays: python-holidays 0.108; US federal, 51 states, 196 countries
+
+==============================================================================
+P1. The RKI files after days off for the institute only (file of the next day)
+==============================================================================
+  Tue 08 Mar 2022 (International Women's Day, Berlin): file of Wed 09 Mar brought 217,189 new cases; same weekday, four weeks either side: median 228,568, smallest 188,056
+  Wed 08 Mar 2023 (International Women's Day, Berlin): file of Thu 09 Mar brought 9,742 new cases; same weekday, four weeks either side: median 12,838, smallest 3,282
+  Fri 08 Mar 2024 (International Women's Day, Berlin): file of Sat 09 Mar brought 0 new cases; same weekday, four weeks either side: median 239, smallest 0
+  Thu 08 May 2025 (one-off holiday, Berlin): file of Fri 09 May brought 0 new cases; same weekday, four weeks either side: median 96, smallest 0
+  Tue 24 Dec 2024 (Christmas Eve): file of Wed 25 Dec brought 0 new cases; same weekday, four weeks either side: median 1,151, smallest 0
+  Wed 24 Dec 2025 (Christmas Eve): file of Thu 25 Dec brought 39 new cases; same weekday, four weeks either side: median 1,420, smallest 0
+  Tue 31 Dec 2024 (New Year's Eve): file of Wed 01 Jan brought 0 new cases; same weekday, four weeks either side: median 792, smallest 0
+  Wed 31 Dec 2025 (New Year's Eve): file of Thu 01 Jan brought 0 new cases; same weekday, four weeks either side: median 1,052, smallest 39
+  weekday Berlin-only holidays in 2021-2023 daily files: 8 March 2022 (Tue) and 8 March 2023 (Wed); Christmas Eve and New Year's Eve fell on a weekend in 2022 and 2023
+
+==============================================================================
+P2. US states: unchanged files
+==============================================================================
+state rows with a file of the day before at landing: 54,111; unchanged 28.3% (15294 of 54111)
+  by year: 2020 3.3%, 2021 17.4%, 2022 49.3%, 2023 70.4%
+  by weekday: Mon 24.0%, Tue 18.9%, Wed 10.6%, Thu 18.0%, Fri 20.0%, Sat 51.4%, Sun 55.0%
+weekday state rows: 38,709; in the daily regime (at most 10% of ordinary weekdays unchanged within 28 days): 28,000 (72.3%), 51 states
+  daily-regime state rows by year: 2020 9,429, 2021 12,138, 2022 5,983, 2023 450
+
+==============================================================================
+P3. US states, daily regime: unchanged files by kind of weekday
+==============================================================================
+  ordinary                           1.0% (258 of 25683)
+  federal and state holiday          36.2% (391 of 1080)
+  state holiday only                 24.2% (43 of 178)
+  federal holiday, state open        6.0% (4 of 67)
+  Christmas Eve or New Year's Eve    4.3% (4 of 92)
+  day after a holiday                3.4% (31 of 900)
+  state holidays only, by name (at least 5 state-days): Election Day 3/19; Day After Thanksgiving 6/18; Good Friday 4/14; Confederate Memorial Day 1/11; Lincoln's Birthday 1/7; Lincoln's Birthday (observed) 1/7; Cesar Chavez Day 0/6; Christmas Eve (observed) 1/6; Christmas Eve 2/5; Patriots' Day 2/5; Susan B. Anthony Day 0/5
+  federal holidays the state did not observe, by name: Christmas Day (observed) 0/1; Columbus Day 3/54; Independence Day (observed) 0/1; Juneteenth National Independence Day (observed) 0/1; New Year's Day (observed) 0/1; Washington's Birthday 1/9
+  federal and state holidays, by name: Christmas Day 53%; Columbus Day 30%; Independence Day 32%; Juneteenth National Independence Day 15%; Labor Day 32%; Martin Luther King Jr. Day 28%; Memorial Day 36%; New Year's Day 52%; Thanksgiving Day 53%; Veterans Day 26%; Washington's Birthday 27%
+
+==============================================================================
+P4. The same date, states that observed it against states that did not (daily regime)
+==============================================================================
+  Columbus Day                 observed: 29.8% (17 of 57); not observed: 5.6% (3 of 54)
+  Day After Thanksgiving       observed: 40.0% (14 of 35); not observed: 25.0% (19 of 76)
+  Election Day                 observed: 15.8% (3 of 19); not observed: 1.1% (1 of 94)
+  Good Friday                  observed: 26.7% (4 of 15); not observed: 0.0% (0 of 61)
+  Confederate Memorial Day     observed: 9.1% (1 of 11); not observed: 1.9% (4 of 214)
+  pooled: observed 28.5% (39 of 137); not observed 5.4% (27 of 499)
+  Christmas Eve and New Year's Eve on a weekday where not a legal holiday: 2020-12-24 3/44; 2020-12-31 1/48
+
+==============================================================================
+P5. What a federal holiday calendar would miss, and what it would flag for nothing
+==============================================================================
+unchanged weekday files on a federal or state holiday: 438; on state holidays that are not federal: 43 (9.8%)
+federal holidays a state did not observe: 67 state-days, 63 of them with new data (94.0%)
+all state-days a federal calendar flags: 1147, unchanged on 34.4% (395 of 1147)
+all state-days the state's own calendar flags: 1258, unchanged on 34.5% (434 of 1258)
+
+==============================================================================
+P6. Robustness of P3 to the definition of the daily regime
+==============================================================================
+  at most  5% within 14 days: n 25,123; ordinary 0.3%, federal and state 35.1%, state only 23.9%, federal only 5.2%
+  at most  5% within 28 days: n 25,558; ordinary 0.5%, federal and state 34.6%, state only 24.7%, federal only 6.2%
+  at most  5% within 42 days: n 25,662; ordinary 0.6%, federal and state 34.6%, state only 23.7%, federal only 6.5%
+  at most 10% within 14 days: n 27,644; ordinary 0.7%, federal and state 36.1%, state only 24.6%, federal only 6.0%
+  at most 10% within 28 days: n 28,000; ordinary 1.0%, federal and state 36.2%, state only 24.2%, federal only 6.0%
+  at most 10% within 42 days: n 27,750; ordinary 1.0%, federal and state 36.0%, state only 24.0%, federal only 5.9%
+  at most 20% within 14 days: n 29,319; ordinary 1.3%, federal and state 37.8%, state only 24.4%, federal only 5.8%
+  at most 20% within 28 days: n 29,483; ordinary 1.5%, federal and state 37.4%, state only 24.7%, federal only 5.8%
+  at most 20% within 42 days: n 29,291; ordinary 1.6%, federal and state 37.2%, state only 24.7%, federal only 5.8%
+
+==============================================================================
+P7. The aggregator: countries outside the US
+==============================================================================
+countries with a holiday calendar: 196; weekday country rows 146,505; in the daily regime 75,247, 167 countries
+  ordinary                   1.4% (905 of 66521)
+  own public holiday         5.5% (163 of 2945)
+  day after own holiday      2.7% (54 of 1989)
+  US federal holiday only    2.1% (56 of 2641)
+  24-31 Dec or 2 Jan         3.1% (36 of 1151)
+  US federal holidays, by name: Christmas Day 5.7% of 159; Columbus Day 0.4% of 269; Independence Day 2.5% of 284; Juneteenth National Independence Day 1.6% of 184; Labor Day 2.4% of 287; Martin Luther King Jr. Day 3.9% of 280; Memorial Day 1.3% of 238; New Year's Day 3.8% of 130; Thanksgiving Day 0.7% of 284; Veterans Day 1.8% of 273; Washington's Birthday 1.2% of 253
+  Germany, weekday dates with an unchanged count: Mon 28 Mar 2022, Mon 04 Apr 2022, Wed 13 Apr 2022, Tue 26 Apr 2022, Wed 24 Aug 2022, Tue 30 Aug 2022, Mon 03 Oct 2022, Fri 10 Feb 2023, Mon 06 Mar 2023
+
+==============================================================================
+P8. Timestamps
+==============================================================================
+state rows unchanged from the day before: 15,294; with a new Last_Update all the same: 99.7% (15243 of 15294)
+state rows that changed: 38,817; with a new Last_Update: 100.0% (38817 of 38817)
+files landing more than 36 hours after the start of their date: 3 of 1062
+unchanged state rows whose file landed within 36 hours: 99.9% (15285 of 15294)
+
+==============================================================================
+P9. Unchanged files and the largest errors: US states against their final version
+==============================================================================
+state-days with a final 7-day count of at least 200: 52,236; unchanged 28.2%
+  absolute relative error of the 7-day count as first published: median 0.00%, 90th percentile 3.4%, 99th 62.2%; revised by more than 0.1%: 17.0%
+  worst 1% (at least 62.2% off): 523; unchanged 64.1%; too high 33%
+  worst 5% (at least 12.1% off): 2612; unchanged 35.4%; too high 27%
+  unchanged files still unchanged in the final version: 90.7% (13333 of 14708)
+  unchanged files filled in later: 1,375; among the worst 1% 21.0%, among the worst 5% 57.1%; mean absolute error 32.50%
+  unchanged files still unchanged: 13,333; among the worst 1% 0.3%, among the worst 5% 1.0%; mean absolute error 0.61%
+  the worst 1%: unchanged files filled in later 55.3% (289 of 523); still unchanged 8.8% (46 of 523)
+  the worst 5%: unchanged files filled in later 30.1% (785 of 2612); still unchanged 5.3% (139 of 2612)
+  of those filled in later, published a 7-day count of zero: 9.8% (135 of 1375); published too low: 75.8% (1042 of 1375)
+  files that changed: 37,528; among the worst 1% 0.5%, among the worst 5% 4.5%; mean absolute error 3.34%
+daily regime (all days of the week): 38,073 state-days; unchanged 13.0%
+  worst 1% (at least 40.7% off): 381; unchanged 27.3%
+  worst 5% (at least 11.9% off): 1904; unchanged 18.0%
+  mean absolute error: unchanged mornings 2.98%, others 2.49%
+  unchanged files still unchanged in the final version: 86.7% (4297 of 4959)
+
+==============================================================================
+P10. Germany as Johns Hopkins published it, against the RKI's count by reporting date
+==============================================================================
+  daily count for date d against the RKI file of d+0: correlation 0.678, identical on 2.9% of 701 days
+  daily count for date d against the RKI file of d+1: correlation 0.787, identical on 10.4% of 701 days
+  daily count for date d against the RKI file of d+2: correlation 0.664, identical on 3.0% of 701 days
+RKI reporting dates ending on d-1: 699 mornings, 2021-04-10 to 2023-03-09; unchanged 8.7% (61 of 699)
+  absolute relative error of the 7-day count as first published: mean 4.77%, median 1.98%; unchanged mornings 6.38%, others 4.62%
+  worst 5% (at least 18.2% off): 35; unchanged 20.0%
+  worst 10% (at least 13.2% off): 70; unchanged 12.9%
+  by weekday: Mon 6.1%, Tue 6.0%, Wed 6.0%, Thu 4.2%, Fri 3.8%, Sat 3.7%, Sun 3.5%
+  the ten largest errors: Sun 27 Mar 2022 -57.6% unchanged; Mon 28 Mar 2022 -57.0% unchanged; Mon 02 Jan 2023 +53.6%; Wed 28 Jul 2021 +52.1%; Sat 26 Mar 2022 -52.0%; Wed 04 Aug 2021 -47.3%; Fri 25 Mar 2022 -44.5%; Thu 24 Mar 2022 -36.3%; Tue 03 Jan 2023 +29.1%; Wed 23 Mar 2022 -27.1%
+RKI reporting dates ending on d-0: 699 mornings, 2021-04-10 to 2023-03-09; unchanged 8.7% (61 of 699)
+  absolute relative error of the 7-day count as first published: mean 4.98%, median 2.89%; unchanged mornings 6.23%, others 4.86%
+  worst 5% (at least 15.1% off): 35; unchanged 17.1%
+  worst 10% (at least 10.6% off): 70; unchanged 14.3%
+Johns Hopkins' final version of the German series: differs from the first published on 89.1% (623 of 699)
+  final cumulative count against the first published: from -4.27% to 4.26%
+  equal to the count first published for the day before: 170 dates, 2022-04-19 to 2022-12-28
+  unchanged dates: first published 61, final version 185; by quarter 2021Q2 1/1, 2021Q3 0/26, 2021Q4 0/28, 2022Q1 2/28, 2022Q2 5/30, 2022Q3 16/26, 2022Q4 19/28, 2023Q1 18/18
