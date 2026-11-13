@@ -31,11 +31,35 @@ jobs:
           path: ${{ runner.temp }}/tax-events/author_event_probe.json
           retention-days: 7
           if-no-files-found: warn
-      - name: Fetch WID original country CSVs and verify top 1% series
+      - name: Fetch WID original 18-country CSVs and verify top 1% series
         id: wid_probe
         continue-on-error: true
-        run: python -m causal_tax_cuts.wid --countries USA GBR FRA --output-dir "$RUNNER_TEMP/wid-source"
-      - name: Publish selected WID values and SHA-256 source manifest
+        run: python -m causal_tax_cuts.wid --output-dir "$RUNNER_TEMP/wid-source"
+      - name: Join published policy treatments and official top-income observations
+        id: build_panel
+        if: steps.wid_probe.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python -m causal_tax_cuts.prepare \
+            --events "$RUNNER_TEMP/tax-events/hope_limberg_reforms_11_2020.csv" \
+            --outcomes "$RUNNER_TEMP/wid-source/wid_top1_pretax.csv" \
+            --event-mode binary-panel \
+            --event-country iso3 \
+            --event-year year \
+            --event-treatment taxcut_2SD \
+            --fields top1_share_pct \
+            --output "$RUNNER_TEMP/tax-study/panel.csv"
+      - name: Run exploratory treatment-history-only matching
+        id: estimate
+        if: steps.build_panel.outcome == 'success'
+        continue-on-error: true
+        run: |
+          python -m causal_tax_cuts.analysis \
+            --panel "$RUNNER_TEMP/tax-study/panel.csv" \
+            --outcome top1_share_pct \
+            --lags 5 --horizon 5 --min-events 5 \
+            --output "$RUNNER_TEMP/tax-study/results"
+      - name: Publish WID values and SHA-256 source manifest
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -43,5 +67,18 @@ jobs:
           path: |
             ${{ runner.temp }}/wid-source/wid_top1_pretax.csv
             ${{ runner.temp }}/wid-source/wid_top1_provenance.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Publish joined panel and exploratory matching audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-real-data-study
+          path: |
+            ${{ runner.temp }}/tax-study/panel.csv
+            ${{ runner.temp }}/tax-study/panel.audit.json
+            ${{ runner.temp }}/tax-study/results/event_effects.csv
+            ${{ runner.temp }}/tax-study/results/att_by_horizon.csv
+            ${{ runner.temp }}/tax-study/results/run_metadata.json
           retention-days: 7
           if-no-files-found: warn

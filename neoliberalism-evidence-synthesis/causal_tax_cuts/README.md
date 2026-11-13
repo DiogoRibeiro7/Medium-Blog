@@ -80,10 +80,20 @@ country-year coverage and missing years. **It neither extrapolates missing
 years nor claims to reproduce the WID vintage used in the 2022 paper.**
 
 The separate [source-probe GitHub Action](../../.github/workflows/causal-tax-source-probe.yml)
-tests public access and makes a limited three-country WID extract available
-as a short-lived CI artifact. It uploads only author-source **metadata**, not
-the authors' original CSV. A failed live WID fetch is logged and must not
-be misinterpreted as successful empirical verification.
+tests public access and processes the full 18-country WID sample. The live
+author file was verified to have **969 rows** (19 countries × 51 years) and
+the actual fields `iso3`, `year`, `taxcut_2SD` and `taxcut_1SD`, plus an
+unnamed original row-index column. The runner configures the **2-SD** series
+without guessing the layout. Three initial WID downloads (USA, GBR, FRA)
+successfully yielded 51 annual rows each; the full 18-country coverage still
+needs to be checked on the extended run.
+
+The Action uploads only author-source **metadata**, not the authors' raw CSV.
+It attempts to produce a short-lived, audited joined panel and **exploratory
+treatment-history-only** matching output. These are not licensed as published
+paper replication and cannot be treated as a full causal result. A failed
+live download, paper-sample audit or estimation step is recorded in CI and
+must not be described as empirical verification.
 
 1. Download the authors' file via the link above. Inspect the true headings:
 
