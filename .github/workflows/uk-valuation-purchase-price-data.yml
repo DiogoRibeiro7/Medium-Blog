@@ -88,6 +88,5 @@ jobs:
             echo "Results unchanged; nothing to commit."
           else
             git commit -m "uk-valuation-purchase-price: results from the Price Paid Data ($(date -u +%Y-%m-%d))"
-            git pull --rebase --autostash
             git push
           fi
