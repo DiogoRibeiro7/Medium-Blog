@@ -116,6 +116,12 @@ to the authors' 2022-vintage dataset; the working paper used a documented
 interpolation procedure for some top-income observations. Our pipeline does
 **not** impute them. Treat this as a real-coverage finding, not an ATT.
 
+The fully completed live run also produced **exploratory** matched contrasts.
+The frozen source-provenance manifest, six observed horizon means and limits
+of the identification strategy are documented in
+[`results/README.md`](results/README.md). The matched comparison is **not**
+a replication of the published PanelMatch method or proof of causality.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash

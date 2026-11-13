@@ -1,0 +1,41 @@
+{
+  "actual_download_url": "https://drive.google.com/uc?export=download&id=1FgV9wfFl7FG5cl7PZ7UMzQQ24Wye0VT3",
+  "bytes": 21254,
+  "columns": [
+    "",
+    "iso3",
+    "year",
+    "taxcut_2SD",
+    "taxcut_1SD"
+  ],
+  "delimiter": ",",
+  "examples": [
+    {
+      "": "1",
+      "iso3": "AUS",
+      "taxcut_1SD": "0",
+      "taxcut_2SD": "0",
+      "year": "1965"
+    },
+    {
+      "": "2",
+      "iso3": "AUS",
+      "taxcut_1SD": "0",
+      "taxcut_2SD": "0",
+      "year": "1966"
+    },
+    {
+      "": "3",
+      "iso3": "AUS",
+      "taxcut_1SD": "0",
+      "taxcut_2SD": "0",
+      "year": "1967"
+    }
+  ],
+  "fetched_at_utc": "2026-11-13T14:46:48.810188+00:00",
+  "original_filename": "hope_limberg_reforms_11_2020.csv",
+  "row_count": 969,
+  "sha256": "3f1bc22a526d3beff2409de30e5644c6dc696b78614b46bede148cb80f7ad653",
+  "source_page": "https://www.taxrich.uk/data",
+  "status": "downloaded"
+}
