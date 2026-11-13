@@ -45,7 +45,8 @@ jobs:
       - name: Rerun each part and compare with the committed output
         run: |
           status=0
-          for part in part*/; do
+          for part in part*/ followup*/; do
+            [ -d "$part" ] || continue
             # each part has one script that prints the numbers (*_numbers.py); fetch.py and
             # figures.py are not compared
             main=$(ls "$part"*_numbers.py)
@@ -62,6 +63,7 @@ jobs:
 
       - name: Check that the figures script runs
         run: |
-          for part in part*/; do
+          for part in part*/ followup*/; do
+            [ -d "$part" ] || continue
             (cd "$part" && python figures.py)
           done
