@@ -1,0 +1,44 @@
+{
+  "frozen_at": "2026-11-13",
+  "origin_repository": "DiogoRibeiro7/Medium-Blog",
+  "origin_commit": "d054aeb97a3dba4e93eb489157c3c2cd11d48dd2",
+  "scope": "Frozen observational inputs; no treatment-effect claims; source usage terms remain those of the original publishers.",
+  "snapshots": {
+    "fte_salary_2015_2025.csv": {
+      "sha256": "7b3a1fae004b1f957e6c929f731ebebee51553f671c9bd93c15d9bf0513339c8",
+      "rows": 55,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/minimum-wage-in-work-poverty/data/fte_salary.csv",
+      "transformation": "Filtered `nama_10_fte`, annual EUR, PT/ES/FR/DE/EU27, 2015–2025; original values and flags preserved."
+    },
+    "housing_indices_2015_2025.csv": {
+      "sha256": "e3aede12542f414a07c6706fc0686724954b4590b29000c7649f978e8591a892",
+      "rows": 55,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/housing-supply-counterfactual/data/annual_housing_indices_2015_2025.csv",
+      "transformation": "Unmodified snapshot derived from Eurostat `prc_hpi_q`, `tipsho30`, `tipsho60`."
+    },
+    "portugal_labour_shares_1995_2024.csv": {
+      "sha256": "b2e7428507d6093c6eca62c280f00a5d24154fb6f2f389fc9c440c789bb08eba",
+      "rows": 540,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/portugal-labour-share/results/shares_long.csv",
+      "transformation": "Unmodified derived 18-definition panel from Eurostat national accounts."
+    },
+    "us_growth_investment_1964_2018.csv": {
+      "sha256": "f9e17c56004842c2a3ca24c79e17d79494b290e713c91b63fe6e95f46712e84a",
+      "rows": 55,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/tax-cuts-rich-historical-cycles/data/real_growth_private_investment_1964_2018.csv",
+      "transformation": "Unmodified BEA macroeconomic series, descriptive only."
+    },
+    "us_household_gini_1967_2018.csv": {
+      "sha256": "b5eff156abd2d5479eb9bf827104c6ced2c1d2cb3d3c6fd2fe988c46ebda7c6e",
+      "rows": 52,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/tax-cuts-rich-historical-cycles/data/household_gini_1967_2018.csv",
+      "transformation": "Unmodified Census money-income Gini, 1993 survey break."
+    },
+    "us_top_income_tax_rate_1964_2018.csv": {
+      "sha256": "157d26cd2810f5cb76e88da05553846c3da562957a106f26460beca5e30a77c7",
+      "rows": 55,
+      "origin_url": "https://github.com/DiogoRibeiro7/Medium-Blog/blob/d054aeb97a3dba4e93eb489157c3c2cd11d48dd2/tax-cuts-rich-historical-cycles/data/top_marginal_rate_1964_2018.csv",
+      "transformation": "Unmodified IRS highest statutory marginal income-tax rate through FRED."
+    }
+  }
+}
