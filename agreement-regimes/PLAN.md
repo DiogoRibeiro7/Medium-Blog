@@ -76,4 +76,13 @@ results; every forward window.
 
 ## Changes after registration
 
-None yet. Any change will be listed here with its reason and date, and marked in the article.
+None to the registered test.
+
+## Descriptive analyses added after the results (2026-11-13)
+
+Not part of the registered test, and labelled as such in the article; printed by `details.py`.
+
+- After the forward results: the rule computed on each forward window's own 24 months (in-period), compared with
+  the observed value over the same months, to separate the rule's description of a period from its forecast of the
+  next one. With the three largest deviations in the trailing and the forward months of each window.
+- The motivating pair's whole-history deviations, counted by size and year.

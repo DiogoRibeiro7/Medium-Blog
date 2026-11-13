@@ -21,7 +21,8 @@ test pair, TLC FHV, met the registered regime criterion, and there the segment r
 one pair). Forward in time, the rule from the previous 36 months was within a factor of two of the loss caught
 over the next 24 months in 9 of 17 windows (H3a not supported), closer than the expanding-history rule in 11 of
 the 13 windows where they differ (H3b supported), unbiased in the median but off by a typical factor of about
-five.
+five. Computed on each forward window's own months instead (descriptive, added after the results), the rule was
+within a factor of two in 15 of 17 windows, and in all 8 of the motivating pair's.
 
 ## Files
 
@@ -32,7 +33,7 @@ five.
 - `evaluate.py`: the test; writes `results/summary.txt`, `results/pairs.json`, `results/windows.csv` and
   `results/curves.csv`.
 - `details.py`: descriptive numbers the article quotes that `evaluate.py` does not print
-  (`results/details.txt`); not part of the registered test.
+  (`results/details.txt`), including the in-period rule of each forward window; not part of the registered test.
 - `figures.py`, `figures/`: the figures of the article.
 - `tests/`: unit tests.
 
