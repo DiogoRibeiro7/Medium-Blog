@@ -51,6 +51,8 @@ jobs:
         run: python -m pytest -q
       - name: The registered test
         run: python evaluate.py --ratios ../second-count-prediction/results/corrected/ratios.csv --out results
+      - name: Descriptive numbers quoted in the article
+        run: python details.py --results results --out results/details.txt
       - name: Figures
         run: python figures.py
       - name: Results unchanged on pull requests

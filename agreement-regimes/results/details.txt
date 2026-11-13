@@ -1,0 +1,17 @@
+Descriptive numbers quoted in the article (not part of the registered test).
+
+Later segment, test pairs: segment rule closer than the full-history rule in 5 of 7 (chicago / drivers, TLC yellow / monthly report, TLC green / monthly report, TLC fhv / monthly report, TLC fhvhv / monthly report)
+Later segment, test pairs: full-history rule also within a factor of two in 7 of 7
+
+Forward windows, test pairs: 17; trailing rule within a factor of two in 9
+  log(observed / trailing): median -0.016, mean -0.139, standard deviation 1.557 (a factor of 4.7)
+  log(observed / expanding): median +0.110, standard deviation 1.724
+  misses with the observed value above twice the trailing rule: 4; below half of it: 4
+
+Forward windows, motivating pair: 8; trailing rule within a factor of two in 2
+  log(observed / trailing): median -1.568, mean -1.300, standard deviation 1.331 (a factor of 3.8)
+  log(observed / expanding): median -3.195, standard deviation 1.025
+  misses with the observed value above twice the trailing rule: 1; below half of it: 5
+
+Order statistics: the 95th percentile of 36 deviations sits at position 33.25 of 0..35: between the deviations ranked 3 and 2 from the top
+Over 24 months the matched budget allows 1 clean alarm(s), and 90% detection needs 22 of 24 months caught, so at most 2 months may be missed
