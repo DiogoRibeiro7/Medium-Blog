@@ -1,0 +1,786 @@
+{
+ "bill": {
+  "hospital": [
+   1220.2,
+   1259.7,
+   1258.2,
+   1268.1,
+   1314.9,
+   1399.2,
+   1571.2,
+   1761.7,
+   1959.0,
+   2273.0,
+   2523.3
+  ],
+  "patients": [
+   709.8,
+   697.3,
+   699.6,
+   710.6,
+   732.6,
+   729.7,
+   760.9,
+   816.9,
+   859.6,
+   920.7,
+   966.1
+  ],
+  "pharmacy": [
+   1182.2,
+   1189.8,
+   1213.5,
+   1255.0,
+   1327.2,
+   1359.4,
+   1430.3,
+   1567.3,
+   1593.8,
+   1685.4,
+   1893.8
+  ],
+  "years": [
+   2015,
+   2016,
+   2017,
+   2018,
+   2019,
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ]
+ },
+ "decomposition": [
+  {
+   "benchmark": "Part 2, US gross / France",
+   "borrowed": 0.9548102433967958,
+   "own": 0.0651248537935542,
+   "premium": -0.019935097190350005,
+   "r": 0.1131985545194438,
+   "us_pt_net": 6.326041702245687
+  },
+  {
+   "benchmark": "Part 2, US gross / France",
+   "borrowed": 0.9416094787294162,
+   "own": 0.07805000503046296,
+   "premium": -0.01965948375987931,
+   "r": 0.13583826542333255,
+   "us_pt_net": 6.4917742839769845
+  },
+  {
+   "benchmark": "Part 2, US net / France",
+   "borrowed": 0.939570248232489,
+   "own": 0.08708785008947978,
+   "premium": -0.0266580983219688,
+   "r": 0.1131985545194438,
+   "us_pt_net": 3.9727541890102915
+  },
+  {
+   "benchmark": "Part 2, US net / France",
+   "borrowed": 0.9222799750763594,
+   "own": 0.10388755236740534,
+   "premium": -0.026167527443764757,
+   "r": 0.13583826542333255,
+   "us_pt_net": 4.076834250337546
+  },
+  {
+   "benchmark": "RAND, US gross / 33 countries",
+   "borrowed": 0.922989400304461,
+   "own": 0.0770105996955391,
+   "premium": -0.0,
+   "r": 0.1131985545194438,
+   "us_pt_net": 4.75867514820433
+  },
+  {
+   "benchmark": "RAND, US gross / 33 countries",
+   "borrowed": 0.9079376148267067,
+   "own": 0.0920623851732933,
+   "premium": -0.0,
+   "r": 0.13583826542333255,
+   "us_pt_net": 4.883345132224906
+  },
+  {
+   "benchmark": "RAND, US net / 33 countries",
+   "borrowed": 0.9035116318452414,
+   "own": 0.09648836815475866,
+   "premium": -0.0,
+   "r": 0.1131985545194438,
+   "us_pt_net": 3.47315626930553
+  },
+  {
+   "benchmark": "RAND, US net / 33 countries",
+   "borrowed": 0.885126704782732,
+   "own": 0.11487329521726793,
+   "premium": -0.0,
+   "r": 0.13583826542333255,
+   "us_pt_net": 3.564147632050405
+  }
+ ],
+ "ledger": [
+  {
+   "hi": 13783.9607382575,
+   "label": "Saving against US prices on medicines without generic competition",
+   "lo": 6555.835922768191,
+   "med": 9969.35403274027
+  },
+  {
+   "hi": 13414.352042531877,
+   "label": "  of which: other countries' prices, through the reference rule",
+   "lo": 6220.162455236599,
+   "med": 9612.83474446057
+  },
+  {
+   "hi": 414.1469675597579,
+   "label": "  of which: the SNS's own returns on those medicines",
+   "lo": 303.8703435462917,
+   "med": 357.7979035428737
+  },
+  {
+   "hi": 594.4890638040681,
+   "label": "Industry returns to the SNS, all medicines (Infarmed)",
+   "lo": 504.51315359239044,
+   "med": 550.45563414695
+  },
+  {
+   "hi": 571.4151738974535,
+   "label": "What France's size would be worth at Portugal's income (price level)",
+   "lo": 157.78170543663788,
+   "med": 368.63544678754596
+  },
+  {
+   "hi": 163.58686959223195,
+   "label": "Spending deferred by the extra wait (upper end) = health forgone (lower bound)",
+   "lo": 120.71810641985138,
+   "med": 141.92358560717634
+  },
+  {
+   "hi": 1507.0977127030064,
+   "label": "Administration: Portugal's share against the US share of health spending",
+   "lo": 1507.0977127030064,
+   "med": 1507.0977127030064
+  }
+ ],
+ "pop_pt": 11387222.0,
+ "sha": [
+  {
+   "admin": 0.0303,
+   "area": "AUS",
+   "name": "Australia",
+   "pharma_oop": 0.5,
+   "pharma_public": 0.4959,
+   "year": 2023
+  },
+  {
+   "admin": 0.0436,
+   "area": "AUT",
+   "name": "Austria",
+   "pharma_oop": 0.3057,
+   "pharma_public": 0.6792,
+   "year": 2024
+  },
+  {
+   "admin": 0.032,
+   "area": "BEL",
+   "name": "Belgium",
+   "pharma_oop": 0.2623,
+   "pharma_public": 0.7371,
+   "year": 2024
+  },
+  {
+   "admin": 0.0126,
+   "area": "BGR",
+   "name": "Bulgaria",
+   "pharma_oop": 0.7577,
+   "pharma_public": 0.2423,
+   "year": 2024
+  },
+  {
+   "admin": 0.024,
+   "area": "BIH",
+   "name": "Bosnia and Herzegovina",
+   "pharma_oop": 0.6741,
+   "pharma_public": 0.3259,
+   "year": 2024
+  },
+  {
+   "admin": 0.0618,
+   "area": "BRA",
+   "name": "Brazil",
+   "pharma_oop": 0.8963,
+   "pharma_public": 0.1037,
+   "year": 2024
+  },
+  {
+   "admin": 0.0336,
+   "area": "CAN",
+   "name": "Canada",
+   "pharma_oop": 0.3021,
+   "pharma_public": 0.3564,
+   "year": 2025
+  },
+  {
+   "admin": 0.0436,
+   "area": "CHE",
+   "name": "Switzerland",
+   "pharma_oop": 0.2349,
+   "pharma_public": 0.7249,
+   "year": 2024
+  },
+  {
+   "admin": 0.1024,
+   "area": "CHL",
+   "name": "Chile",
+   "pharma_oop": 0.7086,
+   "pharma_public": 0.2673,
+   "year": 2024
+  },
+  {
+   "admin": 0.0587,
+   "area": "COL",
+   "name": "Colombia",
+   "pharma_oop": 0.1389,
+   "pharma_public": 0.8023,
+   "year": 2017
+  },
+  {
+   "admin": 0.0835,
+   "area": "CRI",
+   "name": "Costa Rica",
+   "pharma_oop": 0.9854,
+   "pharma_public": 0.0056,
+   "year": 2024
+  },
+  {
+   "admin": 0.0198,
+   "area": "CYP",
+   "name": "Cyprus",
+   "pharma_oop": 0.2574,
+   "pharma_public": 0.7303,
+   "year": 2024
+  },
+  {
+   "admin": 0.0185,
+   "area": "CZE",
+   "name": "Czechia",
+   "pharma_oop": 0.4119,
+   "pharma_public": 0.5881,
+   "year": 2024
+  },
+  {
+   "admin": 0.0417,
+   "area": "DEU",
+   "name": "Germany",
+   "pharma_oop": 0.1643,
+   "pharma_public": 0.8321,
+   "year": 2024
+  },
+  {
+   "admin": 0.0422,
+   "area": "DNK",
+   "name": "Denmark",
+   "pharma_oop": 0.5468,
+   "pharma_public": 0.3896,
+   "year": 2025
+  },
+  {
+   "admin": 0.0283,
+   "area": "ESP",
+   "name": "Spain",
+   "pharma_oop": 0.3321,
+   "pharma_public": 0.6679,
+   "year": 2024
+  },
+  {
+   "admin": 0.0115,
+   "area": "EST",
+   "name": "Estonia",
+   "pharma_oop": 0.4077,
+   "pharma_public": 0.5725,
+   "year": 2024
+  },
+  {
+   "admin": 0.0082,
+   "area": "FIN",
+   "name": "Finland",
+   "pharma_oop": 0.3876,
+   "pharma_public": 0.5824,
+   "year": 2024
+  },
+  {
+   "admin": 0.0511,
+   "area": "FRA",
+   "name": "France",
+   "pharma_oop": 0.1258,
+   "pharma_public": 0.817,
+   "year": 2025
+  },
+  {
+   "admin": 0.0162,
+   "area": "GBR",
+   "name": "United Kingdom",
+   "pharma_oop": 0.2972,
+   "pharma_public": 0.7028,
+   "year": 2024
+  },
+  {
+   "admin": 0.0296,
+   "area": "GEO",
+   "name": "Georgia",
+   "pharma_oop": 0.8819,
+   "pharma_public": 0.0924,
+   "year": 2023
+  },
+  {
+   "admin": 0.0138,
+   "area": "GRC",
+   "name": "Greece",
+   "pharma_oop": 0.5157,
+   "pharma_public": 0.4843,
+   "year": 2024
+  },
+  {
+   "admin": 0.0491,
+   "area": "HRV",
+   "name": "Croatia",
+   "pharma_oop": 0.2342,
+   "pharma_public": 0.7431,
+   "year": 2024
+  },
+  {
+   "admin": 0.017,
+   "area": "HUN",
+   "name": "Hungary",
+   "pharma_oop": 0.5152,
+   "pharma_public": 0.4531,
+   "year": 2024
+  },
+  {
+   "admin": 0.0523,
+   "area": "IDN",
+   "name": "Indonesia",
+   "pharma_oop": 0.9049,
+   "pharma_public": NaN,
+   "year": 2024
+  },
+  {
+   "admin": 0.0196,
+   "area": "IRL",
+   "name": "Ireland",
+   "pharma_oop": NaN,
+   "pharma_public": NaN,
+   "year": 2025
+  },
+  {
+   "admin": 0.0159,
+   "area": "ISL",
+   "name": "Iceland",
+   "pharma_oop": 0.568,
+   "pharma_public": 0.3853,
+   "year": 2025
+  },
+  {
+   "admin": 0.0914,
+   "area": "ISR",
+   "name": "Israel",
+   "pharma_oop": NaN,
+   "pharma_public": NaN,
+   "year": 2023
+  },
+  {
+   "admin": 0.0205,
+   "area": "ITA",
+   "name": "Italy",
+   "pharma_oop": 0.3387,
+   "pharma_public": 0.6613,
+   "year": 2025
+  },
+  {
+   "admin": 0.0132,
+   "area": "JPN",
+   "name": "Japan",
+   "pharma_oop": 0.271,
+   "pharma_public": 0.7199,
+   "year": 2024
+  },
+  {
+   "admin": 0.0327,
+   "area": "KOR",
+   "name": "Korea",
+   "pharma_oop": 0.4649,
+   "pharma_public": 0.5077,
+   "year": 2025
+  },
+  {
+   "admin": 0.0586,
+   "area": "LIE",
+   "name": "Liechtenstein",
+   "pharma_oop": 0.2454,
+   "pharma_public": 0.7379,
+   "year": 2024
+  },
+  {
+   "admin": 0.01,
+   "area": "LTU",
+   "name": "Lithuania",
+   "pharma_oop": 0.4947,
+   "pharma_public": 0.4925,
+   "year": 2024
+  },
+  {
+   "admin": 0.0412,
+   "area": "LUX",
+   "name": "Luxembourg",
+   "pharma_oop": 0.2109,
+   "pharma_public": 0.7567,
+   "year": 2025
+  },
+  {
+   "admin": 0.0232,
+   "area": "LVA",
+   "name": "Latvia",
+   "pharma_oop": 0.5329,
+   "pharma_public": 0.4608,
+   "year": 2024
+  },
+  {
+   "admin": 0.0066,
+   "area": "MDA",
+   "name": "Moldova",
+   "pharma_oop": 0.7305,
+   "pharma_public": 0.2691,
+   "year": 2024
+  },
+  {
+   "admin": 0.0532,
+   "area": "MEX",
+   "name": "Mexico",
+   "pharma_oop": 0.9671,
+   "pharma_public": NaN,
+   "year": 2024
+  },
+  {
+   "admin": 0.0306,
+   "area": "MLT",
+   "name": "Malta",
+   "pharma_oop": 0.3899,
+   "pharma_public": 0.5715,
+   "year": 2024
+  },
+  {
+   "admin": 0.018,
+   "area": "MNE",
+   "name": "Montenegro",
+   "pharma_oop": 0.4969,
+   "pharma_public": 0.439,
+   "year": 2024
+  },
+  {
+   "admin": 0.0297,
+   "area": "NLD",
+   "name": "Netherlands",
+   "pharma_oop": 0.3086,
+   "pharma_public": 0.6855,
+   "year": 2025
+  },
+  {
+   "admin": 0.0177,
+   "area": "NOR",
+   "name": "Norway",
+   "pharma_oop": 0.4726,
+   "pharma_public": 0.5274,
+   "year": 2022
+  },
+  {
+   "admin": 0.1031,
+   "area": "PER",
+   "name": "Peru",
+   "pharma_oop": NaN,
+   "pharma_public": NaN,
+   "year": 2024
+  },
+  {
+   "admin": 0.0358,
+   "area": "POL",
+   "name": "Poland",
+   "pharma_oop": 0.6051,
+   "pharma_public": 0.3933,
+   "year": 2024
+  },
+  {
+   "admin": 0.0229,
+   "area": "PRT",
+   "name": "Portugal",
+   "pharma_oop": 0.4464,
+   "pharma_public": 0.5453,
+   "year": 2024
+  },
+  {
+   "admin": 0.0266,
+   "area": "ROU",
+   "name": "Romania",
+   "pharma_oop": 0.4866,
+   "pharma_public": 0.5133,
+   "year": 2024
+  },
+  {
+   "admin": 0.0147,
+   "area": "SRB",
+   "name": "Serbia",
+   "pharma_oop": 0.6839,
+   "pharma_public": 0.3161,
+   "year": 2024
+  },
+  {
+   "admin": 0.0287,
+   "area": "SVK",
+   "name": "Slovak Republic",
+   "pharma_oop": 0.3525,
+   "pharma_public": 0.6475,
+   "year": 2024
+  },
+  {
+   "admin": 0.0148,
+   "area": "SVN",
+   "name": "Slovenia",
+   "pharma_oop": 0.2423,
+   "pharma_public": 0.7477,
+   "year": 2024
+  },
+  {
+   "admin": 0.012,
+   "area": "SWE",
+   "name": "Sweden",
+   "pharma_oop": 0.4351,
+   "pharma_public": 0.5649,
+   "year": 2024
+  },
+  {
+   "admin": 0.1339,
+   "area": "THA",
+   "name": "Thailand",
+   "pharma_oop": 0.8585,
+   "pharma_public": 0.0014,
+   "year": 2023
+  },
+  {
+   "admin": 0.0738,
+   "area": "USA",
+   "name": "United States",
+   "pharma_oop": 0.2992,
+   "pharma_public": 0.6938,
+   "year": 2024
+  }
+ ],
+ "size": {
+  "beta": [
+   0.7417202821785321,
+   -0.17442670821206127,
+   1.1223202079204977
+  ],
+  "points": [
+   {
+    "aic": 112.0,
+    "geo": "AT",
+    "part_aic": 5.226000169583225,
+    "part_pop": -1.284314100571489,
+    "pli": 115.94,
+    "pop": 9197213.0
+   },
+   {
+    "aic": 112.0,
+    "geo": "BE",
+    "part_aic": 5.3136683468082175,
+    "part_pop": -1.2160575129552198,
+    "pli": 124.13,
+    "pop": 11883495.0
+   },
+   {
+    "aic": 74.0,
+    "geo": "BG",
+    "part_aic": 4.843184843109524,
+    "part_pop": -1.1749748754239295,
+    "pli": 81.23,
+    "pop": 6437360.0
+   },
+   {
+    "aic": 115.0,
+    "geo": "CH",
+    "part_aic": 5.674400777914775,
+    "part_pop": -0.8643663595190382,
+    "pli": 181.76,
+    "pop": 9051029.0
+   },
+   {
+    "aic": 96.0,
+    "geo": "CY",
+    "part_aic": 5.184596460104253,
+    "part_pop": -0.9833225148911008,
+    "pli": 131.77,
+    "pop": 982966.0
+   },
+   {
+    "aic": 82.0,
+    "geo": "CZ",
+    "part_aic": 5.11845163182161,
+    "part_pop": -1.0548795624513243,
+    "pli": 102.78,
+    "pop": 10909500.0
+   },
+   {
+    "aic": 108.0,
+    "geo": "DK",
+    "part_aic": 5.502123751255739,
+    "part_pop": -0.9349255595116405,
+    "pli": 157.85,
+    "pop": 5992734.0
+   },
+   {
+    "aic": 74.0,
+    "geo": "EE",
+    "part_aic": 4.850584675892394,
+    "part_pop": -1.0503622456925221,
+    "pli": 92.01,
+    "pop": 1369995.0
+   },
+   {
+    "aic": 81.0,
+    "geo": "EL",
+    "part_aic": 4.914518045193813,
+    "part_pop": -1.2412172929841843,
+    "pli": 84.14,
+    "pop": 10372335.0
+   },
+   {
+    "aic": 92.0,
+    "geo": "ES",
+    "part_aic": 5.211303813685347,
+    "part_pop": -1.2051645541995004,
+    "pli": 100.63,
+    "pop": 49128297.0
+   },
+   {
+    "aic": 104.0,
+    "geo": "FI",
+    "part_aic": 5.297267961820864,
+    "part_pop": -1.0927750540328152,
+    "pli": 129.21,
+    "pop": 5635971.0
+   },
+   {
+    "aic": 106.0,
+    "geo": "FR",
+    "part_aic": 5.0709261692136,
+    "part_pop": -1.530121408676548,
+    "pli": 85.24,
+    "pop": 68882600.0
+   },
+   {
+    "aic": 72.0,
+    "geo": "HU",
+    "part_aic": 4.829193962205318,
+    "part_pop": -1.188010539019836,
+    "pli": 77.75,
+    "pop": 9539502.0
+   },
+   {
+    "aic": 116.0,
+    "geo": "IS",
+    "part_aic": 5.305759992342465,
+    "part_pop": -1.0044132611056131,
+    "pli": 159.55,
+    "pop": 389444.0
+   },
+   {
+    "aic": 98.0,
+    "geo": "IT",
+    "part_aic": 5.48479454576733,
+    "part_pop": -1.0163786208711523,
+    "pli": 130.47,
+    "pop": 58943464.0
+   },
+   {
+    "aic": 89.0,
+    "geo": "LT",
+    "part_aic": 4.842500319279949,
+    "part_pop": -1.322157530024346,
+    "pli": 86.25,
+    "pop": 2890664.0
+   },
+   {
+    "aic": 76.0,
+    "geo": "LV",
+    "part_aic": 4.858548169376408,
+    "part_pop": -1.0955148858579271,
+    "pli": 90.62,
+    "pop": 1860565.0
+   },
+   {
+    "aic": 120.0,
+    "geo": "NL",
+    "part_aic": 5.020337358512187,
+    "part_pop": -1.6184597302254327,
+    "pli": 89.69,
+    "pop": 18044027.0
+   },
+   {
+    "aic": 124.0,
+    "geo": "NO",
+    "part_aic": 5.268130710859314,
+    "part_pop": -1.3187563191228469,
+    "pli": 125.57,
+    "pop": 5594340.0
+   },
+   {
+    "aic": 84.0,
+    "geo": "PL",
+    "part_aic": 4.737940727616572,
+    "part_pop": -1.5539151551148276,
+    "pli": 64.11,
+    "pop": 36497495.0
+   },
+   {
+    "aic": 85.0,
+    "geo": "PT",
+    "part_aic": 5.063096512774977,
+    "part_pop": -1.153808495576488,
+    "pli": 96.93,
+    "pop": 11387222.0
+   },
+   {
+    "aic": 88.0,
+    "geo": "RO",
+    "part_aic": 4.808746402297684,
+    "part_pop": -1.4860400597216064,
+    "pli": 72.29,
+    "pop": 19043151.0
+   },
+   {
+    "aic": 105.0,
+    "geo": "SE",
+    "part_aic": 5.230956764730605,
+    "part_pop": -1.2175900783298097,
+    "pli": 115.28,
+    "pop": 10587710.0
+   },
+   {
+    "aic": 78.0,
+    "geo": "SK",
+    "part_aic": 4.752081319376068,
+    "part_pop": -1.3121226920167928,
+    "pli": 75.13,
+    "pop": 5419451.0
+   },
+   {
+    "aic": 109.0,
+    "geo": "UK",
+    "part_aic": 5.268856263637218,
+    "part_pop": -1.3640635598335509,
+    "pli": 103.84,
+    "pop": 69384219.0
+   }
+  ]
+ }
+}
