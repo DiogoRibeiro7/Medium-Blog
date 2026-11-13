@@ -15,8 +15,9 @@ Pairs whose first sale was a new build are kept apart (new-build premium) and ex
 histograms. Only aggregates are written; no address or individual transaction leaves this
 script. Outputs (all counts):
 
-- ``pairs_hist.csv``  resale year x region x holding band x kind (nominal / real) x 0.5% bin of
-  the log price change, -40% to +40% plus two tail bins;
+- ``pairs_hist.csv``  resale year x region x holding band x kind x 0.5% bin of the log price
+  change, -40% to +40% plus two tail bins; kind is nominal, real, or real without the resales at
+  exactly the old price (for the real-zero placebo);
 - ``pairs_cells.csv`` resale year x region x holding band x first-sale-new-build flag: counts of
   nominal and real losses, hidden losses, exact resales at the old price, medians;
 - ``pairs_diffs.csv`` resale year x region x holding band: resales whose price differs from the
@@ -152,6 +153,9 @@ def build(ppd: str, cpi: str, out: Path, memory_limit: str = "10GB", threads: in
           UNION ALL
           SELECT y, region, hold, 'real' AS kind, {bin_sql('lrr')} AS bin, count(*) AS n
           FROM clean WHERE new0 = 'N' GROUP BY ALL
+          UNION ALL
+          SELECT y, region, hold, 'real_excl_exact' AS kind, {bin_sql('lrr')} AS bin, count(*) AS n
+          FROM clean WHERE new0 = 'N' AND p <> p0 GROUP BY ALL
           ORDER BY y, region, hold, kind, bin
         ) TO '{out / "pairs_hist.csv"}' (HEADER)
     """)
