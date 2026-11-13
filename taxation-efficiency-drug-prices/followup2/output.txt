@@ -97,6 +97,23 @@ Largest contributions by medicine (points of US share, all terms):
   tecfidera          Biogen             approved 2013  -0.51
   remicade           Johnson & Johnson  approved 1998  -0.36
   entresto           Novartis           approved 2015  -0.35
+  the same medicines, first and last year reported in the window (US share, revenue $ bn):
+    zepbound           2023 US 100.0% $   0.2   2025 US 99.6% $  13.5
+    skyrizi            2019 US 87.6% $   0.4   2025 US 86.6% $  17.6
+    biktarvy           2018 US 96.6% $   1.2   2025 US 80.0% $  14.3
+    gleevec            2016 US 36.5% $   3.3   2023 US 26.7% $   0.6
+    remicade           2016 US  0.0% $   1.3   2024 US  0.0% $   0.1
+    velcade            2016 US  0.0% $   1.2   2020 US  0.0% $   0.4
+    vraylar            2022 US 100.0% $   2.0   2025 US 99.8% $   3.6
+    viekirapakcopackaged 2016 US 22.5% $   1.5   2019 US  0.0% $   0.0
+    singulair          2016 US  4.4% $   0.9   2020 US  3.9% $   0.5
+    bridion            2016 US 16.0% $   0.5   2025 US 88.6% $   1.8
+    enbrel             2016 US 95.9% $   6.0   2025 US 98.8% $   2.2
+    farxiga            2016 US 54.7% $   0.8   2025 US 20.6% $   8.4
+    neulasta           2016 US 84.4% $   4.6   2022 US 85.2% $   1.1
+    tecfidera          2016 US 79.9% $   4.0   2025 US 24.8% $   0.7
+    remicade           2016 US 69.5% $   7.0   2025 US 66.2% $   1.8
+    entresto           2017 US 58.6% $   0.5   2025 US 42.4% $   7.7
 By company (points): AbbVie +2.14, Eli Lilly +1.66, Merck & Co +1.45, Novartis +1.02, AstraZeneca +0.34, Gilead -0.02, Johnson & Johnson -0.16, Biogen -0.63, Amgen -1.37
 Robustness (same decomposition, other windows and samples):
   2018-2025                  10 companies: 57.6% to 63.6% (+6.05); launched in the period +3.78, before +2.27; new +3.57, established +2.48
@@ -124,7 +141,7 @@ Medicines launched by 2016 and reported in both years (55): US share 61.6% in 20
 ==============================================================================================
 6. The life cycle of a medicine's US share
 ==============================================================================================
-Medicine-years with revenue of at least $ 50 million: 1,649; medicines first approved from 2014, observed from launch: 132
+Medicine-years with revenue of at least $ 50 million: 1,649; medicines first approved from 2014: 132 (those approved from 2016 observed from their launch, earlier ones from 2016)
 US share by years since first US approval, medicines approved from 2014:
   age 0: n  19  median 87.9% [74.0%, 97.0%]  revenue-weighted 79.7%
   age 1: n  55  median 87.1% [68.2%, 95.5%]  revenue-weighted 78.0%
@@ -156,6 +173,7 @@ Company-years: 106, companies 11 (US share and new-medicine share both measured 
   AstraZeneca          new  4.7%  US 45.2%
   AbbVie               new  4.2%  US 76.8%
   Gilead               new  0.0%  US 73.8%
+  first year in the data: AbbVie 2016 new 16.2% US 63.2%; Amgen 2016 new 0.0% US 82.3%; Biogen 2016 new 71.1% US 74.7%; AstraZeneca 2016 new 11.2% US 37.3%; Gilead 2016 new 58.5% US 66.9%; Johnson & Johnson 2016 new 11.8% US 62.9%; Eli Lilly 2016 new 12.1% US 56.6%; Merck & Co 2016 new 8.7% US 52.5%; Novartis 2016 new 9.8% US 41.9%; Sanofi 2017 new 8.2% US 41.2%; Novo Nordisk 2019 new 25.6% US 52.6%
   rank correlation across companies in 2025: -0.33 (n=11)
   pooled slope: +0.147 [-0.206, +0.313] (change in US share per unit of new-medicine share; 90% interval, companies resampled 1000 times)
   within companies, net of year effects: +0.166 [+0.008, +0.267]

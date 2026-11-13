@@ -382,6 +382,13 @@ def main() -> None:
     print("  ...")
     for (co, k, a), v in list(top.head(6).items()):
         print(f"  {k:18s} {co:18s} approved {int(a)}  {100 * v:+.2f}")
+    mm = med[med["company"].isin(main_cos) & med["py"].between(START, END)]
+    print("  the same medicines, first and last year reported in the window (US share, revenue $ bn):")
+    for (co, k, a), v in list(top.tail(10)[::-1].items()) + list(top.head(6).items()):
+        g = mm[(mm["company"] == co) & (mm["key"] == k)].sort_values("py")
+        f0, f1 = g.iloc[0], g.iloc[-1]
+        print(f"    {k:18s} {int(f0.py)} US {f0.us_usd / f0.total_usd:5.1%} $ {f0.total_usd / 1e9:5.1f}   {int(f1.py)} US "
+              f"{f1.us_usd / f1.total_usd:5.1%} $ {f1.total_usd / 1e9:5.1f}")
     byco = allt.groupby("company")["total"].sum().sort_values(ascending=False)
     print("By company (points): " + ", ".join(f"{c} {100 * v:+.2f}" for c, v in byco.items()))
     figure["decomposition"] = {
@@ -454,7 +461,8 @@ def main() -> None:
     lc = lc[lc["total_usd"] >= 50e6]
     young = lc[lc["approval"] >= START - 2]
     print(f"Medicine-years with revenue of at least $ 50 million: {len(lc):,}; medicines first approved from "
-          f"{START - 2}, observed from launch: {young[['company', 'key']].drop_duplicates().shape[0]}")
+          f"{START - 2}: {young[['company', 'key']].drop_duplicates().shape[0]} (those approved from {START} observed from "
+          f"their launch, earlier ones from {START})")
     prof = young[young["age"].between(0, 8)].groupby("age").agg(
         n=("s", "size"), med=("s", "median"), q1=("s", lambda x: x.quantile(.25)), q3=("s", lambda x: x.quantile(.75)),
         us=("us_usd", "sum"), rev=("total_usd", "sum"))
@@ -501,6 +509,8 @@ def main() -> None:
     print(f"{END}: share of dated-medicine revenue from medicines under five years old, and their US share:")
     for r in last.itertuples():
         print(f"  {r.company:20s} new {r.n:5.1%}  US {r.s:5.1%}")
+    first = cyr.sort_values("py").groupby("company").head(1).set_index("company")
+    print("  first year in the data: " + "; ".join(f"{c} {int(r.py)} new {r.n:.1%} US {r.s:.1%}" for c, r in first.iterrows()))
     rk = last[["n", "s"]].rank()
     rho = np.corrcoef(rk["n"], rk["s"])[0, 1]
     print(f"  rank correlation across companies in {END}: {rho:+.2f} (n={len(last)})")

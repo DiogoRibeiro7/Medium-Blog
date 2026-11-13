@@ -130,8 +130,8 @@ def fig_lifecycle(data: dict) -> None:
                Patch(color=ORANGE, alpha=0.18, label="Middle half of medicines"),
                Line2D([], [], color=INK2, linestyle=(0, (4, 3)), label="All revenue at that age (weighted)")]
     ax.legend(handles=handles, loc="upper right", ncol=3, fontsize=8.5, bbox_to_anchor=(1.0, 1.0))
-    note(fig, f"Medicines first approved in the US from {lc['first']}, observed from launch, with revenue of at least "
-              f"$50 million in the year; {lc['companies']} companies' annual reports, 2016-2025.")
+    note(fig, f"Medicines first approved in the US from {lc['first']}, with revenue of at least $50 million in the year "
+              f"(reports cover 2016-2025, so those approved before 2016 enter at age 1 or 2); {lc['companies']} companies.")
     fig.savefig(OUT / "fig2_us_share_over_the_life_of_a_medicine.png", dpi=200)
     plt.close(fig)
 
