@@ -34,7 +34,7 @@ jobs:
         run: |
           set +e
           python ine_commuting_partitioned_capture.py \
-            --output .candidate-capture \
+            --output candidate-capture \
             --start-index 0 \
             --count 2 \
             --dimension Dim2
@@ -56,8 +56,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ine-0012340-first-two-dim2-candidate
-          path: urban-affordability-cascade/.candidate-capture/
-          if-no-files-found: warn
+          path: urban-affordability-cascade/candidate-capture/
+          if-no-files-found: error
           retention-days: 30
       - name: Report capture failure after artifact upload
         if: always() && steps.capture.outputs.capture_exit_code != '0'
