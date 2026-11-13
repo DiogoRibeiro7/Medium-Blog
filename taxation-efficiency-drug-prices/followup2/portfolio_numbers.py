@@ -389,6 +389,12 @@ def main() -> None:
         f0, f1 = g.iloc[0], g.iloc[-1]
         print(f"    {k:18s} {int(f0.py)} US {f0.us_usd / f0.total_usd:5.1%} $ {f0.total_usd / 1e9:5.1f}   {int(f1.py)} US "
               f"{f1.us_usd / f1.total_usd:5.1%} $ {f1.total_usd / 1e9:5.1f}")
+    terms = allt.groupby(["company", "key"])[["entry", "between", "within", "exit"]].sum()
+    print("  terms of the three largest (entry, between, within, exit):")
+    for (co, k, a), v in list(top.tail(3)[::-1].items()):
+        r = terms.loc[(co, k)]
+        print(f"    {k:12s} entry {100 * r['entry']:+.2f}, between {100 * r['between']:+.2f}, within {100 * r['within']:+.2f}, "
+              f"exit {100 * r['exit']:+.2f}")
     byco = allt.groupby("company")["total"].sum().sort_values(ascending=False)
     print("By company (points): " + ", ".join(f"{c} {100 * v:+.2f}" for c, v in byco.items()))
     figure["decomposition"] = {

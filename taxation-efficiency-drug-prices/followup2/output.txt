@@ -114,6 +114,10 @@ Largest contributions by medicine (points of US share, all terms):
     tecfidera          2016 US 79.9% $   4.0   2025 US 24.8% $   0.7
     remicade           2016 US 69.5% $   7.0   2025 US 66.2% $   1.8
     entresto           2017 US 58.6% $   0.5   2025 US 42.4% $   7.7
+  terms of the three largest (entry, between, within, exit):
+    zepbound     entry +0.02, between +1.36, within -0.01, exit +0.00
+    skyrizi      entry +0.05, between +1.18, within +0.00, exit +0.00
+    biktarvy     entry +0.22, between +0.99, within -0.39, exit +0.00
 By company (points): AbbVie +2.14, Eli Lilly +1.66, Merck & Co +1.45, Novartis +1.02, AstraZeneca +0.34, Gilead -0.02, Johnson & Johnson -0.16, Biogen -0.63, Amgen -1.37
 Robustness (same decomposition, other windows and samples):
   2018-2025                  10 companies: 57.6% to 63.6% (+6.05); launched in the period +3.78, before +2.27; new +3.57, established +2.48
