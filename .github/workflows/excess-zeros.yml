@@ -1,0 +1,66 @@
+name: Reproduce excess-zeros
+
+on:
+  pull_request:
+    paths:
+      - 'excess-zeros/**'
+      - '.github/workflows/excess-zeros.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'excess-zeros/**'
+      - '.github/workflows/excess-zeros.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: excess-zeros-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: excess-zeros
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: excess-zeros/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Check the estimators
+        run: python check_counts.py
+
+      - name: Rerun the experiments
+        run: |
+          python 01_three_datasets.py
+          python 02_simulation.py
+          python 03_mechanism.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_overdispersion_zeros fig2_rootograms fig3_where_the_gain_is fig4_who_the_zeros_are \
+                   fig5_structural_share fig6_model_choice fig7_decision_errors; do
+            test -s "figures/$f.png"
+          done

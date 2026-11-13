@@ -1,0 +1,94 @@
+== NMES 1988, office visits: n 4406; zeros 683 (0.155); ones 481; mean 5.7744; variance 45.6871; largest count 89
+   Poisson                parameters  8; log-likelihood  -17971.61; AIC   35959.2; BIC   36010.4; expected zeros    46.7; expected ones   178.7; converged True
+   NB                     parameters  9; log-likelihood  -12170.55; AIC   24359.1; BIC   24416.6; expected zeros   608.0; expected ones   578.0; converged True
+   NB, dispersion varies  parameters 14; log-likelihood  -12099.66; AIC   24227.3; BIC   24316.8; expected zeros   653.0; expected ones   547.8; converged True
+   ZIP                    parameters 14; log-likelihood  -16135.24; AIC   32298.5; BIC   32388.0; expected zeros   682.3; expected ones    62.7; converged True
+   ZINB                   parameters 15; log-likelihood  -12090.72; AIC   24211.4; BIC   24307.3; expected zeros   708.8; expected ones   465.0; converged True
+   Hurdle-NB              parameters 15; log-likelihood  -12090.07; AIC   24210.1; BIC   24306.0; expected zeros   683.0; expected ones   492.6; converged True
+   theta of the count distribution (larger means less overdispersed): NB 1.207; ZINB 1.483; Hurdle-NB 1.396
+   Poisson shortfall of zeros 636.3; the NB closes 561.3 of it (0.882); NB minus observed zeros -75.0
+   Vuong: ZIP vs Poisson +17.12 (p 5.14e-66); ZINB vs NB +5.92 (p 1.66e-09), AIC-corrected +5.47 (p 2.24e-08), BIC-corrected +4.05 (p 2.56e-05); ZINB vs NB with varying dispersion +0.65 (p 0.257); hurdle NB vs ZINB +0.09 (p 0.463)
+   lowest AIC: Hurdle-NB; lowest BIC: Hurdle-NB
+   log-likelihood gain of ZINB over the NB: total +79.83; from the zeros +147.92; from the ones -109.27; from counts of 2 or more +41.18
+   log-likelihood gain of Hurdle-NB over the NB: total +80.48; from the zeros +121.49; from the ones -81.94; from counts of 2 or more +40.93
+   log-likelihood gain of NB, dispersion varies over the NB: total +70.89; from the zeros +76.75; from the ones -25.80; from counts of 2 or more +19.95
+   each person's P(Y = 0), ZINB against hurdle NB: mean |difference| 0.0231, largest 0.1491; correlation 0.9610
+   ZINB structural-zero probability: mean 0.0693, 10th-90th percentile 0.0018-0.1830; structural zeros as a share of the expected zeros 0.431
+   P(Y = 0) within deciles of the NB's P(Y = 0), Poisson               : largest |predicted - observed| 0.3356; mean |predicted - observed| 0.1431
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB                    : largest |predicted - observed| 0.1530; mean |predicted - observed| 0.0441
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB, dispersion varies : largest |predicted - observed| 0.0822; mean |predicted - observed| 0.0252
+   P(Y = 0) within deciles of the NB's P(Y = 0), ZINB                  : largest |predicted - observed| 0.0367; mean |predicted - observed| 0.0113
+   P(Y = 0) within deciles of the NB's P(Y = 0), Hurdle-NB             : largest |predicted - observed| 0.0459; mean |predicted - observed| 0.0155
+   Poisson                mean of fitted means 5.7744 (observed 5.7744); effect of one more chronic condition: on the mean +0.9120, on P(Y > 0) +0.0047
+   NB                     mean of fitted means 5.8866 (observed 5.7744); effect of one more chronic condition: on the mean +1.1252, on P(Y > 0) +0.0215
+   NB, dispersion varies  mean of fitted means 5.8119 (observed 5.7744); effect of one more chronic condition: on the mean +0.9771, on P(Y > 0) +0.0411
+   ZIP                    mean of fitted means 5.7827 (observed 5.7744); effect of one more chronic condition: on the mean +0.9671, on P(Y > 0) +0.0551
+   ZINB                   mean of fitted means 5.8317 (observed 5.7744); effect of one more chronic condition: on the mean +1.0334, on P(Y > 0) +0.0531
+   Hurdle-NB              mean of fitted means 5.8411 (observed 5.7744); effect of one more chronic condition: on the mean +1.0513, on P(Y > 0) +0.0556
+== Biochemists, articles: n 915; zeros 275 (0.301); ones 246; mean 1.6929; variance 3.7097; largest count 19
+   Poisson                parameters  6; log-likelihood   -1651.06; AIC    3314.1; BIC    3343.0; expected zeros   191.4; expected ones   283.5; converged True
+   NB                     parameters  7; log-likelihood   -1560.96; AIC    3135.9; BIC    3169.6; expected zeros   277.8; expected ones   249.1; converged True
+   NB, dispersion varies  parameters 12; log-likelihood   -1558.17; AIC    3140.3; BIC    3198.2; expected zeros   276.3; expected ones   249.3; converged True
+   ZIP                    parameters 12; log-likelihood   -1604.77; AIC    3233.5; BIC    3291.4; expected zeros   273.2; expected ones   196.6; converged True
+   ZINB                   parameters 13; log-likelihood   -1549.99; AIC    3126.0; BIC    3188.6; expected zeros   285.4; expected ones   233.9; converged True
+   Hurdle-NB              parameters 13; log-likelihood   -1552.60; AIC    3131.2; BIC    3193.8; expected zeros   275.0; expected ones   253.7; converged True
+   theta of the count distribution (larger means less overdispersed): NB 2.264; ZINB 2.655; Hurdle-NB 1.828
+   Poisson shortfall of zeros 83.6; the NB closes 86.4 of it (1.033); NB minus observed zeros +2.8
+   Vuong: ZIP vs Poisson +4.18 (p 1.45e-05); ZINB vs NB +2.24 (p 0.0125), AIC-corrected +1.02 (p 0.155), BIC-corrected -1.94 (p 0.974); ZINB vs NB with varying dispersion +1.53 (p 0.063); hurdle NB vs ZINB -0.56 (p 0.711)
+   lowest AIC: ZINB; lowest BIC: NB
+   log-likelihood gain of ZINB over the NB: total +10.97; from the zeros +13.81; from the ones -13.72; from counts of 2 or more +10.87
+   log-likelihood gain of Hurdle-NB over the NB: total +8.36; from the zeros +1.32; from the ones +5.72; from counts of 2 or more +1.32
+   log-likelihood gain of NB, dispersion varies over the NB: total +2.79; from the zeros -1.03; from the ones -0.25; from counts of 2 or more +4.08
+   each person's P(Y = 0), ZINB against hurdle NB: mean |difference| 0.0442, largest 0.2461; correlation 0.8816
+   ZINB structural-zero probability: mean 0.0585, 10th-90th percentile 0.0000-0.1985; structural zeros as a share of the expected zeros 0.188
+   P(Y = 0) within deciles of the NB's P(Y = 0), Poisson               : largest |predicted - observed| 0.2085; mean |predicted - observed| 0.0928
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB                    : largest |predicted - observed| 0.1266; mean |predicted - observed| 0.0637
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB, dispersion varies : largest |predicted - observed| 0.1230; mean |predicted - observed| 0.0616
+   P(Y = 0) within deciles of the NB's P(Y = 0), ZINB                  : largest |predicted - observed| 0.1035; mean |predicted - observed| 0.0465
+   P(Y = 0) within deciles of the NB's P(Y = 0), Hurdle-NB             : largest |predicted - observed| 0.1291; mean |predicted - observed| 0.0500
+   Poisson                mean of fitted means 1.6929 (observed 1.6929); effect of ten more mentor articles: on the mean +0.4927, on P(Y > 0) +0.0726
+   NB                     mean of fitted means 1.7049 (observed 1.6929); effect of ten more mentor articles: on the mean +0.5755, on P(Y > 0) +0.0748
+   NB, dispersion varies  mean of fitted means 1.6990 (observed 1.6929); effect of ten more mentor articles: on the mean +0.5580, on P(Y > 0) +0.0718
+   ZIP                    mean of fitted means 1.6932 (observed 1.6929); effect of ten more mentor articles: on the mean +0.6103, on P(Y > 0) +0.1460
+   ZINB                   mean of fitted means 1.6977 (observed 1.6929); effect of ten more mentor articles: on the mean +0.5779, on P(Y > 0) +0.1025
+   Hurdle-NB              mean of fitted means 1.6977 (observed 1.6929); effect of ten more mentor articles: on the mean +0.6248, on P(Y > 0) +0.1331
+== Australia 1977-78, doctor visits: n 5190; zeros 4141 (0.798); ones 782; mean 0.3017; variance 0.6370; largest count 9
+   Poisson                parameters 13; log-likelihood   -3355.54; AIC    6737.1; BIC    6822.3; expected zeros  4013.8; expected ones   928.1; converged True
+   NB                     parameters 14; log-likelihood   -3198.74; AIC    6425.5; BIC    6517.3; expected zeros  4172.7; expected ones   725.9; converged True
+   NB, dispersion varies  parameters 26; log-likelihood   -3179.20; AIC    6410.4; BIC    6580.8; expected zeros  4169.2; expected ones   740.2; converged True
+   ZIP                    parameters 26; log-likelihood   -3174.18; AIC    6400.4; BIC    6570.8; expected zeros  4117.4; expected ones   724.4; converged True
+   ZINB                   parameters 27; log-likelihood   -3107.59; AIC    6269.2; BIC    6446.2; expected zeros  4184.3; expected ones   672.6; converged True
+   Hurdle-NB              parameters 27; log-likelihood   -3144.94; AIC    6343.9; BIC    6520.8; expected zeros  4141.0; expected ones   781.9; converged True
+   theta of the count distribution (larger means less overdispersed): NB 0.928; ZINB 1.731; Hurdle-NB 0.080
+   Poisson shortfall of zeros 127.2; the NB closes 159.0 of it (1.249); NB minus observed zeros +31.7
+   Vuong: ZIP vs Poisson +7.05 (p 8.94e-13); ZINB vs NB +6.84 (p 3.82e-12), AIC-corrected +5.87 (p 2.2e-09), BIC-corrected +2.67 (p 0.0038); ZINB vs NB with varying dispersion +5.26 (p 7.12e-08); hurdle NB vs ZINB -3.09 (p 0.999)
+   lowest AIC: ZINB; lowest BIC: ZINB
+   log-likelihood gain of ZINB over the NB: total +91.15; from the zeros +28.61; from the ones -2.14; from counts of 2 or more +64.68
+   log-likelihood gain of Hurdle-NB over the NB: total +53.81; from the zeros -35.37; from the ones +86.71; from counts of 2 or more +2.47
+   log-likelihood gain of NB, dispersion varies over the NB: total +19.54; from the zeros -5.68; from the ones +18.67; from counts of 2 or more +6.54
+   each person's P(Y = 0), ZINB against hurdle NB: mean |difference| 0.0373, largest 0.2830; correlation 0.9403
+   ZINB structural-zero probability: mean 0.4440, 10th-90th percentile 0.0109-0.8347; structural zeros as a share of the expected zeros 0.551
+   P(Y = 0) within deciles of the NB's P(Y = 0), Poisson               : largest |predicted - observed| 0.0782; mean |predicted - observed| 0.0474
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB                    : largest |predicted - observed| 0.1044; mean |predicted - observed| 0.0426
+   P(Y = 0) within deciles of the NB's P(Y = 0), NB, dispersion varies : largest |predicted - observed| 0.0922; mean |predicted - observed| 0.0398
+   P(Y = 0) within deciles of the NB's P(Y = 0), ZINB                  : largest |predicted - observed| 0.0604; mean |predicted - observed| 0.0196
+   P(Y = 0) within deciles of the NB's P(Y = 0), Hurdle-NB             : largest |predicted - observed| 0.0671; mean |predicted - observed| 0.0310
+   Poisson                mean of fitted means 0.3017 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0620, on P(Y > 0) +0.0355
+   NB                     mean of fitted means 0.3259 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0779, on P(Y > 0) +0.0317
+   NB, dispersion varies  mean of fitted means 0.3170 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0703, on P(Y > 0) +0.0343
+   ZIP                    mean of fitted means 0.3017 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0530, on P(Y > 0) +0.0360
+   ZINB                   mean of fitted means 0.3037 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0574, on P(Y > 0) +0.0378
+   Hurdle-NB              mean of fitted means 0.3095 (observed 0.3017); effect of one more illness in the past two weeks: on the mean +0.0608, on P(Y > 0) +0.0386
+NMES 1988: share of people with no office visit, by private insurance and number of chronic conditions (5 = five or more): observed (count of people), and predicted by each model
+   no private insurance  chronic 0: observed 0.449 (n 225); NB 0.228; NB, dispersion varies 0.336; ZINB 0.463; Hurdle-NB 0.411
+   no private insurance  chronic 1: observed 0.277 (n 318); NB 0.179; NB, dispersion varies 0.259; ZINB 0.250; Hurdle-NB 0.288
+   no private insurance  chronic 2: observed 0.155 (n 206); NB 0.145; NB, dispersion varies 0.196; ZINB 0.142; Hurdle-NB 0.186
+   no private insurance  chronic 3: observed 0.082 (n 122); NB 0.115; NB, dispersion varies 0.138; ZINB 0.092; Hurdle-NB 0.114
+   no private insurance  chronic 4: observed 0.100 (n 60); NB 0.090; NB, dispersion varies 0.089; ZINB 0.067; Hurdle-NB 0.065
+   no private insurance  chronic 5: observed 0.093 (n 54); NB 0.069; NB, dispersion varies 0.049; ZINB 0.052; Hurdle-NB 0.035
+   private insurance     chronic 0: observed 0.250 (n 800); NB 0.176; NB, dispersion varies 0.202; ZINB 0.246; Hurdle-NB 0.228
+   private insurance     chronic 1: observed 0.127 (n 1180); NB 0.141; NB, dispersion varies 0.141; ZINB 0.141; Hurdle-NB 0.141
+   private insurance     chronic 2: observed 0.077 (n 762); NB 0.112; NB, dispersion varies 0.093; ZINB 0.094; Hurdle-NB 0.085
+   private insurance     chronic 3: observed 0.050 (n 403); NB 0.090; NB, dispersion varies 0.059; ZINB 0.072; Hurdle-NB 0.051
+   private insurance     chronic 4: observed 0.056 (n 160); NB 0.072; NB, dispersion varies 0.034; ZINB 0.057; Hurdle-NB 0.030
+   private insurance     chronic 5: observed 0.026 (n 116); NB 0.052; NB, dispersion varies 0.015; ZINB 0.041; Hurdle-NB 0.015
