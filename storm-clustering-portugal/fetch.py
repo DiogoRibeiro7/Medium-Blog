@@ -52,7 +52,8 @@ NAO = "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly
 # Saved verbatim and parsed by the analysis: monthly NAO, East Atlantic, Scandinavian and
 # other Northern Hemisphere teleconnection indices (rotated PCA of 500 hPa height), and
 # the daily NAO index. Either daily file name is accepted.
-TELE = "https://www.cpc.ncep.noaa.gov/data/teledoc/tele_index.nh"
+TELE = ["https://ftp.cpc.ncep.noaa.gov/wd52dg/data/indices/tele_index.nh",
+        "https://www.cpc.ncep.noaa.gov/data/teledoc/tele_index.nh"]
 NAO_DAILY = ["https://ftp.cpc.ncep.noaa.gov/cwlinks/norm.daily.nao.cdas.z500.19500101_current.csv",
              "https://ftp.cpc.ncep.noaa.gov/cwlinks/norm.daily.nao.index.b500101.current.ascii"]
 
@@ -328,16 +329,16 @@ def main(argv=None) -> int:
     rows.sort()
     kept.sort(key=lambda s: s["id"])
     with open(out / "stations.csv", "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(kept[0]) if kept else ["id"])
+        w = csv.DictWriter(fh, fieldnames=list(kept[0]) if kept else ["id"], lineterminator="\n")
         w.writeheader()
         w.writerows(kept)
     with gzip.open(out / "daily_wind.csv.gz", "wt", newline="", compresslevel=9) as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(["station", "date", "n_wind_obs", "wind_max_ms", "gust_max_ms", "slp_min_hpa",
                     "n_syn_wind", "wind_max_syn_ms", "slp_min_syn_hpa"])
         w.writerows(rows)
     with open(out / "qc_codes.csv", "w", newline="") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(["wind_speed_quality_code", "count", "accepted"])
         for code, n in qc.most_common():
             w.writerow([code if code else "(blank)", n, int(code in ACCEPT_QC)])
@@ -345,14 +346,18 @@ def main(argv=None) -> int:
     nao = fetcher.get(NAO)
     if nao is not None:
         with open(out / "nao_monthly.csv", "w", newline="") as fh:
-            w = csv.writer(fh)
+            w = csv.writer(fh, lineterminator="\n")
             w.writerow(["year", "month", "nao"])
             w.writerows(parse_nao(nao.decode("ascii", errors="replace")))
-    tele = fetcher.get(TELE)
-    if tele is not None:
-        (out / "cpc_tele_index_nh.txt").write_bytes(tele)
+    for url in TELE:
+        tele = fetcher.get(url)
+        print(f"teleconnection table {url}: {'ok' if tele is not None else 'not found'}")
+        if tele is not None:
+            (out / "cpc_tele_index_nh.txt").write_bytes(tele)
+            break
     for url in NAO_DAILY:
         daily = fetcher.get(url)
+        print(f"daily NAO {url}: {'ok' if daily is not None else 'not found'}")
         if daily is not None:
             (out / "cpc_nao_daily.txt").write_bytes(f"# {url}\n".encode() + daily)
             break

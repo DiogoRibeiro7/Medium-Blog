@@ -53,7 +53,7 @@ jobs:
           else
             git commit -m "Storm clustering in Portugal: ERA5 daily wind ($(date -u +%Y-%m-%d))"
             for i in 1 2 3; do
-              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
               sleep 5
             done
           fi

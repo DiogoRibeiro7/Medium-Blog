@@ -145,7 +145,7 @@ def main(argv=None) -> int:
             continue
         meta, rows = parse_response(body)
         with gzip.open(point_file(out, lat, lon), "wt", newline="", compresslevel=9) as fh:
-            w = csv.writer(fh)
+            w = csv.writer(fh, lineterminator="\n")
             w.writerow(["date", "wind_max_ms"])
             w.writerows((d, "" if v is None else v) for d, v in rows)
         meta_rows[(lat, lon)] = {"lat": lat, "lon": lon, **meta,
@@ -153,7 +153,8 @@ def main(argv=None) -> int:
         print(f"  ({lat:.1f}, {lon:.1f}) -> ({meta['lat_out']}, {meta['lon_out']}), "
               f"{meta['elevation_m']} m, {len(rows)} days")
     with open(points_path, "w", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["lat", "lon", "lat_out", "lon_out", "elevation_m", "days", "missing"])
+        w = csv.DictWriter(fh, fieldnames=["lat", "lon", "lat_out", "lon_out", "elevation_m", "days", "missing"],
+                           lineterminator="\n")
         w.writeheader()
         for key in sorted(meta_rows):
             w.writerow(meta_rows[key])
