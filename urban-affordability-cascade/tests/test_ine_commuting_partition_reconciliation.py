@@ -26,6 +26,8 @@ SOURCE = ROOT / "data" / "ine_0012340_2021_dim2_0104_raw.json"
 MANIFEST = ROOT / "data" / "ine_0012340_2021_dim2_first_two_manifest.json"
 AUDIT = ROOT / "data" / "ine_0012340_2021_dim2_0104_audit.json"
 SECOND_RUN = ROOT / "data" / "ine_0012340_pr_run_43404869490"
+THIRD_RUN = ROOT / "data" / "ine_0012340_pr_run_43412012492"
+THIRD_SOURCE_SHA256 = "f2062a66f2a3bb9d3f5217c13ecde623c1a76f506374c2516a8b5034a4fd95df"
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -204,6 +206,50 @@ class TwoMunicipalityINESliceAuditTests(unittest.TestCase):
         self.assertEqual(observed["0104"]["0107"], 34)
         self.assertEqual(observed["0107"]["0104"], 34)
         self.assertEqual(len(unique_pairs), 31)
+
+
+class ThreeMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Verify the third official capture and all reciprocal observed links."""
+
+    def test_santa_maria_da_feira_extends_coverage_to_45_pairs(self) -> None:
+        code = "0109"
+        codes = municipality_codes_from_panel()
+        source = THIRD_RUN / "ine_0012340_dim2_0109_candidate.json"
+        raw = source.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), THIRD_SOURCE_SHA256)
+        feira, source_records = parse_dim2_slice(raw, code, codes)
+        self.assertEqual(source_records, 347)
+        self.assertEqual(len(feira), 17)
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(
+                source, THIRD_RUN / "partition_manifest.json", code,
+                Path(folder) / "audit_0109.json",
+            )
+            self.assertEqual(report["status"], "partial_match")
+            self.assertEqual(report["matched_pairs"], 16)
+            self.assertEqual(report["mismatched_pairs"], 0)
+            self.assertEqual(
+                json.loads((THIRD_RUN / "audit_0109.json").read_text(encoding="utf-8")),
+                report,
+            )
+
+        prior: dict[str, dict[str, int]] = {}
+        for previous in ("0104", "0107"):
+            saved = SECOND_RUN / f"ine_0012340_dim2_{previous}_candidate.json"
+            prior[previous], _ = parse_dim2_slice(saved.read_bytes(), previous, codes)
+            self.assertEqual(feira[previous], prior[previous][code])
+        self.assertEqual(feira["0104"], 826)
+        self.assertEqual(feira["0107"], 3910)
+        self.assertEqual(prior["0104"]["0107"], prior["0107"]["0104"])
+
+        slices = {**prior, code: feira}
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, observations in slices.items()
+            for second in observations
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 45)
 
 
 if __name__ == "__main__":
