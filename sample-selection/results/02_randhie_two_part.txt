@@ -1,0 +1,30 @@
+RandHIE, year 2 with education known: 5574 persons (5574 distinct ids), 4281 with positive spending (0.768); mean log spending among them 4.0695
+-- Cameron and Trivedi's specification: 18 regressors in each equation (the intercept and 17 variables)
+   inverse Mills ratio among spenders: R^2 on the outcome regressors 0.9522; condition number 83.3
+   two-part (OLS on spenders): logc -0.0164 (SE 0.0312)
+   two-step: logc -0.0279 (SE 0.0398); lambda 0.2358 (SE 0.5018); rho 0.1683; sigma 1.4008
+   ML (best of four starts; distinct maxima found: 1): logc -0.0760 (SE 0.0337, z -2.25); rho 0.7356 (SE 0.0338); sigma 1.5701; log-likelihood -10170.110; converged True
+   ML from the two-step start alone: rho 0.7356; log-likelihood -10170.110
+   ML latent mean log spending for all 5574 (x'b) 3.5432; observed mean among spenders 4.0695
+   probit (two-step first stage): logc -0.1187 (SE 0.0269)
+   least-squares residuals among spenders: skewness 0.298, excess kurtosis 0.512
+-- same, plus squares of the eight continuous regressors: 26 regressors in each equation (the intercept and 25 variables)
+   inverse Mills ratio among spenders: R^2 on the outcome regressors 0.9536; condition number 166.7
+   two-part (OLS on spenders): logc -0.0264 (SE 0.0653)
+   two-step: logc -0.0442 (SE 0.0708); lambda 0.3288 (SE 0.4901); rho 0.2338; sigma 1.4062
+   ML (best of four starts; distinct maxima found: 1): logc -0.0922 (SE 0.0711, z -1.30); rho 0.7364 (SE 0.0340); sigma 1.5663; log-likelihood -10140.403; converged True
+   ML from the two-step start alone: rho 0.7364; log-likelihood -10140.403
+   ML latent mean log spending for all 5574 (x'b) 3.5422; observed mean among spenders 4.0695
+Profile log-likelihood in rho (minus the maximum): -0.9 -241.14; -0.8 -111.53; -0.7 -61.96; -0.6 -38.54; -0.5 -26.43; -0.4 -19.98; -0.3 -16.58; -0.2 -14.91; -0.1 -14.20; +0.0 -13.97; +0.1 -13.83; +0.2 -13.45; +0.3 -12.53; +0.4 -10.75; +0.5 -7.88; +0.6 -4.04; +0.7 -0.46; +0.8 -2.69; +0.9 -38.55
+Bootstrap over persons (300 replicates):
+   Two-part (OLS on spenders), logc   mean -0.0157; SD 0.0317; 2.5%-97.5% -0.0816 to 0.0443
+   Two-step, logc                     mean -0.0266; SD 0.0408; 2.5%-97.5% -0.1060 to 0.0482
+   Two-step, rho                      mean 0.1512; SD 0.3505; 2.5%-97.5% -0.5099 to 0.7579
+   ML from two-step start, logc       mean -0.0499; SD 0.0475; 2.5%-97.5% -0.1401 to 0.0377
+   ML from two-step start, rho        mean 0.4164; SD 0.3999; 2.5%-97.5% -0.1714 to 0.7916
+   ML best of four starts, logc       mean -0.0741; SD 0.0358; 2.5%-97.5% -0.1483 to -0.0062
+   ML best of four starts, rho        mean 0.7262; SD 0.0794; 2.5%-97.5% 0.6398 to 0.7966
+   ML from the two-step start stopped at a lower maximum in 0.387 of replicates (log-likelihood gap of the better start: median 11.78 where it occurred); two-step rho outside [-1, 1] in 0.000
+   rho reported by ML from the two-step start alone: where it stopped at a lower maximum (116 replicates) median -0.0697, 2.5%-97.5% -0.2145 to 0.0329; elsewhere (184) median 0.7368, 2.5%-97.5% 0.6560 to 0.8002
+Placebo with shuffled least-squares residuals (no selection by construction, 200 replicates): ML rho mean 0.6965, SD 0.0597, 2.5%-97.5% 0.6370 to 0.7409; ML logc mean -0.0735, 2.5%-97.5% -0.1259 to -0.0145 (OLS fit used to build the placebo: logc -0.0164)
+Placebo with normal noise (no selection by construction, 200 replicates): ML rho mean 0.0017, SD 0.2498, 2.5%-97.5% -0.4724 to 0.4616; ML logc mean -0.0179, 2.5%-97.5% -0.0933 to 0.0502 (OLS fit used to build the placebo: logc -0.0164)
