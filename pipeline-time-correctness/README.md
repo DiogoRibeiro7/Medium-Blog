@@ -1,6 +1,6 @@
 # Correctness Over Time in Data Pipelines
 
-Public companion to a six-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
+Public companion to an eight-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
 
 1. **History** (`part1/`): how four fields met the same problem. Insurance run-off triangles and the chain ladder, epidemic reporting delays and nowcasting, valid time and transaction time in temporal databases, slowly changing dimensions in warehouses, and event time, watermarks and triggers in stream processing. Each idea is rebuilt in code, and the published numbers are recomputed where they exist.
 2. **Mechanism** (`part2/`): five mechanisms simulated where the right answer is known. How much of the latest periods is missing for a given delay distribution; what a watermark's slack and allowed lateness trade, and what a nowcast does instead of waiting; what an incremental load loses with a high-water mark on event time, and what insert-only, upsert and an append-only version log keep when records are corrected; what training on final values and joining the current version of a dimension do to a model; and what a backfill does to values already sent.
@@ -8,6 +8,8 @@ Public companion to a six-part series on where correct pipelines give wrong numb
 4. **Practice** (`part4/`): a small daily pipeline in DuckDB that lands the RKI files of Part 3 in an append-only table with their publication date and load time, loads them incrementally on arrival, publishes each 7-day count with a nowcast, its estimated completeness and an interval from its own past errors, compares weeks at equal maturity, and builds training rows on both time axes. It is replayed day by day from June 2021 to August 2023, and every one of its 822 runs is then recomputed and compared with what it stored.
 5. **Fixes** (`part5/`): three changes to the Part 4 pipeline, tested by replaying all 822 mornings with each change alone and in every combination: a content check that counts each date's age from the latest file that brought anything new, a calendar of Germany's nationwide public holidays, and a fallback that uses the same weekday a week earlier instead of a level four to eight weeks old.
 6. **Out of sample** (`part6/`): the Part 5 changes, frozen, and a graded version of the content check, tuned on 2021-2023 only, replayed on the RKI's daily files of 1 January 2024 to 10 November 2026, which no earlier part had read.
+7. **Another feed** (`part7/`): the series' two conjectures about files that bring nothing new, checked against data the series had not used: every version of the Johns Hopkins CSSE daily reports for the 50 US states and DC (April 2020 to March 2023) and of its global time series, the state and national holiday calendars, and the RKI files of 2022 to 2026 on days that were holidays in Berlin only.
+8. **Scoring against the final version** (`part8/`): Part 7's second conjecture, that evaluations scored against an aggregator's final version understate the errors around holidays, checked on Johns Hopkins' morning counts for Germany and on 60,266 weekly case forecasts of the German and Polish COVID-19 Forecast Hub, each scored against counts dated by publication, by reporting date and by reference date.
 
 The manuscripts are kept elsewhere; this repository holds the code, data, outputs and figures.
 
@@ -16,7 +18,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 65 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4, 6 for Part 5, 5 for Part 6)
+python -m unittest discover -s tests -v       # 78 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4, 6 for Part 5, 5 for Part 6, 7 for Part 7, 6 for Part 8)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -132,3 +134,42 @@ python figures.py                      # figures/*.png, from the tables in resul
 - The graded check is another option of the pipeline, `Pipeline(graded=tau)`, with `holidays=True` and `fallback="last_week"`: for each of the 14 latest files, the cases it added against the cases the delay profile expected it to add; a file below the tolerance `tau` is short, its expected share is taken off the dates it covers, and later files' surplus pays the shortfall down. The report gains `missing_cases`.
 - The holiday calendar is a parameter, `holiday_years`; Part 5 used 2020-2024, Part 6 uses 2020-2027. With the Part 5 calendar every Part 5 version has the code version it had.
 - `oos_numbers.py` picks the tolerance on the 822 mornings of Parts 4 and 5, then replays all thirteen versions from 1 October 2023 and scores 1 January 2024 to 13 October 2026, recomputing every morning of each. It prints every number in the article (`output.txt`) and writes the two tables in `results/` that `figures.py` draws.
+
+## Part 7
+
+```
+cd pipeline-time-correctness/part7
+pip install holidays==0.108; python fetch_jhu.py   # optional: rebuilds data/ from the Johns Hopkins repository (a few minutes)
+python jhu_numbers.py > output.txt                 # every number in the article, in a few seconds
+python figures.py                                  # figures/*.png
+```
+
+- `fetch_jhu.py` clones the Johns Hopkins CSSE COVID-19 repository without file contents, at its last commit (`4360e50`, 10 March 2023; the repository is archived), and fetches only the file versions it needs. For each of the 1,062 US daily reports (12 April 2020 to 9 March 2023) and each state and DC, `data/jhu_us_states.csv.gz` keeps the confirmed count as first published, the counts of the day before and of seven days before as they stood when the file landed (its commit time), the count in the final version, the number of versions, and the row's `Last_Update` in the new file and the file of the day before. For each date from 24 March 2020, `data/jhu_countries.csv.gz` keeps each country's count in the first version of the global time series that holds the date, with the day before and seven days before from the same version, and the count in the final version. `data/holidays.csv.gz` holds the calendars used, from python-holidays 0.108: US federal holidays, the legal holidays of each state, and the public holidays of 196 countries. Every blob read is listed in `data/jhu_versions.csv.gz`.
+- `jhu.py` holds the definitions. A file is unchanged for a state or country when its count equals the day before's as the pipeline had it at landing. Weekdays are compared only in a state's or country's daily regime: at most 10% of its ordinary weekdays unchanged in the 57 days around the date (`jhu_numbers.py` shows 5%, 10% and 20% with windows of 14, 28 and 42 days).
+- `jhu_numbers.py` also reads the RKI extracts of Parts 3 and 6 (`rki_melde`, `rki_snapshots`) for the files after Berlin-only holidays and for the comparison of Germany as Johns Hopkins published it with the RKI's count by reporting date. It writes four small tables to `results/`.
+- `figures.py` draws the three figures.
+
+### Data
+
+- Johns Hopkins University Center for Systems Science and Engineering (CSSE), COVID-19 Data Repository, [CSSEGISandData/COVID-19@4360e50](https://github.com/CSSEGISandData/COVID-19/tree/4360e50239b4eb6b22f3a1759323748f36752177), CC BY 4.0. Dong, E., Du, H. and Gardner, L. (2020), An interactive web-based dashboard to track COVID-19 in real time, *The Lancet Infectious Diseases* 20(5), 533–534.
+- Holiday calendars: [python-holidays](https://github.com/vacanza/holidays) 0.108 (MIT).
+
+## Part 8
+
+```
+cd pipeline-time-correctness/part8
+pip install holidays==0.108; python fetch_hub.py   # optional: rebuilds data/ from the forecast hub and the RKI archive (a few minutes)
+python fetch_hub.py --forecasts-only               # the forecasts, which are not committed (about a minute)
+python hub_numbers.py > output.txt                 # every number in the article, in about ten seconds
+python figures.py                                  # figures/*.png (after hub_numbers.py)
+```
+
+- `fetch_hub.py` clones the German and Polish COVID-19 Forecast Hub without file contents at its last commit (`991c7a0`, 31 May 2023) and reads the 2,496 weekly case forecast files for Germany: `data/hub_forecasts.csv.gz` keeps, for each model, forecast date, location (Germany and the 16 states), horizon (1 to 4 weeks) and target week, the median and six quantiles. `data/hub_truth.csv.gz` is the hub's truth, daily cases by the day the RKI published them. From the RKI archive commit of Parts 3 and 6 it reads the file of 10 November 2026 and writes `data/rki_dates.csv.gz`, cases by state, reporting date, reference date and whether the onset is known. `data/holidays_de.csv.gz` holds the national and state holidays (python-holidays 0.108).
+- `hub.py` holds the definitions: the three datings, weeks ending on Saturday as in the hub, national and regional holiday weeks, the absolute log error of the median and 80% interval coverage, the comparison of holiday weeks with the nearest weeks without a holiday, and a bootstrap that resamples whole weeks or holidays.
+- `hub_numbers.py` also reads Part 7's Johns Hopkins extract for the morning 7-day counts of Germany. It writes tables to `results/`, which `figures.py` reads; they are not committed.
+- The forecasts belong to the teams that submitted them, under licences that differ from team to team, so `data/hub_forecasts.csv.gz` is not committed: run `python fetch_hub.py --forecasts-only` first (about a minute; the reproduce workflow does this before the tests). The hub's truth before April 2020, which came partly from IHME under a non-commercial licence, is left out.
+
+### Data
+
+- KITmetricslab, German and Polish COVID-19 Forecast Hub, [covid19-forecast-hub-de@991c7a0](https://github.com/KITmetricslab/covid19-forecast-hub-de/tree/991c7a054246faee4abace7f5b705f044b0ffd01); forecasts are the work of the participating teams, under the licences stated in the hub. Bracher, J. et al. (2021), A pre-registered short-term forecasting study of COVID-19 in Germany and Poland during the second wave, *Nature Communications* 12, 5173.
+- Robert Koch-Institut, SARS-CoV-2 Infektionen in Deutschland (archive), CC BY 4.0, at the commit used in Parts 3 and 6.

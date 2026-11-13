@@ -1,0 +1,68 @@
+name: Reproduce sample-selection
+
+on:
+  pull_request:
+    paths:
+      - 'sample-selection/**'
+      - '.github/workflows/sample-selection.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'sample-selection/**'
+      - '.github/workflows/sample-selection.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sample-selection-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: sample-selection
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: sample-selection/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Check the estimators
+        run: python check_sel.py
+
+      - name: Rerun the experiments
+        run: |
+          python 01_mroz_exclusions.py
+          python 02_randhie_two_part.py
+          python 03_simulation_exclusion.py
+          python 04_mills_linearity.py
+          python 05_mroz_sensitivity.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_mroz_exclusions fig2_mills_linearity fig3_randhie fig4_simulation_rmse \
+                   fig5_simulation_coverage fig6_mroz_sensitivity; do
+            test -s "figures/$f.png"
+          done

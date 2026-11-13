@@ -38,3 +38,8 @@ Blood_Pressure_Missingness/data/private/
 
 # Reproducible external dataset cache
 .cache/
+
+# Part 8 of pipeline-time-correctness: the forecast hub's forecasts belong to the submitting teams and are
+# rebuilt by part8/fetch_hub.py --forecasts-only; results/ holds per-forecast scores
+pipeline-time-correctness/part8/data/hub_forecasts.csv.gz
+pipeline-time-correctness/part8/results/

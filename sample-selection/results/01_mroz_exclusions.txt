@@ -1,0 +1,39 @@
+Mroz87: 753 women, 428 worked (0.568); mean log wage of workers 1.1902, SD 0.7232
+OLS on workers: educ 0.1075 (SE 0.0141); exper 0.0416; exper^2 -0.000811
+OLS prediction of the mean log wage of the 325 non-workers: 0.9723 (workers' observed mean 1.1902)
+-- exclusions: All four (Wooldridge) [nwifeinc, age, kids5, kids618]; strength in the probit: LR 91.73 on 4 df (p 5.7e-19)
+   inverse Mills ratio among workers: R^2 on the wage regressors 0.5392; condition number of the standardised design with the ratio 25.4
+   two-step: educ 0.1091 (SE 0.0155); lambda 0.0323 (SE 0.1336); rho 0.0486; sigma 0.6636
+   ML: educ 0.1084 (SE 0.0149); rho 0.0266 (SE 0.1471); sigma 0.6634; log-likelihood -832.885; converged True
+   implied mean log offered wage of non-workers: two-step 0.9246, ML 0.9462 (gap to workers' mean -0.2440)
+-- exclusions: Children only [kids5, kids618]; strength in the probit: LR 37.14 on 2 df (p 8.6e-09)
+   inverse Mills ratio among workers: R^2 on the wage regressors 0.7883; condition number of the standardised design with the ratio 37.9
+   two-step: educ 0.1008 (SE 0.0184); lambda -0.1295 (SE 0.2276); rho -0.1934; sigma 0.6695
+   ML: educ 0.1047 (SE 0.0164); rho -0.0818 (SE 0.2437); sigma 0.6644; log-likelihood -860.129; converged True
+   implied mean log offered wage of non-workers: two-step 1.1763, ML 1.0579 (gap to workers' mean -0.1322)
+-- exclusions: Other income only [nwifeinc]; strength in the probit: LR 10.86 on 1 df (p 0.00098)
+   inverse Mills ratio among workers: R^2 on the wage regressors 0.9048; condition number of the standardised design with the ratio 56.6
+   two-step: educ 0.1338 (SE 0.0246); lambda 0.4944 (SE 0.3644); rho 0.6574; sigma 0.7521
+   ML: educ 0.1116 (SE 0.0156); rho 0.1172 (SE 0.1884); sigma 0.6657; log-likelihood -873.164; converged True
+   implied mean log offered wage of non-workers: two-step 0.1673, ML 0.8453 (gap to workers' mean -0.3448)
+-- exclusions: Age only [age]; strength in the probit: LR 22.65 on 1 df (p 1.9e-06)
+   inverse Mills ratio among workers: R^2 on the wage regressors 0.8366; condition number of the standardised design with the ratio 42.7
+   two-step: educ 0.1119 (SE 0.0189); lambda 0.0920 (SE 0.2636); rho 0.1380; sigma 0.6665
+   ML: educ 0.1086 (SE 0.0153); rho 0.0344 (SE 0.1923); sigma 0.6635; log-likelihood -867.424; converged True
+   implied mean log offered wage of non-workers: two-step 0.8249, ML 0.9357 (gap to workers' mean -0.2545)
+-- exclusions: None (normality only) [none]; strength in the probit: none
+   inverse Mills ratio among workers: R^2 on the wage regressors 0.9862; condition number of the standardised design with the ratio 148.8
+   two-step: educ 0.0935 (SE 0.0514); lambda -0.2702 (SE 0.9492); rho -0.3906; sigma 0.6917
+   ML: educ 0.0792 (SE 0.0165); rho -0.6935 (SE 0.1077); sigma 0.7670; log-likelihood -878.503; converged True
+   implied mean log offered wage of non-workers: two-step 1.4178, ML 1.8568 (gap to workers' mean +0.6666)
+Two-step SE of educ with nothing excluded / with all four excluded: 0.0514 / 0.0155 = 3.31
+Each excluded variable added to the wage equation, the other three identifying the model (ML):
+   nwifeinc coefficient in the wage equation +0.0056 (SE 0.0033, z +1.69); educ 0.0986; rho -0.0463
+   age      coefficient in the wage equation -0.0001 (SE 0.0054, z -0.02); educ 0.1084; rho 0.0283
+   kids5    coefficient in the wage equation -0.0683 (SE 0.0894, z -0.76); educ 0.1112; rho 0.0670
+   kids618  coefficient in the wage equation -0.0126 (SE 0.0271, z -0.46); educ 0.1072; rho 0.0127
+Profile likelihood in rho, All four (Wooldridge): log-likelihood range over rho in [-0.95, 0.95] 107.438; 95% likelihood-ratio interval for rho covers [-0.25, 0.25] on the grid; educ ranges 0.0528 to 0.1579
+   local maxima of the profile on the grid: rho 0.05 (log-likelihood -0.013 from the maximum, educ 0.1091)
+Profile likelihood in rho, None (normality only): log-likelihood range over rho in [-0.95, 0.95] 86.748; 95% likelihood-ratio interval for rho covers [-0.80, 0.30] on the grid; educ ranges 0.0524 to 0.1594
+   local maxima of the profile on the grid: rho -0.70 (log-likelihood -0.002 from the maximum, educ 0.0788); rho 0.00 (log-likelihood -0.262 from the maximum, educ 0.1075)
+Manski worst-case bounds on the median log offered wage of all women (observed share 0.568): [0.4858, 1.9420] = workers' quantiles 0.120 and 0.880; in dollars [1.63, 6.97]; workers' median 1.2476 (3.48 dollars)

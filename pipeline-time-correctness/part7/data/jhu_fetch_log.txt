@@ -1,0 +1,5 @@
+source https://github.com/CSSEGISandData/COVID-19.git at commit 4360e50239b4eb6b22f3a1759323748f36752177
+US daily reports: 1062 files, 2020-04-12 to 2023-03-09, 54162 state rows
+global time series: 1081 dates, 2020-03-24 to 2023-03-09, 205 countries, 210226 rows
+holidays: python-holidays 0.108; US federal, 51 states, 196 countries
+blob versions read: 4466

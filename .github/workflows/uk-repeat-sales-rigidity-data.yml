@@ -1,0 +1,74 @@
+name: Refresh uk-repeat-sales-rigidity data
+
+on:
+  push:
+    branches:
+      - uk-repeat-sales-rigidity
+    paths:
+      - 'uk-repeat-sales-rigidity/fetch.py'
+      - 'uk-repeat-sales-rigidity/build.py'
+      - '.github/workflows/uk-repeat-sales-rigidity-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: uk-repeat-sales-rigidity
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-repeat-sales-rigidity/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Disk and memory available
+        run: df -h . "$RUNNER_TEMP" && free -g
+
+      - name: Download UK CPI and HM Land Registry Price Paid Data (about 5.3 GB, not committed)
+        run: python fetch.py --out data --ppd "$RUNNER_TEMP/ppd"
+
+      - name: Build the repeat-sale aggregates
+        run: |
+          mkdir -p "$RUNNER_TEMP/duck"
+          python build.py --ppd "$RUNNER_TEMP/ppd/pp-complete.csv" --cpi data/uk_cpi_monthly.csv \
+            --out data --memory-limit 12GB --temp "$RUNNER_TEMP/duck"
+          rm -rf "$RUNNER_TEMP/ppd" "$RUNNER_TEMP/duck"
+          cat data/build_log.txt
+
+      - name: Rerun the analysis and the figures on the new aggregates
+        continue-on-error: true
+        run: |
+          if [ -f analysis.py ]; then python analysis.py > /dev/null; fi
+          if [ -f figures.py ]; then python figures.py; fi
+
+      - name: Commit the aggregates, results and figures if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          [ -d results ] && git add results || true
+          [ -d figures ] && git add figures || true
+          if git diff --cached --quiet -- data/pairs_hist.csv data/pairs_cells.csv data/pairs_diffs.csv data/pairs_monthly.csv data/sales_monthly.csv data/uk_cpi_monthly.csv results; then
+            echo "Aggregates unchanged; nothing to commit."
+          else
+            git commit -m "Refresh repeat-sale aggregates for uk-repeat-sales-rigidity ($(date -u +%Y-%m-%d))"
+            git push
+          fi

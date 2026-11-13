@@ -1,0 +1,119 @@
+# Results (every number quoted in the article)
+
+## Forbes lists and matching
+lists fetched: 16 of 16 (none failed); people per list 1209-3428; source filled: min 0.9994; age known: min 0.9728; last name filled: min 1.0000
+share of people on one list found on the next, by identifier: uri 0.911, naturalId 0.000, name 0.888; identifier used: uri
+list pairs 2011-2026: self-made exits 1650; matched to new heirs on the next list 63 (0.038); only on the list after 10; unmatched 1577
+exits aged 70+: 455 (0.276 of exits); of them matched on the next list 49 (0.108); exits under 70 or of unknown age matched 14 of 1195 (0.012)
+strict matches by rule: name only 38, source only 8, both 17
+new inherited entries 1499; matched to a founder's exit on the same pair 101 (0.067); matched a list later 15; with a generic source 856
+  2011->2012: exits 72, strict 2, window only 0, new heirs 45, heirs matched 3, generic sources 59
+  2012->2013: exits 34, strict 1, window only 0, new heirs 109, heirs matched 1, generic sources 70
+  2013->2014: exits 65, strict 4, window only 2, new heirs 128, heirs matched 4, generic sources 94
+  2014->2015: exits 107, strict 5, window only 0, new heirs 116, heirs matched 8, generic sources 88
+  2015->2016: exits 97, strict 3, window only 1, new heirs 73, heirs matched 5, generic sources 84
+  2016->2017: exits 57, strict 2, window only 1, new heirs 75, heirs matched 2, generic sources 85
+  2017->2018: exits 103, strict 2, window only 0, new heirs 83, heirs matched 2, generic sources 84
+  2018->2019: exits 178, strict 8, window only 1, new heirs 62, heirs matched 13, generic sources 89
+  2019->2020: exits 87, strict 3, window only 0, new heirs 42, heirs matched 3, generic sources 106
+  2020->2021: exits 63, strict 5, window only 0, new heirs 170, heirs matched 5, generic sources 111
+  2021->2022: exits 253, strict 1, window only 1, new heirs 63, heirs matched 1, generic sources 119
+  2022->2023: exits 201, strict 10, window only 3, new heirs 121, heirs matched 17, generic sources 121
+  2023->2024: exits 163, strict 4, window only 1, new heirs 130, heirs matched 9, generic sources 120
+  2024->2025: exits 73, strict 2, window only 0, new heirs 105, heirs matched 6, generic sources 124
+  2025->2026: exits 97, strict 11, window only 0, new heirs 177, heirs matched 22, generic sources 117
+unmapped citizenships: none
+country-years with a strict succession: 50 in 22 countries; successions 63; founders' wealth 415.4 bn; heirs' wealth on the next list 378.0 bn
+mean founder wealth on the last list ($ bn): matched successions, founders 70+ 7.38 (n=49); matched, younger founders 3.86 (n=14); unmatched exits, founders 70+ 2.28 (n=398); unmatched exits, younger 1.54 (n=1179)
+share of departing wealth of founders aged 70+ attributed to matched successions: 0.285; heirs per matched succession 1.67; heirs' wealth on the next list as a share of the founders' 0.910
+successions by country (largest ten): USA 15, IND 8, DEU 6, ITA 6, KOR 4, CHN 3, TWN 3, SWE 2, BRA 2, CHE 2
+strict shock in billionaire countries, list years 2012-2026: 39 country-years > 0 of 882; wealth passing to heirs, % of GDP: median 0.127, 75th pct 0.761, 90th pct 1.374, max 5.790
+  country-years with successions above 0.1% of GDP: 23 in 16 countries
+  country-years with successions above 0.5% of GDP: 12 in 11 countries
+  country-years with successions above 1.0% of GDP: 7 in 7 countries
+
+## Event studies (annual growth in pp; shock = log(1 + wealth passing to heirs as % of GDP); k = growth year minus list year)
+strict / tfp / billionaire countries (n=504, countries=56): k=-3 -0.300 [-1.292, +0.692]; k=-2 +0.485 [-0.722, +1.692]; k=-1 +1.301 [-0.226, +2.829]; k=0 -0.554 [-2.254, +1.146]; k=1 -0.871 [-2.514, +0.772]; k=2 -1.361 [-3.617, +0.896]; post (k=0..2) -2.785 [-4.959, -0.611]; pre (k=-3..-2) +0.185 [-1.077, +1.448]
+strict / tfp / ever billionaire (n=594, countries=66): k=-3 -0.207 [-1.209, +0.794]; k=-2 +0.370 [-0.878, +1.617]; k=-1 +1.291 [-0.270, +2.852]; k=0 -0.536 [-2.245, +1.174]; k=1 -0.767 [-2.544, +1.011]; k=2 -1.455 [-3.778, +0.868]; post (k=0..2) -2.757 [-5.093, -0.422]; pre (k=-3..-2) +0.162 [-1.074, +1.398]
+strict / tfp / all countries (n=1008, countries=112): k=-3 -0.216 [-1.256, +0.825]; k=-2 +0.395 [-0.759, +1.549]; k=-1 +1.354 [-0.261, +2.969]; k=0 -0.587 [-2.167, +0.993]; k=1 -0.609 [-2.320, +1.101]; k=2 -1.413 [-3.610, +0.784]; post (k=0..2) -2.610 [-4.728, -0.492]; pre (k=-3..-2) +0.179 [-0.843, +1.201]
+strict / gdppc / billionaire countries (n=567, countries=63): k=-3 +0.022 [-1.092, +1.136]; k=-2 +0.473 [-0.620, +1.567]; k=-1 +1.132 [+0.105, +2.159]; k=0 -0.037 [-1.348, +1.274]; k=1 -3.113 [-5.414, -0.812]; k=2 -0.815 [-2.289, +0.660]; post (k=0..2) -3.964 [-7.322, -0.607]; pre (k=-3..-2) +0.496 [-1.286, +2.277]
+strict / gdppc / ever billionaire (n=675, countries=75): k=-3 +0.130 [-0.904, +1.164]; k=-2 +0.421 [-0.655, +1.497]; k=-1 +1.145 [+0.086, +2.203]; k=0 -0.017 [-1.223, +1.189]; k=1 -3.007 [-5.219, -0.795]; k=2 -0.841 [-2.299, +0.617]; post (k=0..2) -3.865 [-7.113, -0.617]; pre (k=-3..-2) +0.551 [-1.176, +2.279]
+strict / gdppc / all countries (n=1324, countries=148): k=-3 +0.024 [-0.931, +0.979]; k=-2 +0.760 [-0.385, +1.905]; k=-1 +1.266 [+0.195, +2.338]; k=0 +0.041 [-1.334, +1.416]; k=1 -2.914 [-5.286, -0.542]; k=2 -0.522 [-1.809, +0.766]; post (k=0..2) -3.395 [-6.881, +0.092]; pre (k=-3..-2) +0.784 [-0.768, +2.336]
+window / tfp / billionaire countries (n=504, countries=56): k=-3 -0.164 [-0.946, +0.618]; k=-2 +0.427 [-0.555, +1.409]; k=-1 +1.435 [+0.170, +2.700]; k=0 -0.023 [-1.202, +1.156]; k=1 -0.389 [-1.534, +0.755]; k=2 -1.125 [-2.862, +0.613]; post (k=0..2) -1.538 [-3.658, +0.583]; pre (k=-3..-2) +0.263 [-0.675, +1.201]
+window / tfp / ever billionaire (n=594, countries=66): k=-3 -0.068 [-0.859, +0.724]; k=-2 +0.338 [-0.671, +1.346]; k=-1 +1.416 [+0.127, +2.704]; k=0 -0.027 [-1.195, +1.141]; k=1 -0.323 [-1.522, +0.877]; k=2 -1.193 [-2.996, +0.609]; post (k=0..2) -1.543 [-3.680, +0.594]; pre (k=-3..-2) +0.270 [-0.648, +1.189]
+window / tfp / all countries (n=1008, countries=112): k=-3 -0.111 [-0.928, +0.706]; k=-2 +0.401 [-0.527, +1.329]; k=-1 +1.410 [+0.099, +2.720]; k=0 -0.094 [-1.179, +0.991]; k=1 -0.226 [-1.342, +0.890]; k=2 -1.203 [-2.910, +0.504]; post (k=0..2) -1.523 [-3.423, +0.377]; pre (k=-3..-2) +0.290 [-0.463, +1.043]
+window / gdppc / billionaire countries (n=567, countries=63): k=-3 +0.329 [-0.648, +1.306]; k=-2 +0.586 [-0.308, +1.481]; k=-1 +1.268 [+0.353, +2.182]; k=0 +0.580 [-0.600, +1.761]; k=1 -1.750 [-4.734, +1.234]; k=2 -0.797 [-1.869, +0.275]; post (k=0..2) -1.966 [-6.246, +2.314]; pre (k=-3..-2) +0.916 [-0.659, +2.490]
+window / gdppc / ever billionaire (n=675, countries=75): k=-3 +0.407 [-0.489, +1.304]; k=-2 +0.545 [-0.347, +1.437]; k=-1 +1.276 [+0.344, +2.209]; k=0 +0.571 [-0.534, +1.677]; k=1 -1.685 [-4.566, +1.196]; k=2 -0.828 [-1.890, +0.233]; post (k=0..2) -1.942 [-6.077, +2.193]; pre (k=-3..-2) +0.953 [-0.568, +2.473]
+window / gdppc / all countries (n=1324, countries=148): k=-3 +0.231 [-0.578, +1.039]; k=-2 +0.816 [-0.082, +1.713]; k=-1 +1.314 [+0.405, +2.224]; k=0 +0.579 [-0.613, +1.771]; k=1 -1.646 [-4.574, +1.282]; k=2 -0.626 [-1.559, +0.307]; post (k=0..2) -1.693 [-5.698, +2.311]; pre (k=-3..-2) +1.046 [-0.245, +2.338]
+old founders / tfp / billionaire countries (n=504, countries=56): k=-3 -0.115 [-0.739, +0.510]; k=-2 +0.369 [-0.918, +1.656]; k=-1 +1.382 [-0.305, +3.068]; k=0 -0.665 [-2.715, +1.384]; k=1 -0.806 [-2.505, +0.894]; k=2 -1.639 [-3.928, +0.649]; post (k=0..2) -3.110 [-5.321, -0.900]; pre (k=-3..-2) +0.255 [-0.799, +1.309]
+old founders / tfp / ever billionaire (n=594, countries=66): k=-3 -0.049 [-0.754, +0.655]; k=-2 +0.257 [-1.086, +1.600]; k=-1 +1.381 [-0.350, +3.112]; k=0 -0.654 [-2.722, +1.414]; k=1 -0.729 [-2.657, +1.199]; k=2 -1.710 [-4.087, +0.667]; post (k=0..2) -3.093 [-5.580, -0.606]; pre (k=-3..-2) +0.208 [-0.830, +1.245]
+old founders / tfp / all countries (n=1008, countries=112): k=-3 -0.047 [-0.918, +0.823]; k=-2 +0.287 [-0.945, +1.520]; k=-1 +1.430 [-0.373, +3.234]; k=0 -0.641 [-2.533, +1.251]; k=1 -0.593 [-2.466, +1.281]; k=2 -1.653 [-3.905, +0.599]; post (k=0..2) -2.887 [-5.197, -0.577]; pre (k=-3..-2) +0.240 [-0.582, +1.062]
+old founders / gdppc / billionaire countries (n=567, countries=63): k=-3 +0.179 [-0.786, +1.143]; k=-2 +0.442 [-0.722, +1.606]; k=-1 +1.118 [+0.029, +2.206]; k=0 -0.028 [-1.510, +1.453]; k=1 -3.628 [-5.809, -1.446]; k=2 -0.757 [-2.236, +0.722]; post (k=0..2) -4.413 [-7.754, -1.072]; pre (k=-3..-2) +0.621 [-1.172, +2.414]
+old founders / gdppc / ever billionaire (n=675, countries=75): k=-3 +0.264 [-0.620, +1.149]; k=-2 +0.394 [-0.755, +1.543]; k=-1 +1.134 [+0.007, +2.260]; k=0 -0.002 [-1.362, +1.358]; k=1 -3.539 [-5.620, -1.458]; k=2 -0.779 [-2.239, +0.680]; post (k=0..2) -4.321 [-7.545, -1.096]; pre (k=-3..-2) +0.659 [-1.084, +2.401]
+old founders / gdppc / all countries (n=1324, countries=148): k=-3 +0.218 [-0.602, +1.038]; k=-2 +0.733 [-0.484, +1.950]; k=-1 +1.244 [+0.094, +2.394]; k=0 +0.153 [-1.389, +1.696]; k=1 -3.395 [-5.711, -1.079]; k=2 -0.489 [-1.814, +0.837]; post (k=0..2) -3.730 [-7.437, -0.024]; pre (k=-3..-2) +0.951 [-0.652, +2.553]
+heirs' wealth / tfp / billionaire countries (n=504, countries=56): k=-3 -0.251 [-1.354, +0.853]; k=-2 +0.460 [-1.038, +1.957]; k=-1 +1.332 [+0.231, +2.433]; k=0 -0.329 [-2.142, +1.484]; k=1 -1.197 [-3.519, +1.125]; k=2 -1.270 [-3.695, +1.156]; post (k=0..2) -2.796 [-5.699, +0.108]; pre (k=-3..-2) +0.209 [-1.300, +1.718]
+heirs' wealth / tfp / ever billionaire (n=594, countries=66): k=-3 -0.100 [-1.206, +1.006]; k=-2 +0.326 [-1.196, +1.849]; k=-1 +1.296 [+0.205, +2.387]; k=0 -0.264 [-2.017, +1.488]; k=1 -1.021 [-3.455, +1.413]; k=2 -1.354 [-3.891, +1.183]; post (k=0..2) -2.640 [-5.644, +0.364]; pre (k=-3..-2) +0.226 [-1.222, +1.675]
+heirs' wealth / tfp / all countries (n=1008, countries=112): k=-3 -0.095 [-1.233, +1.042]; k=-2 +0.368 [-1.039, +1.775]; k=-1 +1.357 [+0.260, +2.453]; k=0 -0.388 [-2.021, +1.246]; k=1 -0.799 [-3.137, +1.539]; k=2 -1.349 [-3.726, +1.028]; post (k=0..2) -2.536 [-5.253, +0.180]; pre (k=-3..-2) +0.273 [-0.893, +1.438]
+heirs' wealth / gdppc / billionaire countries (n=567, countries=63): k=-3 -0.027 [-1.217, +1.163]; k=-2 +0.534 [-0.701, +1.769]; k=-1 +1.211 [+0.348, +2.073]; k=0 -0.079 [-1.639, +1.480]; k=1 -4.066 [-6.738, -1.394]; k=2 -0.926 [-2.522, +0.671]; post (k=0..2) -5.071 [-8.569, -1.573]; pre (k=-3..-2) +0.507 [-1.478, +2.491]
+heirs' wealth / gdppc / ever billionaire (n=675, countries=75): k=-3 +0.120 [-1.003, +1.242]; k=-2 +0.479 [-0.721, +1.679]; k=-1 +1.205 [+0.339, +2.070]; k=0 -0.049 [-1.471, +1.374]; k=1 -3.905 [-6.501, -1.310]; k=2 -0.956 [-2.542, +0.631]; post (k=0..2) -4.910 [-8.301, -1.518]; pre (k=-3..-2) +0.598 [-1.323, +2.520]
+heirs' wealth / gdppc / all countries (n=1324, countries=148): k=-3 -0.071 [-1.057, +0.914]; k=-2 +0.875 [-0.374, +2.124]; k=-1 +1.349 [+0.504, +2.193]; k=0 -0.149 [-1.696, +1.397]; k=1 -3.864 [-6.524, -1.203]; k=2 -0.696 [-1.956, +0.564]; post (k=0..2) -4.709 [-7.846, -1.572]; pre (k=-3..-2) +0.803 [-0.930, +2.537]
+old exits, any / tfp / billionaire countries (n=504, countries=56): k=-3 -0.535 [-1.328, +0.258]; k=-2 -0.242 [-1.559, +1.074]; k=-1 +0.998 [-0.027, +2.024]; k=0 -0.876 [-1.900, +0.149]; k=1 +0.562 [-0.379, +1.504]; k=2 -0.294 [-2.071, +1.483]; post (k=0..2) -0.607 [-2.362, +1.148]; pre (k=-3..-2) -0.777 [-2.302, +0.748]
+old exits, any / tfp / ever billionaire (n=594, countries=66): k=-3 -0.551 [-1.364, +0.263]; k=-2 -0.294 [-1.595, +1.006]; k=-1 +0.931 [-0.081, +1.943]; k=0 -0.894 [-1.932, +0.143]; k=1 +0.629 [-0.383, +1.642]; k=2 -0.314 [-2.178, +1.550]; post (k=0..2) -0.579 [-2.388, +1.229]; pre (k=-3..-2) -0.845 [-2.358, +0.668]
+old exits, any / tfp / all countries (n=1008, countries=112): k=-3 -0.491 [-1.306, +0.324]; k=-2 -0.323 [-1.558, +0.911]; k=-1 +1.005 [-0.008, +2.017]; k=0 -0.902 [-1.906, +0.101]; k=1 +0.677 [-0.347, +1.700]; k=2 -0.203 [-2.049, +1.642]; post (k=0..2) -0.429 [-2.166, +1.307]; pre (k=-3..-2) -0.814 [-2.243, +0.614]
+old exits, any / gdppc / billionaire countries (n=567, countries=63): k=-3 -0.721 [-1.991, +0.549]; k=-2 -0.543 [-1.493, +0.408]; k=-1 +0.690 [-0.353, +1.733]; k=0 +0.176 [-0.906, +1.258]; k=1 -0.964 [-2.617, +0.689]; k=2 -0.458 [-1.665, +0.749]; post (k=0..2) -1.246 [-4.086, +1.593]; pre (k=-3..-2) -1.263 [-2.894, +0.367]
+old exits, any / gdppc / ever billionaire (n=675, countries=75): k=-3 -0.697 [-1.982, +0.588]; k=-2 -0.546 [-1.476, +0.384]; k=-1 +0.661 [-0.367, +1.689]; k=0 +0.192 [-0.906, +1.289]; k=1 -0.912 [-2.516, +0.692]; k=2 -0.423 [-1.638, +0.791]; post (k=0..2) -1.144 [-3.965, +1.678]; pre (k=-3..-2) -1.243 [-2.873, +0.387]
+old exits, any / gdppc / all countries (n=1324, countries=148): k=-3 -0.583 [-1.846, +0.681]; k=-2 -0.416 [-1.365, +0.533]; k=-1 +0.887 [-0.227, +2.001]; k=0 +0.251 [-0.883, +1.386]; k=1 -0.841 [-2.571, +0.890]; k=2 -0.172 [-1.328, +0.983]; post (k=0..2) -0.762 [-3.697, +2.173]; pre (k=-3..-2) -0.998 [-2.579, +0.582]
+old exits without heirs / tfp / billionaire countries (n=504, countries=56): k=-3 -0.812 [-1.928, +0.304]; k=-2 -0.535 [-2.310, +1.239]; k=-1 +0.535 [-1.021, +2.091]; k=0 -0.716 [-1.740, +0.308]; k=1 +1.151 [-0.123, +2.425]; k=2 +0.403 [-1.733, +2.538]; post (k=0..2) +0.838 [-1.416, +3.092]; pre (k=-3..-2) -1.347 [-3.412, +0.718]
+old exits without heirs / tfp / ever billionaire (n=594, countries=66): k=-3 -0.877 [-1.969, +0.214]; k=-2 -0.534 [-2.266, +1.199]; k=-1 +0.422 [-1.110, +1.953]; k=0 -0.732 [-1.762, +0.299]; k=1 +1.226 [-0.095, +2.548]; k=2 +0.409 [-1.833, +2.651]; post (k=0..2) +0.904 [-1.414, +3.221]; pre (k=-3..-2) -1.411 [-3.420, +0.598]
+old exits without heirs / tfp / all countries (n=1008, countries=112): k=-3 -0.800 [-1.885, +0.284]; k=-2 -0.595 [-2.268, +1.079]; k=-1 +0.495 [-1.029, +2.019]; k=0 -0.746 [-1.758, +0.265]; k=1 +1.228 [-0.099, +2.555]; k=2 +0.553 [-1.646, +2.753]; post (k=0..2) +1.035 [-1.136, +3.207]; pre (k=-3..-2) -1.395 [-3.339, +0.549]
+old exits without heirs / gdppc / billionaire countries (n=567, countries=63): k=-3 -1.123 [-2.660, +0.415]; k=-2 -1.268 [-2.541, +0.005]; k=-1 +0.416 [-1.149, +1.980]; k=0 +0.317 [-1.013, +1.648]; k=1 -0.048 [-1.275, +1.179]; k=2 -0.489 [-1.963, +0.985]; post (k=0..2) -0.220 [-2.954, +2.515]; pre (k=-3..-2) -2.391 [-4.294, -0.487]
+old exits without heirs / gdppc / ever billionaire (n=675, countries=75): k=-3 -1.134 [-2.674, +0.406]; k=-2 -1.232 [-2.471, +0.007]; k=-1 +0.359 [-1.187, +1.905]; k=0 +0.334 [-1.027, +1.695]; k=1 -0.002 [-1.225, +1.220]; k=2 -0.415 [-1.879, +1.048]; post (k=0..2) -0.083 [-2.797, +2.630]; pre (k=-3..-2) -2.366 [-4.236, -0.497]
+old exits without heirs / gdppc / all countries (n=1324, countries=148): k=-3 -0.924 [-2.539, +0.692]; k=-2 -1.247 [-2.485, -0.009]; k=-1 +0.653 [-1.004, +2.310]; k=0 +0.337 [-1.046, +1.720]; k=1 +0.014 [-1.281, +1.308]; k=2 -0.154 [-1.609, +1.302]; post (k=0..2) +0.197 [-2.681, +3.075]; pre (k=-3..-2) -2.171 [-4.100, -0.242]
+exits without heirs / tfp / billionaire countries (n=504, countries=56): k=-3 -0.309 [-1.240, +0.622]; k=-2 -0.529 [-1.511, +0.453]; k=-1 -0.620 [-1.685, +0.446]; k=0 -0.736 [-1.851, +0.380]; k=1 -0.037 [-1.298, +1.223]; k=2 +0.544 [-0.632, +1.720]; post (k=0..2) -0.229 [-2.280, +1.822]; pre (k=-3..-2) -0.838 [-2.047, +0.371]
+exits without heirs / tfp / ever billionaire (n=594, countries=66): k=-3 -0.338 [-1.206, +0.529]; k=-2 -0.467 [-1.360, +0.427]; k=-1 -0.817 [-1.807, +0.173]; k=0 -0.817 [-1.904, +0.270]; k=1 +0.072 [-1.116, +1.260]; k=2 +0.514 [-0.568, +1.596]; post (k=0..2) -0.231 [-2.216, +1.754]; pre (k=-3..-2) -0.805 [-1.940, +0.330]
+exits without heirs / tfp / all countries (n=1008, countries=112): k=-3 -0.289 [-1.155, +0.576]; k=-2 -0.501 [-1.405, +0.402]; k=-1 -0.692 [-1.685, +0.300]; k=0 -0.825 [-1.918, +0.268]; k=1 +0.065 [-1.088, +1.218]; k=2 +0.551 [-0.487, +1.588]; post (k=0..2) -0.209 [-2.185, +1.766]; pre (k=-3..-2) -0.791 [-1.942, +0.361]
+exits without heirs / gdppc / billionaire countries (n=567, countries=63): k=-3 -0.315 [-1.310, +0.679]; k=-2 -0.994 [-1.825, -0.163]; k=-1 -0.517 [-1.828, +0.793]; k=0 -0.826 [-2.678, +1.026]; k=1 -0.737 [-2.019, +0.546]; k=2 -0.035 [-0.875, +0.805]; post (k=0..2) -1.597 [-4.416, +1.222]; pre (k=-3..-2) -1.309 [-2.668, +0.050]
+exits without heirs / gdppc / ever billionaire (n=675, countries=75): k=-3 -0.194 [-1.135, +0.747]; k=-2 -0.664 [-1.464, +0.136]; k=-1 -0.482 [-1.625, +0.662]; k=0 -0.890 [-2.564, +0.784]; k=1 -0.533 [-1.668, +0.602]; k=2 -0.013 [-0.742, +0.716]; post (k=0..2) -1.436 [-3.963, +1.090]; pre (k=-3..-2) -0.858 [-2.151, +0.435]
+exits without heirs / gdppc / all countries (n=1324, countries=148): k=-3 -0.078 [-0.992, +0.835]; k=-2 -0.773 [-1.542, -0.004]; k=-1 -0.114 [-1.305, +1.077]; k=0 -0.909 [-2.530, +0.711]; k=1 -0.478 [-1.574, +0.618]; k=2 +0.173 [-0.554, +0.899]; post (k=0..2) -1.215 [-3.705, +1.276]; pre (k=-3..-2) -0.851 [-2.124, +0.421]
+heirs without an exit / tfp / billionaire countries (n=504, countries=56): k=-3 -0.242 [-1.001, +0.517]; k=-2 +0.284 [-0.681, +1.249]; k=-1 +0.296 [-0.406, +0.998]; k=0 -0.469 [-1.439, +0.501]; k=1 +0.447 [-0.078, +0.972]; k=2 -0.134 [-0.818, +0.550]; post (k=0..2) -0.156 [-1.481, +1.169]; pre (k=-3..-2) +0.042 [-1.480, +1.564]
+heirs without an exit / tfp / ever billionaire (n=594, countries=66): k=-3 -0.355 [-1.157, +0.447]; k=-2 +0.416 [-0.556, +1.388]; k=-1 +0.544 [-0.286, +1.374]; k=0 -0.524 [-1.488, +0.441]; k=1 +0.528 [+0.017, +1.039]; k=2 -0.052 [-0.736, +0.632]; post (k=0..2) -0.048 [-1.407, +1.310]; pre (k=-3..-2) +0.061 [-1.383, +1.505]
+heirs without an exit / tfp / all countries (n=1008, countries=112): k=-3 -0.260 [-1.074, +0.554]; k=-2 +0.432 [-0.501, +1.365]; k=-1 +0.517 [-0.328, +1.362]; k=0 -0.445 [-1.409, +0.519]; k=1 +0.461 [-0.032, +0.953]; k=2 -0.001 [-0.627, +0.626]; post (k=0..2) +0.015 [-1.350, +1.380]; pre (k=-3..-2) +0.172 [-1.235, +1.579]
+heirs without an exit / gdppc / billionaire countries (n=567, countries=63): k=-3 -0.113 [-0.733, +0.507]; k=-2 +0.540 [-0.448, +1.528]; k=-1 +0.380 [-0.377, +1.136]; k=0 +0.226 [-0.652, +1.104]; k=1 +0.621 [+0.092, +1.150]; k=2 -0.404 [-1.490, +0.682]; post (k=0..2) +0.443 [-0.950, +1.837]; pre (k=-3..-2) +0.427 [-0.972, +1.826]
+heirs without an exit / gdppc / ever billionaire (n=675, countries=75): k=-3 -0.341 [-1.156, +0.474]; k=-2 +0.623 [-0.343, +1.589]; k=-1 +0.499 [-0.265, +1.262]; k=0 +0.186 [-0.714, +1.086]; k=1 +0.619 [+0.110, +1.128]; k=2 -0.353 [-1.432, +0.726]; post (k=0..2) +0.452 [-0.943, +1.848]; pre (k=-3..-2) +0.282 [-1.152, +1.717]
+heirs without an exit / gdppc / all countries (n=1324, countries=148): k=-3 -0.347 [-1.158, +0.464]; k=-2 +0.768 [-0.197, +1.733]; k=-1 +0.318 [-0.387, +1.022]; k=0 +0.347 [-0.585, +1.278]; k=1 +0.406 [-0.140, +0.952]; k=2 -0.449 [-1.490, +0.592]; post (k=0..2) +0.304 [-1.135, +1.742]; pre (k=-3..-2) +0.421 [-0.977, +1.819]
+
+## Permutation of shock timing within country (1,000 draws; cumulative post effect, TFP)
+strict / billionaire countries: observed -2.785; null 5th-50th-95th pct -3.250, -0.053, +2.949; share of draws at or below observed 0.083
+strict / ever billionaire: observed -2.757; null 5th-50th-95th pct -3.354, -0.051, +2.941; share of draws at or below observed 0.093
+old founders / billionaire countries: observed -3.110; null 5th-50th-95th pct -3.246, +0.127, +2.774; share of draws at or below observed 0.054
+old founders / ever billionaire: observed -3.093; null 5th-50th-95th pct -3.265, +0.134, +2.760; share of draws at or below observed 0.059
+old exits, any / billionaire countries: observed -0.607; null 5th-50th-95th pct -1.803, -0.012, +1.717; share of draws at or below observed 0.292
+old exits, any / ever billionaire: observed -0.579; null 5th-50th-95th pct -1.799, -0.009, +1.724; share of draws at or below observed 0.304
+
+## Robustness (TFP, billionaire countries; post = sum of k=0..2; k=-1 = growth in the year before the list year)
+strict / baseline (n=504): post -2.785 [-4.959, -0.611]; pre +0.185 [-1.077, +1.448]; k=-1 +1.301 [-0.226, +2.829]
+strict / previous year's growth as a control (n=504): post -2.872 [-5.055, -0.689]; pre +0.111 [-0.914, +1.137]; k=-1 +1.141 [-0.521, +2.803]
+strict / change in billionaire wealth, same leads and lags, as controls (n=392): post -2.232 [-5.772, +1.307]; pre -0.078 [-2.093, +1.937]; k=-1 +0.551 [-2.732, +3.833]
+strict / growth years 2020 and 2021 left out (n=392): post +0.529 [-2.027, +3.086]; pre +0.809 [-1.005, +2.623]; k=-1 +0.558 [-0.632, +1.748]
+strict / United States left out (n=495): post -2.732 [-4.908, -0.557]; pre +0.203 [-1.061, +1.468]; k=-1 +1.281 [-0.245, +2.807]
+strict / pandemic exposure x year as controls (n=504): post -1.686 [-6.052, +2.679]; pre +1.719 [-0.470, +3.908]; k=-1 +2.076 [+0.552, +3.600]
+strict / indicator: successions above 0.1% of GDP (n=504): post -2.337 [-4.854, +0.181]; pre +0.817 [-0.469, +2.102]; k=-1 +1.203 [+0.015, +2.392]
+strict / leave one country with a succession out: 19 countries; full -2.785; closest to zero -2.287 [-4.395, -0.179] without BRA; furthest -4.186 without PHL; intervals excluding zero 18 of 19
+old founders / baseline (n=504): post -3.110 [-5.321, -0.900]; pre +0.255 [-0.799, +1.309]; k=-1 +1.382 [-0.305, +3.068]
+old founders / previous year's growth as a control (n=504): post -3.218 [-5.587, -0.849]; pre +0.042 [-0.958, +1.042]; k=-1 +1.235 [-0.590, +3.061]
+old founders / change in billionaire wealth, same leads and lags, as controls (n=392): post -2.925 [-5.617, -0.233]; pre +0.350 [-1.861, +2.562]; k=-1 +0.653 [-3.138, +4.445]
+old founders / growth years 2020 and 2021 left out (n=392): post -0.332 [-3.136, +2.472]; pre +0.699 [-0.720, +2.119]; k=-1 +0.690 [-0.505, +1.886]
+old founders / United States left out (n=495): post -3.054 [-5.268, -0.840]; pre +0.272 [-0.781, +1.324]; k=-1 +1.361 [-0.321, +3.043]
+old founders / pandemic exposure x year as controls (n=504): post -1.778 [-7.275, +3.719]; pre +2.027 [-0.353, +4.407]; k=-1 +2.231 [+0.497, +3.964]
+old founders / indicator: successions above 0.1% of GDP (n=504): post -3.227 [-5.823, -0.630]; pre +1.174 [-0.417, +2.765]; k=-1 +1.569 [+0.216, +2.922]
+old founders / leave one country with a succession out: 15 countries; full -3.110; closest to zero -2.505 [-4.384, -0.627] without BRA; furthest -5.966 without PHL; intervals excluding zero 15 of 15
+GDP per capita (billionaire countries):
+  strict / baseline (n=567): post -3.964 [-7.322, -0.607]; pre +0.496 [-1.286, +2.277]
+  strict / growth years 2020 and 2021 left out (n=441): post +2.058 [-0.999, +5.115]; pre +1.563 [-0.255, +3.381]
+  old founders / baseline (n=567): post -4.413 [-7.754, -1.072]; pre +0.621 [-1.172, +2.414]
+  old founders / growth years 2020 and 2021 left out (n=441): post +1.738 [-2.155, +5.630]; pre +1.427 [-0.469, +3.323]
+
+## What the within-country composition coefficient predicts for these successions
+headline fit (TFP, 3 years, billionaire countries, FE, sector shares): inherited minus self-made -1.048, coefficient on the sum +0.086
+successions in billionaire countries with composition data: 38; wealth passing to heirs median 0.151% of GDP; predicted change in annual TFP growth over the next three years: median -0.0347 pp, mean -0.1342 pp, 10th pct -0.4004
+event-study implied change for the median succession (post sum / 3 x median shock): -0.1306 pp a year; for the mean shock -0.3526

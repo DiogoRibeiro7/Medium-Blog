@@ -7,16 +7,20 @@ does not establish the effectiveness of the Dim2/Dim3 filtering parameter.
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 from extract_commuting import municipality_codes_from_panel
 from ine_commuting_capture import CapturedJSON
 from ine_commuting_partitioned_capture import (
     candidate_slice_url,
     capture_partition,
+    main,
     require_slice_url,
     validate_metadata,
 )
@@ -115,6 +119,54 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 )
                 self.assertFalse(row["filter_effect_verified"])
 
+    def test_third_amp_index_targets_only_santa_maria_da_feira(self) -> None:
+        """Pin the next bounded source-probe selection without network access."""
+        with tempfile.TemporaryDirectory() as temp:
+            result = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=2, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(result["requested_codes"], ["0109"])
+            self.assertEqual(result["completed_json_captures"], 1)
+            self.assertEqual(result["items"][0]["municipality"], "Santa Maria da Feira")
+            self.assertEqual(
+                result["items"][0]["candidate_url"],
+                candidate_slice_url("0109", dimension="Dim2"),
+            )
+
+    def test_fourth_amp_index_targets_only_oliveira_de_azemeis(self) -> None:
+        """Keep the fourth bounded source request fixed to DICO 0113."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=3, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["0113"])
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "Oliveira de Azeméis")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("0113", dimension="Dim2"),
+            )
+
+    def test_fifth_amp_index_targets_only_sao_joao_da_madeira(self) -> None:
+        """Keep the fifth bounded source request fixed to DICO 0116."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=4, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["0116"])
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "São João da Madeira")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("0116", dimension="Dim2"),
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
@@ -141,6 +193,41 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     capture_partition(Path(temp), metadata_bytes=self.source,
                                       fetcher=fake_response, **args)
+
+    def test_cli_applies_a_longer_bounded_slice_timeout(self) -> None:
+        """Pass 75 seconds to the live downloader, using no real network calls."""
+        observed: list[tuple[str, float]] = []
+
+        def fake_download(url: str, *, timeout_seconds: float) -> CapturedJSON:
+            observed.append((url, timeout_seconds))
+            return fake_response(url)
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            metadata = root / "metadata.json"
+            metadata.write_bytes(self.source)
+            with patch(
+                "ine_commuting_partitioned_capture.download_slice",
+                side_effect=fake_download,
+            ), redirect_stdout(io.StringIO()):
+                main([
+                    "--metadata-json", str(metadata),
+                    "--output", str(root / "capture"),
+                    "--start-index", "4", "--count", "1",
+                    "--dimension", "Dim2", "--timeout-seconds", "75",
+                ])
+            self.assertEqual(observed, [(candidate_slice_url("0116"), 75.0)])
+            report = json.loads((root / "capture" / "partition_manifest.json").read_text())
+            self.assertEqual(report["requested_codes"], ["0116"])
+            self.assertEqual(report["completed_json_captures"], 1)
+
+    def test_cli_rejects_nonfinite_or_unbounded_timeouts(self) -> None:
+        """Reject invalid timeouts before metadata or network access."""
+        for timeout in ("nan", "inf", "0", "-1", "121"):
+            with self.subTest(timeout=timeout), redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as captured:
+                    main(["--output", "/tmp/unused-ine-timeout-test", "--timeout-seconds", timeout])
+                self.assertEqual(captured.exception.code, 2)
 
 
 if __name__ == "__main__":

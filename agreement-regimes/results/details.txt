@@ -1,0 +1,78 @@
+Descriptive numbers quoted in the article (not part of the registered test).
+
+Motivating pair, whole history: 148 evaluated months; deviation from the median of the previous 12 below 0.5% in 125, above 1% in 19, of which 15 in 2014-2015 (2014-06, 2014-07, 2014-08, 2014-09, 2014-10, 2014-11, 2015-04, 2015-05, 2015-06, 2015-07, 2015-08, 2015-09, 2015-10, 2015-11, 2015-12, 2018-11, 2018-12, 2019-01, 2019-02)
+
+Later segment, test pairs: segment rule closer than the full-history rule in 5 of 7 (chicago / drivers, TLC yellow / monthly report, TLC green / monthly report, TLC fhv / monthly report, TLC fhvhv / monthly report)
+Later segment, test pairs: full-history rule also within a factor of two in 7 of 7
+
+Forward windows, test pairs: 17; trailing rule within a factor of two in 9
+  log(observed / trailing): median -0.016, mean -0.139, standard deviation 1.557 (a factor of 4.7)
+  log(observed / expanding): median +0.110, standard deviation 1.724
+  misses with the observed value above twice the trailing rule: 4; below half of it: 4
+
+Forward windows, motivating pair: 8; trailing rule within a factor of two in 2
+  log(observed / trailing): median -1.568, mean -1.300, standard deviation 1.331 (a factor of 3.8)
+  log(observed / expanding): median -3.195, standard deviation 1.025
+  misses with the observed value above twice the trailing rule: 1; below half of it: 5
+
+Forward windows, rule computed on the window's own months (in-period; added after the forward results),
+  with the three largest deviations from the previous-12 median in the trailing and the forward months:
+  citibike / operator reports 2018-01 (24 months): trailing 17.48%, in-period 11.45%, observed 25.12%; in-period within a factor of two: no
+      largest deviations, trailing: 18.35%, 9.91%, 9.30%; forward: 22.76%, 6.58%, 3.26%
+  citibike / operator reports 2019-01 (24 months): trailing 7.36%, in-period 5.80%, observed 12.59%; in-period within a factor of two: no
+      largest deviations, trailing: 22.76%, 6.58%, 1.07%; forward: 3.26%, 3.19%, 1.86%
+  citibike / operator reports 2020-01 (24 months): trailing 7.85%, in-period 2.98%, observed 3.98%; in-period within a factor of two: yes
+      largest deviations, trailing: 22.76%, 6.58%, 3.26%; forward: 231.37%, 1.53%, 1.45%
+  citibike / operator reports 2021-01 (24 months): trailing 7.85%, in-period 28.51%, observed 31.62%; in-period within a factor of two: yes
+      largest deviations, trailing: 22.76%, 6.58%, 3.26%; forward: 231.37%, 19.44%, 1.69%
+  citibike / operator reports 2022-01 (23 months): trailing 6.21%, in-period 3.17%, observed 3.16%; in-period within a factor of two: yes
+      largest deviations, trailing: 231.37%, 3.26%, 3.19%; forward: 19.44%, 1.69%, 0.86%
+  citibike / operator reports 2023-01 (23 months): trailing 11.54%, in-period 0.37%, observed 0.40%; in-period within a factor of two: yes
+      largest deviations, trailing: 231.37%, 19.44%, 1.69%; forward: 0.21%, 0.18%, 0.17%
+  citibike / operator reports 2024-01 (23 months): trailing 13.09%, in-period 4.79%, observed 2.51%; in-period within a factor of two: yes
+      largest deviations, trailing: 231.37%, 19.44%, 1.69%; forward: 2.58%, 2.46%, 2.43%
+  citibike / DOT table 2017-01 (24 months): trailing 13.27%, in-period 2.47%, observed 1.58%; in-period within a factor of two: yes
+      largest deviations, trailing: 7.34%, 7.26%, 6.99%; forward: 1.58%, 1.30%, 0.96%
+  citibike / DOT table 2018-01 (24 months): trailing 13.16%, in-period 2.56%, observed 1.58%; in-period within a factor of two: yes
+      largest deviations, trailing: 7.34%, 7.26%, 6.99%; forward: 1.58%, 1.30%, 1.26%
+  citibike / DOT table 2019-01 (24 months): trailing 2.06%, in-period 2.05%, observed 1.58%; in-period within a factor of two: yes
+      largest deviations, trailing: 1.58%, 1.30%, 0.96%; forward: 1.26%, 1.18%, 0.22%
+  citibike / DOT table 2020-01 (24 months): trailing 2.51%, in-period 0.43%, observed 0.50%; in-period within a factor of two: yes
+      largest deviations, trailing: 1.58%, 1.30%, 1.26%; forward: 0.22%, 0.22%, 0.21%
+  citibike / DOT table 2021-01 (24 months): trailing 2.51%, in-period 0.08%, observed 0.08%; in-period within a factor of two: yes
+      largest deviations, trailing: 1.58%, 1.30%, 1.26%; forward: 0.04%, 0.04%, 0.04%
+  citibike / DOT table 2022-01 (24 months): trailing 0.92%, in-period 0.18%, observed 0.20%; in-period within a factor of two: yes
+      largest deviations, trailing: 1.26%, 1.18%, 0.22%; forward: 0.15%, 0.10%, 0.07%
+  citibike / DOT table 2023-01 (24 months): trailing 0.42%, in-period 0.28%, observed 0.25%; in-period within a factor of two: yes
+      largest deviations, trailing: 0.22%, 0.22%, 0.21%; forward: 0.41%, 0.15%, 0.10%
+  citibike / DOT table 2024-01 (24 months): trailing 0.15%, in-period 0.67%, observed 0.50%; in-period within a factor of two: yes
+      largest deviations, trailing: 0.15%, 0.10%, 0.07%; forward: 0.41%, 0.37%, 0.17%
+  chicago / vehicles 2024-01 (24 months): trailing 3.74%, in-period 1.69%, observed 2.00%; in-period within a factor of two: yes
+      largest deviations, trailing: 1.93%, 1.91%, 1.90%; forward: 0.92%, 0.87%, 0.78%
+  chicago / drivers 2024-01 (24 months): trailing 0.81%, in-period 0.72%, observed 0.79%; in-period within a factor of two: yes
+      largest deviations, trailing: 0.79%, 0.49%, 0.36%; forward: 0.38%, 0.38%, 0.28%
+  TLC yellow / monthly report 2023-01 (24 months): trailing 0.64%, in-period 1.02%, observed 1.26%; in-period within a factor of two: yes
+      largest deviations, trailing: 7.40%, 0.32%, 0.32%; forward: 9.69%, 0.51%, 0.50%
+  TLC yellow / monthly report 2024-01 (24 months): trailing 4.09%, in-period 2.98%, observed 3.16%; in-period within a factor of two: yes
+      largest deviations, trailing: 9.69%, 7.40%, 0.32%; forward: 1.64%, 1.55%, 1.29%
+  TLC green / monthly report 2023-01 (24 months): trailing 0.21%, in-period 2.16%, observed 2.51%; in-period within a factor of two: yes
+      largest deviations, trailing: 3.41%, 0.12%, 0.10%; forward: 1.11%, 1.10%, 1.03%
+  TLC green / monthly report 2024-01 (24 months): trailing 0.21%, in-period 2.16%, observed 2.51%; in-period within a factor of two: yes
+      largest deviations, trailing: 3.41%, 0.12%, 0.10%; forward: 1.11%, 1.10%, 1.03%
+  TLC fhv / monthly report 2023-01 (24 months): trailing 16.87%, in-period 26.46%, observed 31.62%; in-period within a factor of two: yes
+      largest deviations, trailing: 13.99%, 9.58%, 9.10%; forward: 17.95%, 15.39%, 15.21%
+  TLC fhv / monthly report 2024-01 (24 months): trailing 17.18%, in-period 26.46%, observed 39.81%; in-period within a factor of two: yes
+      largest deviations, trailing: 13.99%, 9.58%, 9.38%; forward: 17.95%, 15.39%, 15.21%
+  TLC fhvhv / monthly report 2023-01 (24 months): trailing 0.12%, in-period 0.01%, observed 0.01%; in-period within a factor of two: yes
+      largest deviations, trailing: 0.16%, 0.08%, 0.05%; forward: 0.02%, 0.01%, 0.00%
+  TLC fhvhv / monthly report 2024-01 (24 months): trailing 0.07%, in-period 0.01%, observed 0.01%; in-period within a factor of two: yes
+      largest deviations, trailing: 0.16%, 0.05%, 0.03%; forward: 0.03%, 0.01%, 0.00%
+  test pairs: in-period rule within a factor of two in 15 of 17
+  motivating pair: in-period rule within a factor of two in 8 of 8
+
+Rolling rule of the article's code block (36 rows ending at each month):
+  citibike / operator reports: above 10% 2017-04 to 2019-02, 2021-07 to 2021-11, 2022-04 to 2024-07; below 1% none
+  citibike / DOT table: above 10% 2016-11 to 2018-07; below 1% 2021-12 to 2026-09
+
+Order statistics: the 95th percentile of 36 deviations sits at position 33.25 of 0..35: between the deviations ranked 3 and 2 from the top
+Over 24 months the matched budget allows 1 clean alarm(s), and 90% detection needs 22 of 24 months caught, so at most 2 months may be missed
