@@ -83,7 +83,10 @@ Non-EU-owned share of EU holdings of US securities (central): 2014 27%, 2015 27%
   end-2024: 2,219 of 7,855; bounds 23%-32%
 
 ## Quarterly co-movement, 2015Q1-2025Q4 (44 quarters, EUR billion per quarter)
-Quarters used: 44
+Quarters used: 44; correlation between non-EU and EU purchases of hub securities 0.68
+Single-variable slope of hub_us on non_eu_in (Figure 5): 0.51
+Single-variable slope of hub_us on eu_in (Figure 5): 0.78
+Single-variable slope of other_us on non_eu_in (Figure 5): 0.01
 hub_us: corr with non-EU purchases of hub securities 0.60, with EU purchases 0.54; OLS slopes 0.36 (HAC se 0.14, t 2.6) and 0.37 (se 0.23, t 1.6); R2 0.39
 hub_ext: corr with non-EU purchases of hub securities 0.78, with EU purchases 0.76; OLS slopes 0.72 (HAC se 0.10, t 6.9) and 1.10 (se 0.26, t 4.1); R2 0.70
 other_us: corr with non-EU purchases of hub securities 0.02, with EU purchases 0.16; OLS slopes -0.09 (HAC se 0.12, t -0.8) and 0.25 (se 0.16, t 1.6); R2 0.04

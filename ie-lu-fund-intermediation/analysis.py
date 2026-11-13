@@ -250,7 +250,10 @@ def main() -> None:
         "hub_ext": H.flow(d, "IE", H.EXT, H.F, "ASS") + H.flow(d, "LU", H.EXT, H.F, "ASS"),
         "non_eu_in": cf_q.non_eu, "eu_in": cf_q.eu,
     }) / 1000
-    L.append(f"Quarters used: {len(q.dropna())}")
+    L.append(f"Quarters used: {len(q.dropna())}; correlation between non-EU and EU purchases of hub securities "
+             f"{q.non_eu_in.corr(q.eu_in):.2f}")
+    for xc, yc in (("non_eu_in", "hub_us"), ("eu_in", "hub_us"), ("non_eu_in", "other_us")):
+        L.append(f"Single-variable slope of {yc} on {xc} (Figure 5): {np.polyfit(q[xc], q[yc], 1)[0]:.2f}")
     for y in ("hub_us", "hub_ext", "other_us"):
         r1, r2 = q[y].corr(q.non_eu_in), q[y].corr(q.eu_in)
         b, se, r2_ = H.ols_hac(q[y].values, q[["non_eu_in", "eu_in"]].values)
