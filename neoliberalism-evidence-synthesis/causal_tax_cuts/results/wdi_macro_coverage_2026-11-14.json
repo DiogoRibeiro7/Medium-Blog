@@ -1,0 +1,72 @@
+{
+  "audit_type": "official_wdi_macro_coverage_not_causal_estimation",
+  "audit_date": "2026-11-14",
+  "wdi_source_last_updated": "2026-11-11",
+  "sample": {
+    "countries": 18,
+    "first_year": 1965,
+    "last_year": 2015,
+    "possible_country_years": 918
+  },
+  "source_archives": {
+    "NY.GDP.PCAP.KD.ZG": {
+      "sha256": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+      "available_country_years": 918,
+      "missing_country_years": 0
+    },
+    "FP.CPI.TOTL.ZG": {
+      "sha256": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+      "available_country_years": 918,
+      "missing_country_years": 0
+    },
+    "NE.TRD.GNFS.ZS": {
+      "sha256": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+      "available_country_years": 853,
+      "missing_country_years": 65
+    },
+    "SL.UEM.TOTL.ZS": {
+      "sha256": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f",
+      "available_country_years": 450,
+      "missing_country_years": 468
+    }
+  },
+  "outcome_panel_overlap": {
+    "source_panel_country_years": 853,
+    "source_panel_treated_event_years": 29,
+    "observed_gdp_growth": 853,
+    "observed_cpi_inflation": 853,
+    "observed_trade_openness": 810,
+    "observed_unemployment": 450,
+    "joint_core_three_series_complete": 810,
+    "joint_all_four_complete": 450,
+    "source_rows_missing_core_three_series": 43,
+    "event_years_missing_core_three_series": 0,
+    "event_years_with_five_complete_pre_treatment_core_years": 27
+  },
+  "core_joint_rows_by_country": {
+    "AUS": 51,
+    "AUT": 36,
+    "BEL": 36,
+    "CAN": 51,
+    "CHE": 41,
+    "DEU": 40,
+    "DNK": 49,
+    "FIN": 46,
+    "FRA": 51,
+    "GBR": 46,
+    "IRL": 45,
+    "ITA": 43,
+    "JPN": 46,
+    "NLD": 40,
+    "NOR": 46,
+    "NZL": 46,
+    "SWE": 51,
+    "USA": 46
+  },
+  "restrictions": [
+    "This is data coverage, not an adjusted matched estimate or causal inference.",
+    "The optional ILO unemployment series is excluded from core controls.",
+    "Available macro years need not be matched donor/outcome eligibility years.",
+    "The previous WID outcome panel and tax-cut event definitions were not edited."
+  ]
+}

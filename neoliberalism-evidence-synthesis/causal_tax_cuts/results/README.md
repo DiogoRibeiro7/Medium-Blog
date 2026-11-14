@@ -99,3 +99,9 @@ python -m causal_tax_cuts.analysis \
 
 The commands query *live* external sources. Future values may differ; compare
 download checksums to the frozen manifest before making temporal comparisons.
+
+## Further data-availability audits
+
+The [official World Bank macroeconomic-controls coverage report](WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md)
+freezes four 14 November 2026 WDI archive checksums and their overlap with
+the existing 853-row outcome panel. It does not revise any historical ATT.
