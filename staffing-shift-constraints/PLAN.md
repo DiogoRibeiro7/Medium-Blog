@@ -142,7 +142,9 @@ minutes.
   hold them, and its costs recomputed.
 - **Orders of the forecasts by cost** under each regime, against their order by WAPE.
 
-- **Calls and needed agent-hours by weekday**, as shares of the week, over the test weeks.
+- **Calls and needed agent-hours by weekday**, as shares of the week, over the test weeks; with the oracle, the
+  excess of R1, R3 and R4 on each weekday as a share of that weekday's need; and the hourly shape of weekdays,
+  Saturdays and Sundays.
 - **The Erlang C margin:** with the oracle, the agents needed above the offered load, as a share of the agents
   needed, by offered load, and for the busiest hour of the median week.
 

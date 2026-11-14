@@ -144,11 +144,33 @@ def main() -> None:
     js["weekday"] = {"calls": (act_w / act_w.sum()).tolist(), "need": (need_w / need_w.sum()).tolist()}
     L.append("   calls: " + ", ".join(f"{v:.3f}" for v in act_w / act_w.sum()))
     L.append("   need:  " + ", ".join(f"{v:.3f}" for v in need_w / need_w.sum()))
+    days = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+    L.append("   excess with the oracle as a share of each weekday's needed agent-hours:")
+    js["weekday"]["excess_over_need"] = {}
+    for regime in ("R1", "R3", "R4"):
+        ex = np.zeros(7)
+        for nd in need:
+            on, _ = S.staffing(regime, nd)
+            ex += np.maximum(on - nd, 0).reshape(7, 24).sum(axis=1)
+        r = ex / need_w
+        js["weekday"]["excess_over_need"][regime] = r.tolist()
+        L.append(f"   {regime}: " + ", ".join(f"{d} {v:.3f}" for d, v in zip(days, r, strict=True)))
+    hp = test.groupby([test.index.dayofweek >= 5, test.index.dayofweek == 6, test.index.hour]).sum()
+    L.append("   hourly shape (share of the day's calls): weekdays, Saturdays, Sundays")
+    js["weekday"]["shape"] = {}
+    for label, key in (("weekdays", (False, False)), ("Saturdays", (True, False)), ("Sundays", (True, True))):
+        sh = hp.loc[key]
+        sh = sh / sh.sum()
+        js["weekday"]["shape"][label] = sh.tolist()
+        L.append(
+            f"   {label}: peak hour {int(sh.idxmax())}:00 ({sh.max():.3f}); 08:00 {sh[8]:.3f}, 09:00 {sh[9]:.3f}; "
+            f"17:00 to 23:59 {sh[17:24].sum():.3f}"
+        )
     L.append("")
 
     L.append("7. Erlang C margin with the oracle: agents needed above the offered load (calls x AHT / 3600),")
     L.append("   as a share of the agents needed, by offered load over all test-week hours; and the median week's")
-    L.append("   busiest and quietest hours")
+    L.append("   busiest hour")
     load_all = np.concatenate([x * AHT / 3600 for x in actual])
     need_all = np.concatenate(need)
     js["margin"] = {}
