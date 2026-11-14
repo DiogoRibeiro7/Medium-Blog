@@ -1,0 +1,110 @@
+-- NB, n = 1000 (500 samples): share of zeros 0.384; true average effect of x on E[Y] 1.2124; true effect of z on P(Y > 0) +0.0000; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 0.164, AIC 0.014, BIC 0.000
+   lowest AIC: NB 0.662; NB, dispersion varies 0.080; ZINB 0.206; Hurdle-NB 0.052
+   lowest BIC: NB 1.000; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 0.000
+   ZINB share of structural zeros: median 0.0216, 5%-95% 0.0010-0.1096; mean error +0.0347; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.222, and in which those also make the raw Vuong test favour the ZINB 0.150
+   Poisson                effect of x on E[Y]: bias +0.0028, RMSE 0.1646; effect of z on P(Y > 0): bias -0.0007, RMSE 0.0120; mean |error| of P(Y = 0) 0.1681; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0050, RMSE 0.1520; effect of z on P(Y > 0): bias -0.0004, RMSE 0.0090; mean |error| of P(Y = 0) 0.0149; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0051, RMSE 0.1525; effect of z on P(Y > 0): bias -0.0013, RMSE 0.0135; mean |error| of P(Y = 0) 0.0185; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0439, RMSE 0.1574; effect of z on P(Y > 0): bias -0.0014, RMSE 0.0147; mean |error| of P(Y = 0) 0.0207; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0351, RMSE 0.1597; effect of z on P(Y > 0): bias -0.0058, RMSE 0.0159; mean |error| of P(Y = 0) 0.0184
+   Hurdle-NB              effect of x on E[Y]: bias +0.0042, RMSE 0.1549; effect of z on P(Y > 0): bias -0.0011, RMSE 0.0148; mean |error| of P(Y = 0) 0.0198; converged 1.000
+-- NB, n = 4000 (500 samples): share of zeros 0.384; true average effect of x on E[Y] 1.2123; true effect of z on P(Y > 0) +0.0000; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 0.130, AIC 0.016, BIC 0.000
+   lowest AIC: NB 0.668; NB, dispersion varies 0.090; ZINB 0.188; Hurdle-NB 0.054
+   lowest BIC: NB 1.000; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 0.000
+   ZINB share of structural zeros: median 0.0113, 5%-95% 0.0005-0.0597; mean error +0.0189; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.154, and in which those also make the raw Vuong test favour the ZINB 0.112
+   Poisson                effect of x on E[Y]: bias -0.0032, RMSE 0.0857; effect of z on P(Y > 0): bias -0.0002, RMSE 0.0059; mean |error| of P(Y = 0) 0.1691; converged 1.000
+   NB                     effect of x on E[Y]: bias -0.0023, RMSE 0.0760; effect of z on P(Y > 0): bias -0.0002, RMSE 0.0045; mean |error| of P(Y = 0) 0.0077; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias -0.0024, RMSE 0.0761; effect of z on P(Y > 0): bias -0.0002, RMSE 0.0069; mean |error| of P(Y = 0) 0.0094; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0480, RMSE 0.0927; effect of z on P(Y > 0): bias -0.0002, RMSE 0.0075; mean |error| of P(Y = 0) 0.0118; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0213, RMSE 0.0819; effect of z on P(Y > 0): bias -0.0023, RMSE 0.0077; mean |error| of P(Y = 0) 0.0092
+   Hurdle-NB              effect of x on E[Y]: bias -0.0035, RMSE 0.0793; effect of z on P(Y > 0): bias -0.0001, RMSE 0.0076; mean |error| of P(Y = 0) 0.0101; converged 1.000
+-- NB, dispersion varies, n = 1000 (500 samples): share of zeros 0.409; true average effect of x on E[Y] 1.2129; true effect of z on P(Y > 0) +0.0966; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 0.990
+   lowest AIC: NB 0.000; NB, dispersion varies 0.996; ZINB 0.000; Hurdle-NB 0.004
+   lowest BIC: NB 0.000; NB, dispersion varies 1.000; ZINB 0.000; Hurdle-NB 0.000
+   ZINB share of structural zeros: median 0.1932, 5%-95% 0.1507-0.2309; mean error +0.1924; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.006, and in which those also make the raw Vuong test favour the ZINB 0.006
+   Poisson                effect of x on E[Y]: bias +0.0064, RMSE 0.2011; effect of z on P(Y > 0): bias -0.0969, RMSE 0.0989; mean |error| of P(Y = 0) 0.1935; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0086, RMSE 0.1768; effect of z on P(Y > 0): bias -0.0958, RMSE 0.0966; mean |error| of P(Y = 0) 0.0995; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0051, RMSE 0.1475; effect of z on P(Y > 0): bias -0.0008, RMSE 0.0115; mean |error| of P(Y = 0) 0.0185; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0191, RMSE 0.1863; effect of z on P(Y > 0): bias -0.0168, RMSE 0.0228; mean |error| of P(Y = 0) 0.0259; converged 1.000
+   ZINB                   effect of x on E[Y]: bias +0.0013, RMSE 0.1636; effect of z on P(Y > 0): bias -0.0539, RMSE 0.0554; mean |error| of P(Y = 0) 0.0458
+   Hurdle-NB              effect of x on E[Y]: bias +0.0913, RMSE 0.2082; effect of z on P(Y > 0): bias +0.0150, RMSE 0.0196; mean |error| of P(Y = 0) 0.0346; converged 1.000
+-- NB, dispersion varies, n = 4000 (500 samples): share of zeros 0.409; true average effect of x on E[Y] 1.2115; true effect of z on P(Y > 0) +0.0967; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 1.000
+   lowest AIC: NB 0.000; NB, dispersion varies 1.000; ZINB 0.000; Hurdle-NB 0.000
+   lowest BIC: NB 0.000; NB, dispersion varies 1.000; ZINB 0.000; Hurdle-NB 0.000
+   ZINB share of structural zeros: median 0.1927, 5%-95% 0.1718-0.2141; mean error +0.1928; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.010, and in which those also make the raw Vuong test favour the ZINB 0.010
+   Poisson                effect of x on E[Y]: bias +0.0023, RMSE 0.1056; effect of z on P(Y > 0): bias -0.0971, RMSE 0.0976; mean |error| of P(Y = 0) 0.1945; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0024, RMSE 0.0932; effect of z on P(Y > 0): bias -0.0968, RMSE 0.0970; mean |error| of P(Y = 0) 0.0997; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0030, RMSE 0.0744; effect of z on P(Y > 0): bias +0.0001, RMSE 0.0059; mean |error| of P(Y = 0) 0.0092; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0179, RMSE 0.0996; effect of z on P(Y > 0): bias -0.0163, RMSE 0.0180; mean |error| of P(Y = 0) 0.0178; converged 1.000
+   ZINB                   effect of x on E[Y]: bias +0.0023, RMSE 0.0851; effect of z on P(Y > 0): bias -0.0541, RMSE 0.0546; mean |error| of P(Y = 0) 0.0412
+   Hurdle-NB              effect of x on E[Y]: bias +0.0850, RMSE 0.1275; effect of z on P(Y > 0): bias +0.0153, RMSE 0.0165; mean |error| of P(Y = 0) 0.0307; converged 1.000
+-- Poisson-lognormal, n = 1000 (500 samples): share of zeros 0.385; true average effect of x on E[Y] 1.2115; true effect of z on P(Y > 0) +0.0000; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 0.346, AIC 0.026, BIC 0.000
+   lowest AIC: NB 0.038; NB, dispersion varies 0.018; ZINB 0.036; Hurdle-NB 0.908
+   lowest BIC: NB 0.634; NB, dispersion varies 0.008; ZINB 0.000; Hurdle-NB 0.358
+   ZINB share of structural zeros: median 0.0060, 5%-95% 0.0000-0.0379; mean error +0.0105; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.490, and in which those also make the raw Vuong test favour the ZINB 0.342
+   Poisson                effect of x on E[Y]: bias +0.0043, RMSE 0.1945; effect of z on P(Y > 0): bias -0.0000, RMSE 0.0138; mean |error| of P(Y = 0) 0.1702; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0042, RMSE 0.1757; effect of z on P(Y > 0): bias -0.0000, RMSE 0.0099; mean |error| of P(Y = 0) 0.0238; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0001, RMSE 0.1765; effect of z on P(Y > 0): bias -0.0003, RMSE 0.0132; mean |error| of P(Y = 0) 0.0238; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0622, RMSE 0.1918; effect of z on P(Y > 0): bias -0.0007, RMSE 0.0146; mean |error| of P(Y = 0) 0.0213; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0270, RMSE 0.1787; effect of z on P(Y > 0): bias -0.0039, RMSE 0.0135; mean |error| of P(Y = 0) 0.0252
+   Hurdle-NB              effect of x on E[Y]: bias -0.0382, RMSE 0.1887; effect of z on P(Y > 0): bias -0.0002, RMSE 0.0147; mean |error| of P(Y = 0) 0.0200; converged 1.000
+-- Poisson-lognormal, n = 4000 (500 samples): share of zeros 0.385; true average effect of x on E[Y] 1.2126; true effect of z on P(Y > 0) +0.0000; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 0.372, AIC 0.018, BIC 0.000
+   lowest AIC: NB 0.000; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 1.000
+   lowest BIC: NB 0.008; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 0.992
+   ZINB share of structural zeros: median 0.0015, 5%-95% 0.0000-0.0153; mean error +0.0037; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.484, and in which those also make the raw Vuong test favour the ZINB 0.358
+   Poisson                effect of x on E[Y]: bias +0.0016, RMSE 0.1069; effect of z on P(Y > 0): bias +0.0001, RMSE 0.0075; mean |error| of P(Y = 0) 0.1699; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0008, RMSE 0.0952; effect of z on P(Y > 0): bias +0.0000, RMSE 0.0054; mean |error| of P(Y = 0) 0.0196; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias -0.0004, RMSE 0.0953; effect of z on P(Y > 0): bias -0.0005, RMSE 0.0070; mean |error| of P(Y = 0) 0.0195; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0616, RMSE 0.1181; effect of z on P(Y > 0): bias -0.0006, RMSE 0.0079; mean |error| of P(Y = 0) 0.0127; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0102, RMSE 0.0969; effect of z on P(Y > 0): bias -0.0013, RMSE 0.0065; mean |error| of P(Y = 0) 0.0198
+   Hurdle-NB              effect of x on E[Y]: bias -0.0463, RMSE 0.1088; effect of z on P(Y > 0): bias -0.0005, RMSE 0.0079; mean |error| of P(Y = 0) 0.0107; converged 1.000
+-- Zero-inflated NB, n = 1000 (500 samples): share of zeros 0.495; true average effect of x on E[Y] 0.8872; true effect of z on P(Y > 0) -0.1308; true share of structural zeros 0.268
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 0.894
+   lowest AIC: NB 0.000; NB, dispersion varies 0.010; ZINB 0.894; Hurdle-NB 0.096
+   lowest BIC: NB 0.000; NB, dispersion varies 0.026; ZINB 0.884; Hurdle-NB 0.090
+   ZINB share of structural zeros: median 0.2691, 5%-95% 0.2015-0.3273; mean error -0.0014; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.004, and in which those also make the raw Vuong test favour the ZINB 0.004
+   Poisson                effect of x on E[Y]: bias -0.0007, RMSE 0.1235; effect of z on P(Y > 0): bias +0.0581, RMSE 0.0596; mean |error| of P(Y = 0) 0.1774; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0035, RMSE 0.1164; effect of z on P(Y > 0): bias +0.0757, RMSE 0.0764; mean |error| of P(Y = 0) 0.0542; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0099, RMSE 0.1142; effect of z on P(Y > 0): bias +0.0225, RMSE 0.0257; mean |error| of P(Y = 0) 0.0296; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0150, RMSE 0.1134; effect of z on P(Y > 0): bias +0.0079, RMSE 0.0163; mean |error| of P(Y = 0) 0.0256; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0045, RMSE 0.1115; effect of z on P(Y > 0): bias -0.0006, RMSE 0.0148; mean |error| of P(Y = 0) 0.0206
+   Hurdle-NB              effect of x on E[Y]: bias +0.0530, RMSE 0.1331; effect of z on P(Y > 0): bias +0.0173, RMSE 0.0216; mean |error| of P(Y = 0) 0.0329; converged 1.000
+-- Zero-inflated NB, n = 4000 (500 samples): share of zeros 0.497; true average effect of x on E[Y] 0.8857; true effect of z on P(Y > 0) -0.1308; true share of structural zeros 0.269
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 1.000
+   lowest AIC: NB 0.000; NB, dispersion varies 0.000; ZINB 1.000; Hurdle-NB 0.000
+   lowest BIC: NB 0.000; NB, dispersion varies 0.000; ZINB 1.000; Hurdle-NB 0.000
+   ZINB share of structural zeros: median 0.2702, 5%-95% 0.2383-0.3005; mean error +0.0011; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.000, and in which those also make the raw Vuong test favour the ZINB 0.000
+   Poisson                effect of x on E[Y]: bias +0.0006, RMSE 0.0612; effect of z on P(Y > 0): bias +0.0585, RMSE 0.0589; mean |error| of P(Y = 0) 0.1764; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0019, RMSE 0.0586; effect of z on P(Y > 0): bias +0.0762, RMSE 0.0764; mean |error| of P(Y = 0) 0.0535; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias +0.0044, RMSE 0.0572; effect of z on P(Y > 0): bias +0.0240, RMSE 0.0249; mean |error| of P(Y = 0) 0.0247; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0106, RMSE 0.0578; effect of z on P(Y > 0): bias +0.0092, RMSE 0.0118; mean |error| of P(Y = 0) 0.0195; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0012, RMSE 0.0567; effect of z on P(Y > 0): bias +0.0009, RMSE 0.0073; mean |error| of P(Y = 0) 0.0104
+   Hurdle-NB              effect of x on E[Y]: bias +0.0537, RMSE 0.0811; effect of z on P(Y > 0): bias +0.0183, RMSE 0.0195; mean |error| of P(Y = 0) 0.0294; converged 1.000
+-- Hurdle NB, n = 1000 (500 samples): share of zeros 0.421; true average effect of x on E[Y] 1.1284; true effect of z on P(Y > 0) +0.1767; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 0.990
+   lowest AIC: NB 0.000; NB, dispersion varies 0.002; ZINB 0.000; Hurdle-NB 0.998
+   lowest BIC: NB 0.000; NB, dispersion varies 0.006; ZINB 0.000; Hurdle-NB 0.994
+   ZINB share of structural zeros: median 0.2384, 5%-95% 0.1998-0.2790; mean error +0.2394; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.120, and in which those also make the raw Vuong test favour the ZINB 0.120
+   Poisson                effect of x on E[Y]: bias -0.0179, RMSE 0.1668; effect of z on P(Y > 0): bias -0.0936, RMSE 0.0942; mean |error| of P(Y = 0) 0.1731; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0363, RMSE 0.1647; effect of z on P(Y > 0): bias -0.0964, RMSE 0.0969; mean |error| of P(Y = 0) 0.0974; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias -0.0985, RMSE 0.1748; effect of z on P(Y > 0): bias -0.0280, RMSE 0.0296; mean |error| of P(Y = 0) 0.0439; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0580, RMSE 0.1634; effect of z on P(Y > 0): bias -0.0174, RMSE 0.0199; mean |error| of P(Y = 0) 0.0265; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0472, RMSE 0.1527; effect of z on P(Y > 0): bias -0.0527, RMSE 0.0536; mean |error| of P(Y = 0) 0.0460
+   Hurdle-NB              effect of x on E[Y]: bias +0.0025, RMSE 0.1601; effect of z on P(Y > 0): bias +0.0003, RMSE 0.0098; mean |error| of P(Y = 0) 0.0186; converged 1.000
+-- Hurdle NB, n = 4000 (500 samples): share of zeros 0.422; true average effect of x on E[Y] 1.1277; true effect of z on P(Y > 0) +0.1767; true share of structural zeros 0.000
+   Vuong ZIP > Poisson at 5%: raw 1.000, AIC 1.000, BIC 1.000; Vuong ZINB > NB at 5%: raw 1.000, AIC 1.000, BIC 1.000
+   lowest AIC: NB 0.000; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 1.000
+   lowest BIC: NB 0.000; NB, dispersion varies 0.000; ZINB 0.000; Hurdle-NB 1.000
+   ZINB share of structural zeros: median 0.2406, 5%-95% 0.2198-0.2617; mean error +0.2406; samples in which some inflation probability exceeds 0.99 (zeros separated by the inflation equation) 0.262, and in which those also make the raw Vuong test favour the ZINB 0.262
+   Poisson                effect of x on E[Y]: bias -0.0149, RMSE 0.0826; effect of z on P(Y > 0): bias -0.0942, RMSE 0.0944; mean |error| of P(Y = 0) 0.1734; converged 1.000
+   NB                     effect of x on E[Y]: bias +0.0383, RMSE 0.0893; effect of z on P(Y > 0): bias -0.0970, RMSE 0.0972; mean |error| of P(Y = 0) 0.0975; converged 1.000
+   NB, dispersion varies  effect of x on E[Y]: bias -0.0998, RMSE 0.1229; effect of z on P(Y > 0): bias -0.0283, RMSE 0.0287; mean |error| of P(Y = 0) 0.0425; converged 1.000
+   ZIP                    effect of x on E[Y]: bias -0.0526, RMSE 0.0915; effect of z on P(Y > 0): bias -0.0170, RMSE 0.0178; mean |error| of P(Y = 0) 0.0200; converged 1.000
+   ZINB                   effect of x on E[Y]: bias -0.0429, RMSE 0.0838; effect of z on P(Y > 0): bias -0.0528, RMSE 0.0531; mean |error| of P(Y = 0) 0.0420
+   Hurdle-NB              effect of x on E[Y]: bias +0.0005, RMSE 0.0789; effect of z on P(Y > 0): bias +0.0003, RMSE 0.0053; mean |error| of P(Y = 0) 0.0094; converged 1.000
