@@ -237,6 +237,31 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 candidate_slice_url("1310", dimension="Dim2"),
             )
 
+    def test_next_three_amp_indices_target_porto_povoa_santo_tirso(self) -> None:
+        """Pin the next three municipal slices without repeating past captures."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=10, count=3, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            expected_codes = ["1312", "1313", "1314"]
+            expected_names = ["Porto", "Póvoa de Varzim", "Santo Tirso"]
+            self.assertEqual(report["requested_codes"], expected_codes)
+            self.assertEqual(report["capture_count"], 3)
+            self.assertEqual(report["completed_json_captures"], 3)
+            self.assertEqual(
+                [item["municipality"] for item in report["items"]],
+                expected_names,
+            )
+            self.assertEqual(
+                [item["candidate_url"] for item in report["items"]],
+                [
+                    candidate_slice_url(code, dimension="Dim2")
+                    for code in expected_codes
+                ],
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
