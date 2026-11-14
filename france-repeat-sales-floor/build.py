@@ -259,11 +259,12 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
                ln(c1.cpi / c0.cpi) AS cum_infl, {hold_sql()} AS hold
         FROM (
           SELECT *, date_diff('day', d0, d) / 365.25 AS hold_y, ln(v / v0) AS lr,
-                 (ptype = ptype0 AND np IS NOT DISTINCT FROM np0
-                  AND sb > 0 AND sb0 > 0 AND abs(ln(sb / sb0)) < {tol}
-                  AND (ptype = 'flat'
-                       OR (land = 0 AND land0 = 0)
-                       OR (land > 0 AND land0 > 0 AND abs(ln(land / land0)) < {tol}))) AS same_struct
+                 coalesce(ptype = ptype0 AND np IS NOT DISTINCT FROM np0
+                          AND sb > 0 AND sb0 > 0 AND abs(ln(sb / sb0)) < {tol}
+                          AND (ptype = 'flat'
+                               OR (land = 0 AND land0 = 0)
+                               OR (land > 0 AND land0 > 0 AND abs(ln(land / land0)) < {tol})),
+                          false) AS same_struct
           FROM pairs
           WHERE date_diff('day', d0, d) >= 183 AND v >= 10000 AND v0 >= 10000
         ) x
