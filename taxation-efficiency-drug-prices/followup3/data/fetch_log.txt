@@ -1,24 +1,30 @@
 fetch.py run on 2026-11-14
 [catalogue] 3532 datasets
-[partd] FAILED: no dataset titled 'Medicare Part D Spending by Drug'; similar: ['Medicare Quarterly Part B Spending by Drug : 2026-01-01', 'Medicare Quarterly Part D Spending by Drug : 2026-01-01', 'Medicare Part D Spending by Drug : 2024-01-01', 'Medicare Part B Spending by Drug : 2024-01-01', 'Medicaid Spending by Drug : 2024-01-01']
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=True api=False
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
+[partd] FAILED: unhashable type: 'list'
 Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 189, in main
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 191, in main
     fetch_program(name, out)
     ~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 147, in fetch_program
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 149, in fetch_program
     rel = releases(title)
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 86, in releases
-    raise RuntimeError(f"no dataset titled {title!r}; similar: {near}")
-RuntimeError: no dataset titled 'Medicare Part D Spending by Drug'; similar: ['Medicare Quarterly Part B Spending by Drug : 2026-01-01', 'Medicare Quarterly Part D Spending by Drug : 2026-01-01', 'Medicare Part D Spending by Drug : 2024-01-01', 'Medicare Part B Spending by Drug : 2024-01-01', 'Medicaid Spending by Drug : 2024-01-01']
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 104, in releases
+    cur = by.setdefault(key, {"title": r["title"], "temporal": r["temporal"], "csv": "", "api": ""})
+TypeError: unhashable type: 'list'
 
-[partb] FAILED: no dataset titled 'Medicare Part B Spending by Drug'; similar: ['Medicare Quarterly Part B Spending by Drug : 2026-01-01', 'Medicare Quarterly Part D Spending by Drug : 2026-01-01', 'Medicare Part D Spending by Drug : 2024-01-01', 'Medicare Part B Spending by Drug : 2024-01-01', 'Medicaid Spending by Drug : 2024-01-01']
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=True api=False
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
+[partb] FAILED: unhashable type: 'list'
 Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 189, in main
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 191, in main
     fetch_program(name, out)
     ~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 147, in fetch_program
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 149, in fetch_program
     rel = releases(title)
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 86, in releases
-    raise RuntimeError(f"no dataset titled {title!r}; similar: {near}")
-RuntimeError: no dataset titled 'Medicare Part B Spending by Drug'; similar: ['Medicare Quarterly Part B Spending by Drug : 2026-01-01', 'Medicare Quarterly Part D Spending by Drug : 2026-01-01', 'Medicare Part D Spending by Drug : 2024-01-01', 'Medicare Part B Spending by Drug : 2024-01-01', 'Medicaid Spending by Drug : 2024-01-01']
+  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 104, in releases
+    cur = by.setdefault(key, {"title": r["title"], "temporal": r["temporal"], "csv": "", "api": ""})
+TypeError: unhashable type: 'list'
 
