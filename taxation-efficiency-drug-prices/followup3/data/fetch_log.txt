@@ -1,30 +1,16 @@
 fetch.py run on 2026-11-14
 [catalogue] 3532 datasets
-  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
-  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=True api=False
-  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
-[partd] FAILED: unhashable type: 'list'
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 191, in main
-    fetch_program(name, out)
-    ~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 149, in fetch_program
-    rel = releases(title)
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 104, in releases
-    cur = by.setdefault(key, {"title": r["title"], "temporal": r["temporal"], "csv": "", "api": ""})
-TypeError: unhashable type: 'list'
-
-  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
-  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=True api=False
-  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal [{'@type': 'PeriodOfTime', 'startDate': '2024-01-01', 'endDate': '2024-12-31'}] csv=False api=True
-[partb] FAILED: unhashable type: 'list'
-Traceback (most recent call last):
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 191, in main
-    fetch_program(name, out)
-    ~~~~~~~~~~~~~^^^^^^^^^^^
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 149, in fetch_program
-    rel = releases(title)
-  File "/home/runner/work/Medium-Blog/Medium-Blog/taxation-efficiency-drug-prices/followup3/fetch.py", line 104, in releases
-    cur = by.setdefault(key, {"title": r["title"], "temporal": r["temporal"], "csv": "", "api": ""})
-TypeError: unhashable type: 'list'
-
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal  csv=False api=True
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal  csv=True api=False
+  [Medicare Part D Spending by Drug] 'Medicare Part D Spending by Drug : 2024-01-01' temporal  csv=False api=True
+[partd] 1 releases
+[partd] release : 14536 rows, columns ['Brnd_Name', 'Gnrc_Name', 'Tot_Mftr', 'Mftr_Name', 'Tot_Spndng_2020', 'Tot_Dsg_Unts_2020', 'Tot_Clms_2020', 'Tot_Benes_2020', 'Avg_Spnd_Per_Dsg_Unt_Wghtd_2020', 'Avg_Spnd_Per_Clm_2020', 'Avg_Spnd_Per_Bene_2020', 'Outlier_Flag_2020'] ...
+[partd] years [np.int64(2020), np.int64(2021), np.int64(2022), np.int64(2023), np.int64(2024)]; rows 16192; brands 3508
+[cms_partd_by_drug] wrote cms_partd_by_drug.csv.gz: 16192 rows, columns ['Brnd_Name', 'Gnrc_Name', 'Tot_Mftr', 'spend', 'units', 'claims', 'benes', 'year', 'release']
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal  csv=False api=True
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal  csv=True api=False
+  [Medicare Part B Spending by Drug] 'Medicare Part B Spending by Drug : 2024-01-01' temporal  csv=False api=True
+[partb] 1 releases
+[partb] release : 799 rows, columns ['HCPCS_Cd', 'HCPCS_Desc', 'Brnd_Name', 'Gnrc_Name', 'Tot_Spndng_2020', 'Tot_Dsg_Unts_2020', 'Tot_Clms_2020', 'Tot_Benes_2020', 'Avg_Spndng_Per_Dsg_Unt_2020', 'Avg_Spndng_Per_Clm_2020', 'Avg_Spndng_Per_Bene_2020', 'Outlier_Flag_2020'] ...
+[partb] years [np.int64(2020), np.int64(2021), np.int64(2022), np.int64(2023), np.int64(2024)]; rows 3322; brands 799
+[cms_partb_by_drug] wrote cms_partb_by_drug.csv.gz: 3322 rows, columns ['HCPCS_Cd', 'HCPCS_Desc', 'Brnd_Name', 'Gnrc_Name', 'spend', 'units', 'claims', 'benes', 'year', 'release']
