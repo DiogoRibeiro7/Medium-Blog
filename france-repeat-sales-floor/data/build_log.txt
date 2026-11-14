@@ -1,0 +1,31 @@
+rows	20382915
+first_date	2021-01-01
+last_date	2025-12-31
+mutations_Vente	6803387
+mutations_Vente en l'état futur d'achèvement	405153
+mutations_Echange	62338
+mutations_Vente terrain à bâtir	31407
+mutations_Adjudication	16447
+mutations_Expropriation	1004
+mutations	7319609
+single_dwelling_mutations	4493643
+keyed_sales	4411987
+keyed_houses	2491972
+keyed_flats	1920015
+same_day_duplicates_dropped	8613
+raw_pairs	255023
+pairs_after_price_and_time_filters	187474
+pairs_structure_changed	16483
+pairs_sale_then_sale	166780
+pairs_auction_then_sale	2192
+pairs_off-plan_then_sale	1564
+pairs_sale_then_other	130
+pairs_off-plan_then_off-plan	118
+pairs_other_then_sale	117
+pairs_sale_then_auction	49
+pairs_sale_then_off-plan	27
+pairs_auction_then_auction	6
+pairs_auction_then_other	6
+main_pairs	166780
+first_resale_month	2021-07-01
+last_resale_month	2025-12-01
