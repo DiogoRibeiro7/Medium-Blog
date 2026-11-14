@@ -90,10 +90,13 @@ def season_label(s: int) -> str:
 
 
 def fmt_T(T: float) -> str:
+    """Return periods to three significant figures (two below 10)."""
     if not np.isfinite(T):
         return "inf"
     if T >= 1e5:
         return f">{1e5:.0f}"
+    if T >= 1000:
+        return f"{float(f'{T:.3g}'):.0f}"
     return f"{T:.0f}" if T >= 10 else f"{T:.1f}"
 
 

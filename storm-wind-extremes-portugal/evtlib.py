@@ -21,6 +21,9 @@ from scipy import optimize
 
 XI_EPS = 1e-6
 BIG = 1e10
+# Tight convergence, then rounding, so that runs on different machines agree to the printed digits.
+OPT = {"ftol": 1e-15, "gtol": 1e-10, "maxiter": 5000, "maxfun": 20000}
+DECIMALS = 7
 
 
 # -----------------------------------------------------------------------------
@@ -169,13 +172,13 @@ def fit_gev(x, Xmu=None, Xsig=None, start=None, fixed_xi=None, hessian=False, xi
                 return v, g[:-1]
             if f(th0[:-1])[0] >= BIG:
                 continue
-            res = optimize.minimize(f, th0[:-1], jac=True, method="L-BFGS-B")
-            theta = np.r_[res.x, fixed_xi]
+            res = optimize.minimize(f, th0[:-1], jac=True, method="L-BFGS-B", options=OPT)
+            theta = np.r_[np.round(res.x, DECIMALS), fixed_xi]
         else:
             if gev_nll(th0, x, Xm, Xs, xi_bounds)[0] >= BIG:
                 continue
-            res = optimize.minimize(gev_nll, th0, args=(x, Xm, Xs, xi_bounds), jac=True, method="L-BFGS-B")
-            theta = res.x
+            res = optimize.minimize(gev_nll, th0, args=(x, Xm, Xs, xi_bounds), jac=True, method="L-BFGS-B", options=OPT)
+            theta = np.round(res.x, DECIMALS)
         val = gev_nll(theta, x, Xm, Xs, xi_bounds)[0]
         if best is None or val < best[1] - 1e-9:
             best = (theta, val, bool(res.success))
@@ -336,12 +339,11 @@ def fit_pooled_shape(M, start=None):
     for th0 in starts:
         if pooled_nll(th0, M)[0] >= BIG:
             continue
-        res = optimize.minimize(pooled_nll, th0, args=(M,), jac=True, method="L-BFGS-B",
-                                options={"maxiter": 5000})
+        res = optimize.minimize(pooled_nll, th0, args=(M,), jac=True, method="L-BFGS-B", options=OPT)
         if best is None or res.fun < best.fun:
             best = res
-    th = best.x
-    return {"mu": th[:J], "sigma": np.exp(th[J:2 * J]), "xi": float(th[-1]), "nll": float(best.fun), "theta": th}
+    th = np.round(best.x, DECIMALS)
+    return {"mu": th[:J], "sigma": np.exp(th[J:2 * J]), "xi": float(th[-1]), "nll": float(pooled_nll(th, M)[0]), "theta": th}
 
 
 # -----------------------------------------------------------------------------
@@ -419,10 +421,11 @@ def fit_gpd_pooled(Y):
         th[-1] = xi0
         if gpd_pooled_nll(th, Y, J)[0] >= BIG:
             continue
-        res = optimize.minimize(gpd_pooled_nll, th, args=(Y, J), jac=True, method="L-BFGS-B")
+        res = optimize.minimize(gpd_pooled_nll, th, args=(Y, J), jac=True, method="L-BFGS-B", options=OPT)
         if best is None or res.fun < best.fun:
             best = res
-    return {"sigma": np.exp(best.x[:J]), "xi": float(best.x[-1]), "nll": float(best.fun)}
+    th = np.round(best.x, DECIMALS)
+    return {"sigma": np.exp(th[:J]), "xi": float(th[-1]), "nll": float(gpd_pooled_nll(th, Y, J)[0])}
 
 
 def gpd_sf(y, sigma, xi):
