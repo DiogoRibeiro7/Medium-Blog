@@ -183,6 +183,43 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 candidate_slice_url("0119", dimension="Dim2"),
             )
 
+    def test_seventh_amp_index_targets_only_gondomar(self) -> None:
+        """Keep the seventh bounded source request fixed to DICO 1304."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=6, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["1304"])
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "Gondomar")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("1304", dimension="Dim2"),
+            )
+
+    def test_next_three_amp_indices_target_maia_matosinhos_paredes(self) -> None:
+        """Pin the eighth through tenth bounded source requests as one batch."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=7, count=3, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            codes = ["1306", "1308", "1310"]
+            names = ["Maia", "Matosinhos", "Paredes"]
+            self.assertEqual(report["requested_codes"], codes)
+            self.assertEqual(report["capture_count"], 3)
+            self.assertEqual(report["completed_json_captures"], 3)
+            self.assertEqual(
+                [item["municipality"] for item in report["items"]], names,
+            )
+            self.assertEqual(
+                [item["candidate_url"] for item in report["items"]],
+                [candidate_slice_url(code, dimension="Dim2") for code in codes],
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:

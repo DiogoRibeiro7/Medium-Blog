@@ -34,6 +34,8 @@ FIFTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43419199498"
 FIFTH_SOURCE_SHA256 = "0e653d1cfe16d8561baf4be8351c3d8dc057af4448080070b167a908370607bf"
 SIXTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43422198121"
 SIXTH_SOURCE_SHA256 = "6714b33cedeb7ce0275b5207d06d05598082cd628f0615d0c858964215b3c73e"
+SEVENTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43513828242"
+SEVENTH_SOURCE_SHA256 = "43f69a11760870dd0fab1ef29c62eeb8c2b3057c95a5550e004317a4d8d0ba68"
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -420,6 +422,65 @@ class SixMunicipalityINESliceAuditTests(unittest.TestCase):
             if first != second
         }
         self.assertEqual(len(unique_pairs), 81)
+
+
+class SevenMunicipalityINESliceAuditTests(unittest.TestCase):
+    """Verify Gondomar and all twenty-one observed reciprocal links."""
+
+    def test_gondomar_extends_coverage_to_91_pairs(self) -> None:
+        code = "1304"
+        codes = municipality_codes_from_panel()
+        source = SEVENTH_RUN / "ine_0012340_dim2_1304_candidate.json"
+        raw = source.read_bytes()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), SEVENTH_SOURCE_SHA256)
+        gondomar, source_records = parse_dim2_slice(raw, code, codes)
+        self.assertEqual(source_records, 347)
+        self.assertEqual(len(gondomar), 17)
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(
+                source, SEVENTH_RUN / "partition_manifest.json", code,
+                Path(folder) / "audit_1304.json",
+            )
+            self.assertEqual(report["status"], "partial_match")
+            self.assertEqual(report["matched_pairs"], 16)
+            self.assertEqual(report["mismatched_pairs"], 0)
+            self.assertFalse(report["full_17_municipality_matrix_reconciled"])
+            self.assertEqual(
+                json.loads((SEVENTH_RUN / "audit_1304.json").read_text(encoding="utf-8")),
+                report,
+            )
+
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+            "0113": FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json",
+            "0116": FIFTH_RUN / "ine_0012340_dim2_0116_candidate.json",
+            "0119": SIXTH_RUN / "ine_0012340_dim2_0119_candidate.json",
+        }
+        observed: dict[str, dict[str, int]] = {code: gondomar}
+        for previous, path in source_paths.items():
+            observed[previous], _ = parse_dim2_slice(path.read_bytes(), previous, codes)
+
+        reciprocal_pairs = 0
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+                    reciprocal_pairs += 1
+        self.assertEqual(reciprocal_pairs, 21)
+        self.assertEqual(
+            {previous: gondomar[previous] for previous in source_paths},
+            {"0104": 158, "0107": 242, "0109": 1010, "0113": 378,
+             "0116": 171, "0119": 176},
+        )
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 91)
 
 
 if __name__ == "__main__":
