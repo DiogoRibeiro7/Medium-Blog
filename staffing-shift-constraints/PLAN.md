@@ -20,8 +20,7 @@ information line, with the date and time the call was received (`date_time`). Th
 since March 2020 it does not fully represent agent-handled calls, so the test uses 1 January 2016 to 31 December
 2019.
 
-`fetch.py` counts calls per clock hour on the portal, month by month, with the Socrata query
-`$select=date_trunc_ymdh(date_time) AS clock_hour, count(*) AS calls ... $group=date_trunc_ymdh(date_time)`, and writes them to
+`fetch.py` counts calls per clock hour on the portal (see "Changes after registration" for how), and writes them to
 `sources/hourly_calls.csv`, which is committed with its SHA-256 in `sources/FILES` and the dataset's update time in
 `sources/REVISION`. Later runs use the committed file.
 
@@ -117,10 +116,14 @@ direction.
 
 ## Changes after registration
 
-- 14 November 2026, before any count was received: the portal rejected the first form of the query (HTTP 400), so
-  the hourly alias was renamed and the grouping written as the expression itself. Same counts, same months.
-- 14 November 2026, before any count was received: the portal does not accept `date_trunc_ymdh(date_time)` with one
-  argument for this column. `fetch.py` now tries it, then the same function with the time zone 'America/New_York',
-  then 'UTC', and keeps the first that the portal accepts and whose hour matches the dataset's own TIME field on at
-  least 99% of the calls of two sampled days (12 January and 12 July 2016). The choice and the match rate are
-  recorded in `sources/REVISION`.
+All three before any count was received, on 14 November 2026:
+
+- The portal rejected the first form of the query (HTTP 400). The hourly alias was renamed and the grouping written
+  as the expression itself.
+- The portal then rejected `date_trunc_ymdh(date_time)` as an unknown function, and also its forms with the time
+  zone 'America/New_York' or 'UTC' and with a cast to a floating timestamp.
+- The counts are now taken from the dataset's own DATE field and the hour of its TIME field ('12:00:16 AM'): for
+  each year and each of the 24 clock hours, one query counts the calls per date whose TIME starts with that hour
+  (with or without a leading zero) and ends with AM or PM accordingly. A second query per year counts all calls per
+  date; the counts by hour must add up to it within 0.5%, or the run stops. Both totals are recorded in
+  `sources/REVISION`.

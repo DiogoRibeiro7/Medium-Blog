@@ -44,76 +44,26 @@ def get(url: str, tries: int = 6) -> bytes:
     raise RuntimeError("unreachable")
 
 
-TRUNC = (
-    "date_trunc_ymdh(date_time)",
-    "date_trunc_ymdh(date_time, 'America/New_York')",
-    "date_trunc_ymdh(date_time, 'UTC')",
-    "date_trunc_ymdh(date_time::floating_timestamp)",
-    "date_trunc_ymdh(to_floating_timestamp(date_time, 'America/New_York'))",
-)
-
-
 def url(params: dict) -> str:
     return f"{BASE}/resource/{DATASET}.csv?" + urllib.parse.urlencode(params)
 
 
-def month_query(year: int, month: int, trunc: str) -> str:
-    start = f"{year}-{month:02d}-01T00:00:00"
-    end = f"{year + (month == 12)}-{month % 12 + 1:02d}-01T00:00:00"
-    return url(
-        {
-            "$select": f"{trunc} AS clock_hour, count(*) AS calls",
-            "$where": f"date_time >= '{start}' AND date_time < '{end}'",
-            "$group": trunc,
-            "$order": trunc,
-            "$limit": "5000",
-        }
-    )
+def hour_pattern(h: int) -> str:
+    """SoQL condition on the TIME text ('12:00:16 AM') for clock hour h, with or without a leading zero."""
+    h12 = 12 if h % 12 == 0 else h % 12
+    half = "AM" if h < 12 else "PM"
+    pats = {f"{h12:02d}:%{half}", f"{h12}:%{half}"}
+    return "(" + " OR ".join(f"time like '{p}'" for p in sorted(pats)) + ")"
 
 
-def clock_hour(text: str) -> int | None:
-    """Hour of the day from the TIME field, '14:05:09' or '02:05:09 PM'."""
-    t = text.strip().upper()
-    try:
-        h = int(t.split(":")[0])
-    except ValueError:
-        return None
-    if t.endswith("PM") and h != 12:
-        h += 12
-    if t.endswith("AM") and h == 12:
-        h = 0
-    return h
+def year_where(year: int) -> str:
+    return f"date >= '{year}-01-01T00:00:00' AND date < '{year + 1}-01-01T00:00:00'"
 
 
-def choose_trunc() -> tuple[str, float, int]:
-    """The first truncation the portal accepts whose hour matches the TIME field on sampled calls."""
-    sample = get(url({"$select": "date, time, date_time", "$limit": "3", "$order": "date_time"})).decode("utf-8")
-    print("field formats (3 calls):", sample.replace("\n", " | "))
-    for trunc in TRUNC:
-        rows = []
-        for month in ("01", "07"):  # winter and summer time
-            q = url(
-                {
-                    "$select": f"{trunc} AS clock_hour, time",
-                    "$where": f"date_time >= '2016-{month}-12T00:00:00' AND date_time < '2016-{month}-13T00:00:00'",
-                    "$limit": "300",
-                }
-            )
-            try:
-                rows += list(csv.DictReader(io.StringIO(get(q).decode("utf-8"))))
-            except SystemExit as e:
-                msg = str(e)
-                print(f"{trunc}: rejected: {msg[msg.find('{') :][:400]}")
-                rows = None
-                break
-        if not rows:
-            continue
-        pairs = [(int(r["clock_hour"][11:13]), clock_hour(r["time"])) for r in rows if r.get("time")]
-        agree = sum(a == b for a, b in pairs) / max(len(pairs), 1)
-        print(f"{trunc}: hour matches TIME on {agree:.3f} of {len(pairs)} sampled calls")
-        if agree >= 0.99:
-            return trunc, agree, len(pairs)
-    raise SystemExit("no truncation of date_time matches the TIME field")
+def by_date(where: str) -> dict[str, int]:
+    q = url({"$select": "date, count(*) AS calls", "$where": where, "$group": "date", "$limit": "5000"})
+    rows = csv.DictReader(io.StringIO(get(q).decode("utf-8")))
+    return {r["date"][:10]: int(r["calls"]) for r in rows}
 
 
 def missing_query(year: int) -> str:
@@ -143,14 +93,23 @@ def main() -> None:
         print("using the committed counts")
         return
     meta = json.loads(get(f"{BASE}/api/views/{DATASET}.json"))
-    trunc, agree, sampled = choose_trunc()
-    rows = []
+    sample = get(url({"$select": "date, time, date_time", "$limit": "3", "$order": "date_time"})).decode("utf-8")
+    print("field formats (3 calls):", sample.replace("\n", " | "))
+    rows, check = [], {}
     for y in YEARS:
-        for m in range(1, 13):
-            body = get(month_query(y, m, trunc)).decode("utf-8")
-            part = list(csv.DictReader(io.StringIO(body)))
-            rows += [(r["clock_hour"][:13].replace("T", " "), int(r["calls"])) for r in part]
-            print(f"{y}-{m:02d}: {len(part)} hours, {sum(int(r['calls']) for r in part)} calls")
+        total = by_date(year_where(y))
+        per_hour = {}
+        for h in range(24):
+            for day, n in by_date(f"{year_where(y)} AND {hour_pattern(h)}").items():
+                per_hour[(day, h)] = n
+        summed = {}
+        for (day, _h), n in per_hour.items():
+            summed[day] = summed.get(day, 0) + n
+        check[y] = {"calls": sum(total.values()), "matched_by_hour": sum(summed.values())}
+        rows += [(f"{day} {h:02d}", n) for (day, h), n in sorted(per_hour.items())]
+        print(f"{y}: {check[y]}")
+        if abs(check[y]["calls"] - check[y]["matched_by_hour"]) > 0.005 * check[y]["calls"]:
+            raise SystemExit(f"{y}: calls by hour do not add up to the calls by date: {check[y]}")
     missing = {}
     for y in YEARS:
         body = get(missing_query(y)).decode("utf-8")
@@ -164,9 +123,8 @@ def main() -> None:
         json.dumps(
             {
                 "rowsUpdatedAt": meta.get("rowsUpdatedAt"),
-                "truncation": trunc,
-                "hour_matches_time_field": agree,
-                "sampled_calls": sampled,
+                "hour_from": "DATE field and the hour of the TIME field",
+                "calls_by_year_and_matched_by_hour": check,
                 "missing_date_time": missing,
             }
         )
