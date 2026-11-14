@@ -11,6 +11,7 @@ measurement-error/**/*.csv -filter -diff -merge text
 heteroscedasticity/**/*.csv -filter -diff -merge text
 sample-selection/**/*.csv -filter -diff -merge text
 excess-zeros/**/*.csv -filter -diff -merge text
+rare-events/**/*.csv -filter -diff -merge text
 agent-eval-runs/**/*.csv -filter -diff -merge text
 portugal-wage-counterfactual/**/*.csv -filter -diff -merge text
 portugal-household-spending/**/*.csv -filter -diff -merge text

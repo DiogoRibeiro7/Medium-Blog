@@ -1,0 +1,80 @@
+Default: 10000 customers, 333 defaults (0.0333); non-defaulters per defaulter 29.03
+Full-data fits: coefficients (intercept, balance, income in thousands, student); mean predicted probability
+   Original       [-1.086905e+01,  5.736505e-03,  3.033450e-03, -6.467758e-01]; mean 0.0333; intercept minus the original's +0.0000
+   Class weights  [-7.595155e+00,  5.758899e-03,  4.724043e-03, -5.705984e-01]; mean 0.1980; intercept minus the original's +3.2739
+   Undersampling  [-8.659801e+00,  5.678450e-03,  3.408694e-02,  3.990916e-02]; mean 0.1991; intercept minus the original's +2.2092
+   Oversampling   [-7.628737e+00,  5.752868e-03,  6.109278e-03, -5.384923e-01]; mean 0.1992; intercept minus the original's +3.2403
+   SMOTE          [-7.361474e+00,  5.829106e-03, -2.136577e-03, -9.061182e-01]; mean 0.1967; intercept minus the original's +3.5076
+   log of non-defaulters per defaulter 3.3683
+   training rows: original 10000 (9667 non-defaulters); undersampling keeps 333 non-defaulters (666 rows); oversampling adds 9334 defaulters drawn with replacement (19334 rows); SMOTE adds 9334 synthetic defaulters
+   Original       expected number of defaults (sum of probabilities) 333.0; balance at which a non-student with the median income (34553 dollars) reaches 0.5: 1876 dollars
+   Class weights  expected number of defaults (sum of probabilities) 1979.9; balance at which a non-student with the median income (34553 dollars) reaches 0.5: 1291 dollars
+   Undersampling  expected number of defaults (sum of probabilities) 1990.5; balance at which a non-student with the median income (34553 dollars) reaches 0.5: 1318 dollars
+   Oversampling   expected number of defaults (sum of probabilities) 1992.4; balance at which a non-student with the median income (34553 dollars) reaches 0.5: 1289 dollars
+   SMOTE          expected number of defaults (sum of probabilities) 1967.0; balance at which a non-student with the median income (34553 dollars) reaches 0.5: 1276 dollars
+   Class weights  log-odds minus the original's, over the 10,000 customers: mean +3.3717, 5th to 95th percentile +3.3292 to +3.4156; mean probability after prior correction 0.0338
+   Undersampling  log-odds minus the original's, over the 10,000 customers: mean +3.4037, 5th to 95th percentile +2.9471 to +3.8669; mean probability after prior correction 0.0336
+   Oversampling   log-odds minus the original's, over the 10,000 customers: mean +3.3889, 5th to 95th percentile +3.3290 to +3.4393; mean probability after prior correction 0.0341
+   SMOTE          log-odds minus the original's, over the 10,000 customers: mean +3.3353, 5th to 95th percentile +3.1949 to +3.4718; mean probability after prior correction 0.0339
+   Original       flags 0.0145 of customers at 0.5 (catches 105 of 333 defaults, 40 false alarms)
+   Class weights  flags 0.1610 of customers at 0.5 (catches 298 of 333 defaults, 1312 false alarms); the original model flags the same share at a cutoff of 0.0324, the cost-based cutoff for R = 29.8; agreement with that rule on who is flagged 0.9982
+   Undersampling  flags 0.1607 of customers at 0.5 (catches 296 of 333 defaults, 1311 false alarms); the original model flags the same share at a cutoff of 0.0325, the cost-based cutoff for R = 29.7; agreement with that rule on who is flagged 0.9834
+   Oversampling   flags 0.1618 of customers at 0.5 (catches 298 of 333 defaults, 1320 false alarms); the original model flags the same share at a cutoff of 0.0321, the cost-based cutoff for R = 30.1; agreement with that rule on who is flagged 0.9980
+   SMOTE          flags 0.1583 of customers at 0.5 (catches 298 of 333 defaults, 1285 false alarms); the original model flags the same share at a cutoff of 0.0335, the cost-based cutoff for R = 28.9; agreement with that rule on who is flagged 0.9944
+Repeated stratified 10-fold cross-validation (20 repeats), out-of-fold predictions, means over repeats (probabilities as fitted, and prior-corrected to the training prevalence)
+   Original       as fitted: AUC 0.9490; calibration intercept -0.0003, slope 0.9942; Brier 0.02138; log loss 0.07891; mean predicted 0.0333
+   Class weights  as fitted: AUC 0.9487; calibration intercept -3.3932, slope 0.9886; Brier 0.09472; log loss 0.29934; mean predicted 0.1979
+   Undersampling  as fitted: AUC 0.9479; calibration intercept -3.4371, slope 0.9648; Brier 0.09598; log loss 0.30395; mean predicted 0.1989
+   Oversampling   as fitted: AUC 0.9486; calibration intercept -3.3938, slope 0.9878; Brier 0.09473; log loss 0.29940; mean predicted 0.1979
+   SMOTE          as fitted: AUC 0.9485; calibration intercept -3.4066, slope 0.9742; Brier 0.09435; log loss 0.29834; mean predicted 0.1962
+   Class weights  corrected: AUC 0.9487; calibration intercept -0.0249, slope 0.9886; Brier 0.02134; log loss 0.07892; mean predicted 0.0338
+   Undersampling  corrected: AUC 0.9479; calibration intercept -0.0688, slope 0.9648; Brier 0.02158; log loss 0.07965; mean predicted 0.0348
+   Oversampling   corrected: AUC 0.9486; calibration intercept -0.0255, slope 0.9878; Brier 0.02135; log loss 0.07895; mean predicted 0.0338
+   SMOTE          corrected: AUC 0.9485; calibration intercept -0.0383, slope 0.9742; Brier 0.02136; log loss 0.07903; mean predicted 0.0341
+First repetition, top tenth of each model's out-of-fold predictions (figure 1, right): mean predicted, observed default rate
+   Original       0.2684, 0.2610
+   Class weights  0.8639, 0.2620
+   Undersampling  0.8734, 0.2620
+   Oversampling   0.8641, 0.2620
+   SMOTE          0.8655, 0.2610
+Expected cost per customer (a false alarm costs 1, a missed default R), cutoff 0.5 or 1 / (1 + R); flagging nobody costs R x 0.0333
+   R = 5 (cost-based cutoff 0.1667; flagging nobody 0.1665):
+      Original       as fitted: cutoff 0.5 0.1179; cost-based cutoff 0.0937
+      Class weights  as fitted: cutoff 0.5 0.1487; cost-based cutoff 0.3023
+      Undersampling  as fitted: cutoff 0.5 0.1505; cost-based cutoff 0.3035
+      Oversampling   as fitted: cutoff 0.5 0.1486; cost-based cutoff 0.3023
+      SMOTE          as fitted: cutoff 0.5 0.1468; cost-based cutoff 0.2987
+      Class weights  corrected: cutoff 0.5 0.1167; cost-based cutoff 0.0931
+      Undersampling  corrected: cutoff 0.5 0.1157; cost-based cutoff 0.0939
+      Oversampling   corrected: cutoff 0.5 0.1167; cost-based cutoff 0.0932
+      SMOTE          corrected: cutoff 0.5 0.1162; cost-based cutoff 0.0942
+   R = 10 (cost-based cutoff 0.0909; flagging nobody 0.3330):
+      Original       as fitted: cutoff 0.5 0.2318; cost-based cutoff 0.1421
+      Class weights  as fitted: cutoff 0.5 0.1667; cost-based cutoff 0.3931
+      Undersampling  as fitted: cutoff 0.5 0.1691; cost-based cutoff 0.3931
+      Oversampling   as fitted: cutoff 0.5 0.1664; cost-based cutoff 0.3928
+      SMOTE          as fitted: cutoff 0.5 0.1647; cost-based cutoff 0.3876
+      Class weights  corrected: cutoff 0.5 0.2293; cost-based cutoff 0.1432
+      Undersampling  corrected: cutoff 0.5 0.2266; cost-based cutoff 0.1434
+      Oversampling   corrected: cutoff 0.5 0.2293; cost-based cutoff 0.1431
+      SMOTE          corrected: cutoff 0.5 0.2281; cost-based cutoff 0.1421
+   R = 29 (cost-based cutoff 0.0333; flagging nobody 0.9657):
+      Original       as fitted: cutoff 0.5 0.6646; cost-based cutoff 0.2316
+      Class weights  as fitted: cutoff 0.5 0.2349; cost-based cutoff 0.5407
+      Undersampling  as fitted: cutoff 0.5 0.2397; cost-based cutoff 0.5394
+      Oversampling   as fitted: cutoff 0.5 0.2343; cost-based cutoff 0.5409
+      SMOTE          as fitted: cutoff 0.5 0.2327; cost-based cutoff 0.5320
+      Class weights  corrected: cutoff 0.5 0.6572; cost-based cutoff 0.2348
+      Undersampling  corrected: cutoff 0.5 0.6482; cost-based cutoff 0.2399
+      Oversampling   corrected: cutoff 0.5 0.6572; cost-based cutoff 0.2342
+      SMOTE          corrected: cutoff 0.5 0.6533; cost-based cutoff 0.2328
+   R = 50 (cost-based cutoff 0.0196; flagging nobody 1.6650):
+      Original       as fitted: cutoff 0.5 1.1430; cost-based cutoff 0.3081
+      Class weights  as fitted: cutoff 0.5 0.3103; cost-based cutoff 0.6110
+      Undersampling  as fitted: cutoff 0.5 0.3179; cost-based cutoff 0.6108
+      Oversampling   as fitted: cutoff 0.5 0.3092; cost-based cutoff 0.6112
+      SMOTE          as fitted: cutoff 0.5 0.3079; cost-based cutoff 0.6020
+      Class weights  corrected: cutoff 0.5 1.1301; cost-based cutoff 0.3080
+      Undersampling  corrected: cutoff 0.5 1.1142; cost-based cutoff 0.3060
+      Oversampling   corrected: cutoff 0.5 1.1301; cost-based cutoff 0.3075
+      SMOTE          corrected: cutoff 0.5 1.1233; cost-based cutoff 0.3124

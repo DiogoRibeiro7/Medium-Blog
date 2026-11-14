@@ -1,0 +1,66 @@
+name: Reproduce rare-events
+
+on:
+  pull_request:
+    paths:
+      - 'rare-events/**'
+      - '.github/workflows/rare-events.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'rare-events/**'
+      - '.github/workflows/rare-events.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rare-events-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: rare-events
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: rare-events/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Keep the committed results
+        run: mkdir -p "$RUNNER_TEMP/committed" && cp results/*.txt "$RUNNER_TEMP/committed/"
+
+      - name: Check the estimators
+        run: python check_rare.py
+
+      - name: Rerun the experiments
+        run: |
+          python 01_default.py
+          python 02_caravan.py
+          python 03_simulation.py
+
+      - name: Check the numbers match the committed run
+        run: python check_reproduction.py "$RUNNER_TEMP/committed"
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_default_probabilities fig2_default_roc fig3_caravan_net_benefit \
+                   fig4_simulation_calibration fig5_simulation_cost; do
+            test -s "figures/$f.png"
+          done

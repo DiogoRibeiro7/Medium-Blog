@@ -1,0 +1,64 @@
+Caravan: 5822 customers, 348 buyers (0.0598); non-buyers per buyer 15.73; 85 regressors
+Ridge penalty chosen in the outer training folds: 100 in 42; 300 in 8 of 50 folds
+Repeated stratified 10-fold cross-validation (5 repeats), out-of-fold predictions, means over repeats
+   Original       as fitted: AUC 0.7457; calibration intercept -0.0020, slope 0.9901; Brier 0.05376; log loss 0.20500; mean predicted 0.0599
+   Class weights  as fitted: AUC 0.7451; calibration intercept -2.7451, slope 0.8018; Brier 0.19553; log loss 0.57514; mean predicted 0.3987
+   Undersampling  as fitted: AUC 0.7347; calibration intercept -2.7612, slope 0.9289; Brier 0.20902; log loss 0.60956; mean predicted 0.4317
+   Oversampling   as fitted: AUC 0.7420; calibration intercept -2.7586, slope 0.7544; Brier 0.19516; log loss 0.57391; mean predicted 0.3939
+   SMOTE          as fitted: AUC 0.7379; calibration intercept -2.7430, slope 0.7066; Brier 0.19176; log loss 0.56270; mean predicted 0.3820
+   Class weights  corrected: AUC 0.7451; calibration intercept +0.0104, slope 0.8018; Brier 0.05423; log loss 0.20609; mean predicted 0.0592
+   Undersampling  corrected: AUC 0.7347; calibration intercept -0.0057, slope 0.9289; Brier 0.05419; log loss 0.20745; mean predicted 0.0601
+   Oversampling   corrected: AUC 0.7420; calibration intercept -0.0030, slope 0.7544; Brier 0.05449; log loss 0.20730; mean predicted 0.0599
+   SMOTE          corrected: AUC 0.7379; calibration intercept +0.0125, slope 0.7066; Brier 0.05463; log loss 0.20874; mean predicted 0.0591
+Expected cost per customer (a wasted offer costs 1, a missed buyer R), cutoff 0.5 or 1 / (1 + R)
+   R = 5 (cost-based cutoff 0.1667; offering nobody 0.2989; offering everybody 0.9402):
+      Original       as fitted: cutoff 0.5 0.2981; cost-based cutoff 0.2828 (offers to 0.0464 of customers)
+      Class weights  as fitted: cutoff 0.5 0.3845; cost-based cutoff 0.7906 (offers to 0.8423 of customers)
+      Undersampling  as fitted: cutoff 0.5 0.4024; cost-based cutoff 0.8888 (offers to 0.9469 of customers)
+      Oversampling   as fitted: cutoff 0.5 0.3836; cost-based cutoff 0.7694 (offers to 0.8199 of customers)
+      SMOTE          as fitted: cutoff 0.5 0.3847; cost-based cutoff 0.7327 (offers to 0.7788 of customers)
+      Class weights  corrected: cutoff 0.5 0.2973; cost-based cutoff 0.2807 (offers to 0.0618 of customers)
+      Undersampling  corrected: cutoff 0.5 0.2978; cost-based cutoff 0.2851 (offers to 0.0440 of customers)
+      Oversampling   corrected: cutoff 0.5 0.2970; cost-based cutoff 0.2812 (offers to 0.0677 of customers)
+      SMOTE          corrected: cutoff 0.5 0.2965; cost-based cutoff 0.2893 (offers to 0.0722 of customers)
+   R = 10 (cost-based cutoff 0.0909; offering nobody 0.5977; offering everybody 0.9402):
+      Original       as fitted: cutoff 0.5 0.5953; cost-based cutoff 0.4601 (offers to 0.1892 of customers)
+      Class weights  as fitted: cutoff 0.5 0.4857; cost-based cutoff 0.8934 (offers to 0.9506 of customers)
+      Undersampling  as fitted: cutoff 0.5 0.5030; cost-based cutoff 0.9340 (offers to 0.9938 of customers)
+      Oversampling   as fitted: cutoff 0.5 0.4844; cost-based cutoff 0.8788 (offers to 0.9352 of customers)
+      SMOTE          as fitted: cutoff 0.5 0.4874; cost-based cutoff 0.8453 (offers to 0.8986 of customers)
+      Class weights  corrected: cutoff 0.5 0.5911; cost-based cutoff 0.4627 (offers to 0.1925 of customers)
+      Undersampling  corrected: cutoff 0.5 0.5939; cost-based cutoff 0.4749 (offers to 0.1738 of customers)
+      Oversampling   corrected: cutoff 0.5 0.5906; cost-based cutoff 0.4677 (offers to 0.1968 of customers)
+      SMOTE          corrected: cutoff 0.5 0.5900; cost-based cutoff 0.4738 (offers to 0.1973 of customers)
+   R = 16 (cost-based cutoff 0.0588; offering nobody 0.9564; offering everybody 0.9402):
+      Original       as fitted: cutoff 0.5 0.9518; cost-based cutoff 0.6016 (offers to 0.3554 of customers)
+      Class weights  as fitted: cutoff 0.5 0.6071; cost-based cutoff 0.9215 (offers to 0.9801 of customers)
+      Undersampling  as fitted: cutoff 0.5 0.6238; cost-based cutoff 0.9388 (offers to 0.9986 of customers)
+      Oversampling   as fitted: cutoff 0.5 0.6054; cost-based cutoff 0.9147 (offers to 0.9716 of customers)
+      SMOTE          as fitted: cutoff 0.5 0.6107; cost-based cutoff 0.8911 (offers to 0.9450 of customers)
+      Class weights  corrected: cutoff 0.5 0.9438; cost-based cutoff 0.6087 (offers to 0.3286 of customers)
+      Undersampling  corrected: cutoff 0.5 0.9493; cost-based cutoff 0.6221 (offers to 0.3490 of customers)
+      Oversampling   corrected: cutoff 0.5 0.9428; cost-based cutoff 0.6074 (offers to 0.3279 of customers)
+      SMOTE          corrected: cutoff 0.5 0.9423; cost-based cutoff 0.6117 (offers to 0.3258 of customers)
+   R = 30 (cost-based cutoff 0.0323; offering nobody 1.7932; offering everybody 0.9402):
+      Original       as fitted: cutoff 0.5 1.7839; cost-based cutoff 0.8021 (offers to 0.6254 of customers)
+      Class weights  as fitted: cutoff 0.5 0.8904; cost-based cutoff 0.9347 (offers to 0.9944 of customers)
+      Undersampling  as fitted: cutoff 0.5 0.9056; cost-based cutoff 0.9399 (offers to 0.9997 of customers)
+      Oversampling   as fitted: cutoff 0.5 0.8877; cost-based cutoff 0.9305 (offers to 0.9903 of customers)
+      SMOTE          as fitted: cutoff 0.5 0.8983; cost-based cutoff 0.9212 (offers to 0.9767 of customers)
+      Class weights  corrected: cutoff 0.5 1.7667; cost-based cutoff 0.7821 (offers to 0.5479 of customers)
+      Undersampling  corrected: cutoff 0.5 1.7784; cost-based cutoff 0.8057 (offers to 0.6503 of customers)
+      Oversampling   corrected: cutoff 0.5 1.7648; cost-based cutoff 0.7937 (offers to 0.5340 of customers)
+      SMOTE          corrected: cutoff 0.5 1.7642; cost-based cutoff 0.8080 (offers to 0.5111 of customers)
+Net benefit (buyers reached per customer, net of wasted offers weighted by t / (1 - t)) at decision threshold t, treating each model's probabilities as risks
+   Original       as fitted: 0.04 +0.03005; 0.06 +0.02185; 0.08 +0.01709; 0.10 +0.01150; 0.16 +0.00420; 0.20 +0.00107; 0.30 -0.00153
+   Class weights  as fitted: 0.04 +0.02094; 0.06 +0.00102; 0.08 -0.01887; 0.10 -0.03829; 0.16 -0.09275; 0.20 -0.12495; 0.30 -0.19072
+   Undersampling  as fitted: 0.04 +0.02062; 0.06 -0.00015; 0.08 -0.02164; 0.10 -0.04368; 0.16 -0.11078; 0.20 -0.15371; 0.30 -0.23720
+   Oversampling   as fitted: 0.04 +0.02113; 0.06 +0.00147; 0.08 -0.01788; 0.10 -0.03680; 0.16 -0.08869; 0.20 -0.11990; 0.30 -0.18440
+   SMOTE          as fitted: 0.04 +0.02172; 0.06 +0.00297; 0.08 -0.01503; 0.10 -0.03275; 0.16 -0.08152; 0.20 -0.11122; 0.30 -0.17315
+   Class weights  corrected: 0.04 +0.02996; 0.06 +0.02144; 0.08 +0.01632; 0.10 +0.01159; 0.16 +0.00434; 0.20 +0.00096; 0.30 -0.00176
+   Undersampling  corrected: 0.04 +0.02889; 0.06 +0.02041; 0.08 +0.01544; 0.10 +0.01052; 0.16 +0.00333; 0.20 +0.00080; 0.30 -0.00112
+   Oversampling   corrected: 0.04 +0.02926; 0.06 +0.02153; 0.08 +0.01613; 0.10 +0.01093; 0.16 +0.00385; 0.20 +0.00084; 0.30 -0.00178
+   SMOTE          corrected: 0.04 +0.02949; 0.06 +0.02113; 0.08 +0.01533; 0.10 +0.01028; 0.16 +0.00212; 0.20 +0.00011; 0.30 -0.00193
+   offer to everybody: 0.04 +0.02060; 0.06 -0.00024; 0.08 -0.02199; 0.10 -0.04470; 0.16 -0.11932; 0.20 -0.17528; 0.30 -0.34318
