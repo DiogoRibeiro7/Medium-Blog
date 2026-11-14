@@ -1,10 +1,11 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
 **Status (13 November 2026): independently captured official Arouca, Espinho,
-Santa Maria da Feira, Oliveira de Azeméis and São João da Madeira slices have
-been preserved and checked against 70 of the 136 frozen pairs.** All 80 observed
-off-diagonal source views match the pinned third-party counts; all ten reciprocal links
-among these municipalities agree in both directions. The remaining **66 pairs** and
+Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira and Vale de Cambra
+slices have been preserved and checked against 81 of the 136 frozen pairs.**
+All 96 observed off-diagonal source views match the pinned third-party counts;
+all fifteen reciprocal links among these municipalities agree in both directions.
+The remaining **55 pairs** and
 full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
@@ -447,3 +448,50 @@ Offline regression tests pin its exact raw SHA-256, deterministic report,
 all 16 matches, all ten observed reciprocal links and the 70-pair count.
 These work/study interaction counts do **not** observe households changing
 residence, displaced tenants, commuting direction or causal housing effects.
+
+### Sixth successful probe: Vale de Cambra
+
+The bounded PR source probe
+[#43422198121](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43422198121)
+selected only `start_index=5`, `count=1`, `dimension=Dim2`, for DICO
+**0119 (Vale de Cambra)**. The official API returned a 60,575-byte JSON
+response with SHA-256
+`6714b33cedeb7ce0275b5207d06d05598082cd628f0615d0c858964215b3c73e`.
+The unchanged response bytes and original run manifest, together with a
+separately reproduced deterministic offline audit, are archived in
+[`data/ine_0012340_pr_run_43422198121/`](data/ine_0012340_pr_run_43422198121/).
+
+There are 347 unique `dim_3` codes, all 17 AMP counterparts, a single
+2021 period, successful API status, `geocod=0119` throughout and a zero
+diagonal. The audit matches **all 16** nonself AMP interactions to the
+checksummed frozen third-party CSV without discrepancies. The five new
+reciprocal links match their already archived official source directions:
+
+| Pair | Previous official slice | Vale de Cambra slice |
+| --- | ---: | ---: |
+| Arouca–Vale de Cambra | 1,014 | 1,014 |
+| Espinho–Vale de Cambra | 80 | 80 |
+| Santa Maria da Feira–Vale de Cambra | 715 | 715 |
+| Oliveira de Azeméis–Vale de Cambra | 2,147 | 2,147 |
+| São João da Madeira–Vale de Cambra | 497 | 497 |
+
+Six slices provide **96 off-diagonal source views**, covering
+`6 × 16 − 15 = 81` distinct AMP municipality pairs. All fifteen
+reciprocal links among captured municipalities agree. **55 of 136 pairs**
+and full-matrix symmetry still lack direct official verification.
+
+Reproduce the sixth comparison offline from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43422198121/ine_0012340_dim2_0119_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43422198121/partition_manifest.json \
+  --municipality-code 0119 \
+  --output-json /tmp/ine-0012340-vale-de-cambra-partial-audit.json
+```
+
+Offline regression tests pin the exact source hash and audit, all 16
+individual comparisons, all fifteen reciprocals and the 81-pair coverage.
+The indicator describes 2021 municipal **work/study interactions**; it
+cannot identify residential relocation, displaced tenants or a causal
+housing-price cascade.

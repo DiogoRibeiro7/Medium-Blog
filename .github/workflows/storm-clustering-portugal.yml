@@ -1,0 +1,84 @@
+name: Reproduce storm-clustering-portugal
+
+on:
+  push:
+    branches: [main, storm-clustering-portugal]
+    paths:
+      - 'storm-clustering-portugal/storm_clustering.py'
+      - 'storm-clustering-portugal/stormlib.py'
+      - 'storm-clustering-portugal/requirements.txt'
+      - 'storm-clustering-portugal/data/known_storms.csv'
+      - '.github/workflows/storm-clustering-portugal.yml'
+  pull_request:
+    paths:
+      - 'storm-clustering-portugal/**'
+      - '.github/workflows/storm-clustering-portugal.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash
+        working-directory: storm-clustering-portugal
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out the project folder
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+          sparse-checkout: storm-clustering-portugal
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: storm-clustering-portugal/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Offline tests of the download helpers
+        run: python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Rerun the analysis and the simulations
+        run: |
+          mkdir -p results
+          python storm_clustering.py > results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in 01_winter_2025_26 02_episodes_per_winter 03_pair_excess 04_dispersion_by_block 05_intensity_2025_26 06_return_periods 07_trend_and_power; do
+            test -s "figures/$f.png"
+          done
+          test "$(ls figures/equations/*.png | wc -l)" -eq 10
+
+      # On the working branch the run's own output is committed, so the numbers quoted in
+      # the article come from this machine type. On main and on pull requests the rerun
+      # must reproduce them exactly.
+      - name: Commit the results on the working branch
+        if: github.event_name == 'push' && github.ref_name == 'storm-clustering-portugal'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add results figures
+          if git diff --cached --quiet; then
+            echo "Results unchanged."
+          else
+            git commit -m "Storm clustering in Portugal: rerun the analysis"
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
+          fi
+
+      - name: Check the numbers match the committed run
+        if: github.event_name != 'push' || github.ref_name != 'storm-clustering-portugal'
+        run: git diff --exit-code -- results/output.txt

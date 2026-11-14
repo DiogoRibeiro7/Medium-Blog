@@ -1,0 +1,60 @@
+{
+ "verdicts": {
+  "H1": {
+   "n": 4,
+   "established": 4,
+   "positive": 4,
+   "supported": true,
+   "instock_established": 2
+  },
+  "H2": {
+   "n": 2,
+   "established": 2,
+   "positive": 2,
+   "supported": true,
+   "instock_established": 1
+  },
+  "H3": {
+   "n": 24,
+   "established": 23,
+   "positive": 24,
+   "supported": false,
+   "instock_established": 8
+  }
+ },
+ "h4": {
+  "by_cost": [
+   "lgbm_l2",
+   "lgbm_tweedie",
+   "ma4w",
+   "naive7"
+  ],
+  "by_wape": [
+   "lgbm_l2",
+   "lgbm_tweedie",
+   "ma4w",
+   "naive7"
+  ],
+  "supported": false
+ },
+ "decomposition": [
+  {
+   "tau": 0.5,
+   "layer": 0.08924071468871257,
+   "algorithm": 0.856267840028592,
+   "remainder": 0.05449144528269543
+  },
+  {
+   "tau": 0.7,
+   "layer": 0.6835003977639688,
+   "algorithm": 0.2878209333634328,
+   "remainder": 0.028678668872598404
+  },
+  {
+   "tau": 0.9,
+   "layer": 0.9783722261656976,
+   "algorithm": 0.014944081074240948,
+   "remainder": 0.006683692760061472
+  }
+ ]
+}

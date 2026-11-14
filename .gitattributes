@@ -134,6 +134,7 @@ china-capital-deepening/**/*.xlsx -filter -diff -merge binary
 eu-us-ppp-drift/**/*.csv -filter -diff -merge text
 eu-us-ppp-drift/**/*.gz -filter -diff -merge binary
 storm-train-recovery/**/*.csv -filter -diff -merge text
+storm-clustering-portugal/**/*.csv -filter -diff -merge text
 housing-losses-inflation/**/*.csv -filter -diff -merge text
 wealth-origin-successions/**/*.csv -filter -diff -merge text
 agreement-regimes/**/*.csv -filter -diff -merge text
@@ -147,3 +148,4 @@ uk-repeat-sales-rigidity/**/*.csv -filter -diff -merge text
 ppp-drift-by-category/**/*.csv -filter -diff -merge text
 ppp-drift-by-category/**/*.gz -filter -diff -merge binary
 uk-valuation-purchase-price/**/*.csv -filter -diff -merge text
+perishable-order-decisions/**/*.csv -filter -diff -merge text

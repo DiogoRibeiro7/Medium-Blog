@@ -1,0 +1,32 @@
+name: Causal identification companion
+
+on:
+  pull_request:
+    paths:
+      - "causal-identification-before-estimation/**"
+      - ".github/workflows/causal-identification-before-estimation.yml"
+  push:
+    branches: [main]
+    paths:
+      - "causal-identification-before-estimation/**"
+      - ".github/workflows/causal-identification-before-estimation.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: causal-identification-before-estimation/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r causal-identification-before-estimation/requirements.txt
+      - name: Run unit tests and render all figures
+        working-directory: causal-identification-before-estimation
+        env:
+          MPLBACKEND: Agg
+        run: python -m unittest discover -s tests -v
