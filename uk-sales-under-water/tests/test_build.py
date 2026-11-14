@@ -63,3 +63,21 @@ def test_planted_lock_in_visible(built):
     h_below = below.resales.sum() / below.stock.sum()
     h_above = above.resales.sum() / above.stock.sum()
     assert h_below < 0.75 * h_above
+
+
+def test_analysis_recovers_planted_lock_in(built, tmp_path, monkeypatch):
+    _, data, _ = built
+    import analysis as A
+    monkeypatch.setattr(A, "DATA", data)
+    monkeypatch.setattr(A, "RES", tmp_path)
+    assert A.main() == 0
+    curve = pd.read_csv(tmp_path / "lock_in_curve.csv")
+    c = curve[curve.period == "all"].set_index("m_bin").effect
+    assert c.loc[-3] < -0.005 and c.loc[8] > 0.01          # below water sells less, well above more
+    cf = pd.read_csv(tmp_path / "counterfactual.csv").set_index("year")
+    fall = cf.rate[2007] - cf.rate[2009]
+    narrow = fall - (cf.rate_without_lock_in[2007] - cf.rate_without_lock_in[2009])
+    wide = fall - (cf.rate_without_position[2007] - cf.rate_without_position[2009])
+    # lock-in is the only cause of the fall in the synthetic market: both measures find part of
+    # it, the narrow one (owners below zero only) less than the wide one
+    assert 0.1 * fall < narrow < wide
