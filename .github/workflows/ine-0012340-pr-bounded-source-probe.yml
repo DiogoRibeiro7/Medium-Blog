@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
-      CAPTURE_START_INDEX: "7"
-      CAPTURE_COUNT: "3"
+      CAPTURE_START_INDEX: "9"
+      CAPTURE_COUNT: "1"
       CAPTURE_DIMENSION: "Dim2"
       CAPTURE_TIMEOUT_SECONDS: "75"
-      EXPECTED_CODES: "1306,1308,1310"
+      EXPECTED_CODES: "1310"
     defaults:
       run:
         working-directory: urban-affordability-cascade
@@ -34,7 +34,7 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Validate geographic bounds and metadata offline
         run: python -m unittest discover -s tests -p 'test_ine_commuting_partitioned_capture.py' -v
-      - name: Capture Maia, Matosinhos and Paredes 2021 Dim2 slices
+      - name: Retry Paredes 2021 Dim2 municipality slice
         id: capture
         shell: bash
         run: |
@@ -62,7 +62,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ine-0012340-dim2-1306-1308-1310-candidates
+          name: ine-0012340-dim2-1310-retry-candidate
           path: urban-affordability-cascade/candidate-capture/
           if-no-files-found: error
           retention-days: 30

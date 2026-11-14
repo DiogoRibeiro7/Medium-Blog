@@ -36,6 +36,11 @@ SIXTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43422198121"
 SIXTH_SOURCE_SHA256 = "6714b33cedeb7ce0275b5207d06d05598082cd628f0615d0c858964215b3c73e"
 SEVENTH_RUN = ROOT / "data" / "ine_0012340_pr_run_43513828242"
 SEVENTH_SOURCE_SHA256 = "43f69a11760870dd0fab1ef29c62eeb8c2b3057c95a5550e004317a4d8d0ba68"
+FIRST_BATCH_RUN = ROOT / "data" / "ine_0012340_pr_run_43581552155"
+FIRST_BATCH_SOURCE_HASHES = {
+    "1306": "17b123803d28e788dceaf4717e79b508384642445bdab41f6bb4cd58df04ab68",
+    "1308": "c570bed15c05300c8c766f3c7c105065b1224a46e7e12e65a319b124f99a96f0",
+}
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -481,6 +486,76 @@ class SevenMunicipalityINESliceAuditTests(unittest.TestCase):
             if first != second
         }
         self.assertEqual(len(unique_pairs), 91)
+
+
+class FirstBatchINESliceAuditTests(unittest.TestCase):
+    """Retain two successful slices even when Paredes received HTTP 500."""
+
+    def test_maia_matosinhos_extend_to_108_unique_pairs(self) -> None:
+        codes = municipality_codes_from_panel()
+        manifest = FIRST_BATCH_RUN / "partition_manifest.json"
+        receipt = json.loads(manifest.read_text(encoding="utf-8"))
+        self.assertEqual(receipt["requested_codes"], ["1306", "1308", "1310"])
+        self.assertEqual(receipt["completed_json_captures"], 2)
+        self.assertEqual(receipt["items"][2]["status"], "failed")
+        self.assertEqual(receipt["items"][2]["error_type"], "HTTPError")
+        self.assertFalse(
+            (FIRST_BATCH_RUN / "ine_0012340_dim2_1310_candidate.json").exists()
+        )
+
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+            "0113": FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json",
+            "0116": FIFTH_RUN / "ine_0012340_dim2_0116_candidate.json",
+            "0119": SIXTH_RUN / "ine_0012340_dim2_0119_candidate.json",
+            "1304": SEVENTH_RUN / "ine_0012340_dim2_1304_candidate.json",
+            **{
+                code: FIRST_BATCH_RUN / f"ine_0012340_dim2_{code}_candidate.json"
+                for code in FIRST_BATCH_SOURCE_HASHES
+            },
+        }
+        observed: dict[str, dict[str, int]] = {}
+        with tempfile.TemporaryDirectory() as folder:
+            for code, path in source_paths.items():
+                raw = path.read_bytes()
+                interactions, source_records = parse_dim2_slice(raw, code, codes)
+                self.assertEqual(source_records, 347)
+                observed[code] = interactions
+                if code in FIRST_BATCH_SOURCE_HASHES:
+                    self.assertEqual(
+                        hashlib.sha256(raw).hexdigest(),
+                        FIRST_BATCH_SOURCE_HASHES[code],
+                    )
+                    report = run(
+                        path, manifest, code, Path(folder) / f"audit_{code}.json",
+                    )
+                    self.assertEqual(report["status"], "partial_match")
+                    self.assertEqual(report["matched_pairs"], 16)
+                    self.assertEqual(report["mismatched_pairs"], 0)
+                    self.assertEqual(
+                        json.loads((FIRST_BATCH_RUN / f"audit_{code}.json").read_text(
+                            encoding="utf-8"
+                        )), report,
+                    )
+
+        reciprocal_count = 0
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+                    reciprocal_count += 1
+        self.assertEqual(reciprocal_count, 36)
+        self.assertEqual(observed["1306"]["1308"], 16154)
+        self.assertEqual(observed["1308"]["1306"], 16154)
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 108)
 
 
 if __name__ == "__main__":

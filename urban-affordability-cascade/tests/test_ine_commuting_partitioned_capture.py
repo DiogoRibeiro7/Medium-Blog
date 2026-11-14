@@ -220,6 +220,23 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 [candidate_slice_url(code, dimension="Dim2") for code in codes],
             )
 
+    def test_paredes_retry_targets_only_failed_batch_member(self) -> None:
+        """Avoid re-downloading the two previously captured municipalities."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=9, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["1310"])
+            self.assertEqual(report["capture_count"], 1)
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "Paredes")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("1310", dimension="Dim2"),
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:

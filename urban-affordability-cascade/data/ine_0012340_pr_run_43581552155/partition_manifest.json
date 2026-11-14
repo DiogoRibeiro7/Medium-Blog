@@ -1,0 +1,115 @@
+{
+  "all_136_pairs_reconciled": false,
+  "candidate_slice_semantics_verified": false,
+  "capture_count": 3,
+  "capture_protocol": "ine_0012340_2021_dico_partition_candidate_v1",
+  "captured_at_utc": "2026-11-14T09:42:20.550206+00:00",
+  "completed_json_captures": 2,
+  "dimension": "Dim2",
+  "items": [
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1306&lang=PT",
+      "code": "1306",
+      "filename": "ine_0012340_dim2_1306_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Maia",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1306",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1306&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "17b123803d28e788dceaf4717e79b508384642445bdab41f6bb4cd58df04ab68",
+      "size_bytes": 57273,
+      "status": "captured_unverified"
+    },
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1308&lang=PT",
+      "code": "1308",
+      "filename": "ine_0012340_dim2_1308_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Matosinhos",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1308",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1308&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "c570bed15c05300c8c766f3c7c105065b1224a46e7e12e65a319b124f99a96f0",
+      "size_bytes": 59350,
+      "status": "captured_unverified"
+    },
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1310&lang=PT",
+      "code": "1310",
+      "error": "HTTP Error 500: Internal Server Error",
+      "error_type": "HTTPError",
+      "municipality": "Paredes",
+      "status": "failed"
+    }
+  ],
+  "metadata_dimensions_checked_against_panel": true,
+  "metadata_matches_archived_2026_11_12_sha256": false,
+  "requested_codes": [
+    "1306",
+    "1308",
+    "1310"
+  ],
+  "source_data_is_residential_migration": false,
+  "source_metadata": {
+    "amp_municipalities_validated_in_both_dimensions": 17,
+    "geographic_dimensions": [
+      2,
+      3
+    ],
+    "indicator": "0012340",
+    "metadata_sha256": "46a95e5b2d997c474498d74a42c75450d07cbc56221acbec8ffdeb19d8684266",
+    "metadata_unit": "Número (N.º)",
+    "period": "2021"
+  },
+  "source_metadata_sha256": "46a95e5b2d997c474498d74a42c75450d07cbc56221acbec8ffdeb19d8684266"
+}
