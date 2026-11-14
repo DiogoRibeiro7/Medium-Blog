@@ -1,0 +1,3 @@
+source https://github.com/CSSEGISandData/COVID-19.git at commit 4360e50239b4eb6b22f3a1759323748f36752177
+global time series rows of Australia, Canada, China, Denmark, France, Netherlands, New Zealand, United Kingdom: 112 rows, 1081 dates, 98647 row-dates
+calendars: python-holidays 0.108; 22 added (Canadian provinces and territories, Australian states and territories, Hong Kong); weekends for 270 calendars

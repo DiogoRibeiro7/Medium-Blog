@@ -1,0 +1,153 @@
+REPEAT SALES IN FRANCE (DVF, 2021-2025): every number used in the article
+============================================================================
+
+[0] Data and matching
+DVF rows 20,382,915; deeds 7,319,609, dated 2021-01-01 to 2025-12-31; ordinary sales 6,803,387, off-plan 405,153, auctions 16,447
+Deeds transferring exactly one dwelling (one house or one flat, any annexes, no shop, one disposition, one price): 4,493,643; with a property key 4,411,987 (houses 2,491,972, flats 1,920,015); dropped as same-day duplicates 8,613
+Consecutive sales of the same key: 255,023; after the time and price filters 187,474; of which rooms, surface or land changed 16,485 (8.8%)
+With rooms, surface and land unchanged, by nature of the two sales: sale_then_sale 166,780, auction_then_sale 2,192, off-plan_then_sale 1,564, sale_then_other 130, off-plan_then_off-plan 118, other_then_sale 117, sale_then_auction 49, sale_then_off-plan 27, auction_then_auction 6, auction_then_other 6
+Main sample: 166,780 repeat sales, resales 2021-07 to 2025-12; houses 90,766, flats 76,014
+By region: Paris 3,429, Inner ring 4,861, Outer Ile-de-France 8,268, Big cities 40,336, Rest of France 107,973, Overseas 1,913
+By holding period: 0.5-1y 17,845, 1-2y 51,041, 2-3y 48,818, 3-4y 35,757, 4y+ 13,319
+By year of resale: 2021 1,127, 2022 15,513, 2023 31,427, 2024 45,634, 2025 73,079
+Median log change (cell medians, weighted): unchanged structure 0.128, changed 0.090
+England and Wales, same resale years and holds under five years: 575,335 repeat sales
+
+[1] The market: OECD nominal house price index (2015 = 100), price per square metre, volume
+  France: 2021-Q1 121.3, peak 2022-Q4 134.0, low after it 2026-Q2 125.7 (-6.2%), last 2026-Q2 125.7 (-6.2% from peak)
+  United Kingdom: 2021-Q1 127.4, peak 2026-Q2 150.0, low after it 2026-Q2 150.0 (0.0%), last 2026-Q2 150.0 (0.0% from peak)
+  France: 2021-Q1 to 2025-Q4 4.9%
+  United Kingdom: 2021-Q1 to 2025-Q4 16.3%
+  median price per m2, France, flats (4-quarter mean): peak 2023Q2 EUR 3,394, low after it 2024Q4 EUR 3,258 (-4.0%), last 2025Q4 EUR 3,347
+  median price per m2, France, houses (4-quarter mean): peak 2023Q2 EUR 2,221, low after it 2024Q3 EUR 2,107 (-5.1%), last 2025Q4 EUR 2,163
+  median price per m2, Paris, flats (4-quarter mean): peak 2021Q4 EUR 10,840, low after it 2024Q4 EUR 9,575 (-11.7%), last 2025Q4 EUR 9,701
+  median price per m2, Paris, houses (4-quarter mean): peak 2022Q2 EUR 15,847, low after it 2024Q3 EUR 12,629 (-20.3%), last 2025Q4 EUR 13,163
+  median price per m2, Inner ring, flats (4-quarter mean): peak 2022Q4 EUR 5,875, low after it 2024Q4 EUR 5,302 (-9.8%), last 2025Q4 EUR 5,401
+  median price per m2, Inner ring, houses (4-quarter mean): peak 2023Q1 EUR 5,375, low after it 2025Q3 EUR 4,775 (-11.2%), last 2025Q4 EUR 4,804
+  median price per m2, Outer Ile-de-France, flats (4-quarter mean): peak 2023Q1 EUR 3,527, low after it 2024Q4 EUR 3,290 (-6.7%), last 2025Q4 EUR 3,350
+  median price per m2, Outer Ile-de-France, houses (4-quarter mean): peak 2023Q1 EUR 3,639, low after it 2025Q4 EUR 3,287 (-9.7%), last 2025Q4 EUR 3,287
+  median price per m2, Big cities, flats (4-quarter mean): peak 2023Q2 EUR 3,700, low after it 2024Q4 EUR 3,548 (-4.1%), last 2025Q4 EUR 3,576
+  median price per m2, Big cities, houses (4-quarter mean): peak 2023Q2 EUR 2,976, low after it 2024Q4 EUR 2,745 (-7.8%), last 2025Q4 EUR 2,765
+  median price per m2, Rest of France, flats (4-quarter mean): peak 2025Q4 EUR 2,447, low after it 2025Q4 EUR 2,447 (0.0%), last 2025Q4 EUR 2,447
+  median price per m2, Rest of France, houses (4-quarter mean): peak 2023Q2 EUR 1,940, low after it 2024Q3 EUR 1,865 (-3.9%), last 2025Q4 EUR 1,907
+  single-dwelling ordinary sales, 12-month total: peak to 2022-03 1,037,760; low to 2024-09 694,439 (-33.1%); to 2025-12 797,764
+  repeat-sales index from the pairs (not used for the market path; see text): 2021Q1 = 100, 2022Q4 118.1, 2024Q4 129.0, 2025Q4 131.5
+  share of repeat sales at least 30% (log) above the purchase price: France 21.3%, England and Wales same years and holds 20.3%
+  French CPI inflation by year: 2021 1.6%, 2022 5.2%, 2023 4.9%, 2024 2.0%, 2025 0.9%; UK: 2021 2.5%, 2022 7.9%, 2023 6.8%, 2024 3.3%, 2025 3.9%
+
+[2] Resales at a loss, by year of resale
+  2021: France n=1,127 nominal loss 11.9%, real loss 19.3%, hidden/real 38.2%, exact 4.26% | England and Wales n=156,447 nominal 6.4%, real 20.4%, hidden/real 68.5%, exact 1.57%
+  2022: France n=15,513 nominal loss 9.8%, real loss 21.3%, hidden/real 54.0%, exact 2.23% | England and Wales n=123,293 nominal 3.5%, real 19.7%, hidden/real 82.3%, exact 0.83%
+  2023: France n=31,427 nominal loss 13.1%, real loss 31.5%, hidden/real 58.5%, exact 2.18% | England and Wales n=92,340 nominal 5.3%, real 41.1%, hidden/real 87.1%, exact 1.22%
+  2024: France n=45,634 nominal loss 20.7%, real loss 40.6%, hidden/real 49.0%, exact 1.97% | England and Wales n=96,119 nominal 9.0%, real 56.8%, hidden/real 84.1%, exact 1.98%
+  2025: France n=73,079 nominal loss 22.4%, real loss 41.8%, hidden/real 46.5%, exact 1.77% | England and Wales n=107,136 nominal 11.0%, real 64.3%, hidden/real 82.9%, exact 2.47%
+  2024-2025, Paris: nominal loss 31.0%, real loss 48.2% [n=2,446]
+  2024-2025, Inner ring: nominal loss 40.9%, real loss 63.0% [n=3,475]
+  2024-2025, Outer Ile-de-France: nominal loss 39.9%, real loss 66.7% [n=5,903]
+  2024-2025, Big cities: nominal loss 22.9%, real loss 42.9% [n=28,620]
+  2024-2025, Rest of France: nominal loss 18.9%, real loss 37.9% [n=76,903]
+  2024-2025, Overseas: nominal loss 12.0%, real loss 26.4% [n=1,366]
+  2024-2025, houses: nominal loss 23.6%, real loss 43.4%
+  2024-2025, flats: nominal loss 19.6%, real loss 38.9%
+  all years: France nominal 18.9%, real 37.5%, hidden/real 49.5%; England and Wales nominal 6.9%, real 37.8%, hidden/real 81.7%
+
+[3] Resales at exactly the old price, against resales at exact round differences (EUR / GBP)
+  France: exact 1.96% of 166,780; exact vs mean of -/+1,000 5.66x, -/+5,000 2.39x, -/+10,000 2.21x; below/above at 1,000 0.74, 5,000 0.48, 10,000 0.34
+  England and Wales: exact 1.59% of 575,335; exact vs mean of -/+1,000 8.56x, -/+5,000 1.43x, -/+10,000 1.29x; below/above at 1,000 0.64, 5,000 0.43, 10,000 0.25
+  France, holding 0.5-1y: exact 4.14%, vs -/+5,000 3.93x
+  France, holding 1-2y: exact 2.17%, vs -/+5,000 2.51x
+  France, holding 2-3y: exact 1.66%, vs -/+5,000 2.18x
+  France, holding 3-4y: exact 1.30%, vs -/+5,000 1.59x
+  France, holding 4y+: exact 1.12%, vs -/+5,000 2.08x
+  England and Wales, holding 0.5-2y: exact 2.91%, vs -/+5,000 1.66x
+  England and Wales, holding 2-5y: exact 1.31%, vs -/+5,000 1.35x
+  France, houses: exact 2.21%, vs -/+5,000 2.54x
+  France, flats: exact 1.66%, vs -/+5,000 2.19x
+  French prices that are whole thousands of euros: purchase 67.7%, resale 57.7%
+
+[4] Jump in density at a nominal change of zero (0.5% bins, bandwidth 5% each side)
+  France, all: theta 0.851 (0.023); without exact resales 0.088 (0.025) = missing 8.4%; donut 0.077 (0.037) = missing 7.4%  [n=140,571]
+  England and Wales, 2021-2025, holds under 5 years: theta 1.083 (0.017); without exact resales 0.361 (0.018) = missing 30.3%; donut 0.278 (0.025) = missing 24.3%  [n=517,008]
+  England and Wales, 1995-2026, holds under 10 years (the earlier article): theta 1.056 (0.005); without exact resales 0.269 (0.005) = missing 23.6%; donut 0.208 (0.008) = missing 18.7%  [n=5,353,209]
+  France minus England and Wales: without exact -0.273 (se 0.031); donut -0.201 (se 0.045)
+  placebo cutoffs (donut), France: -15.0% -0.067 (0.084), -10.0% -0.017 (0.063), -7.5% -0.050 (0.055), +7.5% -0.010 (0.031), +10.0% -0.021 (0.031), +15.0% -0.025 (0.033)
+  placebo cutoffs (donut), England and Wales: -15.0% -0.140 (0.086), -10.0% 0.006 (0.059), -7.5% 0.044 (0.047), +7.5% -0.068 (0.016), +10.0% 0.002 (0.016), +15.0% -0.043 (0.016)
+  sensitivity (bandwidth / donut; 0 = exact resales removed instead): 2.5%/0.0% FR 2.0% UK 28.1%; 5.0%/0.0% FR 8.4% UK 30.3%; 5.0%/1.0% FR 7.4% UK 24.3%; 5.0%/1.5% FR 14.8% UK 26.6%; 5.0%/2.0% FR 20.4% UK 28.2%; 7.5%/0.0% FR 8.4% UK 34.3%; 7.5%/1.0% FR 6.0% UK 29.6%; 7.5%/1.5% FR 8.9% UK 31.4%; 7.5%/2.0% FR 9.5% UK 33.0%; 10.0%/0.0% FR 12.7% UK 38.2%; 10.0%/1.0% FR 11.7% UK 34.4%; 10.0%/1.5% FR 14.4% UK 36.1%; 10.0%/2.0% FR 15.7% UK 37.7%
+  range of the French missing share over these 13 variants: 2.0% to 20.4%; England and Wales 24.3% to 38.2%
+  real-zero placebo (pairs with cumulative CPI inflation of at least 10%, exact resales out, n=51,938): theta -0.038 (0.034); donut 0.045 (0.054)
+  France, houses: theta 0.914 (0.030); without exact resales 0.096 (0.034) = missing 9.2%; donut 0.066 (0.049) = missing 6.4%  [n=75,488]
+  France, flats: theta 0.762 (0.035); without exact resales 0.074 (0.038) = missing 7.2%; donut 0.091 (0.057) = missing 8.7%  [n=65,083]
+  France, Paris: theta 0.697 (0.145); without exact resales 0.189 (0.159) = missing 17.2%; donut 0.346 (0.229) = missing 29.3%  [n=3,033]
+  France, Inner ring: theta 0.695 (0.107); without exact resales 0.023 (0.120) = missing 2.3%; donut 0.072 (0.176) = missing 6.9%  [n=4,413]
+  France, Outer Ile-de-France: theta 0.513 (0.076); without exact resales -0.052 (0.084) = missing -5.3%; donut -0.156 (0.124) = missing -16.9%  [n=7,537]
+  France, Big cities: theta 0.672 (0.045); without exact resales 0.049 (0.050) = missing 4.8%; donut 0.108 (0.074) = missing 10.2%  [n=34,443]
+  France, Rest of France: theta 0.987 (0.030); without exact resales 0.136 (0.034) = missing 12.7%; donut 0.109 (0.050) = missing 10.3%  [n=89,604]
+  France, Overseas: theta 1.317 (0.252); without exact resales -0.050 (0.291) = missing -5.1%; donut -0.509 (0.406) = missing -66.4%  [n=1,541]
+  France, Ile-de-France (three groups pooled): theta 0.592 (0.057); without exact resales 0.005 (0.063) = missing 0.5%; donut -0.014 (0.092) = missing -1.4%  [n=14,983]
+  France, holding 0.5-1y: theta 1.372 (0.064); without exact resales 0.079 (0.074) = missing 7.6%; donut 0.119 (0.110) = missing 11.2%  [n=17,402]
+  France, holding 1-2y: theta 0.936 (0.043); without exact resales 0.045 (0.048) = missing 4.4%; donut -0.023 (0.069) = missing -2.3%  [n=42,708]
+  France, holding 2-3y: theta 0.732 (0.042); without exact resales 0.107 (0.046) = missing 10.1%; donut 0.138 (0.068) = missing 12.9%  [n=40,045]
+  France, holding 3-4y: theta 0.652 (0.049); without exact resales 0.139 (0.053) = missing 13.0%; donut 0.105 (0.080) = missing 9.9%  [n=29,503]
+  France, holding 4y+: theta 0.498 (0.085); without exact resales 0.019 (0.092) = missing 1.8%; donut -0.014 (0.137) = missing -1.4%  [n=10,913]
+  England and Wales 2021-2025, holding 0.5-2y: theta 1.315 (0.033); without exact resales 0.456 (0.036) = missing 36.6%; donut 0.379 (0.050) = missing 31.5%  [n=91,740]
+  England and Wales 2021-2025, holding 2-5y: theta 0.997 (0.019); without exact resales 0.328 (0.021) = missing 28.0%; donut 0.242 (0.028) = missing 21.5%  [n=425,268]
+  2021: France without exact 0.080 (0.307) = missing 7.7%, donut 54.9% [n=1,119] | England and Wales 34.0%, donut 25.7%
+  2022: France without exact 0.029 (0.101) = missing 2.9%, donut -6.6% [n=13,790] | England and Wales 25.8%, donut 19.7%
+  2023: France without exact 0.102 (0.067) = missing 9.7%, donut 3.2% [n=26,082] | England and Wales 26.3%, donut 17.8%
+  2024: France without exact 0.017 (0.048) = missing 1.7%, donut -2.9% [n=37,979] | England and Wales 27.4%, donut 23.4%
+  2025: France without exact 0.126 (0.036) = missing 11.9%, donut 13.8% [n=61,601] | England and Wales 31.7%, donut 27.6%
+  France 2021-2022 pooled: missing 5.5% (0.096); 2023-2025 pooled: 8.7%
+
+[5] The same jump at other cutoffs (donut estimator, bandwidth 5% each side; no window reaches within 1% of zero or crosses it)
+  France: at zero 0.077 (missing 7.4%); at the 52 cutoffs at least 2% from zero: sd 0.045, largest +0.095 at -14.0%, smallest -0.107; cutoffs with a jump at least as large as at zero: 4 of 52
+    at +5.0%: +0.016 (0.021)
+    at +7.0%: -0.019 (0.020)
+    at +7.5%: -0.028 (0.020)
+    at +8.0%: -0.012 (0.020)
+  England and Wales: at zero 0.278 (missing 24.3%); at the 52 cutoffs at least 2% from zero: sd 0.054, largest +0.125 at -12.0%, smallest -0.113; cutoffs with a jump at least as large as at zero: 0 of 52
+    at +5.0%: -0.017 (0.011)
+    at +7.0%: -0.034 (0.010)
+    at +7.5%: -0.020 (0.010)
+    at +8.0%: +0.036 (0.010)
+  round price ratios fall at: x0.90 = -10.54%, x0.95 = -5.13%, x1.05 = +4.88%, x1.08 = +7.70%, x1.10 = +9.53%, x1.15 = +13.98%
+
+[6] Is France different, or is its market? Region-years, holds under 5 years
+  116 England and Wales region-years (1996-2025), 18 French region-years (2023-2025; earlier years have no holds of two years or more)
+  England and Wales: theta_ex = 0.227 (0.024) +0.578 (0.105) x median log change of 2-5 year holds
+  France: theta_ex = 0.027 (0.061) +0.547 (0.441) x median log change of 2-5 year holds
+  pooled: France shift -0.204 (se 0.033) at the same median log change of 2-5 year holds; slope +0.578 (0.105)
+    French region-years: mean of median log change of 2-5 year holds 0.121; predicted from the England and Wales line 0.297 (missing 25.7%), observed 0.093 (missing 8.9%)
+  England and Wales: theta_ex = 0.446 (0.012) -0.739 (0.062) x share of resales at a nominal loss
+  France: theta_ex = 0.198 (0.073) -0.485 (0.294) x share of resales at a nominal loss
+  pooled: France shift -0.192 (se 0.029) at the same share of resales at a nominal loss; slope -0.735 (0.061)
+    French region-years: mean of share of resales at a nominal loss 0.217; predicted from the England and Wales line 0.285 (missing 24.8%), observed 0.093 (missing 8.9%)
+  England and Wales region-years with nominal-loss share (0.0, 0.05]: 49, weighted theta_ex 0.420
+  England and Wales region-years with nominal-loss share (0.05, 0.1]: 26, weighted theta_ex 0.398
+  England and Wales region-years with nominal-loss share (0.1, 0.15]: 12, weighted theta_ex 0.344
+  England and Wales region-years with nominal-loss share (0.15, 0.25]: 15, weighted theta_ex 0.316
+  England and Wales region-years with nominal-loss share (0.25, 1.0]: 14, weighted theta_ex 0.142
+  French region-years: nominal-loss share 0.106 to 0.423
+  departement-years, quartile 1 of the median change of 1-3 year holds (within year): 62 cells, median 0.073, nominal-loss share 29.0%; missing 4.4% (0.044), donut -0.6% (0.065)
+  departement-years, quartile 2 of the median change of 1-3 year holds (within year): 62 cells, median 0.104, nominal-loss share 19.4%; missing 18.6% (0.053), donut 23.7% (0.077)
+  departement-years, quartile 3 of the median change of 1-3 year holds (within year): 61 cells, median 0.129, nominal-loss share 16.1%; missing 1.8% (0.056), donut -2.1% (0.082)
+  departement-years, quartile 4 of the median change of 1-3 year holds (within year): 62 cells, median 0.165, nominal-loss share 14.3%; missing 17.5% (0.070), donut 17.2% (0.103)
+
+[7] Bunching: counterfactual polynomial (degree 7) over -25% to +25%, excluded window -10% to +2%
+  France: missing below the old price 12.9% (se 1.9%) of the counterfactual mass in [-10%, 0); excess in [0, +2%) 11.2% (se 0.8%); excess / missing 0.87
+  England and Wales: missing below the old price 40.8% (se 0.9%) of the counterfactual mass in [-10%, 0); excess in [0, +2%) 7.4% (se 0.5%); excess / missing 0.18
+  France, over 18 variants: missing -0.5% to 23.7%, excess 7.0% to 22.1%; in the 17 variants with missing mass above 5%, excess / missing 0.30 to 3.00 (median 1.20)
+  England and Wales, over 18 variants: missing 31.1% to 51.2%, excess 3.3% to 19.1%; in the 18 variants with missing mass above 5%, excess / missing 0.06 to 0.61 (median 0.20)
+
+[8] Simulations: 600,000 log changes N(+8%, 15%); floors act on would-be losses of up to 10%
+  no floor, no rounding: estimator of the earlier article 0.7%, donut -0.9%, bunching missing 0.8% / excess 0.0%
+  30% sell at exactly the old price: estimator of the earlier article 30.1%, donut 28.7%, bunching missing 30.3% / excess 29.6%
+  30% withdraw: estimator of the earlier article 30.1%, donut 28.7%, bunching missing 30.3% / excess 0.0%
+  rounding only: half within 1% go to zero: estimator of the earlier article 2.0%, donut -0.9%, bunching missing 7.0% / excess 6.2%
+  30% at the old price + rounding: estimator of the earlier article 31.0%, donut 28.7%, bunching missing 34.7% / excess 33.9%
+  10% at the old price + 20% withdraw + rounding: estimator of the earlier article 31.0%, donut 28.7%, bunching missing 34.7% / excess 14.3%
+
+[9] Pairs kept out of the main sample
+  bought at auction, resold by ordinary sale: 2,192; median log change 0.338; nominal loss 5.4%; median hold 1.74 years
+  bought off plan, resold: 1,564; median log change 0.026; nominal loss 37.3%; median hold 2.66 years
+  resold at auction: 49; median log change -0.415; nominal loss 98.0%; median hold 2.89 years
+  ordinary sales with rooms, surface or land changed: 16,302; median log change 0.090; nominal loss 35.9%
