@@ -1,0 +1,152 @@
+{
+  "evidence_class": "single_municipality_ine_dim2_source_slice_reconciliation",
+  "indicator_id": "0012340",
+  "reference_period": "2021",
+  "municipality_code": "1313",
+  "municipality": "Póvoa de Varzim",
+  "capture_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1313&lang=PT",
+  "source_sha256": "3dab97e28bb6b78e9d1e33b8024f5ca1503560d5518f6fc981d9ccf657bae6bc",
+  "capture_manifest_sha256": "16bf748191d4c779064480c625985889da769f0121179de72eacd15eb73745ae",
+  "frozen_third_party_csv_sha256": "0cd66cdefac5c8d5112f611e02217fda30916759d85f3b3f250d9080e055a8e2",
+  "source_records": 347,
+  "amp_geographies_present": 17,
+  "diagonal_count": 0,
+  "slice_filter_effect_observed": true,
+  "full_17_municipality_matrix_reconciled": false,
+  "source_authenticity": "capture manifest records an INE HTTPS URL; this offline audit cannot authenticate the response independently",
+  "data_semantics": "2021 work/study interactions, not residential relocation or causal displacement",
+  "status": "partial_match",
+  "compared_amp_off_diagonal_pairs": 16,
+  "matched_pairs": 16,
+  "mismatched_pairs": 0,
+  "comparison_rows": [
+    {
+      "counterpart_code": "0104",
+      "counterpart_municipality": "Arouca",
+      "ine_interactions": 52,
+      "frozen_third_party_interactions": 52,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "0107",
+      "counterpart_municipality": "Espinho",
+      "ine_interactions": 92,
+      "frozen_third_party_interactions": 92,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "0109",
+      "counterpart_municipality": "Santa Maria da Feira",
+      "ine_interactions": 322,
+      "frozen_third_party_interactions": 322,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "0113",
+      "counterpart_municipality": "Oliveira de Azeméis",
+      "ine_interactions": 177,
+      "frozen_third_party_interactions": 177,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "0116",
+      "counterpart_municipality": "São João da Madeira",
+      "ine_interactions": 41,
+      "frozen_third_party_interactions": 41,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "0119",
+      "counterpart_municipality": "Vale de Cambra",
+      "ine_interactions": 85,
+      "frozen_third_party_interactions": 85,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1304",
+      "counterpart_municipality": "Gondomar",
+      "ine_interactions": 272,
+      "frozen_third_party_interactions": 272,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1306",
+      "counterpart_municipality": "Maia",
+      "ine_interactions": 1091,
+      "frozen_third_party_interactions": 1091,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1308",
+      "counterpart_municipality": "Matosinhos",
+      "ine_interactions": 1060,
+      "frozen_third_party_interactions": 1060,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1310",
+      "counterpart_municipality": "Paredes",
+      "ine_interactions": 140,
+      "frozen_third_party_interactions": 140,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1312",
+      "counterpart_municipality": "Porto",
+      "ine_interactions": 2819,
+      "frozen_third_party_interactions": 2819,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1314",
+      "counterpart_municipality": "Santo Tirso",
+      "ine_interactions": 312,
+      "frozen_third_party_interactions": 312,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1315",
+      "counterpart_municipality": "Valongo",
+      "ine_interactions": 179,
+      "frozen_third_party_interactions": 179,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1316",
+      "counterpart_municipality": "Vila do Conde",
+      "ine_interactions": 8416,
+      "frozen_third_party_interactions": 8416,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1317",
+      "counterpart_municipality": "Vila Nova de Gaia",
+      "ine_interactions": 708,
+      "frozen_third_party_interactions": 708,
+      "difference": 0,
+      "match": true
+    },
+    {
+      "counterpart_code": "1318",
+      "counterpart_municipality": "Trofa",
+      "ine_interactions": 313,
+      "frozen_third_party_interactions": 313,
+      "difference": 0,
+      "match": true
+    }
+  ]
+}

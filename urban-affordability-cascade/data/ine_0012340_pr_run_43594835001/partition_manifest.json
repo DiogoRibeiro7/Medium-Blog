@@ -1,0 +1,145 @@
+{
+  "all_136_pairs_reconciled": false,
+  "candidate_slice_semantics_verified": false,
+  "capture_count": 3,
+  "capture_protocol": "ine_0012340_2021_dico_partition_candidate_v1",
+  "captured_at_utc": "2026-11-14T12:29:27.799343+00:00",
+  "completed_json_captures": 3,
+  "dimension": "Dim2",
+  "items": [
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1312&lang=PT",
+      "code": "1312",
+      "filename": "ine_0012340_dim2_1312_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Porto",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1312",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1312&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "bd3f0725ab5fccdb4fb45148db99a2de7da9f147829aaee3fcf8b8950685029f",
+      "size_bytes": 57995,
+      "status": "captured_unverified"
+    },
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1313&lang=PT",
+      "code": "1313",
+      "filename": "ine_0012340_dim2_1313_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Póvoa de Varzim",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1313",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1313&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "3dab97e28bb6b78e9d1e33b8024f5ca1503560d5518f6fc981d9ccf657bae6bc",
+      "size_bytes": 61326,
+      "status": "captured_unverified"
+    },
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1314&lang=PT",
+      "code": "1314",
+      "filename": "ine_0012340_dim2_1314_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Santo Tirso",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1314",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1314&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "8180d9a30d90a7707b98ee251b0f76cb2afae719812b1a459f8c10ad2a808373",
+      "size_bytes": 59598,
+      "status": "captured_unverified"
+    }
+  ],
+  "metadata_dimensions_checked_against_panel": true,
+  "metadata_matches_archived_2026_11_12_sha256": false,
+  "requested_codes": [
+    "1312",
+    "1313",
+    "1314"
+  ],
+  "source_data_is_residential_migration": false,
+  "source_metadata": {
+    "amp_municipalities_validated_in_both_dimensions": 17,
+    "geographic_dimensions": [
+      2,
+      3
+    ],
+    "indicator": "0012340",
+    "metadata_sha256": "cb6c187e2dc4372ccf615f3017521e834d474b8576f8b7f4d31c2c7112660c94",
+    "metadata_unit": "Número (N.º)",
+    "period": "2021"
+  },
+  "source_metadata_sha256": "cb6c187e2dc4372ccf615f3017521e834d474b8576f8b7f4d31c2c7112660c94"
+}

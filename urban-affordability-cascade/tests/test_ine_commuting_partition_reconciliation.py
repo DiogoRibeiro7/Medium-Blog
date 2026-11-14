@@ -45,6 +45,13 @@ PAREDES_RETRY_RUN = ROOT / "data" / "ine_0012340_pr_run_43582490308"
 PAREDES_RETRY_SOURCE_SHA256 = (
     "8f7b8b757c271b1e7539e4be4511ba1936ba16084abd7c18d105cacb21a4b1be"
 )
+SECOND_BATCH_RUN = ROOT / "data" / "ine_0012340_pr_run_43594835001"
+SECOND_BATCH_SOURCE_HASHES = {
+    "1312": "bd3f0725ab5fccdb4fb45148db99a2de7da9f147829aaee3fcf8b8950685029f",
+    "1313": "3dab97e28bb6b78e9d1e33b8024f5ca1503560d5518f6fc981d9ccf657bae6bc",
+    "1314": "8180d9a30d90a7707b98ee251b0f76cb2afae719812b1a459f8c10ad2a808373",
+}
+SECOND_BATCH_SOURCE_SIZES = {"1312": 57995, "1313": 61326, "1314": 59598}
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -632,6 +639,88 @@ class ParedesINESliceAuditTests(unittest.TestCase):
             if first != second
         }
         self.assertEqual(len(unique_pairs), 115)
+
+
+class SecondBatchINESliceAuditTests(unittest.TestCase):
+    """Audit all three official 2021 slices and the thirteen-source network."""
+
+    def test_porto_povoa_santo_tirso_extend_to_130_unique_pairs(self) -> None:
+        codes = municipality_codes_from_panel()
+        manifest = SECOND_BATCH_RUN / "partition_manifest.json"
+        receipt = json.loads(manifest.read_text(encoding="utf-8"))
+        expected_codes = ["1312", "1313", "1314"]
+        self.assertEqual(receipt["requested_codes"], expected_codes)
+        self.assertEqual(receipt["capture_count"], 3)
+        self.assertEqual(receipt["completed_json_captures"], 3)
+        self.assertEqual([item["code"] for item in receipt["items"]], expected_codes)
+
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+            "0113": FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json",
+            "0116": FIFTH_RUN / "ine_0012340_dim2_0116_candidate.json",
+            "0119": SIXTH_RUN / "ine_0012340_dim2_0119_candidate.json",
+            "1304": SEVENTH_RUN / "ine_0012340_dim2_1304_candidate.json",
+            **{
+                code: FIRST_BATCH_RUN / f"ine_0012340_dim2_{code}_candidate.json"
+                for code in FIRST_BATCH_SOURCE_HASHES
+            },
+            "1310": PAREDES_RETRY_RUN / "ine_0012340_dim2_1310_candidate.json",
+            **{
+                code: SECOND_BATCH_RUN / f"ine_0012340_dim2_{code}_candidate.json"
+                for code in expected_codes
+            },
+        }
+        observed: dict[str, dict[str, int]] = {}
+        with tempfile.TemporaryDirectory() as folder:
+            for code, path in source_paths.items():
+                raw = path.read_bytes()
+                observed[code], source_records = parse_dim2_slice(raw, code, codes)
+                self.assertEqual(source_records, 347)
+
+                if code in SECOND_BATCH_SOURCE_HASHES:
+                    # Pin original API bytes, manifest receipt and deterministic audit.
+                    item = receipt["items"][expected_codes.index(code)]
+                    digest = hashlib.sha256(raw).hexdigest()
+                    self.assertEqual(digest, SECOND_BATCH_SOURCE_HASHES[code])
+                    self.assertEqual(digest, item["sha256"])
+                    self.assertEqual(len(raw), SECOND_BATCH_SOURCE_SIZES[code])
+                    self.assertEqual(item["size_bytes"], len(raw))
+                    self.assertEqual(item["status"], "captured_unverified")
+                    report = run(
+                        path, manifest, code, Path(folder) / f"audit_{code}.json",
+                    )
+                    self.assertEqual(report["status"], "partial_match")
+                    self.assertEqual(report["matched_pairs"], 16)
+                    self.assertEqual(report["mismatched_pairs"], 0)
+                    self.assertEqual(report["diagonal_count"], 0)
+                    self.assertFalse(report["full_17_municipality_matrix_reconciled"])
+                    self.assertEqual(
+                        json.loads((SECOND_BATCH_RUN / f"audit_{code}.json").read_text(
+                            encoding="utf-8"
+                        )), report,
+                    )
+
+        reciprocal_count = 0
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+                    reciprocal_count += 1
+        self.assertEqual(len(observed), 13)
+        self.assertEqual(reciprocal_count, 78)
+        self.assertEqual(observed["1312"]["1308"], 31142)
+        self.assertEqual(observed["1312"]["1313"], 2819)
+        self.assertEqual(observed["1312"]["1314"], 2976)
+        self.assertEqual(observed["1313"]["1314"], 312)
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 130)
 
 
 if __name__ == "__main__":

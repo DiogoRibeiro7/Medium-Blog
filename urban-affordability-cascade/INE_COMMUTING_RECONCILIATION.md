@@ -2,12 +2,12 @@
 
 **Status (14 November 2026): independently captured official Arouca, Espinho,
 Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira, Vale de Cambra,
-Gondomar, Maia, Matosinhos and Paredes slices have been preserved and checked
-against 115 of the 136 frozen pairs.** All 160 observed off-diagonal source
-views match the pinned third-party counts; all forty-five reciprocal links
-among these municipalities agree in both directions. The remaining
-**21 pairs** and
-full-matrix symmetry are **not yet verified** against
+Gondomar, Maia, Matosinhos, Paredes, Porto, Póvoa de Varzim and Santo Tirso
+slices have been preserved and checked against **130 of the 136 frozen
+pairs**. All 208 observed off-diagonal source views match the pinned
+third-party counts; all 78 reciprocal links among these municipalities agree
+in both directions. The remaining **six pairs** and full-matrix symmetry
+are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
 
@@ -620,3 +620,57 @@ python ine_commuting_partition_reconciliation.py \
 Despite successful reproduction, these are **2021 work/study interaction**
 counts. Residential displacement, commuting direction and a causal
 housing-affordability cascade are **not** established by this indicator.
+
+### Second three-municipality batch: Porto, Póvoa de Varzim, Santo Tirso
+
+The bounded PR source probe
+[#43594835001](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43594835001)
+selected exactly `start_index=10`, `count=3`, `dimension=Dim2` on
+**14 November 2026** for DICO **1312 (Porto), 1313 (Póvoa de Varzim), and
+1314 (Santo Tirso)**. All three candidate municipality requests succeeded.
+The exact original raw JSON responses and three-item capture manifest,
+along with independently generated deterministic offline audits, are
+archived under
+[`data/ine_0012340_pr_run_43594835001/`](data/ine_0012340_pr_run_43594835001/).
+
+| Official municipality slice | Raw bytes | Original response SHA-256 | Frozen comparison |
+| --- | ---: | --- | --- |
+| Porto, `Dim2=1312` | 57,995 | `bd3f0725ab5fccdb4fb45148db99a2de7da9f147829aaee3fcf8b8950685029f` | 16/16 |
+| Póvoa de Varzim, `Dim2=1313` | 61,326 | `3dab97e28bb6b78e9d1e33b8024f5ca1503560d5518f6fc981d9ccf657bae6bc` | 16/16 |
+| Santo Tirso, `Dim2=1314` | 59,598 | `8180d9a30d90a7707b98ee251b0f76cb2afae719812b1a459f8c10ad2a808373` | 16/16 |
+
+Each source contains one 2021 reference period, 347 unique `dim_3`
+counterpart codes, all 17 AMP municipalities, the requested fixed
+`geocod` and a zero diagonal. Their **48 off-diagonal source views** match
+the frozen third-party counts without discrepancies. All
+**33 newly observable reciprocal links** to previously captured source
+directions, including the three mutual links within this batch, match
+exactly. Examples include Porto–Matosinhos (**31,142**), Porto–Póvoa de
+Varzim (**2,819**), Porto–Santo Tirso (**2,976**) and Póvoa de
+Varzim–Santo Tirso (**312**) in both independently captured directions.
+
+Thirteen independent municipal slices now supply **208 observed
+off-diagonal source views**, covering `13 × 16 − 78 = 130` unique pairs.
+All **78 reciprocal links** among the 13 captured municipalities match.
+The remaining **six pairs of 136** lack independent official views; these
+are the internal links between the four not-yet-captured municipalities.
+Full official matrix symmetry therefore remains unverified.
+
+Reproduce the three new checks offline from `urban-affordability-cascade/`:
+
+```bash
+for code in 1312 1313 1314; do
+  python ine_commuting_partition_reconciliation.py \
+    --source-json "data/ine_0012340_pr_run_43594835001/ine_0012340_dim2_${code}_candidate.json" \
+    --manifest-json data/ine_0012340_pr_run_43594835001/partition_manifest.json \
+    --municipality-code "$code" \
+    --output-json "/tmp/ine-0012340-${code}-partial-audit.json"
+done
+```
+
+The offline regression pins the three raw SHA-256 hashes, manifest scope,
+all 48 matched counts, all 78 reciprocal comparisons and the exact
+130-pair unique coverage. The source still measures **2021 municipal
+work/study interactions**, not residential moves or displacement. Neither
+this batch nor eventual complete count reproduction can establish a causal
+housing-price cascade.
