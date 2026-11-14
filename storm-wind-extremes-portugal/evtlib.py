@@ -161,9 +161,8 @@ def fit_gev(x, Xmu=None, Xsig=None, start=None, fixed_xi=None, hessian=False, xi
             starts.append(th)
     best = None
     for th0 in starts:
+        th0 = _feasible(th0.copy() if fixed_xi is None else np.r_[th0[:-1], fixed_xi], x, km)
         if fixed_xi is not None:
-            th0 = th0.copy()
-            th0[-1] = fixed_xi
 
             def f(t):
                 v, g = gev_nll(np.r_[t, fixed_xi], x, Xm, Xs, xi_bounds)
@@ -191,6 +190,17 @@ def fit_gev(x, Xmu=None, Xsig=None, start=None, fixed_xi=None, hessian=False, xi
         except np.linalg.LinAlgError:
             cov = None
     return GevFit(theta[:km], theta[km:km + ks], float(theta[-1]), float(val), n, conv, cov)
+
+
+def _feasible(th, x, km):
+    """Widen the starting scale until every observation is inside the GEV support."""
+    xi, mu, s = th[-1], th[0], th[km]
+    if abs(xi) > XI_EPS:
+        edge = (x.max() - mu) if xi < 0 else (mu - x.min())
+        need = abs(xi) * edge * 1.25
+        if need > np.exp(s):
+            th[km] = np.log(need)
+    return th
 
 
 def numerical_hessian(grad, theta, h=1e-5):
