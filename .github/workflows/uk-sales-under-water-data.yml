@@ -1,0 +1,86 @@
+name: Run uk-sales-under-water on the Price Paid Data
+
+on:
+  push:
+    branches:
+      - uk-sales-under-water
+    paths:
+      - 'uk-sales-under-water/fetch.py'
+      - 'uk-sales-under-water/build.py'
+      - '.github/workflows/uk-sales-under-water-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: uk-sales-under-water-data
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    defaults:
+      run:
+        working-directory: uk-sales-under-water
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-sales-under-water/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Disk, memory and processors available
+        run: df -h . "$RUNNER_TEMP" && free -g && nproc
+
+      - name: Download HM Land Registry Price Paid Data (about 5.3 GB, not committed)
+        run: python fetch.py --ppd "$RUNNER_TEMP/ppd" --log data/fetch_log.txt
+
+      - name: Build the owner-stock aggregates (committed) from the sales (not committed)
+        run: |
+          mkdir -p "$RUNNER_TEMP/duck"
+          python build.py --ppd "$RUNNER_TEMP/ppd/pp-complete.csv" --out data --memory-limit 12GB \
+            --temp "$RUNNER_TEMP/duck"
+          rm -rf "$RUNNER_TEMP/ppd" "$RUNNER_TEMP/duck"
+          cat data/build_log.txt
+
+      - name: Summary and figures from the aggregates
+        continue-on-error: true
+        run: |
+          if [ -f analysis.py ]; then python analysis.py > /dev/null; fi
+          if [ -f figures.py ]; then python figures.py; fi
+
+      - name: Keep the aggregates as a run artifact (no transactions in them)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uk-sales-under-water-results
+          path: |
+            uk-sales-under-water/data
+            uk-sales-under-water/results
+          retention-days: 14
+
+      - name: Commit the index, results and figures if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          for d in data results figures; do if [ -d "$d" ]; then git add "$d"; fi; done
+          if git diff --cached --quiet -- data/area_index.csv data/hazard_cells.csv.gz data/district_year.csv.gz results; then
+            echo "Results unchanged; nothing to commit."
+          else
+            git commit -m "uk-sales-under-water: results from the Price Paid Data ($(date -u +%Y-%m-%d))"
+            git push
+          fi

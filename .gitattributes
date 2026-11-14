@@ -10,6 +10,7 @@ robust-regression/**/*.csv -filter -diff -merge text
 measurement-error/**/*.csv -filter -diff -merge text
 heteroscedasticity/**/*.csv -filter -diff -merge text
 sample-selection/**/*.csv -filter -diff -merge text
+excess-zeros/**/*.csv -filter -diff -merge text
 agent-eval-runs/**/*.csv -filter -diff -merge text
 portugal-wage-counterfactual/**/*.csv -filter -diff -merge text
 portugal-household-spending/**/*.csv -filter -diff -merge text
@@ -149,4 +150,5 @@ ppp-drift-by-category/**/*.csv -filter -diff -merge text
 ppp-drift-by-category/**/*.gz -filter -diff -merge binary
 uk-valuation-purchase-price/**/*.csv -filter -diff -merge text
 perishable-order-decisions/**/*.csv -filter -diff -merge text
+uk-sales-under-water/**/*.csv -filter -diff -merge text
 staffing-shift-constraints/**/*.csv -filter -diff -merge text

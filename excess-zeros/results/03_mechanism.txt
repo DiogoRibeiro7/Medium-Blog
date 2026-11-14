@@ -1,0 +1,8 @@
+P(Y = 0) by mean: Poisson; NB2 with theta 0.5, 1, 2, 5; Poisson-lognormal (sd 1)
+   mean 0.5: Poisson 0.6065; NB theta 0.5 0.7071, 1 0.6667, 2 0.6400, 5 0.6209; Poisson-lognormal 0.6792
+   mean 1.0: Poisson 0.3679; NB theta 0.5 0.5774, 1 0.5000, 2 0.4444, 5 0.4019; Poisson-lognormal 0.5124
+   mean 2.0: Poisson 0.1353; NB theta 0.5 0.4472, 1 0.3333, 2 0.2500, 5 0.1859; Poisson-lognormal 0.3325
+   mean 5.0: Poisson 0.0067; NB theta 0.5 0.3015, 1 0.1667, 2 0.0816, 5 0.0312; Poisson-lognormal 0.1385
+NMES 1988, office visits: share of zeros observed 0.1550; expected under Poisson 0.0106, NB 0.1380, ZINB 0.1609, hurdle NB 0.1550
+Biochemists, articles: share of zeros observed 0.3005; expected under Poisson 0.2092, NB 0.3036, ZINB 0.3119, hurdle NB 0.3005
+Australia 1977-78, doctor visits: share of zeros observed 0.7979; expected under Poisson 0.7734, NB 0.8040, ZINB 0.8062, hurdle NB 0.7979

@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Overdispersion Versus Zero-Inflation in Count Data Models"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-13
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/excess-zeros"
+references:
+  - type: data
+    title: "Rdatasets: AER::NMES1988, pscl::bioChemists, AER::DoctorVisits"
+    authors:
+      - family-names: Arel-Bundock
+        given-names: Vincent
+    repository-code: "https://github.com/vincentarelbundock/Rdatasets"

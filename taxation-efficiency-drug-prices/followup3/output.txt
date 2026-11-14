@@ -1,0 +1,262 @@
+
+==============================================================================================
+1. Data: the medicines of follow-up 2
+==============================================================================================
+Medicine-years with US and total revenue: 1,694; distinct medicines 277 (follow-up 2: 1,694 and 277)
+Main sample, companies with dated medicines in every year 2016-2025: 9: AbbVie, Amgen, AstraZeneca, Biogen, Eli Lilly, Gilead, Johnson & Johnson, Merck & Co, Novartis
+Medicine pairs of consecutive years in the main sample: 1,225 of 229 medicines
+  0-4  years since first US approval:  218 pairs of  94 medicines, 15% of the revenue in the pairs
+  5-9  years since first US approval:  316 pairs of 100 medicines, 34% of the revenue in the pairs
+  10+  years since first US approval:  691 pairs of 143 medicines, 51% of the revenue in the pairs
+
+==============================================================================================
+2. The fall to explain: the within term of established medicines
+==============================================================================================
+Within term (each medicine's change in its own US share, weighted), main sample 2016-2025, points:
+  new (0-4 years)          -5.65   (follow-up 2: -5.65)
+  established (5 and more) -5.03   (follow-up 2: -5.03)
+    of which 5-9  years      -1.28
+    of which 10+  years      -3.75
+
+==============================================================================================
+3. Where each change comes from: the United States or abroad
+==============================================================================================
+Each change in a medicine's US share split exactly into the part due to its US revenue and the part due to its revenue abroad (points of the within term; 90% intervals, medicines resampled):
+  0-4        within -5.65 = from US revenue +4.75 (+2.12 to +7.53) + from revenue abroad -10.40 (-15.22 to -5.99)
+  5 and more within -5.03 = from US revenue +2.33 (-2.61 to +8.12) + from revenue abroad -7.36 (-13.10 to -2.15)
+  5-9        within -1.28 = from US revenue +8.23 (+4.79 to +12.22) + from revenue abroad -9.52 (-13.07 to -6.29)
+  10+        within -3.75 = from US revenue -5.90 (-8.35 to -3.50) + from revenue abroad +2.15 (-0.81 to +5.43)
+Where the line for an old medicine is drawn (pairs in which the medicine is at least that old):
+   5 years or more: 1007 pairs, within -5.03 = US +2.33 + abroad -7.36
+   6 years or more:  940 pairs, within -4.43 = US +0.45 + abroad -4.88
+   7 years or more:  875 pairs, within -4.05 = US -1.69 + abroad -2.36
+   8 years or more:  812 pairs, within -3.75 = US -3.34 + abroad -0.41
+   9 years or more:  749 pairs, within -3.80 = US -4.84 + abroad +1.04
+  10 years or more:  691 pairs, within -3.75 = US -5.90 + abroad +2.15
+  12 years or more:  580 pairs, within -2.55 = US -6.23 + abroad +3.69
+  15 years or more:  441 pairs, within -0.98 = US -4.92 + abroad +3.95
+  20 years or more:  229 pairs, within -0.92 = US -2.03 + abroad +1.11
+  5-9  summed over all pairs: US revenue +15.9% from one year to the next, revenue abroad +17.7%
+  10+  summed over all pairs: US revenue -5.0% from one year to the next, revenue abroad -2.9%
+All companies with dated medicines, every pair of consecutive years in which a company is reported:
+  5-9   371 pairs: within -1.76 = US +8.58 + abroad -10.34
+  10+   766 pairs: within -4.37 = US -6.78 + abroad +2.41
+Ten years and more, by year (within; from US, from abroad):
+    2017  -1.27  (-1.55, +0.28)
+    2018  -0.89  (-1.03, +0.15)
+    2019  -0.02  (-0.95, +0.93)
+    2020  -0.52  (-0.78, +0.26)
+    2021  -0.52  (-0.02, -0.50)
+    2022  +0.63  (-0.10, +0.73)
+    2023  -0.71  (-0.93, +0.22)
+    2024  -0.28  (-0.10, -0.18)
+    2025  -0.17  (-0.44, +0.26)
+
+==============================================================================================
+4. P1: which medicines carry the fall
+==============================================================================================
+5-9 years since approval ('steady' = revenue abroad changed by less than 10%):
+  US fell, abroad steady     40 pairs ( 7.8% of revenue): within -0.67 (from US -0.68, abroad +0.00)
+  US fell, abroad grew       21 pairs ( 3.8% of revenue): within -0.92 (from US -0.49, abroad -0.43)
+  US fell, abroad fell       26 pairs ( 3.1% of revenue): within -0.09 (from US -0.71, abroad +0.62)
+  US grew, abroad grew      198 pairs (80.7% of revenue): within -0.15 (from US +9.86, abroad -10.01)
+  US grew, abroad fell       31 pairs ( 4.7% of revenue): within +0.56 (from US +0.25, abroad +0.31)
+  pairs in which US revenue fell: 28% of pairs, 15% of revenue, 132% of the fall (90% interval 65% to 404%); with revenue abroad steady 52%
+  when US revenue fell, revenue-weighted mean change of US revenue -15.5%, of revenue abroad -1.1% (capped at +100%)
+10+ years since approval ('steady' = revenue abroad changed by less than 10%):
+  US fell, abroad steady    216 pairs (24.5% of revenue): within -4.76 (from US -5.11, abroad +0.34)
+  US fell, abroad grew       32 pairs ( 4.4% of revenue): within -1.23 (from US -0.44, abroad -0.79)
+  US fell, abroad fell      175 pairs (16.8% of revenue): within -1.56 (from US -5.75, abroad +4.19)
+  US grew, abroad grew      163 pairs (36.7% of revenue): within -0.20 (from US +4.16, abroad -4.36)
+  US grew, abroad fell      105 pairs (17.6% of revenue): within +4.01 (from US +1.23, abroad +2.78)
+  pairs in which US revenue fell: 61% of pairs, 46% of revenue, 202% of the fall (90% interval 117% to 717%); with revenue abroad steady 127%
+  when US revenue fell, revenue-weighted mean change of US revenue -22.8%, of revenue abroad -9.4% (capped at +100%)
+
+==============================================================================================
+5. P2: medicines whose US revenue kept growing
+==============================================================================================
+5-9: pairs with US revenue up 229 of 316; revenue-weighted mean change in own US share +0.18 points a year (90% interval -0.19 to +0.52); share fell in 45%; within +0.40 = US +10.11 + abroad -9.71
+  pairs with US revenue down 87: mean change in own US share -3.43 points a year
+10+: pairs with US revenue up 268 of 691; revenue-weighted mean change in own US share +1.57 points a year (90% interval +0.64 to +2.41); share fell in 26%; within +3.81 = US +5.39 + abroad -1.58
+  pairs with US revenue down 423: mean change in own US share -3.12 points a year
+  5-9 over each medicine's span in the band (three pairs or more), US revenue higher at the end: 44 medicines, median change in US share -0.9 points, lower for 57%
+  5-9 over each medicine's span in the band (three pairs or more), US revenue lower at the end: 15 medicines, median change in US share -3.9 points, lower for 67%
+  10+ over each medicine's span in the band (three pairs or more), US revenue higher at the end: 26 medicines, median change in US share +0.0 points, lower for 35%
+  10+ over each medicine's span in the band (three pairs or more), US revenue lower at the end: 79 medicines, median change in US share -7.9 points, lower for 73%
+
+==============================================================================================
+6. The same medicines, 2016 against 2025
+==============================================================================================
+Medicines ten years or more on the market in 2016, reported in 2016 and 2025: 20 (of 71 reported in 2016); US share 61.0% to 52.5%; own-share effect -8.31 = US -9.74 + abroad +1.44
+  US revenue 35.5 -> 17.2 bn (-51%); abroad 22.7 -> 15.5 bn (-32%); no longer reported in 2025: 51, 55.5 bn in 2016, US share 52.8%
+  each medicine (US revenue, revenue abroad, bn dollars; US share):
+    humira           AbbVie             appr 2002  US  10.4 ->   3.1; abroad   5.6 ->   1.5; share 64.9% -> 67.4%
+    remicade         Johnson & Johnson  appr 1998  US   4.8 ->   1.2; abroad   2.1 ->   0.6; share 69.5% -> 66.2%
+    enbrel           Amgen              appr 1998  US   5.7 ->   2.2; abroad   0.2 ->   0.0; share 95.9% -> 98.8%
+    januvia          Merck & Co         appr 2006  US   2.3 ->   1.0; abroad   1.6 ->   0.6; share 58.5% -> 62.3%
+    crestor          AstraZeneca        appr 2003  US   1.2 ->   0.0; abroad   2.2 ->   1.2; share 36.0% ->  3.7%
+    symbicort        AstraZeneca        appr 2006  US   1.2 ->   1.2; abroad   1.7 ->   1.7; share 41.6% -> 41.4%
+    gardasil         Merck & Co         appr 2006  US   1.8 ->   2.6; abroad   0.4 ->   2.6; share 81.9% -> 50.5%
+    aranesp          Amgen              appr 2001  US   1.1 ->   0.4; abroad   1.0 ->   1.0; share 51.7% -> 29.9%
+    nexium           AstraZeneca        appr 2001  US   0.6 ->   0.1; abroad   1.5 ->   0.7; share 27.3% ->  8.2%
+    tysabri          Biogen             appr 2004  US   1.2 ->   1.0; abroad   0.8 ->   0.7; share 60.2% -> 57.9%
+    prezista         Johnson & Johnson  appr 2006  US   1.1 ->   1.2; abroad   0.7 ->   0.4; share 61.8% -> 77.6%
+    sandostatin      Novartis           appr 1988  US   0.9 ->   0.7; abroad   0.8 ->   0.5; share 51.8% -> 60.1%
+    proquad          Merck & Co         appr 2005  US   1.4 ->   1.9; abroad   0.3 ->   0.6; share 83.0% -> 76.9%
+    diovan           Novartis           appr 1996  US   0.1 ->   0.0; abroad   0.9 ->   0.6; share 13.7% ->  5.8%
+    pulmicort        AstraZeneca        appr 1997  US   0.2 ->   0.0; abroad   0.9 ->   0.5; share 16.4% ->  1.0%
+    concerta         Johnson & Johnson  appr 2000  US   0.5 ->   0.1; abroad   0.4 ->   0.5; share 54.2% -> 14.0%
+    zoladex          AstraZeneca        appr 1989  US   0.0 ->   0.0; abroad   0.8 ->   1.1; share  4.3% ->  1.7%
+    rotateq          Merck & Co         appr 2006  US   0.5 ->   0.4; abroad   0.2 ->   0.2; share 73.9% -> 63.3%
+    pneumovax23      Merck & Co         appr 1977  US   0.4 ->   0.0; abroad   0.2 ->   0.1; share 69.7% -> 12.7%
+    ambisome         Gilead             appr 1997  US   0.0 ->   0.0; abroad   0.3 ->   0.5; share  5.6% ->  3.9%
+Medicines approved by 2016 (follow-up 2), reported in 2016 and 2025: 55 (of 131 reported in 2016); US share 61.6% to 54.5%; own-share effect -10.00 = US +19.87 + abroad -29.87
+  US revenue 60.2 -> 90.7 bn (+51%); abroad 37.5 -> 75.7 bn (+102%); no longer reported in 2025: 76, 85.3 bn in 2016, US share 55.7%
+Largest contributions, ten years and more, chained pairs (points: total; from US, from abroad):
+  zetia              Merck & Co         approved 2002  -0.51 (-0.53, +0.01)
+  gardasil           Merck & Co         approved 2006  -0.44 (+0.20, -0.64)
+  crestor            AstraZeneca        approved 2003  -0.39 (-0.48, +0.09)
+  cialis             Eli Lilly          approved 2003  -0.28 (-0.40, +0.11)
+  janumet            Merck & Co         approved 2007  -0.23 (-0.23, +0.00)
+  entresto           Novartis           approved 2015  -0.21 (-0.12, -0.09)
+  sensipar           Amgen              approved 2004  -0.18 (-0.19, +0.02)
+  faslodex           AstraZeneca        approved 2002  -0.17 (-0.14, -0.03)
+  zostavax           Merck & Co         approved 2006  -0.17 (-0.15, -0.02)
+  vytorin            Merck & Co         approved 2004  -0.17 (-0.19, +0.02)
+  prezista           Johnson & Johnson  approved 2006  +0.14 (+0.04, +0.10)
+  invegasustenna     Johnson & Johnson  approved 2009  +0.16 (+0.16, -0.00)
+  truvada            Gilead             approved 2004  +0.39 (-0.09, +0.47)
+  humira             AbbVie             approved 2002  +1.42 (+0.06, +1.36)
+  the ten largest negative US parts carry 42% of all negative US parts (-8.42); positive US parts sum to +2.52
+Largest abroad parts, five to nine years (points: total; from US, from abroad):
+  keytruda           Merck & Co         approved 2014  +0.20 (+1.87, -1.67)
+  darzalex           Johnson & Johnson  approved 2015  +0.13 (+0.87, -0.74)
+  entresto           Novartis           approved 2015  +0.00 (+0.56, -0.56)
+  farxiga            AstraZeneca        approved 2014  -0.15 (+0.24, -0.39)
+  verzenio           Eli Lilly          approved 2017  -0.05 (+0.32, -0.37)
+  skyrizi            AbbVie             approved 2019  -0.01 (+0.35, -0.35)
+  trulicity          Eli Lilly          approved 2014  -0.04 (+0.30, -0.34)
+  tagrisso           AstraZeneca        approved 2015  +0.05 (+0.35, -0.29)
+
+==============================================================================================
+7. Which market fell first
+==============================================================================================
+Medicines with six years or more and sales in both markets, both at least 30% below their peaks by the last year: 47
+  US first                          14 medicines, peak revenue  25.5 bn
+  same year                          8 medicines, peak revenue  30.2 bn
+  abroad first                      10 medicines, peak revenue  38.1 bn
+  both falling from the first year  15 medicines, peak revenue  35.2 bn
+    humira           AbbVie             US peak 2022 (then -84%), abroad peak 2018 (then -76%): abroad first
+    stelara          Johnson & Johnson  US peak 2023 (then -45%), abroad peak 2023 (then -43%): same year
+    veklury          Gilead             US peak 2021 (then -87%), abroad peak 2022 (then -81%): US first
+    neulasta         Amgen              US peak 2017 (then -76%), abroad peak 2016 (then -77%): abroad first
+    genvoya          Gilead             US peak 2018 (then -65%), abroad peak 2018 (then -78%): same year
+    tecfidera        Biogen             US peak 2019 (then -95%), abroad peak 2019 (then -55%): same year
+    januvia          Merck & Co         US peak 2016 (then -56%), abroad peak 2021 (then -68%): US first
+    truvada          Gilead             US peak 2019 (then -97%), abroad peak 2016 (then -97%): abroad first
+    zytiga           Johnson & Johnson  US peak 2018 (then -99%), abroad peak 2021 (then -78%): US first
+    mavyret          AbbVie             US peak 2018 (then -61%), abroad peak 2018 (then -63%): same year
+    gilenya          Novartis           US peak 2018 (then -80%), abroad peak 2018 (then -64%): same year
+    alimta           Eli Lilly          US peak 2020 (then -94%), abroad peak 2016 (then -88%): abroad first
+    janumet          Merck & Co         US peak 2016 (then -73%), abroad peak 2021 (then -58%): US first
+    spinraza         Biogen             US peak 2019 (then -33%), abroad peak 2021 (then -30%): US first
+    tasigna          Novartis           US peak 2023 (then -45%), abroad peak 2021 (then -48%): abroad first
+    forteo           Eli Lilly          US peak 2017 (then -65%), abroad peak 2018 (then -76%): US first
+  US revenue 30% or more below its peak, abroad not: 18 (peak revenue 32.2 bn); abroad, US not: 11 (25.3 bn)
+    US only: trulicity (Eli Lilly; -49% US, -22% abroad), imbruvica (AbbVie; -53% US, -28% abroad), imbruvica (Johnson & Johnson; -51% US, -26% abroad), promacta (Novartis; -47% US, -6% abroad), aranesp (Amgen; -63% US, -4% abroad), edurant (Johnson & Johnson; -55% US, +0% abroad), invokana (Johnson & Johnson; -85% US, +0% abroad), basaglar (Eli Lilly; -57% US, -1% abroad)
+    abroad only: gardasil (Merck & Co; +0% US, -62% abroad), humalog (Eli Lilly; -16% US, -32% abroad), descovy (Gilead; +0% US, -53% abroad), prezista (Johnson & Johnson; -23% US, -55% abroad), bridion (Merck & Co; +0% US, -73% abroad), odefsey (Gilead; -29% US, -43% abroad), sandostatin (Novartis; -17% US, -39% abroad), humulinn (Eli Lilly; -29% US, -46% abroad)
+
+==============================================================================================
+8. What the approval dates of generics and biosimilars say
+==============================================================================================
+Medicines whose US revenue peaked after 2016 and then fell by 30% or more: 38; with a US generic approval or biosimilar licence on file 29, without 9
+  years from the first US generic or biosimilar approval to the peak of US revenue: median 0; approval two or more years before the peak for 11, within a year of it for 13, after the peak for 5
+    humira           AbbVie             approved 2002; US peak 2022 (-84% by 2025); first US biosimilar 2016; EU biosimilar 2017; abroad peak 2018
+    stelara          Johnson & Johnson  approved 2009; US peak 2023 (-45% by 2025); first US biosimilar 2023; EU biosimilar 2024; abroad peak 2023
+    trulicity        Eli Lilly          approved 2014; US peak 2022 (-49% by 2025); first US none on file; abroad peak 2022
+    veklury          Gilead             approved 2020; US peak 2021 (-87% by 2025); first US none on file; abroad peak 2022
+    imbruvica        AbbVie             approved 2013; US peak 2021 (-53% by 2025); first US generic 2021; abroad peak 2022
+    neulasta         Amgen              approved 2002; US peak 2017 (-76% by 2022); first US biosimilar 2018; EU biosimilar 2018; abroad peak 2016
+    genvoya          Gilead             approved 2015; US peak 2018 (-65% by 2025); first US none on file; abroad peak 2018
+    tecfidera        Biogen             approved 2013; US peak 2019 (-95% by 2025); first US generic 2020; abroad peak 2019
+    imbruvica        Johnson & Johnson  approved 2013; US peak 2020 (-51% by 2025); first US generic 2021; abroad peak 2021
+    truvada          Gilead             approved 2004; US peak 2019 (-97% by 2023); first US generic 2017; abroad peak 2016
+    zytiga           Johnson & Johnson  approved 2011; US peak 2018 (-99% by 2025); first US generic 2018; abroad peak 2021
+    mavyret          AbbVie             approved 2017; US peak 2018 (-61% by 2025); first US none on file; abroad peak 2018
+    gilenya          Novartis           approved 2010; US peak 2018 (-80% by 2023); first US generic 2019; abroad peak 2018
+    alimta           Eli Lilly          approved 2004; US peak 2020 (-94% by 2023); first US generic 2022; abroad peak 2016
+    promacta         Novartis           approved 2008; US peak 2023 (-47% by 2025); first US generic 2024; abroad peak 2021
+    spinraza         Biogen             approved 2016; US peak 2019 (-33% by 2025); first US none on file; abroad peak 2021
+    aranesp          Amgen              approved 2001; US peak 2017 (-63% by 2025); first US none on file; abroad peak 2016
+    tasigna          Novartis           approved 2007; US peak 2023 (-45% by 2025); first US generic 2024; abroad peak 2021
+Biologics with a biosimilar on both sides (first approval; peak of revenue in each market):
+    humira           AbbVie             US biosimilar 2016, EU 2017; US revenue peak 2022 (-84%), abroad 2018 (-76%)
+    stelara          Johnson & Johnson  US biosimilar 2023, EU 2024; US revenue peak 2023 (-45%), abroad 2023 (-43%)
+    remicade         Johnson & Johnson  US biosimilar 2016, EU 2013; US revenue peak 2016 (-76%), abroad 2016 (-72%)
+    enbrel           Amgen              US biosimilar 2016, EU 2016; US revenue peak 2016 (-62%), abroad 2016 (-89%)
+    neulasta         Amgen              US biosimilar 2018, EU 2018; US revenue peak 2017 (-76%), abroad 2016 (-77%)
+    prolia           Amgen              US biosimilar 2024, EU 2024; US revenue peak 2025 (+0%), abroad 2024 (-4%)
+    xgeva            Amgen              US biosimilar 2024, EU 2024; US revenue peak 2023 (-11%), abroad 2025 (+0%)
+    tysabri          Biogen             US biosimilar 2023, EU 2023; US revenue peak 2016 (-18%), abroad 2021 (-24%)
+
+==============================================================================================
+9. Volume or price: Medicare, 2020-2024
+==============================================================================================
+Medicare rows assigned to the medicines: Part D 1482, Part B 349; medicines 247
+Medicines ten years or more since approval in 2024, US revenue of at least 0.5 bn dollars in 2020 and Medicare spending of at least 0.1 bn: 35
+  log changes 2020-2024 (x100): company US net revenue = Medicare volume + Medicare gross price per unit + the rest (rebates, discounts and the other payers)
+  US revenue fell  17 medicines: net -64.6 = volume -10.6 + gross price +13.2 + rest -67.2  (weights: US revenue in 2020)
+  US revenue grew  18 medicines: net +42.9 = volume +30.8 + gross price +6.6 + rest +5.5  (weights: US revenue in 2020)
+    humira           AbbVie             D   US net  -81.4; Medicare volume  +10.2, gross price  +21.9; rest -113.5  (US 16.1 ->  7.1 bn; Medicare  4.1 ->  5.7 bn)
+    keytruda         Merck & Co         B+D US net  +76.1; Medicare volume  +33.9, gross price  +20.5; rest  +21.7  (US  8.4 -> 17.9 bn; Medicare  3.6 ->  6.1 bn)
+    stelara          Johnson & Johnson  B+D US net  +24.9; Medicare volume  +60.1, gross price  +27.2; rest  -62.4  (US  5.2 ->  6.7 bn; Medicare  1.4 ->  3.4 bn)
+    enbrel           Amgen              D   US net  -39.0; Medicare volume  +11.5, gross price  +28.9; rest  -79.3  (US  4.9 ->  3.3 bn; Medicare  2.2 ->  3.2 bn)
+    imbruvica        AbbVie             D   US net  -56.5; Medicare volume  -48.0, gross price  +21.2; rest  -29.6  (US  4.3 ->  2.4 bn; Medicare  3.0 ->  2.3 bn)
+    trulicity        Eli Lilly          D   US net   -3.8; Medicare volume  +35.2, gross price  +15.5; rest  -54.5  (US  3.8 ->  3.7 bn; Medicare  3.3 ->  5.5 bn)
+    remicade         Johnson & Johnson  B+D US net  -91.1; Medicare volume   -7.8, gross price  -37.4; rest  -45.9  (US  2.5 ->  1.0 bn; Medicare  0.8 ->  0.5 bn)
+    xarelto          Johnson & Johnson  D   US net   +1.2; Medicare volume  +16.0, gross price  +12.2; rest  -27.0  (US  2.3 ->  2.4 bn; Medicare  4.7 ->  6.2 bn)
+    invegasustenna   Johnson & Johnson  D   US net  +30.0; Medicare volume   -0.3, gross price  +23.2; rest   +7.1  (US  2.3 ->  3.1 bn; Medicare  1.5 ->  1.9 bn)
+    prolia           Amgen              B+D US net  +45.5; Medicare volume  +15.2, gross price  +32.0; rest   -1.8  (US  1.8 ->  2.9 bn; Medicare  2.0 ->  3.2 bn)
+    otezla           Amgen              D   US net   -5.2; Medicare volume  +47.4, gross price  +28.7; rest  -81.3  (US  1.8 ->  1.7 bn; Medicare  0.5 ->  1.0 bn)
+    victoza          Novo Nordisk       D   US net -194.8; Medicare volume -169.5, gross price  -21.4; rest   -3.9  (US  1.7 ->  0.2 bn; Medicare  1.9 ->  0.3 bn)
+    prezista         Johnson & Johnson  D   US net  -19.1; Medicare volume  -73.8, gross price  +16.4; rest  +38.3  (US  1.6 ->  1.3 bn; Medicare  0.5 ->  0.3 bn)
+    humalog          Eli Lilly          D   US net   +1.1; Medicare volume   +5.5, gross price -108.5; rest +104.1  (US  1.5 ->  1.5 bn; Medicare  2.1 ->  0.7 bn)
+    januvia          Merck & Co         D   US net -114.2; Medicare volume  -14.3, gross price  +12.8; rest -112.7  (US  1.5 ->  0.5 bn; Medicare  3.9 ->  3.8 bn)
+    simponi          Johnson & Johnson  B+D US net   -6.5; Medicare volume  +36.6, gross price  -28.2; rest  -15.0  (US  1.2 ->  1.1 bn; Medicare  0.5 ->  0.6 bn)
+    botox            AbbVie             B+D US net  +85.6; Medicare volume  +36.0, gross price   +7.5; rest  +42.0  (US  1.2 ->  2.7 bn; Medicare  0.4 ->  0.6 bn)
+    tysabri          Biogen             B+D US net  -17.6; Medicare volume  -49.9, gross price  +21.8; rest  +10.5  (US  1.1 ->  0.9 bn; Medicare  0.3 ->  0.2 bn)
+    symbicort        AstraZeneca        D   US net  +15.0; Medicare volume  -72.5, gross price  -47.2; rest +134.7  (US  1.0 ->  1.2 bn; Medicare  2.0 ->  0.6 bn)
+    novolog          Novo Nordisk       D   US net   +8.4; Medicare volume  -34.4, gross price -144.8; rest +187.6  (US  1.0 ->  1.1 bn; Medicare  2.4 ->  0.4 bn)
+    opsumit          Johnson & Johnson  D   US net  +41.1; Medicare volume  +29.4, gross price  +17.7; rest   -6.1  (US  1.0 ->  1.5 bn; Medicare  0.8 ->  1.2 bn)
+    lynparza         AstraZeneca        D   US net  +41.9; Medicare volume  +39.4, gross price  +11.0; rest   -8.5  (US  0.9 ->  1.3 bn; Medicare  0.4 ->  0.6 bn)
+    humulinn         Eli Lilly          D   US net  -29.8; Medicare volume   -8.7, gross price  -49.7; rest  +28.6  (US  0.9 ->  0.6 bn; Medicare  0.8 ->  0.5 bn)
+    tasigna          Novartis           D   US net   -1.3; Medicare volume   -3.0, gross price  +26.0; rest  -24.2  (US  0.9 ->  0.8 bn; Medicare  0.3 ->  0.4 bn)
+    sandostatin      Novartis           B+D US net   -3.9; Medicare volume   -9.8, gross price  +10.9; rest   -5.0  (US  0.8 ->  0.8 bn; Medicare  0.5 ->  0.5 bn)
+    promacta         Novartis           D   US net  +34.9; Medicare volume  +36.8, gross price  +30.8; rest  -32.8  (US  0.8 ->  1.2 bn; Medicare  0.3 ->  0.7 bn)
+    restasis         AbbVie             D   US net -147.9; Medicare volume  -14.5, gross price   +3.8; rest -137.2  (US  0.8 ->  0.2 bn; Medicare  1.5 ->  1.4 bn)
+    brilinta         AstraZeneca        D   US net   +2.6; Medicare volume   +5.1, gross price  +10.2; rest  -12.7  (US  0.7 ->  0.8 bn; Medicare  0.6 ->  0.7 bn)
+    pneumovax23      Merck & Co         B   US net -256.4; Medicare volume -292.0, gross price  +11.9; rest  +23.7  (US  0.7 ->  0.1 bn; Medicare  0.2 ->  0.0 bn)
+    kyprolis         Amgen              B+D US net  +28.9; Medicare volume   +1.4, gross price  +30.7; rest   -3.2  (US  0.7 ->  0.9 bn; Medicare  0.3 ->  0.4 bn)
+    linzess          AbbVie             D   US net  +34.5; Medicare volume  +39.5, gross price  +15.4; rest  -20.5  (US  0.6 ->  0.9 bn; Medicare  1.1 ->  2.0 bn)
+    aranesp          Amgen              B+D US net  -48.8; Medicare volume  -12.5, gross price   -8.6; rest  -27.8  (US  0.6 ->  0.4 bn; Medicare  0.3 ->  0.2 bn)
+    jardiance        Eli Lilly          D   US net  +94.5; Medicare volume +148.9, gross price   +8.2; rest  -62.6  (US  0.6 ->  1.6 bn; Medicare  2.4 -> 11.4 bn)
+    farxiga          AstraZeneca        D   US net +112.3; Medicare volume +190.7, gross price   +6.5; rest  -84.8  (US  0.6 ->  1.8 bn; Medicare  0.7 ->  5.3 bn)
+    tafinlar         Novartis           D   US net  +39.9; Medicare volume  +59.1, gross price   -1.4; rest  -17.8  (US  0.6 ->  0.8 bn; Medicare  0.2 ->  0.4 bn)
+  US revenue fell: medians net -39.0, volume -9.8, gross price +12.8, rest -27.8; weighted net -64.6 = volume -10.6 + gross price +13.2 + rest -67.2
+  US revenue fell, without humira: medians net -34.4, volume -11.1, gross price +12.4, rest -26.0; weighted net -55.4 = volume -22.2 + gross price +8.3 + rest -41.5
+  of the medicines whose US revenue fell, Medicare volume fell by more than 20 log points for 5, held within 20 points for 9, grew more for 3
+
+==============================================================================================
+10. Currencies and other checks
+==============================================================================================
+USD per EUR 1.107 (2016) to 1.130 (2025); JPY per USD 108.6 to 149.6
+  abroad revenue at 2016 exchange rates, a 0% share of it in yen and the rest in euros: 5-9 US +8.22, abroad -9.65; 10+ US -5.97, abroad +2.57
+  abroad revenue at 2016 exchange rates, a 10% share of it in yen and the rest in euros: 5-9 US +8.25, abroad -9.99; 10+ US -5.97, abroad +2.21
+  abroad revenue at 2016 exchange rates, a 20% share of it in yen and the rest in euros: 5-9 US +8.28, abroad -10.32; 10+ US -5.98, abroad +1.86
+Leaving out each of the largest contributors, ten years and more (within = US + abroad):
+  without humira     -5.17 = -5.96 + +0.80
+  without gardasil   -3.31 = -6.11 + +2.80
+  without zetia      -3.23 = -5.37 + +2.14
+  without crestor    -3.35 = -5.42 + +2.07
+  without truvada    -4.13 = -5.81 + +1.68
+  without humira and gardasil -4.73 = -6.17 + +1.44
