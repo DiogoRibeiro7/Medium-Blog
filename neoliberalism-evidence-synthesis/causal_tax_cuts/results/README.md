@@ -112,3 +112,10 @@ official WDI/WID observations to report 29 reform-event attrition, actual
 donor support and three-control balance, with no adjusted ATT or inference.
 Event-level rows and the complete joined panel are available in the seven-day
 `pre-reform-macro-balance` and `world-bank-macro-coverage` CI artifacts.
+
+The [macro matching sensitivity report](MACRO_SENSITIVITY_RESULTS_2026-11-14.md)
+and [frozen JSON](macro_sensitivity_2026-11-14.json) compare nine pre-reform
+lag/donor-cap rules. Their **19-event common cohort** and fixed three-year
+balance window permit like-for-like descriptive comparisons; they are not
+adjusted causal estimates. Live reproduction includes event-level donor sets
+in the seven-day `pre-reform-macro-sensitivity` workflow artifact.
