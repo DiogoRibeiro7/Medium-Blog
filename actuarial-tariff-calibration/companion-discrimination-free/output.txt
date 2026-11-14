@@ -1,0 +1,135 @@
+Fifth companion: leaving a protected attribute out of a tariff, and the discrimination-free price.
+
+==============================================================================
+Belgium (beMTPL97): who the women in the portfolio are
+==============================================================================
+  Policies 163,212; women 43,168 (0.264 of policies, 0.261 of exposure)
+  Claim frequency per policy-year: women 0.1482, men 0.1360, ratio 1.090
+  share of women (share of exposure) by driver age: 18-25 0.366 (0.049), 26-30 0.346 (0.095), 31-40 0.309 (0.224), 41-50 0.278 (0.236), 51-60 0.216 (0.175), 61-70 0.178 (0.140), 71+ 0.159 (0.080)
+  share of women (share of exposure) by engine power (kW): below 50 0.346 (0.417), 50-65 0.224 (0.317), 66-91 0.178 (0.214), 92+ 0.155 (0.051)
+  share of women (share of exposure) by bonus-malus level: 0 0.202 (0.383), 1-3 0.264 (0.253), 4-6 0.274 (0.157), 7-9 0.350 (0.096), 10-13 0.374 (0.097), 14+ 0.292 (0.014)
+  share of women (share of exposure) by coverage: TPL 0.266 (0.577), TPL+ 0.254 (0.287), TPL++ 0.258 (0.136)
+  share of women (share of exposure) by use: private 0.264 (0.951), work 0.205 (0.049)
+  share of women (share of exposure) by fuel: petrol 0.292 (0.693), diesel 0.193 (0.307)
+  share of women (share of exposure) by fleet: no 0.260 (0.966), yes 0.292 (0.034)
+  share of women (share of exposure) by region (first digit of postcode): 1 0.301 (0.138), 2 0.263 (0.122), 3 0.256 (0.090), 4 0.244 (0.131), 5 0.252 (0.054), 6 0.249 (0.104), 7 0.249 (0.154), 8 0.274 (0.100), 9 0.255 (0.107)
+
+==============================================================================
+Belgium: how well the rating factors predict sex (test samples of 20 random 80/20 splits; exposure-weighted; mean [min, max])
+==============================================================================
+  logistic regression on the GLM design: AUC 0.682 [0.677, 0.687]; Tjur's coefficient 0.085 [0.083, 0.087]
+  gradient boosting on the raw features: AUC 0.692 [0.687, 0.698]; Tjur's coefficient 0.097 [0.094, 0.101]
+  share of women in the training samples (pi) 0.261 [0.260, 0.262]
+
+==============================================================================
+Belgium: three prices, women's average premium per policy-year over men's, on the test samples (20 splits)
+==============================================================================
+  GLM: direct effect of sex (sex coefficient) 0.024 [0.005, 0.044], positive in 20 of 20 splits
+      best estimate: ratio 1.088 [1.059, 1.110]
+      unawareness: ratio 1.065 [1.054, 1.073]
+      implied unawareness: ratio 1.065 [1.055, 1.073]
+      discrimination-free: ratio 1.062 [1.050, 1.071]
+      share of the direct effect restored, pooled over splits (ratio of the mean log gaps): unawareness 0.080, implied unawareness 0.085; per split, unawareness 0.080 [0.079, 0.083], implied 0.085 [0.082, 0.087]; Tjur prediction 0.085
+      per policy, sd of the log of the unawareness price over the discrimination-free price 0.003 [0.001, 0.006]: of which proxy (implied unawareness over discrimination-free) 0.003 [0.001, 0.006], refit (unawareness over implied unawareness) 0.001 [0.000, 0.001]; correlation of the log ratio with the predicted probability of a woman 0.983 [0.983, 0.983]
+  GBM: direct effect of sex (mean log ratio of prices for a woman and a man with the same factors) 0.039 [0.022, 0.061], positive in 20 of 20 splits
+      best estimate: ratio 1.072 [1.051, 1.094]
+      unawareness: ratio 1.058 [1.050, 1.070]
+      implied unawareness: ratio 1.058 [1.049, 1.068]
+      discrimination-free: ratio 1.058 [1.048, 1.068]
+      share of the direct effect restored, pooled over splits (ratio of the mean log gaps): unawareness 0.017, implied unawareness -0.022; per split, unawareness -0.021 [-0.979, 0.267], implied -0.176 [-3.022, 0.320]; Tjur prediction 0.097
+      per policy, sd of the log of the unawareness price over the discrimination-free price 0.060 [0.052, 0.074]: of which proxy (implied unawareness over discrimination-free) 0.014 [0.012, 0.016], refit (unawareness over implied unawareness) 0.059 [0.051, 0.074]; correlation of the log ratio with the predicted probability of a woman 0.019 [-0.029, 0.056]
+
+==============================================================================
+Belgium: what each price costs, on the test samples (20 splits): deviance per 1,000 policy-years, Gini, and actual over expected claims by sex
+==============================================================================
+  GLM, best estimate: deviance 598.04; Gini 0.207 [0.196, 0.218]; A/E women 0.998 [0.913, 1.072], men 0.999 [0.965, 1.047]
+  GLM, unawareness: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.013 [0.940, 1.075], men 0.992 [0.962, 1.041]
+  GLM, implied unawareness: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.013 [0.940, 1.075], men 0.992 [0.962, 1.041]
+  GLM, discrimination-free: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.015 [0.943, 1.075], men 0.992 [0.962, 1.041]
+  GLM: deviance, unawareness minus discrimination-free -0.002 [-0.025, 0.028] (lower in 13 of 20); implied unawareness minus discrimination-free 0.001 [-0.019, 0.036] (lower in 10 of 20); best estimate minus discrimination-free 0.007 [-0.045, 0.220] (lower in 12 of 20); Gini, unawareness minus discrimination-free 0.000 [-0.000, 0.000]
+  GBM, best estimate: deviance 596.54; Gini 0.214 [0.203, 0.226]; A/E women 1.008 [0.915, 1.080], men 0.994 [0.960, 1.037]
+  GBM, unawareness: deviance 596.78; Gini 0.213 [0.204, 0.223]; A/E women 1.017 [0.942, 1.081], men 0.990 [0.960, 1.035]
+  GBM, implied unawareness: deviance 596.62; Gini 0.214 [0.203, 0.224]; A/E women 1.018 [0.943, 1.082], men 0.990 [0.960, 1.035]
+  GBM, discrimination-free: deviance 596.65; Gini 0.214 [0.203, 0.224]; A/E women 1.017 [0.944, 1.081], men 0.990 [0.960, 1.035]
+  GBM: deviance, unawareness minus discrimination-free 0.127 [-0.268, 0.597] (lower in 9 of 20); implied unawareness minus discrimination-free -0.027 [-0.148, 0.180] (lower in 12 of 20); best estimate minus discrimination-free -0.103 [-0.597, 0.390] (lower in 14 of 20); Gini, unawareness minus discrimination-free -0.001 [-0.004, 0.002]
+  pooled over splits, by decile of the predicted probability that the policyholder is a woman (lowest first): mean probability; A/E of each price
+    GLM classifier, probability: 0.094 0.135 0.165 0.193 0.220 0.251 0.287 0.333 0.406 0.529
+    GLM, direct effect of sex (mean log ratio of a woman's to a man's price): +0.024 +0.024 +0.024 +0.024 +0.024 +0.024 +0.024 +0.024 +0.024 +0.024
+    GLM, best estimate: 0.945 0.982 0.998 0.989 0.997 1.013 1.049 1.028 1.023 0.943
+    GLM, unawareness: 0.946 0.982 0.998 0.989 0.996 1.012 1.049 1.028 1.023 0.944
+    GLM, implied unawareness: 0.945 0.982 0.998 0.989 0.997 1.012 1.049 1.028 1.023 0.944
+    GLM, discrimination-free: 0.941 0.979 0.995 0.987 0.995 1.012 1.049 1.030 1.026 0.950
+    GBM classifier, probability: 0.101 0.135 0.159 0.182 0.207 0.236 0.275 0.333 0.422 0.563
+    GBM, direct effect of sex (mean log ratio of a woman's to a man's price): +0.072 +0.071 +0.064 +0.059 +0.054 +0.043 +0.031 +0.015 +0.003 -0.022
+    GBM, best estimate: 0.980 1.011 1.028 0.970 0.985 1.014 1.015 0.996 0.998 0.980
+    GBM, unawareness: 0.978 1.009 1.028 0.970 0.985 1.014 1.016 0.998 0.999 0.978
+    GBM, implied unawareness: 0.980 1.010 1.028 0.970 0.984 1.013 1.015 0.996 0.998 0.980
+    GBM, discrimination-free: 0.973 1.007 1.027 0.971 0.986 1.017 1.019 1.000 1.000 0.973
+
+==============================================================================
+A controlled experiment with known costs, on freMTPL2: a synthetic protected attribute D (share 0.3 of exposure). True frequency = the GLM rate fitted on the whole training pool times exp(gamma D), rescaled; P(D = 1 | x) = logistic(a + kappa s(x)). Models fitted on 200,000 training policies with claims simulated from the truth and every price rescaled to their true expected claims; outcomes on the 135,599 test policies against the true expected claims; implied unawareness uses the true P(D = 1 | x)
+==============================================================================
+  s(x), additive: the standardized sum of standardized (minus driver age), vehicle power (capped at 12) and log density; interaction: the standardized product of standardized (minus driver age) and vehicle power
+  additive, kappa 0, gamma 0.2: AUC of the true P(D = 1 | x) 0.500, Tjur's coefficient 0.000; true ratio of expected claims per policy-year, D = 1 over D = 0 1.219
+      GLM: estimated direct effect 0.212; D = 1 over D = 0 premium: best estimate 1.235, unawareness 0.999, implied unawareness 0.999, discrimination-free 0.999; share restored: unawareness 0.000, implied unawareness 0.000
+          true over charged claims, D = 1 / D = 0: best estimate 0.991 / 1.004; unawareness 1.144 / 0.937; implied unawareness 1.144 / 0.937; discrimination-free 1.144 / 0.937
+          deviance against the truth per 1,000 policy-years: best estimate 0.40; unawareness 1.05; implied unawareness 1.04; discrimination-free 1.04
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.999 0.997 0.999 0.998 0.995 1.003 0.997 1.001 0.994 1.005; discrimination-free 0.999 0.997 0.999 0.998 0.995 1.003 0.997 1.001 0.994 1.004
+      GBM: estimated direct effect 0.132; D = 1 over D = 0 premium: best estimate 1.169, unawareness 0.998, implied unawareness 0.999, discrimination-free 0.999; share restored: unawareness -0.008, implied unawareness 0.000
+          true over charged claims, D = 1 / D = 0: best estimate 1.030 / 0.987; unawareness 1.146 / 0.938; implied unawareness 1.145 / 0.938; discrimination-free 1.145 / 0.938
+          deviance against the truth per 1,000 policy-years: best estimate 3.35; unawareness 3.89; implied unawareness 3.57; discrimination-free 3.57
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 1.003 1.003 0.997 0.998 0.999 1.002 1.002 0.997 0.998 1.000; discrimination-free 1.004 1.003 0.998 0.998 1.001 0.999 1.006 0.993 1.000 0.995
+  additive, kappa 1, gamma 0.2: AUC of the true P(D = 1 | x) 0.743, Tjur's coefficient 0.160; true ratio of expected claims per policy-year, D = 1 over D = 0 1.467
+      GLM: estimated direct effect 0.160; D = 1 over D = 0 premium: best estimate 1.413, unawareness 1.235, implied unawareness 1.236, discrimination-free 1.204; share restored: unawareness 0.159, implied unawareness 0.167
+          true over charged claims, D = 1 / D = 0: best estimate 1.023 / 0.985; unawareness 1.115 / 0.938; implied unawareness 1.113 / 0.938; discrimination-free 1.133 / 0.930
+          deviance against the truth per 1,000 policy-years: best estimate 0.69; unawareness 1.25; implied unawareness 1.24; discrimination-free 1.34
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.991 0.997 0.994 0.992 0.996 0.993 0.993 0.999 1.003 1.016; discrimination-free 0.938 0.960 0.966 0.972 0.983 0.988 0.997 1.012 1.029 1.067
+      GBM: estimated direct effect 0.125; D = 1 over D = 0 premium: best estimate 1.339, unawareness 1.207, implied unawareness 1.210, discrimination-free 1.184; share restored: unawareness 0.161, implied unawareness 0.180
+          true over charged claims, D = 1 / D = 0: best estimate 1.059 / 0.966; unawareness 1.131 / 0.931; implied unawareness 1.130 / 0.932; discrimination-free 1.147 / 0.925
+          deviance against the truth per 1,000 policy-years: best estimate 3.51; unawareness 3.88; implied unawareness 3.75; discrimination-free 3.89
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.933 0.957 0.971 0.973 0.982 1.000 1.009 1.021 1.032 1.042; discrimination-free 0.893 0.927 0.949 0.959 0.975 1.000 1.014 1.036 1.051 1.081
+  additive, kappa 2, gamma 0.2: AUC of the true P(D = 1 | x) 0.866, Tjur's coefficient 0.380; true ratio of expected claims per policy-year, D = 1 over D = 0 1.601
+      GLM: estimated direct effect 0.184; D = 1 over D = 0 premium: best estimate 1.564, unawareness 1.388, implied unawareness 1.398, discrimination-free 1.302; share restored: unawareness 0.349, implied unawareness 0.388
+          true over charged claims, D = 1 / D = 0: best estimate 1.013 / 0.990; unawareness 1.090 / 0.945; implied unawareness 1.085 / 0.947; discrimination-free 1.135 / 0.923
+          deviance against the truth per 1,000 policy-years: best estimate 0.58; unawareness 1.03; implied unawareness 1.00; discrimination-free 1.32
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 1.027 0.990 0.980 0.973 0.975 0.977 0.987 1.000 1.019 1.032; discrimination-free 0.935 0.926 0.933 0.939 0.954 0.969 0.993 1.023 1.064 1.122
+      GBM: estimated direct effect 0.178; D = 1 over D = 0 premium: best estimate 1.538, unawareness 1.350, implied unawareness 1.368, discrimination-free 1.270; share restored: unawareness 0.321, implied unawareness 0.388
+          true over charged claims, D = 1 / D = 0: best estimate 1.025 / 0.984; unawareness 1.109 / 0.936; implied unawareness 1.100 / 0.940; discrimination-free 1.154 / 0.916
+          deviance against the truth per 1,000 policy-years: best estimate 3.49; unawareness 3.85; implied unawareness 3.70; discrimination-free 4.13
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.985 0.978 0.972 0.960 0.963 0.967 0.981 1.008 1.033 1.075; discrimination-free 0.923 0.921 0.925 0.927 0.938 0.956 0.982 1.029 1.078 1.171
+  additive, kappa 4, gamma 0.2: AUC of the true P(D = 1 | x) 0.952, Tjur's coefficient 0.627; true ratio of expected claims per policy-year, D = 1 over D = 0 1.714
+      GLM: estimated direct effect 0.208; D = 1 over D = 0 premium: best estimate 1.726, unawareness 1.563, implied unawareness 1.601, discrimination-free 1.402; share restored: unawareness 0.522, implied unawareness 0.638
+          true over charged claims, D = 1 / D = 0: best estimate 0.996 / 1.003; unawareness 1.056 / 0.963; implied unawareness 1.041 / 0.972; discrimination-free 1.129 / 0.923
+          deviance against the truth per 1,000 policy-years: best estimate 0.43; unawareness 0.77; implied unawareness 0.69; discrimination-free 1.15
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 1.026 1.005 0.989 0.976 0.970 0.971 0.990 1.022 1.040 0.997; discrimination-free 0.902 0.916 0.922 0.929 0.940 0.959 0.998 1.054 1.104 1.117
+      GBM: estimated direct effect 0.177; D = 1 over D = 0 premium: best estimate 1.647, unawareness 1.536, implied unawareness 1.549, discrimination-free 1.411; share restored: unawareness 0.550, implied unawareness 0.603
+          true over charged claims, D = 1 / D = 0: best estimate 1.024 / 0.984; unawareness 1.069 / 0.958; implied unawareness 1.063 / 0.960; discrimination-free 1.124 / 0.925
+          deviance against the truth per 1,000 policy-years: best estimate 3.10; unawareness 3.66; implied unawareness 3.22; discrimination-free 3.61
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.969 0.990 0.993 0.979 0.971 0.972 0.995 1.023 1.040 1.029; discrimination-free 0.897 0.921 0.934 0.931 0.940 0.958 1.000 1.055 1.102 1.109
+  interaction, kappa 2, gamma 0.2: AUC of the true P(D = 1 | x) 0.817, Tjur's coefficient 0.304; true ratio of expected claims per policy-year, D = 1 over D = 0 1.190
+      GLM: estimated direct effect 0.188; D = 1 over D = 0 premium: best estimate 1.187, unawareness 0.990, implied unawareness 1.045, discrimination-free 0.983; share restored: unawareness 0.037, implied unawareness 0.322
+          true over charged claims, D = 1 / D = 0: best estimate 1.001 / 0.999; unawareness 1.134 / 0.944; implied unawareness 1.092 / 0.959; discrimination-free 1.139 / 0.942
+          deviance against the truth per 1,000 policy-years: best estimate 0.43; unawareness 1.06; implied unawareness 0.88; discrimination-free 1.02
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.941 0.951 0.976 0.985 0.994 1.004 1.022 1.009 1.059 1.068; discrimination-free 0.949 0.958 0.970 0.978 0.982 0.992 1.014 1.011 1.062 1.093
+      GBM: estimated direct effect 0.149; D = 1 over D = 0 premium: best estimate 1.145, unawareness 1.007, implied unawareness 1.029, discrimination-free 0.977; share restored: unawareness 0.193, implied unawareness 0.329
+          true over charged claims, D = 1 / D = 0: best estimate 1.027 / 0.988; unawareness 1.121 / 0.949; implied unawareness 1.104 / 0.955; discrimination-free 1.145 / 0.940
+          deviance against the truth per 1,000 policy-years: best estimate 3.08; unawareness 3.41; implied unawareness 3.26; discrimination-free 3.35
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.975 0.939 0.982 0.980 1.018 1.035 1.016 0.993 1.029 1.039; discrimination-free 0.939 0.919 0.976 0.971 1.016 1.034 1.016 0.994 1.044 1.104
+  interaction, kappa 4, gamma 0.2: AUC of the true P(D = 1 | x) 0.908, Tjur's coefficient 0.501; true ratio of expected claims per policy-year, D = 1 over D = 0 1.177
+      GLM: estimated direct effect 0.163; D = 1 over D = 0 premium: best estimate 1.124, unawareness 0.966, implied unawareness 1.038, discrimination-free 0.955; share restored: unawareness 0.073, implied unawareness 0.512
+          true over charged claims, D = 1 / D = 0: best estimate 1.032 / 0.985; unawareness 1.145 / 0.940; implied unawareness 1.089 / 0.960; discrimination-free 1.155 / 0.937
+          deviance against the truth per 1,000 policy-years: best estimate 0.55; unawareness 1.13; implied unawareness 0.86; discrimination-free 1.22
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.925 0.936 0.945 0.960 0.980 1.000 1.010 1.033 1.092 1.134; discrimination-free 0.936 0.946 0.940 0.949 0.963 0.982 1.002 1.035 1.099 1.166
+      GBM: estimated direct effect 0.095; D = 1 over D = 0 premium: best estimate 1.073, unawareness 0.985, implied unawareness 1.011, discrimination-free 0.954; share restored: unawareness 0.269, implied unawareness 0.492
+          true over charged claims, D = 1 / D = 0: best estimate 1.065 / 0.971; unawareness 1.130 / 0.946; implied unawareness 1.110 / 0.953; discrimination-free 1.155 / 0.937
+          deviance against the truth per 1,000 policy-years: best estimate 3.71; unawareness 3.58; implied unawareness 3.77; discrimination-free 3.97
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.973 0.928 0.968 0.960 0.985 0.994 0.993 1.007 1.067 1.127; discrimination-free 0.946 0.918 0.958 0.947 0.972 0.979 1.000 1.030 1.093 1.174
+  additive, kappa 2, gamma 0.5: AUC of the true P(D = 1 | x) 0.868, Tjur's coefficient 0.381; true ratio of expected claims per policy-year, D = 1 over D = 0 2.180
+      GLM: estimated direct effect 0.548; D = 1 over D = 0 premium: best estimate 2.209, unawareness 1.556, implied unawareness 1.587, discrimination-free 1.277; share restored: unawareness 0.360, implied unawareness 0.397
+          true over charged claims, D = 1 / D = 0: best estimate 0.993 / 1.007; unawareness 1.208 / 0.862; implied unawareness 1.193 / 0.869; discrimination-free 1.365 / 0.800
+          deviance against the truth per 1,000 policy-years: best estimate 0.61; unawareness 3.50; implied unawareness 3.32; discrimination-free 5.78
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 1.037 0.983 0.963 0.951 0.946 0.963 0.987 1.012 1.048 1.044; discrimination-free 0.774 0.800 0.824 0.850 0.880 0.935 1.002 1.081 1.191 1.338
+      GBM: estimated direct effect 0.538; D = 1 over D = 0 premium: best estimate 2.112, unawareness 1.526, implied unawareness 1.543, discrimination-free 1.254; share restored: unawareness 0.377, implied unawareness 0.398
+          true over charged claims, D = 1 / D = 0: best estimate 1.018 / 0.986; unawareness 1.223 / 0.856; implied unawareness 1.213 / 0.859; discrimination-free 1.381 / 0.794
+          deviance against the truth per 1,000 policy-years: best estimate 3.41; unawareness 6.32; implied unawareness 5.70; discrimination-free 8.26
+          true over charged claims by decile of P(D = 1 | x), lowest first: unawareness 0.940 0.956 0.961 0.961 0.955 0.972 0.994 1.018 1.053 1.068; discrimination-free 0.749 0.785 0.814 0.844 0.871 0.928 1.005 1.092 1.209 1.370
