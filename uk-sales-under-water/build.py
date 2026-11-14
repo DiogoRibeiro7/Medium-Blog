@@ -26,6 +26,10 @@ Outputs (all aggregates; no address or single transaction):
   their split by band of m and by years since purchase, the share of flats and of new builds
   in the stock, and all standard sales in the district that year.
 - ``data/national_monthly.csv``: standard sales by month.
+- ``data/monthly_position.csv``: for each month from January 2005, region, band of m and band of
+  years since purchase: the stock at the start of the month and the resales during it, with m
+  measured at the end of the previous month. Built from purchase cohorts (area x month of
+  purchase), so it needs no expansion of individual spells by month.
 - ``data/build_log.txt``: counts at each step.
 """
 
@@ -46,7 +50,9 @@ YEARS = range(2000, 2026)
 LAMBDA = 300.0
 MIN_AREA_PAIRS = 1000
 M_BIN = 0.02
+M_BIN_CAP = 50      # m of +100% and more pooled
 DUR_CAP = 25
+MONTHLY_FROM = 2005
 M_BANDS = [(-9.0, -0.10, "below_m10"), (-0.10, 0.0, "m10_0"), (0.0, 0.10, "0_10"),
            (0.10, 0.25, "10_25"), (0.25, 0.50, "25_50"), (0.50, 9.0, "above_50")]
 DUR_BANDS = [(0, 2, "d0_2"), (2, 5, "d2_5"), (5, 10, "d5_10"), (10, 99, "d10p")]
@@ -197,7 +203,7 @@ def build(ppd: str, out: Path, memory_limit: str = "10GB", threads: int | None =
     """)
     con.execute(f"""
         COPY (SELECT area, Y AS year, least(floor(dur), {DUR_CAP})::INT AS dur_year,
-                     floor(m / {M_BIN})::INT AS m_bin, flat, new,
+                     least(floor(m / {M_BIN}), {M_BIN_CAP})::INT AS m_bin, flat, new,
                      sum(stock) AS stock, sum(resales) AS resales, sum(m * stock) AS sum_m
               FROM sym GROUP BY ALL ORDER BY area, year, dur_year, m_bin, flat, new)
         TO '{out / "hazard_cells.csv.gz"}' (HEADER, COMPRESSION gzip)
@@ -232,6 +238,44 @@ def build(ppd: str, out: Path, memory_limit: str = "10GB", threads: int | None =
                      coalesce(ds.sales_new_build, 0) AS sales_new_build
               FROM dy LEFT JOIN ds USING (district, year) ORDER BY district, year)
         TO '{out / "district_year.csv.gz"}' (HEADER, COMPRESSION gzip)
+    """)
+    # ------------------------------------------------------------------ monthly, by cohort
+    area_region = f"""CASE WHEN area IN ({_sql_list(LONDON_AREAS)}) THEN 'London'
+        WHEN area IN ({_sql_list(WALES_AREAS)}) THEN 'Wales'
+        WHEN area IN ({_sql_list(SOUTH_AREAS)}) THEN 'South' ELSE 'North and Midlands' END"""
+    t0 = (MONTHLY_FROM - START_YEAR) * 12
+    con.register("months", pd.DataFrame({"t": list(range(t0, int(last_t) + 1))}))
+    con.execute("""
+        CREATE TABLE coh AS SELECT area, tbuy, count(*) AS n FROM spells
+        WHERE area IN (SELECT DISTINCT area FROM idx) GROUP BY ALL
+    """)
+    con.execute("""
+        CREATE TABLE exits AS
+        SELECT area, tbuy, tnext, n, sum(n) OVER (PARTITION BY area, tbuy ORDER BY tnext) AS cum
+        FROM (SELECT area, tbuy, tnext, count(*) AS n FROM spells
+              WHERE tnext IS NOT NULL AND area IN (SELECT DISTINCT area FROM idx) GROUP BY ALL)
+    """)
+    con.execute("""
+        CREATE TABLE grid AS
+        SELECT c.area, c.tbuy, c.n AS bought, m.t FROM coh c JOIN months m ON m.t > c.tbuy
+    """)
+    con.execute(f"""
+        CREATE TABLE cm AS
+        SELECT g.area, g.tbuy, g.t, g.bought - coalesce(e.cum, 0) AS stock,
+               coalesce(x.n, 0) AS resales, (g.t - g.tbuy) / 12.0 AS dur,
+               ie.log_index - ib.log_index AS m
+        FROM grid g
+        ASOF LEFT JOIN exits e ON e.area = g.area AND e.tbuy = g.tbuy AND e.tnext < g.t
+        LEFT JOIN exits x ON x.area = g.area AND x.tbuy = g.tbuy AND x.tnext = g.t
+        JOIN idx ie ON ie.area = g.area AND ie.t = g.t - 1
+        JOIN idx ib ON ib.area = g.area AND ib.t = g.tbuy
+    """)
+    con.execute(f"""
+        COPY (SELECT (t / 12 + {START_YEAR})::INT AS year, (t % 12 + 1)::INT AS month, region, mb AS m_band,
+                     db AS dur_band, sum(stock) AS stock, sum(resales) AS resales, sum(m * stock) AS sum_m
+              FROM (SELECT *, {area_region} AS region, {m_case} AS mb, {d_case} AS db FROM cm WHERE stock > 0)
+              GROUP BY ALL ORDER BY year, month, region, m_band, dur_band)
+        TO '{out / "monthly_position.csv"}' (HEADER)
     """)
     totals = con.execute("SELECT count(*), sum(stock), sum(resales) FROM sy").fetchall()[0]
     n_spells = con.execute("SELECT count(*) FROM spells").fetchall()[0][0]

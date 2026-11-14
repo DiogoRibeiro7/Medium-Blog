@@ -81,3 +81,16 @@ def test_analysis_recovers_planted_lock_in(built, tmp_path, monkeypatch):
     # lock-in is the only cause of the fall in the synthetic market: both measures find part of
     # it, the narrow one (owners below zero only) less than the wide one
     assert 0.1 * fall < narrow < wide
+
+
+def test_monthly_cohorts_match_annual_stock(built):
+    _, data, _ = built
+    mp = pd.read_csv(data / "monthly_position.csv")
+    hc = pd.read_csv(data / "hazard_cells.csv.gz")
+    jan = mp[mp.month == 1].groupby("year").stock.sum()
+    annual = hc.groupby("year").stock.sum()
+    common = jan.index.intersection(annual.index)
+    assert len(common) >= 15
+    assert (jan.loc[common] == annual.loc[common]).all()
+    yearly = mp.groupby("year").resales.sum()
+    assert (yearly.loc[common] >= hc.groupby("year").resales.sum().loc[common]).all()

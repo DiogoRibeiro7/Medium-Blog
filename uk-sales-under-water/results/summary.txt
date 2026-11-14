@@ -1,0 +1,99 @@
+OWNERS UNDER WATER AND THE FALL IN SALES: every number used in the article
+============================================================================
+
+[0] Data
+Standard sales 29,824,801; ownership spells 29,824,801; postcode areas with an index 105; districts 2,357
+Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 943,363
+
+[1] By year: stock (owners who bought since 1995), resale rate, share below the purchase price, all standard sales
+  2000: stock   4,457,598  rate 7.35%  under water 0.7% (below -10%: 0.0%)  sales 1,128,711
+  2001: stock   5,237,719  rate 8.41%  under water 1.2% (below -10%: 0.0%)  sales 1,244,995
+  2002: stock   6,020,634  rate 9.06%  under water 0.1% (below -10%: 0.0%)  sales 1,350,784
+  2003: stock   6,797,581  rate 8.11%  under water 0.0% (below -10%: 0.0%)  sales 1,234,471
+  2004: stock   7,455,494  rate 7.92%  under water 0.0% (below -10%: 0.0%)  sales 1,231,225
+  2005: stock   8,068,668  rate 6.58%  under water 1.9% (below -10%: 0.0%)  sales 1,061,009
+  2006: stock   8,578,160  rate 8.04%  under water 2.0% (below -10%: 0.0%)  sales 1,325,448
+  2007: stock   9,188,574  rate 7.30%  under water 0.0% (below -10%: 0.0%)  sales 1,271,612
+  2008: stock   9,765,237  rate 3.24%  under water 2.4% (below -10%: 0.0%)  sales 645,567
+  2009: stock  10,083,062  rate 3.04%  under water 33.0% (below -10%: 14.6%)  sales 624,892
+  2010: stock  10,391,700  rate 3.38%  under water 27.1% (below -10%: 9.3%)  sales 662,855
+  2011: stock  10,695,413  rate 3.25%  under water 29.3% (below -10%: 8.1%)  sales 660,737
+  2012: stock  11,002,236  rate 3.27%  under water 32.8% (below -10%: 9.9%)  sales 668,356
+  2013: stock  11,307,331  rate 3.89%  under water 30.9% (below -10%: 9.2%)  sales 791,453
+  2014: stock  11,653,996  rate 4.60%  under water 17.7% (below -10%: 4.9%)  sales 919,116
+  2015: stock  12,030,671  rate 4.40%  under water 10.8% (below -10%: 2.5%)  sales 918,703
+  2016: stock  12,413,996  rate 4.29%  under water 6.1% (below -10%: 1.3%)  sales 922,534
+  2017: stock  12,798,869  rate 4.11%  under water 4.9% (below -10%: 0.8%)  sales 906,714
+  2018: stock  13,175,077  rate 3.87%  under water 3.9% (below -10%: 0.5%)  sales 875,427
+  2019: stock  13,536,352  rate 3.63%  under water 5.6% (below -10%: 0.3%)  sales 842,877
+  2020: stock  13,884,391  rate 3.24%  under water 5.5% (below -10%: 0.2%)  sales 753,413
+  2021: stock  14,185,691  rate 4.82%  under water 0.7% (below -10%: 0.0%)  sales 1,086,850
+  2022: stock  14,584,084  rate 3.86%  under water 0.2% (below -10%: 0.0%)  sales 909,974
+  2023: stock  14,927,937  rate 2.93%  under water 1.5% (below -10%: 0.0%)  sales 708,398
+  2024: stock  15,196,283  rate 3.22%  under water 6.9% (below -10%: 0.0%)  sales 764,184
+  2025: stock  15,469,178  rate 3.59%  under water 3.1% (below -10%: 0.0%)  sales 822,448
+  change 2007->2009: resale rate -58.4%, standard sales -50.9%
+  change 2007->2008: resale rate -55.6%, standard sales -49.2%
+  change 2022->2023: resale rate -24.0%, standard sales -22.2%
+  change 2022->2024: resale rate -16.6%, standard sales -16.0%
+  change 2021->2023: resale rate -39.2%, standard sales -34.8%
+
+[2] Lock-in curve: effect on the annual resale probability (percentage points) against owners with m in [0, 2%), area x year and holding-year x type x new-build effects removed; se clustered by area
+  all: 943,363 cells; reference rate 3.16%; pooled thin bins [-15]
+    [-24%] -0.85 (0.07); [-20%] -0.77 (0.06); [-16%] -0.46 (0.04); [-12%] -0.24 (0.03); [-10%] -0.14 (0.03); [-8%] -0.04 (0.03); [-6%] +0.10 (0.03); [-4%] +0.20 (0.02); [-2%] +0.23 (0.01); [+2%] +0.33 (0.02); [+4%] +0.50 (0.02); [+6%] +0.68 (0.02); [+10%] +0.96 (0.02); [+20%] +1.20 (0.02); [+30%] +1.09 (0.02); [+50%] +0.65 (0.03); [+100%] -0.47 (0.03)
+  2001-2007: 149,807 cells; reference rate 4.97%; pooled thin bins []
+    [-4%] -0.35 (0.16); [-2%] -0.26 (0.08); [+2%] +0.69 (0.05); [+4%] +1.19 (0.06); [+6%] +1.57 (0.06); [+10%] +2.25 (0.08); [+20%] +3.08 (0.07); [+30%] +3.17 (0.07); [+50%] +2.61 (0.09); [+100%] +1.01 (0.11)
+  2008-2012: 173,882 cells; reference rate 2.92%; pooled thin bins [-14]
+    [-24%] -1.32 (0.07); [-20%] -1.08 (0.05); [-16%] -0.77 (0.04); [-12%] -0.54 (0.03); [-10%] -0.48 (0.03); [-8%] -0.36 (0.03); [-6%] -0.20 (0.03); [-4%] -0.11 (0.02); [-2%] -0.04 (0.02); [+2%] +0.12 (0.03); [+4%] +0.21 (0.03); [+6%] +0.25 (0.03); [+10%] +0.40 (0.05); [+20%] +0.55 (0.05); [+30%] +0.50 (0.09); [+50%] +0.35 (0.06); [+100%] -0.05 (0.08)
+  2013-2021: 400,514 cells; reference rate 2.84%; pooled thin bins [-15]
+    [-24%] -1.48 (0.08); [-20%] -1.31 (0.09); [-16%] -0.96 (0.06); [-12%] -0.62 (0.04); [-10%] -0.45 (0.04); [-8%] -0.34 (0.04); [-6%] -0.17 (0.03); [-4%] -0.02 (0.03); [-2%] +0.05 (0.02); [+2%] +0.24 (0.02); [+4%] +0.25 (0.02); [+6%] +0.35 (0.02); [+10%] +0.41 (0.02); [+20%] +0.28 (0.03); [+30%] +0.07 (0.03); [+50%] -0.11 (0.04); [+100%] -0.52 (0.04)
+  2022-2025: 209,315 cells; reference rate 1.65%; pooled thin bins [-5]
+    [-8%] -0.10 (0.11); [-6%] -0.34 (0.06); [-4%] -0.08 (0.05); [-2%] +0.05 (0.03); [+2%] +0.36 (0.03); [+4%] +0.63 (0.04); [+6%] +0.79 (0.05); [+10%] +1.02 (0.05); [+20%] +0.99 (0.09); [+30%] +0.66 (0.10); [+50%] +0.33 (0.11); [+100%] -0.07 (0.16)
+
+[3] Resale rate with and without the lock-in below the purchase price (all-years curve); plateau effect of m in [+10%, +20%): +1.10 pp
+  2000: rate 7.35%  under water 0.7%  drag -0.00 pp  without lock-in 7.35%  below +10% 30.0% wide drag 0.19 pp
+  2001: rate 8.41%  under water 1.2%  drag -0.00 pp  without lock-in 8.41%  below +10% 23.7% wide drag 0.17 pp
+  2002: rate 9.06%  under water 0.1%  drag -0.00 pp  without lock-in 9.06%  below +10% 16.3% wide drag 0.12 pp
+  2003: rate 8.11%  under water 0.0%  drag 0.00 pp  without lock-in 8.11%  below +10% 9.9% wide drag 0.07 pp
+  2004: rate 7.92%  under water 0.0%  drag -0.00 pp  without lock-in 7.92%  below +10% 14.3% wide drag 0.11 pp
+  2005: rate 6.58%  under water 1.9%  drag -0.00 pp  without lock-in 6.58%  below +10% 15.1% wide drag 0.10 pp
+  2006: rate 8.04%  under water 2.0%  drag -0.00 pp  without lock-in 8.04%  below +10% 22.4% wide drag 0.18 pp
+  2007: rate 7.30%  under water 0.0%  drag -0.00 pp  without lock-in 7.30%  below +10% 22.3% wide drag 0.13 pp
+  2008: rate 3.24%  under water 2.4%  drag -0.01 pp  without lock-in 3.23%  below +10% 19.8% wide drag 0.14 pp
+  2009: rate 3.04%  under water 33.0%  drag 0.04 pp  without lock-in 3.08%  below +10% 44.4% wide drag 0.49 pp
+  2010: rate 3.38%  under water 27.1%  drag 0.02 pp  without lock-in 3.40%  below +10% 45.1% wide drag 0.44 pp
+  2011: rate 3.25%  under water 29.3%  drag 0.01 pp  without lock-in 3.25%  below +10% 46.7% wide drag 0.45 pp
+  2012: rate 3.27%  under water 32.8%  drag 0.01 pp  without lock-in 3.28%  below +10% 49.6% wide drag 0.50 pp
+  2013: rate 3.89%  under water 30.9%  drag 0.02 pp  without lock-in 3.91%  below +10% 50.6% wide drag 0.51 pp
+  2014: rate 4.60%  under water 17.7%  drag 0.01 pp  without lock-in 4.61%  below +10% 46.9% wide drag 0.41 pp
+  2015: rate 4.40%  under water 10.8%  drag 0.00 pp  without lock-in 4.41%  below +10% 35.0% wide drag 0.27 pp
+  2016: rate 4.29%  under water 6.1%  drag 0.00 pp  without lock-in 4.29%  below +10% 28.5% wide drag 0.21 pp
+  2017: rate 4.11%  under water 4.9%  drag -0.00 pp  without lock-in 4.11%  below +10% 24.1% wide drag 0.17 pp
+  2018: rate 3.87%  under water 3.9%  drag -0.00 pp  without lock-in 3.87%  below +10% 22.3% wide drag 0.16 pp
+  2019: rate 3.63%  under water 5.6%  drag -0.01 pp  without lock-in 3.62%  below +10% 23.3% wide drag 0.17 pp
+  2020: rate 3.24%  under water 5.5%  drag -0.01 pp  without lock-in 3.23%  below +10% 24.8% wide drag 0.19 pp
+  2021: rate 4.82%  under water 0.7%  drag -0.00 pp  without lock-in 4.82%  below +10% 20.3% wide drag 0.12 pp
+  2022: rate 3.86%  under water 0.2%  drag -0.00 pp  without lock-in 3.86%  below +10% 12.5% wide drag 0.08 pp
+  2023: rate 2.93%  under water 1.5%  drag -0.00 pp  without lock-in 2.93%  below +10% 9.8% wide drag 0.06 pp
+  2024: rate 3.22%  under water 6.9%  drag -0.01 pp  without lock-in 3.20%  below +10% 17.1% wide drag 0.13 pp
+  2025: rate 3.59%  under water 3.1%  drag -0.01 pp  without lock-in 3.59%  below +10% 18.2% wide drag 0.14 pp
+  2007->2009: fall 4.26 pp (58.4%), without lock-in 4.22 pp; share of the fall due to lock-in 1.0%; with everyone below +10% selling like +10-20%: 8.3%
+  2007->2008: fall 4.06 pp (55.6%), without lock-in 4.07 pp; share of the fall due to lock-in -0.1%; with everyone below +10% selling like +10-20%: 0.2%
+  2022->2023: fall 0.93 pp (24.0%), without lock-in 0.93 pp; share of the fall due to lock-in -0.3%; with everyone below +10% selling like +10-20%: -1.2%
+  2022->2024: fall 0.64 pp (16.6%), without lock-in 0.65 pp; share of the fall due to lock-in -2.0%; with everyone below +10% selling like +10-20%: 8.4%
+  with the 2008-2012 curve: 2007->2009 share of the fall due to lock-in 3.4%; drag in 2009 0.14 pp
+  with the 2022-2025 curve: 2022->2024 share of the fall due to lock-in 0.5%; drag in 2024 0.00 pp
+
+[4] Districts within the same postcode area: change in log resale rate vs share of stock under water
+  2007-2009: 2,064 districts in 105 areas; under water mean 33.0% (p10 23.4%, p90 42.4%); mean change -0.904
+    slope: alone -2.864 (0.212); with controls +0.182 (0.681); plus pre-trend +0.241 (0.683); placebo on pre-trend +0.240 (0.332)
+    deep (below -10%) -4.187 (1.020) and any under water +0.959 (0.669)
+  2022-2024: 2,127 districts in 105 areas; under water mean 6.9% (p10 3.6%, p90 9.8%); mean change -0.184
+    slope: alone +0.094 (0.294); with controls +0.889 (0.677); plus pre-trend +0.202 (0.613); placebo on pre-trend -1.652 (0.845)
+    deep (below -10%) +0.000 (0.000) and any under water +0.202 (0.613)
+  2007-2008: 2,077 districts in 105 areas; under water mean 2.4% (p10 0.0%, p90 5.6%); mean change -0.813
+    slope: alone -3.508 (1.111); with controls -0.795 (0.967); plus pre-trend +0.197 (0.690); placebo on pre-trend +2.618 (0.996)
+    deep (below -10%) +0.000 (0.000) and any under water +0.197 (0.690)
+  2022-2023: 2,122 districts in 105 areas; under water mean 1.5% (p10 0.0%, p90 2.6%); mean change -0.276
+    slope: alone -5.532 (0.918); with controls -3.298 (1.089); plus pre-trend -1.837 (0.964); placebo on pre-trend +4.185 (1.150)
+    deep (below -10%) +0.000 (0.000) and any under water -1.837 (0.964)
