@@ -1,0 +1,207 @@
+
+==============================================================================================
+1. Data and coverage
+==============================================================================================
+SEC annual reports read: 167 ({'10-K': 121, '20-F': 46}), 17 companies, fiscal years 2015-2025; annual revenue facts kept: 41,807
+Companies whose filings tag revenue by product and by country (US member), and the fiscal years covered:
+  AbbVie               2016-2025 (10 years)
+  Amgen                2016-2025 (10 years)
+  AstraZeneca          2016-2025 (10 years)
+  Biogen               2016-2025 (10 years)
+  Eli Lilly            2016-2025 (10 years)
+  Gilead               2016-2025 (10 years)
+  Johnson & Johnson    2016-2025 (10 years)
+  Merck & Co           2015-2025 (11 years)
+  Novartis             2016-2025 (10 years)
+  Novo Nordisk         2019-2025 (7 years)
+  Regeneron            2016-2025 (10 years)
+  Sanofi               2017-2025 (9 years)
+  Vertex               2019-2023 (5 years)
+  never by product and country: Bristol-Myers Squibb, GSK, Pfizer, Takeda
+
+==============================================================================================
+2. From XBRL members to dated medicines
+==============================================================================================
+Brand names with a first US approval date: 5,589 (Purple Book 741, of which CBER 280; Drugs@FDA 4,848)
+Product members: 524; matched to a dated US brand 325; left as other revenue 199
+Medicine-years with US and total revenue: 1,694; distinct medicines 277
+Largest medicines in 2025 (company, approval year, US share, revenue in US dollars at ECB rates):
+  keytruda           Merck & Co         approved 2014  US 59.5%  $ 31.6 bn  (Purple Book CDER)
+  mounjaro           Eli Lilly          approved 2022  US 59.4%  $ 23.0 bn  (Drugs@FDA)
+  ozempic            Novo Nordisk       approved 2017  US 69.6%  $ 19.2 bn  (Drugs@FDA)
+  dupixent           Sanofi             approved 2017  US 73.4%  $ 17.8 bn  (Purple Book CDER)
+  skyrizi            AbbVie             approved 2019  US 86.6%  $ 17.6 bn  (Purple Book CDER)
+  darzalex           Johnson & Johnson  approved 2015  US 57.6%  $ 14.4 bn  (Purple Book CDER)
+  biktarvy           Gilead             approved 2018  US 80.0%  $ 14.3 bn  (Drugs@FDA)
+  zepbound           Eli Lilly          approved 2023  US 99.6%  $ 13.5 bn  (Drugs@FDA)
+  wegovy             Novo Nordisk       approved 2021  US 64.5%  $ 12.0 bn  (Drugs@FDA)
+  farxiga            AstraZeneca        approved 2014  US 20.6%  $  8.4 bn  (Drugs@FDA)
+  rinvoq             AbbVie             approved 2019  US 71.5%  $  8.3 bn  (Drugs@FDA)
+  entresto           Novartis           approved 2015  US 42.4%  $  7.7 bn  (Drugs@FDA)
+
+==============================================================================================
+3. The US share to explain
+==============================================================================================
+Currencies: GSK GBP, Novo Nordisk DKK, Sanofi EUR, Takeda JPY; the rest report in US dollars. Converted at ECB annual averages (Part 6).
+The universe is the medicines each company reports one by one, in the US and in total, and that carry a US brand name with an approval date. Share of each company's revenue they cover (where the company's own total and US revenue are tagged):
+  AbbVie               2016 81.2%   2025 86.4%
+  Amgen                2016 81.5%   2025 75.9%
+  AstraZeneca          2020 91.8%   2025 87.4%
+  Biogen               2016 69.2%   2017 69.5%
+  Eli Lilly            2016 75.7%   2025 82.1%
+  Gilead               2016 84.6%   2025 88.2%
+  Johnson & Johnson    2016 38.0%   2025 60.9%
+  Merck & Co           2015 73.5%   2025 80.6%
+  Novartis             2021 60.3%   2025 73.4%
+  Novo Nordisk         2019 80.0%   2025 93.5%
+  Regeneron            2022  3.7%   2022  3.7%
+  Sanofi               2017 35.9%   2025 48.9%
+Companies with dated medicines in every year 2016-2025: 9: AbbVie, Amgen, AstraZeneca, Biogen, Eli Lilly, Gilead, Johnson & Johnson, Merck & Co, Novartis
+Companies with dated medicines in every year 2018-2025: 10: AbbVie, Amgen, AstraZeneca, Biogen, Eli Lilly, Gilead, Johnson & Johnson, Merck & Co, Novartis, Sanofi
+Companies with dated medicines in every year 2021-2025: 11: AbbVie, Amgen, AstraZeneca, Biogen, Eli Lilly, Gilead, Johnson & Johnson, Merck & Co, Novartis, Novo Nordisk, Sanofi
+US share of the dated medicines, main sample: 2016 58.8%, 2017 59.0%, 2018 58.4%, 2019 58.9%, 2020 59.2%, 2021 58.6%, 2022 60.4%, 2023 60.6%, 2024 62.3%, 2025 63.3%
+  change 2016-2025: +4.4 points; revenue of these medicines $ 183 bn to $ 368 bn
+Companies of the main sample whose own total and US revenue are tagged every year (AbbVie, Amgen, Eli Lilly, Gilead, Johnson & Johnson, Merck & Co):
+  US share of all their revenue: 2016 57.3%, 2017 57.5%, 2018 57.3%, 2019 57.7%, 2020 59.7%, 2021 59.7%, 2022 60.2%, 2023 61.5%, 2024 63.3%, 2025 64.7%
+  US share of their dated medicines: 2016 63.3%, 2017 63.7%, 2018 62.9%, 2019 63.9%, 2020 64.6%, 2021 64.0%, 2022 65.4%, 2023 65.5%, 2024 67.0%, 2025 68.4%
+  change: all revenue +7.4 points, dated medicines +5.1; correlation of the yearly changes +0.61
+  Part 6, seven US companies with the US tagged in every year 2015-2025: 54.2% to 66.3%
+
+==============================================================================================
+4. Where the change comes from: an exact decomposition, medicine by medicine
+==============================================================================================
+Main sample, 9 companies, 2016-2025: US share of dated medicines 58.8% to 63.3%, change +4.42 points (sum of the yearly terms +4.42)
+By launch cohort (each medicine's within, between, entry and exit terms, summed over the years):
+  launched in the period   total  +4.74 points (107.1% of the change): within -4.00, between +6.81, entry +1.78, exit +0.14
+  launched before          total  -0.31 points ( -7.1% of the change): within -6.68, between +3.82, entry +0.53, exit +2.01
+By age in the year of each term (new = first US approval less than five years before):
+  new (under five years)   total  +3.73 points ( 84.2%): within -5.65, between +7.64, entry +1.65, exit +0.08
+  established              total  +0.70 points ( 15.8%): within -5.03, between +2.99, entry +0.66, exit +2.07
+Entries into the reported set: 114; within two years of US approval 58 (+1.30 points); older medicines (acquired, newly reported) 56 (+1.01 points)
+  largest entries of older medicines: vraylar (AbbVie, 2022, approved 2015) +0.30; otezla (Amgen, 2020, approved 2014) +0.22; botox (AbbVie, 2020, approved 1991) +0.15; restasis (AbbVie, 2020, approved 2002) +0.13; tezspire (Amgen, 2024, approved 2021) +0.11
+Largest contributions by medicine (points of US share, all terms):
+  zepbound           Eli Lilly          approved 2023  +1.38
+  skyrizi            AbbVie             approved 2019  +1.23
+  biktarvy           Gilead             approved 2018  +0.82
+  gleevec            Novartis           approved 2001  +0.41
+  remicade           Merck & Co         approved 1998  +0.41
+  velcade            Johnson & Johnson  approved 2003  +0.39
+  vraylar            AbbVie             approved 2015  +0.39
+  viekirapakcopackaged AbbVie             approved 2014  +0.30
+  singulair          Merck & Co         approved 1998  +0.27
+  bridion            Merck & Co         approved 2015  +0.27
+  ...
+  enbrel             Amgen              approved 1998  -0.94
+  farxiga            AstraZeneca        approved 2014  -0.87
+  neulasta           Amgen              approved 2002  -0.64
+  tecfidera          Biogen             approved 2013  -0.51
+  remicade           Johnson & Johnson  approved 1998  -0.36
+  entresto           Novartis           approved 2015  -0.35
+  the same medicines, first and last year reported in the window (US share, revenue $ bn):
+    zepbound           2023 US 100.0% $   0.2   2025 US 99.6% $  13.5
+    skyrizi            2019 US 87.6% $   0.4   2025 US 86.6% $  17.6
+    biktarvy           2018 US 96.6% $   1.2   2025 US 80.0% $  14.3
+    gleevec            2016 US 36.5% $   3.3   2023 US 26.7% $   0.6
+    remicade           2016 US  0.0% $   1.3   2024 US  0.0% $   0.1
+    velcade            2016 US  0.0% $   1.2   2020 US  0.0% $   0.4
+    vraylar            2022 US 100.0% $   2.0   2025 US 99.8% $   3.6
+    viekirapakcopackaged 2016 US 22.5% $   1.5   2019 US  0.0% $   0.0
+    singulair          2016 US  4.4% $   0.9   2020 US  3.9% $   0.5
+    bridion            2016 US 16.0% $   0.5   2025 US 88.6% $   1.8
+    enbrel             2016 US 95.9% $   6.0   2025 US 98.8% $   2.2
+    farxiga            2016 US 54.7% $   0.8   2025 US 20.6% $   8.4
+    neulasta           2016 US 84.4% $   4.6   2022 US 85.2% $   1.1
+    tecfidera          2016 US 79.9% $   4.0   2025 US 24.8% $   0.7
+    remicade           2016 US 69.5% $   7.0   2025 US 66.2% $   1.8
+    entresto           2017 US 58.6% $   0.5   2025 US 42.4% $   7.7
+  terms of the three largest (entry, between, within, exit):
+    zepbound     entry +0.02, between +1.36, within -0.01, exit +0.00
+    skyrizi      entry +0.05, between +1.18, within +0.00, exit +0.00
+    biktarvy     entry +0.22, between +0.99, within -0.39, exit +0.00
+By company (points): AbbVie +2.14, Eli Lilly +1.66, Merck & Co +1.45, Novartis +1.02, AstraZeneca +0.34, Gilead -0.02, Johnson & Johnson -0.16, Biogen -0.63, Amgen -1.37
+Robustness (same decomposition, other windows and samples):
+  2018-2025                  10 companies: 57.6% to 63.6% (+6.05); launched in the period +3.78, before +2.27; new +3.57, established +2.48
+  2021-2025                  11 companies: 57.4% to 63.0% (+5.64); launched in the period +1.48, before +4.16; new +2.41, established +3.24
+  2016-2025 without Lilly     8 companies: 59.1% to 62.1% (+3.06); launched in the period +4.19, before -1.12; new +2.51, established +0.56
+  2016-2025 without AbbVie    8 companies: 58.3% to 61.0% (+2.70); launched in the period +4.80, before -2.10; new +4.07, established -1.37
+  2016-2025 without Merck     8 companies: 60.1% to 63.6% (+3.51); launched in the period +4.49, before -0.98; new +3.42, established +0.08
+How much of the change the age split gives to young medicines, by where the line between young and established is drawn:
+  under 5 years old: 2016-2025 +3.73 of +4.42 (84%); 2021-2025 +2.41 of +5.64 (43%)
+  under 8 years old: 2016-2025 +3.05 of +4.42 (69%); 2021-2025 +3.59 of +5.64 (64%)
+  under 10 years old: 2016-2025 +2.61 of +4.42 (59%); 2021-2025 +3.80 of +5.64 (67%)
+The 2021-2025 window by launch cohort:
+  launched before          total +4.16: within -2.35, between +3.76, entry +0.94, exit +1.82
+  launched in the period   total +1.48: within -1.29, between +2.31, entry +0.46, exit +0.00
+  medicines in the 2021-2025 window (total; entry, between, within, exit; first and last year US share, $ bn):
+    zepbound       Eli Lilly          approved 2023  +1.16  (+0.02, +1.15, -0.01, +0.00)  2023 100.0% $  0.2  2025 99.6% $ 13.5
+    skyrizi        AbbVie             approved 2019  +0.80  (+0.00, +0.77, +0.03, +0.00)  2021 84.6% $  2.9  2025 86.6% $ 17.6
+    gardasil       Merck & Co         approved 2006  +0.44  (+0.00, +0.17, +0.27, +0.00)  2021 33.2% $  5.7  2025 50.5% $  5.2
+    zytiga         Johnson & Johnson  approved 2011  +0.36  (+0.00, +0.36, -0.00, +0.00)  2021  5.2% $  2.3  2025  4.6% $  0.5
+    lovenox        Sanofi             approved 1993  +0.35  (+0.00, +0.14, -0.01, +0.21)  2021  2.0% $  1.8  2023  0.6% $  1.2
+    vraylar        AbbVie             approved 2015  +0.34  (+0.27, +0.07, -0.00, +0.00)  2022 100.0% $  2.0  2025 99.8% $  3.6
+    humira         AbbVie             approved 2002  -1.55  (+0.00, -1.29, -0.26, +0.00)  2021 83.7% $ 20.7  2025 67.4% $  4.5
+    farxiga        AstraZeneca        approved 2014  -0.39  (+0.00, -0.32, -0.07, +0.00)  2021 24.4% $  3.0  2025 20.6% $  8.4
+    enbrel         Amgen              approved 1998  -0.36  (+0.00, -0.38, +0.02, +0.00)  2021 97.5% $  4.5  2025 98.8% $  2.2
+    mounjaro       Eli Lilly          approved 2022  -0.10  (+0.03, +0.82, -0.95, +0.00)  2022 76.0% $  0.5  2025 59.4% $ 23.0
+    wegovy         Novo Nordisk       approved 2021  +0.10  (+0.11, +0.64, -0.65, +0.00)  2022 99.1% $  0.9  2025 64.5% $ 12.0
+    ozempic        Novo Nordisk       approved 2017  +0.28  (+0.00, +0.17, +0.10, +0.00)  2021 68.7% $  5.4  2025 69.6% $ 19.2
+
+==============================================================================================
+5. The same by launch cohort, between the end years
+==============================================================================================
+Revenue weight and US share by cohort, 2016 and 2025:
+  launched before          2016: weight 100.0%, US share 58.8%, $   183 bn   2025: weight 57.4%, US share 57.0%, $   211 bn
+  launched in the period   2016: weight  0.0%, US share  nan%, $     0 bn   2025: weight 42.6%, US share 71.6%, $   157 bn
+  contribution of the new cohort between the end years, W x (s - mean S): +4.51 points of +4.42
+Medicines launched by 2016 and reported in both years (55): US share 61.6% in 2016, 54.5% in 2025; revenue $ 98 bn to $ 166 bn
+  at their 2016 US shares and 2025 revenue the group's share would be 64.5%: change of mix inside the group +2.9 points, change of each medicine's own share -10.0
+  revenue-weighted change in a medicine's own US share: -7.8 points; median -7.9; rose for 24% of them
+  reported in 2016 but not in 2025: 76 medicines, 46.6% of 2016 revenue, US share 55.7%
+
+==============================================================================================
+6. The life cycle of a medicine's US share
+==============================================================================================
+Medicine-years with revenue of at least $ 50 million: 1,649; medicines first approved from 2014: 132 (those approved from 2016 observed from their launch, earlier ones from 2016)
+US share by years since first US approval, medicines approved from 2014:
+  age 0: n  19  median 87.9% [74.0%, 97.0%]  revenue-weighted 79.7%
+  age 1: n  55  median 87.1% [68.2%, 95.5%]  revenue-weighted 78.0%
+  age 2: n  84  median 75.8% [56.3%, 84.4%]  revenue-weighted 72.7%
+  age 3: n  81  median 65.8% [54.1%, 78.5%]  revenue-weighted 66.9%
+  age 4: n  82  median 59.3% [46.2%, 74.9%]  revenue-weighted 65.8%
+  age 5: n  73  median 56.9% [44.5%, 71.3%]  revenue-weighted 64.3%
+  age 6: n  70  median 57.3% [43.2%, 71.9%]  revenue-weighted 64.6%
+  age 7: n  56  median 55.9% [42.9%, 70.0%]  revenue-weighted 61.6%
+  age 8: n  48  median 56.0% [43.8%, 68.7%]  revenue-weighted 61.1%
+  within-medicine change in US share per year of age, all medicines: -1.52 points [-1.93, -1.13] (228 medicines, 1576 medicine-years)
+  within-medicine change in US share per year of age, first 8 years: -2.21 points [-2.94, -1.48] (111 medicines, 595 medicine-years)
+  within-medicine change in US share per year of age, 10 years and older: -1.51 points [-2.06, -1.01] (128 medicines, 832 medicine-years)
+  companies in the life-cycle sample: 12
+
+==============================================================================================
+7. P2: companies with more revenue from new medicines
+==============================================================================================
+Company-years: 106, companies 11 (US share and new-medicine share both measured on the company's dated medicines)
+2025: share of dated-medicine revenue from medicines under five years old, and their US share:
+  Eli Lilly            new 68.2%  US 70.0%
+  Novo Nordisk         new 27.4%  US 57.5%
+  Sanofi               new 21.2%  US 69.1%
+  Biogen               new 13.0%  US 55.2%
+  Novartis             new 12.4%  US 52.8%
+  Merck & Co           new  7.6%  US 61.3%
+  Johnson & Johnson    new  6.5%  US 61.4%
+  Amgen                new  5.3%  US 72.5%
+  AstraZeneca          new  4.7%  US 45.2%
+  AbbVie               new  4.2%  US 76.8%
+  Gilead               new  0.0%  US 73.8%
+  first year in the data: AbbVie 2016 new 16.2% US 63.2%; Amgen 2016 new 0.0% US 82.3%; Biogen 2016 new 71.1% US 74.7%; AstraZeneca 2016 new 11.2% US 37.3%; Gilead 2016 new 58.5% US 66.9%; Johnson & Johnson 2016 new 11.8% US 62.9%; Eli Lilly 2016 new 12.1% US 56.6%; Merck & Co 2016 new 8.7% US 52.5%; Novartis 2016 new 9.8% US 41.9%; Sanofi 2017 new 8.2% US 41.2%; Novo Nordisk 2019 new 25.6% US 52.6%
+  rank correlation across companies in 2025: -0.33 (n=11)
+  pooled slope: +0.147 [-0.206, +0.313] (change in US share per unit of new-medicine share; 90% interval, companies resampled 1000 times)
+  within companies, net of year effects: +0.166 [+0.008, +0.267]
+
+==============================================================================================
+8. Currencies
+==============================================================================================
+Dollars per euro: 1.107 in 2016, 1.130 in 2025; yen per dollar: 108.6 and 149.6
+  2025 US share at 2016 exchange rates, all revenue outside the US moving with the euro: 63.7% (at 2025 rates 63.3%)
+  2025 US share at 2016 exchange rates, a tenth with the yen, the rest with the euro: 63.1% (at 2025 rates 63.3%)
+  2025 US share at 2016 exchange rates, a fifth with the yen, the rest with the euro: 62.3% (at 2025 rates 63.3%)
