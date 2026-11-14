@@ -50,7 +50,7 @@ A key sold twice on the same day is dropped as ambiguous.
 Consecutive deeds with the same key form a pair. The chain includes every kind of deed, so an exchange or an auction between two sales breaks the pair rather than being skipped. The main sample keeps a pair when:
 
 - both deeds are ordinary sales (*Vente*). Pairs whose first sale was off plan (*VEFA*, new builds) or that involve an auction (*Adjudication*) are kept apart;
-- the dwelling type and number of main rooms are the same at both sales, and the built surface (and, for houses, the land area) differs by less than 10%. The England and Wales data cannot make this check; here it removes 8.8% of the pairs, mostly extensions;
+- the dwelling type and number of main rooms are the same at both sales, and the built surface (and, for houses, the land area) differs by less than 10%. The England and Wales data cannot make this check. Here it removes 8.8% of the pairs; a third of those were resold at a nominal loss, against a fifth of the pairs kept, so many are probably two different dwellings sharing a key rather than extensions;
 - the two sales are at least 183 days apart and both prices are at least €10,000;
 - the absolute log price change is below log(10), and below 0.5 per year held.
 

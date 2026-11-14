@@ -331,6 +331,8 @@ def main() -> None:
         line(f"  {lab}: 2021-Q1 {s.get('2021-Q1', np.nan):.1f}, peak {pk} {s[pk]:.1f}, low after it {tr} "
              f"{s[tr]:.1f} ({pct(s[tr] / s[pk] - 1)}), last {s.index[-1]} {s.iloc[-1]:.1f} "
              f"({pct(s.iloc[-1] / s[pk] - 1)} from peak)")
+    for iso, lab in [("FRA", "France"), ("GBR", "United Kingdom")]:
+        line(f"  {lab}: 2021-Q1 to 2025-Q4 {pct(hp.loc['2025-Q4', iso] / hp.loc['2021-Q1', iso] - 1)}")
     hp.to_csv(RESULTS / "oecd_hpi.csv", float_format="%.6g")
     for reg in ["France", "Paris", "Inner ring", "Outer Ile-de-France", "Big cities", "Rest of France"]:
         for pt in ["flat", "house"]:
