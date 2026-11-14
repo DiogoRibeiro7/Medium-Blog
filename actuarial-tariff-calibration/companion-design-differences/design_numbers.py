@@ -33,7 +33,7 @@ Sections, for each portfolio
 3. Noise or information: the best blend of the two tariffs, fitted on the calibration sample, scored on the test.
 4. One period, no price reaction: what the market collects, the lognormal prediction from the dispersion, and the
    loss ratio of each insurer.
-5. Rate reviews: the level policyholders pay and each insurer's share once both have reviewed 40 times.
+5. Rate reviews (beta 10): the loading each insurer applies and its share once both have reviewed 40 times.
 6. The price game with curse-aware pricing (beta 10): one level, and ten levels by market position.
 7. Checks.
 """
@@ -121,6 +121,8 @@ def french() -> dict:
               "no territory": lambda idx: X(idx, territory=False)}
     P["same_as_before"] = bool(np.array_equal(X(P["tr"]), P["X_glm"](P["tr"])))
     P["territory"] = "region, population density and area code"
+    P["bm"] = np.minimum(d["bm"], 150)
+    P["bm_edges"] = [51, 61, 71, 81, 101]
     return P
 
 
@@ -159,6 +161,8 @@ def belgian() -> dict:
               "no territory": lambda idx: X(idx, territory=False)}
     P["same_as_before"] = bool(np.array_equal(X(P["tr"]), P["X_glm"](P["tr"])))
     P["territory"] = "region of the postcode"
+    P["bm"] = bm
+    P["bm_edges"] = [1, 4, 7, 10, 14]
     return P
 
 
@@ -215,7 +219,7 @@ def one_period(Rt, et, Nt) -> dict:
 
 def reviews(Rc, Rt, ec, Nc, et, Nt) -> dict:
     out = {}
-    for beta, key in ((BETA, "10"), (INF, "inf")):
+    for beta, key in ((BETA, "10"),):
         L, ok = c1.review(Rc, ec, Nc, beta)
         m = c1.market(Rt, et, Nt, beta, L)
         out[key] = {"level": m["collected"], "share": m["share"], "ok": ok, "L": L,
@@ -303,6 +307,20 @@ def mechanism(P: dict) -> dict:
         rd = np.exp(X(ca) @ bd)
         rd *= c.sum() / (ec * rd).sum()
         show(f"A the GLM, B {design}", np.vstack([rate, rd]))
+        if design == "linear BM":
+            # Where the linear design's errors lie: by band of the bonus-malus level.
+            bm = P["bm"][ca]
+            band = np.digitize(bm, P["bm_edges"])
+            under = np.maximum(c - ec * rd, 0.0)             # what B undercharges where it quotes below cost
+            q = np.log(rd / rate)
+            ed = [int(x) for x in P["bm_edges"]]
+            names = [f"below {ed[0]}"] + [f"{ed[k]}-{ed[k + 1] - 1}" for k in range(len(ed) - 1)] + [f"{ed[-1]} and above"]
+            print("      where B's errors lie, by bonus-malus level: share of exposure; mean log of B's rate over A's;"
+                  " share of B's undercharging (cost minus premium where B quotes below cost)")
+            for k, nm in enumerate(names):
+                m = band == k
+                print(f"        {nm:>14}: {ec[m].sum() / ec.sum():.3f}; {np.average(q[m], weights=ec[m]):+.3f};"
+                      f" {under[m].sum() / under.sum():.3f}")
     return res
 
 
@@ -468,7 +486,7 @@ def run(P: dict, cfg: dict) -> dict:
         print(f"  lognormal minus actual, {group} ({err.size} plays): mean {err.mean():+.4f}, largest absolute"
               f" {np.abs(err).max():.4f}")
 
-    header(f"{name}: after 40 rate reviews on the calibration sample, once every insurer with business breaks even:"
+    header(f"{name}: after 40 rate reviews on the calibration sample (beta 10), once every insurer with business breaks even:"
            f" the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's"
            f" share (test sample; mean over plays)")
     lv_all = []
@@ -477,7 +495,7 @@ def run(P: dict, cfg: dict) -> dict:
         for n in sizes:
             rvs = pairs[n][(a, b)]["rv"]
             row = []
-            for key, lab in (("10", "beta 10"), ("inf", "cheapest wins")):
+            for key, lab in (("10", "beta 10"),):
                 lv_all += [v[key]["level"] for v, _ in rvs]
                 la = np.array([v[key]["L"][ia] for v, ia in rvs])
                 lb = np.array([v[key]["L"][1 - ia] for v, ia in rvs])
@@ -494,7 +512,7 @@ def run(P: dict, cfg: dict) -> dict:
                                                    "load": float(ld.mean()), "sha": float(sh.mean())}
             print(f"      books of {n:>7,}: " + "; ".join(row))
     print(f"  premium / claims on the test sample after the reviews, all plays: between {min(lv_all):.3f} and"
-          f" {max(lv_all):.3f} (1 on the calibration sample by construction)")
+          f" {max(lv_all):.3f} (1 on the calibration sample once both insurers break even)")
 
     header(f"{name}: the price game, curse-aware pricing, beta 10: each insurer's profit (percent of the test sample's"
            f" claims) and the price level, mean over the plays that settled")

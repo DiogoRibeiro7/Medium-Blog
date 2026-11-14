@@ -28,6 +28,13 @@ freMTPL2: the mechanism with known costs (cost = the GLM rate fitted on the whol
   A the GLM, B linear BM: sigma 0.117; cheapest wins, collected / cost 0.926 (lognormal from sigma 0.934), loss ratio A 1.000, B 1.245; beta 10, collected / cost 0.947
       after rate reviews (beta 10): loading A 1.000, B 1.321, share-weighted 1.037; share of A 0.884
       curse-aware game, one level: profit A +16.60, B +10.85, level 1.275; market position: profit A +13.13, B +12.65, level 1.258
+      where B's errors lie, by bonus-malus level: share of exposure; mean log of B's rate over A's; share of B's undercharging (cost minus premium where B quotes below cost)
+              below 51: 0.630; +0.100; 0.000
+                 51-60: 0.133; -0.162; 0.279
+                 61-70: 0.074; -0.381; 0.506
+                 71-80: 0.073; -0.039; 0.095
+                81-100: 0.080; +0.138; 0.023
+         101 and above: 0.010; -0.115; 0.097
   A the GLM, B no territory: sigma 0.117; cheapest wins, collected / cost 0.932 (lognormal from sigma 0.934), loss ratio A 1.000, B 1.146; beta 10, collected / cost 0.953
       after rate reviews (beta 10): loading A 1.000, B 1.150, share-weighted 1.039; share of A 0.739
       curse-aware game, one level: profit A +19.39, B +14.65, level 1.340; market position: profit A +12.74, B +12.56, level 1.253
@@ -166,39 +173,39 @@ freMTPL2: one period at a common level of 1, cheapest wins (test sample; mean ov
   lognormal minus actual, different designs (192 plays): mean +0.0028, largest absolute 0.0142
 
 ==============================================================================
-freMTPL2: after 40 rate reviews on the calibration sample, once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
+freMTPL2: after 40 rate reviews on the calibration sample (beta 10), once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
 ==============================================================================
   GLM against GLM:
-      books of  20,000: beta 10: loading 1.106 [1.053, 1.165] (settled 6 of 6); cheapest wins: loading 1.117 [1.068, 1.184] (settled 6 of 6)
-      books of  50,000: beta 10: loading 1.056 [1.028, 1.084] (settled 6 of 6); cheapest wins: loading 1.065 [1.035, 1.088] (settled 6 of 6)
-      books of 100,000: beta 10: loading 1.033 [1.017, 1.059] (settled 6 of 6); cheapest wins: loading 1.031 [0.994, 1.057] (settled 5 of 6)
-      books of 200,000: beta 10: loading 1.022 [1.018, 1.028] (settled 6 of 6); cheapest wins: loading 1.035 [1.005, 1.045] (settled 3 of 6)
+      books of  20,000: beta 10: loading 1.106 [1.053, 1.165] (settled 6 of 6)
+      books of  50,000: beta 10: loading 1.056 [1.028, 1.084] (settled 6 of 6)
+      books of 100,000: beta 10: loading 1.033 [1.017, 1.059] (settled 6 of 6)
+      books of 200,000: beta 10: loading 1.022 [1.018, 1.028] (settled 6 of 6)
   GLM against linear BM:
-      books of  20,000: beta 10: loading GLM 1.069, linear BM 1.234, share-weighted 1.117; share of GLM 0.663 [0.529, 0.793], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.057, linear BM 1.413, share-weighted 1.103; share of GLM 0.768 [0.500, 0.963], below 0.5 in 0 of 12 (settled 11 of 12)
-      books of  50,000: beta 10: loading GLM 1.019, linear BM 1.246, share-weighted 1.068; share of GLM 0.764 [0.697, 0.876], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 0.994, linear BM 2.038, share-weighted 0.933; share of GLM 0.864 [0.000, 1.000], below 0.5 in 1 of 12 (settled 8 of 12)
-      books of 100,000: beta 10: loading GLM 1.005, linear BM 1.260, share-weighted 1.051; share of GLM 0.810 [0.761, 0.878], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 0.989, linear BM 2.186, share-weighted 0.913; share of GLM 0.907 [0.000, 1.000], below 0.5 in 1 of 12 (settled 6 of 12)
-      books of 200,000: beta 10: loading GLM 0.998, linear BM 1.349, share-weighted 1.036; share of GLM 0.870 [0.822, 0.972], below 0.5 in 0 of 12 (settled 11 of 12); cheapest wins: loading GLM 0.993, linear BM 2.830, share-weighted 0.910; share of GLM 0.916 [0.000, 1.000], below 0.5 in 1 of 12 (settled 10 of 12)
+      books of  20,000: beta 10: loading GLM 1.069, linear BM 1.234, share-weighted 1.117; share of GLM 0.663 [0.529, 0.793], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.019, linear BM 1.246, share-weighted 1.068; share of GLM 0.764 [0.697, 0.876], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.005, linear BM 1.260, share-weighted 1.051; share of GLM 0.810 [0.761, 0.878], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 0.998, linear BM 1.349, share-weighted 1.036; share of GLM 0.870 [0.822, 0.972], below 0.5 in 0 of 12 (settled 11 of 12)
   GLM against no territory:
-      books of  20,000: beta 10: loading GLM 1.124, no territory 1.105, share-weighted 1.106; share of GLM 0.505 [0.311, 0.620], below 0.5 in 4 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.170, no territory 1.118, share-weighted 1.116; share of GLM 0.479 [0.189, 0.693], below 0.5 in 4 of 12 (settled 12 of 12)
-      books of  50,000: beta 10: loading GLM 1.045, no territory 1.110, share-weighted 1.070; share of GLM 0.604 [0.478, 0.684], below 0.5 in 1 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.047, no territory 1.197, share-weighted 1.073; share of GLM 0.712 [0.400, 0.959], below 0.5 in 1 of 12 (settled 11 of 12)
-      books of 100,000: beta 10: loading GLM 1.024, no territory 1.119, share-weighted 1.055; share of GLM 0.648 [0.545, 0.756], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.025, no territory 1.205, share-weighted 1.056; share of GLM 0.781 [0.598, 0.900], below 0.5 in 0 of 12 (settled 11 of 12)
-      books of 200,000: beta 10: loading GLM 1.012, no territory 1.128, share-weighted 1.048; share of GLM 0.683 [0.654, 0.709], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.004, no territory 1.387, share-weighted 1.026; share of GLM 0.908 [0.810, 1.000], below 0.5 in 0 of 12 (settled 7 of 12)
+      books of  20,000: beta 10: loading GLM 1.124, no territory 1.105, share-weighted 1.106; share of GLM 0.505 [0.311, 0.620], below 0.5 in 4 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.045, no territory 1.110, share-weighted 1.070; share of GLM 0.604 [0.478, 0.684], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.024, no territory 1.119, share-weighted 1.055; share of GLM 0.648 [0.545, 0.756], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 1.012, no territory 1.128, share-weighted 1.048; share of GLM 0.683 [0.654, 0.709], below 0.5 in 0 of 12 (settled 12 of 12)
   GLM against GBM:
-      books of  20,000: beta 10: loading GLM 1.102, GBM 1.427, share-weighted 1.205; share of GLM 0.647 [0.503, 0.762], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.090, GBM 1.551, share-weighted 1.197; share of GLM 0.712 [0.488, 0.843], below 0.5 in 1 of 12 (settled 12 of 12)
-      books of  50,000: beta 10: loading GLM 1.160, GBM 1.166, share-weighted 1.153; share of GLM 0.468 [0.334, 0.597], below 0.5 in 8 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.191, GBM 1.200, share-weighted 1.160; share of GLM 0.466 [0.165, 0.782], below 0.5 in 8 of 12 (settled 12 of 12)
-      books of 100,000: beta 10: loading GLM 1.291, GBM 1.059, share-weighted 1.107; share of GLM 0.284 [0.101, 0.404], below 0.5 in 12 of 12 (settled 12 of 12); cheapest wins: loading GLM 2.652, GBM 1.040, share-weighted 1.069; share of GLM 0.159 [0.000, 0.388], below 0.5 in 12 of 12 (settled 11 of 12)
-      books of 200,000: beta 10: loading GLM 2.806, GBM 1.001, share-weighted 1.026; share of GLM 0.049 [0.000, 0.172], below 0.5 in 12 of 12 (settled 11 of 12); cheapest wins: loading GLM 5.784, GBM 0.995, share-weighted 0.996; share of GLM 0.001 [0.000, 0.008], below 0.5 in 12 of 12 (settled 10 of 12)
+      books of  20,000: beta 10: loading GLM 1.102, GBM 1.427, share-weighted 1.205; share of GLM 0.647 [0.503, 0.762], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.160, GBM 1.166, share-weighted 1.153; share of GLM 0.468 [0.334, 0.597], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.291, GBM 1.059, share-weighted 1.107; share of GLM 0.284 [0.101, 0.404], below 0.5 in 12 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 2.806, GBM 1.001, share-weighted 1.026; share of GLM 0.049 [0.000, 0.172], below 0.5 in 12 of 12 (settled 11 of 12)
   GBM against other GBM:
-      books of  20,000: beta 10: loading GBM 1.417, other GBM 1.125, share-weighted 1.221; share of GBM 0.367 [0.238, 0.515], below 0.5 in 11 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.503, other GBM 1.122, share-weighted 1.222; share of GBM 0.324 [0.131, 0.529], below 0.5 in 11 of 12 (settled 12 of 12)
-      books of  50,000: beta 10: loading GBM 1.230, other GBM 1.112, share-weighted 1.154; share of GBM 0.431 [0.286, 0.563], below 0.5 in 11 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.297, other GBM 1.116, share-weighted 1.160; share of GBM 0.382 [0.125, 0.621], below 0.5 in 10 of 12 (settled 12 of 12)
-      books of 100,000: beta 10: loading GBM 1.141, other GBM 1.103, share-weighted 1.115; share of GBM 0.477 [0.342, 0.607], below 0.5 in 6 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.183, other GBM 1.120, share-weighted 1.126; share of GBM 0.452 [0.175, 0.740], below 0.5 in 7 of 12 (settled 12 of 12)
-      books of 200,000: beta 10: loading GBM 1.083, other GBM 1.109, share-weighted 1.093; share of GBM 0.549 [0.451, 0.632], below 0.5 in 4 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.104, other GBM 1.154, share-weighted 1.103; share of GBM 0.586 [0.245, 0.826], below 0.5 in 4 of 12 (settled 12 of 12)
+      books of  20,000: beta 10: loading GBM 1.417, other GBM 1.125, share-weighted 1.221; share of GBM 0.367 [0.238, 0.515], below 0.5 in 11 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GBM 1.230, other GBM 1.112, share-weighted 1.154; share of GBM 0.431 [0.286, 0.563], below 0.5 in 11 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GBM 1.141, other GBM 1.103, share-weighted 1.115; share of GBM 0.477 [0.342, 0.607], below 0.5 in 6 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GBM 1.083, other GBM 1.109, share-weighted 1.093; share of GBM 0.549 [0.451, 0.632], below 0.5 in 4 of 12 (settled 12 of 12)
   GBM against GBM:
-      books of  20,000: beta 10: loading 1.271 [1.232, 1.322] (settled 6 of 6); cheapest wins: loading 1.284 [1.239, 1.335] (settled 6 of 6)
-      books of  50,000: beta 10: loading 1.181 [1.150, 1.210] (settled 6 of 6); cheapest wins: loading 1.196 [1.168, 1.211] (settled 6 of 6)
-      books of 100,000: beta 10: loading 1.132 [1.112, 1.158] (settled 6 of 6); cheapest wins: loading 1.143 [1.114, 1.176] (settled 6 of 6)
-      books of 200,000: beta 10: loading 1.106 [1.098, 1.110] (settled 6 of 6); cheapest wins: loading 1.124 [1.117, 1.129] (settled 6 of 6)
-  premium / claims on the test sample after the reviews, all plays: between 0.000 and 1.003 (1 on the calibration sample by construction)
+      books of  20,000: beta 10: loading 1.271 [1.232, 1.322] (settled 6 of 6)
+      books of  50,000: beta 10: loading 1.181 [1.150, 1.210] (settled 6 of 6)
+      books of 100,000: beta 10: loading 1.132 [1.112, 1.158] (settled 6 of 6)
+      books of 200,000: beta 10: loading 1.106 [1.098, 1.110] (settled 6 of 6)
+  premium / claims on the test sample after the reviews, all plays: between 0.995 and 1.003 (1 on the calibration sample once both insurers break even)
 
 ==============================================================================
 freMTPL2: the price game, curse-aware pricing, beta 10: each insurer's profit (percent of the test sample's claims) and the price level, mean over the plays that settled
@@ -272,6 +279,13 @@ beMTPL97: the mechanism with known costs (cost = the GLM rate fitted on the whol
   A the GLM, B linear BM: sigma 0.024; cheapest wins, collected / cost 0.985 (lognormal from sigma 0.986), loss ratio A 1.000, B 1.038; beta 10, collected / cost 0.997
       after rate reviews (beta 10): loading A 1.000, B 1.006, share-weighted 1.003; share of A 0.516
       curse-aware game, one level: profit A +12.84, B +12.57, level 1.254; market position: profit A +12.52, B +12.50, level 1.250
+      where B's errors lie, by bonus-malus level: share of exposure; mean log of B's rate over A's; share of B's undercharging (cost minus premium where B quotes below cost)
+               below 1: 0.376; +0.031; 0.000
+                   1-3: 0.256; -0.050; 0.749
+                   4-6: 0.160; +0.007; 0.000
+                   7-9: 0.095; +0.021; 0.000
+                 10-13: 0.098; -0.022; 0.251
+          14 and above: 0.014; +0.064; 0.000
   A the GLM, B no territory: sigma 0.076; cheapest wins, collected / cost 0.954 (lognormal from sigma 0.957), loss ratio A 1.000, B 1.123; beta 10, collected / cost 0.975
       after rate reviews (beta 10): loading A 1.000, B 1.075, share-weighted 1.025; share of A 0.662
       curse-aware game, one level: profit A +15.27, B +12.65, level 1.279; market position: profit A +12.60, B +12.52, level 1.251
@@ -410,39 +424,39 @@ beMTPL97: one period at a common level of 1, cheapest wins (test sample; mean ov
   lognormal minus actual, different designs (192 plays): mean -0.0003, largest absolute 0.0160
 
 ==============================================================================
-beMTPL97: after 40 rate reviews on the calibration sample, once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
+beMTPL97: after 40 rate reviews on the calibration sample (beta 10), once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
 ==============================================================================
   GLM against GLM:
-      books of   5,000: beta 10: loading 1.125 [1.067, 1.203] (settled 6 of 6); cheapest wins: loading 1.132 [1.079, 1.222] (settled 5 of 6)
-      books of  12,000: beta 10: loading 1.056 [1.025, 1.076] (settled 6 of 6); cheapest wins: loading 1.073 [1.037, 1.098] (settled 6 of 6)
-      books of  24,000: beta 10: loading 1.037 [1.008, 1.058] (settled 6 of 6); cheapest wins: loading 1.046 [0.985, 1.072] (settled 6 of 6)
-      books of  48,000: beta 10: loading 1.018 [1.014, 1.026] (settled 6 of 6); cheapest wins: loading 1.025 [0.981, 1.046] (settled 4 of 6)
+      books of   5,000: beta 10: loading 1.125 [1.067, 1.203] (settled 6 of 6)
+      books of  12,000: beta 10: loading 1.056 [1.025, 1.076] (settled 6 of 6)
+      books of  24,000: beta 10: loading 1.037 [1.008, 1.058] (settled 6 of 6)
+      books of  48,000: beta 10: loading 1.018 [1.014, 1.026] (settled 6 of 6)
   GLM against linear BM:
-      books of   5,000: beta 10: loading GLM 1.148, linear BM 1.112, share-weighted 1.121; share of GLM 0.466 [0.259, 0.705], below 0.5 in 8 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.210, linear BM 1.183, share-weighted 1.124; share of GLM 0.455 [0.085, 0.938], below 0.5 in 8 of 12 (settled 10 of 12)
-      books of  12,000: beta 10: loading GLM 1.061, linear BM 1.052, share-weighted 1.054; share of GLM 0.487 [0.353, 0.587], below 0.5 in 8 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.093, linear BM 1.076, share-weighted 1.070; share of GLM 0.473 [0.124, 0.754], below 0.5 in 5 of 12 (settled 10 of 12)
-      books of  24,000: beta 10: loading GLM 1.040, linear BM 1.036, share-weighted 1.036; share of GLM 0.497 [0.384, 0.590], below 0.5 in 7 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.077, linear BM 1.070, share-weighted 1.047; share of GLM 0.491 [0.103, 0.895], below 0.5 in 6 of 12 (settled 9 of 12)
-      books of  48,000: beta 10: loading GLM 1.017, linear BM 1.021, share-weighted 1.019; share of GLM 0.510 [0.456, 0.551], below 0.5 in 4 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.045, linear BM 1.045, share-weighted 1.034; share of GLM 0.506 [0.204, 0.895], below 0.5 in 6 of 12 (settled 7 of 12)
+      books of   5,000: beta 10: loading GLM 1.148, linear BM 1.112, share-weighted 1.121; share of GLM 0.466 [0.259, 0.705], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.061, linear BM 1.052, share-weighted 1.054; share of GLM 0.487 [0.353, 0.587], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.040, linear BM 1.036, share-weighted 1.036; share of GLM 0.497 [0.384, 0.590], below 0.5 in 7 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.017, linear BM 1.021, share-weighted 1.019; share of GLM 0.510 [0.456, 0.551], below 0.5 in 4 of 12 (settled 12 of 12)
   GLM against no territory:
-      books of   5,000: beta 10: loading GLM 1.129, no territory 1.132, share-weighted 1.123; share of GLM 0.513 [0.299, 0.723], below 0.5 in 4 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.201, no territory 1.198, share-weighted 1.128; share of GLM 0.515 [0.052, 0.925], below 0.5 in 5 of 12 (settled 12 of 12)
-      books of  12,000: beta 10: loading GLM 1.045, no territory 1.092, share-weighted 1.063; share of GLM 0.579 [0.488, 0.684], below 0.5 in 2 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.050, no territory 1.169, share-weighted 1.069; share of GLM 0.691 [0.342, 0.941], below 0.5 in 2 of 12 (settled 12 of 12)
-      books of  24,000: beta 10: loading GLM 1.028, no territory 1.081, share-weighted 1.046; share of GLM 0.592 [0.472, 0.696], below 0.5 in 1 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.029, no territory 1.202, share-weighted 1.042; share of GLM 0.759 [0.267, 0.974], below 0.5 in 1 of 12 (settled 8 of 12)
-      books of  48,000: beta 10: loading GLM 1.014, no territory 1.071, share-weighted 1.035; share of GLM 0.615 [0.564, 0.682], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.007, no territory 1.125, share-weighted 0.939; share of GLM 0.808 [0.000, 0.980], below 0.5 in 1 of 12 (settled 7 of 12)
+      books of   5,000: beta 10: loading GLM 1.129, no territory 1.132, share-weighted 1.123; share of GLM 0.513 [0.299, 0.723], below 0.5 in 4 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.045, no territory 1.092, share-weighted 1.063; share of GLM 0.579 [0.488, 0.684], below 0.5 in 2 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.028, no territory 1.081, share-weighted 1.046; share of GLM 0.592 [0.472, 0.696], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.014, no territory 1.071, share-weighted 1.035; share of GLM 0.615 [0.564, 0.682], below 0.5 in 0 of 12 (settled 12 of 12)
   GLM against GBM:
-      books of   5,000: beta 10: loading GLM 1.103, GBM 1.373, share-weighted 1.190; share of GLM 0.646 [0.497, 0.764], below 0.5 in 1 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.100, GBM 1.489, share-weighted 1.187; share of GLM 0.708 [0.457, 0.938], below 0.5 in 1 of 12 (settled 12 of 12)
-      books of  12,000: beta 10: loading GLM 1.048, GBM 1.339, share-weighted 1.128; share of GLM 0.692 [0.603, 0.817], below 0.5 in 0 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.041, GBM 1.519, share-weighted 1.110; share of GLM 0.796 [0.674, 0.981], below 0.5 in 0 of 12 (settled 11 of 12)
-      books of  24,000: beta 10: loading GLM 1.064, GBM 1.147, share-weighted 1.096; share of GLM 0.568 [0.439, 0.664], below 0.5 in 2 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.072, GBM 1.232, share-weighted 1.100; share of GLM 0.638 [0.308, 0.945], below 0.5 in 2 of 12 (settled 12 of 12)
-      books of  48,000: beta 10: loading GLM 1.072, GBM 1.089, share-weighted 1.079; share of GLM 0.506 [0.426, 0.583], below 0.5 in 6 of 12 (settled 12 of 12); cheapest wins: loading GLM 1.095, GBM 1.114, share-weighted 1.099; share of GLM 0.503 [0.350, 0.695], below 0.5 in 6 of 12 (settled 12 of 12)
+      books of   5,000: beta 10: loading GLM 1.103, GBM 1.373, share-weighted 1.190; share of GLM 0.646 [0.497, 0.764], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.048, GBM 1.339, share-weighted 1.128; share of GLM 0.692 [0.603, 0.817], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.064, GBM 1.147, share-weighted 1.096; share of GLM 0.568 [0.439, 0.664], below 0.5 in 2 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.072, GBM 1.089, share-weighted 1.079; share of GLM 0.506 [0.426, 0.583], below 0.5 in 6 of 12 (settled 12 of 12)
   GBM against other GBM:
-      books of   5,000: beta 10: loading GBM 1.304, other GBM 1.193, share-weighted 1.212; share of GBM 0.445 [0.294, 0.660], below 0.5 in 7 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.365, other GBM 1.228, share-weighted 1.210; share of GBM 0.436 [0.171, 0.730], below 0.5 in 7 of 12 (settled 11 of 12)
-      books of  12,000: beta 10: loading GBM 1.307, other GBM 1.078, share-weighted 1.149; share of GBM 0.361 [0.220, 0.462], below 0.5 in 12 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.430, other GBM 1.076, share-weighted 1.143; share of GBM 0.287 [0.058, 0.512], below 0.5 in 11 of 12 (settled 9 of 12)
-      books of  24,000: beta 10: loading GBM 1.164, other GBM 1.065, share-weighted 1.101; share of GBM 0.413 [0.318, 0.532], below 0.5 in 9 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.289, other GBM 1.056, share-weighted 1.096; share of GBM 0.289 [0.084, 0.558], below 0.5 in 10 of 12 (settled 12 of 12)
-      books of  48,000: beta 10: loading GBM 1.116, other GBM 1.054, share-weighted 1.080; share of GBM 0.432 [0.355, 0.500], below 0.5 in 11 of 12 (settled 12 of 12); cheapest wins: loading GBM 1.178, other GBM 1.062, share-weighted 1.090; share of GBM 0.342 [0.163, 0.593], below 0.5 in 10 of 12 (settled 11 of 12)
+      books of   5,000: beta 10: loading GBM 1.304, other GBM 1.193, share-weighted 1.212; share of GBM 0.445 [0.294, 0.660], below 0.5 in 7 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GBM 1.307, other GBM 1.078, share-weighted 1.149; share of GBM 0.361 [0.220, 0.462], below 0.5 in 12 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GBM 1.164, other GBM 1.065, share-weighted 1.101; share of GBM 0.413 [0.318, 0.532], below 0.5 in 9 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GBM 1.116, other GBM 1.054, share-weighted 1.080; share of GBM 0.432 [0.355, 0.500], below 0.5 in 11 of 12 (settled 12 of 12)
   GBM against GBM:
-      books of   5,000: beta 10: loading 1.231 [1.154, 1.334] (settled 6 of 6); cheapest wins: loading 1.239 [1.159, 1.350] (settled 6 of 6)
-      books of  12,000: beta 10: loading 1.185 [1.158, 1.246] (settled 6 of 6); cheapest wins: loading 1.190 [1.154, 1.241] (settled 6 of 6)
-      books of  24,000: beta 10: loading 1.121 [1.096, 1.148] (settled 6 of 6); cheapest wins: loading 1.137 [1.115, 1.165] (settled 5 of 6)
-      books of  48,000: beta 10: loading 1.092 [1.085, 1.101] (settled 6 of 6); cheapest wins: loading 1.109 [1.092, 1.122] (settled 6 of 6)
-  premium / claims on the test sample after the reviews, all plays: between 0.000 and 1.011 (1 on the calibration sample by construction)
+      books of   5,000: beta 10: loading 1.231 [1.154, 1.334] (settled 6 of 6)
+      books of  12,000: beta 10: loading 1.185 [1.158, 1.246] (settled 6 of 6)
+      books of  24,000: beta 10: loading 1.121 [1.096, 1.148] (settled 6 of 6)
+      books of  48,000: beta 10: loading 1.092 [1.085, 1.101] (settled 6 of 6)
+  premium / claims on the test sample after the reviews, all plays: between 1.000 and 1.011 (1 on the calibration sample once both insurers break even)
 
 ==============================================================================
 beMTPL97: the price game, curse-aware pricing, beta 10: each insurer's profit (percent of the test sample's claims) and the price level, mean over the plays that settled
