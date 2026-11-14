@@ -76,7 +76,8 @@ def missing_query(year: int) -> str:
 
 
 def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    """Digest of the file with LF line endings, so that git's line-ending normalisation does not change it."""
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def main() -> None:
@@ -115,7 +116,7 @@ def main() -> None:
         body = get(missing_query(y)).decode("utf-8")
         missing[y] = int(next(csv.DictReader(io.StringIO(body)))["n"])
     with open(out, "w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(["hour", "calls"])
         w.writerows(rows)
     files.write_text(f"hourly_calls.csv {sha256(out)}\n", encoding="utf-8")

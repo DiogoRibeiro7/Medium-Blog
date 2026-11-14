@@ -142,3 +142,13 @@ minutes.
   hold them, and its costs recomputed.
 - **Orders of the forecasts by cost** under each regime, against their order by WAPE.
 
+- **Calls and needed agent-hours by weekday**, as shares of the week, over the test weeks.
+- **The Erlang C margin:** with the oracle, the agents needed above the offered load, as a share of the agents
+  needed, by offered load, and for the busiest hour of the median week.
+
+## Bookkeeping after the results
+
+- `fetch.py` wrote the counts with Windows line endings, and recorded the SHA-256 of that file in `sources/FILES`.
+  Git stored the file with Unix line endings, so the committed file no longer matched its digest and the next run
+  stopped. The counts are unchanged. `sources/FILES` now holds the digest of the committed file, `fetch.py` writes
+  Unix line endings, and the digest is taken over the file with Unix line endings.

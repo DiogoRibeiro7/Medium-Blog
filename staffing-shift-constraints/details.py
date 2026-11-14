@@ -136,6 +136,36 @@ def main() -> None:
             sel = [r for r in rows if r["regime"] == regime and r["k"] == k and r["forecast"] != "oracle"]
             order = [r["forecast"] for r in sorted(sel, key=lambda r: float(r["cost"]))]
             L.append(f"   k {k}, {regime}: {', '.join(order)}")
+    L.append("")
+
+    L.append("6. Calls and needed agent-hours by weekday over the test weeks, as shares of the week (Monday first)")
+    act_w = np.array([x.reshape(7, 24).sum(axis=1) for x in actual]).sum(axis=0)
+    need_w = np.array([nd.reshape(7, 24).sum(axis=1) for nd in need]).sum(axis=0)
+    js["weekday"] = {"calls": (act_w / act_w.sum()).tolist(), "need": (need_w / need_w.sum()).tolist()}
+    L.append("   calls: " + ", ".join(f"{v:.3f}" for v in act_w / act_w.sum()))
+    L.append("   need:  " + ", ".join(f"{v:.3f}" for v in need_w / need_w.sum()))
+    L.append("")
+
+    L.append("7. Erlang C margin with the oracle: agents needed above the offered load (calls x AHT / 3600),")
+    L.append("   as a share of the agents needed, by offered load over all test-week hours; and the median week's")
+    L.append("   busiest and quietest hours")
+    load_all = np.concatenate([x * AHT / 3600 for x in actual])
+    need_all = np.concatenate(need)
+    js["margin"] = {}
+    for lo, hi in ((0, 10), (10, 50), (50, 150), (150, np.inf)):
+        m = (load_all >= lo) & (load_all < hi) & (need_all > 0)
+        share = float((need_all[m] - load_all[m]).sum() / need_all[m].sum()) if m.any() else float("nan")
+        js["margin"][f"{lo}-{hi}"] = {"hours": int(m.sum()), "margin_share": share}
+        L.append(f"   load {lo} to {hi}: {int(m.sum())} hours; margin {share:.3f} of the agents needed")
+    calls_week = [x.sum() for x in actual]
+    mw = int(np.argsort(calls_week)[len(calls_week) // 2])  # as in evaluate.py
+    x, nd = actual[mw], need[mw]
+    h = int(np.argmax(x))
+    ld = x[h] * AHT / 3600
+    L.append(
+        f"   median week {weeks[mw].date()}, busiest hour (day {h // 24}, {h % 24}:00): {int(x[h])} calls, "
+        f"load {ld:.1f}, agents needed {int(nd[h])}, margin {(nd[h] - ld) / nd[h]:.3f}"
+    )
     a.out.write_text("\n".join(L) + "\n", encoding="utf-8")
     (a.out.parent / "details.json").write_text(json.dumps(js, indent=1), encoding="utf-8")
     print("\n".join(L))
