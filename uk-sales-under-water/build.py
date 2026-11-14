@@ -271,7 +271,7 @@ def build(ppd: str, out: Path, memory_limit: str = "10GB", threads: int | None =
         JOIN idx ib ON ib.area = g.area AND ib.t = g.tbuy
     """)
     con.execute(f"""
-        COPY (SELECT (t / 12 + {START_YEAR})::INT AS year, (t % 12 + 1)::INT AS month, region, mb AS m_band,
+        COPY (SELECT (t // 12 + {START_YEAR})::INT AS year, (t % 12 + 1)::INT AS month, region, mb AS m_band,
                      db AS dur_band, sum(stock) AS stock, sum(resales) AS resales, sum(m * stock) AS sum_m
               FROM (SELECT *, {area_region} AS region, {m_case} AS mb, {d_case} AS db FROM cm WHERE stock > 0)
               GROUP BY ALL ORDER BY year, month, region, m_band, dur_band)
