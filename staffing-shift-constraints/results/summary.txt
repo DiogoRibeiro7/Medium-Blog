@@ -1,0 +1,105 @@
+Shift constraints against forecast quality, NYC 311 agent-handled calls. Settings: PLAN.md.
+
+hours on the grid 35064 (2016-01-01 00:00:00 to 2019-12-31 23:00:00); total calls 25570677
+  2016: 6965346 calls, 20 hours with no calls
+  2017: 6785747 calls, 23 hours with no calls
+  2018: 6251214 calls, 213 hours with no calls
+  2019: 5568370 calls, 7 hours with no calls
+share of calls by hour of day: 0:1.2%, 1:0.9%, 2:0.6%, 3:0.5%, 4:0.4%, 5:0.6%, 6:1.2%, 7:2.4%, 8:4.9%, 9:8.2%, 10:8.9%, 11:9.0%, 12:8.6%, 13:8.2%, 14:8.2%, 15:7.9%, 16:7.0%, 17:4.8%, 18:4.0%, 19:3.4%, 20:2.9%, 21:2.5%, 22:2.1%, 23:1.7%
+days below 20% of their year's median: 9: 2018-01-19 (406), 2018-01-20 (0), 2018-01-21 (0), 2018-01-22 (0), 2018-01-23 (0), 2018-01-24 (0), 2018-01-25 (0), 2018-06-15 (577), 2018-06-16 (0)
+test weeks excluded: 0
+
+test weeks used: 52; median week by calls: 2019-09-09
+WAPE of the forecasts over the test weeks: two_weeks 0.1538, mean4 0.1307, gbm 0.1148, oracle 0.0000
+
+AHT 5 min, k = 1: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.1444 (+0.1444); mean4 0.1225 (+0.1225); gbm 0.1081 (+0.1081); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1251]: two_weeks 0.2273 (+0.1023); mean4 0.2034 (+0.0783); gbm 0.1959 (+0.0709); oracle 0.1251 (+0.0000)
+  R2 8h + 4h [constraint 0.0263]: two_weeks 0.1545 (+0.1282); mean4 0.1314 (+0.1052); gbm 0.1170 (+0.0907); oracle 0.0263 (+0.0000)
+  R3 three fixed starts [constraint 0.4888]: two_weeks 0.5526 (+0.0638); mean4 0.5261 (+0.0373); gbm 0.5409 (+0.0521); oracle 0.4888 (+0.0000)
+  R4 weekly tours [constraint 0.1866]: two_weeks 0.2516 (+0.0651); mean4 0.2132 (+0.0267); gbm 0.2280 (+0.0414); oracle 0.1866 (+0.0000)
+
+AHT 5 min, k = 3: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.2848 (+0.2848); mean4 0.2362 (+0.2362); gbm 0.1855 (+0.1855); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1251]: two_weeks 0.3262 (+0.2011); mean4 0.2801 (+0.1551); gbm 0.2463 (+0.1212); oracle 0.1251 (+0.0000)
+  R2 8h + 4h [constraint 0.0263]: two_weeks 0.2787 (+0.2525); mean4 0.2373 (+0.2110); gbm 0.1874 (+0.1611); oracle 0.0263 (+0.0000)
+  R3 three fixed starts [constraint 0.4888]: two_weeks 0.6100 (+0.1212); mean4 0.5699 (+0.0811); gbm 0.5644 (+0.0756); oracle 0.4888 (+0.0000)
+  R4 weekly tours [constraint 0.1866]: two_weeks 0.3123 (+0.1257); mean4 0.2686 (+0.0821); gbm 0.2621 (+0.0756); oracle 0.1866 (+0.0000)
+
+AHT 5 min: paid hours / needed hours and share of calls answered within 30 s
+  R0: two_weeks 1.004 / 58.8%; mean4 1.009 / 57.9%; gbm 1.031 / 67.2%; oracle 1.000 / 82.6%
+  R1: two_weeks 1.128 / 71.3%; mean4 1.127 / 70.5%; gbm 1.146 / 77.9%; oracle 1.125 / 89.6%
+  R2: two_weeks 1.030 / 62.8%; mean4 1.026 / 60.3%; gbm 1.047 / 69.6%; oracle 1.026 / 85.0%
+  R3: two_weeks 1.495 / 83.5%; mean4 1.482 / 80.9%; gbm 1.517 / 88.4%; oracle 1.489 / 95.3%
+  R4: two_weeks 1.191 / 78.8%; mean4 1.158 / 75.6%; gbm 1.194 / 83.6%; oracle 1.187 / 93.5%
+
+AHT 3 min, k = 1: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.1418 (+0.1418); mean4 0.1203 (+0.1203); gbm 0.1061 (+0.1061); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1223]: two_weeks 0.2232 (+0.1009); mean4 0.2000 (+0.0776); gbm 0.1925 (+0.0702); oracle 0.1223 (+0.0000)
+  R2 8h + 4h [constraint 0.0253]: two_weeks 0.1516 (+0.1263); mean4 0.1290 (+0.1037); gbm 0.1149 (+0.0896); oracle 0.0253 (+0.0000)
+  R3 three fixed starts [constraint 0.4798]: two_weeks 0.5421 (+0.0624); mean4 0.5158 (+0.0360); gbm 0.5310 (+0.0512); oracle 0.4798 (+0.0000)
+  R4 weekly tours [constraint 0.1844]: two_weeks 0.2465 (+0.0620); mean4 0.2110 (+0.0266); gbm 0.2239 (+0.0395); oracle 0.1844 (+0.0000)
+
+AHT 3 min, k = 3: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.2797 (+0.2797); mean4 0.2319 (+0.2319); gbm 0.1820 (+0.1820); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1223]: two_weeks 0.3205 (+0.1982); mean4 0.2754 (+0.1531); gbm 0.2420 (+0.1197); oracle 0.1223 (+0.0000)
+  R2 8h + 4h [constraint 0.0253]: two_weeks 0.2740 (+0.2487); mean4 0.2331 (+0.2078); gbm 0.1840 (+0.1587); oracle 0.0253 (+0.0000)
+  R3 three fixed starts [constraint 0.4798]: two_weeks 0.5982 (+0.1185); mean4 0.5586 (+0.0788); gbm 0.5539 (+0.0741); oracle 0.4798 (+0.0000)
+  R4 weekly tours [constraint 0.1844]: two_weeks 0.3039 (+0.1195); mean4 0.2649 (+0.0805); gbm 0.2567 (+0.0723); oracle 0.1844 (+0.0000)
+
+AHT 3 min: paid hours / needed hours and share of calls answered within 30 s
+  R0: two_weeks 1.004 / 61.1%; mean4 1.009 / 60.3%; gbm 1.030 / 69.3%; oracle 1.000 / 83.5%
+  R1: two_weeks 1.126 / 72.6%; mean4 1.125 / 72.0%; gbm 1.143 / 79.2%; oracle 1.122 / 89.9%
+  R2: two_weeks 1.029 / 64.7%; mean4 1.025 / 62.4%; gbm 1.046 / 71.5%; oracle 1.025 / 85.5%
+  R3: two_weeks 1.486 / 84.2%; mean4 1.473 / 81.9%; gbm 1.508 / 89.0%; oracle 1.480 / 95.3%
+  R4: two_weeks 1.189 / 80.0%; mean4 1.157 / 77.0%; gbm 1.191 / 84.8%; oracle 1.184 / 93.6%
+
+AHT 8 min, k = 1: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.1464 (+0.1464); mean4 0.1242 (+0.1242); gbm 0.1094 (+0.1094); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1270]: two_weeks 0.2307 (+0.1037); mean4 0.2062 (+0.0792); gbm 0.1985 (+0.0715); oracle 0.1270 (+0.0000)
+  R2 8h + 4h [constraint 0.0270]: two_weeks 0.1567 (+0.1297); mean4 0.1332 (+0.1062); gbm 0.1188 (+0.0918); oracle 0.0270 (+0.0000)
+  R3 three fixed starts [constraint 0.4955]: two_weeks 0.5603 (+0.0648); mean4 0.5333 (+0.0378); gbm 0.5483 (+0.0528); oracle 0.4955 (+0.0000)
+  R4 weekly tours [constraint 0.1893]: two_weeks 0.2550 (+0.0657); mean4 0.2154 (+0.0261); gbm 0.2310 (+0.0417); oracle 0.1893 (+0.0000)
+
+AHT 8 min, k = 3: cost per actual agent-hour needed (constraint cost of the regime; forecast cost)
+  R0 hourly [constraint 0.0000]: two_weeks 0.2888 (+0.2888); mean4 0.2397 (+0.2397); gbm 0.1881 (+0.1881); oracle 0.0000 (+0.0000)
+  R1 8h any start [constraint 0.1270]: two_weeks 0.3309 (+0.2039); mean4 0.2839 (+0.1569); gbm 0.2495 (+0.1225); oracle 0.1270 (+0.0000)
+  R2 8h + 4h [constraint 0.0270]: two_weeks 0.2825 (+0.2554); mean4 0.2404 (+0.2134); gbm 0.1902 (+0.1632); oracle 0.0270 (+0.0000)
+  R3 three fixed starts [constraint 0.4955]: two_weeks 0.6187 (+0.1232); mean4 0.5777 (+0.0822); gbm 0.5721 (+0.0766); oracle 0.4955 (+0.0000)
+  R4 weekly tours [constraint 0.1893]: two_weeks 0.3161 (+0.1268); mean4 0.2715 (+0.0822); gbm 0.2656 (+0.0763); oracle 0.1893 (+0.0000)
+
+AHT 8 min: paid hours / needed hours and share of calls answered within 30 s
+  R0: two_weeks 1.004 / 57.0%; mean4 1.009 / 56.0%; gbm 1.031 / 65.7%; oracle 1.000 / 82.0%
+  R1: two_weeks 1.131 / 70.2%; mean4 1.129 / 69.3%; gbm 1.148 / 76.9%; oracle 1.127 / 89.5%
+  R2: two_weeks 1.031 / 61.2%; mean4 1.026 / 58.5%; gbm 1.047 / 68.2%; oracle 1.027 / 84.6%
+  R3: two_weeks 1.502 / 82.8%; mean4 1.489 / 80.1%; gbm 1.524 / 88.0%; oracle 1.496 / 95.4%
+  R4: two_weeks 1.194 / 77.9%; mean4 1.159 / 74.7%; gbm 1.196 / 82.9%; oracle 1.189 / 93.6%
+
+H1, AHT 5 min (main): supported (8 of 8 established, 8 in the stated direction) - under R3 and R4 the constraint cost exceeds the forecast cost of mean4 and gbm
+    k 1: R3: constraint cost - forecast cost of mean4: +0.4515 [+0.4230, +0.4793]
+    k 1: R3: constraint cost - forecast cost of gbm: +0.4367 [+0.4149, +0.4594]
+    k 1: R4: constraint cost - forecast cost of mean4: +0.1599 [+0.1385, +0.1816]
+    k 1: R4: constraint cost - forecast cost of gbm: +0.1451 [+0.1247, +0.1674]
+    k 3: R3: constraint cost - forecast cost of mean4: +0.4077 [+0.3810, +0.4323]
+    k 3: R3: constraint cost - forecast cost of gbm: +0.4132 [+0.3928, +0.4341]
+    k 3: R4: constraint cost - forecast cost of mean4: +0.1045 [+0.0827, +0.1262]
+    k 3: R4: constraint cost - forecast cost of gbm: +0.1110 [+0.0913, +0.1309]
+H2, AHT 5 min (main): not supported (1 of 2 established, 2 in the stated direction) - the two_weeks -> gbm saving is smaller under R4 than under R0
+    k 1: two_weeks -> gbm saving under R0 - the same under R4: +0.0127 [-0.0021, +0.0280]
+    k 3: two_weeks -> gbm saving under R0 - the same under R4: +0.0492 [+0.0247, +0.0787]
+H3, AHT 5 min (main): not supported (2 of 4 established, 2 in the stated direction) - under R1 and R2 the forecast cost of gbm exceeds the constraint cost
+    k 1: R1: forecast cost of gbm - constraint cost: -0.0542 [-0.0707, -0.0367]
+    k 1: R2: forecast cost of gbm - constraint cost: +0.0644 [+0.0543, +0.0757]
+    k 3: R1: forecast cost of gbm - constraint cost: -0.0038 [-0.0210, +0.0158]
+    k 3: R2: forecast cost of gbm - constraint cost: +0.1348 [+0.1183, +0.1548]
+H1, AHT 3 min (sensitivity): supported (8 of 8 established, 8 in the stated direction) - under R3 and R4 the constraint cost exceeds the forecast cost of mean4 and gbm
+H2, AHT 3 min (sensitivity): not supported (1 of 2 established, 2 in the stated direction) - the two_weeks -> gbm saving is smaller under R4 than under R0
+H3, AHT 3 min (sensitivity): not supported (2 of 4 established, 2 in the stated direction) - under R1 and R2 the forecast cost of gbm exceeds the constraint cost
+H1, AHT 8 min (sensitivity): supported (8 of 8 established, 8 in the stated direction) - under R3 and R4 the constraint cost exceeds the forecast cost of mean4 and gbm
+H2, AHT 8 min (sensitivity): not supported (1 of 2 established, 2 in the stated direction) - the two_weeks -> gbm saving is smaller under R4 than under R0
+H3, AHT 8 min (sensitivity): not supported (2 of 4 established, 2 in the stated direction) - under R1 and R2 the forecast cost of gbm exceeds the constraint cost
+
+Shadow prices, R4 with the oracle, median week (paid hours per extra agent needed in that hour):
+  largest: day 0 09:00 40.00, day 6 01:00 40.00, day 0 17:00 13.33, day 2 17:00 13.33, day 4 17:00 13.33, day 5 17:00 13.33, day 6 20:00 0.00, day 3 14:00 0.00, day 5 23:00 0.00, day 0 12:00 0.00
+  summed by hour of day: 0:0.0, 1:40.0, 2:0.0, 3:0.0, 4:0.0, 5:0.0, 6:0.0, 7:-0.0, 8:0.0, 9:40.0, 10:0.0, 11:0.0, 12:0.0, 13:0.0, 14:-0.0, 15:0.0, 16:-0.0, 17:53.3, 18:0.0, 19:0.0, 20:0.0, 21:-0.0, 22:0.0, 23:0.0
+  hours with a positive shadow price: 6 of 168

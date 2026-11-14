@@ -1,0 +1,43 @@
+aht,hypothesis,comparison,k,estimate,lo,hi,established
+300.0,H1,R3: constraint cost - forecast cost of mean4,1,0.451546,0.422989,0.479344,True
+300.0,H1,R3: constraint cost - forecast cost of gbm,1,0.436686,0.414914,0.459412,True
+300.0,H1,R4: constraint cost - forecast cost of mean4,1,0.159896,0.138540,0.181593,True
+300.0,H1,R4: constraint cost - forecast cost of gbm,1,0.145127,0.124672,0.167396,True
+300.0,H2,two_weeks -> gbm saving under R0 - the same under R4,1,0.012655,-0.002066,0.028007,False
+300.0,H3,R1: forecast cost of gbm - constraint cost,1,-0.054192,-0.070713,-0.036690,False
+300.0,H3,R2: forecast cost of gbm - constraint cost,1,0.064428,0.054293,0.075667,True
+300.0,H1,R3: constraint cost - forecast cost of mean4,3,0.407724,0.380968,0.432258,True
+300.0,H1,R3: constraint cost - forecast cost of gbm,3,0.413226,0.392825,0.434072,True
+300.0,H1,R4: constraint cost - forecast cost of mean4,3,0.104480,0.082724,0.126178,True
+300.0,H1,R4: constraint cost - forecast cost of gbm,3,0.110992,0.091254,0.130875,True
+300.0,H2,two_weeks -> gbm saving under R0 - the same under R4,3,0.049196,0.024689,0.078732,True
+300.0,H3,R1: forecast cost of gbm - constraint cost,3,-0.003842,-0.020967,0.015814,False
+300.0,H3,R2: forecast cost of gbm - constraint cost,3,0.134821,0.118297,0.154765,True
+180.0,H1,R3: constraint cost - forecast cost of mean4,1,0.443710,0.415249,0.471367,True
+180.0,H1,R3: constraint cost - forecast cost of gbm,1,0.428526,0.407396,0.450990,True
+180.0,H1,R4: constraint cost - forecast cost of mean4,1,0.157781,0.136423,0.180165,True
+180.0,H1,R4: constraint cost - forecast cost of gbm,1,0.144917,0.124403,0.166074,True
+180.0,H2,two_weeks -> gbm saving under R0 - the same under R4,1,0.013110,-0.001183,0.027982,False
+180.0,H3,R1: forecast cost of gbm - constraint cost,1,-0.052114,-0.068876,-0.034872,False
+180.0,H3,R2: forecast cost of gbm - constraint cost,1,0.064333,0.054585,0.075491,True
+180.0,H1,R3: constraint cost - forecast cost of mean4,3,0.400945,0.374782,0.425186,True
+180.0,H1,R3: constraint cost - forecast cost of gbm,3,0.405648,0.385803,0.426058,True
+180.0,H1,R4: constraint cost - forecast cost of mean4,3,0.103928,0.081586,0.125984,True
+180.0,H1,R4: constraint cost - forecast cost of gbm,3,0.112070,0.093474,0.131006,True
+180.0,H2,two_weeks -> gbm saving under R0 - the same under R4,3,0.050552,0.025840,0.079337,True
+180.0,H3,R1: forecast cost of gbm - constraint cost,3,-0.002639,-0.019827,0.016776,False
+180.0,H3,R2: forecast cost of gbm - constraint cost,3,0.133427,0.117304,0.152893,True
+480.0,H1,R3: constraint cost - forecast cost of mean4,1,0.457702,0.428529,0.486135,True
+480.0,H1,R3: constraint cost - forecast cost of gbm,1,0.442701,0.420581,0.465824,True
+480.0,H1,R4: constraint cost - forecast cost of mean4,1,0.163174,0.141722,0.185646,True
+480.0,H1,R4: constraint cost - forecast cost of gbm,1,0.147605,0.126014,0.170154,True
+480.0,H2,two_weeks -> gbm saving under R0 - the same under R4,1,0.012984,-0.002166,0.028404,False
+480.0,H3,R1: forecast cost of gbm - constraint cost,1,-0.055500,-0.072221,-0.037682,False
+480.0,H3,R2: forecast cost of gbm - constraint cost,1,0.064758,0.054475,0.076095,True
+480.0,H1,R3: constraint cost - forecast cost of mean4,3,0.413296,0.386383,0.438201,True
+480.0,H1,R3: constraint cost - forecast cost of gbm,3,0.418890,0.398144,0.440102,True
+480.0,H1,R4: constraint cost - forecast cost of mean4,3,0.107112,0.084663,0.129132,True
+480.0,H1,R4: constraint cost - forecast cost of gbm,3,0.113034,0.093110,0.133434,True
+480.0,H2,two_weeks -> gbm saving under R0 - the same under R4,3,0.050230,0.024840,0.080366,True
+480.0,H3,R1: forecast cost of gbm - constraint cost,3,-0.004541,-0.022282,0.015518,False
+480.0,H3,R2: forecast cost of gbm - constraint cost,3,0.136208,0.119520,0.156559,True
