@@ -50,6 +50,25 @@ jobs:
             --event-treatment taxcut_2SD \
             --fields top1_share_pct \
             --output "$RUNNER_TEMP/tax-study/panel.csv"
+      - name: Fetch official WDI macro controls and audit outcome-panel coverage
+        id: wdi_probe
+        if: steps.build_panel.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.world_bank \
+            --panel "$RUNNER_TEMP/tax-study/panel.csv" \
+            --output-dir "$RUNNER_TEMP/wdi-source"
+      - name: Publish WDI country-year series and coverage audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: world-bank-macro-coverage
+          path: |
+            ${{ runner.temp }}/wdi-source/world_bank_controls.csv
+            ${{ runner.temp }}/wdi-source/world_bank_provenance.json
+            ${{ runner.temp }}/wdi-source/outcome_panel_with_macro.csv
+            ${{ runner.temp }}/wdi-source/macro_overlap_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'

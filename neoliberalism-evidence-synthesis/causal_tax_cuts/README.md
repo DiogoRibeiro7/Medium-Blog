@@ -168,6 +168,25 @@ The first audited 18-country live result, including the influence of each
 omitted country, is preserved in
 [`results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md`](results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md).
 
+### Real macro controls and missingness audit
+
+[`MACRO_CONTROLS.md`](MACRO_CONTROLS.md) documents the official World Bank WDI
+ingestion for GDP-per-capita growth, inflation, trade openness and an
+optional unemployment coverage check. This is a **data-availability and
+pre-treatment-history audit**, not a revised ATT or a reconstruction of the
+original paper's full covariate set. Run it on the existing real-data panel:
+
+```bash
+python -m causal_tax_cuts.world_bank \
+  --panel data/tax-study/panel.csv \
+  --output-dir data/wdi-source
+```
+
+It preserves all outcome rows, records exact WDI API response checksums,
+reports each indicator's missingness, and counts reforms with five available
+pre-reform years of the three core controls. The resulting complete-case
+audit must precede any covariate-adjusted estimate.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
