@@ -1,0 +1,41 @@
+name: Staffing under shift constraints
+
+# Companion of the article on staffing a call centre under shift constraints. First step: record the column schema
+# of the 311 Call Center Inquiry dataset (no data values), before the plan is written.
+
+on:
+  push:
+    branches:
+      - staffing-shift-constraints
+    paths:
+      - 'staffing-shift-constraints/**'
+      - '!staffing-shift-constraints/sources/**'
+      - '.github/workflows/staffing-shift-constraints.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: staffing-shift-constraints
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Record the dataset schema
+        run: python probe.py --out sources/schema.json
+      - name: Commit the schema
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources
+          if git diff --cached --quiet; then echo "Nothing changed."; else
+            git commit -m "staffing-shift-constraints: dataset schema (no data values)"
+            git push
+          fi
