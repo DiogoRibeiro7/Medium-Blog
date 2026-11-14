@@ -20,12 +20,12 @@ class OpenMeteo(unittest.TestCase):
     def test_jobs_unique_paths_and_order(self):
         js = fetch.jobs(Path("data"))
         self.assertEqual(len({j["path"] for j in js}), len(js))
-        self.assertEqual(len(js), len(fetch.KRISTIN_SITES) + len(fetch.SITES) + len(fetch.NODES))
+        self.assertEqual(len(js), len(fetch.KRISTIN_SITES) + len(fetch.SITES) + 2 * len(fetch.NODES))
         self.assertTrue(js[0]["key"].startswith("kristin_"))
-        self.assertTrue(js[-1]["key"].startswith("gust_"))
+        self.assertTrue(js[-1]["key"].startswith("early_"))
 
     def test_url(self):
-        j = fetch.jobs(Path("data"))[-1]
+        j = [j for j in fetch.jobs(Path("data")) if j["key"].startswith("gust_")][-1]
         u = fetch.url_for(j)
         self.assertIn("daily=wind_gusts_10m_max", u)
         self.assertIn("models=era5", u)

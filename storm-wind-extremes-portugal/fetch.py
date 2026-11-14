@@ -14,6 +14,9 @@ storm-clustering-portugal/data and are read from there. This script adds three t
 3. ERA5 daily maximum wind and gust on 26-30 January 2026 at the cells of the stations
    whose gusts during storm Kristin were reported by IPMA, and every GHCNh report from
    the five airports that kept reporting through that storm.
+4. ERA5 daily maximum 10 m wind at the 38 nodes from 1940-01-01 to 1950-09-30, the early
+   part of ERA5's back extension, so the record can be tested with the cyclone of
+   15 February 1941 in it. ERA5 before 1950 assimilates far fewer observations.
 
 ERA5 (Hersbach et al. 2020, Copernicus Climate Change Service) is served at 0.25 degrees
 by the Open-Meteo historical weather API (archive-api.open-meteo.com, CC BY 4.0). Days are
@@ -29,6 +32,7 @@ Outputs in --out:
   era5_gust/gust_<lat>_<lon>.csv.gz      date, gust_max_ms
   era5_sites/site_<key>.csv.gz           date, wind_max_ms
   era5_kristin/kristin_<key>.csv.gz      date, wind_max_ms, gust_max_ms
+  era5_early/early_<lat>_<lon>.csv.gz    date, wind_max_ms (1940-01-01 to 1950-09-30)
   era5_cells.csv                         every request: key, requested and returned
                                          coordinates, model elevation, days, missing
   kristin_reports.csv                    GHCNh reports from the airports, 26-30 Jan 2026
@@ -54,6 +58,7 @@ from urllib.request import Request, urlopen
 API = "https://archive-api.open-meteo.com/v1/archive"
 START, END = "1950-10-01", "2026-03-31"
 K_START, K_END = "2026-01-26", "2026-01-30"
+E_START, E_END = "1940-01-01", "1950-09-30"
 GHCNH = "https://www.ncei.noaa.gov/oa/global-historical-climatology-network/hourly/access/by-station/GHCNh_{sid}_por.psv"
 AGENT = "storm-wind-extremes-portugal (research; github.com/DiogoRibeiro7)"
 
@@ -117,6 +122,10 @@ def kristin_file(out: Path, key: str) -> Path:
     return out / "era5_kristin" / f"kristin_{key}.csv.gz"
 
 
+def early_file(out: Path, lat: float, lon: float) -> Path:
+    return out / "era5_early" / f"early_{lat:.2f}_{lon:.2f}.csv.gz"
+
+
 def jobs(out: Path) -> list[dict]:
     """Every Open-Meteo request, cheapest and most needed first."""
     js = []
@@ -130,6 +139,9 @@ def jobs(out: Path) -> list[dict]:
     for lat, lon in NODES:
         js.append({"key": f"gust_{lat:.2f}_{lon:.2f}", "lat": lat, "lon": lon, "start": START, "end": END,
                    "vars": ["wind_gusts_10m_max"], "cols": ["gust_max_ms"], "path": gust_file(out, lat, lon)})
+    for lat, lon in NODES:
+        js.append({"key": f"early_{lat:.2f}_{lon:.2f}", "lat": lat, "lon": lon, "start": E_START, "end": E_END,
+                   "vars": ["wind_speed_10m_max"], "cols": ["wind_max_ms"], "path": early_file(out, lat, lon)})
     return js
 
 
@@ -206,9 +218,18 @@ def write_gz(path: Path, header: list[str], rows) -> None:
     tmp.replace(path)
 
 
+def is_lfs_pointer(path: Path) -> bool:
+    """True for a Git LFS pointer file (a CSV committed before the folder was exempted from LFS)."""
+    try:
+        with open(path, "rb") as fh:
+            return fh.read(40).startswith(b"version https://git-lfs")
+    except OSError:
+        return False
+
+
 def fetch_reports(out: Path, log: list[str]) -> None:
     path = out / "kristin_reports.csv"
-    if path.exists():
+    if path.exists() and not is_lfs_pointer(path):
         print("kristin_reports.csv already on disk")
         return
     rows = []
@@ -245,7 +266,7 @@ def main(argv=None) -> int:
     log_path, cells_path = out / "fetch_log.txt", out / "era5_cells.csv"
     log = log_path.read_text().splitlines() if log_path.exists() else []
     cells = {}
-    if cells_path.exists():
+    if cells_path.exists() and not is_lfs_pointer(cells_path):
         with open(cells_path) as fh:
             for r in csv.DictReader(fh):
                 cells[r["key"]] = r
