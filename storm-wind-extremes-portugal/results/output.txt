@@ -21,17 +21,17 @@ Likelihood ratio, pooled shape against Gumbel at every node: 53.2 (1 df if the n
 
 Nodes ranked by Kristin's return period (pooled shape, with 2025/26):
   lat    lon    Kristin  50-yr   rank  T sep(in)  T sep(ex)  T pool(in) [95% boot] (share inf)  T pool(ex)  T Gumbel
-  39.00  -8.00    15.0    12.8     1        512      15851       2121 [241 to inf] (4%)      11657       304
+  39.00  -8.00    15.0    12.8     1        512      15851       2121 [240 to inf] (4%)      11657       304
   39.50  -8.00    15.7    14.0     1        197        714        522 [118 to >100000] (1%)       1300       144
   39.50  -9.00    19.0    17.0     1         65        101        514 [112 to >100000] (0%)       1213       174
   39.50  -7.50    14.2    12.9     1        162        444        450 [105 to >100000] (1%)       1044       133
-  39.00  -7.50    13.6    12.4     1        173        568        373 [93 to 64503] (0%)        817       116
-  38.50  -8.00    13.9    12.8     1        303       8968        313 [84 to 36631] (0%)        663        98
-  39.00  -8.50    15.5    14.3     1        151        361        259 [71 to 22406] (0%)        493        92
-  39.00  -9.00    15.8    15.1     2         96        164        133 [48 to 2631] (0%)        209        61
-  38.50  -8.50    14.7    14.2     1        293       2651        104 [41 to 1335] (0%)        160        45
+  39.00  -7.50    13.6    12.4     1        173        568        373 [93 to 64399] (0%)        817       116
+  38.50  -8.00    13.9    12.8     1        303       8968        313 [84 to 36633] (0%)        663        98
+  39.00  -8.50    15.5    14.3     1        151        361        259 [71 to 22400] (0%)        493        92
+  39.00  -9.00    15.8    15.1     2         96        164        133 [48 to 2630] (0%)        209        61
+  38.50  -8.50    14.7    14.2     1        293       2651        104 [41 to 1333] (0%)        160        45
   39.50  -8.50    15.2    14.7     3         43         54         99 [35 to 711] (0%)        140        56
-  38.75  -9.00    16.0    15.6     2        100        154         84 [33 to 887] (0%)        121        41
+  38.75  -9.00    16.0    15.6     2        100        154         84 [33 to 888] (0%)        121        41
   38.50  -7.50    12.2    12.1     2         61         86         61 [28 to 334] (0%)         81        35
   38.00  -8.50    13.9    14.2     2         69         91         32 [18 to 100] (0%)         39        20
   38.00  -8.00    12.5    13.2     3         26         28         19 [12 to 43] (0%)         22        14
@@ -72,19 +72,19 @@ Storms per season above the threshold: median 2.71 over nodes
 Extremal index (days above the threshold per storm, inverted): runs 0.75, intervals estimator 0.70 (medians over nodes)
 Pooled GPD shape: xi = -0.122 (season-bootstrap 95% interval -0.197 to -0.065)
    39.00 N -8.00 E: return period from peaks over threshold 2010, from season maxima 2121
-   39.50 N -8.00 E: return period from peaks over threshold 1057, from season maxima 522
+   39.50 N -8.00 E: return period from peaks over threshold 1056, from season maxima 522
    39.50 N -9.00 E: return period from peaks over threshold 1315, from season maxima 514
    39.50 N -7.50 E: return period from peaks over threshold 309, from season maxima 450
    39.00 N -7.50 E: return period from peaks over threshold 475, from season maxima 373
    38.50 N -8.00 E: return period from peaks over threshold 226, from season maxima 313
 
-2f. How much the answer depends on the shape
+2e. How much the answer depends on the shape
 --------------------------------------------
-   39.00 N -8.00 E: return period at xi = -0.18: 23396; at xi = -0.10: 2123; at xi = -0.02: 441; Gumbel (xi = 0): 304
-   39.50 N -8.00 E: return period at xi = -0.18: 2815; at xi = -0.10: 523; at xi = -0.02: 187; Gumbel (xi = 0): 144
-   39.50 N -9.00 E: return period at xi = -0.18: 1916; at xi = -0.10: 514; at xi = -0.02: 218; Gumbel (xi = 0): 174
+   39.00 N -8.00 E: return period at xi = -0.18: 23413; at xi = -0.10: 2123; at xi = -0.02: 441; Gumbel (xi = 0): 304
+   39.50 N -8.00 E: return period at xi = -0.18: 2818; at xi = -0.10: 523; at xi = -0.02: 187; Gumbel (xi = 0): 144
+   39.50 N -9.00 E: return period at xi = -0.18: 1917; at xi = -0.10: 514; at xi = -0.02: 218; Gumbel (xi = 0): 174
 
-2e. The record back to 1940
+2f. The record back to 1940
 ---------------------------
 Seasons 1940/41 to 1949/50 added (10); ERA5 before 1950 assimilates far fewer observations
 15 February 1941: highest node 22.9 m/s at 37.00 N -8.00 E; Kristin's highest 19.1 m/s at 37.00 N -8.00 E
@@ -165,7 +165,7 @@ Portalegre, 590 m                  zone A: 41 seasons 1975/76-2021/22; own xi -0
 Lisbon, Gago Coutinho (urban)      zone A: 35 seasons 1984/85-2021/22; own xi -0.25, sigma/mu 0.25; 50-yr synoptic 18.3 m/s (regional shape 20.0; sampling-corrected 22.3); record 18.5 in 1985/86; basic velocity 27
 Vila Real, 479 m                   zone A: 33 seasons 1977/78-2021/22; own xi -0.28, sigma/mu 0.25; 50-yr synoptic 14.5 m/s (regional shape 16.2; sampling-corrected 18.1); record 15.4 in 1979/80; basic velocity 27
 Monte Real air base                zone A: 19 seasons 2006/07-2025/26; own xi +0.15, sigma/mu 0.19; 50-yr synoptic 25.1 m/s (regional shape 22.3; sampling-corrected 25.0); record 27.0 in 2025/26; basic velocity 27
-Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.4 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
+Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.3 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
 Station days dropped by the ERA5 cross-check (>= 20 m/s and > 2.2 x the cell): 10
    portalegre  1982-02-17: station 26.0 (synoptic) / 26.0 (all), ERA5 cell 3.1, lowest pressure 1012 hPa
    portalegre  1984-03-28: station 31.4 (synoptic) / 31.4 (all), ERA5 cell 8.1, lowest pressure 1016 hPa
