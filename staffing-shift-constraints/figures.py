@@ -163,7 +163,7 @@ def fig3(res: Path, out: Path) -> None:
     ax.set_title("Which hours set the roster: positive shadow price, perfect forecast", loc="left")
     ax.set_xticks(range(0, 24, 2), [f"{x:02d}:00" for x in range(0, 24, 2)])
     ax.set_xlabel("hour of the day")
-    ax.legend(frameon=False, loc="upper center")
+    ax.legend(frameon=False, loc="center right")
     ax.grid(axis="y", color=GRID, lw=0.6)
     ax.set_axisbelow(True)
     fig.tight_layout()
