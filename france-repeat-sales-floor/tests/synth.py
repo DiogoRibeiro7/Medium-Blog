@@ -56,6 +56,8 @@ def sales_by_year() -> dict[int, list[dict]]:
     rows = []
     # 1 Bordeaux house: resold at exactly the old price
     rows += house("2021-1", "2021-03-01", 200000, "33", "33001000AB0001")
+    for r in rows:
+        r["adresse_nom_voie"] = "RUE ANNE, COMTE DE TOURVILLE"     # a quoted field with a comma
     rows += house("2024-1", "2024-06-01", 200000, "33", "33001000AB0001")
     # 2 Paris flat with cellar: loss then gain; lot numbers written with and without zeros
     rows += flat("2021-2", "2021-05-01", 400000, "75", "75101000CD0002", ["12", "0003"])

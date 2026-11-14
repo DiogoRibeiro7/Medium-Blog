@@ -150,7 +150,7 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
                code_nature_culture AS cult,
                TRY_CAST(surface_terrain AS DOUBLE) AS st
         FROM (SELECT {cols} FROM read_csv({files}, header=true, all_varchar=true,
-                                          union_by_name=true, delim=','))
+                                          union_by_name=true, delim=',', quote='"', escape='"'))
     """)
     stats["rows"] = _one(con, "SELECT count(*) FROM r")
     stats["first_date"] = str(_one(con, "SELECT min(d) FROM r"))
