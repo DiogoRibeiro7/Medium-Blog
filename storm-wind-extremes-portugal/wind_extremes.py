@@ -1092,8 +1092,8 @@ def fig_dependence(dist, theta, cnt, M):
 EQUATION_TEX = {
     "eq01_gev": r"$G(x) = \exp\left\{-\left[1 + \xi\,\dfrac{x - \mu}{\sigma}\right]^{-1/\xi}\right\}$",
     "eq02_return_period": r"$T(x) = \dfrac{1}{1 - G(x)}\ \ \mathrm{seasons}, \qquad z_T = \mu + \dfrac{\sigma}{\xi}\left[\left(-\ln(1 - 1/T)\right)^{-\xi} - 1\right]$",
-    "eq03_profile": r"$\left\{\,T : 2\left[\ell(\hat\mu, \hat\sigma, \hat\xi) - \max_{\sigma, \xi}\ \ell\left(\mu_T(\sigma, \xi), \sigma, \xi\right)\right] \leq \chi^2_{1,\,0.95}\,\right\}$",
-    "eq04_pooled": r"$\ell_{\mathrm{pool}}(\mu_1, \ldots, \mu_{38}, \sigma_1, \ldots, \sigma_{38}, \xi) = \sum_{j=1}^{38} \sum_{s=1}^{76} \ln g(m_{sj};\, \mu_j, \sigma_j, \xi)$",
+    "eq03_pooled": r"$\ell_{\mathrm{pool}}(\mu_1, \ldots, \mu_{38}, \sigma_1, \ldots, \sigma_{38}, \xi) = \sum_{j=1}^{38} \sum_{s=1}^{76} \ln g(m_{sj};\, \mu_j, \sigma_j, \xi)$",
+    "eq04_profile": r"$\left\{\,T : 2\left[\ell(\hat\mu, \hat\sigma, \hat\xi) - \max_{\sigma, \xi}\ \ell\left(\mu_T(\sigma, \xi), \sigma, \xi\right)\right] \leq \chi^2_{1,\,0.95}\,\right\}$",
     "eq05_trend": r"$\mu_j(s) = \mu_{0j}\,(1 + \beta_j\,\tau_s), \qquad \ln\sigma_j(s) = \ln\sigma_{0j} + \gamma_j\,\tau_s, \qquad \tau_s = \dfrac{s - 1987.5}{10}$",
     "eq06_annex": r"$\dfrac{v_b(T)}{v_{b,0}} = 0.7 - 0.077\,\ln\left[-\ln\left(1 - 1/T\right)\right]$",
     "eq07_peak": r"$v_p = v_m\sqrt{1 + 7\,I_v}, \qquad I_v(10\,\mathrm{m}) = \dfrac{1}{\ln(10/0.05)} = 0.189$",
