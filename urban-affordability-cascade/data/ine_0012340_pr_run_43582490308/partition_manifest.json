@@ -1,0 +1,67 @@
+{
+  "all_136_pairs_reconciled": false,
+  "candidate_slice_semantics_verified": false,
+  "capture_count": 1,
+  "capture_protocol": "ine_0012340_2021_dico_partition_candidate_v1",
+  "captured_at_utc": "2026-11-14T09:52:55.277148+00:00",
+  "completed_json_captures": 1,
+  "dimension": "Dim2",
+  "items": [
+    {
+      "candidate_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1310&lang=PT",
+      "code": "1310",
+      "filename": "ine_0012340_dim2_1310_candidate.json",
+      "filter_effect_verified": false,
+      "municipal_pair_counts_reconciled": false,
+      "municipality": "Paredes",
+      "observed_period_keys": [
+        "2021"
+      ],
+      "requested_dico": "1310",
+      "requested_dimension": "Dim2",
+      "response_url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1310&lang=PT",
+      "schema_outline": {
+        "dados_period_keys": [
+          "2021"
+        ],
+        "dados_period_sizes": {
+          "2021": 347
+        },
+        "first_item_keys": [
+          "Dados",
+          "DataExtracao",
+          "DataUltimoAtualizacao",
+          "IndicadorCod",
+          "IndicadorDsg",
+          "MetaInfUrl",
+          "Sucesso",
+          "UltimoPref"
+        ],
+        "first_item_type": "dict",
+        "root_items": 1,
+        "root_type": "array"
+      },
+      "sha256": "8f7b8b757c271b1e7539e4be4511ba1936ba16084abd7c18d105cacb21a4b1be",
+      "size_bytes": 58237,
+      "status": "captured_unverified"
+    }
+  ],
+  "metadata_dimensions_checked_against_panel": true,
+  "metadata_matches_archived_2026_11_12_sha256": false,
+  "requested_codes": [
+    "1310"
+  ],
+  "source_data_is_residential_migration": false,
+  "source_metadata": {
+    "amp_municipalities_validated_in_both_dimensions": 17,
+    "geographic_dimensions": [
+      2,
+      3
+    ],
+    "indicator": "0012340",
+    "metadata_sha256": "c37b58fe9d0a6f6a76a8ea4d88d7abab77ded4f7cc9182304687635f4c4d3536",
+    "metadata_unit": "Número (N.º)",
+    "period": "2021"
+  },
+  "source_metadata_sha256": "c37b58fe9d0a6f6a76a8ea4d88d7abab77ded4f7cc9182304687635f4c4d3536"
+}

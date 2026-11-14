@@ -41,6 +41,10 @@ FIRST_BATCH_SOURCE_HASHES = {
     "1306": "17b123803d28e788dceaf4717e79b508384642445bdab41f6bb4cd58df04ab68",
     "1308": "c570bed15c05300c8c766f3c7c105065b1224a46e7e12e65a319b124f99a96f0",
 }
+PAREDES_RETRY_RUN = ROOT / "data" / "ine_0012340_pr_run_43582490308"
+PAREDES_RETRY_SOURCE_SHA256 = (
+    "8f7b8b757c271b1e7539e4be4511ba1936ba16084abd7c18d105cacb21a4b1be"
+)
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -556,6 +560,78 @@ class FirstBatchINESliceAuditTests(unittest.TestCase):
             if first != second
         }
         self.assertEqual(len(unique_pairs), 108)
+
+
+class ParedesINESliceAuditTests(unittest.TestCase):
+    """Reconcile independently captured Paredes after the batch HTTP 500."""
+
+    def test_paredes_retry_extends_to_115_unique_pairs(self) -> None:
+        codes = municipality_codes_from_panel()
+        source = PAREDES_RETRY_RUN / "ine_0012340_dim2_1310_candidate.json"
+        manifest = PAREDES_RETRY_RUN / "partition_manifest.json"
+        receipt = json.loads(manifest.read_text(encoding="utf-8"))
+        self.assertEqual(receipt["requested_codes"], ["1310"])
+        self.assertEqual(receipt["completed_json_captures"], 1)
+        self.assertEqual(receipt["items"][0]["status"], "captured_unverified")
+        raw = source.read_bytes()
+        self.assertEqual(len(raw), 58237)
+        self.assertEqual(
+            hashlib.sha256(raw).hexdigest(), PAREDES_RETRY_SOURCE_SHA256,
+        )
+
+        with tempfile.TemporaryDirectory() as folder:
+            report = run(source, manifest, "1310", Path(folder) / "audit.json")
+        self.assertEqual(report["source_records"], 347)
+        self.assertEqual(report["matched_pairs"], 16)
+        self.assertEqual(report["mismatched_pairs"], 0)
+        self.assertEqual(report["diagonal_count"], 0)
+        self.assertEqual(report["status"], "partial_match")
+        self.assertFalse(report["full_17_municipality_matrix_reconciled"])
+        self.assertEqual(
+            json.loads((PAREDES_RETRY_RUN / "audit_1310.json").read_text(
+                encoding="utf-8"
+            )), report,
+        )
+
+        # All 45 independently observed reverse views must agree exactly.
+        source_paths = {
+            "0104": SECOND_RUN / "ine_0012340_dim2_0104_candidate.json",
+            "0107": SECOND_RUN / "ine_0012340_dim2_0107_candidate.json",
+            "0109": THIRD_RUN / "ine_0012340_dim2_0109_candidate.json",
+            "0113": FOURTH_RUN / "ine_0012340_dim2_0113_candidate.json",
+            "0116": FIFTH_RUN / "ine_0012340_dim2_0116_candidate.json",
+            "0119": SIXTH_RUN / "ine_0012340_dim2_0119_candidate.json",
+            "1304": SEVENTH_RUN / "ine_0012340_dim2_1304_candidate.json",
+            **{
+                code: FIRST_BATCH_RUN / f"ine_0012340_dim2_{code}_candidate.json"
+                for code in FIRST_BATCH_SOURCE_HASHES
+            },
+            "1310": source,
+        }
+        observed: dict[str, dict[str, int]] = {}
+        for code, path in source_paths.items():
+            observed[code], source_records = parse_dim2_slice(
+                path.read_bytes(), code, codes,
+            )
+            self.assertEqual(source_records, 347)
+
+        reciprocal_count = 0
+        for first in sorted(observed):
+            for second in sorted(observed):
+                if first < second:
+                    self.assertEqual(observed[first][second], observed[second][first])
+                    reciprocal_count += 1
+        self.assertEqual(len(observed), 10)
+        self.assertEqual(reciprocal_count, 45)
+        self.assertEqual(observed["1310"]["1306"], 1562)
+        self.assertEqual(observed["1310"]["1308"], 1268)
+        unique_pairs = {
+            tuple(sorted((first, second)))
+            for first, interactions in observed.items()
+            for second in interactions
+            if first != second
+        }
+        self.assertEqual(len(unique_pairs), 115)
 
 
 if __name__ == "__main__":

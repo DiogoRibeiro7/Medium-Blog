@@ -2,10 +2,11 @@
 
 **Status (14 November 2026): independently captured official Arouca, Espinho,
 Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira, Vale de Cambra,
-Gondomar, Maia and Matosinhos slices have been preserved and checked against
-108 of the 136 frozen pairs.** All 144 observed off-diagonal source views match
-the pinned third-party counts; all thirty-six reciprocal links among these
-municipalities agree in both directions. The remaining **28 pairs** and
+Gondomar, Maia, Matosinhos and Paredes slices have been preserved and checked
+against 115 of the 136 frozen pairs.** All 160 observed off-diagonal source
+views match the pinned third-party counts; all forty-five reciprocal links
+among these municipalities agree in both directions. The remaining
+**21 pairs** and
 full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
@@ -568,14 +569,54 @@ the frozen third-party values without mismatches. The reciprocal
 Maia–Matosinhos count is **16,154** in both independent responses. All
 36 reciprocal counts among the nine captured municipalities agree.
 
-Nine official slices supply **144 off-diagonal source views** covering
-`9 × 16 − 36 = 108` unique undirected pairs. **28 of 136 pairs remain
-without an independent official view**; the failed Paredes response cannot
-be treated as a zero, an observed count, or successful verification.
-The next bounded PR source probe retries **only Paredes** using
+Nine official slices supplied **144 off-diagonal source views** covering
+`9 × 16 − 36 = 108` unique undirected pairs. **28 of 136 pairs lacked
+an independent official view at that stage**; the failed Paredes response
+was not treated as a zero, an observed count, or successful verification.
+The following bounded PR source probe retried **only Paredes** using
 `start_index=9`, `count=1`, `dimension=Dim2`. The offline tests pin both
 exact response hashes, original failed-item manifest, both audit reports,
 all 36 reciprocal links and the 108-pair count.
 
 This indicator still measures **work/study interactions**, not residential
 moves, housing-related displacement or causal geographical contagion.
+
+### Tenth successful probe: independent Paredes retry
+
+The bounded one-municipality source probe
+[#43582490308](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43582490308)
+successfully captured Paredes (`Dim2=1310`) on **14 November 2026** after
+the earlier three-municipality batch failed with HTTP 500. The unchanged
+**58,237-byte** official JSON, original successful one-item manifest and
+separately reproduced offline audit are archived under
+[`data/ine_0012340_pr_run_43582490308/`](data/ine_0012340_pr_run_43582490308/).
+The raw response SHA-256 is
+`8f7b8b757c271b1e7539e4be4511ba1936ba16084abd7c18d105cacb21a4b1be`.
+
+The response contains a single 2021 period, 347 distinct `dim_3` codes,
+all 17 AMP municipal counterparts, `geocod=1310` and a zero diagonal.
+The independent count audit matches **16 of 16** frozen nonself pairs with
+no discrepancy. All nine reverse official views from previously captured
+municipalities agree, including Maia–Paredes (**1,562**) and
+Matosinhos–Paredes (**1,268**) in both directions.
+
+Ten municipality captures now supply **160 off-diagonal source views**,
+covering `10 × 16 − 45 = 115` unique undirected AMP pairs. All **45**
+reciprocal links among captured municipalities are symmetric; **21 of
+136 pairs** still lack any independently captured official view.
+The offline regression pins the Paredes source SHA-256, deterministic audit,
+all 16 comparisons, all 45 observed reciprocals and 115-pair coverage.
+
+Reproduce the Paredes audit offline from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43582490308/ine_0012340_dim2_1310_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43582490308/partition_manifest.json \
+  --municipality-code 1310 \
+  --output-json /tmp/ine-0012340-paredes-partial-audit.json
+```
+
+Despite successful reproduction, these are **2021 work/study interaction**
+counts. Residential displacement, commuting direction and a causal
+housing-affordability cascade are **not** established by this indicator.
