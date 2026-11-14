@@ -185,6 +185,15 @@ def fit_gev(x, Xmu=None, Xsig=None, start=None, fixed_xi=None, hessian=False, xi
     if best is None:
         raise RuntimeError("no feasible starting value for the GEV fit")
     theta, val, conv = best
+    # A shape that ends on a bound is a corner solution; L-BFGS-B stops there at slightly
+    # different points on different machines. Refit with the shape held at the bound, a
+    # smooth problem in the remaining parameters, so the answer is the same everywhere.
+    if fixed_xi is None:
+        for b in xi_bounds:
+            if abs(theta[-1] - b) < 1e-3:
+                fb = fit_gev(x, Xmu=Xmu, Xsig=Xsig, start=np.r_[theta[:-1], b], fixed_xi=b,
+                             xi_bounds=xi_bounds, multi_start=multi_start)
+                theta, val, conv = fb.theta, fb.nll, fb.converged
     cov = None
     if hessian and fixed_xi is None:
         H = numerical_hessian(lambda t: gev_nll(t, x, Xm, Xs, xi_bounds)[1], theta)
