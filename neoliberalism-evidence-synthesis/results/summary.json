@@ -1,0 +1,97 @@
+{
+  "housing_wage": {
+    "aggregate_warning": "EU27 overlaps the member states; not an independent treatment unit.",
+    "denominator_warning": "FTE salary is a national average, before tax; it is not the median wage or household disposable income.",
+    "endpoints": {
+      "DE": {
+        "house_price_to_fte_salary_growth_pct": 8.285,
+        "hpi_2025_status": "",
+        "nominal_fte_salary_growth_pct": 41.006,
+        "nominal_house_price_growth_pct": 52.688,
+        "official_price_income_growth_pct": 1.586,
+        "salary_2025_status": ""
+      },
+      "ES": {
+        "house_price_to_fte_salary_growth_pct": 39.727,
+        "hpi_2025_status": "",
+        "nominal_fte_salary_growth_pct": 29.255,
+        "nominal_house_price_growth_pct": 80.605,
+        "official_price_income_growth_pct": 24.54,
+        "salary_2025_status": ""
+      },
+      "EU27_2020": {
+        "house_price_to_fte_salary_growth_pct": 16.705,
+        "hpi_2025_status": "",
+        "nominal_fte_salary_growth_pct": 38.717,
+        "nominal_house_price_growth_pct": 61.89,
+        "official_price_income_growth_pct": 6.79,
+        "salary_2025_status": ""
+      },
+      "FR": {
+        "house_price_to_fte_salary_growth_pct": 1.946,
+        "hpi_2025_status": "",
+        "nominal_fte_salary_growth_pct": 24.826,
+        "nominal_house_price_growth_pct": 27.255,
+        "official_price_income_growth_pct": -5.627,
+        "salary_2025_status": ""
+      },
+      "PT": {
+        "house_price_to_fte_salary_growth_pct": 66.493,
+        "hpi_2025_status": "",
+        "nominal_fte_salary_growth_pct": 58.473,
+        "nominal_house_price_growth_pct": 163.847,
+        "official_price_income_growth_pct": 60.857,
+        "salary_2025_status": ""
+      }
+    },
+    "geographies": [
+      "PT",
+      "ES",
+      "FR",
+      "DE",
+      "EU27_2020"
+    ],
+    "period": "2015-2025",
+    "price_warning": "HPI is a national property transaction price index; it is not the price or mortgage burden of a specific home."
+  },
+  "portugal_labour_share": {
+    "denominator": "GDP at market prices",
+    "inference_warning": "Do not infer a policy effect or a universally declining labour share from definition-sensitive endpoints.",
+    "period": "1995-2024",
+    "self_employment_treatments": {
+      "employment": {
+        "change_1995_2024_percentage_points": -2.666,
+        "level_1995_pct": 58.998,
+        "level_2024_pct": 56.332
+      },
+      "hours": {
+        "change_1995_2024_percentage_points": -4.215,
+        "level_1995_pct": 59.436,
+        "level_2024_pct": 55.221
+      },
+      "mixed_all": {
+        "change_1995_2024_percentage_points": -4.178,
+        "level_1995_pct": 62.129,
+        "level_2024_pct": 57.951
+      },
+      "raw": {
+        "change_1995_2024_percentage_points": 0.879,
+        "level_1995_pct": 46.796,
+        "level_2024_pct": 47.675
+      }
+    }
+  },
+  "status": "descriptive_only_not_causal",
+  "us_context": {
+    "causal_warning": "Tax rate is statutory, not effective; co-movement with Gini or GDP cannot identify tax-reform effects.",
+    "household_money_income_gini_1967": 0.397,
+    "household_money_income_gini_1992": 0.433,
+    "household_money_income_gini_1993": 0.454,
+    "household_money_income_gini_2018": 0.486,
+    "method_break": "1993 Current Population Survey redesign: Gini levels across the break are not strictly comparable.",
+    "period": "1967-2018 for Gini; 1964-2018 for tax and macro",
+    "top_statutory_tax_rate_pct_1980": 70.0,
+    "top_statutory_tax_rate_pct_1988": 28.0,
+    "top_statutory_tax_rate_pct_2018": 37.0
+  }
+}

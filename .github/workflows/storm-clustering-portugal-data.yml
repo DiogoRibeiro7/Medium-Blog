@@ -1,0 +1,64 @@
+name: Storm clustering in Portugal — fetch station records
+
+on:
+  push:
+    branches: [storm-clustering-portugal]
+    paths:
+      - 'storm-clustering-portugal/fetch.py'
+      - '.github/workflows/storm-clustering-portugal-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash
+        working-directory: storm-clustering-portugal
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          # Only this project's folder: elsewhere in the repository a file with CRLF line
+          # endings shows as modified after checkout and blocks the rebase before pushing.
+          sparse-checkout: storm-clustering-portugal
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Offline parser tests
+        run: python -m unittest discover -s tests -p "test_fetch.py" -v
+
+      - name: Download GHCNh station records and the NAO index
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Storm clustering in Portugal: NOAA station snapshot ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
+          fi
+
+      - name: Fail if the download failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          tail -n 40 data/fetch_log.txt || true
+          exit 1

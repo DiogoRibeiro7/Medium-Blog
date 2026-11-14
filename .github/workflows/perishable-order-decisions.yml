@@ -1,0 +1,84 @@
+name: Perishable order decisions
+
+# Companion of the article on algorithms against the decisions around them, for daily perishable orders. Pull
+# requests: lint and tests. Pushes to the branch: also download FreshRetailNet-50K at the recorded revision, run the
+# registered test and commit the sources, results and figures.
+
+on:
+  push:
+    branches:
+      - perishable-order-decisions
+    paths:
+      - 'perishable-order-decisions/**'
+      - '!perishable-order-decisions/results/**'
+      - '!perishable-order-decisions/figures/**'
+      - '!perishable-order-decisions/sources/**'
+      - '.github/workflows/perishable-order-decisions.yml'
+  pull_request:
+    paths:
+      - 'perishable-order-decisions/**'
+      - '.github/workflows/perishable-order-decisions.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: perishable-order-decisions-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: perishable-order-decisions
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: perishable-order-decisions/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint
+        run: ruff check . && ruff format --check .
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Cache the dataset
+        if: github.event_name != 'pull_request'
+        uses: actions/cache@v4
+        with:
+          path: perishable-order-decisions/data
+          key: frn50k-${{ hashFiles('perishable-order-decisions/sources/REVISION') }}
+      - name: Download the dataset at the recorded revision
+        if: github.event_name != 'pull_request'
+        run: python fetch.py --data data --sources sources
+      - name: The registered test
+        if: github.event_name != 'pull_request'
+        run: python evaluate.py --data data --out results --orders data/orders.npz
+      - name: Descriptive numbers quoted in the article
+        if: github.event_name != 'pull_request' && hashFiles('perishable-order-decisions/details.py') != ''
+        run: python details.py --orders data/orders.npz --results results --out results/details.txt
+      - name: Figures
+        if: github.event_name != 'pull_request' && hashFiles('perishable-order-decisions/figures.py') != ''
+        run: python figures.py --results results --out figures
+      - name: Commit sources, results and figures
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources results
+          if [ -d figures ]; then git add figures; fi
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "perishable-order-decisions: sources and results from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
