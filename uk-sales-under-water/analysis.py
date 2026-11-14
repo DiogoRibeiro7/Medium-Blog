@@ -36,7 +36,7 @@ REF_BIN = 0                     # [0, 2%)
 PERIODS = [("all", 2000, 2025), ("2001-2007", 2001, 2007), ("2008-2012", 2008, 2012),
            ("2013-2021", 2013, 2021), ("2022-2025", 2022, 2025)]
 MIN_BIN_STOCK = 5000
-EPISODES = [("2007-2009", 2007, 2009, 2005), ("2007-2010", 2007, 2010, 2005),
+EPISODES = [("2007-2009", 2007, 2009, 2005), ("2007-2010", 2007, 2010, 2005), ("2009-2010", 2009, 2010, 2007),
             ("2022-2024", 2022, 2024, 2020)]
 M_BAND_ORDER = ["below_m10", "m10_0", "0_10", "10_25", "25_50", "above_50"]
 DUR_BAND_EDGES = [(0, 2), (2, 5), (5, 10), (10, 99)]
@@ -217,15 +217,17 @@ def district_test(dy: pd.DataFrame, y0: int, y1: int, ypre: int) -> dict:
     def resid(v):
         g = np.linalg.lstsq(Z * sw[:, None], v * sw, rcond=None)[0]
         return v - Z @ g
-    ry, rx = resid(W.dy.to_numpy()), resid(W.under.to_numpy())
-    q = pd.qcut(rx, 10, labels=False, duplicates="drop")
-    binned = pd.DataFrame({"q": q, "x": rx + np.average(d.under, weights=d.w),
-                           "y": ry + np.average(d.dy, weights=d.w), "w": d.w})
-    bins = binned.groupby("q").apply(lambda g: pd.Series({"x": np.average(g.x, weights=g.w),
-                                                           "y": np.average(g.y, weights=g.w),
-                                                           "n": len(g)}), include_groups=False)
-    bins = bins.reset_index().assign(episode=out["episode"])
-    return out, bins
+    mx, my = np.average(d.under, weights=d.w), np.average(d.dy, weights=d.w)
+    frames = []
+    for label, xv, yv in [("controls", resid(W.under.to_numpy()), resid(W.dy.to_numpy())),
+                          ("area only", W.under.to_numpy(), W.dy.to_numpy())]:
+        q = pd.qcut(xv, 10, labels=False, duplicates="drop")
+        binned = pd.DataFrame({"q": q, "x": xv + mx, "y": yv + my, "w": d.w.to_numpy()})
+        bins = binned.groupby("q").apply(lambda g: pd.Series({"x": np.average(g.x, weights=g.w),
+                                                               "y": np.average(g.y, weights=g.w),
+                                                               "n": len(g)}), include_groups=False)
+        frames.append(bins.reset_index().assign(episode=out["episode"], spec=label))
+    return out, pd.concat(frames)
 
 
 def main() -> int:
@@ -302,15 +304,43 @@ def main() -> int:
         w(f"  {a}->{b}: fall {100 * fall:.2f} pp ({100 * fall / c.rate[a]:.1f}%), without lock-in "
           f"{100 * fall_cf:.2f} pp; share of the fall due to lock-in {pct((fall - fall_cf) / fall)}; "
           f"with everyone below +10% selling like +10-20%: {pct((fall - fall_w) / fall)}")
-    for name in ["2008-2012", "2022-2025"]:
+    # each year with the curve estimated for its own period
+    parts = []
+    for name, a, b in PERIODS[1:]:
         cp = cdf[cdf.period == name].copy()
-        cp.attrs["pooled"] = []
-        cfp = counterfactual(hc, cp).set_index("year")
-        a, b = (2007, 2009) if name == "2008-2012" else (2022, 2024)
-        fall = cfp.rate[a] - cfp.rate[b]
-        fall_cf = cfp.rate_without_lock_in[a] - cfp.rate_without_lock_in[b]
-        w(f"  with the {name} curve: {a}->{b} share of the fall due to lock-in {pct((fall - fall_cf) / fall)}; "
-          f"drag in {b} {100 * cfp.lock_in_drag[b]:.2f} pp")
+        cp.attrs["pooled"] = [int(x) for x in curves[[c.period.iloc[0] for c in curves].index(name)].attrs["pooled"]]
+        cfp = counterfactual(hc[(hc.year >= a) & (hc.year <= b)], cp)
+        cfp["curve"] = name
+        cfp["plateau"] = cfp.attrs["plateau"]
+        parts.append(cfp)
+    cfper = pd.concat(parts).sort_values("year")
+    cfper.to_csv(RES / "counterfactual_by_period.csv", index=False, float_format="%.6g")
+    w("  with each period's own curve (narrow: m < 0 sells like [0, 2%); wide: m < +10% sells like [+10%, +20%))")
+    for r in cfper.itertuples():
+        if r.year >= 2007:
+            w(f"    {r.year} ({r.curve}, plateau {100 * r.plateau:+.2f} pp): rate {pct(r.rate, 2)}; narrow drag "
+              f"{100 * r.lock_in_drag:.2f} pp; wide drag {100 * r.position_drag:.2f} pp = "
+              f"{pct(r.position_drag / r.rate)} of the actual rate")
+    cp_ = cfper.set_index("year")
+    for a, b in [(2007, 2009), (2022, 2024), (2022, 2023)]:
+        fall = cp_.rate[a] - cp_.rate[b]
+        fw = cp_.rate_without_position[a] - cp_.rate_without_position[b]
+        fn = cp_.rate_without_lock_in[a] - cp_.rate_without_lock_in[b]
+        w(f"    {a}->{b}: share of the fall, narrow {pct((fall - fn) / fall)}, wide {pct((fall - fw) / fall)}")
+    yrs = [2009, 2010, 2011, 2012, 2013]
+    w(f"    2009-2013 average: actual rate {pct(cp_.rate[yrs].mean(), 2)}, wide drag "
+      f"{100 * cp_.position_drag[yrs].mean():.2f} pp ({pct((cp_.position_drag[yrs] / cp_.rate[yrs]).mean())} of "
+      f"the actual rate); resales lost {int((cp_.position_drag[yrs] * cp_.stock[yrs]).sum()):,} "
+      f"against {int(cp_.resales[yrs].sum()):,} that happened")
+    # raw resale rates by band of m, owners held 2 to 5 years, selected years
+    w("  raw annual resale rate by band of m, owners held 2-5 whole years:")
+    raw = hc[hc.dur_year.between(2, 4)].copy()
+    raw["band"] = pd.cut(raw.m_bin * M_BIN, [-1, -0.10, 0, 0.10, 0.25, 9], right=False,
+                         labels=["below -10%", "-10% to 0", "0 to +10%", "+10% to +25%", "above +25%"])
+    for y in [2009, 2010, 2012, 2024]:
+        g = raw[raw.year == y].groupby("band", observed=True)[["stock", "resales"]].sum()
+        w(f"    {y}: " + "; ".join(f"{b} {pct(r.resales / r.stock, 2)} (stock {int(r.stock):,})"
+                                for b, r in g.iterrows() if r.stock > 0))
 
     # [4] districts
     w("")

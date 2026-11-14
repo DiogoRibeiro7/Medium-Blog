@@ -81,19 +81,71 @@ Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 79
   2007->2008: fall 4.06 pp (55.6%), without lock-in 4.07 pp; share of the fall due to lock-in -0.1%; with everyone below +10% selling like +10-20%: 0.2%
   2022->2023: fall 0.93 pp (24.0%), without lock-in 0.93 pp; share of the fall due to lock-in -0.3%; with everyone below +10% selling like +10-20%: -1.2%
   2022->2024: fall 0.64 pp (16.6%), without lock-in 0.65 pp; share of the fall due to lock-in -2.0%; with everyone below +10% selling like +10-20%: 8.4%
-  with the 2008-2012 curve: 2007->2009 share of the fall due to lock-in 3.4%; drag in 2009 0.14 pp
-  with the 2022-2025 curve: 2022->2024 share of the fall due to lock-in 0.5%; drag in 2024 0.00 pp
+  with each period's own curve (narrow: m < 0 sells like [0, 2%); wide: m < +10% sells like [+10%, +20%))
+    2007 (2001-2007, plateau +2.65 pp): rate 7.30%; narrow drag 0.00 pp; wide drag 0.33 pp = 4.5% of the actual rate
+    2008 (2008-2012, plateau +0.51 pp): rate 3.24%; narrow drag 0.00 pp; wide drag 0.07 pp = 2.3% of the actual rate
+    2009 (2008-2012, plateau +0.51 pp): rate 3.04%; narrow drag 0.14 pp; wide drag 0.36 pp = 11.7% of the actual rate
+    2010 (2008-2012, plateau +0.51 pp): rate 3.38%; narrow drag 0.10 pp; wide drag 0.31 pp = 9.1% of the actual rate
+    2011 (2008-2012, plateau +0.51 pp): rate 3.25%; narrow drag 0.10 pp; wide drag 0.31 pp = 9.5% of the actual rate
+    2012 (2008-2012, plateau +0.51 pp): rate 3.27%; narrow drag 0.12 pp; wide drag 0.35 pp = 10.6% of the actual rate
+    2013 (2013-2021, plateau +0.37 pp): rate 3.89%; narrow drag 0.11 pp; wide drag 0.26 pp = 6.8% of the actual rate
+    2014 (2013-2021, plateau +0.37 pp): rate 4.60%; narrow drag 0.06 pp; wide drag 0.17 pp = 3.8% of the actual rate
+    2015 (2013-2021, plateau +0.37 pp): rate 4.40%; narrow drag 0.03 pp; wide drag 0.10 pp = 2.4% of the actual rate
+    2016 (2013-2021, plateau +0.37 pp): rate 4.29%; narrow drag 0.02 pp; wide drag 0.07 pp = 1.6% of the actual rate
+    2017 (2013-2021, plateau +0.37 pp): rate 4.11%; narrow drag 0.01 pp; wide drag 0.05 pp = 1.3% of the actual rate
+    2018 (2013-2021, plateau +0.37 pp): rate 3.87%; narrow drag 0.01 pp; wide drag 0.04 pp = 1.2% of the actual rate
+    2019 (2013-2021, plateau +0.37 pp): rate 3.63%; narrow drag 0.00 pp; wide drag 0.05 pp = 1.4% of the actual rate
+    2020 (2013-2021, plateau +0.37 pp): rate 3.24%; narrow drag 0.00 pp; wide drag 0.05 pp = 1.7% of the actual rate
+    2021 (2013-2021, plateau +0.37 pp): rate 4.82%; narrow drag 0.00 pp; wide drag 0.02 pp = 0.5% of the actual rate
+    2022 (2022-2025, plateau +1.09 pp): rate 3.86%; narrow drag -0.00 pp; wide drag 0.07 pp = 1.7% of the actual rate
+    2023 (2022-2025, plateau +1.09 pp): rate 2.93%; narrow drag -0.00 pp; wide drag 0.06 pp = 2.1% of the actual rate
+    2024 (2022-2025, plateau +1.09 pp): rate 3.22%; narrow drag 0.00 pp; wide drag 0.14 pp = 4.3% of the actual rate
+    2025 (2022-2025, plateau +1.09 pp): rate 3.59%; narrow drag 0.00 pp; wide drag 0.14 pp = 3.8% of the actual rate
+    2007->2009: share of the fall, narrow 3.4%, wide 0.6%
+    2022->2024: share of the fall, narrow 0.5%, wide 11.2%
+    2022->2023: share of the fall, narrow -0.1%, wide -0.6%
+    2009-2013 average: actual rate 3.37%, wide drag 0.32 pp (9.6% of the actual rate); resales lost 169,049 against 1,804,850 that happened
+  raw annual resale rate by band of m, owners held 2-5 whole years:
+    2009: below -10% 2.76% (stock 120,835); -10% to 0 3.10% (stock 1,472,238); 0 to +10% 3.61% (stock 1,061,987); +10% to +25% 3.64% (stock 326,364); above +25% 3.28% (stock 23,428)
+    2010: below -10% 2.39% (stock 784,830); -10% to 0 3.33% (stock 1,491,172); 0 to +10% 4.43% (stock 763,245); +10% to +25% 5.42% (stock 159,360); above +25% 6.62% (stock 22,451)
+    2012: below -10% 2.72% (stock 866,424); -10% to 0 3.65% (stock 760,921); 0 to +10% 4.11% (stock 519,440); +10% to +25% 4.53% (stock 106,821); above +25% 5.37% (stock 335)
+    2024: -10% to 0 2.37% (stock 8,011); 0 to +10% 3.42% (stock 837,338); +10% to +25% 4.41% (stock 1,535,460); above +25% 4.38% (stock 81,680)
 
 [4] Districts within the same postcode area: change in log resale rate vs share of stock under water
   2007-2009: 2,064 districts in 105 areas; under water mean 33.0% (p10 23.4%, p90 42.4%); mean change -0.904
     slope: alone -2.864 (0.212); with controls +0.182 (0.681); plus pre-trend +0.241 (0.683); placebo on pre-trend +0.240 (0.332)
-    deep (below -10%) -4.187 (1.020) and any under water +0.959 (0.669)
+    deep (below -10%, mean 14.6%, p10 10.0%, p90 19.7%) -4.187 (1.020) and any under water +0.959 (0.669); placebo deep on pre-trend +2.055 (0.558)
+  2007-2010: 2,101 districts in 105 areas; under water mean 27.1% (p10 15.3%, p90 37.9%); mean change -0.794
+    slope: alone -3.314 (0.290); with controls -5.681 (0.476); plus pre-trend -5.455 (0.487); placebo on pre-trend +1.190 (0.423)
+    deep (below -10%, mean 9.3%, p10 0.0%, p90 17.0%) -3.395 (0.752) and any under water -3.664 (0.642); placebo deep on pre-trend +1.094 (0.603)
+  2009-2010: 2,062 districts in 105 areas; under water mean 27.1% (p10 15.3%, p90 37.9%); mean change +0.110
+    slope: alone +0.489 (0.125); with controls +1.037 (0.285); plus pre-trend -1.199 (0.253); placebo on pre-trend -6.854 (0.525)
+    deep (below -10%, mean 9.2%, p10 0.0%, p90 17.0%) -0.837 (0.430) and any under water -0.807 (0.320); placebo deep on pre-trend -4.063 (0.937)
   2022-2024: 2,127 districts in 105 areas; under water mean 6.9% (p10 3.6%, p90 9.8%); mean change -0.184
     slope: alone +0.094 (0.294); with controls +0.889 (0.677); plus pre-trend +0.202 (0.613); placebo on pre-trend -1.652 (0.845)
-    deep (below -10%) +0.000 (0.000) and any under water +0.202 (0.613)
-  2007-2008: 2,077 districts in 105 areas; under water mean 2.4% (p10 0.0%, p90 5.6%); mean change -0.813
-    slope: alone -3.508 (1.111); with controls -0.795 (0.967); plus pre-trend +0.197 (0.690); placebo on pre-trend +2.618 (0.996)
-    deep (below -10%) +0.000 (0.000) and any under water +0.197 (0.690)
-  2022-2023: 2,122 districts in 105 areas; under water mean 1.5% (p10 0.0%, p90 2.6%); mean change -0.276
-    slope: alone -5.532 (0.918); with controls -3.298 (1.089); plus pre-trend -1.837 (0.964); placebo on pre-trend +4.185 (1.150)
-    deep (below -10%) +0.000 (0.000) and any under water -1.837 (0.964)
+    deep (below -10%, mean 0.0%, p10 0.0%, p90 0.0%) +0.000 (0.000) and any under water +0.202 (0.613); placebo deep on pre-trend +0.000 (0.000)
+
+[5] Monthly: resale rate of the stock and the share of the stock below its purchase price (m at the end of the previous month)
+  2007 Q3: monthly resale rate 0.684%  under water 0.2% (below -10%: 0.0%)
+  2007 Q4: monthly resale rate 0.534%  under water 0.8% (below -10%: 0.0%)
+  2008 Q1: monthly resale rate 0.324%  under water 4.3% (below -10%: 0.0%)
+  2008 Q2: monthly resale rate 0.334%  under water 8.5% (below -10%: 0.0%)
+  2008 Q3: monthly resale rate 0.248%  under water 15.1% (below -10%: 0.0%)
+  2008 Q4: monthly resale rate 0.184%  under water 25.4% (below -10%: 6.2%)
+  2009 Q1: monthly resale rate 0.139%  under water 35.9% (below -10%: 17.5%)
+  2009 Q2: monthly resale rate 0.217%  under water 39.2% (below -10%: 21.2%)
+  2009 H2: monthly resale rate 0.331%  under water 32.3% (below -10%: 14.9%)
+  2012: monthly resale rate 0.271%  under water 30.5% (below -10%: 9.3%)
+  2014: monthly resale rate 0.381%  under water 13.0% (below -10%: 3.5%)
+  2022 H1: monthly resale rate 0.296%  under water 0.2% (below -10%: 0.0%)
+  2022 H2: monthly resale rate 0.342%  under water 0.2% (below -10%: 0.0%)
+  2023 H1: monthly resale rate 0.224%  under water 3.5% (below -10%: 0.0%)
+  2023 H2: monthly resale rate 0.262%  under water 4.2% (below -10%: 0.0%)
+  2024: monthly resale rate 0.266%  under water 5.0% (below -10%: 0.0%)
+  fall in the monthly resale rate, owners held 2-5 years, by band of m: 2007 average to 2009 average, and 2022 to 2023
+    below_m10: 2007->2009 n/a; 2022->2023 n/a
+        m10_0: 2007->2009 n/a; 2022->2023 0.194% -> 0.220% (+14%, avg stock 240)
+         0_10: 2007->2009 0.687% -> 0.314% (-54%, avg stock 159,873); 2022->2023 0.333% -> 0.219% (-34%, avg stock 99,096)
+        10_25: 2007->2009 0.801% -> 0.364% (-55%, avg stock 48,741); 2022->2023 0.415% -> 0.304% (-27%, avg stock 440,370)
+        25_50: 2007->2009 0.821% -> 0.453% (-45%, avg stock 4,830); 2022->2023 0.434% -> 0.332% (-24%, avg stock 96,796)
+     above_50: 2007->2009 n/a; 2022->2023 n/a
