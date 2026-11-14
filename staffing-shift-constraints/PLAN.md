@@ -127,3 +127,18 @@ All three before any count was received, on 14 November 2026:
   (with or without a leading zero) and ends with AM or PM accordingly. A second query per year counts all calls per
   date; the counts by hour must add up to it within 0.5%, or the run stops. Both totals are recorded in
   `sources/REVISION`.
+
+## Descriptive analyses added after the results (14 November 2026)
+
+Not part of the registered test, and labelled as such in the article; `details.py`, at the main handle time of 5
+minutes.
+
+- **Bias of the forecasts:** total forecast over total calls in the test weeks, with the calls by year.
+- **Where the constraint cost sits:** with the oracle, the excess agent-hours of each shift regime by hour of day.
+- **Which hours bind:** with the oracle, the share of days on which each hour of the day has a positive shadow price
+  in the linear relaxation, over all test weeks, for R1 and R4 (the plan registered this for the median week only).
+- **The data gap:** the structural checks found 9 days in 2018 with almost no calls (19 to 25 January, 15 and 16
+  June), inside the training years. The gradient-boosted model is refitted without the three training weeks that
+  hold them, and its costs recomputed.
+- **Orders of the forecasts by cost** under each regime, against their order by WAPE.
+

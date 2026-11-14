@@ -71,11 +71,12 @@ def train_mondays(last_monday: pd.Timestamp) -> list[pd.Timestamp]:
     return list(pd.date_range(FIRST_TRAIN_MONDAY, last_monday, freq="7D"))
 
 
-def fit_gbm(c: Calls, last_train_monday: pd.Timestamp, settings: dict | None = None):
+def fit_gbm(c: Calls, last_train_monday: pd.Timestamp, settings: dict | None = None, exclude=()):
+    """`exclude`: training weeks to leave out (used only by the descriptive check in details.py)."""
     import lightgbm as lgb
 
     hol = holidays()
-    weeks = train_mondays(last_train_monday)
+    weeks = [w for w in train_mondays(last_train_monday) if w not in set(exclude)]
     x = pd.concat([features(c, m, hol) for m in weeks], ignore_index=True)
     y = np.concatenate([c.calls[week_slice(c, m)] for m in weeks])
     params = {**GBM, **(settings or {})}

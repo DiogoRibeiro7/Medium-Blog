@@ -9,6 +9,16 @@ shortfall of agent-hours against the requirement of the calls that actually arri
 
 `PLAN.md` is the pre-registration, committed before any call count was downloaded.
 
+## Results in one paragraph
+
+With a perfect forecast, the shift rules alone force idle agent-hours worth 12.5% of the hours the calls needed with
+8-hour shifts starting at any hour, 18.7% with weekly tours of five consecutive days, 48.9% with three fixed shift
+starts, and 2.6% when a quarter of the hours can be 4-hour shifts. Under the two rigid regimes, that cost is larger
+than what the forecast errors add (H1 supported, 8 of 8). The saving from a better forecast was smaller under weekly
+tours than with hourly staffing, but established only when a shortfall weighs three times an idle hour (H2 not
+supported). With 4-hour shifts available the forecast is the larger cost; with 8-hour shifts at any start it is not
+(H3 not supported). The binding hours are 01:00, 09:00 and 17:00: eight hours apart, set by the shift length.
+
 ## Files
 
 - `PLAN.md`: the pre-registration.
@@ -19,7 +29,10 @@ shortfall of agent-hours against the requirement of the calls that actually arri
 - `feed/erlang.py`: Erlang C service level and staffing requirement.
 - `feed/forecast.py`: the four forecasts.
 - `feed/schedule.py`: the five shift regimes as integer programmes, and shadow prices.
-- `evaluate.py`: the registered test; writes `results/`.
+- `evaluate.py`: the registered test; writes `results/` (`summary.txt` holds every registered number).
+- `details.py`: descriptive analyses added after the results (`results/details.txt`); not part of the registered
+  test.
+- `figures.py`, `figures/`: the figures of the article.
 - `tests/`: unit tests on synthetic data.
 
 ## Run
