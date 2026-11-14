@@ -1,0 +1,78 @@
+{
+  "baseline": "same complete-macro donor pool, prior to nearest-K selection",
+  "caveats": [
+    "Control availability never restricts outcomes at or after reform t.",
+    "Matching only three pre-treatment proxy means does not establish exchangeability.",
+    "Donor censoring by future reform exposure may introduce selection bias.",
+    "Pre-period balance does not establish parallel trends or causal effects.",
+    "Donor pools and reforms overlap across events; SMD means are descriptive."
+  ],
+  "donor_exposure_rule": "no major tax cut from t through t+max_horizon",
+  "event_status_counts": {
+    "incomplete_treated_pre_macro": 1,
+    "invalid_treatment_history": 7,
+    "matched": 20,
+    "no_history_eligible_donors": 1
+  },
+  "inference": "none: no adjusted treatment effects, uncertainty or significance",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "lags": 5,
+  "max_donors": 5,
+  "max_horizon": 5,
+  "n_history_only_eligible_events": 21,
+  "n_macro_complete_donors_across_matched_events": 174,
+  "n_matched_events": 20,
+  "n_matched_treated_countries": 14,
+  "n_original_history_donors_across_matched_events": 184,
+  "n_original_treated_events": 29,
+  "n_selected_donors_across_matched_events": 94,
+  "outcome_window": "all years from t-L through t+max_horizon required",
+  "pre_reform_controls": [
+    "gdp_pc_growth_pct",
+    "inflation_cpi_pct",
+    "trade_open_pct_gdp"
+  ],
+  "pretrend_slope_balance": {
+    "mean_abs_gap_pool": 0.1984589285714286,
+    "mean_abs_gap_selected": 0.21769500000000006,
+    "median_abs_gap_selected": 0.17149999999999993
+  },
+  "ranking": "within-event standardized ridge Mahalanobis; 0.75 covariance + 0.25 identity",
+  "selection_profile": "mean of t-1 through t-L for each core WDI series",
+  "source_archive_sha256": {
+    "FP.CPI.TOTL.ZG": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+    "NE.TRD.GNFS.ZS": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+    "NY.GDP.PCAP.KD.ZG": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+    "SL.UEM.TOTL.ZS": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f"
+  },
+  "source_last_updated": {
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "NE.TRD.GNFS.ZS": "2026-11-11",
+    "NY.GDP.PCAP.KD.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11"
+  },
+  "status": "pre_reform_support_and_balance_only_no_adjusted_effects",
+  "variable_balance": {
+    "gdp_pc_growth_pct": {
+      "mean_abs_standardized_gap_pool": 0.8846738480641025,
+      "mean_abs_standardized_gap_selected": 0.6957793021989069,
+      "n_evaluable_events": 20,
+      "n_events_abs_gap_reduced": 14,
+      "n_undefined_due_to_zero_donor_variance": 0
+    },
+    "inflation_cpi_pct": {
+      "mean_abs_standardized_gap_pool": 1.3879146542902145,
+      "mean_abs_standardized_gap_selected": 1.102098438616936,
+      "n_evaluable_events": 20,
+      "n_events_abs_gap_reduced": 14,
+      "n_undefined_due_to_zero_donor_variance": 0
+    },
+    "trade_open_pct_gdp": {
+      "mean_abs_standardized_gap_pool": 1.4803850337248814,
+      "mean_abs_standardized_gap_selected": 1.3196657956911795,
+      "n_evaluable_events": 20,
+      "n_events_abs_gap_reduced": 13,
+      "n_undefined_due_to_zero_donor_variance": 0
+    }
+  }
+}
