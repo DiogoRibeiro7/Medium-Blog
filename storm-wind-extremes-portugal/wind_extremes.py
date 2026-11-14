@@ -391,7 +391,7 @@ def peaks_over_threshold(W, M, K, R, rng, q=0.98, r=2):
 
 def early_record(M, K, R):
     """ERA5 back to 1940, which brings in the cyclone of 15 February 1941."""
-    section("2e. The record back to 1940")
+    section("2f. The record back to 1940")
     cols = {}
     for c in M.columns:
         f = DATA / "era5_early" / f"early_{c[0]:.2f}_{c[1]:.2f}.csv.gz"
@@ -442,7 +442,7 @@ def early_record(M, K, R):
 def shape_sensitivity(M, K, R, pin, boot_xi):
     """Kristin's return period at the most affected nodes as a function of a fixed shape,
     with the composite profile of the shape over all nodes."""
-    section("2f. How much the answer depends on the shape")
+    section("2e. How much the answer depends on the shape")
     X = M.values
     grid = np.round(np.arange(-0.25, 0.151, 0.01), 2)
     top = list(R.sort_values("T_pool_in", ascending=False).index[:3])
@@ -1004,7 +1004,7 @@ def fig_trend(M, tr, sizes, power):
     for i, p in enumerate(power):
         bx.text(i, p + 0.02, f"{100 * p:.0f}%", ha="center", fontsize=9.5, color=INK)
     bx.axhline(0.8, color=INK_2, lw=0.8, ls=(0, (4, 3)))
-    bx.text(len(sizes) - 0.5, 0.81, "80% power", fontsize=8.5, color=INK_2, ha="right", va="bottom")
+    bx.text(-0.45, 0.81, "80% power", fontsize=8.5, color=INK_2, ha="left", va="bottom")
     bx.set_xticks(range(len(sizes)))
     bx.set_xticklabels([f"{s:g}%" for s in sizes])
     bx.set_ylim(0, 1.08)
@@ -1017,7 +1017,7 @@ def fig_trend(M, tr, sizes, power):
 
 
 def fig_design(S, gusts, mr_mean):
-    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.8), gridspec_kw={"width_ratios": [1, 1.15]})
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 5.6), gridspec_kw={"width_ratios": [1, 1.15]})
     ax = axes[0]
     S = S.sort_values("z50c")
     y = np.arange(len(S))
@@ -1033,7 +1033,7 @@ def fig_design(S, gusts, mr_mean):
     ax.set_yticklabels([f"{k.replace('_', ' ').title().replace('Gc', 'GC')} ({z})" for k, z in zip(S.key, S.zone)])
     ax.set_xlabel("Ten-minute mean wind at 10 m (m/s)")
     ax.set_title("Stations against the building code (zone)", loc="left", fontsize=11, color=INK)
-    ax.legend(fontsize=8.5, loc="lower right")
+    ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.45, -0.16), ncol=2)
     ax.set_xlim(10, 37)
     bx = axes[1]
     g = gusts.sort_values("gust_kmh")
@@ -1043,15 +1043,16 @@ def fig_design(S, gusts, mr_mean):
     for i, (_, r) in enumerate(g.iterrows()):
         bx.plot([LINE_GUST[r.zone]] * 2, [i - 0.38, i + 0.38], color=INK, lw=2)
         bx.plot([VB0[r.zone] * PEAK] * 2, [i - 0.38, i + 0.38], color=INK_2, lw=2, ls=(0, (2, 1.5)))
-    bx.plot([], [], color=INK, lw=2, label="Line design gust, below 20 m")
-    bx.plot([], [], color=INK_2, lw=2, ls=(0, (2, 1.5)), label="Building code peak velocity")
-    bx.barh([], [], color=ORANGE, label="Zone A")
-    bx.barh([], [], color=YELLOW, label="Zone B")
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    handles = [Line2D([], [], color=INK, lw=2, label="Line design gust, below 20 m"),
+               Line2D([], [], color=INK_2, lw=2, ls=(0, (2, 1.5)), label="Building code peak velocity"),
+               Patch(color=ORANGE, label="Station in zone A"), Patch(color=YELLOW, label="Station in zone B")]
     bx.set_yticks(yy)
     bx.set_yticklabels(g["name"])
     bx.set_xlabel("Gust on 28 January 2026 (m/s)")
     bx.set_title("Kristin's reported gusts against design gusts", loc="left", fontsize=11, color=INK)
-    bx.legend(fontsize=8.5, loc="lower right")
+    bx.legend(handles=handles, fontsize=8.5, loc="upper center", bbox_to_anchor=(0.4, -0.16), ncol=2)
     fig.tight_layout()
     fig.savefig(FIGURES / "05_design_values.png", dpi=DPI)
     plt.close(fig)
@@ -1080,6 +1081,8 @@ def fig_dependence(dist, theta, cnt, M):
     bx.bar(s, cnt, color=[ORANGE if v == LAST else BLUE for v in s], width=0.8)
     bx.set_xlabel("Season (labelled by its October)")
     bx.set_ylabel("Nodes above their own 50-year level")
+    from matplotlib.ticker import MaxNLocator
+    bx.yaxis.set_major_locator(MaxNLocator(integer=True))
     bx.set_title("Footprint of each season's strongest winds", loc="left", fontsize=11, color=INK)
     fig.tight_layout()
     fig.savefig(FIGURES / "06_dependence_and_footprint.png", dpi=DPI)
