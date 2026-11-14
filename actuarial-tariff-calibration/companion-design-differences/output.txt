@@ -1,0 +1,504 @@
+Fourth companion: competing insurers whose tariffs differ in design, on freMTPL2 and beMTPL97.
+Designs: GLM, linear BM, no territory, GBM, other GBM. Other GBM: learning_rate 0.1, max_leaf_nodes 8, min_samples_leaf 100, l2_regularization 1.0, random_state 11; the GBM of the earlier companions: learning_rate 0.05, max_leaf_nodes 31, min_samples_leaf 200, random_state 7.
+
+==============================================================================
+freMTPL2: the mechanism with known costs (cost = the GLM rate fitted on the whole training pool; calibration sample, 135,598 policies; beta 10 unless cheapest wins)
+==============================================================================
+  exact tariffs: sigma 0.000; cheapest wins, collected / cost 1.000 (lognormal from sigma 1.000), loss ratio A 1.000, B 1.000; beta 10, collected / cost 1.000
+      after rate reviews (beta 10): loading A 1.000, B 1.000, share-weighted 1.000; share of A 0.500
+      curse-aware game, one level: profit A +12.50, B +12.50, level 1.250; market position: profit A +12.50, B +12.50, level 1.250
+  noise, sigma 0.1: sigma 0.100; cheapest wins, collected / cost 0.944 (lognormal from sigma 0.944), loss ratio A 1.060, B 1.059; beta 10, collected / cost 0.964
+      after rate reviews (beta 10): loading A 1.037, B 1.037, share-weighted 1.037; share of A 0.501
+      curse-aware game, one level: profit A +15.68, B +15.69, level 1.314; market position: profit A +12.64, B +12.64, level 1.253
+  information, sigma 0.1: sigma 0.100; cheapest wins, collected / cost 0.944 (lognormal from sigma 0.944), loss ratio A 1.000, B 1.120; beta 10, collected / cost 0.964
+      after rate reviews (beta 10): loading A 1.000, B 1.105, share-weighted 1.036; share of A 0.661
+      curse-aware game, one level: profit A +17.44, B +13.80, level 1.312; market position: profit A +12.73, B +12.54, level 1.253
+  noise, sigma 0.2: sigma 0.200; cheapest wins, collected / cost 0.888 (lognormal from sigma 0.888), loss ratio A 1.126, B 1.125; beta 10, collected / cost 0.905
+      after rate reviews (beta 10): loading A 1.105, B 1.105, share-weighted 1.105; share of A 0.500
+      curse-aware game, one level: profit A +23.32, B +23.37, level 1.467; market position: profit A +12.95, B +12.96, level 1.259
+  information, sigma 0.2: sigma 0.201; cheapest wins, collected / cost 0.888 (lognormal from sigma 0.887), loss ratio A 1.000, B 1.254; beta 10, collected / cost 0.904
+      after rate reviews (beta 10): loading A 1.000, B 1.495, share-weighted 1.068; share of A 0.862
+      curse-aware game, one level: profit A +27.63, B +18.03, level 1.457; market position: profit A +13.27, B +12.64, level 1.259
+  noise, sigma 0.3: sigma 0.299; cheapest wins, collected / cost 0.833 (lognormal from sigma 0.832), loss ratio A 1.201, B 1.200; beta 10, collected / cost 0.846
+      after rate reviews (beta 10): loading A 1.182, B 1.182, share-weighted 1.182; share of A 0.500
+      curse-aware game, one level: profit A +35.24, B +35.31, level 1.705; market position: profit A +13.40, B +13.39, level 1.268
+  information, sigma 0.3: sigma 0.306; cheapest wins, collected / cost 0.832 (lognormal from sigma 0.829), loss ratio A 1.000, B 1.404; beta 10, collected / cost 0.845
+      after rate reviews (beta 10): loading A 1.000, B 2.476, share-weighted 1.056; share of A 0.962
+      curse-aware game, one level: profit A +41.46, B +25.92, level 1.674; market position: profit A +14.02, B +12.81, level 1.268
+  A the GLM, B linear BM: sigma 0.117; cheapest wins, collected / cost 0.926 (lognormal from sigma 0.934), loss ratio A 1.000, B 1.245; beta 10, collected / cost 0.947
+      after rate reviews (beta 10): loading A 1.000, B 1.321, share-weighted 1.037; share of A 0.884
+      curse-aware game, one level: profit A +16.60, B +10.85, level 1.275; market position: profit A +13.13, B +12.65, level 1.258
+      where B's errors lie, by bonus-malus level: share of exposure; mean log of B's rate over A's; share of B's undercharging (cost minus premium where B quotes below cost)
+              below 51: 0.630; +0.100; 0.000
+                 51-60: 0.133; -0.162; 0.279
+                 61-70: 0.074; -0.381; 0.506
+                 71-80: 0.073; -0.039; 0.095
+                81-100: 0.080; +0.138; 0.023
+         101 and above: 0.010; -0.115; 0.097
+  A the GLM, B no territory: sigma 0.117; cheapest wins, collected / cost 0.932 (lognormal from sigma 0.934), loss ratio A 1.000, B 1.146; beta 10, collected / cost 0.953
+      after rate reviews (beta 10): loading A 1.000, B 1.150, share-weighted 1.039; share of A 0.739
+      curse-aware game, one level: profit A +19.39, B +14.65, level 1.340; market position: profit A +12.74, B +12.56, level 1.253
+
+==============================================================================
+freMTPL2: the designs alone (test sample; Gini on claim counts, Poisson deviance per 1,000 policy-years; mean over 12 fits) and twin dispersion (root mean square over 6 pairs of books)
+==============================================================================
+  Policies 677,991; training pool 406,794; calibration 135,598; test 135,599 (71,814.7 policy-years, 5,267 claims); two disjoint books per partition, 6 partitions
+  Columns of the GLM designs: GLM 57, linear BM 49, no territory 34; the territorial factors left out of 'no territory': region, population density and area code
+  books of 20,000:
+      GLM          Gini 0.266 [0.256, 0.275], deviance 458.05; twin sigma 0.252 (mean 0.251)
+      linear BM    Gini 0.247 [0.239, 0.258], deviance 460.25; twin sigma 0.242 (mean 0.241)
+      no territory Gini 0.255 [0.244, 0.263], deviance 457.80; twin sigma 0.185 (mean 0.183)
+      GBM          Gini 0.249 [0.220, 0.273], deviance 461.87; twin sigma 0.426 (mean 0.425)
+      other GBM    Gini 0.269 [0.255, 0.283], deviance 457.57; twin sigma 0.321 (mean 0.320)
+  books of 50,000:
+      GLM          Gini 0.282 [0.275, 0.289], deviance 455.07; twin sigma 0.174 (mean 0.173)
+      linear BM    Gini 0.264 [0.257, 0.274], deviance 457.64; twin sigma 0.164 (mean 0.163)
+      no territory Gini 0.262 [0.257, 0.267], deviance 456.28; twin sigma 0.124 (mean 0.123)
+      GBM          Gini 0.284 [0.275, 0.295], deviance 454.13; twin sigma 0.314 (mean 0.314)
+      other GBM    Gini 0.293 [0.273, 0.303], deviance 452.71; twin sigma 0.252 (mean 0.252)
+  books of 100,000:
+      GLM          Gini 0.288 [0.283, 0.292], deviance 453.88; twin sigma 0.118 (mean 0.117)
+      linear BM    Gini 0.272 [0.265, 0.276], deviance 456.61; twin sigma 0.112 (mean 0.111)
+      no territory Gini 0.266 [0.262, 0.268], deviance 455.66; twin sigma 0.090 (mean 0.089)
+      GBM          Gini 0.304 [0.298, 0.310], deviance 450.34; twin sigma 0.246 (mean 0.245)
+      other GBM    Gini 0.308 [0.301, 0.314], deviance 449.92; twin sigma 0.202 (mean 0.202)
+  books of 200,000:
+      GLM          Gini 0.291 [0.288, 0.293], deviance 453.39; twin sigma 0.087 (mean 0.087)
+      linear BM    Gini 0.275 [0.272, 0.277], deviance 456.21; twin sigma 0.082 (mean 0.082)
+      no territory Gini 0.266 [0.264, 0.269], deviance 455.37; twin sigma 0.067 (mean 0.067)
+      GBM          Gini 0.316 [0.311, 0.323], deviance 448.07; twin sigma 0.206 (mean 0.206)
+      other GBM    Gini 0.317 [0.314, 0.320], deviance 448.12; twin sigma 0.165 (mean 0.165)
+  GLM: twin sigma falls like n to the power -0.47
+  linear BM: twin sigma falls like n to the power -0.47
+  no territory: twin sigma falls like n to the power -0.44
+  GBM: twin sigma falls like n to the power -0.32
+  other GBM: twin sigma falls like n to the power -0.29
+
+==============================================================================
+freMTPL2: disagreement between designs on independent books (test sample; sigma as root mean square over plays; data part = root of the mean of the two designs' squared twin sigmas; design part = root of the remainder; same book = the two designs fitted on one book)
+==============================================================================
+  GLM against linear BM:
+      books of  20,000: sigma 0.274 (same book 0.128); data part 0.247, design part 0.118 (19 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  50,000: sigma 0.205 (same book 0.125); data part 0.169, design part 0.117 (32 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 100,000: sigma 0.163 (same book 0.119); data part 0.115, design part 0.115 (50 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 200,000: sigma 0.143 (same book 0.117); data part 0.085, design part 0.115 (65 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.29, the data part like -0.47, the design part like -0.01
+  GLM against no territory:
+      books of  20,000: sigma 0.246 (same book 0.163); data part 0.221, design part 0.109 (19 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  50,000: sigma 0.187 (same book 0.140); data part 0.151, design part 0.110 (35 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 100,000: sigma 0.154 (same book 0.125); data part 0.105, design part 0.113 (54 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 200,000: sigma 0.137 (same book 0.119); data part 0.078, design part 0.113 (68 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.26, the data part like -0.46, the design part like 0.02
+  GLM against GBM:
+      books of  20,000: sigma 0.370 (same book 0.298); data part 0.350, design part 0.120 (11 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  50,000: sigma 0.284 (same book 0.242); data part 0.254, design part 0.127 (20 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 100,000: sigma 0.238 (same book 0.216); data part 0.193, design part 0.140 (34 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 200,000: sigma 0.219 (same book 0.205); data part 0.158, design part 0.152 (48 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.23, the data part like -0.35, the design part like 0.10
+  GBM against other GBM:
+      books of  20,000: sigma 0.378 (same book 0.244); data part 0.377, design part 0.032 (1 percent of the squared dispersion); design part positive in 5 of 6 partitions
+      books of  50,000: sigma 0.287 (same book 0.186); data part 0.285, design part 0.031 (1 percent of the squared dispersion); design part positive in 4 of 6 partitions
+      books of 100,000: sigma 0.227 (same book 0.150); data part 0.225, design part 0.028 (1 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of 200,000: sigma 0.189 (same book 0.127); data part 0.187, design part 0.029 (2 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.31, the data part like -0.31, the design part like -0.05
+
+==============================================================================
+freMTPL2: noise or information: the best blend exp(c + wA log rA + wB log rB) fitted on the calibration sample; deviance on the test sample per 1,000 policy-years (mean over plays)
+==============================================================================
+  GLM against GLM:
+      books of  20,000: weight on GLM 0.430 [0.363, 0.508], on GLM 0.494 [0.377, 0.577]; deviance GLM 458.37, GLM 457.73, geometric mean 455.58, best blend 455.33; the blend gains 2.24 over the better of the two
+      books of  50,000: weight on GLM 0.485 [0.380, 0.596], on GLM 0.483 [0.366, 0.611]; deviance GLM 455.20, GLM 454.93, geometric mean 453.93, best blend 453.90; the blend gains 0.73 over the better of the two
+      books of 100,000: weight on GLM 0.508 [0.292, 0.780], on GLM 0.479 [0.186, 0.704]; deviance GLM 453.94, GLM 453.82, geometric mean 453.33, best blend 453.37; the blend gains 0.34 over the better of the two
+      books of 200,000: weight on GLM 0.525 [0.398, 0.654], on GLM 0.463 [0.334, 0.590]; deviance GLM 453.33, GLM 453.44, geometric mean 453.09, best blend 453.09; the blend gains 0.17 over the better of the two
+  GLM against linear BM:
+      books of  20,000: weight on GLM 0.568 [0.475, 0.645], on linear BM 0.381 [0.305, 0.488]; deviance GLM 458.05, linear BM 460.25, geometric mean 456.19, best blend 455.93; the blend gains 2.12 over the better of the two
+      books of  50,000: weight on GLM 0.676 [0.598, 0.755], on linear BM 0.309 [0.235, 0.406]; deviance GLM 455.07, linear BM 457.64, geometric mean 454.68, best blend 454.40; the blend gains 0.67 over the better of the two
+      books of 100,000: weight on GLM 0.786 [0.715, 0.933], on linear BM 0.213 [0.077, 0.295]; deviance GLM 453.88, linear BM 456.61, geometric mean 454.12, best blend 453.69; the blend gains 0.19 over the better of the two
+      books of 200,000: weight on GLM 0.847 [0.802, 0.891], on linear BM 0.149 [0.105, 0.195]; deviance GLM 453.39, linear BM 456.21, geometric mean 453.90, best blend 453.34; the blend gains 0.05 over the better of the two
+  GLM against no territory:
+      books of  20,000: weight on GLM 0.457 [0.327, 0.550], on no territory 0.501 [0.410, 0.609]; deviance GLM 458.05, no territory 457.80, geometric mean 455.54, best blend 455.40; the blend gains 2.08 over the better of the two
+      books of  50,000: weight on GLM 0.569 [0.442, 0.687], on no territory 0.421 [0.275, 0.531]; deviance GLM 455.07, no territory 456.28, geometric mean 454.35, best blend 454.28; the blend gains 0.79 over the better of the two
+      books of 100,000: weight on GLM 0.680 [0.542, 0.821], on no territory 0.323 [0.153, 0.459]; deviance GLM 453.88, no territory 455.66, geometric mean 453.86, best blend 453.66; the blend gains 0.22 over the better of the two
+      books of 200,000: weight on GLM 0.756 [0.702, 0.810], on no territory 0.244 [0.189, 0.299]; deviance GLM 453.39, no territory 455.37, geometric mean 453.67, best blend 453.35; the blend gains 0.04 over the better of the two
+  GLM against GBM:
+      books of  20,000: weight on GLM 0.574 [0.489, 0.656], on GBM 0.385 [0.322, 0.451]; deviance GLM 458.05, GBM 461.87, geometric mean 454.44, best blend 454.14; the blend gains 3.90 over the better of the two
+      books of  50,000: weight on GLM 0.494 [0.394, 0.606], on GBM 0.525 [0.388, 0.649]; deviance GLM 455.07, GBM 454.13, geometric mean 451.29, best blend 451.20; the blend gains 2.62 over the better of the two
+      books of 100,000: weight on GLM 0.370 [0.279, 0.426], on GBM 0.677 [0.604, 0.752]; deviance GLM 453.88, GBM 450.34, geometric mean 449.69, best blend 449.30; the blend gains 1.04 over the better of the two
+      books of 200,000: weight on GLM 0.201 [0.131, 0.259], on GBM 0.840 [0.769, 0.914]; deviance GLM 453.39, GBM 448.07, geometric mean 448.65, best blend 447.73; the blend gains 0.34 over the better of the two
+  GBM against other GBM:
+      books of  20,000: weight on GBM 0.387 [0.322, 0.451], on other GBM 0.578 [0.426, 0.662]; deviance GBM 461.87, other GBM 457.57, geometric mean 453.91, best blend 453.56; the blend gains 4.00 over the better of the two
+      books of  50,000: weight on GBM 0.451 [0.324, 0.609], on other GBM 0.582 [0.449, 0.685]; deviance GBM 454.13, other GBM 452.71, geometric mean 450.04, best blend 449.88; the blend gains 2.37 over the better of the two
+      books of 100,000: weight on GBM 0.495 [0.417, 0.585], on other GBM 0.560 [0.466, 0.633]; deviance GBM 450.34, other GBM 449.92, geometric mean 447.99, best blend 447.91; the blend gains 1.79 over the better of the two
+      books of 200,000: weight on GBM 0.561 [0.460, 0.647], on other GBM 0.497 [0.399, 0.590]; deviance GBM 448.07, other GBM 448.12, geometric mean 446.63, best blend 446.55; the blend gains 1.30 over the better of the two
+  GBM against GBM:
+      books of  20,000: weight on GBM 0.431 [0.366, 0.470], on GBM 0.488 [0.405, 0.556]; deviance GBM 462.69, GBM 461.06, geometric mean 454.62, best blend 454.37; the blend gains 6.40 over the better of the two
+      books of  50,000: weight on GBM 0.455 [0.360, 0.527], on GBM 0.555 [0.472, 0.651]; deviance GBM 454.98, GBM 453.27, geometric mean 450.11, best blend 450.01; the blend gains 3.22 over the better of the two
+      books of 100,000: weight on GBM 0.546 [0.447, 0.610], on GBM 0.502 [0.452, 0.587]; deviance GBM 450.67, GBM 450.00, geometric mean 447.82, best blend 447.76; the blend gains 2.10 over the better of the two
+      books of 200,000: weight on GBM 0.549 [0.499, 0.622], on GBM 0.507 [0.433, 0.559]; deviance GBM 447.83, GBM 448.32, geometric mean 446.35, best blend 446.26; the blend gains 1.39 over the better of the two
+
+==============================================================================
+freMTPL2: one period at a common level of 1, cheapest wins (test sample; mean over plays): what the market collects per unit of claims; the lognormal prediction from the pair's sigma, scaled by what the two tariffs would collect alone; each insurer's loss ratio; and the same market with beta 10
+==============================================================================
+  GLM against GLM:
+      books of  20,000: collected 0.885 [0.839, 0.931] (lognormal 0.882, minus actual -0.003); loss ratio GLM 1.130, GLM 1.130 | beta 10: collected 0.901, loss ratio GLM 1.111, GLM 1.111
+      books of  50,000: collected 0.927 [0.903, 0.952] (lognormal 0.919, minus actual -0.007); loss ratio GLM 1.078, GLM 1.078 | beta 10: collected 0.945, loss ratio GLM 1.057, GLM 1.057
+      books of 100,000: collected 0.946 [0.921, 0.957] (lognormal 0.944, minus actual -0.001); loss ratio GLM 1.057, GLM 1.057 | beta 10: collected 0.965, loss ratio GLM 1.036, GLM 1.036
+      books of 200,000: collected 0.957 [0.950, 0.960] (lognormal 0.957, minus actual -0.000); loss ratio GLM 1.043, GLM 1.043 | beta 10: collected 0.976, loss ratio GLM 1.023, GLM 1.023
+  GLM against linear BM:
+      books of  20,000: collected 0.870 [0.814, 0.914] (lognormal 0.870, minus actual -0.000); loss ratio GLM 1.110, linear BM 1.192 (linear BM higher in 12 of 12); share of GLM 0.546 | beta 10: collected 0.885, loss ratio GLM 1.097, linear BM 1.166
+      books of  50,000: collected 0.902 [0.881, 0.925] (lognormal 0.902, minus actual -0.001); loss ratio GLM 1.051, linear BM 1.175 (linear BM higher in 12 of 12); share of GLM 0.579 | beta 10: collected 0.919, loss ratio GLM 1.044, linear BM 1.134
+      books of 100,000: collected 0.915 [0.893, 0.934] (lognormal 0.919, minus actual +0.005); loss ratio GLM 1.027, linear BM 1.179 (linear BM higher in 12 of 12); share of GLM 0.600 | beta 10: collected 0.933, loss ratio GLM 1.024, linear BM 1.125
+      books of 200,000: collected 0.920 [0.914, 0.924] (lognormal 0.925, minus actual +0.006); loss ratio GLM 1.021, linear BM 1.180 (linear BM higher in 12 of 12); share of GLM 0.627 | beta 10: collected 0.939, loss ratio GLM 1.017, linear BM 1.120
+  GLM against no territory:
+      books of  20,000: collected 0.886 [0.840, 0.916] (lognormal 0.885, minus actual -0.001); loss ratio GLM 1.120, no territory 1.139 (no territory higher in 8 of 12); share of GLM 0.528 | beta 10: collected 0.902, loss ratio GLM 1.106, no territory 1.113
+      books of  50,000: collected 0.914 [0.887, 0.940] (lognormal 0.912, minus actual -0.001); loss ratio GLM 1.053, no territory 1.135 (no territory higher in 12 of 12); share of GLM 0.533 | beta 10: collected 0.931, loss ratio GLM 1.046, no territory 1.100
+      books of 100,000: collected 0.922 [0.898, 0.941] (lognormal 0.924, minus actual +0.002); loss ratio GLM 1.031, no territory 1.139 (no territory higher in 12 of 12); share of GLM 0.540 | beta 10: collected 0.941, loss ratio GLM 1.023, no territory 1.102
+      books of 200,000: collected 0.927 [0.920, 0.932] (lognormal 0.929, minus actual +0.002); loss ratio GLM 1.015, no territory 1.143 (no territory higher in 12 of 12); share of GLM 0.538 | beta 10: collected 0.946, loss ratio GLM 1.011, no territory 1.102
+  GLM against GBM:
+      books of  20,000: collected 0.807 [0.767, 0.839] (lognormal 0.813, minus actual +0.005); loss ratio GLM 1.189, GBM 1.288 (GBM higher in 11 of 12); share of GLM 0.455 | beta 10: collected 0.818, loss ratio GLM 1.174, GBM 1.269
+      books of  50,000: collected 0.851 [0.824, 0.869] (lognormal 0.856, minus actual +0.004); loss ratio GLM 1.189, GBM 1.161 (GBM higher in 2 of 12); share of GLM 0.458 | beta 10: collected 0.865, loss ratio GLM 1.168, GBM 1.144
+      books of 100,000: collected 0.871 [0.855, 0.888] (lognormal 0.876, minus actual +0.005); loss ratio GLM 1.211, GBM 1.091 (GBM higher in 0 of 12); share of GLM 0.457 | beta 10: collected 0.886, loss ratio GLM 1.179, GBM 1.081
+      books of 200,000: collected 0.877 [0.868, 0.886] (lognormal 0.882, minus actual +0.005); loss ratio GLM 1.239, GBM 1.046 (GBM higher in 0 of 12); share of GLM 0.455 | beta 10: collected 0.893, loss ratio GLM 1.199, GBM 1.042
+  GBM against other GBM:
+      books of  20,000: collected 0.801 [0.752, 0.838] (lognormal 0.807, minus actual +0.006); loss ratio GBM 1.301, other GBM 1.198 (other GBM higher in 0 of 12); share of GBM 0.535 | beta 10: collected 0.812, loss ratio GBM 1.284, other GBM 1.181
+      books of  50,000: collected 0.850 [0.818, 0.867] (lognormal 0.854, minus actual +0.004); loss ratio GBM 1.199, other GBM 1.153 (other GBM higher in 2 of 12); share of GBM 0.526 | beta 10: collected 0.864, loss ratio GBM 1.179, other GBM 1.137
+      books of 100,000: collected 0.880 [0.867, 0.895] (lognormal 0.883, minus actual +0.003); loss ratio GBM 1.148, other GBM 1.124 (other GBM higher in 3 of 12); share of GBM 0.521 | beta 10: collected 0.896, loss ratio GBM 1.127, other GBM 1.106
+      books of 200,000: collected 0.899 [0.889, 0.909] (lognormal 0.900, minus actual +0.001); loss ratio GBM 1.106, other GBM 1.120 (other GBM higher in 7 of 12); share of GBM 0.525 | beta 10: collected 0.916, loss ratio GBM 1.091, other GBM 1.093
+  GBM against GBM:
+      books of  20,000: collected 0.773 [0.738, 0.798] (lognormal 0.779, minus actual +0.007); loss ratio GBM 1.295, GBM 1.295 | beta 10: collected 0.782, loss ratio GBM 1.279, GBM 1.279
+      books of  50,000: collected 0.833 [0.810, 0.856] (lognormal 0.838, minus actual +0.005); loss ratio GBM 1.200, GBM 1.200 | beta 10: collected 0.846, loss ratio GBM 1.182, GBM 1.182
+      books of 100,000: collected 0.867 [0.850, 0.878] (lognormal 0.872, minus actual +0.004); loss ratio GBM 1.153, GBM 1.153 | beta 10: collected 0.882, loss ratio GBM 1.134, GBM 1.134
+      books of 200,000: collected 0.889 [0.885, 0.895] (lognormal 0.890, minus actual +0.001); loss ratio GBM 1.125, GBM 1.125 | beta 10: collected 0.905, loss ratio GBM 1.104, GBM 1.104
+  lognormal minus actual, twins (48 plays): mean +0.0006, largest absolute 0.0146
+  lognormal minus actual, different designs (192 plays): mean +0.0028, largest absolute 0.0142
+
+==============================================================================
+freMTPL2: after 40 rate reviews on the calibration sample (beta 10), once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
+==============================================================================
+  GLM against GLM:
+      books of  20,000: beta 10: loading 1.106 [1.053, 1.165] (settled 6 of 6)
+      books of  50,000: beta 10: loading 1.056 [1.028, 1.084] (settled 6 of 6)
+      books of 100,000: beta 10: loading 1.033 [1.017, 1.059] (settled 6 of 6)
+      books of 200,000: beta 10: loading 1.022 [1.018, 1.028] (settled 6 of 6)
+  GLM against linear BM:
+      books of  20,000: beta 10: loading GLM 1.069, linear BM 1.234, share-weighted 1.117; share of GLM 0.663 [0.529, 0.793], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.019, linear BM 1.246, share-weighted 1.068; share of GLM 0.764 [0.697, 0.876], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.005, linear BM 1.260, share-weighted 1.051; share of GLM 0.810 [0.761, 0.878], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 0.998, linear BM 1.349, share-weighted 1.036; share of GLM 0.870 [0.822, 0.972], below 0.5 in 0 of 12 (settled 11 of 12)
+  GLM against no territory:
+      books of  20,000: beta 10: loading GLM 1.124, no territory 1.105, share-weighted 1.106; share of GLM 0.505 [0.311, 0.620], below 0.5 in 4 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.045, no territory 1.110, share-weighted 1.070; share of GLM 0.604 [0.478, 0.684], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.024, no territory 1.119, share-weighted 1.055; share of GLM 0.648 [0.545, 0.756], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 1.012, no territory 1.128, share-weighted 1.048; share of GLM 0.683 [0.654, 0.709], below 0.5 in 0 of 12 (settled 12 of 12)
+  GLM against GBM:
+      books of  20,000: beta 10: loading GLM 1.102, GBM 1.427, share-weighted 1.205; share of GLM 0.647 [0.503, 0.762], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GLM 1.160, GBM 1.166, share-weighted 1.153; share of GLM 0.468 [0.334, 0.597], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GLM 1.291, GBM 1.059, share-weighted 1.107; share of GLM 0.284 [0.101, 0.404], below 0.5 in 12 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GLM 2.806, GBM 1.001, share-weighted 1.026; share of GLM 0.049 [0.000, 0.172], below 0.5 in 12 of 12 (settled 11 of 12)
+  GBM against other GBM:
+      books of  20,000: beta 10: loading GBM 1.417, other GBM 1.125, share-weighted 1.221; share of GBM 0.367 [0.238, 0.515], below 0.5 in 11 of 12 (settled 12 of 12)
+      books of  50,000: beta 10: loading GBM 1.230, other GBM 1.112, share-weighted 1.154; share of GBM 0.431 [0.286, 0.563], below 0.5 in 11 of 12 (settled 12 of 12)
+      books of 100,000: beta 10: loading GBM 1.141, other GBM 1.103, share-weighted 1.115; share of GBM 0.477 [0.342, 0.607], below 0.5 in 6 of 12 (settled 12 of 12)
+      books of 200,000: beta 10: loading GBM 1.083, other GBM 1.109, share-weighted 1.093; share of GBM 0.549 [0.451, 0.632], below 0.5 in 4 of 12 (settled 12 of 12)
+  GBM against GBM:
+      books of  20,000: beta 10: loading 1.271 [1.232, 1.322] (settled 6 of 6)
+      books of  50,000: beta 10: loading 1.181 [1.150, 1.210] (settled 6 of 6)
+      books of 100,000: beta 10: loading 1.132 [1.112, 1.158] (settled 6 of 6)
+      books of 200,000: beta 10: loading 1.106 [1.098, 1.110] (settled 6 of 6)
+  premium / claims on the test sample after the reviews, all plays: between 0.995 and 1.003 (1 on the calibration sample once both insurers break even)
+
+==============================================================================
+freMTPL2: the price game, curse-aware pricing, beta 10: each insurer's profit (percent of the test sample's claims) and the price level, mean over the plays that settled
+==============================================================================
+  GLM against GLM:
+      books of  20,000: one level: each +26.02, level 1.520; market position: each +13.14, level 1.263
+      books of  50,000: one level: each +17.96, level 1.359; market position: each +12.74, level 1.255
+      books of 100,000: one level: each +15.97, level 1.319; market position: each +12.59, level 1.252
+      books of 200,000: one level: each +14.28, level 1.286; market position: each +12.55, level 1.251
+  GLM against linear BM:
+      books of  20,000: one level: GLM +29.59, linear BM +26.55 (GLM ahead in 12 of 12), level 1.561; market position: GLM +13.19, linear BM +13.38 (GLM ahead in 5 of 12), level 1.266
+      books of  50,000: one level: GLM +21.97, linear BM +17.82 (GLM ahead in 12 of 12), level 1.398; market position: GLM +13.07, linear BM +12.62 (GLM ahead in 10 of 12), level 1.257
+      books of 100,000: one level: GLM +20.06, linear BM +15.37 (GLM ahead in 12 of 12), level 1.354; market position: GLM +13.12, linear BM +12.38 (GLM ahead in 12 of 12), level 1.255
+      books of 200,000: one level: GLM +18.13, linear BM +13.36 (GLM ahead in 12 of 12), level 1.315; market position: GLM +13.14, linear BM +12.04 (GLM ahead in 12 of 12), level 1.252
+  GLM against no territory:
+      books of  20,000: one level: GLM +27.06, no territory +26.57 (GLM ahead in 7 of 12), level 1.536; market position: GLM +12.96, no territory +13.30 (GLM ahead in 2 of 12), level 1.263
+      books of  50,000: one level: GLM +22.58, no territory +19.86 (GLM ahead in 12 of 12), level 1.424; market position: GLM +12.67, no territory +12.95 (GLM ahead in 5 of 12), level 1.256
+      books of 100,000: one level: GLM +21.58, no territory +17.70 (GLM ahead in 12 of 12), level 1.393; market position: GLM +12.81, no territory +12.62 (GLM ahead in 9 of 12), level 1.254
+      books of 200,000: one level: GLM +20.38, no territory +15.89 (GLM ahead in 12 of 12), level 1.363; market position: GLM +12.68, no territory +12.63 (GLM ahead in 8 of 12), level 1.253
+  GLM against GBM:
+      books of  20,000: one level: GLM +46.82, GBM +42.88 (GLM ahead in 12 of 12), level 1.897; market position: GLM +13.92, GBM +13.72 (GLM ahead in 8 of 12), level 1.276
+      books of  50,000: one level: GLM +30.44, GBM +31.42 (GLM ahead in 2 of 12), level 1.619; market position: GLM +13.15, GBM +13.54 (GLM ahead in 4 of 12), level 1.267
+      books of 100,000: one level: GLM +22.91, GBM +27.26 (GLM ahead in 0 of 12), level 1.502; market position: GLM +12.59, GBM +13.47 (GLM ahead in 0 of 12), level 1.261
+      books of 200,000: one level: GLM +18.91, GBM +25.89 (GLM ahead in 0 of 12), level 1.448; market position: GLM +12.27, GBM +13.45 (GLM ahead in 0 of 12), level 1.257
+  GBM against other GBM:
+      books of  20,000: one level: GBM +46.49, other GBM +50.71 (GBM ahead in 0 of 12), level 1.972; market position: GBM +13.90, other GBM +14.17 (GBM ahead in 4 of 12), level 1.281
+      books of  50,000: one level: GBM +30.97, other GBM +32.72 (GBM ahead in 2 of 12), level 1.637; market position: GBM +13.71, other GBM +13.52 (GBM ahead in 7 of 12), level 1.272
+      books of 100,000: one level: GBM +23.69, other GBM +24.50 (GBM ahead in 3 of 12), level 1.482; market position: GBM +13.35, other GBM +13.16 (GBM ahead in 8 of 12), level 1.265
+      books of 200,000: one level: GBM +20.45, other GBM +20.27 (GBM ahead in 6 of 12), level 1.407; market position: GBM +12.97, other GBM +12.91 (GBM ahead in 8 of 12), level 1.259
+  GBM against GBM:
+      books of  20,000: one level: each +59.26, level 2.185; market position: each +14.37, level 1.287
+      books of  50,000: one level: each +36.96, level 1.739; market position: each +13.72, level 1.274
+      books of 100,000: one level: each +26.83, level 1.537; market position: each +13.29, level 1.266
+      books of 200,000: one level: each +22.18, level 1.444; market position: each +13.00, level 1.260
+
+==============================================================================
+freMTPL2: checks
+==============================================================================
+  the GLM design built here is the earlier companions' design: True
+  GLM and GBM payoffs, one level, against the second companion: largest difference below 1e-9
+  GLM and GBM payoffs, market position, against the third companion: largest difference below 1e-9
+  twin sigma of the GLM and the GBM against the second companion: largest difference below 1e-9
+  one level: settled in 240 of 240 plays; largest gain from moving one level (first partition for one level), percent of claims: below 0.005
+  market position: settled in 240 of 240 plays; largest gain from moving one level (first partition for one level), percent of claims: below 0.005
+  plays that did not settle, left out of the game payoffs: none
+
+==============================================================================
+beMTPL97: the mechanism with known costs (cost = the GLM rate fitted on the whole training pool; calibration sample, 32,642 policies; beta 10 unless cheapest wins)
+==============================================================================
+  exact tariffs: sigma 0.000; cheapest wins, collected / cost 1.000 (lognormal from sigma 1.000), loss ratio A 1.000, B 1.000; beta 10, collected / cost 1.000
+      after rate reviews (beta 10): loading A 1.000, B 1.000, share-weighted 1.000; share of A 0.500
+      curse-aware game, one level: profit A +12.50, B +12.50, level 1.250; market position: profit A +12.50, B +12.50, level 1.250
+  noise, sigma 0.1: sigma 0.100; cheapest wins, collected / cost 0.944 (lognormal from sigma 0.943), loss ratio A 1.059, B 1.060; beta 10, collected / cost 0.964
+      after rate reviews (beta 10): loading A 1.038, B 1.037, share-weighted 1.038; share of A 0.499
+      curse-aware game, one level: profit A +15.74, B +15.74, level 1.315; market position: profit A +12.63, B +12.65, level 1.253
+  information, sigma 0.1: sigma 0.100; cheapest wins, collected / cost 0.944 (lognormal from sigma 0.943), loss ratio A 1.000, B 1.120; beta 10, collected / cost 0.964
+      after rate reviews (beta 10): loading A 1.000, B 1.105, share-weighted 1.036; share of A 0.659
+      curse-aware game, one level: profit A +17.48, B +13.83, level 1.313; market position: profit A +12.73, B +12.55, level 1.253
+  noise, sigma 0.2: sigma 0.201; cheapest wins, collected / cost 0.888 (lognormal from sigma 0.887), loss ratio A 1.125, B 1.128; beta 10, collected / cost 0.904
+      after rate reviews (beta 10): loading A 1.105, B 1.106, share-weighted 1.106; share of A 0.501
+      curse-aware game, one level: profit A +23.69, B +23.67, level 1.474; market position: profit A +12.95, B +12.99, level 1.259
+  information, sigma 0.2: sigma 0.202; cheapest wins, collected / cost 0.888 (lognormal from sigma 0.886), loss ratio A 1.000, B 1.254; beta 10, collected / cost 0.905
+      after rate reviews (beta 10): loading A 1.000, B 1.489, share-weighted 1.069; share of A 0.859
+      curse-aware game, one level: profit A +27.85, B +18.21, level 1.461; market position: profit A +13.28, B +12.66, level 1.259
+  noise, sigma 0.3: sigma 0.301; cheapest wins, collected / cost 0.832 (lognormal from sigma 0.832), loss ratio A 1.200, B 1.204; beta 10, collected / cost 0.845
+      after rate reviews (beta 10): loading A 1.182, B 1.185, share-weighted 1.184; share of A 0.502
+      curse-aware game, one level: profit A +36.39, B +36.32, level 1.727; market position: profit A +13.39, B +13.46, level 1.269
+  information, sigma 0.3: sigma 0.306; cheapest wins, collected / cost 0.833 (lognormal from sigma 0.828), loss ratio A 1.000, B 1.404; beta 10, collected / cost 0.845
+      after rate reviews (beta 10): loading A 1.000, B 2.410, share-weighted 1.060; share of A 0.957
+      curse-aware game, one level: profit A +42.05, B +26.43, level 1.685; market position: profit A +14.04, B +12.85, level 1.269
+  A the GLM, B linear BM: sigma 0.024; cheapest wins, collected / cost 0.985 (lognormal from sigma 0.986), loss ratio A 1.000, B 1.038; beta 10, collected / cost 0.997
+      after rate reviews (beta 10): loading A 1.000, B 1.006, share-weighted 1.003; share of A 0.516
+      curse-aware game, one level: profit A +12.84, B +12.57, level 1.254; market position: profit A +12.52, B +12.50, level 1.250
+      where B's errors lie, by bonus-malus level: share of exposure; mean log of B's rate over A's; share of B's undercharging (cost minus premium where B quotes below cost)
+               below 1: 0.376; +0.031; 0.000
+                   1-3: 0.256; -0.050; 0.749
+                   4-6: 0.160; +0.007; 0.000
+                   7-9: 0.095; +0.021; 0.000
+                 10-13: 0.098; -0.022; 0.251
+          14 and above: 0.014; +0.064; 0.000
+  A the GLM, B no territory: sigma 0.076; cheapest wins, collected / cost 0.954 (lognormal from sigma 0.957), loss ratio A 1.000, B 1.123; beta 10, collected / cost 0.975
+      after rate reviews (beta 10): loading A 1.000, B 1.075, share-weighted 1.025; share of A 0.662
+      curse-aware game, one level: profit A +15.27, B +12.65, level 1.279; market position: profit A +12.60, B +12.52, level 1.251
+
+==============================================================================
+beMTPL97: the designs alone (test sample; Gini on claim counts, Poisson deviance per 1,000 policy-years; mean over 12 fits) and twin dispersion (root mean square over 6 pairs of books)
+==============================================================================
+  Policies 163,212; training pool 97,927; calibration 32,642; test 32,643 (28,984.8 policy-years, 4,004 claims); two disjoint books per partition, 6 partitions
+  Columns of the GLM designs: GLM 34, linear BM 29, no territory 26; the territorial factors left out of 'no territory': region of the postcode
+  books of 5,000:
+      GLM          Gini 0.177 [0.164, 0.188], deviance 602.34; twin sigma 0.224 (mean 0.221)
+      linear BM    Gini 0.179 [0.166, 0.191], deviance 601.63; twin sigma 0.212 (mean 0.210)
+      no territory Gini 0.175 [0.160, 0.190], deviance 602.31; twin sigma 0.198 (mean 0.195)
+      GBM          Gini 0.152 [0.128, 0.174], deviance 610.61; twin sigma 0.351 (mean 0.349)
+      other GBM    Gini 0.159 [0.142, 0.184], deviance 607.41; twin sigma 0.311 (mean 0.309)
+  books of 12,000:
+      GLM          Gini 0.194 [0.189, 0.199], deviance 597.88; twin sigma 0.139 (mean 0.138)
+      linear BM    Gini 0.193 [0.189, 0.197], deviance 597.86; twin sigma 0.133 (mean 0.132)
+      no territory Gini 0.189 [0.181, 0.198], deviance 598.87; twin sigma 0.121 (mean 0.121)
+      GBM          Gini 0.165 [0.154, 0.186], deviance 605.12; twin sigma 0.304 (mean 0.304)
+      other GBM    Gini 0.180 [0.163, 0.191], deviance 600.30; twin sigma 0.223 (mean 0.223)
+  books of 24,000:
+      GLM          Gini 0.202 [0.197, 0.207], deviance 596.31; twin sigma 0.117 (mean 0.116)
+      linear BM    Gini 0.201 [0.196, 0.204], deviance 596.52; twin sigma 0.109 (mean 0.109)
+      no territory Gini 0.197 [0.190, 0.203], deviance 597.53; twin sigma 0.103 (mean 0.102)
+      GBM          Gini 0.185 [0.176, 0.201], deviance 599.55; twin sigma 0.228 (mean 0.228)
+      other GBM    Gini 0.197 [0.190, 0.204], deviance 597.19; twin sigma 0.185 (mean 0.184)
+  books of 48,000:
+      GLM          Gini 0.207 [0.204, 0.210], deviance 595.33; twin sigma 0.079 (mean 0.079)
+      linear BM    Gini 0.205 [0.203, 0.208], deviance 595.67; twin sigma 0.076 (mean 0.075)
+      no territory Gini 0.201 [0.198, 0.203], deviance 596.73; twin sigma 0.072 (mean 0.072)
+      GBM          Gini 0.199 [0.192, 0.203], deviance 596.95; twin sigma 0.182 (mean 0.181)
+      other GBM    Gini 0.207 [0.193, 0.215], deviance 595.25; twin sigma 0.150 (mean 0.150)
+  GLM: twin sigma falls like n to the power -0.44
+  linear BM: twin sigma falls like n to the power -0.44
+  no territory: twin sigma falls like n to the power -0.43
+  GBM: twin sigma falls like n to the power -0.30
+  other GBM: twin sigma falls like n to the power -0.32
+
+==============================================================================
+beMTPL97: disagreement between designs on independent books (test sample; sigma as root mean square over plays; data part = root of the mean of the two designs' squared twin sigmas; design part = root of the remainder; same book = the two designs fitted on one book)
+==============================================================================
+  GLM against linear BM:
+      books of   5,000: sigma 0.220 (same book 0.059); data part 0.218, design part 0.029 (2 percent of the squared dispersion); design part positive in 3 of 6 partitions
+      books of  12,000: sigma 0.137 (same book 0.036); data part 0.136, design part 0.017 (2 percent of the squared dispersion); design part positive in 4 of 6 partitions
+      books of  24,000: sigma 0.114 (same book 0.031); data part 0.113, design part 0.013 (1 percent of the squared dispersion); design part positive in 4 of 6 partitions
+      books of  48,000: sigma 0.080 (same book 0.026); data part 0.077, design part 0.020 (6 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.43, the data part like -0.44, the design part like -0.21
+  GLM against no territory:
+      books of   5,000: sigma 0.221 (same book 0.096); data part 0.211, design part 0.063 (8 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  12,000: sigma 0.148 (same book 0.085); data part 0.130, design part 0.071 (23 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  24,000: sigma 0.130 (same book 0.079); data part 0.110, design part 0.069 (28 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  48,000: sigma 0.106 (same book 0.078); data part 0.076, design part 0.074 (49 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.31, the data part like -0.43, the design part like 0.06
+  GLM against GBM:
+      books of   5,000: sigma 0.309 (same book 0.257); data part 0.294, design part 0.095 (9 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  12,000: sigma 0.253 (same book 0.224); data part 0.237, design part 0.088 (12 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  24,000: sigma 0.197 (same book 0.175); data part 0.181, design part 0.078 (15 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      books of  48,000: sigma 0.166 (same book 0.152); data part 0.140, design part 0.088 (28 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.28, the data part like -0.33, the design part like -0.05
+  GBM against other GBM:
+      books of   5,000: sigma 0.332 (same book 0.207); data part 0.331, design part 0.026 (1 percent of the squared dispersion); design part positive in 4 of 6 partitions
+      books of  12,000: sigma 0.269 (same book 0.186); data part 0.267, design part 0.035 (2 percent of the squared dispersion); design part positive in 3 of 6 partitions
+      books of  24,000: sigma 0.208 (same book 0.139); data part 0.208, design part 0.004 (0 percent of the squared dispersion); design part positive in 3 of 6 partitions
+      books of  48,000: sigma 0.169 (same book 0.112); data part 0.167, design part 0.027 (3 percent of the squared dispersion); design part positive in 6 of 6 partitions
+      as the books grow, sigma falls like n to the power -0.31, the data part like -0.31, the design part like -0.29
+
+==============================================================================
+beMTPL97: noise or information: the best blend exp(c + wA log rA + wB log rB) fitted on the calibration sample; deviance on the test sample per 1,000 policy-years (mean over plays)
+==============================================================================
+  GLM against GLM:
+      books of   5,000: weight on GLM 0.492 [0.363, 0.622], on GLM 0.391 [0.279, 0.483]; deviance GLM 601.93, GLM 602.75, geometric mean 598.84, best blend 598.45; the blend gains 2.98 over the better of the two
+      books of  12,000: weight on GLM 0.402 [0.168, 0.537], on GLM 0.570 [0.439, 0.688]; deviance GLM 598.14, GLM 597.62, geometric mean 596.48, best blend 596.49; the blend gains 1.07 over the better of the two
+      books of  24,000: weight on GLM 0.453 [0.310, 0.744], on GLM 0.532 [0.275, 0.651]; deviance GLM 596.52, GLM 596.10, geometric mean 595.35, best blend 595.35; the blend gains 0.73 over the better of the two
+      books of  48,000: weight on GLM 0.549 [0.193, 0.885], on GLM 0.441 [0.140, 0.797]; deviance GLM 595.39, GLM 595.27, geometric mean 594.90, best blend 594.85; the blend gains 0.19 over the better of the two
+  GLM against linear BM:
+      books of   5,000: weight on GLM 0.407 [0.276, 0.611], on linear BM 0.488 [0.311, 0.689]; deviance GLM 602.34, linear BM 601.63, geometric mean 598.65, best blend 598.33; the blend gains 2.68 over the better of the two
+      books of  12,000: weight on GLM 0.457 [0.105, 0.657], on linear BM 0.519 [0.260, 0.753]; deviance GLM 597.88, linear BM 597.86, geometric mean 596.54, best blend 596.55; the blend gains 1.06 over the better of the two
+      books of  24,000: weight on GLM 0.493 [0.302, 0.797], on linear BM 0.494 [0.224, 0.716]; deviance GLM 596.31, linear BM 596.52, geometric mean 595.51, best blend 595.50; the blend gains 0.67 over the better of the two
+      books of  48,000: weight on GLM 0.535 [0.200, 0.980], on linear BM 0.454 [0.053, 0.820]; deviance GLM 595.33, linear BM 595.67, geometric mean 595.07, best blend 595.01; the blend gains 0.18 over the better of the two
+  GLM against no territory:
+      books of   5,000: weight on GLM 0.469 [0.322, 0.655], on no territory 0.434 [0.270, 0.637]; deviance GLM 602.34, no territory 602.31, geometric mean 598.91, best blend 598.62; the blend gains 2.82 over the better of the two
+      books of  12,000: weight on GLM 0.584 [0.444, 0.740], on no territory 0.414 [0.110, 0.656]; deviance GLM 597.88, no territory 598.87, geometric mean 596.76, best blend 596.66; the blend gains 1.16 over the better of the two
+      books of  24,000: weight on GLM 0.633 [0.487, 0.792], on no territory 0.369 [0.171, 0.532]; deviance GLM 596.31, no territory 597.53, geometric mean 595.70, best blend 595.58; the blend gains 0.73 over the better of the two
+      books of  48,000: weight on GLM 0.726 [0.551, 0.906], on no territory 0.272 [0.131, 0.449]; deviance GLM 595.33, no territory 596.73, geometric mean 595.23, best blend 595.05; the blend gains 0.28 over the better of the two
+  GLM against GBM:
+      books of   5,000: weight on GLM 0.561 [0.452, 0.761], on GBM 0.320 [0.189, 0.433]; deviance GLM 602.34, GBM 610.61, geometric mean 599.98, best blend 598.96; the blend gains 3.38 over the better of the two
+      books of  12,000: weight on GLM 0.681 [0.609, 0.808], on GBM 0.311 [0.200, 0.442]; deviance GLM 597.88, GBM 605.12, geometric mean 597.02, best blend 596.19; the blend gains 1.69 over the better of the two
+      books of  24,000: weight on GLM 0.603 [0.501, 0.683], on GBM 0.414 [0.328, 0.536]; deviance GLM 596.31, GBM 599.55, geometric mean 595.12, best blend 594.86; the blend gains 1.45 over the better of the two
+      books of  48,000: weight on GLM 0.544 [0.456, 0.629], on GBM 0.474 [0.404, 0.580]; deviance GLM 595.33, GBM 596.95, geometric mean 594.11, best blend 594.03; the blend gains 1.30 over the better of the two
+  GBM against other GBM:
+      books of   5,000: weight on GBM 0.380 [0.211, 0.576], on other GBM 0.444 [0.286, 0.580]; deviance GBM 610.61, other GBM 607.41, geometric mean 601.52, best blend 600.41; the blend gains 5.63 over the better of the two
+      books of  12,000: weight on GBM 0.370 [0.249, 0.496], on other GBM 0.604 [0.517, 0.688]; deviance GBM 605.12, other GBM 600.30, geometric mean 597.53, best blend 597.15; the blend gains 3.15 over the better of the two
+      books of  24,000: weight on GBM 0.408 [0.294, 0.544], on other GBM 0.602 [0.481, 0.717]; deviance GBM 599.55, other GBM 597.19, geometric mean 595.27, best blend 595.11; the blend gains 1.94 over the better of the two
+      books of  48,000: weight on GBM 0.406 [0.306, 0.504], on other GBM 0.611 [0.471, 0.724]; deviance GBM 596.95, other GBM 595.25, geometric mean 594.00, best blend 593.87; the blend gains 1.28 over the better of the two
+  GBM against GBM:
+      books of   5,000: weight on GBM 0.406 [0.268, 0.547], on GBM 0.394 [0.266, 0.573]; deviance GBM 611.92, GBM 609.30, geometric mean 602.43, best blend 601.09; the blend gains 6.77 over the better of the two
+      books of  12,000: weight on GBM 0.438 [0.366, 0.559], on GBM 0.462 [0.341, 0.634]; deviance GBM 605.00, GBM 605.25, geometric mean 598.63, best blend 598.12; the blend gains 4.86 over the better of the two
+      books of  24,000: weight on GBM 0.478 [0.383, 0.543], on GBM 0.505 [0.417, 0.631]; deviance GBM 599.32, GBM 599.77, geometric mean 595.81, best blend 595.75; the blend gains 2.80 over the better of the two
+      books of  48,000: weight on GBM 0.493 [0.438, 0.583], on GBM 0.496 [0.433, 0.561]; deviance GBM 597.10, GBM 596.80, geometric mean 594.50, best blend 594.48; the blend gains 1.95 over the better of the two
+
+==============================================================================
+beMTPL97: one period at a common level of 1, cheapest wins (test sample; mean over plays): what the market collects per unit of claims; the lognormal prediction from the pair's sigma, scaled by what the two tariffs would collect alone; each insurer's loss ratio; and the same market with beta 10
+==============================================================================
+  GLM against GLM:
+      books of   5,000: collected 0.876 [0.819, 0.923] (lognormal 0.873, minus actual -0.003); loss ratio GLM 1.143, GLM 1.143 | beta 10: collected 0.892, loss ratio GLM 1.121, GLM 1.121
+      books of  12,000: collected 0.931 [0.913, 0.958] (lognormal 0.931, minus actual -0.000); loss ratio GLM 1.074, GLM 1.074 | beta 10: collected 0.950, loss ratio GLM 1.052, GLM 1.052
+      books of  24,000: collected 0.946 [0.928, 0.974] (lognormal 0.946, minus actual -0.000); loss ratio GLM 1.056, GLM 1.056 | beta 10: collected 0.966, loss ratio GLM 1.035, GLM 1.035
+      books of  48,000: collected 0.965 [0.957, 0.971] (lognormal 0.964, minus actual -0.001); loss ratio GLM 1.033, GLM 1.033 | beta 10: collected 0.984, loss ratio GLM 1.015, GLM 1.015
+  GLM against linear BM:
+      books of   5,000: collected 0.879 [0.824, 0.915] (lognormal 0.875, minus actual -0.004); loss ratio GLM 1.147, linear BM 1.132 (linear BM higher in 4 of 12); share of GLM 0.504 | beta 10: collected 0.895, loss ratio GLM 1.123, linear BM 1.111
+      books of  12,000: collected 0.932 [0.915, 0.961] (lognormal 0.932, minus actual -0.001); loss ratio GLM 1.069, linear BM 1.076 (linear BM higher in 6 of 12); share of GLM 0.502 | beta 10: collected 0.952, loss ratio GLM 1.050, linear BM 1.051
+      books of  24,000: collected 0.948 [0.930, 0.978] (lognormal 0.947, minus actual -0.001); loss ratio GLM 1.048, linear BM 1.060 (linear BM higher in 6 of 12); share of GLM 0.503 | beta 10: collected 0.968, loss ratio GLM 1.029, linear BM 1.035
+      books of  48,000: collected 0.965 [0.957, 0.971] (lognormal 0.964, minus actual -0.001); loss ratio GLM 1.027, linear BM 1.041 (linear BM higher in 7 of 12); share of GLM 0.505 | beta 10: collected 0.984, loss ratio GLM 1.010, linear BM 1.020
+  GLM against no territory:
+      books of   5,000: collected 0.878 [0.821, 0.925] (lognormal 0.875, minus actual -0.003); loss ratio GLM 1.148, no territory 1.137 (no territory higher in 6 of 12); share of GLM 0.509 | beta 10: collected 0.894, loss ratio GLM 1.120, no territory 1.118
+      books of  12,000: collected 0.924 [0.904, 0.954] (lognormal 0.925, minus actual +0.001); loss ratio GLM 1.059, no territory 1.106 (no territory higher in 10 of 12); share of GLM 0.526 | beta 10: collected 0.943, loss ratio GLM 1.046, no territory 1.074
+      books of  24,000: collected 0.938 [0.920, 0.965] (lognormal 0.938, minus actual +0.001); loss ratio GLM 1.049, no territory 1.087 (no territory higher in 10 of 12); share of GLM 0.525 | beta 10: collected 0.957, loss ratio GLM 1.030, no territory 1.059
+      books of  48,000: collected 0.948 [0.940, 0.954] (lognormal 0.949, minus actual +0.001); loss ratio GLM 1.024, no territory 1.089 (no territory higher in 12 of 12); share of GLM 0.547 | beta 10: collected 0.968, loss ratio GLM 1.013, no territory 1.051
+  GLM against GBM:
+      books of   5,000: collected 0.827 [0.764, 0.878] (lognormal 0.825, minus actual -0.002); loss ratio GLM 1.139, GBM 1.285 (GBM higher in 12 of 12); share of GLM 0.472 | beta 10: collected 0.839, loss ratio GLM 1.129, GBM 1.257
+      books of  12,000: collected 0.865 [0.817, 0.903] (lognormal 0.866, minus actual +0.001); loss ratio GLM 1.087, GBM 1.226 (GBM higher in 12 of 12); share of GLM 0.466 | beta 10: collected 0.879, loss ratio GLM 1.076, GBM 1.199
+      books of  24,000: collected 0.898 [0.874, 0.933] (lognormal 0.900, minus actual +0.001); loss ratio GLM 1.079, GBM 1.148 (GBM higher in 12 of 12); share of GLM 0.475 | beta 10: collected 0.915, loss ratio GLM 1.063, GBM 1.123
+      books of  48,000: collected 0.913 [0.900, 0.918] (lognormal 0.915, minus actual +0.002); loss ratio GLM 1.085, GBM 1.107 (GBM higher in 10 of 12); share of GLM 0.478 | beta 10: collected 0.931, loss ratio GLM 1.060, GBM 1.088
+  GBM against other GBM:
+      books of   5,000: collected 0.813 [0.744, 0.848] (lognormal 0.810, minus actual -0.003); loss ratio GBM 1.257, other GBM 1.203 (other GBM higher in 3 of 12); share of GBM 0.512 | beta 10: collected 0.825, loss ratio GBM 1.238, other GBM 1.186
+      books of  12,000: collected 0.854 [0.805, 0.889] (lognormal 0.856, minus actual +0.002); loss ratio GBM 1.214, other GBM 1.127 (other GBM higher in 1 of 12); share of GBM 0.530 | beta 10: collected 0.868, loss ratio GBM 1.189, other GBM 1.114
+      books of  24,000: collected 0.894 [0.873, 0.928] (lognormal 0.894, minus actual -0.000); loss ratio GBM 1.148, other GBM 1.089 (other GBM higher in 2 of 12); share of GBM 0.522 | beta 10: collected 0.911, loss ratio GBM 1.122, other GBM 1.074
+      books of  48,000: collected 0.912 [0.904, 0.917] (lognormal 0.913, minus actual +0.001); loss ratio GBM 1.119, other GBM 1.074 (other GBM higher in 1 of 12); share of GBM 0.517 | beta 10: collected 0.930, loss ratio GBM 1.093, other GBM 1.056
+  GBM against GBM:
+      books of   5,000: collected 0.805 [0.741, 0.848] (lognormal 0.800, minus actual -0.004); loss ratio GBM 1.246, GBM 1.246 | beta 10: collected 0.816, loss ratio GBM 1.227, GBM 1.227
+      books of  12,000: collected 0.834 [0.792, 0.850] (lognormal 0.835, minus actual +0.001); loss ratio GBM 1.200, GBM 1.200 | beta 10: collected 0.846, loss ratio GBM 1.182, GBM 1.182
+      books of  24,000: collected 0.881 [0.859, 0.903] (lognormal 0.882, minus actual +0.001); loss ratio GBM 1.136, GBM 1.136 | beta 10: collected 0.897, loss ratio GBM 1.116, GBM 1.116
+      books of  48,000: collected 0.903 [0.896, 0.909] (lognormal 0.905, minus actual +0.002); loss ratio GBM 1.108, GBM 1.108 | beta 10: collected 0.920, loss ratio GBM 1.086, GBM 1.086
+  lognormal minus actual, twins (48 plays): mean -0.0006, largest absolute 0.0147
+  lognormal minus actual, different designs (192 plays): mean -0.0003, largest absolute 0.0160
+
+==============================================================================
+beMTPL97: after 40 rate reviews on the calibration sample (beta 10), once every insurer with business breaks even: the loading each insurer applies to its own tariff, the share-weighted loading, and the first design's share (test sample; mean over plays)
+==============================================================================
+  GLM against GLM:
+      books of   5,000: beta 10: loading 1.125 [1.067, 1.203] (settled 6 of 6)
+      books of  12,000: beta 10: loading 1.056 [1.025, 1.076] (settled 6 of 6)
+      books of  24,000: beta 10: loading 1.037 [1.008, 1.058] (settled 6 of 6)
+      books of  48,000: beta 10: loading 1.018 [1.014, 1.026] (settled 6 of 6)
+  GLM against linear BM:
+      books of   5,000: beta 10: loading GLM 1.148, linear BM 1.112, share-weighted 1.121; share of GLM 0.466 [0.259, 0.705], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.061, linear BM 1.052, share-weighted 1.054; share of GLM 0.487 [0.353, 0.587], below 0.5 in 8 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.040, linear BM 1.036, share-weighted 1.036; share of GLM 0.497 [0.384, 0.590], below 0.5 in 7 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.017, linear BM 1.021, share-weighted 1.019; share of GLM 0.510 [0.456, 0.551], below 0.5 in 4 of 12 (settled 12 of 12)
+  GLM against no territory:
+      books of   5,000: beta 10: loading GLM 1.129, no territory 1.132, share-weighted 1.123; share of GLM 0.513 [0.299, 0.723], below 0.5 in 4 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.045, no territory 1.092, share-weighted 1.063; share of GLM 0.579 [0.488, 0.684], below 0.5 in 2 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.028, no territory 1.081, share-weighted 1.046; share of GLM 0.592 [0.472, 0.696], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.014, no territory 1.071, share-weighted 1.035; share of GLM 0.615 [0.564, 0.682], below 0.5 in 0 of 12 (settled 12 of 12)
+  GLM against GBM:
+      books of   5,000: beta 10: loading GLM 1.103, GBM 1.373, share-weighted 1.190; share of GLM 0.646 [0.497, 0.764], below 0.5 in 1 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GLM 1.048, GBM 1.339, share-weighted 1.128; share of GLM 0.692 [0.603, 0.817], below 0.5 in 0 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GLM 1.064, GBM 1.147, share-weighted 1.096; share of GLM 0.568 [0.439, 0.664], below 0.5 in 2 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GLM 1.072, GBM 1.089, share-weighted 1.079; share of GLM 0.506 [0.426, 0.583], below 0.5 in 6 of 12 (settled 12 of 12)
+  GBM against other GBM:
+      books of   5,000: beta 10: loading GBM 1.304, other GBM 1.193, share-weighted 1.212; share of GBM 0.445 [0.294, 0.660], below 0.5 in 7 of 12 (settled 12 of 12)
+      books of  12,000: beta 10: loading GBM 1.307, other GBM 1.078, share-weighted 1.149; share of GBM 0.361 [0.220, 0.462], below 0.5 in 12 of 12 (settled 12 of 12)
+      books of  24,000: beta 10: loading GBM 1.164, other GBM 1.065, share-weighted 1.101; share of GBM 0.413 [0.318, 0.532], below 0.5 in 9 of 12 (settled 12 of 12)
+      books of  48,000: beta 10: loading GBM 1.116, other GBM 1.054, share-weighted 1.080; share of GBM 0.432 [0.355, 0.500], below 0.5 in 11 of 12 (settled 12 of 12)
+  GBM against GBM:
+      books of   5,000: beta 10: loading 1.231 [1.154, 1.334] (settled 6 of 6)
+      books of  12,000: beta 10: loading 1.185 [1.158, 1.246] (settled 6 of 6)
+      books of  24,000: beta 10: loading 1.121 [1.096, 1.148] (settled 6 of 6)
+      books of  48,000: beta 10: loading 1.092 [1.085, 1.101] (settled 6 of 6)
+  premium / claims on the test sample after the reviews, all plays: between 1.000 and 1.011 (1 on the calibration sample once both insurers break even)
+
+==============================================================================
+beMTPL97: the price game, curse-aware pricing, beta 10: each insurer's profit (percent of the test sample's claims) and the price level, mean over the plays that settled
+==============================================================================
+  GLM against GLM:
+      books of   5,000: one level: each +23.45, level 1.469; market position: each +13.42, level 1.268
+      books of  12,000: one level: each +18.08, level 1.362; market position: each +13.07, level 1.261
+      books of  24,000: one level: each +16.63, level 1.333; market position: each +12.94, level 1.259
+      books of  48,000: one level: each +14.74, level 1.295; market position: each +12.83, level 1.257
+  GLM against linear BM:
+      books of   5,000: one level: GLM +22.77, linear BM +23.27 (GLM ahead in 5 of 12), level 1.460; market position: GLM +13.34, linear BM +13.42 (GLM ahead in 4 of 12), level 1.268
+      books of  12,000: one level: GLM +18.11, linear BM +18.08 (GLM ahead in 6 of 12), level 1.362; market position: GLM +13.02, linear BM +13.05 (GLM ahead in 6 of 12), level 1.261
+      books of  24,000: one level: GLM +16.55, linear BM +16.23 (GLM ahead in 8 of 12), level 1.328; market position: GLM +12.93, linear BM +12.90 (GLM ahead in 8 of 12), level 1.258
+      books of  48,000: one level: GLM +15.03, linear BM +14.50 (GLM ahead in 10 of 12), level 1.295; market position: GLM +12.86, linear BM +12.84 (GLM ahead in 6 of 12), level 1.257
+  GLM against no territory:
+      books of   5,000: one level: GLM +22.77, no territory +22.84 (GLM ahead in 6 of 12), level 1.456; market position: GLM +13.41, no territory +13.45 (GLM ahead in 5 of 12), level 1.269
+      books of  12,000: one level: GLM +19.11, no territory +17.71 (GLM ahead in 11 of 12), level 1.368; market position: GLM +13.11, no territory +13.23 (GLM ahead in 5 of 12), level 1.263
+      books of  24,000: one level: GLM +17.85, no territory +16.44 (GLM ahead in 11 of 12), level 1.343; market position: GLM +12.95, no territory +12.94 (GLM ahead in 7 of 12), level 1.259
+      books of  48,000: one level: GLM +16.56, no territory +14.67 (GLM ahead in 12 of 12), level 1.312; market position: GLM +12.87, no territory +12.90 (GLM ahead in 6 of 12), level 1.258
+  GLM against GBM:
+      books of   5,000: one level: GLM +39.05, GBM +33.66 (GLM ahead in 12 of 12), level 1.727; market position: GLM +13.83, GBM +13.51 (GLM ahead in 9 of 12), level 1.273
+      books of  12,000: one level: GLM +32.05, GBM +26.54 (GLM ahead in 12 of 12), level 1.586; market position: GLM +13.69, GBM +13.33 (GLM ahead in 8 of 12), level 1.270
+      books of  24,000: one level: GLM +24.48, GBM +21.71 (GLM ahead in 12 of 12), level 1.462; market position: GLM +13.44, GBM +13.21 (GLM ahead in 9 of 12), level 1.266
+      books of  48,000: one level: GLM +21.16, GBM +19.73 (GLM ahead in 11 of 12), level 1.409; market position: GLM +13.36, GBM +13.20 (GLM ahead in 9 of 12), level 1.266
+  GBM against other GBM:
+      books of   5,000: one level: GBM +37.15, other GBM +39.54 (GBM ahead in 3 of 12), level 1.767; market position: GBM +13.98, other GBM +13.95 (GBM ahead in 6 of 12), level 1.279
+      books of  12,000: one level: GBM +29.46, other GBM +32.59 (GBM ahead in 1 of 12), level 1.620; market position: GBM +13.56, other GBM +13.77 (GBM ahead in 6 of 12), level 1.273
+      books of  24,000: one level: GBM +22.21, other GBM +24.31 (GBM ahead in 2 of 12), level 1.465; market position: GBM +13.43, other GBM +13.30 (GBM ahead in 8 of 12), level 1.267
+      books of  48,000: one level: GBM +19.44, other GBM +21.07 (GBM ahead in 1 of 12), level 1.405; market position: GBM +13.22, other GBM +13.30 (GBM ahead in 5 of 12), level 1.265
+  GBM against GBM:
+      books of   5,000: one level: each +40.86, level 1.817; market position: each +14.15, level 1.283
+      books of  12,000: one level: each +37.05, level 1.741; market position: each +13.76, level 1.275
+      books of  24,000: one level: each +26.16, level 1.523; market position: each +13.34, level 1.267
+      books of  48,000: one level: each +21.80, level 1.436; market position: each +13.33, level 1.267
+
+==============================================================================
+beMTPL97: checks
+==============================================================================
+  the GLM design built here is the earlier companions' design: True
+  GLM and GBM payoffs, one level, against the second companion: largest difference below 1e-9
+  GLM and GBM payoffs, market position, against the third companion: largest difference below 1e-9
+  twin sigma of the GLM and the GBM against the second companion: largest difference below 1e-9
+  one level: settled in 240 of 240 plays; largest gain from moving one level (first partition for one level), percent of claims: below 0.005
+  market position: settled in 240 of 240 plays; largest gain from moving one level (first partition for one level), percent of claims: below 0.005
+  plays that did not settle, left out of the game payoffs: none
