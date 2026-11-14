@@ -1,0 +1,25 @@
+family,days,logloss
+window,7,0.3596221591686629
+window,14,0.30679657008085165
+window,28,0.270802547036863
+window,56,0.25854750330015264
+window,91,0.2663606914540935
+window,182,0.3061387585651572
+window,365,0.38544539222145335
+window,730,0.4824270268042004
+half-life,7,0.3495697827266745
+half-life,14,0.2957937573009955
+half-life,28,0.2704839977637862
+half-life,56,0.2787398013236333
+half-life,112,0.3195122711784893
+half-life,224,0.3769490692204101
+change points by day of the week,56,0.25967496069360907
+change points by day of the week,91,0.2473285981949973
+change points by day of the week,182,0.24000092444814
+change points by day of the week,364,0.23964645679152788
+change points by day of the week,728,0.24279079528465736
+change points by day of the week,1456,0.24748699762306733
+change points shared by the producer's days,91,0.22526943730696364
+change points shared by the producer's days,182,0.22315276090871997
+change points shared by the producer's days,365,0.22324195097885727
+change points shared by the producer's days,730,0.22439265843058434

@@ -1,6 +1,6 @@
 # Correctness Over Time in Data Pipelines
 
-Public companion to an eight-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
+Public companion to a nine-part series on where correct pipelines give wrong numbers because of time. Every record has three dates: when the event happened, when the pipeline received it, and when it was corrected. A pipeline that keeps only one of them cannot reproduce what it reported yesterday, and cannot say how wrong today's number is.
 
 1. **History** (`part1/`): how four fields met the same problem. Insurance run-off triangles and the chain ladder, epidemic reporting delays and nowcasting, valid time and transaction time in temporal databases, slowly changing dimensions in warehouses, and event time, watermarks and triggers in stream processing. Each idea is rebuilt in code, and the published numbers are recomputed where they exist.
 2. **Mechanism** (`part2/`): five mechanisms simulated where the right answer is known. How much of the latest periods is missing for a given delay distribution; what a watermark's slack and allowed lateness trade, and what a nowcast does instead of waiting; what an incremental load loses with a high-water mark on event time, and what insert-only, upsert and an append-only version log keep when records are corrected; what training on final values and joining the current version of a dimension do to a model; and what a backfill does to values already sent.
@@ -10,6 +10,7 @@ Public companion to an eight-part series on where correct pipelines give wrong n
 6. **Out of sample** (`part6/`): the Part 5 changes, frozen, and a graded version of the content check, tuned on 2021-2023 only, replayed on the RKI's daily files of 1 January 2024 to 10 November 2026, which no earlier part had read.
 7. **Another feed** (`part7/`): the series' two conjectures about files that bring nothing new, checked against data the series had not used: every version of the Johns Hopkins CSSE daily reports for the 50 US states and DC (April 2020 to March 2023) and of its global time series, the state and national holiday calendars, and the RKI files of 2022 to 2026 on days that were holidays in Berlin only.
 8. **Scoring against the final version** (`part8/`): Part 7's second conjecture, that evaluations scored against an aggregator's final version understate the errors around holidays, checked on Johns Hopkins' morning counts for Germany and on 60,266 weekly case forecasts of the German and Polish COVID-19 Forecast Hub, each scored against counts dated by publication, by reporting date and by reference date.
+9. **A learned calendar** (`part9/`): Part 7's first conjecture, that a producer's calendar learned from the history of its unchanged files predicts its next gaps better than a published holiday calendar and changes at identifiable points, checked on 266 producers in the Johns Hopkins files (the US states, the provinces of Canada, the states of Australia, Hong Kong, and 193 countries), with the changes matched against announcements by the producers.
 
 The manuscripts are kept elsewhere; this repository holds the code, data, outputs and figures.
 
@@ -18,7 +19,7 @@ The manuscripts are kept elsewhere; this repository holds the code, data, output
 ```
 cd pipeline-time-correctness
 pip install -r requirements.txt
-python -m unittest discover -s tests -v       # 78 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4, 6 for Part 5, 5 for Part 6, 7 for Part 7, 6 for Part 8)
+python -m unittest discover -s tests -v       # 90 tests (11 for Part 1, 19 for Part 2, 15 for Part 3, 9 for Part 4, 6 for Part 5, 5 for Part 6, 7 for Part 7, 6 for Part 8, 12 for Part 9)
 cd part1
 python history_numbers.py > output.txt         # every number in the article
 python figures.py                              # figures/*.png
@@ -173,3 +174,23 @@ python figures.py                                  # figures/*.png (after hub_nu
 
 - KITmetricslab, German and Polish COVID-19 Forecast Hub, [covid19-forecast-hub-de@991c7a0](https://github.com/KITmetricslab/covid19-forecast-hub-de/tree/991c7a054246faee4abace7f5b705f044b0ffd01); forecasts are the work of the participating teams, under the licences stated in the hub. Bracher, J. et al. (2021), A pre-registered short-term forecasting study of COVID-19 in Germany and Poland during the second wave, *Nature Communications* 12, 5173.
 - Robert Koch-Institut, SARS-CoV-2 Infektionen in Deutschland (archive), CC BY 4.0, at the commit used in Parts 3 and 6.
+
+## Part 9
+
+```
+cd pipeline-time-correctness/part9
+pip install holidays==0.108; python fetch_global.py   # optional: rebuilds data/ from the Johns Hopkins repository (a minute)
+python calendar_numbers.py > output.txt               # every number in the article, in about a minute
+python figures.py                                     # figures/*.png (after calendar_numbers.py)
+```
+
+- `fetch_global.py` reads, from the 1,081 first versions of the global time series that Part 7 read (listed in `part7/data/jhu_versions.csv.gz`) and the final version, the rows of the eight countries that the series splits into states, provinces or territories: `data/jhu_global_rows.csv.gz`. It also writes the legal holidays of the Canadian provinces and territories, the Australian states and territories and Hong Kong (`data/calendars.csv.gz`) and every calendar's legal weekend by year (`data/weekends.csv`), from python-holidays 0.108.
+- `data/documented_changes.csv` is written by hand: for 15 producers (the ten most populous US states and the ten most populous EU member states in the Johns Hopkins lookup table, and the United Kingdom, where a change of two or more days of the week was detected), the first day of a changed reporting schedule as announced, with the source.
+- `learned.py` holds the definitions: the producers (US states from Part 7's extract; countries from Part 7's extract, with the country rows of Denmark, France, the Netherlands, New Zealand and the United Kingdom from this part's; Canadian provinces, Australian states and Hong Kong from this part's), the unchanged flag of Part 7, which producer-days are counted, the kinds of day under the published calendar, the four models (the published calendar; the producer's weekday rates; those plus the group's holiday effect; those plus the producer's own holiday effect), sliding windows, exponential forgetting, change-point detection by day of the week and shared by a producer's seven days, the segmentation used to date changes after the fact, and the matching of announced changes.
+- `calendar_numbers.py` prints every number; `output.txt` is its committed output. It writes small tables to `results/` for the figures.
+
+### Data
+
+- Johns Hopkins University Center for Systems Science and Engineering, COVID-19 Data Repository, CC BY 4.0, [CSSEGISandData/COVID-19@4360e50](https://github.com/CSSEGISandData/COVID-19/tree/4360e50239b4eb6b22f3a1759323748f36752177), as read in Part 7.
+- Holiday calendars and legal weekends: [python-holidays](https://github.com/vacanza/holidays) 0.108 (MIT).
+- Announcements of reporting changes: the sources listed in `data/documented_changes.csv`.
