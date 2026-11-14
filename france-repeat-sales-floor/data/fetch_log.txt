@@ -1,0 +1,26 @@
+# fetched 2026-11-14T11:03Z
+source	status	bytes	sha256
+https://sdmx.oecd.org/public/rest/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0/FRA.M.N.CPI.IX._T.N._Z?startPeriod=2018-01&format=csvfilewithlabels	200	29204	702b28ebb5881afc9a2765218bbf095caaee3e0e72b454e1021ee7ae5df42b4e
+# data.gouv.fr dataset last_modified 2026-10-21, temporal_coverage {"end": "2025-12-31", "start": "2020-07-01"}
+#   resource 'DVF 2021 (2nd semestre)' 75478922 bytes, modified 2026-10-20
+#   resource 'DVF 2022' 141270325 bytes, modified 2026-10-20
+#   resource 'DVF 2023' 117378804 bytes, modified 2026-10-20
+#   resource 'DVF 2024' 107356846 bytes, modified 2026-10-20
+#   resource 'DVF 2025' 116267867 bytes, modified 2026-10-20
+#   resource 'DVF 2026 (1er semestre)' 51711646 bytes, modified 2026-10-20
+#   resource 'DVF juillet 2021 - juin 2026 - fichier unique' 609458453 bytes, modified 2026-10-21
+#   resource 'Documentation des données sources' None bytes, modified 2026-11-14
+#   resource '[ARCHIVE] Données au format CSV - livraison avril - suppression au 31/11/2026' None bytes, modified 2026-05-25
+https://files.data.gouv.fr/geo-dvf/latest/csv/2014/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2015/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2016/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2017/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2018/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2019/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2020/full.csv.gz	404	0	-
+https://files.data.gouv.fr/geo-dvf/latest/csv/2021/full.csv.gz	200	122292058	bf7146c51827415302539b780e3009277530b40e08f3746fc3d73b2145938a07
+https://files.data.gouv.fr/geo-dvf/latest/csv/2022/full.csv.gz	200	122755368	fb4bc89a8ff5dd057525428dbd5335e229e856522090043a6bf2964e62253d09
+https://files.data.gouv.fr/geo-dvf/latest/csv/2023/full.csv.gz	200	101479952	9ecfee4de5cc1e34e9dbe438cb02b2957ecee2e4cd8cad9d28291e947611b5c6
+https://files.data.gouv.fr/geo-dvf/latest/csv/2024/full.csv.gz	200	92633147	f702185bb169c53627cf3619760e0a93d5e39912d3fded30d587e8033e083cc7
+https://files.data.gouv.fr/geo-dvf/latest/csv/2025/full.csv.gz	200	98313852	bf80533b27c44471287026e9ce679fa803ecdd9efd8267cf5710d40fd7a22980
+https://files.data.gouv.fr/geo-dvf/latest/csv/2026/full.csv.gz	404	0	-

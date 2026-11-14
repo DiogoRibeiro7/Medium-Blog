@@ -1,0 +1,228 @@
+
+==============================================================================
+P0. The producers and their files
+==============================================================================
+source https://github.com/CSSEGISandData/COVID-19.git at commit 4360e50239b4eb6b22f3a1759323748f36752177
+global time series rows of Australia, Canada, China, Denmark, France, Netherlands, New Zealand, United Kingdom: 112 rows, 1081 dates, 98647 row-dates
+calendars: python-holidays 0.108; 22 added (Canadian provinces and territories, Australian states and territories, Hong Kong); weekends for 270 calendars
+US states  producers  51; producer-days  54,162; counted  51,483 (51 producers); unchanged 29.0%
+provinces  producers  22; producer-days  23,534; counted  11,933 (22 producers); unchanged 36.3%
+countries  producers 193; producer-days 201,641; counted 125,501 (188 producers); unchanged 19.0%
+all       producers 266; producer-days 279,337; counted 188,917
+counted producer-days are those with a file and a count of the day before, on or before the producer's last change, with at least 800 new cases in the 28 days before (files as first published)
+unchanged share by year (April to March):
+  US states  2020-21 3.7%, 2021-22 23.2%, 2022-23 58.3%
+  provinces  2020-21 9.1%, 2021-22 17.5%, 2022-23 57.0%
+  countries  2020-21 7.1%, 2021-22 14.6%, 2022-23 38.9%
+producers whose legal weekend in 2021 is not Saturday and Sunday: 26 (Afghanistan, Algeria, Bahrain, Bangladesh, Brunei, Congo (Kinshasa), Djibouti, Egypt, Hong Kong, Iran, Iraq, Israel, Jordan, Kuwait, Maldives, Mauritania, Niger, Oman, Paraguay, Qatar, Saint Kitts and Nevis, Saudi Arabia, Sudan, Syria, Venezuela, Yemen)
+unchanged share by kind of day (counted days, all years):
+  US states  working 16.8% (n=33,882), weekend 54.9% (n=14,661), holiday 50.8% (n=1,730), after 24.0% (n=1,210)
+  provinces  working 29.3% (n=8,047), weekend 52.5% (n=3,329), holiday 47.9% (n=317), after 34.6% (n=240)
+  countries  working 15.7% (n=84,891), weekend 26.9% (n=35,258), holiday 20.7% (n=3,390), after 16.6% (n=1,962)
+
+==============================================================================
+P1. The published calendar as a rule (test period, 1 April 2021 to 9 March 2023)
+==============================================================================
+counted producer-days 132,225; unchanged 39,603 (30.0%)
+unchanged files on a legal weekend day or holiday: 48.2%; on a legal working day: 51.8%
+legal weekend days and holidays with an unchanged file: 46.4%; legal working days with one: 22.5%
+  US states  unchanged on legal off-days 58.8%; legal off-days unchanged 74.2%; legal working days unchanged 24.3%
+  provinces  unchanged on legal off-days 42.1%; legal off-days unchanged 56.8%; legal working days unchanged 34.5%
+  countries  unchanged on legal off-days 42.1%; legal off-days unchanged 33.3%; legal working days unchanged 20.4%
+
+==============================================================================
+P2. Four models, each fitted only on days before the one it predicts (test period)
+==============================================================================
+weekday window 56 days, holiday window 365 days, prior 2.0 pseudo-days, holiday-effect prior sd 1.0
+mean log loss (lower is better; predicting the group's overall rate everywhere would score about 0.5 to 0.6):
+  US states  n=35,584  constant rate 0.674; published 0.459, weekdays 0.248, weekdays + published holidays 0.222, learned 0.216, learned, change points 0.180
+  provinces  n=10,069  constant rate 0.678; published 0.531, weekdays 0.288, weekdays + published holidays 0.284, learned 0.280, learned, change points 0.237
+  countries  n=86,572  constant rate 0.556; published 0.504, weekdays 0.283, weekdays + published holidays 0.282, learned 0.281, learned, change points 0.247
+  all        n=132,225  published 0.494, weekdays 0.274, weekdays + published holidays 0.266, learned 0.263, learned, change points 0.228
+Brier score:
+  US states  published 0.151, weekdays 0.065, weekdays + published holidays 0.061, learned 0.059, learned, change points 0.047
+  provinces  published 0.181, weekdays 0.078, weekdays + published holidays 0.079, learned 0.077, learned, change points 0.064
+  countries  published 0.165, weekdays 0.082, weekdays + published holidays 0.082, learned 0.081, learned, change points 0.073
+difference in log loss, published minus learned, with a 95% interval resampling producers:
+  US states  +0.243 [+0.215, +0.276]
+  provinces  +0.251 [+0.209, +0.293]
+  countries  +0.223 [+0.198, +0.250]
+difference, learned minus learned with change points:
+  US states  +0.036 [+0.032, +0.040]
+  provinces  +0.042 [+0.034, +0.050]
+  countries  +0.033 [+0.030, +0.037]
+what the learned calendar (change points) said before each unchanged file:
+  US states  unchanged files 14,322: expected (p >= 0.5) 90.1%, in between 7.6%, unexpected (p < 0.05) 2.4%
+  provinces  unchanged files  4,167: expected (p >= 0.5) 85.7%, in between 11.3%, unexpected (p < 0.05) 3.0%
+  countries  unchanged files 21,114: expected (p >= 0.5) 70.2%, in between 25.5%, unexpected (p < 0.05) 4.2%
+  days the learned calendar expected an unchanged file: 34,122, of which unchanged 91.7%; days it gave below 0.05: 62,674, of which unchanged 2.2%
+
+==============================================================================
+P3. Holidays and the days after them (test period)
+==============================================================================
+  US states  holiday n=1,201 unchanged 65.4%: published 0.654, weekdays 1.352, weekdays + published holidays 0.581, learned 0.415
+  US states  after   n=  886 unchanged 32.3%: published 0.605, weekdays 0.350, weekdays + published holidays 0.358, learned 0.340
+  provinces  holiday n=  275 unchanged 48.0%: published 0.711, weekdays 0.716, weekdays + published holidays 0.552, learned 0.399
+  provinces  after   n=  212 unchanged 39.2%: published 0.645, weekdays 0.301, weekdays + published holidays 0.306, learned 0.308
+  countries  holiday n=2,349 unchanged 26.1%: published 0.568, weekdays 0.456, weekdays + published holidays 0.407, learned 0.353
+  countries  after   n=1,450 unchanged 20.2%: published 0.495, weekdays 0.310, weekdays + published holidays 0.309, learned 0.303
+learned minus weekdays + published holidays, on holidays (95% interval resampling producers):
+  US states  -0.166 [-0.227, -0.107]; weekdays + published holidays minus weekdays -0.771 [-1.033, -0.508]
+  provinces  -0.153 [-0.211, -0.089]; weekdays + published holidays minus weekdays -0.165 [-0.554, +0.187]
+  countries  -0.054 [-0.079, -0.034]; weekdays + published holidays minus weekdays -0.049 [-0.077, -0.023]
+holiday effects on the odds of an unchanged file (test holidays on working days):
+  US states  group effect, median over the test holidays: odds x58.8; producers' own effects at their last test holiday (n=51): 10th pct x5.3, median x16.0, 90th pct x46.1
+  provinces  group effect, median over the test holidays: odds x12.2; producers' own effects at their last test holiday (n=20): 10th pct x0.9, median x3.6, 90th pct x9.9
+  countries  group effect, median over the test holidays: odds x2.9; producers' own effects at their last test holiday (n=181): 10th pct x1.1, median x2.6, 90th pct x8.9
+  prior sd 0.5: US states holidays learned 0.477; provinces holidays learned 0.477; countries holidays learned 0.379
+  prior sd 2.0: US states holidays learned 0.393; provinces holidays learned 0.346; countries holidays learned 0.346
+
+==============================================================================
+P4. The same holiday a year later
+==============================================================================
+pairs: the same named legal holiday on a working day, the same producer, two consecutive years, both days counted
+  US states  pairs  872; unchanged in the second year: after an unchanged file the year before 94.9% (n=276), after a changed one 56.7% (n=596)
+             both years in a daily regime (weekday rate below 10%): pairs 413; after unchanged 89.1% (n=64), after changed 45.8% (n=349)
+  provinces  pairs  106; unchanged in the second year: after an unchanged file the year before 90.2% (n=41), after a changed one 49.2% (n=65)
+             both years in a daily regime (weekday rate below 10%): pairs 22; after unchanged 50.0% (n=4), after changed 16.7% (n=18)
+  countries  pairs 1574; unchanged in the second year: after an unchanged file the year before 67.7% (n=158), after a changed one 24.5% (n=1416)
+             both years in a daily regime (weekday rate below 10%): pairs 878; after unchanged 58.6% (n=29), after changed 7.3% (n=849)
+
+==============================================================================
+P5. The conjecture as worded: a calendar fitted to one year, used for the next
+==============================================================================
+fitted on 2020-21, scored on 2021-22:
+  US states  n=18,314 published 0.671, weekdays 0.877, weekdays + published holidays 0.831, learned 0.829
+  provinces  n= 3,988 published 0.445, weekdays 0.464, weekdays + published holidays 0.449, learned 0.447
+  countries  n=51,686 published 0.439, weekdays 0.373, weekdays + published holidays 0.370, learned 0.370
+  days of the week with no move in either year (78.7% of the scored days): published 0.309, weekdays 0.269, weekdays + published holidays 0.257, learned 0.256
+  the others: published 1.189, weekdays 1.363, weekdays + published holidays 1.342, learned 1.341
+fitted on 2021-22, scored on 2022-23:
+  US states  n=17,270 published 1.016, weekdays 1.355, weekdays + published holidays 1.273, learned 1.267
+  provinces  n= 6,081 published 1.194, weekdays 1.414, weekdays + published holidays 1.388, learned 1.386
+  countries  n=34,886 published 0.841, weekdays 1.091, weekdays + published holidays 1.084, learned 1.084
+  days of the week with no move in either year (51.0% of the scored days): published 0.484, weekdays 0.419, weekdays + published holidays 0.407, learned 0.405
+  the others: published 1.394, weekdays 2.019, weekdays + published holidays 1.969, learned 1.966
+
+==============================================================================
+P6. How the calendars changed
+==============================================================================
+segments (one series per producer and day of the week, holidays left out): 3,310 in 1,788 series
+transitions between a rate of at most 20% and one of at least 80%: 954 (up 824, down 130); observed week by week (no gap over 14 days): 863
+  of these, directly from one segment to the next: 94.9%
+changes of process (transitions of one producer, same direction, within 6 days): 456; by number of days of the week involved: 1: 248, 2: 115, 3: 27, 4: 39, 5: 14, 6: 13
+  transitions that belong to a change involving two or more days: 71.3%
+  producers with at least one change involving two or more days: 122 (US states 44, provinces 16, countries 62)
+  US states  changes 89 (up 77, down 12); by half-year: 2020 H2 2, 2021 H1 18, 2021 H2 17, 2022 H1 33, 2022 H2 18, 2023 H1 1
+  provinces  changes 23 (up 22, down 1); by half-year: 2020 H2 2, 2021 H1 1, 2021 H2 1, 2022 H1 8, 2022 H2 10, 2023 H1 1
+  countries  changes 96 (up 84, down 12); by half-year: 2020 H1 3, 2020 H2 10, 2021 H1 8, 2021 H2 7, 2022 H1 42, 2022 H2 26
+share of unchanged files on the days of the week that changed, by week relative to the change (183 upward changes involving two or more days):
+  weeks -12..+12: 0.07 0.07 0.04 0.06 0.05 0.06 0.04 0.04 0.04 0.03 0.03 0.00 1.00 0.97 0.99 0.98 0.95 0.96 0.93 0.93 0.90 0.92 0.89 0.89 0.89
+  weeks -4 to -2 3.4%, weeks +1 to +3 97.8%
+  simulated, step         (400 series): weeks -4 to -2 4.8%, weeks +1 to +3 95.5%; fitted as a direct step from one week to the next 99.8%
+  simulated, 4-week ramp  (400 series): weeks -4 to -2 7.4%, weeks +1 to +3 92.8%; fitted as a direct step from one week to the next 99.2%
+  simulated, 8-week ramp  (400 series): weeks -4 to -2 15.7%, weeks +1 to +3 85.6%; fitted as a direct step from one week to the next 96.5%
+  simulated, 13-week ramp (399 series): weeks -4 to -2 22.1%, weeks +1 to +3 82.2%; fitted as a direct step from one week to the next 88.2%
+
+==============================================================================
+P7. Changes that were announced
+==============================================================================
+sampling frame: the ten most populous US states and the ten most populous EU member states by the Johns Hopkins lookup table, and the United Kingdom; each announced change matched to the producer's detected change, involving two or more days of the week, nearest to the announced first day
+frame producers with such a change: 15; without one: California, Texas, New York, Germany, Poland, Czechia
+  Florida         announced first day 2021-06-04  detected 2021-06-07 (MTWT)  offset +3; changes of two or more days detected for this producer: 3
+  Pennsylvania    announced first day 2022-05-05  detected 2022-05-07 (TFSS)  offset +2; changes of two or more days detected for this producer: 1
+  Illinois        announced first day 2021-06-19  detected 2021-06-19 (SS)  offset +0; changes of two or more days detected for this producer: 2
+  Ohio            announced first day 2022-03-14  detected 2022-03-14 (MTWFSS)  offset +0; changes of two or more days detected for this producer: 1
+  Georgia         announced first day 2021-07-03  detected 2021-07-03 (SS)  offset +0; changes of two or more days detected for this producer: 2
+  North Carolina  announced first day 2022-04-07  detected 2022-04-07 (MTTF)  offset +0; changes of two or more days detected for this producer: 1
+  Michigan        announced first day 2021-07-07  detected 2021-07-07 (MWT)  offset +0; changes of two or more days detected for this producer: 3
+  France          announced first day 2022-06-11  detected 2022-06-12 (SS)  offset +1; changes of two or more days detected for this producer: 2
+  Italy           announced first day 2022-10-30  detected 2022-10-30 (MTSS)  offset +0; changes of two or more days detected for this producer: 2
+  Spain           announced first day 2020-07-04  detected 2020-07-04 (SS)  offset +0; changes of two or more days detected for this producer: 2
+  Romania         announced first day 2022-06-13  detected 2022-06-16 (TFSS)  offset +3; changes of two or more days detected for this producer: 4
+  Netherlands     announced first day 2022-04-09  detected 2022-04-09 (SS)  offset +0; changes of two or more days detected for this producer: 2
+  Belgium         announced first day 2021-06-27  detected 2021-06-26 (SS)  offset -1; changes of two or more days detected for this producer: 2
+  Greece          announced first day 2022-07-10  detected 2022-07-11 (MWTFSS)  offset +1; changes of two or more days detected for this producer: 1
+  United Kingdom  announced first day 2022-02-26  detected 2022-02-26 (SS)  offset +0; changes of two or more days detected for this producer: 2
+offsets: 9 at zero, all within -1 to +3 days
+Romania's return to daily reporting (announced from 12 July 2022): detected 2022-07-14
+
+==============================================================================
+P8. Keeping the weekday rate current: windows, forgetting, change points
+==============================================================================
+working and weekend days of the test period, n=125,852; mean log loss of the weekday rate
+  window: 7d 0.360, 14d 0.307, 28d 0.271, 56d 0.259, 91d 0.266, 182d 0.306, 365d 0.385, 730d 0.482
+  half-life: 7d 0.350, 14d 0.296, 28d 0.270, 56d 0.279, 112d 0.320, 224d 0.377
+  change points by day of the week: 56d 0.260, 91d 0.247, 182d 0.240, 364d 0.240, 728d 0.243, 1456d 0.247
+  change points shared by the producer's days: 91d 0.225, 182d 0.223, 365d 0.223, 730d 0.224
+  (window: days in the window; half-life: days; change points: expected days between changes)
+  US states  window 56 days 0.205, change points by day (a year apart) 0.183, shared change points (a year apart) 0.168
+  provinces  window 56 days 0.276, change points by day (a year apart) 0.254, shared change points (a year apart) 0.233
+  countries  window 56 days 0.278, change points by day (a year apart) 0.261, shared change points (a year apart) 0.244
+  by day minus shared: +0.016 [+0.014, +0.019]
+  window 56 days minus shared: +0.035 [+0.033, +0.038]
+simulated series (one day of the week, two moves between 3% and 95%): mean log loss
+  steps          window 8 weeks 0.278, change points 0.250
+  4-week ramps   window 8 weeks 0.276, change points 0.253
+  8-week ramps   window 8 weeks 0.278, change points 0.268
+  13-week ramps  window 8 weeks 0.282, change points 0.282
+  26-week ramps  window 8 weeks 0.330, change points 0.339
+
+==============================================================================
+P9. Robustness
+==============================================================================
+28-day count of at least 400: counted 204,215; US states published 0.460 learned 0.216; provinces published 0.529 learned 0.277; countries published 0.523 learned 0.291
+28-day count of at least 2000: counted 165,507; US states published 0.458 learned 0.214; provinces published 0.535 learned 0.286; countries published 0.475 learned 0.261
+prior 0.5: US states learned 0.209; provinces learned 0.272; countries learned 0.279
+prior 8.0: US states learned 0.271; provinces learned 0.344; countries learned 0.336
+weekday window 28: US states published 0.455 learned 0.220; provinces published 0.524 learned 0.284; countries published 0.503 learned 0.296
+weekday window 91: US states published 0.465 learned 0.235; provinces published 0.539 learned 0.298; countries published 0.506 learned 0.282
+
+==============================================================================
+P10. Worked example: Florida, June 2021
+==============================================================================
+  Mon 24 May working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Tue 25 May working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Wed 26 May working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Thu 27 May working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Fri 28 May working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Sat 29 May weekend  unchanged 1  published 0.30  window 0.05  by day 0.04  shared 0.04
+  Sun 30 May weekend  unchanged 1  published 0.31  window 0.06  by day 0.03  shared 0.07
+  Mon 31 May holiday  unchanged 1  published 0.19  window 0.00  by day 0.00  shared 0.01
+  Tue 01 Jun after    unchanged 0  published 0.02  window 0.01  by day 0.00  shared 0.02
+  Wed 02 Jun working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Thu 03 Jun working  unchanged 0  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Fri 04 Jun working  unchanged 1  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Sat 05 Jun weekend  unchanged 0  published 0.31  window 0.16  by day 0.18  shared 0.47
+  Sun 06 Jun weekend  unchanged 1  published 0.32  window 0.17  by day 0.23  shared 0.48
+  Mon 07 Jun working  unchanged 1  published 0.01  window 0.00  by day 0.00  shared 0.01
+  Tue 08 Jun working  unchanged 1  published 0.01  window 0.01  by day 0.00  shared 0.02
+  Wed 09 Jun working  unchanged 1  published 0.01  window 0.00  by day 0.00  shared 0.00
+  Thu 10 Jun working  unchanged 1  published 0.01  window 0.00  by day 0.00  shared 0.01
+  Fri 11 Jun working  unchanged 1  published 0.01  window 0.10  by day 0.14  shared 0.27
+  Sat 12 Jun weekend  unchanged 1  published 0.34  window 0.16  by day 0.13  shared 0.38
+  Sun 13 Jun weekend  unchanged 1  published 0.35  window 0.27  by day 0.52  shared 0.67
+  Mon 14 Jun working  unchanged 1  published 0.01  window 0.11  by day 0.14  shared 0.33
+  Tue 15 Jun working  unchanged 1  published 0.02  window 0.12  by day 0.15  shared 0.34
+  Wed 16 Jun working  unchanged 1  published 0.02  window 0.10  by day 0.14  shared 0.24
+  Thu 17 Jun working  unchanged 1  published 0.02  window 0.10  by day 0.14  shared 0.24
+  Fri 18 Jun holiday  unchanged 0  published 0.21  window 0.20  by day 0.35  shared 0.45
+  Sat 19 Jun weekend  unchanged 0  published 0.37  window 0.27  by day 0.33  shared 0.53
+  Sun 20 Jun weekend  unchanged 1  published 0.38  window 0.38  by day 0.66  shared 0.75
+  Mon 21 Jun working  unchanged 1  published 0.02  window 0.23  by day 0.36  shared 0.50
+  Tue 22 Jun working  unchanged 1  published 0.02  window 0.23  by day 0.36  shared 0.51
+  Wed 23 Jun working  unchanged 1  published 0.02  window 0.20  by day 0.35  shared 0.40
+  Thu 24 Jun working  unchanged 1  published 0.02  window 0.21  by day 0.36  shared 0.40
+  Fri 25 Jun working  unchanged 1  published 0.02  window 0.23  by day 0.35  shared 0.46
+  Sat 26 Jun weekend  unchanged 1  published 0.39  window 0.27  by day 0.25  shared 0.44
+  Sun 27 Jun weekend  unchanged 1  published 0.40  window 0.48  by day 0.74  shared 0.80
+  Mon 28 Jun working  unchanged 1  published 0.02  window 0.34  by day 0.50  shared 0.60
+  Tue 29 Jun working  unchanged 1  published 0.02  window 0.34  by day 0.51  shared 0.61
+  Wed 30 Jun working  unchanged 1  published 0.02  window 0.30  by day 0.50  shared 0.50
+  Thu 01 Jul working  unchanged 1  published 0.02  window 0.31  by day 0.51  shared 0.50
+  Fri 02 Jul working  unchanged 0  published 0.03  window 0.34  by day 0.50  shared 0.57
+  Sat 03 Jul weekend  unchanged 1  published 0.42  window 0.38  by day 0.42  shared 0.53
+  Sun 04 Jul weekend  unchanged 1  published 0.44  window 0.59  by day 0.80  shared 0.84
+  first Monday to Thursday with p >= 0.5, window: 2021-07-12
+  first Monday to Thursday with p >= 0.5, change points by day: 2021-06-28
+  first Monday to Thursday with p >= 0.5, shared change points: 2021-06-21
