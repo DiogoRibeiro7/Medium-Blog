@@ -48,6 +48,8 @@ TRUNC = (
     "date_trunc_ymdh(date_time)",
     "date_trunc_ymdh(date_time, 'America/New_York')",
     "date_trunc_ymdh(date_time, 'UTC')",
+    "date_trunc_ymdh(date_time::floating_timestamp)",
+    "date_trunc_ymdh(to_floating_timestamp(date_time, 'America/New_York'))",
 )
 
 
@@ -85,6 +87,8 @@ def clock_hour(text: str) -> int | None:
 
 def choose_trunc() -> tuple[str, float, int]:
     """The first truncation the portal accepts whose hour matches the TIME field on sampled calls."""
+    sample = get(url({"$select": "date, time, date_time", "$limit": "3", "$order": "date_time"})).decode("utf-8")
+    print("field formats (3 calls):", sample.replace("\n", " | "))
     for trunc in TRUNC:
         rows = []
         for month in ("01", "07"):  # winter and summer time
@@ -98,7 +102,8 @@ def choose_trunc() -> tuple[str, float, int]:
             try:
                 rows += list(csv.DictReader(io.StringIO(get(q).decode("utf-8"))))
             except SystemExit as e:
-                print(f"{trunc}: rejected ({str(e)[:160]})")
+                msg = str(e)
+                print(f"{trunc}: rejected: {msg[msg.find('{') :][:400]}")
                 rows = None
                 break
         if not rows:
