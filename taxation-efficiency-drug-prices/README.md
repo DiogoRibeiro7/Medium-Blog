@@ -14,6 +14,7 @@ Follow-ups test conjectures left open by the parts.
 
 - **Follow-up 1 — confidential returns in Portugal and the countries it references** ([`followup1/`](followup1)). Tests the conjecture of Part 7: that reference pricing turns list prices into something other payers use, so that a small country that is both referenced and referencing should bargain through confidential returns, more so over time and in hospitals, and should have a wider gap between list and net prices than the countries it references. Puts together every published piece on Portugal's returns (the State–industry agreements 2013–2025, the extraordinary contribution on the industry, Infarmed's figures for 2023–2025 and the industry's own studies, with the rounding of each figure carried through), France's rebates 2016–2024 by setting (DREES, IGAS-IGF), Belgium's compensations under article 81/111 conventions and levies 2015–2024 by setting (INAMI), and what Italy and Spain publish. Compares the share returned in 2024, turns it into net prices with Part 3's list-price ratios (with a simulation over the uncertain inputs), and computes what the referenced countries' own rebates do to Portugal's price ceiling.
 - **Follow-up 2 — where the rise in the US share of drugmakers' revenue comes from** ([`followup2/`](followup2)). Tests the second conjecture of Part 6: that the US share rises because new medicines are launched first, and priced highest, in the United States, so that the rise is concentrated in medicines launched in the period and the share is higher for companies with more revenue from medicines under five years old. Rebuilds, from the XBRL instances of the seventeen companies' annual reports, the revenue of each medicine in the United States and in total (2016–2025 for the companies that tag revenue by product and country), dates each medicine by its first US approval (Drugs@FDA and the Purple Book), and splits the change in the pooled US share exactly, medicine by medicine (Griliches and Regev 1995), by launch cohort and by age. Adds the life cycle of a medicine's US share from launch and the relation, across and within companies, between revenue from new medicines and the US share.
+- **Follow-up 3 — whether old medicines lose US share in the United States or abroad** ([`followup3/`](followup3)). Tests the second conjecture of follow-up 2: that the fall in the US share of established medicines comes from the United States (falling net prices, earlier generic and biosimilar entry) rather than from growth abroad. Uses follow-up 2's medicine-by-medicine revenue from the SEC filings and splits each medicine's change in US share exactly into the part due to its US revenue and the part due to its revenue abroad (a two-factor Shapley split), by years since first US approval. Tests the two predictions (the fall concentrated in medicines whose US revenue fell; medicines whose US revenue grew keeping their share), follows the medicines on the market for ten years or more in 2016 to 2025, compares which market fell first with the FDA and EMA approval dates of generics and biosimilars, and sets the companies' US revenue against Medicare Part D and Part B volumes, 2020–2024.
 
 ## Running
 
@@ -47,6 +48,9 @@ python rebates_numbers.py > output.txt    # a few seconds; reads data/, ../part7
 python figures.py
 cd ../followup2
 python portfolio_numbers.py > output.txt  # about ten seconds; reads data/ and ../part6/data, ../part6/output.txt
+python figures.py
+cd ../followup3
+python us_side_numbers.py > output.txt    # about thirty seconds; reads data/, ../followup2/data, ../part6/data and ../part4/data
 python figures.py
 cd ..
 python -m unittest discover -s tests      # tests of the shared tools
@@ -141,6 +145,11 @@ A GitHub Actions workflow (`.github/workflows/taxation-efficiency-drug-prices.ym
 
   A product member of a filing is matched to a US brand name by its words (the leftmost word that begins a brand name; four names used outside the US or misspelt are aliased); members that name a group, a business or a kind of revenue stay out. The decomposition covers the medicines a company reports one by one with US and total revenue, not the company's whole revenue; the script prints how much of each company's revenue that is.
 
+- **Follow-up 3** uses the snapshot in `followup3/data`, taken on 14 November 2026, with the revenue and FDA files of follow-up 2 (`followup2/data`), the exchange rates of Part 6 and the EMA medicines list of Part 4:
+  - CMS, Medicare Part D Spending by Drug and Medicare Part B Spending by Drug, the release covering 2020–2024 (the only one in the CMS data catalogue): spending, dosage or billing units, claims and beneficiaries by brand (Part D, the "Overall" row of each brand and generic name) and by HCPCS code (Part B). Spending is gross of manufacturer rebates in Part D; Part B pays on average sales prices.
+
+  Medicare rows are assigned to a medicine when their brand name begins with its name, or is contained in the name of the XBRL member that reports it (members such as `PREZISTAPREZCOBIXREZOLSTASYMTUZA` report several brands as one line). First US generic approvals are the earliest ANDA with the same active moieties (salt and hydrate words removed); first US biosimilars, the earliest 351(k) licence naming the medicine as reference product; first EU biosimilars, the earliest centrally authorised biosimilar of the same substance. Approval is not launch, and the script compares both with the year each market's revenue peaked.
+
 ## References
 
 Acemoglu, D., & Linn, J. (2004). Market size in innovation: theory and evidence from the pharmaceutical industry. *Quarterly Journal of Economics*, 119(3), 1049–1090.
@@ -164,6 +173,8 @@ Browning, E. K. (1976). The marginal cost of public funds. *Journal of Political
 Centers for Medicare & Medicaid Services (2024). Negotiating lower drug prices works, saves billions. Press release, 15 August 2024.
 
 Centers for Medicare & Medicaid Services (2026). Medicare Part D Spending by Drug: methodology, data years 2020–2024.
+
+Centers for Medicare & Medicaid Services (2026). Medicare Part B Spending by Drug: data years 2020–2024.
 
 Charles River Associates (2026). *European Access Hurdles Portal: results from the fourth year of data collection*. Final report for EFPIA, May 2026.
 
@@ -296,5 +307,7 @@ Portuguese State & Indústria Farmacêutica (2013–2024). Agreements for 2013 (
 Portuguese State & Indústria Farmacêutica (2025). Acordo entre o Estado Português e a Indústria Farmacêutica, 20 de março de 2025.
 
 Real Decreto-ley 8/2010, de 20 de mayo, por el que se adoptan medidas extraordinarias para la reducción del déficit público. *Boletín Oficial del Estado*; amended by Real Decreto-ley 9/2011, de 19 de agosto.
+
+Shorrocks, A. F. (2013). Decomposition procedures for distributional analysis: a unified framework based on the Shapley value. *Journal of Economic Inequality*, 11(1), 99–126.
 
 Weimann, J., Brosig-Koch, J., Heinrich, T., Hennig-Schmidt, H., & Keser, C. (2019). Public good provision by large groups – the logic of collective action revisited. *European Economic Review*, 118, 348–363.
