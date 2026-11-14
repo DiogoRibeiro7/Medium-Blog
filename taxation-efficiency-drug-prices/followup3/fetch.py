@@ -80,7 +80,9 @@ def catalogue() -> dict:
 
 def releases(title: str) -> list[dict]:
     """The CSV distributions of the dataset with this title, one per release, newest first."""
-    ds = [d for d in catalogue()["dataset"] if d.get("title", "").strip().lower() == title.lower()]
+    # each release is its own catalogue entry, titled "<title> : <last day covered>"
+    ds = [d for d in catalogue()["dataset"]
+          if re.fullmatch(re.escape(title.lower()) + r"(\s*:\s*[\d-]+)?", d.get("title", "").strip().lower())]
     if not ds:
         near = [d.get("title") for d in catalogue()["dataset"] if "spending by drug" in d.get("title", "").lower()]
         raise RuntimeError(f"no dataset titled {title!r}; similar: {near}")
@@ -90,7 +92,7 @@ def releases(title: str) -> list[dict]:
             url = dist.get("downloadURL") or ""
             api = dist.get("accessURL") or ""
             kind = (dist.get("mediaType") or dist.get("format") or "").lower()
-            out.append({"title": dist.get("title", ""), "temporal": dist.get("temporal", ""),
+            out.append({"title": dist.get("title", "") or d.get("title", ""), "temporal": dist.get("temporal", "") or d.get("temporal", ""),
                         "modified": dist.get("modified", ""), "csv": url if (url.lower().endswith(".csv") or "csv" in kind) else "",
                         "api": api if "data-api" in api else ""})
     for r in out:
