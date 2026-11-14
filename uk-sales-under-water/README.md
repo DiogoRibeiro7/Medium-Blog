@@ -6,7 +6,7 @@ Every standard sale since 1995 starts an ownership spell at its address; the nex
 
 - **Timing**: the monthly resale rate halved between the summer of 2007 and the first quarter of 2008, when 4% of owners were below their purchase price. The share under water peaked near 40% in 2009, while the resale rate was already recovering.
 - **Lock-in curve**: within the same postcode area and year, and for owners with the same years since purchase, type and new-build status, the probability of reselling falls smoothly as m falls, with no step at zero. In 2008–2012, owners 10% under water sold about 16% less often than owners at 0 to +2%, and owners 20% under water about 37% less.
-- **How much it mattered**: if owners below their purchase price had sold like owners just above it, 3% of the 2007–2009 fall would have been avoided. A wider version, owners below +10% selling like owners at +10–20%, adds 9–12% to the resale rate in 2009–2012.
+- **How much it mattered**: if owners below their purchase price had sold like owners just above it, 3% of the 2007–2009 fall would have been avoided; if owners below +10% had sold like owners at +10–20%, 7%. In 2009–2012 the wider version adds 9–12% to the resale rate. On synthetic sales where a sharp lock-in is the only cause of the fall, the same estimates recover 28% and 68% of it (`validate.py`), so the real effect is larger than these figures, perhaps about a tenth of the fall.
 - **Districts**: comparisons of postcode districts within the same area change sign with the controls and fail placebo tests; they cannot separate the position of owners from the composition and earlier boom of each district.
 
 ## Run
@@ -17,6 +17,7 @@ python fetch.py --ppd /scratch/ppd                                             #
 python build.py --ppd /scratch/ppd/pp-complete.csv --out data --temp /scratch/duck
 python analysis.py        # results/*.csv and results/summary.txt (every number in the article)
 python figures.py
+python validate.py         # the method on synthetic sales with and without a planted lock-in
 python -m pytest -q tests  # synthetic sales with a planted lock-in
 ```
 

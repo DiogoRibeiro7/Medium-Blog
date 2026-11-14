@@ -1,0 +1,12 @@
+VALIDATION ON SYNTHETIC SALES (tests/synth.py, 4 areas x 20,000 homes, seed 23)
+============================================================================
+
+planted: owners below their purchase price sell at 40% of the normal rate
+  resale rate 2007 10.38%, 2009 8.13% (fall 22%); share under water at the start of 2009 32%
+  estimated 2008-2012 curve, relative to owners at 0 to +2%: [-10%] -37%; [-6%] -24%; [-2%] -6%; [+2%] +6%; [+10%] +32%; [+16%] +43%
+  share of the 2007-2009 fall attributed: narrow 28%, wide 68% (true share: 100%, the planted effect is the only cause)
+
+null: no effect of the purchase price
+  resale rate 2007 10.29%, 2009 10.13% (fall 2%); share under water at the start of 2009 31%
+  estimated 2008-2012 curve, relative to owners at 0 to +2%: [-10%] +12%; [-6%] +12%; [-2%] +12%; [+2%] +14%; [+10%] +17%; [+16%] +17%
+  no fall to attribute; the curve varies by 5 points across the bands shown

@@ -247,6 +247,24 @@ def main() -> int:
     w(f"Owner-years {int(log['owner_years']):,} and resales {int(log['resales']):,}, years {log['years']}; "
       f"hazard cells {len(hc):,}")
 
+    # [0b] area index: peak-to-trough falls
+    idx = pd.read_csv(DATA / "area_index.csv").pivot(index="t", columns="area", values="log_index")
+
+    def falls(a0, a1, b1):
+        out = {}
+        for a_ in idx.columns:
+            s_ = idx[a_]
+            pk_ = s_.loc[a0:a1].idxmax()
+            out[a_] = float(np.expm1(s_.loc[pk_:b1].min() - s_.loc[pk_]))
+        return pd.Series(out)
+
+    def tm(y, m):
+        return (y - 1995) * 12 + m - 1
+    f1 = falls(tm(2006, 1), tm(2008, 12), tm(2013, 12))
+    f2 = falls(tm(2021, 6), tm(2023, 12), tm(2025, 12))
+    w(f"Area index, peak to trough: 2007-2009 median area {pct(f1.median())} (range {pct(f1.max())} to "
+      f"{pct(f1.min())}); 2022-2025 median area {pct(f2.median())} (range {pct(f2.max())} to {pct(f2.min())})")
+
     # [1] national series
     cf_all = None
     yr = hc.groupby("year").agg(stock=("stock", "sum"), resales=("resales", "sum")).reset_index()
@@ -327,6 +345,15 @@ def main() -> int:
         fw = cp_.rate_without_position[a] - cp_.rate_without_position[b]
         fn = cp_.rate_without_lock_in[a] - cp_.rate_without_lock_in[b]
         w(f"    {a}->{b}: share of the fall, narrow {pct((fall - fn) / fall)}, wide {pct((fall - fw) / fall)}")
+    # the 2007-2009 fall with the 2008-2012 curve applied to the positions of both years
+    c0812 = cdf[cdf.period == "2008-2012"].copy()
+    c0812.attrs["pooled"] = [int(x) for x in curves[[c.period.iloc[0] for c in curves].index("2008-2012")].attrs["pooled"]]
+    cf_same = counterfactual(hc[hc.year.isin([2007, 2009])], c0812).set_index("year")
+    fall = cf_same.rate[2007] - cf_same.rate[2009]
+    for kind, col in [("narrow", "lock_in_drag"), ("wide", "position_drag")]:
+        d07, d09 = cf_same[col][2007], cf_same[col][2009]
+        w(f"    2007->2009 with the 2008-2012 curve for both years, {kind}: drag {100 * d07:.2f} pp in 2007 and "
+          f"{100 * d09:.2f} pp in 2009; share of the fall {pct((d09 - d07) / fall)}")
     yrs = [2009, 2010, 2011, 2012, 2013]
     w(f"    2009-2013 average: actual rate {pct(cp_.rate[yrs].mean(), 2)}, wide drag "
       f"{100 * cp_.position_drag[yrs].mean():.2f} pp ({pct((cp_.position_drag[yrs] / cp_.rate[yrs]).mean())} of "
@@ -396,6 +423,27 @@ def main() -> int:
                           ("2023 H2", "2023-07", "2023-12"), ("2024", "2024-01", "2024-12")]:
             w(f"  {lab}: monthly resale rate {100 * avg(a, b):.3f}%  under water {pct(avg(a, b, 'share_under'))} "
               f"(below -10%: {pct(avg(a, b, 'share_under10'))})")
+        pk = sr.share_under.idxmax()
+        w(f"  peak share under water: {pct(sr.share_under.max())} in {pk:%Y-%m}; lowest monthly resale rate "
+          f"2008-2009: {100 * sr.loc['2008':'2009', 'rate'].min():.3f}% in {sr.loc['2008':'2009', 'rate'].idxmin():%Y-%m}")
+        yr_rate = sr.loc["2010":"2013", "rate"].groupby(sr.loc["2010":"2013"].index.year).mean()
+        yr_under = sr.loc["2010":"2013", "share_under"]
+        w(f"  2010-2013: annual mean of the monthly resale rate {100 * yr_rate.min():.3f}% to {100 * yr_rate.max():.3f}%; "
+          f"monthly share under water {pct(yr_under.min())} to {pct(yr_under.max())}")
+        # by region: fall in the annual resale rate and the share under water
+        w("  by region: resale rate 2007 -> 2009 (sum of monthly resales over mean stock) and share under water")
+        mp["under"] = mp.m_band.isin(["below_m10", "m10_0"])
+        for reg, g in mp.groupby("region"):
+            def ann(y):
+                gy = g[g.year == y]
+                st = gy.groupby("date").stock.sum().mean()
+                return gy.resales.sum() / st
+            und_ = g[g.under].groupby("date").stock.sum() / g.groupby("date").stock.sum()
+            und_ = und_.reindex(g.date.unique()).fillna(0).sort_index()
+            w(f"    {reg}: {pct(ann(2007), 2)} -> {pct(ann(2009), 2)} ({100 * (ann(2009) / ann(2007) - 1):+.0f}%); "
+              f"2022 -> 2023 {100 * (ann(2023) / ann(2022) - 1):+.0f}%; under water Jan 2008 "
+              f"{pct(und_.loc['2008-01'].iloc[0])}, Jan 2009 {pct(und_.loc['2009-01'].iloc[0])}, peak "
+              f"{pct(und_.loc['2008':'2013'].max())}; Jan 2024 {pct(und_.loc['2024-01'].iloc[0])}")
         w("  fall in the monthly resale rate, owners held 2-5 years, by band of m: 2007 average to 2009 "
           "average, and 2022 to 2023")
         for col in ["rate_2_5y_" + b for b in M_BAND_ORDER]:

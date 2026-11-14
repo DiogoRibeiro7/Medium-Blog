@@ -4,6 +4,7 @@ OWNERS UNDER WATER AND THE FALL IN SALES: every number used in the article
 [0] Data
 Standard sales 29,824,801; ownership spells 29,824,801; postcode areas with an index 105; districts 2,357
 Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 794,393
+Area index, peak to trough: 2007-2009 median area -18.1% (range -13.6% to -25.0%); 2022-2025 median area -4.6% (range -1.1% to -9.8%)
 
 [1] By year: stock (owners who bought since 1995), resale rate, share below the purchase price, all standard sales
   2000: stock   4,457,598  rate 7.35%  under water 0.7% (below -10%: 0.0%)  sales 1,128,711
@@ -104,6 +105,8 @@ Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 79
     2007->2009: share of the fall, narrow 3.4%, wide 0.6%
     2022->2024: share of the fall, narrow 0.5%, wide 11.2%
     2022->2023: share of the fall, narrow -0.1%, wide -0.6%
+    2007->2009 with the 2008-2012 curve for both years, narrow: drag 0.00 pp in 2007 and 0.14 pp in 2009; share of the fall 3.4%
+    2007->2009 with the 2008-2012 curve for both years, wide: drag 0.07 pp in 2007 and 0.36 pp in 2009; share of the fall 6.7%
     2009-2013 average: actual rate 3.37%, wide drag 0.32 pp (9.6% of the actual rate); resales lost 169,049 against 1,804,850 that happened
   raw annual resale rate by band of m, owners held 2-5 whole years:
     2009: below -10% 2.76% (stock 120,835); -10% to 0 3.10% (stock 1,472,238); 0 to +10% 3.61% (stock 1,061,987); +10% to +25% 3.64% (stock 326,364); above +25% 3.28% (stock 23,428)
@@ -142,6 +145,13 @@ Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 79
   2023 H1: monthly resale rate 0.224%  under water 3.5% (below -10%: 0.0%)
   2023 H2: monthly resale rate 0.262%  under water 4.2% (below -10%: 0.0%)
   2024: monthly resale rate 0.266%  under water 5.0% (below -10%: 0.0%)
+  peak share under water: 39.6% in 2009-04; lowest monthly resale rate 2008-2009: 0.127% in 2009-01
+  2010-2013: annual mean of the monthly resale rate 0.271% to 0.322%; monthly share under water 18.7% to 33.9%
+  by region: resale rate 2007 -> 2009 (sum of monthly resales over mean stock) and share under water
+    London: 7.69% -> 3.06% (-60%); 2022 -> 2023 -22%; under water Jan 2008 1.2%, Jan 2009 19.9%, peak 24.6%; Jan 2024 8.2%
+    North and Midlands: 7.11% -> 2.68% (-62%); 2022 -> 2023 -22%; under water Jan 2008 2.9%, Jan 2009 34.9%, peak 47.0%; Jan 2024 5.5%
+    South: 7.50% -> 3.49% (-53%); 2022 -> 2023 -26%; under water Jan 2008 2.1%, Jan 2009 33.3%, peak 41.5%; Jan 2024 8.2%
+    Wales: 6.26% -> 2.53% (-60%); 2022 -> 2023 -23%; under water Jan 2008 3.1%, Jan 2009 33.9%, peak 45.8%; Jan 2024 5.2%
   fall in the monthly resale rate, owners held 2-5 years, by band of m: 2007 average to 2009 average, and 2022 to 2023
     below_m10: 2007->2009 n/a; 2022->2023 n/a
         m10_0: 2007->2009 n/a; 2022->2023 0.194% -> 0.220% (+14%, avg stock 240)
