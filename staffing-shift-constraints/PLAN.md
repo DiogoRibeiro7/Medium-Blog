@@ -21,7 +21,7 @@ since March 2020 it does not fully represent agent-handled calls, so the test us
 2019.
 
 `fetch.py` counts calls per clock hour on the portal, month by month, with the Socrata query
-`$select=date_trunc_ymdh(date_time) AS hour, count(*) AS calls ... $group=hour`, and writes them to
+`$select=date_trunc_ymdh(date_time) AS clock_hour, count(*) AS calls ... $group=date_trunc_ymdh(date_time)`, and writes them to
 `sources/hourly_calls.csv`, which is committed with its SHA-256 in `sources/FILES` and the dataset's update time in
 `sources/REVISION`. Later runs use the committed file.
 
@@ -117,4 +117,5 @@ direction.
 
 ## Changes after registration
 
-None yet.
+- 14 November 2026, before any count was received: the portal rejected the first form of the query (HTTP 400), so
+  the hourly alias was renamed and the grouping written as the expression itself. Same counts, same months.

@@ -14,6 +14,7 @@ import hashlib
 import io
 import json
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -28,6 +29,12 @@ def get(url: str, tries: int = 6) -> bytes:
         try:
             with urllib.request.urlopen(url, timeout=300) as r:
                 return r.read()
+        except urllib.error.HTTPError as e:
+            if 400 <= e.code < 500 and e.code != 429:
+                raise SystemExit(f"{e.code} for {url}: {e.read().decode('utf-8', 'replace')[:2000]}") from e
+            if i == tries - 1:
+                raise
+            time.sleep(10 * 2**i)
         except Exception as e:  # noqa: BLE001 - retry any transient failure, then give up
             if i == tries - 1:
                 raise
@@ -41,10 +48,10 @@ def month_query(year: int, month: int) -> str:
     start = f"{year}-{month:02d}-01T00:00:00"
     end = f"{year + (month == 12)}-{month % 12 + 1:02d}-01T00:00:00"
     params = {
-        "$select": "date_trunc_ymdh(date_time) AS hour, count(*) AS calls",
+        "$select": "date_trunc_ymdh(date_time) AS clock_hour, count(*) AS calls",
         "$where": f"date_time >= '{start}' AND date_time < '{end}'",
-        "$group": "hour",
-        "$order": "hour",
+        "$group": "date_trunc_ymdh(date_time)",
+        "$order": "date_trunc_ymdh(date_time)",
         "$limit": "5000",
     }
     return f"{BASE}/resource/{DATASET}.csv?" + urllib.parse.urlencode(params)
@@ -81,7 +88,7 @@ def main() -> None:
         for m in range(1, 13):
             body = get(month_query(y, m)).decode("utf-8")
             part = list(csv.DictReader(io.StringIO(body)))
-            rows += [(r["hour"][:13].replace("T", " "), int(r["calls"])) for r in part]
+            rows += [(r["clock_hour"][:13].replace("T", " "), int(r["calls"])) for r in part]
             print(f"{y}-{m:02d}: {len(part)} hours, {sum(int(r['calls']) for r in part)} calls")
     missing = {}
     for y in YEARS:
