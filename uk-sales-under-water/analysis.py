@@ -36,8 +36,9 @@ REF_BIN = 0                     # [0, 2%)
 PERIODS = [("all", 2000, 2025), ("2001-2007", 2001, 2007), ("2008-2012", 2008, 2012),
            ("2013-2021", 2013, 2021), ("2022-2025", 2022, 2025)]
 MIN_BIN_STOCK = 5000
-EPISODES = [("2007-2009", 2007, 2009, 2005), ("2022-2024", 2022, 2024, 2020),
-            ("2007-2008", 2007, 2008, 2005), ("2022-2023", 2022, 2023, 2020)]
+EPISODES = [("2007-2009", 2007, 2009, 2005), ("2007-2010", 2007, 2010, 2005),
+            ("2022-2024", 2022, 2024, 2020)]
+M_BAND_ORDER = ["below_m10", "m10_0", "0_10", "10_25", "25_50", "above_50"]
 DUR_BAND_EDGES = [(0, 2), (2, 5), (5, 10), (10, 99)]
 
 
@@ -203,6 +204,12 @@ def district_test(dy: pd.DataFrame, y0: int, y1: int, ypre: int) -> dict:
     beta, se, _ = wls_cluster(W.dy.to_numpy(), W[xs].to_numpy(), d.w.to_numpy(), d.area.to_numpy())
     out["deep_b"], out["deep_se"] = float(beta[0]), float(se[0])
     out["shallow_b"], out["shallow_se"] = float(beta[1]), float(se[1])
+    out["mean_under10"] = float(np.average(d.under10, weights=d.w))
+    out["p10_under10"], out["p90_under10"] = float(d.under10.quantile(0.1)), float(d.under10.quantile(0.9))
+    W = within(d, ["pre", "under10", "under"] + ctrl, "area", "w")
+    xs = ["under10", "under"] + ctrl
+    beta, se, _ = wls_cluster(W.pre.to_numpy(), W[xs].to_numpy(), d.w.to_numpy(), d.area.to_numpy())
+    out["placebo_deep_b"], out["placebo_deep_se"] = float(beta[0]), float(se[0])
     # binned relation for the figure: residualise on area and controls, 10 bins of the share
     W = within(d, ["dy", "under"] + ctrl + ["pre"], "area", "w")
     Z = W[ctrl + ["pre"]].to_numpy()
@@ -320,10 +327,59 @@ def main() -> int:
           f"({o['under_controls_se']:.3f}); plus pre-trend {o['under_controls_pre_b']:+.3f} "
           f"({o['under_controls_pre_se']:.3f}); placebo on pre-trend {o['placebo_pre_b']:+.3f} "
           f"({o['placebo_pre_se']:.3f})")
-        w(f"    deep (below -10%) {o['deep_b']:+.3f} ({o['deep_se']:.3f}) and any under water "
-          f"{o['shallow_b']:+.3f} ({o['shallow_se']:.3f})")
+        w(f"    deep (below -10%, mean {pct(o['mean_under10'])}, p10 {pct(o['p10_under10'])}, p90 "
+          f"{pct(o['p90_under10'])}) {o['deep_b']:+.3f} ({o['deep_se']:.3f}) and any under water "
+          f"{o['shallow_b']:+.3f} ({o['shallow_se']:.3f}); placebo deep on pre-trend "
+          f"{o['placebo_deep_b']:+.3f} ({o['placebo_deep_se']:.3f})")
     pd.DataFrame(res4).to_csv(RES / "district_tests.csv", index=False, float_format="%.6g")
     pd.concat(bins4).to_csv(RES / "district_binned.csv", index=False, float_format="%.6g")
+
+    # [5] monthly: when did sales fall, and for whom?
+    mp_path = DATA / "monthly_position.csv"
+    if mp_path.exists():
+        mp = pd.read_csv(mp_path)
+        mp["date"] = pd.to_datetime(dict(year=mp.year, month=mp.month, day=1))
+        tot = mp.groupby("date").agg(stock=("stock", "sum"), resales=("resales", "sum"))
+        und = mp[mp.m_band.isin(["below_m10", "m10_0"])].groupby("date").stock.sum()
+        und10 = mp[mp.m_band == "below_m10"].groupby("date").stock.sum()
+        series = tot.assign(rate=tot.resales / tot.stock, share_under=und.reindex(tot.index).fillna(0) / tot.stock,
+                            share_under10=und10.reindex(tot.index).fillna(0) / tot.stock)
+        # resale rate by band of m within the 2-5 year holding band (holds composition roughly fixed)
+        sub = mp[mp.dur_band == "d2_5"]
+        byb = sub.groupby(["date", "m_band"]).agg(stock=("stock", "sum"), resales=("resales", "sum"))
+        byb = (byb.resales / byb.stock).unstack()
+        out5 = series.join(byb.add_prefix("rate_2_5y_")).reset_index()
+        out5.to_csv(RES / "monthly_series.csv", index=False, float_format="%.6g")
+        w("")
+        w("[5] Monthly: resale rate of the stock and the share of the stock below its purchase price "
+          "(m at the end of the previous month)")
+        sr = series
+        def avg(a, b, col="rate"):
+            return float(sr.loc[a:b, col].mean())
+        for lab, a, b in [("2007 Q3", "2007-07", "2007-09"), ("2007 Q4", "2007-10", "2007-12"),
+                          ("2008 Q1", "2008-01", "2008-03"), ("2008 Q2", "2008-04", "2008-06"),
+                          ("2008 Q3", "2008-07", "2008-09"), ("2008 Q4", "2008-10", "2008-12"),
+                          ("2009 Q1", "2009-01", "2009-03"), ("2009 Q2", "2009-04", "2009-06"),
+                          ("2009 H2", "2009-07", "2009-12"), ("2012", "2012-01", "2012-12"),
+                          ("2014", "2014-01", "2014-12"), ("2022 H1", "2022-01", "2022-06"),
+                          ("2022 H2", "2022-07", "2022-12"), ("2023 H1", "2023-01", "2023-06"),
+                          ("2023 H2", "2023-07", "2023-12"), ("2024", "2024-01", "2024-12")]:
+            w(f"  {lab}: monthly resale rate {100 * avg(a, b):.3f}%  under water {pct(avg(a, b, 'share_under'))} "
+              f"(below -10%: {pct(avg(a, b, 'share_under10'))})")
+        w("  fall in the monthly resale rate, owners held 2-5 years, by band of m: 2007 average to 2009 "
+          "average, and 2022 to 2023")
+        for col in ["rate_2_5y_" + b for b in M_BAND_ORDER]:
+            if col not in out5:
+                continue
+            x = out5.set_index("date")[col]
+            a07, a09 = x.loc["2007-01":"2007-12"].mean(), x.loc["2009-01":"2009-12"].mean()
+            a22, a23 = x.loc["2022-01":"2022-12"].mean(), x.loc["2023-01":"2023-12"].mean()
+            st09 = sub[(sub.m_band == col[10:]) & (sub.year == 2009)].stock.mean()
+            st23 = sub[(sub.m_band == col[10:]) & (sub.year == 2023)].stock.mean()
+            def fmt(a, b, st):
+                return (f"{100 * a:.3f}% -> {100 * b:.3f}% ({100 * (b / a - 1):+.0f}%, avg stock {st:,.0f})"
+                        if np.isfinite(a) and np.isfinite(b) and a > 0 else "n/a")
+            w(f"    {col[10:]:>9}: 2007->2009 {fmt(a07, a09, st09)}; 2022->2023 {fmt(a22, a23, st23)}")
     text = "\n".join(L) + "\n"
     (RES / "summary.txt").write_text(text)
     print(text)
