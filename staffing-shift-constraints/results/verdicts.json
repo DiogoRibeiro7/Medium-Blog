@@ -1,0 +1,64 @@
+{
+ "verdicts": {
+  "H1@180": {
+   "n": 8,
+   "established": 8,
+   "positive": 8,
+   "supported": true
+  },
+  "H2@180": {
+   "n": 2,
+   "established": 1,
+   "positive": 2,
+   "supported": false
+  },
+  "H3@180": {
+   "n": 4,
+   "established": 2,
+   "positive": 2,
+   "supported": false
+  },
+  "H1@300": {
+   "n": 8,
+   "established": 8,
+   "positive": 8,
+   "supported": true
+  },
+  "H2@300": {
+   "n": 2,
+   "established": 1,
+   "positive": 2,
+   "supported": false
+  },
+  "H3@300": {
+   "n": 4,
+   "established": 2,
+   "positive": 2,
+   "supported": false
+  },
+  "H1@480": {
+   "n": 8,
+   "established": 8,
+   "positive": 8,
+   "supported": true
+  },
+  "H2@480": {
+   "n": 2,
+   "established": 1,
+   "positive": 2,
+   "supported": false
+  },
+  "H3@480": {
+   "n": 4,
+   "established": 2,
+   "positive": 2,
+   "supported": false
+  }
+ },
+ "wape": {
+  "two_weeks": 0.15380439471490118,
+  "mean4": 0.1306709651877787,
+  "gbm": 0.11480103485665308,
+  "oracle": 0.0
+ }
+}

@@ -1,0 +1,60 @@
+Descriptive analyses added after the results (not part of the registered test). AHT 5 minutes.
+
+1. Bias of the forecasts over the test weeks: total forecast / total calls - 1
+   two_weeks: +0.0042
+   mean4: +0.0090
+   gbm: +0.0320
+   calls by year: 2016 6965346, 2017 6785747, 2018 6251214, 2019 5568370
+
+2. Where the constraint cost sits: excess agent-hours with the oracle, by hour of day, as a share of
+   each regime's total excess over the test weeks; and the share of excess in hours 07:00 to 10:59
+   R1: morning 07-10 0.142; night 00-05 0.181; evening 17-23 0.242; peak hour 6:00
+   R2: morning 07-10 0.151; night 00-05 0.198; evening 17-23 0.300; peak hour 18:00
+   R3: morning 07-10 0.241; night 00-05 0.125; evening 17-23 0.536; peak hour 7:00
+   R4: morning 07-10 0.177; night 00-05 0.164; evening 17-23 0.196; peak hour 13:00
+
+3. Binding hours: share of test weeks in which an hour of the day has a positive shadow price on some day,
+   averaged over the 7 days, and the mean shadow price summed over the week, oracle requirements
+   R1: hours most often binding: 9:00 0.77, 17:00 0.77, 1:00 0.75, 10:00 0.10, 18:00 0.09; binding hours per week on average 20.3 of 168
+   R4: hours most often binding: 17:00 0.51, 1:00 0.40, 9:00 0.37, 0:00 0.05, 18:00 0.04; binding hours per week on average 11.2 of 168
+
+4. The gradient-boosted model refitted without the training weeks that hold the low days (2018-01-15, 2018-01-22, 2018-06-11)
+   WAPE 0.1148 -> 0.1109; bias +0.0320 -> +0.0391
+   R0: cost k=1 0.1081 -> 0.1044; k=3 0.1855 -> 0.1715
+   R1: cost k=1 0.1959 -> 0.1929; k=3 0.2463 -> 0.2346
+   R2: cost k=1 0.1170 -> 0.1140; k=3 0.1874 -> 0.1745
+   R3: cost k=1 0.5409 -> 0.5458; k=3 0.5644 -> 0.5629
+   R4: cost k=1 0.2280 -> 0.2212; k=3 0.2621 -> 0.2503
+
+5. Order of the three forecasts by cost under each regime, against their order by WAPE (gbm, mean4, two_weeks)
+   k 1, R0: gbm, mean4, two_weeks
+   k 1, R1: gbm, mean4, two_weeks
+   k 1, R2: gbm, mean4, two_weeks
+   k 1, R3: mean4, gbm, two_weeks
+   k 1, R4: mean4, gbm, two_weeks
+   k 3, R0: gbm, mean4, two_weeks
+   k 3, R1: gbm, mean4, two_weeks
+   k 3, R2: gbm, mean4, two_weeks
+   k 3, R3: gbm, mean4, two_weeks
+   k 3, R4: gbm, mean4, two_weeks
+
+6. Calls and needed agent-hours by weekday over the test weeks, as shares of the week (Monday first)
+   calls: 0.175, 0.177, 0.169, 0.164, 0.157, 0.084, 0.073
+   need:  0.173, 0.174, 0.167, 0.163, 0.156, 0.088, 0.078
+   excess with the oracle as a share of each weekday's needed agent-hours:
+   R1: Mon 0.156, Tue 0.124, Wed 0.101, Thu 0.144, Fri 0.130, Sat 0.102, Sun 0.087
+   R3: Mon 0.521, Tue 0.520, Wed 0.507, Thu 0.523, Fri 0.518, Sat 0.345, Sun 0.343
+   R4: Mon 0.185, Tue 0.164, Wed 0.153, Thu 0.165, Fri 0.197, Sat 0.201, Sun 0.322
+   hourly shape (share of the day's calls): weekdays, Saturdays, Sundays
+   weekdays: peak hour 10:00 (0.092); 08:00 0.050, 09:00 0.090; 17:00 to 23:59 0.195
+   Saturdays: peak hour 11:00 (0.078); 08:00 0.047, 09:00 0.068; 17:00 to 23:59 0.285
+   Sundays: peak hour 12:00 (0.066); 08:00 0.036, 09:00 0.053; 17:00 to 23:59 0.330
+
+7. Erlang C margin with the oracle: agents needed above the offered load (calls x AHT / 3600),
+   as a share of the agents needed, by offered load over all test-week hours; and the median week's
+   busiest hour
+   load 0 to 10: 1560 hours; margin 0.322 of the agents needed
+   load 10 to 50: 4020 hours; margin 0.148 of the agents needed
+   load 50 to 150: 2790 hours; margin 0.067 of the agents needed
+   load 150 to inf: 359 hours; margin 0.049 of the agents needed
+   median week 2019-09-09, busiest hour (day 0, 9:00): 2318 calls, load 193.2, agents needed 202, margin 0.044

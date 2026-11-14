@@ -1,0 +1,64 @@
+{
+ "id": "wewp-mm3p",
+ "name": "311 Call Center Inquiry",
+ "description": "<b>Please note: Due to pandemic call handling modifications, the activity data since March 2020 does not fully represent the agent-handled calls to 311. The actual calls handled are higher.</b>\r\n\r\nThe 311 Call Center Inquiry dataset contains information on all agent-handled calls to the City’s 311 information line, including date, time and topic.\r\n\r\nClick <a href=\"https://data.cityofnewyork.us/api/views/wewp-mm3p/files/5ec79733-6c0b-4f84-b511-936142db396e?download=true&filename=Call%20Center%20Inquiry%20Data%20Dictionary.xlsx\">here </a>for the data dictionary.",
+ "rowsUpdatedAt": 1794621903,
+ "attribution": "311",
+ "license": null,
+ "columns": [
+  {
+   "fieldName": "unique_id",
+   "name": "UNIQUE_ID",
+   "dataTypeName": "text",
+   "description": ""
+  },
+  {
+   "fieldName": "date",
+   "name": "DATE",
+   "dataTypeName": "calendar_date",
+   "description": null
+  },
+  {
+   "fieldName": "time",
+   "name": "TIME",
+   "dataTypeName": "text",
+   "description": "Time the call was received."
+  },
+  {
+   "fieldName": "date_time",
+   "name": "DATE_TIME",
+   "dataTypeName": "calendar_date",
+   "description": null
+  },
+  {
+   "fieldName": "agency",
+   "name": "AGENCY",
+   "dataTypeName": "text",
+   "description": "Agency associated with the specific topic"
+  },
+  {
+   "fieldName": "agency_name",
+   "name": "AGENCY_NAME",
+   "dataTypeName": "text",
+   "description": null
+  },
+  {
+   "fieldName": "inquiry_name",
+   "name": "INQUIRY_NAME",
+   "dataTypeName": "text",
+   "description": "Topic the call center representative used to resolve the customer's inquiry"
+  },
+  {
+   "fieldName": "brief_description",
+   "name": "BRIEF_DESCRIPTION",
+   "dataTypeName": "text",
+   "description": "Brief description of the topic."
+  },
+  {
+   "fieldName": "call_resolution",
+   "name": "CALL_RESOLUTION",
+   "dataTypeName": "text",
+   "description": "How the call ended/was resolved."
+  }
+ ]
+}

@@ -1,0 +1,78 @@
+name: Staffing under shift constraints
+
+# Companion of the article on staffing NYC 311 under shift constraints. Pull requests: lint and tests. Pushes to the
+# branch: also count the calls per hour on NYC Open Data (once; the counts are then committed), run the registered
+# test and commit the sources, results and figures.
+
+on:
+  push:
+    branches:
+      - staffing-shift-constraints
+    paths:
+      - 'staffing-shift-constraints/**'
+      - '!staffing-shift-constraints/sources/**'
+      - '!staffing-shift-constraints/results/**'
+      - '!staffing-shift-constraints/figures/**'
+      - '.github/workflows/staffing-shift-constraints.yml'
+  pull_request:
+    paths:
+      - 'staffing-shift-constraints/**'
+      - '.github/workflows/staffing-shift-constraints.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: staffing-shift-constraints-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: staffing-shift-constraints
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: staffing-shift-constraints/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint
+        run: ruff check . && ruff format --check .
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Count the calls per hour (only if not committed yet)
+        if: github.event_name != 'pull_request'
+        run: python fetch.py --sources sources
+      - name: The registered test
+        if: github.event_name != 'pull_request'
+        run: python evaluate.py --sources sources --out results
+      - name: Descriptive numbers quoted in the article
+        if: github.event_name != 'pull_request' && hashFiles('staffing-shift-constraints/details.py') != ''
+        run: python details.py --sources sources --results results --out results/details.txt
+      - name: Figures
+        if: github.event_name != 'pull_request' && hashFiles('staffing-shift-constraints/figures.py') != ''
+        run: python figures.py --results results --out figures
+      - name: Commit sources, results and figures
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources results
+          if [ -d figures ]; then git add figures; fi
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "staffing-shift-constraints: sources and results from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
