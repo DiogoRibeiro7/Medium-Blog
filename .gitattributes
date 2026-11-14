@@ -147,4 +147,5 @@ ie-lu-fund-intermediation/**/*.gz -filter -diff -merge binary
 uk-repeat-sales-rigidity/**/*.csv -filter -diff -merge text
 ppp-drift-by-category/**/*.csv -filter -diff -merge text
 ppp-drift-by-category/**/*.gz -filter -diff -merge binary
+uk-valuation-purchase-price/**/*.csv -filter -diff -merge text
 perishable-order-decisions/**/*.csv -filter -diff -merge text

@@ -1,0 +1,50 @@
+name: Reproduce uk-valuation-purchase-price
+
+on:
+  pull_request:
+    paths:
+      - 'uk-valuation-purchase-price/**'
+      - '.github/workflows/uk-valuation-purchase-price.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'uk-valuation-purchase-price/**'
+      - '.github/workflows/uk-valuation-purchase-price.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: uk-valuation-purchase-price
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-valuation-purchase-price/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests (synthetic Price Paid Data with a planted floor)
+        run: python -m pytest -q tests
+
+      - name: Rerun the summary from the committed aggregates
+        run: |
+          if [ -f analysis.py ]; then python analysis.py > /dev/null; git diff --exit-code -- results/summary.txt; fi
+
+      - name: Draw the figures
+        run: if [ -f figures.py ]; then python figures.py; fi
