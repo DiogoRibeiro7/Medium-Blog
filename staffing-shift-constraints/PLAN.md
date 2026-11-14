@@ -119,3 +119,8 @@ direction.
 
 - 14 November 2026, before any count was received: the portal rejected the first form of the query (HTTP 400), so
   the hourly alias was renamed and the grouping written as the expression itself. Same counts, same months.
+- 14 November 2026, before any count was received: the portal does not accept `date_trunc_ymdh(date_time)` with one
+  argument for this column. `fetch.py` now tries it, then the same function with the time zone 'America/New_York',
+  then 'UTC', and keeps the first that the portal accepts and whose hour matches the dataset's own TIME field on at
+  least 99% of the calls of two sampled days (12 January and 12 July 2016). The choice and the match rate are
+  recorded in `sources/REVISION`.
