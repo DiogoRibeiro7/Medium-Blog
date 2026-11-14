@@ -46,7 +46,7 @@ Belgium: what each price costs, on the test samples (20 splits): deviance per 1,
   GLM, unawareness: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.013 [0.940, 1.075], men 0.992 [0.962, 1.041]
   GLM, implied unawareness: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.013 [0.940, 1.075], men 0.992 [0.962, 1.041]
   GLM, discrimination-free: deviance 598.03; Gini 0.207 [0.196, 0.218]; A/E women 1.015 [0.943, 1.075], men 0.992 [0.962, 1.041]
-  GLM: deviance, unawareness minus discrimination-free -0.002 [-0.025, 0.028] (lower in 13 of 20); implied unawareness minus discrimination-free 0.001 [-0.019, 0.036] (lower in 10 of 20); best estimate minus discrimination-free 0.007 [-0.045, 0.220] (lower in 12 of 20); Gini, unawareness minus discrimination-free 0.000 [-0.000, 0.000]
+  GLM: deviance, unawareness minus discrimination-free -0.002 [-0.025, 0.028] (lower in 13 of 20); implied unawareness minus discrimination-free 0.001 [-0.019, 0.036] (lower in 10 of 20); best estimate minus discrimination-free 0.007 [-0.045, 0.220] (lower in 12 of 20); Gini, unawareness minus discrimination-free 0.000 [0.000, 0.000]
   GBM, best estimate: deviance 596.54; Gini 0.214 [0.203, 0.226]; A/E women 1.008 [0.915, 1.080], men 0.994 [0.960, 1.037]
   GBM, unawareness: deviance 596.78; Gini 0.213 [0.204, 0.223]; A/E women 1.017 [0.942, 1.081], men 0.990 [0.960, 1.035]
   GBM, implied unawareness: deviance 596.62; Gini 0.214 [0.203, 0.224]; A/E women 1.018 [0.943, 1.082], men 0.990 [0.960, 1.035]

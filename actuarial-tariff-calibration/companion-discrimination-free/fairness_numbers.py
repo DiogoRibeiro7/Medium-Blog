@@ -70,9 +70,15 @@ SETTINGS = [("additive", 0.0, 0.2), ("additive", 1.0, 0.2), ("additive", 2.0, 0.
             ("interaction", 2.0, 0.2), ("interaction", 4.0, 0.2), ("additive", 2.0, 0.5)]
 
 
+def f3(x) -> str:
+    """Three decimals, without a negative zero: a value that rounds to zero prints the same on every machine."""
+    t = f"{x:.3f}"
+    return "0.000" if t == "-0.000" else t
+
+
 def summary(x) -> str:
     x = np.asarray(x, dtype=float)
-    return f"{x.mean():.3f} [{x.min():.3f}, {x.max():.3f}]"
+    return f"{f3(x.mean())} [{f3(x.min())}, {f3(x.max())}]"
 
 
 def wmean(x, w) -> float:
@@ -265,7 +271,7 @@ def belgium() -> dict:
         pooled = float((lu - ld).mean() / (lb - ld).mean())
         pooled_i = float((li - ld).mean() / (lb - ld).mean())
         print(f"      share of the direct effect restored, pooled over splits (ratio of the mean log gaps): unawareness"
-              f" {pooled:.3f}, implied unawareness {pooled_i:.3f}; per split, unawareness {summary(a['share'])},"
+              f" {f3(pooled)}, implied unawareness {f3(pooled_i)}; per split, unawareness {summary(a['share'])},"
               f" implied {summary(a['share_i'])}; Tjur prediction {np.mean(a['tjur']):.3f}")
         print(f"      per policy, sd of the log of the unawareness price over the discrimination-free price"
               f" {summary(a['sd'])}: of which proxy (implied unawareness over discrimination-free) {summary(a['sd_proxy'])},"
@@ -378,8 +384,8 @@ def synthetic() -> dict:
             o = row[cls]
             print(f"      {cls}: estimated direct effect {o['effect']:.3f}; D = 1 over D = 0 premium: best estimate"
                   f" {o['ratios'][0]:.3f}, unawareness {o['ratios'][1]:.3f}, implied unawareness {o['ratios'][2]:.3f},"
-                  f" discrimination-free {o['ratios'][3]:.3f}; share restored: unawareness {o['share']:.3f}, implied"
-                  f" unawareness {o['share_i']:.3f}")
+                  f" discrimination-free {o['ratios'][3]:.3f}; share restored: unawareness {f3(o['share'])}, implied"
+                  f" unawareness {f3(o['share_i'])}")
             print(f"          true over charged claims, D = 1 / D = 0: " + "; ".join(
                 f"{k} {o[SHORT[k]]['ae_f']:.3f} / {o[SHORT[k]]['ae_m']:.3f}" for k in PRICES))
             print(f"          deviance against the truth per 1,000 policy-years: " + "; ".join(
