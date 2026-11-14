@@ -1,0 +1,7 @@
+scenario,missing_181,missing_donut,bunch_missing,bunch_excess
+"no floor, no rounding",0.00733335,-0.00904593,0.00807343,0.000387628
+30% sell at exactly the old price,0.300934,0.287314,0.303363,0.295677
+30% withdraw,0.300934,0.287314,0.303363,0.000387628
+rounding only: half within 1% go to zero,0.020151,-0.00904593,0.0697237,0.0620379
+30% at the old price + rounding,0.309917,0.287314,0.346803,0.339117
+10% at the old price + 20% withdraw + rounding,0.309917,0.287314,0.346803,0.142565

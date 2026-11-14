@@ -1,0 +1,2484 @@
+month,region,ptype,nature,sales
+2021-01-01,Big cities,flat,auction,38
+2021-01-01,Big cities,flat,off-plan,252
+2021-01-01,Big cities,flat,other,6
+2021-01-01,Big cities,flat,sale,8494
+2021-01-01,Big cities,house,auction,30
+2021-01-01,Big cities,house,off-plan,11
+2021-01-01,Big cities,house,other,11
+2021-01-01,Big cities,house,sale,8120
+2021-01-01,Inner ring,flat,auction,17
+2021-01-01,Inner ring,flat,off-plan,556
+2021-01-01,Inner ring,flat,other,5
+2021-01-01,Inner ring,flat,sale,2950
+2021-01-01,Inner ring,house,auction,3
+2021-01-01,Inner ring,house,off-plan,5
+2021-01-01,Inner ring,house,sale,854
+2021-01-01,Outer Ile-de-France,flat,auction,24
+2021-01-01,Outer Ile-de-France,flat,off-plan,409
+2021-01-01,Outer Ile-de-France,flat,sale,2424
+2021-01-01,Outer Ile-de-France,house,auction,11
+2021-01-01,Outer Ile-de-France,house,off-plan,9
+2021-01-01,Outer Ile-de-France,house,other,3
+2021-01-01,Outer Ile-de-France,house,sale,2703
+2021-01-01,Overseas,flat,auction,1
+2021-01-01,Overseas,flat,off-plan,10
+2021-01-01,Overseas,flat,sale,308
+2021-01-01,Overseas,house,auction,1
+2021-01-01,Overseas,house,off-plan,2
+2021-01-01,Overseas,house,sale,359
+2021-01-01,Paris,flat,auction,8
+2021-01-01,Paris,flat,off-plan,6
+2021-01-01,Paris,flat,other,3
+2021-01-01,Paris,flat,sale,2110
+2021-01-01,Paris,house,sale,8
+2021-01-01,Rest of France,flat,auction,76
+2021-01-01,Rest of France,flat,off-plan,685
+2021-01-01,Rest of France,flat,other,9
+2021-01-01,Rest of France,flat,sale,12311
+2021-01-01,Rest of France,house,auction,101
+2021-01-01,Rest of France,house,off-plan,34
+2021-01-01,Rest of France,house,other,28
+2021-01-01,Rest of France,house,sale,29365
+2021-02-01,Big cities,flat,auction,46
+2021-02-01,Big cities,flat,off-plan,269
+2021-02-01,Big cities,flat,other,2
+2021-02-01,Big cities,flat,sale,8044
+2021-02-01,Big cities,house,auction,25
+2021-02-01,Big cities,house,off-plan,8
+2021-02-01,Big cities,house,other,9
+2021-02-01,Big cities,house,sale,7880
+2021-02-01,Inner ring,flat,auction,25
+2021-02-01,Inner ring,flat,off-plan,459
+2021-02-01,Inner ring,flat,other,2
+2021-02-01,Inner ring,flat,sale,2790
+2021-02-01,Inner ring,house,auction,13
+2021-02-01,Inner ring,house,off-plan,5
+2021-02-01,Inner ring,house,other,1
+2021-02-01,Inner ring,house,sale,793
+2021-02-01,Outer Ile-de-France,flat,auction,17
+2021-02-01,Outer Ile-de-France,flat,off-plan,382
+2021-02-01,Outer Ile-de-France,flat,other,2
+2021-02-01,Outer Ile-de-France,flat,sale,2081
+2021-02-01,Outer Ile-de-France,house,auction,10
+2021-02-01,Outer Ile-de-France,house,off-plan,12
+2021-02-01,Outer Ile-de-France,house,other,3
+2021-02-01,Outer Ile-de-France,house,sale,2623
+2021-02-01,Overseas,flat,auction,2
+2021-02-01,Overseas,flat,off-plan,11
+2021-02-01,Overseas,flat,sale,331
+2021-02-01,Overseas,house,auction,5
+2021-02-01,Overseas,house,off-plan,2
+2021-02-01,Overseas,house,other,2
+2021-02-01,Overseas,house,sale,356
+2021-02-01,Paris,flat,auction,6
+2021-02-01,Paris,flat,off-plan,11
+2021-02-01,Paris,flat,other,8
+2021-02-01,Paris,flat,sale,2093
+2021-02-01,Paris,house,sale,6
+2021-02-01,Rest of France,flat,auction,56
+2021-02-01,Rest of France,flat,off-plan,768
+2021-02-01,Rest of France,flat,other,9
+2021-02-01,Rest of France,flat,sale,11761
+2021-02-01,Rest of France,house,auction,107
+2021-02-01,Rest of France,house,off-plan,28
+2021-02-01,Rest of France,house,other,32
+2021-02-01,Rest of France,house,sale,27847
+2021-03-01,Big cities,flat,auction,42
+2021-03-01,Big cities,flat,off-plan,420
+2021-03-01,Big cities,flat,other,18
+2021-03-01,Big cities,flat,sale,9653
+2021-03-01,Big cities,house,auction,32
+2021-03-01,Big cities,house,off-plan,20
+2021-03-01,Big cities,house,other,10
+2021-03-01,Big cities,house,sale,9112
+2021-03-01,Inner ring,flat,auction,39
+2021-03-01,Inner ring,flat,off-plan,730
+2021-03-01,Inner ring,flat,other,1
+2021-03-01,Inner ring,flat,sale,3278
+2021-03-01,Inner ring,house,auction,5
+2021-03-01,Inner ring,house,off-plan,3
+2021-03-01,Inner ring,house,other,1
+2021-03-01,Inner ring,house,sale,970
+2021-03-01,Outer Ile-de-France,flat,auction,25
+2021-03-01,Outer Ile-de-France,flat,off-plan,492
+2021-03-01,Outer Ile-de-France,flat,other,3
+2021-03-01,Outer Ile-de-France,flat,sale,2690
+2021-03-01,Outer Ile-de-France,house,auction,17
+2021-03-01,Outer Ile-de-France,house,off-plan,12
+2021-03-01,Outer Ile-de-France,house,other,2
+2021-03-01,Outer Ile-de-France,house,sale,2875
+2021-03-01,Overseas,flat,auction,2
+2021-03-01,Overseas,flat,off-plan,23
+2021-03-01,Overseas,flat,sale,419
+2021-03-01,Overseas,house,auction,3
+2021-03-01,Overseas,house,off-plan,1
+2021-03-01,Overseas,house,sale,502
+2021-03-01,Paris,flat,auction,8
+2021-03-01,Paris,flat,off-plan,3
+2021-03-01,Paris,flat,other,9
+2021-03-01,Paris,flat,sale,2622
+2021-03-01,Paris,house,sale,16
+2021-03-01,Rest of France,flat,auction,57
+2021-03-01,Rest of France,flat,off-plan,922
+2021-03-01,Rest of France,flat,other,18
+2021-03-01,Rest of France,flat,sale,14031
+2021-03-01,Rest of France,house,auction,146
+2021-03-01,Rest of France,house,off-plan,35
+2021-03-01,Rest of France,house,other,47
+2021-03-01,Rest of France,house,sale,32008
+2021-04-01,Big cities,flat,auction,42
+2021-04-01,Big cities,flat,off-plan,433
+2021-04-01,Big cities,flat,other,10
+2021-04-01,Big cities,flat,sale,9796
+2021-04-01,Big cities,house,auction,15
+2021-04-01,Big cities,house,off-plan,22
+2021-04-01,Big cities,house,other,15
+2021-04-01,Big cities,house,sale,9294
+2021-04-01,Inner ring,flat,auction,24
+2021-04-01,Inner ring,flat,off-plan,613
+2021-04-01,Inner ring,flat,other,3
+2021-04-01,Inner ring,flat,sale,3210
+2021-04-01,Inner ring,house,auction,4
+2021-04-01,Inner ring,house,off-plan,1
+2021-04-01,Inner ring,house,other,1
+2021-04-01,Inner ring,house,sale,911
+2021-04-01,Outer Ile-de-France,flat,auction,13
+2021-04-01,Outer Ile-de-France,flat,off-plan,468
+2021-04-01,Outer Ile-de-France,flat,other,1
+2021-04-01,Outer Ile-de-France,flat,sale,2654
+2021-04-01,Outer Ile-de-France,house,auction,7
+2021-04-01,Outer Ile-de-France,house,off-plan,12
+2021-04-01,Outer Ile-de-France,house,other,3
+2021-04-01,Outer Ile-de-France,house,sale,2940
+2021-04-01,Overseas,flat,auction,4
+2021-04-01,Overseas,flat,off-plan,38
+2021-04-01,Overseas,flat,sale,376
+2021-04-01,Overseas,house,auction,3
+2021-04-01,Overseas,house,off-plan,1
+2021-04-01,Overseas,house,other,2
+2021-04-01,Overseas,house,sale,430
+2021-04-01,Paris,flat,auction,8
+2021-04-01,Paris,flat,off-plan,4
+2021-04-01,Paris,flat,other,10
+2021-04-01,Paris,flat,sale,2412
+2021-04-01,Paris,house,sale,12
+2021-04-01,Rest of France,flat,auction,43
+2021-04-01,Rest of France,flat,off-plan,907
+2021-04-01,Rest of France,flat,other,7
+2021-04-01,Rest of France,flat,sale,14682
+2021-04-01,Rest of France,house,auction,89
+2021-04-01,Rest of France,house,off-plan,40
+2021-04-01,Rest of France,house,other,42
+2021-04-01,Rest of France,house,sale,33264
+2021-05-01,Big cities,flat,auction,16
+2021-05-01,Big cities,flat,off-plan,446
+2021-05-01,Big cities,flat,other,6
+2021-05-01,Big cities,flat,sale,9987
+2021-05-01,Big cities,house,auction,25
+2021-05-01,Big cities,house,off-plan,14
+2021-05-01,Big cities,house,other,12
+2021-05-01,Big cities,house,sale,9179
+2021-05-01,Inner ring,flat,auction,28
+2021-05-01,Inner ring,flat,off-plan,602
+2021-05-01,Inner ring,flat,other,2
+2021-05-01,Inner ring,flat,sale,3231
+2021-05-01,Inner ring,house,auction,9
+2021-05-01,Inner ring,house,off-plan,8
+2021-05-01,Inner ring,house,other,5
+2021-05-01,Inner ring,house,sale,865
+2021-05-01,Outer Ile-de-France,flat,auction,17
+2021-05-01,Outer Ile-de-France,flat,off-plan,383
+2021-05-01,Outer Ile-de-France,flat,other,1
+2021-05-01,Outer Ile-de-France,flat,sale,2733
+2021-05-01,Outer Ile-de-France,house,auction,7
+2021-05-01,Outer Ile-de-France,house,off-plan,13
+2021-05-01,Outer Ile-de-France,house,other,1
+2021-05-01,Outer Ile-de-France,house,sale,2906
+2021-05-01,Overseas,flat,auction,1
+2021-05-01,Overseas,flat,off-plan,19
+2021-05-01,Overseas,flat,other,1
+2021-05-01,Overseas,flat,sale,369
+2021-05-01,Overseas,house,auction,4
+2021-05-01,Overseas,house,off-plan,2
+2021-05-01,Overseas,house,other,1
+2021-05-01,Overseas,house,sale,387
+2021-05-01,Paris,flat,auction,6
+2021-05-01,Paris,flat,off-plan,4
+2021-05-01,Paris,flat,other,6
+2021-05-01,Paris,flat,sale,2497
+2021-05-01,Paris,house,sale,15
+2021-05-01,Rest of France,flat,auction,53
+2021-05-01,Rest of France,flat,off-plan,887
+2021-05-01,Rest of France,flat,other,16
+2021-05-01,Rest of France,flat,sale,15167
+2021-05-01,Rest of France,house,auction,97
+2021-05-01,Rest of France,house,off-plan,34
+2021-05-01,Rest of France,house,other,51
+2021-05-01,Rest of France,house,sale,32966
+2021-06-01,Big cities,flat,auction,50
+2021-06-01,Big cities,flat,off-plan,601
+2021-06-01,Big cities,flat,other,14
+2021-06-01,Big cities,flat,sale,12756
+2021-06-01,Big cities,house,auction,35
+2021-06-01,Big cities,house,off-plan,17
+2021-06-01,Big cities,house,other,11
+2021-06-01,Big cities,house,sale,11975
+2021-06-01,Inner ring,flat,auction,25
+2021-06-01,Inner ring,flat,off-plan,786
+2021-06-01,Inner ring,flat,other,8
+2021-06-01,Inner ring,flat,sale,4263
+2021-06-01,Inner ring,house,auction,13
+2021-06-01,Inner ring,house,off-plan,7
+2021-06-01,Inner ring,house,other,2
+2021-06-01,Inner ring,house,sale,1272
+2021-06-01,Outer Ile-de-France,flat,auction,25
+2021-06-01,Outer Ile-de-France,flat,off-plan,607
+2021-06-01,Outer Ile-de-France,flat,other,1
+2021-06-01,Outer Ile-de-France,flat,sale,3648
+2021-06-01,Outer Ile-de-France,house,auction,15
+2021-06-01,Outer Ile-de-France,house,off-plan,17
+2021-06-01,Outer Ile-de-France,house,other,7
+2021-06-01,Outer Ile-de-France,house,sale,4304
+2021-06-01,Overseas,flat,auction,2
+2021-06-01,Overseas,flat,off-plan,51
+2021-06-01,Overseas,flat,sale,461
+2021-06-01,Overseas,house,auction,2
+2021-06-01,Overseas,house,off-plan,3
+2021-06-01,Overseas,house,other,2
+2021-06-01,Overseas,house,sale,537
+2021-06-01,Paris,flat,auction,5
+2021-06-01,Paris,flat,off-plan,13
+2021-06-01,Paris,flat,other,9
+2021-06-01,Paris,flat,sale,3262
+2021-06-01,Paris,house,sale,15
+2021-06-01,Rest of France,flat,auction,66
+2021-06-01,Rest of France,flat,off-plan,1083
+2021-06-01,Rest of France,flat,other,10
+2021-06-01,Rest of France,flat,sale,19279
+2021-06-01,Rest of France,house,auction,156
+2021-06-01,Rest of France,house,off-plan,40
+2021-06-01,Rest of France,house,other,49
+2021-06-01,Rest of France,house,sale,42604
+2021-07-01,Big cities,flat,auction,48
+2021-07-01,Big cities,flat,off-plan,509
+2021-07-01,Big cities,flat,other,8
+2021-07-01,Big cities,flat,sale,13440
+2021-07-01,Big cities,house,auction,19
+2021-07-01,Big cities,house,off-plan,20
+2021-07-01,Big cities,house,other,5
+2021-07-01,Big cities,house,sale,14812
+2021-07-01,Inner ring,flat,auction,3
+2021-07-01,Inner ring,flat,off-plan,751
+2021-07-01,Inner ring,flat,other,15
+2021-07-01,Inner ring,flat,sale,5140
+2021-07-01,Inner ring,house,auction,1
+2021-07-01,Inner ring,house,off-plan,3
+2021-07-01,Inner ring,house,sale,1740
+2021-07-01,Outer Ile-de-France,flat,auction,6
+2021-07-01,Outer Ile-de-France,flat,off-plan,551
+2021-07-01,Outer Ile-de-France,flat,other,2
+2021-07-01,Outer Ile-de-France,flat,sale,3989
+2021-07-01,Outer Ile-de-France,house,auction,5
+2021-07-01,Outer Ile-de-France,house,off-plan,9
+2021-07-01,Outer Ile-de-France,house,other,2
+2021-07-01,Outer Ile-de-France,house,sale,5816
+2021-07-01,Overseas,flat,off-plan,32
+2021-07-01,Overseas,flat,sale,451
+2021-07-01,Overseas,house,auction,2
+2021-07-01,Overseas,house,off-plan,1
+2021-07-01,Overseas,house,other,5
+2021-07-01,Overseas,house,sale,557
+2021-07-01,Paris,flat,auction,6
+2021-07-01,Paris,flat,off-plan,13
+2021-07-01,Paris,flat,other,7
+2021-07-01,Paris,flat,sale,3618
+2021-07-01,Paris,house,off-plan,1
+2021-07-01,Paris,house,sale,25
+2021-07-01,Rest of France,flat,auction,35
+2021-07-01,Rest of France,flat,off-plan,1156
+2021-07-01,Rest of France,flat,other,8
+2021-07-01,Rest of France,flat,sale,19158
+2021-07-01,Rest of France,house,auction,101
+2021-07-01,Rest of France,house,off-plan,46
+2021-07-01,Rest of France,house,other,58
+2021-07-01,Rest of France,house,sale,49781
+2021-08-01,Big cities,flat,off-plan,245
+2021-08-01,Big cities,flat,other,10
+2021-08-01,Big cities,flat,sale,8776
+2021-08-01,Big cities,house,auction,1
+2021-08-01,Big cities,house,off-plan,4
+2021-08-01,Big cities,house,other,4
+2021-08-01,Big cities,house,sale,10303
+2021-08-01,Inner ring,flat,auction,6
+2021-08-01,Inner ring,flat,off-plan,332
+2021-08-01,Inner ring,flat,sale,2595
+2021-08-01,Inner ring,house,sale,878
+2021-08-01,Outer Ile-de-France,flat,off-plan,293
+2021-08-01,Outer Ile-de-France,flat,sale,2511
+2021-08-01,Outer Ile-de-France,house,off-plan,6
+2021-08-01,Outer Ile-de-France,house,sale,3707
+2021-08-01,Overseas,flat,off-plan,30
+2021-08-01,Overseas,flat,sale,405
+2021-08-01,Overseas,house,auction,1
+2021-08-01,Overseas,house,sale,441
+2021-08-01,Paris,flat,auction,1
+2021-08-01,Paris,flat,off-plan,5
+2021-08-01,Paris,flat,other,5
+2021-08-01,Paris,flat,sale,1648
+2021-08-01,Paris,house,sale,8
+2021-08-01,Rest of France,flat,auction,5
+2021-08-01,Rest of France,flat,off-plan,574
+2021-08-01,Rest of France,flat,other,10
+2021-08-01,Rest of France,flat,sale,13368
+2021-08-01,Rest of France,house,auction,12
+2021-08-01,Rest of France,house,off-plan,22
+2021-08-01,Rest of France,house,other,21
+2021-08-01,Rest of France,house,sale,34646
+2021-09-01,Big cities,flat,auction,38
+2021-09-01,Big cities,flat,off-plan,506
+2021-09-01,Big cities,flat,other,17
+2021-09-01,Big cities,flat,sale,12157
+2021-09-01,Big cities,house,auction,27
+2021-09-01,Big cities,house,off-plan,9
+2021-09-01,Big cities,house,other,18
+2021-09-01,Big cities,house,sale,10952
+2021-09-01,Inner ring,flat,auction,17
+2021-09-01,Inner ring,flat,off-plan,890
+2021-09-01,Inner ring,flat,other,4
+2021-09-01,Inner ring,flat,sale,4435
+2021-09-01,Inner ring,house,auction,6
+2021-09-01,Inner ring,house,off-plan,10
+2021-09-01,Inner ring,house,other,1
+2021-09-01,Inner ring,house,sale,1307
+2021-09-01,Outer Ile-de-France,flat,auction,25
+2021-09-01,Outer Ile-de-France,flat,off-plan,644
+2021-09-01,Outer Ile-de-France,flat,other,1
+2021-09-01,Outer Ile-de-France,flat,sale,3476
+2021-09-01,Outer Ile-de-France,house,auction,15
+2021-09-01,Outer Ile-de-France,house,off-plan,18
+2021-09-01,Outer Ile-de-France,house,other,5
+2021-09-01,Outer Ile-de-France,house,sale,3930
+2021-09-01,Overseas,flat,auction,4
+2021-09-01,Overseas,flat,off-plan,37
+2021-09-01,Overseas,flat,sale,485
+2021-09-01,Overseas,house,auction,3
+2021-09-01,Overseas,house,off-plan,3
+2021-09-01,Overseas,house,sale,475
+2021-09-01,Paris,flat,auction,5
+2021-09-01,Paris,flat,off-plan,7
+2021-09-01,Paris,flat,other,5
+2021-09-01,Paris,flat,sale,3343
+2021-09-01,Paris,house,sale,19
+2021-09-01,Rest of France,flat,auction,49
+2021-09-01,Rest of France,flat,off-plan,1038
+2021-09-01,Rest of France,flat,other,7
+2021-09-01,Rest of France,flat,sale,17240
+2021-09-01,Rest of France,house,auction,118
+2021-09-01,Rest of France,house,off-plan,33
+2021-09-01,Rest of France,house,other,22
+2021-09-01,Rest of France,house,sale,39730
+2021-10-01,Big cities,flat,auction,39
+2021-10-01,Big cities,flat,off-plan,487
+2021-10-01,Big cities,flat,other,7
+2021-10-01,Big cities,flat,sale,10238
+2021-10-01,Big cities,house,auction,26
+2021-10-01,Big cities,house,off-plan,14
+2021-10-01,Big cities,house,other,17
+2021-10-01,Big cities,house,sale,9918
+2021-10-01,Inner ring,flat,auction,9
+2021-10-01,Inner ring,flat,off-plan,790
+2021-10-01,Inner ring,flat,other,3
+2021-10-01,Inner ring,flat,sale,3614
+2021-10-01,Inner ring,house,auction,5
+2021-10-01,Inner ring,house,off-plan,11
+2021-10-01,Inner ring,house,sale,1092
+2021-10-01,Outer Ile-de-France,flat,auction,14
+2021-10-01,Outer Ile-de-France,flat,off-plan,559
+2021-10-01,Outer Ile-de-France,flat,other,5
+2021-10-01,Outer Ile-de-France,flat,sale,2904
+2021-10-01,Outer Ile-de-France,house,auction,8
+2021-10-01,Outer Ile-de-France,house,off-plan,8
+2021-10-01,Outer Ile-de-France,house,other,2
+2021-10-01,Outer Ile-de-France,house,sale,3551
+2021-10-01,Overseas,flat,auction,6
+2021-10-01,Overseas,flat,off-plan,30
+2021-10-01,Overseas,flat,sale,448
+2021-10-01,Overseas,house,auction,1
+2021-10-01,Overseas,house,off-plan,2
+2021-10-01,Overseas,house,sale,466
+2021-10-01,Paris,flat,auction,6
+2021-10-01,Paris,flat,off-plan,5
+2021-10-01,Paris,flat,other,5
+2021-10-01,Paris,flat,sale,2823
+2021-10-01,Paris,house,auction,1
+2021-10-01,Paris,house,sale,13
+2021-10-01,Rest of France,flat,auction,50
+2021-10-01,Rest of France,flat,off-plan,1027
+2021-10-01,Rest of France,flat,other,8
+2021-10-01,Rest of France,flat,sale,14613
+2021-10-01,Rest of France,house,auction,106
+2021-10-01,Rest of France,house,off-plan,33
+2021-10-01,Rest of France,house,other,34
+2021-10-01,Rest of France,house,sale,36157
+2021-11-01,Big cities,flat,auction,17
+2021-11-01,Big cities,flat,off-plan,423
+2021-11-01,Big cities,flat,other,8
+2021-11-01,Big cities,flat,sale,8645
+2021-11-01,Big cities,house,auction,15
+2021-11-01,Big cities,house,off-plan,10
+2021-11-01,Big cities,house,other,12
+2021-11-01,Big cities,house,sale,8058
+2021-11-01,Inner ring,flat,auction,14
+2021-11-01,Inner ring,flat,off-plan,667
+2021-11-01,Inner ring,flat,other,5
+2021-11-01,Inner ring,flat,sale,2648
+2021-11-01,Inner ring,house,auction,4
+2021-11-01,Inner ring,house,off-plan,6
+2021-11-01,Inner ring,house,other,1
+2021-11-01,Inner ring,house,sale,804
+2021-11-01,Outer Ile-de-France,flat,auction,19
+2021-11-01,Outer Ile-de-France,flat,off-plan,599
+2021-11-01,Outer Ile-de-France,flat,sale,2245
+2021-11-01,Outer Ile-de-France,house,auction,8
+2021-11-01,Outer Ile-de-France,house,off-plan,8
+2021-11-01,Outer Ile-de-France,house,other,1
+2021-11-01,Outer Ile-de-France,house,sale,2534
+2021-11-01,Overseas,flat,auction,2
+2021-11-01,Overseas,flat,off-plan,37
+2021-11-01,Overseas,flat,sale,372
+2021-11-01,Overseas,house,auction,3
+2021-11-01,Overseas,house,off-plan,7
+2021-11-01,Overseas,house,other,2
+2021-11-01,Overseas,house,sale,450
+2021-11-01,Paris,flat,auction,3
+2021-11-01,Paris,flat,off-plan,6
+2021-11-01,Paris,flat,other,5
+2021-11-01,Paris,flat,sale,2199
+2021-11-01,Paris,house,sale,10
+2021-11-01,Rest of France,flat,auction,32
+2021-11-01,Rest of France,flat,off-plan,944
+2021-11-01,Rest of France,flat,other,8
+2021-11-01,Rest of France,flat,sale,12800
+2021-11-01,Rest of France,house,auction,74
+2021-11-01,Rest of France,house,off-plan,41
+2021-11-01,Rest of France,house,other,38
+2021-11-01,Rest of France,house,sale,30622
+2021-12-01,Big cities,flat,auction,23
+2021-12-01,Big cities,flat,off-plan,780
+2021-12-01,Big cities,flat,other,12
+2021-12-01,Big cities,flat,sale,11076
+2021-12-01,Big cities,house,auction,20
+2021-12-01,Big cities,house,off-plan,25
+2021-12-01,Big cities,house,other,9
+2021-12-01,Big cities,house,sale,10482
+2021-12-01,Inner ring,flat,auction,19
+2021-12-01,Inner ring,flat,off-plan,1092
+2021-12-01,Inner ring,flat,sale,3465
+2021-12-01,Inner ring,house,auction,3
+2021-12-01,Inner ring,house,off-plan,3
+2021-12-01,Inner ring,house,other,2
+2021-12-01,Inner ring,house,sale,996
+2021-12-01,Outer Ile-de-France,flat,auction,9
+2021-12-01,Outer Ile-de-France,flat,off-plan,942
+2021-12-01,Outer Ile-de-France,flat,other,1
+2021-12-01,Outer Ile-de-France,flat,sale,2979
+2021-12-01,Outer Ile-de-France,house,auction,6
+2021-12-01,Outer Ile-de-France,house,off-plan,19
+2021-12-01,Outer Ile-de-France,house,other,2
+2021-12-01,Outer Ile-de-France,house,sale,3282
+2021-12-01,Overseas,flat,auction,2
+2021-12-01,Overseas,flat,off-plan,127
+2021-12-01,Overseas,flat,sale,535
+2021-12-01,Overseas,house,auction,4
+2021-12-01,Overseas,house,off-plan,8
+2021-12-01,Overseas,house,other,1
+2021-12-01,Overseas,house,sale,610
+2021-12-01,Paris,flat,auction,3
+2021-12-01,Paris,flat,off-plan,15
+2021-12-01,Paris,flat,other,5
+2021-12-01,Paris,flat,sale,2768
+2021-12-01,Paris,house,sale,27
+2021-12-01,Rest of France,flat,auction,26
+2021-12-01,Rest of France,flat,off-plan,1673
+2021-12-01,Rest of France,flat,other,11
+2021-12-01,Rest of France,flat,sale,17653
+2021-12-01,Rest of France,house,auction,59
+2021-12-01,Rest of France,house,off-plan,63
+2021-12-01,Rest of France,house,other,40
+2021-12-01,Rest of France,house,sale,39590
+2022-01-01,Big cities,flat,auction,37
+2022-01-01,Big cities,flat,off-plan,271
+2022-01-01,Big cities,flat,other,6
+2022-01-01,Big cities,flat,sale,8993
+2022-01-01,Big cities,house,auction,17
+2022-01-01,Big cities,house,off-plan,6
+2022-01-01,Big cities,house,other,14
+2022-01-01,Big cities,house,sale,7951
+2022-01-01,Inner ring,flat,auction,25
+2022-01-01,Inner ring,flat,off-plan,426
+2022-01-01,Inner ring,flat,other,1
+2022-01-01,Inner ring,flat,sale,3089
+2022-01-01,Inner ring,house,auction,4
+2022-01-01,Inner ring,house,off-plan,4
+2022-01-01,Inner ring,house,sale,777
+2022-01-01,Outer Ile-de-France,flat,auction,9
+2022-01-01,Outer Ile-de-France,flat,off-plan,393
+2022-01-01,Outer Ile-de-France,flat,sale,2492
+2022-01-01,Outer Ile-de-France,house,auction,10
+2022-01-01,Outer Ile-de-France,house,off-plan,8
+2022-01-01,Outer Ile-de-France,house,other,5
+2022-01-01,Outer Ile-de-France,house,sale,2602
+2022-01-01,Overseas,flat,auction,6
+2022-01-01,Overseas,flat,off-plan,27
+2022-01-01,Overseas,flat,sale,320
+2022-01-01,Overseas,house,other,1
+2022-01-01,Overseas,house,sale,364
+2022-01-01,Paris,flat,auction,6
+2022-01-01,Paris,flat,off-plan,10
+2022-01-01,Paris,flat,other,10
+2022-01-01,Paris,flat,sale,2464
+2022-01-01,Paris,house,sale,7
+2022-01-01,Rest of France,flat,auction,43
+2022-01-01,Rest of France,flat,off-plan,639
+2022-01-01,Rest of France,flat,other,9
+2022-01-01,Rest of France,flat,sale,12925
+2022-01-01,Rest of France,house,auction,125
+2022-01-01,Rest of France,house,off-plan,30
+2022-01-01,Rest of France,house,other,24
+2022-01-01,Rest of France,house,sale,28559
+2022-02-01,Big cities,flat,auction,37
+2022-02-01,Big cities,flat,off-plan,266
+2022-02-01,Big cities,flat,other,8
+2022-02-01,Big cities,flat,sale,9106
+2022-02-01,Big cities,house,auction,16
+2022-02-01,Big cities,house,off-plan,14
+2022-02-01,Big cities,house,other,6
+2022-02-01,Big cities,house,sale,8049
+2022-02-01,Inner ring,flat,auction,16
+2022-02-01,Inner ring,flat,off-plan,414
+2022-02-01,Inner ring,flat,other,1
+2022-02-01,Inner ring,flat,sale,3129
+2022-02-01,Inner ring,house,auction,5
+2022-02-01,Inner ring,house,off-plan,4
+2022-02-01,Inner ring,house,other,1
+2022-02-01,Inner ring,house,sale,769
+2022-02-01,Outer Ile-de-France,flat,auction,9
+2022-02-01,Outer Ile-de-France,flat,off-plan,387
+2022-02-01,Outer Ile-de-France,flat,other,1
+2022-02-01,Outer Ile-de-France,flat,sale,2612
+2022-02-01,Outer Ile-de-France,house,auction,6
+2022-02-01,Outer Ile-de-France,house,off-plan,6
+2022-02-01,Outer Ile-de-France,house,other,8
+2022-02-01,Outer Ile-de-France,house,sale,2727
+2022-02-01,Overseas,flat,auction,4
+2022-02-01,Overseas,flat,off-plan,30
+2022-02-01,Overseas,flat,sale,370
+2022-02-01,Overseas,house,auction,1
+2022-02-01,Overseas,house,off-plan,1
+2022-02-01,Overseas,house,sale,422
+2022-02-01,Paris,flat,auction,10
+2022-02-01,Paris,flat,off-plan,4
+2022-02-01,Paris,flat,other,6
+2022-02-01,Paris,flat,sale,2412
+2022-02-01,Paris,house,sale,9
+2022-02-01,Rest of France,flat,auction,44
+2022-02-01,Rest of France,flat,off-plan,732
+2022-02-01,Rest of France,flat,other,9
+2022-02-01,Rest of France,flat,sale,13251
+2022-02-01,Rest of France,house,auction,82
+2022-02-01,Rest of France,house,off-plan,17
+2022-02-01,Rest of France,house,other,37
+2022-02-01,Rest of France,house,sale,28719
+2022-03-01,Big cities,flat,auction,39
+2022-03-01,Big cities,flat,off-plan,429
+2022-03-01,Big cities,flat,other,13
+2022-03-01,Big cities,flat,sale,10992
+2022-03-01,Big cities,house,auction,20
+2022-03-01,Big cities,house,off-plan,10
+2022-03-01,Big cities,house,other,6
+2022-03-01,Big cities,house,sale,9353
+2022-03-01,Inner ring,flat,auction,17
+2022-03-01,Inner ring,flat,off-plan,608
+2022-03-01,Inner ring,flat,other,5
+2022-03-01,Inner ring,flat,sale,3798
+2022-03-01,Inner ring,house,auction,7
+2022-03-01,Inner ring,house,off-plan,5
+2022-03-01,Inner ring,house,other,2
+2022-03-01,Inner ring,house,sale,983
+2022-03-01,Outer Ile-de-France,flat,auction,15
+2022-03-01,Outer Ile-de-France,flat,off-plan,486
+2022-03-01,Outer Ile-de-France,flat,other,2
+2022-03-01,Outer Ile-de-France,flat,sale,3007
+2022-03-01,Outer Ile-de-France,house,auction,15
+2022-03-01,Outer Ile-de-France,house,off-plan,13
+2022-03-01,Outer Ile-de-France,house,other,3
+2022-03-01,Outer Ile-de-France,house,sale,3033
+2022-03-01,Overseas,flat,auction,2
+2022-03-01,Overseas,flat,off-plan,39
+2022-03-01,Overseas,flat,other,1
+2022-03-01,Overseas,flat,sale,444
+2022-03-01,Overseas,house,auction,2
+2022-03-01,Overseas,house,off-plan,2
+2022-03-01,Overseas,house,other,2
+2022-03-01,Overseas,house,sale,480
+2022-03-01,Paris,flat,auction,2
+2022-03-01,Paris,flat,off-plan,6
+2022-03-01,Paris,flat,other,7
+2022-03-01,Paris,flat,sale,2972
+2022-03-01,Paris,house,off-plan,1
+2022-03-01,Paris,house,sale,14
+2022-03-01,Rest of France,flat,auction,36
+2022-03-01,Rest of France,flat,off-plan,1029
+2022-03-01,Rest of France,flat,other,8
+2022-03-01,Rest of France,flat,sale,16056
+2022-03-01,Rest of France,house,auction,124
+2022-03-01,Rest of France,house,off-plan,29
+2022-03-01,Rest of France,house,other,39
+2022-03-01,Rest of France,house,sale,33802
+2022-04-01,Big cities,flat,auction,15
+2022-04-01,Big cities,flat,off-plan,355
+2022-04-01,Big cities,flat,other,9
+2022-04-01,Big cities,flat,sale,10039
+2022-04-01,Big cities,house,auction,13
+2022-04-01,Big cities,house,off-plan,12
+2022-04-01,Big cities,house,other,10
+2022-04-01,Big cities,house,sale,8369
+2022-04-01,Inner ring,flat,auction,9
+2022-04-01,Inner ring,flat,off-plan,551
+2022-04-01,Inner ring,flat,other,1
+2022-04-01,Inner ring,flat,sale,3304
+2022-04-01,Inner ring,house,auction,1
+2022-04-01,Inner ring,house,off-plan,1
+2022-04-01,Inner ring,house,sale,923
+2022-04-01,Outer Ile-de-France,flat,auction,9
+2022-04-01,Outer Ile-de-France,flat,off-plan,476
+2022-04-01,Outer Ile-de-France,flat,sale,2567
+2022-04-01,Outer Ile-de-France,house,auction,6
+2022-04-01,Outer Ile-de-France,house,off-plan,11
+2022-04-01,Outer Ile-de-France,house,sale,2673
+2022-04-01,Overseas,flat,auction,6
+2022-04-01,Overseas,flat,off-plan,42
+2022-04-01,Overseas,flat,sale,398
+2022-04-01,Overseas,house,auction,3
+2022-04-01,Overseas,house,off-plan,2
+2022-04-01,Overseas,house,other,1
+2022-04-01,Overseas,house,sale,484
+2022-04-01,Paris,flat,auction,4
+2022-04-01,Paris,flat,off-plan,4
+2022-04-01,Paris,flat,other,7
+2022-04-01,Paris,flat,sale,2639
+2022-04-01,Paris,house,sale,19
+2022-04-01,Rest of France,flat,auction,33
+2022-04-01,Rest of France,flat,off-plan,831
+2022-04-01,Rest of France,flat,other,16
+2022-04-01,Rest of France,flat,sale,14427
+2022-04-01,Rest of France,house,auction,74
+2022-04-01,Rest of France,house,off-plan,22
+2022-04-01,Rest of France,house,other,21
+2022-04-01,Rest of France,house,sale,30468
+2022-05-01,Big cities,flat,auction,30
+2022-05-01,Big cities,flat,off-plan,430
+2022-05-01,Big cities,flat,other,11
+2022-05-01,Big cities,flat,sale,10868
+2022-05-01,Big cities,house,auction,19
+2022-05-01,Big cities,house,off-plan,12
+2022-05-01,Big cities,house,other,5
+2022-05-01,Big cities,house,sale,8782
+2022-05-01,Inner ring,flat,auction,14
+2022-05-01,Inner ring,flat,off-plan,587
+2022-05-01,Inner ring,flat,other,4
+2022-05-01,Inner ring,flat,sale,3395
+2022-05-01,Inner ring,house,auction,6
+2022-05-01,Inner ring,house,off-plan,6
+2022-05-01,Inner ring,house,sale,920
+2022-05-01,Outer Ile-de-France,flat,auction,18
+2022-05-01,Outer Ile-de-France,flat,off-plan,487
+2022-05-01,Outer Ile-de-France,flat,other,1
+2022-05-01,Outer Ile-de-France,flat,sale,2752
+2022-05-01,Outer Ile-de-France,house,auction,6
+2022-05-01,Outer Ile-de-France,house,off-plan,6
+2022-05-01,Outer Ile-de-France,house,other,3
+2022-05-01,Outer Ile-de-France,house,sale,2686
+2022-05-01,Overseas,flat,auction,5
+2022-05-01,Overseas,flat,off-plan,38
+2022-05-01,Overseas,flat,sale,454
+2022-05-01,Overseas,house,auction,3
+2022-05-01,Overseas,house,other,5
+2022-05-01,Overseas,house,sale,418
+2022-05-01,Paris,flat,auction,6
+2022-05-01,Paris,flat,off-plan,4
+2022-05-01,Paris,flat,other,3
+2022-05-01,Paris,flat,sale,2942
+2022-05-01,Paris,house,sale,18
+2022-05-01,Rest of France,flat,auction,41
+2022-05-01,Rest of France,flat,off-plan,921
+2022-05-01,Rest of France,flat,other,6
+2022-05-01,Rest of France,flat,sale,16490
+2022-05-01,Rest of France,house,auction,93
+2022-05-01,Rest of France,house,off-plan,25
+2022-05-01,Rest of France,house,other,35
+2022-05-01,Rest of France,house,sale,32419
+2022-06-01,Big cities,flat,auction,55
+2022-06-01,Big cities,flat,off-plan,464
+2022-06-01,Big cities,flat,other,5
+2022-06-01,Big cities,flat,sale,12903
+2022-06-01,Big cities,house,auction,32
+2022-06-01,Big cities,house,off-plan,12
+2022-06-01,Big cities,house,other,12
+2022-06-01,Big cities,house,sale,10725
+2022-06-01,Inner ring,flat,auction,12
+2022-06-01,Inner ring,flat,off-plan,732
+2022-06-01,Inner ring,flat,other,5
+2022-06-01,Inner ring,flat,sale,4373
+2022-06-01,Inner ring,house,auction,4
+2022-06-01,Inner ring,house,off-plan,5
+2022-06-01,Inner ring,house,sale,1201
+2022-06-01,Outer Ile-de-France,flat,auction,21
+2022-06-01,Outer Ile-de-France,flat,off-plan,667
+2022-06-01,Outer Ile-de-France,flat,other,2
+2022-06-01,Outer Ile-de-France,flat,sale,3534
+2022-06-01,Outer Ile-de-France,house,auction,11
+2022-06-01,Outer Ile-de-France,house,off-plan,22
+2022-06-01,Outer Ile-de-France,house,other,7
+2022-06-01,Outer Ile-de-France,house,sale,3694
+2022-06-01,Overseas,flat,off-plan,31
+2022-06-01,Overseas,flat,sale,502
+2022-06-01,Overseas,house,auction,3
+2022-06-01,Overseas,house,off-plan,1
+2022-06-01,Overseas,house,sale,510
+2022-06-01,Paris,flat,auction,11
+2022-06-01,Paris,flat,off-plan,3
+2022-06-01,Paris,flat,other,3
+2022-06-01,Paris,flat,sale,3515
+2022-06-01,Paris,house,sale,25
+2022-06-01,Rest of France,flat,auction,63
+2022-06-01,Rest of France,flat,off-plan,1074
+2022-06-01,Rest of France,flat,other,11
+2022-06-01,Rest of France,flat,sale,17686
+2022-06-01,Rest of France,house,auction,137
+2022-06-01,Rest of France,house,off-plan,35
+2022-06-01,Rest of France,house,other,37
+2022-06-01,Rest of France,house,sale,37890
+2022-07-01,Big cities,flat,auction,7
+2022-07-01,Big cities,flat,off-plan,412
+2022-07-01,Big cities,flat,other,13
+2022-07-01,Big cities,flat,sale,12435
+2022-07-01,Big cities,house,auction,17
+2022-07-01,Big cities,house,off-plan,8
+2022-07-01,Big cities,house,other,16
+2022-07-01,Big cities,house,sale,12484
+2022-07-01,Inner ring,flat,auction,4
+2022-07-01,Inner ring,flat,off-plan,620
+2022-07-01,Inner ring,flat,other,3
+2022-07-01,Inner ring,flat,sale,4624
+2022-07-01,Inner ring,house,off-plan,5
+2022-07-01,Inner ring,house,other,1
+2022-07-01,Inner ring,house,sale,1510
+2022-07-01,Outer Ile-de-France,flat,auction,5
+2022-07-01,Outer Ile-de-France,flat,off-plan,482
+2022-07-01,Outer Ile-de-France,flat,other,1
+2022-07-01,Outer Ile-de-France,flat,sale,3587
+2022-07-01,Outer Ile-de-France,house,auction,6
+2022-07-01,Outer Ile-de-France,house,off-plan,7
+2022-07-01,Outer Ile-de-France,house,other,2
+2022-07-01,Outer Ile-de-France,house,sale,5056
+2022-07-01,Overseas,flat,auction,1
+2022-07-01,Overseas,flat,off-plan,48
+2022-07-01,Overseas,flat,other,2
+2022-07-01,Overseas,flat,sale,447
+2022-07-01,Overseas,house,auction,3
+2022-07-01,Overseas,house,sale,572
+2022-07-01,Paris,flat,auction,3
+2022-07-01,Paris,flat,off-plan,1
+2022-07-01,Paris,flat,other,3
+2022-07-01,Paris,flat,sale,3737
+2022-07-01,Paris,house,sale,11
+2022-07-01,Rest of France,flat,auction,30
+2022-07-01,Rest of France,flat,off-plan,1015
+2022-07-01,Rest of France,flat,other,5
+2022-07-01,Rest of France,flat,sale,17290
+2022-07-01,Rest of France,house,auction,75
+2022-07-01,Rest of France,house,off-plan,35
+2022-07-01,Rest of France,house,other,36
+2022-07-01,Rest of France,house,sale,42361
+2022-08-01,Big cities,flat,off-plan,224
+2022-08-01,Big cities,flat,other,6
+2022-08-01,Big cities,flat,sale,8982
+2022-08-01,Big cities,house,auction,1
+2022-08-01,Big cities,house,off-plan,8
+2022-08-01,Big cities,house,other,9
+2022-08-01,Big cities,house,sale,9219
+2022-08-01,Inner ring,flat,auction,5
+2022-08-01,Inner ring,flat,off-plan,295
+2022-08-01,Inner ring,flat,sale,2516
+2022-08-01,Inner ring,house,auction,2
+2022-08-01,Inner ring,house,off-plan,1
+2022-08-01,Inner ring,house,sale,811
+2022-08-01,Outer Ile-de-France,flat,auction,1
+2022-08-01,Outer Ile-de-France,flat,off-plan,292
+2022-08-01,Outer Ile-de-France,flat,sale,2269
+2022-08-01,Outer Ile-de-France,house,auction,1
+2022-08-01,Outer Ile-de-France,house,off-plan,7
+2022-08-01,Outer Ile-de-France,house,other,1
+2022-08-01,Outer Ile-de-France,house,sale,3226
+2022-08-01,Overseas,flat,off-plan,38
+2022-08-01,Overseas,flat,other,2
+2022-08-01,Overseas,flat,sale,408
+2022-08-01,Overseas,house,auction,1
+2022-08-01,Overseas,house,other,1
+2022-08-01,Overseas,house,sale,481
+2022-08-01,Paris,flat,auction,1
+2022-08-01,Paris,flat,other,2
+2022-08-01,Paris,flat,sale,1783
+2022-08-01,Paris,house,sale,7
+2022-08-01,Rest of France,flat,auction,2
+2022-08-01,Rest of France,flat,off-plan,636
+2022-08-01,Rest of France,flat,other,10
+2022-08-01,Rest of France,flat,sale,12877
+2022-08-01,Rest of France,house,auction,6
+2022-08-01,Rest of France,house,off-plan,22
+2022-08-01,Rest of France,house,other,20
+2022-08-01,Rest of France,house,sale,31418
+2022-09-01,Big cities,flat,auction,56
+2022-09-01,Big cities,flat,off-plan,427
+2022-09-01,Big cities,flat,other,6
+2022-09-01,Big cities,flat,sale,12090
+2022-09-01,Big cities,house,auction,36
+2022-09-01,Big cities,house,off-plan,15
+2022-09-01,Big cities,house,other,14
+2022-09-01,Big cities,house,sale,10102
+2022-09-01,Inner ring,flat,auction,35
+2022-09-01,Inner ring,flat,off-plan,734
+2022-09-01,Inner ring,flat,other,2
+2022-09-01,Inner ring,flat,sale,4342
+2022-09-01,Inner ring,house,auction,9
+2022-09-01,Inner ring,house,off-plan,2
+2022-09-01,Inner ring,house,sale,1223
+2022-09-01,Outer Ile-de-France,flat,auction,29
+2022-09-01,Outer Ile-de-France,flat,off-plan,679
+2022-09-01,Outer Ile-de-France,flat,other,2
+2022-09-01,Outer Ile-de-France,flat,sale,3361
+2022-09-01,Outer Ile-de-France,house,auction,15
+2022-09-01,Outer Ile-de-France,house,off-plan,20
+2022-09-01,Outer Ile-de-France,house,other,3
+2022-09-01,Outer Ile-de-France,house,sale,3591
+2022-09-01,Overseas,flat,auction,2
+2022-09-01,Overseas,flat,off-plan,48
+2022-09-01,Overseas,flat,sale,472
+2022-09-01,Overseas,house,auction,1
+2022-09-01,Overseas,house,off-plan,3
+2022-09-01,Overseas,house,other,2
+2022-09-01,Overseas,house,sale,520
+2022-09-01,Paris,flat,auction,3
+2022-09-01,Paris,flat,off-plan,9
+2022-09-01,Paris,flat,other,5
+2022-09-01,Paris,flat,sale,3735
+2022-09-01,Paris,house,sale,22
+2022-09-01,Rest of France,flat,auction,40
+2022-09-01,Rest of France,flat,off-plan,1052
+2022-09-01,Rest of France,flat,other,5
+2022-09-01,Rest of France,flat,sale,16902
+2022-09-01,Rest of France,house,auction,102
+2022-09-01,Rest of France,house,off-plan,31
+2022-09-01,Rest of France,house,other,22
+2022-09-01,Rest of France,house,sale,36948
+2022-10-01,Big cities,flat,auction,29
+2022-10-01,Big cities,flat,off-plan,350
+2022-10-01,Big cities,flat,other,9
+2022-10-01,Big cities,flat,sale,9223
+2022-10-01,Big cities,house,auction,21
+2022-10-01,Big cities,house,off-plan,5
+2022-10-01,Big cities,house,other,12
+2022-10-01,Big cities,house,sale,8497
+2022-10-01,Inner ring,flat,auction,27
+2022-10-01,Inner ring,flat,off-plan,447
+2022-10-01,Inner ring,flat,sale,3240
+2022-10-01,Inner ring,house,auction,1
+2022-10-01,Inner ring,house,off-plan,3
+2022-10-01,Inner ring,house,other,1
+2022-10-01,Inner ring,house,sale,947
+2022-10-01,Outer Ile-de-France,flat,auction,22
+2022-10-01,Outer Ile-de-France,flat,off-plan,534
+2022-10-01,Outer Ile-de-France,flat,other,2
+2022-10-01,Outer Ile-de-France,flat,sale,2388
+2022-10-01,Outer Ile-de-France,house,auction,11
+2022-10-01,Outer Ile-de-France,house,off-plan,5
+2022-10-01,Outer Ile-de-France,house,sale,2831
+2022-10-01,Overseas,flat,auction,3
+2022-10-01,Overseas,flat,off-plan,35
+2022-10-01,Overseas,flat,sale,422
+2022-10-01,Overseas,house,auction,2
+2022-10-01,Overseas,house,off-plan,1
+2022-10-01,Overseas,house,other,1
+2022-10-01,Overseas,house,sale,477
+2022-10-01,Paris,flat,auction,3
+2022-10-01,Paris,flat,off-plan,2
+2022-10-01,Paris,flat,other,4
+2022-10-01,Paris,flat,sale,2713
+2022-10-01,Paris,house,sale,10
+2022-10-01,Rest of France,flat,auction,54
+2022-10-01,Rest of France,flat,off-plan,896
+2022-10-01,Rest of France,flat,other,12
+2022-10-01,Rest of France,flat,sale,13410
+2022-10-01,Rest of France,house,auction,115
+2022-10-01,Rest of France,house,off-plan,44
+2022-10-01,Rest of France,house,other,28
+2022-10-01,Rest of France,house,sale,31341
+2022-11-01,Big cities,flat,auction,25
+2022-11-01,Big cities,flat,off-plan,343
+2022-11-01,Big cities,flat,other,13
+2022-11-01,Big cities,flat,sale,8572
+2022-11-01,Big cities,house,auction,27
+2022-11-01,Big cities,house,off-plan,8
+2022-11-01,Big cities,house,other,12
+2022-11-01,Big cities,house,sale,7455
+2022-11-01,Inner ring,flat,auction,28
+2022-11-01,Inner ring,flat,off-plan,583
+2022-11-01,Inner ring,flat,other,1
+2022-11-01,Inner ring,flat,sale,2699
+2022-11-01,Inner ring,house,auction,6
+2022-11-01,Inner ring,house,off-plan,4
+2022-11-01,Inner ring,house,other,3
+2022-11-01,Inner ring,house,sale,782
+2022-11-01,Outer Ile-de-France,flat,auction,6
+2022-11-01,Outer Ile-de-France,flat,off-plan,582
+2022-11-01,Outer Ile-de-France,flat,other,1
+2022-11-01,Outer Ile-de-France,flat,sale,2006
+2022-11-01,Outer Ile-de-France,house,auction,11
+2022-11-01,Outer Ile-de-France,house,off-plan,3
+2022-11-01,Outer Ile-de-France,house,other,6
+2022-11-01,Outer Ile-de-France,house,sale,2257
+2022-11-01,Overseas,flat,auction,3
+2022-11-01,Overseas,flat,off-plan,39
+2022-11-01,Overseas,flat,sale,392
+2022-11-01,Overseas,house,auction,2
+2022-11-01,Overseas,house,off-plan,2
+2022-11-01,Overseas,house,other,2
+2022-11-01,Overseas,house,sale,415
+2022-11-01,Paris,flat,auction,5
+2022-11-01,Paris,flat,off-plan,7
+2022-11-01,Paris,flat,other,5
+2022-11-01,Paris,flat,sale,2373
+2022-11-01,Paris,house,sale,9
+2022-11-01,Rest of France,flat,auction,26
+2022-11-01,Rest of France,flat,off-plan,914
+2022-11-01,Rest of France,flat,other,11
+2022-11-01,Rest of France,flat,sale,13008
+2022-11-01,Rest of France,house,auction,66
+2022-11-01,Rest of France,house,off-plan,33
+2022-11-01,Rest of France,house,other,34
+2022-11-01,Rest of France,house,sale,28119
+2022-12-01,Big cities,flat,auction,14
+2022-12-01,Big cities,flat,off-plan,1022
+2022-12-01,Big cities,flat,other,16
+2022-12-01,Big cities,flat,sale,10793
+2022-12-01,Big cities,house,auction,16
+2022-12-01,Big cities,house,off-plan,21
+2022-12-01,Big cities,house,other,18
+2022-12-01,Big cities,house,sale,9064
+2022-12-01,Inner ring,flat,auction,19
+2022-12-01,Inner ring,flat,off-plan,929
+2022-12-01,Inner ring,flat,other,6
+2022-12-01,Inner ring,flat,sale,3350
+2022-12-01,Inner ring,house,auction,5
+2022-12-01,Inner ring,house,off-plan,4
+2022-12-01,Inner ring,house,other,3
+2022-12-01,Inner ring,house,sale,866
+2022-12-01,Outer Ile-de-France,flat,auction,7
+2022-12-01,Outer Ile-de-France,flat,off-plan,1115
+2022-12-01,Outer Ile-de-France,flat,other,3
+2022-12-01,Outer Ile-de-France,flat,sale,2683
+2022-12-01,Outer Ile-de-France,house,auction,4
+2022-12-01,Outer Ile-de-France,house,off-plan,16
+2022-12-01,Outer Ile-de-France,house,other,1
+2022-12-01,Outer Ile-de-France,house,sale,2684
+2022-12-01,Overseas,flat,auction,3
+2022-12-01,Overseas,flat,off-plan,105
+2022-12-01,Overseas,flat,sale,544
+2022-12-01,Overseas,house,auction,2
+2022-12-01,Overseas,house,off-plan,4
+2022-12-01,Overseas,house,other,1
+2022-12-01,Overseas,house,sale,597
+2022-12-01,Paris,flat,auction,7
+2022-12-01,Paris,flat,off-plan,14
+2022-12-01,Paris,flat,other,14
+2022-12-01,Paris,flat,sale,2721
+2022-12-01,Paris,house,sale,11
+2022-12-01,Rest of France,flat,auction,25
+2022-12-01,Rest of France,flat,off-plan,2155
+2022-12-01,Rest of France,flat,other,11
+2022-12-01,Rest of France,flat,sale,16713
+2022-12-01,Rest of France,house,auction,60
+2022-12-01,Rest of France,house,off-plan,29
+2022-12-01,Rest of France,house,other,33
+2022-12-01,Rest of France,house,sale,34444
+2023-01-01,Big cities,flat,auction,41
+2023-01-01,Big cities,flat,off-plan,172
+2023-01-01,Big cities,flat,other,2
+2023-01-01,Big cities,flat,sale,8467
+2023-01-01,Big cities,house,auction,28
+2023-01-01,Big cities,house,off-plan,8
+2023-01-01,Big cities,house,other,10
+2023-01-01,Big cities,house,sale,6923
+2023-01-01,Inner ring,flat,auction,21
+2023-01-01,Inner ring,flat,off-plan,316
+2023-01-01,Inner ring,flat,other,1
+2023-01-01,Inner ring,flat,sale,2685
+2023-01-01,Inner ring,house,auction,5
+2023-01-01,Inner ring,house,off-plan,4
+2023-01-01,Inner ring,house,sale,656
+2023-01-01,Outer Ile-de-France,flat,auction,14
+2023-01-01,Outer Ile-de-France,flat,off-plan,222
+2023-01-01,Outer Ile-de-France,flat,other,2
+2023-01-01,Outer Ile-de-France,flat,sale,2074
+2023-01-01,Outer Ile-de-France,house,auction,6
+2023-01-01,Outer Ile-de-France,house,off-plan,3
+2023-01-01,Outer Ile-de-France,house,other,4
+2023-01-01,Outer Ile-de-France,house,sale,2022
+2023-01-01,Overseas,flat,auction,2
+2023-01-01,Overseas,flat,off-plan,10
+2023-01-01,Overseas,flat,sale,320
+2023-01-01,Overseas,house,auction,3
+2023-01-01,Overseas,house,off-plan,2
+2023-01-01,Overseas,house,other,1
+2023-01-01,Overseas,house,sale,356
+2023-01-01,Paris,flat,auction,2
+2023-01-01,Paris,flat,off-plan,3
+2023-01-01,Paris,flat,other,4
+2023-01-01,Paris,flat,sale,2344
+2023-01-01,Paris,house,sale,10
+2023-01-01,Rest of France,flat,auction,34
+2023-01-01,Rest of France,flat,off-plan,411
+2023-01-01,Rest of France,flat,other,4
+2023-01-01,Rest of France,flat,sale,11860
+2023-01-01,Rest of France,house,auction,85
+2023-01-01,Rest of France,house,off-plan,15
+2023-01-01,Rest of France,house,other,27
+2023-01-01,Rest of France,house,sale,24624
+2023-02-01,Big cities,flat,auction,17
+2023-02-01,Big cities,flat,off-plan,141
+2023-02-01,Big cities,flat,other,2
+2023-02-01,Big cities,flat,sale,8004
+2023-02-01,Big cities,house,auction,22
+2023-02-01,Big cities,house,off-plan,5
+2023-02-01,Big cities,house,other,9
+2023-02-01,Big cities,house,sale,6477
+2023-02-01,Inner ring,flat,auction,16
+2023-02-01,Inner ring,flat,off-plan,262
+2023-02-01,Inner ring,flat,other,2
+2023-02-01,Inner ring,flat,sale,2718
+2023-02-01,Inner ring,house,auction,4
+2023-02-01,Inner ring,house,off-plan,2
+2023-02-01,Inner ring,house,other,1
+2023-02-01,Inner ring,house,sale,646
+2023-02-01,Outer Ile-de-France,flat,auction,12
+2023-02-01,Outer Ile-de-France,flat,off-plan,221
+2023-02-01,Outer Ile-de-France,flat,sale,2145
+2023-02-01,Outer Ile-de-France,house,auction,1
+2023-02-01,Outer Ile-de-France,house,off-plan,9
+2023-02-01,Outer Ile-de-France,house,sale,2139
+2023-02-01,Overseas,flat,off-plan,22
+2023-02-01,Overseas,flat,sale,383
+2023-02-01,Overseas,house,auction,2
+2023-02-01,Overseas,house,other,1
+2023-02-01,Overseas,house,sale,374
+2023-02-01,Paris,flat,auction,9
+2023-02-01,Paris,flat,off-plan,8
+2023-02-01,Paris,flat,other,13
+2023-02-01,Paris,flat,sale,2251
+2023-02-01,Paris,house,sale,9
+2023-02-01,Rest of France,flat,auction,28
+2023-02-01,Rest of France,flat,off-plan,337
+2023-02-01,Rest of France,flat,other,4
+2023-02-01,Rest of France,flat,sale,11388
+2023-02-01,Rest of France,house,auction,77
+2023-02-01,Rest of France,house,off-plan,12
+2023-02-01,Rest of France,house,other,25
+2023-02-01,Rest of France,house,sale,23665
+2023-03-01,Big cities,flat,auction,31
+2023-03-01,Big cities,flat,off-plan,193
+2023-03-01,Big cities,flat,other,7
+2023-03-01,Big cities,flat,sale,9396
+2023-03-01,Big cities,house,auction,27
+2023-03-01,Big cities,house,off-plan,12
+2023-03-01,Big cities,house,other,11
+2023-03-01,Big cities,house,sale,7705
+2023-03-01,Inner ring,flat,auction,24
+2023-03-01,Inner ring,flat,off-plan,355
+2023-03-01,Inner ring,flat,other,1
+2023-03-01,Inner ring,flat,sale,3112
+2023-03-01,Inner ring,house,auction,5
+2023-03-01,Inner ring,house,off-plan,5
+2023-03-01,Inner ring,house,other,1
+2023-03-01,Inner ring,house,sale,833
+2023-03-01,Outer Ile-de-France,flat,auction,12
+2023-03-01,Outer Ile-de-France,flat,off-plan,356
+2023-03-01,Outer Ile-de-France,flat,sale,2314
+2023-03-01,Outer Ile-de-France,house,auction,10
+2023-03-01,Outer Ile-de-France,house,off-plan,2
+2023-03-01,Outer Ile-de-France,house,other,4
+2023-03-01,Outer Ile-de-France,house,sale,2270
+2023-03-01,Overseas,flat,auction,2
+2023-03-01,Overseas,flat,off-plan,24
+2023-03-01,Overseas,flat,sale,459
+2023-03-01,Overseas,house,auction,2
+2023-03-01,Overseas,house,off-plan,2
+2023-03-01,Overseas,house,other,3
+2023-03-01,Overseas,house,sale,438
+2023-03-01,Paris,flat,auction,8
+2023-03-01,Paris,flat,off-plan,8
+2023-03-01,Paris,flat,other,3
+2023-03-01,Paris,flat,sale,2722
+2023-03-01,Paris,house,sale,9
+2023-03-01,Rest of France,flat,auction,44
+2023-03-01,Rest of France,flat,off-plan,529
+2023-03-01,Rest of France,flat,other,7
+2023-03-01,Rest of France,flat,sale,13536
+2023-03-01,Rest of France,house,auction,100
+2023-03-01,Rest of France,house,off-plan,21
+2023-03-01,Rest of France,house,other,38
+2023-03-01,Rest of France,house,sale,28309
+2023-04-01,Big cities,flat,auction,23
+2023-04-01,Big cities,flat,off-plan,151
+2023-04-01,Big cities,flat,other,4
+2023-04-01,Big cities,flat,sale,7814
+2023-04-01,Big cities,house,auction,19
+2023-04-01,Big cities,house,off-plan,5
+2023-04-01,Big cities,house,other,8
+2023-04-01,Big cities,house,sale,6303
+2023-04-01,Inner ring,flat,auction,13
+2023-04-01,Inner ring,flat,off-plan,329
+2023-04-01,Inner ring,flat,other,3
+2023-04-01,Inner ring,flat,sale,2506
+2023-04-01,Inner ring,house,auction,5
+2023-04-01,Inner ring,house,off-plan,7
+2023-04-01,Inner ring,house,other,2
+2023-04-01,Inner ring,house,sale,612
+2023-04-01,Outer Ile-de-France,flat,auction,16
+2023-04-01,Outer Ile-de-France,flat,off-plan,299
+2023-04-01,Outer Ile-de-France,flat,other,2
+2023-04-01,Outer Ile-de-France,flat,sale,1987
+2023-04-01,Outer Ile-de-France,house,auction,7
+2023-04-01,Outer Ile-de-France,house,off-plan,5
+2023-04-01,Outer Ile-de-France,house,other,2
+2023-04-01,Outer Ile-de-France,house,sale,1926
+2023-04-01,Overseas,flat,off-plan,21
+2023-04-01,Overseas,flat,sale,362
+2023-04-01,Overseas,house,auction,1
+2023-04-01,Overseas,house,off-plan,2
+2023-04-01,Overseas,house,sale,311
+2023-04-01,Paris,flat,auction,3
+2023-04-01,Paris,flat,off-plan,4
+2023-04-01,Paris,flat,other,8
+2023-04-01,Paris,flat,sale,2212
+2023-04-01,Paris,house,sale,14
+2023-04-01,Rest of France,flat,auction,21
+2023-04-01,Rest of France,flat,off-plan,459
+2023-04-01,Rest of France,flat,other,13
+2023-04-01,Rest of France,flat,sale,11365
+2023-04-01,Rest of France,house,auction,53
+2023-04-01,Rest of France,house,off-plan,24
+2023-04-01,Rest of France,house,other,35
+2023-04-01,Rest of France,house,sale,22576
+2023-05-01,Big cities,flat,auction,41
+2023-05-01,Big cities,flat,off-plan,169
+2023-05-01,Big cities,flat,other,4
+2023-05-01,Big cities,flat,sale,8662
+2023-05-01,Big cities,house,auction,15
+2023-05-01,Big cities,house,off-plan,5
+2023-05-01,Big cities,house,other,4
+2023-05-01,Big cities,house,sale,6960
+2023-05-01,Inner ring,flat,auction,10
+2023-05-01,Inner ring,flat,off-plan,347
+2023-05-01,Inner ring,flat,other,1
+2023-05-01,Inner ring,flat,sale,2651
+2023-05-01,Inner ring,house,auction,1
+2023-05-01,Inner ring,house,off-plan,3
+2023-05-01,Inner ring,house,sale,639
+2023-05-01,Outer Ile-de-France,flat,auction,23
+2023-05-01,Outer Ile-de-France,flat,off-plan,306
+2023-05-01,Outer Ile-de-France,flat,sale,2125
+2023-05-01,Outer Ile-de-France,house,auction,11
+2023-05-01,Outer Ile-de-France,house,off-plan,10
+2023-05-01,Outer Ile-de-France,house,other,3
+2023-05-01,Outer Ile-de-France,house,sale,2051
+2023-05-01,Overseas,flat,auction,1
+2023-05-01,Overseas,flat,off-plan,24
+2023-05-01,Overseas,flat,other,2
+2023-05-01,Overseas,flat,sale,352
+2023-05-01,Overseas,house,auction,1
+2023-05-01,Overseas,house,other,2
+2023-05-01,Overseas,house,sale,385
+2023-05-01,Paris,flat,auction,9
+2023-05-01,Paris,flat,off-plan,4
+2023-05-01,Paris,flat,other,7
+2023-05-01,Paris,flat,sale,2271
+2023-05-01,Paris,house,sale,8
+2023-05-01,Rest of France,flat,auction,36
+2023-05-01,Rest of France,flat,off-plan,516
+2023-05-01,Rest of France,flat,other,15
+2023-05-01,Rest of France,flat,sale,12476
+2023-05-01,Rest of France,house,auction,95
+2023-05-01,Rest of France,house,off-plan,14
+2023-05-01,Rest of France,house,other,22
+2023-05-01,Rest of France,house,sale,25006
+2023-06-01,Big cities,flat,auction,32
+2023-06-01,Big cities,flat,off-plan,216
+2023-06-01,Big cities,flat,other,13
+2023-06-01,Big cities,flat,sale,10326
+2023-06-01,Big cities,house,auction,26
+2023-06-01,Big cities,house,off-plan,8
+2023-06-01,Big cities,house,other,13
+2023-06-01,Big cities,house,sale,8595
+2023-06-01,Inner ring,flat,auction,26
+2023-06-01,Inner ring,flat,off-plan,473
+2023-06-01,Inner ring,flat,other,4
+2023-06-01,Inner ring,flat,sale,3444
+2023-06-01,Inner ring,house,auction,5
+2023-06-01,Inner ring,house,off-plan,2
+2023-06-01,Inner ring,house,other,2
+2023-06-01,Inner ring,house,sale,858
+2023-06-01,Outer Ile-de-France,flat,auction,16
+2023-06-01,Outer Ile-de-France,flat,off-plan,430
+2023-06-01,Outer Ile-de-France,flat,other,1
+2023-06-01,Outer Ile-de-France,flat,sale,2767
+2023-06-01,Outer Ile-de-France,house,auction,11
+2023-06-01,Outer Ile-de-France,house,off-plan,9
+2023-06-01,Outer Ile-de-France,house,other,6
+2023-06-01,Outer Ile-de-France,house,sale,2899
+2023-06-01,Overseas,flat,auction,7
+2023-06-01,Overseas,flat,off-plan,28
+2023-06-01,Overseas,flat,sale,417
+2023-06-01,Overseas,house,auction,3
+2023-06-01,Overseas,house,off-plan,1
+2023-06-01,Overseas,house,other,1
+2023-06-01,Overseas,house,sale,503
+2023-06-01,Paris,flat,auction,8
+2023-06-01,Paris,flat,off-plan,7
+2023-06-01,Paris,flat,other,6
+2023-06-01,Paris,flat,sale,2916
+2023-06-01,Paris,house,sale,7
+2023-06-01,Rest of France,flat,auction,54
+2023-06-01,Rest of France,flat,off-plan,629
+2023-06-01,Rest of France,flat,other,19
+2023-06-01,Rest of France,flat,sale,15382
+2023-06-01,Rest of France,house,auction,95
+2023-06-01,Rest of France,house,off-plan,21
+2023-06-01,Rest of France,house,other,36
+2023-06-01,Rest of France,house,sale,30923
+2023-07-01,Big cities,flat,auction,8
+2023-07-01,Big cities,flat,off-plan,223
+2023-07-01,Big cities,flat,other,8
+2023-07-01,Big cities,flat,sale,9416
+2023-07-01,Big cities,house,auction,22
+2023-07-01,Big cities,house,off-plan,7
+2023-07-01,Big cities,house,other,12
+2023-07-01,Big cities,house,sale,9093
+2023-07-01,Inner ring,flat,auction,4
+2023-07-01,Inner ring,flat,off-plan,445
+2023-07-01,Inner ring,flat,other,3
+2023-07-01,Inner ring,flat,sale,3375
+2023-07-01,Inner ring,house,auction,5
+2023-07-01,Inner ring,house,off-plan,3
+2023-07-01,Inner ring,house,sale,1046
+2023-07-01,Outer Ile-de-France,flat,auction,7
+2023-07-01,Outer Ile-de-France,flat,off-plan,352
+2023-07-01,Outer Ile-de-France,flat,other,2
+2023-07-01,Outer Ile-de-France,flat,sale,2625
+2023-07-01,Outer Ile-de-France,house,auction,2
+2023-07-01,Outer Ile-de-France,house,off-plan,10
+2023-07-01,Outer Ile-de-France,house,other,1
+2023-07-01,Outer Ile-de-France,house,sale,3282
+2023-07-01,Overseas,flat,off-plan,24
+2023-07-01,Overseas,flat,other,1
+2023-07-01,Overseas,flat,sale,357
+2023-07-01,Overseas,house,auction,2
+2023-07-01,Overseas,house,off-plan,1
+2023-07-01,Overseas,house,sale,493
+2023-07-01,Paris,flat,auction,5
+2023-07-01,Paris,flat,off-plan,6
+2023-07-01,Paris,flat,other,4
+2023-07-01,Paris,flat,sale,2938
+2023-07-01,Paris,house,sale,26
+2023-07-01,Rest of France,flat,auction,31
+2023-07-01,Rest of France,flat,off-plan,549
+2023-07-01,Rest of France,flat,other,12
+2023-07-01,Rest of France,flat,sale,14056
+2023-07-01,Rest of France,house,auction,68
+2023-07-01,Rest of France,house,off-plan,17
+2023-07-01,Rest of France,house,other,33
+2023-07-01,Rest of France,house,sale,31382
+2023-08-01,Big cities,flat,auction,2
+2023-08-01,Big cities,flat,off-plan,94
+2023-08-01,Big cities,flat,other,7
+2023-08-01,Big cities,flat,sale,6880
+2023-08-01,Big cities,house,off-plan,3
+2023-08-01,Big cities,house,other,14
+2023-08-01,Big cities,house,sale,6719
+2023-08-01,Inner ring,flat,off-plan,226
+2023-08-01,Inner ring,flat,other,1
+2023-08-01,Inner ring,flat,sale,1806
+2023-08-01,Inner ring,house,off-plan,2
+2023-08-01,Inner ring,house,sale,541
+2023-08-01,Outer Ile-de-France,flat,off-plan,245
+2023-08-01,Outer Ile-de-France,flat,other,2
+2023-08-01,Outer Ile-de-France,flat,sale,1668
+2023-08-01,Outer Ile-de-France,house,auction,1
+2023-08-01,Outer Ile-de-France,house,off-plan,6
+2023-08-01,Outer Ile-de-France,house,other,2
+2023-08-01,Outer Ile-de-France,house,sale,2040
+2023-08-01,Overseas,flat,auction,1
+2023-08-01,Overseas,flat,off-plan,19
+2023-08-01,Overseas,flat,sale,354
+2023-08-01,Overseas,house,auction,1
+2023-08-01,Overseas,house,off-plan,1
+2023-08-01,Overseas,house,other,1
+2023-08-01,Overseas,house,sale,419
+2023-08-01,Paris,flat,auction,1
+2023-08-01,Paris,flat,other,4
+2023-08-01,Paris,flat,sale,1274
+2023-08-01,Paris,house,sale,5
+2023-08-01,Rest of France,flat,auction,4
+2023-08-01,Rest of France,flat,off-plan,312
+2023-08-01,Rest of France,flat,other,7
+2023-08-01,Rest of France,flat,sale,10187
+2023-08-01,Rest of France,house,auction,5
+2023-08-01,Rest of France,house,off-plan,14
+2023-08-01,Rest of France,house,other,29
+2023-08-01,Rest of France,house,sale,23914
+2023-09-01,Big cities,flat,auction,40
+2023-09-01,Big cities,flat,off-plan,217
+2023-09-01,Big cities,flat,other,4
+2023-09-01,Big cities,flat,sale,8994
+2023-09-01,Big cities,house,auction,21
+2023-09-01,Big cities,house,off-plan,1
+2023-09-01,Big cities,house,other,8
+2023-09-01,Big cities,house,sale,7466
+2023-09-01,Inner ring,flat,auction,28
+2023-09-01,Inner ring,flat,off-plan,441
+2023-09-01,Inner ring,flat,other,3
+2023-09-01,Inner ring,flat,sale,3038
+2023-09-01,Inner ring,house,auction,5
+2023-09-01,Inner ring,house,off-plan,2
+2023-09-01,Inner ring,house,other,3
+2023-09-01,Inner ring,house,sale,813
+2023-09-01,Outer Ile-de-France,flat,auction,26
+2023-09-01,Outer Ile-de-France,flat,off-plan,393
+2023-09-01,Outer Ile-de-France,flat,sale,2274
+2023-09-01,Outer Ile-de-France,house,auction,18
+2023-09-01,Outer Ile-de-France,house,off-plan,8
+2023-09-01,Outer Ile-de-France,house,sale,2437
+2023-09-01,Overseas,flat,auction,3
+2023-09-01,Overseas,flat,off-plan,26
+2023-09-01,Overseas,flat,sale,413
+2023-09-01,Overseas,house,auction,2
+2023-09-01,Overseas,house,off-plan,3
+2023-09-01,Overseas,house,sale,410
+2023-09-01,Paris,flat,auction,10
+2023-09-01,Paris,flat,off-plan,5
+2023-09-01,Paris,flat,other,3
+2023-09-01,Paris,flat,sale,2788
+2023-09-01,Paris,house,sale,11
+2023-09-01,Rest of France,flat,auction,43
+2023-09-01,Rest of France,flat,off-plan,566
+2023-09-01,Rest of France,flat,other,8
+2023-09-01,Rest of France,flat,sale,12869
+2023-09-01,Rest of France,house,auction,100
+2023-09-01,Rest of France,house,off-plan,20
+2023-09-01,Rest of France,house,other,28
+2023-09-01,Rest of France,house,sale,27847
+2023-10-01,Big cities,flat,auction,34
+2023-10-01,Big cities,flat,off-plan,222
+2023-10-01,Big cities,flat,other,10
+2023-10-01,Big cities,flat,sale,7689
+2023-10-01,Big cities,house,auction,34
+2023-10-01,Big cities,house,off-plan,7
+2023-10-01,Big cities,house,other,8
+2023-10-01,Big cities,house,sale,6929
+2023-10-01,Inner ring,flat,auction,16
+2023-10-01,Inner ring,flat,off-plan,364
+2023-10-01,Inner ring,flat,other,6
+2023-10-01,Inner ring,flat,sale,2553
+2023-10-01,Inner ring,house,auction,2
+2023-10-01,Inner ring,house,off-plan,1
+2023-10-01,Inner ring,house,sale,679
+2023-10-01,Outer Ile-de-France,flat,auction,12
+2023-10-01,Outer Ile-de-France,flat,off-plan,303
+2023-10-01,Outer Ile-de-France,flat,other,2
+2023-10-01,Outer Ile-de-France,flat,sale,1913
+2023-10-01,Outer Ile-de-France,house,auction,6
+2023-10-01,Outer Ile-de-France,house,off-plan,12
+2023-10-01,Outer Ile-de-France,house,other,1
+2023-10-01,Outer Ile-de-France,house,sale,2120
+2023-10-01,Overseas,flat,auction,6
+2023-10-01,Overseas,flat,off-plan,45
+2023-10-01,Overseas,flat,sale,356
+2023-10-01,Overseas,house,auction,3
+2023-10-01,Overseas,house,other,2
+2023-10-01,Overseas,house,sale,375
+2023-10-01,Paris,flat,auction,12
+2023-10-01,Paris,flat,off-plan,2
+2023-10-01,Paris,flat,other,2
+2023-10-01,Paris,flat,sale,2259
+2023-10-01,Paris,house,auction,1
+2023-10-01,Paris,house,sale,12
+2023-10-01,Rest of France,flat,auction,53
+2023-10-01,Rest of France,flat,off-plan,594
+2023-10-01,Rest of France,flat,other,13
+2023-10-01,Rest of France,flat,sale,11287
+2023-10-01,Rest of France,house,auction,98
+2023-10-01,Rest of France,house,off-plan,28
+2023-10-01,Rest of France,house,other,27
+2023-10-01,Rest of France,house,sale,26490
+2023-11-01,Big cities,flat,auction,20
+2023-11-01,Big cities,flat,off-plan,164
+2023-11-01,Big cities,flat,other,6
+2023-11-01,Big cities,flat,sale,6323
+2023-11-01,Big cities,house,auction,16
+2023-11-01,Big cities,house,off-plan,5
+2023-11-01,Big cities,house,other,11
+2023-11-01,Big cities,house,sale,5531
+2023-11-01,Inner ring,flat,auction,16
+2023-11-01,Inner ring,flat,off-plan,326
+2023-11-01,Inner ring,flat,sale,1963
+2023-11-01,Inner ring,house,off-plan,2
+2023-11-01,Inner ring,house,other,2
+2023-11-01,Inner ring,house,sale,483
+2023-11-01,Outer Ile-de-France,flat,auction,11
+2023-11-01,Outer Ile-de-France,flat,off-plan,265
+2023-11-01,Outer Ile-de-France,flat,other,1
+2023-11-01,Outer Ile-de-France,flat,sale,1421
+2023-11-01,Outer Ile-de-France,house,auction,6
+2023-11-01,Outer Ile-de-France,house,off-plan,10
+2023-11-01,Outer Ile-de-France,house,other,1
+2023-11-01,Outer Ile-de-France,house,sale,1591
+2023-11-01,Overseas,flat,auction,1
+2023-11-01,Overseas,flat,off-plan,39
+2023-11-01,Overseas,flat,sale,320
+2023-11-01,Overseas,house,auction,2
+2023-11-01,Overseas,house,off-plan,1
+2023-11-01,Overseas,house,other,3
+2023-11-01,Overseas,house,sale,359
+2023-11-01,Paris,flat,auction,6
+2023-11-01,Paris,flat,off-plan,1
+2023-11-01,Paris,flat,other,11
+2023-11-01,Paris,flat,sale,1766
+2023-11-01,Paris,house,other,2
+2023-11-01,Paris,house,sale,15
+2023-11-01,Rest of France,flat,auction,27
+2023-11-01,Rest of France,flat,off-plan,446
+2023-11-01,Rest of France,flat,other,7
+2023-11-01,Rest of France,flat,sale,10103
+2023-11-01,Rest of France,house,auction,69
+2023-11-01,Rest of France,house,off-plan,11
+2023-11-01,Rest of France,house,other,36
+2023-11-01,Rest of France,house,sale,22191
+2023-12-01,Big cities,flat,auction,18
+2023-12-01,Big cities,flat,off-plan,354
+2023-12-01,Big cities,flat,other,8
+2023-12-01,Big cities,flat,sale,7925
+2023-12-01,Big cities,house,auction,11
+2023-12-01,Big cities,house,off-plan,10
+2023-12-01,Big cities,house,other,13
+2023-12-01,Big cities,house,sale,6927
+2023-12-01,Inner ring,flat,auction,7
+2023-12-01,Inner ring,flat,off-plan,520
+2023-12-01,Inner ring,flat,sale,2335
+2023-12-01,Inner ring,house,auction,2
+2023-12-01,Inner ring,house,off-plan,3
+2023-12-01,Inner ring,house,other,1
+2023-12-01,Inner ring,house,sale,667
+2023-12-01,Outer Ile-de-France,flat,auction,10
+2023-12-01,Outer Ile-de-France,flat,off-plan,531
+2023-12-01,Outer Ile-de-France,flat,other,2
+2023-12-01,Outer Ile-de-France,flat,sale,1918
+2023-12-01,Outer Ile-de-France,house,auction,14
+2023-12-01,Outer Ile-de-France,house,off-plan,9
+2023-12-01,Outer Ile-de-France,house,other,5
+2023-12-01,Outer Ile-de-France,house,sale,2010
+2023-12-01,Overseas,flat,auction,1
+2023-12-01,Overseas,flat,off-plan,80
+2023-12-01,Overseas,flat,sale,383
+2023-12-01,Overseas,house,auction,1
+2023-12-01,Overseas,house,off-plan,1
+2023-12-01,Overseas,house,other,1
+2023-12-01,Overseas,house,sale,487
+2023-12-01,Paris,flat,auction,7
+2023-12-01,Paris,flat,off-plan,5
+2023-12-01,Paris,flat,other,7
+2023-12-01,Paris,flat,sale,2108
+2023-12-01,Paris,house,sale,12
+2023-12-01,Rest of France,flat,auction,28
+2023-12-01,Rest of France,flat,off-plan,875
+2023-12-01,Rest of France,flat,other,17
+2023-12-01,Rest of France,flat,sale,13072
+2023-12-01,Rest of France,house,auction,57
+2023-12-01,Rest of France,house,off-plan,20
+2023-12-01,Rest of France,house,other,36
+2023-12-01,Rest of France,house,sale,27478
+2024-01-01,Big cities,flat,auction,26
+2024-01-01,Big cities,flat,off-plan,85
+2024-01-01,Big cities,flat,other,15
+2024-01-01,Big cities,flat,sale,6169
+2024-01-01,Big cities,house,auction,16
+2024-01-01,Big cities,house,off-plan,2
+2024-01-01,Big cities,house,other,12
+2024-01-01,Big cities,house,sale,5252
+2024-01-01,Inner ring,flat,auction,9
+2024-01-01,Inner ring,flat,off-plan,192
+2024-01-01,Inner ring,flat,other,6
+2024-01-01,Inner ring,flat,sale,1948
+2024-01-01,Inner ring,house,auction,3
+2024-01-01,Inner ring,house,off-plan,2
+2024-01-01,Inner ring,house,sale,485
+2024-01-01,Outer Ile-de-France,flat,auction,19
+2024-01-01,Outer Ile-de-France,flat,off-plan,150
+2024-01-01,Outer Ile-de-France,flat,sale,1478
+2024-01-01,Outer Ile-de-France,house,auction,14
+2024-01-01,Outer Ile-de-France,house,off-plan,6
+2024-01-01,Outer Ile-de-France,house,other,2
+2024-01-01,Outer Ile-de-France,house,sale,1508
+2024-01-01,Overseas,flat,auction,2
+2024-01-01,Overseas,flat,off-plan,4
+2024-01-01,Overseas,flat,sale,253
+2024-01-01,Overseas,house,auction,2
+2024-01-01,Overseas,house,other,3
+2024-01-01,Overseas,house,sale,255
+2024-01-01,Paris,flat,auction,11
+2024-01-01,Paris,flat,other,6
+2024-01-01,Paris,flat,sale,1825
+2024-01-01,Paris,house,sale,8
+2024-01-01,Rest of France,flat,auction,36
+2024-01-01,Rest of France,flat,off-plan,243
+2024-01-01,Rest of France,flat,other,13
+2024-01-01,Rest of France,flat,sale,9244
+2024-01-01,Rest of France,house,auction,71
+2024-01-01,Rest of France,house,off-plan,10
+2024-01-01,Rest of France,house,other,30
+2024-01-01,Rest of France,house,sale,19916
+2024-02-01,Big cities,flat,auction,43
+2024-02-01,Big cities,flat,off-plan,68
+2024-02-01,Big cities,flat,other,10
+2024-02-01,Big cities,flat,sale,6093
+2024-02-01,Big cities,house,auction,21
+2024-02-01,Big cities,house,off-plan,4
+2024-02-01,Big cities,house,other,12
+2024-02-01,Big cities,house,sale,5202
+2024-02-01,Inner ring,flat,auction,18
+2024-02-01,Inner ring,flat,off-plan,167
+2024-02-01,Inner ring,flat,other,2
+2024-02-01,Inner ring,flat,sale,2001
+2024-02-01,Inner ring,house,auction,4
+2024-02-01,Inner ring,house,off-plan,1
+2024-02-01,Inner ring,house,sale,523
+2024-02-01,Outer Ile-de-France,flat,auction,9
+2024-02-01,Outer Ile-de-France,flat,off-plan,128
+2024-02-01,Outer Ile-de-France,flat,other,2
+2024-02-01,Outer Ile-de-France,flat,sale,1573
+2024-02-01,Outer Ile-de-France,house,auction,14
+2024-02-01,Outer Ile-de-France,house,off-plan,4
+2024-02-01,Outer Ile-de-France,house,other,4
+2024-02-01,Outer Ile-de-France,house,sale,1521
+2024-02-01,Overseas,flat,auction,1
+2024-02-01,Overseas,flat,off-plan,8
+2024-02-01,Overseas,flat,sale,255
+2024-02-01,Overseas,house,auction,2
+2024-02-01,Overseas,house,other,2
+2024-02-01,Overseas,house,sale,295
+2024-02-01,Paris,flat,auction,7
+2024-02-01,Paris,flat,off-plan,2
+2024-02-01,Paris,flat,other,5
+2024-02-01,Paris,flat,sale,1888
+2024-02-01,Paris,house,sale,6
+2024-02-01,Rest of France,flat,auction,38
+2024-02-01,Rest of France,flat,off-plan,186
+2024-02-01,Rest of France,flat,other,11
+2024-02-01,Rest of France,flat,sale,9159
+2024-02-01,Rest of France,house,auction,77
+2024-02-01,Rest of France,house,off-plan,8
+2024-02-01,Rest of France,house,other,30
+2024-02-01,Rest of France,house,sale,19436
+2024-03-01,Big cities,flat,auction,27
+2024-03-01,Big cities,flat,off-plan,123
+2024-03-01,Big cities,flat,other,7
+2024-03-01,Big cities,flat,sale,6382
+2024-03-01,Big cities,house,auction,19
+2024-03-01,Big cities,house,off-plan,1
+2024-03-01,Big cities,house,other,12
+2024-03-01,Big cities,house,sale,5277
+2024-03-01,Inner ring,flat,auction,21
+2024-03-01,Inner ring,flat,off-plan,230
+2024-03-01,Inner ring,flat,other,4
+2024-03-01,Inner ring,flat,sale,2192
+2024-03-01,Inner ring,house,auction,3
+2024-03-01,Inner ring,house,other,1
+2024-03-01,Inner ring,house,sale,561
+2024-03-01,Outer Ile-de-France,flat,auction,17
+2024-03-01,Outer Ile-de-France,flat,off-plan,153
+2024-03-01,Outer Ile-de-France,flat,other,3
+2024-03-01,Outer Ile-de-France,flat,sale,1689
+2024-03-01,Outer Ile-de-France,house,auction,9
+2024-03-01,Outer Ile-de-France,house,off-plan,5
+2024-03-01,Outer Ile-de-France,house,sale,1640
+2024-03-01,Overseas,flat,auction,2
+2024-03-01,Overseas,flat,off-plan,15
+2024-03-01,Overseas,flat,sale,306
+2024-03-01,Overseas,house,auction,2
+2024-03-01,Overseas,house,other,2
+2024-03-01,Overseas,house,sale,339
+2024-03-01,Paris,flat,auction,2
+2024-03-01,Paris,flat,off-plan,2
+2024-03-01,Paris,flat,other,7
+2024-03-01,Paris,flat,sale,2076
+2024-03-01,Paris,house,sale,9
+2024-03-01,Rest of France,flat,auction,45
+2024-03-01,Rest of France,flat,off-plan,224
+2024-03-01,Rest of France,flat,other,14
+2024-03-01,Rest of France,flat,sale,9657
+2024-03-01,Rest of France,house,auction,84
+2024-03-01,Rest of France,house,off-plan,12
+2024-03-01,Rest of France,house,other,25
+2024-03-01,Rest of France,house,sale,20250
+2024-04-01,Big cities,flat,auction,24
+2024-04-01,Big cities,flat,off-plan,130
+2024-04-01,Big cities,flat,other,10
+2024-04-01,Big cities,flat,sale,6880
+2024-04-01,Big cities,house,auction,21
+2024-04-01,Big cities,house,off-plan,6
+2024-04-01,Big cities,house,other,11
+2024-04-01,Big cities,house,sale,5789
+2024-04-01,Inner ring,flat,auction,7
+2024-04-01,Inner ring,flat,off-plan,255
+2024-04-01,Inner ring,flat,other,4
+2024-04-01,Inner ring,flat,sale,2140
+2024-04-01,Inner ring,house,auction,3
+2024-04-01,Inner ring,house,off-plan,4
+2024-04-01,Inner ring,house,sale,548
+2024-04-01,Outer Ile-de-France,flat,auction,8
+2024-04-01,Outer Ile-de-France,flat,off-plan,160
+2024-04-01,Outer Ile-de-France,flat,other,3
+2024-04-01,Outer Ile-de-France,flat,sale,1619
+2024-04-01,Outer Ile-de-France,house,auction,4
+2024-04-01,Outer Ile-de-France,house,off-plan,7
+2024-04-01,Outer Ile-de-France,house,other,2
+2024-04-01,Outer Ile-de-France,house,sale,1675
+2024-04-01,Overseas,flat,auction,3
+2024-04-01,Overseas,flat,off-plan,5
+2024-04-01,Overseas,flat,sale,287
+2024-04-01,Overseas,house,auction,1
+2024-04-01,Overseas,house,off-plan,1
+2024-04-01,Overseas,house,other,2
+2024-04-01,Overseas,house,sale,364
+2024-04-01,Paris,flat,auction,5
+2024-04-01,Paris,flat,off-plan,1
+2024-04-01,Paris,flat,other,7
+2024-04-01,Paris,flat,sale,2221
+2024-04-01,Paris,house,sale,9
+2024-04-01,Rest of France,flat,auction,33
+2024-04-01,Rest of France,flat,off-plan,244
+2024-04-01,Rest of France,flat,other,18
+2024-04-01,Rest of France,flat,sale,10248
+2024-04-01,Rest of France,house,auction,63
+2024-04-01,Rest of France,house,off-plan,10
+2024-04-01,Rest of France,house,other,34
+2024-04-01,Rest of France,house,sale,21205
+2024-05-01,Big cities,flat,auction,27
+2024-05-01,Big cities,flat,off-plan,111
+2024-05-01,Big cities,flat,other,2
+2024-05-01,Big cities,flat,sale,6922
+2024-05-01,Big cities,house,auction,14
+2024-05-01,Big cities,house,off-plan,6
+2024-05-01,Big cities,house,other,3
+2024-05-01,Big cities,house,sale,5511
+2024-05-01,Inner ring,flat,auction,12
+2024-05-01,Inner ring,flat,off-plan,163
+2024-05-01,Inner ring,flat,other,1
+2024-05-01,Inner ring,flat,sale,2149
+2024-05-01,Inner ring,house,auction,2
+2024-05-01,Inner ring,house,off-plan,4
+2024-05-01,Inner ring,house,sale,557
+2024-05-01,Outer Ile-de-France,flat,auction,11
+2024-05-01,Outer Ile-de-France,flat,off-plan,131
+2024-05-01,Outer Ile-de-France,flat,sale,1696
+2024-05-01,Outer Ile-de-France,house,auction,15
+2024-05-01,Outer Ile-de-France,house,off-plan,4
+2024-05-01,Outer Ile-de-France,house,other,2
+2024-05-01,Outer Ile-de-France,house,sale,1662
+2024-05-01,Overseas,flat,auction,1
+2024-05-01,Overseas,flat,off-plan,7
+2024-05-01,Overseas,flat,sale,275
+2024-05-01,Overseas,house,auction,2
+2024-05-01,Overseas,house,other,1
+2024-05-01,Overseas,house,sale,351
+2024-05-01,Paris,flat,auction,9
+2024-05-01,Paris,flat,off-plan,3
+2024-05-01,Paris,flat,other,5
+2024-05-01,Paris,flat,sale,2079
+2024-05-01,Paris,house,sale,10
+2024-05-01,Rest of France,flat,auction,19
+2024-05-01,Rest of France,flat,off-plan,268
+2024-05-01,Rest of France,flat,other,9
+2024-05-01,Rest of France,flat,sale,10468
+2024-05-01,Rest of France,house,auction,44
+2024-05-01,Rest of France,house,off-plan,7
+2024-05-01,Rest of France,house,other,27
+2024-05-01,Rest of France,house,sale,20989
+2024-06-01,Big cities,flat,auction,27
+2024-06-01,Big cities,flat,off-plan,149
+2024-06-01,Big cities,flat,other,14
+2024-06-01,Big cities,flat,sale,7993
+2024-06-01,Big cities,house,auction,15
+2024-06-01,Big cities,house,off-plan,5
+2024-06-01,Big cities,house,other,12
+2024-06-01,Big cities,house,sale,6949
+2024-06-01,Inner ring,flat,auction,20
+2024-06-01,Inner ring,flat,off-plan,244
+2024-06-01,Inner ring,flat,other,1
+2024-06-01,Inner ring,flat,sale,2733
+2024-06-01,Inner ring,house,auction,3
+2024-06-01,Inner ring,house,other,1
+2024-06-01,Inner ring,house,sale,669
+2024-06-01,Outer Ile-de-France,flat,auction,24
+2024-06-01,Outer Ile-de-France,flat,off-plan,196
+2024-06-01,Outer Ile-de-France,flat,other,1
+2024-06-01,Outer Ile-de-France,flat,sale,2050
+2024-06-01,Outer Ile-de-France,house,auction,11
+2024-06-01,Outer Ile-de-France,house,off-plan,3
+2024-06-01,Outer Ile-de-France,house,other,3
+2024-06-01,Outer Ile-de-France,house,sale,2193
+2024-06-01,Overseas,flat,auction,1
+2024-06-01,Overseas,flat,off-plan,17
+2024-06-01,Overseas,flat,sale,291
+2024-06-01,Overseas,house,auction,3
+2024-06-01,Overseas,house,off-plan,1
+2024-06-01,Overseas,house,sale,391
+2024-06-01,Paris,flat,auction,19
+2024-06-01,Paris,flat,off-plan,4
+2024-06-01,Paris,flat,other,5
+2024-06-01,Paris,flat,sale,2444
+2024-06-01,Paris,house,sale,5
+2024-06-01,Rest of France,flat,auction,49
+2024-06-01,Rest of France,flat,off-plan,342
+2024-06-01,Rest of France,flat,other,15
+2024-06-01,Rest of France,flat,sale,11969
+2024-06-01,Rest of France,house,auction,84
+2024-06-01,Rest of France,house,off-plan,12
+2024-06-01,Rest of France,house,other,26
+2024-06-01,Rest of France,house,sale,25280
+2024-07-01,Big cities,flat,auction,13
+2024-07-01,Big cities,flat,off-plan,198
+2024-07-01,Big cities,flat,other,12
+2024-07-01,Big cities,flat,sale,9367
+2024-07-01,Big cities,house,auction,11
+2024-07-01,Big cities,house,off-plan,4
+2024-07-01,Big cities,house,other,8
+2024-07-01,Big cities,house,sale,9126
+2024-07-01,Inner ring,flat,auction,6
+2024-07-01,Inner ring,flat,off-plan,300
+2024-07-01,Inner ring,flat,other,5
+2024-07-01,Inner ring,flat,sale,3169
+2024-07-01,Inner ring,house,auction,3
+2024-07-01,Inner ring,house,off-plan,3
+2024-07-01,Inner ring,house,other,4
+2024-07-01,Inner ring,house,sale,985
+2024-07-01,Outer Ile-de-France,flat,auction,2
+2024-07-01,Outer Ile-de-France,flat,off-plan,271
+2024-07-01,Outer Ile-de-France,flat,other,9
+2024-07-01,Outer Ile-de-France,flat,sale,2365
+2024-07-01,Outer Ile-de-France,house,auction,4
+2024-07-01,Outer Ile-de-France,house,off-plan,7
+2024-07-01,Outer Ile-de-France,house,other,3
+2024-07-01,Outer Ile-de-France,house,sale,3114
+2024-07-01,Overseas,flat,auction,1
+2024-07-01,Overseas,flat,off-plan,16
+2024-07-01,Overseas,flat,sale,372
+2024-07-01,Overseas,house,auction,2
+2024-07-01,Overseas,house,off-plan,1
+2024-07-01,Overseas,house,other,2
+2024-07-01,Overseas,house,sale,451
+2024-07-01,Paris,flat,auction,5
+2024-07-01,Paris,flat,off-plan,6
+2024-07-01,Paris,flat,other,6
+2024-07-01,Paris,flat,sale,2817
+2024-07-01,Paris,house,sale,13
+2024-07-01,Rest of France,flat,auction,19
+2024-07-01,Rest of France,flat,off-plan,357
+2024-07-01,Rest of France,flat,other,19
+2024-07-01,Rest of France,flat,sale,13786
+2024-07-01,Rest of France,house,auction,55
+2024-07-01,Rest of France,house,off-plan,14
+2024-07-01,Rest of France,house,other,38
+2024-07-01,Rest of France,house,sale,32329
+2024-08-01,Big cities,flat,off-plan,98
+2024-08-01,Big cities,flat,other,5
+2024-08-01,Big cities,flat,sale,6359
+2024-08-01,Big cities,house,auction,1
+2024-08-01,Big cities,house,off-plan,7
+2024-08-01,Big cities,house,other,3
+2024-08-01,Big cities,house,sale,6502
+2024-08-01,Inner ring,flat,off-plan,157
+2024-08-01,Inner ring,flat,other,1
+2024-08-01,Inner ring,flat,sale,1445
+2024-08-01,Inner ring,house,off-plan,1
+2024-08-01,Inner ring,house,other,1
+2024-08-01,Inner ring,house,sale,504
+2024-08-01,Outer Ile-de-France,flat,off-plan,113
+2024-08-01,Outer Ile-de-France,flat,sale,1460
+2024-08-01,Outer Ile-de-France,house,other,1
+2024-08-01,Outer Ile-de-France,house,sale,1915
+2024-08-01,Overseas,flat,off-plan,8
+2024-08-01,Overseas,flat,sale,299
+2024-08-01,Overseas,house,auction,2
+2024-08-01,Overseas,house,off-plan,1
+2024-08-01,Overseas,house,sale,389
+2024-08-01,Paris,flat,auction,3
+2024-08-01,Paris,flat,other,5
+2024-08-01,Paris,flat,sale,1066
+2024-08-01,Paris,house,sale,7
+2024-08-01,Rest of France,flat,auction,1
+2024-08-01,Rest of France,flat,off-plan,204
+2024-08-01,Rest of France,flat,other,7
+2024-08-01,Rest of France,flat,sale,9590
+2024-08-01,Rest of France,house,auction,6
+2024-08-01,Rest of France,house,off-plan,2
+2024-08-01,Rest of France,house,other,15
+2024-08-01,Rest of France,house,sale,23582
+2024-09-01,Big cities,flat,auction,34
+2024-09-01,Big cities,flat,off-plan,180
+2024-09-01,Big cities,flat,other,7
+2024-09-01,Big cities,flat,sale,8604
+2024-09-01,Big cities,house,auction,18
+2024-09-01,Big cities,house,off-plan,6
+2024-09-01,Big cities,house,other,10
+2024-09-01,Big cities,house,sale,7422
+2024-09-01,Inner ring,flat,auction,26
+2024-09-01,Inner ring,flat,off-plan,321
+2024-09-01,Inner ring,flat,sale,3130
+2024-09-01,Inner ring,house,auction,5
+2024-09-01,Inner ring,house,off-plan,4
+2024-09-01,Inner ring,house,other,1
+2024-09-01,Inner ring,house,sale,778
+2024-09-01,Outer Ile-de-France,flat,auction,16
+2024-09-01,Outer Ile-de-France,flat,off-plan,236
+2024-09-01,Outer Ile-de-France,flat,other,2
+2024-09-01,Outer Ile-de-France,flat,sale,2210
+2024-09-01,Outer Ile-de-France,house,auction,12
+2024-09-01,Outer Ile-de-France,house,off-plan,3
+2024-09-01,Outer Ile-de-France,house,other,6
+2024-09-01,Outer Ile-de-France,house,sale,2409
+2024-09-01,Overseas,flat,auction,2
+2024-09-01,Overseas,flat,off-plan,13
+2024-09-01,Overseas,flat,sale,355
+2024-09-01,Overseas,house,auction,5
+2024-09-01,Overseas,house,other,2
+2024-09-01,Overseas,house,sale,371
+2024-09-01,Paris,flat,auction,5
+2024-09-01,Paris,flat,off-plan,4
+2024-09-01,Paris,flat,other,5
+2024-09-01,Paris,flat,sale,2634
+2024-09-01,Paris,house,sale,16
+2024-09-01,Rest of France,flat,auction,47
+2024-09-01,Rest of France,flat,off-plan,328
+2024-09-01,Rest of France,flat,other,9
+2024-09-01,Rest of France,flat,sale,12550
+2024-09-01,Rest of France,house,auction,82
+2024-09-01,Rest of France,house,off-plan,7
+2024-09-01,Rest of France,house,other,28
+2024-09-01,Rest of France,house,sale,27606
+2024-10-01,Big cities,flat,auction,32
+2024-10-01,Big cities,flat,off-plan,153
+2024-10-01,Big cities,flat,other,13
+2024-10-01,Big cities,flat,sale,7912
+2024-10-01,Big cities,house,auction,16
+2024-10-01,Big cities,house,off-plan,3
+2024-10-01,Big cities,house,other,5
+2024-10-01,Big cities,house,sale,7468
+2024-10-01,Inner ring,flat,auction,12
+2024-10-01,Inner ring,flat,off-plan,277
+2024-10-01,Inner ring,flat,sale,2599
+2024-10-01,Inner ring,house,auction,2
+2024-10-01,Inner ring,house,off-plan,1
+2024-10-01,Inner ring,house,sale,782
+2024-10-01,Outer Ile-de-France,flat,auction,15
+2024-10-01,Outer Ile-de-France,flat,off-plan,184
+2024-10-01,Outer Ile-de-France,flat,other,4
+2024-10-01,Outer Ile-de-France,flat,sale,2007
+2024-10-01,Outer Ile-de-France,house,auction,17
+2024-10-01,Outer Ile-de-France,house,off-plan,3
+2024-10-01,Outer Ile-de-France,house,sale,2338
+2024-10-01,Overseas,flat,auction,2
+2024-10-01,Overseas,flat,off-plan,9
+2024-10-01,Overseas,flat,sale,339
+2024-10-01,Overseas,house,auction,1
+2024-10-01,Overseas,house,off-plan,1
+2024-10-01,Overseas,house,other,2
+2024-10-01,Overseas,house,sale,427
+2024-10-01,Paris,flat,auction,4
+2024-10-01,Paris,flat,off-plan,2
+2024-10-01,Paris,flat,other,12
+2024-10-01,Paris,flat,sale,2192
+2024-10-01,Paris,house,sale,5
+2024-10-01,Rest of France,flat,auction,45
+2024-10-01,Rest of France,flat,off-plan,335
+2024-10-01,Rest of France,flat,other,9
+2024-10-01,Rest of France,flat,sale,11528
+2024-10-01,Rest of France,house,auction,100
+2024-10-01,Rest of France,house,off-plan,4
+2024-10-01,Rest of France,house,other,29
+2024-10-01,Rest of France,house,sale,27855
+2024-11-01,Big cities,flat,auction,22
+2024-11-01,Big cities,flat,off-plan,137
+2024-11-01,Big cities,flat,other,6
+2024-11-01,Big cities,flat,sale,6227
+2024-11-01,Big cities,house,auction,13
+2024-11-01,Big cities,house,off-plan,5
+2024-11-01,Big cities,house,other,3
+2024-11-01,Big cities,house,sale,5972
+2024-11-01,Inner ring,flat,auction,10
+2024-11-01,Inner ring,flat,off-plan,232
+2024-11-01,Inner ring,flat,other,3
+2024-11-01,Inner ring,flat,sale,1802
+2024-11-01,Inner ring,house,auction,5
+2024-11-01,Inner ring,house,off-plan,3
+2024-11-01,Inner ring,house,other,1
+2024-11-01,Inner ring,house,sale,535
+2024-11-01,Outer Ile-de-France,flat,auction,3
+2024-11-01,Outer Ile-de-France,flat,off-plan,140
+2024-11-01,Outer Ile-de-France,flat,sale,1470
+2024-11-01,Outer Ile-de-France,house,auction,1
+2024-11-01,Outer Ile-de-France,house,off-plan,2
+2024-11-01,Outer Ile-de-France,house,other,3
+2024-11-01,Outer Ile-de-France,house,sale,1720
+2024-11-01,Overseas,flat,auction,4
+2024-11-01,Overseas,flat,off-plan,5
+2024-11-01,Overseas,flat,sale,312
+2024-11-01,Overseas,house,auction,2
+2024-11-01,Overseas,house,other,2
+2024-11-01,Overseas,house,sale,365
+2024-11-01,Paris,flat,auction,1
+2024-11-01,Paris,flat,off-plan,2
+2024-11-01,Paris,flat,other,6
+2024-11-01,Paris,flat,sale,1652
+2024-11-01,Paris,house,sale,5
+2024-11-01,Rest of France,flat,auction,31
+2024-11-01,Rest of France,flat,off-plan,306
+2024-11-01,Rest of France,flat,other,10
+2024-11-01,Rest of France,flat,sale,9960
+2024-11-01,Rest of France,house,auction,53
+2024-11-01,Rest of France,house,off-plan,3
+2024-11-01,Rest of France,house,other,28
+2024-11-01,Rest of France,house,sale,22441
+2024-12-01,Big cities,flat,auction,14
+2024-12-01,Big cities,flat,off-plan,307
+2024-12-01,Big cities,flat,other,19
+2024-12-01,Big cities,flat,sale,8868
+2024-12-01,Big cities,house,auction,21
+2024-12-01,Big cities,house,off-plan,13
+2024-12-01,Big cities,house,other,17
+2024-12-01,Big cities,house,sale,8260
+2024-12-01,Inner ring,flat,auction,14
+2024-12-01,Inner ring,flat,off-plan,413
+2024-12-01,Inner ring,flat,other,3
+2024-12-01,Inner ring,flat,sale,2643
+2024-12-01,Inner ring,house,auction,5
+2024-12-01,Inner ring,house,off-plan,5
+2024-12-01,Inner ring,house,sale,714
+2024-12-01,Outer Ile-de-France,flat,auction,12
+2024-12-01,Outer Ile-de-France,flat,off-plan,311
+2024-12-01,Outer Ile-de-France,flat,other,1
+2024-12-01,Outer Ile-de-France,flat,sale,2179
+2024-12-01,Outer Ile-de-France,house,auction,5
+2024-12-01,Outer Ile-de-France,house,off-plan,10
+2024-12-01,Outer Ile-de-France,house,other,5
+2024-12-01,Outer Ile-de-France,house,sale,2345
+2024-12-01,Overseas,flat,off-plan,24
+2024-12-01,Overseas,flat,sale,411
+2024-12-01,Overseas,house,auction,3
+2024-12-01,Overseas,house,off-plan,2
+2024-12-01,Overseas,house,other,2
+2024-12-01,Overseas,house,sale,446
+2024-12-01,Paris,flat,auction,6
+2024-12-01,Paris,flat,off-plan,9
+2024-12-01,Paris,flat,other,11
+2024-12-01,Paris,flat,sale,2359
+2024-12-01,Paris,house,sale,13
+2024-12-01,Rest of France,flat,auction,15
+2024-12-01,Rest of France,flat,off-plan,609
+2024-12-01,Rest of France,flat,other,13
+2024-12-01,Rest of France,flat,sale,14092
+2024-12-01,Rest of France,house,auction,57
+2024-12-01,Rest of France,house,off-plan,16
+2024-12-01,Rest of France,house,other,37
+2024-12-01,Rest of France,house,sale,31569
+2025-01-01,Big cities,flat,auction,24
+2025-01-01,Big cities,flat,off-plan,75
+2025-01-01,Big cities,flat,other,5
+2025-01-01,Big cities,flat,sale,7142
+2025-01-01,Big cities,house,auction,21
+2025-01-01,Big cities,house,off-plan,2
+2025-01-01,Big cities,house,other,6
+2025-01-01,Big cities,house,sale,6216
+2025-01-01,Inner ring,flat,auction,9
+2025-01-01,Inner ring,flat,off-plan,153
+2025-01-01,Inner ring,flat,other,2
+2025-01-01,Inner ring,flat,sale,2374
+2025-01-01,Inner ring,house,auction,4
+2025-01-01,Inner ring,house,other,2
+2025-01-01,Inner ring,house,sale,584
+2025-01-01,Outer Ile-de-France,flat,auction,13
+2025-01-01,Outer Ile-de-France,flat,off-plan,87
+2025-01-01,Outer Ile-de-France,flat,other,1
+2025-01-01,Outer Ile-de-France,flat,sale,1732
+2025-01-01,Outer Ile-de-France,house,auction,7
+2025-01-01,Outer Ile-de-France,house,off-plan,3
+2025-01-01,Outer Ile-de-France,house,sale,1837
+2025-01-01,Overseas,flat,off-plan,1
+2025-01-01,Overseas,flat,sale,262
+2025-01-01,Overseas,house,off-plan,1
+2025-01-01,Overseas,house,other,1
+2025-01-01,Overseas,house,sale,315
+2025-01-01,Paris,flat,auction,3
+2025-01-01,Paris,flat,other,5
+2025-01-01,Paris,flat,sale,2136
+2025-01-01,Paris,house,sale,18
+2025-01-01,Rest of France,flat,auction,28
+2025-01-01,Rest of France,flat,off-plan,141
+2025-01-01,Rest of France,flat,other,16
+2025-01-01,Rest of France,flat,sale,10573
+2025-01-01,Rest of France,house,auction,65
+2025-01-01,Rest of France,house,off-plan,5
+2025-01-01,Rest of France,house,other,31
+2025-01-01,Rest of France,house,sale,22294
+2025-02-01,Big cities,flat,auction,22
+2025-02-01,Big cities,flat,off-plan,63
+2025-02-01,Big cities,flat,other,9
+2025-02-01,Big cities,flat,sale,7268
+2025-02-01,Big cities,house,auction,13
+2025-02-01,Big cities,house,off-plan,5
+2025-02-01,Big cities,house,other,11
+2025-02-01,Big cities,house,sale,6286
+2025-02-01,Inner ring,flat,auction,11
+2025-02-01,Inner ring,flat,off-plan,120
+2025-02-01,Inner ring,flat,other,8
+2025-02-01,Inner ring,flat,sale,2258
+2025-02-01,Inner ring,house,auction,1
+2025-02-01,Inner ring,house,off-plan,4
+2025-02-01,Inner ring,house,other,1
+2025-02-01,Inner ring,house,sale,560
+2025-02-01,Outer Ile-de-France,flat,auction,5
+2025-02-01,Outer Ile-de-France,flat,off-plan,60
+2025-02-01,Outer Ile-de-France,flat,other,1
+2025-02-01,Outer Ile-de-France,flat,sale,1707
+2025-02-01,Outer Ile-de-France,house,auction,1
+2025-02-01,Outer Ile-de-France,house,off-plan,4
+2025-02-01,Outer Ile-de-France,house,other,1
+2025-02-01,Outer Ile-de-France,house,sale,1908
+2025-02-01,Overseas,flat,auction,2
+2025-02-01,Overseas,flat,off-plan,1
+2025-02-01,Overseas,flat,sale,283
+2025-02-01,Overseas,house,auction,2
+2025-02-01,Overseas,house,off-plan,2
+2025-02-01,Overseas,house,other,4
+2025-02-01,Overseas,house,sale,292
+2025-02-01,Paris,flat,auction,5
+2025-02-01,Paris,flat,off-plan,4
+2025-02-01,Paris,flat,other,4
+2025-02-01,Paris,flat,sale,1984
+2025-02-01,Paris,house,sale,9
+2025-02-01,Rest of France,flat,auction,34
+2025-02-01,Rest of France,flat,off-plan,141
+2025-02-01,Rest of France,flat,other,13
+2025-02-01,Rest of France,flat,sale,10447
+2025-02-01,Rest of France,house,auction,63
+2025-02-01,Rest of France,house,off-plan,6
+2025-02-01,Rest of France,house,other,24
+2025-02-01,Rest of France,house,sale,22100
+2025-03-01,Big cities,flat,auction,30
+2025-03-01,Big cities,flat,off-plan,83
+2025-03-01,Big cities,flat,other,15
+2025-03-01,Big cities,flat,sale,9067
+2025-03-01,Big cities,house,auction,13
+2025-03-01,Big cities,house,off-plan,1
+2025-03-01,Big cities,house,other,11
+2025-03-01,Big cities,house,sale,7978
+2025-03-01,Inner ring,flat,auction,13
+2025-03-01,Inner ring,flat,off-plan,161
+2025-03-01,Inner ring,flat,other,4
+2025-03-01,Inner ring,flat,sale,3381
+2025-03-01,Inner ring,house,auction,4
+2025-03-01,Inner ring,house,sale,866
+2025-03-01,Outer Ile-de-France,flat,auction,16
+2025-03-01,Outer Ile-de-France,flat,off-plan,94
+2025-03-01,Outer Ile-de-France,flat,other,2
+2025-03-01,Outer Ile-de-France,flat,sale,2381
+2025-03-01,Outer Ile-de-France,house,auction,5
+2025-03-01,Outer Ile-de-France,house,off-plan,3
+2025-03-01,Outer Ile-de-France,house,other,4
+2025-03-01,Outer Ile-de-France,house,sale,2436
+2025-03-01,Overseas,flat,off-plan,2
+2025-03-01,Overseas,flat,sale,327
+2025-03-01,Overseas,house,auction,3
+2025-03-01,Overseas,house,other,1
+2025-03-01,Overseas,house,sale,390
+2025-03-01,Paris,flat,auction,12
+2025-03-01,Paris,flat,off-plan,2
+2025-03-01,Paris,flat,other,13
+2025-03-01,Paris,flat,sale,3633
+2025-03-01,Paris,house,sale,18
+2025-03-01,Rest of France,flat,auction,29
+2025-03-01,Rest of France,flat,off-plan,168
+2025-03-01,Rest of France,flat,other,8
+2025-03-01,Rest of France,flat,sale,12569
+2025-03-01,Rest of France,house,auction,69
+2025-03-01,Rest of France,house,off-plan,8
+2025-03-01,Rest of France,house,other,35
+2025-03-01,Rest of France,house,sale,26202
+2025-04-01,Big cities,flat,auction,25
+2025-04-01,Big cities,flat,off-plan,113
+2025-04-01,Big cities,flat,other,11
+2025-04-01,Big cities,flat,sale,8599
+2025-04-01,Big cities,house,auction,10
+2025-04-01,Big cities,house,off-plan,6
+2025-04-01,Big cities,house,other,10
+2025-04-01,Big cities,house,sale,7363
+2025-04-01,Inner ring,flat,auction,6
+2025-04-01,Inner ring,flat,off-plan,171
+2025-04-01,Inner ring,flat,other,3
+2025-04-01,Inner ring,flat,sale,2463
+2025-04-01,Inner ring,house,auction,2
+2025-04-01,Inner ring,house,off-plan,2
+2025-04-01,Inner ring,house,other,1
+2025-04-01,Inner ring,house,sale,639
+2025-04-01,Outer Ile-de-France,flat,auction,10
+2025-04-01,Outer Ile-de-France,flat,off-plan,96
+2025-04-01,Outer Ile-de-France,flat,other,3
+2025-04-01,Outer Ile-de-France,flat,sale,2089
+2025-04-01,Outer Ile-de-France,house,auction,6
+2025-04-01,Outer Ile-de-France,house,off-plan,6
+2025-04-01,Outer Ile-de-France,house,other,1
+2025-04-01,Outer Ile-de-France,house,sale,2073
+2025-04-01,Overseas,flat,off-plan,2
+2025-04-01,Overseas,flat,sale,318
+2025-04-01,Overseas,house,auction,3
+2025-04-01,Overseas,house,sale,395
+2025-04-01,Paris,flat,auction,4
+2025-04-01,Paris,flat,other,4
+2025-04-01,Paris,flat,sale,1688
+2025-04-01,Paris,house,sale,2
+2025-04-01,Rest of France,flat,auction,24
+2025-04-01,Rest of France,flat,off-plan,163
+2025-04-01,Rest of France,flat,other,16
+2025-04-01,Rest of France,flat,sale,13575
+2025-04-01,Rest of France,house,auction,48
+2025-04-01,Rest of France,house,off-plan,13
+2025-04-01,Rest of France,house,other,34
+2025-04-01,Rest of France,house,sale,27777
+2025-05-01,Big cities,flat,auction,17
+2025-05-01,Big cities,flat,off-plan,96
+2025-05-01,Big cities,flat,other,6
+2025-05-01,Big cities,flat,sale,6895
+2025-05-01,Big cities,house,auction,8
+2025-05-01,Big cities,house,off-plan,5
+2025-05-01,Big cities,house,other,12
+2025-05-01,Big cities,house,sale,5620
+2025-05-01,Inner ring,flat,auction,7
+2025-05-01,Inner ring,flat,off-plan,166
+2025-05-01,Inner ring,flat,other,3
+2025-05-01,Inner ring,flat,sale,2286
+2025-05-01,Inner ring,house,auction,3
+2025-05-01,Inner ring,house,off-plan,1
+2025-05-01,Inner ring,house,other,1
+2025-05-01,Inner ring,house,sale,586
+2025-05-01,Outer Ile-de-France,flat,auction,16
+2025-05-01,Outer Ile-de-France,flat,off-plan,96
+2025-05-01,Outer Ile-de-France,flat,other,2
+2025-05-01,Outer Ile-de-France,flat,sale,1685
+2025-05-01,Outer Ile-de-France,house,auction,3
+2025-05-01,Outer Ile-de-France,house,off-plan,4
+2025-05-01,Outer Ile-de-France,house,other,2
+2025-05-01,Outer Ile-de-France,house,sale,1730
+2025-05-01,Overseas,flat,auction,1
+2025-05-01,Overseas,flat,off-plan,1
+2025-05-01,Overseas,flat,sale,301
+2025-05-01,Overseas,house,off-plan,2
+2025-05-01,Overseas,house,sale,380
+2025-05-01,Paris,flat,auction,2
+2025-05-01,Paris,flat,off-plan,2
+2025-05-01,Paris,flat,other,3
+2025-05-01,Paris,flat,sale,2027
+2025-05-01,Paris,house,sale,8
+2025-05-01,Rest of France,flat,auction,22
+2025-05-01,Rest of France,flat,off-plan,149
+2025-05-01,Rest of France,flat,other,6
+2025-05-01,Rest of France,flat,sale,10380
+2025-05-01,Rest of France,house,auction,42
+2025-05-01,Rest of France,house,off-plan,6
+2025-05-01,Rest of France,house,other,26
+2025-05-01,Rest of France,house,sale,21096
+2025-06-01,Big cities,flat,auction,25
+2025-06-01,Big cities,flat,off-plan,100
+2025-06-01,Big cities,flat,other,2
+2025-06-01,Big cities,flat,sale,9675
+2025-06-01,Big cities,house,auction,15
+2025-06-01,Big cities,house,off-plan,4
+2025-06-01,Big cities,house,other,9
+2025-06-01,Big cities,house,sale,8270
+2025-06-01,Inner ring,flat,auction,8
+2025-06-01,Inner ring,flat,off-plan,179
+2025-06-01,Inner ring,flat,other,3
+2025-06-01,Inner ring,flat,sale,3346
+2025-06-01,Inner ring,house,auction,1
+2025-06-01,Inner ring,house,off-plan,5
+2025-06-01,Inner ring,house,sale,841
+2025-06-01,Outer Ile-de-France,flat,auction,11
+2025-06-01,Outer Ile-de-France,flat,off-plan,87
+2025-06-01,Outer Ile-de-France,flat,other,2
+2025-06-01,Outer Ile-de-France,flat,sale,2439
+2025-06-01,Outer Ile-de-France,house,auction,6
+2025-06-01,Outer Ile-de-France,house,off-plan,9
+2025-06-01,Outer Ile-de-France,house,sale,2751
+2025-06-01,Overseas,flat,auction,2
+2025-06-01,Overseas,flat,off-plan,1
+2025-06-01,Overseas,flat,sale,366
+2025-06-01,Overseas,house,auction,2
+2025-06-01,Overseas,house,off-plan,3
+2025-06-01,Overseas,house,sale,421
+2025-06-01,Paris,flat,auction,6
+2025-06-01,Paris,flat,off-plan,2
+2025-06-01,Paris,flat,other,1
+2025-06-01,Paris,flat,sale,2771
+2025-06-01,Paris,house,sale,11
+2025-06-01,Rest of France,flat,auction,35
+2025-06-01,Rest of France,flat,off-plan,186
+2025-06-01,Rest of France,flat,other,14
+2025-06-01,Rest of France,flat,sale,13529
+2025-06-01,Rest of France,house,auction,59
+2025-06-01,Rest of France,house,off-plan,5
+2025-06-01,Rest of France,house,other,22
+2025-06-01,Rest of France,house,sale,28020
+2025-07-01,Big cities,flat,auction,7
+2025-07-01,Big cities,flat,off-plan,101
+2025-07-01,Big cities,flat,other,17
+2025-07-01,Big cities,flat,sale,10910
+2025-07-01,Big cities,house,auction,11
+2025-07-01,Big cities,house,off-plan,5
+2025-07-01,Big cities,house,other,10
+2025-07-01,Big cities,house,sale,10377
+2025-07-01,Inner ring,flat,auction,2
+2025-07-01,Inner ring,flat,off-plan,161
+2025-07-01,Inner ring,flat,other,5
+2025-07-01,Inner ring,flat,sale,3966
+2025-07-01,Inner ring,house,auction,2
+2025-07-01,Inner ring,house,off-plan,3
+2025-07-01,Inner ring,house,other,1
+2025-07-01,Inner ring,house,sale,1188
+2025-07-01,Outer Ile-de-France,flat,auction,5
+2025-07-01,Outer Ile-de-France,flat,off-plan,64
+2025-07-01,Outer Ile-de-France,flat,other,1
+2025-07-01,Outer Ile-de-France,flat,sale,2813
+2025-07-01,Outer Ile-de-France,house,auction,2
+2025-07-01,Outer Ile-de-France,house,off-plan,5
+2025-07-01,Outer Ile-de-France,house,other,4
+2025-07-01,Outer Ile-de-France,house,sale,3750
+2025-07-01,Overseas,flat,auction,1
+2025-07-01,Overseas,flat,off-plan,3
+2025-07-01,Overseas,flat,other,2
+2025-07-01,Overseas,flat,sale,412
+2025-07-01,Overseas,house,sale,483
+2025-07-01,Paris,flat,auction,5
+2025-07-01,Paris,flat,off-plan,4
+2025-07-01,Paris,flat,other,7
+2025-07-01,Paris,flat,sale,3431
+2025-07-01,Paris,house,sale,19
+2025-07-01,Rest of France,flat,auction,13
+2025-07-01,Rest of France,flat,off-plan,165
+2025-07-01,Rest of France,flat,other,18
+2025-07-01,Rest of France,flat,sale,15425
+2025-07-01,Rest of France,house,auction,30
+2025-07-01,Rest of France,house,off-plan,5
+2025-07-01,Rest of France,house,other,21
+2025-07-01,Rest of France,house,sale,36164
+2025-08-01,Big cities,flat,off-plan,40
+2025-08-01,Big cities,flat,other,7
+2025-08-01,Big cities,flat,sale,6664
+2025-08-01,Big cities,house,off-plan,1
+2025-08-01,Big cities,house,other,15
+2025-08-01,Big cities,house,sale,7029
+2025-08-01,Inner ring,flat,off-plan,63
+2025-08-01,Inner ring,flat,sale,1737
+2025-08-01,Inner ring,house,off-plan,1
+2025-08-01,Inner ring,house,sale,560
+2025-08-01,Outer Ile-de-France,flat,off-plan,42
+2025-08-01,Outer Ile-de-France,flat,other,2
+2025-08-01,Outer Ile-de-France,flat,sale,1468
+2025-08-01,Outer Ile-de-France,house,off-plan,3
+2025-08-01,Outer Ile-de-France,house,other,2
+2025-08-01,Outer Ile-de-France,house,sale,2264
+2025-08-01,Overseas,flat,off-plan,5
+2025-08-01,Overseas,flat,sale,304
+2025-08-01,Overseas,house,auction,1
+2025-08-01,Overseas,house,other,2
+2025-08-01,Overseas,house,sale,388
+2025-08-01,Paris,flat,off-plan,1
+2025-08-01,Paris,flat,other,2
+2025-08-01,Paris,flat,sale,1286
+2025-08-01,Paris,house,sale,7
+2025-08-01,Rest of France,flat,off-plan,84
+2025-08-01,Rest of France,flat,other,11
+2025-08-01,Rest of France,flat,sale,9760
+2025-08-01,Rest of France,house,auction,4
+2025-08-01,Rest of France,house,off-plan,4
+2025-08-01,Rest of France,house,other,10
+2025-08-01,Rest of France,house,sale,24460
+2025-09-01,Big cities,flat,auction,15
+2025-09-01,Big cities,flat,off-plan,73
+2025-09-01,Big cities,flat,other,7
+2025-09-01,Big cities,flat,sale,9856
+2025-09-01,Big cities,house,auction,8
+2025-09-01,Big cities,house,off-plan,7
+2025-09-01,Big cities,house,other,10
+2025-09-01,Big cities,house,sale,8635
+2025-09-01,Inner ring,flat,auction,8
+2025-09-01,Inner ring,flat,off-plan,131
+2025-09-01,Inner ring,flat,other,3
+2025-09-01,Inner ring,flat,sale,3527
+2025-09-01,Inner ring,house,auction,1
+2025-09-01,Inner ring,house,off-plan,1
+2025-09-01,Inner ring,house,other,1
+2025-09-01,Inner ring,house,sale,925
+2025-09-01,Outer Ile-de-France,flat,auction,13
+2025-09-01,Outer Ile-de-France,flat,off-plan,38
+2025-09-01,Outer Ile-de-France,flat,other,1
+2025-09-01,Outer Ile-de-France,flat,sale,2425
+2025-09-01,Outer Ile-de-France,house,auction,5
+2025-09-01,Outer Ile-de-France,house,off-plan,4
+2025-09-01,Outer Ile-de-France,house,other,1
+2025-09-01,Outer Ile-de-France,house,sale,2875
+2025-09-01,Overseas,flat,off-plan,2
+2025-09-01,Overseas,flat,sale,386
+2025-09-01,Overseas,house,auction,1
+2025-09-01,Overseas,house,sale,432
+2025-09-01,Paris,flat,auction,2
+2025-09-01,Paris,flat,off-plan,1
+2025-09-01,Paris,flat,other,6
+2025-09-01,Paris,flat,sale,3131
+2025-09-01,Paris,house,sale,18
+2025-09-01,Rest of France,flat,auction,22
+2025-09-01,Rest of France,flat,off-plan,126
+2025-09-01,Rest of France,flat,other,11
+2025-09-01,Rest of France,flat,sale,13850
+2025-09-01,Rest of France,house,auction,27
+2025-09-01,Rest of France,house,off-plan,4
+2025-09-01,Rest of France,house,other,26
+2025-09-01,Rest of France,house,sale,30540
+2025-10-01,Big cities,flat,auction,7
+2025-10-01,Big cities,flat,off-plan,75
+2025-10-01,Big cities,flat,other,5
+2025-10-01,Big cities,flat,sale,8887
+2025-10-01,Big cities,house,auction,6
+2025-10-01,Big cities,house,off-plan,8
+2025-10-01,Big cities,house,other,9
+2025-10-01,Big cities,house,sale,8702
+2025-10-01,Inner ring,flat,off-plan,113
+2025-10-01,Inner ring,flat,other,5
+2025-10-01,Inner ring,flat,sale,3047
+2025-10-01,Inner ring,house,off-plan,1
+2025-10-01,Inner ring,house,other,1
+2025-10-01,Inner ring,house,sale,854
+2025-10-01,Outer Ile-de-France,flat,auction,3
+2025-10-01,Outer Ile-de-France,flat,off-plan,34
+2025-10-01,Outer Ile-de-France,flat,other,1
+2025-10-01,Outer Ile-de-France,flat,sale,2186
+2025-10-01,Outer Ile-de-France,house,auction,1
+2025-10-01,Outer Ile-de-France,house,off-plan,2
+2025-10-01,Outer Ile-de-France,house,other,3
+2025-10-01,Outer Ile-de-France,house,sale,2767
+2025-10-01,Overseas,flat,auction,1
+2025-10-01,Overseas,flat,off-plan,3
+2025-10-01,Overseas,flat,sale,344
+2025-10-01,Overseas,house,off-plan,1
+2025-10-01,Overseas,house,other,1
+2025-10-01,Overseas,house,sale,386
+2025-10-01,Paris,flat,auction,1
+2025-10-01,Paris,flat,off-plan,1
+2025-10-01,Paris,flat,other,9
+2025-10-01,Paris,flat,sale,2632
+2025-10-01,Paris,house,sale,15
+2025-10-01,Rest of France,flat,auction,5
+2025-10-01,Rest of France,flat,off-plan,124
+2025-10-01,Rest of France,flat,other,8
+2025-10-01,Rest of France,flat,sale,12993
+2025-10-01,Rest of France,house,auction,17
+2025-10-01,Rest of France,house,off-plan,11
+2025-10-01,Rest of France,house,other,34
+2025-10-01,Rest of France,house,sale,30207
+2025-11-01,Big cities,flat,auction,3
+2025-11-01,Big cities,flat,off-plan,49
+2025-11-01,Big cities,flat,other,3
+2025-11-01,Big cities,flat,sale,7209
+2025-11-01,Big cities,house,auction,3
+2025-11-01,Big cities,house,off-plan,2
+2025-11-01,Big cities,house,other,7
+2025-11-01,Big cities,house,sale,6511
+2025-11-01,Inner ring,flat,auction,1
+2025-11-01,Inner ring,flat,off-plan,93
+2025-11-01,Inner ring,flat,other,2
+2025-11-01,Inner ring,flat,sale,2224
+2025-11-01,Inner ring,house,other,1
+2025-11-01,Inner ring,house,sale,628
+2025-11-01,Outer Ile-de-France,flat,off-plan,40
+2025-11-01,Outer Ile-de-France,flat,other,2
+2025-11-01,Outer Ile-de-France,flat,sale,1643
+2025-11-01,Outer Ile-de-France,house,off-plan,1
+2025-11-01,Outer Ile-de-France,house,other,1
+2025-11-01,Outer Ile-de-France,house,sale,1933
+2025-11-01,Overseas,flat,sale,255
+2025-11-01,Overseas,house,off-plan,1
+2025-11-01,Overseas,house,sale,335
+2025-11-01,Paris,flat,auction,4
+2025-11-01,Paris,flat,off-plan,1
+2025-11-01,Paris,flat,other,5
+2025-11-01,Paris,flat,sale,1968
+2025-11-01,Paris,house,sale,11
+2025-11-01,Rest of France,flat,auction,2
+2025-11-01,Rest of France,flat,off-plan,87
+2025-11-01,Rest of France,flat,other,5
+2025-11-01,Rest of France,flat,sale,10665
+2025-11-01,Rest of France,house,auction,6
+2025-11-01,Rest of France,house,off-plan,10
+2025-11-01,Rest of France,house,other,23
+2025-11-01,Rest of France,house,sale,23503
+2025-12-01,Big cities,flat,off-plan,85
+2025-12-01,Big cities,flat,other,26
+2025-12-01,Big cities,flat,sale,10091
+2025-12-01,Big cities,house,off-plan,6
+2025-12-01,Big cities,house,other,15
+2025-12-01,Big cities,house,sale,8974
+2025-12-01,Inner ring,flat,off-plan,109
+2025-12-01,Inner ring,flat,other,3
+2025-12-01,Inner ring,flat,sale,3110
+2025-12-01,Inner ring,house,off-plan,2
+2025-12-01,Inner ring,house,other,1
+2025-12-01,Inner ring,house,sale,798
+2025-12-01,Outer Ile-de-France,flat,off-plan,22
+2025-12-01,Outer Ile-de-France,flat,sale,2434
+2025-12-01,Outer Ile-de-France,house,off-plan,2
+2025-12-01,Outer Ile-de-France,house,other,4
+2025-12-01,Outer Ile-de-France,house,sale,2615
+2025-12-01,Overseas,flat,off-plan,3
+2025-12-01,Overseas,flat,sale,263
+2025-12-01,Overseas,house,off-plan,1
+2025-12-01,Overseas,house,other,1
+2025-12-01,Overseas,house,sale,436
+2025-12-01,Paris,flat,other,5
+2025-12-01,Paris,flat,sale,2421
+2025-12-01,Paris,house,sale,17
+2025-12-01,Rest of France,flat,auction,1
+2025-12-01,Rest of France,flat,off-plan,123
+2025-12-01,Rest of France,flat,other,7
+2025-12-01,Rest of France,flat,sale,13493
+2025-12-01,Rest of France,house,auction,1
+2025-12-01,Rest of France,house,off-plan,12
+2025-12-01,Rest of France,house,other,32
+2025-12-01,Rest of France,house,sale,29494
