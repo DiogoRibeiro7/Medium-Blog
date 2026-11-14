@@ -165,7 +165,7 @@ Portalegre, 590 m                  zone A: 41 seasons 1975/76-2021/22; own xi -0
 Lisbon, Gago Coutinho (urban)      zone A: 35 seasons 1984/85-2021/22; own xi -0.25, sigma/mu 0.25; 50-yr synoptic 18.3 m/s (regional shape 20.0; sampling-corrected 22.3); record 18.5 in 1985/86; basic velocity 27
 Vila Real, 479 m                   zone A: 33 seasons 1977/78-2021/22; own xi -0.28, sigma/mu 0.25; 50-yr synoptic 14.5 m/s (regional shape 16.2; sampling-corrected 18.1); record 15.4 in 1979/80; basic velocity 27
 Monte Real air base                zone A: 19 seasons 2006/07-2025/26; own xi +0.15, sigma/mu 0.19; 50-yr synoptic 25.1 m/s (regional shape 22.3; sampling-corrected 25.0); record 27.0 in 2025/26; basic velocity 27
-Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.4 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
+Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.17; 50-yr synoptic 16.3 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
 Station days dropped by the ERA5 cross-check (>= 20 m/s and > 2.2 x the cell): 10
    portalegre  1982-02-17: station 26.0 (synoptic) / 26.0 (all), ERA5 cell 3.1, lowest pressure 1012 hPa
    portalegre  1984-03-28: station 31.4 (synoptic) / 31.4 (all), ERA5 cell 8.1, lowest pressure 1016 hPa
@@ -178,7 +178,7 @@ Station days dropped by the ERA5 cross-check (>= 20 m/s and > 2.2 x the cell): 1
    montijo     2010-11-24: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 4.1, lowest pressure 1011 hPa
    montijo     2012-12-21: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 3.4, lowest pressure 1023 hPa
 Sampling-corrected 50-year level / basic wind velocity: median 0.79 (stations 0.67 to 0.93)
-Station sigma/mu: median 0.20 (annex 0.11)
+Station sigma/mu: median 0.19 (annex 0.11)
 
 4c. Kristin at the stations: ten-minute means and gusts against design values
 -----------------------------------------------------------------------------
@@ -226,8 +226,8 @@ Portalegre, 590 m                  41 seasons: station/ERA5 ratio of season maxi
 Lisbon, Gago Coutinho (urban)      35 seasons: station/ERA5 ratio of season maxima 0.85; rank correlation of season maxima 0.29, of winter days 0.69; station's 10 windiest days among ERA5's 30: 1; sigma/mu station 0.25, ERA5 0.09; ERA5 Kristin 18.6 m/s, ERA5 return period 162
 Vila Real, 479 m                   33 seasons: station/ERA5 ratio of season maxima 1.26; rank correlation of season maxima 0.45, of winter days 0.72; station's 10 windiest days among ERA5's 30: 2; sigma/mu station 0.25, ERA5 0.12; ERA5 Kristin 5.4 m/s, ERA5 return period 1.0
 Monte Real air base                19 seasons: station/ERA5 ratio of season maxima 0.83; rank correlation of season maxima 0.43, of winter days 0.78; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.19, ERA5 0.13; ERA5 Kristin 20.7 m/s, ERA5 return period 61
-Montijo air base, Tagus estuary    20 seasons: station/ERA5 ratio of season maxima 1.10; rank correlation of season maxima 0.31, of winter days 0.76; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.20, ERA5 0.13; ERA5 Kristin 16.0 m/s, ERA5 return period 100
-Medians over stations: rank correlation of season maxima 0.33, of winter days 0.72; sigma/mu station 0.20, ERA5 0.11
+Montijo air base, Tagus estuary    20 seasons: station/ERA5 ratio of season maxima 1.10; rank correlation of season maxima 0.31, of winter days 0.76; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.17, ERA5 0.13; ERA5 Kristin 16.0 m/s, ERA5 return period 100
+Medians over stations: rank correlation of season maxima 0.33, of winter days 0.72; sigma/mu station 0.19, ERA5 0.11
 ERA5 on 28 January 2026 at the cells of the stations IPMA reported (daily maximum wind, gust; observed gust):
    Monte Real air base              ERA5  20.7 /  33.2 m/s; observed  49.4 m/s; ERA5 gust / observed 0.67
    Degracias, Soure (524 m)         ERA5   8.5 /  32.0 m/s; observed  58.0 m/s; ERA5 gust / observed 0.55
