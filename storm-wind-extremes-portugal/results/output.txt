@@ -1,0 +1,272 @@
+Storm wind extremes in Portugal: printed results
+================================================
+
+1. Data
+-------
+ERA5 daily maximum 10 m wind at 38 nodes, 1950-10-01 to 2026-03-31
+Blocks: October-March seasons 1950/51 to 2025/26 (76 seasons)
+Share of October-September maxima that fall in April-September: 9.1%
+Kristin = ERA5 daily maximum on 2026-01-28; it is the 2025/26 season maximum at 20 of 38 nodes
+Nodes where Kristin beat every earlier season maximum (1950/51 to 2024/25): 8
+  all of them south of 40.0 N: True; nodes south of 40.0 N: 20
+ERA5 daily maximum 10 m gust at the same nodes: 1950-10-01 to 2026-03-31
+
+2. Kristin's return period, node by node
+----------------------------------------
+Separate fits: shape xi ranges -0.26 to +0.13, median -0.12
+Pooled shape, all 76 seasons: xi = -0.097 (season-bootstrap 95% interval -0.184 to -0.023)
+Pooled shape without 2025/26: xi = -0.112
+Share of bootstrap samples with xi < 0: 100%
+Likelihood ratio, pooled shape against Gumbel at every node: 53.2 (1 df if the nodes were independent; they are not)
+
+Nodes ranked by Kristin's return period (pooled shape, with 2025/26):
+  lat    lon    Kristin  50-yr   rank  T sep(in)  T sep(ex)  T pool(in) [95% boot] (share inf)  T pool(ex)  T Gumbel
+  39.00  -8.00    15.0    12.8     1        512      15851       2121 [241 to inf] (4%)      11657       304
+  39.50  -8.00    15.7    14.0     1        197        714        522 [118 to >100000] (1%)       1300       144
+  39.50  -9.00    19.0    17.0     1         65        101        514 [112 to >100000] (0%)       1213       174
+  39.50  -7.50    14.2    12.9     1        162        444        450 [105 to >100000] (1%)       1044       133
+  39.00  -7.50    13.6    12.4     1        173        568        373 [93 to 64503] (0%)        817       116
+  38.50  -8.00    13.9    12.8     1        303       8968        313 [84 to 36631] (0%)        663        98
+  39.00  -8.50    15.5    14.3     1        151        361        259 [71 to 22406] (0%)        493        92
+  39.00  -9.00    15.8    15.1     2         96        164        133 [48 to 2631] (0%)        209        61
+  38.50  -8.50    14.7    14.2     1        293       2651        104 [41 to 1335] (0%)        160        45
+  39.50  -8.50    15.2    14.7     3         43         54         99 [35 to 711] (0%)        140        56
+  38.75  -9.00    16.0    15.6     2        100        154         84 [33 to 887] (0%)        121        41
+  38.50  -7.50    12.2    12.1     2         61         86         61 [28 to 334] (0%)         81        35
+  38.00  -8.50    13.9    14.2     2         69         91         32 [18 to 100] (0%)         39        20
+  38.00  -8.00    12.5    13.2     3         26         28         19 [12 to 43] (0%)         22        14
+  37.00  -8.00    19.1    20.7     6         16         16         12 [7.6 to 24] (0%)         13       8.8
+  38.00  -7.50    10.8    11.9     7         13         14         10 [7.3 to 19] (0%)         11       8.5
+Nodes with pooled return period of at least 10 seasons: with 2025/26 16, without 17, Gumbel 14
+Nodes with pooled return period of at least 50 seasons: with 2025/26 12, without 12, Gumbel 9
+Nodes with pooled return period of at least 100 seasons: with 2025/26 9, without 11, Gumbel 5
+Nodes with pooled return period of at least 500 seasons: with 2025/26 3, without 6, Gumbel 0
+Highest node: pooled 2121 against Gumbel 304 (ratio 7.0)
+Nodes north of 40.0 N with Kristin above their median season maximum: 0 of 18
+
+2b. Profile-likelihood intervals at the most affected nodes
+-----------------------------------------------------------
+Node 39.00 N -8.00 E (Kristin 15.0 m/s; 50-yr level 13.1, 95% 12.4 to 14.6):
+   with 2025/26: T = 512 (95% profile interval 65 to 21203)
+   without:      T = 15851 (95% profile interval 169 to inf)
+Node 39.50 N -8.00 E (Kristin 15.7 m/s; 50-yr level 14.3, 95% 13.5 to 16.4):
+   with 2025/26: T = 197 (95% profile interval 36 to 4100)
+   without:      T = 714 (95% profile interval 58 to inf)
+Node 39.50 N -9.00 E (Kristin 19.0 m/s; 50-yr level 18.4, 95% 16.7 to 23.3):
+   with 2025/26: T = 65 (95% profile interval 19 to 503)
+   without:      T = 101 (95% profile interval 23 to 2062)
+
+2c. What including or excluding the trigger does, by simulation
+---------------------------------------------------------------
+Node 39.00 N -8.00 E, pooled parameters; 2000 simulated records kept out of 194574
+  (last season a record and above the true 50-year level of 12.8 m/s)
+Median estimated / true return period: including the trigger 0.87, excluding it 2.52
+Share of records where the estimate is within a factor 2 of the truth: including 57%, excluding 35%
+Share where the estimate exceeds the truth: including 44%, excluding 79%
+Share where excluding the trigger puts it beyond the fitted upper end point (infinite T): 6.2%
+
+2d. Peaks over a threshold: the shape from every storm, not only the season maximum
+-----------------------------------------------------------------------------------
+Threshold: each node's 98th percentile of October-March days (8.7 m/s median); storms separated by 2 days below it
+Storms per season above the threshold: median 2.71 over nodes
+Extremal index (days above the threshold per storm, inverted): runs 0.75, intervals estimator 0.70 (medians over nodes)
+Pooled GPD shape: xi = -0.122 (season-bootstrap 95% interval -0.197 to -0.065)
+   39.00 N -8.00 E: return period from peaks over threshold 2010, from season maxima 2121
+   39.50 N -8.00 E: return period from peaks over threshold 1057, from season maxima 522
+   39.50 N -9.00 E: return period from peaks over threshold 1315, from season maxima 514
+   39.50 N -7.50 E: return period from peaks over threshold 309, from season maxima 450
+   39.00 N -7.50 E: return period from peaks over threshold 475, from season maxima 373
+   38.50 N -8.00 E: return period from peaks over threshold 226, from season maxima 313
+
+2f. How much the answer depends on the shape
+--------------------------------------------
+   39.00 N -8.00 E: return period at xi = -0.18: 23396; at xi = -0.10: 2123; at xi = -0.02: 441; Gumbel (xi = 0): 304
+   39.50 N -8.00 E: return period at xi = -0.18: 2815; at xi = -0.10: 523; at xi = -0.02: 187; Gumbel (xi = 0): 144
+   39.50 N -9.00 E: return period at xi = -0.18: 1916; at xi = -0.10: 514; at xi = -0.02: 218; Gumbel (xi = 0): 174
+
+2e. The record back to 1940
+---------------------------
+Seasons 1940/41 to 1949/50 added (10); ERA5 before 1950 assimilates far fewer observations
+15 February 1941: highest node 22.9 m/s at 37.00 N -8.00 E; Kristin's highest 19.1 m/s at 37.00 N -8.00 E
+Nodes where 15 February 1941 beat Kristin: 34 of 38
+  south of 40 N: 16 of 20; north: 18 of 18
+Pooled shape with 86 seasons: xi = -0.060
+   39.00 N -8.00 E: Kristin rank 1 of 86; return period 668 (76 seasons: 2121); 15 Feb 1941 here 14.1 m/s
+   39.50 N -8.00 E: Kristin rank 1 of 86; return period 223 (76 seasons: 522); 15 Feb 1941 here 14.3 m/s
+   39.50 N -9.00 E: Kristin rank 2 of 86; return period 208 (76 seasons: 514); 15 Feb 1941 here 19.1 m/s
+   39.50 N -7.50 E: Kristin rank 1 of 86; return period 151 (76 seasons: 450); 15 Feb 1941 here 13.3 m/s
+   39.00 N -7.50 E: Kristin rank 1 of 86; return period 186 (76 seasons: 373); 15 Feb 1941 here 13.2 m/s
+   38.50 N -8.00 E: Kristin rank 2 of 86; return period 130 (76 seasons: 313); 15 Feb 1941 here 15.1 m/s
+Nodes where 15 February 1941 was the 1940/41 season maximum: 38
+Nodes where 15 February 1941 is the highest of all 86 seasons: 26; Kristin the highest: 4
+Return period of 15 February 1941 under the 86-season fit: highest 7183 at 37.25 N -8.50 E; nodes at 100 or more: 25
+
+3. Trend in the season maxima (location and scale of the GEV)
+-------------------------------------------------------------
+Location trend, mean over nodes: +0.02% of the location per decade (nodes from -1.00% to +0.83%)
+With the scale also trending: location +0.04% per decade, scale +1.23% per decade
+Nodes with a 2-df likelihood-ratio p < 0.05: 0 of 38
+Permutation tests (999 reorderings of the 76 seasons, all nodes together):
+  mean location trend: p = 0.933; mean scale trend: p = 0.682; count of nodes with p < 0.05: p = 1.000
+  95% of reorderings give a mean location trend within +-0.85% per decade and a mean scale trend within +-5.12% per decade
+  under reordering, the count of nodes with p < 0.05 has median 1 and 95th percentile 10
+Implied change of the 50-year level from 1950/51 to 2025/26: mean +2.8%, nodes from -8.9% to +16.3%
+
+Positive control, winter (October-March) NAO as the covariate of the location:
+  mean effect -1.44% of the location per standard deviation of the NAO (nodes -3.02% to +0.10%), permutation p = 0.154
+  nodes with p < 0.05: 1 of 38
+  mean effect south of 40 N: -1.46%; north: -1.41%
+  location trend with the NAO also in the model: mean +0.41% per decade
+
+Satellite era only (1979/80 to 2025/26): mean location trend +1.27% per decade, permutation p = 0.182
+Halves 1950/51-1987/88 and 1988/89-2025/26: pooled xi -0.103 and -0.098 (difference 95% bootstrap -0.192 to +0.230); median sigma/mu 0.104 and 0.104
+
+3b. Power of the field test for a location trend
+------------------------------------------------
+Location trend 0.0% per decade (0% over the record): detected in 6% of 200 simulated histories
+Location trend 0.5% per decade (4% over the record): detected in 20% of 200 simulated histories
+Location trend 1.0% per decade (8% over the record): detected in 64% of 200 simulated histories
+Location trend 2.0% per decade (15% over the record): detected in 100% of 200 simulated histories
+Location trend 3.0% per decade (22% over the record): detected in 100% of 200 simulated histories
+
+3c. Station check (synoptic-hour maxima, raw GHCNh, not homogenised)
+--------------------------------------------------------------------
+porto      1973/74 to 2025/26 (53 seasons): location trend -3.95% per decade, LR p = 0.003
+faro       1973/74 to 2025/26 (53 seasons): location trend +1.30% per decade, LR p = 0.348
+beja       1973/74 to 2025/26 (48 seasons): location trend -1.65% per decade, LR p = 0.191
+
+4. The shape the code assumes against the shape in the data
+-----------------------------------------------------------
+Annex conversion v(T)/v(50) = 0.7 - 0.077 ln(-ln(1 - 1/T)): Gumbel with sigma/mu = 0.110
+  implied ratios: v(10)/v(50) = 0.873, v(100)/v(50) = 1.054, v(500)/v(50) = 1.178, v(1000)/v(50) = 1.232
+ERA5 nodes, pooled-shape fit: sigma/mu median 0.105 (nodes 0.089 to 0.128); xi = -0.097
+  v(10)/v(50): ERA5 pooled fit median 0.904; same location and scale with xi = 0: 0.877
+  v(100)/v(50): ERA5 pooled fit median 1.036; same location and scale with xi = 0: 1.052
+  v(500)/v(50): ERA5 pooled fit median 1.111; same location and scale with xi = 0: 1.172
+  v(1000)/v(50): ERA5 pooled fit median 1.139; same location and scale with xi = 0: 1.224
+Kristin relative to the node's 50-year level (pooled fit), and the return period the annex's
+formula gives to the same ratio:
+  39.00 N -8.00 E: Kristin / v(50) = 1.169; annex return period 440; ERA5 pooled return period 2121
+  39.50 N -8.00 E: Kristin / v(50) = 1.121; annex return period 236; ERA5 pooled return period 522
+  39.50 N -9.00 E: Kristin / v(50) = 1.116; annex return period 224; ERA5 pooled return period 514
+  39.50 N -7.50 E: Kristin / v(50) = 1.101; annex return period 184; ERA5 pooled return period 450
+  39.00 N -7.50 E: Kristin / v(50) = 1.097; annex return period 174; ERA5 pooled return period 373
+  38.50 N -8.00 E: Kristin / v(50) = 1.087; annex return period 153; ERA5 pooled return period 313
+
+4b. Station 50-year mean winds against the basic wind velocity
+--------------------------------------------------------------
+Season maximum from all reports / from synoptic hours, Porto and Faro seasons with >= 40 reports a day: median 1.071, quartiles 1.000 to 1.147 (64 seasons)
+Extrapolated further factor from 48 to 144 ten-minute windows a day: 1.044
+Porto airport, 4 km from the sea   zone B: 53 seasons 1973/74-2025/26; own xi -0.41, sigma/mu 0.20; 50-yr synoptic 18.5 m/s (regional shape 21.2; sampling-corrected 23.7); record 19.0 in 1981/82; basic velocity 30
+Faro airport, on the coast         zone B: 53 seasons 1973/74-2025/26; own xi -0.41, sigma/mu 0.17; 50-yr synoptic 18.6 m/s (regional shape 21.1; sampling-corrected 23.6); record 19.0 in 2009/10; basic velocity 30
+Beja air base, inland Alentejo     zone A: 48 seasons 1973/74-2025/26; own xi -0.09, sigma/mu 0.12; 50-yr synoptic 17.2 m/s (regional shape 17.2; sampling-corrected 19.2); record 17.5 in 1978/79; basic velocity 27
+Braganca, 718 m                    zone B: 49 seasons 1973/74-2021/22; own xi -0.49, sigma/mu 0.23; 50-yr synoptic 17.1 m/s (regional shape 20.1; sampling-corrected 22.5); record 17.5 in 1984/85; basic velocity 30
+Portalegre, 590 m                  zone A: 41 seasons 1975/76-2021/22; own xi -0.39, sigma/mu 0.19; 50-yr synoptic 17.7 m/s (regional shape 20.8; sampling-corrected 23.3); record 18.5 in 1988/89; basic velocity 27
+Lisbon, Gago Coutinho (urban)      zone A: 35 seasons 1984/85-2021/22; own xi -0.25, sigma/mu 0.25; 50-yr synoptic 18.3 m/s (regional shape 20.0; sampling-corrected 22.3); record 18.5 in 1985/86; basic velocity 27
+Vila Real, 479 m                   zone A: 33 seasons 1977/78-2021/22; own xi -0.28, sigma/mu 0.25; 50-yr synoptic 14.5 m/s (regional shape 16.2; sampling-corrected 18.1); record 15.4 in 1979/80; basic velocity 27
+Monte Real air base                zone A: 19 seasons 2006/07-2025/26; own xi +0.15, sigma/mu 0.19; 50-yr synoptic 25.1 m/s (regional shape 22.3; sampling-corrected 25.0); record 27.0 in 2025/26; basic velocity 27
+Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.4 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
+Station days dropped by the ERA5 cross-check (>= 20 m/s and > 2.2 x the cell): 10
+   portalegre  1982-02-17: station 26.0 (synoptic) / 26.0 (all), ERA5 cell 3.1, lowest pressure 1012 hPa
+   portalegre  1984-03-28: station 31.4 (synoptic) / 31.4 (all), ERA5 cell 8.1, lowest pressure 1016 hPa
+   portalegre  2008-02-12: station 30.0 (synoptic) / 30.0 (all), ERA5 cell 5.8, lowest pressure 1021 hPa
+   vila_real   2021-01-26: station 22.0 (synoptic) / 22.0 (all), ERA5 cell 3.0, lowest pressure 1020 hPa
+   monte_real  2002-01-29: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 5.0, lowest pressure 1026 hPa
+   monte_real  2015-03-08: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 6.6, lowest pressure 1023 hPa
+   monte_real  2022-01-15: station 30.9 (synoptic) / 30.9 (all), ERA5 cell 6.6, lowest pressure 1025 hPa
+   montijo     2010-03-17: station 6.0 (synoptic) / 22.1 (all), ERA5 cell 4.5, lowest pressure 1021 hPa
+   montijo     2010-11-24: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 4.1, lowest pressure 1011 hPa
+   montijo     2012-12-21: station 20.0 (synoptic) / 20.0 (all), ERA5 cell 3.4, lowest pressure 1023 hPa
+Sampling-corrected 50-year level / basic wind velocity: median 0.79 (stations 0.67 to 0.93)
+Station sigma/mu: median 0.20 (annex 0.11)
+
+4c. Kristin at the stations: ten-minute means and gusts against design values
+-----------------------------------------------------------------------------
+Monte Real air base                28 Jan: highest synoptic-hour mean 27.0 m/s, highest report 35.0 m/s (12 reports); zone A basic velocity 27
+Montijo air base, Tagus estuary    28 Jan: highest synoptic-hour mean 11.0 m/s, highest report 14.4 m/s (21 reports); zone A basic velocity 27
+Beja air base, inland Alentejo     28 Jan: highest synoptic-hour mean 16.5 m/s, highest report 16.5 m/s (32 reports); zone A basic velocity 27
+Faro airport, on the coast         28 Jan: highest synoptic-hour mean 16.0 m/s, highest report 18.0 m/s (45 reports); zone B basic velocity 30
+Porto airport, 4 km from the sea   28 Jan: highest synoptic-hour mean 5.1 m/s, highest report 10.8 m/s (46 reports); zone B basic velocity 30
+Monte Real reports on 28 January (UTC; direction; ten-minute mean m/s; gust m/s):
+   00:00   360    2.0       
+   01:00   160    4.6       
+   03:00   140    6.0       
+   03:02   140    6.2       
+   04:02   170   10.8   18.5
+   05:00   290   35.0   48.9
+   06:00   010    3.0   43.0
+   07:00                    
+   08:00                    
+   09:00   010   27.0       
+Highest ten-minute mean reported at Monte Real: 35.0 m/s at 05:00 UTC (+30% against zone A's basic wind velocity)
+
+Eurocode peak velocity at 10 m, terrain II: mean x sqrt(1 + 7 I_v) with I_v = 0.189, factor 1.524
+  zone A 41.1 m/s (148 km/h), zone B 45.7 m/s (165 km/h)
+Overhead line design gust below 20 m (EN 50341-3-17): zone A 34.5 m/s (124 km/h), zone B 37.9 m/s (136 km/h); E-REDES specification 34 m/s
+Gusts reported on 28 January 2026, km/h and m/s, against the design gusts of the zone:
+   Monte Real air base               178.0 km/h  49.4 m/s  zone A:  120% of the building peak,  144% of the line gust
+   Degracias, Soure (524 m)          208.8 km/h  58.0 m/s  zone A:  141% of the building peak,  168% of the line gust
+   Cabo Carvoeiro                    149.0 km/h  41.4 m/s  zone B:   91% of the building peak,  109% of the line gust
+   Ansiao                            146.0 km/h  40.6 m/s  zone A:   99% of the building peak,  118% of the line gust
+   Leiria aerodrome                  142.0 km/h  39.4 m/s  zone A:   96% of the building peak,  114% of the line gust
+   Castelo Branco                    137.0 km/h  38.1 m/s  zone A:   93% of the building peak,  110% of the line gust
+   Foia, Monchique (902 m)           135.0 km/h  37.5 m/s  zone B:   82% of the building peak,   99% of the line gust
+   Vale Donas, Tomar                 133.0 km/h  36.9 m/s  zone A:   90% of the building peak,  107% of the line gust
+   Cabo da Roca                      131.0 km/h  36.4 m/s  zone B:   80% of the building peak,   96% of the line gust
+   Santa Cruz, Torres Vedras         128.9 km/h  35.8 m/s  zone B:   78% of the building peak,   94% of the line gust
+Above the line design gust: 7 of 10; above the building peak velocity: 2 of 10
+
+4d. ERA5 at the station cells against the anemometers
+-----------------------------------------------------
+Porto airport, 4 km from the sea   53 seasons: station/ERA5 ratio of season maxima 1.15; rank correlation of season maxima 0.29, of winter days 0.71; station's 10 windiest days among ERA5's 30: 4; sigma/mu station 0.20, ERA5 0.13; ERA5 Kristin 7.0 m/s, ERA5 return period 1.0
+Faro airport, on the coast         53 seasons: station/ERA5 ratio of season maxima 0.90; rank correlation of season maxima 0.40, of winter days 0.72; station's 10 windiest days among ERA5's 30: 6; sigma/mu station 0.17, ERA5 0.10; ERA5 Kristin 19.1 m/s, ERA5 return period 16
+Beja air base, inland Alentejo     48 seasons: station/ERA5 ratio of season maxima 1.30; rank correlation of season maxima 0.33, of winter days 0.83; station's 10 windiest days among ERA5's 30: 6; sigma/mu station 0.12, ERA5 0.11; ERA5 Kristin 12.5 m/s, ERA5 return period 26
+Braganca, 718 m                    49 seasons: station/ERA5 ratio of season maxima 1.28; rank correlation of season maxima 0.19, of winter days 0.69; station's 10 windiest days among ERA5's 30: 1; sigma/mu station 0.23, ERA5 0.11; ERA5 Kristin 4.9 m/s, ERA5 return period 1.0
+Portalegre, 590 m                  41 seasons: station/ERA5 ratio of season maxima 1.39; rank correlation of season maxima 0.36, of winter days 0.60; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.19, ERA5 0.09; ERA5 Kristin 14.2 m/s, ERA5 return period 190
+Lisbon, Gago Coutinho (urban)      35 seasons: station/ERA5 ratio of season maxima 0.85; rank correlation of season maxima 0.29, of winter days 0.69; station's 10 windiest days among ERA5's 30: 1; sigma/mu station 0.25, ERA5 0.09; ERA5 Kristin 18.6 m/s, ERA5 return period 162
+Vila Real, 479 m                   33 seasons: station/ERA5 ratio of season maxima 1.26; rank correlation of season maxima 0.45, of winter days 0.72; station's 10 windiest days among ERA5's 30: 2; sigma/mu station 0.25, ERA5 0.12; ERA5 Kristin 5.4 m/s, ERA5 return period 1.0
+Monte Real air base                19 seasons: station/ERA5 ratio of season maxima 0.83; rank correlation of season maxima 0.43, of winter days 0.78; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.19, ERA5 0.13; ERA5 Kristin 20.7 m/s, ERA5 return period 61
+Montijo air base, Tagus estuary    20 seasons: station/ERA5 ratio of season maxima 1.10; rank correlation of season maxima 0.31, of winter days 0.76; station's 10 windiest days among ERA5's 30: 3; sigma/mu station 0.20, ERA5 0.13; ERA5 Kristin 16.0 m/s, ERA5 return period 100
+Medians over stations: rank correlation of season maxima 0.33, of winter days 0.72; sigma/mu station 0.20, ERA5 0.11
+ERA5 on 28 January 2026 at the cells of the stations IPMA reported (daily maximum wind, gust; observed gust):
+   Monte Real air base              ERA5  20.7 /  33.2 m/s; observed  49.4 m/s; ERA5 gust / observed 0.67
+   Degracias, Soure (524 m)         ERA5   8.5 /  32.0 m/s; observed  58.0 m/s; ERA5 gust / observed 0.55
+   Cabo Carvoeiro                   ERA5  21.1 /  32.9 m/s; observed  41.4 m/s; ERA5 gust / observed 0.79
+   Ansiao                           ERA5   8.5 /  32.0 m/s; observed  40.6 m/s; ERA5 gust / observed 0.79
+   Leiria aerodrome                 ERA5  15.1 /  34.0 m/s; observed  39.4 m/s; ERA5 gust / observed 0.86
+   Castelo Branco                   ERA5  12.0 /  25.5 m/s; observed  38.1 m/s; ERA5 gust / observed 0.67
+   Foia, Monchique (902 m)          ERA5  13.5 /  30.6 m/s; observed  37.5 m/s; ERA5 gust / observed 0.82
+   Vale Donas, Tomar                ERA5  15.2 /  29.7 m/s; observed  36.9 m/s; ERA5 gust / observed 0.80
+   Cabo da Roca                     ERA5  18.6 /  32.6 m/s; observed  36.4 m/s; ERA5 gust / observed 0.90
+   Santa Cruz, Torres Vedras        ERA5  21.1 /  32.9 m/s; observed  35.8 m/s; ERA5 gust / observed 0.92
+ERA5 gust as a fraction of the reported gust: median 0.80, range 0.55 to 0.92
+
+4e. ERA5 gusts
+--------------
+Pooled shape of ERA5 gust maxima: xi = -0.126; sigma/mu median 0.117
+ERA5 50-year gust: median over nodes 31.7 m/s (nodes 28.6 to 39.8)
+ERA5 gust on 28 Jan 2026: highest 34.1 m/s at 38.75 N -9.00 E
+line reference gust at 10 m, zone A (30 m/s): ERA5 50-year gust above it at 30 of 38 nodes; reached at one node or more in 50 of 76 seasons
+line reference gust at 10 m, zone B (33 m/s): ERA5 50-year gust above it at 10 of 38 nodes; reached at one node or more in 31 of 76 seasons
+   38.50 N -8.50 E: Kristin gust 34.0 m/s, 50-yr 31.1, return period 326
+   38.75 N -9.00 E: Kristin gust 34.1 m/s, 50-yr 31.9, return period 210
+   39.00 N -9.00 E: Kristin gust 33.7 m/s, 50-yr 31.8, return period 169
+   38.00 N -8.50 E: Kristin gust 30.9 m/s, 50-yr 29.7, return period 111
+   38.00 N -7.50 E: Kristin gust 29.1 m/s, 50-yr 28.6, return period 69
+   38.50 N -8.00 E: Kristin gust 30.6 m/s, 50-yr 30.5, return period 51
+
+5. Spatial dependence of the season maxima and exposure of a network
+--------------------------------------------------------------------
+Pairs 0-60 km apart:  61, median pairwise extremal coefficient 1.27
+Pairs 60-120 km apart: 168, median pairwise extremal coefficient 1.38
+Pairs 120-200 km apart: 163, median pairwise extremal coefficient 1.47
+Pairs 200-300 km apart: 164, median pairwise extremal coefficient 1.55
+Pairs 300-600 km apart: 147, median pairwise extremal coefficient 1.67
+Whole field of 38 nodes behaves like 5.4 independent sites for its maximum (south of 40 N: 3.0 of 20; north: 3.6 of 18)
+  chance a season brings the 50-year wind to at least one node, one site: 2.0% (once in 50.0 seasons)
+  chance a season brings the 50-year wind to at least one node, south of 40 N: 5.8% (once in 17.1 seasons)
+  chance a season brings the 50-year wind to at least one node, all nodes: 10.4% (once in 9.6 seasons)
+Observed: seasons with at least one node above its own 50-year level (pooled fit): 12 of 76 (1951/52, 1959/60, 1968/69, 1971/72, 1981/82, 1988/89, 1997/98, 1998/99, 2009/10, 2012/13, 2019/20, 2025/26)
+Nodes above their 50-year level in 2025/26: 12; most in any earlier season: 20 (1981/82)
+
+Figures written to figures/, equation images to figures/equations/.
