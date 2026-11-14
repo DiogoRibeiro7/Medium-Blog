@@ -119,10 +119,10 @@ changes of process (transitions of one producer, same direction, within 6 days):
 share of unchanged files on the days of the week that changed, by week relative to the change (183 upward changes involving two or more days):
   weeks -12..+12: 0.07 0.07 0.04 0.06 0.05 0.06 0.04 0.04 0.04 0.03 0.03 0.00 1.00 0.97 0.99 0.98 0.95 0.96 0.93 0.93 0.90 0.92 0.89 0.89 0.89
   weeks -4 to -2 3.4%, weeks +1 to +3 97.8%
-  simulated, step         (400 series): weeks -4 to -2 4.8%, weeks +1 to +3 95.5%
-  simulated, 4-week ramp  (400 series): weeks -4 to -2 7.4%, weeks +1 to +3 92.8%
-  simulated, 8-week ramp  (400 series): weeks -4 to -2 15.7%, weeks +1 to +3 85.6%
-  simulated, 13-week ramp (399 series): weeks -4 to -2 22.1%, weeks +1 to +3 82.2%
+  simulated, step         (400 series): weeks -4 to -2 4.8%, weeks +1 to +3 95.5%; fitted as a direct step from one week to the next 99.8%
+  simulated, 4-week ramp  (400 series): weeks -4 to -2 7.4%, weeks +1 to +3 92.8%; fitted as a direct step from one week to the next 99.2%
+  simulated, 8-week ramp  (400 series): weeks -4 to -2 15.7%, weeks +1 to +3 85.6%; fitted as a direct step from one week to the next 96.5%
+  simulated, 13-week ramp (399 series): weeks -4 to -2 22.1%, weeks +1 to +3 82.2%; fitted as a direct step from one week to the next 88.2%
 
 ==============================================================================
 P7. Changes that were announced

@@ -530,14 +530,15 @@ def event_profile(df: pd.DataFrame, changes: pd.DataFrame, weeks: int = 12) -> n
 
 
 def simulated_profile(ramp_weeks: int, n_series: int = 400, weeks: int = 12, seed: int = SEED,
-                      low: float = 0.04, high: float = 0.95, length: int = 150) -> np.ndarray:
+                      low: float = 0.04, high: float = 0.95, length: int = 150) -> tuple[np.ndarray, float]:
     """What the same procedure (segmentation, transition, refinement, profile) shows for series of one
     day of the week whose rate moves from `low` to `high` along a straight line lasting `ramp_weeks`
-    (0 for a step), each series with one move at a random week."""
+    (0 for a step), each series with one move at a random week. Also returns the share of the series
+    whose move was fitted as a direct step (no segment in between) from one week to the next."""
     rng = np.random.default_rng(seed)
     t = np.arange(length)
     start = pd.Timestamp("2020-06-01")
-    prof = []
+    prof, direct = [], []
     for _ in range(n_series):
         c = rng.integers(40, length - 40)
         p = low + (high - low) * (np.clip((t - c) / ramp_weeks, 0, 1) if ramp_weeks else (t >= c))
@@ -552,6 +553,7 @@ def simulated_profile(ramp_weeks: int, n_series: int = 400, weeks: int = 12, see
         if not len(tr):
             continue
         r = tr.iloc[0]
+        direct.append(bool(r["n_between"] == 0 and r["days"] <= 7))
         pos = int((r.first_new - start).days // 7)
         later = np.flatnonzero(y[pos:] == 1)
         pos = pos + int(later[0]) if len(later) else pos
@@ -560,7 +562,7 @@ def simulated_profile(ramp_weeks: int, n_series: int = 400, weeks: int = 12, see
             if 0 <= pos + k < length:
                 row[k + weeks] = y[pos + k]
         prof.append(row)
-    return np.array(prof)
+    return np.array(prof), float(np.mean(direct))
 
 
 def documented(changes: pd.DataFrame, reach: int = 42) -> pd.DataFrame:

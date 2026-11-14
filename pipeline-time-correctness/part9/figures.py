@@ -76,7 +76,7 @@ def fig1_fingerprints(df: pd.DataFrame) -> None:
     save(fig, "fig1_fingerprints.png")
 
 
-def fig2_memory() -> None:
+def fig3_memory() -> None:
     est = pd.read_csv(RES / "estimators.csv")
     fams = (("window", "sliding window, by day of the week", BLUE, "o"),
             ("half-life", "exponential forgetting, by day of the week", AQUA, "s"),
@@ -94,10 +94,10 @@ def fig2_memory() -> None:
     ax.set_ylabel("mean log loss, test period (lower is better)")
     ax.legend(loc="upper center", fontsize=9, ncol=1)
     ax.set_ylim(0.2, 0.5)
-    save(fig, "fig2_memory.png")
+    save(fig, "fig3_memory.png")
 
 
-def fig3_profile() -> None:
+def fig2_profile() -> None:
     obs = np.loadtxt(RES / "profile_observed.csv", delimiter=",")
     k = np.arange(-12, 13)
     fig, ax = plt.subplots(figsize=(9.5, 5.0))
@@ -117,14 +117,14 @@ def fig3_profile() -> None:
     ax.set_ylabel("files unchanged on the days that changed, %")
     ax.set_ylim(-3, 103)
     ax.legend(loc="center left", fontsize=9, bbox_to_anchor=(0.0, 0.62))
-    save(fig, "fig3_profile.png")
+    save(fig, "fig2_profile.png")
 
 
 def main() -> None:
     df = L.frame()
     fig1_fingerprints(df)
-    fig2_memory()
-    fig3_profile()
+    fig2_profile()
+    fig3_memory()
 
 
 if __name__ == "__main__":

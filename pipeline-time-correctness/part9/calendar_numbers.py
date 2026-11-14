@@ -257,10 +257,11 @@ def main() -> None:
     print("  weeks -12..+12: " + " ".join(f"{v:.2f}" for v in m))
     print(f"  weeks -4 to -2 {pct(np.nanmean(prof[:, 8:11]))}, weeks +1 to +3 {pct(np.nanmean(prof[:, 13:16]))}")
     for rw in (0, 4, 8, 13):
-        sp = L.simulated_profile(rw)
+        sp, direct = L.simulated_profile(rw)
         np.savetxt(RESULTS / f"profile_ramp{rw}.csv", sp, delimiter=",", fmt="%.6g")
         print(f"  simulated, {'step' if rw == 0 else f'{rw}-week ramp':12s} ({len(sp)} series): weeks -4 to -2 "
-              f"{pct(np.nanmean(sp[:, 8:11]))}, weeks +1 to +3 {pct(np.nanmean(sp[:, 13:16]))}")
+              f"{pct(np.nanmean(sp[:, 8:11]))}, weeks +1 to +3 {pct(np.nanmean(sp[:, 13:16]))}; "
+              f"fitted as a direct step from one week to the next {pct(direct)}")
 
     section("P7. Changes that were announced")
     doc = L.documented(ch)
