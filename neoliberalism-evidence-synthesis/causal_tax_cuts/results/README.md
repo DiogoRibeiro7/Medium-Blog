@@ -105,3 +105,10 @@ download checksums to the frozen manifest before making temporal comparisons.
 The [official World Bank macroeconomic-controls coverage report](WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md)
 freezes four 14 November 2026 WDI archive checksums and their overlap with
 the existing 853-row outcome panel. It does not revise any historical ATT.
+
+The [pre-reform macro matching report](MACRO_MATCHING_RESULTS_2026-11-14.md)
+and [machine-readable audit](macro_balance_2026-11-14.json) use those same
+official WDI/WID observations to report 29 reform-event attrition, actual
+donor support and three-control balance, with no adjusted ATT or inference.
+Event-level rows and the complete joined panel are available in the seven-day
+`pre-reform-macro-balance` and `world-bank-macro-coverage` CI artifacts.

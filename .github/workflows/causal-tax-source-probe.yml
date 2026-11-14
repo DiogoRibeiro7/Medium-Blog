@@ -69,6 +69,26 @@ jobs:
             ${{ runner.temp }}/wdi-source/macro_overlap_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit pre-reform macro matching eligibility and balance
+        id: macro_balance
+        if: steps.wdi_probe.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.macro_matching \
+            --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" \
+            --provenance "$RUNNER_TEMP/wdi-source/world_bank_provenance.json" \
+            --lags 5 --max-horizon 5 --max-donors 5 \
+            --output-dir "$RUNNER_TEMP/tax-study/macro-balance"
+      - name: Publish macro matching attrition and balance diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-reform-macro-balance
+          path: |
+            ${{ runner.temp }}/tax-study/macro-balance/macro_event_eligibility.csv
+            ${{ runner.temp }}/tax-study/macro-balance/macro_pretrend_balance.csv
+            ${{ runner.temp }}/tax-study/macro-balance/macro_balance_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'

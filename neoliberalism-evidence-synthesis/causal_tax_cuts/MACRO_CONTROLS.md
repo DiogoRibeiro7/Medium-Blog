@@ -80,7 +80,9 @@ nonfinite or misidentified observations.
   create bias. We must explicitly review confounding and selection before
   interpreting changes in estimates causally.
 
-The next PR should evaluate pre-treatment balance and sample attrition under
-declared lag/missingness rules before reporting any adjusted point estimates.
+The pre-treatment donor-selection and balance audit now lives in
+[`MACRO_MATCHING.md`](MACRO_MATCHING.md). It reports event attrition, eligible
+donor pools, balance on the three World Bank series, and *separately* the
+pre-reform income-share trend gap, without issuing adjusted effect estimates.
 The first audited source-vintage and panel-overlap results are preserved in
 [`results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md`](results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md).

@@ -189,6 +189,26 @@ audit must precede any covariate-adjusted estimate.
 The first verified World Bank archive vintage and joint coverage figures are
 frozen in [`results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md`](results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md).
 
+### Pre-treatment macro matching and balance (no adjusted ATT)
+
+[`MACRO_MATCHING.md`](MACRO_MATCHING.md) describes a deliberately separate
+pre-reform donor-selection audit. It uses the existing balanced WID outcome
+windows and treatment histories; tests availability of WDI controls **only
+at t-1 through t-5**; and ranks macro-complete donors on their three lagged
+means. It reports missingness attrition and standardised pre-reform balance
+against the *same donor pool* before ranking. It never conditions on WDI
+variables at t or later, and it does not calculate treatment effects.
+
+```bash
+python -m causal_tax_cuts.macro_matching \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --provenance data/wdi-source/world_bank_provenance.json \
+  --output-dir data/tax-study/macro-balance
+```
+
+The first real-data results and limitations are documented in
+[`results/MACRO_MATCHING_RESULTS_2026-11-14.md`](results/MACRO_MATCHING_RESULTS_2026-11-14.md).
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
