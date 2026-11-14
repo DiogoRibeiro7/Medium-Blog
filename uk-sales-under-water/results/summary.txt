@@ -3,7 +3,7 @@ OWNERS UNDER WATER AND THE FALL IN SALES: every number used in the article
 
 [0] Data
 Standard sales 29,824,801; ownership spells 29,824,801; postcode areas with an index 105; districts 2,357
-Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 943,363
+Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 794,393
 
 [1] By year: stock (owners who bought since 1995), resale rate, share below the purchase price, all standard sales
   2000: stock   4,457,598  rate 7.35%  under water 0.7% (below -10%: 0.0%)  sales 1,128,711
@@ -39,15 +39,15 @@ Owner-years 282,905,932 and resales 12,774,035, years 2000-2025; hazard cells 94
   change 2021->2023: resale rate -39.2%, standard sales -34.8%
 
 [2] Lock-in curve: effect on the annual resale probability (percentage points) against owners with m in [0, 2%), area x year and holding-year x type x new-build effects removed; se clustered by area
-  all: 943,363 cells; reference rate 3.16%; pooled thin bins [-15]
+  all: 794,393 cells; reference rate 3.16%; pooled thin bins [-15]
     [-24%] -0.85 (0.07); [-20%] -0.77 (0.06); [-16%] -0.46 (0.04); [-12%] -0.24 (0.03); [-10%] -0.14 (0.03); [-8%] -0.04 (0.03); [-6%] +0.10 (0.03); [-4%] +0.20 (0.02); [-2%] +0.23 (0.01); [+2%] +0.33 (0.02); [+4%] +0.50 (0.02); [+6%] +0.68 (0.02); [+10%] +0.96 (0.02); [+20%] +1.20 (0.02); [+30%] +1.09 (0.02); [+50%] +0.65 (0.03); [+100%] -0.47 (0.03)
-  2001-2007: 149,807 cells; reference rate 4.97%; pooled thin bins []
+  2001-2007: 138,681 cells; reference rate 4.97%; pooled thin bins []
     [-4%] -0.35 (0.16); [-2%] -0.26 (0.08); [+2%] +0.69 (0.05); [+4%] +1.19 (0.06); [+6%] +1.57 (0.06); [+10%] +2.25 (0.08); [+20%] +3.08 (0.07); [+30%] +3.17 (0.07); [+50%] +2.61 (0.09); [+100%] +1.01 (0.11)
-  2008-2012: 173,882 cells; reference rate 2.92%; pooled thin bins [-14]
+  2008-2012: 153,654 cells; reference rate 2.92%; pooled thin bins [-14]
     [-24%] -1.32 (0.07); [-20%] -1.08 (0.05); [-16%] -0.77 (0.04); [-12%] -0.54 (0.03); [-10%] -0.48 (0.03); [-8%] -0.36 (0.03); [-6%] -0.20 (0.03); [-4%] -0.11 (0.02); [-2%] -0.04 (0.02); [+2%] +0.12 (0.03); [+4%] +0.21 (0.03); [+6%] +0.25 (0.03); [+10%] +0.40 (0.05); [+20%] +0.55 (0.05); [+30%] +0.50 (0.09); [+50%] +0.35 (0.06); [+100%] -0.05 (0.08)
-  2013-2021: 400,514 cells; reference rate 2.84%; pooled thin bins [-15]
+  2013-2021: 332,307 cells; reference rate 2.84%; pooled thin bins [-15]
     [-24%] -1.48 (0.08); [-20%] -1.31 (0.09); [-16%] -0.96 (0.06); [-12%] -0.62 (0.04); [-10%] -0.45 (0.04); [-8%] -0.34 (0.04); [-6%] -0.17 (0.03); [-4%] -0.02 (0.03); [-2%] +0.05 (0.02); [+2%] +0.24 (0.02); [+4%] +0.25 (0.02); [+6%] +0.35 (0.02); [+10%] +0.41 (0.02); [+20%] +0.28 (0.03); [+30%] +0.07 (0.03); [+50%] -0.11 (0.04); [+100%] -0.52 (0.04)
-  2022-2025: 209,315 cells; reference rate 1.65%; pooled thin bins [-5]
+  2022-2025: 159,906 cells; reference rate 1.65%; pooled thin bins [-5]
     [-8%] -0.10 (0.11); [-6%] -0.34 (0.06); [-4%] -0.08 (0.05); [-2%] +0.05 (0.03); [+2%] +0.36 (0.03); [+4%] +0.63 (0.04); [+6%] +0.79 (0.05); [+10%] +1.02 (0.05); [+20%] +0.99 (0.09); [+30%] +0.66 (0.10); [+50%] +0.33 (0.11); [+100%] -0.07 (0.16)
 
 [3] Resale rate with and without the lock-in below the purchase price (all-years curve); plateau effect of m in [+10%, +20%): +1.10 pp
