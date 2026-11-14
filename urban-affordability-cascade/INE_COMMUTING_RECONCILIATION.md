@@ -1,11 +1,11 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
 **Status (13 November 2026): independently captured official Arouca, Espinho,
-Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira and Vale de Cambra
-slices have been preserved and checked against 81 of the 136 frozen pairs.**
-All 96 observed off-diagonal source views match the pinned third-party counts;
-all fifteen reciprocal links among these municipalities agree in both directions.
-The remaining **55 pairs** and
+Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira, Vale de Cambra
+and Gondomar slices have been preserved and checked against 91 of the 136
+frozen pairs.** All 112 observed off-diagonal source views match the pinned
+third-party counts; all twenty-one reciprocal links among these municipalities
+agree in both directions. The remaining **45 pairs** and
 full-matrix symmetry are **not yet verified** against
 official data. No official full commuting matrix is added; the 136 existing
 undirected pairs remain labelled a third-party extraction attributed to INE.
@@ -495,3 +495,50 @@ individual comparisons, all fifteen reciprocals and the 81-pair coverage.
 The indicator describes 2021 municipal **work/study interactions**; it
 cannot identify residential relocation, displaced tenants or a causal
 housing-price cascade.
+
+### Seventh successful probe: Gondomar
+
+The bounded PR source probe
+[#43513828242](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43513828242)
+selected exactly `start_index=6`, `count=1`, `dimension=Dim2` for DICO
+**1304 (Gondomar)**. It captured a 58,594-byte official 2021 JSON response
+with SHA-256
+`43f69a11760870dd0fab1ef29c62eeb8c2b3057c95a5550e004317a4d8d0ba68`.
+The exact source bytes, original workflow manifest and independently produced
+offline numerical audit are archived under
+[`data/ine_0012340_pr_run_43513828242/`](data/ine_0012340_pr_run_43513828242/).
+
+The captured response has a single 2021 period, 347 unique `dim_3` codes,
+all 17 AMP counterparts, `geocod=1304` throughout, successful API status
+and a zero diagonal. The offline audit compares all **16** nonself AMP
+counts with the frozen, checksummed third-party source without discrepancies.
+Each new reciprocal count matches the previously archived official response:
+
+| Pair | Previous official slice | Gondomar slice |
+| --- | ---: | ---: |
+| Arouca–Gondomar | 158 | 158 |
+| Espinho–Gondomar | 242 | 242 |
+| Santa Maria da Feira–Gondomar | 1,010 | 1,010 |
+| Oliveira de Azeméis–Gondomar | 378 | 378 |
+| São João da Madeira–Gondomar | 171 | 171 |
+| Vale de Cambra–Gondomar | 176 | 176 |
+
+Seven slices supply **112 off-diagonal source views**, covering
+`7 × 16 − 21 = 91` distinct AMP pairs. All twenty-one reciprocal links
+among captured municipalities agree in both directions. The remaining
+**45 of 136 pairs** and full-matrix symmetry are not independently verified.
+
+Reproduce the seventh audit offline from `urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43513828242/ine_0012340_dim2_1304_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43513828242/partition_manifest.json \
+  --municipality-code 1304 \
+  --output-json /tmp/ine-0012340-gondomar-partial-audit.json
+```
+
+Offline regression tests pin the raw source SHA-256, deterministic audit,
+all 16 matched counts, all 21 reciprocal links and the 91-pair coverage.
+This is **2021 municipal work/study connectivity**, not observed relocation,
+forced displacement, commuter direction or causal housing-price transmission.

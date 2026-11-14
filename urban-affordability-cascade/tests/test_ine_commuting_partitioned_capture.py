@@ -183,6 +183,22 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 candidate_slice_url("0119", dimension="Dim2"),
             )
 
+    def test_seventh_amp_index_targets_only_gondomar(self) -> None:
+        """Keep the seventh bounded source request fixed to DICO 1304."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=6, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["1304"])
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "Gondomar")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("1304", dimension="Dim2"),
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
