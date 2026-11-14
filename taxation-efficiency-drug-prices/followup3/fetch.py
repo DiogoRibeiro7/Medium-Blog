@@ -78,6 +78,14 @@ def catalogue() -> dict:
     return _catalogue
 
 
+def txt(v) -> str:
+    if isinstance(v, list):
+        return ";".join(txt(x) for x in v)
+    if isinstance(v, dict):
+        return txt(v.get("@id") or v.get("url") or "")
+    return "" if v is None else str(v)
+
+
 def releases(title: str) -> list[dict]:
     """The CSV distributions of the dataset with this title, one per release, newest first."""
     # each release is its own catalogue entry, titled "<title> : <last day covered>"
@@ -89,11 +97,13 @@ def releases(title: str) -> list[dict]:
     out = []
     for d in ds:
         for dist in d.get("distribution", []):
-            url = dist.get("downloadURL") or ""
-            api = dist.get("accessURL") or ""
-            kind = (dist.get("mediaType") or dist.get("format") or "").lower()
-            out.append({"title": dist.get("title", "") or d.get("title", ""), "temporal": dist.get("temporal", "") or d.get("temporal", ""),
-                        "modified": dist.get("modified", ""), "csv": url if (url.lower().endswith(".csv") or "csv" in kind) else "",
+            url = txt(dist.get("downloadURL"))
+            api = txt(dist.get("accessURL"))
+            kind = (txt(dist.get("mediaType")) or txt(dist.get("format"))).lower()
+            out.append({"title": txt(dist.get("title")) or txt(d.get("title")),
+                        "temporal": txt(dist.get("temporal")) or txt(d.get("temporal")),
+                        "modified": txt(dist.get("modified")),
+                        "csv": url if (url.lower().endswith(".csv") or "csv" in kind) else "",
                         "api": api if "data-api" in api else ""})
     for r in out:
         log(f"  [{title}] {r['title']!r} temporal {r['temporal']} csv={bool(r['csv'])} api={bool(r['api'])}")
