@@ -42,6 +42,8 @@ Outputs (all counts):
 - ``pairs_qq.csv``     region x type x quarter of purchase x quarter of resale: pairs and the sum
   of log changes (for a repeat-sales index).
 - ``pairs_monthly.csv``, ``sales_monthly.csv``  monthly counts.
+- ``price_m2_quarterly.csv``  median price per square metre of every single-dwelling sale (not
+  only repeat sales) by region, type and quarter, and for France as a whole: market context.
 """
 
 from __future__ import annotations
@@ -224,6 +226,17 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
                      {nature_kind('nat')} AS nature, count(*) AS sales
               FROM s2 GROUP BY ALL ORDER BY month, region, ptype, nature)
         TO {_q(str(out / 'sales_monthly.csv'))} (HEADER)
+    """)
+    con.execute(f"""
+        COPY (
+          SELECT coalesce(region, 'France') AS region, ptype, q, count(*) AS sales,
+                 median(v / sb) AS median_eur_m2,
+                 quantile_cont(v / sb, 0.25) AS p25_eur_m2, quantile_cont(v / sb, 0.75) AS p75_eur_m2
+          FROM (SELECT region, ptype, ({year_q('d')}) AS q, v, sb FROM s2
+                WHERE nat = {_q(VENTE)} AND sb >= 9 AND v >= 10000)
+          GROUP BY GROUPING SETS ((region, ptype, q), (ptype, q))
+          ORDER BY region, ptype, q
+        ) TO {_q(str(out / 'price_m2_quarterly.csv'))} (HEADER)
     """)
     con.execute(f"""
         CREATE TABLE pairs AS

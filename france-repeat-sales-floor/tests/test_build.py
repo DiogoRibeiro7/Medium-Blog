@@ -81,3 +81,13 @@ def test_real_far_kind_needs_cumulative_inflation(built):
     assert far.n.sum() == 0
     qq = pd.read_csv(out / "pairs_qq.csv")
     assert qq.n.sum() == 4
+
+
+def test_price_per_m2_table(built):
+    _, out = built
+    p = pd.read_csv(out / "price_m2_quarterly.csv")
+    fr = p[p.region == "France"]
+    assert fr.sales.sum() == p[p.region != "France"].sales.sum()
+    # 18 keyed sales after the same-day duplicates; the off-plan and auction deeds are not in it
+    assert fr.sales.sum() == 16
+    assert (p.median_eur_m2 > 0).all()
