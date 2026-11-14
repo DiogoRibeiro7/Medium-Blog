@@ -275,7 +275,7 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
     stats["pairs_after_price_and_time_filters"] = _one(con, "SELECT count(*) FROM clean")
     stats["pairs_structure_changed"] = _one(con, "SELECT count(*) FROM clean WHERE NOT same_struct")
     for k0, k1, n in con.execute("SELECT nat0, nat1, count(*) FROM clean WHERE same_struct "
-                                 "GROUP BY ALL ORDER BY 3 DESC").fetchall():
+                                 "GROUP BY ALL ORDER BY 3 DESC, 1, 2").fetchall():
         stats[f"pairs_{k0}_then_{k1}"] = n
     con.execute("CREATE VIEW main AS SELECT * FROM clean WHERE same_struct AND nat0 = 'sale' AND nat1 = 'sale'")
     stats["main_pairs"] = _one(con, "SELECT count(*) FROM main")
@@ -307,7 +307,7 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
                  count(*) FILTER (WHERE lr < 0 AND lr >= -0.02) AS within_2pct_below,
                  count(*) FILTER (WHERE cum_infl >= {FAR_INFLATION}) AS far_inflation,
                  median(lr) AS median_lr, median(lrr) AS median_lrr,
-                 avg(cum_infl) AS mean_cum_infl, median(hold_y) AS median_hold_y,
+                 round(avg(cum_infl), 9) AS mean_cum_infl, median(hold_y) AS median_hold_y,
                  median(v0) AS median_price0
           FROM clean GROUP BY ALL ORDER BY y, region, ptype, hold, first_sale, second_sale, same_struct
         ) TO {_q(str(out / 'pairs_cells.csv'))} (HEADER)
@@ -341,7 +341,8 @@ def build(dvf: list[str], cpi: str, out: Path, memory_limit: str = "10GB", threa
     """)
     con.execute(f"""
         COPY (
-          SELECT region, ptype, q0, q1, count(*) AS n, sum(lr) AS sum_lr, sum(lr * lr) AS sum_lr2
+          SELECT region, ptype, q0, q1, count(*) AS n,
+                 round(sum(lr), 6) AS sum_lr, round(sum(lr * lr), 6) AS sum_lr2
           FROM main GROUP BY ALL ORDER BY region, ptype, q0, q1
         ) TO {_q(str(out / 'pairs_qq.csv'))} (HEADER)
     """)

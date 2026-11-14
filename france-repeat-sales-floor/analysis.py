@@ -299,7 +299,7 @@ def main() -> None:
          f"which rooms, surface or land changed {changed:,} ({pct(changed / kept)})")
     others = {k[6:]: int(v) for k, v in blog.items() if k.startswith("pairs_") and "_then_" in k}
     line("With rooms, surface and land unchanged, by nature of the two sales: " +
-         ", ".join(f"{k} {v:,}" for k, v in sorted(others.items(), key=lambda kv: -kv[1])))
+         ", ".join(f"{k} {v:,}" for k, v in sorted(others.items(), key=lambda kv: (-kv[1], kv[0]))))
     n_main = int(main_cells.n.sum())
     line(f"Main sample: {n_main:,} repeat sales, resales {blog['first_resale_month'][:7]} to "
          f"{blog['last_resale_month'][:7]}; houses {int(main_cells[main_cells.ptype == 'house'].n.sum()):,}, "
