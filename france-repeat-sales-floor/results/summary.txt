@@ -4,8 +4,8 @@ REPEAT SALES IN FRANCE (DVF, 2021-2025): every number used in the article
 [0] Data and matching
 DVF rows 20,382,915; deeds 7,319,609, dated 2021-01-01 to 2025-12-31; ordinary sales 6,803,387, off-plan 405,153, auctions 16,447
 Deeds transferring exactly one dwelling (one house or one flat, any annexes, no shop, one disposition, one price): 4,493,643; with a property key 4,411,987 (houses 2,491,972, flats 1,920,015); dropped as same-day duplicates 8,613
-Consecutive sales of the same key: 255,023; after the time and price filters 187,474; of which rooms, surface or land changed 16,483 (8.8%)
-With rooms, surface and land unchanged, by nature of the two sales: sale_then_sale 166,780, auction_then_sale 2,192, off-plan_then_sale 1,564, sale_then_other 130, off-plan_then_off-plan 118, other_then_sale 117, sale_then_auction 49, sale_then_off-plan 27, auction_then_auction 6, auction_then_other 6
+Consecutive sales of the same key: 255,023; after the time and price filters 187,474; of which rooms, surface or land changed 16,485 (8.8%)
+With rooms, surface and land unchanged, by nature of the two sales: sale_then_sale 166,780, auction_then_sale 2,192, off-plan_then_sale 1,564, sale_then_other 130, off-plan_then_off-plan 118, other_then_sale 117, sale_then_auction 49, sale_then_off-plan 27, auction_then_other 6, auction_then_auction 6
 Main sample: 166,780 repeat sales, resales 2021-07 to 2025-12; houses 90,766, flats 76,014
 By region: Paris 3,429, Inner ring 4,861, Outer Ile-de-France 8,268, Big cities 40,336, Rest of France 107,973, Overseas 1,913
 By holding period: 0.5-1y 17,845, 1-2y 51,041, 2-3y 48,818, 3-4y 35,757, 4y+ 13,319
