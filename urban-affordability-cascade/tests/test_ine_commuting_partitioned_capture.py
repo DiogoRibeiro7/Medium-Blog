@@ -262,6 +262,31 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 ],
             )
 
+    def test_next_three_amp_indices_target_valongo_conde_gaia(self) -> None:
+        """Select fixed DICO 1315–1317 and preserve strict source request bounds."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=13, count=3, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            expected_codes = ["1315", "1316", "1317"]
+            expected_names = ["Valongo", "Vila do Conde", "Vila Nova de Gaia"]
+            self.assertEqual(report["requested_codes"], expected_codes)
+            self.assertEqual(report["capture_count"], 3)
+            self.assertEqual(report["completed_json_captures"], 3)
+            self.assertEqual(
+                [item["municipality"] for item in report["items"]],
+                expected_names,
+            )
+            self.assertEqual(
+                [item["candidate_url"] for item in report["items"]],
+                [
+                    candidate_slice_url(code, dimension="Dim2")
+                    for code in expected_codes
+                ],
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
