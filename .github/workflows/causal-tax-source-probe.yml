@@ -68,6 +68,15 @@ jobs:
             --outcome top1_share_pct \
             --lags 5 --horizon 5 --min-events 5 \
             --output "$RUNNER_TEMP/tax-study/placebo"
+      - name: Audit whole-country deletion influence
+        id: country_influence
+        if: steps.placebo.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.country_influence \
+            --panel "$RUNNER_TEMP/tax-study/panel.csv" \
+            --outcome top1_share_pct \
+            --lags 5 --horizon 5 --min-events 5 \
+            --output "$RUNNER_TEMP/tax-study/country-influence"
       - name: Publish WID values and SHA-256 source manifest
         if: always()
         uses: actions/upload-artifact@v4
@@ -92,5 +101,8 @@ jobs:
             ${{ runner.temp }}/tax-study/placebo/event_time_contrasts.csv
             ${{ runner.temp }}/tax-study/placebo/event_time_summary.csv
             ${{ runner.temp }}/tax-study/placebo/event_study_audit.json
+            ${{ runner.temp }}/tax-study/country-influence/country_deletions.csv
+            ${{ runner.temp }}/tax-study/country-influence/country_influence_summary.csv
+            ${{ runner.temp }}/tax-study/country-influence/country_influence_audit.json
           retention-days: 7
           if-no-files-found: warn

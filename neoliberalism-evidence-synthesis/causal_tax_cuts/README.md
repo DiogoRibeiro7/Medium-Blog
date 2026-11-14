@@ -144,6 +144,30 @@ trends, and outcome-window completeness can reduce the matched sample.
 The audited first live run and fixed-cohort event-time table are available in
 [`results/PRE_TREND_RESULTS_2026-11-13.md`](results/PRE_TREND_RESULTS_2026-11-13.md).
 
+### Whole-country deletion influence
+
+The next diagnostic reruns the entire balanced-cohort event study after
+removing **each country in turn**, from both potential treatment and donor
+pools. It records the effect of country removal on the matched cohort,
+pre-reform leads and post-reform contrasts. A deletion that leaves too few
+events is reported as unavailable, never given a zero effect.
+
+[`COUNTRY_INFLUENCE.md`](COUNTRY_INFLUENCE.md) describes the estimand,
+outputs and assumptions. From the same joined real-data panel:
+
+```bash
+python -m causal_tax_cuts.country_influence \
+  --panel data/tax-study/panel.csv --outcome top1_share_pct \
+  --lags 5 --horizon 5 --min-events 5 \
+  --output data/tax-study/country-influence
+```
+
+Leave-one-country-out ranges are **descriptive sensitivity checks**, not
+bootstrap confidence intervals or a substitute for economic controls.
+The first audited 18-country live result, including the influence of each
+omitted country, is preserved in
+[`results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md`](results/COUNTRY_INFLUENCE_RESULTS_2026-11-13.md).
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
