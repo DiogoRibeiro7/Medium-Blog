@@ -21,15 +21,15 @@ Likelihood ratio, pooled shape against Gumbel at every node: 53.2 (1 df if the n
 
 Nodes ranked by Kristin's return period (pooled shape, with 2025/26):
   lat    lon    Kristin  50-yr   rank  T sep(in)  T sep(ex)  T pool(in) [95% boot] (share inf)  T pool(ex)  T Gumbel
-  39.00  -8.00    15.0    12.8     1        512      15851       2121 [240 to inf] (4%)      11657       304
-  39.50  -8.00    15.7    14.0     1        197        714        522 [118 to >100000] (1%)       1300       144
-  39.50  -9.00    19.0    17.0     1         65        101        514 [112 to >100000] (0%)       1213       174
-  39.50  -7.50    14.2    12.9     1        162        444        450 [105 to >100000] (1%)       1044       133
-  39.00  -7.50    13.6    12.4     1        173        568        373 [93 to 64399] (0%)        817       116
-  38.50  -8.00    13.9    12.8     1        303       8968        313 [84 to 36633] (0%)        663        98
+  39.00  -8.00    15.0    12.8     1        512      15900       2120 [240 to inf] (4%)      11700       304
+  39.50  -8.00    15.7    14.0     1        197        714        523 [118 to >100000] (1%)       1300       144
+  39.50  -9.00    19.0    17.0     1         65        101        514 [112 to >100000] (0%)       1210       174
+  39.50  -7.50    14.2    12.9     1        162        444        450 [105 to >100000] (1%)       1040       133
+  39.00  -7.50    13.6    12.4     1        173        568        373 [93 to 64500] (0%)        817       116
+  38.50  -8.00    13.9    12.8     1        303       8970        313 [84 to 36600] (0%)        663        98
   39.00  -8.50    15.5    14.3     1        151        361        259 [71 to 22400] (0%)        493        92
   39.00  -9.00    15.8    15.1     2         96        164        133 [48 to 2630] (0%)        209        61
-  38.50  -8.50    14.7    14.2     1        293       2651        104 [41 to 1333] (0%)        160        45
+  38.50  -8.50    14.7    14.2     1        293       2650        104 [41 to 1330] (0%)        160        45
   39.50  -8.50    15.2    14.7     3         43         54         99 [35 to 711] (0%)        140        56
   38.75  -9.00    16.0    15.6     2        100        154         84 [33 to 888] (0%)        121        41
   38.50  -7.50    12.2    12.1     2         61         86         61 [28 to 334] (0%)         81        35
@@ -41,20 +41,20 @@ Nodes with pooled return period of at least 10 seasons: with 2025/26 16, without
 Nodes with pooled return period of at least 50 seasons: with 2025/26 12, without 12, Gumbel 9
 Nodes with pooled return period of at least 100 seasons: with 2025/26 9, without 11, Gumbel 5
 Nodes with pooled return period of at least 500 seasons: with 2025/26 3, without 6, Gumbel 0
-Highest node: pooled 2121 against Gumbel 304 (ratio 7.0)
+Highest node: pooled 2120 against Gumbel 304 (ratio 7.0)
 Nodes north of 40.0 N with Kristin above their median season maximum: 0 of 18
 
 2b. Profile-likelihood intervals at the most affected nodes
 -----------------------------------------------------------
 Node 39.00 N -8.00 E (Kristin 15.0 m/s; 50-yr level 13.1, 95% 12.4 to 14.6):
-   with 2025/26: T = 512 (95% profile interval 65 to 21203)
-   without:      T = 15851 (95% profile interval 169 to inf)
+   with 2025/26: T = 512 (95% profile interval 65 to 21200)
+   without:      T = 15900 (95% profile interval 169 to inf)
 Node 39.50 N -8.00 E (Kristin 15.7 m/s; 50-yr level 14.3, 95% 13.5 to 16.4):
    with 2025/26: T = 197 (95% profile interval 36 to 4100)
    without:      T = 714 (95% profile interval 58 to inf)
 Node 39.50 N -9.00 E (Kristin 19.0 m/s; 50-yr level 18.4, 95% 16.7 to 23.3):
    with 2025/26: T = 65 (95% profile interval 19 to 503)
-   without:      T = 101 (95% profile interval 23 to 2062)
+   without:      T = 101 (95% profile interval 23 to 2060)
 
 2c. What including or excluding the trigger does, by simulation
 ---------------------------------------------------------------
@@ -71,18 +71,18 @@ Threshold: each node's 98th percentile of October-March days (8.7 m/s median); s
 Storms per season above the threshold: median 2.71 over nodes
 Extremal index (days above the threshold per storm, inverted): runs 0.75, intervals estimator 0.70 (medians over nodes)
 Pooled GPD shape: xi = -0.122 (season-bootstrap 95% interval -0.197 to -0.065)
-   39.00 N -8.00 E: return period from peaks over threshold 2010, from season maxima 2121
-   39.50 N -8.00 E: return period from peaks over threshold 1056, from season maxima 522
-   39.50 N -9.00 E: return period from peaks over threshold 1315, from season maxima 514
+   39.00 N -8.00 E: return period from peaks over threshold 2010, from season maxima 2120
+   39.50 N -8.00 E: return period from peaks over threshold 1060, from season maxima 523
+   39.50 N -9.00 E: return period from peaks over threshold 1310, from season maxima 514
    39.50 N -7.50 E: return period from peaks over threshold 309, from season maxima 450
    39.00 N -7.50 E: return period from peaks over threshold 475, from season maxima 373
    38.50 N -8.00 E: return period from peaks over threshold 226, from season maxima 313
 
 2e. How much the answer depends on the shape
 --------------------------------------------
-   39.00 N -8.00 E: return period at xi = -0.18: 23413; at xi = -0.10: 2123; at xi = -0.02: 441; Gumbel (xi = 0): 304
-   39.50 N -8.00 E: return period at xi = -0.18: 2818; at xi = -0.10: 523; at xi = -0.02: 187; Gumbel (xi = 0): 144
-   39.50 N -9.00 E: return period at xi = -0.18: 1917; at xi = -0.10: 514; at xi = -0.02: 218; Gumbel (xi = 0): 174
+   39.00 N -8.00 E: return period at xi = -0.18: 23400; at xi = -0.10: 2120; at xi = -0.02: 442; Gumbel (xi = 0): 304
+   39.50 N -8.00 E: return period at xi = -0.18: 2820; at xi = -0.10: 523; at xi = -0.02: 187; Gumbel (xi = 0): 144
+   39.50 N -9.00 E: return period at xi = -0.18: 1920; at xi = -0.10: 514; at xi = -0.02: 218; Gumbel (xi = 0): 174
 
 2f. The record back to 1940
 ---------------------------
@@ -91,15 +91,15 @@ Seasons 1940/41 to 1949/50 added (10); ERA5 before 1950 assimilates far fewer ob
 Nodes where 15 February 1941 beat Kristin: 34 of 38
   south of 40 N: 16 of 20; north: 18 of 18
 Pooled shape with 86 seasons: xi = -0.060
-   39.00 N -8.00 E: Kristin rank 1 of 86; return period 668 (76 seasons: 2121); 15 Feb 1941 here 14.1 m/s
-   39.50 N -8.00 E: Kristin rank 1 of 86; return period 223 (76 seasons: 522); 15 Feb 1941 here 14.3 m/s
+   39.00 N -8.00 E: Kristin rank 1 of 86; return period 668 (76 seasons: 2120); 15 Feb 1941 here 14.1 m/s
+   39.50 N -8.00 E: Kristin rank 1 of 86; return period 223 (76 seasons: 523); 15 Feb 1941 here 14.3 m/s
    39.50 N -9.00 E: Kristin rank 2 of 86; return period 208 (76 seasons: 514); 15 Feb 1941 here 19.1 m/s
    39.50 N -7.50 E: Kristin rank 1 of 86; return period 151 (76 seasons: 450); 15 Feb 1941 here 13.3 m/s
    39.00 N -7.50 E: Kristin rank 1 of 86; return period 186 (76 seasons: 373); 15 Feb 1941 here 13.2 m/s
    38.50 N -8.00 E: Kristin rank 2 of 86; return period 130 (76 seasons: 313); 15 Feb 1941 here 15.1 m/s
 Nodes where 15 February 1941 was the 1940/41 season maximum: 38
 Nodes where 15 February 1941 is the highest of all 86 seasons: 26; Kristin the highest: 4
-Return period of 15 February 1941 under the 86-season fit: highest 7183 at 37.25 N -8.50 E; nodes at 100 or more: 25
+Return period of 15 February 1941 under the 86-season fit: highest 7180 at 37.25 N -8.50 E; nodes at 100 or more: 25
 
 3. Trend in the season maxima (location and scale of the GEV)
 -------------------------------------------------------------
@@ -146,8 +146,8 @@ ERA5 nodes, pooled-shape fit: sigma/mu median 0.105 (nodes 0.089 to 0.128); xi =
   v(1000)/v(50): ERA5 pooled fit median 1.139; same location and scale with xi = 0: 1.224
 Kristin relative to the node's 50-year level (pooled fit), and the return period the annex's
 formula gives to the same ratio:
-  39.00 N -8.00 E: Kristin / v(50) = 1.169; annex return period 440; ERA5 pooled return period 2121
-  39.50 N -8.00 E: Kristin / v(50) = 1.121; annex return period 236; ERA5 pooled return period 522
+  39.00 N -8.00 E: Kristin / v(50) = 1.169; annex return period 440; ERA5 pooled return period 2120
+  39.50 N -8.00 E: Kristin / v(50) = 1.121; annex return period 236; ERA5 pooled return period 523
   39.50 N -9.00 E: Kristin / v(50) = 1.116; annex return period 224; ERA5 pooled return period 514
   39.50 N -7.50 E: Kristin / v(50) = 1.101; annex return period 184; ERA5 pooled return period 450
   39.00 N -7.50 E: Kristin / v(50) = 1.097; annex return period 174; ERA5 pooled return period 373
@@ -165,7 +165,7 @@ Portalegre, 590 m                  zone A: 41 seasons 1975/76-2021/22; own xi -0
 Lisbon, Gago Coutinho (urban)      zone A: 35 seasons 1984/85-2021/22; own xi -0.25, sigma/mu 0.25; 50-yr synoptic 18.3 m/s (regional shape 20.0; sampling-corrected 22.3); record 18.5 in 1985/86; basic velocity 27
 Vila Real, 479 m                   zone A: 33 seasons 1977/78-2021/22; own xi -0.28, sigma/mu 0.25; 50-yr synoptic 14.5 m/s (regional shape 16.2; sampling-corrected 18.1); record 15.4 in 1979/80; basic velocity 27
 Monte Real air base                zone A: 19 seasons 2006/07-2025/26; own xi +0.15, sigma/mu 0.19; 50-yr synoptic 25.1 m/s (regional shape 22.3; sampling-corrected 25.0); record 27.0 in 2025/26; basic velocity 27
-Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.3 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
+Montijo air base, Tagus estuary    zone A: 20 seasons 2006/07-2025/26; own xi -0.60, sigma/mu 0.20; 50-yr synoptic 16.4 m/s (regional shape 18.5; sampling-corrected 20.7); record 16.0 in 2006/07; basic velocity 27
 Station days dropped by the ERA5 cross-check (>= 20 m/s and > 2.2 x the cell): 10
    portalegre  1982-02-17: station 26.0 (synoptic) / 26.0 (all), ERA5 cell 3.1, lowest pressure 1012 hPa
    portalegre  1984-03-28: station 31.4 (synoptic) / 31.4 (all), ERA5 cell 8.1, lowest pressure 1016 hPa
