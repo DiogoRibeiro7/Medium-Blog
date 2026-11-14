@@ -79,4 +79,7 @@ python wind_extremes.py > results/output.txt
 workflow `storm-wind-extremes-portugal.yml` reruns everything; on the working branch it
 commits `results/output.txt` and the figures, and on `main` and pull requests it checks
 that the output is reproduced exactly. The numbers quoted in the article come from that
-run.
+run. To make reruns on different runners agree to the printed digits, every fit converges
+to tight tolerances and is rounded to seven decimals, a fit whose shape ends on its bound
+is refitted with the shape held there, and return periods are printed to three
+significant figures.
