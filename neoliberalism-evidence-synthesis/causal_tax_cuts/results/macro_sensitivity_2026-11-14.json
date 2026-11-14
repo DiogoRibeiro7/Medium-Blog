@@ -1,0 +1,268 @@
+{
+  "common_matched_event_ids": [
+    {
+      "country": "AUS",
+      "reform_year": 1987
+    },
+    {
+      "country": "AUT",
+      "reform_year": 1989
+    },
+    {
+      "country": "BEL",
+      "reform_year": 1989
+    },
+    {
+      "country": "CAN",
+      "reform_year": 1972
+    },
+    {
+      "country": "DEU",
+      "reform_year": 2001
+    },
+    {
+      "country": "DEU",
+      "reform_year": 2008
+    },
+    {
+      "country": "FIN",
+      "reform_year": 1986
+    },
+    {
+      "country": "GBR",
+      "reform_year": 1979
+    },
+    {
+      "country": "GBR",
+      "reform_year": 1988
+    },
+    {
+      "country": "GBR",
+      "reform_year": 2003
+    },
+    {
+      "country": "ITA",
+      "reform_year": 1989
+    },
+    {
+      "country": "ITA",
+      "reform_year": 1998
+    },
+    {
+      "country": "JPN",
+      "reform_year": 1999
+    },
+    {
+      "country": "NLD",
+      "reform_year": 1990
+    },
+    {
+      "country": "NLD",
+      "reform_year": 2001
+    },
+    {
+      "country": "NOR",
+      "reform_year": 1992
+    },
+    {
+      "country": "NZL",
+      "reform_year": 1987
+    },
+    {
+      "country": "SWE",
+      "reform_year": 1990
+    },
+    {
+      "country": "USA",
+      "reform_year": 1982
+    }
+  ],
+  "comparison_window": "t-3 through t-1 for all configurations",
+  "fixed_outcome_slope_unit": "top-1% income-share percentage points per year",
+  "fixed_smd_scale": "population SD of per-country pre-3 means for all WDI-observed countries at the event date",
+  "frozen_reference_check": "same_source_and_reference_estimates_reproduced",
+  "grid": [
+    {
+      "lags": 3,
+      "max_donors": 3,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.4810452731963355,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.6638676803142189,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.28728070175438597,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.6652800492198881,
+      "mean_reference_donor_jaccard_common": 0.5268170426065163,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 22,
+      "n_macro_complete_donor_event_pairs": 192,
+      "n_matched_events": 21,
+      "n_selected_donor_event_pairs": 61,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 3,
+      "max_donors": 5,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.5356363221009762,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.7991519229537095,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.28936842105263166,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.7016430514814157,
+      "mean_reference_donor_jaccard_common": 0.6904761904761905,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 22,
+      "n_macro_complete_donor_event_pairs": 192,
+      "n_matched_events": 21,
+      "n_selected_donor_event_pairs": 99,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 3,
+      "max_donors": 7,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.615476556787754,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.8681001674058829,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.2597368421052632,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.7686697142650857,
+      "mean_reference_donor_jaccard_common": 0.6441102756892231,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 22,
+      "n_macro_complete_donor_event_pairs": 192,
+      "n_matched_events": 21,
+      "n_selected_donor_event_pairs": 137,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 5,
+      "max_donors": 3,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.7145232482127352,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.7501271587714508,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.3019298245614034,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.644866350516741,
+      "mean_reference_donor_jaccard_common": 0.6210526315789473,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 21,
+      "n_macro_complete_donor_event_pairs": 174,
+      "n_matched_events": 20,
+      "n_selected_donor_event_pairs": 58,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 5,
+      "max_donors": 5,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.6835284535562266,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.8076091533102266,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.2932105263157894,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.688471508450616,
+      "mean_reference_donor_jaccard_common": 1.0,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 21,
+      "n_macro_complete_donor_event_pairs": 174,
+      "n_matched_events": 20,
+      "n_selected_donor_event_pairs": 94,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 5,
+      "max_donors": 7,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.67032844339233,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.8636744350629323,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.2897368421052632,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.7562258686963225,
+      "mean_reference_donor_jaccard_common": 0.7293233082706767,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 21,
+      "n_macro_complete_donor_event_pairs": 174,
+      "n_matched_events": 20,
+      "n_selected_donor_event_pairs": 130,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 7,
+      "max_donors": 3,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.7386702158425201,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.8320814036349247,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.30201754385964913,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.714036533543467,
+      "mean_reference_donor_jaccard_common": 0.5614035087719298,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 20,
+      "n_macro_complete_donor_event_pairs": 149,
+      "n_matched_events": 19,
+      "n_selected_donor_event_pairs": 54,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 7,
+      "max_donors": 5,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.6063068560254701,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.921293441941328,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.2738421052631579,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.7156990341383104,
+      "mean_reference_donor_jaccard_common": 0.7042606516290727,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 20,
+      "n_macro_complete_donor_event_pairs": 149,
+      "n_matched_events": 19,
+      "n_selected_donor_event_pairs": 88,
+      "n_treated_countries": 14
+    },
+    {
+      "lags": 7,
+      "max_donors": 7,
+      "mean_abs_fixed_pre3_gdp_smd_common": 0.6223071982544955,
+      "mean_abs_fixed_pre3_inflation_smd_common": 0.93548256202502,
+      "mean_abs_fixed_pre3_outcome_slope_gap_common": 0.25578947368421057,
+      "mean_abs_fixed_pre3_trade_smd_common": 0.8467499744146822,
+      "mean_reference_donor_jaccard_common": 0.6177944862155389,
+      "n_common_cohort_events": 19,
+      "n_history_eligible_events": 20,
+      "n_macro_complete_donor_event_pairs": 149,
+      "n_matched_events": 19,
+      "n_selected_donor_event_pairs": 122,
+      "n_treated_countries": 14
+    }
+  ],
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "lag_values": [
+    3,
+    5,
+    7
+  ],
+  "limitations": [
+    "No treatment effect or uncertainty estimate is calculated.",
+    "The common cohort is selected by meeting every grid specification; it is not a representative random subsample.",
+    "The fixed covariate evaluation window overlaps selection features and is not an external validation set.",
+    "Changing lag length changes historic treatment constraints and donor eligibility, not just matching similarity.",
+    "Excluding donors that receive a future reform can induce post-baseline selection bias.",
+    "Overlapping events, country dependence and unmeasured confounders remain unresolved."
+  ],
+  "max_donors_values": [
+    3,
+    5,
+    7
+  ],
+  "max_horizon_fixed": 5,
+  "missing_smd_rule": "zero cross-country variance gives undefined, not zero",
+  "n_common_matched_events": 19,
+  "n_grid_configurations": 9,
+  "n_original_events": 29,
+  "reference_audit_counts": {
+    "n_matched_events": 20,
+    "n_original_treated_events": 29,
+    "n_selected_donor_event_pairs": 94
+  },
+  "reference_matches_prior_audit_by_construction": true,
+  "reference_rule": {
+    "lags": 5,
+    "max_donors": 5
+  },
+  "source_archive_sha256": {
+    "FP.CPI.TOTL.ZG": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+    "NE.TRD.GNFS.ZS": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+    "NY.GDP.PCAP.KD.ZG": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+    "SL.UEM.TOTL.ZS": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f"
+  },
+  "source_last_updated": {
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "NE.TRD.GNFS.ZS": "2026-11-11",
+    "NY.GDP.PCAP.KD.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11"
+  },
+  "status": "pre_reform_sensitivity_only_no_adjusted_att_or_inference"
+}

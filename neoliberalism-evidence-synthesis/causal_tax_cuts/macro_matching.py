@@ -100,7 +100,7 @@ def read_macro_controls(path: Path, expected_keys: set[Key]) -> dict[Key, MacroV
 def pre_reform_means(
     controls: dict[Key, MacroValues], country: str, year: int, lags: int
 ) -> np.ndarray | None:
-    """Return just three five-year pre-treatment means, or None if incomplete."""
+    """Return three pre-treatment means over the requested lags, or None."""
     measurements = [controls.get((country, year - lag)) for lag in range(1, lags + 1)]
     if any(row is None or any(value is None for value in row) for row in measurements):
         return None

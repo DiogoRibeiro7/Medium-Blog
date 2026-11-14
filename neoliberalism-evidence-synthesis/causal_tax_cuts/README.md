@@ -209,6 +209,28 @@ python -m causal_tax_cuts.macro_matching \
 The first real-data results and limitations are documented in
 [`results/MACRO_MATCHING_RESULTS_2026-11-14.md`](results/MACRO_MATCHING_RESULTS_2026-11-14.md).
 
+### Matching design sensitivity: fixed cohort and evaluation window
+
+[`MACRO_SENSITIVITY.md`](MACRO_SENSITIVITY.md) records a declared 3×3 grid
+of **3/5/7 pre-reform history years × 3/5/7 selected donors**. It uses
+the existing macro-matching function without replacing its reference rule.
+It reports event eligibility for every specification, the reforms supported
+by *all nine* configurations, donor-set overlap with the five/five reference,
+and income-share trend and WDI balance measured over the **same final three
+pre-reform years**. This is not a model selection or new effect estimation.
+
+```bash
+python -m causal_tax_cuts.macro_sensitivity \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --provenance data/wdi-source/world_bank_provenance.json \
+  --frozen-reference causal_tax_cuts/results/macro_balance_2026-11-14.json \
+  --lags 3 5 7 --donor-caps 3 5 7 \
+  --output-dir data/tax-study/macro-sensitivity
+```
+
+The first source-matched report and frozen machine-readable grid are in
+[`results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md`](results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md).
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash

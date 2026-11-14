@@ -93,6 +93,7 @@ publishes them as the seven-day `pre-reform-macro-balance` artifact.
 
 The first checked results are in
 [`results/MACRO_MATCHING_RESULTS_2026-11-14.md`](results/MACRO_MATCHING_RESULTS_2026-11-14.md).
-The next methodological task is a sensitivity grid over lag length, donor
-cap, coverage and outcome-pretrend balance, followed by proper identification
-and uncertainty design *before* publishing any adjusted ATT.
+The follow-on [lag/donor-cap sensitivity grid](MACRO_SENSITIVITY.md) now
+measures the event-cohort changes and common-cohort outcome balance when
+these choices vary. A defensible identification and uncertainty design is
+still required *before* publishing any adjusted ATT.
