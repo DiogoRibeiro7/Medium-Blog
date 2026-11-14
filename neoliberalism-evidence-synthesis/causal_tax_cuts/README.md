@@ -186,6 +186,8 @@ It preserves all outcome rows, records exact WDI API response checksums,
 reports each indicator's missingness, and counts reforms with five available
 pre-reform years of the three core controls. The resulting complete-case
 audit must precede any covariate-adjusted estimate.
+The first verified World Bank archive vintage and joint coverage figures are
+frozen in [`results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md`](results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md).
 
 1. Download the authors' file via the link above. Inspect the true headings:
 

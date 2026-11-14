@@ -10,9 +10,14 @@ statistical specification.
 ## Published primary data and variable definitions
 
 The [World Bank World Development Indicators API](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation)
-provides public annual observations. The importer requests the official `source=2`
-database through its [documented API query format](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures)
+provides public annual observations. The importer checks the API's returned
+`sourceid=2` against its [documented response format](https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures)
 for the paper's exact **18 countries, 1965–2015**. No API key is needed.
+The current World Bank service intermittently times out on semicolon-separated
+multi-country requests and `date`/`source` JSON query filters. Instead, the
+importer downloads the four official **indicator CSV ZIP archives** concurrently
+using `downloadformat=csv`, validates the included `DS2` data and source
+metadata, and filters countries and years locally. Each original ZIP is hashed.
 
 | Output column | World Bank series | Unit | Intended use |
 | --- | --- | --- | --- |
@@ -43,9 +48,10 @@ python -m causal_tax_cuts.world_bank \
 
 1. `world_bank_controls.csv`: **918 country-years**, four measured macro
    columns; absent values are empty cells, not zeros or interpolations.
-2. `world_bank_provenance.json`: requested exact API URLs, retrieval timestamp,
-   SHA-256 of every original JSON response, its size, observed counts, and
-   country-level missingness. This is a *live* extraction, not a frozen vintage.
+2. `world_bank_provenance.json`: the four exact official indicator ZIP URLs,
+   retrieval timestamp, SHA-256 of each original archive, archive size,
+   source update date, observed counts and country-level missingness. This is a *live*
+   extraction, not a frozen vintage.
 3. `outcome_panel_with_macro.csv` (with `--panel`): the entire original
    outcome/policy panel, joined by exact ISO3/year, with blank macro gaps.
 4. `macro_overlap_audit.json` (with `--panel`): original outcome and event
@@ -76,3 +82,5 @@ nonfinite or misidentified observations.
 
 The next PR should evaluate pre-treatment balance and sample attrition under
 declared lag/missingness rules before reporting any adjusted point estimates.
+The first audited source-vintage and panel-overlap results are preserved in
+[`results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md`](results/WDI_MACRO_COVERAGE_RESULTS_2026-11-14.md).

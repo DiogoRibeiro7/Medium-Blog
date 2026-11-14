@@ -1,7 +1,7 @@
-"""Download official WDI macro series and audit their overlap with tax-cut data.
+"""Ingest the World Bank's official WDI CSV archives and audit tax-cut coverage.
 
-The first version is deliberately an ingestion and missingness audit, not an
-adjusted causal estimator. A null observation stays null in every output.
+This module reports observable macroeconomic coverage only; it does not change
+the study's existing event cohort, estimator or claims about causal effects.
 """
 
 from __future__ import annotations
@@ -9,13 +9,18 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import io
 import json
 import math
+import time
+import zipfile
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from pathlib import Path
 from typing import TypeAlias
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from .prepare import PAPER_COUNTRIES
@@ -23,12 +28,13 @@ from .prepare import PAPER_COUNTRIES
 Key: TypeAlias = tuple[str, int]
 START_YEAR = 1965
 END_YEAR = 2015
-MAX_RESPONSE_BYTES = 8_000_000
+MAX_ARCHIVE_BYTES = 5_000_000
+MAX_DATA_MEMBER_BYTES = 3_000_000
 
 
 @dataclass(frozen=True, slots=True)
 class Indicator:
-    """An exact World Development Indicators series and output-column name."""
+    """A documented WDI series and stable local column name."""
 
     column: str
     code: str
@@ -49,20 +55,22 @@ INDICATORS: tuple[Indicator, ...] = (
         "Unemployment, total (% of total labor force) (modeled ILO estimate)",
     ),
 )
-CORE_COLUMNS: tuple[str, ...] = tuple(ind.column for ind in INDICATORS[:3])
-ALL_COLUMNS: tuple[str, ...] = tuple(ind.column for ind in INDICATORS)
+CORE_COLUMNS: tuple[str, ...] = tuple(indicator.column for indicator in INDICATORS[:3])
+ALL_COLUMNS: tuple[str, ...] = tuple(indicator.column for indicator in INDICATORS)
 
 
 @dataclass(frozen=True, slots=True)
 class SeriesAudit:
-    """Verifiable metadata for one original API response, not its raw contents."""
+    """Provenance and coverage from one unmodified official WDI ZIP archive."""
 
     column: str
     indicator_code: str
     source_url: str
     source_sha256: str
     source_bytes: int
-    n_api_rows: int
+    source_csv_member: str
+    source_last_updated: str
+    n_paper_country_rows: int
     n_observed_values: int
     n_missing_values: int
     missing_by_country: dict[str, int]
@@ -70,7 +78,7 @@ class SeriesAudit:
 
 @dataclass(frozen=True, slots=True)
 class PanelRow:
-    """A validated source-panel row with its observed policy exposure."""
+    """One previously audited country-year, policy and income-share observation."""
 
     country: str
     year: int
@@ -78,99 +86,124 @@ class PanelRow:
     top1_share_pct: float
 
 
-def indicator_url(
-    indicator: Indicator,
-    *,
-    countries: frozenset[str] = PAPER_COUNTRIES,
-    start_year: int = START_YEAR,
-    end_year: int = END_YEAR,
-) -> str:
-    """Request WDI source 2 for an explicit ISO3 and annual date interval."""
-    if (
-        not countries
-        or not countries.issubset(PAPER_COUNTRIES)
-        or not 1900 <= start_year <= end_year <= 2100
-        or indicator not in INDICATORS
-    ):
-        raise ValueError("Invalid WDI indicator, paper-country sample or date interval")
-    country_path = ";".join(sorted(countries))
+def archive_url(indicator: Indicator) -> str:
+    """Use the World Bank's documented, stable ZIP/CSV bulk export endpoint."""
+    if indicator not in INDICATORS:
+        raise ValueError("Unsupported WDI indicator")
     return (
-        f"https://api.worldbank.org/v2/country/{country_path}/indicator/"
-        f"{indicator.code}?format=json&source=2&date={start_year}:{end_year}"
-        "&per_page=10000"
+        f"https://api.worldbank.org/v2/en/indicator/{indicator.code}?downloadformat=csv"
     )
 
 
-def parse_wdi_response(
+def parse_wdi_archive(
     content: bytes,
     *,
     indicator: Indicator,
     countries: frozenset[str] = PAPER_COUNTRIES,
     start_year: int = START_YEAR,
     end_year: int = END_YEAR,
-) -> tuple[dict[Key, float], int]:
-    """Validate API pagination, country/year identifiers, nulls and uniqueness.
+) -> tuple[dict[Key, float], str, str, int]:
+    """Validate the original ZIP/CSV and select only the declared study years.
 
-    Missing API records and explicit JSON nulls both remain absent from the
-    numeric mapping; they are never interpreted as measured zeros.
+    The archive contains country and indicator metadata CSVs alongside one
+    source-2 measurement CSV. Never extract archive paths to the filesystem.
+    Empty source cells are omitted; numeric zeros are genuine measurements.
     """
-    if not 1900 <= start_year <= end_year <= 2100 or not countries:
-        raise ValueError("Invalid observation window or countries")
-    try:
-        document = json.loads(content.decode("utf-8-sig"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
-        raise ValueError("World Bank did not return valid JSON") from exc
     if (
-        not isinstance(document, list)
-        or len(document) != 2
-        or not isinstance(document[0], dict)
-        or not isinstance(document[1], list)
+        indicator not in INDICATORS
+        or not countries
+        or not countries.issubset(PAPER_COUNTRIES)
+        or not 1900 <= start_year <= end_year <= 2100
     ):
-        raise ValueError("Unexpected World Bank API envelope or API error")
-    metadata, records = document
+        raise ValueError("Invalid WDI indicator, countries or study interval")
+    if not 0 < len(content) <= MAX_ARCHIVE_BYTES:
+        raise ValueError("WDI source archive has an invalid size")
     try:
-        page = int(metadata["page"])
-        pages = int(metadata["pages"])
-        total = int(metadata["total"])
-    except (KeyError, TypeError, ValueError) as exc:
-        raise ValueError("World Bank response lacks valid pagination") from exc
-    if page != 1 or pages != 1 or total != len(records):
-        raise ValueError("World Bank response is truncated or paginated")
+        with zipfile.ZipFile(io.BytesIO(content), mode="r") as archive:
+            matching = [
+                member
+                for member in archive.infolist()
+                if member.filename.startswith(f"API_{indicator.code}_DS2_en_csv_")
+                and member.filename.endswith(".csv")
+                and not member.is_dir()
+            ]
+            if len(matching) != 1:
+                raise ValueError("WDI ZIP lacks one unambiguous source-2 CSV")
+            member = matching[0]
+            if member.file_size > MAX_DATA_MEMBER_BYTES:
+                raise ValueError("WDI uncompressed CSV exceeds the size limit")
+            # zipfile checks CRC as it reads; no path is extracted or trusted.
+            raw_csv = archive.read(member)
+    except (zipfile.BadZipFile, zipfile.LargeZipFile, RuntimeError) as exc:
+        raise ValueError("Invalid or corrupt official WDI ZIP archive") from exc
+    try:
+        source = io.StringIO(raw_csv.decode("utf-8-sig"), newline="")
+    except UnicodeDecodeError as exc:
+        raise ValueError("WDI CSV is not valid UTF-8") from exc
+    rows = csv.reader(source)
+    try:
+        source_line = next(rows)
+        blank_one = next(rows)
+        revision_line = next(rows)
+        blank_two = next(rows)
+        headings = next(rows)
+    except StopIteration as exc:
+        raise ValueError("WDI CSV is missing its published header") from exc
+    if (
+        source_line[:2] != ["Data Source", "World Development Indicators"]
+        or blank_one
+        or revision_line[:1] != ["Last Updated Date"]
+        or len(revision_line) < 2
+        or blank_two
+        or headings[:4]
+        != ["Country Name", "Country Code", "Indicator Name", "Indicator Code"]
+    ):
+        raise ValueError("Unexpected WDI data-source metadata or CSV columns")
+    last_updated = revision_line[1]
+    try:
+        date.fromisoformat(last_updated)
+    except ValueError as exc:
+        raise ValueError("Invalid WDI source last-updated date") from exc
+    years = [str(year) for year in range(start_year, end_year + 1)]
+    if len(headings) != len(set(headings)) or not set(years).issubset(headings):
+        raise ValueError("WDI source CSV does not cover the requested annual window")
 
     values: dict[Key, float] = {}
-    encountered: set[Key] = set()
-    for row_index, record in enumerate(records, start=1):
-        if not isinstance(record, dict) or not isinstance(
-            record.get("indicator"), dict
-        ):
-            raise TypeError(f"Invalid WDI observation #{row_index}")
-        if record["indicator"].get("id") != indicator.code:
-            raise ValueError(f"Wrong WDI indicator at observation #{row_index}")
-        country = record.get("countryiso3code")
-        try:
-            year = int(record["date"])
-        except (KeyError, TypeError, ValueError) as exc:
-            raise ValueError(f"Invalid WDI year at observation #{row_index}") from exc
-        if country not in countries or not start_year <= year <= end_year:
-            raise ValueError(f"Unexpected WDI country/year: {country}, {year}")
-        key = (country, year)
-        if key in encountered:
-            raise ValueError(f"Duplicated WDI country-year for {indicator.code}: {key}")
-        encountered.add(key)
-        measurement = record.get("value")
-        if measurement is None:
-            continue
-        if isinstance(measurement, bool) or not isinstance(measurement, (float, int)):
-            raise TypeError(f"Non-numeric WDI value for {indicator.code} at {key}")
-        value = float(measurement)
-        if not math.isfinite(value):
-            raise ValueError(f"Non-finite WDI value for {indicator.code} at {key}")
-        if indicator.column == "unemployment_pct_labor" and not 0 <= value <= 100:
-            raise ValueError(f"Unemployment percentage outside 0–100 at {key}")
-        values[key] = value
+    observed_countries: set[str] = set()
+    for row_index, row in enumerate(
+        csv.DictReader(source, fieldnames=headings), start=6
+    ):
+        country = row.get("Country Code")
+        if country not in countries:
+            continue  # Other World Bank countries and aggregates are not the paper sample.
+        if country in observed_countries:
+            raise ValueError(f"Duplicated WDI country row: {country}")
+        observed_countries.add(country)
+        if row.get("Indicator Code") != indicator.code:
+            raise ValueError(f"Wrong WDI series for {country} on CSV row {row_index}")
+        for year in range(start_year, end_year + 1):
+            key = (country, year)
+            original = row.get(str(year))
+            if original is None:
+                raise ValueError(f"Missing WDI year column at {key}")
+            if not original.strip():
+                continue
+            try:
+                value = float(original)
+            except ValueError as exc:
+                raise ValueError(f"Invalid numeric WDI value at {key}") from exc
+            if not math.isfinite(value):
+                raise ValueError(f"Non-finite WDI value at {key}")
+            if indicator.column == "unemployment_pct_labor" and not 0 <= value <= 100:
+                raise ValueError(f"Invalid unemployment percentage at {key}")
+            values[key] = value
+    if observed_countries != countries:
+        raise ValueError(
+            f"WDI source lacks paper countries: {sorted(countries - observed_countries)}"
+        )
     if not values:
-        raise ValueError(f"WDI returned no observed values for {indicator.code}")
-    return values, len(encountered)
+        raise ValueError(f"No observed WDI values for {indicator.code}")
+    return values, member.filename, last_updated, len(observed_countries)
 
 
 def download_indicator(
@@ -179,20 +212,30 @@ def download_indicator(
     countries: frozenset[str] = PAPER_COUNTRIES,
     start_year: int = START_YEAR,
     end_year: int = END_YEAR,
-    timeout_seconds: int = 45,
+    timeout_seconds: int = 30,
+    attempts: int = 3,
 ) -> tuple[dict[Key, float], SeriesAudit]:
-    """Download bounded official JSON, hash its bytes and audit all missing years."""
-    url = indicator_url(
-        indicator, countries=countries, start_year=start_year, end_year=end_year
-    )
+    """Fetch a bounded WDI ZIP with retries and a SHA-256 of its exact bytes."""
+    if attempts < 1 or timeout_seconds < 1:
+        raise ValueError("Retry count and timeout must be positive")
+    url = archive_url(indicator)
     request = Request(url, headers={"User-Agent": "research-audit/1.0 WDI public data"})
-    with urlopen(request, timeout=timeout_seconds) as response:
-        if "html" in response.headers.get("Content-Type", "").lower():
-            raise ValueError("World Bank served HTML instead of a JSON payload")
-        content = response.read(MAX_RESPONSE_BYTES + 1)
-    if len(content) > MAX_RESPONSE_BYTES:
-        raise ValueError("WDI source payload exceeds the configured size limit")
-    values, n_api_rows = parse_wdi_response(
+    for attempt in range(attempts):
+        try:
+            with urlopen(request, timeout=timeout_seconds) as response:
+                if "html" in response.headers.get("Content-Type", "").lower():
+                    raise ValueError("WDI endpoint served HTML instead of CSV ZIP")
+                content = response.read(MAX_ARCHIVE_BYTES + 1)
+            break
+        except (HTTPError, URLError, TimeoutError) as exc:
+            if isinstance(exc, HTTPError) and exc.code not in {429, 502, 503, 504}:
+                raise
+            if attempt == attempts - 1:
+                raise RuntimeError(
+                    f"WDI {indicator.code}: exhausted {attempts} official ZIP requests"
+                ) from exc
+            time.sleep(min(2**attempt, 4))
+    values, member, last_updated, n_country_rows = parse_wdi_archive(
         content,
         indicator=indicator,
         countries=countries,
@@ -211,7 +254,9 @@ def download_indicator(
         source_url=url,
         source_sha256=hashlib.sha256(content).hexdigest(),
         source_bytes=len(content),
-        n_api_rows=n_api_rows,
+        source_csv_member=member,
+        source_last_updated=last_updated,
+        n_paper_country_rows=n_country_rows,
         n_observed_values=len(values),
         n_missing_values=sum(missing_by_country.values()),
         missing_by_country=missing_by_country,
@@ -219,7 +264,7 @@ def download_indicator(
 
 
 def read_outcome_panel(path: Path) -> list[PanelRow]:
-    """Read the already-audited WID/policy panel without editing its cohort."""
+    """Read the existing WID/policy panel without editing its cohort."""
     required = {"country", "year", "treated", "top1_share_pct"}
     rows: list[PanelRow] = []
     encountered: set[Key] = set()
@@ -260,7 +305,7 @@ def coverage_audit(
     *,
     lag_years: int = 5,
 ) -> dict[str, object]:
-    """Count complete cases, event-year loss and only pre-treatment histories."""
+    """Count complete cases, event-year loss and pre-treatment macro histories."""
     if lag_years < 1 or set(values) != set(ALL_COLUMNS):
         raise ValueError("Expected all four WDI series and positive lag years")
     events = [item for item in panel if item.treated == 1]
@@ -277,8 +322,7 @@ def coverage_audit(
     core_events = [
         row for row in events if complete((row.country, row.year), CORE_COLUMNS)
     ]
-    # Lagged covariates are used exclusively before reform year t; availability
-    # in year t or later is not a prerequisite for a valid matching history.
+    # Matching uses only years t-1 through t-5, not the event year or future.
     lagged_events = [
         row
         for row in events
@@ -325,9 +369,13 @@ def write_results(
     end_year: int,
     panel: list[PanelRow] | None = None,
 ) -> None:
-    """Write complete country/year grids, provenance and optional panel overlap."""
-    if set(values) != set(ALL_COLUMNS) or len(audits) != len(INDICATORS):
-        raise ValueError("Expected the four explicitly documented WDI series")
+    """Persist a complete grid, original archive provenance and panel overlap."""
+    if (
+        set(values) != set(ALL_COLUMNS)
+        or {audit.column for audit in audits} != set(ALL_COLUMNS)
+        or len(audits) != len(INDICATORS)
+    ):
+        raise ValueError("Expected one audited WDI ZIP per declared indicator")
     output_dir.mkdir(parents=True, exist_ok=True)
     fields = ["country", "year", *ALL_COLUMNS]
     with (output_dir / "world_bank_controls.csv").open(
@@ -350,16 +398,16 @@ def write_results(
                         },
                     }
                 )
-    manifest = {
+    manifest: dict[str, object] = {
         "status": "official_world_bank_wdi_live_data_not_frozen_vintage",
         "downloaded_at_utc": datetime.now(UTC).isoformat(),
-        "publisher": "World Bank World Development Indicators (source=2)",
+        "publisher": "World Bank World Development Indicators (DS2)",
         "country_sample": sorted(PAPER_COUNTRIES),
         "study_years": [start_year, end_year],
         "core_matching_candidates": list(CORE_COLUMNS),
         "additional_coverage_only": ["unemployment_pct_labor"],
         "source_data_are_not_imputed": True,
-        "series": [asdict(audit) for audit in audits],
+        "series": [asdict(audit) for audit in sorted(audits, key=lambda a: a.column)],
     }
     (output_dir / "world_bank_provenance.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
@@ -397,7 +445,7 @@ def write_results(
 
 
 def main() -> None:
-    """Fetch four official annual WDI controls and report missingness."""
+    """Download four independent official WDI ZIP archives and audit coverage."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--panel", type=Path, help="Optional existing WID/tax-cut CSV")
@@ -408,16 +456,28 @@ def main() -> None:
         parser.error("Year range must fall within the 1965–2015 study period")
     values: dict[str, dict[Key, float]] = {}
     audits: list[SeriesAudit] = []
-    for indicator in INDICATORS:
-        observations, audit = download_indicator(
-            indicator, start_year=arguments.start_year, end_year=arguments.end_year
-        )
-        values[indicator.column] = observations
-        audits.append(audit)
-        print(
-            f"WDI {indicator.code}: {audit.n_observed_values} observed; "
-            f"{audit.n_missing_values} missing; SHA256={audit.source_sha256}"
-        )
+    # Four source-independent downloads take less time than the unstable
+    # multi-country JSON endpoint and retain exact original archive checksums.
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        jobs = {
+            executor.submit(
+                download_indicator,
+                indicator,
+                start_year=arguments.start_year,
+                end_year=arguments.end_year,
+            ): indicator
+            for indicator in INDICATORS
+        }
+        for task in as_completed(jobs):
+            indicator = jobs[task]
+            observations, audit = task.result()
+            values[indicator.column] = observations
+            audits.append(audit)
+            print(
+                f"WDI {indicator.code}: {audit.n_observed_values} observed; "
+                f"{audit.n_missing_values} missing; SHA256={audit.source_sha256}",
+                flush=True,
+            )
     panel = read_outcome_panel(arguments.panel) if arguments.panel else None
     write_results(
         arguments.output_dir,
