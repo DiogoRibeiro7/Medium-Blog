@@ -231,6 +231,30 @@ python -m causal_tax_cuts.macro_sensitivity \
 The first source-matched report and frozen machine-readable grid are in
 [`results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md`](results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md).
 
+### Future tax cuts among donors and macro support (no adjusted ATT)
+
+[`DONOR_SUPPORT.md`](DONOR_SUPPORT.md) evaluates an identification problem
+left unresolved by the matching grid: donors are excluded when they
+themselves experience a major cut during follow-up. With the full observed
+`t-5..t+5` income-share window and pre-reform WDI histories held fixed,
+the audit counts eligible donors before the **future-reform** restriction
+and at horizons zero through five. It also tests the treated macro profile
+against each donor variable's range and records nearest-donor distances
+on one fixed pre-censoring scale. These are limited, descriptive support
+checks, not a joint positivity test or new causal effect.
+
+```bash
+python -m causal_tax_cuts.donor_support \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --provenance data/wdi-source/world_bank_provenance.json \
+  --output-dir data/tax-study/donor-support
+```
+
+The first source-backed audit and its frozen JSON are in
+[`results/DONOR_SUPPORT_RESULTS_2026-11-15.md`](results/DONOR_SUPPORT_RESULTS_2026-11-15.md).
+The source-probe Action also uploads event- and donor-level diagnostics as
+`tax-cut-donor-support` for seven days.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
