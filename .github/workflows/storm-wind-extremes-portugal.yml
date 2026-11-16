@@ -1,0 +1,91 @@
+name: Reproduce storm-wind-extremes-portugal
+
+on:
+  push:
+    branches: [main, storm-wind-extremes-portugal]
+    paths:
+      - 'storm-wind-extremes-portugal/wind_extremes.py'
+      - 'storm-wind-extremes-portugal/evtlib.py'
+      - 'storm-wind-extremes-portugal/requirements.txt'
+      - 'storm-wind-extremes-portugal/data/kristin_gusts.csv'
+      - '.github/workflows/storm-wind-extremes-portugal.yml'
+  pull_request:
+    paths:
+      - 'storm-wind-extremes-portugal/**'
+      - '.github/workflows/storm-wind-extremes-portugal.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: storm-wind-extremes-portugal-reproduce-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: bash
+        working-directory: storm-wind-extremes-portugal
+    env:
+      MPLBACKEND: Agg
+    steps:
+      # The ERA5 wind and the station records are read from the sibling project's data folder.
+      - name: Check out this project and the sibling data
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+          sparse-checkout: |
+            storm-wind-extremes-portugal
+            storm-clustering-portugal/data
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: storm-wind-extremes-portugal/requirements.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Tests of the extreme value tools and the download helpers
+        run: python -m unittest discover -s tests -p "test_*.py"
+
+      - name: Rerun the analysis
+        run: |
+          mkdir -p results
+          python wind_extremes.py > results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in 01_kristin_return_periods 02_return_level_and_profile 03_shape_sensitivity 04_trend_test_and_power 05_design_values 06_dependence_and_footprint; do
+            test -s "figures/$f.png"
+          done
+          test "$(ls figures/equations/*.png | wc -l)" -eq 9
+
+      # On the working branch the run's own output is committed, so the numbers quoted in
+      # the article come from this machine type. On main and on pull requests the rerun
+      # must reproduce them exactly.
+      - name: Commit the results on the working branch
+        if: github.event_name == 'push' && github.ref_name == 'storm-wind-extremes-portugal'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add results figures
+          if git diff --cached --quiet; then
+            echo "Results unchanged."
+          else
+            git commit -m "Storm wind extremes in Portugal: rerun the analysis"
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
+          fi
+
+      - name: Check the numbers match the committed run
+        if: github.event_name != 'push' || github.ref_name != 'storm-wind-extremes-portugal'
+        run: git diff --exit-code -- results/output.txt

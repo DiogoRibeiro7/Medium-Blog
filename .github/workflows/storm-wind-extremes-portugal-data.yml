@@ -1,0 +1,68 @@
+name: Storm wind extremes in Portugal — fetch ERA5 gusts and Kristin reports
+
+on:
+  push:
+    branches: [storm-wind-extremes-portugal]
+    paths:
+      - 'storm-wind-extremes-portugal/fetch.py'
+      - '.github/workflows/storm-wind-extremes-portugal-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: storm-wind-extremes-portugal-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    defaults:
+      run:
+        shell: bash
+        working-directory: storm-wind-extremes-portugal
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          sparse-checkout: storm-wind-extremes-portugal
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Offline tests
+        run: python -m unittest discover -s tests -p "test_fetch.py" -v
+
+      # One job, one request at a time: the script waits on Open-Meteo's per-minute and
+      # per-hour limits and stops on the daily one; a later run resumes from what is on disk.
+      - name: Download (resumes where the last run stopped)
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data --max-minutes 320 | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit what was downloaded
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Nothing new."
+          else
+            git commit -m "Storm wind extremes in Portugal: data ($(date -u +%Y-%m-%d))"
+            for i in 1 2 3; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin HEAD:"${GITHUB_REF_NAME}" && break
+              sleep 5
+            done
+          fi
+
+      - name: Fail if the download failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          tail -n 20 data/fetch_log.txt || true
+          exit 1
