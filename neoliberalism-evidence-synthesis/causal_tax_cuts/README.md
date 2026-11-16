@@ -255,6 +255,31 @@ The first source-backed audit and its frozen JSON are in
 The source-probe Action also uploads event- and donor-level diagnostics as
 `tax-cut-donor-support` for seven days.
 
+### Dynamic policy paths and sequential adjustment feasibility (no ATT)
+
+[`DYNAMIC_EXPOSURE.md`](DYNAMIC_EXPOSURE.md) addresses an asymmetry in the
+exploratory design: the treated path retains repeat major tax cuts, while
+the comparator path excludes them. It defines two distinct *candidate*
+comparisons—baseline initiation with natural follow-up in both arms,
+and a hypothetical single-coded-cut versus no-cut sustained pathway.
+For every supported reform and its baseline donors, it records annual
+event histories, path adherence and whether the preceding year's three
+WDI controls are observed, without using post-treatment macro data for
+matching, estimating causal weights or claiming sequential exchangeability.
+
+```bash
+python -m causal_tax_cuts.dynamic_exposure \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --provenance data/wdi-source/world_bank_provenance.json \
+  --frozen-reference causal_tax_cuts/results/donor_support_2026-11-15.json \
+  --output-dir data/tax-study/dynamic-exposure
+```
+
+The first source-backed repeat-reform and risk-set counts are in
+[`results/DYNAMIC_EXPOSURE_RESULTS_2026-11-16.md`](results/DYNAMIC_EXPOSURE_RESULTS_2026-11-16.md).
+The source-probe Action publishes a seven-day `tax-cut-dynamic-exposure`
+artifact containing every observed policy path.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash

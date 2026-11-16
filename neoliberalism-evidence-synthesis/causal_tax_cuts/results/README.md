@@ -129,3 +129,14 @@ donor ranges. These diagnostics do **not** estimate an adjusted ATT or
 establish joint covariate overlap. The `tax-cut-donor-support` seven-day
 workflow artifact provides the event-, donor-, and horizon-level source
 records when the live data probe succeeds.
+
+The [dynamic policy-path results](DYNAMIC_EXPOSURE_RESULTS_2026-11-16.md)
+and [frozen JSON](dynamic_exposure_2026-11-16.json) show that **5 of 20**
+treated reform episodes experience another major cut during five-year
+follow-up. Treating the hypothetical strategies of *one coded major
+cut* and *no coded major cuts* symmetrically leaves **15 treated
+episodes** and **144 compatible donor–reform pairs** at year five;
+these are not independent observations, an estimated policy effect, or
+evidence of sequential exchangeability. The
+`tax-cut-dynamic-exposure` artifact contains annual policy paths and
+pre-decision WDI coverage diagnostics.
