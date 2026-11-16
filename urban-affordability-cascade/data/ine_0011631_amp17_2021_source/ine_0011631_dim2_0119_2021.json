@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:55.032Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "89",
+      "valor" : "89"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "99",
+      "valor" : "99"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "120",
+      "valor" : "120"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "139",
+      "valor" : "139"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "179",
+      "valor" : "179"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "188",
+      "valor" : "188"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "194",
+      "valor" : "194"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "199",
+      "valor" : "199"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "259",
+      "valor" : "259"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "363",
+      "valor" : "363"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "378",
+      "valor" : "378"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 040",
+      "valor" : "1040"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 073",
+      "valor" : "1073"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 527",
+      "valor" : "1527"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 586",
+      "valor" : "1586"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 113",
+      "valor" : "2113"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "3 113",
+      "valor" : "3113"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "8 662",
+      "valor" : "8662"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "9 306",
+      "valor" : "9306"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "10 278",
+      "valor" : "10278"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "10 991",
+      "valor" : "10991"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "17 968",
+      "valor" : "17968"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "21 269",
+      "valor" : "21269"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

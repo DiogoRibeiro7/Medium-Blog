@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:48.759Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "91",
+      "valor" : "91"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "93",
+      "valor" : "93"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "107",
+      "valor" : "107"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "166",
+      "valor" : "166"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "184",
+      "valor" : "184"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "189",
+      "valor" : "189"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "203",
+      "valor" : "203"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "335",
+      "valor" : "335"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "396",
+      "valor" : "396"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "694",
+      "valor" : "694"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "753",
+      "valor" : "753"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 163",
+      "valor" : "1163"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 204",
+      "valor" : "1204"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 447",
+      "valor" : "1447"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "2 367",
+      "valor" : "2367"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "8 914",
+      "valor" : "8914"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "9 681",
+      "valor" : "9681"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "10 170",
+      "valor" : "10170"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "10 976",
+      "valor" : "10976"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "18 595",
+      "valor" : "18595"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "21 146",
+      "valor" : "21146"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

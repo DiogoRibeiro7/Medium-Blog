@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:53.826Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "80",
+      "valor" : "80"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "98",
+      "valor" : "98"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "177",
+      "valor" : "177"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "178",
+      "valor" : "178"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "346",
+      "valor" : "346"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "431",
+      "valor" : "431"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "439",
+      "valor" : "439"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "870",
+      "valor" : "870"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "905",
+      "valor" : "905"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "969",
+      "valor" : "969"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 513",
+      "valor" : "1513"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "1 577",
+      "valor" : "1577"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 874",
+      "valor" : "1874"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "3 090",
+      "valor" : "3090"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "8 769",
+      "valor" : "8769"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "10 106",
+      "valor" : "10106"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "10 380",
+      "valor" : "10380"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "11 763",
+      "valor" : "11763"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "18 875",
+      "valor" : "18875"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "22 143",
+      "valor" : "22143"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "0",
+      "valor" : "0"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:56.291Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "530",
+      "valor" : "530"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "623",
+      "valor" : "623"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "757",
+      "valor" : "757"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "761",
+      "valor" : "761"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "1 153",
+      "valor" : "1153"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 372",
+      "valor" : "1372"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 442",
+      "valor" : "1442"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "1 518",
+      "valor" : "1518"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 959",
+      "valor" : "1959"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "2 084",
+      "valor" : "2084"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "2 814",
+      "valor" : "2814"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "4 043",
+      "valor" : "4043"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "4 770",
+      "valor" : "4770"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 205",
+      "valor" : "5205"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "8 724",
+      "valor" : "8724"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "9 261",
+      "valor" : "9261"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "9 975",
+      "valor" : "9975"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "17 985",
+      "valor" : "17985"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "68 506",
+      "valor" : "68506"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "76 248",
+      "valor" : "76248"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "77 991",
+      "valor" : "77991"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "86 266",
+      "valor" : "86266"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "144 754",
+      "valor" : "144754"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "164 257",
+      "valor" : "164257"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

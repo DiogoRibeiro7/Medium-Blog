@@ -1,0 +1,190 @@
+name: INE 0011631 Porto residential categories source probe
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - ".github/workflows/ine-0011631-porto-categories-pr-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-porto-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: urban-affordability-cascade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pinned study dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Test strict source scoping without network access
+        run: |
+          python -m unittest discover -s tests -p 'test_ine_residential_categories_probe.py' -v
+          python -m unittest discover -s tests -p 'test_ine_residential_municipal_capture.py' -v
+
+      - name: Fetch two bounded, unverified official source candidates
+        shell: bash
+        run: |
+          set +e
+          python ine_residential_categories_probe.py \
+            --output candidate-capture \
+            --timeout-seconds 60
+          code=$?
+          echo "Capture exit status: $code"
+          exit 0
+
+      - name: Preserve unmodified source responses and any failure receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ine-0011631-porto-2021-residential-category-candidates
+          path: urban-affordability-cascade/candidate-capture/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Capture each of the 17 bounded AMP municipality category responses
+        shell: bash
+        run: |
+          set +e
+          python ine_residential_municipal_capture.py \
+            --metadata-json candidate-capture/ine_0011631_metadata.json \
+            --output municipal-capture \
+            --start-index 0 \
+            --count 17 \
+            --timeout-seconds 25
+          code=$?
+          echo "Municipal capture exit status: $code"
+          exit 0
+
+      - name: Preserve all municipality source bytes and response receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ine-0011631-amp17-2021-residential-category-candidates
+          path: urban-affordability-cascade/municipal-capture/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Classify source availability after artifact upload
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          manifest_path = Path("candidate-capture/probe_manifest.json")
+          if not manifest_path.exists():
+              sys.exit("No source manifest was generated")
+          report = json.loads(manifest_path.read_text(encoding="utf-8"))
+          expected = ["metadata", "porto_dim2_candidate"]
+          items = report.get("items")
+          if (
+              report.get("protocol") != "ine_0011631_2021_porto_category_source_probe_v1"
+              or report.get("indicator_id") != "0011631"
+              or report.get("requested_kinds") != expected
+              or report.get("source_semantics_verified") is not False
+              or report.get("directed_residential_origin_destination_counts_reconciled") is not False
+              or not isinstance(items, list)
+              or len(items) != 2
+              or any(not isinstance(item, dict) or item.get("kind") != kind
+                     for item, kind in zip(items, expected))
+          ):
+              sys.exit("Source manifest changed scientific scope or query identity")
+
+          captured = [item for item in items if item.get("status") == "captured_unverified"]
+          failed = [item for item in items if item.get("status") == "failed"]
+          if len(captured) + len(failed) != 2 or len(captured) != report.get("completed_json_captures"):
+              sys.exit("Source manifest capture counters are inconsistent")
+          if any(not item.get("indicator_code_matches_request") for item in captured):
+              sys.exit("Source response has unexpected indicator identity")
+
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as summary:
+              summary.write(
+                  "## INE 0011631 Census 2021 Porto category source availability\n"
+                  f"- JSON candidates captured: {len(captured)}/2\n"
+                  "- Neither response establishes named residential origins or causal effects.\n"
+                  "- Review actual metadata dimensions and category labels before using any count.\n"
+              )
+              for item in failed:
+                  summary.write(
+                      f"- Failed {item['kind']}: {item.get('error_type')} "
+                      f"({item.get('error')})\n"
+                  )
+
+          transient_http = ("HTTP Error 429:", "HTTP Error 500:", "HTTP Error 502:",
+                            "HTTP Error 503:", "HTTP Error 504:")
+          for item in failed:
+              reason = str(item.get("error", ""))
+              if not (
+                  item.get("error_type") in {"TimeoutError", "URLError"}
+                  or (item.get("error_type") == "HTTPError" and reason.startswith(transient_http))
+              ):
+                  sys.exit("Candidate source failed because of an invalid response, not transient availability")
+          if failed:
+              print("::warning title=INE source unavailable::Inspect the archived failure receipt")
+          PY
+
+      - name: Classify municipal source completeness after archiving
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          path = Path("municipal-capture/municipal_capture_manifest.json")
+          if not path.is_file():
+              sys.exit("No 17-municipality source manifest was generated")
+          report = json.loads(path.read_text(encoding="utf-8"))
+          rows = report.get("items")
+          codes = sorted({"0104", "0107", "0109", "0113", "0116", "0119",
+                          "1304", "1306", "1308", "1310", "1312", "1313",
+                          "1314", "1315", "1316", "1317", "1318"})
+          if (
+              report.get("protocol") != "ine_0011631_2021_amp_municipal_categories_v1"
+              or report.get("requested_codes") != codes
+              or report.get("requested_count") != 17
+              or report.get("full_residential_origin_destination_matrix_observed") is not False
+              or not isinstance(rows, list)
+              or len(rows) != 17
+              or any(not isinstance(row, dict) or row.get("code") != code
+                     for row, code in zip(rows, codes))
+          ):
+              sys.exit("Changed municipality capture scope or scientific classification")
+          passed = [row for row in rows if row.get("status") == "validated_2021_migration_categories"]
+          failed = [row for row in rows if row.get("status") == "failed"]
+          if len(passed) + len(failed) != 17 or len(passed) != report.get("validated_count"):
+              sys.exit("Municipality capture statuses or counters are inconsistent")
+
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as stream:
+              stream.write(f"\n### AMP municipality category validation: {len(passed)}/17\n")
+              stream.write("These are residence *categories*, not named residential origins.\n")
+              for item in failed:
+                  stream.write(f"- {item['code']}: {item.get('error_type')} ({item.get('error')})\n")
+
+          transient_http = ("HTTP Error 429:", "HTTP Error 500:", "HTTP Error 502:",
+                            "HTTP Error 503:", "HTTP Error 504:")
+          for row in failed:
+              err = str(row.get("error", ""))
+              if not (
+                  row.get("error_type") in {"TimeoutError", "URLError"}
+                  or (row.get("error_type") == "HTTPError" and err.startswith(transient_http))
+              ):
+                  sys.exit("Non-transient municipality schema, geography or value failure")
+          if failed:
+              print("::warning title=Municipality source unavailable::See archived receipts")
+          PY

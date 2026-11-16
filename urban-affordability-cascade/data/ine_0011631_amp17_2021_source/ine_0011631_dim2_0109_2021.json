@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:51.335Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "593",
+      "valor" : "593"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "653",
+      "valor" : "653"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "665",
+      "valor" : "665"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "783",
+      "valor" : "783"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 135",
+      "valor" : "1135"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 177",
+      "valor" : "1177"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "1 258",
+      "valor" : "1258"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "1 436",
+      "valor" : "1436"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 711",
+      "valor" : "1711"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 971",
+      "valor" : "1971"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "2 312",
+      "valor" : "2312"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "3 682",
+      "valor" : "3682"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 447",
+      "valor" : "5447"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 800",
+      "valor" : "5800"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "9 076",
+      "valor" : "9076"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "9 601",
+      "valor" : "9601"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "11 247",
+      "valor" : "11247"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "18 677",
+      "valor" : "18677"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "56 139",
+      "valor" : "56139"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "60 600",
+      "valor" : "60600"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "65 880",
+      "valor" : "65880"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "70 794",
+      "valor" : "70794"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "116 739",
+      "valor" : "116739"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "136 674",
+      "valor" : "136674"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:49:04.866Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "317",
+      "valor" : "317"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "386",
+      "valor" : "386"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "483",
+      "valor" : "483"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "489",
+      "valor" : "489"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "623",
+      "valor" : "623"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "702",
+      "valor" : "702"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "703",
+      "valor" : "703"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "972",
+      "valor" : "972"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 325",
+      "valor" : "1325"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 410",
+      "valor" : "1410"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 569",
+      "valor" : "1569"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "2 979",
+      "valor" : "2979"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "3 636",
+      "valor" : "3636"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "3 894",
+      "valor" : "3894"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "6 055",
+      "valor" : "6055"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "6 482",
+      "valor" : "6482"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "7 530",
+      "valor" : "7530"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "12 537",
+      "valor" : "12537"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "38 435",
+      "valor" : "38435"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "42 728",
+      "valor" : "42728"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "44 973",
+      "valor" : "44973"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "49 699",
+      "valor" : "49699"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "81 163",
+      "valor" : "81163"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "94 672",
+      "valor" : "94672"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:49:08.789Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "142",
+      "valor" : "142"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "144",
+      "valor" : "144"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "153",
+      "valor" : "153"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "179",
+      "valor" : "179"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "183",
+      "valor" : "183"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "201",
+      "valor" : "201"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "286",
+      "valor" : "286"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "332",
+      "valor" : "332"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "384",
+      "valor" : "384"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "518",
+      "valor" : "518"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "609",
+      "valor" : "609"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 127",
+      "valor" : "1127"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 565",
+      "valor" : "1565"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 565",
+      "valor" : "1565"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "2 406",
+      "valor" : "2406"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "2 469",
+      "valor" : "2469"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "3 130",
+      "valor" : "3130"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 875",
+      "valor" : "4875"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "15 884",
+      "valor" : "15884"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "17 405",
+      "valor" : "17405"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "18 473",
+      "valor" : "18473"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "20 075",
+      "valor" : "20075"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "33 289",
+      "valor" : "33289"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "38 548",
+      "valor" : "38548"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
