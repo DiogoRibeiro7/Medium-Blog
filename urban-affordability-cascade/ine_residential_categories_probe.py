@@ -23,6 +23,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qsl, urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+from extract_commuting import municipality_codes_from_panel
 from ine_commuting_capture import _parse_json, _schema_outline
 
 INDICATOR = "0011631"
@@ -38,6 +39,20 @@ PORTO_DATA_CANDIDATE_URL = (
 SOURCE_URLS = {
     "metadata": METADATA_URL,
     "porto_dim2_candidate": PORTO_DATA_CANDIDATE_URL,
+}
+
+
+def municipality_candidate_url(dico: str) -> str:
+    """Build an allowlisted 2021 residence-category query for one AMP DICO."""
+    if not isinstance(dico, str) or dico not in municipality_codes_from_panel():
+        raise ValueError("Expected an exact four-digit AMP municipality DICO")
+    return PORTO_DATA_CANDIDATE_URL.replace("Dim2=1312", f"Dim2={dico}")
+
+
+# The separate full-panel collector is restricted to exactly these 17 codes.
+MUNICIPALITY_URLS = {
+    f"municipality_{code}": municipality_candidate_url(code)
+    for code in sorted(municipality_codes_from_panel()) if code != PORTO_DICO
 }
 OUTPUT_FILENAMES = {
     "metadata": "ine_0011631_metadata.json",
@@ -92,7 +107,7 @@ def require_source_url(url: str) -> str:
     if len(fields) != len({name for name, _ in fields}):
         raise ValueError("Duplicate INE query parameter")
 
-    for kind, allowed_url in SOURCE_URLS.items():
+    for kind, allowed_url in {**SOURCE_URLS, **MUNICIPALITY_URLS}.items():
         allowed = urlsplit(allowed_url)
         if source.path == allowed.path and dict(fields) == dict(
             parse_qsl(allowed.query, strict_parsing=True)

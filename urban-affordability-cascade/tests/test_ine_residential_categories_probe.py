@@ -20,6 +20,7 @@ from ine_residential_categories_probe import (
     CaptureResponse,
     capture,
     download_source,
+    municipality_candidate_url,
     require_source_url,
 )
 
@@ -48,11 +49,12 @@ class ResidentialCategorySourceProbeTests(unittest.TestCase):
         self.assertEqual(
             require_source_url(PORTO_DATA_CANDIDATE_URL), "porto_dim2_candidate"
         )
+        self.assertEqual(require_source_url(municipality_candidate_url("1317")), "municipality_1317")
         rejected = (
             PORTO_DATA_CANDIDATE_URL.replace("www.ine.pt", "evil.example"),
             PORTO_DATA_CANDIDATE_URL.replace("https:", "http:"),
             PORTO_DATA_CANDIDATE_URL.replace("0011631", "0012340"),
-            PORTO_DATA_CANDIDATE_URL.replace("1312", "1317"),
+            PORTO_DATA_CANDIDATE_URL.replace("1312", "1415"),
             PORTO_DATA_CANDIDATE_URL.replace("S7A2021", "S7A2011"),
             PORTO_DATA_CANDIDATE_URL + "&Dim2=1312",
             METADATA_URL + "#fragment",
@@ -60,6 +62,8 @@ class ResidentialCategorySourceProbeTests(unittest.TestCase):
         for changed in rejected:
             with self.subTest(url=changed), self.assertRaises(ValueError):
                 require_source_url(changed)
+        with self.assertRaises(ValueError):
+            municipality_candidate_url("1415")
 
     def test_saves_both_exact_fake_responses_and_unverified_receipts(self) -> None:
         def fake_get(url: str) -> CaptureResponse:
