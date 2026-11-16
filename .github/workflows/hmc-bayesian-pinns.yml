@@ -1,0 +1,57 @@
+name: Test hmc-bayesian-pinns study
+
+on:
+  pull_request:
+    paths:
+      - 'hmc-bayesian-pinns/**'
+      - '.github/workflows/hmc-bayesian-pinns.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'hmc-bayesian-pinns/**'
+      - '.github/workflows/hmc-bayesian-pinns.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hmc-bayesian-pinns-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: hmc-bayesian-pinns
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: hmc-bayesian-pinns/pyproject.toml
+
+      - name: Install project
+        run: python -m pip install -e ".[test]"
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Quick run and figure inventory
+        run: |
+          python experiment.py --output "$RUNNER_TEMP/hmc-quick" --quick > /dev/null
+          test "$(find "$RUNNER_TEMP/hmc-quick/figures" -name '*.png' | wc -l)" -eq 7
+          python -c "import json,sys; m=json.load(open(sys.argv[1])); assert m['quick'] and m['reference']['narrow']['boundary_mass'] < 1e-7" "$RUNNER_TEMP/hmc-quick/metrics.json"
+
+      - name: Committed results come from the full run
+        run: python -c "import json; m=json.load(open('results/metrics.json')); assert not m['quick'] and m['coverage']['narrow']['replications'] == 100"

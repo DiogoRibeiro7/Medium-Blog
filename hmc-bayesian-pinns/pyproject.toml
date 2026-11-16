@@ -1,6 +1,6 @@
 [project]
 name = "hmc-bayesian-pinns-study"
-version = "0.1.0"
+version = "0.2.0"
 description = "Reproducible inverse-diffusion posterior-geometry study accompanying a Bayesian PINNs essay"
 requires-python = ">=3.10"
 dependencies = [
@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = []
+test = ["arviz>=0.20"]
 
 [tool.ruff]
 line-length = 110

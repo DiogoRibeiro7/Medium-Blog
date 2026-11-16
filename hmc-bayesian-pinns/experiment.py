@@ -25,6 +25,8 @@ from numpy.typing import NDArray
 from scipy.optimize import minimize
 from scipy.special import logsumexp
 
+import diagnostics
+
 FloatArray = NDArray[np.float64]
 Design = Literal["narrow", "wide"]
 
@@ -57,7 +59,13 @@ def solution(x: FloatArray, t: FloatArray, amplitude: FloatArray, diffusivity: F
     return amplitude * np.sin(np.pi * x) * np.exp(-diffusivity * np.pi**2 * t)
 
 
-def simulate(seed: int, design: Design) -> Observations:
+def simulate(
+    seed: int,
+    design: Design,
+    *,
+    amplitude: float = TRUE_AMPLITUDE,
+    diffusivity: float = TRUE_DIFFUSIVITY,
+) -> Observations:
     """Generate the same spatial locations with either weak or strong time spread."""
     if design not in ("narrow", "wide"):
         raise ValueError("design must be 'narrow' or 'wide'")
@@ -70,19 +78,44 @@ def simulate(seed: int, design: Design) -> Observations:
         t = np.linspace(0.06, 0.57, n, dtype=np.float64)
     # Avoid a spurious space/time ordering by permuting the time design.
     t = rng.permutation(t)
-    y_true = solution(x, t, TRUE_AMPLITUDE, TRUE_DIFFUSIVITY)
+    y_true = solution(x, t, amplitude, diffusivity)
     y = y_true + rng.normal(0.0, OBSERVATION_SIGMA, size=n)
+    return Observations(x=x, t=t, y=y)
+
+
+def simulate_at(
+    seed: int,
+    x: FloatArray,
+    t: FloatArray,
+    *,
+    amplitude: float = TRUE_AMPLITUDE,
+    diffusivity: float = TRUE_DIFFUSIVITY,
+) -> Observations:
+    """Noisy observations at an explicit (x, t) design."""
+    rng = np.random.default_rng(seed)
+    x = np.asarray(x, dtype=np.float64)
+    t = np.asarray(t, dtype=np.float64)
+    y = solution(x, t, amplitude, diffusivity) + rng.normal(0.0, OBSERVATION_SIGMA, size=x.size)
     return Observations(x=x, t=t, y=y)
 
 
 class Posterior:
     """Gaussian-observation posterior in (log amplitude, log diffusivity)."""
 
-    def __init__(self, data: Observations):
+    def __init__(
+        self,
+        data: Observations,
+        prior_mean: FloatArray = PRIOR_MEAN,
+        prior_sd: FloatArray = PRIOR_SD,
+    ):
         if not isinstance(data, Observations):
             raise TypeError("data must be Observations")
         self.data = data
         self.sin_x: FloatArray = np.sin(np.pi * data.x)
+        self.prior_mean = np.asarray(prior_mean, dtype=np.float64)
+        self.prior_sd = np.asarray(prior_sd, dtype=np.float64)
+        if self.prior_mean.shape != (2,) or self.prior_sd.shape != (2,) or np.any(self.prior_sd <= 0):
+            raise ValueError("prior_mean and prior_sd must be length-2 with positive SDs")
 
     def potential(self, q: FloatArray) -> FloatArray:
         """Negative log posterior, excluding parameter-independent constants."""
@@ -93,7 +126,7 @@ class Posterior:
         kap = np.exp(q[..., 1])[..., None]
         pred = amp * self.sin_x * np.exp(-kap * np.pi**2 * self.data.t)
         residual = (pred - self.data.y) / self.data.sigma
-        prior = (q - PRIOR_MEAN) / PRIOR_SD
+        prior = (q - self.prior_mean) / self.prior_sd
         return 0.5 * (np.sum(residual**2, axis=-1) + np.sum(prior**2, axis=-1))
 
     def gradient(self, q: FloatArray) -> FloatArray:
@@ -106,13 +139,13 @@ class Posterior:
         scaled_error = (pred - self.data.y) / self.data.sigma**2
         d_amp = np.sum(scaled_error * pred, axis=-1)
         d_kap = np.sum(scaled_error * (-kap * np.pi**2 * self.data.t * pred), axis=-1)
-        return np.stack((d_amp, d_kap), axis=-1) + (q - PRIOR_MEAN) / PRIOR_SD**2
+        return np.stack((d_amp, d_kap), axis=-1) + (q - self.prior_mean) / self.prior_sd**2
 
     def map_estimate(self) -> FloatArray:
         """Return a posterior mode in log coordinates."""
         opt = minimize(
             fun=lambda q: float(self.potential(q)),
-            x0=PRIOR_MEAN.copy(),
+            x0=self.prior_mean.copy(),
             jac=self.gradient,
             method="BFGS",
             options={"gtol": 1e-9, "maxiter": 1200},
@@ -157,7 +190,7 @@ class GridPosterior:
             "mean_diffusivity": float(mean[1]),
             "sd_diffusivity": float(np.sqrt(cov[1, 1])),
             "correlation": float(cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])),
-            "interval90_diffusivity": [float(v) for v in self.quantiles(actual[:, 1], (0.05, 0.95))],
+            "interval90_diffusivity": [float(v) for v in self.kappa_quantiles((0.05, 0.95))],
         }
 
     def quantiles(self, values: FloatArray, levels: tuple[float, ...]) -> FloatArray:
@@ -168,25 +201,67 @@ class GridPosterior:
         cum = np.cumsum(self.probabilities[order])
         return np.interp(np.asarray(levels), cum, values[order])
 
+    def kappa_quantiles(self, levels: tuple[float, ...]) -> FloatArray:
+        """Quantiles of kappa from the log-kappa marginal, linear CDF within each grid cell.
+
+        Weighted quantiles of the raw grid values snap to cell centres; interpolating
+        the marginal CDF removes that half-cell error.
+        """
+        axis, density = self.marginal_log_diffusivity()
+        step = axis[1] - axis[0]
+        edges = np.concatenate(([axis[0] - step / 2], axis + step / 2))
+        cdf = np.concatenate(([0.0], np.cumsum(density * step)))
+        return np.exp(np.interp(np.asarray(levels, dtype=np.float64), cdf, edges))
+
+    def log_moments(self) -> tuple[FloatArray, FloatArray]:
+        """Posterior mean and covariance of (log A, log kappa), the coordinates the samplers use."""
+        mean = self.expectation(self.points)
+        delta = self.points - mean
+        return mean, np.einsum("i,ij,ik->jk", self.probabilities, delta, delta)
+
+    def log_summary(self) -> dict[str, float]:
+        """Moments in the log coordinates, where HMC and VI operate."""
+        mean, cov = self.log_moments()
+        return {
+            "mean_log_amplitude": float(mean[0]),
+            "mean_log_diffusivity": float(mean[1]),
+            "sd_log_amplitude": float(np.sqrt(cov[0, 0])),
+            "sd_log_diffusivity": float(np.sqrt(cov[1, 1])),
+            "correlation_log": float(cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])),
+        }
+
+    def marginal_log_diffusivity(self) -> tuple[FloatArray, FloatArray]:
+        """Marginal density of log kappa on the grid axis (integrates to one)."""
+        mass = self.probabilities.reshape(self.shape).sum(axis=0)
+        step = self.axis_diffusivity[1] - self.axis_diffusivity[0]
+        return self.axis_diffusivity, mass / step
+
     def draws(self, rng: np.random.Generator, number: int) -> FloatArray:
         """Sample from the quadrature reference for plotting only."""
         return self.points[rng.choice(len(self.probabilities), number, p=self.probabilities)]
 
 
-def posterior_grid(posterior: Posterior, resolution: int = 480) -> GridPosterior:
-    """Integrate over a fixed ±5 prior SD domain without stochastic quadrature."""
-    if resolution < 40:
+def posterior_grid(
+    posterior: Posterior,
+    resolution: int | tuple[int, int] = 480,
+    bounds: tuple[tuple[float, float], tuple[float, float]] | None = None,
+) -> GridPosterior:
+    """Integrate over a fixed domain (default ±5 prior SD) without stochastic quadrature."""
+    sizes = (resolution, resolution) if isinstance(resolution, int) else tuple(resolution)
+    if min(sizes) < 40:
         raise ValueError("resolution must be at least 40")
-    axes = [
-        np.linspace(PRIOR_MEAN[j] - 5 * PRIOR_SD[j], PRIOR_MEAN[j] + 5 * PRIOR_SD[j], resolution)
-        for j in range(2)
-    ]
+    if bounds is None:
+        bounds = tuple(
+            (posterior.prior_mean[j] - 5 * posterior.prior_sd[j], posterior.prior_mean[j] + 5 * posterior.prior_sd[j])
+            for j in range(2)
+        )
+    axes = [np.linspace(bounds[j][0], bounds[j][1], sizes[j]) for j in range(2)]
     a, k = np.meshgrid(*axes, indexing="ij")
     points = np.column_stack((a.ravel(), k.ravel()))
     potential = posterior.potential(points)
     weights = np.exp(-potential - logsumexp(-potential))
     weights = weights / np.sum(weights)
-    grid_w = weights.reshape(resolution, resolution)
+    grid_w = weights.reshape(sizes)
     mass_at_edges = float(
         np.sum(grid_w[0, :]) + np.sum(grid_w[-1, :])
         + np.sum(grid_w[:, 0]) + np.sum(grid_w[:, -1])
@@ -194,11 +269,34 @@ def posterior_grid(posterior: Posterior, resolution: int = 480) -> GridPosterior
     return GridPosterior(
         points=points,
         probabilities=weights,
-        shape=(resolution, resolution),
+        shape=(int(sizes[0]), int(sizes[1])),
         axis_amplitude=axes[0],
         axis_diffusivity=axes[1],
         boundary_mass=mass_at_edges,
     )
+
+
+def adaptive_grid(posterior: Posterior, resolution: int = 230, width: float = 10.0) -> GridPosterior:
+    """Grid centred on the MAP, ±width Laplace SDs per axis, widened until the edges hold < 1e-8.
+
+    A domain fixed by the prior is far wider than a well-identified posterior,
+    which then falls on only a few grid cells; centring on the posterior keeps
+    the spacing near a tenth of a posterior SD whatever the design.
+    """
+    try:
+        mode = posterior.map_estimate()
+        sd = np.sqrt(np.diag(np.linalg.inv(posterior.local_hessian(mode))))
+        if not np.all(np.isfinite(sd)):
+            raise RuntimeError("non-finite Laplace scale")
+    except (RuntimeError, np.linalg.LinAlgError):
+        return posterior_grid(posterior, resolution=max(resolution, 480))
+    for _ in range(6):
+        bounds = tuple((mode[j] - width * sd[j], mode[j] + width * sd[j]) for j in range(2))
+        grid = posterior_grid(posterior, resolution=resolution, bounds=bounds)
+        if grid.boundary_mass < 1e-8:
+            return grid
+        width *= 1.6
+    raise RuntimeError("adaptive grid could not contain the posterior")
 
 
 @dataclass
@@ -210,12 +308,17 @@ class MCMCResult:
     step_sizes: FloatArray
     gradients: int
     seconds: float
+    accept_probability: FloatArray | None = None  # (chains, draws) Metropolis probability per transition
+    start_states: FloatArray | None = None  # (chains, draws, 2) state at which each transition began
+    divergences: int = 0  # sampling transitions with energy error > 1000 or non-finite
 
     def summary(self) -> dict[str, object]:
         """Report effective sample size, Rhat, and computational work."""
         k_samples = np.exp(self.draws[..., 1])
         ess_k = effective_sample_size(k_samples)
         ess_a = effective_sample_size(np.exp(self.draws[..., 0]))
+        bulk = diagnostics.ess_bulk(k_samples)
+        tail = diagnostics.ess_tail(k_samples)
         return {
             "acceptance": float(np.mean(self.acceptance)),
             "step_size_mean": float(np.mean(self.step_sizes)),
@@ -223,6 +326,14 @@ class MCMCResult:
             "ess_amplitude": float(ess_a),
             "ess_per_1000_gradients": float(1000 * ess_k / self.gradients),
             "rhat_diffusivity": float(rhat(k_samples)),
+            "rhat_rank_diffusivity": float(diagnostics.rhat_rank(k_samples)),
+            "ess_bulk_diffusivity": float(bulk),
+            "ess_tail_diffusivity": float(tail),
+            "ess_bulk_per_1000_gradients": float(1000 * bulk / self.gradients),
+            "ess_tail_per_1000_gradients": float(1000 * tail / self.gradients),
+            "mcse_q05_diffusivity": float(diagnostics.mcse_quantile(k_samples, 0.05)),
+            "mcse_q95_diffusivity": float(diagnostics.mcse_quantile(k_samples, 0.95)),
+            "divergences": int(self.divergences),
             "draws": int(k_samples.size),
             "gradient_evaluations": int(self.gradients),
             "seconds": float(self.seconds),
@@ -241,19 +352,29 @@ def hmc(
     draws: int = 1500,
     chains: int = 4,
     target_accept: float = 0.78,
+    leapfrog_range: tuple[int, int] = (9, 21),
 ) -> MCMCResult:
     """Fixed-mass leapfrog HMC with Robbins–Monro step-size warm-up.
 
-    Path lengths are jittered to reduce resonance. Mass is fixed for the
-    entire run; tuning the step size is limited to warm-up, never sampling.
+    Path lengths are drawn uniformly from ``leapfrog_range`` (inclusive) to
+    reduce resonance. Mass is fixed for the entire run; tuning the step size
+    is limited to warm-up, never sampling. A sampling transition whose energy
+    error exceeds 1000, or is not finite, is counted as divergent (the
+    threshold Stan uses).
     """
     mass = np.asarray(mass, dtype=np.float64)
     if mass.shape != (2, 2) or np.min(np.linalg.eigvalsh(mass)) <= 0:
         raise ValueError("mass must be a symmetric positive definite 2x2 matrix")
+    low_steps, high_steps = leapfrog_range
+    if not 1 <= low_steps <= high_steps:
+        raise ValueError("leapfrog_range must satisfy 1 <= low <= high")
     inverse_mass = np.linalg.inv(mass)
     chol = np.linalg.cholesky(mass)
     rng = np.random.default_rng(seed)
     samples = np.empty((chains, draws, 2), dtype=np.float64)
+    starts = np.empty((chains, draws, 2), dtype=np.float64)
+    probabilities = np.empty((chains, draws), dtype=np.float64)
+    divergent = 0
     accept_rates = np.empty(chains, dtype=np.float64)
     step_sizes = np.empty(chains, dtype=np.float64)
     gradient_count = 0
@@ -269,21 +390,23 @@ def hmc(
             original_energy = float(posterior.potential(q) + 0.5 * momentum @ inverse_mass @ momentum)
             q_next = q.copy()
             p_next = momentum.copy()
-            leapfrogs = int(rng.integers(9, 22))
-            grad = posterior.gradient(q_next)
-            gradient_count += 1
-            p_next -= 0.5 * eps * grad
-            for step in range(leapfrogs):
-                q_next += eps * (inverse_mass @ p_next)
+            leapfrogs = int(rng.integers(low_steps, high_steps + 1))
+            with np.errstate(over="ignore", invalid="ignore"):
                 grad = posterior.gradient(q_next)
                 gradient_count += 1
-                if step + 1 < leapfrogs:
-                    p_next -= eps * grad
-            p_next -= 0.5 * eps * grad
-            new_energy = float(posterior.potential(q_next) + 0.5 * p_next @ inverse_mass @ p_next)
+                p_next -= 0.5 * eps * grad
+                for step in range(leapfrogs):
+                    q_next += eps * (inverse_mass @ p_next)
+                    grad = posterior.gradient(q_next)
+                    gradient_count += 1
+                    if step + 1 < leapfrogs:
+                        p_next -= eps * grad
+                p_next -= 0.5 * eps * grad
+                new_energy = float(posterior.potential(q_next) + 0.5 * p_next @ inverse_mass @ p_next)
             delta = original_energy - new_energy
             probability = min(1.0, float(np.exp(min(0.0, delta)))) if np.isfinite(delta) else 0.0
             accepted = float(rng.random() < probability)
+            start = q
             if accepted:
                 q = q_next
             if iteration < warmup:
@@ -291,6 +414,9 @@ def hmc(
                 eps = float(np.clip(eps * np.exp(gain * (probability - target_accept)), 0.0003, 0.9))
             else:
                 samples[chain, iteration - warmup] = q
+                starts[chain, iteration - warmup] = start
+                probabilities[chain, iteration - warmup] = probability
+                divergent += int((not np.isfinite(delta)) or (-delta > 1000.0))
                 accept_total += accepted
         accept_rates[chain] = accept_total / draws
         step_sizes[chain] = eps
@@ -301,6 +427,9 @@ def hmc(
         step_sizes=step_sizes,
         gradients=gradient_count,
         seconds=time.perf_counter() - start_clock,
+        accept_probability=probabilities,
+        start_states=starts,
+        divergences=divergent,
     )
 
 
@@ -391,6 +520,92 @@ def mean_field_variational(posterior: Posterior, mode: FloatArray) -> Variationa
     return VariationalResult(result.x[:2], np.exp(result.x[2:]), float(result.fun))
 
 
+@dataclass
+class FullRankResult:
+    """Full-covariance Gaussian approximation q = N(mean, L L^T) in log coordinates."""
+
+    mean: FloatArray
+    chol: FloatArray
+    objective: float
+
+    @property
+    def covariance(self) -> FloatArray:
+        return self.chol @ self.chol.T
+
+    def summary(self, rng: np.random.Generator) -> dict[str, object]:
+        """Monte Carlo summaries on physical scale."""
+        z = rng.normal(size=(100_000, 2)) @ self.chol.T + self.mean
+        k = np.exp(z[:, 1])
+        cov = self.covariance
+        return {
+            "mean_diffusivity": float(np.mean(k)),
+            "interval90_diffusivity": [float(v) for v in np.quantile(k, (0.05, 0.95))],
+            "sd_log_amplitude": float(np.sqrt(cov[0, 0])),
+            "sd_log_diffusivity": float(np.sqrt(cov[1, 1])),
+            "correlation_log": float(cov[0, 1] / np.sqrt(cov[0, 0] * cov[1, 1])),
+            "negative_elbo_without_constant": float(self.objective),
+        }
+
+
+GAUSS_HERMITE_24 = np.polynomial.hermite.hermgauss(24)
+
+
+def _standard_normal_rule() -> tuple[FloatArray, FloatArray]:
+    """24x24 Gauss–Hermite nodes and weights for a standard bivariate normal."""
+    nodes, weights = GAUSS_HERMITE_24
+    yy, xx = np.meshgrid(nodes, nodes, indexing="ij")
+    z = np.column_stack((yy.ravel(), xx.ravel())) * np.sqrt(2)
+    return z, np.outer(weights, weights).ravel() / np.pi
+
+
+def _unpack_full_rank(params: FloatArray) -> tuple[FloatArray, FloatArray]:
+    chol = np.array([[np.exp(params[2]), 0.0], [params[4], np.exp(params[3])]])
+    return params[:2], chol
+
+
+def full_rank_objective(posterior: Posterior, params: FloatArray) -> tuple[float, FloatArray]:
+    """Negative ELBO (up to a constant) and its gradient for q = N(m, L L^T).
+
+    params = (m1, m2, log L11, log L22, L21).  E_q[U] - log det L, with the
+    expectation computed by the deterministic Gauss–Hermite rule.
+    """
+    z, w = _standard_normal_rule()
+    mean, chol = _unpack_full_rank(params)
+    points = mean + z @ chol.T
+    with np.errstate(over="ignore", invalid="ignore"):
+        potentials = posterior.potential(points)
+        gradients = posterior.gradient(points)
+    if not np.all(np.isfinite(potentials)) or not np.all(np.isfinite(gradients)):
+        return float("inf"), np.zeros_like(params)
+    value = float(w @ potentials - params[2] - params[3])
+    g_mean = w @ gradients
+    g_l = np.einsum("i,ij,ik->jk", w, gradients, z)  # d E[U] / d L_jk
+    grad = np.array([
+        g_mean[0], g_mean[1],
+        g_l[0, 0] * chol[0, 0] - 1.0,
+        g_l[1, 1] * chol[1, 1] - 1.0,
+        g_l[1, 0],
+    ])
+    return value, grad
+
+
+def full_rank_variational(posterior: Posterior, mode: FloatArray) -> FullRankResult:
+    """Optimise reverse KL(q || p) over all bivariate Gaussians (Cholesky parameterisation).
+
+    The expectation uses the same deterministic 24x24 Gauss–Hermite rule as the
+    mean-field fit, so the two approximations differ only in their family.
+    """
+    hess = posterior.local_hessian(mode)
+    start_chol = np.linalg.cholesky(np.linalg.inv(hess))
+    params = np.array([mode[0], mode[1], np.log(start_chol[0, 0]), np.log(start_chol[1, 1]), start_chol[1, 0]])
+    result = minimize(lambda p: full_rank_objective(posterior, p), params, jac=True, method="L-BFGS-B",
+                      options={"maxiter": 3000, "ftol": 1e-13, "gtol": 1e-9})
+    if not np.isfinite(result.fun):
+        raise RuntimeError(f"Full-rank VI failed: {result.message}")
+    mean, chol = _unpack_full_rank(result.x)
+    return FullRankResult(mean, chol, float(result.fun))
+
+
 def coverages(seed: int, designs: tuple[Design, ...], replications: int = 100) -> dict[str, object]:
     """Frequentist repeated-data coverage of exact-grid Bayesian intervals.
 
@@ -403,9 +618,9 @@ def coverages(seed: int, designs: tuple[Design, ...], replications: int = 100) -
         count_u = 0
         for replicate in range(replications):
             observations = simulate(seed + replicate * 1009, design)
-            grid = posterior_grid(Posterior(observations), resolution=230)
+            grid = adaptive_grid(Posterior(observations), resolution=230)
             kappas = np.exp(grid.points[:, 1])
-            bounds_k = grid.quantiles(kappas, (0.05, 0.95))
+            bounds_k = grid.kappa_quantiles((0.05, 0.95))
             count_k += bool(bounds_k[0] <= TRUE_DIFFUSIVITY <= bounds_k[1])
             predicted = solution(np.array(0.5), np.array(0.55), np.exp(grid.points[:, 0]), kappas)
             bounds_u = grid.quantiles(predicted, (0.05, 0.95))
@@ -421,28 +636,40 @@ def coverages(seed: int, designs: tuple[Design, ...], replications: int = 100) -
     return answer
 
 
-def plot_geometry(grid: GridPosterior, hmc_result: MCMCResult, vi: VariationalResult, mode: FloatArray, path: Path) -> None:
-    """Posterior density with sampled trajectory positions and VI ellipse."""
-    log_density = np.log(np.maximum(grid.probabilities.reshape(grid.shape), 1e-300))
-    fig, ax = plt.subplots(figsize=(8.2, 6.2), constrained_layout=True)
-    ax.contourf(np.exp(grid.axis_amplitude), np.exp(grid.axis_diffusivity),
-                np.exp(log_density.T - np.max(log_density)), 22, cmap="Blues")
-    xx = np.exp(hmc_result.draws[0, ::22, 0])
-    yy = np.exp(hmc_result.draws[0, ::22, 1])
-    ax.scatter(xx, yy, s=9, c="#f3a43b", alpha=0.50, label="HMC retained positions")
-    ax.scatter([np.exp(mode[0])], [np.exp(mode[1])], marker="x", s=100,
-               color="#cc4b35", linewidth=2, label="MAP")
-    ax.scatter([TRUE_AMPLITUDE], [TRUE_DIFFUSIVITY], marker="*", s=180,
-               color="#19191d", label="Data-generating parameters")
-    angles = np.linspace(0, 2 * np.pi, 300)
-    xvi = np.exp(vi.mean[0] + 2 * vi.sd[0] * np.cos(angles))
-    yvi = np.exp(vi.mean[1] + 2 * vi.sd[1] * np.sin(angles))
-    ax.plot(xvi, yvi, color="#de6333", linewidth=2, label="Mean-field VI: 2-SD contour")
-    ax.set(xlabel="Initial amplitude A", ylabel="Diffusivity κ",
-           title="Sparse times produce an amplitude–diffusivity ridge")
-    ax.set_xlim(0.65, 1.9)
-    ax.set_ylim(0.055, 0.53)
-    ax.legend(loc="upper left", fontsize=8, framealpha=0.9)
+def _ellipse(mean: FloatArray, cov: FloatArray, radius: float = 2.0) -> FloatArray:
+    angles = np.linspace(0, 2 * np.pi, 400)
+    vals, vecs = np.linalg.eigh(cov)
+    circle = np.column_stack((np.cos(angles), np.sin(angles)))
+    return mean + radius * circle @ (vecs * np.sqrt(vals)).T
+
+
+def plot_geometry(grid: GridPosterior, hmc_result: MCMCResult, vi: VariationalResult, full: FullRankResult,
+                  mode: FloatArray, path: Path) -> None:
+    """Posterior density in physical and in log (sampler) coordinates, with both Gaussian approximations."""
+    density = grid.probabilities.reshape(grid.shape)
+    density = density / density.max()
+    fig, axes = plt.subplots(1, 2, figsize=(12.4, 5.6), constrained_layout=True)
+    mf_ellipse = _ellipse(vi.mean, np.diag(vi.sd**2))
+    fr_ellipse = _ellipse(full.mean, full.covariance)
+    pts = hmc_result.draws[0, ::22]
+    for ax, transform, labels in (
+        (axes[0], np.exp, ("Initial amplitude A", "Diffusivity κ")),
+        (axes[1], lambda v: v, ("log A (sampler coordinate)", "log κ (sampler coordinate)")),
+    ):
+        ax.contourf(transform(grid.axis_amplitude), transform(grid.axis_diffusivity), density.T, 22, cmap="Blues")
+        ax.scatter(transform(pts[:, 0]), transform(pts[:, 1]), s=8, c="#f3a43b", alpha=0.55,
+                   label="Identity-mass HMC draws (every 22nd)")
+        ax.plot(transform(fr_ellipse[:, 0]), transform(fr_ellipse[:, 1]), color="#5b8c3a", lw=1.8,
+                label="Full-covariance VI: 2-SD contour")
+        ax.plot(transform(mf_ellipse[:, 0]), transform(mf_ellipse[:, 1]), color="#de6333", lw=2,
+                label="Mean-field VI: 2-SD contour")
+        ax.scatter(transform(mode[0]), transform(mode[1]), marker="x", s=90, color="#cc4b35", lw=2, label="MAP")
+        ax.scatter(transform(np.log(TRUE_AMPLITUDE)), transform(np.log(TRUE_DIFFUSIVITY)), marker="*", s=170,
+                   color="#19191d", label="Data-generating parameters")
+        ax.set(xlabel=labels[0], ylabel=labels[1])
+    axes[0].set(xlim=(0.65, 1.9), ylim=(0.04, 0.53), title="Physical coordinates")
+    axes[1].set(xlim=(-0.55, 0.65), ylim=(-3.3, -0.6), title="Log coordinates, where HMC and VI operate")
+    axes[0].legend(loc="upper left", fontsize=7.5, framealpha=0.9)
     fig.savefig(path, dpi=190)
     plt.close(fig)
 
@@ -476,104 +703,135 @@ def plot_prediction(grid: GridPosterior, vi: VariationalResult, data: Observatio
     plt.close(fig)
 
 
-def plot_designs(grids: dict[Design, GridPosterior], path: Path) -> None:
-    """Show geometry as measurement times are spread apart."""
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.8), sharex=True, sharey=True, constrained_layout=True)
-    for ax, (design, grid) in zip(axes, grids.items(), strict=True):
+def plot_designs(grids: dict[str, GridPosterior], titles: dict[str, str], path: Path) -> None:
+    """Posterior geometry under three time designs with the same 24 locations and noise."""
+    fig, axes = plt.subplots(1, len(grids), figsize=(4.6 * len(grids), 4.8), sharex=True, sharey=True,
+                             constrained_layout=True)
+    for ax, (name, grid) in zip(axes, grids.items(), strict=True):
         density = grid.probabilities.reshape(grid.shape)
         ax.contourf(np.exp(grid.axis_amplitude), np.exp(grid.axis_diffusivity),
                     density.T / density.max(), 18, cmap="Blues")
         ax.scatter([TRUE_AMPLITUDE], [TRUE_DIFFUSIVITY], c="black", marker="*", s=110)
-        correlation = grid.summary()["correlation"]
-        ax.set(title=f"{design.capitalize()} time design\nposterior corr = {correlation:+.2f}",
-               xlabel="Amplitude A", xlim=(0.65, 1.9), ylim=(0.055, 0.53))
+        summary = grid.summary()
+        lo, hi = summary["interval90_diffusivity"]
+        ax.set(title=f"{titles[name]}\nκ 90%: [{lo:.3f}, {hi:.3f}], corr {summary['correlation']:+.2f}",
+               xlabel="Amplitude A", xlim=(0.65, 1.9), ylim=(0.04, 0.53))
     axes[0].set_ylabel("Diffusivity κ")
     fig.savefig(path, dpi=190)
     plt.close(fig)
 
 
-def plot_mcmc(plain: MCMCResult, conditioned: MCMCResult, path: Path) -> None:
-    """Display first-chain traces and autocorrelations for two mass matrices."""
-    fig, axes = plt.subplots(2, 2, figsize=(11, 6.6), constrained_layout=True)
-    for j, (name, result, color) in enumerate(
-        (("Identity mass", plain, "#b2632f"), ("MAP-Hessian mass", conditioned, "#24618c"))
-    ):
-        series = np.exp(result.draws[0, :, 1])
-        axes[0, j].plot(series, color=color, linewidth=0.65)
-        axes[0, j].axhline(TRUE_DIFFUSIVITY, color="black", ls="--")
-        axes[0, j].set(title=name, xlabel="Retained iteration", ylabel="κ trace")
-        centered = series - np.mean(series)
-        auto = np.correlate(centered, centered, mode="full")[len(series) - 1:]
-        auto = auto[:70] / auto[0]
-        axes[1, j].plot(np.arange(70), auto, color=color)
-        axes[1, j].axhline(0, color="#444", linewidth=0.6)
-        axes[1, j].set(xlabel="Lag", ylabel="Autocorrelation", ylim=(-0.2, 1.02))
-    fig.savefig(path, dpi=190)
-    plt.close(fig)
+def run(output: Path, *, seed: int = 20261116, replications: int = 100, quick: bool = False) -> dict[str, object]:
+    """Run the reference integration, VI, HMC, identification, sampler, design and coverage studies.
 
+    ``quick`` shrinks replications, seeds and grid sizes for CI; the committed
+    results come from the full run.
+    """
+    import design
+    import studies
 
-def plot_coverage(results: dict[str, object], path: Path) -> None:
-    """Compare empirical coverage with the nominal target and sampling error."""
-    names = ["Narrow: κ", "Narrow: u", "Wide: κ", "Wide: u"]
-    values = [
-        results["narrow"]["parameter_coverage"], results["narrow"]["solution_coverage"],
-        results["wide"]["parameter_coverage"], results["wide"]["solution_coverage"],
-    ]
-    n = results["narrow"]["replications"]
-    fig, ax = plt.subplots(figsize=(8.5, 4.5), constrained_layout=True)
-    ax.bar(names, values, color=["#3279ad", "#6fa6be", "#3279ad", "#6fa6be"], width=0.62)
-    ax.axhline(0.90, color="#af552e", ls="--", label="Nominal 90%")
-    ax.axhspan(0.90 - 1.96 * np.sqrt(0.09 / n), 0.90 + 1.96 * np.sqrt(0.09 / n),
-               color="#e9cc9e", alpha=0.30, label="Approx. ±1.96 binomial SE")
-    ax.set(ylim=(0.65, 1.0), ylabel="Proportion of repeated data sets covered",
-           title=f"Exact-reference interval coverage ({n} synthetic data sets per design)")
-    ax.legend(fontsize=8)
-    fig.savefig(path, dpi=190)
-    plt.close(fig)
-
-
-def run(output: Path, *, seed: int = 20261116, replications: int = 100) -> dict[str, object]:
-    """Run reference integration, VI, two HMC variants, and coverage audit."""
     output = Path(output)
     figures = output / "figures"
     figures.mkdir(parents=True, exist_ok=True)
+    if quick:
+        replications = min(replications, 12)
     observed = {d: simulate(seed, d) for d in ("narrow", "wide")}
     posteriors = {d: Posterior(observed[d]) for d in observed}
-    grids = {d: posterior_grid(posteriors[d]) for d in observed}
+    grids = {"narrow": posterior_grid(posteriors["narrow"]), "wide": adaptive_grid(posteriors["wide"], resolution=480)}
     if any(g.boundary_mass > 1e-7 for g in grids.values()):
         raise RuntimeError("Reference grid truncates material posterior probability")
+    fine = posterior_grid(posteriors["narrow"], resolution=960)
+    fine_wide = adaptive_grid(posteriors["wide"], resolution=960)
+    refinement = {
+        "interval90_diffusivity_480": grids["narrow"].summary()["interval90_diffusivity"],
+        "interval90_diffusivity_960": fine.summary()["interval90_diffusivity"],
+        "sd_diffusivity_480": grids["narrow"].summary()["sd_diffusivity"],
+        "sd_diffusivity_960": fine.summary()["sd_diffusivity"],
+        "wide_interval90_diffusivity_480": grids["wide"].summary()["interval90_diffusivity"],
+        "wide_interval90_diffusivity_960": fine_wide.summary()["interval90_diffusivity"],
+    }
 
     narrow = posteriors["narrow"]
     mode = narrow.map_estimate()
     vi = mean_field_variational(narrow, mode)
+    full = full_rank_variational(narrow, mode)
     hess = narrow.local_hessian(mode)
     if np.min(np.linalg.eigvalsh(hess)) <= 0:
         raise RuntimeError("Local Hessian is not positive definite")
+    _, log_cov = grids["narrow"].log_moments()
+    masses = {"identity": np.eye(2), "map_hessian": hess, "posterior_covariance": np.linalg.inv(log_cov)}
 
-    plain = hmc(narrow, mode, mass=np.eye(2), seed=seed + 11)
-    condition = hmc(narrow, mode, mass=hess, seed=seed + 21)
+    plain = hmc(narrow, mode, mass=masses["identity"], seed=seed + 11)
+    condition = hmc(narrow, mode, mass=masses["map_hessian"], seed=seed + 21)
+    covariance = hmc(narrow, mode, mass=masses["posterior_covariance"], seed=seed + 31)
+    runs = {"identity": plain, "map_hessian": condition, "posterior_covariance": covariance}
     coverage = coverages(seed + 30000, ("narrow", "wide"), replications=replications)
 
-    plot_geometry(grids["narrow"], condition, vi, mode, figures / "posterior_geometry.png")
+    ident = {d: studies.identification(observed[d], grids[d], posteriors[d]) for d in observed}
+    sensitivity = {d: studies.prior_sensitivity(observed[d]) for d in observed}
+    ridge = studies.ridge_points(narrow, grids["narrow"], (0.01, 0.05, 0.25, 0.5, 0.75, 0.95, 0.99))
+    margins = {name: studies.ridge_in_metric(ridge, m) for name, m in masses.items()}
+    steps = {name: float(np.mean(r.step_sizes)) for name, r in runs.items()}
+    sweep = studies.sampler_study(
+        observed["narrow"], masses, mode,
+        seeds=2 if quick else 8, path_means=(5, 15) if quick else (4, 8, 15, 30), base_seed=seed + 50000,
+    )
+    design_results = studies.design_study(observed["narrow"].x, replications=replications, base_seed=seed + 70000,
+                                          resolution=160 if quick else 230)
+    truth_kappas = (0.03, 0.05, 0.10, 0.18, 0.26, 0.40, 0.60)
+    by_truth = studies.coverage_by_truth(truth_kappas, replications=replications, base_seed=seed + 90000,
+                                         resolution=160 if quick else 230)
+    prior_drawn = studies.coverage_prior_drawn(replications=2 * replications, base_seed=seed + 110000,
+                                               resolution=160 if quick else 230)
+
+    targeted = design_results["designs"]["kappa_targeted_at_truth"]
+    plan = design.TwoTimeDesign(targeted["early_time"], targeted["late_time"], targeted["n_early"], 24)
+    x = observed["narrow"].x
+    targeted_data = simulate_at(seed, x, design.assign_times(x, plan))
+    targeted_grid = adaptive_grid(Posterior(targeted_data), resolution=480)
+
+    plot_geometry(grids["narrow"], plain, vi, full, mode, figures / "posterior_geometry.png")
     plot_prediction(grids["narrow"], vi, observed["narrow"], figures / "predictive_uncertainty.png")
-    plot_designs(grids, figures / "observation_geometry.png")
-    plot_mcmc(plain, condition, figures / "sampler_diagnostics.png")
-    plot_coverage(coverage, figures / "repeated_coverage.png")
+    plot_designs(
+        {"narrow": grids["narrow"], "wide": grids["wide"], "two_time": targeted_grid},
+        {"narrow": "Narrow window (0.218–0.262)", "wide": "Wide window (0.06–0.57)",
+         "two_time": f"{plan.n_early} at t = {plan.early:.2f}, {24 - plan.n_early} at t = {plan.late:.2f}"},
+        figures / "observation_geometry.png",
+    )
+    studies.plot_identification(observed, figures / "identification.png")
+    studies.plot_sampler(runs, grids["narrow"], margins, steps, sweep, figures / "sampler_diagnostics.png")
+    studies.plot_design(x, design_results, figures / "design_tradeoff.png")
+    studies.plot_coverage_by_truth(by_truth, figures / "coverage_by_truth.png")
 
     metrics: dict[str, object] = {
         "seed": seed,
+        "quick": quick,
         "model": "Exact one-mode heat equation; not a trained PINN",
         "true_parameters": {"amplitude": TRUE_AMPLITUDE, "diffusivity": TRUE_DIFFUSIVITY},
         "sample_size_each_design": 24,
         "noise_sigma": OBSERVATION_SIGMA,
         "prior_mean_log": PRIOR_MEAN.tolist(),
         "prior_sd_log": PRIOR_SD.tolist(),
-        "reference": {k: v.summary() | {"boundary_mass": v.boundary_mass} for k, v in grids.items()},
+        "reference": {k: v.summary() | v.log_summary() | {"boundary_mass": v.boundary_mass} for k, v in grids.items()},
+        "reference_two_time_design": targeted_grid.summary() | targeted_grid.log_summary(),
+        "grid_refinement": refinement,
         "map": {"amplitude": float(np.exp(mode[0])), "diffusivity": float(np.exp(mode[1]))},
         "vi": vi.summary(np.random.default_rng(seed + 37)),
+        "vi_full_rank": full.summary(np.random.default_rng(seed + 38)),
         "hmc_identity": plain.summary(),
         "hmc_map_hessian": condition.summary(),
+        "hmc_posterior_covariance": covariance.summary(),
+        "hmc_stability_margin": {
+            name: [{**row, "step_over_thin_sd": steps[name] / row["thin_sd"]} for row in rows]
+            for name, rows in margins.items()
+        },
+        "hmc_replicates": sweep,
+        "identification": ident,
+        "prior_sensitivity": sensitivity,
+        "design": design_results,
         "coverage": coverage,
+        "coverage_by_true_diffusivity": by_truth,
+        "coverage_parameters_drawn_from_prior": prior_drawn,
     }
     (output / "metrics.json").write_text(json.dumps(metrics, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return metrics
@@ -585,9 +843,16 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path(__file__).parent / "results")
     parser.add_argument("--seed", type=int, default=20261116)
     parser.add_argument("--replications", type=int, default=100)
+    parser.add_argument("--quick", action="store_true", help="small run for CI; not the committed results")
     args = parser.parse_args()
-    print(json.dumps(run(args.output, seed=args.seed, replications=args.replications), indent=2))
+    metrics = run(args.output, seed=args.seed, replications=args.replications, quick=args.quick)
+    print(json.dumps({k: metrics[k] for k in ("reference", "vi", "vi_full_rank", "hmc_identity", "hmc_map_hessian",
+                                              "hmc_posterior_covariance")}, indent=2))
 
 
 if __name__ == "__main__":
-    main()
+    # studies.py imports this file as the module ``experiment``; running through that
+    # module keeps a single copy of the classes (isinstance checks would fail otherwise).
+    import experiment
+
+    experiment.main()
