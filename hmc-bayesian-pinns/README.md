@@ -1,13 +1,13 @@
 # HMC and the geometry of Bayesian inverse PDEs
 
 This project is a reproducible computational companion to the Medium essay
-*When Physics Meets Probability: Hamiltonian Monte Carlo and the Limits of Physics-Informed Neural Networks*.
+*Hamiltonian Monte Carlo for Bayesian PINNs, Tested on a Posterior We Can Compute Exactly*.
 
 ## What it does—and what it does not
 
 It uses a **known analytic forward solution**, not a trained PINN. This design
 sets approximation error to zero, isolating posterior geometry and the behaviour
-of HMC, a Gaussian mean-field variational approximation and a MAP estimator.
+of HMC, Gaussian variational approximations and a MAP estimator.
 The manuscript discusses how these phenomena carry over to B-PINNs and where
 additional neural approximation and residual-likelihood assumptions enter.
 
@@ -25,38 +25,59 @@ locations and noise variance are held fixed.
 
 ## Reproduce
 
-Tested with Python 3.12, NumPy 2.3, SciPy 1.17, and Matplotlib 3.10. From this
+Tested with Python 3.13, NumPy 2.5, SciPy 1.18 and Matplotlib 3.11. From this
 directory, use an isolated environment of your choice:
 
 ```bash
-python -m pip install -e .
+python -m pip install -e ".[test]"
 python -m unittest discover -s tests -v
 python experiment.py --output results --seed 20261116 --replications 100
 ```
 
-The command writes `results/metrics.json` and five PNG figures under
-`results/figures/`. No data are downloaded, and all random seeds are fixed.
+The full run takes several minutes and writes
+`results/metrics.json` and seven PNG figures under `results/figures/`.
+`--quick` runs a reduced version (fewer replications, seeds and grid points) in
+under a minute; CI uses it, and its numbers are not the committed ones. No data
+are downloaded, and all random seeds are fixed. `render_equations.py` writes the
+displayed equations used by the essay.
 
 ## What is compared
 
-1. A 480×480 deterministic integration of the two-dimensional posterior,
-   treated as the numerical reference rather than an MCMC result.
-2. MAP for the same posterior.
-3. Reverse-KL, independent Gaussian variational inference, optimized using
-   24×24 Gauss–Hermite quadrature (no stochastic VI noise).
-4. Four-chain leapfrog HMC with a unit mass matrix.
-5. Four-chain leapfrog HMC with a fixed mass matrix equal to the Hessian of the
-   negative log posterior at the MAP point. This is a local metric, not full
-   Riemannian HMC.
-6. Repeated synthetic-data coverage of the **exact-grid** posterior intervals;
-   these are not claims of full B-PINN calibration.
+On the narrow-window data set:
 
-HMC step sizes are adapted only during warm-up; path lengths are randomly
-jittered. Results include acceptance, rough FFT-based ESS, split-Rhat and the
-number of gradient calls. Chain diagnostics are intentionally minimal: users
-should not interpret split-Rhat or ESS alone as proof that all posterior regions
-were explored. High-dimensional applications should use modern rank-normalized
-diagnostics and stronger chain/pathology checks.
+1. A 480×480 deterministic integration of the two-dimensional posterior,
+   treated as the numerical reference rather than an MCMC result (checked
+   against a 960×960 grid).
+2. MAP for the same posterior.
+3. Reverse-KL Gaussian variational inference, both mean-field and
+   full-covariance, optimised with 24×24 Gauss–Hermite quadrature (no
+   stochastic VI noise).
+4. Four-chain leapfrog HMC with three constant mass matrices: the identity, the
+   Hessian of the negative log posterior at the MAP point, and the inverse of
+   the exact posterior covariance (the dense metric that Stan-style warm-up
+   adaptation tries to estimate). None of these is Riemannian HMC.
+
+Follow-up studies (`studies.py`):
+
+- **Identification.** Profile likelihood of κ with the amplitude maximised in
+  closed form; exact-grid intervals as the prior on log κ is narrowed, widened
+  or moved; local Hessian geometry at points along the ridge.
+- **Samplers.** Eight seeds × four mean path lengths (4, 8, 15, 30 leapfrog
+  steps) × three mass matrices. Rank-normalised split-Rhat, bulk and tail ESS
+  and quantile MCSE (`diagnostics.py`, Vehtari et al. 2021, cross-checked
+  against ArviZ in the tests), divergent transitions (energy error above
+  1000), acceptance probability by position on the ridge, and the ratio of the
+  tuned step size to the thinnest local width of the ridge in each metric's
+  coordinates (leapfrog is unstable above 2).
+- **Design** (`design.py`). Local Fisher information over windows of evenly
+  spaced times; the Box–Lucas D-optimal two-time design; a two-time design
+  targeted at κ alone, planned at the true κ, at the prior median and at two
+  wrong guesses; each checked with exact-grid posteriors on 100 repeated data
+  sets.
+- **Calibration.** Coverage of the exact-grid 90% intervals over 100 repeated
+  data sets at the original parameters, at seven fixed true values of κ from
+  0.03 to 0.6, and with (A, κ) drawn from the prior (where nominal coverage
+  holds by construction, so this checks the machinery).
 
 ## Scientific boundaries
 
@@ -66,21 +87,29 @@ diagnostics and stronger chain/pathology checks.
 - The residual term of a soft-constrained PINN is absent because the equation
   holds exactly. A full B-PINN would need an explicit residual-discrepancy
   model, prior over weights and inference over those weights.
-- Credible interval coverage is evaluated over draws from a fixed parameter
-  pair, so the observed value can differ from nominal coverage even under a
-  correctly specified Bayesian model, especially for finite samples.
-- The MAP Hessian mass is fixed across the trajectory. It need not solve a
-  globally curved posterior; the study tests that limitation.
+- Credible-interval coverage at a fixed parameter value need not be nominal;
+  the coverage study shows where it is not.
+- The design results are local: they assume a value of κ, which is what the
+  experiment is meant to find.
+- The HMC sampler uses fixed path-length ranges rather than NUTS; the path-length
+  sweep is there so that conclusions do not rest on one trajectory length.
 
 ## Outputs
 
-| Figure | Subject |
-| --- | --- |
-| `posterior_geometry.png` | Narrow time design: curved parameter ridge and VI contour |
-| `predictive_uncertainty.png` | Exact posterior/VI solution bands against truth |
-| `observation_geometry.png` | Posterior geometry under two time designs |
-| `sampler_diagnostics.png` | Trace and autocorrelation under two HMC masses |
-| `repeated_coverage.png` | Exact posterior repeated-data 90% interval coverage |
+- `posterior_geometry.png`: narrow design in physical and log coordinates, with
+  mean-field and full-covariance VI contours.
+- `predictive_uncertainty.png`: exact posterior and mean-field VI bands for
+  u(0.5, t).
+- `identification.png`: profile likelihood against posteriors under three prior
+  widths, narrow and wide designs.
+- `sampler_diagnostics.png`: traces, acceptance by position, stability margin
+  and ESS per gradient across path lengths for the three mass matrices.
+- `observation_geometry.png`: posterior geometry for the narrow window, the wide
+  window and the κ-targeted two-time design.
+- `design_tradeoff.png`: Laplace posterior SD of log κ over measurement windows,
+  and the two-time trade-off between dispersion and decay.
+- `coverage_by_truth.png`: interval coverage as the true κ moves away from the
+  prior median.
 
 The generated figures are original and can be reused with attribution to
 Diogo Ribeiro and the companion project.
