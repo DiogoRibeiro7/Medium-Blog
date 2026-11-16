@@ -101,9 +101,9 @@ Donor–reform pairs are **not independent**: a country can appear in several
 reforms' candidate pools. Neither pair counts nor nearest distances are
 inferential sample sizes or standard errors.
 
-The next identification step must explicitly choose a way to handle
-subsequent donor treatment and time-varying confounding (for example,
-target-trial-style dynamic exposure contrasts with defensible adjustment),
-and separately evaluate **joint** covariate overlap, including political
-and institutional variables. Neither strategy is implemented or justified
-by this descriptive check.
+The subsequent [dynamic-exposure feasibility audit](DYNAMIC_EXPOSURE.md)
+now explicitly counts additional major cuts **in the treated paths** as
+well as the censored donor paths, and describes two different candidate
+policy strategies. It does **not** justify causal treatment weighting.
+Joint covariate overlap, political and institutional confounders, policy
+timing and a credible identification/inference strategy remain unresolved.

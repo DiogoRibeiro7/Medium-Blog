@@ -1,0 +1,117 @@
+{
+  "baseline_history_years": 5,
+  "by_horizon": [
+    {
+      "horizon": 0,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 20,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 0,
+      "n_no_cut_comparator_pairs": 227,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 227,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 227,
+      "n_pairs_with_both_strategy_arms_adherent": 227,
+      "n_reforms_with_both_strategy_arms_adherent": 20
+    },
+    {
+      "horizon": 1,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 16,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 4,
+      "n_no_cut_comparator_pairs": 212,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 212,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 176,
+      "n_pairs_with_both_strategy_arms_adherent": 176,
+      "n_reforms_with_both_strategy_arms_adherent": 16
+    },
+    {
+      "horizon": 2,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 16,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 4,
+      "n_no_cut_comparator_pairs": 197,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 197,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 168,
+      "n_pairs_with_both_strategy_arms_adherent": 168,
+      "n_reforms_with_both_strategy_arms_adherent": 16
+    },
+    {
+      "horizon": 3,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 16,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 4,
+      "n_no_cut_comparator_pairs": 184,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 184,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 159,
+      "n_pairs_with_both_strategy_arms_adherent": 159,
+      "n_reforms_with_both_strategy_arms_adherent": 16
+    },
+    {
+      "horizon": 4,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 16,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 4,
+      "n_no_cut_comparator_pairs": 179,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 179,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 154,
+      "n_pairs_with_both_strategy_arms_adherent": 154,
+      "n_reforms_with_both_strategy_arms_adherent": 16
+    },
+    {
+      "horizon": 5,
+      "n_eligible_initiating_reforms": 20,
+      "n_initiators_single_cut_adherent": 15,
+      "n_initiators_with_complete_sequential_lagged_wdi": 20,
+      "n_initiators_with_subsequent_major_cut": 5,
+      "n_no_cut_comparator_pairs": 174,
+      "n_no_cut_comparator_pairs_with_sequential_wdi": 174,
+      "n_pairs_with_both_arms_adherent_and_sequential_wdi": 144,
+      "n_pairs_with_both_strategy_arms_adherent": 144,
+      "n_reforms_with_both_strategy_arms_adherent": 15
+    }
+  ],
+  "causal_estimation": "none; no weights, ATT, model, test or uncertainty interval",
+  "cohort_policy": "fixed WID outcome t-5..t+5; matching WDI only t-5..t-1",
+  "followup_years": 5,
+  "frozen_reference_status": "same_source_validated",
+  "identification_barriers": [
+    "The original comparator's future-reform censoring is asymmetric with retention of repeated treated reforms.",
+    "Both strategies are event-history descriptions; binary 2-SD cuts do not specify a uniform policy dose or other tax changes.",
+    "Yearly WDI at t+h-1 may be affected by earlier tax cuts and may not be available before the next policy decision.",
+    "Sequential exchangeability, baseline policy assignment, genuine joint support, calendar-time common shocks and country dependence are unresolved.",
+    "Effective independent units are countries, not re-used donor-reform episodes.",
+    "Requiring observed WID outcomes through t+5 already selects on post-baseline data availability."
+  ],
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "n_baseline_eligible_reforms": 20,
+  "n_original_observed_reform_events": 29,
+  "n_pre_censor_comparator_pairs": 239,
+  "observed_original_design": "repeat treated cuts retained; comparator cuts from t onward excluded",
+  "original_reform_status_counts": {
+    "baseline_donors_available": 20,
+    "incomplete_treated_pre_macro": 1,
+    "invalid_treatment_history": 7,
+    "no_pre_reform_macro_donors": 1
+  },
+  "predecision_wdi_availability": "three annual WDI variables at t+h-1, cumulatively complete from t-1 to t+h-1; coverage only",
+  "reconciled_to_prior_donor_risk_sets": true,
+  "source_archive_sha256": {
+    "FP.CPI.TOTL.ZG": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+    "NE.TRD.GNFS.ZS": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+    "NY.GDP.PCAP.KD.ZG": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+    "SL.UEM.TOTL.ZS": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f"
+  },
+  "source_last_updated": {
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "NE.TRD.GNFS.ZS": "2026-11-11",
+    "NY.GDP.PCAP.KD.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11"
+  },
+  "status": "dynamic_policy_pathway_and_covariate_availability_audit_only",
+  "strategy_a": "major cut at t followed by no additional coded major cuts t+1..t+h",
+  "strategy_b": "no coded major cut in t..t+h"
+}

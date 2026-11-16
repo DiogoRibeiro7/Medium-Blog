@@ -130,6 +130,27 @@ jobs:
             ${{ runner.temp }}/tax-study/donor-support/donor_support_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit dynamic tax-cut pathways and sequential WDI coverage
+        id: dynamic_exposure
+        if: steps.donor_support.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.dynamic_exposure \
+            --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" \
+            --provenance "$RUNNER_TEMP/wdi-source/world_bank_provenance.json" \
+            --frozen-reference causal_tax_cuts/results/donor_support_2026-11-15.json \
+            --output-dir "$RUNNER_TEMP/tax-study/dynamic-exposure"
+      - name: Publish dynamic policy paths and adherence audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-dynamic-exposure
+          path: |
+            ${{ runner.temp }}/tax-study/dynamic-exposure/dynamic_policy_paths.csv
+            ${{ runner.temp }}/tax-study/dynamic-exposure/dynamic_reform_recurrence.csv
+            ${{ runner.temp }}/tax-study/dynamic-exposure/dynamic_event_horizons.csv
+            ${{ runner.temp }}/tax-study/dynamic-exposure/dynamic_exposure_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
