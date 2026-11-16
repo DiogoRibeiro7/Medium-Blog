@@ -110,6 +110,26 @@ jobs:
             ${{ runner.temp }}/tax-study/macro-sensitivity/macro_sensitivity_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit future donor reforms and marginal macro support
+        id: donor_support
+        if: steps.macro_sensitivity.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.donor_support \
+            --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" \
+            --provenance "$RUNNER_TEMP/wdi-source/world_bank_provenance.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/donor-support"
+      - name: Publish future donor exposure and support audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-donor-support
+          path: |
+            ${{ runner.temp }}/tax-study/donor-support/support_reform_eligibility.csv
+            ${{ runner.temp }}/tax-study/donor-support/future_donor_exposure.csv
+            ${{ runner.temp }}/tax-study/donor-support/support_by_horizon.csv
+            ${{ runner.temp }}/tax-study/donor-support/donor_support_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'

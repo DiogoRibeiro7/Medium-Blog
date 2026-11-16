@@ -103,7 +103,10 @@ The source-probe workflow runs this grid after the macro balance audit and
 uploads the outputs as a seven-day `pre-reform-macro-sensitivity` artifact.
 
 This is not an exercise in selecting the rule with the lowest visible gap.
-The next research gate is to address *actual overlap/positivity, historical
-time-varying confounding and donor-exposure censoring*, then design credible
-clustered inference. The empirical numbers are frozen in
+The next [donor exposure and marginal macro support audit](DONOR_SUPPORT.md)
+now quantifies attrition from future donor reforms and limited measured
+overlap, without claiming full multivariate positivity or resolving
+time-varying confounding. A credible dynamic-treatment design and inference
+strategy are still outstanding. The original nine-specification empirical
+grid is frozen in
 [`results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md`](results/MACRO_SENSITIVITY_RESULTS_2026-11-14.md).

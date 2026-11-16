@@ -119,3 +119,13 @@ lag/donor-cap rules. Their **19-event common cohort** and fixed three-year
 balance window permit like-for-like descriptive comparisons; they are not
 adjusted causal estimates. Live reproduction includes event-level donor sets
 in the seven-day `pre-reform-macro-sensitivity` workflow artifact.
+
+The [future donor reform and macro support report](DONOR_SUPPORT_RESULTS_2026-11-15.md)
+and [frozen JSON](donor_support_2026-11-15.json) quantify donor–reform
+attrition due to later tax cuts, with a fixed outcome window and pre-reform
+macro distances. They show **65 of 239** eligible pairs removed by year five,
+and only **8 of 20** supported reforms inside all three separate macro
+donor ranges. These diagnostics do **not** estimate an adjusted ATT or
+establish joint covariate overlap. The `tax-cut-donor-support` seven-day
+workflow artifact provides the event-, donor-, and horizon-level source
+records when the live data probe succeeds.

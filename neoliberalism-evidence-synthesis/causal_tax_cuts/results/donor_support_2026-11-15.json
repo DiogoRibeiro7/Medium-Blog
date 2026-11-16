@@ -1,0 +1,127 @@
+{
+  "by_horizon": [
+    {
+      "horizon": -1,
+      "mean_nearest_fixed_standardized_distance": 1.087820356782783,
+      "median_nearest_fixed_standardized_distance": 0.966427409133302,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 239,
+      "n_donor_reform_pairs_censored_cumulative": 0,
+      "n_reforms_with_all_three_marginal_ranges": 9,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 19
+    },
+    {
+      "horizon": 0,
+      "mean_nearest_fixed_standardized_distance": 1.087820356782783,
+      "median_nearest_fixed_standardized_distance": 0.966427409133302,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 227,
+      "n_donor_reform_pairs_censored_cumulative": 12,
+      "n_reforms_with_all_three_marginal_ranges": 9,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 19
+    },
+    {
+      "horizon": 1,
+      "mean_nearest_fixed_standardized_distance": 1.1607338334917867,
+      "median_nearest_fixed_standardized_distance": 0.966427409133302,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 212,
+      "n_donor_reform_pairs_censored_cumulative": 27,
+      "n_reforms_with_all_three_marginal_ranges": 9,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 18
+    },
+    {
+      "horizon": 2,
+      "mean_nearest_fixed_standardized_distance": 1.2076872445518145,
+      "median_nearest_fixed_standardized_distance": 1.0506902510971483,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 197,
+      "n_donor_reform_pairs_censored_cumulative": 42,
+      "n_reforms_with_all_three_marginal_ranges": 8,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 18
+    },
+    {
+      "horizon": 3,
+      "mean_nearest_fixed_standardized_distance": 1.2310289632225075,
+      "median_nearest_fixed_standardized_distance": 1.0506902510971483,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 184,
+      "n_donor_reform_pairs_censored_cumulative": 55,
+      "n_reforms_with_all_three_marginal_ranges": 8,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 18
+    },
+    {
+      "horizon": 4,
+      "mean_nearest_fixed_standardized_distance": 1.245678431887964,
+      "median_nearest_fixed_standardized_distance": 1.0506902510971483,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 179,
+      "n_donor_reform_pairs_censored_cumulative": 60,
+      "n_reforms_with_all_three_marginal_ranges": 8,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 18
+    },
+    {
+      "horizon": 5,
+      "mean_nearest_fixed_standardized_distance": 1.2872624040027958,
+      "median_nearest_fixed_standardized_distance": 1.1194818668677446,
+      "n_baseline_eligible_reforms": 20,
+      "n_donor_reform_pairs_at_risk": 174,
+      "n_donor_reform_pairs_censored_cumulative": 65,
+      "n_reforms_with_all_three_marginal_ranges": 8,
+      "n_reforms_with_any_donor": 20,
+      "n_reforms_with_at_least_three_donors": 18
+    }
+  ],
+  "caveats": [
+    "A marginal-range screen is necessary but not sufficient for multivariate support; it does not prove positivity.",
+    "The entire observed outcome window t-5..t+5 remains required even for h=0; this is another possible future-availability selection.",
+    "The no-new-cut counterfactual cannot use donors after they reform, but selecting only non-reforming future donors conditions on post-baseline policy.",
+    "Donor-event pairs recur across reforms/countries and are not independent observations.",
+    "Political, institutional and capital-openness confounders have not been adjusted."
+  ],
+  "censoring": "exclude donors at horizon h if any tax cut from t through t+h",
+  "donor_screening": "identical five-year prior tax-cut path and complete observed WID outcome window",
+  "event_status_counts": {
+    "baseline_donors_available": 20,
+    "incomplete_treated_pre_macro": 1,
+    "invalid_treatment_history": 7,
+    "no_pre_reform_macro_donors": 1
+  },
+  "horizon_minus_one": "pre-censor baseline including donors that reform at t",
+  "inference": "none; no adjusted treatment effect, test or uncertainty interval",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "macro_input_window": "only t-5 through t-1 WDI; no imputation",
+  "matching_reference": {
+    "lags": 5,
+    "max_horizon": 5
+  },
+  "n_donor_event_pairs_with_future_reform_through_h5": 65,
+  "n_eligible_reforms_before_future_censoring": 20,
+  "n_original_reform_events": 29,
+  "n_pre_censor_donor_event_pairs": 239,
+  "n_previous_reference_matched_events": 20,
+  "n_reforms_with_donors_after_five_year_censoring": 20,
+  "nearest_distance": "Euclidean distance on three lagged macro means, standardized once using pre-censoring treated+donor pool",
+  "reference_matched_event_ids_consistent": true,
+  "source_archive_sha256": {
+    "FP.CPI.TOTL.ZG": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+    "NE.TRD.GNFS.ZS": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+    "NY.GDP.PCAP.KD.ZG": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+    "SL.UEM.TOTL.ZS": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f"
+  },
+  "source_last_updated": {
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "NE.TRD.GNFS.ZS": "2026-11-11",
+    "NY.GDP.PCAP.KD.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11"
+  },
+  "source_outcome_window": "full t-5..t+5 WID outcome window at every horizon",
+  "status": "future_donor_exposure_and_marginal_support_audit_only",
+  "support_definition": "treated pre-five mean lies within every donor marginal min-max range, not joint convex hull or positivity"
+}
