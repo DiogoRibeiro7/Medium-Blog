@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any, Callable
 
 from extract_commuting import municipality_codes_from_panel
+from ine_commuting_full_slice_audit import build_report, compare_source_views
 from ine_commuting_partition_reconciliation import (
     parse_dim2_slice,
     run,
@@ -59,6 +60,10 @@ THIRD_BATCH_SOURCE_HASHES = {
     "1317": "94d3968f36a2fb0017a57c1f9b4f6cb0006c0bf9d0d24c3211a2319b3e32358b",
 }
 THIRD_BATCH_SOURCE_SIZES = {"1315": 58213, "1316": 60313, "1317": 61824}
+TROFA_RUN = ROOT / "data" / "ine_0012340_pr_run_43887818291"
+TROFA_SOURCE_SHA256 = "f3dace7790dc74400bf010c8f485c29ffed674a5fca5401955f376588a7e965e"
+TROFA_SOURCE_BYTES = 57479
+FULL_AMP_SLICE_AUDIT = ROOT / "data" / "ine_0012340_2021_amp_full_slice_audit.json"
 SECOND_SOURCE_HASHES = {
     "0104": "4c209febabc788d01a64121121dea2eff27b792ba4c1fce527d01a471de46de7",
     "0107": "69d06467a55030f1ccd681a055c6ef2aaa68c7f82c3bca32201b63879244e37b",
@@ -823,6 +828,92 @@ class ThirdBatchINESliceAuditTests(unittest.TestCase):
         }
         self.assertEqual(len(unique_pairs), 136)
         self.assertEqual(unique_pairs, all_expected_pairs)
+
+
+class FullINESliceAuditTests(unittest.TestCase):
+    """Verify 17 original captured JSON slices and all 136 reverse pairs."""
+
+    def test_trofa_source_manifest_and_partial_audit(self) -> None:
+        source = TROFA_RUN / "ine_0012340_dim2_1318_candidate.json"
+        manifest = TROFA_RUN / "partition_manifest.json"
+        raw = source.read_bytes()
+        receipt = json.loads(manifest.read_text(encoding="utf-8"))
+        self.assertEqual(len(raw), TROFA_SOURCE_BYTES)
+        self.assertEqual(hashlib.sha256(raw).hexdigest(), TROFA_SOURCE_SHA256)
+        self.assertEqual(receipt["requested_codes"], ["1318"])
+        self.assertEqual(receipt["capture_count"], 1)
+        self.assertEqual(receipt["completed_json_captures"], 1)
+        self.assertEqual(receipt["items"][0]["sha256"], TROFA_SOURCE_SHA256)
+        self.assertEqual(receipt["items"][0]["status"], "captured_unverified")
+
+        with tempfile.TemporaryDirectory() as directory:
+            audit = run(source, manifest, "1318", Path(directory) / "audit.json")
+        self.assertEqual(audit["status"], "partial_match")
+        self.assertEqual(audit["source_records"], 347)
+        self.assertEqual(audit["amp_geographies_present"], 17)
+        self.assertEqual(audit["diagonal_count"], 0)
+        self.assertEqual(audit["matched_pairs"], 16)
+        self.assertEqual(audit["mismatched_pairs"], 0)
+        self.assertFalse(audit["full_17_municipality_matrix_reconciled"])
+        self.assertEqual(
+            json.loads((TROFA_RUN / "audit_1318.json").read_text(encoding="utf-8")),
+            audit,
+        )
+
+    def test_full_17_slice_report_matches_committed_json(self) -> None:
+        report = build_report()
+        self.assertEqual(report["status"], "match")
+        self.assertEqual(report["source_municipality_slices"], 17)
+        self.assertEqual(report["official_offdiagonal_source_views"], 272)
+        self.assertEqual(report["reciprocal_pairs_checked"], 136)
+        self.assertEqual(report["reciprocal_pairs_symmetric"], 136)
+        self.assertEqual(report["frozen_undirected_pairs"], 136)
+        self.assertEqual(report["both_source_views_matching_frozen"], 136)
+        self.assertEqual(report["frozen_comparison_discrepancies"], [])
+        self.assertEqual(report["reciprocal_discrepancies"], [])
+        self.assertEqual(len(report["pair_comparisons"]), 136)
+        self.assertEqual(
+            {source["municipality_code"] for source in report["source_slices"]},
+            set(municipality_codes_from_panel()),
+        )
+        self.assertTrue(all(source["source_records"] == 347 for source in report["source_slices"]))
+        self.assertFalse(report["residential_migration_or_displacement_evidence"])
+        self.assertFalse(report["housing_cascade_causality_established"])
+        self.assertFalse(report["single_official_full_matrix_download_claimed"])
+        self.assertEqual(
+            json.loads(FULL_AMP_SLICE_AUDIT.read_text(encoding="utf-8")), report,
+        )
+
+    def test_one_modified_reverse_view_fails_comparison(self) -> None:
+        codes = municipality_codes_from_panel()
+        frozen = {
+            (row["municipality_a_code"], row["municipality_b_code"]):
+            row["frozen_third_party_interactions"]
+            for row in build_report()["pair_comparisons"]
+        }
+        observed: dict[str, dict[str, int]] = {
+            code: {other: 0 for other in codes} for code in codes
+        }
+        for (first, second), count in frozen.items():
+            observed[first][second] = count
+            observed[second][first] = count
+
+        # Alter only one official direction; totals alone would miss this error.
+        observed["1318"]["0104"] += 1
+        result = compare_source_views(observed, frozen, codes)
+        self.assertEqual(result["status"], "discrepancies_detected")
+        self.assertEqual(result["reciprocal_pairs_symmetric"], 135)
+        self.assertEqual(result["both_source_views_matching_frozen"], 135)
+        self.assertEqual(len(result["reciprocal_discrepancies"]), 1)
+        self.assertEqual(len(result["frozen_comparison_discrepancies"]), 1)
+        self.assertEqual(
+            (result["reciprocal_discrepancies"][0]["municipality_a_code"],
+             result["reciprocal_discrepancies"][0]["municipality_b_code"]),
+            ("0104", "1318"),
+        )
+        del observed["1318"]
+        with self.assertRaisesRegex(ValueError, "17 different AMP"):
+            compare_source_views(observed, frozen, codes)
 
 
 if __name__ == "__main__":

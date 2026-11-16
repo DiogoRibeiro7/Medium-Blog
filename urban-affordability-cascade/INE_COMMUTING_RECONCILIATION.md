@@ -1,14 +1,12 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
-**Status (14 November 2026): sixteen independently captured official
-municipality slices now reproduce all 136 frozen undirected AMP 2021
-work/study interaction pairs.** All 256 off-diagonal official source views
-match the pinned third-party counts; all 120 reciprocal links among the
-captured municipalities agree in both directions. The missing **Trofa**
-municipality source leaves **16 reverse views and full official matrix
-symmetry unverified**. No official full commuting matrix is added; the 136
-existing undirected pairs remain labelled a third-party extraction
-attributed to INE.
+**Status (16 November 2026): all seventeen independently captured official
+municipality slices reproduce all 136 frozen undirected AMP 2021 work/study
+interaction pairs.** All **272 off-diagonal source views** match the pinned
+third-party counts and all **136 reciprocal links** agree in both directions.
+This is a reconciliation assembled from **17 separate `Dim2` responses**, not
+an independent download of a single full official matrix. The 136 frozen
+undirected pairs remain labelled a third-party extraction attributed to INE.
 
 ## What is being tested
 
@@ -96,9 +94,13 @@ not authenticate independent INE data. A separate small PR-triggered
 source probe now exists, with an archived first real response and its
 own offline regression tests described below.
 
-The **complete 136-pair result** remains unverified against the official API
-until the remaining municipality slices, reverse views, territorial metadata,
-population universe and source definitions have all been independently reviewed.
+The 136 frozen pair **counts** now reproduce against all 17 independently
+captured official municipality response slices, including both reverse views.
+The offline scripts verify the declared geographic codes, indicator, period,
+unit, source shape, response checksums and numerical comparisons. They do
+**not** independently authenticate the INE publisher or resolve every
+substantive question about the statistical population and directional meaning.
+Those limits matter before interpreting the network beyond count agreement.
 
 ## Scientific boundary
 
@@ -728,3 +730,64 @@ manifest scope, all 48 matches, all 120 reciprocal agreements and exact
 counts, not observed relocation or causal displacement. Complete numerical
 agreement with the frozen counts would still not demonstrate a housing-price
 contagion mechanism.
+
+### Final municipality capture: Trofa and 17-slice full count audit
+
+The bounded PR source probe
+[#43887818291](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43887818291)
+selected only `start_index=16`, `count=1`, `dimension=Dim2` on
+**16 November 2026**, independently capturing Trofa (`DICO=1318`). Its
+original **57,479-byte** raw 2021 JSON response and one-item manifest
+are archived unchanged under
+[`data/ine_0012340_pr_run_43887818291/`](data/ine_0012340_pr_run_43887818291/).
+The SHA-256 of those exact source bytes is
+`f3dace7790dc74400bf010c8f485c29ffed674a5fca5401955f376588a7e965e`.
+
+The Trofa response contains 347 unique `dim_3` geographic codes, all 17
+AMP municipality counterparts, a single 2021 period, the expected
+`geocod=1318`, and a zero same-municipality diagonal. All **16/16**
+nonself counts independently match the frozen pairs. Its 16 reciprocal
+views agree with the corresponding previously archived `Dim2` source
+responses. The original source and manifest passed the deterministic
+audit [`audit_1318.json`](data/ine_0012340_pr_run_43887818291/audit_1318.json).
+
+The final offline
+[`ine_commuting_full_slice_audit.py`](ine_commuting_full_slice_audit.py)
+reads and checks all **17 original raw response files** and their original
+manifests. It requires all 17 source views per municipality, verifies the
+original response digests, validates the exact fixed AMP geography, and
+compares both independently captured directions for every unordered pair.
+The machine-readable, reproducible
+[`full-slice report`](data/ine_0012340_2021_amp_full_slice_audit.json)
+lists all 17 source hashes, provenance run IDs and 136 individual pair
+comparisons. Its result is:
+
+| Count-level test | Independently checked | Discrepancies |
+| --- | ---: | ---: |
+| Municipality source slices | 17 of 17 | 0 |
+| Off-diagonal source views | 272 of 272 | 0 |
+| Unordered AMP frozen pairs | 136 of 136 | 0 |
+| Reciprocal pairs with symmetric source counts | 136 of 136 | 0 |
+| Pairs where **both** views equal the frozen count | 136 of 136 | 0 |
+
+Reproduce both the final source audit and the complete 17-slice comparison
+without fetching data or modifying the frozen study, from
+`urban-affordability-cascade/`:
+
+```bash
+python ine_commuting_partition_reconciliation.py \
+  --source-json data/ine_0012340_pr_run_43887818291/ine_0012340_dim2_1318_candidate.json \
+  --manifest-json data/ine_0012340_pr_run_43887818291/partition_manifest.json \
+  --municipality-code 1318 \
+  --output-json /tmp/ine-0012340-trofa-audit.json
+
+python ine_commuting_full_slice_audit.py \
+  --output-json /tmp/ine-0012340-17-slice-count-audit.json
+```
+
+The final report checks a **complete set of municipality source slices**;
+it does not assert one separately authenticated, all-municipality official
+download. INE indicator `0012340` reports **2021 work/study interactions**.
+None of the reproduced counts establish which municipality someone moved
+from, a residential displacement mechanism, housing-price transmission,
+or causality. These questions require independent outcome and mobility data.

@@ -287,6 +287,23 @@ class PartitionedINECaptureTests(unittest.TestCase):
                 ],
             )
 
+    def test_last_amp_index_targets_only_trofa(self) -> None:
+        """Pin the final indexed capture to Trofa without repeating other slices."""
+        with tempfile.TemporaryDirectory() as temp:
+            report = capture_partition(
+                Path(temp), metadata_bytes=self.source,
+                start_index=16, count=1, dimension="Dim2",
+                fetcher=fake_response,
+            )
+            self.assertEqual(report["requested_codes"], ["1318"])
+            self.assertEqual(report["capture_count"], 1)
+            self.assertEqual(report["completed_json_captures"], 1)
+            self.assertEqual(report["items"][0]["municipality"], "Trofa")
+            self.assertEqual(
+                report["items"][0]["candidate_url"],
+                candidate_slice_url("1318", dimension="Dim2"),
+            )
+
     def test_failed_partition_remains_in_manifest_without_stale_success(self) -> None:
         def partial_fetch(url: str) -> CapturedJSON:
             if "Dim2=0107" in url:
