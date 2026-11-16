@@ -1,0 +1,109 @@
+name: INE 0011631 Porto residential categories source probe
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+    paths:
+      - ".github/workflows/ine-0011631-porto-categories-pr-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-porto-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    defaults:
+      run:
+        working-directory: urban-affordability-cascade
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Test strict source scoping without network access
+        run: python -m unittest discover -s tests -p 'test_ine_residential_categories_probe.py' -v
+
+      - name: Fetch two bounded, unverified official source candidates
+        shell: bash
+        run: |
+          set +e
+          python ine_residential_categories_probe.py \
+            --output candidate-capture \
+            --timeout-seconds 60
+          code=$?
+          echo "Capture exit status: $code"
+          exit 0
+
+      - name: Preserve unmodified source responses and any failure receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ine-0011631-porto-2021-residential-category-candidates
+          path: urban-affordability-cascade/candidate-capture/
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Classify source availability after artifact upload
+        if: always()
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          manifest_path = Path("candidate-capture/probe_manifest.json")
+          if not manifest_path.exists():
+              sys.exit("No source manifest was generated")
+          report = json.loads(manifest_path.read_text(encoding="utf-8"))
+          expected = ["metadata", "porto_dim2_candidate"]
+          items = report.get("items")
+          if (
+              report.get("protocol") != "ine_0011631_2021_porto_category_source_probe_v1"
+              or report.get("indicator_id") != "0011631"
+              or report.get("requested_kinds") != expected
+              or report.get("source_semantics_verified") is not False
+              or report.get("directed_residential_origin_destination_counts_reconciled") is not False
+              or not isinstance(items, list)
+              or len(items) != 2
+              or any(not isinstance(item, dict) or item.get("kind") != kind
+                     for item, kind in zip(items, expected))
+          ):
+              sys.exit("Source manifest changed scientific scope or query identity")
+
+          captured = [item for item in items if item.get("status") == "captured_unverified"]
+          failed = [item for item in items if item.get("status") == "failed"]
+          if len(captured) + len(failed) != 2 or len(captured) != report.get("completed_json_captures"):
+              sys.exit("Source manifest capture counters are inconsistent")
+          if any(not item.get("indicator_code_matches_request") for item in captured):
+              sys.exit("Source response has unexpected indicator identity")
+
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as summary:
+              summary.write(
+                  "## INE 0011631 Census 2021 Porto category source availability\n"
+                  f"- JSON candidates captured: {len(captured)}/2\n"
+                  "- Neither response establishes named residential origins or causal effects.\n"
+                  "- Review actual metadata dimensions and category labels before using any count.\n"
+              )
+              for item in failed:
+                  summary.write(
+                      f"- Failed {item['kind']}: {item.get('error_type')} "
+                      f"({item.get('error')})\n"
+                  )
+
+          transient_http = ("HTTP Error 429:", "HTTP Error 500:", "HTTP Error 502:",
+                            "HTTP Error 503:", "HTTP Error 504:")
+          for item in failed:
+              reason = str(item.get("error", ""))
+              if not (
+                  item.get("error_type") in {"TimeoutError", "URLError"}
+                  or (item.get("error_type") == "HTTPError" and reason.startswith(transient_http))
+              ):
+                  sys.exit("Candidate source failed because of an invalid response, not transient availability")
+          if failed:
+              print("::warning title=INE source unavailable::Inspect the archived failure receipt")
+          PY
