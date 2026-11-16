@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:49:02.421Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "286",
+      "valor" : "286"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "299",
+      "valor" : "299"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "427",
+      "valor" : "427"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "442",
+      "valor" : "442"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "485",
+      "valor" : "485"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "524",
+      "valor" : "524"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "585",
+      "valor" : "585"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "912",
+      "valor" : "912"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "966",
+      "valor" : "966"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 007",
+      "valor" : "1007"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 165",
+      "valor" : "1165"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 111",
+      "valor" : "2111"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "2 172",
+      "valor" : "2172"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 304",
+      "valor" : "2304"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 069",
+      "valor" : "4069"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 396",
+      "valor" : "4396"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "4 415",
+      "valor" : "4415"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "8 465",
+      "valor" : "8465"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "25 870",
+      "valor" : "25870"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "29 335",
+      "valor" : "29335"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "30 238",
+      "valor" : "30238"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "34 017",
+      "valor" : "34017"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "55 205",
+      "valor" : "55205"
+    }, {
+      "geocod" : "1313",
+      "geodsg" : "Póvoa de Varzim",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "64 255",
+      "valor" : "64255"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

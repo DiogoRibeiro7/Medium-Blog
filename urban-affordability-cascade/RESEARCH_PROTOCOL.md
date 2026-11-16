@@ -131,6 +131,21 @@ checks. The accompanying [residential_od_intake.py](residential_od_intake.py)
 requires exact published counts or explicitly suppressed cells. Unit tests
 are synthetic and cannot stand in for collected migration data.
 
+**Official 17-municipality residence-category checkpoint (16 November
+2026).** Exact read-only INE indicator `0011631` Census 2021 category responses
+for **all 17 AMP municipalities** have been archived with the matching
+metadata and response checksums; the capture run is documented in
+[OD_DATA_ACCESS.md](OD_DATA_ACCESS.md). An offline 24-sex/category-cell audit
+per municipality reconciles independently to the Porto municipal archive:
+15,724 Porto residents and 124,618 metropolitan-area residents previously
+lived in another Portuguese municipality, leaving 108,894 in the other 16
+destinations. The derived municipal table gives valid destination-specific
+category rates (for example, Porto 6.844646%, Vila Nova de Gaia 6.152721%
+and Vale de Cambra 10.023244% of the eligible 2021 population). These are
+**not** directed flows, net migration, inferred departures from Porto or a
+causal effect. The 17×18 named-origin cross-tab and its unsent request are
+still the blocking empirical input for identifying residential exchange.
+
 **Annual timing / rolling-prediction checkpoint (31 October 2026).** The
 fixed 2019–2025 sold-price and 2020–2025 new-contract rent medians now
 support an audited Stage B first-passage calculation and an exploratory

@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:57.521Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "566",
+      "valor" : "566"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "615",
+      "valor" : "615"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "637",
+      "valor" : "637"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "648",
+      "valor" : "648"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 165",
+      "valor" : "1165"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "1 203",
+      "valor" : "1203"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 259",
+      "valor" : "1259"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "1 263",
+      "valor" : "1263"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 383",
+      "valor" : "1383"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 451",
+      "valor" : "1451"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "2 424",
+      "valor" : "2424"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "2 834",
+      "valor" : "2834"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 179",
+      "valor" : "5179"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 498",
+      "valor" : "5498"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "8 364",
+      "valor" : "8364"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "8 774",
+      "valor" : "8774"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "10 677",
+      "valor" : "10677"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "17 138",
+      "valor" : "17138"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "55 148",
+      "valor" : "55148"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "61 428",
+      "valor" : "61428"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "64 127",
+      "valor" : "64127"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "70 850",
+      "valor" : "70850"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "116 576",
+      "valor" : "116576"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "134 977",
+      "valor" : "134977"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

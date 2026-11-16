@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:49:06.105Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "355",
+      "valor" : "355"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "383",
+      "valor" : "383"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "413",
+      "valor" : "413"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "442",
+      "valor" : "442"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "796",
+      "valor" : "796"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "797",
+      "valor" : "797"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "872",
+      "valor" : "872"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "930",
+      "valor" : "930"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "983",
+      "valor" : "983"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 008",
+      "valor" : "1008"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 802",
+      "valor" : "1802"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 991",
+      "valor" : "1991"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 859",
+      "valor" : "2859"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "3 071",
+      "valor" : "3071"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "5 156",
+      "valor" : "5156"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "5 364",
+      "valor" : "5364"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 930",
+      "valor" : "5930"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "10 520",
+      "valor" : "10520"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "33 148",
+      "valor" : "33148"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "36 361",
+      "valor" : "36361"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "38 717",
+      "valor" : "38717"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "42 108",
+      "valor" : "42108"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "69 509",
+      "valor" : "69509"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "80 825",
+      "valor" : "80825"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

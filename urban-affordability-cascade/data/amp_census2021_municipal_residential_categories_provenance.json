@@ -1,0 +1,123 @@
+{
+  "amp_previous_other_portuguese_municipality": 124618,
+  "category_cells_per_municipality": 24,
+  "derived_csv_sha256": "5909719ee693fcfc5fd628acc4fd67e924dd90f1ebdee67cf998506b6fd6d866",
+  "evidence_class": "2021_census_municipal_destination_migration_categories_not_od",
+  "geography": "17 AMP municipalities, 2021 Census NUTS 2013 municipality DICO",
+  "independent_porto_archive_csv_sha256": "91cd3b83c8ed91169ff961f89128b7610d581419323bedb982a553a59bfcd928",
+  "indicator_id": "0011631",
+  "metadata_gzip_sha256": "fff28a8bb1f88b532a2d4811efecfb941f81168f47e85524258d6426b5a5cbe6",
+  "municipal_capture_manifest_sha256": "0825d65885b51da322e48b83d56cd0a11e3869a3d501e5d7bb4c583846cbcfac",
+  "municipalities": 17,
+  "period": "2021",
+  "porto_previous_other_portuguese_municipality": 15724,
+  "raw_source_files": [
+    {
+      "bytes": 6055,
+      "dico": "0104",
+      "filename": "ine_0011631_dim2_0104_2021.json",
+      "sha256": "ef8e0a2decb7c7d848da210ef85fe7b9a27f103c0e541c29cc7755ec2af2421b"
+    },
+    {
+      "bytes": 6095,
+      "dico": "0107",
+      "filename": "ine_0011631_dim2_0107_2021.json",
+      "sha256": "e1dda2be0334a8558f107df513a238876af7692bbd271c020e82533a93b34f29"
+    },
+    {
+      "bytes": 6439,
+      "dico": "0109",
+      "filename": "ine_0011631_dim2_0109_2021.json",
+      "sha256": "4f5b1ce193cff22a7301e0263975d80d1fe7f7f652c9638d5553dc9e4b9b704f"
+    },
+    {
+      "bytes": 6413,
+      "dico": "0113",
+      "filename": "ine_0011631_dim2_0113_2021.json",
+      "sha256": "cde660bb253e09f970cb52447d336c3b9cc691a0e27aea984fd31ba414f12750"
+    },
+    {
+      "bytes": 6407,
+      "dico": "0116",
+      "filename": "ine_0011631_dim2_0116_2021.json",
+      "sha256": "f0b1c3d56540899c80a7dd3b50b8ea920d546f85ecd06649ad0f88019aa5aa87"
+    },
+    {
+      "bytes": 6255,
+      "dico": "0119",
+      "filename": "ine_0011631_dim2_0119_2021.json",
+      "sha256": "0bd6eff701e630a0af9cee8b90941a359576e1fcbe482ebaeb1c4a898b04b568"
+    },
+    {
+      "bytes": 6149,
+      "dico": "1304",
+      "filename": "ine_0011631_dim2_1304_2021.json",
+      "sha256": "efcea61533e42f7ebfbe981d30a271743e9c8d810f87068c608a011e6a3a0540"
+    },
+    {
+      "bytes": 6055,
+      "dico": "1306",
+      "filename": "ine_0011631_dim2_1306_2021.json",
+      "sha256": "658f7e63fc66b1e8d2b72ccf9ed4a87a9e3d6e58134addfc2ecfddec449b9718"
+    },
+    {
+      "bytes": 6201,
+      "dico": "1308",
+      "filename": "ine_0011631_dim2_1308_2021.json",
+      "sha256": "920fb02ebe9c42847a03934e72a9b2117b51af9e55268947f21d453356d3e344"
+    },
+    {
+      "bytes": 6103,
+      "dico": "1310",
+      "filename": "ine_0011631_dim2_1310_2021.json",
+      "sha256": "c886e9a367d63ded919521ea0588c31642cf8dbbc63ce852ad107dd1316118aa"
+    },
+    {
+      "bytes": 6101,
+      "dico": "1312",
+      "filename": "ine_0011631_dim2_1312_2021.json",
+      "sha256": "376dcf32b6ead554a3a5f0228e99f845ffe1f634a1fb1f6f2217db5060ae67d3"
+    },
+    {
+      "bytes": 6320,
+      "dico": "1313",
+      "filename": "ine_0011631_dim2_1313_2021.json",
+      "sha256": "5e47436d2f3e936be783cf8c4bab30d2a0022baa7bf8c69b9d547314176f6295"
+    },
+    {
+      "bytes": 6194,
+      "dico": "1314",
+      "filename": "ine_0011631_dim2_1314_2021.json",
+      "sha256": "70976fbfd6642b1b42c64f2ba14cfbfe6c6ac0a33e53eb7bb5ee7f7bb29b36ec"
+    },
+    {
+      "bytes": 6109,
+      "dico": "1315",
+      "filename": "ine_0011631_dim2_1315_2021.json",
+      "sha256": "178677c9a5be61bc03430d37008fa39eff19729e357cb8f321770aa1623982d7"
+    },
+    {
+      "bytes": 6250,
+      "dico": "1316",
+      "filename": "ine_0011631_dim2_1316_2021.json",
+      "sha256": "9d0df518bdeb9691324fa3b5ebdd126d49de0f973aeb1a655560c0366e01ea8f"
+    },
+    {
+      "bytes": 6393,
+      "dico": "1317",
+      "filename": "ine_0011631_dim2_1317_2021.json",
+      "sha256": "cd3db0d5e1a18e5ef153f1736b0710a0b8d1d4219b7698beeda6996b080dfb5f"
+    },
+    {
+      "bytes": 6050,
+      "dico": "1318",
+      "filename": "ine_0011631_dim2_1318_2021.json",
+      "sha256": "1e6917ec585bef1d7c81f5220ba667861a4221c3188e4851c7263505e1258831"
+    }
+  ],
+  "residential_displacement_or_housing_causality_established": false,
+  "source_attempt_count": 1,
+  "source_data_is_named_origin_destination": false,
+  "source_metadata_sha256": "2ad66a75f486f830480500e20b9eed0d1be8c1670dff14c9dad68eb3b545282e",
+  "unit": "persons"
+}

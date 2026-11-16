@@ -1,8 +1,10 @@
 # Census 2021 directed residential mobility: access and intake specification
 
-**Status (31 October 2026): not requested, not received.** This is an actionable
-research-data specification, not evidence of Porto-to-suburb relocation. The
-repository must not host or fabricate individual Census records.
+**Status (16 November 2026): published municipality-level migration categories
+verified; named residential origin–destination data not requested or received.**
+This is an actionable research-data specification, not evidence of
+Porto-to-suburb relocation. The repository must not host or fabricate
+individual Census records.
 
 ## 1. Why the official data could answer the question
 
@@ -20,6 +22,59 @@ whole Porto Metropolitan Area (AMP). Neither number identifies origin.
 The required cross-tabulation has not been located in the inspected public
 tables. **Collection of named previous municipality does not guarantee access
 to it**, or that INE will approve a geographically detailed table.
+
+### Verified public-category data, not residential origin–destination data
+
+The official [INE Census 2021 indicator 0011631](https://www.ine.pt/xurl/indx/0011631/PT)
+has now been independently queried for **each of the 17 AMP destination
+municipalities**. It exposes the resident population by sex and by eight
+residence/migration categories, including category `33` (*previously resident
+in another Portuguese municipality*). It provides **no previous-municipality
+name or code**, and hence no Porto-to-Gaia, Porto-to-Maia or other directed
+residential origin–destination cell.
+
+Source evidence was fetched read-only in [GitHub Actions run
+43897407323](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43897407323),
+attempt 3, which validated **17/17 municipalities**. Exact raw 2021 JSON
+responses, the original SHA-256-bearing receipt and a losslessly compressed
+copy of the matching official metadata are pinned under
+`data/ine_0011631_amp17_2021_source/`. No synthetic observations enter the
+published data.
+
+The offline audit in `ine_residential_municipal_audit.py` checks the official
+indicator/period/geography/sex/category identities, all 24 cells per
+municipality, subgroup accounting, source checksums and **two independently
+published margins** from the Porto municipal archive:
+
+| Current residents in 2021 who lived in another Portuguese municipality in 2019 | People |
+| --- | ---: |
+| Porto (destination `1312`) | 15,724 |
+| Entire AMP (17 destinations) | 124,618 |
+| Other 16 destinations, combined | 108,894 |
+
+The verified derived panel is
+`data/amp_census2021_municipal_residential_categories.csv`; its companion
+`_provenance.json` records the hashes of every official source and the frozen
+Porto archive. The `moved_from_other_municipality_pct_eligible` denominator
+is the municipality's 2021 usual residents who were already born at the
+31 December 2019 reference date. It is a **retrospective in-mover category
+share**, not an annual migration rate, a count of departures, an origin–
+destination flow or a housing-price response.
+
+To audit the committed sources without network access, from this study folder:
+
+```bash
+python ine_residential_municipal_audit.py \
+  --capture-directory data/ine_0011631_amp17_2021_source \
+  --output-csv /tmp/ine-0011631-amp17-categories.csv \
+  --output-provenance /tmp/ine-0011631-amp17-provenance.json
+```
+
+The 17 destination counts reinforce the validity of the existing marginal
+controls but **cannot narrow the sharp identification bounds on Porto's
+directed residential exchange**: every destination's category `33` includes
+origins anywhere else in Portugal. The custom INE cross-tabulation specified
+below remains necessary for that question.
 
 ## 2. Two documented routes for obtaining an authorized table
 

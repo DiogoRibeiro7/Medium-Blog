@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:52.594Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "255",
+      "valor" : "255"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "299",
+      "valor" : "299"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "303",
+      "valor" : "303"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "343",
+      "valor" : "343"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "554",
+      "valor" : "554"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "568",
+      "valor" : "568"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "575",
+      "valor" : "575"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "646",
+      "valor" : "646"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "787",
+      "valor" : "787"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "861",
+      "valor" : "861"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "1 143",
+      "valor" : "1143"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "1 648",
+      "valor" : "1648"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 788",
+      "valor" : "2788"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "2 916",
+      "valor" : "2916"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 486",
+      "valor" : "4486"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 655",
+      "valor" : "4655"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "5 704",
+      "valor" : "5704"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "9 141",
+      "valor" : "9141"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "27 235",
+      "valor" : "27235"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "29 245",
+      "valor" : "29245"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "32 020",
+      "valor" : "32020"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "34 155",
+      "valor" : "34155"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "56 480",
+      "valor" : "56480"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "66 175",
+      "valor" : "66175"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:49:07.343Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "1 369",
+      "valor" : "1369"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "1 515",
+      "valor" : "1515"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "1 598",
+      "valor" : "1598"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "1 655",
+      "valor" : "1655"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "2 884",
+      "valor" : "2884"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "3 253",
+      "valor" : "3253"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "3 437",
+      "valor" : "3437"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "3 819",
+      "valor" : "3819"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "5 902",
+      "valor" : "5902"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "6 397",
+      "valor" : "6397"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "7 256",
+      "valor" : "7256"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "8 950",
+      "valor" : "8950"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "9 566",
+      "valor" : "9566"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "12 299",
+      "valor" : "12299"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "18 516",
+      "valor" : "18516"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "19 944",
+      "valor" : "19944"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "21 380",
+      "valor" : "21380"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "41 324",
+      "valor" : "41324"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "122 640",
+      "valor" : "122640"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "136 976",
+      "valor" : "136976"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "144 099",
+      "valor" : "144099"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "159 725",
+      "valor" : "159725"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "259 616",
+      "valor" : "259616"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "303 824",
+      "valor" : "303824"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

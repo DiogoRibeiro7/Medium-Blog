@@ -1,0 +1,232 @@
+[ {
+  "IndicadorCod" : "0011631",
+  "IndicadorDsg" : "População residente (N.º) por Local de residência à data dos Censos [2021] (NUTS - 2013), Sexo e Migrações (Relativamente a um ano antes); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0011631&lingua=PT",
+  "DataExtracao" : "2026-11-16T15:48:50.030Z",
+  "DataUltimoAtualizacao" : "2022-11-23",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "113",
+      "valor" : "113"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "128",
+      "valor" : "128"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "137",
+      "valor" : "137"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "164",
+      "valor" : "164"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "167",
+      "valor" : "167"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "171",
+      "valor" : "171"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "1",
+      "dim_4_t" : "Ainda não tinha nascido",
+      "ind_string" : "241",
+      "valor" : "241"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "32",
+      "dim_4_t" : "Proveniente de outra freguesia do mesmo município",
+      "ind_string" : "308",
+      "valor" : "308"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "326",
+      "valor" : "326"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "34",
+      "dim_4_t" : "Proveniente do estrangeiro",
+      "ind_string" : "331",
+      "valor" : "331"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "349",
+      "valor" : "349"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "31",
+      "dim_4_t" : "Dentro da mesma freguesia",
+      "ind_string" : "675",
+      "valor" : "675"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 412",
+      "valor" : "1412"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "1 612",
+      "valor" : "1612"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "2 042",
+      "valor" : "2042"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "2 296",
+      "valor" : "2296"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "33",
+      "dim_4_t" : "Proveniente de outro munícipio",
+      "ind_string" : "3 024",
+      "valor" : "3024"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "3",
+      "dim_4_t" : "Com alteração de residência",
+      "ind_string" : "4 338",
+      "valor" : "4338"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "12 306",
+      "valor" : "12306"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "14 158",
+      "valor" : "14158"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "1",
+      "dim_3_t" : "H",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "14 461",
+      "valor" : "14461"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "2",
+      "dim_3_t" : "M",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "16 582",
+      "valor" : "16582"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "2",
+      "dim_4_t" : "Sem alteração de residência",
+      "ind_string" : "26 464",
+      "valor" : "26464"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "dim_3" : "T",
+      "dim_3_t" : "HM",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "31 043",
+      "valor" : "31043"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
