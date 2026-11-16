@@ -1,15 +1,14 @@
 # INE 2021 commuting-source reconciliation: operator-controlled audit
 
-**Status (14 November 2026): independently captured official Arouca, Espinho,
-Santa Maria da Feira, Oliveira de Azeméis, São João da Madeira, Vale de Cambra,
-Gondomar, Maia, Matosinhos, Paredes, Porto, Póvoa de Varzim and Santo Tirso
-slices have been preserved and checked against **130 of the 136 frozen
-pairs**. All 208 observed off-diagonal source views match the pinned
-third-party counts; all 78 reciprocal links among these municipalities agree
-in both directions. The remaining **six pairs** and full-matrix symmetry
-are **not yet verified** against
-official data. No official full commuting matrix is added; the 136 existing
-undirected pairs remain labelled a third-party extraction attributed to INE.
+**Status (14 November 2026): sixteen independently captured official
+municipality slices now reproduce all 136 frozen undirected AMP 2021
+work/study interaction pairs.** All 256 off-diagonal official source views
+match the pinned third-party counts; all 120 reciprocal links among the
+captured municipalities agree in both directions. The missing **Trofa**
+municipality source leaves **16 reverse views and full official matrix
+symmetry unverified**. No official full commuting matrix is added; the 136
+existing undirected pairs remain labelled a third-party extraction
+attributed to INE.
 
 ## What is being tested
 
@@ -674,3 +673,58 @@ all 48 matched counts, all 78 reciprocal comparisons and the exact
 work/study interactions**, not residential moves or displacement. Neither
 this batch nor eventual complete count reproduction can establish a causal
 housing-price cascade.
+
+### Third three-municipality batch: Valongo, Vila do Conde and Vila Nova de Gaia
+
+The bounded PR source probe
+[#43650564745](https://github.com/DiogoRibeiro7/Medium-Blog/actions/runs/43650564745)
+selected exactly `start_index=13`, `count=3`, `dimension=Dim2` on
+**14 November 2026** for DICO **1315 (Valongo), 1316 (Vila do Conde) and
+1317 (Vila Nova de Gaia)**. All three official requests returned valid
+2021 candidate JSON slices. Their original bytes and complete capture
+manifest, together with separately computed offline audits, are preserved
+under [`data/ine_0012340_pr_run_43650564745/`](data/ine_0012340_pr_run_43650564745/).
+
+| Official municipality slice | Original bytes | Original source SHA-256 | Frozen comparison |
+| --- | ---: | --- | --- |
+| Valongo, `Dim2=1315` | 58,213 | `a729051b18ef9700adb8770f05887219c8a06c696dfe74a46c81562664c22be3` | 16/16 |
+| Vila do Conde, `Dim2=1316` | 60,313 | `53000f8750773b2cf830fb753b2e5f3999db1e5a223efd49da08cc8eae43dc43` | 16/16 |
+| Vila Nova de Gaia, `Dim2=1317` | 61,824 | `94d3968f36a2fb0017a57c1f9b4f6cb0006c0bf9d0d24c3211a2319b3e32358b` | 16/16 |
+
+Each response contains one 2021 period, 347 unique `dim_3` codes,
+all 17 AMP counterparts, the requested `geocod` and a zero diagonal.
+The **48 new off-diagonal source views** all match the frozen third-party
+counts. All **42 newly observed reciprocal links** agree with archived
+official source views, including Valongo–Vila do Conde (**632**),
+Valongo–Vila Nova de Gaia (**2,520**) and Vila do Conde–Vila Nova de Gaia
+(**1,484**). Vila Nova de Gaia–Porto is **39,960** in both independent
+directions.
+
+Sixteen independent municipality slices now supply **256 off-diagonal
+official views**, covering `16 × 16 − 120 = 136` unique undirected pairs.
+The offline test confirms the observed set is **exactly** the full 136-pair
+universe, not merely a matching total. All **120 reciprocal links** among
+captured municipalities are symmetric. No pair lacks an independent
+official count view, but **Trofa's `Dim2=1318` slice is still absent**.
+Consequently its sixteen reverse views and complete 17×17 official
+matrix symmetry remain unverified.
+
+Reproduce the three new partial audits offline from
+`urban-affordability-cascade/`:
+
+```bash
+for code in 1315 1316 1317; do
+  python ine_commuting_partition_reconciliation.py \
+    --source-json "data/ine_0012340_pr_run_43650564745/ine_0012340_dim2_${code}_candidate.json" \
+    --manifest-json data/ine_0012340_pr_run_43650564745/partition_manifest.json \
+    --municipality-code "$code" \
+    --output-json "/tmp/ine-0012340-${code}-partial-audit.json"
+done
+```
+
+The offline regression fixes the three source SHA-256 hashes, original
+manifest scope, all 48 matches, all 120 reciprocal agreements and exact
+136-pair coverage. These are **2021 municipal work/study interaction**
+counts, not observed relocation or causal displacement. Complete numerical
+agreement with the frozen counts would still not demonstrate a housing-price
+contagion mechanism.
