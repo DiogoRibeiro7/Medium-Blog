@@ -1,0 +1,104 @@
+{
+  "coverage": {
+    "narrow": {
+      "binomial_standard_error_at_nominal": 0.030000000000000002,
+      "nominal_coverage": 0.9,
+      "parameter_coverage": 0.94,
+      "replications": 100,
+      "solution_coverage": 0.94
+    },
+    "wide": {
+      "binomial_standard_error_at_nominal": 0.030000000000000002,
+      "nominal_coverage": 0.9,
+      "parameter_coverage": 0.93,
+      "replications": 100,
+      "solution_coverage": 0.91
+    }
+  },
+  "hmc_identity": {
+    "acceptance": 0.7641666666666667,
+    "draws": 6000,
+    "ess_amplitude": 630.1309231131386,
+    "ess_diffusivity": 602.4053689267843,
+    "ess_per_1000_gradients": 3.608989856856566,
+    "gradient_evaluations": 166918,
+    "interval90_diffusivity": [
+      0.08897341776316539,
+      0.33033483160983784
+    ],
+    "mean_diffusivity": 0.2020366105413969,
+    "rhat_diffusivity": 1.0027791301665727,
+    "seconds": 3.940809520001494,
+    "step_size_mean": 0.019411873900279732
+  },
+  "hmc_map_hessian": {
+    "acceptance": 0.7795000000000001,
+    "draws": 6000,
+    "ess_amplitude": 589.3772795591343,
+    "ess_diffusivity": 591.9442993018072,
+    "ess_per_1000_gradients": 3.5466154154592293,
+    "gradient_evaluations": 166904,
+    "interval90_diffusivity": [
+      0.10713872152438228,
+      0.3181099770432856
+    ],
+    "mean_diffusivity": 0.20388582526673785,
+    "rhat_diffusivity": 1.0133691331294832,
+    "seconds": 3.8586712350006565,
+    "step_size_mean": 0.23857732319369954
+  },
+  "map": {
+    "amplitude": 1.0484814274845686,
+    "diffusivity": 0.2162312590299099
+  },
+  "model": "Exact one-mode heat equation; not a trained PINN",
+  "noise_sigma": 0.035,
+  "prior_mean_log": [
+    0.0,
+    -1.5141277326297755
+  ],
+  "prior_sd_log": [
+    0.48,
+    0.7
+  ],
+  "reference": {
+    "narrow": {
+      "boundary_mass": 5.449812989712332e-09,
+      "correlation": 0.9894815320338377,
+      "interval90_diffusivity": [
+        0.08697777259031247,
+        0.33857106734799725
+      ],
+      "mean_amplitude": 1.0292694779558662,
+      "mean_diffusivity": 0.20149164915879075,
+      "sd_diffusivity": 0.07629131842451134
+    },
+    "wide": {
+      "boundary_mass": 7.740929533198695e-120,
+      "correlation": 0.8620757624883397,
+      "interval90_diffusivity": [
+        0.234953953062048,
+        0.27192528405413996
+      ],
+      "mean_amplitude": 1.1454884972828643,
+      "mean_diffusivity": 0.2536951638994901,
+      "sd_diffusivity": 0.011225241524062849
+    }
+  },
+  "sample_size_each_design": 24,
+  "seed": 20261116,
+  "true_parameters": {
+    "amplitude": 1.15,
+    "diffusivity": 0.26
+  },
+  "vi": {
+    "interval90_diffusivity": [
+      0.1740648337731107,
+      0.1927764557481265
+    ],
+    "mean_diffusivity": 0.18330222267837937,
+    "negative_elbo_without_constant": 15.955232145293625,
+    "sd_log_amplitude": 0.013568244982099482,
+    "sd_log_diffusivity": 0.03105116687676474
+  }
+}
