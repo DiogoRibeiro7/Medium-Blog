@@ -8,7 +8,7 @@ A common piece of modelling advice says: after feature engineering, overfit a mo
 
 Both data sets are public and downloaded by `fetch.py`, which checks their SHA-256 digests.
 
-* **UCI Adult** (Becker and Kohavi, 1996): 48,842 rows of the 1994 Current Population Survey, label "income above $50K". The mirror combines the UCI training and test files and has already removed the trailing period that the UCI test file puts on its labels.
+* **UCI Adult** (Becker and Kohavi, 1996): 48,842 records extracted from the 1994 US Census database, label "income above $50K". The mirror combines the UCI training and test files and has already removed the trailing period that the UCI test file puts on its labels.
 * **California housing** (Pace and Barry, 1997): 20,640 block groups of the 1990 census, in the version with ocean proximity used in Géron's *Hands-On Machine Learning*. The target is the log of the median house value.
 * **Simulation** (`common.py`): ten standard-normal features, a fixed nonlinear rule of five of them, and each label flipped with probability eta. Because the rule is deterministic and the flips are independent of the features, the Bayes error is exactly eta.
 
