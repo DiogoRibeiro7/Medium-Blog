@@ -1,0 +1,150 @@
+DATA
+district rows 1972-2024: 11745; elections: 27
+seats by year (D/R/I): 1972 242/192/1; 1974 291/144/0; 1976 292/143/0; 1978 277/158/0; 1980 243/192/0; 1982 269/166/0; 1984 253/182/0; 1986 258/177/0; 1988 260/175/0; 1990 267/167/1; 1992 258/176/1; 1994 204/230/1; 1996 207/226/2; 1998 211/223/1; 2000 212/221/2; 2002 205/229/1; 2004 202/232/1; 2006 233/202/0; 2008 257/178/0; 2010 193/242/0; 2012 201/234/0; 2014 188/247/0; 2016 194/241/0; 2018 235/200/0; 2020 222/213/0; 2022 213/222/0; 2024 215/220/0
+uncontested districts by year: 1972 56; 1974 61; 1976 52; 1978 69; 1980 50; 1982 57; 1984 68; 1986 75; 1988 81; 1990 85; 1992 34; 1994 53; 1996 21; 1998 95; 2000 64; 2002 82; 2004 64; 2006 56; 2008 56; 2010 29; 2012 45; 2014 77; 2016 63; 2018 41; 2020 27; 2022 32; 2024 37
+
+THE POST'S EIGHT STATES, 2026 (unofficial)
+FL: vote 48.9% (post 50%), seats 8/28 = 28.6% (post 29%), symmetric curve 13.1 seats, proportional 13.7, gap -5.1, drawer R
+GA: vote 56.2% (post 56%), seats 5/14 = 35.7% (post 36%), symmetric curve 9.5 seats, proportional 7.9, gap -4.5, drawer R
+LA: vote 45.0% (post 45%), seats 1/6 = 16.7% (post 17%), symmetric curve 2.1 seats, proportional 2.7, gap -1.1, drawer R
+OK: vote 41.4% (post 41%), seats 0/5 = 0.0% (post 0%), symmetric curve 1.3 seats, proportional 2.1, gap -1.3, drawer R
+SC: vote 49.4% (post 49%), seats 2/7 = 28.6% (post 29%), symmetric curve 3.4 seats, proportional 3.5, gap -1.4, drawer R
+TN: vote 45.0% (post 45%), seats 1/9 = 11.1% (post 11%), symmetric curve 3.2 seats, proportional 4.0, gap -2.2, drawer R
+TX: vote 52.9% (post 53%), seats 14/38 = 36.8% (post 37%), symmetric curve 22.2 seats, proportional 20.1, gap -8.2, drawer R
+UT: vote 49.5% (post 50%), seats 1/4 = 25.0% (post 25%), symmetric curve 1.9 seats, proportional 2.0, gap -0.9, drawer Court
+sum of gaps, eight states: -24.7 seats
+pooled responsiveness rho (year intercepts): 2.997
+
+CROSS-STATE CURVE BY YEAR (Democratic seat share at a 50/50 vote; responsiveness)
+1972: 48.1% [45.1, 51.2], rho 3.14, states 44
+1974: 38.0% [31.8, 44.8], rho 3.78, states 44
+1976: 49.9% [44.3, 54.7], rho 2.93, states 44
+1978: 53.6% [51.2, 55.9], rho 2.73, states 44
+1980: 53.3% [49.3, 55.7], rho 3.03, states 44
+1982: 47.8% [41.0, 52.8], rho 2.68, states 44
+1984: 53.6% [51.1, 55.9], rho 2.55, states 44
+1986: 50.1% [47.0, 52.7], rho 2.13, states 44
+1988: 52.3% [49.9, 54.4], rho 2.41, states 44
+1990: 52.3% [49.5, 54.8], rho 2.97, states 44
+1992: 53.1% [49.6, 56.0], rho 2.35, states 43
+1994: 55.4% [51.6, 60.5], rho 3.21, states 43
+1996: 48.7% [44.0, 53.8], rho 3.04, states 43
+1998: 49.5% [46.0, 53.8], rho 3.07, states 43
+2000: 48.3% [46.0, 51.0], rho 2.61, states 43
+2002: 52.7% [49.9, 55.7], rho 3.12, states 43
+2004: 47.6% [45.2, 50.4], rho 2.63, states 43
+2006: 45.0% [41.1, 48.6], rho 2.45, states 43
+2008: 47.3% [44.0, 50.5], rho 2.57, states 43
+2010: 52.2% [48.6, 57.3], rho 2.75, states 43
+2012: 43.4% [38.1, 47.8], rho 3.02, states 43
+2014: 50.9% [47.3, 54.6], rho 3.29, states 43
+2016: 45.3% [42.0, 50.2], rho 2.92, states 43
+2018: 42.4% [39.1, 45.5], rho 3.52, states 43
+2020: 47.9% [45.1, 52.0], rho 3.14, states 43
+2022: 53.1% [49.4, 59.8], rho 3.23, states 44
+2024: 53.3% [49.7, 57.8], rho 3.66, states 44
+2026: 34.6% [29.7, 40.5], rho 4.00, states 34
+
+NATIONAL UNIFORM-SWING BIAS (seats above 217.5 at 50/50; D vote needed for 218)
+1972: +15.0; national D share 52.4%; needed 47.0%
+1974: +14.5; national D share 58.0%; needed 48.1%
+1976: +21.5; national D share 56.4%; needed 47.1%
+1978: +23.5; national D share 54.2%; needed 46.6%
+1980: +21.5; national D share 51.0%; needed 46.9%
+1982: +13.5; national D share 55.2%; needed 47.4%
+1984: +27.5; national D share 52.0%; needed 46.1%
+1986: +23.5; national D share 54.4%; needed 44.0%
+1988: +28.5; national D share 53.5%; needed 41.9%
+1990: +31.5; national D share 53.5%; needed 45.2%
+1992: +14.5; national D share 52.9%; needed 48.4%
+1994: +8.0; national D share 47.5%; needed 49.2%
+1996: -5.5; national D share 49.7%; needed 50.5%
+1998: -5.0; national D share 49.8%; needed 52.0%
+2000: -6.0; national D share 50.2%; needed 51.0%
+2002: -7.0; national D share 48.3%; needed 52.3%
+2004: -14.5; national D share 49.3%; needed 54.6%
+2006: -8.5; national D share 53.9%; needed 51.2%
+2008: +15.5; national D share 55.0%; needed 47.3%
+2010: +0.5; national D share 47.0%; needed 49.9%
+2012: -22.5; national D share 50.7%; needed 53.9%
+2014: -21.5; national D share 47.4%; needed 55.2%
+2016: -21.5; national D share 49.3%; needed 56.0%
+2018: -13.5; national D share 53.7%; needed 51.5%
+2020: +0.5; national D share 51.1%; needed 50.0%
+2022: +5.5; national D share 48.7%; needed 49.1%
+2024: +4.5; national D share 49.0%; needed 49.5%
+
+STATE-LEVEL UNIFORM-SWING BIAS SUMMED BY DRAWER (seats)
+1972: D +17.0, neutral -8.5, R +0.0
+1974: D +18.5, neutral -4.5, R -2.0
+1976: D +4.5, neutral +4.5, R +4.0
+1978: D +15.5, neutral +3.5, R -1.0
+1980: D +11.5, neutral -2.5, R +2.0
+1982: D +15.0, neutral +3.5, R -0.5
+1984: D +16.5, neutral +4.0, R -0.5
+1986: D +17.5, neutral +6.0, R +1.5
+1988: D +14.5, neutral +5.0, R +1.5
+1990: D +12.5, neutral +12.0, R -0.5
+1992: D +7.5, neutral -2.5, R +nan
+1994: D +6.5, neutral -1.5, R +nan
+1996: D +1.5, neutral -7.5, R +nan
+1998: D +2.5, neutral -4.5, R +nan
+2000: D -1.1, neutral -7.5, R +nan
+2002: D +6.0, neutral -0.5, R -12.0
+2004: D +6.0, neutral -0.5, R -18.0
+2006: D +10.5, neutral +0.5, R -12.5
+2008: D +12.5, neutral +5.5, R -8.5
+2010: D +6.5, neutral -6.5, R -14.5
+2012: D +1.5, neutral +2.0, R -36.0
+2014: D +4.5, neutral +3.0, R -41.0
+2016: D +4.5, neutral -1.0, R -37.0
+2018: D +3.5, neutral -0.0, R -26.0
+2020: D +2.5, neutral -3.5, R -19.5
+2022: D -3.0, neutral +3.5, R -23.0
+2024: D +4.0, neutral -3.0, R -27.5
+SEAT BONUS VS CUBE-LAW CURVE SUMMED BY DRAWER (seats; state totals)
+2012: D +0.9, neutral -5.5, R -18.7, all -22.3
+2016: D +0.2, neutral -7.1, R -7.9, all -15.2
+2018: D -0.8, neutral -5.3, R -14.7, all -19.9
+2022: D +3.9, neutral +1.0, R +2.5, all +9.3
+2024: D +4.8, neutral +3.2, R -1.1, all +8.9
+2026: D -2.0, neutral -2.8, R -26.6, all -31.9
+
+CAUSAL: TWO-WAY FIXED EFFECTS (points of the delegation; 95% CI; states clustered)
+uniform-swing bias, 1972-2024: R -10.23 [-13.72, -6.74] p=0.000; D +8.17 [+5.83, +10.50] p=0.000; n=818, states=32
+uniform-swing bias, 1972-1998: R -2.17 [-5.87, +1.53] p=0.250; D +6.75 [+3.59, +9.92] p=0.000; n=434, states=32
+uniform-swing bias, 2002-2024: R -11.90 [-15.60, -8.20] p=0.000; D +4.35 [+0.37, +8.32] p=0.032; n=353, states=30
+uniform-swing bias, low-confidence codes dropped: R -11.63 [-15.61, -7.66] p=0.000; D +7.62 [+5.24, +10.00] p=0.000; n=660, states=31
+median-minus-mean, 1972-2024: R -3.78 [-5.53, -2.03] p=0.000; D +4.63 [+3.04, +6.22] p=0.000; n=818, states=32
+efficiency gap from district votes, 1972-2024: R -5.35 [-8.55, -2.15] p=0.001; D +3.03 [-0.54, +6.60] p=0.096; n=818, states=32
+seat bonus vs cube-law curve, 1972-2026: R -2.11 [-4.28, +0.06] p=0.057; D +1.43 [-1.01, +3.88] p=0.250; n=845, states=32
+seat bonus, 2002-2026: R -6.11 [-8.19, -4.04] p=0.000; D +3.11 [-3.81, +10.03] p=0.379; n=380, states=30
+seat bonus with unimputed vote, 1972-2026: R -0.12 [-3.17, +2.93] p=0.939; D +2.27 [-1.01, +5.54] p=0.175; n=845, states=32
+simplified efficiency gap, 1972-2026: R -5.08 [-7.70, -2.46] p=0.000; D +3.71 [+0.67, +6.75] p=0.017; n=845, states=32
+CAUSAL: STACKED EVENT STUDY (uniform-swing bias)
+event_us_all: toward D +4.07 [+0.34, +7.81], toward R -8.07 [-12.15, -3.98] (signed as change in D bias), pre-trend -0.49 [-2.04, +1.06]; events toward R 36, toward D 25
+event_us_post1992: toward D +7.25 [+3.72, +10.78], toward R -8.59 [-13.57, -3.62] (signed as change in D bias), pre-trend -0.20 [-1.84, +1.44]; events toward R 29, toward D 19
+event_us_pre1992: toward D -1.73 [-6.55, +3.08], toward R -4.05 [-9.98, +1.87] (signed as change in D bias), pre-trend -1.24 [-5.08, +2.60]; events toward R 7, toward D 6
+event_us_no_low: toward D +5.25 [+1.56, +8.93], toward R -8.70 [-13.25, -4.15] (signed as change in D bias), pre-trend -0.31 [-2.22, +1.60]; events toward R 30, toward D 17
+event_bonus_all: toward D +1.59 [-2.36, +5.54], toward R +0.17 [-2.91, +3.25] (signed as change in D bias), pre-trend -1.35 [-3.22, +0.51]; events toward R 37, toward D 26
+event-time coefficients, all events: k=-2 -0.49 [-2.04, +1.06] n=158; k=0 +6.98 [+4.50, +9.45] n=172; k=1 +7.01 [+4.45, +9.58] n=154; k=2 +6.06 [+3.84, +8.28] n=120; k=3 +6.14 [+2.44, +9.84] n=111; k=4 +5.68 [+2.37, +8.98] n=105
+event-time coefficients, from 1992: k=-2 -0.20 [-1.84, +1.44] n=128; k=0 +8.63 [+5.50, +11.76] n=137; k=1 +8.78 [+6.04, +11.51] n=123; k=2 +8.13 [+4.83, +11.42] n=89; k=3 +7.77 [+2.74, +12.79] n=80; k=4 +6.78 [+2.76, +10.81] n=79
+events: 172 new plans, 61 with a change in control
+national implied seats (post-2000 TWFE x seats drawn): {"2012": {"seats_R_drawn": 208, "seats_D_drawn": 35, "implied_R_seats": -24.752261413134512, "implied_D_seats": 1.5212128936614426}, "2016": {"seats_R_drawn": 170, "seats_D_drawn": 35, "implied_R_seats": -20.23021365496571, "implied_D_seats": 1.5212128936614426}, "2022": {"seats_R_drawn": 152, "seats_D_drawn": 40, "implied_R_seats": -18.088191032675223, "implied_D_seats": 1.738529021327363}, "2024": {"seats_R_drawn": 159, "seats_D_drawn": 66, "implied_R_seats": -18.921199830232634, "implied_D_seats": 2.868572885190149}}
+sensitivity: {"impute_0.7": {"twfe_post2000_R": -11.480760065891392, "twfe_post2000_D": 4.329506918062574, "event_post1992_toward_R": 7.979937264991638, "event_post1992_toward_D": 6.863181921800164}, "impute_0.75": {"twfe_post2000_R": -11.900125679391596, "twfe_post2000_D": 4.346322553318409, "event_post1992_toward_R": 8.593278226086227, "event_post1992_toward_D": 7.249434385775267}, "impute_0.8": {"twfe_post2000_R": -11.915196638153407, "twfe_post2000_D": 4.981850650031308, "event_post1992_toward_R": 9.049598784968154, "event_post1992_toward_D": 6.1149046657056445}, "min_seats_8": {"twfe_post2000_R": -13.30473465280955, "twfe_post2000_D": 4.421427146048277, "event_post1992_toward_R": 6.7470911719159, "event_post1992_toward_D": 7.7259558014712795, "n": 254}, "leave_one_state_out_post1992": {"toward_R_min": 7.455241133688096, "toward_R_max": 11.097933396305686, "toward_D_min": 6.399523316204469, "toward_D_max": 8.564676954974228, "toward_D_min_state": "IL", "toward_R_min_state": "AL"}}
+
+2026: OLD MAP PROJECTED AT THE 2026 SWING
+calibration_2016_2018: {"states": 42, "mean_gap": 0.47619047619047616, "mean_abs_gap": 0.7142857142857143, "sd_gap": 1.1526871095791829, "sum_gap": 20}
+calibration_2022_2024: {"states": 39, "mean_gap": 0.05128205128205128, "mean_abs_gap": 0.46153846153846156, "sd_gap": 1.190946504360424, "sum_gap": 2}
+redraw_2026: {"states": 34, "kept": 25, "kept_mean_gap": -0.04, "kept_sd_gap": 0.7348469228349533, "kept_sum_gap": -1, "r_states": ["AL", "FL", "LA", "NC", "OH", "TN", "TX"], "r_sum_gap": -5, "r_mean_gap": -0.7142857142857143, "r_minus_kept_mean": -0.6742857142857143, "perm_p": 0.12254, "r_effect_seats_total": -4.72, "ca_gap": 0, "ut_gap": 0}
+  AL: old map 2 D seats at swing +19.9 pts; actual 2; gap +0
+  CA: old map 48 D seats at swing +9.6 pts; actual 48; gap +0
+  FL: old map 11 D seats at swing +6.8 pts; actual 8; gap -3
+  LA: old map 2 D seats at swing +10.3 pts; actual 1; gap -1
+  NC: old map 12 D seats at swing +12.8 pts; actual 11; gap -1
+  OH: old map 6 D seats at swing +8.1 pts; actual 8; gap +2
+  TN: old map 2 D seats at swing +10.8 pts; actual 1; gap -1
+  TX: old map 15 D seats at swing +12.0 pts; actual 14; gap -1
+  UT: old map 1 D seats at swing +15.4 pts; actual 1; gap +0
+2024->2026 seat-bonus DiD, seven R redraws vs kept maps: -12.13 pts [-25.91, +1.66] HC1 p=0.085, permutation p=0.132; kept maps mean change -7.09
+placebo 2022->2024 (TX, FL, OH, TN): -0.23 [-4.24, +3.78] p=0.91

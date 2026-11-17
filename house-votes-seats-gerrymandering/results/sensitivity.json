@@ -1,0 +1,35 @@
+{
+ "impute_0.7": {
+  "twfe_post2000_R": -11.480760065891392,
+  "twfe_post2000_D": 4.329506918062574,
+  "event_post1992_toward_R": 7.979937264991638,
+  "event_post1992_toward_D": 6.863181921800164
+ },
+ "impute_0.75": {
+  "twfe_post2000_R": -11.900125679391596,
+  "twfe_post2000_D": 4.346322553318409,
+  "event_post1992_toward_R": 8.593278226086227,
+  "event_post1992_toward_D": 7.249434385775267
+ },
+ "impute_0.8": {
+  "twfe_post2000_R": -11.915196638153407,
+  "twfe_post2000_D": 4.981850650031308,
+  "event_post1992_toward_R": 9.049598784968154,
+  "event_post1992_toward_D": 6.1149046657056445
+ },
+ "min_seats_8": {
+  "twfe_post2000_R": -13.30473465280955,
+  "twfe_post2000_D": 4.421427146048277,
+  "event_post1992_toward_R": 6.7470911719159,
+  "event_post1992_toward_D": 7.7259558014712795,
+  "n": 254
+ },
+ "leave_one_state_out_post1992": {
+  "toward_R_min": 7.455241133688096,
+  "toward_R_max": 11.097933396305686,
+  "toward_D_min": 6.399523316204469,
+  "toward_D_max": 8.564676954974228,
+  "toward_D_min_state": "IL",
+  "toward_R_min_state": "AL"
+ }
+}
