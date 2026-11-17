@@ -1,0 +1,45 @@
+name: House votes and seats, 1972-2026
+
+on:
+  pull_request:
+    paths:
+      - "house-votes-seats-gerrymandering/**"
+      - ".github/workflows/house-votes-seats-gerrymandering.yml"
+  push:
+    branches: [main]
+    paths:
+      - "house-votes-seats-gerrymandering/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    name: Rebuild results from the committed district table and check nothing moves
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: house-votes-seats-gerrymandering
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: house-votes-seats-gerrymandering/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Rebuild panel, curves, causal estimates and summary
+        run: |
+          python state_panel.py
+          python votes_seats.py
+          python causal.py
+          python counterfactual_2026.py
+          python sensitivity.py
+          python summarize.py
+      - name: Fail if a committed number changed
+        run: git diff --exit-code -- results/summary.txt results/post_check_2026.csv results/national_bias.csv results/event_study_coefs.csv results/old_map_projection_2026.csv
+      - name: Tests
+        run: python -m unittest discover -s tests -v
