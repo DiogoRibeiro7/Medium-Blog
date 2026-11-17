@@ -1,0 +1,50 @@
+bug,check,flagged
+No bug,C1 overfit one batch,False
+No bug,C2 overfit full training set,False
+No bug,C3 shuffle-calibrated memorisation,False
+No bug,C4 held-out vs permuted labels,False
+No bug,C5 single-column audit,False
+No bug,C6 train-test duplicate audit,False
+No bug,C7 label audit,False
+Labels misaligned after a sort,C1 overfit one batch,False
+Labels misaligned after a sort,C2 overfit full training set,False
+Labels misaligned after a sort,C3 shuffle-calibrated memorisation,True
+Labels misaligned after a sort,C4 held-out vs permuted labels,True
+Labels misaligned after a sort,C5 single-column audit,False
+Labels misaligned after a sort,C6 train-test duplicate audit,False
+Labels misaligned after a sort,C7 label audit,False
+Every feature made constant,C1 overfit one batch,True
+Every feature made constant,C2 overfit full training set,True
+Every feature made constant,C3 shuffle-calibrated memorisation,True
+Every feature made constant,C4 held-out vs permuted labels,True
+Every feature made constant,C5 single-column audit,False
+Every feature made constant,C6 train-test duplicate audit,False
+Every feature made constant,C7 label audit,False
+Learning rate a million times too small,C1 overfit one batch,True
+Learning rate a million times too small,C2 overfit full training set,True
+Learning rate a million times too small,C3 shuffle-calibrated memorisation,False
+Learning rate a million times too small,C4 held-out vs permuted labels,True
+Learning rate a million times too small,C5 single-column audit,False
+Learning rate a million times too small,C6 train-test duplicate audit,False
+Learning rate a million times too small,C7 label audit,False
+Target leak in one column,C1 overfit one batch,False
+Target leak in one column,C2 overfit full training set,False
+Target leak in one column,C3 shuffle-calibrated memorisation,False
+Target leak in one column,C4 held-out vs permuted labels,False
+Target leak in one column,C5 single-column audit,True
+Target leak in one column,C6 train-test duplicate audit,False
+Target leak in one column,C7 label audit,False
+Minority class oversampled before the split,C1 overfit one batch,False
+Minority class oversampled before the split,C2 overfit full training set,False
+Minority class oversampled before the split,C3 shuffle-calibrated memorisation,False
+Minority class oversampled before the split,C4 held-out vs permuted labels,False
+Minority class oversampled before the split,C5 single-column audit,False
+Minority class oversampled before the split,C6 train-test duplicate audit,True
+Minority class oversampled before the split,C7 label audit,False
+Test labels never parsed,C1 overfit one batch,False
+Test labels never parsed,C2 overfit full training set,False
+Test labels never parsed,C3 shuffle-calibrated memorisation,False
+Test labels never parsed,C4 held-out vs permuted labels,True
+Test labels never parsed,C5 single-column audit,False
+Test labels never parsed,C6 train-test duplicate audit,False
+Test labels never parsed,C7 label audit,True
