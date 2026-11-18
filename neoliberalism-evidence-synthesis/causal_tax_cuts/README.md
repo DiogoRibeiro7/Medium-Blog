@@ -306,6 +306,31 @@ and its machine-readable frozen JSON. The networked source-probe Action
 publishes `tax-cut-joint-macro-support` for seven days, including all
 event/horizon certificate witnesses and full source checksums.
 
+### Official political and institutional covariates (coverage only)
+
+[`POLITICAL_INSTITUTIONS.md`](POLITICAL_INSTITUTIONS.md) documents the
+Inter-American Development Bank's DPI2023 country-year source, the official
+codebook and exact mapping to the paper's 18-country panel. This audit
+checks the executive's **nominal** right/center/left party orientation,
+political checks and executive election competitiveness strictly at
+`t-5..t-1`. It distinguishes unknown from inapplicable classifications,
+and it does **not** rematch donors or calculate an effect.
+
+```bash
+python -m causal_tax_cuts.political_institutions \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --frozen-reference causal_tax_cuts/results/donor_support_2026-11-15.json \
+  --output-dir data/tax-study/political-institutions
+```
+
+On the frozen source vintage, **17 of 20** baseline reforms have all three
+five-year political histories. There are **206 of 239** initial donor–event
+pairs with complete three-variable histories; **143 of 174** have them at
+year five. Three early reforms precede the source's complete availability.
+See [`results/POLITICAL_INSTITUTIONS_RESULTS_2026-11-18.md`](results/POLITICAL_INSTITUTIONS_RESULTS_2026-11-18.md)
+and the frozen manifest. The live Action publishes a seven-day
+`tax-cut-political-institutions` artifact, not a politically adjusted ATT.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash

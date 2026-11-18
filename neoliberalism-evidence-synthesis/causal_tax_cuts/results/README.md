@@ -150,3 +150,14 @@ macro-variable ranges. Six marginal passes therefore do **not** establish
 joint support. This does not measure causal positivity or estimate an
 effect. The seven-day `tax-cut-joint-macro-support` artifact contains all
 event-level witness combinations, eligibility and numeric tolerances.
+
+The [political and institutional prehistory report](POLITICAL_INSTITUTIONS_RESULTS_2026-11-18.md)
+and [frozen source manifest](political_institutions_2026-11-18.json) audit
+the published IDB DPI2023 dataset for exactly the same 20 eligible reforms,
+239 initial donor–event pairs and 174 year-five pairs. Executive economic
+orientation remains a **nominal** right/center/left class, with unknown and
+not-applicable values kept separate. All three five-year histories exist
+for **17/20** treated reforms, **206/239** initial donor pairs and
+**143/174** year-five donor pairs. None of these counts is an adjusted
+causal estimate; the `tax-cut-political-institutions` artifact has the
+year-by-year controls and event/donor completeness details.
