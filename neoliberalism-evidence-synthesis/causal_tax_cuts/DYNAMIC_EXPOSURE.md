@@ -116,8 +116,11 @@ audit is frozen in
 3. **Find sequential confounders with support.** Pre-decision macro
    coverage is necessary but not enough. Political composition,
    international common shocks, capital openness and fiscal context
-   matter; assess joint overlap and risk of unstable weights *before*
-   modeling exposure/censoring probabilities.
+   matter. The [three-WDI joint hull audit](JOINT_SUPPORT.md) now finds
+   only **2 of 20** baseline reforms geometrically supported at five
+   years; this is not a positivity estimate. Assess richer joint overlap
+   and risk of unstable weights *before* modeling exposure/censoring
+   probabilities.
 4. **Choose a credible independent unit and inference design.** The
    same country can recur across multiple event-specific comparator
    paths. Those are not 239 independent countries. Country-level

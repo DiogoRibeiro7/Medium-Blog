@@ -1,0 +1,112 @@
+{
+  "by_horizon": [
+    {
+      "horizon": -1,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 6,
+      "n_surviving_donor_reform_pairs": 239,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 9,
+      "n_with_relaxed_joint_hull_support": 3,
+      "n_with_strict_joint_hull_support": 3
+    },
+    {
+      "horizon": 0,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 6,
+      "n_surviving_donor_reform_pairs": 227,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 9,
+      "n_with_relaxed_joint_hull_support": 3,
+      "n_with_strict_joint_hull_support": 3
+    },
+    {
+      "horizon": 1,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 6,
+      "n_surviving_donor_reform_pairs": 212,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 9,
+      "n_with_relaxed_joint_hull_support": 3,
+      "n_with_strict_joint_hull_support": 3
+    },
+    {
+      "horizon": 2,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 5,
+      "n_surviving_donor_reform_pairs": 197,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 8,
+      "n_with_relaxed_joint_hull_support": 3,
+      "n_with_strict_joint_hull_support": 3
+    },
+    {
+      "horizon": 3,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 5,
+      "n_surviving_donor_reform_pairs": 184,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 8,
+      "n_with_relaxed_joint_hull_support": 3,
+      "n_with_strict_joint_hull_support": 3
+    },
+    {
+      "horizon": 4,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 6,
+      "n_surviving_donor_reform_pairs": 179,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 8,
+      "n_with_relaxed_joint_hull_support": 2,
+      "n_with_strict_joint_hull_support": 2
+    },
+    {
+      "horizon": 5,
+      "n_baseline_eligible_reforms": 20,
+      "n_marginal_but_not_strict_joint": 6,
+      "n_surviving_donor_reform_pairs": 174,
+      "n_tolerance_sensitive": 0,
+      "n_with_marginal_support": 8,
+      "n_with_relaxed_joint_hull_support": 2,
+      "n_with_strict_joint_hull_support": 2
+    }
+  ],
+  "caveats": [
+    "Finite-sample geometric interpolation support is neither a positivity estimate nor a causal exchangeability test.",
+    "A donor convex-hull certificate exists only for these three pre-period WDI means, not for omitted political or fiscal confounders.",
+    "The eligible cohort requires future observed WID outcomes through t+5 and may suffer outcome-availability selection.",
+    "Donors are removed after subsequent reforms; donor and treated pathways are asymmetric in the original exploratory contrast.",
+    "Barycentric weights certify geometry and cannot be used without a justified estimation design.",
+    "A tolerance-sensitive classification is numerically indeterminate and must not be declared robust overlap."
+  ],
+  "frozen_reference_status": "same_source_validated",
+  "horizon_minus_one": "before same-year and future donor reform exclusions",
+  "inference": "none; no treatment effect, propensity, positivity estimate or uncertainty interval",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "matching_reference": {
+    "history_years": 5,
+    "max_horizon": 5
+  },
+  "n_baseline_eligible_reforms": 20,
+  "n_original_observed_reforms": 29,
+  "n_pre_censor_donor_reform_pairs": 239,
+  "reconciled_to_prior_marginal_donor_audit": true,
+  "relaxed_max_absolute_scaled_coordinate_error": 1e-06,
+  "source_archive_sha256": {
+    "FP.CPI.TOTL.ZG": "09f784d70cf4aa2cf10988a554cdb030629f77b9e8b1a9abebfe7ed2150e6cab",
+    "NE.TRD.GNFS.ZS": "ce9e1d06619f8973fd68ebc0d947a00fbf1038afe4e00ad5a9ca13a7f9107dcc",
+    "NY.GDP.PCAP.KD.ZG": "e81500776bbc1edd0bc2a39d968ea75d2a7edab4d28eaed76e5c72a85245e78d",
+    "SL.UEM.TOTL.ZS": "dab4a9cd5934514a8f22ffbc02ffe66294c585d3e35b0a4c98d12b30ccab723f"
+  },
+  "source_last_updated": {
+    "FP.CPI.TOTL.ZG": "2026-11-11",
+    "NE.TRD.GNFS.ZS": "2026-11-11",
+    "NY.GDP.PCAP.KD.ZG": "2026-11-11",
+    "SL.UEM.TOTL.ZS": "2026-11-11"
+  },
+  "standardization": "per-reform pre-censor treated+donor population standard deviation, held fixed across horizons",
+  "status": "three_wdi_dimension_joint_convex_hull_diagnostic_only",
+  "strict_max_absolute_scaled_coordinate_error": 1e-09,
+  "support_algorithm": "enumerate every 1..4-donor simplex in 3 dimensions, solve nonnegative barycentric feasibility",
+  "witness_weights": "nonnegative barycentric interpolation certificate only, not causal donor weights"
+}

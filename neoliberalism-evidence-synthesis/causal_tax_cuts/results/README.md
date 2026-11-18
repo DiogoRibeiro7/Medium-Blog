@@ -140,3 +140,13 @@ these are not independent observations, an estimated policy effect, or
 evidence of sequential exchangeability. The
 `tax-cut-dynamic-exposure` artifact contains annual policy paths and
 pre-decision WDI coverage diagnostics.
+
+The [joint three-variable donor support report](JOINT_SUPPORT_RESULTS_2026-11-18.md)
+and [frozen audit JSON](joint_support_2026-11-18.json) add a more stringent
+pre-treatment interpolation check on that *identical* 20-event cohort.
+Only **2 of 20** reforms lie inside the surviving donors' three-dimensional
+convex hull at horizon five, whereas **8 of 20** pass all three separate
+macro-variable ranges. Six marginal passes therefore do **not** establish
+joint support. This does not measure causal positivity or estimate an
+effect. The seven-day `tax-cut-joint-macro-support` artifact contains all
+event-level witness combinations, eligibility and numeric tolerances.
