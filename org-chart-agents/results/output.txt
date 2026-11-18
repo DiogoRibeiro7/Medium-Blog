@@ -1,0 +1,195 @@
+
+==============================================================================
+1. ChatDev and MetaGPT on 30 MMLU questions (MAST traces, commit a70542e)
+==============================================================================
+ChatDev runs: 60 (30 questions x 2 runs); MetaGPT runs: 30
+Subjects: 19 distinct MMLU subjects; professional_law questions: 7
+
+1a. What the ChatDev organisation did with a multiple-choice question
+  roles taking part per run: 7
+  product modality chosen in the opening 'demand analysis' meeting: document 38, pdf 7, powerpoint 15
+  programming language chosen: Python 60
+  runs whose code imports tkinter (a desktop GUI): 60 of 60
+  lines of code: median 63 (range 35-85)
+  documentation files: median 7 (range 6-7)
+  lines of user manual: median 36 (range 27-50)
+  runs whose test phase failed on 'no display' (TclError): 60 of 60
+  runs that then tried a virtual display (Xvfb/pyvirtualdisplay) and failed on it: 17 of 60
+  test rounds per run: median 2, max 3
+
+1b. Resources per question (ChatDev)
+  tokens: median 27,216, IQR 23,334-30,051, total 1,648,889
+  tokens written by agents: median 5,482, IQR 4,738-6,410, total 337,426
+  words written by agents: median 3,338, IQR 2,898-3,834, total 203,902
+  cost, USD: median 0.192, IQR 0.167-0.211, total 11.619
+  wall-clock seconds: median 78, IQR 64-89, total 4688
+  model calls: median 19, IQR 17-20, total 1122
+  utterances: median 35, IQR 31-38, total 2088
+  phase executions: median 16, IQR 14-18, total 966
+  words per completion token, pooled: 0.60
+  minutes to read what the agents wrote, at 238 words/min: median 14.0, IQR 12.2-16.1
+
+1c. Where the ChatDev tokens went (pooled over 60 runs)
+  Choose product format and language      12.2%   median per run 2,868
+  Write the program                        6.6%   median per run 1,622
+  Code review                             34.2%   median per run 8,822
+  Test and fix                            26.9%   median per run 7,354
+  Requirements file and user manual       12.7%   median per run 3,331
+  Reflection and other                     7.4%   median per run 1,940
+
+1d. The code reviewer
+  review rounds per run: 3 scheduled; runs in which the reviewer raised any comment: 10 of 60; runs where every round ended '<INFO> Finished': 50
+  share of tokens spent in review in runs with no review comment at all: 33.2%
+  runs where a review comment asked to replace the hard-coded answer with logic for other questions: 6
+  final code commits to one answer: 51; branching logic with several possible answers: 6; no answer index in code: 3
+  of the 6 runs with a generalisation request, final code commits to one answer in 2; first version committed to one answer in 5
+  runs where an agent message states 'The answer is (X)' as the task asked: 42 of 60
+
+1e. Agreement (no ground truth is used anywhere)
+  ChatDev, run 0 vs run 1, questions where both runs commit to one answer: 24; same answer: 23
+  ChatDev run vs MetaGPT on the same question (runs committing to one answer): 42 of 51 agree
+
+1f. MetaGPT: coder, tester, reviewer
+  messages per run: 5; coder messages per run: 1; tester: 2; reviewer: 2
+  coder's answer recovered as: hand 1, index lookup 3, literal 26
+  tester's first positive assertion equals the coder's answer: 30 of 30
+  runs where the tests also assert answers for inputs the coder's function does not accept: 2 (questions 13, 20)
+  runs where a reviewer message asks for edge cases, other inputs or generality: 21 of 30
+  runs where the reviewer disputes the chosen answer itself: 1 (question 22); coder messages after the dispute: 0
+  words by role, pooled: coder 19%, tester 30%, reviewer 50%
+  wall-clock seconds per run: median 30
+
+==============================================================================
+2. Separation of duties: residual error after k reviewers
+==============================================================================
+Model: item difficulty U ~ N(0,1). Agent j errs on an item when lam_j*U + sqrt(1-lam_j^2)*Z_j > tau_j,
+Z_j independent N(0,1); tau_j = Phi^-1(1 - q_j). Two agents' errors then have tetrachoric correlation lam_j*lam_k.
+A reviewer stops a producer's error only if it would itself answer correctly AND it is not anchored on the
+producer's answer (anchoring probability a). Residual error after k reviewers:
+   R_k = E_U[ p_P(U) * prod_j ( a + (1 - a) p_j(U) ) ],  p_j(U) = Phi((lam_j U - tau_j) / sqrt(1 - lam_j^2))
+
+Producer and reviewers all err on 20% of items (same model, same role prompt quality).
+Residual error after k reviewers, a = 0 (blind review):
+  rho=0.0   k=0:  0.2000  k=1:  0.0400  k=2:  0.0080  k=3:  0.0016  k=4:  0.0003  k=5:  0.0001
+  rho=0.25  k=0:  0.2000  k=1:  0.0614  k=2:  0.0243  k=3:  0.0113  k=4:  0.0059  k=5:  0.0034
+  rho=0.5   k=0:  0.2000  k=1:  0.0872  k=2:  0.0501  k=3:  0.0331  k=4:  0.0239  k=5:  0.0182
+  rho=0.75  k=0:  0.2000  k=1:  0.1206  k=2:  0.0897  k=3:  0.0729  k=4:  0.0622  k=5:  0.0548
+  rho=0.9   k=0:  0.2000  k=1:  0.1499  k=2:  0.1283  k=3:  0.1154  k=4:  0.1066  k=5:  0.1002
+Effective number of independent reviewers, n_eff = log(R_k)/log(q) - 1:
+  rho=0.0   k=1: 1.00  k=3: 3.00  k=5: 5.00
+  rho=0.25  k=1: 0.73  k=3: 1.79  k=5: 2.54
+  rho=0.5   k=1: 0.52  k=3: 1.12  k=5: 1.49
+  rho=0.75  k=1: 0.31  k=3: 0.63  k=5: 0.80
+  rho=0.9   k=1: 0.18  k=3: 0.34  k=5: 0.43
+Anchoring: residual error after 3 reviewers
+  rho=0.0  a=0.0: 0.0016  a=0.25: 0.0128  a=0.5: 0.0432  a=0.75: 0.1024  a=1.0: 0.2000
+  rho=0.5  a=0.0: 0.0331  a=0.25: 0.0505  a=0.5: 0.0806  a=0.75: 0.1287  a=1.0: 0.2000
+  rho=0.9  a=0.0: 0.1154  a=0.25: 0.1270  a=0.5: 0.1437  a=0.75: 0.1675  a=1.0: 0.2000
+  Monte Carlo check rho=0.5, a=0.0, k=3: 0.0335 (quadrature 0.0331, MC s.e. 0.0003)
+  Monte Carlo check rho=0.9, a=0.5, k=3: 0.1440 (quadrature 0.1437, MC s.e. 0.0006)
+
+A weaker but independent check against a stronger copy (one reviewer, producer q=0.2, rho_PP=0.8):
+  same-model reviewer, q=0.20, error correlation with producer 0.80: residual 0.1290
+  independent-evidence reviewer, q=0.30, correlation 0.0: residual 0.0600
+  independent-evidence reviewer, q=0.30, correlation 0.2: residual 0.0804
+  independent-evidence reviewer, q=0.40, correlation 0.0: residual 0.0800
+  independent-evidence reviewer, q=0.40, correlation 0.2: residual 0.1021
+  independent-evidence reviewer, q=0.50, correlation 0.0: residual 0.1000
+  independent-evidence reviewer, q=0.50, correlation 0.2: residual 0.1224
+  an uncorrelated reviewer matches the same-model copy at its own error rate q = 0.645
+  a reviewer with correlation 0.2 matches it at q = 0.535
+  MetaGPT's tester (oracle = the coder's own answer) is the case a = 1: residual = q = 0.20 for any number of tests
+
+==============================================================================
+3. Deliberation: a lead and four advisers on four-option questions
+==============================================================================
+Agents err with probability 0.3 (error correlation rho = 0.5); an erring agent picks the item's most
+attractive wrong option with probability g = 0.632, so two erring agents agree 60% of the time.
+Each round, every agent sees the others' current answers. With probability c it is persuaded by evidence:
+if it is wrong and someone holds the right answer, it switches to it. Otherwise, with probability s it conforms:
+it adopts the answer with the most weight among the others (the lead counts w, advisers 1; it keeps its own
+answer if that answer ties for the most weight). Otherwise it keeps its answer. Three rounds. Option 0 is correct.
+
+Single agent accuracy (any one agent, before talking): 0.699
+Plurality vote of the five initial answers (no discussion; ties to the lead): 0.784
+Lead alone, initial answer: 0.696
+Initial unanimity: 0.374; accuracy on questions where the five first answers agree: 0.965
+
+Final accuracy when the lead decides | plurality of final answers | unanimity | agent answers flipped right->wrong | wrong->right
+  evidence-driven correction c = 0.0
+    s=0.3 w=1    lead 0.749 | vote 0.778 | unanimous 0.691 | right->wrong 0.035 | wrong->right 0.086 | lead kept own first answer 0.854 | accuracy when unanimous 0.846
+    s=0.3 w=2    lead 0.744 | vote 0.767 | unanimous 0.685 | right->wrong 0.043 | wrong->right 0.088 | lead kept own first answer 0.876 | accuracy when unanimous 0.848
+    s=0.3 w=4    lead 0.734 | vote 0.735 | unanimous 0.648 | right->wrong 0.066 | wrong->right 0.085 | lead kept own first answer 0.902 | accuracy when unanimous 0.844
+    s=0.3 w=6    lead 0.731 | vote 0.733 | unanimous 0.653 | right->wrong 0.067 | wrong->right 0.085 | lead kept own first answer 0.902 | accuracy when unanimous 0.842
+    s=0.6 w=1    lead 0.774 | vote 0.780 | unanimous 0.926 | right->wrong 0.047 | wrong->right 0.123 | lead kept own first answer 0.796 | accuracy when unanimous 0.795
+    s=0.6 w=2    lead 0.764 | vote 0.767 | unanimous 0.908 | right->wrong 0.057 | wrong->right 0.120 | lead kept own first answer 0.840 | accuracy when unanimous 0.791
+    s=0.6 w=4    lead 0.736 | vote 0.735 | unanimous 0.867 | right->wrong 0.083 | wrong->right 0.116 | lead kept own first answer 0.889 | accuracy when unanimous 0.775
+    s=0.6 w=6    lead 0.737 | vote 0.736 | unanimous 0.865 | right->wrong 0.082 | wrong->right 0.116 | lead kept own first answer 0.887 | accuracy when unanimous 0.777
+    s=0.9 w=1    lead 0.780 | vote 0.780 | unanimous 0.997 | right->wrong 0.049 | wrong->right 0.130 | lead kept own first answer 0.784 | accuracy when unanimous 0.780
+    s=0.9 w=2    lead 0.770 | vote 0.765 | unanimous 0.962 | right->wrong 0.063 | wrong->right 0.130 | lead kept own first answer 0.836 | accuracy when unanimous 0.780
+    s=0.9 w=4    lead 0.763 | vote 0.709 | unanimous 0.824 | right->wrong 0.111 | wrong->right 0.134 | lead kept own first answer 0.806 | accuracy when unanimous 0.803
+    s=0.9 w=6    lead 0.760 | vote 0.707 | unanimous 0.825 | right->wrong 0.112 | wrong->right 0.134 | lead kept own first answer 0.807 | accuracy when unanimous 0.801
+  evidence-driven correction c = 0.1
+    s=0.3 w=1    lead 0.796 | vote 0.820 | unanimous 0.720 | right->wrong 0.028 | wrong->right 0.127 | lead kept own first answer 0.821 | accuracy when unanimous 0.893
+    s=0.3 w=2    lead 0.793 | vote 0.811 | unanimous 0.708 | right->wrong 0.036 | wrong->right 0.126 | lead kept own first answer 0.845 | accuracy when unanimous 0.892
+    s=0.3 w=4    lead 0.785 | vote 0.788 | unanimous 0.671 | right->wrong 0.054 | wrong->right 0.124 | lead kept own first answer 0.864 | accuracy when unanimous 0.889
+    s=0.3 w=6    lead 0.785 | vote 0.788 | unanimous 0.670 | right->wrong 0.054 | wrong->right 0.124 | lead kept own first answer 0.865 | accuracy when unanimous 0.891
+    s=0.6 w=1    lead 0.796 | vote 0.794 | unanimous 0.909 | right->wrong 0.042 | wrong->right 0.139 | lead kept own first answer 0.786 | accuracy when unanimous 0.830
+    s=0.6 w=2    lead 0.789 | vote 0.789 | unanimous 0.887 | right->wrong 0.049 | wrong->right 0.140 | lead kept own first answer 0.827 | accuracy when unanimous 0.832
+    s=0.6 w=4    lead 0.771 | vote 0.767 | unanimous 0.843 | right->wrong 0.070 | wrong->right 0.138 | lead kept own first answer 0.863 | accuracy when unanimous 0.824
+    s=0.6 w=6    lead 0.769 | vote 0.764 | unanimous 0.841 | right->wrong 0.072 | wrong->right 0.137 | lead kept own first answer 0.865 | accuracy when unanimous 0.821
+    s=0.9 w=1    lead 0.788 | vote 0.785 | unanimous 0.984 | right->wrong 0.046 | wrong->right 0.135 | lead kept own first answer 0.783 | accuracy when unanimous 0.796
+    s=0.9 w=2    lead 0.784 | vote 0.776 | unanimous 0.943 | right->wrong 0.058 | wrong->right 0.140 | lead kept own first answer 0.827 | accuracy when unanimous 0.803
+    s=0.9 w=4    lead 0.777 | vote 0.721 | unanimous 0.811 | right->wrong 0.107 | wrong->right 0.144 | lead kept own first answer 0.795 | accuracy when unanimous 0.824
+    s=0.9 w=6    lead 0.778 | vote 0.721 | unanimous 0.807 | right->wrong 0.107 | wrong->right 0.144 | lead kept own first answer 0.793 | accuracy when unanimous 0.827
+  evidence-driven correction c = 0.3
+    s=0.3 w=1    lead 0.874 | vote 0.898 | unanimous 0.800 | right->wrong 0.015 | wrong->right 0.189 | lead kept own first answer 0.779 | accuracy when unanimous 0.941
+    s=0.3 w=2    lead 0.872 | vote 0.892 | unanimous 0.790 | right->wrong 0.020 | wrong->right 0.189 | lead kept own first answer 0.789 | accuracy when unanimous 0.941
+    s=0.3 w=4    lead 0.867 | vote 0.881 | unanimous 0.754 | right->wrong 0.032 | wrong->right 0.184 | lead kept own first answer 0.803 | accuracy when unanimous 0.941
+    s=0.3 w=6    lead 0.870 | vote 0.880 | unanimous 0.751 | right->wrong 0.032 | wrong->right 0.185 | lead kept own first answer 0.800 | accuracy when unanimous 0.941
+    s=0.6 w=1    lead 0.858 | vote 0.857 | unanimous 0.901 | right->wrong 0.025 | wrong->right 0.184 | lead kept own first answer 0.765 | accuracy when unanimous 0.899
+    s=0.6 w=2    lead 0.855 | vote 0.854 | unanimous 0.877 | right->wrong 0.030 | wrong->right 0.184 | lead kept own first answer 0.790 | accuracy when unanimous 0.901
+    s=0.6 w=4    lead 0.839 | vote 0.836 | unanimous 0.830 | right->wrong 0.048 | wrong->right 0.180 | lead kept own first answer 0.812 | accuracy when unanimous 0.896
+    s=0.6 w=6    lead 0.838 | vote 0.836 | unanimous 0.831 | right->wrong 0.048 | wrong->right 0.180 | lead kept own first answer 0.814 | accuracy when unanimous 0.897
+    s=0.9 w=1    lead 0.830 | vote 0.821 | unanimous 0.942 | right->wrong 0.034 | wrong->right 0.165 | lead kept own first answer 0.768 | accuracy when unanimous 0.860
+    s=0.9 w=2    lead 0.831 | vote 0.814 | unanimous 0.890 | right->wrong 0.048 | wrong->right 0.172 | lead kept own first answer 0.791 | accuracy when unanimous 0.873
+    s=0.9 w=4    lead 0.819 | vote 0.756 | unanimous 0.778 | right->wrong 0.095 | wrong->right 0.170 | lead kept own first answer 0.761 | accuracy when unanimous 0.882
+    s=0.9 w=6    lead 0.818 | vote 0.757 | unanimous 0.780 | right->wrong 0.095 | wrong->right 0.171 | lead kept own first answer 0.760 | accuracy when unanimous 0.882
+
+With no correction and w = 6, the lead's final accuracy minus a single agent's: s=0.3: +0.032, s=0.6: +0.038, s=0.9: +0.062
+With no correction, group answer (plurality of final answers) minus the no-discussion vote, w = 1 -> w = 6: s=0.3: -0.006 -> -0.051, s=0.6: -0.004 -> -0.048, s=0.9: -0.004 -> -0.077
+Right answers abandoned (share of agent-question pairs), w = 1 -> w = 6, c = 0: s=0.3: 0.035 -> 0.067, s=0.6: 0.047 -> 0.082, s=0.9: 0.049 -> 0.112
+
+==============================================================================
+4. The last human: one reviewer, a fixed budget, a growing team
+==============================================================================
+Human reads 238 words/min for 120 min/day -> 28,560 words/day.
+Each agent hands over 4 deliverables of 1,000 words a day; each pair of agents adds 150 words of coordination the human must read (Graicunas/Brooks: pairs grow as n(n-1)/2).
+A deliverable carries a material error with probability 0.15; read in full, an error is caught with probability 0.8; read in part, in proportion to the share read. A caught error costs the deliverable;
+an uncaught one costs D (in units of a correct deliverable's value V = 1).
+  D = 2   best team size 20 (net value 49.05/day); net value at n=12: 32.08; first n with negative net value: none up to 20
+  D = 5   best team size 20 (net value 20.63/day); net value at n=12: 19.01; first n with negative net value: none up to 20
+  D = 10  best team size  6 (net value 13.20/day); net value at n=12: -2.79; first n with negative net value: 12
+  D = 20  best team size  6 (net value 6.00/day); net value at n=12: -46.38; first n with negative net value: 8
+  share of output the human can read: n=1: 100%, n=2: 100%, n=4: 100%, n=8: 79%, n=12: 49%
+  words produced per day (work 'done'): n=1: 4,000, n=4: 16,900, n=12: 57,900
+  D = 2   slope per extra agent once reading is saturated (no coordination): +2.20; break-even D = (1-e)/e = 5.67
+  D = 5   slope per extra agent once reading is saturated (no coordination): +0.40; break-even D = (1-e)/e = 5.67
+  D = 10  slope per extra agent once reading is saturated (no coordination): -2.60; break-even D = (1-e)/e = 5.67
+  D = 20  slope per extra agent once reading is saturated (no coordination): -8.60; break-even D = (1-e)/e = 5.67
+Sensitivity: best team size by daily reading budget (D = 10)
+   30 min/day -> best n = 2, net value 3.21
+   60 min/day -> best n = 3, net value 6.60
+  120 min/day -> best n = 6, net value 13.20
+  240 min/day -> best n = 12, net value 25.62
+  480 min/day -> best n = 20, net value 44.00
+Anchor from section 1: auditing one ChatDev answer means reading a median of 3,338 words, 14 minutes at 238 words/min; a 120-minute budget audits 8.6 such answers a day.
+
+==============================================================================
+Figures written
+==============================================================================
+  figures/fig1_chatdev_tokens.png
+  figures/fig2_correlated_review.png
+  figures/fig3_deliberation.png
+  figures/fig4_review_budget.png
+  figures/fig5_independent_check.png
