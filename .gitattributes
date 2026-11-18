@@ -156,3 +156,4 @@ uk-sales-under-water/**/*.csv -filter -diff -merge text
 staffing-shift-constraints/**/*.csv -filter -diff -merge text
 france-repeat-sales-floor/**/*.csv -filter -diff -merge text
 house-votes-seats-gerrymandering/**/*.csv -filter -diff -merge text
+coupon-campaign-questions/**/*.csv -filter -diff -merge text

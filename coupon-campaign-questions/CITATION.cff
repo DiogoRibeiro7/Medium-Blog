@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "What a year of grocery coupon campaigns can and cannot say: designs, placebos and experiment size on the Complete Journey data"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-18
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/coupon-campaign-questions"
+references:
+  - type: software
+    title: "completejourney: Retail Shopping Data"
+    authors:
+      - family-names: Boehmke
+        given-names: Brad
+      - family-names: Mortimer
+        given-names: Steven M.
+    repository-code: "https://github.com/bradleyboehmke/completejourney"
+    license: CC0-1.0
+  - type: data
+    title: "The Complete Journey"
+    authors:
+      - name: "84.51°"
+    url: "https://www.8451.com/area51"

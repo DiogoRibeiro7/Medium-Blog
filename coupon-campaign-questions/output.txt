@@ -1,0 +1,153 @@
+
+====================================================================================================
+1. The data
+====================================================================================================
+receipt lines 1,469,307; baskets 155,848; households 2,469; products 68,509; stores 457
+first day 2017-01-01, last receipt day 2018-01-01 (whole days to 2017-12-31)
+sales value (what the retailer receives) $4,596,040; loyalty-card discounts $791,651 on 50.1% of lines; manufacturer coupon discounts $26,360 on 21,889 lines (1.49%); retailer coupon match $4,543
+loyalty discounts as a share of shelf value: 14.7%
+Type A: 4 campaigns; recipient-campaign pairs 3,647; redemptions 1,718
+Type B: 17 campaigns; recipient-campaign pairs 2,368; redemptions 323
+Type C: 6 campaigns; recipient-campaign pairs 574; redemptions 61
+households sent at least one campaign: 1,559 of 2,469
+coupon redemptions: 2,102 by 410 households
+campaigns (id, type, start, end, recipients, coupons, covered products, redemptions, weeks of history used):
+  24 Type C 2016-11-14 2017-01-16    12   27    632    0  -
+  25 Type B 2016-12-06 2017-02-05    17   28    535    1  -
+  26 Type B 2016-12-28 2017-02-19   118   33    689   22  -
+  27 Type A 2017-02-08 2017-03-26   361  181   3205   64  -
+   1 Type B 2017-03-03 2017-04-09    13   11    383    1  8
+   2 Type B 2017-03-08 2017-04-09    48   16    301    5  8
+   3 Type C 2017-03-13 2017-05-08    12   34    506    2  8
+   4 Type B 2017-03-29 2017-04-30    81   12    200   11  8
+   5 Type B 2017-04-03 2017-05-07   166   11    443   13  8
+   6 Type C 2017-04-19 2017-05-21    65    1     18    1  8
+   7 Type B 2017-04-24 2017-05-28   198    8    259    7  16
+   8 Type A 2017-05-08 2017-06-25  1076  209  17178  372  16
+   9 Type B 2017-05-31 2017-07-02   176   18    825   43  16
+  10 Type B 2017-06-28 2017-07-30   123   14    393   15  24
+  11 Type B 2017-07-12 2017-08-27   214   13    278    8  24
+  12 Type B 2017-07-12 2017-08-13   170   15    620   26  24
+  13 Type A 2017-08-08 2017-09-24  1077  207  35616  629  24
+  14 Type C 2017-09-04 2017-11-08   224   26    714   34  24
+  15 Type C 2017-09-20 2018-02-28    17    2     55    2  24
+  16 Type B 2017-10-04 2017-11-05   188   13   1025   43  24
+  17 Type B 2017-10-18 2017-11-19   202   19    713   45  24
+  18 Type A 2017-10-30 2017-12-24  1133  209  35513  653  24
+  19 Type B 2017-11-15 2017-12-17   130   11    375   29  24
+  20 Type C 2017-11-27 2018-02-05   244   24    609   22  24
+  21 Type B 2017-12-06 2018-01-07    65   16    242    3  24
+  22 Type B 2017-12-06 2018-01-07   276   21   1917   43  24
+  23 Type B 2017-12-28 2018-02-04   183   18    767    8  -
+campaigns with eight weeks of history and at least one complete campaign week: 22 (19 with known coupons, 3 targeted); with 16 weeks: 16; with 24 weeks: 13
+
+====================================================================================================
+2. The thirty-second answers
+====================================================================================================
+redemptions matched to a same-day receipt line with a coupon discount on a covered product: 986 of 2,102 (46.9%)
+matched to a same-day purchase of a covered product, with or without a coupon discount: 1,594 (75.8%)
+sales value of the matched coupon lines $3,775 (manufacturer coupon value $993, retailer match $154); sales value of the 622 whole baskets that held them $60,125
+every manufacturer coupon line in the receipts, campaign or not: 21,889 lines in 9,827 baskets, sales value $77,333, whole-basket sales $672,525
+targeted campaigns 8, 13, 18 pooled; households active before; mean weekly spend in dollars:
+  redeemers                   units   568  eight weeks before $ 80.22  during $ 87.18  change $ +6.96
+  recipients, no redemption   units  2673  eight weeks before $ 52.28  during $ 51.47  change $ -0.81
+  not sent the campaign       units  3368  eight weeks before $ 22.53  during $ 22.64  change $ +0.12
+redeemers spent 69% more per week during the campaigns than recipients who did not redeem ($35.71); before the campaigns the gap was 53% ($27.94); difference in changes $+7.77
+
+====================================================================================================
+3. Who was sent the coupons
+====================================================================================================
+Type A: recipients spent $57.18 a week in the eight weeks before, other active households $22.53 (ratio 2.54); bought a covered product in those weeks: recipients 99.4%, others 93.5%
+Type B: recipients spent $77.17 a week in the eight weeks before, other active households $37.05 (ratio 2.08); bought a covered product in those weeks: recipients 59.3%, others 25.3%
+Type C: recipients spent $82.92 a week in the eight weeks before, other active households $37.38 (ratio 2.22); bought a covered product in those weeks: recipients 55.2%, others 18.0%
+recipients with no receipt in the eight weeks before their campaign (outside every panel): 56 of 5,898 recipient-campaign pairs
+redemptions where the household had bought a product the coupon covers in the 8 weeks before the campaign: 50.9% (A 55.0%, B 31.9%, C 36.1%; B and C together 32.6%)
+redemptions where the household had bought a product the coupon covers in the 13 weeks before the campaign: 58.4% (A 62.3%, B 39.9%, C 45.9%; B and C together 40.9%)
+
+====================================================================================================
+4. The standard pipeline: match on the eight weeks before, then difference in differences
+====================================================================================================
+Types B and C, baskets with a covered product per recipient-week: 19 campaigns, 13,878 recipient-weeks; recipients' baseline 0.1675
+  effect during the campaigns +0.0413 [+0.0334, +0.0504] = +24.7% of baseline; total +573.7 [+453.3, +700.7]
+  effect in the eight weeks after the campaigns +0.0436 [+0.0346, +0.0528] (13,956 recipient-weeks)
+Type A, total spend in dollars per recipient-week: 3 campaigns, 23,780 recipient-weeks; recipients' baseline 57.0964
+  effect during the campaigns +5.4817 [+3.2446, +7.4535] = +9.6% of baseline; total +130355.2 [+76978.2, +177123.6]
+  effect in the eight weeks after the campaigns +5.8984 [+3.2542, +8.6398] (18,106 recipient-weeks)
+campaigns analysed separately: 22; nominal p < 0.05: 12 (all with positive estimates: True); Benjamini-Hochberg adjusted p < 0.05: 9; expected by chance if nothing worked 1.1
+
+====================================================================================================
+5. Asking each design what it reports when this campaign's coupons did not exist yet
+====================================================================================================
+Types B and C, baskets with a covered product per recipient-week
+  estimates on the 13 campaigns with 16 weeks of history (7, 9, 10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22); placebos on the 11 with 24 weeks (10, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22)
+  matched  estimate  +0.0441 [+0.0351, +0.0537]  (matched on weeks -8..-1, change from weeks -8..-1)
+           placebo   +0.0218 [+0.0103, +0.0338]  (matched on weeks -16..-9, change from -16..-9 to -8..-1)
+  plain    estimate  +0.0049 [-0.0038, +0.0141]  (all active households, change from weeks -8..-1)
+           placebo   -0.0350 [-0.0446, -0.0254]  (change from weeks -16..-9 to -8..-1)
+  trend    estimate  +0.0242 [+0.0120, +0.0374]  (all active households, each against its own line over weeks -16..-1)
+           placebo   -0.0167 [-0.0315, -0.0024]  (line over weeks -24..-9, residual in weeks -8..-1)
+  placebos on the 16-week campaigns instead: matched +0.0238 [+0.0134, +0.0344], plain -0.0306 [-0.0393, -0.0224]
+  short placebo for the plain design (weeks -4..-1 against -8..-5): +0.0022 [-0.0101, +0.0130]
+  trend design in the eight weeks after the campaigns: +0.0500 [+0.0291, +0.0717]
+Type A, total spend in dollars per recipient-week
+  estimates on the 3 campaigns with 16 weeks of history (8, 13, 18); placebos on the 2 with 24 weeks (13, 18)
+  matched  estimate  +5.4817 [+3.2446, +7.4535]  (matched on weeks -8..-1, change from weeks -8..-1)
+           placebo   +5.0944 [+2.3179, +8.0789]  (matched on weeks -16..-9, change from -16..-9 to -8..-1)
+  plain    estimate  +0.4574 [-0.6727, +1.5383]  (all active households, change from weeks -8..-1)
+           placebo   -4.5687 [-5.9503, -3.2147]  (change from weeks -16..-9 to -8..-1)
+  trend    estimate  +3.2325 [+1.7464, +4.8158]  (all active households, each against its own line over weeks -16..-1)
+           placebo   -0.7041 [-2.5429, +1.0992]  (line over weeks -24..-9, residual in weeks -8..-1)
+  placebos on the 16-week campaigns instead: matched +5.4516 [+2.9621, +7.8638], plain -4.0417 [-5.2117, -3.0000]
+  short placebo for the plain design (weeks -4..-1 against -8..-5): -0.1504 [-1.5946, +1.2495]
+  trend design in the eight weeks after the campaigns: +2.1612 [-0.4332, +4.8188]
+  trend design fitted on weeks -12..-1 (campaigns 8, 13, 18): +2.82 [+0.84, +4.88]
+  trend design fitted on weeks -16..-1 (campaigns 8, 13, 18): +3.23 [+1.75, +4.82]
+  trend design fitted on weeks -20..-1 (campaigns 13, 18): +4.52 [+2.93, +6.14]
+  trend design fitted on weeks -24..-1 (campaigns 13, 18): +4.94 [+3.37, +6.44]
+event study, known (recipients minus controls, each line from its own baseline window):
+  matched on weeks -8..-1    w-24:+12.3 w-23:+10.4 w-22:+11.9 w-21:+9.7 w-20:+11.6 w-19:+11.3 w-18:+13.8 w-17:+9.7 w-16:+11.0 w-15:+9.9 w-14:+9.0 w-13:+10.9 w-12:+8.2 w-11:+6.9 w-10:+7.0 w-9:+6.2 w-8:-0.7 w-7:+0.5 w-6:+0.6 w-5:-0.7 w-4:+0.0 w-3:+0.2 w-2:+1.0 w-1:-0.9 d1:+5.3 d2:+4.8 d3:+5.7 d4:+4.0 d5:+4.8 p1:+4.9 p2:+5.7 p3:+4.9 p4:+5.7 p5:+6.7 p6:+5.3 p7:+6.4 p8:+1.4
+  matched on weeks -16..-9   w-24:+9.8 w-23:+7.5 w-22:+8.9 w-21:+7.2 w-20:+8.8 w-19:+9.0 w-18:+10.2 w-17:+7.3 w-16:+2.0 w-15:+1.3 w-14:+1.0 w-13:+2.7 w-12:+0.5 w-11:-2.5 w-10:-1.3 w-9:-3.7 w-8:+1.5 w-7:+1.4 w-6:+3.6 w-5:+1.9 w-4:+1.6 w-3:+1.8 w-2:+3.1 w-1:+2.5 d1:+3.7 d2:+2.8 d3:+5.0 d4:+2.6 d5:+4.1 p1:+4.0 p2:+4.3 p3:+2.8 p4:+3.6 p5:+5.5 p6:+3.9 p7:+4.5 p8:-0.4
+  no matching                w-24:+6.0 w-23:+5.0 w-22:+5.6 w-21:+3.7 w-20:+6.0 w-19:+5.2 w-18:+7.2 w-17:+5.0 w-16:+6.1 w-15:+4.2 w-14:+3.1 w-13:+5.4 w-12:+1.8 w-11:+2.2 w-10:+2.1 w-9:+3.0 w-8:-0.2 w-7:-0.2 w-6:+0.3 w-5:-0.6 w-4:-0.3 w-3:+0.3 w-2:+0.6 w-1:+0.1 d1:+1.8 d2:+1.0 d3:+1.7 d4:+0.1 d5:+0.2 p1:-0.3 p2:+0.4 p3:+0.7 p4:+1.1 p5:+0.1 p6:+1.1 p7:+1.3 p8:-1.8
+event study, targeted (recipients minus controls, each line from its own baseline window):
+  matched on weeks -8..-1    w-24:+21.2 w-23:+30.4 w-22:+24.7 w-21:+22.3 w-20:+19.7 w-19:+22.5 w-18:+18.0 w-17:+18.2 w-16:+18.4 w-15:+17.2 w-14:+15.0 w-13:+10.4 w-12:+12.2 w-11:+8.5 w-10:+13.7 w-9:+9.7 w-8:-1.4 w-7:+2.0 w-6:-1.3 w-5:-1.6 w-4:-0.9 w-3:-0.0 w-2:+2.3 w-1:+0.9 d1:+3.3 d2:+2.3 d3:+6.2 d4:+7.8 d5:+9.8 p1:+8.3 p2:+1.2 p3:+4.7 p4:+14.7 p5:+3.8 p6:+13.6 p7:+6.7 p8:+6.8
+  matched on weeks -16..-9   w-24:+18.7 w-23:+26.3 w-22:+20.6 w-21:+16.5 w-20:+13.7 w-19:+17.3 w-18:+11.7 w-17:+10.7 w-16:+5.4 w-15:+3.5 w-14:-0.3 w-13:-4.6 w-12:-1.4 w-11:-3.2 w-10:+3.5 w-9:-2.9 w-8:+0.2 w-7:+2.3 w-6:+2.9 w-5:+4.7 w-4:+7.9 w-3:+6.4 w-2:+8.6 w-1:+7.8 d1:+2.5 d2:+6.5 d3:+5.2 d4:+8.4 d5:+9.5 p1:+9.9 p2:-0.0 p3:+1.2 p4:+11.8 p5:+1.6 p6:+7.4 p7:+2.5 p8:+6.1
+  no matching                w-24:+8.5 w-23:+12.0 w-22:+11.5 w-21:+10.1 w-20:+6.3 w-19:+7.5 w-18:+7.7 w-17:+9.5 w-16:+6.6 w-15:+4.5 w-14:+5.0 w-13:+4.5 w-12:+4.6 w-11:+3.1 w-10:+5.6 w-9:+2.8 w-8:+0.2 w-7:-1.7 w-6:+0.4 w-5:+0.0 w-4:-0.4 w-3:+0.5 w-2:-0.8 w-1:+1.7 d1:-0.2 d2:-0.6 d3:+0.4 d4:+2.0 d5:+2.9 p1:-1.5 p2:-5.2 p3:-3.7 p4:-1.3 p5:-3.8 p6:-0.9 p7:-4.5 p8:-0.7
+
+====================================================================================================
+6. One question per campaign, three designs
+====================================================================================================
+matched : 16 campaigns; nominal p < 0.05: 11 (9+, 10+, 12+, 14+, 16+, 19+, 20+, 21+, 8+, 13+, 18+); BH-adjusted p < 0.05: 8
+plain   : 16 campaigns; nominal p < 0.05: 2 (17-, 18+); BH-adjusted p < 0.05: 0
+trend   : 16 campaigns; nominal p < 0.05: 5 (12+, 16+, 19+, 20+, 18+); BH-adjusted p < 0.05: 2
+
+====================================================================================================
+7. How many redemptions would have happened anyway (known-coupon campaigns)
+====================================================================================================
+matched : incremental covered baskets +527.0 [+411.3, +648.4]; redemption trips 176; incremental share +2.99 [+2.25, +4.00]; would have happened anyway -1.99 [-3.00, -1.25]
+plain   : incremental covered baskets +59.1 [-47.2, +171.2]; redemption trips 186; incremental share +0.32 [-0.25, +0.94]; would have happened anyway +0.68 [+0.06, +1.25]
+trend   : incremental covered baskets +292.1 [+142.8, +460.1]; redemption trips 186; incremental share +1.57 [+0.75, +2.64]; would have happened anyway -0.57 [-1.64, +0.25]
+all 19 known-coupon campaigns: 210 redemption trips over 14,069 recipient-weeks = 0.0149 per recipient-week (1.49 per 100)
+variance across recipients of the change in weekly covered baskets (campaign weeks minus the eight weeks before): 0.0500 (standard deviation 0.224)
+  households needed to detect an incremental share of 0.25 (effect 0.0037 per recipient-week, 80% power, 5% two-sided): 112,689 with a 50/50 holdout, 313,025 with a 10% holdout
+  households needed to detect an incremental share of 0.50 (effect 0.0075 per recipient-week, 80% power, 5% two-sided): 28,172 with a 50/50 holdout, 78,256 with a 10% holdout
+  households needed to detect an incremental share of 1.00 (effect 0.0149 per recipient-week, 80% power, 5% two-sided): 7,043 with a 50/50 holdout, 19,564 with a 10% holdout
+randomising which half of a campaign's coupons each recipient gets, instead of whether it gets any: variance ratio 0.89 (18 campaigns), i.e. 11% fewer households for the same power
+
+====================================================================================================
+8. Whose margin, and at what discount the coupons pay
+====================================================================================================
+known-coupon redemption trips matched to receipt lines: 116; manufacturer coupon per trip $1.59 (median $1.00); retailer match per trip $0.28; shelf value of the couponed items $7.90
+coupon depth (manufacturer coupon / shelf value of the couponed items): 20.2%; with the retailer's match 23.8%
+break-even incremental share = depth / contribution margin on shelf value: m=0.10: 2.02  m=0.15: 1.34  m=0.20: 1.01  m=0.25: 0.81  m=0.30: 0.67  m=0.35: 0.58  m=0.40: 0.50  m=0.45: 0.45  m=0.50: 0.40  m=0.55: 0.37  m=0.60: 0.34
+margin at which the coupons break even if the incremental share is the plain estimate (0.32): 0.64
+margin at which the coupons break even if the incremental share is the trend estimate (1.57): 0.13
+prior-buyer share of known-coupon redemptions (bought a covered product in the 8 / 13 weeks before): B 31.9% / 39.9%, C 36.1% / 45.9%
+targeted campaigns, plain design: change in recipients' total spend +10887 [-16054, +36651] dollars over 23,802 recipient-weeks; per redeemed coupon $6.58 (1654 redemptions)
+targeted campaigns, trend design: change in recipients' total spend +76939 [+41753, +114701] dollars over 23,802 recipient-weeks; per redeemed coupon $46.52 (1654 redemptions)
+retailer's own outlay on campaign coupons in the receipts (coupon match on matched lines, all campaigns): $154
+
+====================================================================================================
+9. The larger discount
+====================================================================================================
+loyalty-card discounts $791,651 (14.7% of shelf value, on 50.1% of lines); all manufacturer coupons $26,360; campaign coupon value on matched lines $993; ratio of loyalty discounts to all manufacturer coupons 30 to 1
+loyalty discount as a share of each household's shelf value: median 14.6%, quartiles 11.3% to 18.3%
