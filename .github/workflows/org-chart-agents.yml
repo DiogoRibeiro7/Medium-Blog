@@ -1,0 +1,53 @@
+name: Reproduce org-chart-agents
+
+on:
+  pull_request:
+    paths:
+      - 'org-chart-agents/**'
+      - '.github/workflows/org-chart-agents.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'org-chart-agents/**'
+      - '.github/workflows/org-chart-agents.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: org-chart-agents
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: org-chart-agents/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rebuild the trace tables from the pinned MAST commit
+        run: python fetch_traces.py --check
+
+      - name: Rerun the analysis
+        run: python org_chart_agents.py > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_chatdev_tokens fig2_correlated_review fig3_deliberation fig4_review_budget fig5_independent_check; do
+            test -s "figures/$f.png"
+          done
