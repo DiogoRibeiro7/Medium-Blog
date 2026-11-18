@@ -78,6 +78,7 @@ finished in the bottom three: changed 0.449, kept 0.457, difference -0.008, 95% 
   results below what shots on target predict    n=253 +0.38 [-0.21, +0.99]
   results in line with shots on target          n=197 +0.81 [+0.09, +1.47]
 richer minus poorer: +1.86, 95% interval [+0.92, +2.73]
+changes made inside the bottom three: 0.220 of the richer clubs' changes, 0.652 of the poorer clubs'
   Premier League  n= 90 +0.87
   LaLiga          n=102 -0.58
   Serie A         n=103 +0.71
@@ -96,6 +97,7 @@ linear model on all decision points, same state plus season effects: +0.36 [-0.0
   distance matching only                   n=454 +0.43
   without quick moves to another club      n=438 +0.55
 ten simulated 30-season leagues in which a change does nothing: same-spot estimate mean -0.03, range -0.65 to +0.59, standard error of the mean 0.11
+the same leagues with distance matching only (no exact match on recent form): mean +0.22
 
 == Hidden information
 before/after gain +5.20; same-spot estimate +0.57; the observed state accounts for 4.63 points
@@ -104,5 +106,8 @@ before/after gain +5.20; same-spot estimate +0.57; the observed state accounts f
   for a true gain of 3 points over ten, what the board knew and the data do not would have to cost the changed clubs 2.43 points: 52% of what the observed state accounts for
 
 == Two remembered changes
+changes that did 10 or more points worse than their comparison clubs: 6
 Bayern Munich 2019/20: Niko Kovac -> Hansi Flick after match 10 (02 Nov 2019), place 4, 7 points from the last five; next ten: 24 points, comparison clubs 16.8, difference +7.2
+  share of all changes with a difference at least this large: 0.109
 Manchester United 2018/19: José Mourinho -> Ole Gunnar Solskjær after match 17 (16 Dec 2018), place 6, 6 points from the last five; next ten: 26 points, comparison clubs 17.6, difference +8.4
+  share of all changes with a difference at least this large: 0.062

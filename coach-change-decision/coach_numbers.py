@@ -249,6 +249,12 @@ def main():
         return richer - per.loc[[x for x in ts if x not in rich], "diff"].mean()
 
     print(f"richer minus poorer: {gap(list(per.index)):+.2f}, 95% interval {ci(cc.bootstrap(e, pairs, gap))}")
+    richer = splits["squad worth more than the league median"]
+    in3 = E.in_drop.to_numpy() == 1
+    print(
+        f"changes made inside the bottom three: {in3[richer].mean():.3f} of the richer clubs' changes, "
+        f"{in3[~richer].mean():.3f} of the poorer clubs'"
+    )
     for lg_code, name in cc.LEAGUE_NAMES.items():
         mask = E.league.to_numpy() == lg_code
         print(f"  {name:15s} n={mask.sum():3d} {per['diff'].to_numpy()[mask].mean():+.2f}")
@@ -303,6 +309,13 @@ def main():
         f"range {nulls.min():+.2f} to {nulls.max():+.2f}, "
         f"standard error of the mean {nulls.std(ddof=1) / np.sqrt(10):.2f}"
     )
+    drift = []
+    for seed in range(1, 11):
+        sm_, sv_, nj_ = simulate.synthetic(effect=0.0, seed=seed)
+        e_ = cc.eligible(cc.decision_points(sm_, sv_, nj_))
+        _, lg_ = cc.fit_hazard(e_)
+        drift.append(cc.matched_effect(e_, cc.match(e_, lg_, exact=("in_drop",)))["diff"].mean())
+    print(f"the same leagues with distance matching only (no exact match on recent form): mean {np.mean(drift):+.2f}")
 
     print("\n== Hidden information")
     bounce = (y[t] - 2 * e.last5.to_numpy(float)[t]).mean()
@@ -344,12 +357,17 @@ def main():
     out.to_csv(RESULTS / "changes.csv", index=False, float_format="%.3f")
 
     print("\n== Two remembered changes")
+    print(f"changes that did 10 or more points worse than their comparison clubs: {(out.difference <= -10).sum()}")
     for club, season in [("Bayern Munich", 2019), ("Manchester United", 2018)]:
         r = out[(out.club == club) & (out.season == season)].iloc[0]
         print(
             f"{club} {season}/{(season + 1) % 100:02d}: {r.manager} -> {r.next_manager} after match {r.k} "
             f"({r.date:%d %b %Y}), place {r.pos}, {r.last5:.0f} points from the last five; next ten: "
             f"{r.next10_changed:.0f} points, comparison clubs {r.next10_kept_mean:.1f}, difference {r.difference:+.1f}"
+        )
+        print(
+            "  share of all changes with a difference at least this large: "
+            f"{(out.difference >= r.difference).mean():.3f}"
         )
 
 
