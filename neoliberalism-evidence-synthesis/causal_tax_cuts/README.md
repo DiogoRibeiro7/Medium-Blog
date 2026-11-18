@@ -280,6 +280,32 @@ The first source-backed repeat-reform and risk-set counts are in
 The source-probe Action publishes a seven-day `tax-cut-dynamic-exposure`
 artifact containing every observed policy path.
 
+### Joint three-dimensional donor support (no causal estimation)
+
+[`JOINT_SUPPORT.md`](JOINT_SUPPORT.md) tests the stronger geometry left
+unresolved by the earlier per-variable marginal-range checks. For each
+eligible reform, it checks whether its **three WDI pre-reform means** can
+be represented by a convex combination of at most four surviving donors,
+holding the original macro scale and subsequent-cut censoring rules fixed.
+This is an empirical donor-hull diagnostic, not causal positivity, estimated
+counterfactual weights or a new ATT.
+
+```bash
+python -m causal_tax_cuts.joint_support \
+  --panel data/wdi-source/outcome_panel_with_macro.csv \
+  --provenance data/wdi-source/world_bank_provenance.json \
+  --frozen-reference causal_tax_cuts/results/donor_support_2026-11-15.json \
+  --output-dir data/tax-study/joint-support
+```
+
+The initial source-backed report shows that **8/20** reforms pass all three
+separate marginal ranges at horizon five, but only **2/20** pass the joint
+convex-hull check. See
+[`results/JOINT_SUPPORT_RESULTS_2026-11-18.md`](results/JOINT_SUPPORT_RESULTS_2026-11-18.md)
+and its machine-readable frozen JSON. The networked source-probe Action
+publishes `tax-cut-joint-macro-support` for seven days, including all
+event/horizon certificate witnesses and full source checksums.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
