@@ -64,6 +64,9 @@ def main():
         f"median force ratio {np.exp(b.lr.median()):.2f}"
     )
     print("battles by era: " + ", ".join(f"{k} {v}" for k, v in b.era.value_counts().sort_index().items()))
+    for _, _, name in bc.ERAS:
+        top_e = b[b.era == name].war_key.value_counts().head(3)
+        print(f"  {name}, largest wars: " + "; ".join(f"{k} {v}" for k, v in top_e.items()))
     top = b.war_key.value_counts().head(4)
     print("largest wars: " + "; ".join(f"{k} {v}" for k, v in top.items()))
 
