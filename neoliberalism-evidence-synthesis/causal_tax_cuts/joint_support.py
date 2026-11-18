@@ -159,8 +159,7 @@ def audit_joint_support(
     for candidate in candidates:
         donor_index[candidate.country, candidate.reform_year].append(candidate)
     prior_index = {
-        (row.country, row.reform_year, row.horizon): row
-        for row in prior_horizons
+        (row.country, row.reform_year, row.horizon): row for row in prior_horizons
     }
     rows: list[JointSupportRow] = []
 
@@ -226,11 +225,7 @@ def audit_joint_support(
                         if witness
                         else ""
                     ),
-                    (
-                        float(f"{witness.max_scaled_residual:.12g}")
-                        if witness
-                        else None
-                    ),
+                    (float(f"{witness.max_scaled_residual:.12g}") if witness else None),
                 )
             )
 
