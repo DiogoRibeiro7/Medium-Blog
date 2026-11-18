@@ -170,6 +170,26 @@ jobs:
             ${{ runner.temp }}/tax-study/joint-support/joint_support_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit official DPI2023 pre-reform political-institutional coverage
+        id: political_institutions
+        if: steps.joint_support.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.political_institutions \
+            --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" \
+            --frozen-reference causal_tax_cuts/results/donor_support_2026-11-15.json \
+            --output-dir "$RUNNER_TEMP/tax-study/political-institutions"
+      - name: Publish DPI2023 controls, coverage, and source manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-political-institutions
+          path: |
+            ${{ runner.temp }}/tax-study/political-institutions/dpi_political_controls.csv
+            ${{ runner.temp }}/tax-study/political-institutions/political_reform_coverage.csv
+            ${{ runner.temp }}/tax-study/political-institutions/political_donor_coverage.csv
+            ${{ runner.temp }}/tax-study/political-institutions/political_coverage_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
