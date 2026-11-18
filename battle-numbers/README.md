@@ -16,6 +16,10 @@ All numbers below are from `output.txt`.
 - The data give +0.29 (+0.48 holding the result fixed).
 - Stated errors in the strengths shrink these slopes by only about 6%.
 
+**Battles end long before anyone is destroyed.** The losing side's median loss was 16% of its initial strength, and the winner's 6%. The losing side lost under a tenth of its strength in 36% of decisive battles and over half in 12%.
+
+**Exceptions both ways.** Attackers with under half the defender's numbers won 13 battles, 5 of them with surprise; attackers with over three times the defender's numbers lost 25. Both lists are printed in `output.txt`.
+
 **What else goes with winning.** Each measure is known or countable before the battle:
 - **Surprise.** The attacker won 79% of battles in which he achieved surprise, against 61% of battles with no surprise either way.
 - **The commanders' earlier records.** The attacker won 74% when his commander had the better record in earlier CDB90 battles, against 35% when the record was worse.
@@ -35,7 +39,7 @@ CDB90 (CAA Database of Battles, Version 1990), in the tidy open-data version by 
 - archived on Zenodo, doi:10.5281/zenodo.23928303;
 - licence CC0 1.0.
 
-The five tables used here are committed in `data/`. `fetch_data.py` downloads them from that commit and checks each against the SHA-256 digests in `digests.txt`.
+The four tables used here are committed in `data/`. `fetch_data.py` downloads them from that commit and checks each against the SHA-256 digests in `digests.txt`.
 
 ## Reproduce
 

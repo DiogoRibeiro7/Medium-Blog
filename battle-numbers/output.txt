@@ -26,7 +26,52 @@ odds ratio for doubling the force ratio: 1.39
 comparing battles within the same war (conditional logit, 569 battles): slope 0.683, standard error 0.155; odds ratio for doubling 1.61
 modelled chance the attacker wins at 1:2, 1:1, 2:1, 3:1: 0.518, 0.600, 0.676, 0.717
 
+== Examples
+attackers with under half the defender's numbers who won, and attackers with over three times who lost
+  won with under 1:2: 13, attacker surprise in 5
+    Molino Del Rey (1847), USA 3,100 attacking Mexico 12,000
+    Suomussalmi (1939), Finland 9,000 attacking USSR 29,954, surprise
+    Resaca De La Palma (1846), USA 1,700 attacking Mexico 5,600
+    Palo Alto (1846), USA 2,288 attacking Mexico 6,000
+    Bayonette Line (1951), USA 13,700 attacking North Korea 35,500
+    Oboyan-Kursk (Phase Ii) (1943), Germany 60,000 attacking USSR 149,000
+    Guilford Court House (1781), Great Britain 1,900 attacking USA 4,449
+    Preston (1648), English Parliament 9,000 attacking Scottish Royalist 21,000, surprise
+    Jebel Geneifa (1973), Israel 16,200 attacking Egypt 35,633
+    San Jacinto (1836), Texas 743 attacking Mexico 1,600, surprise
+    Chapultepec (1847), USA 7,180 attacking Mexico 15,000
+    Zenta (1697), Holy Roman Empire 50,000 attacking Ottoman Empire 100,000, surprise
+    Dunbar (1650), English Parliament 11,000 attacking Scottish Royalist 22,000, surprise
+  lost with over 3:1: 25, attacker surprise in 5
+    Plassey (1757), Bengal 50,050 attacking Great Britain 2,975
+    Mount Tabor (1799), Ottoman Empire 35,000 attacking France 4,500
+    Bastogne (1944), Germany 36,678 attacking USA 4,849
+    Kakazu And Tombstone Ridges (1945), USA 21,247 attacking Japan 3,000
+    Carroceto (1944), Germany 26,490 attacking Great Britain 4,515
+    Mount Hermonit (1973), Syria 31,650 attacking Israel 5,395
+    Shuri Envelopment (Phase Ii) (1945), USA 15,840 attacking Japan 3,000
+    Spion Kop (1900), Great Britain 24,000 attacking South African Republic 5,000, surprise
+    Rapido South I (1944), USA 7,700 attacking Germany 1,800
+    Rapido South Ii (1944), USA 7,538 attacking Germany 1,800
+    Somme-Ovillers (1916), Great Britain 11,300 attacking Germany 2,800
+    Loos (1915), Great Britain 298,437 attacking Germany 75,000
+    Ahmadiyeh (1973), Syria 22,750 attacking Israel 5,745, surprise
+    Kochi Ridge-Onaga Iii (1945), USA 15,764 attacking Japan 4,050
+    Ulundi (1879), Zulu 20,000 attacking Great Britain 5,317
+    Rapido North I (1944), USA 8,000 attacking Germany 2,200
+    Kochi Ridge-Onaga Ii (1945), USA 15,986 attacking Japan 4,500
+    Yehuda-El Al (1973), Syria 21,984 attacking Israel 6,300, surprise
+    Rapido North Ii (1944), USA 7,600 attacking Germany 2,200
+    Chemin-Des-Dames (1918), Germany 250,000 attacking France 75,000, surprise
+    Dragoni (1943), USA 17,034 attacking Germany 5,152
+    Bowling Alley I (1944), Germany 14,600 attacking USA 4,500, surprise
+    Somme-Fourth Army Attack (1916), Great Britain 290,000 attacking Germany 95,000
+    Mitla Pass (1967), Egypt 22,000 attacking Israel 7,250
+    Festubert (1915), Great Britain 90,365 attacking Germany 30,000
+  Mexican-American War: 8 decisive battles, attacker outnumbered in 6, of which the attacker won 6
+
 == Against Lanchester
+illustration, 1,000 against 500 of equal quality: under the square law the larger side wins with 866 left and the smaller side must be 4 times as effective per soldier to draw; under the linear law 500 left and 2 times
   square law, all battles: the log effectiveness ratio would need a standard deviation of 7.59; one standard deviation is a factor of 1,974
   square law, within wars: the log effectiveness ratio would need a standard deviation of 5.31; one standard deviation is a factor of 203
   linear law, all battles: the log effectiveness ratio would need a standard deviation of 3.79; one standard deviation is a factor of 44
@@ -37,6 +82,19 @@ the same, decisive battles, holding the result fixed: +0.475, 95% interval [+0.1
 benchmarks: square law -1, linear law 0
 slope of log loss fraction on the log force ratio: attacker -0.492, defender +0.218
 median losses as a share of initial strength: attacker 0.066, defender 0.122
+
+== How battles end
+decisive battles with strengths and losses: 610
+median losses as a share of initial strength: losing side 0.158, winning side 0.058
+  losing side lost under 10% of its strength: 0.356
+  losing side lost under 20% of its strength: 0.589
+  losing side lost under 50% of its strength: 0.874
+  losing side lost over half: 0.121 (74 battles)
+losing side lost the larger share: 0.795
+  1600-1799: median share lost, losing side 0.246, winning side 0.076
+  1800-1899: median share lost, losing side 0.193, winning side 0.083
+  1900-1945: median share lost, losing side 0.143, winning side 0.050
+  1946-1982: median share lost, losing side 0.046, winning side 0.018
 
 == Errors in the strengths
 decisive battles with stated strength ranges: 559; median half-range attacker 0.100, defender 0.150

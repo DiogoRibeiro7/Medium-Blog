@@ -101,7 +101,31 @@ def main():
     grid = np.linspace(np.log(0.25), np.log(17), 200)
     pd.DataFrame({"lr": grid, "p": 1 / (1 + np.exp(-(a + s * grid)))}).to_csv(RESULTS / "win_curve.csv", index=False)
 
+    print("\n== Examples")
+    print("attackers with under half the defender's numbers who won, and attackers with over three times who lost")
+    for lab, x in (
+        ("won with under 1:2", d[(d.lr < BINS[1]) & (d.win == 1)].sort_values("lr")),
+        ("lost with over 3:1", d[(d.lr > BINS[-2]) & (d.win == 0)].sort_values("lr", ascending=False)),
+    ):
+        print(f"  {lab}: {len(x)}, attacker surprise in {int(x.att_surprise.sum())}")
+        for r in x.itertuples():
+            print(
+                f"    {r.name.title()} ({r.year}), {r.attacker_actors} {r.attacker_str:,.0f} attacking "
+                f"{r.defender_actors} {r.defender_str:,.0f}{', surprise' if r.att_surprise else ''}"
+            )
+    x = d[d.war_key.str.startswith("Mexican-American")]
+    print(
+        f"  Mexican-American War: {len(x)} decisive battles, attacker outnumbered in {int((x.lr < 0).sum())}, "
+        f"of which the attacker won {int(x[x.lr < 0].win.sum())}"
+    )
+
     print("\n== Against Lanchester")
+    big, small = 1000, 500
+    print(
+        f"illustration, {big:,} against {small:,} of equal quality: under the square law the larger side wins with "
+        f"{np.sqrt(big**2 - small**2):,.0f} left and the smaller side must be {(big / small) ** 2:.0f} times as "
+        f"effective per soldier to draw; under the linear law {big - small:,} left and {big / small:.0f} times"
+    )
     for name, e in (("square law", 2), ("linear law", 1)):
         for lab, sl_ in (("all battles", s), ("within wars", ws)):
             sd = bc.implied_spread(sl_, e)
@@ -131,6 +155,22 @@ def main():
         f"defender {(c.defender_cas / c.defender_str).median():.3f}"
     )
     c[["isqno", "lr", "llr", "wina"]].to_csv(RESULTS / "casualties.csv", index=False)
+
+    print("\n== How battles end")
+    fa_, fd_ = cd.attacker_cas / cd.attacker_str, cd.defender_cas / cd.defender_str
+    loser = pd.Series(np.where(cd.wina == 1, fd_, fa_), index=cd.index)
+    winner = pd.Series(np.where(cd.wina == 1, fa_, fd_), index=cd.index)
+    print(f"decisive battles with strengths and losses: {len(cd)}")
+    print(
+        f"median losses as a share of initial strength: losing side {loser.median():.3f}, "
+        f"winning side {winner.median():.3f}"
+    )
+    for t in (0.1, 0.2, 0.5):
+        print(f"  losing side lost under {t:.0%} of its strength: {(loser < t).mean():.3f}")
+    print(f"  losing side lost over half: {(loser > 0.5).mean():.3f} ({int((loser > 0.5).sum())} battles)")
+    print(f"losing side lost the larger share: {(loser > winner).mean():.3f}")
+    for name, g in loser.groupby(cd.era):
+        print(f"  {name}: median share lost, losing side {g.median():.3f}, winning side {winner[g.index].median():.3f}")
 
     print("\n== Errors in the strengths")
     rel, n_err = bc.attenuation(d)
