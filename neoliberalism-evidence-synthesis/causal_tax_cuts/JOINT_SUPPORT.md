@@ -131,3 +131,8 @@ weights or extrapolating from distant donors would not remove those
 identification problems. A defensible next phase first needs an explicit
 intervention, contemporaneous institutional variables, correct sequencing
 and an inference design that respects country-level dependence.
+
+The next [DPI2023 political-institutional coverage audit](POLITICAL_INSTITUTIONS.md)
+verifies how many of these same reform/donor risk sets have all three
+*political* prehistories observed. That is a coverage step, not a remedy
+for limited three-dimensional WDI support or a causal adjustment.
