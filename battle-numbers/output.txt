@@ -1,0 +1,128 @@
+== Data
+battles: 660, fought 1600 to 1982, in 64 wars and 306 campaigns; after 1973: Bekka Valley (1982)
+from the HERO studies (1984): 600; added in CDB90 (1990): 60
+won by the attacker: 398; by the defender: 217; draws: 43; outcome missing: 2
+decisive battles with both strengths known: 614
+median strength: attacker 21,984, defender 15,500; median force ratio 1.50
+battles by era: 1600-1799 113, 1800-1899 126, 1900-1945 339, 1946-1982 82
+largest wars: World War II of 1939-1945 192; World War I of 1914-1918 124; U.S. Civil War of 1861-1865 49; Yom Kippur War of 1973 33
+
+== How often numbers win
+decisive battles with unequal numbers won by the larger side: 0.602 of 603, 95% interval [0.548, 0.650]
+won by the attacker: 0.647
+  attacker:defender under 1:2   n= 26 attacker won 0.500 [0.321, 0.679]
+  attacker:defender 1:2 to 3:4  n= 52 attacker won 0.558 [0.423, 0.684]
+  attacker:defender 3:4 to 1:1  n=102 attacker won 0.618 [0.521, 0.706]
+  attacker:defender 1:1 to 4:3  n=103 attacker won 0.583 [0.486, 0.673]
+  attacker:defender 4:3 to 2:1  n=118 attacker won 0.653 [0.563, 0.732]
+  attacker:defender 2:1 to 3:1  n=107 attacker won 0.692 [0.599, 0.771]
+  attacker:defender over 3:1    n=106 attacker won 0.764 [0.675, 0.835]
+logistic slope on the log force ratio: 0.478, 95% interval [0.18, 0.79]
+odds ratio for doubling the force ratio: 1.39
+comparing battles within the same war (conditional logit, 569 battles): slope 0.683, standard error 0.155; odds ratio for doubling 1.61
+modelled chance the attacker wins at 1:2, 1:1, 2:1, 3:1: 0.518, 0.600, 0.676, 0.717
+
+== Against Lanchester
+  square law, all battles: the log effectiveness ratio would need a standard deviation of 7.59; one standard deviation is a factor of 1,974
+  square law, within wars: the log effectiveness ratio would need a standard deviation of 5.31; one standard deviation is a factor of 203
+  linear law, all battles: the log effectiveness ratio would need a standard deviation of 3.79; one standard deviation is a factor of 44
+  linear law, within wars: the log effectiveness ratio would need a standard deviation of 2.66; one standard deviation is a factor of 14
+battles with both strengths and casualties: 654
+slope of log(attacker losses / defender losses) on the log force ratio: +0.290, 95% interval [-0.022, +0.639]
+the same, decisive battles, holding the result fixed: +0.475, 95% interval [+0.181, +0.771]
+benchmarks: square law -1, linear law 0
+slope of log loss fraction on the log force ratio: attacker -0.492, defender +0.218
+median losses as a share of initial strength: attacker 0.066, defender 0.122
+
+== Errors in the strengths
+decisive battles with stated strength ranges: 559; median half-range attacker 0.100, defender 0.150
+reliability of the log force ratio, reading half-ranges as one standard deviation: 0.940
+slopes corrected for that error: all battles 0.509, within wars 0.727; square-law factor 1,251 and 147
+
+== What else goes with winning (decisive battles)
+  attacker achieved surprise: n=166, attacker won 0.789
+  defender achieved surprise: n=14, attacker won 0.071
+  no surprise either way: n=434, attacker won 0.611
+  defender in fortified defence: n=163, attacker won 0.656, median force ratio 2.09
+  defender in prepared defence: n=151, attacker won 0.709, median force ratio 1.55
+  defender in hasty defence: n=278, attacker won 0.590, median force ratio 1.10
+  defender in delaying action: n=19, attacker won 0.842, median force ratio 2.56
+  flat terrain: n=106, attacker won 0.651
+  rolling terrain: n=368, attacker won 0.636
+  rugged terrain: n=124, attacker won 0.669
+battles in which either commander had fought an earlier battle in CDB90: 362 of 614
+  attacker's commander had the better prior record: n=207, attacker won 0.739
+  attacker's commander had the equal (mostly no earlier battle) prior record: n=291, attacker won 0.698
+  attacker's commander had the worse prior record: n=116, attacker won 0.353
+battles with every variable below known: 578
+  numbers                                          AUC 0.594  share of variation explained 0.039
+  numbers + surprise                               AUC 0.666  share of variation explained 0.149
+  numbers + posture                                AUC 0.603  share of variation explained 0.055
+  numbers + terrain                                AUC 0.594  share of variation explained 0.039
+  numbers + prior record                           AUC 0.678  share of variation explained 0.130
+  numbers + surprise + posture + terrain + record  AUC 0.741  share of variation explained 0.253
+  numbers + coded leadership                       AUC 0.856  share of variation explained 0.548
+  numbers + all ten coded advantages               AUC 0.930  share of variation explained 0.772
+  odds ratios in the model without coded advantages: lr 1.63, att_surprise 3.26, def_surprise 0.05, fortified 0.93, prepared 1.13, delaying 2.80, rugged 0.95, flat 0.84, record 2.44
+  odds ratio for doubling the force ratio in that model: 1.40
+
+== Hindsight in the codes
+  within-commander correlation with winning, force ratio (counted, not coded)  +0.311 (98 commanders, 449 battles)
+  within-commander correlation with winning, surprise                          +0.404 (98 commanders, 449 battles)
+  within-commander correlation with winning, leadership                        +0.469 (98 commanders, 449 battles)
+  within-commander correlation with winning, morale                            +0.300 (98 commanders, 449 battles)
+  within-commander correlation with winning, combat effectiveness              +0.231 (98 commanders, 449 battles)
+  within-commander correlation with winning, initiative                        +0.347 (98 commanders, 449 battles)
+  within-commander correlation with winning, intelligence                      +0.423 (98 commanders, 449 battles)
+  within-commander correlation with winning, air superiority                   +0.176 (98 commanders, 449 battles)
+  within-commander correlation with winning, momentum                          +0.265 (98 commanders, 449 battles)
+  within-commander correlation with winning, training                          +0.164 (98 commanders, 449 battles)
+  within-commander correlation with winning, logistics                         +0.166 (98 commanders, 449 battles)
+  within-commander correlation with winning, technology                        +0.194 (98 commanders, 449 battles)
+pairs of opposing commanders who met more than once with different results: 26, 90 battles
+  within-pair correlation of coded leadership with the result: +0.372, permutation p-value 0.0032
+  within-pair correlation of force ratio with the result: +0.275, permutation p-value 0.0160
+  within-pair correlation of surprise with the result: +0.361, permutation p-value 0.0068
+  Napoleon v Archduke Charles, Eckmuehl 1809: Napoleon won, his coded leadership advantage +1
+  Napoleon v Archduke Charles, Aspern-Essling 1809: Napoleon lost, his coded leadership advantage -0
+  Napoleon v Archduke Charles, Wagram 1809: Napoleon won, his coded leadership advantage +1
+commanders with at least two wins and two defeats: coded leadership advantage in wins / in defeats
+  Napoleon                       24 battles, 18 won: +1.17 / +0.33
+  Archibald Vincent Arnold       16 battles, 12 won: +0.00 / +0.00
+  Eberhard Rodt                  14 battles,  8 won: +0.50 / +0.00
+  Frederick II of Prussia        14 battles, 11 won: +0.91 / +0.33
+  Robert E. Lee                  12 battles,  7 won: +0.57 / +0.00
+  Luigi Cadorna                  10 battles,  4 won: +0.00 / -0.17
+  Ernst-Günther Baade             9 battles,  6 won: +0.00 / +0.00
+  Douglas Haig, 1st Earl Haig     9 battles,  3 won: +0.00 / +0.00
+  Abdul Munim Wassel              8 battles,  3 won: -1.33 / -1.20
+  Ulysses S. Grant                8 battles,  5 won: +0.80 / +0.00
+  Svetozar Boroević               8 battles,  5 won: +0.00 / +0.00
+  Archduke Charles, Duke of Teschen  7 battles,  4 won: +0.75 / -0.67
+  Charles W. Ryder                7 battles,  4 won: +0.00 / +0.00
+  Ronald Penney                   7 battles,  5 won: +0.00 / +0.00
+  Avraham Adan                    7 battles,  5 won: +1.20 / +1.50
+  Gerald Templer                  6 battles,  3 won: +0.00 / +0.00
+  Gebhard Leberecht von Blücher   6 battles,  3 won: -0.33 / -1.00
+  Fritz-Hubert Gräser             6 battles,  2 won: +0.00 / +0.00
+  Franz Conrad von Hötzendorf     5 battles,  2 won: +0.50 / +0.00
+  Troy H. Middleton               5 battles,  3 won: +0.00 / +0.00
+  Leopold Joseph von Daun         5 battles,  3 won: -0.33 / -0.50
+  Rupprecht, Crown Prince of Bavaria  5 battles,  3 won: +0.00 / +0.00
+  André Masséna                   4 battles,  2 won: +0.50 / -1.00
+  Franz von Mercy                 4 battles,  2 won: +1.50 / +0.00
+  Jean-Baptiste Jourdan           4 battles,  2 won: +0.00 / -1.00
+  Friedrich Freiherr Kress von Kressenstein  4 battles,  2 won: +0.00 / -1.00
+  George Washington               4 battles,  2 won: +2.50 / +0.50
+  mean over these 27 commanders: +0.33 / -0.14
+
+== Which battles get fought
+  attacker outnumbered (under 3:4)  n= 78 attacker surprise 0.308, attacker won 0.538
+  roughly equal (3:4 to 4:3)        n=205 attacker surprise 0.273, attacker won 0.600
+  attacker ahead (over 4:3)         n=331 attacker surprise 0.260, attacker won 0.701
+
+== By era
+  1600-1799: n=110, attacker won 0.664, larger side won 0.528 [0.430, 0.626], slope +0.01 [-0.66, +1.22]
+  1800-1899: n=122, attacker won 0.516, larger side won 0.526 [0.421, 0.628], slope +0.51 [-0.16, +1.40]
+  1900-1945: n=306, attacker won 0.670, larger side won 0.689 [0.622, 0.750], slope +0.90 [+0.51, +1.39]
+  1946-1982: n=76, attacker won 0.737, larger side won 0.474 [0.333, 0.643], slope -0.53 [-2.08, +0.87]

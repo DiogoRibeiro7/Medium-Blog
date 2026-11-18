@@ -1,0 +1,66 @@
+name: Reproduce battle-numbers
+
+on:
+  pull_request:
+    paths:
+      - 'battle-numbers/**'
+      - '.github/workflows/battle-numbers.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'battle-numbers/**'
+      - '.github/workflows/battle-numbers.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: battle-numbers
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: battle-numbers/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on synthetic battles
+        run: python -m unittest discover -s tests -v
+
+      - name: Check the data against the pinned source
+        run: python fetch_data.py --check
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python battle_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=battle-numbers/output.txt::output of battle_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_who_wins fig2_losses fig3_what_explains fig4_coded_leadership fig5_eras; do
+            test -s "figures/$f.png"
+          done
