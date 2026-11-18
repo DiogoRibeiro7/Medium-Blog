@@ -113,10 +113,17 @@ def main():
                 f"    {r.name.title()} ({r.year}), {r.attacker_actors} {r.attacker_str:,.0f} attacking "
                 f"{r.defender_actors} {r.defender_str:,.0f}{', surprise' if r.att_surprise else ''}"
             )
+    x = d[(d.lr > BINS[-2]) & (d.win == 0)]
+    print(
+        f"  defences in those {len(x)} lost attacks: fortified {int((x.post1 == 'FD').sum())}, prepared "
+        f"{int((x.post1 == 'PD').sum())}, hasty {int((x.post1 == 'HD').sum())}; fortified in all decisive "
+        f"battles {(d.post1 == 'FD').mean():.3f}"
+    )
     x = d[d.war_key.str.startswith("Mexican-American")]
     print(
-        f"  Mexican-American War: {len(x)} decisive battles, attacker outnumbered in {int((x.lr < 0).sum())}, "
-        f"of which the attacker won {int(x[x.lr < 0].win.sum())}"
+        f"  Mexican-American War: {len(x)} decisive battles, {int((x.attacker_actors == 'USA').sum())} American "
+        f"attacks, all won: {bool(x[x.attacker_actors == 'USA'].win.all())}; attacker outnumbered in "
+        f"{int((x.lr < 0).sum())}, of which the attacker won {int(x[x.lr < 0].win.sum())}"
     )
 
     print("\n== Against Lanchester")
