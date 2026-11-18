@@ -1,0 +1,191 @@
+== Exp 1A: memorisation grid (simulation, n=2000, 3 replications) ==
+lowest training accuracy over every model, noise level and label version: 1.0000
+mean test accuracy, real labels (columns = eta):
+eta                                       0.00   0.05   0.10   0.20   0.30   0.40   0.50
+model                                                                                   
+Decision tree (grown to purity)          0.787  0.727  0.684  0.599  0.542  0.512  0.498
+Neural network (2x256, no weight decay)  0.931  0.834  0.765  0.648  0.567  0.516  0.499
+Random forest (unlimited depth)          0.852  0.813  0.780  0.697  0.607  0.530  0.499
+XGBoost (deep, no penalties)             0.802  0.810  0.783  0.685  0.588  0.522  0.500
+test accuracy with shuffled labels: min 0.473, mean 0.503, max 0.567
+memorisation effort, mean over replications:
+labels                                 real  shuffled  ratio_real_to_shuffled
+effort_unit                   eta                                            
+epochs to 100% train accuracy 0.00   53.333   133.333                   0.400
+                              0.05  131.667   146.667                   0.898
+                              0.10  146.667   135.000                   1.086
+                              0.20  161.667   128.333                   1.260
+                              0.30  141.667   151.667                   0.934
+                              0.40  150.000   156.667                   0.957
+                              0.50  101.667   131.667                   0.772
+leaves at purity              0.00  227.333   450.333                   0.505
+                              0.05  292.333   444.333                   0.658
+                              0.10  337.000   439.333                   0.767
+                              0.20  394.333   446.333                   0.883
+                              0.30  425.000   445.000                   0.955
+                              0.40  440.000   448.667                   0.981
+                              0.50  447.000   451.667                   0.990
+rounds to zero train error    0.00  147.333   397.667                   0.370
+                              0.05  281.667   403.667                   0.698
+                              0.10  314.667   491.333                   0.640
+                              0.20  368.333   413.667                   0.890
+                              0.30  417.000   371.667                   1.122
+                              0.40  441.333   377.333                   1.170
+                              0.50  390.667   438.333                   0.891
+
+== Exp 1B: share of data sets declared to carry signal (alpha = 0.05) ==
+      reps  memorised  power_leaves  power_holdout  leaves_real  leaves_real_sd  leaves_null  holdout_acc  holdout_acc_sd
+eta                                                                                                                      
+0.30    60        1.0         0.750          1.000      421.450           9.852      445.917        0.606           0.019
+0.35    60        1.0         0.383          0.933      434.650          10.106      445.928        0.568           0.022
+0.40    60        1.0         0.067          0.383      441.917           8.771      445.792        0.530           0.017
+0.42    60        1.0         0.150          0.317      441.900          10.219      445.738        0.525           0.021
+0.44    60        1.0         0.033          0.183      445.383           8.361      446.017        0.516           0.020
+0.46    60        1.0         0.067          0.067      443.317          10.851      445.809        0.509           0.021
+0.48    60        1.0         0.100          0.050      445.133          10.354      446.116        0.501           0.023
+0.50    60        1.0         0.033          0.033      447.100           8.641      446.040        0.503           0.019
+
+== Exp 1C: feature-set ranking, UCI Adult (70/30 split) ==
+                         feature_set  n_columns  distinct_rows_share  tree_train_acc  tree_test_acc  deep_xgb_train_acc  deep_xgb_test_acc  reg_xgb_train_acc  reg_xgb_test_acc  majority_baseline
+               All 14 census columns        108               0.9991          0.9999         0.8166              0.9998             0.8599             0.8883            0.8760             0.7607
+13 columns (sampling weight dropped)        107               0.8749          0.9756         0.8215              0.9756             0.8488             0.8841            0.8765             0.7607
+        13 columns + a random row ID        108               1.0000          1.0000         0.8139              0.9999             0.8573             0.8874            0.8767             0.7607
+  13 columns + 20 pure-noise columns        127               1.0000          1.0000         0.8100              1.0000             0.8655             0.9154            0.8730             0.7607
+              Education and sex only         18               0.0009          0.7857         0.7868              0.7857             0.7868             0.7857            0.7868             0.7607
+                Sampling weight only          1               0.6549          0.9038         0.6964              0.7613             0.7574             0.7607            0.7607             0.7607
+                  Random row ID only          1               1.0000          1.0000         0.6371              0.7607             0.7607             0.7607            0.7607             0.7607
+rank by tree training accuracy: ['13 columns + a random row ID', 'Random row ID only', '13 columns + 20 pure-noise columns', 'All 14 census columns', '13 columns (sampling weight dropped)', 'Sampling weight only', 'Education and sex only']
+rank by held-out accuracy:      ['13 columns + a random row ID', '13 columns (sampling weight dropped)', 'All 14 census columns', '13 columns + 20 pure-noise columns', 'Education and sex only', 'Sampling weight only', 'Random row ID only']
+
+== Exp 2A: duplicate floor, UCI Adult, columns added in order ==
+ step          added  n_features  cells  singleton_share  plug_in_floor  overfit_tree_train_error  lookup_cv_error  xgb_cv_error
+    1            sex           1      2           0.0000         0.2393                    0.2393           0.2393        0.2393
+    2      education           2     32           0.0000         0.2140                    0.2140           0.2155        0.2155
+    3 marital_status           3    203           0.0002         0.1781                    0.1781           0.1795        0.1797
+    4     occupation           4   1673           0.0085         0.1671                    0.1671           0.1732        0.1713
+    5   relationship           5   3386           0.0257         0.1651                    0.1651           0.1737        0.1716
+    6           race           6   5625           0.0572         0.1607                    0.1607           0.1747        0.1724
+    7      workclass           7   8619           0.0994         0.1463                    0.1463           0.1713        0.1661
+    8 native_country           8  11382           0.1552         0.1379                    0.1379           0.1716        0.1661
+    9            age           9  29914           0.4850         0.0757                    0.0757           0.1764        0.1593
+   10 hours_per_week          10  39723           0.7218         0.0384                    0.0384           0.1685        0.1570
+   11   capital_gain          11  40802           0.7525         0.0319                    0.0319           0.1451        0.1351
+   12   capital_loss          12  41439           0.7712         0.0283                    0.0283           0.1341        0.1261
+   13         fnlwgt          13  48785           0.9977         0.0001                    0.0001           0.1258        0.1259
+max |tree training error - plug-in floor|: 1.00e-16
+
+== Exp 2B: Cover-Hart lower bound from leave-one-out 1-NN error (mean of 4 reps) ==
+                      r_1nn  cover_hart_lower  xgb_test_error
+eta noise_dims n                                             
+0.1 0          500    0.304             0.187           0.234
+               2000   0.266             0.158           0.185
+               8000   0.249             0.146           0.155
+               32000  0.230             0.133           0.138
+    5          500    0.375             0.251           0.248
+               2000   0.344             0.221           0.201
+               8000   0.329             0.208           0.166
+               32000  0.308             0.190           0.143
+    20         500    0.433             0.318           0.288
+               2000   0.434             0.318           0.222
+               8000   0.418             0.298           0.183
+               32000  0.398             0.275           0.152
+0.2 0          500    0.376             0.251           0.340
+               2000   0.372             0.247           0.296
+               8000   0.353             0.229           0.257
+               32000  0.346             0.223           0.236
+    5          500    0.425             0.307           0.346
+               2000   0.416             0.296           0.305
+               8000   0.405             0.282           0.267
+               32000  0.389             0.265           0.242
+    20         500    0.477             0.396           0.369
+               2000   0.465             0.370           0.321
+               8000   0.451             0.344           0.280
+               32000  0.442             0.330           0.257
+0.3 0          500    0.461             0.367           0.412
+               2000   0.438             0.325           0.391
+               8000   0.440             0.327           0.359
+               32000  0.434             0.319           0.333
+    5          500    0.446             0.338           0.436
+               2000   0.465             0.370           0.402
+               8000   0.456             0.352           0.363
+               32000  0.452             0.346           0.338
+    20         500    0.492             0.446           0.440
+               2000   0.476             0.396           0.410
+               8000   0.474             0.387           0.379
+               32000  0.474             0.385           0.352
+
+== Exp 2C: learning curves (means of 3 reps) ==
+                                     test_error  train_error  overfit_train_error
+data                          n                                                  
+Simulation (Bayes error 0.20) 250        0.4148       0.2467               0.0000
+                              500        0.3580       0.1727               0.0000
+                              1000       0.3254       0.1467               0.0000
+                              2000       0.3009       0.1790               0.0000
+                              4000       0.2856       0.1881               0.0000
+                              8000       0.2667       0.2008               0.0000
+                              16000      0.2533       0.2034               0.0000
+                              32000      0.2437       0.2103               0.0000
+UCI Adult (14 columns)        500        0.1662       0.0820               0.0000
+                              1000       0.1516       0.0990               0.0000
+                              2000       0.1439       0.1057               0.0000
+                              4000       0.1387       0.1102               0.0000
+                              8000       0.1310       0.1123               0.0000
+                              16000      0.1277       0.1137               0.0000
+                              34189      0.1245       0.1154               0.0001
+                         data  asymptote  asymptote_se      b      c  largest_n_test_error  largest_n_train_error
+Simulation (Bayes error 0.20)     0.2227        0.0079 2.0229 0.4292                0.2437                 0.2103
+       UCI Adult (14 columns)     0.1161        0.0036 0.6550 0.4158                0.1245                 0.1154
+
+== Exp 2D: nearest-neighbour residual variance, simulation (mean, sd over 4 reps) ==
+                        product_estimate        difference_estimate       
+                                    mean    std                mean    std
+sigma2 noise_dims n                                                       
+0.25   0          1000             0.876  0.111               0.644  0.060
+                  4000             0.686  0.027               0.519  0.018
+                  16000            0.546  0.010               0.424  0.005
+                  64000            0.436  0.006               0.354  0.003
+       5          1000             1.530  0.068               1.174  0.053
+                  4000             1.299  0.049               1.010  0.032
+                  16000            1.122  0.021               0.874  0.006
+                  64000            0.983  0.007               0.765  0.005
+1.00   0          1000             1.682  0.079               1.463  0.063
+                  4000             1.460  0.041               1.296  0.029
+                  16000            1.272  0.028               1.159  0.016
+                  64000            1.207  0.010               1.117  0.004
+       5          1000             2.352  0.164               1.982  0.157
+                  4000             2.071  0.046               1.766  0.051
+                  16000            1.875  0.022               1.635  0.024
+                  64000            1.733  0.023               1.518  0.013
+California housing, log median house value:
+        feature_set  n_columns  var_y  product_estimate  difference_estimate  xgb_cv_mse  knn5_cv_mse  knn10_cv_mse  overfit_tree_train_mse  distinct_rows  r2_ceiling_product  r2_xgb  xgb_mse_over_floor
+       All features         13 0.3239            0.0641               0.0584      0.0463       0.0806        0.0779                  0.0000          20640              0.8021  0.8570              0.7227
+Location and income          3 0.3239            0.0497               0.0477      0.0518       0.0683        0.0671                  0.0000          20635              0.8467  0.8401              1.0427
+      Location only          2 0.3239            0.0430               0.0434      0.1455       0.0608        0.0612                  0.0129          12590              0.8674  0.5508              3.3862
+
+== Exp 3: planted bugs x checks (True = check fails) ==
+check                                        C1 overfit one batch  C2 overfit full training set  C3 shuffle-calibrated memorisation  C4 held-out vs permuted labels  C5 single-column audit  C6 train-test duplicate audit  C7 label audit
+bug                                                                                                                                                                                                                                       
+Every feature made constant                                  True                          True                                True                            True                   False                          False           False
+Labels misaligned after a sort                              False                         False                                True                            True                   False                          False           False
+Learning rate a million times too small                      True                          True                               False                            True                   False                          False           False
+Minority class oversampled before the split                 False                         False                               False                           False                   False                           True           False
+No bug                                                      False                         False                               False                           False                   False                          False           False
+Target leak in one column                                   False                         False                               False                           False                    True                          False           False
+Test labels never parsed                                    False                         False                               False                            True                   False                          False            True
+                                 0                               1                            2                                        3                          4                                            5                         6
+bug                         No bug  Labels misaligned after a sort  Every feature made constant  Learning rate a million times too small  Target leak in one column  Minority class oversampled before the split  Test labels never parsed
+one_batch_acc                  1.0                             1.0                       0.7969                                   0.2656                        1.0                                          1.0                       1.0
+full_train_error            0.0002                          0.0005                       0.2393                                   0.2393                        0.0                                       0.0002                    0.0002
+train_floor                 0.0001                          0.0004                       0.2393                                   0.0001                        0.0                                       0.0001                    0.0001
+leaves_real                   5062                            8933                            1                                     5062                       1116                                         6141                      5062
+leaves_shuffled_mean     8997.3077                       8977.2821                          1.0                                8997.3077                  8931.6154                                   17596.4103                 8997.3077
+p_leaves                     0.025                           0.275                          1.0                                    0.025                      0.025                                        0.025                     0.025
+reported_test_acc            0.876                          0.7603                       0.7607                                   0.7607                     0.9797                                       0.8544                    0.7955
+majority_baseline           0.7607                          0.7607                       0.7607                                   0.7607                     0.7607                                       0.5145                       1.0
+p_holdout                    0.001                           0.738                          1.0                                      1.0                      0.001                                        0.001                       1.0
+clean_acc                    0.876                          0.7603                       0.7607                                   0.7607                     0.8116                                       0.8307                     0.876
+best_single_auc             0.7802                          0.6202                          0.5                                   0.7802                     0.9694                                       0.7806                       0.5
+best_single_col       relationship                             sex                          NaN                             relationship       income_band_followup                                 relationship                       NaN
+test_rows_in_train          0.0015                          0.0015                       0.0015                                   0.0015                     0.0012                                       0.4452                    0.0015
+prev_train                  0.2393                          0.2393                       0.2393                                   0.2393                     0.2393                                       0.4855                    0.2393
+prev_test                   0.2393                          0.2393                       0.2393                                   0.2393                     0.2393                                       0.4855                       0.0

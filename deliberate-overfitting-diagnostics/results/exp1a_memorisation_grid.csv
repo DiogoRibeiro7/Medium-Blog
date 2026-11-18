@@ -1,0 +1,253 @@
+eta,rep,labels,model,train_acc,test_acc,effort,effort_unit
+0.0,0,real,Decision tree (grown to purity),1.0,0.78735,,
+0.0,0,real,Random forest (unlimited depth),1.0,0.8479,,
+0.0,0,real,"XGBoost (deep, no penalties)",1.0,0.79865,,
+0.0,0,real,"Neural network (2x256, no weight decay)",1.0,0.93595,40.0,epochs to 100% train accuracy
+0.0,0,real,Decision tree (grown to purity),,,214.0,leaves at purity
+0.0,0,real,XGBoost depth 3,,,143.0,rounds to zero train error
+0.0,0,shuffled,Decision tree (grown to purity),1.0,0.4943,,
+0.0,0,shuffled,Random forest (unlimited depth),1.0,0.5141,,
+0.0,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.5086,,
+0.0,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.51405,145.0,epochs to 100% train accuracy
+0.0,0,shuffled,Decision tree (grown to purity),,,454.0,leaves at purity
+0.0,0,shuffled,XGBoost depth 3,,,456.0,rounds to zero train error
+0.0,1,real,Decision tree (grown to purity),1.0,0.7895,,
+0.0,1,real,Random forest (unlimited depth),1.0,0.8554,,
+0.0,1,real,"XGBoost (deep, no penalties)",1.0,0.8096,,
+0.0,1,real,"Neural network (2x256, no weight decay)",1.0,0.92865,55.0,epochs to 100% train accuracy
+0.0,1,real,Decision tree (grown to purity),,,231.0,leaves at purity
+0.0,1,real,XGBoost depth 3,,,132.0,rounds to zero train error
+0.0,1,shuffled,Decision tree (grown to purity),1.0,0.51735,,
+0.0,1,shuffled,Random forest (unlimited depth),1.0,0.54205,,
+0.0,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.5344,,
+0.0,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.527,120.0,epochs to 100% train accuracy
+0.0,1,shuffled,Decision tree (grown to purity),,,446.0,leaves at purity
+0.0,1,shuffled,XGBoost depth 3,,,382.0,rounds to zero train error
+0.0,2,real,Decision tree (grown to purity),1.0,0.78465,,
+0.0,2,real,Random forest (unlimited depth),1.0,0.852,,
+0.0,2,real,"XGBoost (deep, no penalties)",1.0,0.79715,,
+0.0,2,real,"Neural network (2x256, no weight decay)",1.0,0.9278,65.0,epochs to 100% train accuracy
+0.0,2,real,Decision tree (grown to purity),,,237.0,leaves at purity
+0.0,2,real,XGBoost depth 3,,,167.0,rounds to zero train error
+0.0,2,shuffled,Decision tree (grown to purity),1.0,0.50085,,
+0.0,2,shuffled,Random forest (unlimited depth),1.0,0.4795,,
+0.0,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.48495,,
+0.0,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.5024,135.0,epochs to 100% train accuracy
+0.0,2,shuffled,Decision tree (grown to purity),,,451.0,leaves at purity
+0.0,2,shuffled,XGBoost depth 3,,,355.0,rounds to zero train error
+0.05,0,real,Decision tree (grown to purity),1.0,0.717,,
+0.05,0,real,Random forest (unlimited depth),1.0,0.816,,
+0.05,0,real,"XGBoost (deep, no penalties)",1.0,0.80385,,
+0.05,0,real,"Neural network (2x256, no weight decay)",1.0,0.83595,125.0,epochs to 100% train accuracy
+0.05,0,real,Decision tree (grown to purity),,,295.0,leaves at purity
+0.05,0,real,XGBoost depth 3,,,299.0,rounds to zero train error
+0.05,0,shuffled,Decision tree (grown to purity),1.0,0.51365,,
+0.05,0,shuffled,Random forest (unlimited depth),1.0,0.56725,,
+0.05,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.5396,,
+0.05,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.52005,150.0,epochs to 100% train accuracy
+0.05,0,shuffled,Decision tree (grown to purity),,,444.0,leaves at purity
+0.05,0,shuffled,XGBoost depth 3,,,343.0,rounds to zero train error
+0.05,1,real,Decision tree (grown to purity),1.0,0.73875,,
+0.05,1,real,Random forest (unlimited depth),1.0,0.81795,,
+0.05,1,real,"XGBoost (deep, no penalties)",1.0,0.81485,,
+0.05,1,real,"Neural network (2x256, no weight decay)",1.0,0.83915,145.0,epochs to 100% train accuracy
+0.05,1,real,Decision tree (grown to purity),,,290.0,leaves at purity
+0.05,1,real,XGBoost depth 3,,,286.0,rounds to zero train error
+0.05,1,shuffled,Decision tree (grown to purity),1.0,0.4936,,
+0.05,1,shuffled,Random forest (unlimited depth),1.0,0.4726,,
+0.05,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.4792,,
+0.05,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.48305,135.0,epochs to 100% train accuracy
+0.05,1,shuffled,Decision tree (grown to purity),,,458.0,leaves at purity
+0.05,1,shuffled,XGBoost depth 3,,,450.0,rounds to zero train error
+0.05,2,real,Decision tree (grown to purity),1.0,0.726,,
+0.05,2,real,Random forest (unlimited depth),1.0,0.80385,,
+0.05,2,real,"XGBoost (deep, no penalties)",1.0,0.81025,,
+0.05,2,real,"Neural network (2x256, no weight decay)",1.0,0.8266,125.0,epochs to 100% train accuracy
+0.05,2,real,Decision tree (grown to purity),,,292.0,leaves at purity
+0.05,2,real,XGBoost depth 3,,,260.0,rounds to zero train error
+0.05,2,shuffled,Decision tree (grown to purity),1.0,0.51535,,
+0.05,2,shuffled,Random forest (unlimited depth),1.0,0.52835,,
+0.05,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.5276,,
+0.05,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.51215,155.0,epochs to 100% train accuracy
+0.05,2,shuffled,Decision tree (grown to purity),,,431.0,leaves at purity
+0.05,2,shuffled,XGBoost depth 3,,,418.0,rounds to zero train error
+0.1,0,real,Decision tree (grown to purity),1.0,0.67495,,
+0.1,0,real,Random forest (unlimited depth),1.0,0.78205,,
+0.1,0,real,"XGBoost (deep, no penalties)",1.0,0.7835,,
+0.1,0,real,"Neural network (2x256, no weight decay)",1.0,0.7571,135.0,epochs to 100% train accuracy
+0.1,0,real,Decision tree (grown to purity),,,339.0,leaves at purity
+0.1,0,real,XGBoost depth 3,,,319.0,rounds to zero train error
+0.1,0,shuffled,Decision tree (grown to purity),1.0,0.50795,,
+0.1,0,shuffled,Random forest (unlimited depth),1.0,0.4814,,
+0.1,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.4877,,
+0.1,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.4894,145.0,epochs to 100% train accuracy
+0.1,0,shuffled,Decision tree (grown to purity),,,435.0,leaves at purity
+0.1,0,shuffled,XGBoost depth 3,,,533.0,rounds to zero train error
+0.1,1,real,Decision tree (grown to purity),1.0,0.6824,,
+0.1,1,real,Random forest (unlimited depth),1.0,0.77365,,
+0.1,1,real,"XGBoost (deep, no penalties)",1.0,0.7744,,
+0.1,1,real,"Neural network (2x256, no weight decay)",1.0,0.7662,160.0,epochs to 100% train accuracy
+0.1,1,real,Decision tree (grown to purity),,,334.0,leaves at purity
+0.1,1,real,XGBoost depth 3,,,322.0,rounds to zero train error
+0.1,1,shuffled,Decision tree (grown to purity),1.0,0.50055,,
+0.1,1,shuffled,Random forest (unlimited depth),1.0,0.4828,,
+0.1,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.4868,,
+0.1,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.4873,125.0,epochs to 100% train accuracy
+0.1,1,shuffled,Decision tree (grown to purity),,,446.0,leaves at purity
+0.1,1,shuffled,XGBoost depth 3,,,503.0,rounds to zero train error
+0.1,2,real,Decision tree (grown to purity),1.0,0.6954,,
+0.1,2,real,Random forest (unlimited depth),1.0,0.78455,,
+0.1,2,real,"XGBoost (deep, no penalties)",1.0,0.79095,,
+0.1,2,real,"Neural network (2x256, no weight decay)",1.0,0.77155,145.0,epochs to 100% train accuracy
+0.1,2,real,Decision tree (grown to purity),,,338.0,leaves at purity
+0.1,2,real,XGBoost depth 3,,,303.0,rounds to zero train error
+0.1,2,shuffled,Decision tree (grown to purity),1.0,0.501,,
+0.1,2,shuffled,Random forest (unlimited depth),1.0,0.4799,,
+0.1,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.493,,
+0.1,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.48885,135.0,epochs to 100% train accuracy
+0.1,2,shuffled,Decision tree (grown to purity),,,437.0,leaves at purity
+0.1,2,shuffled,XGBoost depth 3,,,438.0,rounds to zero train error
+0.2,0,real,Decision tree (grown to purity),1.0,0.6007,,
+0.2,0,real,Random forest (unlimited depth),1.0,0.6918,,
+0.2,0,real,"XGBoost (deep, no penalties)",1.0,0.6825,,
+0.2,0,real,"Neural network (2x256, no weight decay)",1.0,0.65375,165.0,epochs to 100% train accuracy
+0.2,0,real,Decision tree (grown to purity),,,378.0,leaves at purity
+0.2,0,real,XGBoost depth 3,,,392.0,rounds to zero train error
+0.2,0,shuffled,Decision tree (grown to purity),1.0,0.4908,,
+0.2,0,shuffled,Random forest (unlimited depth),1.0,0.48805,,
+0.2,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.4894,,
+0.2,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.49395,95.0,epochs to 100% train accuracy
+0.2,0,shuffled,Decision tree (grown to purity),,,449.0,leaves at purity
+0.2,0,shuffled,XGBoost depth 3,,,380.0,rounds to zero train error
+0.2,1,real,Decision tree (grown to purity),1.0,0.6029,,
+0.2,1,real,Random forest (unlimited depth),1.0,0.69705,,
+0.2,1,real,"XGBoost (deep, no penalties)",1.0,0.6828,,
+0.2,1,real,"Neural network (2x256, no weight decay)",1.0,0.6425,155.0,epochs to 100% train accuracy
+0.2,1,real,Decision tree (grown to purity),,,394.0,leaves at purity
+0.2,1,real,XGBoost depth 3,,,360.0,rounds to zero train error
+0.2,1,shuffled,Decision tree (grown to purity),1.0,0.49585,,
+0.2,1,shuffled,Random forest (unlimited depth),1.0,0.50555,,
+0.2,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.4974,,
+0.2,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.50185,150.0,epochs to 100% train accuracy
+0.2,1,shuffled,Decision tree (grown to purity),,,441.0,leaves at purity
+0.2,1,shuffled,XGBoost depth 3,,,451.0,rounds to zero train error
+0.2,2,real,Decision tree (grown to purity),1.0,0.59385,,
+0.2,2,real,Random forest (unlimited depth),1.0,0.7014,,
+0.2,2,real,"XGBoost (deep, no penalties)",1.0,0.689,,
+0.2,2,real,"Neural network (2x256, no weight decay)",1.0,0.648,165.0,epochs to 100% train accuracy
+0.2,2,real,Decision tree (grown to purity),,,411.0,leaves at purity
+0.2,2,real,XGBoost depth 3,,,353.0,rounds to zero train error
+0.2,2,shuffled,Decision tree (grown to purity),1.0,0.50585,,
+0.2,2,shuffled,Random forest (unlimited depth),1.0,0.49275,,
+0.2,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.5004,,
+0.2,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.51075,140.0,epochs to 100% train accuracy
+0.2,2,shuffled,Decision tree (grown to purity),,,449.0,leaves at purity
+0.2,2,shuffled,XGBoost depth 3,,,410.0,rounds to zero train error
+0.3,0,real,Decision tree (grown to purity),1.0,0.53645,,
+0.3,0,real,Random forest (unlimited depth),1.0,0.6014,,
+0.3,0,real,"XGBoost (deep, no penalties)",1.0,0.5779,,
+0.3,0,real,"Neural network (2x256, no weight decay)",1.0,0.56395,130.0,epochs to 100% train accuracy
+0.3,0,real,Decision tree (grown to purity),,,424.0,leaves at purity
+0.3,0,real,XGBoost depth 3,,,376.0,rounds to zero train error
+0.3,0,shuffled,Decision tree (grown to purity),1.0,0.50185,,
+0.3,0,shuffled,Random forest (unlimited depth),1.0,0.50385,,
+0.3,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.50225,,
+0.3,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.51,165.0,epochs to 100% train accuracy
+0.3,0,shuffled,Decision tree (grown to purity),,,439.0,leaves at purity
+0.3,0,shuffled,XGBoost depth 3,,,353.0,rounds to zero train error
+0.3,1,real,Decision tree (grown to purity),1.0,0.54275,,
+0.3,1,real,Random forest (unlimited depth),1.0,0.61135,,
+0.3,1,real,"XGBoost (deep, no penalties)",1.0,0.5935,,
+0.3,1,real,"Neural network (2x256, no weight decay)",1.0,0.57075,150.0,epochs to 100% train accuracy
+0.3,1,real,Decision tree (grown to purity),,,397.0,leaves at purity
+0.3,1,real,XGBoost depth 3,,,439.0,rounds to zero train error
+0.3,1,shuffled,Decision tree (grown to purity),1.0,0.5006,,
+0.3,1,shuffled,Random forest (unlimited depth),1.0,0.50545,,
+0.3,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.5031,,
+0.3,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.5033,140.0,epochs to 100% train accuracy
+0.3,1,shuffled,Decision tree (grown to purity),,,447.0,leaves at purity
+0.3,1,shuffled,XGBoost depth 3,,,360.0,rounds to zero train error
+0.3,2,real,Decision tree (grown to purity),1.0,0.5467,,
+0.3,2,real,Random forest (unlimited depth),1.0,0.60885,,
+0.3,2,real,"XGBoost (deep, no penalties)",1.0,0.5917,,
+0.3,2,real,"Neural network (2x256, no weight decay)",1.0,0.56665,145.0,epochs to 100% train accuracy
+0.3,2,real,Decision tree (grown to purity),,,454.0,leaves at purity
+0.3,2,real,XGBoost depth 3,,,436.0,rounds to zero train error
+0.3,2,shuffled,Decision tree (grown to purity),1.0,0.50975,,
+0.3,2,shuffled,Random forest (unlimited depth),1.0,0.50475,,
+0.3,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.50625,,
+0.3,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.4917,150.0,epochs to 100% train accuracy
+0.3,2,shuffled,Decision tree (grown to purity),,,449.0,leaves at purity
+0.3,2,shuffled,XGBoost depth 3,,,402.0,rounds to zero train error
+0.4,0,real,Decision tree (grown to purity),1.0,0.517,,
+0.4,0,real,Random forest (unlimited depth),1.0,0.53545,,
+0.4,0,real,"XGBoost (deep, no penalties)",1.0,0.527,,
+0.4,0,real,"Neural network (2x256, no weight decay)",1.0,0.51745,155.0,epochs to 100% train accuracy
+0.4,0,real,Decision tree (grown to purity),,,449.0,leaves at purity
+0.4,0,real,XGBoost depth 3,,,402.0,rounds to zero train error
+0.4,0,shuffled,Decision tree (grown to purity),1.0,0.50325,,
+0.4,0,shuffled,Random forest (unlimited depth),1.0,0.5107,,
+0.4,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.5003,,
+0.4,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.5008,170.0,epochs to 100% train accuracy
+0.4,0,shuffled,Decision tree (grown to purity),,,456.0,leaves at purity
+0.4,0,shuffled,XGBoost depth 3,,,387.0,rounds to zero train error
+0.4,1,real,Decision tree (grown to purity),1.0,0.5105,,
+0.4,1,real,Random forest (unlimited depth),1.0,0.5246,,
+0.4,1,real,"XGBoost (deep, no penalties)",1.0,0.5164,,
+0.4,1,real,"Neural network (2x256, no weight decay)",1.0,0.51265,125.0,epochs to 100% train accuracy
+0.4,1,real,Decision tree (grown to purity),,,433.0,leaves at purity
+0.4,1,real,XGBoost depth 3,,,470.0,rounds to zero train error
+0.4,1,shuffled,Decision tree (grown to purity),1.0,0.50385,,
+0.4,1,shuffled,Random forest (unlimited depth),1.0,0.50205,,
+0.4,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.49515,,
+0.4,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.50515,155.0,epochs to 100% train accuracy
+0.4,1,shuffled,Decision tree (grown to purity),,,452.0,leaves at purity
+0.4,1,shuffled,XGBoost depth 3,,,405.0,rounds to zero train error
+0.4,2,real,Decision tree (grown to purity),1.0,0.50935,,
+0.4,2,real,Random forest (unlimited depth),1.0,0.53135,,
+0.4,2,real,"XGBoost (deep, no penalties)",1.0,0.5226,,
+0.4,2,real,"Neural network (2x256, no weight decay)",1.0,0.5181,170.0,epochs to 100% train accuracy
+0.4,2,real,Decision tree (grown to purity),,,438.0,leaves at purity
+0.4,2,real,XGBoost depth 3,,,452.0,rounds to zero train error
+0.4,2,shuffled,Decision tree (grown to purity),1.0,0.51335,,
+0.4,2,shuffled,Random forest (unlimited depth),1.0,0.50745,,
+0.4,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.5042,,
+0.4,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.5009,145.0,epochs to 100% train accuracy
+0.4,2,shuffled,Decision tree (grown to purity),,,438.0,leaves at purity
+0.4,2,shuffled,XGBoost depth 3,,,340.0,rounds to zero train error
+0.5,0,real,Decision tree (grown to purity),1.0,0.4946,,
+0.5,0,real,Random forest (unlimited depth),1.0,0.501,,
+0.5,0,real,"XGBoost (deep, no penalties)",1.0,0.499,,
+0.5,0,real,"Neural network (2x256, no weight decay)",1.0,0.49545,100.0,epochs to 100% train accuracy
+0.5,0,real,Decision tree (grown to purity),,,434.0,leaves at purity
+0.5,0,real,XGBoost depth 3,,,391.0,rounds to zero train error
+0.5,0,shuffled,Decision tree (grown to purity),1.0,0.49925,,
+0.5,0,shuffled,Random forest (unlimited depth),1.0,0.4979,,
+0.5,0,shuffled,"XGBoost (deep, no penalties)",1.0,0.5009,,
+0.5,0,shuffled,"Neural network (2x256, no weight decay)",1.0,0.4995,100.0,epochs to 100% train accuracy
+0.5,0,shuffled,Decision tree (grown to purity),,,459.0,leaves at purity
+0.5,0,shuffled,XGBoost depth 3,,,516.0,rounds to zero train error
+0.5,1,real,Decision tree (grown to purity),1.0,0.5047,,
+0.5,1,real,Random forest (unlimited depth),1.0,0.50005,,
+0.5,1,real,"XGBoost (deep, no penalties)",1.0,0.50515,,
+0.5,1,real,"Neural network (2x256, no weight decay)",1.0,0.5033,110.0,epochs to 100% train accuracy
+0.5,1,real,Decision tree (grown to purity),,,450.0,leaves at purity
+0.5,1,real,XGBoost depth 3,,,393.0,rounds to zero train error
+0.5,1,shuffled,Decision tree (grown to purity),1.0,0.49155,,
+0.5,1,shuffled,Random forest (unlimited depth),1.0,0.5054,,
+0.5,1,shuffled,"XGBoost (deep, no penalties)",1.0,0.509,,
+0.5,1,shuffled,"Neural network (2x256, no weight decay)",1.0,0.5024,155.0,epochs to 100% train accuracy
+0.5,1,shuffled,Decision tree (grown to purity),,,449.0,leaves at purity
+0.5,1,shuffled,XGBoost depth 3,,,396.0,rounds to zero train error
+0.5,2,real,Decision tree (grown to purity),1.0,0.49535,,
+0.5,2,real,Random forest (unlimited depth),1.0,0.4961,,
+0.5,2,real,"XGBoost (deep, no penalties)",1.0,0.4971,,
+0.5,2,real,"Neural network (2x256, no weight decay)",1.0,0.4991,95.0,epochs to 100% train accuracy
+0.5,2,real,Decision tree (grown to purity),,,457.0,leaves at purity
+0.5,2,real,XGBoost depth 3,,,388.0,rounds to zero train error
+0.5,2,shuffled,Decision tree (grown to purity),1.0,0.4974,,
+0.5,2,shuffled,Random forest (unlimited depth),1.0,0.4969,,
+0.5,2,shuffled,"XGBoost (deep, no penalties)",1.0,0.49635,,
+0.5,2,shuffled,"Neural network (2x256, no weight decay)",1.0,0.502,140.0,epochs to 100% train accuracy
+0.5,2,shuffled,Decision tree (grown to purity),,,447.0,leaves at purity
+0.5,2,shuffled,XGBoost depth 3,,,403.0,rounds to zero train error

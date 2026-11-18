@@ -1,0 +1,45 @@
+name: Deliberate overfitting diagnostics
+
+on:
+  pull_request:
+    paths:
+      - "deliberate-overfitting-diagnostics/**"
+      - ".github/workflows/deliberate-overfitting-diagnostics.yml"
+  push:
+    branches: [main]
+    paths:
+      - "deliberate-overfitting-diagnostics/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    name: Check committed results, then rerun the bug and feature-set experiments
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: deliberate-overfitting-diagnostics
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: deliberate-overfitting-diagnostics/requirements.txt
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Download and verify the public data
+        run: python fetch.py
+      - name: Tests on the committed results
+        run: python -m unittest discover -s tests -v
+      - name: Rerun the planted-bug and feature-set experiments
+        run: |
+          python exp1_memorization.py c
+          python exp3_bugs.py
+      - name: Tests on the fresh results
+        run: python -m unittest discover -s tests -v
+      - name: Show what moved
+        run: git diff --stat -- results/
