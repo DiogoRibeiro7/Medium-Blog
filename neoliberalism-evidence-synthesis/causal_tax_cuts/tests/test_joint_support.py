@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import itertools
 import json
 import tempfile
 import unittest
@@ -159,7 +160,7 @@ class JointCohortTests(unittest.TestCase):
                 (row for row in rows if (row.country, row.reform_year) == event),
                 key=lambda row: row.horizon,
             )
-            for previous, current in zip(event_rows, event_rows[1:], strict=False):
+            for previous, current in itertools.pairwise(event_rows):
                 self.assertGreaterEqual(
                     previous.n_surviving_donors, current.n_surviving_donors
                 )
