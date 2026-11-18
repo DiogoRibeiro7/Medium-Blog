@@ -1,0 +1,113 @@
+== Data
+league matches: 24962 in 69 league-seasons (2012/13 to 2025/26, Ligue 1 2019/20 left out)
+in-season manager changes (a new name in the next league match, not a temporary absence): 718
+  of which the outgoing manager had led at least 5 league matches in a row: 578
+temporary absences dropped (the manager led the club again later that season): 59
+decision points in the window (after match 5 to 10 before the end), established manager: 28991
+changes among them: 454; weekly rate 0.0157
+changes where the outgoing manager led another club within 30 days: 13
+changes by league: LaLiga 103, Ligue 1 83, Premier League 90, Serie A 103, Bundesliga 75
+league-average points per match (all clubs): 1.375
+in-season changes per season across the five leagues: 51.3
+clubs that finished a season on 1.30 to 1.45 points per match (about average): 144; share with at least one run of five league matches bringing 3 points or fewer: 0.875
+
+== Who gets a change (logistic model, one row per decision point)
+AUC 0.873
+odds of a change after a defeat relative to after a win in the latest match, all else equal: 6.8
+odds ratio per extra point in the last five (the latest match included), median-value club: 0.820
+share of changes that came straight after a defeat: 0.800; share of all decision points after a defeat: 0.369
+odds ratio for one unit of log squad value above the league median, at zero recent points: 2.31
+weekly change rate by points from the last five:
+  (-1, 2]: 0.0715 (n=2504)
+  (2, 4]: 0.0321 (n=4866)
+  (4, 6]: 0.0114 (n=5773)
+  (6, 8]: 0.0053 (n=6418)
+  (8, 10]: 0.0034 (n=4932)
+  (10, 15]: 0.0004 (n=4498)
+weekly rate in the bottom three 0.0596, elsewhere 0.0094
+
+== The same-spot comparison
+changes matched: 450 of 454; comparison clubs per change 5; distinct comparison decision points 1798
+balance (changed / kept / standardised difference):
+  pts            0.289    0.289 +0.000
+  last5          3.447    3.447 +0.000
+  form10         0.831    0.828 +0.005
+  ppg            0.901    0.891 +0.018
+  gd_pg         -0.650   -0.662 +0.016
+  pos_norm       0.765    0.773 -0.025
+  value_rel     -0.107   -0.156 +0.060
+  sot_share      0.436    0.434 +0.023
+  opp_next       0.053    0.033 +0.104
+  k             16.102   16.049 +0.008
+  in_drop        0.473    0.473 +0.000
+  gap_safety     0.689    0.584 +0.011
+  tenure        33.331   38.862 -0.100
+points per match, last five before the decision: changed 0.689, kept 0.689
+points per match, next ten: changed 1.210, kept 1.152
+before/after for the changed clubs (next ten minus twice the last five, points over ten matches): +5.20
+before/after for the kept clubs: +4.63
+same-spot estimate, points over the next ten matches: +0.57 95% interval [+0.12, +1.07]
+share of changes whose club did better than its comparison clubs: 0.516
+
+== Yardsticks
+comparison clubs that changed manager anyway within the next ten matches: 0.306
+changes with at least one comparison club that kept its manager all ten matches: 443
+yardstick 'kept him and stuck with him': changed minus kept-for-good -0.44 points over ten
+  95% interval [-0.89, +0.02]
+yardstick 'own last five': +5.20 points over ten, 95% interval [+4.71, +5.74]
+
+== Timing of any gain
+matches 1-3 after: changed minus kept +0.08 points, 95% interval [-0.12, +0.29]
+matches 4-10 after: changed minus kept +0.49 points, 95% interval [+0.12, +0.88]
+matches 14-10 before, outside every matching window (255 changes made after match 14): changed minus kept -0.03 points, 95% interval [-0.33, +0.26]
+rest of the season, points per match: changed 1.219, kept 1.157, difference +0.062, 95% interval [+0.022, +0.103]
+matches left in the season after a change: mean 21.1; the difference over them: +1.23 points
+
+== Relegation
+changes made within 3 points of the bottom three or inside it: 352
+finished in the bottom three: changed 0.449, kept 0.457, difference -0.008, 95% interval [-0.061, +0.048]
+
+== Where the answer might differ (95% intervals; eight groups, so one could look notable by chance)
+  all changes                                   n=450 +0.57 [+0.12, +1.07]
+  inside the bottom three                       n=213 +0.25 [-0.39, +0.93]
+  outside the bottom three                      n=237 +0.86 [+0.26, +1.46]
+  first half of the season                      n=303 +0.49 [-0.06, +1.04]
+  second half of the season                     n=147 +0.73 [-0.04, +1.50]
+  squad worth more than the league median       n=186 +1.66 [+0.95, +2.39]
+  squad worth less than the league median       n=264 -0.20 [-0.75, +0.33]
+  results below what shots on target predict    n=253 +0.38 [-0.21, +0.99]
+  results in line with shots on target          n=197 +0.81 [+0.09, +1.47]
+richer minus poorer: +1.86, 95% interval [+0.92, +2.73]
+changes made inside the bottom three: 0.220 of the richer clubs' changes, 0.652 of the poorer clubs'
+  Premier League  n= 90 +0.87
+  LaLiga          n=102 -0.58
+  Serie A         n=103 +0.71
+  Bundesliga      n= 73 +1.61
+  Ligue 1         n= 82 +0.58
+
+== Checks
+placebo (the nearest kept club of each change treated as if it had changed): -0.12, 95% interval [-0.57, +0.34], n=422
+linear model on all decision points, same state plus season effects: +0.36 [-0.01, +0.73]
+  1 comparison club                        n=450 +0.74
+  3 comparison clubs                       n=450 +0.55
+  10 comparison clubs                      n=450 +0.49
+  caliper 0.1 sd                           n=443 +0.43
+  caliper 0.5 sd                           n=454 +0.63
+  stage within one match                   n=446 +0.50
+  distance matching only                   n=454 +0.43
+  without quick moves to another club      n=438 +0.55
+ten simulated 30-season leagues in which a change does nothing: same-spot estimate mean -0.03, range -0.65 to +0.59, standard error of the mean 0.11
+the same leagues with distance matching only (no exact match on recent form): mean +0.22
+
+== Hidden information
+before/after gain +5.20; same-spot estimate +0.57; the observed state accounts for 4.63 points
+  for a true gain of 1 points over ten, what the board knew and the data do not would have to cost the changed clubs 0.43 points: 9% of what the observed state accounts for
+  for a true gain of 2 points over ten, what the board knew and the data do not would have to cost the changed clubs 1.43 points: 31% of what the observed state accounts for
+  for a true gain of 3 points over ten, what the board knew and the data do not would have to cost the changed clubs 2.43 points: 52% of what the observed state accounts for
+
+== Two remembered changes
+changes that did 10 or more points worse than their comparison clubs: 6
+Bayern Munich 2019/20: Niko Kovac -> Hansi Flick after match 10 (02 Nov 2019), place 4, 7 points from the last five; next ten: 24 points, comparison clubs 16.8, difference +7.2
+  share of all changes with a difference at least this large: 0.109
+Manchester United 2018/19: José Mourinho -> Ole Gunnar Solskjær after match 17 (16 Dec 2018), place 6, 6 points from the last five; next ten: 26 points, comparison clubs 17.6, difference +8.4
+  share of all changes with a difference at least this large: 0.062

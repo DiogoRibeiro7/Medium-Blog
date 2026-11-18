@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Changing the football manager mid-season, judged as a decision: a same-spot comparison of 450 changes in the big five leagues, 2012/13 to 2025/26"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-18
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/coach-change-decision"
+references:
+  - type: data
+    title: "transfermarkt-datasets"
+    authors:
+      - name: "dcaribou (GitHub) and contributors"
+    repository-code: "https://github.com/dcaribou/transfermarkt-datasets"
+    license: CC0-1.0
+  - type: data
+    title: "Football datasets (mirror of football-data.co.uk)"
+    authors:
+      - name: "Datahub and contributors"
+    repository-code: "https://github.com/datasets/football-datasets"
+    license: PDDL-1.0

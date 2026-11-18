@@ -1,0 +1,451 @@
+league,season,club,k,date,manager,next_manager,pos,n_clubs,last5,ppg,value_rel,next10_changed,next10_kept_mean,difference
+LaLiga,2012,RCD Mallorca,22,2013-02-03,Joaquín Caparrós,Gregorio Manzano,19,20,1.000,0.773,-1.014,11.000,11.000,0.000
+LaLiga,2012,Sevilla FC,19,2013-01-12,Michel,Unai Emery,12,20,4.000,1.158,0.192,16.000,13.800,2.200
+LaLiga,2012,RCD Espanyol Barcelona,13,2012-11-25,Mauricio Pochettino,Javier Aguirre,20,20,4.000,0.692,0.102,19.000,14.000,5.000
+LaLiga,2012,Deportivo de La Coruña,17,2012-12-20,José Luis Oltra,Domingos Paciência,20,20,2.000,0.706,-0.356,5.000,9.400,-4.400
+LaLiga,2012,Deportivo de La Coruña,22,2013-02-02,Domingos Paciência,Fernando Vázquez,20,20,4.000,0.727,-0.356,14.000,10.400,3.600
+LaLiga,2012,Celta de Vigo,24,2013-02-16,Paco Herrera,Abel Resino,18,20,2.000,0.833,-0.619,11.000,9.800,1.200
+LaLiga,2012,Valencia CF,14,2012-12-01,Mauricio Pellegrino,Ernesto Valverde,12,20,7.000,1.286,0.042,22.000,14.600,7.400
+LaLiga,2012,Granada CF,21,2013-01-28,Juan Anquela,Lucas Alcaraz,17,20,7.000,0.952,-0.459,8.000,9.600,-1.600
+LaLiga,2013,Real Betis Balompié,15,2013-12-01,Pepe Mel,Juan Carlos Garrido,20,20,2.000,0.667,0.068,4.000,13.000,-9.000
+LaLiga,2013,Real Betis Balompié,20,2014-01-18,Juan Carlos Garrido,Gabriel Calderón,20,20,1.000,0.550,0.068,11.000,9.500,1.500
+LaLiga,2013,Valencia CF,16,2013-12-15,Miroslav Djukic,Nico Estévez,9,20,7.000,1.250,0.407,15.000,15.200,-0.200
+LaLiga,2013,Getafe CF,27,2014-03-08,Luis García,Cosmin Contra,15,20,2.000,1.000,-0.247,12.000,16.200,-4.200
+LaLiga,2014,Real Sociedad,10,2014-11-01,Jagoba Arrasate,Asier Santana,17,20,2.000,0.600,0.925,16.000,21.000,-5.000
+LaLiga,2014,Córdoba CF,8,2014-10-18,Albert Ferrer,Miroslav Djukic,19,20,2.000,0.500,-1.354,13.000,14.200,-1.200
+LaLiga,2014,Córdoba CF,27,2015-03-15,Miroslav Djukic,José Antonio Romero,20,20,0.000,0.667,-1.354,2.000,8.400,-6.400
+LaLiga,2014,UD Almería,14,2014-12-08,Francisco Rodríguez,Miguel Rivera,17,20,1.000,0.714,-1.116,13.000,6.800,6.200
+LaLiga,2014,Levante UD,8,2014-10-18,José Luis Mendilibar,Lucas Alcaraz,18,20,4.000,0.625,0.020,11.000,11.200,-0.200
+LaLiga,2014,Getafe CF,24,2015-02-20,Quique Sánchez Flores,Pablo Franco,11,20,9.000,1.083,-0.020,10.000,15.000,-5.000
+LaLiga,2014,Granada CF,18,2015-01-11,Joaquín Caparrós,Joseba Aguado,20,20,3.000,0.778,-0.391,9.000,9.400,-0.400
+LaLiga,2015,Real Betis Balompié,19,2016-01-09,Pepe Mel,Juan Merino,14,20,1.000,1.053,-0.343,14.000,11.600,2.400
+LaLiga,2015,Real Madrid,18,2016-01-03,Rafael Benítez,Zinédine Zidane,3,20,10.000,2.056,2.196,23.000,21.500,1.500
+LaLiga,2015,UD Las Palmas,8,2015-10-18,Paco Herrera,Quique Setién,19,20,3.000,0.625,-1.249,12.000,11.000,1.000
+LaLiga,2015,Real Sociedad,11,2015-11-06,David Moyes,Eusebio,16,20,3.000,0.818,0.743,12.000,15.200,-3.200
+LaLiga,2015,RCD Espanyol Barcelona,15,2015-12-12,Sergio,Constantin Gâlcă,12,20,4.000,1.133,0.079,8.000,13.800,-5.800
+LaLiga,2015,Valencia CF,13,2015-11-29,Nuno Espírito Santo,Voro,9,20,7.000,1.462,0.939,6.000,16.800,-10.800
+LaLiga,2015,Levante UD,9,2015-10-25,Lucas Alcaraz,Rubi,20,20,4.000,0.667,0.140,8.000,10.800,-2.800
+LaLiga,2015,Granada CF,25,2016-02-21,José Ramón Sandoval,José González,20,20,3.000,0.800,-0.832,13.000,10.400,2.600
+LaLiga,2016,Real Betis Balompié,11,2016-11-06,Gustavo Poyet,Víctor Sánchez,14,20,3.000,1.000,0.079,13.000,12.000,1.000
+LaLiga,2016,CA Osasuna,11,2016-11-05,Enrique Martín,Joaquín Caparrós,19,20,5.000,0.636,-0.601,3.000,9.400,-6.400
+LaLiga,2016,CA Osasuna,16,2016-12-18,Joaquín Caparrós,Petar Vasiljevic,20,20,0.000,0.438,-0.601,3.000,9.000,-6.000
+LaLiga,2016,Deportivo de La Coruña,23,2017-02-25,Gaizka Garitano,Pepe Mel,17,20,1.000,0.826,-0.385,12.000,10.800,1.200
+LaLiga,2016,Valencia CF,15,2016-12-10,Cesare Prandelli,Voro,17,20,2.000,0.800,0.848,17.000,16.500,0.500
+LaLiga,2016,Málaga CF,16,2016-12-17,Juande Ramos,Marcelo Romero,11,20,6.000,1.312,-0.325,5.000,11.400,-6.400
+LaLiga,2016,Málaga CF,26,2017-03-05,Marcelo Romero,Míchel,15,20,4.000,1.000,-0.325,19.000,13.600,5.400
+LaLiga,2016,Sporting Gijón,18,2017-01-15,Abelardo,Rubi,18,20,3.000,0.667,-0.850,9.000,11.200,-2.200
+LaLiga,2017,Sevilla FC,17,2017-12-20,Eduardo Berizzo,Vincenzo Montella,5,20,7.000,1.706,0.964,16.000,16.200,-0.200
+LaLiga,2017,UD Las Palmas,6,2017-09-24,Manolo Márquez,Pako Ayestarán,15,20,6.000,1.000,-0.052,5.000,9.600,-4.600
+LaLiga,2017,UD Las Palmas,13,2017-11-26,Pako Ayestarán,Paquito,19,20,1.000,0.538,-0.052,11.000,8.750,2.250
+LaLiga,2017,Deportivo de La Coruña,9,2017-10-23,Pepe Mel,Cristóbal Parralo,16,20,7.000,0.889,-0.747,8.000,11.600,-3.600
+LaLiga,2017,Deportivo de La Coruña,22,2018-02-02,Cristóbal Parralo,Clarence Seedorf,18,20,2.000,0.773,-0.747,9.000,6.400,2.600
+LaLiga,2017,Villarreal CF,6,2017-09-24,Fran Escribá,Javier Calleja,14,20,7.000,1.167,0.774,17.000,18.200,-1.200
+LaLiga,2017,Málaga CF,19,2018-01-12,Míchel,José González,19,20,3.000,0.579,-0.409,3.000,10.600,-7.600
+LaLiga,2017,Deportivo Alavés,13,2017-11-25,Giovanni De Biasi,Abelardo,19,20,3.000,0.462,-0.190,19.000,12.200,6.800
+LaLiga,2018,Rayo Vallecano,28,2019-03-17,Míchel,Paco Jémez,19,20,0.000,0.821,-1.527,9.000,12.000,-3.000
+LaLiga,2018,Sevilla FC,27,2019-03-10,Pablo Machín,Joaquín Caparrós,6,20,4.000,1.481,0.466,16.000,14.800,1.200
+LaLiga,2018,Real Madrid,10,2018-10-28,Julen Lopetegui,Santiago Solari,9,20,1.000,1.400,1.991,22.000,14.000,8.000
+LaLiga,2018,Real Madrid,27,2019-03-10,Santiago Solari,Zinédine Zidane,3,20,9.000,1.889,1.991,17.000,17.600,-0.600
+LaLiga,2018,Athletic Bilbao,14,2018-12-03,Eduardo Berizzo,Gaizka Garitano,18,20,2.000,0.786,0.316,19.000,13.250,5.750
+LaLiga,2018,Real Sociedad,17,2018-12-21,Asier Garitano,Imanol Alguacil,15,20,3.000,1.118,0.590,16.000,12.200,3.800
+LaLiga,2018,Celta de Vigo,12,2018-11-11,Antonio Mohamed,Miguel Cardoso,14,20,4.000,1.167,0.405,10.000,9.600,0.400
+LaLiga,2018,Celta de Vigo,26,2019-03-03,Miguel Cardoso,Fran Escribá,17,20,4.000,0.962,0.405,15.000,15.600,-0.600
+LaLiga,2018,Villarreal CF,21,2019-01-26,Luis García,Javier Calleja,19,20,3.000,0.857,0.295,12.000,6.600,5.400
+LaLiga,2018,SD Huesca,8,2018-10-07,Leo Franco,Francisco Rodríguez,20,20,1.000,0.625,-1.376,6.000,12.400,-6.400
+LaLiga,2019,FC Barcelona,19,2020-01-04,Ernesto Valverde,Quique Setién,1,20,9.000,2.105,1.657,24.000,17.200,6.800
+LaLiga,2019,RCD Espanyol Barcelona,8,2019-10-06,David Gallego,Pablo Machín,19,20,4.000,0.625,-0.084,5.000,12.200,-7.200
+LaLiga,2019,RCD Espanyol Barcelona,18,2019-12-22,Pablo Machín,Abelardo,20,20,2.000,0.556,-0.084,13.000,11.000,2.000
+LaLiga,2019,Celta de Vigo,12,2019-11-03,Fran Escribá,Óscar García,18,20,3.000,0.750,0.299,8.000,7.200,0.800
+LaLiga,2019,CD Leganés,9,2019-10-19,Mauricio Pellegrino,Luis Cembranos,20,20,2.000,0.222,-0.615,12.000,7.200,4.800
+LaLiga,2020,Athletic Bilbao,17,2021-01-03,Gaizka Garitano,Marcelino,9,20,7.000,1.235,0.427,13.000,14.600,-1.600
+LaLiga,2020,Celta de Vigo,9,2020-11-06,Óscar García,Eduardo Coudet,17,20,2.000,0.778,-0.062,16.000,16.400,-0.400
+LaLiga,2020,Deportivo Alavés,18,2021-01-10,Pablo Machín,Abelardo,15,20,4.000,1.000,-0.539,5.000,13.800,-8.800
+LaLiga,2020,Elche CF,21,2021-02-12,Jorge Almirón,Fran Escribá,19,20,2.000,0.857,-1.636,8.000,8.000,0.000
+LaLiga,2020,SD Huesca,18,2021-01-11,Míchel,Pacheta,20,20,1.000,0.667,-1.545,9.000,8.000,1.000
+LaLiga,2021,FC Barcelona,10,2021-10-27,Ronald Koeman,Sergi Barjuan,9,20,6.000,1.500,1.589,17.000,17.000,0.000
+LaLiga,2021,Deportivo Alavés,18,2021-12-21,Javier Calleja,José Luis Mendilibar,18,20,1.000,0.833,-0.769,7.000,7.200,-0.200
+LaLiga,2021,Elche CF,14,2021-11-21,Fran Escribá,Sergio Mantecón,18,20,2.000,0.786,-1.172,15.000,10.000,5.000
+LaLiga,2021,Cádiz CF,20,2022-01-09,Álvaro Cervera,Sergio,19,20,2.000,0.700,-1.169,14.000,9.400,4.600
+LaLiga,2021,Levante UD,8,2021-10-02,Paco López,Javier Pereira,17,20,2.000,0.500,-0.416,4.000,11.400,-7.400
+LaLiga,2021,Levante UD,15,2021-11-28,Javier Pereira,Alessio Lisci,20,20,2.000,0.467,-0.416,8.000,9.400,-1.400
+LaLiga,2021,Getafe CF,8,2021-10-03,Míchel,Quique Sánchez Flores,20,20,1.000,0.125,0.101,14.000,7.000,7.000
+LaLiga,2021,Granada CF,27,2022-03-05,Robert Moreno,Rubén Torrecilla,17,20,1.000,0.926,-0.145,12.000,10.200,1.800
+LaLiga,2022,Real Valladolid CF,27,2023-04-02,Pacheta,Paulo Pezzolano,16,20,4.000,1.037,-0.931,11.000,11.000,0.000
+LaLiga,2022,Sevilla FC,7,2022-10-01,Julen Lopetegui,Jorge Sampaoli,16,20,4.000,0.714,0.765,10.000,16.000,-6.000
+LaLiga,2022,Sevilla FC,26,2023-03-19,Jorge Sampaoli,José Luis Mendilibar,14,20,4.000,1.077,0.765,21.000,14.400,6.600
+LaLiga,2022,RCD Espanyol Barcelona,27,2023-04-01,Diego Martínez,Luis García,17,20,3.000,1.000,-0.080,9.000,12.800,-3.800
+LaLiga,2022,Celta de Vigo,12,2022-10-29,Eduardo Coudet,Carlos Carvalhal,15,20,1.000,0.917,-0.156,13.000,15.400,-2.400
+LaLiga,2022,Valencia CF,18,2023-01-29,Gennaro Gattuso,Voro,14,20,4.000,1.111,0.418,7.000,7.800,-0.800
+LaLiga,2022,Villarreal CF,11,2022-10-23,Unai Emery,Quique Setién,7,20,7.000,1.636,0.930,13.000,15.800,-2.800
+LaLiga,2022,Elche CF,7,2022-10-03,Francisco Rodríguez,Alberto Gallego,20,20,0.000,0.143,-0.778,4.000,6.200,-2.200
+LaLiga,2022,Elche CF,13,2022-11-05,Jorge Almirón,Sergio Mantecón,20,20,2.000,0.308,-0.778,5.000,10.000,-5.000
+LaLiga,2022,Elche CF,26,2023-03-19,Pablo Machín,Sebastián Beccacece,20,20,4.000,0.500,-0.778,8.000,8.800,-0.800
+LaLiga,2023,Sevilla FC,8,2023-10-07,José Luis Mendilibar,Diego Alonso,13,20,8.000,1.000,0.348,8.000,15.600,-7.600
+LaLiga,2023,Sevilla FC,16,2023-12-16,Diego Alonso,Quique Sánchez Flores,16,20,2.000,0.812,0.348,11.000,11.600,-0.600
+LaLiga,2023,Celta de Vigo,28,2024-03-10,Rafael Benítez,Claudio Giráldez,17,20,4.000,0.857,-0.031,17.000,13.400,3.600
+LaLiga,2023,Villarreal CF,12,2023-11-05,Pacheta,Miguel Ángel Tena,13,20,5.000,1.000,0.683,11.000,12.000,-1.000
+LaLiga,2023,Cádiz CF,21,2024-01-19,Sergio,Mauricio Pellegrino,18,20,2.000,0.714,-0.778,10.000,8.200,1.800
+LaLiga,2023,UD Almería,7,2023-09-26,Vicente Moreno,Alberto Lasarte,20,20,2.000,0.286,-0.537,3.000,17.000,-14.000
+LaLiga,2023,UD Almería,28,2024-03-11,Gaizka Garitano,Pepe Mel,20,20,4.000,0.357,-0.537,11.000,9.500,1.500
+LaLiga,2023,Granada CF,14,2023-11-24,Paco López,Alexander Medina,19,20,1.000,0.500,-0.973,6.000,7.600,-1.600
+LaLiga,2023,Granada CF,28,2024-03-16,Alexander Medina,José Ramón Sandoval,19,20,2.000,0.500,-0.973,7.000,10.600,-3.600
+LaLiga,2024,Real Valladolid CF,15,2024-11-30,Paulo Pezzolano,Álvaro Rubio,20,20,1.000,0.600,-1.198,6.000,9.600,-3.600
+LaLiga,2024,Real Valladolid CF,24,2025-02-16,Diego Cocca,Álvaro Rubio,20,20,0.000,0.625,-1.198,1.000,5.000,-4.000
+LaLiga,2024,UD Las Palmas,9,2024-10-05,Luis Carrión,Diego Martínez,20,20,1.000,0.333,-0.309,19.000,11.200,7.800
+LaLiga,2024,Valencia CF,17,2024-12-22,Rubén Baraja,Carlos Corberán,19,20,2.000,0.706,0.496,15.000,13.333,1.667
+LaLiga,2024,Deportivo Alavés,15,2024-11-30,Luis García,Eduardo Coudet,16,20,4.000,0.933,-0.298,8.000,13.000,-5.000
+LaLiga,2025,RCD Mallorca,25,2026-02-22,Jagoba Arrasate,Gustavo Siviero,18,20,3.000,0.960,-0.455,15.000,11.200,3.800
+LaLiga,2025,Real Madrid,19,2026-01-04,Xabi Alonso,Álvaro Arbeloa,2,20,12.000,2.368,2.259,24.000,23.600,0.400
+LaLiga,2025,Real Sociedad,16,2025-12-12,Sergio Francisco,Ion Ansotegi,14,20,4.000,1.000,0.965,19.000,13.600,5.400
+LaLiga,2025,Deportivo Alavés,26,2026-02-27,Eduardo Coudet,Quique Sánchez Flores,14,20,5.000,1.038,-0.721,13.000,10.800,2.200
+LaLiga,2025,Real Oviedo,8,2025-10-04,Veljko Paunovic,Luis Carrión,15,20,3.000,0.750,-1.681,6.000,10.400,-4.400
+LaLiga,2025,Real Oviedo,16,2025-12-14,Luis Carrión,Guillermo Almada,19,20,2.000,0.625,-1.681,7.000,6.600,0.400
+LaLiga,2025,Levante UD,14,2025-11-29,Julián Calero,Álvaro del Moral,19,20,1.000,0.643,-1.551,9.000,11.000,-2.000
+Ligue 1,2012,AC Ajaccio,18,2012-12-15,Alex Dupont,Albert Emon,14,20,5.000,1.167,-0.130,13.000,13.000,0.000
+Ligue 1,2012,AS Nancy-Lorraine,19,2012-12-22,Jean Fernandez,Patrick Gabriel,20,20,4.000,0.579,-0.657,13.000,12.400,0.600
+Ligue 1,2013,Olympique Marseille,17,2013-12-06,Élie Baup,José Anigo,4,20,9.000,1.588,1.146,16.000,17.000,-1.000
+Ligue 1,2013,FC Sochaux-Montbéliard,7,2013-09-25,Eric Hély,Omar Daf,20,20,1.000,0.286,-0.782,6.000,5.600,0.400
+Ligue 1,2013,Montpellier HSC,17,2013-12-08,Jean Fernandez,Rolland Courbis,17,20,3.000,0.941,0.024,17.000,14.400,2.600
+Ligue 1,2013,AC Ajaccio,12,2013-11-02,Fabrizio Ravanelli,Christian Bracconi,19,20,1.000,0.583,-0.282,3.000,9.400,-6.400
+Ligue 1,2013,Valenciennes FC,9,2013-10-05,Daniel Sanchez,Ariel Jacobs,20,20,1.000,0.444,-0.988,10.000,10.000,0.000
+Ligue 1,2014,SC Bastia,12,2014-11-01,Claude Makélélé,Ghislain Printant,19,20,3.000,0.833,-0.667,13.000,8.600,4.400
+Ligue 1,2015,Stade Rennais FC,21,2016-01-16,Philippe Montanier,Rolland Courbis,5,20,9.000,1.476,0.234,17.000,12.600,4.400
+Ligue 1,2015,FC Toulouse,28,2016-02-27,Dominique Arribagé,Pascal Dupraz,19,20,2.000,0.786,0.069,18.000,8.000,10.000
+Ligue 1,2015,SC Bastia,22,2016-01-23,Ghislain Printant,François Ciccolini,15,20,7.000,1.136,-0.663,18.000,12.000,6.000
+Ligue 1,2015,Montpellier HSC,19,2015-12-18,Rolland Courbis,Pascal Baills,13,20,7.000,1.158,-0.332,14.000,15.400,-1.400
+Ligue 1,2015,Olympique Lyon,19,2015-12-20,Hubert Fournier,Bruno Génésio,9,20,1.000,1.368,1.038,19.000,11.800,7.200
+Ligue 1,2015,LOSC Lille,13,2015-11-07,Hervé Renard,Patrick Collot,16,20,6.000,1.000,0.322,13.000,17.000,-4.000
+Ligue 1,2015,ESTAC Troyes,16,2015-12-02,Jean-Marc Furlan,Olivier Tingry,20,20,1.000,0.312,-0.663,9.000,9.600,-0.600
+Ligue 1,2015,ESTAC Troyes,24,2016-02-03,Claude Robin,Mohamed Bradja,20,20,3.000,0.458,-0.663,6.000,5.400,0.600
+Ligue 1,2016,Olympique Marseille,9,2016-10-16,Franck Passi,Rudi Garcia,12,20,8.000,1.333,-0.176,18.000,13.800,4.200
+Ligue 1,2016,SC Bastia,26,2017-02-25,François Ciccolini,Rui Almeida,19,20,2.000,0.885,-0.746,9.000,10.000,-1.000
+Ligue 1,2016,Montpellier HSC,22,2017-01-27,Frédéric Hantz,Jean-Louis Gasset,14,20,4.000,1.045,-0.348,13.000,12.800,0.200
+Ligue 1,2016,FC Nantes,15,2016-11-30,René Girard,Philippe Mao,19,20,2.000,0.867,0.060,17.000,11.400,5.600
+Ligue 1,2016,LOSC Lille,13,2016-11-18,Frédéric Antonetti,Patrick Collot,18,20,3.000,0.769,0.306,16.000,10.200,5.800
+Ligue 1,2016,LOSC Lille,27,2017-02-25,Patrick Collot,Franck Passi,15,20,3.000,1.074,0.306,14.000,12.200,1.800
+Ligue 1,2016,FC Lorient,10,2016-10-22,Sylvain Ripoll,Franck Haise,20,20,3.000,0.600,-0.360,12.000,10.800,1.200
+Ligue 1,2017,FC Girondins Bordeaux,21,2018-01-16,Jocelyn Gourvennec,Eric Bedouet,13,20,3.000,1.095,0.656,14.000,17.600,-3.600
+Ligue 1,2017,Stade Rennais FC,12,2017-11-03,Christian Gourcuff,Sabri Lamouchi,10,20,9.000,1.250,-0.057,16.000,12.600,3.400
+Ligue 1,2017,FC Metz,10,2017-10-21,Philippe Hinschberger,José Pinot,20,20,3.000,0.300,-0.111,9.000,13.000,-4.000
+Ligue 1,2017,FC Toulouse,22,2018-01-20,Pascal Dupraz,Mickaël Debève,19,20,1.000,0.909,0.380,10.000,10.800,-0.800
+Ligue 1,2017,AS Saint-Étienne,12,2017-11-05,Óscar García,Julien Sablé,6,20,4.000,1.500,0.459,5.000,15.600,-10.600
+Ligue 1,2017,AS Saint-Étienne,19,2017-12-20,Julien Sablé,Jean-Louis Gasset,16,20,1.000,1.053,0.459,16.000,11.800,4.200
+Ligue 1,2017,LOSC Lille,13,2017-11-20,Marcelo Bielsa,Fernando Da Cruz,19,20,6.000,0.923,-0.050,13.000,8.600,4.400
+Ligue 1,2017,LOSC Lille,19,2017-12-20,Fernando Da Cruz,Christophe Galtier,18,20,7.000,1.000,-0.050,9.000,7.333,1.667
+Ligue 1,2018,FC Girondins Bordeaux,28,2019-03-09,Eric Bedouet,Paulo Sousa,13,20,5.000,1.179,0.632,8.000,11.600,-3.600
+Ligue 1,2018,AS Monaco,21,2019-01-19,Thierry Henry,Franck Passi,19,20,2.000,0.714,1.300,16.000,20.000,-4.000
+Ligue 1,2018,Stade Rennais FC,15,2018-12-02,Sabri Lamouchi,Julien Stéphan,14,20,5.000,1.133,0.180,19.000,11.600,7.400
+Ligue 1,2018,EA Guingamp,12,2018-11-04,Antoine Kombouaré,Sylvain Didot,20,20,6.000,0.583,-0.832,7.000,15.800,-8.800
+Ligue 1,2018,FC Nantes,8,2018-09-29,Miguel Cardoso,Vahid Halilhodzic,19,20,5.000,0.750,0.231,17.000,14.600,2.400
+Ligue 1,2018,Dijon FCO,18,2018-12-22,Olivier Dall'Oglio,Antoine Kombouaré,18,20,5.000,0.889,-0.108,5.000,11.000,-6.000
+Ligue 1,2020,Olympique Marseille,20,2021-01-23,André Villas-Boas,Nasser Larguet,6,20,4.000,1.600,0.721,13.000,11.600,1.400
+Ligue 1,2020,Olympique Marseille,27,2021-03-03,Nasser Larguet,Jorge Sampaoli,8,20,6.000,1.444,0.721,20.000,13.400,6.600
+Ligue 1,2020,Stade Rennais FC,26,2021-02-26,Julien Stéphan,Philippe Bizeul,8,20,2.000,1.462,0.661,17.000,12.400,4.600
+Ligue 1,2020,FC Metz,6,2020-10-04,Vincent Hognon,Frédéric Antonetti,15,20,7.000,1.167,-0.255,16.000,13.200,2.800
+Ligue 1,2020,OGC Nice,11,2020-11-29,Patrick Vieira,Adrian Ursea,11,20,7.000,1.545,0.561,9.000,12.000,-3.000
+Ligue 1,2020,Paris Saint-Germain,17,2020-12-23,Thomas Tuchel,Mauricio Pochettino,3,20,10.000,2.059,2.114,22.000,24.000,-2.000
+Ligue 1,2020,FC Nantes,13,2020-12-06,Christian Gourcuff,Patrick Collot,14,20,5.000,1.000,0.023,6.000,8.200,-2.200
+Ligue 1,2020,FC Nantes,24,2021-02-07,Raymond Domenech,Antoine Kombouaré,18,20,2.000,0.792,0.023,12.000,10.800,1.200
+Ligue 1,2020,Nîmes Olympique,22,2021-02-03,Jérôme Arpinon,Pascal Plancque,20,20,3.000,0.682,-0.889,15.000,6.000,9.000
+Ligue 1,2020,Dijon FCO,9,2020-11-01,Stéphane Jobard,David Linarès,20,20,3.000,0.333,-0.571,11.000,12.600,-1.600
+Ligue 1,2021,FC Girondins Bordeaux,23,2022-02-06,Vladimir Petkovic,Jaroslav Plasil,19,20,3.000,0.870,-0.183,7.000,6.400,0.600
+Ligue 1,2021,AS Monaco,19,2021-12-22,Niko Kovac,Philippe Clement,6,20,10.000,1.526,1.249,15.000,18.600,-3.600
+Ligue 1,2021,AS Saint-Étienne,17,2021-12-05,Claude Puel,Julien Sablé,20,20,6.000,0.706,-0.003,13.000,9.400,3.600
+Ligue 1,2021,ESTAC Troyes,19,2021-12-22,Laurent Batlles,Bruno Irles,15,20,4.000,0.895,-0.932,12.000,10.000,2.000
+Ligue 1,2022,AJ Auxerre,10,2022-10-09,Jean-Marc Furlan,Michel Padovani,16,20,1.000,0.800,-1.500,5.000,7.800,-2.800
+Ligue 1,2022,OGC Nice,17,2023-01-02,Lucien Favre,Didier Digard,11,20,8.000,1.235,0.740,22.000,14.000,8.000
+Ligue 1,2022,RC Strasbourg Alsace,17,2023-01-02,Julien Stéphan,Mathieu Le Scornet,19,20,2.000,0.647,0.026,12.000,8.800,3.200
+Ligue 1,2022,RC Strasbourg Alsace,23,2023-02-12,Mathieu Le Scornet,Frédéric Antonetti,17,20,6.000,0.783,0.026,14.000,12.200,1.800
+Ligue 1,2022,Montpellier HSC,11,2022-10-15,Olivier Dall'Oglio,Romain Pitau,10,20,3.000,1.091,-0.026,8.000,9.800,-1.800
+Ligue 1,2022,Montpellier HSC,22,2023-02-05,Romain Pitau,Michel Der Zakarian,15,20,3.000,0.909,-0.026,20.000,9.600,10.400
+Ligue 1,2022,Olympique Lyon,10,2022-10-07,Peter Bosz,Laurent Blanc,7,20,1.000,1.400,0.736,14.000,9.600,4.400
+Ligue 1,2022,ESTAC Troyes,14,2022-11-04,Bruno Irles,Claude Robin,12,20,3.000,1.000,-0.574,5.000,13.400,-8.400
+Ligue 1,2022,Angers SCO,15,2022-11-13,Gérald Baticle,Abdel Bouhazama,20,20,0.000,0.533,-0.201,2.000,10.600,-8.600
+Ligue 1,2022,Angers SCO,26,2023-03-05,Abdel Bouhazama,Alexandre Dujeux,20,20,2.000,0.385,-0.201,5.000,10.200,-5.200
+Ligue 1,2022,Stade Reims,10,2022-10-08,Óscar García,Will Still,14,20,3.000,0.800,0.070,18.000,10.000,8.000
+Ligue 1,2022,Stade Brestois 29,10,2022-10-09,Michel Der Zakarian,Bruno Grougi,20,20,2.000,0.600,-0.242,12.000,11.200,0.800
+Ligue 1,2022,Stade Brestois 29,17,2023-01-01,Bruno Grougi,Éric Roy,17,20,4.000,0.765,-0.242,10.000,7.800,2.200
+Ligue 1,2023,Olympique Marseille,5,2023-09-17,Marcelino,Jacques Abardonado,3,18,9.000,1.800,0.726,14.000,16.600,-2.600
+Ligue 1,2023,Olympique Marseille,22,2024-02-18,Gennaro Gattuso,Jean-Louis Gasset,9,18,3.000,1.364,0.726,17.000,11.200,5.800
+Ligue 1,2023,Stade Rennais FC,12,2023-11-12,Bruno Génésio,Julien Stéphan,13,18,1.000,1.000,0.907,22.000,15.000,7.000
+Ligue 1,2023,FC Nantes,13,2023-11-26,Pierre Aristouy,Jocelyn Gourvennec,11,18,4.000,1.154,-0.056,10.000,14.800,-4.800
+Ligue 1,2024,Stade Rennais FC,10,2024-11-03,Julien Stéphan,Sébastien Tambouret,13,18,4.000,1.100,0.751,9.000,17.000,-8.000
+Ligue 1,2024,Stade Rennais FC,19,2025-01-25,Jorge Sampaoli,Habib Beye,15,18,3.000,0.895,0.751,18.000,17.600,0.400
+Ligue 1,2024,AS Saint-Étienne,15,2024-12-13,Olivier Dall'Oglio,Eirik Horneland,16,18,3.000,0.867,-1.328,7.000,7.000,0.000
+Ligue 1,2024,Montpellier HSC,8,2024-10-20,Michel Der Zakarian,Jean-Louis Gasset,18,18,3.000,0.500,-0.232,8.000,11.800,-3.800
+Ligue 1,2024,Olympique Lyon,19,2025-01-26,Pierre Sage,Paulo Fonseca,6,18,5.000,1.579,0.712,21.000,15.000,6.000
+Ligue 1,2024,Stade Reims,20,2025-02-02,Luka Elsner,Samba Diawara,13,18,2.000,1.100,-0.122,10.000,11.800,-1.800
+Ligue 1,2025,AS Monaco,7,2025-10-05,Adi Hütter,Sébastien Pocognoli,5,18,10.000,1.857,1.199,10.000,16.400,-6.400
+Ligue 1,2025,Olympique Marseille,21,2026-02-08,Roberto De Zerbi,Jacques Abardonado,4,18,7.000,1.857,0.899,14.000,18.600,-4.600
+Ligue 1,2025,Stade Rennais FC,21,2026-02-07,Habib Beye,Sébastien Tambouret,6,18,4.000,1.476,0.549,25.000,13.400,11.600
+Ligue 1,2025,FC Metz,18,2026-01-18,Stéphane Le Mignan,Benoît Tavenot,18,18,1.000,0.667,-1.160,3.000,10.200,-7.200
+Ligue 1,2025,OGC Nice,16,2025-12-14,Franck Haise,Claude Puel,13,18,0.000,1.062,0.546,10.000,12.200,-2.200
+Ligue 1,2025,RC Strasbourg Alsace,17,2026-01-03,Liam Rosenior,Gary O'Neil,7,18,2.000,1.412,0.677,16.000,17.200,-1.200
+Ligue 1,2025,FC Nantes,15,2025-12-06,Luís Castro,Ahmed Kantari,16,18,2.000,0.733,-0.089,6.000,9.000,-3.000
+Ligue 1,2025,Paris FC,23,2026-02-21,Stéphane Gilli,Antoine Kombouaré,15,18,4.000,1.000,-1.158,18.000,9.800,8.200
+Premier League,2012,Southampton FC,22,2013-01-16,Nigel Adkins,Mauricio Pochettino,15,20,7.000,1.000,-0.197,15.000,13.200,1.800
+Premier League,2012,Chelsea FC,12,2012-11-17,Roberto Di Matteo,Rafael Benítez,3,20,5.000,2.000,0.623,18.000,11.200,6.800
+Premier League,2012,Queens Park Rangers,12,2012-11-17,Mark Hughes,Mark Bowen,20,20,2.000,0.333,-0.502,10.000,10.000,0.000
+Premier League,2013,Tottenham Hotspur,16,2013-12-15,André Villas-Boas,Tim Sherwood,7,20,7.000,1.688,0.181,23.000,14.000,9.000
+Premier League,2013,Sunderland AFC,5,2013-09-21,Paolo Di Canio,Kevin Ball,20,20,1.000,0.200,-0.123,7.000,9.000,-2.000
+Premier League,2013,Cardiff City,18,2013-12-26,Malky Mackay,David Kerslake,16,20,4.000,0.944,-0.893,5.000,11.600,-6.600
+Premier League,2013,Crystal Palace,8,2013-10-21,Ian Holloway,Keith Millen,19,20,0.000,0.375,0.115,13.000,13.600,-0.600
+Premier League,2013,Fulham FC,13,2013-11-30,Martin Jol,René Meulensteen,18,20,0.000,0.769,-0.924,9.000,7.000,2.000
+Premier League,2013,Fulham FC,26,2014-02-12,René Meulensteen,Felix Magath,20,20,1.000,0.769,-0.924,11.000,10.000,1.000
+Premier League,2013,West Bromwich Albion,16,2013-12-14,Steve Clarke,Keith Downing,16,20,1.000,0.938,0.368,9.000,10.000,-1.000
+Premier League,2013,West Bromwich Albion,21,2014-01-11,Keith Downing,Pepe Mel,14,20,6.000,1.000,0.368,8.000,11.600,-3.600
+Premier League,2013,Swansea City,24,2014-02-01,Michael Laudrup,Garry Monk,12,20,3.000,1.000,-0.569,9.000,14.200,-5.200
+Premier League,2014,Aston Villa,25,2015-02-10,Paul Lambert,Tim Sherwood,18,20,0.000,0.880,-0.455,13.000,8.000,5.000
+Premier League,2014,Newcastle United,19,2014-12-28,Alan Pardew,John Carver,9,20,6.000,1.368,-0.058,9.000,10.400,-1.400
+Premier League,2014,Crystal Palace,18,2014-12-26,Neil Warnock,Keith Millen,18,20,2.000,0.833,-0.014,15.000,12.400,2.600
+Premier League,2014,West Bromwich Albion,19,2014-12-28,Alan Irvine,Rob Kelly,16,20,4.000,0.895,0.179,16.000,10.800,5.200
+Premier League,2014,Queens Park Rangers,23,2015-01-31,Harry Redknapp,Chris Ramsey,19,20,2.000,0.826,-1.470,7.000,11.200,-4.200
+Premier League,2015,Liverpool FC,8,2015-10-04,Brendan Rodgers,Jürgen Klopp,10,20,5.000,1.500,0.915,15.000,10.200,4.800
+Premier League,2015,Sunderland AFC,8,2015-10-03,Dick Advocaat,Sam Allardyce,19,20,2.000,0.375,-0.635,9.000,8.400,0.600
+Premier League,2015,Aston Villa,10,2015-10-24,Tim Sherwood,Kevin MacDonald,19,20,0.000,0.400,-0.502,4.000,9.000,-5.000
+Premier League,2015,Chelsea FC,16,2015-12-14,José Mourinho,Steve Holland,16,20,4.000,0.938,0.843,18.000,15.800,2.200
+Premier League,2015,Newcastle United,28,2016-03-05,Steve McClaren,Rafael Benítez,19,20,3.000,0.857,-0.065,13.000,7.600,5.400
+Premier League,2015,Swansea City,15,2015-12-05,Garry Monk,Alan Curtis,15,20,1.000,0.933,-0.403,13.000,8.800,4.200
+Premier League,2016,Middlesbrough FC,27,2017-03-04,Aitor Karanka,Steve Agnew,18,20,2.000,0.815,-0.798,6.000,11.000,-5.000
+Premier League,2016,Crystal Palace,17,2016-12-17,Alan Pardew,Sam Allardyce,17,20,4.000,0.882,-0.027,10.000,14.200,-4.200
+Premier League,2016,Leicester City,25,2017-02-12,Claudio Ranieri,Craig Shakespeare,17,20,0.000,0.840,0.232,22.000,13.000,9.000
+Premier League,2016,Swansea City,7,2016-10-01,Francesco Guidolin,Bob Bradley,17,20,1.000,0.571,-0.419,8.000,9.400,-1.400
+Premier League,2016,Swansea City,18,2016-12-26,Bob Bradley,Alan Curtis,19,20,3.000,0.667,-0.419,15.000,10.800,4.200
+Premier League,2016,Hull City,20,2017-01-02,Mike Phelan,Marco Silva,19,20,1.000,0.650,-1.031,14.000,6.800,7.200
+Premier League,2017,Everton FC,9,2017-10-22,Ronald Koeman,David Unsworth,18,20,4.000,0.889,0.088,18.000,9.800,8.200
+Premier League,2017,Everton FC,14,2017-11-29,David Unsworth,Sam Allardyce,13,20,7.000,1.071,0.088,13.000,13.400,-0.400
+Premier League,2017,West Ham United,11,2017-11-04,Slaven Bilic,David Moyes,17,20,5.000,0.818,0.075,12.000,14.800,-2.800
+Premier League,2017,Stoke City,22,2018-01-01,Mark Hughes,Eddie Niedzwiecki,16,20,4.000,0.909,-0.468,7.000,12.600,-5.600
+Premier League,2017,West Bromwich Albion,12,2017-11-18,Tony Pulis,Gary Megson,17,20,1.000,0.833,-0.225,6.000,10.200,-4.200
+Premier League,2017,Leicester City,8,2017-10-16,Craig Shakespeare,Michael Appleton,18,20,3.000,0.750,0.204,20.000,9.800,10.200
+Premier League,2017,Watford FC,24,2018-01-20,Marco Silva,Javi Gracia,10,20,4.000,1.083,-0.075,11.000,13.600,-2.600
+Premier League,2017,Swansea City,18,2017-12-18,Paul Clement,Leon Britton,20,20,3.000,0.667,-0.664,15.000,8.600,6.400
+Premier League,2018,Southampton FC,14,2018-12-01,Mark Hughes,Kelvin Davis,18,20,3.000,0.643,0.333,14.000,11.800,2.200
+Premier League,2018,Fulham FC,12,2018-11-11,Slavisa Jokanovic,Claudio Ranieri,20,20,0.000,0.417,-0.112,9.000,9.600,-0.600
+Premier League,2018,Fulham FC,28,2019-02-27,Claudio Ranieri,Scott Parker,19,20,3.000,0.607,-0.112,9.000,6.600,2.400
+Premier League,2018,Manchester United,17,2018-12-16,José Mourinho,Ole Gunnar Solskjær,6,20,6.000,1.529,1.445,26.000,17.600,8.400
+Premier League,2018,Leicester City,27,2019-02-23,Claude Puel,Mike Stowell,12,20,1.000,1.185,0.396,19.000,13.200,5.800
+Premier League,2018,Huddersfield Town,22,2019-01-12,David Wagner,Mark Hudson,20,20,1.000,0.500,-0.740,3.000,10.800,-7.800
+Premier League,2019,Arsenal FC,13,2019-11-23,Unai Emery,Freddie Ljungberg,7,20,3.000,1.385,0.747,11.000,8.800,2.200
+Premier League,2019,Arsenal FC,18,2019-12-21,Freddie Ljungberg,Mikel Arteta,11,20,5.000,1.278,0.747,17.000,10.200,6.800
+Premier League,2019,Everton FC,15,2019-12-04,Marco Silva,Duncan Ferguson,18,20,4.000,0.933,0.416,19.000,11.400,7.600
+Premier League,2019,Tottenham Hotspur,12,2019-11-09,Mauricio Pochettino,José Mourinho,12,20,3.000,1.167,0.979,16.000,13.000,3.000
+Premier League,2019,West Ham United,19,2019-12-28,Manuel Pellegrini,David Moyes,17,20,3.000,1.000,-0.003,8.000,10.800,-2.800
+Premier League,2019,Watford FC,14,2019-11-30,Quique Sánchez Flores,Hayden Mullins,20,20,4.000,0.571,-0.353,15.000,12.400,2.600
+Premier League,2020,Sheffield United,28,2021-03-06,Chris Wilder,Paul Heckingbottom,20,20,3.000,0.500,-0.534,9.000,7.000,2.000
+Premier League,2020,Chelsea FC,19,2021-01-19,Frank Lampard,Thomas Tuchel,8,20,4.000,1.526,0.989,22.000,13.800,8.200
+Premier League,2020,West Bromwich Albion,13,2020-12-15,Slaven Bilic,Sam Allardyce,19,20,4.000,0.538,-0.974,5.000,6.200,-1.200
+Premier League,2021,Everton FC,19,2022-01-15,Rafael Benítez,Duncan Ferguson,15,20,4.000,1.000,0.294,6.000,12.000,-6.000
+Premier League,2021,Tottenham Hotspur,10,2021-10-30,Nuno Espírito Santo,Antonio Conte,8,20,6.000,1.500,0.642,21.000,10.400,10.600
+Premier League,2021,Leeds United,26,2022-02-26,Marcelo Bielsa,Jesse Marsch,16,20,1.000,0.885,-0.339,11.000,11.800,-0.800
+Premier League,2021,Aston Villa,11,2021-11-05,Dean Smith,Steven Gerrard,15,20,0.000,0.909,0.170,16.000,9.400,6.600
+Premier League,2021,Newcastle United,8,2021-10-17,Steve Bruce,Graeme Jones,19,20,2.000,0.375,-0.367,7.000,11.400,-4.400
+Premier League,2021,Manchester United,12,2021-11-20,Ole Gunnar Solskjær,Michael Carrick,7,20,3.000,1.417,0.765,21.000,12.000,9.000
+Premier League,2021,Watford FC,7,2021-10-02,Xisco Muñoz,Claudio Ranieri,14,20,4.000,1.000,-1.126,6.000,12.200,-6.200
+Premier League,2021,Watford FC,20,2022-01-21,Claudio Ranieri,Roy Hodgson,18,20,1.000,0.700,-1.126,8.000,9.200,-1.200
+Premier League,2021,Norwich City,11,2021-11-06,Daniel Farke,Dean Smith,20,20,5.000,0.455,-0.913,8.000,12.200,-4.200
+Premier League,2022,Everton FC,20,2023-01-21,Frank Lampard,Sean Dyche,19,20,1.000,0.750,-0.002,12.000,15.800,-3.800
+Premier League,2022,Tottenham Hotspur,28,2023-03-18,Antonio Conte,Cristian Stellini,4,20,10.000,1.750,0.395,11.000,15.200,-4.200
+Premier League,2022,Southampton FC,14,2022-11-06,Ralph Hasenhüttl,Nathan Jones,18,20,5.000,0.857,-0.313,6.000,13.000,-7.000
+Premier League,2022,Southampton FC,22,2023-02-11,Nathan Jones,Rubén Sellés,20,20,3.000,0.682,-0.313,9.000,12.000,-3.000
+Premier League,2022,Leeds United,20,2023-02-05,Jesse Marsch,Michael Skubala,17,20,3.000,0.900,-0.302,11.000,12.600,-1.600
+Premier League,2022,Aston Villa,11,2022-10-20,Steven Gerrard,Aaron Danks,17,20,5.000,0.818,0.008,19.000,10.600,8.400
+Premier League,2022,Wolverhampton Wanderers,8,2022-10-01,Bruno Lage,Steve Davis,18,20,5.000,0.750,0.010,8.000,13.400,-5.400
+Premier League,2022,Wolverhampton Wanderers,15,2022-11-12,Steve Davis,Julen Lopetegui,20,20,1.000,0.667,0.010,14.000,9.600,4.400
+Premier League,2022,Chelsea FC,6,2022-09-03,Thomas Tuchel,Graham Potter,5,20,7.000,1.667,0.784,15.000,12.400,2.600
+Premier League,2022,Chelsea FC,28,2023-04-01,Graham Potter,Bruno Saltor,11,20,7.000,1.357,0.784,6.000,16.600,-10.600
+Premier League,2022,Crystal Palace,27,2023-03-15,Patrick Vieira,Patrick McCarthy,12,20,2.000,1.000,-0.469,17.000,13.200,3.800
+Premier League,2022,Leicester City,28,2023-04-01,Brendan Rodgers,Adam Sadler,18,20,1.000,0.893,0.019,9.000,13.400,-4.400
+Premier League,2022,Brighton & Hove Albion,6,2022-09-04,Graham Potter,Roberto De Zerbi,4,20,10.000,2.167,-0.437,11.000,12.000,-1.000
+Premier League,2023,Sheffield United,14,2023-12-02,Paul Heckingbottom,Chris Wilder,20,20,4.000,0.357,-1.431,8.000,7.400,0.600
+Premier League,2023,Nottingham Forest,17,2023-12-15,Steve Cooper,Nuno Espírito Santo,17,20,1.000,0.824,-0.244,10.000,10.600,-0.600
+Premier League,2023,Crystal Palace,24,2024-02-12,Roy Hodgson,Ray Lewington,16,20,6.000,1.000,-0.340,15.000,10.800,4.200
+Premier League,2024,Everton FC,19,2025-01-04,Sean Dyche,David Moyes,16,20,3.000,0.895,-0.221,17.000,8.800,8.200
+Premier League,2024,Southampton FC,16,2024-12-15,Russell Martin,Simon Rusk,20,20,1.000,0.312,-0.794,4.000,7.200,-3.200
+Premier League,2024,West Ham United,20,2025-01-04,Julen Lopetegui,Graham Potter,13,20,5.000,1.150,-0.023,11.000,10.400,0.600
+Premier League,2024,Wolverhampton Wanderers,16,2024-12-14,Gary O'Neil,Vítor Pereira,19,20,3.000,0.562,-0.220,13.000,9.400,3.600
+Premier League,2024,Manchester United,9,2024-10-27,Erik ten Hag,Ruud van Nistelrooy,14,20,5.000,1.222,0.533,11.000,13.200,-2.200
+Premier League,2024,Leicester City,12,2024-11-23,Steve Cooper,Ben Dawson,16,20,4.000,0.833,-0.807,4.000,11.200,-7.200
+Premier League,2025,Tottenham Hotspur,26,2026-02-10,Thomas Frank,Igor Tudor,16,20,2.000,1.115,0.519,9.000,10.800,-1.800
+Premier League,2025,West Ham United,5,2025-09-20,Graham Potter,Nuno Espírito Santo,18,20,3.000,0.600,-0.132,10.000,10.800,-0.800
+Premier League,2025,Wolverhampton Wanderers,10,2025-11-01,Vítor Pereira,Jamie Collins,20,20,2.000,0.200,-0.103,4.000,7.200,-3.200
+Premier League,2025,Chelsea FC,19,2025-12-30,Enzo Maresca,Calum McFarlane,5,20,6.000,1.579,0.765,18.000,16.400,1.600
+Premier League,2025,Nottingham Forest,8,2025-10-18,Ange Postecoglou,Sean Dyche,18,20,1.000,0.625,-0.011,13.000,9.400,3.600
+Premier League,2025,Nottingham Forest,26,2026-02-11,Sean Dyche,Vítor Pereira,17,20,6.000,1.038,-0.011,16.000,10.400,5.600
+Premier League,2025,Manchester United,20,2026-01-04,Rúben Amorim,Darren Fletcher,6,20,6.000,1.550,0.334,23.000,14.200,8.800
+Serie A,2012,Associazione Sportiva Roma,23,2013-02-01,Zdeněk Zeman,Aurelio Andreazzoli,8,20,2.000,1.478,0.432,18.000,12.200,5.800
+Serie A,2012,Genoa CFC,8,2012-10-21,Luigi De Canio,Luigi Delneri,11,20,6.000,1.125,0.171,5.000,13.000,-8.000
+Serie A,2012,Genoa CFC,21,2013-01-20,Luigi Delneri,Davide Ballardini,19,20,5.000,0.810,0.171,10.000,13.200,-3.200
+Serie A,2012,Juventus FC,7,2012-10-07,Massimo Carrera,Angelo Alessio,1,20,13.000,2.714,0.974,22.000,18.800,3.200
+Serie A,2012,Juventus FC,15,2012-12-01,Angelo Alessio,Antonio Conte,1,20,7.000,2.333,0.974,20.000,19.000,1.000
+Serie A,2012,Chievo Verona,6,2012-09-30,Domenico Di Carlo,Eugenio Corini,19,20,0.000,0.500,-0.338,15.000,10.200,4.800
+Serie A,2012,UC Sampdoria,17,2012-12-16,Ciro Ferrara,Delio Rossi,14,20,7.000,1.059,0.261,18.000,10.600,7.400
+Serie A,2012,Siena FC,17,2012-12-16,Serse Cosmi,Giuseppe Iachini,16,20,4.000,1.000,-1.562,10.000,8.400,1.600
+Serie A,2012,Delfino Pescara 1936,13,2012-11-18,Giovanni Stroppa,Cristiano Bergodi,19,20,4.000,0.846,-0.430,9.000,10.800,-1.800
+Serie A,2012,Delfino Pescara 1936,27,2013-03-03,Cristiano Bergodi,Cristian Bucchi,20,20,1.000,0.778,-0.430,1.000,10.000,-9.000
+Serie A,2013,AC Milan,19,2014-01-12,Massimiliano Allegri,Clarence Seedorf,11,20,5.000,1.158,0.775,14.000,15.200,-1.200
+Serie A,2013,Genoa CFC,6,2013-09-28,Fabio Liverani,Gian Piero Gasperini,14,20,4.000,0.667,0.179,16.000,14.000,2.000
+Serie A,2013,Società Sportiva Lazio S.p.A.,17,2013-12-22,Vladimir Petkovic,Edoardo Reja,10,20,4.000,1.176,0.054,18.000,14.000,4.000
+Serie A,2013,Chievo Verona,12,2013-11-10,Giuseppe Sannino,Eugenio Corini,20,20,2.000,0.500,-0.500,12.000,12.200,-0.200
+Serie A,2013,Bologna Football Club 1909,18,2014-01-06,Stefano Pioli,Davide Ballardini,17,20,4.000,0.833,-0.054,8.000,11.400,-3.400
+Serie A,2013,UC Sampdoria,12,2013-11-10,Delio Rossi,Siniša Mihajlović,18,20,6.000,0.750,0.344,16.000,7.500,8.500
+Serie A,2013,Catania FC,19,2014-01-12,Luigi De Canio,Rolando Maran,20,20,4.000,0.684,-0.630,7.000,4.000,3.000
+Serie A,2013,US Sassuolo,26,2014-03-02,Alberto Malesani,Eusebio Di Francesco,20,20,0.000,0.654,-1.145,14.000,7.400,6.600
+Serie A,2014,Inter Milan,11,2014-11-09,Walter Mazzarri,Roberto Mancini,9,20,8.000,1.455,0.455,10.000,14.000,-4.000
+Serie A,2014,Atalanta BC,25,2015-03-01,Stefano Colantuono,Edoardo Reja,17,20,3.000,0.920,-0.406,13.000,10.400,2.600
+Serie A,2014,Chievo Verona,7,2014-10-18,Eugenio Corini,Rolando Maran,17,20,1.000,0.571,-0.967,13.000,12.000,1.000
+Serie A,2014,Cagliari Calcio,26,2015-03-07,Gianfranco Zola,Zdenek Zeman,18,20,1.000,0.769,0.086,8.000,13.000,-5.000
+Serie A,2014,Cesena FC,14,2014-12-07,Pierpaolo Bisoli,Domenico Di Carlo,19,20,2.000,0.571,-1.925,8.000,6.400,1.600
+Serie A,2015,Associazione Sportiva Roma,19,2016-01-09,Rudi Garcia,Luciano Spalletti,5,20,7.000,1.789,0.589,25.000,15.800,9.200
+Serie A,2015,Hellas Verona,14,2015-11-29,Andrea Mandorlini,Luigi Delneri,20,20,1.000,0.429,-0.391,9.000,9.000,0.000
+Serie A,2015,Bologna Football Club 1909,10,2015-10-27,Delio Rossi,Roberto Donadoni,18,20,3.000,0.600,-0.142,17.000,11.000,6.000
+Serie A,2015,UC Sampdoria,12,2015-11-08,Walter Zenga,Vincenzo Montella,10,20,5.000,1.333,0.371,7.000,14.000,-7.000
+Serie A,2015,AC Carpi,11,2015-11-01,Giuseppe Sannino,Fabrizio Castori,20,20,4.000,0.545,-1.990,12.000,10.200,1.800
+Serie A,2016,Inter Milan,11,2016-10-30,Frank de Boer,Stefano Vecchi,11,20,3.000,1.273,0.774,25.000,11.800,13.200
+Serie A,2016,Udinese Calcio,7,2016-10-01,Giuseppe Iachini,Luigi Delneri,14,20,4.000,1.000,-0.038,17.000,10.000,7.000
+Serie A,2016,Palermo FC,14,2016-11-27,Roberto De Zerbi,Eugenio Corini,20,20,0.000,0.429,-0.813,8.000,5.000,3.000
+Serie A,2016,Palermo FC,21,2017-01-22,Eugenio Corini,Diego López,19,20,4.000,0.476,-0.813,5.000,10.400,-5.400
+Serie A,2016,Delfino Pescara 1936,24,2017-02-12,Massimo Oddo,Zdenek Zeman,20,20,0.000,0.375,-1.071,5.000,7.200,-2.200
+Serie A,2017,AC Milan,14,2017-11-26,Vincenzo Montella,Gennaro Gattuso,7,20,7.000,1.429,0.760,18.000,15.600,2.400
+Serie A,2017,Genoa CFC,12,2017-11-04,Ivan Juric,Davide Ballardini,18,20,4.000,0.500,-0.130,15.000,10.000,5.000
+Serie A,2017,Udinese Calcio,12,2017-11-19,Luigi Delneri,Massimo Oddo,14,20,6.000,1.000,-0.118,20.000,10.000,10.000
+Serie A,2017,Torino FC,19,2017-12-30,Siniša Mihajlović,Walter Mazzarri,10,20,6.000,1.316,-0.028,14.000,12.600,1.400
+Serie A,2017,Cagliari Calcio,8,2017-10-15,Massimo Rastelli,Diego López,14,20,3.000,0.750,0.028,11.000,13.800,-2.800
+Serie A,2017,FC Crotone,15,2017-12-04,Davide Nicola,Walter Zenga,16,20,6.000,0.800,-1.336,9.000,10.200,-1.200
+Serie A,2017,Benevento Calcio,9,2017-10-22,Marco Baroni,Roberto De Zerbi,20,20,0.000,0.000,-0.905,4.000,12.600,-8.600
+Serie A,2017,US Sassuolo,14,2017-11-25,Cristian Bucchi,Giuseppe Iachini,16,20,3.000,0.786,-0.082,12.000,7.200,4.800
+Serie A,2018,Associazione Sportiva Roma,26,2019-03-02,Eusebio Di Francesco,Claudio Ranieri,5,20,10.000,1.692,0.838,18.000,12.800,5.200
+Serie A,2018,Genoa CFC,7,2018-10-07,Davide Ballardini,Ivan Juric,12,20,9.000,1.714,-0.268,7.000,13.000,-6.000
+Serie A,2018,Genoa CFC,14,2018-12-02,Ivan Juric,Cesare Prandelli,14,20,1.000,1.071,-0.268,13.000,11.000,2.000
+Serie A,2018,Udinese Calcio,12,2018-11-11,Julio Velázquez,Davide Nicola,17,20,1.000,0.750,-0.203,10.000,14.400,-4.400
+Serie A,2018,Udinese Calcio,27,2019-03-17,Davide Nicola,Igor Tudor,16,20,6.000,0.926,-0.203,15.000,11.200,3.800
+Serie A,2018,FC Empoli,27,2019-03-11,Giuseppe Iachini,Aurelio Andreazzoli,17,20,4.000,0.815,-1.286,16.000,10.200,5.800
+Serie A,2018,Chievo Verona,8,2018-10-07,Lorenzo D'Anna,Gian Piero Ventura,19,20,1.000,0.250,-1.345,6.000,7.600,-1.600
+Serie A,2018,Bologna Football Club 1909,21,2019-01-27,Filippo Inzaghi,Siniša Mihajlović,18,20,2.000,0.667,-0.355,16.000,9.200,6.800
+Serie A,2018,Frosinone Calcio,16,2018-12-16,Moreno Longo,Marco Baroni,19,20,2.000,0.500,-1.619,9.000,9.400,-0.400
+Serie A,2019,AC Milan,7,2019-10-05,Marco Giampaolo,Stefano Pioli,11,20,6.000,1.286,0.938,12.000,15.600,-3.600
+Serie A,2019,Brescia Calcio,22,2020-02-01,Eugenio Corini,Diego López,20,20,1.000,0.682,-1.199,6.000,7.800,-1.800
+Serie A,2019,Genoa CFC,8,2019-10-20,Aurelio Andreazzoli,Thiago Motta,19,20,1.000,0.625,-0.282,9.000,11.600,-2.600
+Serie A,2019,Genoa CFC,17,2019-12-21,Thiago Motta,Davide Nicola,20,20,2.000,0.647,-0.282,14.000,11.600,2.400
+Serie A,2019,Torino FC,22,2020-02-02,Walter Mazzarri,Moreno Longo,12,20,6.000,1.227,-0.065,7.000,11.600,-4.600
+Serie A,2019,ACF Fiorentina,17,2019-12-20,Vincenzo Montella,Giuseppe Iachini,14,20,1.000,1.000,0.387,14.000,13.400,0.600
+Serie A,2019,UC Sampdoria,7,2019-10-05,Eusebio Di Francesco,Claudio Ranieri,20,20,3.000,0.429,0.329,12.000,8.500,3.500
+Serie A,2019,Cagliari Calcio,25,2020-03-01,Rolando Maran,Walter Zenga,11,20,2.000,1.280,0.007,10.000,10.000,0.000
+Serie A,2019,SPAL,23,2020-02-09,Leonardo Semplici,Luigi Di Biagio,20,20,3.000,0.652,-0.983,4.000,6.800,-2.800
+Serie A,2019,SSC Napoli,15,2019-12-07,Carlo Ancelotti,Gennaro Gattuso,7,20,3.000,1.400,1.067,15.000,14.000,1.000
+Serie A,2020,Parma Calcio 1913,16,2021-01-06,Fabio Liverani,Roberto D'Aversa,18,20,1.000,0.750,-0.386,4.000,12.000,-8.000
+Serie A,2020,Genoa CFC,13,2020-12-20,Rolando Maran,Davide Ballardini,19,20,2.000,0.538,-0.412,19.000,10.800,8.200
+Serie A,2020,Torino FC,18,2021-01-16,Marco Giampaolo,Davide Nicola,18,20,6.000,0.722,-0.045,11.000,13.333,-2.333
+Serie A,2020,ACF Fiorentina,28,2021-03-21,Cesare Prandelli,Giuseppe Iachini,14,20,4.000,1.036,0.531,11.000,12.800,-1.800
+Serie A,2020,Cagliari Calcio,23,2021-02-19,Eusebio Di Francesco,Leonardo Semplici,18,20,1.000,0.652,-0.005,16.000,8.200,7.800
+Serie A,2020,FC Crotone,24,2021-02-28,Giovanni Stroppa,Serse Cosmi,20,20,0.000,0.500,-1.870,6.000,9.400,-3.400
+Serie A,2021,Genoa CFC,12,2021-11-05,Davide Ballardini,Andriy Shevchenko,15,20,4.000,0.750,-0.496,3.000,13.400,-10.400
+Serie A,2021,Genoa CFC,21,2022-01-09,Andriy Shevchenko,Abdoulay Konko,19,20,2.000,0.571,-0.496,10.000,6.200,3.800
+Serie A,2021,US Salernitana 1919,8,2021-10-16,Fabrizio Castori,Stefano Colantuono,19,20,4.000,0.500,-1.932,4.000,10.000,-6.000
+Serie A,2021,US Salernitana 1919,23,2022-02-13,Stefano Colantuono,Davide Nicola,20,20,5.000,0.565,-1.932,12.000,8.200,3.800
+Serie A,2021,Udinese Calcio,16,2021-12-06,Luca Gotti,Gabriele Cioffi,14,20,5.000,1.000,-0.356,13.000,12.000,1.000
+Serie A,2021,UC Sampdoria,22,2022-01-15,Roberto D'Aversa,Marco Giampaolo,15,20,2.000,0.909,-0.078,9.000,9.600,-0.600
+Serie A,2022,Hellas Verona,9,2022-10-09,Gabriele Cioffi,Salvatore Bocchetti,18,20,3.000,0.556,-0.221,7.000,10.000,-3.000
+Serie A,2022,Hellas Verona,15,2022-11-13,Salvatore Bocchetti,Marco Zaffaroni,20,20,0.000,0.333,-0.221,13.000,7.333,5.667
+Serie A,2022,US Salernitana 1919,22,2023-02-13,Davide Nicola,Paulo Sousa,16,20,3.000,0.955,-1.012,13.000,10.400,2.600
+Serie A,2022,Bologna Football Club 1909,5,2022-09-04,Siniša Mihajlović,Luca Vigiani,16,20,3.000,0.600,-0.130,16.000,7.600,8.400
+Serie A,2022,UC Sampdoria,8,2022-10-02,Marco Giampaolo,Dejan Stankovic,20,20,1.000,0.250,-0.398,7.000,12.000,-5.000
+Serie A,2022,US Cremonese,18,2023-01-14,Massimiliano Alvini,Davide Ballardini,20,20,1.000,0.389,-1.173,6.000,7.600,-1.600
+Serie A,2022,AC Monza,6,2022-09-11,Giovanni Stroppa,Raffaele Palladino,20,20,1.000,0.167,-1.498,16.000,8.800,7.200
+Serie A,2022,Spezia Calcio,22,2023-02-11,Luca Gotti,Fabrizio Lorieri,17,20,4.000,0.864,-0.792,8.000,13.800,-5.800
+Serie A,2023,Associazione Sportiva Roma,20,2024-01-14,José Mourinho,Daniele De Rossi,9,20,4.000,1.450,0.636,23.000,13.200,9.800
+Serie A,2023,US Salernitana 1919,8,2023-10-08,Paulo Sousa,Filippo Inzaghi,19,20,1.000,0.375,-0.354,9.000,7.800,1.200
+Serie A,2023,US Salernitana 1919,24,2024-02-09,Filippo Inzaghi,Fabio Liverani,20,20,1.000,0.542,-0.354,2.000,10.000,-8.000
+Serie A,2023,Società Sportiva Lazio S.p.A.,28,2024-03-11,Maurizio Sarri,Giovanni Martusciello,9,20,3.000,1.429,0.457,21.000,14.000,7.000
+Serie A,2023,Udinese Calcio,9,2023-10-23,Andrea Sottil,Gabriele Cioffi,18,20,3.000,0.667,-0.074,11.000,9.800,1.200
+Serie A,2023,FC Empoli,20,2024-01-13,Aurelio Andreazzoli,Davide Nicola,19,20,1.000,0.650,-0.320,12.000,12.400,-0.400
+Serie A,2023,US Lecce,28,2024-03-10,Roberto D'Aversa,Luca Gotti,15,20,1.000,0.893,-0.509,13.000,12.200,0.800
+Serie A,2023,SSC Napoli,12,2023-11-12,Rudi Garcia,Walter Mazzarri,4,20,7.000,1.750,1.345,14.000,15.400,-1.400
+Serie A,2023,SSC Napoli,24,2024-02-17,Walter Mazzarri,Francesco Calzona,9,20,8.000,1.500,1.345,14.000,15.333,-1.333
+Serie A,2023,US Sassuolo,25,2024-02-24,Alessio Dionisi,Emiliano Bigica,18,20,1.000,0.800,0.047,9.000,10.400,-1.400
+Serie A,2024,AC Milan,17,2024-12-29,Paulo Fonseca,Sérgio Conceição,8,20,8.000,1.588,1.132,14.000,18.600,-4.600
+Serie A,2024,Associazione Sportiva Roma,12,2024-11-10,Ivan Juric,Claudio Ranieri,12,20,3.000,1.083,0.647,17.000,11.000,6.000
+Serie A,2024,Parma Calcio 1913,25,2025-02-16,Fabio Pecchia,Cristian Chivu,18,20,1.000,0.800,-0.788,12.000,8.800,3.200
+Serie A,2024,Genoa CFC,12,2024-11-07,Alberto Gilardino,Patrick Vieira,15,20,5.000,0.833,-0.092,16.000,12.000,4.000
+Serie A,2024,US Lecce,12,2024-11-08,Luca Gotti,Marco Giampaolo,18,20,4.000,0.750,-0.670,11.000,10.200,0.800
+Serie A,2024,AC Monza,24,2025-02-09,Salvatore Bocchetti,Alessandro Nesta,20,20,3.000,0.542,-0.215,2.000,9.600,-7.600
+Serie A,2025,Genoa CFC,9,2025-10-29,Patrick Vieira,Roberto Murgita,20,20,1.000,0.333,-0.124,13.000,14.200,-1.200
+Serie A,2025,Hellas Verona,23,2026-01-31,Paolo Zanetti,Paolo Sammarco,20,20,1.000,0.609,-0.754,4.000,7.800,-3.800
+Serie A,2025,Torino FC,26,2026-02-22,Marco Baroni,Roberto D'Aversa,15,20,4.000,1.038,-0.035,17.000,12.800,4.200
+Serie A,2025,ACF Fiorentina,10,2025-11-02,Stefano Pioli,Paolo Vanoli,19,20,1.000,0.400,0.438,10.000,11.400,-1.400
+Serie A,2025,Juventus FC,8,2025-10-26,Igor Tudor,Massimo Brambilla,8,20,3.000,1.500,1.154,21.000,12.600,8.400
+Serie A,2025,Atalanta BC,11,2025-11-09,Ivan Jurić,Raffaele Palladino,13,20,3.000,1.182,0.938,19.000,14.000,5.000
+Serie A,2025,Pisa Sporting Club,23,2026-01-31,Alberto Gilardino,Oscar Hiljemark,19,20,2.000,0.609,-1.020,4.000,9.200,-5.200
+Bundesliga,2012,1.FC Nuremberg,17,2012-12-16,Dieter Hecking,Michael Wiesinger,14,18,8.000,1.176,-0.476,15.000,9.800,5.200
+Bundesliga,2012,FC Schalke 04,17,2012-12-15,Huub Stevens,Jens Keller,7,18,2.000,1.471,0.074,17.000,10.400,6.600
+Bundesliga,2012,SpVgg Greuther Fürth,22,2013-02-16,Mike Büskens,Ludwig Preis,18,18,3.000,0.545,-1.607,9.000,11.400,-2.400
+Bundesliga,2012,VfL Wolfsburg,8,2012-10-20,Felix Magath,Lorenz-Günther Köstner,18,18,1.000,0.625,0.335,17.000,13.400,3.600
+Bundesliga,2012,VfL Wolfsburg,17,2012-12-15,Lorenz-Günther Köstner,Dieter Hecking,15,18,5.000,1.118,0.335,13.000,11.800,1.200
+Bundesliga,2012,TSG 1899 Hoffenheim,15,2012-12-02,Markus Babbel,Frank Kramer,16,18,1.000,0.800,-0.189,7.000,11.200,-4.200
+Bundesliga,2013,1.FC Nuremberg,8,2013-10-06,Michael Wiesinger,Roger Prinzen,16,18,3.000,0.625,-0.920,9.000,7.000,2.000
+Bundesliga,2013,Hamburger SV,5,2013-09-14,Thorsten Fink,Rodolfo Cardoso,15,18,4.000,0.800,0.005,12.000,12.200,-0.200
+Bundesliga,2013,Hamburger SV,21,2014-02-15,Bert van Marwijk,Mirko Slomka,17,18,0.000,0.762,0.005,11.000,8.400,2.600
+Bundesliga,2013,Hannover 96,17,2013-12-21,Mirko Slomka,Tayfun Korkut,13,18,4.000,1.059,-0.388,11.000,13.000,-2.000
+Bundesliga,2014,FC Schalke 04,7,2014-10-04,Jens Keller,Roberto Di Matteo,11,18,7.000,1.143,0.205,19.000,10.400,8.600
+Bundesliga,2014,1.FSV Mainz 05,21,2015-02-13,Kasper Hjulmand,Martin Schmidt,13,18,4.000,1.048,-0.237,15.000,14.400,0.600
+Bundesliga,2014,Hertha BSC,19,2015-02-04,Jos Luhukay,Pál Dárdai,17,18,4.000,0.947,0.241,16.000,3.750,12.250
+Bundesliga,2014,VfB Stuttgart,12,2014-11-23,Armin Veh,Huub Stevens,18,18,4.000,0.750,0.308,9.000,12.000,-3.000
+Bundesliga,2014,SV Werder Bremen,9,2014-10-24,Robin Dutt,Viktor Skrypnyk,18,18,1.000,0.444,-0.649,19.000,11.400,7.600
+Bundesliga,2015,Borussia Mönchengladbach,5,2015-09-19,Lucien Favre,André Schubert,18,18,0.000,0.000,0.390,26.000,12.800,13.200
+Bundesliga,2015,Hannover 96,17,2015-12-19,Michael Frontzeck,Thomas Schaaf,17,18,3.000,0.824,-0.297,3.000,10.000,-7.000
+Bundesliga,2015,VfB Stuttgart,13,2015-11-21,Alexander Zorniger,Jürgen Kramny,16,18,6.000,0.769,0.160,18.000,8.500,9.500
+Bundesliga,2015,TSG 1899 Hoffenheim,10,2015-10-23,Markus Gisdol,Huub Stevens,17,18,5.000,0.600,-0.043,8.000,8.800,-0.800
+Bundesliga,2015,TSG 1899 Hoffenheim,20,2016-02-07,Huub Stevens,Julian Nagelsmann,17,18,4.000,0.700,-0.043,20.000,7.200,12.800
+Bundesliga,2016,Bayer 04 Leverkusen,23,2017-03-04,Roger Schmidt,Tayfun Korkut,9,18,6.000,1.304,0.985,8.000,13.400,-5.400
+Bundesliga,2016,Borussia Mönchengladbach,16,2016-12-20,André Schubert,Dieter Hecking,14,18,4.000,1.000,0.559,17.000,14.600,2.400
+Bundesliga,2016,Hamburger SV,5,2016-09-24,Bruno Labbadia,Markus Gisdol,16,18,1.000,0.200,-0.877,9.000,8.200,0.800
+Bundesliga,2016,VfL Wolfsburg,7,2016-10-16,Dieter Hecking,Valérien Ismaël,14,18,2.000,0.857,0.645,13.000,15.200,-2.200
+Bundesliga,2016,VfL Wolfsburg,22,2017-02-24,Valérien Ismaël,Andries Jonker,14,18,3.000,1.000,0.645,14.000,12.400,1.600
+Bundesliga,2016,SV Darmstadt 98,13,2016-12-04,Norbert Meier,Ramon Berndroth,16,18,0.000,0.615,-1.569,4.000,11.750,-7.750
+Bundesliga,2016,FC Augsburg,14,2016-12-10,Dirk Schuster,Manuel Baum,12,18,6.000,1.000,0.002,14.000,11.200,2.800
+Bundesliga,2016,FC Ingolstadt 04,10,2016-11-05,Markus Kauczinski,Maik Walpurgis,17,18,1.000,0.200,-1.124,13.000,9.000,4.000
+Bundesliga,2017,Borussia Dortmund,15,2017-12-09,Peter Bosz,Peter Stöger,7,18,2.000,1.467,1.029,20.000,12.800,7.200
+Bundesliga,2017,Bayern Munich,6,2017-09-22,Carlo Ancelotti,Willy Sagnol,2,18,10.000,2.167,1.422,25.000,17.000,8.000
+Bundesliga,2017,Hamburger SV,19,2018-01-20,Markus Gisdol,Bernd Hollerbach,17,18,1.000,0.789,-0.759,7.000,11.000,-4.000
+Bundesliga,2017,VfB Stuttgart,20,2018-01-27,Hannes Wolf,Tayfun Korkut,15,18,3.000,1.000,-0.736,19.000,9.800,9.200
+Bundesliga,2017,VfL Wolfsburg,23,2018-02-17,Martin Schmidt,Bruno Labbadia,13,18,4.000,1.043,0.199,6.000,9.400,-3.400
+Bundesliga,2017,SV Werder Bremen,10,2017-10-29,Alexander Nouri,Florian Kohfeldt,17,18,3.000,0.500,-0.515,12.000,6.000,6.000
+Bundesliga,2018,1.FC Nuremberg,21,2019-02-09,Michael Köllner,Boris Schommers,18,18,1.000,0.571,-1.754,7.000,8.800,-1.800
+Bundesliga,2018,Bayer 04 Leverkusen,17,2018-12-22,Heiko Herrlich,Peter Bosz,9,18,10.000,1.412,0.785,18.000,20.800,-2.800
+Bundesliga,2018,Hannover 96,19,2019-01-26,André Breitenreiter,Thomas Doll,17,18,1.000,0.579,-0.649,3.000,14.000,-11.000
+Bundesliga,2018,VfB Stuttgart,7,2018-10-06,Tayfun Korkut,Markus Weinzierl,18,18,5.000,0.714,-0.055,9.000,10.600,-1.600
+Bundesliga,2019,1.FC Köln,11,2019-11-08,Achim Beierlorzer,Markus Gisdol,17,18,4.000,0.636,-1.051,16.000,10.200,5.800
+Bundesliga,2019,Bayern Munich,10,2019-11-02,Niko Kovac,Hansi Flick,4,18,7.000,1.800,1.304,24.000,16.800,7.200
+Bundesliga,2019,Fortuna Düsseldorf,19,2020-01-26,Friedhelm Funkel,Uwe Rösler,18,18,3.000,0.789,-0.774,12.000,6.400,5.600
+Bundesliga,2019,Hertha BSC,12,2019-11-24,Ante Covic,Jürgen Klinsmann,15,18,1.000,0.917,0.054,15.000,13.600,1.400
+Bundesliga,2019,Hertha BSC,21,2020-02-08,Jürgen Klinsmann,Alexander Nouri,14,18,5.000,1.095,0.054,15.000,13.600,1.400
+Bundesliga,2020,Arminia Bielefeld,22,2021-02-27,Uwe Neuhaus,Frank Kramer,16,18,1.000,0.818,-2.314,13.000,7.000,6.000
+Bundesliga,2020,Borussia Dortmund,11,2020-12-12,Lucien Favre,Edin Terzic,5,18,4.000,1.727,1.061,14.000,15.400,-1.400
+Bundesliga,2020,FC Schalke 04,12,2020-12-16,Manuel Baum,Huub Stevens,18,18,1.000,0.333,0.089,5.000,9.750,-4.750
+Bundesliga,2020,FC Schalke 04,23,2021-02-27,Christian Gross,Dimitrios Grammozis,18,18,2.000,0.391,0.089,7.000,8.000,-1.000
+Bundesliga,2020,1.FSV Mainz 05,13,2020-12-19,Jan-Moritz Lichte,Jan Siewert,17,18,2.000,0.462,-0.530,11.000,10.400,0.600
+Bundesliga,2020,Hertha BSC,18,2021-01-23,Bruno Labbadia,Pál Dárdai,14,18,4.000,0.944,0.093,9.000,12.000,-3.000
+Bundesliga,2021,Hertha BSC,13,2021-11-27,Pál Dárdai,Tayfun Korkut,14,18,5.000,1.077,0.055,9.000,11.600,-2.600
+Bundesliga,2021,VfL Wolfsburg,9,2021-10-23,Mark van Bommel,Florian Kohfeldt,8,18,1.000,1.444,0.256,8.000,7.400,0.600
+Bundesliga,2021,RB Leipzig,14,2021-12-03,Jesse Marsch,Domenico Tedesco,8,18,4.000,1.286,1.056,22.000,18.600,3.400
+Bundesliga,2022,Bayer 04 Leverkusen,8,2022-09-30,Gerardo Seoane,Xabi Alonso,16,18,5.000,0.625,1.040,19.000,14.000,5.000
+Bundesliga,2022,FC Schalke 04,10,2022-10-14,Frank Kramer,Matthias Kreutzer,16,18,3.000,0.600,-1.285,6.000,7.200,-1.200
+Bundesliga,2022,VfB Stuttgart,9,2022-10-09,Pellegrino Matarazzo,Michael Wimmer,17,18,2.000,0.556,-0.071,11.000,12.400,-1.400
+Bundesliga,2022,VfB Stuttgart,15,2022-11-12,Michael Wimmer,Bruno Labbadia,16,18,6.000,0.933,-0.071,6.000,10.400,-4.400
+Bundesliga,2022,VfL Bochum,6,2022-09-10,Thomas Reis,Heiko Butscher,18,18,0.000,0.000,-1.316,16.000,6.000,10.000
+Bundesliga,2022,TSG 1899 Hoffenheim,19,2023-02-04,André Breitenreiter,Pellegrino Matarazzo,14,18,1.000,1.000,0.270,10.000,13.200,-3.200
+Bundesliga,2022,RB Leipzig,5,2022-09-03,Domenico Tedesco,Marco Rose,11,18,5.000,1.000,1.072,23.000,13.000,10.000
+Bundesliga,2023,1.FC Köln,16,2023-12-20,Steffen Baumgart,Timo Schultz,17,18,4.000,0.625,-0.270,8.000,4.800,3.200
+Bundesliga,2023,1.FSV Mainz 05,9,2023-10-27,Bo Svensson,Jan Siewert,18,18,2.000,0.333,-0.120,8.000,11.000,-3.000
+Bundesliga,2023,1.FSV Mainz 05,21,2024-02-11,Jan Siewert,Bo Henriksen,17,18,2.000,0.571,-0.120,16.000,6.000,10.000
+Bundesliga,2023,1.FC Union Berlin,11,2023-11-12,Urs Fischer,Marco Grote,18,18,0.000,0.545,-0.021,15.000,10.000,5.000
+Bundesliga,2023,FC Augsburg,7,2023-10-07,Enrico Maaßen,Jess Thorup,15,18,4.000,0.714,-0.186,13.000,12.400,0.600
+Bundesliga,2024,Borussia Dortmund,18,2025-01-17,Nuri Şahin,Mike Tullberg,10,18,4.000,1.389,1.083,16.000,12.800,3.200
+Bundesliga,2024,VfL Bochum,7,2024-10-19,Peter Zeidler,Markus Feldhoff,18,18,1.000,0.143,-0.884,10.000,7.400,2.600
+Bundesliga,2024,1.FC Union Berlin,15,2024-12-21,Bo Svensson,Steffen Baumgart,12,18,0.000,1.067,-0.185,10.000,11.200,-1.200
+Bundesliga,2024,TSG 1899 Hoffenheim,10,2024-11-10,Pellegrino Matarazzo,Christian Ilzer,15,18,6.000,0.900,-0.041,9.000,17.200,-8.200
+Bundesliga,2025,Eintracht Frankfurt,18,2026-01-16,Dino Toppmöller,Dennis Schmitt,7,18,6.000,1.500,0.755,12.000,14.200,-2.200
+Bundesliga,2025,1.FSV Mainz 05,12,2025-11-30,Bo Henriksen,Benjamin Hoffmann,18,18,2.000,0.500,-0.006,15.000,10.200,4.800
+Bundesliga,2025,VfL Wolfsburg,10,2025-11-07,Paul Simonis,Daniel Bauer,12,18,3.000,0.800,0.373,11.000,14.400,-3.400
+Bundesliga,2025,SV Werder Bremen,20,2026-01-31,Horst Steffen,Daniel Thioune,15,18,2.000,0.950,-0.240,12.000,11.400,0.600
+Bundesliga,2025,FC Augsburg,12,2025-11-29,Sandro Wagner,Manuel Baum,13,18,3.000,0.833,-0.295,15.000,11.800,3.200
