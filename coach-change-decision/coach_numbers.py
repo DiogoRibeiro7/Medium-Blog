@@ -54,6 +54,13 @@ def main():
     by_lg = e[e.change == 1].groupby("league").size().rename(cc.LEAGUE_NAMES)
     print("changes by league: " + ", ".join(f"{k} {v}" for k, v in by_lg.items()))
     print(f"league-average points per match (all clubs): {m.pts.mean():.3f}")
+    print(f"in-season changes per season across the five leagues: {len(board) / m.season.nunique():.1f}")
+    final = dp.groupby(["league", "season", "club_id"]).agg(final_ppg=("ppg", "last"), worst5=("last5", "min"))
+    avg = final[final.final_ppg.between(1.30, 1.45)]
+    print(
+        f"clubs that finished a season on 1.30 to 1.45 points per match (about average): {len(avg)}; "
+        f"share with at least one run of five league matches bringing 3 points or fewer: {(avg.worst5 <= 3).mean():.3f}"
+    )
 
     print("\n== Who gets a change (logistic model, one row per decision point)")
     fit, logit = cc.fit_hazard(e)
@@ -335,6 +342,15 @@ def main():
         per["diff"].values,
     )
     out.to_csv(RESULTS / "changes.csv", index=False, float_format="%.3f")
+
+    print("\n== Two remembered changes")
+    for club, season in [("Bayern Munich", 2019), ("Manchester United", 2018)]:
+        r = out[(out.club == club) & (out.season == season)].iloc[0]
+        print(
+            f"{club} {season}/{(season + 1) % 100:02d}: {r.manager} -> {r.next_manager} after match {r.k} "
+            f"({r.date:%d %b %Y}), place {r.pos}, {r.last5:.0f} points from the last five; next ten: "
+            f"{r.next10_changed:.0f} points, comparison clubs {r.next10_kept_mean:.1f}, difference {r.difference:+.1f}"
+        )
 
 
 if __name__ == "__main__":

@@ -8,6 +8,8 @@ changes among them: 454; weekly rate 0.0157
 changes where the outgoing manager led another club within 30 days: 13
 changes by league: LaLiga 103, Ligue 1 83, Premier League 90, Serie A 103, Bundesliga 75
 league-average points per match (all clubs): 1.375
+in-season changes per season across the five leagues: 51.3
+clubs that finished a season on 1.30 to 1.45 points per match (about average): 144; share with at least one run of five league matches bringing 3 points or fewer: 0.875
 
 == Who gets a change (logistic model, one row per decision point)
 AUC 0.873
@@ -100,3 +102,7 @@ before/after gain +5.20; same-spot estimate +0.57; the observed state accounts f
   for a true gain of 1 points over ten, what the board knew and the data do not would have to cost the changed clubs 0.43 points: 9% of what the observed state accounts for
   for a true gain of 2 points over ten, what the board knew and the data do not would have to cost the changed clubs 1.43 points: 31% of what the observed state accounts for
   for a true gain of 3 points over ten, what the board knew and the data do not would have to cost the changed clubs 2.43 points: 52% of what the observed state accounts for
+
+== Two remembered changes
+Bayern Munich 2019/20: Niko Kovac -> Hansi Flick after match 10 (02 Nov 2019), place 4, 7 points from the last five; next ten: 24 points, comparison clubs 16.8, difference +7.2
+Manchester United 2018/19: José Mourinho -> Ole Gunnar Solskjær after match 17 (16 Dec 2018), place 6, 6 points from the last five; next ten: 26 points, comparison clubs 17.6, difference +8.4
