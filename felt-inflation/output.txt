@@ -136,6 +136,8 @@ median gap: 4.2 points; frequent share of spending in 2025: 39.5% to 58.7%
 correlation with the balance, median over countries: frequent 0.74, all items 0.73, everything else 0.62
 frequent correlates more than everything else in 23 of 27 countries
 frequent correlates more than all items in 14 of 27 countries
+largest gaps (frequent minus everything else): BE 0.37, BG 0.36, IT 0.24, ES 0.23, RO 0.23
+everything else correlates more in: DE -0.01, FR -0.01, CZ -0.06, LU -0.10
 one basket, country fixed effects: T12 slope 5.18, within R2 0.430
 one basket, country fixed effects: F12 slope 4.80, within R2 0.453
 one basket, country fixed effects: X12 slope 4.27, within R2 0.300
@@ -233,9 +235,21 @@ the twelve countries of the 2002 cash changeover, 1998-2025 fit, average gap by 
     2023:   17.3    16.0
     2024:   26.5    26.8
     2025:   22.6    23.1
+euro area balance: highest 2001-2020 73.2 (2008-07); October 2026 62.7
 euro area (21 countries), fitted on 2002-2025, 2026 answers minus prediction:
   all items    mean  11.3, RMSE  11.6; balance in 2026 45.8 to 62.7
   two baskets  mean  10.2, RMSE  10.8; balance in 2026 45.8 to 62.7
+  month: answers / predicted from all items / predicted from two baskets
+  2026-01:  46.9   31.2   31.2
+  2026-02:  45.8   33.3   31.8
+  2026-03:  47.4   39.4   42.7
+  2026-04:  56.4   43.8   49.2
+  2026-05:  57.4   45.1   46.7
+  2026-06:  55.5   41.4   40.4
+  2026-07:  53.8   43.0   43.1
+  2026-08:  54.9   45.7   47.7
+  2026-09:  58.7   50.6   52.9
+  2026-10:  62.7   52.9   52.2
 
 ====================================================================================================
 10. A felt index for the euro area (20 countries)

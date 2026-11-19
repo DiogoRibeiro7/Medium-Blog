@@ -166,6 +166,11 @@ def main():
     print(f"frequent correlates more than everything else in {(cor.F12 > cor.X12).sum()} of {len(cor)} countries")
     print(f"frequent correlates more than all items in {(cor.F12 > cor.T12).sum()} of {len(cor)} countries")
     cor.round(4).to_csv(RES / "correlations.csv")
+    gaps = (cor.F12 - cor.X12).sort_values(ascending=False)
+    print(
+        "largest gaps (frequent minus everything else): " + ", ".join(f"{g} {v:.2f}" for g, v in gaps.head(5).items())
+    )
+    print("everything else correlates more in: " + ", ".join(f"{g} {v:.2f}" for g, v in gaps[gaps < 0].items()))
     for x in ["T12", "F12", "X12"]:
         b, r2 = fc.fe_fit(p, "B", [x])
         print(f"one basket, country fixed effects: {x} slope {b[0]:.2f}, within R2 {r2:.3f}")
@@ -328,14 +333,24 @@ def main():
         }
     ).dropna()
     tr, te = agg.loc["2002-01":"2025-12"], agg.loc["2026-01":"2026-10"]
+    early = agg.B.loc["2001-01":"2020-12"]
+    print(
+        f"euro area balance: highest 2001-2020 {early.max():.1f} ({early.idxmax()});"
+        f" October 2026 {agg.B['2026-10']:.1f}"
+    )
+    preds = {}
     print("euro area (21 countries), fitted on 2002-2025, 2026 answers minus prediction:")
     for name, xs in [("all items", ["T12"]), ("two baskets", ["F12", "X12"])]:
         coef = fc.ols(tr, "B", xs)
         pr = coef[0] + sum(coef[i + 1] * te[x] for i, x in enumerate(xs))
+        preds[name] = pr
         print(
             f"  {name:12s} mean {fc.mean(te.B - pr):5.1f}, RMSE {fc.rmse(te.B, pr):5.1f};"
             f" balance in 2026 {te.B.min():.1f} to {te.B.max():.1f}"
         )
+    print("  month: answers / predicted from all items / predicted from two baskets")
+    for mo in te.index:
+        print(f"  {mo}: {te.B[mo]:5.1f}  {preds['all items'][mo]:5.1f}  {preds['two baskets'][mo]:5.1f}")
 
     # ----------------------------------------------------------------------------------------------- 10
     head("10. A felt index for the euro area (20 countries)")
