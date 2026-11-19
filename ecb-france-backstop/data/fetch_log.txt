@@ -180,3 +180,10 @@ eba file	200	1785417e172907b3a49623eb13e2cc6c7af26a02ae982bfe2ba3a70f782e4104	15
 eba file	SAVED	eba_tr_oth.csv.gz	1902447 bytes
 eba file	200	33e85cba051fac4d42c76272fb00b830cf26d9cab26398db32cc100135a0956c	91038353 bytes	https://www.eba.europa.eu/assets/TE2025/Full_database/883401/tr_sov.csv
 eba file	SAVED	eba_tr_sov.csv.gz	3300724 bytes
+# fetch.py run 2026-11-19T22:55:19+00:00
+eurostat yields_monthly	200	3e115405be66dd2e4cb4ab730c3ed6290ca6f5ae95a44cc3ab66ba1bcc61b2e5	106028 bytes	https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/irt_lt_mcby_m?format=JSON&lang=EN&geo=DE&geo=FR&geo=IT&geo=ES&geo=BE&geo=AT&geo=NL&geo=FI&geo=PT&geo=IE&geo=EL
+eurostat yields_monthly	ROWS	5625	columns ['freq', 'int_rt', 'geo', 'time', 'value']	last period 2026-10	filters []
+ecb ecb_yields_monthly	200	59ff44ff147d2ad61e5087466b6e0bfdbd61fd1252dda463e69c3b27944189db	1515336 bytes	https://data-api.ecb.europa.eu/service/data/IRS/M.DE+FR+IT+ES+BE+AT+NL+FI+PT+IE+GR.L.L40.CI.0000.EUR.N.Z?startPeriod=1995-01&format=csvdata
+ecb ecb_yields_monthly	ROWS	4202	series 11	last period 2026-10
+ecb target_balances	200	be8bacf11a102304cd65fab70f1bbe2c31e4dc1bc2c19d4dbdb5ed5fd6893dbc	417784 bytes	https://data-api.ecb.europa.eu/service/data/TGB/M.DE+FR+IT+ES+BE+AT+NL+FI+PT+IE+GR.N.A094T.U2.EUR.E?startPeriod=2008-01&format=csvdata
+ecb target_balances	ROWS	2431	series 11	last period 2026-09
