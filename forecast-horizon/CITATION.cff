@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "How far ahead weather can be forecast: error growth in Lorenz's models and in the real atmosphere"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-19
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/forecast-horizon"
+references:
+  - type: data
+    title: "The NCEP/NCAR 40-Year Reanalysis Project (sample distributed with xarray)"
+    authors:
+      - family-names: Kalnay
+        given-names: Eugenia
+    year: 1996
+    doi: 10.1175/1520-0477(1996)077<0437:TNYRP>2.0.CO;2
+    repository-code: "https://github.com/pydata/xarray-data"

@@ -1,0 +1,79 @@
+== Lorenz's rounding (Lorenz 1963 model)
+largest Lyapunov exponent: 0.908 per time unit; errors double every 0.76 time units
+typical distance between two states on the attractor: 18.8
+state kept to six decimals: -3.660875, -4.336895, 19.809181
+state rounded to three:     -3.661, -4.337, 19.809
+initial difference: 0.000244
+the two runs first differ by 1 unit at t = 9.4, and by half the typical distance at t = 11.7
+each tenfold reduction of the initial error adds 2.48 time units on average (range 2.16 to 2.74); ln(10)/exponent = 2.54
+
+== One scale (Lorenz 1996 model, 40 variables, forcing 8)
+climatological mean 2.35, standard deviation 3.64; one time unit = 5 days
+largest Lyapunov exponent: 1.692 per time unit; small errors double every 2.05 days
+error of a random guess from the climate: 5.15; horizon = time to reach half of it, 2.58
+  initial error 1e-08 of the natural variability: horizon  51.3 days
+  initial error 1e-07 of the natural variability: horizon  45.3 days
+  initial error 1e-06 of the natural variability: horizon  38.8 days
+  initial error 1e-05 of the natural variability: horizon  32.6 days
+  initial error 1e-04 of the natural variability: horizon  25.7 days
+  initial error 1e-03 of the natural variability: horizon  19.3 days
+  initial error 1e-02 of the natural variability: horizon  12.7 days
+  initial error 1e-01 of the natural variability: horizon   6.0 days
+days gained by each tenfold reduction: mean 6.5 (range 5.9 to 6.8)
+ln(10) / exponent, in days: 6.8
+
+== Two scales (Lorenz 1996 two-scale model: 36 slow and 360 fast variables)
+standard deviation: slow variables 3.55, fast variables 0.237
+largest Lyapunov exponent of the full system: 10.4 per time unit; the fastest errors double every 8.0 hours
+  initial error in the slow variables only:
+    1e-08 of their natural variability: horizon of the slow variables  26.1 days
+    1e-07 of their natural variability: horizon of the slow variables  24.7 days
+    1e-06 of their natural variability: horizon of the slow variables  23.3 days
+    1e-05 of their natural variability: horizon of the slow variables  21.6 days
+    1e-04 of their natural variability: horizon of the slow variables  20.7 days
+    1e-03 of their natural variability: horizon of the slow variables  19.4 days
+    1e-02 of their natural variability: horizon of the slow variables  17.2 days
+    1e-01 of their natural variability: horizon of the slow variables   8.8 days
+    1e+00 of their natural variability: horizon of the slow variables   0.0 days
+    days per tenfold reduction: from 1e-01 to 1e-02 8.5; below 1e-03, mean 1.3 (range 0.9 to 1.7)
+    gain from 1e-03 to 1e-08 (a hundred thousand times more precise): 6.7 days
+  initial error in the fast variables only:
+    1e-08 of their natural variability: horizon of the slow variables  25.4 days
+    1e-07 of their natural variability: horizon of the slow variables  24.2 days
+    1e-06 of their natural variability: horizon of the slow variables  23.8 days
+    1e-05 of their natural variability: horizon of the slow variables  21.9 days
+    1e-04 of their natural variability: horizon of the slow variables  20.3 days
+    1e-03 of their natural variability: horizon of the slow variables  19.4 days
+    1e-02 of their natural variability: horizon of the slow variables  18.8 days
+    1e-01 of their natural variability: horizon of the slow variables  16.4 days
+    1e+00 of their natural variability: horizon of the slow variables  14.3 days
+    days per tenfold reduction: from 1e-01 to 1e-02 2.4; below 1e-03, mean 1.2 (range 0.4 to 1.9)
+    gain from 1e-03 to 1e-08 (a hundred thousand times more precise): 6.0 days
+
+== Ensembles (one-scale model, perfect model)
+200 cases, 50 members, starting error 5% of the natural variability, 30 days
+anomaly correlation below 0.6: single forecast at day 10.0, ensemble mean at day 12.0
+single forecast worse than forecasting the climate average (error above 3.64) from day 11.0
+ensemble mean error at day 30: 1.00 of the natural variability; single forecast 1.38
+probability skill against climatology (CRPS skill score) at days 5, 10, 15, 20: 0.73, 0.36, 0.14, 0.05
+CRPS skill score first below 0.05 at day 20.5, below 0.01 at day 29.5
+spread / error of the ensemble mean, days 1 to 30: 0.98 to 1.03
+
+== The real atmosphere: analogues (NCEP/NCAR reanalysis sample, 2013-2014)
+730 days, 25 x 53 grid points from 15 to 75 N and 30 to 160 W; near-surface air temperature, daily means, seasonal cycle removed
+saturation (two unrelated days): 4.46 K; median same-season pair at least 30 days apart 0.91 of it
+closest analogue of each day (710 days): median distance 0.65 of saturation, closest of all 0.40
+pooled distance of analogue pairs by day, as a share of saturation: day 0 0.70, day 1 0.77, day 2 0.87, day 3 0.91, day 5 0.96, day 10 0.98, day 20 0.95
+level after day 10: 0.97; first reaches 95% of it on day 4
+best tenth of analogues (71): start 0.44, day 3 0.61, after day 10 0.67
+in the leading 20 patterns (79% of the variance), real against a linear stochastic copy (memory plus random forcing, no chaos):
+  real:      day 0 0.61, day 1 0.72, day 2 0.84, day 3 0.90, day 5 0.95, day 10 0.97
+  surrogate: day 0 0.61, day 1 0.74, day 2 0.82, day 3 0.88, day 5 0.95, day 10 1.00
+  largest gap over days 0 to 20: 0.05
+
+== Doubling times of small errors reported over the years
+  1966: Charney et al. (1966), early general circulation models (Smagorinsky 1963; Mintz 1964; Leith 1965): 5 days
+  1969: Smagorinsky (1969), primitive-equation model: 3 days
+  1981: Lorenz (1982), ECMWF operational model, 500 hPa height, 1 Dec 1980 to 10 Mar 1981: 2.5 days
+  1997: Simmons and Hollingsworth (2002), ECMWF, northern hemisphere, winter 1996/97: 1.42 to 1.59 days
+  2001: Simmons and Hollingsworth (2002), ECMWF, northern hemisphere, winter 2000/01: 1.14 to 1.42 days

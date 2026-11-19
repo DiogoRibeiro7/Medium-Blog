@@ -160,3 +160,4 @@ coupon-campaign-questions/**/*.csv -filter -diff -merge text
 org-chart-agents/**/*.csv -filter -diff -merge text
 coach-change-decision/**/*.csv -filter -diff -merge text
 battle-numbers/**/*.csv -filter -diff -merge text
+forecast-horizon/**/*.csv -filter -diff -merge text
