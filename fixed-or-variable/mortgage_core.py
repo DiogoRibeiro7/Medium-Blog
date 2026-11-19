@@ -209,6 +209,8 @@ def cohort(loans, start, horizon=HORIZON, income=None, hicp=None):
     }
     out["extra_fixed"] = out["interest_fix"] - out["interest_var"]  # > 0: fixing cost more
     out["rise"] = out["pay_var_max"] / out["pay_var0"] - 1
+    out["rise_fix"] = max(f.payment) / f.payment.iloc[0] - 1
+    out["extra_total"] = math.fsum(max(p - out["pay_var0"], 0.0) for p in v.payment)
     out["extra_peak_year"] = max(
         math.fsum(max(p - out["pay_var0"], 0.0) for p in v.payment.iloc[j : j + 12]) for j in range(max(n - 11, 1))
     )

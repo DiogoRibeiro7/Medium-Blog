@@ -95,6 +95,7 @@ start months with a rise above 25%: 140; above 50%: 64
 start months where payment-to-income passed 40%: 45 (2018-06 to 2022-07)
 fixed loans started 2019-2021: payment-to-income at the end of 2025, mean 24.1%
 fixed loans started 2019-2021: the payment in 2026-10, in prices of the start month, is 78.5% of the first payment
+starts 2019-2021: paid above the first payment, in total up to 2026-10: mean 6,632 euros, largest 7,270 euros (2021-09)
   start 2005-01: variable 439 -> highest 561 (2008-01); fixed 508
   start 2015-01: variable 336 -> highest 460 (2024-01); fixed 345
   start 2021-10: variable 322 -> highest 536 (2023-10); fixed 322
@@ -111,15 +112,18 @@ start months with a rise of 25% or more: 140; fixing cost -640 euros on average 
 ====================================================================================================
 7. Checks: other settings
 ====================================================================================================
-  base case                                variable cheaper  90.2%, mean extra cost of fixing  15,911; largest rise  66.7%, mean rise 2019-2021 starts  59.0%
-  fixed loans 0.25 points dearer           variable cheaper  94.4%, mean extra cost of fixing  18,319; largest rise  66.7%, mean rise 2019-2021 starts  59.0%
-  fixed loans 0.50 points dearer           variable cheaper  95.3%, mean extra cost of fixing  20,741; largest rise  66.7%, mean rise 2019-2021 starts  59.0%
-  margins of 1.5 points                    variable cheaper  90.2%, mean extra cost of fixing  16,112; largest rise  64.4%, mean rise 2019-2021 starts  57.1%
-  6-month Euribor, reset every 6 months    variable cheaper  90.2%, mean extra cost of fixing  17,417; largest rise  67.2%, mean rise 2019-2021 starts  60.9%
-  3-month Euribor, reset every 3 months    variable cheaper  90.2%, mean extra cost of fixing  18,458; largest rise  64.7%, mean rise 2019-2021 starts  60.1%
-  all euro-area government bonds           variable cheaper  96.3%, mean extra cost of fixing  19,216; largest rise  66.7%, mean rise 2019-2021 starts  59.0%
-  no floor at zero                         variable cheaper  92.6%, mean extra cost of fixing  16,320; largest rise  78.2%, mean rise 2019-2021 starts  66.3%
-  fixed for 30 years (30-year par yield)   variable cheaper  97.2%, mean extra cost of fixing  21,097; largest rise  66.7%, mean rise 2019-2021 starts  59.0%
+  base case                                variable cheaper  90.2%, mean extra cost of fixing  15,911; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+  fixed loans 0.25 points dearer           variable cheaper  94.4%, mean extra cost of fixing  18,319; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+  fixed loans 0.50 points dearer           variable cheaper  95.3%, mean extra cost of fixing  20,741; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+  margins of 1.5 points                    variable cheaper  90.2%, mean extra cost of fixing  16,112; largest rise  64.4%, mean rise 2019-2021 starts  57.1%; largest rise of the fixed payment   0.0%
+  6-month Euribor, reset every 6 months    variable cheaper  90.2%, mean extra cost of fixing  17,417; largest rise  67.2%, mean rise 2019-2021 starts  60.9%; largest rise of the fixed payment   0.0%
+  3-month Euribor, reset every 3 months    variable cheaper  90.2%, mean extra cost of fixing  18,458; largest rise  64.7%, mean rise 2019-2021 starts  60.1%; largest rise of the fixed payment   0.0%
+  all euro-area government bonds           variable cheaper  96.3%, mean extra cost of fixing  19,216; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+  no floor at zero                         variable cheaper  92.6%, mean extra cost of fixing  16,320; largest rise  78.2%, mean rise 2019-2021 starts  66.3%; largest rise of the fixed payment   0.0%
+  fixed for 5 years, then refixed          variable cheaper  81.4%, mean extra cost of fixing   4,611; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment  43.1%
+  fixed for 20 years (20-year par yield)   variable cheaper  95.8%, mean extra cost of fixing  20,354; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+  fixed for 30 years (30-year par yield)   variable cheaper  97.2%, mean extra cost of fixing  21,097; largest rise  66.7%, mean rise 2019-2021 starts  59.0%; largest rise of the fixed payment   0.0%
+fixed for 5 years: largest rise of the payment at the refix 43.1% (loan started 2021-09); refix raised the payment by more than 25% for 49 start months, from 2017-10 to 2021-10
 
 ====================================================================================================
 8. A loan started in 2026-10

@@ -33,7 +33,8 @@ def summary(r):
     return (
         f"variable cheaper {100 * (full.extra_fixed > 0).mean():5.1f}%, mean extra cost of fixing"
         f" {mc.mean(full.extra_fixed):7,.0f}; largest rise {100 * r.rise.max():5.1f}%,"
-        f" mean rise 2019-2021 starts {100 * mc.mean(late.rise):5.1f}%"
+        f" mean rise 2019-2021 starts {100 * mc.mean(late.rise):5.1f}%; largest rise of the fixed payment"
+        f" {100 * r.rise_fix.max():5.1f}%"
     )
 
 
@@ -147,6 +148,11 @@ def main():
         f"fixed loans started 2019-2021: the payment in {mc.LAST}, in prices of the start month,"
         f" is {100 * mc.mean(r.loc['2019-01':'2021-12'].real_fix_end):.1f}% of the first payment"
     )
+    g = r.loc["2019-01":"2021-12"]
+    print(
+        f"starts 2019-2021: paid above the first payment, in total up to {mc.LAST}: mean {eur(mc.mean(g.extra_total))},"
+        f" largest {eur(g.extra_total.max())} ({g.extra_total.idxmax()})"
+    )
     paths = {}
     for start in ["2005-01", "2015-01", "2021-10"]:
         n = min(mc.HORIZON, loans.available(start))
@@ -199,11 +205,21 @@ def main():
         ("3-month Euribor, reset every 3 months", {"index": "IRT_M3", "reset": 3}),
         ("all euro-area government bonds", {"bonds": "CGB_EA"}),
         ("no floor at zero", {"floor": False}),
+        ("fixed for 5 years, then refixed", {"fixed_years": 5}),
+        ("fixed for 20 years (20-year par yield)", {"fixed_years": 20}),
         ("fixed for 30 years (30-year par yield)", {"fixed_years": 30}),
     ]
     for name, kw in variants:
         rv = mc.all_cohorts(mc.Loans(m, **kw))
         print(f"  {name:40s} {summary(rv)}")
+        if kw.get("fixed_years") == 5:
+            five = rv
+    print(
+        f"fixed for 5 years: largest rise of the payment at the refix {100 * five.rise_fix.max():.1f}%"
+        f" (loan started {five.rise_fix.idxmax()}); refix raised the payment by more than 25% for"
+        f" {(five.rise_fix > 0.25).sum()} start months, from {five[five.rise_fix > 0.25].index[0]}"
+        f" to {five[five.rise_fix > 0.25].index[-1]}"
+    )
 
     # ------------------------------------------------------------------------------------------------ 8
     head(f"8. A loan started in {mc.LAST}")
