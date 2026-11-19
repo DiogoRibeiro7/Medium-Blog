@@ -1,5 +1,5 @@
-Latest monthly 10-year yields (2026-09): FR 4.44, DE 3.47, IT 4.36, ES 3.93
-Spreads to Germany (2026-09): FR +0.97, IT +0.89, ES +0.45
+Latest monthly 10-year yields (2026-10): FR 4.89, DE 3.42, IT 4.68, ES 4.07
+Spreads to Germany (2026-10): FR +1.47, IT +1.26, ES +0.65
 
 Levels: debt % GDP / interest % GDP / implicit rate / market yield / gap / primary balance % GDP / overall balance / nominal growth / debt-stabilising primary balance at the implicit rate | at the market yield
   FR 2025: 115.7 / 2.20 / 1.94 / 3.37 / +1.42 / -2.87 / -5.07 / +1.90 / +0.05 | +1.66
@@ -8,13 +8,13 @@ Levels: debt % GDP / interest % GDP / implicit rate / market yield / gap / prima
   FR 2011: 88.7 / 2.72 / 3.15 / 3.32 / +0.17 / -2.59 / -5.30 / +3.31 / -0.14 | +0.01
   IT 2025: 136.7 / 3.85 / 2.87 / 3.59 / +0.71 / +0.77 / -3.08 / +2.46 / +0.55 | +1.51
   ES 2025: 100.5 / 2.39 / 2.44 / 3.22 / +0.78 / -0.01 / -2.40 / +5.72 / -3.12 | -2.38
-  FR 2025 at 2026-09 yield: 115.7 / 2.20 / 1.94 / 4.44 / +2.50 / -2.87 / -5.07 / +1.90 / +0.05 | +2.88
+  FR 2025 at 2026-10 yield: 115.7 / 2.20 / 1.94 / 4.89 / +2.95 / -2.87 / -5.07 / +1.90 / +0.05 | +3.39
 
 Pass-through rho, pooled FR, IT, ES, DE, NL, AT, FI, BE with country intercepts, 1999-2025: 0.168 (SE 0.015)
   by country: FR 0.165 (0.057), IT 0.210 (0.060), ES 0.158 (0.037), DE 0.200 (0.036), NL 0.136 (0.041), AT 0.127 (0.033), FI 0.239 (0.052), BE 0.123 (0.029)
 Structural check, France 2025: 1 / average maturity (8.50 years) = 0.118; deficit / debt = 0.044; sum 0.161 against estimated rho 0.165
 Half-life of a gap between market yield and implicit rate at France's rho: 3.9 years; share of today's gap still open after 5 and 10 years: 0.41, 0.17
-France: gap between the 2026-09 yield and the 2025 implicit rate +2.50 pp, of which German yield level +1.53 and French spread +0.97
+France: gap between the 2026-10 yield and the 2025 implicit rate +2.95 pp, of which German yield level +1.47 and French spread +1.47
 
 Backtests: rho fitted before the test period, implicit rate simulated with actual yields; error = predicted - actual (pp)
   IT 2011-2019: rho 0.522; mean error +0.01, RMSE 0.67, max abs 0.97; actual/predicted 2011 3.93/4.58, 2012 4.15/5.06, 2013 3.70/4.67, 2014 3.43/3.74, 2015 3.06/2.68, 2016 2.92/2.06, 2017 2.83/2.09, 2018 2.73/2.36, 2019 2.51/2.15

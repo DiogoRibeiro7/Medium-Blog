@@ -1,4 +1,4 @@
-Monthly spreads to Germany, 1988-09 to 2026-09; windows of 24 months; factor from IT, ES, BE, AT, NL, FI, PT, IE (leave-one-out)
+Monthly spreads to Germany, 1988-09 to 2026-10; windows of 24 months; factor from IT, ES, BE, AT, NL, FI, PT, IE (leave-one-out)
 
 Window 2011 (2010-01 to 2011-12): first factor of the others explains 0.59 of their standardised variance
   France: R^2 on the others' factor 0.82 (90% block-bootstrap interval 0.40-0.87); cumulative spread change +0.89 pp, of which common +1.11 and specific -0.22; sd of monthly changes 15.2 bp, of the specific part 6.4 bp
@@ -9,25 +9,25 @@ Window 2011 (2010-01 to 2011-12): first factor of the others explains 0.59 of th
   correlation of monthly changes with France: IT 0.78, ES 0.80, BE 0.92, AT 0.93, NL 0.68, FI 0.69, PT 0.02, IE 0.13
   Italy's spread change per 1 pp change in France's: 1.80
 
-Window latest (2024-10 to 2026-09): first factor of the others explains 0.51 of their standardised variance
-  France: R^2 on the others' factor 0.14 (90% block-bootstrap interval 0.01-0.47); cumulative spread change +0.24 pp, of which common -0.13 and specific +0.36; sd of monthly changes 5.5 bp, of the specific part 5.1 bp
-  Italy: R^2 0.35 (0.09-0.55); cumulative change -0.51 pp (common -0.32, specific -0.19)
-  Spain: R^2 0.64 (0.25-0.85); cumulative change -0.37 pp (common -0.20, specific -0.17)
-  leave-one-out R^2, all panel countries (lowest first): NL 0.00, FR 0.14, FI 0.27, AT 0.30, IE 0.34, IT 0.35, PT 0.54, BE 0.62, ES 0.64
-  France ranks 2 of 9 from the bottom
-  correlation of monthly changes with France: IT 0.47, ES 0.38, BE 0.71, AT 0.05, NL 0.22, FI 0.26, PT 0.17, IE -0.02
-  Italy's spread change per 1 pp change in France's: 0.61
+Window latest (2024-11 to 2026-10): first factor of the others explains 0.61 of their standardised variance
+  France: R^2 on the others' factor 0.62 (90% block-bootstrap interval 0.03-0.74); cumulative spread change +0.71 pp, of which common -0.21 and specific +0.92; sd of monthly changes 11.5 bp, of the specific part 7.1 bp
+  Italy: R^2 0.67 (0.14-0.78); cumulative change -0.01 pp (common -0.11, specific +0.11)
+  Spain: R^2 0.86 (0.35-0.94); cumulative change -0.08 pp (common -0.05, specific -0.03)
+  leave-one-out R^2, all panel countries (lowest first): NL 0.08, IE 0.24, FI 0.40, AT 0.46, FR 0.62, PT 0.66, IT 0.67, BE 0.84, ES 0.86
+  France ranks 5 of 9 from the bottom
+  correlation of monthly changes with France: IT 0.84, ES 0.84, BE 0.94, AT 0.42, NL 0.40, FI 0.54, PT 0.61, IE 0.14
+  Italy's spread change per 1 pp change in France's: 0.75
 
-France's R^2, 2011 window minus latest window: +0.68 (90% interval of the bootstrap difference +0.13 to +0.79; share of draws above zero 0.985)
-Rolling 24-month R^2 of France on the others' factor: windows ending 2011 0.75 on average; ending 2015-2019 0.52 (range 0.19-0.70); latest 0.14; lowest since 2001: 0.09 (window ending 2007-05, when the sd of France's monthly spread changes was 1.2 bp)
-  sd of France's monthly spread changes: windows ending 2011 8.5 bp; 2015-2019 5.9; latest 5.5; of the part not shared with the others: 2011 4.2, 2015-2019 3.9, latest 5.1
+France's R^2, 2011 window minus latest window: +0.20 (90% interval of the bootstrap difference -0.13 to +0.75; share of draws above zero 0.895)
+Rolling 24-month R^2 of France on the others' factor: windows ending 2011 0.75 on average; ending 2015-2019 0.52 (range 0.19-0.70); latest 0.62; lowest since 2001: 0.09 (window ending 2007-05, when the sd of France's monthly spread changes was 1.2 bp)
+  sd of France's monthly spread changes: windows ending 2011 8.5 bp; 2015-2019 5.9; latest 11.5; of the part not shared with the others: 2011 4.2, 2015-2019 3.9, latest 7.1
   windows ending 2005-2007: R^2 0.41, sd 1.9 bp (spreads near zero, changes mostly noise)
 
 Spreads at 2011 reference month 2011-11 (pp, widest first): PT 10.02, IE 6.64, IT 5.19, ES 4.33, BE 2.97, FR 1.54, AT 1.49, FI 0.67, NL 0.58; France ranks 6 of 9; Greece (not in the panel) 16.05
   change over the 12 months from 2010-11: PT +5.64, IT +3.54, ES +2.17, BE +2.02, FR +1.07, AT +1.01, IE +0.95, FI +0.38, NL +0.32; countries widening by more than 0.10 pp: 9 of 9
-Spreads at latest reference month 2026-09 (pp, widest first): FR 0.97, IT 0.89, BE 0.65, ES 0.45, PT 0.37, FI 0.33, AT 0.21, IE 0.12, NL 0.09; France ranks 1 of 9; Greece (not in the panel) 0.75
-  change over the 12 months from 2025-09: FR +0.15, BE +0.08, IT +0.02, PT -0.07, FI -0.07, NL -0.10, ES -0.12, AT -0.12, IE -0.14; countries widening by more than 0.10 pp: 1 of 9
+Spreads at latest reference month 2026-10 (pp, widest first): FR 1.47, IT 1.26, BE 0.96, ES 0.65, PT 0.50, FI 0.41, AT 0.27, IE 0.14, NL 0.12; France ranks 1 of 9; Greece (not in the panel) 0.99
+  change over the 12 months from 2025-10: FR +0.65, IT +0.44, BE +0.39, ES +0.12, PT +0.10, FI +0.01, AT -0.04, NL -0.06, IE -0.12; countries widening by more than 0.10 pp: 4 of 9
 
-Change in spreads from 2026-01 to 2026-09 (pp): FR +0.24, IT +0.20, BE +0.09, PT -0.00, ES -0.01, NL -0.04, AT -0.06, FI -0.12, IE -0.14
-Change in spreads from 2026-06 to 2026-09 (pp): FR +0.25, IT +0.12, BE +0.10, PT +0.01, ES +0.01, FI -0.02, NL -0.02, AT -0.03, IE -0.04
-Correlation of monthly changes with France, 2026-01 to 2026-09 (9 months): IT 0.74, ES 0.56, BE 0.68, AT -0.10, NL 0.37, FI -0.03, PT 0.38, IE -0.38
+Change in spreads from 2026-01 to 2026-10 (pp): FR +0.75, IT +0.58, BE +0.41, ES +0.19, PT +0.12, AT +0.00, NL -0.01, FI -0.04, IE -0.12
+Change in spreads from 2026-06 to 2026-10 (pp): FR +0.76, IT +0.49, BE +0.42, ES +0.20, PT +0.14, FI +0.06, AT +0.03, NL +0.01, IE -0.03
+Correlation of monthly changes with France, 2026-01 to 2026-10 (10 months): IT 0.93, ES 0.94, BE 0.96, AT 0.54, NL 0.56, FI 0.52, PT 0.77, IE 0.08
