@@ -148,7 +148,7 @@ def fig3_precision():
     plt.close(fig)
 
 
-def fig4_ensemble():
+def fig6_ensemble():
     pl = pd.read_csv(RES / "ensemble_plume.csv")
     sk = pd.read_csv(RES / "ensemble_skill.csv")
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(10, 4.8), gridspec_kw={"wspace": 0.28})
@@ -176,12 +176,12 @@ def fig4_ensemble():
     grid(a2)
     frame(
         fig,
-        "Figure 4. A single forecast against an ensemble of 50, in a model with no model error",
+        "Figure 6. A single forecast against an ensemble of 50, in a model with no model error",
         "Lorenz's 1996 model; starting error 5% of the natural variability, the same size in every member.",
         SIM,
         bottom_in=0.75,
     )
-    fig.savefig(FIG / "fig4_ensemble.png")
+    fig.savefig(FIG / "fig6_ensemble.png")
     plt.close(fig)
 
 
@@ -219,7 +219,7 @@ def fig5_analogues():
     plt.close(fig)
 
 
-def fig6_doubling():
+def fig4_doubling():
     lit = pd.read_csv(HERE / "literature" / "doubling_times.csv")
     fig, ax = plt.subplots(figsize=(8, 4.6))
     hi = lit.doubling_days_high.fillna(lit.doubling_days)
@@ -252,14 +252,14 @@ def fig6_doubling():
     grid(ax)
     frame(
         fig,
-        "Figure 6. The better the models, the faster small errors are found to grow",
+        "Figure 4. The better the models, the faster small errors are found to grow",
         "Published estimates of the doubling time of small forecast errors; for ECMWF in 1996/97 and 2000/01, "
         "days 1 and 2 (filled and open).",
         "Sources: Bengtsson and Hodges (2006) for 1966 and 1969; Lorenz (1982); Simmons and Hollingsworth (2002). "
         "Figure: Diogo Ribeiro.",
         bottom_in=0.75,
     )
-    fig.savefig(FIG / "fig6_doubling.png")
+    fig.savefig(FIG / "fig4_doubling.png")
     plt.close(fig)
 
 
@@ -268,9 +268,9 @@ def main():
     fig1_rounding()
     fig2_error_growth()
     fig3_precision()
-    fig4_ensemble()
+    fig4_doubling()
     fig5_analogues()
-    fig6_doubling()
+    fig6_ensemble()
 
 
 if __name__ == "__main__":
