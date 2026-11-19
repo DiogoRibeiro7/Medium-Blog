@@ -122,6 +122,10 @@ def spillover() -> tuple[pd.DataFrame, list[str]]:
             rows.append(dict(period=label, country=j, beta=est[j], lo=D[j].quantile(.05), hi=D[j].quantile(.95), months=n))
         lines.append(f"  {label} ({n} months; France's own shock is {est['fr_own_share']:.0%} of the variance of its spread changes): "
                      + "; ".join(f"{NAMES[j]} {est[j]:+.2f} [{D[j].quantile(.05):+.2f}, {D[j].quantile(.95):+.2f}]" for j in OTHERS))
+    last_m = ch.index.max()
+    prev = spillover_betas(ch.loc["2024-06":str(last_m - 1)])
+    lines.append(f"  June 2024 to {last_m - 1} (without the latest month): France's own shock is {prev['fr_own_share']:.0%} of the variance; "
+                 + ", ".join(f"{NAMES[j]} {prev[j]:+.2f}" for j in ("BE", "IT")))
     df = pd.DataFrame(rows)
     df.to_csv(RESULTS / "channels_spillover.csv", index=False, float_format="%.4f")
     recent = df[df.period == "June 2024 on"].set_index("country")
