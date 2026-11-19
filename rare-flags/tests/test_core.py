@@ -37,6 +37,20 @@ class TestArithmetic(unittest.TestCase):
         posterior_odds = b / (1 - b) * lr
         self.assertAlmostEqual(posterior_odds / (1 + posterior_odds), t)
 
+    def test_rescale_score_at_calibration_base_is_identity(self):
+        self.assertAlmostEqual(fc.rescale_score(0.8, 0.5), 0.8)
+        self.assertAlmostEqual(fc.rescale_score(0.8, 0.2, calibration_base=0.2), 0.8)
+
+    def test_rescale_score_matches_bayes(self):
+        """A calibrated score is the probability on its own population; moving the base rate is Bayes' rule."""
+        sens, fpr = 0.9, 0.1
+        score_balanced = float(fc.ppv(0.5, sens, fpr))
+        self.assertAlmostEqual(fc.rescale_score(score_balanced, 0.03), float(fc.ppv(0.03, sens, fpr)))
+
+    def test_act_threshold(self):
+        self.assertAlmostEqual(fc.act_threshold(1, 1), 0.5)
+        self.assertAlmostEqual(fc.act_threshold(19, 1), 0.95)
+
     def test_false_per_true(self):
         self.assertAlmostEqual(float(fc.false_per_true(0.5, 1.0, 0.25)), 0.25)
 

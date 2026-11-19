@@ -184,12 +184,35 @@ def needs_section(m):
     )
 
 
+def reading_section():
+    print("\n== Reading a score and acting on a flag")
+    for b in ESSAY_BASES:
+        v = [fc.rescale_score(x, b) for x in (0.9, 0.98, 0.999)]
+        print(
+            f"a score calibrated on a balanced test set, read where {pct(b, 0)} are positive: 90% -> {pct(v[0])}, "
+            f"98% -> {pct(v[1])}, 99.9% -> {pct(v[2])}"
+        )
+    for ratio in (1, 20, 1 / 40):
+        print(
+            f"a false alarm costing {ratio:g} times a miss: act when a flag is right with probability above "
+            f"{pct(fc.act_threshold(ratio, 1))}"
+        )
+    lr = 0.9 / 0.09
+    odds = 0.01 / 0.99 * lr
+    odds2 = odds * lr
+    print(
+        f"mammography, a second positive from an independent test of the same accuracy: "
+        f"{pct(odds / (1 + odds))} -> {pct(odds2 / (1 + odds2))}"
+    )
+
+
 def main():
     RESULTS.mkdir(exist_ok=True)
     cases = cases_section()
     m = detectors_section()
     fraud_section()
     needs_section(m)
+    reading_section()
     cases.to_csv(RESULTS / "cases.csv", index=False)
 
 

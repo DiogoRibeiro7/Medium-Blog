@@ -44,6 +44,18 @@ def likelihood_ratio_needed(base, target):
     return (target / (1 - target)) / (base / (1 - base))
 
 
+def rescale_score(score, base, calibration_base=0.5):
+    """Probability for a score calibrated where positives were `calibration_base` of cases, read where they are
+    `base`: the score's odds times the ratio of the two base-rate odds."""
+    odds = score / (1 - score) * (base / (1 - base)) / (calibration_base / (1 - calibration_base))
+    return odds / (1 + odds)
+
+
+def act_threshold(cost_false_alarm, cost_miss):
+    """Acting on a flag lowers the expected cost when its probability of being right exceeds this."""
+    return cost_false_alarm / (cost_false_alarm + cost_miss)
+
+
 # ---------------------------------------------------------------- uncertainty from small samples
 
 

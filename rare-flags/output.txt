@@ -70,3 +70,11 @@ base rate 0.015%, sensitivity 90%: false-positive rate at most 0.014% for half t
 sensitivity / false-positive rate needed for 90% right flags at 3.000%: 291
 sensitivity / false-positive rate needed for 90% right flags at 0.015%: 59,991
 the average detector: sensitivity / false-positive rate 9.3 on native essays, 0.79 on non-native essays; OpenAI's classifier 2.9; Cardiff, if every one of 170,000 faces was checked once and all were innocent but 173: at most 74
+
+== Reading a score and acting on a flag
+a score calibrated on a balanced test set, read where 3% are positive: 90% -> 21.8%, 98% -> 60.2%, 99.9% -> 96.9%
+a score calibrated on a balanced test set, read where 11% are positive: 90% -> 52.7%, 98% -> 85.8%, 99.9% -> 99.2%
+a false alarm costing 1 times a miss: act when a flag is right with probability above 50.0%
+a false alarm costing 20 times a miss: act when a flag is right with probability above 95.2%
+a false alarm costing 0.025 times a miss: act when a flag is right with probability above 2.4%
+mammography, a second positive from an independent test of the same accuracy: 9.2% -> 50.3%
