@@ -1,0 +1,249 @@
+
+====================================================================================================
+1. Data
+====================================================================================================
+countries: 27 (AT BE BG CY CZ DE DK EE EL ES FI FR HR HU IE IT LT LU LV MT NL PL PT RO SE SI SK)
+months: 2002-01 to 2025-12; country-months in the panel: 7725
+prices: Eurostat HICP, ECOICOP ver.1 to 2025-12 (rebuilt baskets); ECOICOP ver.2 aggregates to 2026-10
+perceptions: EC consumer survey, price trends over the last 12 months, balance, seasonally adjusted
+
+====================================================================================================
+2. Rebuilding Eurostat's frequent out-of-pocket purchases (FROOPP) index: euro area check
+====================================================================================================
+weight, rebuilt minus published, 2001-2016: largest gap 0.03 per mille
+weight, rebuilt minus published, 2017-2025: 26.0 to 32.6 per mille
+published FROOPP weight 2017-2025: 420.4 to 427.9 per mille
+12-month rate, rebuilt minus published, 2002-2016: largest gap 0.020 points
+12-month rate, rebuilt minus published, 2017-2025: mean gap 0.075, largest 0.353 points
+everything else, 12-month rate gap 2002-2016: largest 0.058 points
+
+====================================================================================================
+3. Euro area (20 countries), two baskets, ECOICOP ver.2, to October 2026
+====================================================================================================
+weight of frequent purchases in 2026: 42.3% of spending
+2001-12 to 2020-12, a year: frequent 1.98%, all items 1.56%, everything else 1.23%
+2001-12 to 2025-12, a year: frequent 2.58%, all items 2.12%, everything else 1.76%
+2001-12 to 2026-10, a year: frequent 2.67%, all items 2.21%, everything else 1.86%
+2001-12 to 2026-10, total: frequent +92.4%, all items +72.3%, everything else +58.0%
+2020-12 to 2025-12, total: frequent +26.9%, all items +23.2%, everything else +20.7%
+2020-12 to 2026-10, total: frequent +32.7%, all items +28.3%, everything else +25.3%
+2025-12 to 2026-10, total: frequent +4.5%, all items +4.1%, everything else +3.8%
+months 2002-01 to 2026-10 with frequent purchases rising faster than everything else: 243 of 298
+average 12-month rate by year (frequent / all items / everything else):
+  2002:  2.85   2.27   1.81
+  2003:  2.68   2.12   1.65
+  2004:  2.75   2.18   1.71
+  2005:  2.53   2.20   1.92
+  2006:  2.53   2.21   1.94
+  2007:  2.72   2.17   1.72
+  2008:  4.59   3.36   2.35
+  2009:  0.09   0.33   0.55
+  2010:  2.35   1.61   0.99
+  2011:  3.35   2.72   2.19
+  2012:  3.14   2.50   1.97
+  2013:  1.75   1.36   1.01
+  2014:  0.44   0.43   0.42
+  2015: -0.09   0.19   0.44
+  2016:  0.31   0.23   0.17
+  2017:  2.00   1.54   1.22
+  2018:  2.39   1.75   1.31
+  2019:  1.43   1.20   1.03
+  2020:  0.50   0.26   0.08
+  2021:  2.88   2.59   2.39
+  2022:  8.80   8.38   8.08
+  2023:  7.52   5.48   4.04
+  2024:  2.48   2.37   2.29
+  2025:  2.22   2.13   2.07
+12-month rates in 2026 (frequent / all items / everything else / fuel / household electricity and gas):
+  2026-01:  2.02   1.66   1.38   -4.04   -3.91
+  2026-02:  2.08   1.89   1.73   -3.27   -2.93
+  2026-03:  3.51   2.55   1.85   14.50   -2.43
+  2026-04:  4.32   3.01   2.08   23.84    0.27
+  2026-05:  3.96   3.15   2.57   22.62    1.29
+  2026-06:  3.15   2.74   2.45   15.08    3.18
+  2026-07:  3.51   2.94   2.51   18.24    3.83
+  2026-08:  4.12   3.22   2.57   25.82    4.90
+  2026-09:  4.76   3.76   3.04   33.77    7.00
+  2026-10:  4.65   4.01   3.56   32.40   11.70
+
+====================================================================================================
+4. Item by item, euro area, December 2001 to December 2025 (ECOICOP ver.1)
+====================================================================================================
+  Tobacco                        frequent  +240.4%
+  Electricity                    bill      +153.0%
+  Gas                            bill      +147.4%
+  Newspapers and magazines       frequent  +128.8%
+  Oils and fats                  frequent  +121.8%
+  Fuel for cars                  frequent  +98.4%
+  Restaurants and cafés          frequent  +96.4%
+  Coffee, tea and cocoa          frequent  +94.1%
+  Bread and cereals              frequent  +81.5%
+  Insurance                      bill      +81.1%
+  Meat                           frequent  +79.1%
+  Package holidays               rare      +77.3%
+  Hairdressing                   frequent  +76.2%
+  Milk, cheese and eggs          frequent  +75.9%
+  Rent                           bill      +51.6%
+  Furniture                      rare      +43.7%
+  New cars                       rare      +42.3%
+  Shoes                          rare      +23.2%
+  Clothing                       rare      +23.0%
+  Household appliances           rare      -13.0%
+  Post, phone and internet       bill      -32.4%
+  TVs and audio equipment        rare      -78.9%
+  Computers                      rare      -84.1%
+median, frequent: +95.3% (10 items)
+median, bill: +81.1% (5 items)
+median, rare: +23.1% (8 items)
+
+====================================================================================================
+5. Country by country: rebuilt baskets, December 2020 to December 2025
+====================================================================================================
+  BG: frequent +46.6%, all items +35.1%, everything else +22.2%, gap +11.5 points; frequent share 53.6%
+  HU: frequent +63.8%, all items +53.3%, everything else +39.9%, gap +10.6 points; frequent share 58.7%
+  SK: frequent +46.8%, all items +38.4%, everything else +28.3%, gap +8.4 points; frequent share 56.2%
+  SI: frequent +34.8%, all items +26.5%, everything else +19.0%, gap +8.3 points; frequent share 49.5%
+  MT: frequent +26.0%, all items +19.1%, everything else +13.1%, gap +6.9 points; frequent share 48.2%
+  LT: frequent +48.2%, all items +41.9%, everything else +35.2%, gap +6.4 points; frequent share 52.6%
+  PT: frequent +27.6%, all items +21.4%, everything else +15.4%, gap +6.2 points; frequent share 49.5%
+  DK: frequent +23.7%, all items +18.1%, everything else +14.3%, gap +5.6 points; frequent share 41.1%
+  SE: frequent +27.6%, all items +22.4%, everything else +18.1%, gap +5.2 points; frequent share 46.9%
+  LU: frequent +26.4%, all items +21.3%, everything else +16.4%, gap +5.1 points; frequent share 54.3%
+  HR: frequent +40.5%, all items +35.4%, everything else +29.2%, gap +5.1 points; frequent share 56.4%
+  DE: frequent +30.8%, all items +26.1%, everything else +23.3%, gap +4.7 points; frequent share 39.5%
+  ES: frequent +27.5%, all items +23.0%, everything else +17.8%, gap +4.4 points; frequent share 52.9%
+  BE: frequent +30.2%, all items +26.0%, everything else +22.7%, gap +4.2 points; frequent share 43.2%
+  NL: frequent +30.8%, all items +27.4%, everything else +24.6%, gap +3.4 points; frequent share 42.4%
+  AT: frequent +31.9%, all items +28.5%, everything else +25.7%, gap +3.4 points; frequent share 44.2%
+  LV: frequent +43.8%, all items +40.4%, everything else +36.2%, gap +3.4 points; frequent share 57.1%
+  EL: frequent +26.3%, all items +23.3%, everything else +19.7%, gap +3.0 points; frequent share 53.1%
+  FI: frequent +20.3%, all items +17.4%, everything else +15.0%, gap +2.9 points; frequent share 45.5%
+  CY: frequent +21.3%, all items +18.6%, everything else +15.3%, gap +2.7 points; frequent share 55.8%
+  FR: frequent +20.2%, all items +17.7%, everything else +15.6%, gap +2.6 points; frequent share 45.1%
+  EE: frequent +51.0%, all items +48.6%, everything else +46.2%, gap +2.4 points; frequent share 50.4%
+  IE: frequent +24.2%, all items +22.4%, everything else +20.8%, gap +1.8 points; frequent share 52.1%
+  RO: frequent +50.8%, all items +49.2%, everything else +46.7%, gap +1.6 points; frequent share 58.1%
+  PL: frequent +42.0%, all items +40.9%, everything else +39.9%, gap +1.1 points; frequent share 47.5%
+  IT: frequent +21.5%, all items +20.7%, everything else +19.9%, gap +0.8 points; frequent share 48.3%
+  CZ: frequent +35.7%, all items +39.1%, everything else +42.5%, gap -3.4 points; frequent share 50.7%
+countries where frequent purchases rose more than all items: 26 of 27
+median gap: 4.2 points; frequent share of spending in 2025: 39.5% to 58.7%
+2001-12 to 2020-12, a year, frequent minus everything else: median 0.90 points, positive in 26 of 27; negative in RO
+
+====================================================================================================
+6. What people say: perceived price trends against the two baskets, 27 countries, 2002-2025
+====================================================================================================
+correlation with the balance, median over countries: frequent 0.74, all items 0.73, everything else 0.62
+frequent correlates more than everything else in 23 of 27 countries
+frequent correlates more than all items in 14 of 27 countries
+one basket, country fixed effects: T12 slope 5.18, within R2 0.430
+one basket, country fixed effects: F12 slope 4.80, within R2 0.453
+one basket, country fixed effects: X12 slope 4.27, within R2 0.300
+both baskets, country fixed effects: slopes frequent 4.31, everything else 0.71, within R2 0.457
+weight the answers put on frequent purchases: 0.86, 95% interval [0.71, 1.04] (countries resampled)
+weight frequent purchases have in spending (average over countries): 0.50
+with month fixed effects as well: 0.90, 95% interval [0.68, 1.08] (199 resamples)
+the same weight in other samples:
+  2002-2019                    0.83 (spending share 0.50, 5782 rows)
+  without 2021-2023            0.77 (spending share 0.50, 6753 rows)
+  without 2002                 0.80 (spending share 0.50, 7423 rows)
+  euro countries               0.84 (spending share 0.50, 5709 rows)
+  countries outside the euro   0.92 (spending share 0.52, 2016 rows)
+
+====================================================================================================
+7. Groceries, bills and the rest
+====================================================================================================
+six baskets, country fixed effects, within R2 0.482
+  groceries, drinks, tobacco     slope  2.10; weight in answers 0.36 [0.22, 0.52]; in spending 0.24
+  fuel for cars                  slope  0.29; weight in answers 0.05 [0.03, 0.07]; in spending 0.05
+  other frequent purchases       slope  1.25; weight in answers 0.21 [0.03, 0.44]; in spending 0.21
+  household energy               slope  0.02; weight in answers 0.00 [-0.02, 0.02]; in spending 0.06
+  rent, water, phone, insurance  slope  0.01; weight in answers 0.00 [-0.12, 0.14]; in spending 0.10
+  everything else                slope  2.22; weight in answers 0.38 [0.16, 0.52]; in spending 0.33
+three baskets, within R2 0.481
+  frequent purchases                             slope  3.83; weight in answers 0.64 [0.49, 0.82]; in spending 0.50
+  bills (energy, rent, water, phone, insurance)  slope -0.20; weight in answers -0.03 [-0.09, 0.02]; in spending 0.17
+  everything else                                slope  2.40; weight in answers 0.40 [0.22, 0.52]; in spending 0.33
+three baskets in other samples (weights in answers: frequent / bills / everything else):
+  with month fixed effects   0.56 / -0.05 / 0.49
+  2002-2019                  0.75 / 0.07 / 0.18
+  without 2021-2023          0.62 / 0.01 / 0.37
+  euro countries             0.60 / -0.04 / 0.43
+
+====================================================================================================
+8. Memory: the last 12 months, or longer?
+====================================================================================================
+sample with 48 months of history: 7569 rows, 2002-01 to 2025-12
+  change over 12 months (a year): all items within R2 0.450; both baskets 0.471, weight on frequent 0.79
+  change over 24 months (a year): all items within R2 0.467; both baskets 0.490, weight on frequent 0.86
+  change over 36 months (a year): all items within R2 0.398; both baskets 0.416, weight on frequent 0.88
+  change over 48 months (a year): all items within R2 0.335; both baskets 0.360, weight on frequent 0.99
+sample with 36 months of history: 7629 rows
+  12-month rates only: slopes [4.23, 1.08], within R2 0.470
+  12- and 36-month rates: slopes [2.8, 0.9, 3.82, -0.31] (F12, X12, F36, X36), within R2 0.541
+average gap between answers and the model, by year (balance points; 12 months only / with 36 months):
+  2002:    0.6    -1.2
+  2003:    3.4     2.7
+  2004:   -0.0     0.3
+  2005:    0.7     0.8
+  2006:   -1.2    -1.5
+  2007:    1.1     1.2
+  2008:    6.5     6.4
+  2009:   -6.2   -12.3
+  2010:  -10.7   -13.4
+  2011:    4.1     7.0
+  2012:    6.5     5.9
+  2013:    4.6     2.5
+  2014:   -2.9    -2.6
+  2015:  -11.9    -8.1
+  2016:  -14.6    -7.8
+  2017:  -13.4    -5.4
+  2018:   -7.1    -2.6
+  2019:   -4.8    -3.0
+  2020:   -7.0    -5.2
+  2021:   -2.2     2.1
+  2022:   -3.5     3.2
+  2023:   14.4     7.6
+  2024:   24.0     8.9
+  2025:   20.3    14.7
+the twelve countries of the 2002 cash changeover, 1998-2025 fit, average gap by year:
+  1998:  -18.3
+  1999:  -17.9
+  2000:  -11.7
+  2001:   -8.9
+  2002:    8.1
+  2003:   16.2
+  2004:   13.2
+  2005:   10.6
+  2006:    7.4
+  countries with answers before 2002: 11, 48 to 48 months each
+
+====================================================================================================
+9. Out of sample: fit on 2002-2019, predict 2020-2025
+====================================================================================================
+  all items      slopes [5.93]; RMSE 2020-2025 25.6 balance points
+  two baskets    slopes [4.54, 0.96]; RMSE 2020-2025 24.7 balance points
+  three baskets  slopes [4.35, 0.4, 1.07]; RMSE 2020-2025 24.6 balance points
+  two baskets beats all items in 17 of 27 countries
+  three baskets beats all items in 20 of 27 countries
+  average error by year (answers minus prediction; all items / two baskets):
+    2020:   -3.2    -3.8
+    2021:   -0.2     0.6
+    2022:   -5.9    -2.2
+    2023:   17.3    16.0
+    2024:   26.5    26.8
+    2025:   22.6    23.1
+euro area (21 countries), fitted on 2002-2025, 2026 answers minus prediction:
+  all items    mean  11.3, RMSE  11.6; balance in 2026 45.8 to 62.7
+  two baskets  mean  10.2, RMSE  10.8; balance in 2026 45.8 to 62.7
+
+====================================================================================================
+10. A felt index for the euro area (20 countries)
+====================================================================================================
+two-basket index with the published weights against all items, 2020-12 to 2026-10: +28.34% vs +28.34%
+published weight of frequent purchases, 2021-2026: 0.410 to 0.423
+  weight 0.423: 2020-12 to 2026-10 +28.4%, 2001-12 to 2026-10 +71.8%; 12-month rate 2022-12 9.2%, 2026-10 4.0%
+  weight 0.500: 2020-12 to 2026-10 +29.0%, 2001-12 to 2026-10 +74.4%; 12-month rate 2022-12 9.4%, 2026-10 4.1%
+  weight 0.860: 2020-12 to 2026-10 +31.6%, 2001-12 to 2026-10 +87.2%; 12-month rate 2022-12 10.1%, 2026-10 4.5%
+  weight 1.000: 2020-12 to 2026-10 +32.7%, 2001-12 to 2026-10 +92.4%; 12-month rate 2022-12 10.4%, 2026-10 4.7%
+published all items: 12-month rate 2022-12 9.2%, 2026-10 4.0%

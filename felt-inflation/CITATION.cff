@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Frequent purchases, official inflation and perceived prices in 27 EU countries, 2002-2026"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-19
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/felt-inflation"
+references:
+  - type: data
+    title: "Harmonised index of consumer prices (HICP): prc_hicp_midx, prc_hicp_inw, prc_hicp_minr, prc_hicp_iw"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/web/hicp"
+  - type: data
+    title: "Consumers - monthly data (ei_bsco_m): price trends over the last 12 months"
+    authors:
+      - name: "European Commission, Directorate-General for Economic and Financial Affairs"
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/databrowser/view/ei_bsco_m/default/table"
+  - type: article
+    title: "Exposure to Grocery Prices and Inflation Expectations"
+    authors:
+      - family-names: D'Acunto
+        given-names: Francesco
+      - family-names: Malmendier
+        given-names: Ulrike
+      - family-names: Ospina
+        given-names: Juan
+      - family-names: Weber
+        given-names: Michael
+    journal: Journal of Political Economy
+    volume: 129
+    issue: 5
+    year: 2021
+    doi: 10.1086/713192
