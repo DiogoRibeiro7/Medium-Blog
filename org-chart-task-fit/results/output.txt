@@ -1,0 +1,96 @@
+
+==============================================================================
+1. ChatDev on 30 MMLU questions and on the 30 ProgramDev software tasks (MAST, commit a70542e)
+==============================================================================
+MMLU questions: 60 runs on 30 tasks; platform recorded in the logs: linux 60
+ProgramDev software tasks: 30 runs on 30 tasks; platform recorded in the logs: macos 30
+
+MMLU questions
+  roles taking part: 7 roles in 60 runs
+  phase executions: median 16 (IQR 14-18); code-review rounds: 3 in 60
+  product format chosen: document 38, powerpoint 15, pdf 7
+  tokens: median 27,216 (IQR 23,334-30,051)
+  tokens written by agents: median 5,482 (IQR 4,738-6,410)
+  model calls: median 19 (IQR 17-20)
+  seconds: median 78 (IQR 64-89)
+  lines of code: median 63 (IQR 58-68)
+  code imports a GUI library (tkinter, pygame, turtle, Qt, kivy): 60 of 60
+
+ProgramDev software tasks
+  roles taking part: 6 roles in 24 runs, 7 roles in 6 runs
+  phase executions: median 12 (IQR 12-14); code-review rounds: 3 in 30
+  product format chosen: application 29, excel 1
+  tokens: median 24,702 (IQR 21,434-31,637)
+  tokens written by agents: median 6,549 (IQR 5,274-8,472)
+  model calls: median 14 (IQR 14-16)
+  seconds: median 70 (IQR 59-95)
+  lines of code: median 132 (IQR 94-151)
+  code imports a GUI library (tkinter, pygame, turtle, Qt, kivy): 27 of 30
+
+Share of all tokens by stage, pooled over runs (95% bootstrap interval, resampling tasks):
+  Choose product format and language   MMLU  12.2% (10.7%-14.4%)   ProgramDev   8.6% (7.6%-9.7%)   difference  -3.7% (-6.1% to -1.7%)
+  Write the program                    MMLU   6.6% (6.0%-7.3%)   ProgramDev  11.2% (9.3%-13.2%)   difference  +4.6% (+2.6% to +6.7%)
+  Code review                          MMLU  34.2% (32.7%-35.8%)   ProgramDev  52.3% (50.2%-54.3%)   difference +18.1% (+15.4% to +20.6%)
+  Run, test and fix                    MMLU  26.9% (23.9%-29.7%)   ProgramDev   4.3% (0.9%-8.4%)   difference -22.5% (-27.1% to -17.6%)
+  Requirements file and user manual    MMLU  12.7% (12.1%-13.2%)   ProgramDev  15.6% (14.9%-16.4%)   difference  +2.9% (+2.0% to +3.9%)
+  Reflection and other                 MMLU   7.4% (7.1%-7.8%)   ProgramDev   8.1% (7.7%-8.5%)   difference  +0.6% (+0.1% to +1.1%)
+  format/language meetings + documentation together: MMLU 24.9%, ProgramDev 24.2%; difference -0.8% (-3.2% to +1.6%)
+  per run, meetings + documentation share: MMLU questions median 24.6 (IQR 21.4-27.8) %
+  per run, meetings + documentation share: ProgramDev software tasks median 25.5 (IQR 22.2-28.0) %
+  Mann-Whitney U on the per-run shares: U = 829, p = 0.546 (runs treated as independent; MMLU runs are two per question)
+  per run, meetings + documentation tokens: MMLU questions median 6,326, ProgramDev software tasks median 6,516
+
+Code review
+  MMLU questions: reviewer commented in at least one round in 10 of 60 runs; all three rounds ended 'Finished' in 50; review share of tokens in those silent runs 33.2%
+  ProgramDev software tasks: reviewer commented in at least one round in 24 of 30 runs; all three rounds ended 'Finished' in 6; review share of tokens in those silent runs 52.1%
+
+Testing: every execution of the program by the test engineer is a 'test report'
+  MMLU questions: test reports per run median 5 (IQR 3-6); first execution ran without error in 0 of 60; some execution ran without error in 32; runs with a bug-summary step 60
+  ProgramDev software tasks: test reports per run median 1 (IQR 1-1); first execution ran without error in 24 of 30; some execution ran without error in 28; runs with a bug-summary step 3
+
+==============================================================================
+2. MetaGPT (coder, tester, reviewer) on the same 30 MMLU questions and 30 ProgramDev tasks
+==============================================================================
+  MMLU questions: 30 runs; message sequences: Coder>Tester>Reviewer>Tester>Reviewer in 30; coder messages per run: [1]; runs with any execution output (exit code, traceback, test-runner summary): 0
+  ProgramDev software tasks: 30 runs; message sequences: Coder>Tester>Reviewer>Tester>Reviewer in 30; coder messages per run: [1]; runs with any execution output (exit code, traceback, test-runner summary): 0
+
+==============================================================================
+3. AG2 on 200 GSM-Plus problems: original chat, improved prompt, added verifier
+==============================================================================
+Each configuration's 200 traces are matched to the GSM-Plus test set by question text; same problem at each index in all three: True
+Perturbation types among the 200: adding operation 25, critical thinking 22, digit expansion 31, distraction insertion 21, integer-decimal-fraction conversion 21, numerical substitution 24, problem understanding 26, reversing operation 30
+'critical thinking' problems lack information needed for an answer; their key is 'None'.
+  original two-agent chat    correct 156/200 = 78.0% (95% Wilson 71.8%-83.2%); ended with a final answer 200/200; messages median 4 (IQR 4-6); words median 178 (IQR 144-252)
+  improved prompt            correct 174/200 = 87.0% (95% Wilson 81.6%-91.0%); ended with a final answer 200/200; messages median 6 (IQR 4-6); words median 332 (IQR 248-428)
+  added verifying agent      correct 152/200 = 76.0% (95% Wilson 69.6%-81.4%); ended with a final answer 188/200; messages median 7 (IQR 6-10); words median 570 (IQR 439-771)
+
+By problem type
+  missing information (critical thinking): original two-agent chat 0/22 = 0.0% (0.0%-14.9%); improved prompt 15/22 = 68.2% (47.3%-83.6%); added verifying agent 9/22 = 40.9% (23.3%-61.3%)
+  all other types: original two-agent chat 156/178 = 87.6% (82.0%-91.7%); improved prompt 159/178 = 89.3% (83.9%-93.1%); added verifying agent 143/178 = 80.3% (73.9%-85.5%)
+
+Paired comparisons on the same problems (exact McNemar test on discordant pairs)
+  original two-agent chat vs improved prompt, all 200: right only with the first 8, only with the second 26, both right 148; net +18; p = 0.003
+  original two-agent chat vs improved prompt, missing information (critical thinking): right only with the first 0, only with the second 15, both right 0; net +15; p = 0.000
+  original two-agent chat vs improved prompt, all other types: right only with the first 8, only with the second 11, both right 148; net +3; p = 0.648
+  original two-agent chat vs added verifying agent, all 200: right only with the first 24, only with the second 20, both right 132; net -4; p = 0.652
+  original two-agent chat vs added verifying agent, missing information (critical thinking): right only with the first 0, only with the second 9, both right 0; net +9; p = 0.004
+  original two-agent chat vs added verifying agent, all other types: right only with the first 24, only with the second 11, both right 132; net -13; p = 0.041
+  improved prompt vs added verifying agent, all 200: right only with the first 31, only with the second 9, both right 143; net -22; p = 0.001
+  improved prompt vs added verifying agent, missing information (critical thinking): right only with the first 8, only with the second 2, both right 7; net -6; p = 0.109
+  improved prompt vs added verifying agent, all other types: right only with the first 23, only with the second 7, both right 136; net -16; p = 0.005
+
+The verifying agent's runs that never declared a final answer
+  12 of 200 hit the conversation's message cap without a SOLUTION_FOUND line; messages in those runs: [21]
+  the correct number appears somewhere in the agents' messages in 11 of them; the original chat got 11 of the same 12 problems right
+  accuracy of the verifying configuration on the 188 runs that ended with an answer: 152/188 = 80.9%
+  the original chat on the same 188 problems: 145/188 = 77.1%
+  other problem types, runs that ended with an answer (166): added verifier 143/166, original chat 145/166; lost 13, gained 11, p = 0.839
+  unterminated runs by type: distraction insertion 3, digit expansion 4, problem understanding 2, reversing operation 1, integer-decimal-fraction conversion 2
+  median words per run relative to the original chat: improved prompt 1.9x, added verifier 3.2x
+
+==============================================================================
+Figures written
+==============================================================================
+  figures/fig1_chatdev_two_tasks.png
+  figures/fig2_ag2_by_type.png
+  figures/fig3_ag2_paired.png
