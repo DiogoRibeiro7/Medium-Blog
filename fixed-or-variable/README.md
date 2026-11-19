@@ -21,6 +21,8 @@ Both reference rates are floored at zero.
 - **The fixed side.** A fixed payment started in 2019–2021 fell to 78.5% of its first value in real terms.
 
 **Premium and payout.** Fixing cost money in the start months where the variable payment barely moved. It saved money in the months where the payment rose the most (figure 5).
+- **Self-insurance.** For variable loans started in 2019–2021, the payments above the first payment added up to 6,632 euros per 100,000 by October 2026 (up to 7,270 euros). That is the buffer a variable borrower needed.
+- **Fixing for five years.** Fixing for five years and then refixing cost 4,611 euros more than variable on average, against 15,911 euros for a ten-year fix. The refix raised the payment by more than 25% for 49 start months (October 2017 to October 2021), and by up to 43.1%.
 
 **A loan started in October 2026.** Variable starts at 4.24%, fixed at 4.42%. Each scenario lays one past start month's yield-curve errors onto today's curve.
 - **Errors as they were.** Variable is cheaper in 88% of scenarios, and the payment never rises by more than 43%.
@@ -46,7 +48,7 @@ Both reference rates are floored at zero.
   - 6-month and 3-month Euribor with matching resets;
   - all euro-area government bonds;
   - no floor;
-  - a 30-year fixed rate.
+  - 5-, 20- and 30-year fixed rates.
 - **Determinism.** Sums are `math.fsum` or fixed-order Python sums, so the output does not depend on the processor's vector kernels.
 
 ## Reproduce
