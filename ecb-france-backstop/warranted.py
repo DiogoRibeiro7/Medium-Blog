@@ -42,7 +42,7 @@ import itertools
 import numpy as np
 import pandas as pd
 
-from common import NAMES, PANEL, RESULTS, quarterly_panel, write
+from common import NAMES, PANEL, RESULTS, monthly_spreads, quarterly_panel, write
 
 FEATURES: dict[str, list[str]] = {
     "debt": ["debt_gap"],
@@ -221,6 +221,11 @@ def run() -> str:
     lines.append(f"    window pre_crisis (excluded from headline): warranted median {pre.warranted.median():.2f}, residual median {pre.residual.median():+.2f}, flagged {pre.flag.mean():.0%}")
     lines.append(f"  October 2026 daily peak 1.78 (22 Oct, documented) against the latest warranted median {f.warranted.median():.2f}: excess {1.78 - f.warranted.median():+.2f}; "
                  f"share of headline models whose threshold it would cross (residual > threshold): {((1.78 - f.warranted) > f.threshold).mean():.0%}")
+    ms = monthly_spreads()["FR"].dropna()
+    m_last, x_m = ms.index.max(), float(ms.iloc[-1])
+    lines.append(f"  Latest monthly average {m_last} {x_m:.2f} (after the last model quarter if later than {last_q}) against the latest warranted median {f.warranted.median():.2f}: "
+                 f"excess {x_m - f.warranted.median():+.2f}; above the warranted spread in {(x_m > f.warranted).mean():.0%} of headline models; "
+                 f"share whose threshold it would cross: {((x_m - f.warranted) > f.threshold).mean():.0%}")
     lines.append(f"  Excess over warranted needed to be flagged by half of the headline models: {(f.threshold.median()):.2f} above warranted, i.e. a spread near {f.warranted.median() + f.threshold.median():.2f}")
 
     lines += ["", "The OMT episode (headline models), 2012Q2 -> 2013Q2: actual, warranted median, residual median, share flagged"]

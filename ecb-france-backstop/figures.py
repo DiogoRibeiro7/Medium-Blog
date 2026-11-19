@@ -91,15 +91,17 @@ def fig1_spreads() -> None:
         ax.text(xv + 0.08, 6.05, name, fontsize=8.5, color=INK2, va="top")
     ax.scatter([2026 + 9.7 / 12], [OCT_PEAK], s=46, facecolor=SURFACE, edgecolor=BLUE, lw=1.8, zorder=6)
     fr_last = s["FR"].dropna()
-    ax.annotate(f"France: Sep 2026 monthly average {fr_last.iloc[-1]:.2f};\n22 Oct 2026 daily close 1.78 (circle)", (2026 + 9.7 / 12, OCT_PEAK), xytext=(2022.9, 2.75), fontsize=8.8, color=INK2,
+    m_last = fr_last.index.max()
+    since = fr_last.loc[:m_last - 1][fr_last.loc[:m_last - 1] >= fr_last.iloc[-1]].index.max()
+    ax.annotate(f"France: {m_last.strftime('%b %Y')} monthly average {fr_last.iloc[-1]:.2f};\n22 Oct 2026 daily close 1.78 (circle)", (2026 + 9.7 / 12, OCT_PEAK), xytext=(2022.9, 2.75), fontsize=8.8, color=INK2,
                 arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8))
     ax.set_ylim(0, 6.2)
     ax.set_xlim(2007, 2027.2)
     years(ax, 2)
     ax.set_ylabel("Spread to German 10-year yield, percentage points")
     ax.legend(loc="upper right", ncol=4, bbox_to_anchor=(1.0, 0.93))
-    ax.set_title("Monthly averages, January 2007 to September 2026; dotted lines mark ECB announcements")
-    suptitle(fig, "France's spread is at its highest since July 2012, but far from the levels the ECB acted against")
+    ax.set_title(f"Monthly averages, January 2007 to {m_last.strftime('%B %Y')}; dotted lines mark ECB announcements")
+    suptitle(fig, f"France's spread is at its highest since {since.strftime('%B %Y')}, but far from the levels the ECB acted against")
     note(fig, "Source: Eurostat irt_lt_mcby_m and ECB IRS (EMU convergence-criterion yields); October 2026 point from FXStreet (27 Oct 2026)")
     save(fig, "fig1_spreads")
 
@@ -118,16 +120,22 @@ def fig2_france_warranted() -> None:
     ax.plot(trig.index, trig, color=MUTED, lw=1.2, ls=":", label="Level at which half the models flag")
     ax.plot(act.index, act, color=BLUE, lw=2.6, label="Actual spread (quarterly average)", zorder=5)
     ax.scatter([2026.8], [OCT_PEAK], s=46, facecolor=SURFACE, edgecolor=BLUE, lw=1.8, zorder=6)
-    ax.annotate("22 Oct 2026, daily: 1.78", (2026.8, OCT_PEAK), xytext=(2020.4, 2.55), fontsize=8.8, color=INK2,
+    ax.annotate("22 Oct 2026, daily: 1.78", (2026.8, OCT_PEAK), xytext=(2021.4, 2.62), fontsize=8.8, color=INK2,
                 arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8))
+    ms = monthly_spreads()["FR"].dropna()
+    if ms.index.max() > p["q"].max().asfreq("M", "end"):
+        xm = ms.index.max().year + (ms.index.max().month - 0.5) / 12
+        ax.scatter([xm], [ms.iloc[-1]], s=40, marker="D", color=BLUE, edgecolor=SURFACE, lw=1.2, zorder=6)
+        ax.annotate(f"{ms.index.max().strftime('%b %Y')}, monthly: {ms.iloc[-1]:.2f}", (xm, ms.iloc[-1]), xytext=(2021.4, 1.72), fontsize=8.8, color=INK2,
+                    arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8))
     ax.axhline(0, color=MUTED, lw=0.8)
     ax.set_xlim(2005, 2027.3)
     years(ax, 2)
     ax.set_ylim(-0.4, 3.0)
     ax.set_ylabel("Percentage points over Germany")
     ax.legend(loc="upper left", fontsize=9)
-    ax.set_title("France, 2005Q1-2026Q3: actual spread against the spread its fundamentals justify")
-    suptitle(fig, "By most models France now trades at, or below, the spread its debt and deficit warrant")
+    ax.set_title("France, 2005Q1-2026Q3 by quarter, October 2026 marked: actual spread against the spread its fundamentals justify")
+    suptitle(fig, "France traded at or below its warranted spread through 2026Q3; October rose above it, short of where most models flag")
     note(fig, "Models: 6 feature sets x German yield yes/no x country effects yes/no x 4 windows (2000-07 window shown separately); fundamentals lagged one quarter. Source: Eurostat; author's estimates")
     save(fig, "fig2_france_warranted")
 
@@ -220,7 +228,7 @@ def fig6_bill() -> None:
     show = [
         ("panic", "Panic like Italy 2011-14, no cap", RED, "-", 2.0),
         ("panic_capped_at_trigger", "Panic capped where models flag", ORANGE, "-", 1.8),
-        ("held", "Yields held at Sep 2026", BLUE, "-", 2.6),
+        ("held", f"Yields held at {monthly_spreads()['FR'].dropna().index.max().strftime('%b %Y')}", BLUE, "-", 2.6),
         ("panic_capped_at_warranted", "Panic capped at warranted spread", INK2, "--", 1.4),
         ("rates_back_to_2025", "Euro-area rates back to 2025", AQUA, "-", 1.8),
         ("spread_zero", "No spread over Germany at all", VIOLET, "-", 1.8),
@@ -237,7 +245,7 @@ def fig6_bill() -> None:
         ends.append((ys[-1], lab, col))
     ax.set_xlim(2025, 2039.6)
     ax.set_xticks(range(2025, 2037, 2))
-    ax.set_ylim(2.0, 6.2)
+    ax.set_ylim(2.0, max(6.2, np.ceil(2 * max(e[0] for e in ends)) / 2 + 0.2))
     ends.sort()
     last_y = -9
     for y, lab, col in ends:

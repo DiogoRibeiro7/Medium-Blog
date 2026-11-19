@@ -99,6 +99,8 @@ def run() -> str:
     rho = estimate_rho(a, "FR", RHO_FIT)
     latest = m.dropna(subset=["FR"]).index.max()
     x_latest, de_latest = float(m.loc[latest, "FR"]), float(m.loc[latest, "DE"])
+    prev_m = latest - 1
+    x_prev, de_prev = float(m.loc[prev_m, "FR"]), float(m.loc[prev_m, "DE"])
     y26 = m.loc[m.index.year == 2026, "FR"]
     y26_avg = float((y26.sum() + y26.iloc[-1] * (12 - len(y26))) / 12)
     q = quarterly_fiscal()
@@ -127,6 +129,8 @@ def run() -> str:
         panic[years == 2027 + k] += s
     scen = {
         "held": path(s_latest),
+        "held_previous_month": path(x_prev - de_prev, bund=de_prev),
+        "spread_at_warranted_previous_month": path(w["warranted"], bund=de_prev),
         "spread_at_warranted": path(w["warranted"]),
         "spread_zero": path(0.0),
         "rates_back_to_2025": path(w["warranted"], bund=de2025),
@@ -151,6 +155,7 @@ def run() -> str:
     lines = [
         f"Start {START}: debt {d0:.1f}% of GDP, implicit rate {i0:.2f}%, interest {int0:.2f}% of GDP (EUR {int0 / 100 * gdp0 / 1000:.1f} bn); pass-through rho {rho:.3f} (France, {RHO_FIT[0]}-{RHO_FIT[1]})",
         f"Yields: latest {latest} France {x_latest:.2f}, Germany {de_latest:.2f}, spread {s_latest:.2f}; 2026 average {y26_avg:.2f}; German 2025 average {de2025:.2f}",
+        f"  previous month {prev_m} (sensitivity scenarios '..._previous_month'): France {x_prev:.2f}, Germany {de_prev:.2f}, spread {x_prev - de_prev:.2f}",
         f"Warranted spread ({w['quarter']}, headline models): median {w['warranted']:.2f} (10-90% {w['w10']:.2f}-{w['w90']:.2f}); trigger level (half of models flag) {w['trigger']:.2f}",
         "Italy 2011-2014 spread rise over 2010 (pp): " + ", ".join(f"{s:+.2f}" for s in shock),
         f"Nominal growth 2026 {g26:.2f}% ({len(have)} quarters), then {G_BASE}%; primary balance: deficit {DEFICIT_2026}% (2026), {DEFICIT_2027}% (2027), then +{PB_STEP} pp a year to {PB_CAP:+.1f}%",
@@ -165,6 +170,7 @@ def run() -> str:
         lines.append(f"  total with yields held: {v('held', y) - int0:+.2f}")
         lines.append(f"  of which the whole French spread over Germany (held minus spread zero): {v('held', y) - v('spread_zero', y):+.2f}")
         lines.append(f"  of which the part above the warranted spread (held minus spread at warranted): {v('held', y) - v('spread_at_warranted', y):+.2f}")
+        lines.append(f"    the same with yields held at {prev_m}: total {v('held_previous_month', y) - int0:+.2f}; part above the warranted spread {v('held_previous_month', y) - v('spread_at_warranted_previous_month', y):+.2f}")
         lines.append(f"  euro-area rates back to 2025 (spread at warranted): {v('rates_back_to_2025', y) - v('spread_at_warranted', y):+.2f}")
         lines.append(f"  already locked in, at warranted spread and 2025 German yield: {v('rates_back_to_2025', y) - int0:+.2f}")
         lines.append(f"  a panic like Italy's in 2011-2014: {v('panic', y) - v('held', y):+.2f}; capped at the trigger {v('panic_capped_at_trigger', y) - v('held', y):+.2f}; capped at warranted {v('panic_capped_at_warranted', y) - v('held', y):+.2f}")
