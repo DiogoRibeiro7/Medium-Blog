@@ -1,0 +1,72 @@
+== Worked cases
+mammography screening (Gigerenzer et al. 2007): base rate 1%, sensitivity 90%, false-positive rate 9%
+  out of 1,000: 10 positive, 9.0 of them flagged; 990 negative, 89.1 of them flagged; 98.1 flags, 9.2% right
+Eddy (1982): base rate 1%, sensitivity 80%, false-positive rate 9.6%
+  share of positives that are right: 7.8%
+face matching, Champions League final, Cardiff 2017 (South Wales Police figures)
+  2,470 alerts, 173 right, 2,297 wrong: 7.0% right; the wrong alerts are 1.35% of a crowd of 170,000
+OpenAI's text classifier (January 2023): flags 26% of AI-written text and 9% of human text
+  if 3% of essays are AI-written: out of 1,000: 30 positive, 7.8 of them flagged; 970 negative, 87.3 of them flagged; 95.1 flags, 8.2% right
+  if 11% of essays are AI-written: out of 1,000: 110 positive, 28.6 of them flagged; 890 negative, 80.1 of them flagged; 108.7 flags, 26.3% right
+a detector with a 1% false-positive rate (Turnitin's stated bound, full documents), 3% AI-written:
+  false-positive rate 1.0%: right 60.7%, 69.9%, 75.6% for sensitivity 50%, 75%, 100%
+  false-positive rate 0.5%: right 75.6%, 82.3%, 86.1% for sensitivity 50%, 75%, 100%
+card payments: 0.015% fraudulent by number (EEA, first half of 2023); detector catching 90%
+  false-positive rate 1.00%: 1.3% of alerts right, 74.1 false alerts per fraud
+  false-positive rate 0.10%: 11.9% of alerts right, 7.4 false alerts per fraud
+  false-positive rate 0.01%: 57.5% of alerts right, 0.7 false alerts per fraud
+
+== AI-text detectors on real essays (Liang et al. 2023 data)
+human essays: 88 by US eighth-graders, 91 TOEFL essays by non-native writers, 70 college admission essays; AI essays: 176 plain, 176 after a self-edit prompt
+share flagged as AI (score above 0.5), by detector:
+  Crossplag     native  12%, non-native  52%, college  0% | AI plain  40%, AI edited   7%
+  GPTZero       native   0%, non-native  52%, college  1% | AI plain  29%, AI edited   3%
+  HFOpenAI      native   9%, non-native  58%, college  0% | AI plain  44%, AI edited   8%
+  OriginalityAI native   1%, non-native  76%, college  4% | AI plain  56%, AI edited  23%
+  Quil          native   9%, non-native  75%, college  1% | AI plain  57%, AI edited  20%
+  Sapling       native   5%, non-native  68%, college  1% | AI plain  69%, AI edited  15%
+  ZeroGPT       native   0%, non-native  48%, college  3% | AI plain  43%, AI edited   3%
+average of the seven: native 5.2%, non-native 61.2%, college 1.6%; AI plain 48.4%, AI edited 11.2%
+non-native false alarms against native, ratio of averages: 12
+  GPTZero: 0 of 88 native essays flagged; 95% upper bound 2.8%
+  ZeroGPT: 0 of 88 native essays flagged; 95% upper bound 2.8%
+share of flags that are right if 3% of essays are AI-written (95% interval):
+  Crossplag     native 9% [6%, 16%]; non-native 2% [2%, 3%]
+  GPTZero       native 100% [25%, 100%]; non-native 2% [1%, 2%]
+  HFOpenAI      native 13% [8%, 24%]; non-native 2% [2%, 3%]
+  OriginalityAI native 60% [25%, 93%]; non-native 2% [2%, 3%]
+  Quil          native 16% [10%, 29%]; non-native 2% [2%, 3%]
+  Sapling       native 32% [17%, 58%]; non-native 3% [3%, 4%]
+  ZeroGPT       native 100% [32%, 100%]; non-native 3% [2%, 4%]
+share of flags that are right if 11% of essays are AI-written (95% interval):
+  Crossplag     native 29% [19%, 43%]; non-native 9% [7%, 11%]
+  GPTZero       native 100% [57%, 100%]; non-native 6% [5%, 9%]
+  HFOpenAI      native 38% [25%, 56%]; non-native 9% [7%, 11%]
+  OriginalityAI native 86% [57%, 98%]; non-native 8% [7%, 10%]
+  Quil          native 44% [30%, 62%]; non-native 9% [7%, 10%]
+  Sapling       native 65% [45%, 85%]; non-native 11% [10%, 13%]
+  ZeroGPT       native 100% [66%, 100%]; non-native 10% [8%, 13%]
+the average detector, per 1,000 essays with 3% AI-written:
+  native: out of 1,000: 30 positive, 14.5 of them flagged; 970 negative, 50.4 of them flagged; 64.9 flags, 22.4% right
+  non-native: out of 1,000: 30 positive, 14.5 of them flagged; 970 negative, 593.9 of them flagged; 608.4 flags, 2.4% right
+
+== A real card-fraud model (ULB and Worldline data, September 2013)
+284,807 transactions, 492 frauds (0.173%), over two days
+  day 1: 144,786 transactions, 281 frauds (0.194%)
+  day 2: 140,021 transactions, 211 frauds (0.151%)
+logistic regression trained on day 1, scored on day 2: AUC 0.958, average precision 0.643
+at the data's fraud rate (0.151%) and at the EEA rate for card payments (0.015%), same detector:
+  catching 50%: 147 alerts, 106 frauds, 41 false (false-positive rate 0.029%); right 72.1%, 0.4 false per fraud | at the EEA rate: right 20.4%, 4 false per fraud
+  catching 60%: 182 alerts, 127 frauds, 55 false (false-positive rate 0.039%); right 69.8%, 0.4 false per fraud | at the EEA rate: right 18.7%, 4 false per fraud
+  catching 70%: 281 alerts, 148 frauds, 133 false (false-positive rate 0.095%); right 52.7%, 0.9 false per fraud | at the EEA rate: right 10.0%, 9 false per fraud
+  catching 80%: 954 alerts, 169 frauds, 785 false (false-positive rate 0.561%); right 17.7%, 4.6 false per fraud | at the EEA rate: right 2.1%, 47 false per fraud
+  catching 90%: 12,368 alerts, 190 frauds, 12,178 false (false-positive rate 8.710%); right 1.5%, 64.1 false per fraud | at the EEA rate: right 0.2%, 645 false per fraud
+
+== What a flag needs
+base rate 11.000%, sensitivity 90%: false-positive rate at most 11.124% for half the flags to be right, 1.236% for 90%, 0.1124% for 99%
+base rate 3.000%, sensitivity 90%: false-positive rate at most 2.784% for half the flags to be right, 0.309% for 90%, 0.0281% for 99%
+base rate 1.000%, sensitivity 90%: false-positive rate at most 0.909% for half the flags to be right, 0.101% for 90%, 0.0092% for 99%
+base rate 0.015%, sensitivity 90%: false-positive rate at most 0.014% for half the flags to be right, 0.002% for 90%, 0.0001% for 99%
+sensitivity / false-positive rate needed for 90% right flags at 3.000%: 291
+sensitivity / false-positive rate needed for 90% right flags at 0.015%: 59,991
+the average detector: sensitivity / false-positive rate 9.3 on native essays, 0.79 on non-native essays; OpenAI's classifier 2.9; Cardiff, if every one of 170,000 faces was checked once and all were innocent but 173: at most 74
