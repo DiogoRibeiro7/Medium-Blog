@@ -61,6 +61,6 @@ jobs:
       - name: Check every figure is drawn
         run: |
           python figures.py
-          for f in fig1_thousand_essays fig2_ppv_curves fig3_detectors fig4_fraud fig5_required; do
+          for f in fig1_detectors fig2_thousand_essays fig3_ppv_curves fig4_fraud fig5_required; do
             test -s "figures/$f.png"
           done

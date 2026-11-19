@@ -63,7 +63,7 @@ def whole(x):
     return int(np.floor(x + 0.5))
 
 
-def fig1_thousand_essays():
+def fig2_thousand_essays():
     f = pd.read_csv(RES / "thousand_essays.csv").set_index("group")
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.7), gridspec_kw={"wspace": 0.08})
     cols, rows = 40, 25
@@ -100,18 +100,18 @@ def fig1_thousand_essays():
     fig.legend(handles=handles, loc="lower center", ncols=4, fontsize=8.5, bbox_to_anchor=(0.5, 0.11))
     frame(
         fig,
-        "Figure 1. One thousand essays, 30 of them AI-written, checked by the same detector",
+        "Figure 2. One thousand essays, 30 of them AI-written, checked by the same detector",
         "Average flag rates of seven detectors tested by Liang et al. (2023): 48% of AI essays, 5% of essays by US "
         "eighth-graders, 61% of TOEFL essays.",
         "Data: Liang et al. (2023), Patterns. " + CODE,
         note="Counts rounded to whole essays.",
         bottom_in=1.05,
     )
-    fig.savefig(FIG / "fig1_thousand_essays.png")
+    fig.savefig(FIG / "fig2_thousand_essays.png")
     plt.close(fig)
 
 
-def fig2_ppv_curves():
+def fig3_ppv_curves():
     cases = pd.read_csv(RES / "cases.csv")
     b = np.logspace(-5, np.log10(0.5), 400)
     fig, ax = plt.subplots(figsize=(8, 5.4))
@@ -136,14 +136,14 @@ def fig2_ppv_curves():
     grid(ax)
     frame(
         fig,
-        "Figure 2. The same detector, flags worth very different amounts",
+        "Figure 3. The same detector, flags worth very different amounts",
         "Share of flags that are right, for a detector that catches 90% of true cases, by base rate and "
         "false-alarm rate. Dots: real cases.",
         "Sources: Gigerenzer et al. (2007); OpenAI (2023); Turnitin (2024); EBA and ECB (2024). " + CODE,
         note="Dots use their own detection rates: 90% for mammography, 26% for OpenAI's classifier.",
         bottom_in=0.85,
     )
-    fig.savefig(FIG / "fig2_ppv_curves.png")
+    fig.savefig(FIG / "fig3_ppv_curves.png")
     plt.close(fig)
 
 
@@ -151,7 +151,7 @@ def fc_eu(cases):
     return float(cases[cases.case.str.startswith("Card alert")].base.iloc[0])
 
 
-def fig3_detectors():
+def fig1_detectors():
     d = pd.read_csv(RES / "detectors.csv")
     order = fc.DETECTORS[::-1]
     y = np.arange(len(order))
@@ -182,13 +182,13 @@ def fig3_detectors():
     a1.set_yticklabels(order)
     frame(
         fig,
-        "Figure 3. Seven detectors, on student essays and on ChatGPT's",
+        "Figure 1. Seven detectors, on student essays and on ChatGPT's",
         "A score above 0.5 counts as a flag. 88 essays by US eighth-graders, 91 TOEFL essays, 176 ChatGPT essays "
         "before and after a self-edit prompt.",
         "Data: Liang et al. (2023), github.com/Weixin-Liang/ChatGPT-Detector-Bias. " + CODE,
         bottom_in=0.75,
     )
-    fig.savefig(FIG / "fig3_detectors.png")
+    fig.savefig(FIG / "fig1_detectors.png")
     plt.close(fig)
 
 
@@ -293,9 +293,9 @@ def fig5_required():
 
 def main():
     FIG.mkdir(exist_ok=True)
-    fig1_thousand_essays()
-    fig2_ppv_curves()
-    fig3_detectors()
+    fig1_detectors()
+    fig2_thousand_essays()
+    fig3_ppv_curves()
     fig4_fraud()
     fig5_required()
 
