@@ -1,0 +1,65 @@
+name: Reproduce forecast-horizon
+
+on:
+  pull_request:
+    paths:
+      - 'forecast-horizon/**'
+      - '.github/workflows/forecast-horizon.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'forecast-horizon/**'
+      - '.github/workflows/forecast-horizon.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: forecast-horizon
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: forecast-horizon/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on systems with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Download the reanalysis sample and check it against the pinned digest
+        run: python fetch_data.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python forecast_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=forecast-horizon/output.txt::output of forecast_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_rounding fig2_error_growth fig3_precision fig4_doubling fig5_analogues fig6_ensemble; do
+            test -s "figures/$f.png"
+          done
