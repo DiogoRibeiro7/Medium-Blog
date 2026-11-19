@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Fixed or variable: euro-area mortgages replayed for every start month, 1999-2026"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-19
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/fixed-or-variable"
+references:
+  - type: data
+    title: "Money market interest rates (irt_st_m): Euribor monthly averages"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/databrowser/view/irt_st_m/default/table"
+  - type: data
+    title: "Euro yield curves (irt_euryld_m, irt_h_euryld_m)"
+    authors:
+      - name: "Eurostat and European Central Bank"
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/databrowser/view/irt_euryld_m/default/table"
