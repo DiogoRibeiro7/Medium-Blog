@@ -162,3 +162,6 @@ coach-change-decision/**/*.csv -filter -diff -merge text
 battle-numbers/**/*.csv -filter -diff -merge text
 forecast-horizon/**/*.csv -filter -diff -merge text
 org-chart-task-fit/**/*.csv -filter -diff -merge text
+rare-flags/**/*.csv -filter -diff -merge text
+felt-inflation/**/*.csv -filter -diff -merge text
+fixed-or-variable/**/*.csv -filter -diff -merge text

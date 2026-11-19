@@ -1,0 +1,10 @@
+model,basket,label,weight,lo,hi,spending
+six,groceries,"groceries, drinks, tobacco",0.357,0.223,0.5205,0.2426
+six,fuel,fuel for cars,0.0497,0.034,0.0666,0.0473
+six,other_frequent,other frequent purchases,0.212,0.0259,0.4441,0.2134
+six,energy,household energy,0.0042,-0.0177,0.0206,0.0642
+six,bills,"rent, water, phone, insurance",0.0009,-0.1171,0.1416,0.103
+six,rest,everything else,0.3763,0.1646,0.5226,0.3296
+three,frequent,frequent purchases,0.6351,0.4934,0.8218,0.5032
+three,billed,"bills (energy, rent, water, phone, insurance)",-0.0327,-0.0938,0.024,0.1672
+three,rest,everything else,0.3976,0.2248,0.5238,0.3296

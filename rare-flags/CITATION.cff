@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "What a flag means when the thing flagged is rare: base rates in AI-text detection, card fraud and screening"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-19
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/rare-flags"
+references:
+  - type: article
+    title: "GPT detectors are biased against non-native English writers"
+    authors:
+      - family-names: Liang
+        given-names: Weixin
+      - family-names: Yuksekgonul
+        given-names: Mert
+      - family-names: Mao
+        given-names: Yining
+      - family-names: Wu
+        given-names: Eric
+      - family-names: Zou
+        given-names: James
+    journal: Patterns
+    year: 2023
+    repository-code: "https://github.com/Weixin-Liang/ChatGPT-Detector-Bias"
+  - type: conference-paper
+    title: "Calibrating probability with undersampling for unbalanced classification"
+    authors:
+      - family-names: Dal Pozzolo
+        given-names: Andrea
+      - family-names: Caelen
+        given-names: Olivier
+      - family-names: Johnson
+        given-names: Reid A.
+      - family-names: Bontempi
+        given-names: Gianluca
+    year: 2015
+    conference:
+      name: "IEEE Symposium Series on Computational Intelligence"

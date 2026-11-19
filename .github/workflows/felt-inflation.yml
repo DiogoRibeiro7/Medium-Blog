@@ -1,0 +1,67 @@
+name: Reproduce felt-inflation
+
+on:
+  pull_request:
+    paths:
+      - 'felt-inflation/**'
+      - '.github/workflows/felt-inflation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'felt-inflation/**'
+      - '.github/workflows/felt-inflation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: felt-inflation
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: felt-inflation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on cases with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Rerun the analysis on the committed Eurostat snapshot and compare with the committed output
+        run: |
+          python felt_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=felt-inflation/output.txt::output of felt_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_two_baskets fig2_items fig3_countries fig4_correlations fig5_weights fig6_memory fig7_felt; do
+            test -s "figures/$f.png"
+          done
+
+      - name: Report how far Eurostat's current data are from the snapshot (information only)
+        continue-on-error: true
+        run: python fetch_data.py
