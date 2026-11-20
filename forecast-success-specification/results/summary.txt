@@ -1,0 +1,103 @@
+Success-specification test on M5 FOODS, 10 stores
+series: 13777; products: 1437; test origins: 52; bootstrap: 1000
+week B sales over the test origins: 9,339,891 units
+
+S0 default: daily WAPE, h 1-28
+  lgb_l1        0.6480  [0.6215, 0.6751]
+  lgb_tweedie   0.6871  [0.6567, 0.7196]
+  lgb_l2        0.6997  [0.6689, 0.7327]
+  ses           0.7113  [0.6820, 0.7424]
+  ma28          0.7267  [0.6975, 0.7562]
+  dow4          0.7528  [0.7205, 0.7858]
+  snaive        0.8511  [0.8147, 0.8895]
+  winner: lgb_l1
+
+S1 unit and timing: week B WAPE
+  lgbw_tweedie  0.3685  [0.3541, 0.3835]
+  lgb_tweedie   0.3732  [0.3584, 0.3882]
+  lgb_l2        0.3837  [0.3681, 0.4003]
+  ses           0.3951  [0.3790, 0.4117]
+  ma28          0.4028  [0.3852, 0.4200]
+  dow4          0.4028  [0.3852, 0.4200]
+  lgb_l1        0.4332  [0.4156, 0.4518]
+  snaive        0.4429  [0.4245, 0.4619]
+  lgbw_q80      0.4777  [0.4577, 0.4982]
+  winner: lgbw_tweedie
+
+S2 cost: pinball loss at 0.8 of the week B order, per unit sold
+  lgbw_q80      0.1479  [0.1415, 0.1543]
+  lgbw_tweedie  0.1588  [0.1520, 0.1658]
+  lgb_tweedie   0.1611  [0.1541, 0.1684]
+  lgb_l2        0.1638  [0.1565, 0.1714]
+  lgb_l1        0.1698  [0.1621, 0.1776]
+  ses           0.1719  [0.1641, 0.1798]
+  ma28          0.1816  [0.1730, 0.1901]
+  dow4          0.1816  [0.1730, 0.1901]
+  snaive        0.1855  [0.1773, 0.1940]
+  winner: lgbw_q80
+
+S3 tolerance: share of series-quarters with more than one bad week
+  lgbw_tweedie  0.4130  [0.4007, 0.4255]
+  lgb_tweedie   0.4141  [0.4017, 0.4269]
+  lgb_l2        0.4251  [0.4125, 0.4383]
+  ma28          0.4676  [0.4543, 0.4811]
+  dow4          0.4676  [0.4543, 0.4811]
+  ses           0.4686  [0.4555, 0.4822]
+  snaive        0.5766  [0.5639, 0.5894]
+  lgb_l1        0.6210  [0.6098, 0.6326]
+  lgbw_q80      0.6775  [0.6642, 0.6912]
+  winner: lgbw_tweedie
+
+S4 stability: revisions per unit sold
+  ma28          0.1215  [0.1162, 0.1266]
+  dow4          0.1215  [0.1162, 0.1266]
+  lgb_l1        0.1326  [0.1274, 0.1379]
+  lgb_tweedie   0.1452  [0.1398, 0.1503]
+  lgb_l2        0.1494  [0.1437, 0.1549]
+  lgbw_tweedie  0.1505  [0.1447, 0.1557]
+  lgbw_q80      0.1788  [0.1708, 0.1865]
+  ses           0.1875  [0.1773, 0.1968]
+  snaive        0.3860  [0.3696, 0.4033]
+  winner: ma28
+
+S5 full specification: admissible (no worse than ma28 on S3 and S4): ma28, dow4
+  winner: ma28
+
+H1: S0 winner is lgb_l1
+  S1: winner lgbw_tweedie; lgb_l1 minus winner 0.0647 [0.0602, 0.0697] (17.6% of the winner's value); established: True
+  S2: winner lgbw_q80; lgb_l1 minus winner 0.0219 [0.0202, 0.0237] (14.8% of the winner's value); established: True
+  S3: winner lgbw_tweedie; lgb_l1 minus winner 0.2080 [0.1987, 0.2168] (50.4% of the winner's value); established: True
+  S4: winner ma28; lgb_l1 minus winner 0.0111 [0.0085, 0.0134] (9.2% of the winner's value); established: True
+  H1 supported: True (4 specifications: S1, S2, S3, S4)
+
+H2: captured share of the S5 gain over the incumbent when choosing by S0
+  not testable: the S5 winner is the incumbent
+  unconstrained captured share (S2 winner lgbw_q80): 0.349 [0.308, 0.392]
+
+H3: Kendall tau between the S1 and S4 orderings: 0.083 [0.056, 0.167]
+  H3 supported: False
+
+Week B bias (forecast minus sales, over sales) and S2 order coverage
+  snaive        bias -0.009 [-0.011, -0.008]; fill rate 0.895; weeks with sales at or below the order 0.783
+  ma28          bias -0.013 [-0.015, -0.011]; fill rate 0.892; weeks with sales at or below the order 0.769
+  dow4          bias -0.013 [-0.015, -0.011]; fill rate 0.892; weeks with sales at or below the order 0.769
+  ses           bias -0.032 [-0.035, -0.030]; fill rate 0.897; weeks with sales at or below the order 0.766
+  lgb_l2        bias -0.025 [-0.031, -0.020]; fill rate 0.899; weeks with sales at or below the order 0.763
+  lgb_l1        bias -0.290 [-0.307, -0.275]; fill rate 0.892; weeks with sales at or below the order 0.759
+  lgb_tweedie   bias -0.040 [-0.047, -0.033]; fill rate 0.900; weeks with sales at or below the order 0.763
+  lgbw_tweedie  bias -0.035 [-0.040, -0.031]; fill rate 0.902; weeks with sales at or below the order 0.764
+  lgbw_q80      bias +0.303 [+0.289, +0.318]; fill rate 0.913; weeks with sales at or below the order 0.799
+
+Robustness (not deciding)
+  S2 at tau 0.7: winner lgbw_tweedie 0.1826; lgb_l1 0.1950; ma28 0.2066
+  S2 at tau 0.9: winner lgbw_q80 0.1148; lgb_l1 0.1235; ma28 0.1327
+  S3 at (3 units, 30%): winner lgb_tweedie 0.7787; lgb_l1 0.8525; ma28 0.7798
+  S3 at (10 units, 70%): winner lgbw_tweedie 0.1144; lgb_l1 0.1497; ma28 0.1603
+  S0 with RMSE: winner lgb_tweedie 2.7788; lgb_l1 2.9245
+  S2 as delivered (no adjustment): winner lgbw_q80 0.1479; lgb_l1 0.3037; ma28 0.2052
+
+Winners by test quarter (S1 to S4)
+  Q1: S1 lgbw_tweedie; S2 lgbw_q80; S3 lgbw_tweedie; S4 ma28
+  Q2: S1 lgbw_tweedie; S2 lgbw_q80; S3 lgbw_tweedie; S4 ma28
+  Q3: S1 lgb_tweedie; S2 lgbw_q80; S3 lgbw_tweedie; S4 ma28
+  Q4: S1 lgbw_tweedie; S2 lgbw_q80; S3 lgb_tweedie; S4 ma28

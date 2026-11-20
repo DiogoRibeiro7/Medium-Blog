@@ -1,0 +1,70 @@
+name: Reproduce forecast-success-specification
+
+on:
+  pull_request:
+    paths:
+      - 'forecast-success-specification/**'
+      - '.github/workflows/forecast-success-specification.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: forecast-success-specification
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: forecast-success-specification/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Unit tests on synthetic data
+        run: python -m pytest -q tests
+
+      - name: Download the M5 archive and check its hash
+        run: python fetch_data.py --data data
+
+      - name: Run the nine candidates at every origin (about 20 minutes)
+        run: python forecast.py --raw data/raw --out data
+
+      - name: Registered evaluation and descriptive analyses
+        run: |
+          mkdir -p "$RUNNER_TEMP/results"
+          python evaluate.py --raw data/raw --data data --out "$RUNNER_TEMP/results"
+          python details.py --raw data/raw --data data --out "$RUNNER_TEMP/results"
+
+      - name: The verdicts match the committed summary
+        run: |
+          grep -E "winner|supported|not testable" results/summary.txt > "$RUNNER_TEMP/committed.txt"
+          grep -E "winner|supported|not testable" "$RUNNER_TEMP/results/summary.txt" > "$RUNNER_TEMP/rerun.txt"
+          diff -u "$RUNNER_TEMP/committed.txt" "$RUNNER_TEMP/rerun.txt"
+
+      - name: Every figure is drawn
+        run: |
+          python figures.py --results "$RUNNER_TEMP/results" --out "$RUNNER_TEMP/figures"
+          for f in fig1_weekly_bias_by_intermittency fig2_rank_by_definition fig3_cost_against_stability fig4_stability_allowance fig5_tolerance_by_volume; do
+            test -s "$RUNNER_TEMP/figures/$f.png"
+          done
+
+      - name: Keep the rerun
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forecast-success-specification-rerun
+          path: ${{ runner.temp }}/results
