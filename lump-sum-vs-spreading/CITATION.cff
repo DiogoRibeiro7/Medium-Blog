@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Lump sum or monthly instalments: investing a windfall in 23 stock markets since 1955"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-20
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/lump-sum-vs-spreading"
+references:
+  - type: data
+    title: "Financial market statistics: share prices, short-term interest rates (DF_FINMARK)"
+    authors:
+      - name: OECD
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "S&P 500 (monthly prices, dividends, earnings), from Robert Shiller's online data"
+    authors:
+      - name: "Datasets (datasets/s-and-p-500)"
+    year: 2026
+    url: "https://github.com/datasets/s-and-p-500"
