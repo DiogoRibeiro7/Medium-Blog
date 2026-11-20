@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Writing the success criterion before the demand forecast: a pre-registered test on M5 food sales"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-20
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/forecast-success-specification"
+references:
+  - type: article
+    title: "M5 accuracy competition: Results, findings, and conclusions"
+    authors:
+      - family-names: Makridakis
+        given-names: Spyros
+      - family-names: Spiliotis
+        given-names: Evangelos
+      - family-names: Assimakopoulos
+        given-names: Vassilios
+    journal: "International Journal of Forecasting"
+    volume: 38
+    issue: 4
+    start: 1346
+    end: 1364
+    year: 2022
+    doi: "10.1016/j.ijforecast.2021.11.013"
