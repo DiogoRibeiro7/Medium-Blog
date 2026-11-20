@@ -124,6 +124,11 @@ def main():
     for (c, s), x in [w for w in worst if w[0][0] != "ISL"][:6]:
         print(f"   {name(c)} {s}: {pct(x)} (average inflation {pct(pc.average_inflation(d.cpi[c], s, 20))} a year)")
     print("lowest in Iceland: " + ", ".join(f"{s} {pct(x, 2)}" for (c, s), x in worst[:3]))
+    print("share of starts before 1980 that lost more than 90% by 85:")
+    for c in ("ISL", "PRT", "GRC", "ESP", "ITA"):
+        p = d.cpi[c]
+        starts = [s for s in p if pc.FIRST_START <= s < 1980 and s + 20 in p]
+        print(f"   {name(c)}: {pct(pc.share(starts, lambda s, p=p: p[s] / p[s + 20] < 0.1))} of {len(starts)}")
     best = sorted(v85.items(), key=lambda x: -x[1])[:4]
     print("highest real value at 85: " + "; ".join(f"{name(c)} {s} {pct(x)}" for (c, s), x in best))
     print("median real value at 85 by start decade, with the lowest and highest:")
@@ -319,6 +324,10 @@ def main():
         ],
         ex,
     )
+    print("10-year government bond yields in the purchase years, by decade (p10, median, p90):")
+    for dec in range(1950, 2000, 10):
+        ys = [e[2] for e in ex if dec <= e[1] < dec + 10]
+        print(f"   {dec}s: {pct(pc.quantile(ys, 0.1))}, {pct(pc.quantile(ys, 0.5))}, {pct(pc.quantile(ys, 0.9))}")
     countries = sorted({c for c, *_ in ex})
     print(
         f"purchases: {len(ex)} country-years, {len(countries)} countries,"
@@ -399,6 +408,12 @@ def main():
             f" lowest bracket's percentages {pct(low[y] - 1):>6s}" + (f", real {pct(low_real)}" if y in cpi else "")
         )
     write("portugal_pension", ["year", "january", "july", "average", "real", "lowest_index", "lowest_real"], out)
+    print("years where the ordinance's minimum rise in euros was larger than the percentage rise:")
+    for y in range(2009, 2027):
+        b = pc.pt_bracket(pc.pt_update_rows(d.pt_updates, y, "jan"), pt[y - 1][1])
+        by_rate = float(b["rate"]) / 100 * pt[y - 1][1]
+        if b["minimum"] and float(b["minimum"]) > by_rate:
+            print(f"   {y}: {b['rate']}% of {pt[y - 1][1]:.2f} = {by_rate:.2f} euros; minimum {b['minimum']} euros")
     reals = [(r[4], r[0]) for r in out if not math.isnan(r[4])]
     lo = min(reals)
     print(f"lowest real value: {pct(lo[0])} in {lo[1]}; in 2025: {pct(reals[-1][0])}")
@@ -445,6 +460,7 @@ def main():
         vv = [x for (cc, s), x in life_fixed.items() if cc == c]
         eq.append(pc.quantile(vv, 0.5))
     print(f"   median of country medians (each country counted once): {pct(pc.quantile(eq, 0.5))}")
+    print(f"   Turkey's average inflation, 1980-1999: {pct(pc.average_inflation(d.cpi['TUR'], 1980, 19))} a year")
     tur = pc.windows(d.cpi, ["TUR"], pc.SPAN)
     vv = [pc.weighted_real(pc.real_path(d.cpi["TUR"], s, pc.SPAN), S) for c, s in tur]
     print(
