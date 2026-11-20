@@ -1,0 +1,148 @@
+
+====================================================================================================
+1. Data and conventions
+====================================================================================================
+countries: 23 (OECD members by 1973, without Turkey): AUS, AUT, BEL, CAN, CHE, DEU, DNK, ESP, FIN, FRA, GBR, GRC, IRL, ISL, ITA, JPN, LUX, NLD, NOR, NZL, PRT, SWE, USA
+first month of share prices: Australia 1958-01, Austria 1957-01, Belgium 1985-04, Canada 1956-01, Switzerland 1955-01, Germany 1960-01, Denmark 1983-01, Spain 1985-01, Finland 1957-01, France 1955-01, United Kingdom 1957-12, Greece 1985-01, Ireland 1955-01, Iceland 1993-01, Italy 1957-01, Japan 1959-01, Luxembourg 1999-01, Netherlands 1957-01, Norway 1986-01, New Zealand 1967-01, Portugal 1988-01, Sweden 1950-01, United States 1957-01
+last month of share prices: 2026-10
+start months with 12 months of prices and cash rates after them: 13241
+first and last start month: 1955-01, 2025-10
+cash rate in the start month from the overnight rate (3-month rate missing): 10.1%
+start months with a negative cash rate: 10.4%
+start months by country: AUS 694, AUT 437, BEL 487, CAN 838, CHE 646, DEU 790, DNK 466, ESP 490, FIN 466, FRA 850, GBR 574, GRC 490, IRL 502, ISL 394, ITA 565, JPN 484, LUX 322, NLD 526, NOR 478, NZL 623, PRT 443, SWE 850, USA 826
+
+====================================================================================================
+2. Twelve monthly instalments against a lump sum, share prices without dividends
+====================================================================================================
+lump sum ahead after 12 months in 56.7% of 13241 start months
+advantage of the lump sum (per cent of the spread value): min -86.05% | p5 -19.38% | p25 -5.61% | median 1.67% | p75 8.13% | p95 18.79% | max 66.64%
+mean advantage: 1.00%
+when the lump sum wins: median 7.20%; when it loses: median -7.01%
+lump sum ahead by more than 10%: 19.3%; behind by more than 10%: 15.7%
+worst for the lump sum: Iceland 2008-09: lump sum 0.130, spread 0.930 (advantage -86.0%)
+best for the lump sum: Greece 1986-12: lump sum 2.861, spread 1.717 (advantage 66.6%)
+   New Zealand      623 starts: lump sum ahead 47.8%, median advantage -0.29%
+   Luxembourg       322 starts: lump sum ahead 50.6%, median advantage 0.13%
+   Germany          790 starts: lump sum ahead 52.2%, median advantage 0.75%
+   Greece           490 starts: lump sum ahead 52.7%, median advantage 1.29%
+   Australia        694 starts: lump sum ahead 52.7%, median advantage 0.47%
+   France           850 starts: lump sum ahead 52.8%, median advantage 0.89%
+   Japan            484 starts: lump sum ahead 53.7%, median advantage 1.08%
+   Portugal         443 starts: lump sum ahead 54.2%, median advantage 1.67%
+   Austria          437 starts: lump sum ahead 54.2%, median advantage 1.43%
+   Italy            565 starts: lump sum ahead 55.4%, median advantage 2.01%
+   Canada           838 starts: lump sum ahead 55.6%, median advantage 0.85%
+   Finland          466 starts: lump sum ahead 55.8%, median advantage 1.78%
+   Spain            490 starts: lump sum ahead 56.7%, median advantage 2.24%
+   United States    826 starts: lump sum ahead 58.5%, median advantage 1.79%
+   United Kingdom   574 starts: lump sum ahead 59.4%, median advantage 1.50%
+   Iceland          394 starts: lump sum ahead 59.9%, median advantage 2.48%
+   Sweden           850 starts: lump sum ahead 60.0%, median advantage 2.13%
+   Belgium          487 starts: lump sum ahead 60.2%, median advantage 2.61%
+   Switzerland      646 starts: lump sum ahead 61.3%, median advantage 2.48%
+   Ireland          502 starts: lump sum ahead 61.4%, median advantage 3.16%
+   Denmark          466 starts: lump sum ahead 62.9%, median advantage 4.34%
+   Netherlands      526 starts: lump sum ahead 64.1%, median advantage 3.51%
+   Norway           478 starts: lump sum ahead 64.2%, median advantage 4.19%
+countries where the lump sum was ahead in more than half of start months: 22 of 23
+median of the 23 country shares: 55.8%
+share of start months where the index (no dividends) beat cash over the 12 months: 58.0%
+
+====================================================================================================
+3. What spreading buys: the value of the windfall after one year
+====================================================================================================
+   p01: lump sum 0.556, spread 0.726, half and half 0.650
+   p05: lump sum 0.728, spread 0.850, half and half 0.799
+   p10: lump sum 0.810, spread 0.905, half and half 0.863
+   p25: lump sum 0.946, spread 0.993, half and half 0.972
+   p50: lump sum 1.084, spread 1.068, half and half 1.076
+   p75: lump sum 1.214, spread 1.143, half and half 1.175
+   p90: lump sum 1.359, spread 1.223, half and half 1.286
+   p95: lump sum 1.480, spread 1.297, half and half 1.382
+   p99: lump sum 1.837, spread 1.516, half and half 1.650
+   worth less than 1.0 of the windfall: lump sum 33.6%, spread 26.9%, half and half 30.7%
+   worth less than 0.9 of the windfall: lump sum 18.9%, spread 9.4%, half and half 13.8%
+   worth less than 0.8 of the windfall: lump sum 9.2%, spread 2.5%, half and half 5.1%
+   worth less than 0.7 of the windfall: lump sum 3.9%, spread 0.7%, half and half 1.6%
+half now, half over 12 months: ahead of spreading in 56.7%, median 0.83%
+loss aversion at which spreading becomes the better bet (without dividends): losses weighted 1.79 times gains
+loss aversion at which spreading becomes the better bet (with 3% dividends): losses weighted 2.69 times gains
+regret of the lump-sum investor (spreading would have done better), median 7.01%, p95 24.56%
+regret of the spreading investor (the lump sum would have done better), median 7.20%, p95 22.56%
+
+====================================================================================================
+4. Dividends: the OECD indices leave them out
+====================================================================================================
+with an assumed dividend yield of 2% a year: lump sum ahead in 60.3%, median advantage 2.60%
+with an assumed dividend yield of 3% a year: lump sum ahead in 62.1%, median advantage 3.06%
+with an assumed dividend yield of 4% a year: lump sum ahead in 63.8%, median advantage 3.53%
+United States, Shiller's S&P composite, price only, starts 1954-07 to 2022-06 (816): lump sum ahead in 61.6%, median advantage 1.85%
+United States, Shiller's S&P composite, total return, starts 1954-07 to 2022-06 (816): lump sum ahead in 67.9%, median advantage 3.15%
+United States, Shiller price: loss aversion at which spreading becomes the better bet 2.01
+United States, Shiller total: loss aversion at which spreading becomes the better bet 3.48
+United States, OECD index without dividends, same start months (786): lump sum ahead in 57.3%
+Shiller dividend yield, 1954-07 to 2023-06: median 2.96%, range 1.11% to 6.24%
+United States with dividends, by cash rate in the start month:
+   below 2%      210 starts: lump sum ahead in 81.4%, median 6.88%
+   2% to 5%      231 starts: lump sum ahead in 63.2%, median 1.68%
+   5% to 8%      233 starts: lump sum ahead in 70.4%, median 3.83%
+   8% to 12%     111 starts: lump sum ahead in 53.2%, median 0.86%
+   12% or more    31 starts: lump sum ahead in 45.2%, median -4.41%
+
+====================================================================================================
+5. How long to spread: 3 to 36 monthly instalments
+====================================================================================================
+    3 months (13457 starts): lump sum ahead in 56.1%, median advantage 0.48%; 5th percentile of value at the end: lump sum 0.860, spread 0.905
+    6 months (13385 starts): lump sum ahead in 56.3%, median advantage 0.95%; 5th percentile of value at the end: lump sum 0.798, spread 0.877
+   12 months (13241 starts): lump sum ahead in 56.7%, median advantage 1.67%; 5th percentile of value at the end: lump sum 0.728, spread 0.850
+   24 months (12958 starts): lump sum ahead in 56.3%, median advantage 2.51%; 5th percentile of value at the end: lump sum 0.647, spread 0.827
+   36 months (12682 starts): lump sum ahead in 55.6%, median advantage 2.74%; 5th percentile of value at the end: lump sum 0.646, spread 0.834
+   average share of the windfall in cash over the 12 months of spreading: 45.8%
+   average share of the windfall in cash over the 24 months of spreading: 47.9%
+   average share of the windfall in cash over the 36 months of spreading: 48.6%
+
+====================================================================================================
+6. Conditions at the start
+====================================================================================================
+   at an all-time high           1852 starts: lump sum ahead in 61.8% (with 3% dividends 67.5%), median advantage 2.69%
+   20% or more below the high    5991 starts: lump sum ahead in 57.0% (with 3% dividends 61.7%), median advantage 1.88%
+   anywhere else                 5398 starts: lump sum ahead in 54.6% (with 3% dividends 60.8%), median advantage 0.99%
+   at an all-time high: index lower a year later in 30.7% of starts
+by the cash rate in the start month:
+   below 2%      3998 starts: lump sum ahead in 62.7% (with 3% dividends 68.6%), median advantage 2.88%
+   2% to 5%      4161 starts: lump sum ahead in 59.6% (with 3% dividends 65.1%), median advantage 2.25%
+   5% to 8%      2243 starts: lump sum ahead in 54.2% (with 3% dividends 60.0%), median advantage 1.04%
+   8% to 12%     1675 starts: lump sum ahead in 46.3% (with 3% dividends 51.5%), median advantage -0.98%
+   12% or more   1164 starts: lump sum ahead in 45.0% (with 3% dividends 48.4%), median advantage -2.19%
+
+====================================================================================================
+7. By decade of the start month
+====================================================================================================
+   1950s:   204 starts, lump sum ahead in 53.4% (with 3% dividends 60.3%), median advantage 0.91%, median cash rate 3.9%
+   1960s:   624 starts, lump sum ahead in 46.6% (with 3% dividends 52.7%), median advantage -0.82%, median cash rate 4.7%
+   1970s:   928 starts, lump sum ahead in 45.4% (with 3% dividends 51.8%), median advantage -0.95%, median cash rate 7.4%
+   1980s:  1739 starts, lump sum ahead in 58.3% (with 3% dividends 63.3%), median advantage 2.55%, median cash rate 10.8%
+   1990s:  2616 starts, lump sum ahead in 56.6% (with 3% dividends 60.9%), median advantage 2.03%, median cash rate 6.4%
+   2000s:  2760 starts, lump sum ahead in 52.9% (with 3% dividends 56.7%), median advantage 1.03%, median cash rate 3.4%
+   2010s:  2760 starts, lump sum ahead in 59.7% (with 3% dividends 66.6%), median advantage 1.76%, median cash rate 0.3%
+   2020s:  1610 starts, lump sum ahead in 67.1% (with 3% dividends 74.3%), median advantage 3.34%, median cash rate 1.8%
+
+====================================================================================================
+8. Episodes: a windfall of 100,000 in a given month, one month after the last instalment
+====================================================================================================
+   2000-03: USA lump 96,973 / spread 95,911; DEU lump 70,688 / spread 84,369; GBR lump 87,342 / spread 92,891; JPN lump 74,529 / spread 84,507; PRT lump 75,968 / spread 90,456
+   2007-10: USA lump 60,343 / spread 69,209; DEU lump 58,350 / spread 70,133; GBR lump 64,887 / spread 75,062; JPN lump 56,148 / spread 67,897; PRT lump 54,296 / spread 66,282
+   2008-09: USA lump 86,368 / spread 119,548; DEU lump 85,224 / spread 116,652; GBR lump 96,204 / spread 118,596; JPN lump 80,359 / spread 107,746; PRT lump 101,888 / spread 124,533
+   2009-03: USA lump 155,069 / spread 116,987; DEU lump 147,493 / spread 115,794; GBR lump 149,486 / spread 120,366; JPN lump 123,860 / spread 106,163; PRT lump 135,311 / spread 106,877
+   2020-02: USA lump 110,606 / spread 121,068; DEU lump 104,500 / spread 114,551; GBR lump 90,020 / spread 106,779; JPN lump 114,401 / spread 119,880; PRT lump 102,666 / spread 112,963
+   2022-01: USA lump 92,990 / spread 102,431; DEU lump 87,832 / spread 105,357; GBR lump 103,176 / spread 105,726; JPN lump 98,068 / spread 100,055; PRT lump 110,460 / spread 103,089
+
+====================================================================================================
+9. Checks
+====================================================================================================
+each country counted once (median of country shares): 55.8%; mean 56.8%
+only start months with a 3-month rate: 57.0% of 11910
+starts from 1970: 57.2%; from 1990: 58.2%
+without Iceland and Greece: 56.7%
+non-overlapping windows only (one start every 13 months): 55.0% of 1025
+cash earning nothing (same start months as the base case): lump sum ahead in 64.3%
