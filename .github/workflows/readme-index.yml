@@ -1,0 +1,80 @@
+name: readme-index
+
+# Pull requests: checks projects.yml and changes nothing, so two open pull requests that add
+# folders do not conflict over README.md. A new folder missing from projects.yml is a warning.
+#
+# Main, after every merge: rebuilds the Projects list in README.md from projects.yml and the
+# folders' README headings, commits it to main if it changed, then checks it is up to date.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: readme-index-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  pull-request:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        run: python -m pip install pyyaml==6.0.2
+
+      - name: Test the list builder
+        run: python -m unittest scripts.tests.test_build_readme -v
+
+      - name: projects.yml valid
+        run: python scripts/build_readme.py --validate
+
+  main:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        run: python -m pip install pyyaml==6.0.2
+
+      - name: Rebuild the Projects list
+        run: python scripts/build_readme.py
+
+      - name: Commit to main
+        run: |
+          if [ -z "$(git status --porcelain README.md)" ]; then
+            echo "Nothing to commit."
+            exit 0
+          fi
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add README.md
+          git commit -m "Rebuild the Projects list in README.md"
+          if ! git push origin HEAD:main; then
+            # Main moved while this ran (another merge). That merge starts its own run.
+            echo "::notice::main moved during the run; the run for the newer merge takes over."
+            echo "SUPERSEDED=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: README.md up to date
+        if: env.SUPERSEDED != '1'
+        run: python scripts/build_readme.py --check

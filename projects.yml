@@ -1,0 +1,386 @@
+# Top-level folders of Medium-Blog and the group each one is listed under in README.md.
+#
+# scripts/build_readme.py builds the "Projects" part of README.md from this file and from the
+# first heading of each folder's README. On a pull request the readme-index workflow only checks
+# this file; after the merge it rebuilds README.md on main and commits it.
+#
+# Adding a folder: add one line under `folders`, in alphabetical order:
+#   my-new-study: operations-and-decisions
+# Optional keys, written as {group: ..., part: ..., title: ...}:
+#   part   position inside a series (the first part the folder belongs to); folders without it
+#          follow, by name. Follow-up series count from 101.
+#   title  replaces the README heading in the list.
+# A folder that is not listed still appears in README.md, under "Not yet sorted".
+#
+# Section kinds: series and themes list each folder with its title; tooling likewise;
+# archive lists its folders on one line.
+
+sections:
+  - id: series-methods
+    kind: series
+    title: "Series: statistics, machine learning and data engineering"
+  - id: series-economics
+    kind: series
+    title: "Series: economics and economic history"
+  - id: themes
+    kind: themes
+    title: "Standalone studies, by theme"
+  - id: tooling
+    kind: tooling
+    title: "Repository tooling"
+  - id: archive
+    kind: archive
+    title: "Historical archive"
+
+groups:
+  - id: causal-inference-in-statistics
+    section: series-methods
+    title: "Causal Inference in Statistics"
+    about: "Twenty simulation experiments with a known causal effect, one estimator or design per part."
+  - id: survival-analysis-for-data-scientists
+    section: series-methods
+    title: "Survival Analysis for Data Scientists"
+    about: "A six-part introduction to time-to-event analysis."
+  - id: monty-hall
+    section: series-methods
+    title: "The Monty Hall Problem"
+    about: "Four parts on the host protocol and selection."
+  - id: simpsons-paradox
+    section: series-methods
+    title: "Simpson's Paradox"
+    about: "Four parts on which table answers the question."
+  - id: regression-to-the-mean
+    section: series-methods
+    title: "Regression to the Mean"
+    about: "Four parts on selecting on a noisy measurement."
+  - id: statistical-process-control
+    section: series-methods
+    title: "Statistical Process Control"
+    about: "Estimated control limits on production lines and the in-control ARL."
+  - id: backward-evaluation
+    section: series-methods
+    title: "Backward Evaluation of Forecasting Models"
+    about: "Training on the present and testing on the past, with pre-registered tests."
+  - id: overcoming-data-challenges
+    section: series-methods
+    title: "Overcoming Data Challenges"
+    about: "One method per data problem, each with a real-data experiment."
+  - id: contact-centre-synthetic-data
+    section: series-methods
+    title: "Synthetic Data for a Contact Centre"
+    about: "Mechanistic, data-driven and hybrid generators, tested on a real call centre."
+  - id: actuarial-tariff-calibration
+    section: series-methods
+    title: "Actuarial Data Science: Discrimination, Calibration and the Tariff"
+    about: "Why a good Gini is not a good tariff."
+  - id: code-quality-for-data-work
+    section: series-methods
+    title: "Code Quality for Data Work"
+    about: "SQL quality, pipeline tests and data tests."
+  - id: correctness-over-time
+    section: series-methods
+    title: "Correctness Over Time in Data Pipelines"
+    about: "Where time makes correct pipelines give wrong numbers."
+  - id: midterm-2026-forecast
+    section: series-methods
+    title: "The 2026 Midterm Forecast"
+    about: "Fit against prediction in an election model."
+  - id: us-political-economy
+    section: series-economics
+    title: "U.S. Political Economy, 1870–2025"
+    about: "Nine periods of U.S. economic history measured with public data."
+  - id: euro-crisis
+    section: series-economics
+    title: "The Euro-Area Debt Crisis and Its Aftermath"
+    about: "The 2010–2025 ledger, France in 2026, Germany, the ECB and Portugal."
+  - id: eu-import-dependence
+    section: series-economics
+    title: "EU Dependence on Suppliers Outside the Bloc"
+    about: "Dependence product by product, a redesigned screen and its lead time."
+  - id: capacity-and-recovery
+    section: series-economics
+    title: "Capacity Lock-In, Shocks and Recovery"
+    about: "When a market can rebuild lost capacity."
+  - id: eu-crops-and-weather
+    section: series-economics
+    title: "Heat, Drought and Europe's Crops"
+    about: "Weather and yields across EU regions."
+  - id: portugal-wages-and-living-costs
+    section: series-economics
+    title: "Portuguese Wages and the Cost of Living since 1975"
+    about: "Counterfactual wages and household spending on basic needs."
+  - id: eu-wages
+    section: series-economics
+    title: "Wage Setting in the EU, with Portugal as a Special Case"
+    about: "Labour law as auction and bargaining, and scenario forecasts."
+  - id: europe-low-wage-path
+    section: series-economics
+    title: "Europe's Low-Wage Path, Measured"
+    about: "Four measurements behind the low-wage argument, and their follow-ups."
+  - id: billionaires-poverty
+    section: series-economics
+    title: "Billionaire Density and Poverty"
+    about: "The 54-country reanalysis and its follow-ups."
+  - id: wealth-concentration
+    section: series-economics
+    title: "Wealth Concentration and Growth"
+    about: "Wealth against productivity across countries, then inherited and self-made billionaire wealth."
+  - id: taxation-efficiency-drug-prices
+    section: series-economics
+    title: "Taxes, Efficiency and the Price of Medicines"
+    about: "What a single public buyer obtains for medicines, compared with the United States, and the follow-ups."
+  - id: statistics-for-data-scientists
+    section: themes
+    title: "Statistics for Data Scientists"
+    about: "Standalone 'X is not Y' guides, each with a simulation study."
+  - id: ml-and-statistical-methods
+    section: themes
+    title: "Machine Learning and Statistical Methods"
+    about: "Method studies on public and simulated data."
+  - id: operations-and-decisions
+    section: themes
+    title: "Operations and Decisions"
+    about: "Decision problems with data: orders, rosters, routing, prices and storms."
+  - id: housing
+    section: themes
+    title: Housing
+    about: "Housing supply, prices and affordability."
+  - id: economics-and-society
+    section: themes
+    title: "Economics and Society"
+    about: "Prices, labour, taxes, growth and elections."
+  - id: history-measured
+    section: themes
+    title: "History, Measured"
+    about: "Questions about the past, tested on historical records."
+  - id: science-and-mathematics
+    section: themes
+    title: "Science and Mathematics"
+    about: "Questions from science and everyday life, checked with code."
+  - id: tooling
+    section: tooling
+    title: "Shared tooling"
+    about: "Repository checks, shared assets and data-source records."
+  - id: archive
+    section: archive
+    title: "Older article material"
+    about: "Notebooks, scripts and data behind older articles, kept at their original paths. Not guaranteed to run unchanged today."
+
+folders:
+  a-correlation-is-not-a-mechanism: statistics-for-data-scientists
+  a-dataset-is-not-a-population: statistics-for-data-scientists
+  a-label-is-not-ground-truth: statistics-for-data-scientists
+  ab_testing: archive
+  actuarial-tariff-calibration: {group: actuarial-tariff-calibration, part: 1}
+  agent-eval-runs: ml-and-statistical-methods
+  agent-size-evaluation: ml-and-statistical-methods
+  agreement-regimes: ml-and-statistical-methods
+  analytics-sql-quality: {group: code-quality-for-data-work, part: 1}
+  anonymous-bank-redials: {group: contact-centre-synthetic-data, part: 3}
+  anova_analysis: archive
+  assets: {group: tooling, title: "Logo and shared images"}
+  backward-evaluation: {group: backward-evaluation, part: 1}
+  backward-evaluation-episode-end: {group: backward-evaluation, part: 3}
+  backward-evaluation-generality: {group: backward-evaluation, part: 4}
+  backward-evaluation-guide: {group: backward-evaluation, part: 6}
+  backward-evaluation-model-choice: {group: backward-evaluation, part: 5}
+  backward-evaluation-pooling: {group: backward-evaluation, part: 2}
+  Barabasi-Albert_Network: archive
+  battle-numbers: history-measured
+  Bayestheorem: archive
+  BhattacharyyaMetrics: archive
+  billionaires-poverty-audit: {group: billionaires-poverty, part: 1}
+  billionaires-poverty-followups: {group: billionaires-poverty, part: 101}
+  Blood_Pressure_Missingness: ml-and-statistical-methods
+  "causal inference in marketing analytics": archive
+  causal-identification-before-estimation: statistics-for-data-scientists
+  causal-transportability-for-data-scientists: statistics-for-data-scientists
+  causal_inference_statistics: {group: causal-inference-in-statistics, part: 1, title: "All twenty parts: simulations, result tables and audits"}
+  change_point: archive
+  china-capital-deepening: {group: europe-low-wage-path, part: 102}
+  china-manufacturing-labour-costs: {group: europe-low-wage-path, part: 2}
+  civil-rights-great-society: {group: us-political-economy, part: 4}
+  civility-and-political-change: economics-and-society
+  clima_portugal: archive
+  clustering-is-not-a-population: statistics-for-data-scientists
+  coach-change-decision: operations-and-decisions
+  "compare tests statistics": archive
+  conformal-prediction-for-data-scientists: statistics-for-data-scientists
+  conformal_prediction: archive
+  coupon-campaign-questions: operations-and-decisions
+  cure-fraction-identifiability: {group: capacity-and-recovery, part: 4}
+  customer_life_value: archive
+  customer_segmentation: archive
+  data-tests-in-production: {group: code-quality-for-data-work, part: 3}
+  data-tests-limits: {group: code-quality-for-data-work, part: 4}
+  Data_Is_Not_Decision: archive
+  data_sources: {group: tooling, title: "Records of shared data sources"}
+  data_vs_sampling_dist: archive
+  decision-focused-optimization-for-data-scientists: statistics-for-data-scientists
+  "Deep Learning with Caffe and\u00a0Python": archive
+  deliberate-overfitting-diagnostics: ml-and-statistical-methods
+  dependency-early-warning: {group: eu-import-dependence, part: 3}
+  dependency-screen-design: {group: eu-import-dependence, part: 2}
+  dependent-data-uncertainty-for-data-scientists: statistics-for-data-scientists
+  DimensionReduction: archive
+  Django-Charts: archive
+  docs: {group: tooling, title: "Repository architecture"}
+  drift-detectors-as-control-charts: statistical-process-control
+  earthmover: archive
+  ecb-france-backstop: {group: euro-crisis, part: 4}
+  edge-of-stability: ml-and-statistical-methods
+  elliptic-curves: archive
+  eu-capital-exports: {group: europe-low-wage-path, part: 4}
+  eu-integration-correlated-shocks: {group: capacity-and-recovery, part: 2}
+  eu-okun-law: economics-and-society
+  eu-us-ppp-drift: {group: europe-low-wage-path, part: 103}
+  eu-us-productivity-gap: {group: europe-low-wage-path, part: 1}
+  eu-us-surplus-by-industry: {group: europe-low-wage-path, part: 101}
+  eu-wage-bargaining-power: {group: eu-wages, part: 1}
+  eu-wage-policy-forecast: {group: eu-wages, part: 2}
+  eu-wheat-weather: {group: eu-crops-and-weather, part: 1}
+  euro-crisis-ledger: {group: euro-crisis, part: 1}
+  europe-deindustrialisation: {group: eu-import-dependence, part: 1}
+  excess-zeros: {group: overcoming-data-challenges, part: 7}
+  extreme-value-theory-for-data-scientists: statistics-for-data-scientists
+  extreme-weather-warning-decisions: operations-and-decisions
+  feature-importance-is-not-causality: statistics-for-data-scientists
+  feature_discretization: archive
+  feature_importance_in_python: archive
+  "Featuring Engineering": archive
+  felt-inflation: economics-and-society
+  Finance: archive
+  financialization-before-2008: {group: us-political-economy, part: 6}
+  fixed-or-variable: economics-and-society
+  forecast-horizon: science-and-mathematics
+  france-repeat-sales-floor: housing
+  france-spread-2026: {group: euro-crisis, part: 2}
+  gaussian-graphical-models-for-data-scientists: statistics-for-data-scientists
+  gdp-life-outcomes: economics-and-society
+  german-public-investment: {group: euro-crisis, part: 3}
+  gilded-age-political-economy: {group: us-political-economy, part: 1}
+  "Graph Algorithms": archive
+  great-recession-unequal-recovery: {group: us-political-economy, part: 7}
+  hansard-classifier-drift: ml-and-statistical-methods
+  heteroscedasticity: {group: overcoming-data-challenges, part: 5}
+  hmc-bayesian-pinns: ml-and-statistical-methods
+  hotel-cancellation-replay: operations-and-decisions
+  house-votes-seats-gerrymandering: economics-and-society
+  housing-losses-inflation: housing
+  housing-supply-counterfactual: housing
+  hybrid-discrepancy-generators: {group: contact-centre-synthetic-data, part: 2}
+  iberian-electricity-lp: operations-and-decisions
+  ie-lu-fund-intermediation: {group: europe-low-wage-path, part: 105}
+  income_inequaility: archive
+  industrial-statistics-for-data-scientists: statistics-for-data-scientists
+  intermittent_time_series-main: archive
+  introduction_to_batch_processing_mapreduce: archive
+  inverse-problems-for-data-scientists: statistics-for-data-scientists
+  island-cable-resilience: operations-and-decisions
+  just_fun: archive
+  large-data-short-history: ml-and-statistical-methods
+  learned-branching-variability: operations-and-decisions
+  "Levenshtein Distance": archive
+  manufacturing_data_science: archive
+  mapreduce: archive
+  market-capacity-lock-in: {group: capacity-and-recovery, part: 1}
+  mc-dropout-posterior: ml-and-statistical-methods
+  measurement-error: {group: overcoming-data-challenges, part: 4}
+  mechanistic-vs-data-driven-generators: {group: contact-centre-synthetic-data, part: 1}
+  medium-equations: tooling
+  midterm-forecast-fit-vs-prediction: {group: midterm-2026-forecast, part: 1}
+  minimum-wage-in-work-poverty: {group: europe-low-wage-path, part: 3}
+  missing-data-is-not-zero: statistics-for-data-scientists
+  mixed-effects-models: {group: overcoming-data-challenges, part: 1}
+  ml-pipeline-tests: {group: code-quality-for-data-work, part: 2}
+  model-collapse-genesis: ml-and-statistical-methods
+  "Mongo DB": archive
+  monty-hall: {group: monty-hall, part: 1}
+  multiple-imputation: {group: overcoming-data-challenges, part: 2}
+  nearest-neighbor-geometry-for-data-scientists: statistics-for-data-scientists
+  neoliberalism-evidence-synthesis: economics-and-society
+  "Neural Network": archive
+  new-deal-social-contract: {group: us-political-economy, part: 3}
+  operational-research-2026: operations-and-decisions
+  org-chart-agents: ml-and-statistical-methods
+  org-chart-task-fit: ml-and-statistical-methods
+  outlier-is-not-an-error: statistics-for-data-scientists
+  pandemic-inflation-unequal-recovery: {group: us-political-economy, part: 8}
+  pca-vs-latent-factors-for-data-scientists: statistics-for-data-scientists
+  perishable-order-decisions: operations-and-decisions
+  pinn-crossover-dimension: ml-and-statistical-methods
+  pipeline-time-correctness: {group: correctness-over-time, part: 1}
+  portugal-2010-contagion: {group: euro-crisis, part: 5}
+  portugal-building-ecosystem: housing
+  portugal-debt-management: {group: euro-crisis, part: 6}
+  portugal-household-spending: {group: portugal-wages-and-living-costs, part: 2}
+  portugal-housing-generations: {group: housing, title: "Portugal's housing market, 2008–2025 (moved to its own repository)"}
+  portugal-iva-zero: economics-and-society
+  portugal-labour-share: economics-and-society
+  portugal-labour-share-industries: economics-and-society
+  portugal-wage-counterfactual: {group: portugal-wages-and-living-costs, part: 1}
+  portugal_data: archive
+  post-cutoff-forecasting: ml-and-statistical-methods
+  ppp-drift-by-category: {group: europe-low-wage-path, part: 106}
+  ppp-drift-pairs: {group: europe-low-wage-path, part: 104}
+  "Predicting House Prices": archive
+  preprocessing: archive
+  prescribing-individuals: ml-and-statistical-methods
+  progressive-era-reform-gap: {group: us-political-economy, part: 2}
+  pseudo_labeling_a_simple_semi_supervised_learning_method: archive
+  python-missing-data: archive
+  python-telegram-tutorial: archive
+  queueing-theory-for-data-scientists: statistics-for-data-scientists
+  R_code: archive
+  rare-event-detection-for-data-scientists: statistics-for-data-scientists
+  rare-events: {group: overcoming-data-challenges, part: 8}
+  rare-flags: science-and-mathematics
+  real_data_science: archive
+  recovery-after-busts: {group: capacity-and-recovery, part: 3}
+  regression-to-the-mean: {group: regression-to-the-mean, part: 1}
+  reliability-statistics-for-data-scientists: statistics-for-data-scientists
+  restaurant-portion-economics: operations-and-decisions
+  robust-regression: {group: overcoming-data-challenges, part: 3}
+  routing-on-real-roads: operations-and-decisions
+  sample-selection: {group: overcoming-data-challenges, part: 6}
+  scripts: {group: tooling, title: "Repository checks and shared fetch scripts"}
+  second-count-prediction: ml-and-statistical-methods
+  sequential-change-detection-for-data-scientists: statistics-for-data-scientists
+  short_time_series: archive
+  significance-selection-winners-curse: statistics-for-data-scientists
+  simpsons-paradox: {group: simpsons-paradox, part: 1}
+  spectral_methods: archive
+  spurious-regression-cointegration: statistics-for-data-scientists
+  staffing-shift-constraints: operations-and-decisions
+  stagflation-market-turn: {group: us-political-economy, part: 5}
+  statistical-evidence-and-decisions: ml-and-statistical-methods
+  statistical-process-control: {group: statistical-process-control, part: 1}
+  stocks_under_10: archive
+  storm-clustering-portugal: operations-and-decisions
+  storm-train-recovery: operations-and-decisions
+  storm-wind-extremes-portugal: operations-and-decisions
+  survival-analysis-for-data-scientists: survival-analysis-for-data-scientists
+  survival_analysis: archive
+  synthetic-data-evaluation: ml-and-statistical-methods
+  tax-cuts-rich-historical-cycles: {group: us-political-economy, part: 9}
+  taxation-efficiency-drug-prices: {group: taxation-efficiency-drug-prices, part: 1}
+  tenure-by-age-at-hire: ml-and-statistical-methods
+  the-test-set-is-not-an-oracle: statistics-for-data-scientists
+  Twitter_Analytics: archive
+  uk-repeat-sales-rigidity: housing
+  uk-sales-under-water: housing
+  uk-valuation-purchase-price: housing
+  urban-affordability-cascade: housing
+  Walmart-Sales-Prediction: archive
+  wealth-concentration-misallocation: {group: wealth-concentration, part: 1}
+  wealth-origin-growth: {group: wealth-concentration, part: 2}
+  wealth-origin-pandemic: {group: wealth-concentration, part: 4}
+  wealth-origin-sectors: {group: wealth-concentration, part: 3}
+  wealth-origin-successions: {group: wealth-concentration, part: 5}
+  wealth-origin-synthesis: {group: wealth-concentration, part: 6, title: "What five studies established about inherited billionaire wealth and growth"}
+  "Web Scrapper": archive
+  "work force model": archive
+  xx-equals-49: science-and-mathematics
+  "Yelp rating in Las\u00a0Vegas": archive
+  Zipf: archive
+  zipf_law: archive
