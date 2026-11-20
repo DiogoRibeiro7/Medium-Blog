@@ -122,6 +122,10 @@ def spillover() -> tuple[pd.DataFrame, list[str]]:
             rows.append(dict(period=label, country=j, beta=est[j], lo=D[j].quantile(.05), hi=D[j].quantile(.95), months=n))
         lines.append(f"  {label} ({n} months; France's own shock is {est['fr_own_share']:.0%} of the variance of its spread changes): "
                      + "; ".join(f"{NAMES[j]} {est[j]:+.2f} [{D[j].quantile(.05):+.2f}, {D[j].quantile(.95):+.2f}]" for j in OTHERS))
+    last_m = ch.index.max()
+    prev = spillover_betas(ch.loc["2024-06":str(last_m - 1)])
+    lines.append(f"  June 2024 to {last_m - 1} (without the latest month): France's own shock is {prev['fr_own_share']:.0%} of the variance; "
+                 + ", ".join(f"{NAMES[j]} {prev[j]:+.2f}" for j in ("BE", "IT")))
     df = pd.DataFrame(rows)
     df.to_csv(RESULTS / "channels_spillover.csv", index=False, float_format="%.4f")
     recent = df[df.period == "June 2024 on"].set_index("country")
@@ -131,8 +135,11 @@ def spillover() -> tuple[pd.DataFrame, list[str]]:
     cal = calibration()
     lines.append(f"  Calibration on simulated data with known responses (Italy 0.40, Belgium 0.20, six others 0): estimates Italy {cal['IT']:.2f}, Belgium {cal['BE']:.2f}, "
                  f"the six others {cal['zero_mean']:+.2f} on average ({cal['zero_min']:+.2f} to {cal['zero_max']:+.2f}); the estimator leans slightly negative, so values within about 0.1 of zero mean no response")
-    yr = s.loc["2025-12":"2026-09"]
-    lines.append("  Change in spreads, December 2025 to September 2026 (pp): " + ", ".join(f"{NAMES[c]} {yr[c].iloc[-1] - yr[c].iloc[0]:+.2f}" for c in ("FR", *OTHERS)))
+    yr = s.loc["2025-12":].dropna(subset=["FR"])
+    big = s[["FR", *OTHERS]].diff().loc["2024-06":].abs()
+    top = [NAMES[c] for c in ("FR", *OTHERS) if big[c].idxmax() == big.index.max()]
+    lines.append(f"  Countries whose largest absolute monthly change since June 2024 is the latest month ({big.index.max()}): {', '.join(top) or 'none'}")
+    lines.append(f"  Change in spreads, December 2025 to {yr.index.max().strftime('%B %Y')} (pp): " + ", ".join(f"{NAMES[c]} {yr[c].iloc[-1] - yr[c].iloc[0]:+.2f}" for c in ("FR", *OTHERS)))
     return df, lines
 
 

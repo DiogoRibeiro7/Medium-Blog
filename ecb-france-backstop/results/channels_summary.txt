@@ -1,11 +1,13 @@
 1. Other sovereigns: basis-point response to a 1 bp France-specific spread move (90% bootstrap interval)
   2013-2019 (84 months; France's own shock is 58% of the variance of its spread changes): Italy +0.06 [-0.56, +0.68]; Spain -0.02 [-0.49, +0.48]; Belgium +0.57 [+0.24, +0.72]; Austria +0.00 [-0.14, +0.15]; Netherlands -0.06 [-0.29, +0.15]; Finland -0.05 [-0.22, +0.11]; Portugal -1.55 [-2.65, -0.22]; Ireland -0.26 [-0.46, +0.19]
-  2020-2026 (81 months; France's own shock is 47% of the variance of its spread changes): Italy +0.33 [-0.10, +0.63]; Spain -0.11 [-0.35, +0.05]; Belgium +0.17 [-0.04, +0.24]; Austria -0.09 [-0.21, +0.06]; Netherlands +0.05 [-0.09, +0.22]; Finland -0.11 [-0.37, +0.11]; Portugal -0.15 [-0.46, +0.09]; Ireland +0.00 [-0.15, +0.33]
-  June 2024 on (28 months; France's own shock is 67% of the variance of its spread changes): Italy +0.32 [-0.26, +0.67]; Spain +0.05 [-0.15, +0.24]; Belgium +0.29 [+0.11, +0.38]; Austria -0.16 [-0.31, +0.03]; Netherlands +0.10 [-0.01, +0.24]; Finland +0.04 [-0.21, +0.29]; Portugal -0.21 [-0.52, +0.07]; Ireland -0.27 [-0.40, -0.02]
-  A 100 bp France-specific widening, June 2024 on: response Italy +32 bp, Spain +5 bp, Belgium +29 bp, Austria -16 bp, Netherlands +10 bp, Finland +4 bp, Portugal -21 bp, Ireland -27 bp
+  2020-2026 (82 months; France's own shock is 55% of the variance of its spread changes): Italy +0.28 [-0.08, +0.58]; Spain +0.00 [-0.32, +0.07]; Belgium +0.43 [-0.04, +0.47]; Austria -0.11 [-0.20, +0.05]; Netherlands -0.03 [-0.11, +0.21]; Finland -0.08 [-0.34, +0.08]; Portugal -0.20 [-0.43, +0.06]; Ireland -0.14 [-0.21, +0.31]
+  June 2024 on (29 months; France's own shock is 41% of the variance of its spread changes): Italy +0.42 [-0.18, +0.63]; Spain +0.13 [-0.12, +0.22]; Belgium +0.47 [+0.13, +0.55]; Austria -0.15 [-0.29, -0.01]; Netherlands +0.05 [-0.02, +0.23]; Finland -0.03 [-0.20, +0.26]; Portugal -0.14 [-0.49, +0.06]; Ireland -0.29 [-0.39, -0.06]
+  June 2024 to 2026-09 (without the latest month): France's own shock is 67% of the variance; Belgium +0.29, Italy +0.32
+  A 100 bp France-specific widening, June 2024 on: response Italy +42 bp, Spain +13 bp, Belgium +47 bp, Austria -15 bp, Netherlands +5 bp, Finland -3 bp, Portugal -14 bp, Ireland -29 bp
   Same shock with 2013-2019 slopes: Italy +6 bp, Spain -2 bp, Belgium +57 bp, Austria +0 bp, Netherlands -6 bp, Finland -5 bp, Portugal -155 bp, Ireland -26 bp
   Calibration on simulated data with known responses (Italy 0.40, Belgium 0.20, six others 0): estimates Italy 0.39, Belgium 0.16, the six others -0.09 on average (-0.09 to -0.08); the estimator leans slightly negative, so values within about 0.1 of zero mean no response
-  Change in spreads, December 2025 to September 2026 (pp): France +0.22, Italy +0.15, Spain -0.00, Belgium +0.14, Austria -0.07, Netherlands -0.06, Finland -0.02, Portugal +0.04, Ireland -0.08
+  Countries whose largest absolute monthly change since June 2024 is the latest month (2026-10): France, Italy, Spain, Belgium, Portugal
+  Change in spreads, December 2025 to October 2026 (pp): France +0.73, Italy +0.52, Spain +0.19, Belgium +0.46, Austria -0.01, Netherlands -0.04, Finland +0.05, Portugal +0.17, Ireland -0.06
 
 2. Banks (EBA 2025 transparency exercise, June 2025)
   119 banks plus the EBA's aggregate of other banks, 25 countries, June 2025. Direct exposure to French general government (net of short positions): EUR 726 bn, of which French banks 578 bn (80%)
