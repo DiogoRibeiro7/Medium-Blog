@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-218 top-level folders: 77 belong to 24 series, 83 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
+219 top-level folders: 77 belong to 24 series, 84 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -350,6 +350,7 @@ Prices, labour, taxes, growth and elections.
 - [`gdp-life-outcomes/`](gdp-life-outcomes/) — GDP per Capita, Life Expectancy and Basic Services: What Cross-Country Correlations Can and Cannot Identify
 - [`house-votes-seats-gerrymandering/`](house-votes-seats-gerrymandering/) — Votes, seats and who drew the map: U.S. House elections, 1972–2026
 - [`neoliberalism-evidence-synthesis/`](neoliberalism-evidence-synthesis/) — Neoliberalism, work, distribution and housing: an evidence audit
+- [`pension-inflation/`](pension-inflation/) — Pension inflation: fixed and indexed pensions replayed on 23 countries' prices
 - [`portugal-iva-zero/`](portugal-iva-zero/) — Pass-through of Portugal's zero VAT on 46 food products (IVA Zero) in official prices
 - [`portugal-labour-share/`](portugal-labour-share/) — Portugal's labour share under eighteen definitions
 - [`portugal-labour-share-industries/`](portugal-labour-share-industries/) — Portugal's labour share by industry, 1995–2024
