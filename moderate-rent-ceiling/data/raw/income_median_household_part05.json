@@ -1,0 +1,1436 @@
+[ {
+  "IndicadorCod" : "0012712",
+  "IndicadorDsg" : "Valor mediano do rendimento bruto declarado por agregado fiscal (€) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012712&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:16:44.323Z",
+  "DataUltimoAtualizacao" : "2026-07-24",
+  "UltimoPref" : "2024",
+  "Dados" : {
+    "2018" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 253",
+      "valor" : "9253"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "10 262",
+      "valor" : "10262"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "10 302",
+      "valor" : "10302"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "10 363",
+      "valor" : "10363"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "10 388",
+      "valor" : "10388"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "10 429",
+      "valor" : "10429"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "10 921",
+      "valor" : "10921"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "11 050",
+      "valor" : "11050"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "11 064",
+      "valor" : "11064"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "11 222",
+      "valor" : "11222"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "11 408",
+      "valor" : "11408"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "11 440",
+      "valor" : "11440"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "11 579",
+      "valor" : "11579"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "12 139",
+      "valor" : "12139"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "12 386",
+      "valor" : "12386"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "12 402",
+      "valor" : "12402"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "12 671",
+      "valor" : "12671"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "12 810",
+      "valor" : "12810"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "13 074",
+      "valor" : "13074"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "13 167",
+      "valor" : "13167"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "13 185",
+      "valor" : "13185"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "13 254",
+      "valor" : "13254"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "13 295",
+      "valor" : "13295"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "13 353",
+      "valor" : "13353"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "13 507",
+      "valor" : "13507"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "13 530",
+      "valor" : "13530"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "13 530",
+      "valor" : "13530"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "13 768",
+      "valor" : "13768"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "13 772",
+      "valor" : "13772"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "13 801",
+      "valor" : "13801"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "13 874",
+      "valor" : "13874"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "13 942",
+      "valor" : "13942"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "14 048",
+      "valor" : "14048"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "14 093",
+      "valor" : "14093"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "14 656",
+      "valor" : "14656"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "15 054",
+      "valor" : "15054"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "15 491",
+      "valor" : "15491"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "17 938",
+      "valor" : "17938"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 100",
+      "valor" : "9100"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "10 711",
+      "valor" : "10711"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "10 760",
+      "valor" : "10760"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "10 852",
+      "valor" : "10852"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "10 852",
+      "valor" : "10852"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "10 893",
+      "valor" : "10893"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "11 200",
+      "valor" : "11200"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "11 365",
+      "valor" : "11365"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "11 395",
+      "valor" : "11395"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "11 635",
+      "valor" : "11635"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "11 683",
+      "valor" : "11683"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "11 868",
+      "valor" : "11868"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "11 967",
+      "valor" : "11967"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "12 620",
+      "valor" : "12620"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "12 812",
+      "valor" : "12812"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "13 002",
+      "valor" : "13002"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "13 125",
+      "valor" : "13125"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "13 239",
+      "valor" : "13239"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "13 384",
+      "valor" : "13384"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "13 654",
+      "valor" : "13654"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "13 739",
+      "valor" : "13739"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "13 796",
+      "valor" : "13796"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "13 884",
+      "valor" : "13884"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "13 943",
+      "valor" : "13943"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "14 000",
+      "valor" : "14000"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "14 000",
+      "valor" : "14000"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "14 066",
+      "valor" : "14066"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "14 086",
+      "valor" : "14086"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "14 210",
+      "valor" : "14210"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "14 289",
+      "valor" : "14289"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "14 394",
+      "valor" : "14394"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "14 499",
+      "valor" : "14499"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "14 721",
+      "valor" : "14721"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "14 854",
+      "valor" : "14854"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "15 331",
+      "valor" : "15331"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "15 413",
+      "valor" : "15413"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "15 843",
+      "valor" : "15843"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "18 373",
+      "valor" : "18373"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 183",
+      "valor" : "9183"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "10 808",
+      "valor" : "10808"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "10 964",
+      "valor" : "10964"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "10 969",
+      "valor" : "10969"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "11 095",
+      "valor" : "11095"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "11 195",
+      "valor" : "11195"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "11 312",
+      "valor" : "11312"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "11 362",
+      "valor" : "11362"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "11 525",
+      "valor" : "11525"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "11 661",
+      "valor" : "11661"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "11 943",
+      "valor" : "11943"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "12 074",
+      "valor" : "12074"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "12 116",
+      "valor" : "12116"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "12 634",
+      "valor" : "12634"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "12 757",
+      "valor" : "12757"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "13 069",
+      "valor" : "13069"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "13 085",
+      "valor" : "13085"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "13 259",
+      "valor" : "13259"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "13 553",
+      "valor" : "13553"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "13 570",
+      "valor" : "13570"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "13 597",
+      "valor" : "13597"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "13 719",
+      "valor" : "13719"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "13 965",
+      "valor" : "13965"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "13 993",
+      "valor" : "13993"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "13 993",
+      "valor" : "13993"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "13 993",
+      "valor" : "13993"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "14 064",
+      "valor" : "14064"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "14 077",
+      "valor" : "14077"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "14 191",
+      "valor" : "14191"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "14 321",
+      "valor" : "14321"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "14 376",
+      "valor" : "14376"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "14 493",
+      "valor" : "14493"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "14 689",
+      "valor" : "14689"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "14 826",
+      "valor" : "14826"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "15 193",
+      "valor" : "15193"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "15 569",
+      "valor" : "15569"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "15 794",
+      "valor" : "15794"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "18 456",
+      "valor" : "18456"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 765",
+      "valor" : "9765"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "11 231",
+      "valor" : "11231"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "11 478",
+      "valor" : "11478"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "11 493",
+      "valor" : "11493"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "11 527",
+      "valor" : "11527"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "11 628",
+      "valor" : "11628"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "11 718",
+      "valor" : "11718"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "12 068",
+      "valor" : "12068"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "12 213",
+      "valor" : "12213"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "12 317",
+      "valor" : "12317"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "12 503",
+      "valor" : "12503"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "12 574",
+      "valor" : "12574"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "12 584",
+      "valor" : "12584"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "12 980",
+      "valor" : "12980"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "13 100",
+      "valor" : "13100"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "13 473",
+      "valor" : "13473"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "13 575",
+      "valor" : "13575"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "13 899",
+      "valor" : "13899"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "13 928",
+      "valor" : "13928"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "13 933",
+      "valor" : "13933"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "13 990",
+      "valor" : "13990"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "14 281",
+      "valor" : "14281"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "14 300",
+      "valor" : "14300"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "14 405",
+      "valor" : "14405"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "14 472",
+      "valor" : "14472"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "14 472",
+      "valor" : "14472"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "14 570",
+      "valor" : "14570"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "14 611",
+      "valor" : "14611"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "14 652",
+      "valor" : "14652"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "14 900",
+      "valor" : "14900"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "15 088",
+      "valor" : "15088"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "15 148",
+      "valor" : "15148"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "15 324",
+      "valor" : "15324"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "15 326",
+      "valor" : "15326"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "15 831",
+      "valor" : "15831"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "16 216",
+      "valor" : "16216"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "16 292",
+      "valor" : "16292"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "19 085",
+      "valor" : "19085"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 870",
+      "valor" : "9870"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "11 530",
+      "valor" : "11530"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "12 018",
+      "valor" : "12018"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "12 097",
+      "valor" : "12097"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "12 238",
+      "valor" : "12238"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "12 296",
+      "valor" : "12296"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "12 542",
+      "valor" : "12542"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "13 073",
+      "valor" : "13073"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "13 145",
+      "valor" : "13145"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "13 198",
+      "valor" : "13198"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "13 201",
+      "valor" : "13201"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "13 278",
+      "valor" : "13278"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "13 306",
+      "valor" : "13306"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "13 540",
+      "valor" : "13540"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "13 542",
+      "valor" : "13542"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "14 061",
+      "valor" : "14061"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "14 188",
+      "valor" : "14188"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "14 210",
+      "valor" : "14210"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "14 439",
+      "valor" : "14439"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "14 479",
+      "valor" : "14479"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "14 715",
+      "valor" : "14715"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "14 741",
+      "valor" : "14741"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "14 812",
+      "valor" : "14812"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "15 018",
+      "valor" : "15018"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "15 023",
+      "valor" : "15023"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "15 023",
+      "valor" : "15023"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "15 153",
+      "valor" : "15153"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "15 176",
+      "valor" : "15176"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "15 439",
+      "valor" : "15439"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "15 454",
+      "valor" : "15454"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "15 885",
+      "valor" : "15885"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "15 951",
+      "valor" : "15951"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "16 046",
+      "valor" : "16046"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "16 140",
+      "valor" : "16140"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "16 501",
+      "valor" : "16501"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "16 732",
+      "valor" : "16732"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "17 104",
+      "valor" : "17104"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "19 793",
+      "valor" : "19793"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "9 860",
+      "valor" : "9860"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "11 622",
+      "valor" : "11622"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "12 369",
+      "valor" : "12369"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "12 675",
+      "valor" : "12675"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "12 755",
+      "valor" : "12755"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "12 987",
+      "valor" : "12987"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "13 222",
+      "valor" : "13222"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "13 532",
+      "valor" : "13532"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "13 700",
+      "valor" : "13700"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "13 732",
+      "valor" : "13732"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "13 795",
+      "valor" : "13795"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "13 884",
+      "valor" : "13884"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "13 912",
+      "valor" : "13912"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "13 923",
+      "valor" : "13923"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "14 218",
+      "valor" : "14218"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "14 400",
+      "valor" : "14400"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "14 492",
+      "valor" : "14492"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "14 693",
+      "valor" : "14693"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "14 878",
+      "valor" : "14878"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "14 999",
+      "valor" : "14999"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "15 336",
+      "valor" : "15336"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "15 618",
+      "valor" : "15618"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "15 676",
+      "valor" : "15676"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "15 676",
+      "valor" : "15676"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "15 715",
+      "valor" : "15715"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "15 934",
+      "valor" : "15934"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "16 016",
+      "valor" : "16016"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "16 019",
+      "valor" : "16019"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "16 080",
+      "valor" : "16080"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "16 344",
+      "valor" : "16344"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "16 735",
+      "valor" : "16735"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "16 881",
+      "valor" : "16881"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "16 965",
+      "valor" : "16965"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "17 037",
+      "valor" : "17037"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "17 045",
+      "valor" : "17045"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "17 150",
+      "valor" : "17150"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "17 680",
+      "valor" : "17680"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "20 550",
+      "valor" : "20550"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "1C10211",
+      "geodsg" : "Odemira",
+      "ind_string" : "10 525",
+      "valor" : "10525"
+    }, {
+      "geocod" : "1C20208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "11 816",
+      "valor" : "11816"
+    }, {
+      "geocod" : "1C1",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "13 073",
+      "valor" : "13073"
+    }, {
+      "geocod" : "1C20213",
+      "geodsg" : "Serpa",
+      "ind_string" : "13 761",
+      "valor" : "13761"
+    }, {
+      "geocod" : "1C20209",
+      "geodsg" : "Mértola",
+      "ind_string" : "13 795",
+      "valor" : "13795"
+    }, {
+      "geocod" : "1C20210",
+      "geodsg" : "Moura",
+      "ind_string" : "13 921",
+      "valor" : "13921"
+    }, {
+      "geocod" : "1C20212",
+      "geodsg" : "Ourique",
+      "ind_string" : "14 334",
+      "valor" : "14334"
+    }, {
+      "geocod" : "1A01115",
+      "geodsg" : "Amadora",
+      "ind_string" : "14 356",
+      "valor" : "14356"
+    }, {
+      "geocod" : "1C11505",
+      "geodsg" : "Grândola",
+      "ind_string" : "14 422",
+      "valor" : "14422"
+    }, {
+      "geocod" : "1C11501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "14 719",
+      "valor" : "14719"
+    }, {
+      "geocod" : "1C2",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "14 742",
+      "valor" : "14742"
+    }, {
+      "geocod" : "1C",
+      "geodsg" : "Alentejo",
+      "ind_string" : "14 793",
+      "valor" : "14793"
+    }, {
+      "geocod" : "1A01116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "14 800",
+      "valor" : "14800"
+    }, {
+      "geocod" : "1C20207",
+      "geodsg" : "Cuba",
+      "ind_string" : "14 884",
+      "valor" : "14884"
+    }, {
+      "geocod" : "1B01506",
+      "geodsg" : "Moita",
+      "ind_string" : "14 958",
+      "valor" : "14958"
+    }, {
+      "geocod" : "1B01507",
+      "geodsg" : "Montijo",
+      "ind_string" : "14 967",
+      "valor" : "14967"
+    }, {
+      "geocod" : "1C20202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "15 004",
+      "valor" : "15004"
+    }, {
+      "geocod" : "1A01111",
+      "geodsg" : "Sintra",
+      "ind_string" : "15 293",
+      "valor" : "15293"
+    }, {
+      "geocod" : "1C20205",
+      "geodsg" : "Beja",
+      "ind_string" : "15 493",
+      "valor" : "15493"
+    }, {
+      "geocod" : "1A01107",
+      "geodsg" : "Loures",
+      "ind_string" : "15 607",
+      "valor" : "15607"
+    }, {
+      "geocod" : "1B01504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "16 032",
+      "valor" : "16032"
+    }, {
+      "geocod" : "1C11513",
+      "geodsg" : "Sines",
+      "ind_string" : "16 270",
+      "valor" : "16270"
+    }, {
+      "geocod" : "1B01503",
+      "geodsg" : "Almada",
+      "ind_string" : "16 298",
+      "valor" : "16298"
+    }, {
+      "geocod" : "1B",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "16 460",
+      "valor" : "16460"
+    }, {
+      "geocod" : "1B0",
+      "geodsg" : "Península de Setúbal",
+      "ind_string" : "16 460",
+      "valor" : "16460"
+    }, {
+      "geocod" : "1B01510",
+      "geodsg" : "Seixal",
+      "ind_string" : "16 823",
+      "valor" : "16823"
+    }, {
+      "geocod" : "1B01512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "16 881",
+      "valor" : "16881"
+    }, {
+      "geocod" : "1C11509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "17 008",
+      "valor" : "17008"
+    }, {
+      "geocod" : "1C20201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "17 041",
+      "valor" : "17041"
+    }, {
+      "geocod" : "1B01508",
+      "geodsg" : "Palmela",
+      "ind_string" : "17 255",
+      "valor" : "17255"
+    }, {
+      "geocod" : "1A01106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "17 692",
+      "valor" : "17692"
+    }, {
+      "geocod" : "1B01511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "17 984",
+      "valor" : "17984"
+    }, {
+      "geocod" : "1A01109",
+      "geodsg" : "Mafra",
+      "ind_string" : "17 998",
+      "valor" : "17998"
+    }, {
+      "geocod" : "1A01114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "18 055",
+      "valor" : "18055"
+    }, {
+      "geocod" : "1A01105",
+      "geodsg" : "Cascais",
+      "ind_string" : "18 245",
+      "valor" : "18245"
+    }, {
+      "geocod" : "1C20206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "18 301",
+      "valor" : "18301"
+    }, {
+      "geocod" : "1B01502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "19 307",
+      "valor" : "19307"
+    }, {
+      "geocod" : "1A01110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "21 700",
+      "valor" : "21700"
+    }, {
+      "geocod" : "1C20203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C20204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

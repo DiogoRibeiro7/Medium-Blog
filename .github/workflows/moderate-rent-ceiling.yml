@@ -1,0 +1,55 @@
+name: Reproduce moderate-rent-ceiling
+
+on:
+  pull_request:
+    paths:
+      - 'moderate-rent-ceiling/**'
+      - '.github/workflows/moderate-rent-ceiling.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'moderate-rent-ceiling/**'
+      - '.github/workflows/moderate-rent-ceiling.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: moderate-rent-ceiling
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: moderate-rent-ceiling/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Rerun the analysis
+        run: |
+          cp results/summary.txt "$RUNNER_TEMP/summary_committed.txt"
+          python ceiling.py > /dev/null
+
+      - name: Check the numbers match the committed run
+        run: python check_summary.py "$RUNNER_TEMP/summary_committed.txt" results/summary.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          test "$(ls figures/fig*.png | wc -l)" -eq 6

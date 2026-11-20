@@ -1,0 +1,216 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:20:15.035Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "1407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "161,10",
+      "valor" : "161.1"
+    }, {
+      "geocod" : "1417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "168,46",
+      "valor" : "168.46"
+    }, {
+      "geocod" : "1408",
+      "geodsg" : "Constância",
+      "ind_string" : "195,21",
+      "valor" : "195.21"
+    }, {
+      "geocod" : "1409",
+      "geodsg" : "Coruche",
+      "ind_string" : "209,10",
+      "valor" : "209.1"
+    }, {
+      "geocod" : "1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "209,58",
+      "valor" : "209.58"
+    }, {
+      "geocod" : "1606",
+      "geodsg" : "Ponte da Barca",
+      "ind_string" : "215,56",
+      "valor" : "215.56"
+    }, {
+      "geocod" : "1501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "217,92",
+      "valor" : "217.92"
+    }, {
+      "geocod" : "1412",
+      "geodsg" : "Golegã",
+      "ind_string" : "237,55",
+      "valor" : "237.55"
+    }, {
+      "geocod" : "1603",
+      "geodsg" : "Melgaço",
+      "ind_string" : "238,81",
+      "valor" : "238.81"
+    }, {
+      "geocod" : "1413",
+      "geodsg" : "Mação",
+      "ind_string" : "241,36",
+      "valor" : "241.36"
+    }, {
+      "geocod" : "1601",
+      "geodsg" : "Arcos de Valdevez",
+      "ind_string" : "242,83",
+      "valor" : "242.83"
+    }, {
+      "geocod" : "1605",
+      "geodsg" : "Paredes de Coura",
+      "ind_string" : "248,21",
+      "valor" : "248.21"
+    }, {
+      "geocod" : "1506",
+      "geodsg" : "Moita",
+      "ind_string" : "262,28",
+      "valor" : "262.28"
+    }, {
+      "geocod" : "1404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "265,52",
+      "valor" : "265.52"
+    }, {
+      "geocod" : "1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "265,83",
+      "valor" : "265.83"
+    }, {
+      "geocod" : "1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "265,99",
+      "valor" : "265.99"
+    }, {
+      "geocod" : "1415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "271,03",
+      "valor" : "271.03"
+    }, {
+      "geocod" : "1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "274,25",
+      "valor" : "274.25"
+    }, {
+      "geocod" : "1607",
+      "geodsg" : "Ponte de Lima",
+      "ind_string" : "274,64",
+      "valor" : "274.64"
+    }, {
+      "geocod" : "1505",
+      "geodsg" : "Grândola",
+      "ind_string" : "276,54",
+      "valor" : "276.54"
+    }, {
+      "geocod" : "1410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "284,08",
+      "valor" : "284.08"
+    }, {
+      "geocod" : "1604",
+      "geodsg" : "Monção",
+      "ind_string" : "285,30",
+      "valor" : "285.3"
+    }, {
+      "geocod" : "1509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "286,20",
+      "valor" : "286.2"
+    }, {
+      "geocod" : "1416",
+      "geodsg" : "Santarém",
+      "ind_string" : "288,35",
+      "valor" : "288.35"
+    }, {
+      "geocod" : "1608",
+      "geodsg" : "Valença",
+      "ind_string" : "288,94",
+      "valor" : "288.94"
+    }, {
+      "geocod" : "1406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "291,96",
+      "valor" : "291.96"
+    }, {
+      "geocod" : "1414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "296,62",
+      "valor" : "296.62"
+    }, {
+      "geocod" : "1513",
+      "geodsg" : "Sines",
+      "ind_string" : "298,60",
+      "valor" : "298.6"
+    }, {
+      "geocod" : "1602",
+      "geodsg" : "Caminha",
+      "ind_string" : "300,35",
+      "valor" : "300.35"
+    }, {
+      "geocod" : "1504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "301,76",
+      "valor" : "301.76"
+    }, {
+      "geocod" : "1609",
+      "geodsg" : "Viana do Castelo",
+      "ind_string" : "305,62",
+      "valor" : "305.62"
+    }, {
+      "geocod" : "1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "310,44",
+      "valor" : "310.44"
+    }, {
+      "geocod" : "1512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "314,19",
+      "valor" : "314.19"
+    }, {
+      "geocod" : "1405",
+      "geodsg" : "Benavente",
+      "ind_string" : "320,04",
+      "valor" : "320.04"
+    }, {
+      "geocod" : "1503",
+      "geodsg" : "Almada",
+      "ind_string" : "321,30",
+      "valor" : "321.3"
+    }, {
+      "geocod" : "1507",
+      "geodsg" : "Montijo",
+      "ind_string" : "350,98",
+      "valor" : "350.98"
+    }, {
+      "geocod" : "1508",
+      "geodsg" : "Palmela",
+      "ind_string" : "361,45",
+      "valor" : "361.45"
+    }, {
+      "geocod" : "1511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "365,74",
+      "valor" : "365.74"
+    }, {
+      "geocod" : "1510",
+      "geodsg" : "Seixal",
+      "ind_string" : "370,15",
+      "valor" : "370.15"
+    }, {
+      "geocod" : "1502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "371,11",
+      "valor" : "371.11"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

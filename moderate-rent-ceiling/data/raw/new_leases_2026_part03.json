@@ -1,0 +1,1249 @@
+[ {
+  "IndicadorCod" : "0014697",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2026 - N.º) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0014697&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:15:27.586Z",
+  "DataUltimoAtualizacao" : "2026-09-29",
+  "UltimoPref" : "2025",
+  "Dados" : {
+    "2020" : [ {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "68",
+      "valor" : "68"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "84",
+      "valor" : "84"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "85",
+      "valor" : "85"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "85",
+      "valor" : "85"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "86",
+      "valor" : "86"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "86",
+      "valor" : "86"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "92",
+      "valor" : "92"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "98",
+      "valor" : "98"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "150",
+      "valor" : "150"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "155",
+      "valor" : "155"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "194",
+      "valor" : "194"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "207",
+      "valor" : "207"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "215",
+      "valor" : "215"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "218",
+      "valor" : "218"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "233",
+      "valor" : "233"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "280",
+      "valor" : "280"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "285",
+      "valor" : "285"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "388",
+      "valor" : "388"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "461",
+      "valor" : "461"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "470",
+      "valor" : "470"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "471",
+      "valor" : "471"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "750",
+      "valor" : "750"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "1 902",
+      "valor" : "1902"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "2 564",
+      "valor" : "2564"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "2 926",
+      "valor" : "2926"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "3 264",
+      "valor" : "3264"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "5 448",
+      "valor" : "5448"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "73",
+      "valor" : "73"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "73",
+      "valor" : "73"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "76",
+      "valor" : "76"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "77",
+      "valor" : "77"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "84",
+      "valor" : "84"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "84",
+      "valor" : "84"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "90",
+      "valor" : "90"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "92",
+      "valor" : "92"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "100",
+      "valor" : "100"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "129",
+      "valor" : "129"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "160",
+      "valor" : "160"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "164",
+      "valor" : "164"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "172",
+      "valor" : "172"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "173",
+      "valor" : "173"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "198",
+      "valor" : "198"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "224",
+      "valor" : "224"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "253",
+      "valor" : "253"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "284",
+      "valor" : "284"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "286",
+      "valor" : "286"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "423",
+      "valor" : "423"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "469",
+      "valor" : "469"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "496",
+      "valor" : "496"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "526",
+      "valor" : "526"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "731",
+      "valor" : "731"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "2 025",
+      "valor" : "2025"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "2 859",
+      "valor" : "2859"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "3 169",
+      "valor" : "3169"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "3 450",
+      "valor" : "3450"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "5 713",
+      "valor" : "5713"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "ind_string" : "45",
+      "valor" : "45"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "76",
+      "valor" : "76"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "94",
+      "valor" : "94"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "95",
+      "valor" : "95"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "100",
+      "valor" : "100"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "100",
+      "valor" : "100"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "102",
+      "valor" : "102"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "110",
+      "valor" : "110"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "110",
+      "valor" : "110"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "112",
+      "valor" : "112"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "133",
+      "valor" : "133"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "173",
+      "valor" : "173"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "188",
+      "valor" : "188"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "202",
+      "valor" : "202"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "230",
+      "valor" : "230"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "239",
+      "valor" : "239"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "253",
+      "valor" : "253"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "259",
+      "valor" : "259"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "300",
+      "valor" : "300"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "316",
+      "valor" : "316"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "506",
+      "valor" : "506"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "510",
+      "valor" : "510"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "513",
+      "valor" : "513"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "515",
+      "valor" : "515"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "813",
+      "valor" : "813"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "2 091",
+      "valor" : "2091"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "3 122",
+      "valor" : "3122"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "3 207",
+      "valor" : "3207"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "3 676",
+      "valor" : "3676"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "6 077",
+      "valor" : "6077"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "ind_string" : "49",
+      "valor" : "49"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "49",
+      "valor" : "49"
+    }, {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "83",
+      "valor" : "83"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "89",
+      "valor" : "89"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "89",
+      "valor" : "89"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "98",
+      "valor" : "98"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "101",
+      "valor" : "101"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "108",
+      "valor" : "108"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "108",
+      "valor" : "108"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "108",
+      "valor" : "108"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "113",
+      "valor" : "113"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "117",
+      "valor" : "117"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "119",
+      "valor" : "119"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "133",
+      "valor" : "133"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "156",
+      "valor" : "156"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "199",
+      "valor" : "199"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "221",
+      "valor" : "221"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "223",
+      "valor" : "223"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "231",
+      "valor" : "231"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "234",
+      "valor" : "234"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "248",
+      "valor" : "248"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "322",
+      "valor" : "322"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "332",
+      "valor" : "332"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "467",
+      "valor" : "467"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "524",
+      "valor" : "524"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "539",
+      "valor" : "539"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "542",
+      "valor" : "542"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "909",
+      "valor" : "909"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "2 195",
+      "valor" : "2195"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "3 146",
+      "valor" : "3146"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "3 297",
+      "valor" : "3297"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "3 842",
+      "valor" : "3842"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "6 098",
+      "valor" : "6098"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "ind_string" : "55",
+      "valor" : "55"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "68",
+      "valor" : "68"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "77",
+      "valor" : "77"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "87",
+      "valor" : "87"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "91",
+      "valor" : "91"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "98",
+      "valor" : "98"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "102",
+      "valor" : "102"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "112",
+      "valor" : "112"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "113",
+      "valor" : "113"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "117",
+      "valor" : "117"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "118",
+      "valor" : "118"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "139",
+      "valor" : "139"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "166",
+      "valor" : "166"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "181",
+      "valor" : "181"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "210",
+      "valor" : "210"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "230",
+      "valor" : "230"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "250",
+      "valor" : "250"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "252",
+      "valor" : "252"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "278",
+      "valor" : "278"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "324",
+      "valor" : "324"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "369",
+      "valor" : "369"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "506",
+      "valor" : "506"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "509",
+      "valor" : "509"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "544",
+      "valor" : "544"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "556",
+      "valor" : "556"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "914",
+      "valor" : "914"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "2 287",
+      "valor" : "2287"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "3 116",
+      "valor" : "3116"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "3 265",
+      "valor" : "3265"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "4 059",
+      "valor" : "4059"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "6 168",
+      "valor" : "6168"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2025" : [ {
+      "geocod" : "1931013",
+      "geodsg" : "Pedrógão Grande",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1931007",
+      "geodsg" : "Castanheira de Pêra",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1931008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "1931002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "48",
+      "valor" : "48"
+    }, {
+      "geocod" : "1920613",
+      "geodsg" : "Penacova",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1940901",
+      "geodsg" : "Aguiar da Beira",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1920614",
+      "geodsg" : "Penela",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1921808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "74",
+      "valor" : "74"
+    }, {
+      "geocod" : "1920617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "91",
+      "valor" : "91"
+    }, {
+      "geocod" : "1920616",
+      "geodsg" : "Tábua",
+      "ind_string" : "97",
+      "valor" : "97"
+    }, {
+      "geocod" : "1910112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "99",
+      "valor" : "99"
+    }, {
+      "geocod" : "1920615",
+      "geodsg" : "Soure",
+      "ind_string" : "112",
+      "valor" : "112"
+    }, {
+      "geocod" : "1931003",
+      "geodsg" : "Ansião",
+      "ind_string" : "117",
+      "valor" : "117"
+    }, {
+      "geocod" : "1920601",
+      "geodsg" : "Arganil",
+      "ind_string" : "119",
+      "valor" : "119"
+    }, {
+      "geocod" : "1920609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "129",
+      "valor" : "129"
+    }, {
+      "geocod" : "1910117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "134",
+      "valor" : "134"
+    }, {
+      "geocod" : "1920608",
+      "geodsg" : "Mira",
+      "ind_string" : "138",
+      "valor" : "138"
+    }, {
+      "geocod" : "1920610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "148",
+      "valor" : "148"
+    }, {
+      "geocod" : "1931004",
+      "geodsg" : "Batalha",
+      "ind_string" : "179",
+      "valor" : "179"
+    }, {
+      "geocod" : "1920604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "197",
+      "valor" : "197"
+    }, {
+      "geocod" : "1920111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "210",
+      "valor" : "210"
+    }, {
+      "geocod" : "1920611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "213",
+      "valor" : "213"
+    }, {
+      "geocod" : "1910108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "269",
+      "valor" : "269"
+    }, {
+      "geocod" : "1920607",
+      "geodsg" : "Lousã",
+      "ind_string" : "275",
+      "valor" : "275"
+    }, {
+      "geocod" : "1931016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "278",
+      "valor" : "278"
+    }, {
+      "geocod" : "1910118",
+      "geodsg" : "Vagos",
+      "ind_string" : "293",
+      "valor" : "293"
+    }, {
+      "geocod" : "1910114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "357",
+      "valor" : "357"
+    }, {
+      "geocod" : "1920602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "358",
+      "valor" : "358"
+    }, {
+      "geocod" : "1931015",
+      "geodsg" : "Pombal",
+      "ind_string" : "549",
+      "valor" : "549"
+    }, {
+      "geocod" : "1931010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "553",
+      "valor" : "553"
+    }, {
+      "geocod" : "1910110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "590",
+      "valor" : "590"
+    }, {
+      "geocod" : "1910115",
+      "geodsg" : "Ovar",
+      "ind_string" : "611",
+      "valor" : "611"
+    }, {
+      "geocod" : "1920605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "990",
+      "valor" : "990"
+    }, {
+      "geocod" : "1931009",
+      "geodsg" : "Leiria",
+      "ind_string" : "2 458",
+      "valor" : "2458"
+    }, {
+      "geocod" : "1920603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "3 172",
+      "valor" : "3172"
+    }, {
+      "geocod" : "194",
+      "geodsg" : "Viseu Dão Lafões",
+      "ind_string" : "3 520",
+      "valor" : "3520"
+    }, {
+      "geocod" : "193",
+      "geodsg" : "Região de Leiria",
+      "ind_string" : "4 301",
+      "valor" : "4301"
+    }, {
+      "geocod" : "192",
+      "geodsg" : "Região de Coimbra",
+      "ind_string" : "6 462",
+      "valor" : "6462"
+    }, {
+      "geocod" : "1920606",
+      "geodsg" : "Góis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1920612",
+      "geodsg" : "Pampilhosa da Serra",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

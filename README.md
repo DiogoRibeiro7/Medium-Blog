@@ -332,6 +332,7 @@ Housing supply, prices and affordability.
 - [`france-repeat-sales-floor/`](france-repeat-sales-floor/) — Is the purchase price a floor in France too? Repeat sales in the DVF files, 2021–2025
 - [`housing-losses-inflation/`](housing-losses-inflation/) — Housing losses and inflation: how much of the loss never shows in the price
 - [`housing-supply-counterfactual/`](housing-supply-counterfactual/) — Construction, House Prices and the Missing Counterfactual
+- [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — The EUR 2,300 moderate-rent ceiling against the rents of new leases and local incomes, Portugal 2017–2025
 - [`portugal-building-ecosystem/`](portugal-building-ecosystem/) — Who builds Portugal's houses? The housebuilding sector measured layer by layer
 - [`portugal-housing-generations/`](portugal-housing-generations/) — Portugal's housing market, 2008–2025 (moved to its own repository)
 - [`uk-repeat-sales-rigidity/`](uk-repeat-sales-rigidity/) — Do sellers refuse nominal losses? Repeat sales in England and Wales, 1995–2026

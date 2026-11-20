@@ -1,0 +1,5426 @@
+[ {
+  "IndicadorCod" : "0012714",
+  "IndicadorDsg" : "Distribuição do rendimento bruto declarado dos agregados fiscais (€) por Localização geográfica (NUTS - 2024) e Quintis de rendimento; Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012714&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:19:21.638Z",
+  "DataUltimoAtualizacao" : "2026-07-24",
+  "UltimoPref" : "2024",
+  "Dados" : {
+    "2018" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 276",
+      "valor" : "5276"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 479",
+      "valor" : "5479"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 479",
+      "valor" : "5479"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 945",
+      "valor" : "5945"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 005",
+      "valor" : "6005"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 083",
+      "valor" : "6083"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 245",
+      "valor" : "6245"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 342",
+      "valor" : "6342"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 342",
+      "valor" : "6342"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 496",
+      "valor" : "6496"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 524",
+      "valor" : "6524"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 699",
+      "valor" : "6699"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 704",
+      "valor" : "6704"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 827",
+      "valor" : "6827"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 827",
+      "valor" : "6827"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 827",
+      "valor" : "6827"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 033",
+      "valor" : "7033"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 068",
+      "valor" : "7068"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 190",
+      "valor" : "7190"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 261",
+      "valor" : "7261"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 288",
+      "valor" : "7288"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 445",
+      "valor" : "7445"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 619",
+      "valor" : "7619"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 334",
+      "valor" : "8334"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 470",
+      "valor" : "8470"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 605",
+      "valor" : "8605"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 611",
+      "valor" : "8611"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 691",
+      "valor" : "8691"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 707",
+      "valor" : "8707"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 943",
+      "valor" : "8943"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 130",
+      "valor" : "9130"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 283",
+      "valor" : "9283"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 354",
+      "valor" : "9354"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 362",
+      "valor" : "9362"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 523",
+      "valor" : "9523"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 608",
+      "valor" : "9608"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 806",
+      "valor" : "9806"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 806",
+      "valor" : "9806"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 806",
+      "valor" : "9806"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 989",
+      "valor" : "9989"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 003",
+      "valor" : "10003"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 122",
+      "valor" : "10122"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 274",
+      "valor" : "10274"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 466",
+      "valor" : "10466"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 475",
+      "valor" : "10475"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 907",
+      "valor" : "10907"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "10 951",
+      "valor" : "10951"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 201",
+      "valor" : "11201"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 427",
+      "valor" : "11427"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 665",
+      "valor" : "11665"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 769",
+      "valor" : "11769"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 794",
+      "valor" : "11794"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 358",
+      "valor" : "12358"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 513",
+      "valor" : "12513"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 060",
+      "valor" : "13060"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 066",
+      "valor" : "13066"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 271",
+      "valor" : "13271"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 316",
+      "valor" : "13316"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 938",
+      "valor" : "13938"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 329",
+      "valor" : "14329"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 329",
+      "valor" : "14329"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 329",
+      "valor" : "14329"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 958",
+      "valor" : "14958"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 133",
+      "valor" : "15133"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 236",
+      "valor" : "15236"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 524",
+      "valor" : "15524"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 117",
+      "valor" : "16117"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 230",
+      "valor" : "16230"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 330",
+      "valor" : "16330"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "17 541",
+      "valor" : "17541"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "17 553",
+      "valor" : "17553"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "18 603",
+      "valor" : "18603"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 437",
+      "valor" : "19437"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 078",
+      "valor" : "20078"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 138",
+      "valor" : "20138"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 223",
+      "valor" : "20223"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 892",
+      "valor" : "20892"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 218",
+      "valor" : "21218"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 305",
+      "valor" : "21305"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 463",
+      "valor" : "21463"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 918",
+      "valor" : "21918"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 071",
+      "valor" : "22071"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 058",
+      "valor" : "24058"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 520",
+      "valor" : "24520"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 520",
+      "valor" : "24520"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 520",
+      "valor" : "24520"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 248",
+      "valor" : "25248"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 899",
+      "valor" : "25899"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 111",
+      "valor" : "26111"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 294",
+      "valor" : "26294"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 949",
+      "valor" : "27949"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 562",
+      "valor" : "28562"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 620",
+      "valor" : "5620"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 748",
+      "valor" : "5748"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 164",
+      "valor" : "6164"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 180",
+      "valor" : "6180"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 190",
+      "valor" : "6190"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 494",
+      "valor" : "6494"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 728",
+      "valor" : "6728"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 803",
+      "valor" : "6803"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 948",
+      "valor" : "6948"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 057",
+      "valor" : "7057"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 221",
+      "valor" : "7221"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 235",
+      "valor" : "7235"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 235",
+      "valor" : "7235"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 235",
+      "valor" : "7235"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 257",
+      "valor" : "7257"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 342",
+      "valor" : "7342"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 377",
+      "valor" : "7377"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 539",
+      "valor" : "7539"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 641",
+      "valor" : "7641"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 674",
+      "valor" : "7674"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 688",
+      "valor" : "7688"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 718",
+      "valor" : "7718"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 001",
+      "valor" : "8001"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 702",
+      "valor" : "8702"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 942",
+      "valor" : "8942"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "8 971",
+      "valor" : "8971"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 020",
+      "valor" : "9020"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 023",
+      "valor" : "9023"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 163",
+      "valor" : "9163"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 334",
+      "valor" : "9334"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 549",
+      "valor" : "9549"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 744",
+      "valor" : "9744"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 793",
+      "valor" : "9793"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 859",
+      "valor" : "9859"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 906",
+      "valor" : "9906"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 913",
+      "valor" : "9913"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 186",
+      "valor" : "10186"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 186",
+      "valor" : "10186"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 186",
+      "valor" : "10186"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 367",
+      "valor" : "10367"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 406",
+      "valor" : "10406"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 499",
+      "valor" : "10499"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 535",
+      "valor" : "10535"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 850",
+      "valor" : "10850"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 934",
+      "valor" : "10934"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 300",
+      "valor" : "11300"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 571",
+      "valor" : "11571"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 711",
+      "valor" : "11711"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 758",
+      "valor" : "11758"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 038",
+      "valor" : "12038"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 277",
+      "valor" : "12277"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 351",
+      "valor" : "12351"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 705",
+      "valor" : "12705"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 429",
+      "valor" : "13429"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 481",
+      "valor" : "13481"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 754",
+      "valor" : "13754"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 960",
+      "valor" : "13960"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 194",
+      "valor" : "14194"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 352",
+      "valor" : "14352"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 849",
+      "valor" : "14849"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 849",
+      "valor" : "14849"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 849",
+      "valor" : "14849"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 523",
+      "valor" : "15523"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 525",
+      "valor" : "15525"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 807",
+      "valor" : "15807"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 287",
+      "valor" : "16287"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 701",
+      "valor" : "16701"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 953",
+      "valor" : "16953"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 038",
+      "valor" : "17038"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "18 298",
+      "valor" : "18298"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 010",
+      "valor" : "19010"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 624",
+      "valor" : "19624"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 989",
+      "valor" : "19989"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 306",
+      "valor" : "20306"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 865",
+      "valor" : "20865"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 957",
+      "valor" : "20957"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 911",
+      "valor" : "21911"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 120",
+      "valor" : "22120"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 144",
+      "valor" : "22144"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 319",
+      "valor" : "22319"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 628",
+      "valor" : "22628"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 654",
+      "valor" : "22654"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 940",
+      "valor" : "24940"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 415",
+      "valor" : "25415"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 415",
+      "valor" : "25415"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 415",
+      "valor" : "25415"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 100",
+      "valor" : "26100"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 862",
+      "valor" : "26862"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 886",
+      "valor" : "26886"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 316",
+      "valor" : "27316"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 782",
+      "valor" : "28782"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 595",
+      "valor" : "29595"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 638",
+      "valor" : "5638"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 804",
+      "valor" : "5804"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 338",
+      "valor" : "6338"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 604",
+      "valor" : "6604"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 617",
+      "valor" : "6617"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 670",
+      "valor" : "6670"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 876",
+      "valor" : "6876"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 985",
+      "valor" : "6985"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 021",
+      "valor" : "7021"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 162",
+      "valor" : "7162"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 354",
+      "valor" : "7354"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 354",
+      "valor" : "7354"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 354",
+      "valor" : "7354"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 371",
+      "valor" : "7371"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 371",
+      "valor" : "7371"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 496",
+      "valor" : "7496"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 554",
+      "valor" : "7554"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 811",
+      "valor" : "7811"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 812",
+      "valor" : "7812"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 894",
+      "valor" : "7894"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 081",
+      "valor" : "8081"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 184",
+      "valor" : "8184"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 295",
+      "valor" : "8295"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 112",
+      "valor" : "9112"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 177",
+      "valor" : "9177"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 221",
+      "valor" : "9221"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 268",
+      "valor" : "9268"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 290",
+      "valor" : "9290"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 472",
+      "valor" : "9472"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 778",
+      "valor" : "9778"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 780",
+      "valor" : "9780"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 848",
+      "valor" : "9848"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 904",
+      "valor" : "9904"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 966",
+      "valor" : "9966"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 140",
+      "valor" : "10140"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 140",
+      "valor" : "10140"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 223",
+      "valor" : "10223"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 223",
+      "valor" : "10223"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 223",
+      "valor" : "10223"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 498",
+      "valor" : "10498"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 740",
+      "valor" : "10740"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 895",
+      "valor" : "10895"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 907",
+      "valor" : "10907"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 920",
+      "valor" : "10920"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 926",
+      "valor" : "10926"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 733",
+      "valor" : "11733"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 783",
+      "valor" : "11783"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 806",
+      "valor" : "11806"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "11 952",
+      "valor" : "11952"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 064",
+      "valor" : "12064"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 414",
+      "valor" : "12414"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 566",
+      "valor" : "12566"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 755",
+      "valor" : "12755"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 437",
+      "valor" : "13437"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 823",
+      "valor" : "13823"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 105",
+      "valor" : "14105"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 219",
+      "valor" : "14219"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 532",
+      "valor" : "14532"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 597",
+      "valor" : "14597"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 905",
+      "valor" : "14905"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 905",
+      "valor" : "14905"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 905",
+      "valor" : "14905"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 586",
+      "valor" : "15586"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 996",
+      "valor" : "15996"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 175",
+      "valor" : "16175"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 646",
+      "valor" : "16646"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 810",
+      "valor" : "16810"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 871",
+      "valor" : "16871"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 400",
+      "valor" : "17400"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "18 260",
+      "valor" : "18260"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 468",
+      "valor" : "19468"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 259",
+      "valor" : "20259"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 502",
+      "valor" : "20502"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 727",
+      "valor" : "20727"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 811",
+      "valor" : "20811"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 823",
+      "valor" : "20823"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 141",
+      "valor" : "22141"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 420",
+      "valor" : "22420"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 122",
+      "valor" : "23122"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 295",
+      "valor" : "23295"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 453",
+      "valor" : "23453"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 545",
+      "valor" : "23545"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 263",
+      "valor" : "25263"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 876",
+      "valor" : "25876"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 876",
+      "valor" : "25876"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 876",
+      "valor" : "25876"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 348",
+      "valor" : "26348"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 352",
+      "valor" : "27352"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 464",
+      "valor" : "27464"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 684",
+      "valor" : "27684"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 459",
+      "valor" : "29459"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 571",
+      "valor" : "29571"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "5 921",
+      "valor" : "5921"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 028",
+      "valor" : "6028"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 154",
+      "valor" : "6154"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 684",
+      "valor" : "6684"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 820",
+      "valor" : "6820"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 877",
+      "valor" : "6877"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 935",
+      "valor" : "6935"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 004",
+      "valor" : "7004"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 133",
+      "valor" : "7133"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 280",
+      "valor" : "7280"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 396",
+      "valor" : "7396"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 499",
+      "valor" : "7499"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 499",
+      "valor" : "7499"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 499",
+      "valor" : "7499"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 698",
+      "valor" : "7698"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 887",
+      "valor" : "7887"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 938",
+      "valor" : "7938"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 073",
+      "valor" : "8073"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 079",
+      "valor" : "8079"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 123",
+      "valor" : "8123"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 348",
+      "valor" : "8348"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 386",
+      "valor" : "8386"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 422",
+      "valor" : "8422"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 548",
+      "valor" : "9548"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 548",
+      "valor" : "9548"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 548",
+      "valor" : "9548"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 630",
+      "valor" : "9630"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 666",
+      "valor" : "9666"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "9 935",
+      "valor" : "9935"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 012",
+      "valor" : "10012"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 055",
+      "valor" : "10055"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 220",
+      "valor" : "10220"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 252",
+      "valor" : "10252"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 256",
+      "valor" : "10256"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 414",
+      "valor" : "10414"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 632",
+      "valor" : "10632"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 632",
+      "valor" : "10632"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 632",
+      "valor" : "10632"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 646",
+      "valor" : "10646"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 936",
+      "valor" : "10936"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 012",
+      "valor" : "11012"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 129",
+      "valor" : "11129"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 209",
+      "valor" : "11209"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 319",
+      "valor" : "11319"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 408",
+      "valor" : "11408"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 209",
+      "valor" : "12209"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 387",
+      "valor" : "12387"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 451",
+      "valor" : "12451"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 518",
+      "valor" : "12518"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 721",
+      "valor" : "12721"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "12 903",
+      "valor" : "12903"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 406",
+      "valor" : "13406"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 430",
+      "valor" : "13430"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 154",
+      "valor" : "14154"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 154",
+      "valor" : "14154"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 508",
+      "valor" : "14508"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 535",
+      "valor" : "14535"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 576",
+      "valor" : "14576"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 297",
+      "valor" : "15297"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 511",
+      "valor" : "15511"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 511",
+      "valor" : "15511"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 511",
+      "valor" : "15511"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 223",
+      "valor" : "16223"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 413",
+      "valor" : "16413"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 586",
+      "valor" : "16586"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 057",
+      "valor" : "17057"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 194",
+      "valor" : "17194"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 644",
+      "valor" : "17644"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 883",
+      "valor" : "17883"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "19 444",
+      "valor" : "19444"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 039",
+      "valor" : "20039"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 189",
+      "valor" : "21189"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 307",
+      "valor" : "21307"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 422",
+      "valor" : "21422"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 680",
+      "valor" : "21680"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 988",
+      "valor" : "21988"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 857",
+      "valor" : "22857"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 051",
+      "valor" : "23051"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 605",
+      "valor" : "23605"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 773",
+      "valor" : "23773"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 880",
+      "valor" : "23880"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 885",
+      "valor" : "23885"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 141",
+      "valor" : "26141"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 949",
+      "valor" : "26949"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 949",
+      "valor" : "26949"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 949",
+      "valor" : "26949"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 483",
+      "valor" : "27483"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 097",
+      "valor" : "28097"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 363",
+      "valor" : "28363"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 618",
+      "valor" : "28618"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "30 717",
+      "valor" : "30717"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "31 549",
+      "valor" : "31549"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 575",
+      "valor" : "6575"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 735",
+      "valor" : "6735"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 971",
+      "valor" : "6971"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 146",
+      "valor" : "7146"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 444",
+      "valor" : "7444"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 656",
+      "valor" : "7656"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 772",
+      "valor" : "7772"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 825",
+      "valor" : "7825"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 941",
+      "valor" : "7941"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 075",
+      "valor" : "8075"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 186",
+      "valor" : "8186"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 266",
+      "valor" : "8266"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 302",
+      "valor" : "8302"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 302",
+      "valor" : "8302"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 302",
+      "valor" : "8302"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 376",
+      "valor" : "8376"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 425",
+      "valor" : "8425"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 626",
+      "valor" : "8626"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 790",
+      "valor" : "8790"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 820",
+      "valor" : "8820"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 916",
+      "valor" : "8916"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 030",
+      "valor" : "9030"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 180",
+      "valor" : "9180"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 122",
+      "valor" : "10122"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 122",
+      "valor" : "10122"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 155",
+      "valor" : "10155"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 313",
+      "valor" : "10313"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 315",
+      "valor" : "10315"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 513",
+      "valor" : "10513"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 615",
+      "valor" : "10615"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 898",
+      "valor" : "10898"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 950",
+      "valor" : "10950"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 959",
+      "valor" : "10959"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 024",
+      "valor" : "11024"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 150",
+      "valor" : "11150"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 299",
+      "valor" : "11299"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 299",
+      "valor" : "11299"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 299",
+      "valor" : "11299"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 403",
+      "valor" : "11403"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 550",
+      "valor" : "11550"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 785",
+      "valor" : "11785"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 868",
+      "valor" : "11868"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 959",
+      "valor" : "11959"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 048",
+      "valor" : "12048"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 256",
+      "valor" : "12256"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 725",
+      "valor" : "12725"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 389",
+      "valor" : "13389"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 402",
+      "valor" : "13402"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 540",
+      "valor" : "13540"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 544",
+      "valor" : "13544"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "13 855",
+      "valor" : "13855"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 282",
+      "valor" : "14282"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 285",
+      "valor" : "14285"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 012",
+      "valor" : "15012"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 230",
+      "valor" : "15230"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 259",
+      "valor" : "15259"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 541",
+      "valor" : "15541"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 746",
+      "valor" : "15746"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 070",
+      "valor" : "16070"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 482",
+      "valor" : "16482"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 482",
+      "valor" : "16482"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 482",
+      "valor" : "16482"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 182",
+      "valor" : "17182"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 401",
+      "valor" : "17401"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 534",
+      "valor" : "17534"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 997",
+      "valor" : "17997"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 048",
+      "valor" : "18048"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 711",
+      "valor" : "18711"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 726",
+      "valor" : "18726"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "20 955",
+      "valor" : "20955"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "21 682",
+      "valor" : "21682"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 341",
+      "valor" : "22341"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 629",
+      "valor" : "22629"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 664",
+      "valor" : "22664"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 767",
+      "valor" : "22767"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 387",
+      "valor" : "23387"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 098",
+      "valor" : "24098"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 777",
+      "valor" : "24777"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 860",
+      "valor" : "24860"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 200",
+      "valor" : "25200"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 284",
+      "valor" : "25284"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 167",
+      "valor" : "26167"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 589",
+      "valor" : "27589"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 104",
+      "valor" : "28104"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 104",
+      "valor" : "28104"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 104",
+      "valor" : "28104"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 650",
+      "valor" : "28650"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 663",
+      "valor" : "29663"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 727",
+      "valor" : "29727"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "30 330",
+      "valor" : "30330"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "31 638",
+      "valor" : "31638"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 900",
+      "valor" : "32900"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "6 887",
+      "valor" : "6887"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 184",
+      "valor" : "7184"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 541",
+      "valor" : "7541"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 678",
+      "valor" : "7678"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 120",
+      "valor" : "8120"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 163",
+      "valor" : "8163"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 198",
+      "valor" : "8198"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 352",
+      "valor" : "8352"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 397",
+      "valor" : "8397"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 556",
+      "valor" : "8556"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 563",
+      "valor" : "8563"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 709",
+      "valor" : "8709"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 718",
+      "valor" : "8718"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 718",
+      "valor" : "8718"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 718",
+      "valor" : "8718"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 974",
+      "valor" : "8974"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 009",
+      "valor" : "9009"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 045",
+      "valor" : "9045"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 189",
+      "valor" : "9189"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 308",
+      "valor" : "9308"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 393",
+      "valor" : "9393"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 626",
+      "valor" : "9626"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 662",
+      "valor" : "9662"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 919",
+      "valor" : "10919"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 990",
+      "valor" : "10990"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "10 990",
+      "valor" : "10990"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 105",
+      "valor" : "11105"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 192",
+      "valor" : "11192"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 200",
+      "valor" : "11200"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 462",
+      "valor" : "11462"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 676",
+      "valor" : "11676"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 699",
+      "valor" : "11699"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 730",
+      "valor" : "11730"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 924",
+      "valor" : "11924"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 062",
+      "valor" : "12062"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 124",
+      "valor" : "12124"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 124",
+      "valor" : "12124"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 124",
+      "valor" : "12124"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 178",
+      "valor" : "12178"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 274",
+      "valor" : "12274"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 563",
+      "valor" : "12563"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 698",
+      "valor" : "12698"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 769",
+      "valor" : "12769"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 896",
+      "valor" : "12896"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 242",
+      "valor" : "13242"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 954",
+      "valor" : "13954"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 272",
+      "valor" : "14272"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 514",
+      "valor" : "14514"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 560",
+      "valor" : "14560"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 564",
+      "valor" : "14564"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "14 576",
+      "valor" : "14576"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 235",
+      "valor" : "15235"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 508",
+      "valor" : "15508"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 199",
+      "valor" : "16199"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 203",
+      "valor" : "16203"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 413",
+      "valor" : "16413"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 641",
+      "valor" : "16641"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 741",
+      "valor" : "16741"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 294",
+      "valor" : "17294"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 611",
+      "valor" : "17611"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 611",
+      "valor" : "17611"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 611",
+      "valor" : "17611"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 165",
+      "valor" : "18165"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 517",
+      "valor" : "18517"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 596",
+      "valor" : "18596"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "19 185",
+      "valor" : "19185"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "19 205",
+      "valor" : "19205"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "20 253",
+      "valor" : "20253"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "20 613",
+      "valor" : "20613"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "22 934",
+      "valor" : "22934"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 510",
+      "valor" : "23510"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 640",
+      "valor" : "23640"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "23 749",
+      "valor" : "23749"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 213",
+      "valor" : "24213"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 342",
+      "valor" : "24342"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 868",
+      "valor" : "24868"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 837",
+      "valor" : "25837"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 002",
+      "valor" : "26002"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 292",
+      "valor" : "26292"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 275",
+      "valor" : "27275"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 606",
+      "valor" : "27606"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 979",
+      "valor" : "27979"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 421",
+      "valor" : "29421"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 683",
+      "valor" : "29683"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 683",
+      "valor" : "29683"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 683",
+      "valor" : "29683"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 980",
+      "valor" : "29980"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "31 460",
+      "valor" : "31460"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "31 673",
+      "valor" : "31673"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 426",
+      "valor" : "32426"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "33 327",
+      "valor" : "33327"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "34 912",
+      "valor" : "34912"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 884",
+      "valor" : "7884"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "7 906",
+      "valor" : "7906"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 426",
+      "valor" : "8426"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 486",
+      "valor" : "8486"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 638",
+      "valor" : "8638"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 721",
+      "valor" : "8721"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 895",
+      "valor" : "8895"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "8 907",
+      "valor" : "8907"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 010",
+      "valor" : "9010"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 156",
+      "valor" : "9156"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 166",
+      "valor" : "9166"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 220",
+      "valor" : "9220"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 222",
+      "valor" : "9222"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 222",
+      "valor" : "9222"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 222",
+      "valor" : "9222"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 551",
+      "valor" : "9551"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 603",
+      "valor" : "9603"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 604",
+      "valor" : "9604"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 734",
+      "valor" : "9734"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 840",
+      "valor" : "9840"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 905",
+      "valor" : "9905"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "9 982",
+      "valor" : "9982"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "ind_string" : "10 494",
+      "valor" : "10494"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 581",
+      "valor" : "11581"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 864",
+      "valor" : "11864"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 900",
+      "valor" : "11900"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 933",
+      "valor" : "11933"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "11 961",
+      "valor" : "11961"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 113",
+      "valor" : "12113"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 217",
+      "valor" : "12217"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 355",
+      "valor" : "12355"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 522",
+      "valor" : "12522"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 759",
+      "valor" : "12759"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 781",
+      "valor" : "12781"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 940",
+      "valor" : "12940"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 940",
+      "valor" : "12940"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 940",
+      "valor" : "12940"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 957",
+      "valor" : "12957"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "12 963",
+      "valor" : "12963"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 069",
+      "valor" : "13069"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 430",
+      "valor" : "13430"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 575",
+      "valor" : "13575"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 584",
+      "valor" : "13584"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "13 822",
+      "valor" : "13822"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "14 088",
+      "valor" : "14088"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "ind_string" : "14 933",
+      "valor" : "14933"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 331",
+      "valor" : "15331"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 645",
+      "valor" : "15645"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 679",
+      "valor" : "15679"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 736",
+      "valor" : "15736"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "15 802",
+      "valor" : "15802"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 113",
+      "valor" : "16113"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "16 340",
+      "valor" : "16340"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 319",
+      "valor" : "17319"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 524",
+      "valor" : "17524"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "17 621",
+      "valor" : "17621"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 210",
+      "valor" : "18210"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 253",
+      "valor" : "18253"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 465",
+      "valor" : "18465"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 792",
+      "valor" : "18792"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 792",
+      "valor" : "18792"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "18 792",
+      "valor" : "18792"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "19 374",
+      "valor" : "19374"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "19 890",
+      "valor" : "19890"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "19 929",
+      "valor" : "19929"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "20 331",
+      "valor" : "20331"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "20 595",
+      "valor" : "20595"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "21 634",
+      "valor" : "21634"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "ind_string" : "21 781",
+      "valor" : "21781"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 638",
+      "valor" : "24638"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "24 695",
+      "valor" : "24695"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 323",
+      "valor" : "25323"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "25 686",
+      "valor" : "25686"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 299",
+      "valor" : "26299"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 301",
+      "valor" : "26301"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "26 989",
+      "valor" : "26989"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 550",
+      "valor" : "27550"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "27 833",
+      "valor" : "27833"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "28 521",
+      "valor" : "28521"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 527",
+      "valor" : "29527"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "29 582",
+      "valor" : "29582"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "30 875",
+      "valor" : "30875"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "31 758",
+      "valor" : "31758"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 020",
+      "valor" : "32020"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 020",
+      "valor" : "32020"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 020",
+      "valor" : "32020"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "32 144",
+      "valor" : "32144"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "33 994",
+      "valor" : "33994"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "34 166",
+      "valor" : "34166"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "34 764",
+      "valor" : "34764"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "35 878",
+      "valor" : "35878"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "ind_string" : "37 448",
+      "valor" : "37448"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "1",
+      "dim_3_t" : "1º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "2",
+      "dim_3_t" : "2º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "3",
+      "dim_3_t" : "3º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "dim_3" : "4",
+      "dim_3_t" : "4º quintil",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

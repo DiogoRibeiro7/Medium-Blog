@@ -1,0 +1,1525 @@
+[ {
+  "IndicadorCod" : "0009632",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2021 - N.º) por Localização geográfica (NUTS - 2013); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0009632&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:14:52.528Z",
+  "DataUltimoAtualizacao" : "2024-03-28",
+  "UltimoPref" : "2023",
+  "Dados" : {
+    "2017" : [ {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "56",
+      "valor" : "56"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "69",
+      "valor" : "69"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "98",
+      "valor" : "98"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "143",
+      "valor" : "143"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "155",
+      "valor" : "155"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "184",
+      "valor" : "184"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "184",
+      "valor" : "184"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "195",
+      "valor" : "195"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "199",
+      "valor" : "199"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "334",
+      "valor" : "334"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "397",
+      "valor" : "397"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "474",
+      "valor" : "474"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "498",
+      "valor" : "498"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "561",
+      "valor" : "561"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "744",
+      "valor" : "744"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "1 101",
+      "valor" : "1101"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 344",
+      "valor" : "1344"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 814",
+      "valor" : "1814"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 789",
+      "valor" : "4789"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2018" : [ {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "30",
+      "valor" : "30"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "62",
+      "valor" : "62"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "62",
+      "valor" : "62"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "72",
+      "valor" : "72"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "106",
+      "valor" : "106"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "109",
+      "valor" : "109"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "122",
+      "valor" : "122"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "156",
+      "valor" : "156"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "162",
+      "valor" : "162"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "171",
+      "valor" : "171"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "172",
+      "valor" : "172"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "177",
+      "valor" : "177"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "186",
+      "valor" : "186"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "281",
+      "valor" : "281"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "337",
+      "valor" : "337"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "399",
+      "valor" : "399"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "449",
+      "valor" : "449"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "548",
+      "valor" : "548"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "642",
+      "valor" : "642"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "982",
+      "valor" : "982"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 240",
+      "valor" : "1240"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 657",
+      "valor" : "1657"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 227",
+      "valor" : "4227"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "48",
+      "valor" : "48"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "64",
+      "valor" : "64"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "95",
+      "valor" : "95"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "106",
+      "valor" : "106"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "129",
+      "valor" : "129"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "153",
+      "valor" : "153"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "157",
+      "valor" : "157"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "179",
+      "valor" : "179"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "189",
+      "valor" : "189"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "234",
+      "valor" : "234"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "287",
+      "valor" : "287"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "435",
+      "valor" : "435"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "441",
+      "valor" : "441"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "459",
+      "valor" : "459"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "612",
+      "valor" : "612"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "893",
+      "valor" : "893"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "989",
+      "valor" : "989"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 506",
+      "valor" : "1506"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 043",
+      "valor" : "4043"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "32",
+      "valor" : "32"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "65",
+      "valor" : "65"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "70",
+      "valor" : "70"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "81",
+      "valor" : "81"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "87",
+      "valor" : "87"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "121",
+      "valor" : "121"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "143",
+      "valor" : "143"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "156",
+      "valor" : "156"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "157",
+      "valor" : "157"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "172",
+      "valor" : "172"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "175",
+      "valor" : "175"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "201",
+      "valor" : "201"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "256",
+      "valor" : "256"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "272",
+      "valor" : "272"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "448",
+      "valor" : "448"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "490",
+      "valor" : "490"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "494",
+      "valor" : "494"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "671",
+      "valor" : "671"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "1 023",
+      "valor" : "1023"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 070",
+      "valor" : "1070"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 615",
+      "valor" : "1615"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 342",
+      "valor" : "4342"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "52",
+      "valor" : "52"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "58",
+      "valor" : "58"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "88",
+      "valor" : "88"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "93",
+      "valor" : "93"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "100",
+      "valor" : "100"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "134",
+      "valor" : "134"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "145",
+      "valor" : "145"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "146",
+      "valor" : "146"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "162",
+      "valor" : "162"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "182",
+      "valor" : "182"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "197",
+      "valor" : "197"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "217",
+      "valor" : "217"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "249",
+      "valor" : "249"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "277",
+      "valor" : "277"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "438",
+      "valor" : "438"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "491",
+      "valor" : "491"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "584",
+      "valor" : "584"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "658",
+      "valor" : "658"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "1 068",
+      "valor" : "1068"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 071",
+      "valor" : "1071"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 619",
+      "valor" : "1619"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 370",
+      "valor" : "4370"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "45",
+      "valor" : "45"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "68",
+      "valor" : "68"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "70",
+      "valor" : "70"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "82",
+      "valor" : "82"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "107",
+      "valor" : "107"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "125",
+      "valor" : "125"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "130",
+      "valor" : "130"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "144",
+      "valor" : "144"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "153",
+      "valor" : "153"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "179",
+      "valor" : "179"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "217",
+      "valor" : "217"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "227",
+      "valor" : "227"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "255",
+      "valor" : "255"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "317",
+      "valor" : "317"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "459",
+      "valor" : "459"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "512",
+      "valor" : "512"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "634",
+      "valor" : "634"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "711",
+      "valor" : "711"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 047",
+      "valor" : "1047"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "1 101",
+      "valor" : "1101"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 674",
+      "valor" : "1674"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 618",
+      "valor" : "4618"
+    }, {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1840201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1840206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "1840208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1840210",
+      "geodsg" : "Moura",
+      "ind_string" : "42",
+      "valor" : "42"
+    }, {
+      "geocod" : "1851407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "45",
+      "valor" : "45"
+    }, {
+      "geocod" : "1811501",
+      "geodsg" : "Alcácer do Sal",
+      "ind_string" : "69",
+      "valor" : "69"
+    }, {
+      "geocod" : "1851409",
+      "geodsg" : "Coruche",
+      "ind_string" : "70",
+      "valor" : "70"
+    }, {
+      "geocod" : "1811505",
+      "geodsg" : "Grândola",
+      "ind_string" : "80",
+      "valor" : "80"
+    }, {
+      "geocod" : "1851415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "109",
+      "valor" : "109"
+    }, {
+      "geocod" : "1811513",
+      "geodsg" : "Sines",
+      "ind_string" : "139",
+      "valor" : "139"
+    }, {
+      "geocod" : "1851103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "152",
+      "valor" : "152"
+    }, {
+      "geocod" : "1811509",
+      "geodsg" : "Santiago do Cacém",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "1851403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "171",
+      "valor" : "171"
+    }, {
+      "geocod" : "1851406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "172",
+      "valor" : "172"
+    }, {
+      "geocod" : "1851414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "182",
+      "valor" : "182"
+    }, {
+      "geocod" : "1851405",
+      "geodsg" : "Benavente",
+      "ind_string" : "209",
+      "valor" : "209"
+    }, {
+      "geocod" : "1840205",
+      "geodsg" : "Beja",
+      "ind_string" : "221",
+      "valor" : "221"
+    }, {
+      "geocod" : "1810211",
+      "geodsg" : "Odemira",
+      "ind_string" : "238",
+      "valor" : "238"
+    }, {
+      "geocod" : "1701511",
+      "geodsg" : "Sesimbra",
+      "ind_string" : "352",
+      "valor" : "352"
+    }, {
+      "geocod" : "1851416",
+      "geodsg" : "Santarém",
+      "ind_string" : "504",
+      "valor" : "504"
+    }, {
+      "geocod" : "184",
+      "geodsg" : "Baixo Alentejo",
+      "ind_string" : "512",
+      "valor" : "512"
+    }, {
+      "geocod" : "181",
+      "geodsg" : "Alentejo Litoral",
+      "ind_string" : "695",
+      "valor" : "695"
+    }, {
+      "geocod" : "186",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "846",
+      "valor" : "846"
+    }, {
+      "geocod" : "1701510",
+      "geodsg" : "Seixal",
+      "ind_string" : "1 140",
+      "valor" : "1140"
+    }, {
+      "geocod" : "1701512",
+      "geodsg" : "Setúbal",
+      "ind_string" : "1 204",
+      "valor" : "1204"
+    }, {
+      "geocod" : "185",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "1 669",
+      "valor" : "1669"
+    }, {
+      "geocod" : "18",
+      "geodsg" : "Alentejo",
+      "ind_string" : "4 952",
+      "valor" : "4952"
+    }, {
+      "geocod" : "1840202",
+      "geodsg" : "Almodôvar",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840203",
+      "geodsg" : "Alvito",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840204",
+      "geodsg" : "Barrancos",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840207",
+      "geodsg" : "Cuba",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840209",
+      "geodsg" : "Mértola",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840212",
+      "geodsg" : "Ourique",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840213",
+      "geodsg" : "Serpa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1840214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851404",
+      "geodsg" : "Alpiarça",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1851412",
+      "geodsg" : "Golegã",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1861203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

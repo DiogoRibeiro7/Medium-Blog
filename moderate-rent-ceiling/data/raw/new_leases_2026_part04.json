@@ -1,0 +1,1280 @@
+[ {
+  "IndicadorCod" : "0014697",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2026 - N.º) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0014697&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:15:50.458Z",
+  "DataUltimoAtualizacao" : "2026-09-29",
+  "UltimoPref" : "2025",
+  "Dados" : {
+    "2020" : [ {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "42",
+      "valor" : "42"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "54",
+      "valor" : "54"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "64",
+      "valor" : "64"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "85",
+      "valor" : "85"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "108",
+      "valor" : "108"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "114",
+      "valor" : "114"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "125",
+      "valor" : "125"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "147",
+      "valor" : "147"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "149",
+      "valor" : "149"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "168",
+      "valor" : "168"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "192",
+      "valor" : "192"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "321",
+      "valor" : "321"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "440",
+      "valor" : "440"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "787",
+      "valor" : "787"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "825",
+      "valor" : "825"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 045",
+      "valor" : "1045"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 550",
+      "valor" : "1550"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 177",
+      "valor" : "2177"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "33 892",
+      "valor" : "33892"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "33 892",
+      "valor" : "33892"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "42",
+      "valor" : "42"
+    }, {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "57",
+      "valor" : "57"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "67",
+      "valor" : "67"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "70",
+      "valor" : "70"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "85",
+      "valor" : "85"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "94",
+      "valor" : "94"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "115",
+      "valor" : "115"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "131",
+      "valor" : "131"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "161",
+      "valor" : "161"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "162",
+      "valor" : "162"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "174",
+      "valor" : "174"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "244",
+      "valor" : "244"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "335",
+      "valor" : "335"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "454",
+      "valor" : "454"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "778",
+      "valor" : "778"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "932",
+      "valor" : "932"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 036",
+      "valor" : "1036"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 728",
+      "valor" : "1728"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 381",
+      "valor" : "2381"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "41 105",
+      "valor" : "41105"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "41 105",
+      "valor" : "41105"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "64",
+      "valor" : "64"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "72",
+      "valor" : "72"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "80",
+      "valor" : "80"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "84",
+      "valor" : "84"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "88",
+      "valor" : "88"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "101",
+      "valor" : "101"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "129",
+      "valor" : "129"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "151",
+      "valor" : "151"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "171",
+      "valor" : "171"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "194",
+      "valor" : "194"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "221",
+      "valor" : "221"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "249",
+      "valor" : "249"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "345",
+      "valor" : "345"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "513",
+      "valor" : "513"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "819",
+      "valor" : "819"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "1 028",
+      "valor" : "1028"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 092",
+      "valor" : "1092"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 877",
+      "valor" : "1877"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 579",
+      "valor" : "2579"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "40 851",
+      "valor" : "40851"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "40 851",
+      "valor" : "40851"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "50",
+      "valor" : "50"
+    }, {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "54",
+      "valor" : "54"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "57",
+      "valor" : "57"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "58",
+      "valor" : "58"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "61",
+      "valor" : "61"
+    }, {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "65",
+      "valor" : "65"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "72",
+      "valor" : "72"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "75",
+      "valor" : "75"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "81",
+      "valor" : "81"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "90",
+      "valor" : "90"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "101",
+      "valor" : "101"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "119",
+      "valor" : "119"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "134",
+      "valor" : "134"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "149",
+      "valor" : "149"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "200",
+      "valor" : "200"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "210",
+      "valor" : "210"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "259",
+      "valor" : "259"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "265",
+      "valor" : "265"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "367",
+      "valor" : "367"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "498",
+      "valor" : "498"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "859",
+      "valor" : "859"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "1 046",
+      "valor" : "1046"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 200",
+      "valor" : "1200"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 937",
+      "valor" : "1937"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 696",
+      "valor" : "2696"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "38 587",
+      "valor" : "38587"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "38 587",
+      "valor" : "38587"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "45",
+      "valor" : "45"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "58",
+      "valor" : "58"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "69",
+      "valor" : "69"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "76",
+      "valor" : "76"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "79",
+      "valor" : "79"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "90",
+      "valor" : "90"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "101",
+      "valor" : "101"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "113",
+      "valor" : "113"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "122",
+      "valor" : "122"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "147",
+      "valor" : "147"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "166",
+      "valor" : "166"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "203",
+      "valor" : "203"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "207",
+      "valor" : "207"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "255",
+      "valor" : "255"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "271",
+      "valor" : "271"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "366",
+      "valor" : "366"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "519",
+      "valor" : "519"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "823",
+      "valor" : "823"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "1 129",
+      "valor" : "1129"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 198",
+      "valor" : "1198"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 848",
+      "valor" : "1848"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 795",
+      "valor" : "2795"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "38 741",
+      "valor" : "38741"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "38 741",
+      "valor" : "38741"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2025" : [ {
+      "geocod" : "1960908",
+      "geodsg" : "Manteigas",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1941822",
+      "geodsg" : "Vila Nova de Paiva",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1950511",
+      "geodsg" : "Vila Velha de Ródão",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1950505",
+      "geodsg" : "Idanha-a-Nova",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1960910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1941811",
+      "geodsg" : "Penalva do Castelo",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "1960909",
+      "geodsg" : "Mêda",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "1960911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "1960903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "1950508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "61",
+      "valor" : "61"
+    }, {
+      "geocod" : "1960913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "61",
+      "valor" : "61"
+    }, {
+      "geocod" : "1941824",
+      "geodsg" : "Vouzela",
+      "ind_string" : "64",
+      "valor" : "64"
+    }, {
+      "geocod" : "1941803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "67",
+      "valor" : "67"
+    }, {
+      "geocod" : "1960501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "81",
+      "valor" : "81"
+    }, {
+      "geocod" : "1941817",
+      "geodsg" : "Sátão",
+      "ind_string" : "84",
+      "valor" : "84"
+    }, {
+      "geocod" : "1941802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "97",
+      "valor" : "97"
+    }, {
+      "geocod" : "1941810",
+      "geodsg" : "Oliveira de Frades",
+      "ind_string" : "100",
+      "valor" : "100"
+    }, {
+      "geocod" : "1941814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "123",
+      "valor" : "123"
+    }, {
+      "geocod" : "1960906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "130",
+      "valor" : "130"
+    }, {
+      "geocod" : "1950509",
+      "geodsg" : "Sertã",
+      "ind_string" : "158",
+      "valor" : "158"
+    }, {
+      "geocod" : "1941809",
+      "geodsg" : "Nelas",
+      "ind_string" : "164",
+      "valor" : "164"
+    }, {
+      "geocod" : "1941816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "221",
+      "valor" : "221"
+    }, {
+      "geocod" : "1941806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "250",
+      "valor" : "250"
+    }, {
+      "geocod" : "1941821",
+      "geodsg" : "Tondela",
+      "ind_string" : "282",
+      "valor" : "282"
+    }, {
+      "geocod" : "1960912",
+      "geodsg" : "Seia",
+      "ind_string" : "307",
+      "valor" : "307"
+    }, {
+      "geocod" : "1960504",
+      "geodsg" : "Fundão",
+      "ind_string" : "333",
+      "valor" : "333"
+    }, {
+      "geocod" : "1960907",
+      "geodsg" : "Guarda",
+      "ind_string" : "516",
+      "valor" : "516"
+    }, {
+      "geocod" : "1950502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "891",
+      "valor" : "891"
+    }, {
+      "geocod" : "1960503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "1 143",
+      "valor" : "1143"
+    }, {
+      "geocod" : "195",
+      "geodsg" : "Beira Baixa",
+      "ind_string" : "1 274",
+      "valor" : "1274"
+    }, {
+      "geocod" : "1941823",
+      "geodsg" : "Viseu",
+      "ind_string" : "1 947",
+      "valor" : "1947"
+    }, {
+      "geocod" : "196",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "2 851",
+      "valor" : "2851"
+    }, {
+      "geocod" : "1A",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "41 593",
+      "valor" : "41593"
+    }, {
+      "geocod" : "1A0",
+      "geodsg" : "Grande Lisboa",
+      "ind_string" : "41 593",
+      "valor" : "41593"
+    }, {
+      "geocod" : "1950506",
+      "geodsg" : "Oleiros",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950507",
+      "geodsg" : "Penamacor",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1950510",
+      "geodsg" : "Vila de Rei",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1960905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

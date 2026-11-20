@@ -1,0 +1,216 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:20:12.896Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0908",
+      "geodsg" : "Manteigas",
+      "ind_string" : "152,47",
+      "valor" : "152.47"
+    }, {
+      "geocod" : "0910",
+      "geodsg" : "Pinhel",
+      "ind_string" : "173,92",
+      "valor" : "173.92"
+    }, {
+      "geocod" : "0905",
+      "geodsg" : "Fornos de Algodres",
+      "ind_string" : "187,20",
+      "valor" : "187.2"
+    }, {
+      "geocod" : "0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "187,34",
+      "valor" : "187.34"
+    }, {
+      "geocod" : "1007",
+      "geodsg" : "Castanheira de Pêra",
+      "ind_string" : "189,58",
+      "valor" : "189.58"
+    }, {
+      "geocod" : "0909",
+      "geodsg" : "Mêda",
+      "ind_string" : "190,09",
+      "valor" : "190.09"
+    }, {
+      "geocod" : "0903",
+      "geodsg" : "Celorico da Beira",
+      "ind_string" : "191,45",
+      "valor" : "191.45"
+    }, {
+      "geocod" : "0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "ind_string" : "191,75",
+      "valor" : "191.75"
+    }, {
+      "geocod" : "1002",
+      "geodsg" : "Alvaiázere",
+      "ind_string" : "196,11",
+      "valor" : "196.11"
+    }, {
+      "geocod" : "0914",
+      "geodsg" : "Vila Nova de Foz Côa",
+      "ind_string" : "205,54",
+      "valor" : "205.54"
+    }, {
+      "geocod" : "0913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "206,29",
+      "valor" : "206.29"
+    }, {
+      "geocod" : "0911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "207,77",
+      "valor" : "207.77"
+    }, {
+      "geocod" : "0912",
+      "geodsg" : "Seia",
+      "ind_string" : "209,94",
+      "valor" : "209.94"
+    }, {
+      "geocod" : "1008",
+      "geodsg" : "Figueiró dos Vinhos",
+      "ind_string" : "239,12",
+      "valor" : "239.12"
+    }, {
+      "geocod" : "1013",
+      "geodsg" : "Pedrógão Grande",
+      "ind_string" : "241,03",
+      "valor" : "241.03"
+    }, {
+      "geocod" : "1016",
+      "geodsg" : "Porto de Mós",
+      "ind_string" : "251,59",
+      "valor" : "251.59"
+    }, {
+      "geocod" : "1003",
+      "geodsg" : "Ansião",
+      "ind_string" : "253,20",
+      "valor" : "253.2"
+    }, {
+      "geocod" : "1014",
+      "geodsg" : "Peniche",
+      "ind_string" : "258,52",
+      "valor" : "258.52"
+    }, {
+      "geocod" : "0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "261,73",
+      "valor" : "261.73"
+    }, {
+      "geocod" : "1005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "263,67",
+      "valor" : "263.67"
+    }, {
+      "geocod" : "1011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "266,47",
+      "valor" : "266.47"
+    }, {
+      "geocod" : "1104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "271,97",
+      "valor" : "271.97"
+    }, {
+      "geocod" : "1010",
+      "geodsg" : "Marinha Grande",
+      "ind_string" : "284,98",
+      "valor" : "284.98"
+    }, {
+      "geocod" : "1001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "288,39",
+      "valor" : "288.39"
+    }, {
+      "geocod" : "1108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "292,76",
+      "valor" : "292.76"
+    }, {
+      "geocod" : "1015",
+      "geodsg" : "Pombal",
+      "ind_string" : "298,92",
+      "valor" : "298.92"
+    }, {
+      "geocod" : "1103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "300,96",
+      "valor" : "300.96"
+    }, {
+      "geocod" : "1004",
+      "geodsg" : "Batalha",
+      "ind_string" : "318,03",
+      "valor" : "318.03"
+    }, {
+      "geocod" : "1112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "319,74",
+      "valor" : "319.74"
+    }, {
+      "geocod" : "1006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "325,58",
+      "valor" : "325.58"
+    }, {
+      "geocod" : "1012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "328,09",
+      "valor" : "328.09"
+    }, {
+      "geocod" : "1107",
+      "geodsg" : "Loures",
+      "ind_string" : "331,96",
+      "valor" : "331.96"
+    }, {
+      "geocod" : "1101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "334,64",
+      "valor" : "334.64"
+    }, {
+      "geocod" : "1102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "335,98",
+      "valor" : "335.98"
+    }, {
+      "geocod" : "1009",
+      "geodsg" : "Leiria",
+      "ind_string" : "346,30",
+      "valor" : "346.3"
+    }, {
+      "geocod" : "1111",
+      "geodsg" : "Sintra",
+      "ind_string" : "392,69",
+      "valor" : "392.69"
+    }, {
+      "geocod" : "1109",
+      "geodsg" : "Mafra",
+      "ind_string" : "413,58",
+      "valor" : "413.58"
+    }, {
+      "geocod" : "1110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "456,62",
+      "valor" : "456.62"
+    }, {
+      "geocod" : "1106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "470,87",
+      "valor" : "470.87"
+    }, {
+      "geocod" : "1105",
+      "geodsg" : "Cascais",
+      "ind_string" : "529,73",
+      "valor" : "529.73"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

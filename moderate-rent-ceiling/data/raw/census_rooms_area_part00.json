@@ -1,0 +1,1105 @@
+[ {
+  "IndicadorCod" : "0014625",
+  "IndicadorDsg" : "Alojamentos familiares clássicos de residência habitual (N.º) por Localização geográfica à data dos Censos [2021] (NUTS - 2024 - geografia 2025), Escalão de divisões e Escalão de área útil; Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0014625&lingua=PT",
+  "DataExtracao" : "2026-11-20T23:21:00.952Z",
+  "DataUltimoAtualizacao" : "2026-02-05",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "1 432",
+      "valor" : "1432"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "8 888",
+      "valor" : "8888"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "68 967",
+      "valor" : "68967"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "364 193",
+      "valor" : "364193"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "267 827",
+      "valor" : "267827"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "64 680",
+      "valor" : "64680"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "23 773",
+      "valor" : "23773"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "9 147",
+      "valor" : "9147"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "4 090",
+      "valor" : "4090"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "6",
+      "dim_4_t" : "80 m² - 99 m²",
+      "ind_string" : "812 997",
+      "valor" : "812997"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "2 858",
+      "valor" : "2858"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "5 880",
+      "valor" : "5880"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "31 541",
+      "valor" : "31541"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "209 374",
+      "valor" : "209374"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "331 105",
+      "valor" : "331105"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "98 321",
+      "valor" : "98321"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "37 807",
+      "valor" : "37807"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "16 308",
+      "valor" : "16308"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "7 585",
+      "valor" : "7585"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "7",
+      "dim_4_t" : "100 m² - 119 m²",
+      "ind_string" : "740 779",
+      "valor" : "740779"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "4 239",
+      "valor" : "4239"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "3 655",
+      "valor" : "3655"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "12 381",
+      "valor" : "12381"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "97 372",
+      "valor" : "97372"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "284 792",
+      "valor" : "284792"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "119 101",
+      "valor" : "119101"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "48 838",
+      "valor" : "48838"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "21 580",
+      "valor" : "21580"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "10 484",
+      "valor" : "10484"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "8",
+      "dim_4_t" : "120 m² - 149 m²",
+      "ind_string" : "602 442",
+      "valor" : "602442"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "6 029",
+      "valor" : "6029"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "2 534",
+      "valor" : "2534"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "5 530",
+      "valor" : "5530"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "40 412",
+      "valor" : "40412"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "140 386",
+      "valor" : "140386"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "123 406",
+      "valor" : "123406"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "60 075",
+      "valor" : "60075"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "27 712",
+      "valor" : "27712"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "14 179",
+      "valor" : "14179"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "9",
+      "dim_4_t" : "150 m² - 199 m²",
+      "ind_string" : "420 263",
+      "valor" : "420263"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "17 542",
+      "valor" : "17542"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "51 340",
+      "valor" : "51340"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "109 008",
+      "valor" : "109008"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "428 644",
+      "valor" : "428644"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "1 254 622",
+      "valor" : "1254622"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "1 295 053",
+      "valor" : "1295053"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "538 552",
+      "valor" : "538552"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "257 565",
+      "valor" : "257565"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "123 844",
+      "valor" : "123844"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "66 411",
+      "valor" : "66411"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "T",
+      "dim_4_t" : "Total",
+      "ind_string" : "4 142 581",
+      "valor" : "4142581"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "17 542",
+      "valor" : "17542"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "30 078",
+      "valor" : "30078"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "15 649",
+      "valor" : "15649"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "1",
+      "dim_4_t" : "Menos de 30 m²",
+      "ind_string" : "63 269",
+      "valor" : "63269"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "35 959",
+      "valor" : "35959"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "22 136",
+      "valor" : "22136"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "71 253",
+      "valor" : "71253"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "84 428",
+      "valor" : "84428"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "72 517",
+      "valor" : "72517"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "43 902",
+      "valor" : "43902"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "27 816",
+      "valor" : "27816"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "10",
+      "dim_4_t" : "200 m² ou mais",
+      "ind_string" : "358 011",
+      "valor" : "358011"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "17 739",
+      "valor" : "17739"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "50 549",
+      "valor" : "50549"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "40 164",
+      "valor" : "40164"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "14 377",
+      "valor" : "14377"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "2",
+      "dim_4_t" : "30 m² - 39 m²",
+      "ind_string" : "122 829",
+      "valor" : "122829"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "14 520",
+      "valor" : "14520"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "61 050",
+      "valor" : "61050"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "68 793",
+      "valor" : "68793"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "24 472",
+      "valor" : "24472"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "6 816",
+      "valor" : "6816"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "3",
+      "dim_4_t" : "40 m² - 49 m²",
+      "ind_string" : "175 651",
+      "valor" : "175651"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "261",
+      "valor" : "261"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "12 338",
+      "valor" : "12338"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "75 322",
+      "valor" : "75322"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "106 272",
+      "valor" : "106272"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "39 429",
+      "valor" : "39429"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "10 955",
+      "valor" : "10955"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "3 784",
+      "valor" : "3784"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "1 359",
+      "valor" : "1359"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "644",
+      "valor" : "644"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "4",
+      "dim_4_t" : "50 m² - 59 m²",
+      "ind_string" : "250 364",
+      "valor" : "250364"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "1",
+      "dim_3_t" : "Com 1 divisão",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "0",
+      "valor" : "0"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "10",
+      "dim_3_t" : "Com 10 ou mais divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "562",
+      "valor" : "562"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "2",
+      "dim_3_t" : "Com 2 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "13 376",
+      "valor" : "13376"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "3",
+      "dim_3_t" : "Com 3 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "107 655",
+      "valor" : "107655"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "4",
+      "dim_3_t" : "Com 4 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "305 906",
+      "valor" : "305906"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "5",
+      "dim_3_t" : "Com 5 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "121 412",
+      "valor" : "121412"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "6",
+      "dim_3_t" : "Com 6 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "30 845",
+      "valor" : "30845"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "7",
+      "dim_3_t" : "Com 7 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "10 771",
+      "valor" : "10771"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "8",
+      "dim_3_t" : "Com 8 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "3 836",
+      "valor" : "3836"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "9",
+      "dim_3_t" : "Com 9 divisões",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "1 613",
+      "valor" : "1613"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "dim_3" : "T",
+      "dim_3_t" : "Total",
+      "dim_4" : "5",
+      "dim_4_t" : "60 m² - 79 m²",
+      "ind_string" : "595 976",
+      "valor" : "595976"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
