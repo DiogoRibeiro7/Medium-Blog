@@ -341,7 +341,7 @@ def main():
         )
 
     # ------------------------------------------------------------------------------------------------ 8
-    head("8. Episodes: a windfall of 100,000 in a given month, one year after the last instalment")
+    head("8. Episodes: a windfall of 100,000 in a given month, one month after the last instalment")
     index = {(o.country, lc.label(o.start)): o for o in base}
     for e in EPISODES:
         parts = []

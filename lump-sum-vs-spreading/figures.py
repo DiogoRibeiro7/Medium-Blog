@@ -83,7 +83,7 @@ def fig1_countries():
     ax.set_ylim(-0.7, len(c) + 0.2)
     percent(ax, "x")
     grid(ax, "x")
-    ax.set_xlabel("Start months in which the lump sum was ahead one year after the last instalment")
+    ax.set_xlabel("Start months in which the lump sum was ahead one month after the last instalment")
     ax.legend(loc="lower right", fontsize=8.5)
     frame(
         fig,
@@ -126,7 +126,7 @@ def fig2_advantage():
     grid(ax)
     percent(ax, "x")
     ax.set_xlim(-0.5, 0.5)
-    ax.set_xlabel("Lump sum's lead over 12 monthly instalments, one year after the last instalment (clipped at ±50%)")
+    ax.set_xlabel("Lump sum's lead over 12 monthly instalments, one month after the last instalment (clipped at ±50%)")
     ax.set_ylabel("Start months")
     ax.legend(loc="upper left", fontsize=8.5)
     frame(
@@ -164,13 +164,13 @@ def fig3_outcomes():
     ax.set_xlim(0.5, 1.7)
     ax.set_ylim(0, 1)
     percent(ax)
-    ax.set_xlabel("Value one year after the last instalment, windfall = 1")
+    ax.set_xlabel("Value one month after the last instalment, windfall = 1")
     ax.set_ylabel("Share of start months with a value below this")
     ax.legend(loc="lower right", fontsize=8.5)
     frame(
         fig,
         "What spreading buys: fewer bad years, paid for with fewer good ones",
-        "Distribution of the windfall's value one year after the last instalment, 13,241 start months in 23 markets,"
+        "Distribution of the windfall's value one month after the last instalment, 13,241 start months in 23 markets,"
         " share prices\nwithout dividends. A curve further left at the bottom means more bad outcomes.",
     )
     fig.savefig(FIG / "fig3_outcomes.png")
