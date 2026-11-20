@@ -1,0 +1,66 @@
+name: Reproduce pension-inflation
+
+on:
+  pull_request:
+    paths:
+      - 'pension-inflation/**'
+      - '.github/workflows/pension-inflation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'pension-inflation/**'
+      - '.github/workflows/pension-inflation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: pension-inflation
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: pension-inflation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on cases with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Compare the committed snapshot with the OECD and Eurostat
+        run: python fetch_data.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python pension_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=pension-inflation/output.txt::output of pension_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_fan fig2_heatmap fig3_rules fig4_level_vs_indexed fig5_portugal; do
+            test -s "figures/$f.png"
+          done
