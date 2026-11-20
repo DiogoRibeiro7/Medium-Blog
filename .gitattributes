@@ -165,6 +165,7 @@ org-chart-task-fit/**/*.csv -filter -diff -merge text
 rare-flags/**/*.csv -filter -diff -merge text
 felt-inflation/**/*.csv -filter -diff -merge text
 fixed-or-variable/**/*.csv -filter -diff -merge text
+heat-pump-price-ratio/**/*.csv -filter -diff -merge text
 lump-sum-vs-spreading/**/*.csv -filter -diff -merge text
 pension-inflation/**/*.csv -filter -diff -merge text
 forecast-success-specification/**/*.csv -filter -diff -merge text

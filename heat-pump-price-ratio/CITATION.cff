@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "The price ratio decides heat pumps: household electricity and gas prices in 25 European countries, 2007-2026"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-20
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/heat-pump-price-ratio"
+references:
+  - type: data
+    title: "Electricity prices for household consumers (nrg_pc_204); Gas prices for household consumers (nrg_pc_202); Cooling and heating degree days (nrg_chdd_a)"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/data/database"

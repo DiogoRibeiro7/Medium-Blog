@@ -1,0 +1,192 @@
+1. Data
+   25 countries, 921 country half-years, 2007-S2 to 2026-S1
+   electricity band KWH5000-14999 (DD), gas band GJ20-199 (D2), all taxes and levies, euros
+   AT Austria         2007-S2 to 2026-S1, 38 half-years
+   BE Belgium         2007-S2 to 2026-S1, 38 half-years
+   BG Bulgaria        2007-S2 to 2026-S1, 38 half-years
+   CZ Czechia         2007-S2 to 2026-S1, 38 half-years
+   DE Germany         2007-S2 to 2026-S1, 38 half-years
+   DK Denmark         2007-S2 to 2026-S1, 38 half-years
+   EE Estonia         2007-S2 to 2026-S1, 38 half-years
+   EL Greece          2012-S2 to 2026-S1, 27 half-years
+   ES Spain           2007-S2 to 2026-S1, 38 half-years
+   FR France          2007-S2 to 2026-S1, 38 half-years
+   HR Croatia         2007-S2 to 2026-S1, 38 half-years
+   HU Hungary         2007-S2 to 2026-S1, 38 half-years
+   IE Ireland         2007-S2 to 2026-S1, 38 half-years
+   IT Italy           2008-S1 to 2026-S1, 37 half-years
+   LT Lithuania       2007-S2 to 2026-S1, 38 half-years
+   LU Luxembourg      2007-S2 to 2026-S1, 38 half-years
+   LV Latvia          2007-S2 to 2026-S1, 38 half-years
+   NL Netherlands     2007-S2 to 2026-S1, 38 half-years
+   PL Poland          2007-S2 to 2023-S2, 33 half-years
+   PT Portugal        2007-S2 to 2026-S1, 38 half-years
+   RO Romania         2007-S2 to 2026-S1, 38 half-years
+   SE Sweden          2007-S2 to 2026-S1, 38 half-years
+   SI Slovenia        2007-S2 to 2026-S1, 38 half-years
+   SK Slovakia        2007-S2 to 2026-S1, 38 half-years
+   UK United Kingdom  2007-S2 to 2020-S1, 26 half-years
+   half-years with a flagged price (estimated, provisional, break or definition): 30
+
+2. The ratio of the electricity price to the gas price, per kWh
+   all country half-years: median 2.70, p10 1.87, p90 3.78
+   lowest 0.80 (SE 2022-S1), highest 5.38 (BE 2021-S1)
+   below 1 (electricity cheaper than gas per kWh): 6 country half-years
+   by country: lowest, median, highest, latest year
+   AT 1.67 (2023-S1)  2.53  3.06 (2021-S1)  2.42 (2025-S2+2026-S1)
+   BE 2.56 (2011-S2)  3.45  5.38 (2021-S1)  3.77 (2025-S2+2026-S1)
+   BG 0.98 (2022-S2)  1.98  3.01 (2016-S2)  2.07 (2025-S2+2026-S1)
+   CZ 1.80 (2022-S2)  2.24  3.02 (2021-S2)  2.61 (2025-S2+2026-S1)
+   DE 2.68 (2008-S2)  4.02  4.80 (2020-S1)  2.81 (2025-S2+2026-S1)
+   DK 1.82 (2026-S1)  2.52  3.02 (2019-S2)  1.88 (2025-S2+2026-S1)
+   EE 1.81 (2022-S1)  2.64  3.62 (2016-S2)  2.63 (2025-S2+2026-S1)
+   EL 1.58 (2012-S2)  2.69  3.94 (2021-S1)  2.82 (2025-S2+2026-S1)
+   ES 1.95 (2019-S2)  2.48  3.59 (2011-S2)  2.62 (2025-S2+2026-S1)
+   FR 1.59 (2025-S2)  2.08  2.59 (2021-S1)  1.61 (2025-S2+2026-S1)
+   HR 2.66 (2015-S1)  3.21  4.07 (2008-S2)  3.30 (2025-S2+2026-S1)
+   HU 2.56 (2011-S2)  3.18  4.99 (2024-S1)  4.12 (2025-S2+2026-S1)
+   IE 2.04 (2023-S1)  2.97  3.45 (2021-S1)  2.75 (2025-S2+2026-S1)
+   IT 1.82 (2024-S2)  2.98  4.90 (2009-S2)  2.25 (2025-S2+2026-S1)
+   LT 1.40 (2023-S2)  2.65  4.61 (2021-S1)  2.64 (2025-S2+2026-S1)
+   LU 1.91 (2023-S1)  3.09  4.70 (2020-S2)  2.46 (2025-S2+2026-S1)
+   LV 2.00 (2008-S2)  2.88  5.34 (2020-S2)  2.63 (2025-S2+2026-S1)
+   NL 1.12 (2022-S1)  2.24  3.10 (2009-S2)  1.55 (2025-S2+2026-S1)
+   PL 2.39 (2008-S2)  2.76  3.78 (2021-S1)  3.13 (2023-S1+2023-S2)
+   PT 1.43 (2023-S1)  2.31  2.84 (2017-S1)  1.70 (2025-S2+2026-S1)
+   RO 2.65 (2022-S2)  3.87  4.76 (2021-S1)  4.62 (2025-S2+2026-S1)
+   SE 0.80 (2022-S1)  1.39  1.65 (2007-S2)  1.08 (2025-S2+2026-S1)
+   SI 1.53 (2008-S2)  2.18  2.69 (2020-S2)  2.25 (2025-S2+2026-S1)
+   SK 2.61 (2014-S2)  2.93  3.56 (2021-S1)  2.83 (2025-S2+2026-S1)
+   UK 2.70 (2011-S2)  3.06  4.25 (2020-S1)  4.12 (2019-S2+2020-S1)
+   latest year (2025-S2+2026-S1), 23 countries: median 2.62; SE 1.08, NL 1.55, FR 1.61, PT 1.70, DK 1.88, BG 2.07, IT 2.25, SI 2.25, AT 2.42, LU 2.46, CZ 2.61, ES 2.62, EE 2.63, LV 2.63, LT 2.64, IE 2.75, DE 2.81, EL 2.82, SK 2.83, HR 3.30, BE 3.77, HU 4.12, RO 4.62
+   EU (27) average prices: 2008-S1 2.59, 2010-S1 2.94, 2012-S1 2.79, 2014-S1 2.87, 2016-S1 3.02, 2018-S1 3.04, 2020-S1 3.03, 2022-S1 2.73, 2024-S1 2.45, 2026-S1 2.31
+   EU (27): first 2.52 (2007-S2), highest 3.12 (2017-S1), lowest 2.14 (2025-S2), last 2.31 (2026-S1)
+
+3. How good a heat pump has to be (boiler efficiency 0.90, gross calorific value)
+   break-even seasonal performance factor, all country half-years: median 2.43, p10 1.68, p90 3.40
+   share of country half-years in which the heat pump was cheaper to run
+   boiler 0.90: SPF 2.5: 54.1%, SPF 2.8: 73.1%, SPF 3.0: 81.1%, SPF 3.4: 90.0%, SPF 4.0: 96.6%
+   boiler 0.85: SPF 2.5: 64.6%, SPF 2.8: 80.5%, SPF 3.0: 85.9%, SPF 3.4: 92.7%, SPF 4.0: 98.4%
+   boiler 0.80: SPF 2.5: 73.5%, SPF 2.8: 85.2%, SPF 3.0: 89.3%, SPF 3.4: 95.3%, SPF 4.0: 99.7%
+   latest year, 23 countries: cheaper at SPF 2.8 in 19, at 3.4 in 21, at 4.0 in 22
+   latest year, break-even SPF: SE 0.97, NL 1.40, FR 1.45, PT 1.53, DK 1.69, BG 1.86, IT 2.03, SI 2.03, AT 2.18, LU 2.22, CZ 2.35, ES 2.35, EE 2.36, LV 2.36, LT 2.38, IE 2.48, DE 2.53, EL 2.54, SK 2.54, HR 2.97, BE 3.39, HU 3.71, RO 4.16
+   countries in which the heat pump was cheaper, by half-year (SPF 2.8 / 3.4, of countries with data)
+   2007-S2: 15 / 22 of 23
+   2008-S1: 19 / 23 of 24
+   2008-S2: 20 / 23 of 24
+   2009-S1: 18 / 24 of 24
+   2009-S2: 16 / 23 of 24
+   2010-S1: 16 / 22 of 24
+   2010-S2: 18 / 23 of 24
+   2011-S1: 19 / 23 of 24
+   2011-S2: 20 / 22 of 24
+   2012-S1: 21 / 22 of 24
+   2012-S2: 23 / 23 of 25
+   2013-S1: 22 / 23 of 25
+   2013-S2: 23 / 23 of 25
+   2014-S1: 21 / 23 of 25
+   2014-S2: 21 / 23 of 25
+   2015-S1: 18 / 22 of 25
+   2015-S2: 17 / 23 of 25
+   2016-S1: 15 / 22 of 25
+   2016-S2: 17 / 22 of 25
+   2017-S1: 15 / 21 of 25
+   2017-S2: 17 / 20 of 24
+   2018-S1: 15 / 22 of 25
+   2018-S2: 16 / 23 of 25
+   2019-S1: 16 / 21 of 25
+   2019-S2: 17 / 20 of 25
+   2020-S1: 12 / 18 of 25
+   2020-S2: 12 / 18 of 24
+   2021-S1: 12 / 17 of 24
+   2021-S2: 15 / 21 of 24
+   2022-S1: 16 / 23 of 24
+   2022-S2: 19 / 24 of 24
+   2023-S1: 18 / 22 of 24
+   2023-S2: 18 / 22 of 24
+   2024-S1: 19 / 21 of 23
+   2024-S2: 19 / 22 of 23
+   2025-S1: 19 / 22 of 23
+   2025-S2: 20 / 21 of 23
+   2026-S1: 19 / 20 of 23
+   share cheaper at SPF 2.8: to 2021-S2 71.3%, from 2022-S1 79.1%; at SPF 3.4: 89.0% and 93.4%
+
+4. What it saves: a home that needs 10,000 kWh of heat a year, prices of the latest year
+   SE (2025-S2+2026-S1): electricity 0.231, gas 0.215, ratio 1.08; boiler costs 2,385; saving at SPF 2.8 1,561, at 3.4 1,706; degree days 5,029, heat 17,091 kWh, saving at 3.4 2,916
+   NL (2025-S2+2026-S1): electricity 0.259, gas 0.167, ratio 1.55; boiler costs 1,853; saving at SPF 2.8 927, at 3.4 1,091; degree days 2,499, heat 8,493 kWh, saving at 3.4 926
+   FR (2025-S2+2026-S1): electricity 0.224, gas 0.139, ratio 1.61; boiler costs 1,546; saving at SPF 2.8 745, at 3.4 886; degree days 2,229, heat 7,575 kWh, saving at 3.4 671
+   PT (2025-S2+2026-S1): electricity 0.226, gas 0.133, ratio 1.70; boiler costs 1,478; saving at SPF 2.8 672, at 3.4 814; degree days 1,127, heat 3,829 kWh, saving at 3.4 312
+   DK (2025-S2+2026-S1): electricity 0.232, gas 0.123, ratio 1.88; boiler costs 1,371; saving at SPF 2.8 543, at 3.4 689; degree days 3,063, heat 10,411 kWh, saving at 3.4 718
+   BG (2025-S2+2026-S1): electricity 0.134, gas 0.065, ratio 2.07; boiler costs 723; saving at SPF 2.8 243, at 3.4 328; degree days 2,372, heat 8,063 kWh, saving at 3.4 264
+   IT (2025-S2+2026-S1): electricity 0.295, gas 0.131, ratio 2.25; boiler costs 1,454; saving at SPF 2.8 402, at 3.4 587; degree days 1,868, heat 6,349 kWh, saving at 3.4 373
+   SI (2025-S2+2026-S1): electricity 0.195, gas 0.086, ratio 2.25; boiler costs 961; saving at SPF 2.8 265, at 3.4 388; degree days 2,669, heat 9,070 kWh, saving at 3.4 352
+   AT (2025-S2+2026-S1): electricity 0.298, gas 0.123, ratio 2.42; boiler costs 1,367; saving at SPF 2.8 304, at 3.4 492; degree days 3,364, heat 11,432 kWh, saving at 3.4 562
+   LU (2025-S2+2026-S1): electricity 0.215, gas 0.087, ratio 2.46; boiler costs 972; saving at SPF 2.8 203, at 3.4 338; degree days 2,903, heat 9,866 kWh, saving at 3.4 334
+   CZ (2025-S2+2026-S1): electricity 0.243, gas 0.093, ratio 2.61; boiler costs 1,034; saving at SPF 2.8 166, at 3.4 319; degree days 3,131, heat 10,640 kWh, saving at 3.4 339
+   ES (2025-S2+2026-S1): electricity 0.228, gas 0.087, ratio 2.62; boiler costs 968; saving at SPF 2.8 154, at 3.4 298; degree days 1,665, heat 5,658 kWh, saving at 3.4 168
+   EE (2025-S2+2026-S1): electricity 0.204, gas 0.078, ratio 2.63; boiler costs 864; saving at SPF 2.8 135, at 3.4 264; degree days 3,984, heat 13,541 kWh, saving at 3.4 357
+   LV (2025-S2+2026-S1): electricity 0.215, gas 0.082, ratio 2.63; boiler costs 910; saving at SPF 2.8 141, at 3.4 277; degree days 3,799, heat 12,912 kWh, saving at 3.4 358
+   LT (2025-S2+2026-S1): electricity 0.174, gas 0.066, ratio 2.64; boiler costs 729; saving at SPF 2.8 109, at 3.4 219; degree days 3,602, heat 12,243 kWh, saving at 3.4 268
+   IE (2025-S2+2026-S1): electricity 0.342, gas 0.124, ratio 2.75; boiler costs 1,379; saving at SPF 2.8 160, at 3.4 375; degree days 2,691, heat 9,145 kWh, saving at 3.4 343
+   DE (2025-S2+2026-S1): electricity 0.335, gas 0.119, ratio 2.81; boiler costs 1,322; saving at SPF 2.8 127, at 3.4 338; degree days 2,840, heat 9,653 kWh, saving at 3.4 326
+   EL (2025-S2+2026-S1): electricity 0.239, gas 0.084, ratio 2.82; boiler costs 938; saving at SPF 2.8 86, at 3.4 237; degree days 1,548, heat 5,262 kWh, saving at 3.4 125
+   SK (2025-S2+2026-S1): electricity 0.174, gas 0.062, ratio 2.83; boiler costs 686; saving at SPF 2.8 63, at 3.4 172; degree days 3,075, heat 10,450 kWh, saving at 3.4 180
+   PL (2023-S1+2023-S2): electricity 0.221, gas 0.071, ratio 3.13; boiler costs 785; saving at SPF 2.8 -4, at 3.4 135; degree days 3,121, heat 10,607 kWh, saving at 3.4 143
+   HR (2025-S2+2026-S1): electricity 0.173, gas 0.052, ratio 3.30; boiler costs 581; saving at SPF 2.8 -36, at 3.4 73; degree days 2,185, heat 7,425 kWh, saving at 3.4 54
+   BE (2025-S2+2026-S1): electricity 0.329, gas 0.087, ratio 3.77; boiler costs 969; saving at SPF 2.8 -206, at 3.4 2; degree days 2,545, heat 8,651 kWh, saving at 3.4 1
+   UK (2019-S2+2020-S1): electricity 0.202, gas 0.049, ratio 4.12; boiler costs 544; saving at SPF 2.8 -177, at 3.4 -50; degree days 2,901, heat 9,859 kWh, saving at 3.4 -49
+   HU (2025-S2+2026-S1): electricity 0.137, gas 0.033, ratio 4.12; boiler costs 369; saving at SPF 2.8 -120, at 3.4 -34; degree days 2,548, heat 8,660 kWh, saving at 3.4 -29
+   RO (2025-S2+2026-S1): electricity 0.268, gas 0.058, ratio 4.62; boiler costs 644; saving at SPF 2.8 -312, at 3.4 -143; degree days 2,766, heat 9,399 kWh, saving at 3.4 -135
+   EU (27) degree days, mean 2015-2024: 2,942
+   latest year, 23 countries: correlation of the saving at SPF 3.4 with the ratio -0.87, with the gas price 0.93, with the electricity price 0.11
+   gas price across country half-years: p10 0.037, median 0.062, p90 0.116 euros per kWh
+   saving at SPF 3.4 across all country half-years: p10 0, median 185, p90 596
+
+5. Taxes: the ratio with all taxes, without VAT, and without any taxes or levies (latest year)
+   SE: all taxes 1.08, without VAT 1.08, without taxes 1.07
+   NL: all taxes 1.55, without VAT 1.56, without taxes 2.49
+   FR: all taxes 1.61, without VAT 1.62, without taxes 1.61
+   PT: all taxes 1.70, without VAT 1.74, without taxes 1.62
+   DK: all taxes 1.88, without VAT 1.88, without taxes 2.66
+   BG: all taxes 2.07, without VAT 2.07, without taxes 2.07
+   IT: all taxes 2.25, without VAT 2.42, without taxes 2.33
+   SI: all taxes 2.25, without VAT 2.25, without taxes 2.33
+   AT: all taxes 2.42, without VAT 2.42, without taxes 2.70
+   LU: all taxes 2.46, without VAT 2.46, without taxes 3.04
+   CZ: all taxes 2.61, without VAT 2.61, without taxes 2.44
+   ES: all taxes 2.62, without VAT 2.62, without taxes 2.30
+   EE: all taxes 2.63, without VAT 2.64, without taxes 2.64
+   LV: all taxes 2.63, without VAT 2.63, without taxes 2.83
+   LT: all taxes 2.64, without VAT 2.65, without taxes 2.66
+   IE: all taxes 2.75, without VAT 2.75, without taxes 3.02
+   DE: all taxes 2.81, without VAT 2.81, without taxes 2.71
+   EL: all taxes 2.82, without VAT 2.82, without taxes 2.34
+   SK: all taxes 2.83, without VAT 2.92, without taxes 2.33
+   PL: all taxes 3.13, without VAT 3.13, without taxes 2.09
+   HR: all taxes 3.30, without VAT 3.07, without taxes 2.80
+   BE: all taxes 3.77, without VAT 3.78, without taxes 3.51
+   UK: all taxes 4.12, without VAT 4.13, without taxes 3.17
+   HU: all taxes 4.12, without VAT 4.13, without taxes 4.13
+   RO: all taxes 4.62, without VAT 4.62, without taxes 4.24
+   taxes raise the ratio in 13 of 25 countries; median change +0.00; largest rise PL +1.04, UK +0.95, SK +0.50, HR +0.50; largest fall NL -0.93, DK -0.78, LU -0.58
+   DE with/without taxes: 2008-S1 3.10/2.46, 2013-S1 4.21/2.78, 2018-S1 4.60/2.72, 2021-S2 4.25/2.91, 2023-S1 3.13/2.86, 2026-S1 2.78/2.63
+   DK with/without taxes: 2008-S1 2.44/1.85, 2013-S1 2.28/2.01, 2018-S1 2.78/2.35, 2021-S2 1.93/2.08, 2023-S1 2.20/2.89, 2026-S1 1.82/2.91
+   NL with/without taxes: 2008-S1 2.75/2.81, 2013-S1 2.58/2.13, 2018-S1 2.21/2.12, 2021-S2 1.65/2.05, 2023-S1 2.42/2.43, 2026-S1 1.56/2.64
+   SE with/without taxes: 2008-S1 1.60/1.72, 2013-S1 1.44/1.62, 2018-S1 1.38/1.46, 2021-S2 1.02/1.03, 2023-S1 0.99/0.95, 2026-S1 1.11/1.14
+
+6. Deciding on today's ratio: does it hold for the next five and ten years?
+   5 years, SPF 2.8: 687 starts; the ratio at the start gave the right answer in 84.7%; said cheaper but was not 38, said dearer but was not 67; median gap between the starting ratio and the mean ratio over the period 0.21
+      starting ratio within 0.3 of the break-even ratio: right in 70.9% of 206; further away: right in 90.6% of 481
+   5 years, SPF 3.4: 687 starts; the ratio at the start gave the right answer in 92.7%; said cheaper but was not 18, said dearer but was not 32
+      starting ratio within 0.3 of the break-even ratio: right in 68.5% of 54; further away: right in 94.8% of 633
+   10 years, SPF 2.8: 438 starts; the ratio at the start gave the right answer in 81.7%; said cheaper but was not 43, said dearer but was not 37; median gap between the starting ratio and the mean ratio over the period 0.24
+      starting ratio within 0.3 of the break-even ratio: right in 65.9% of 126; further away: right in 88.1% of 312
+   10 years, SPF 3.4: 438 starts; the ratio at the start gave the right answer in 91.6%; said cheaper but was not 22, said dearer but was not 15
+      starting ratio within 0.3 of the break-even ratio: right in 57.9% of 38; further away: right in 94.8% of 400
+
+7. Sensitivity
+   electricity band DC (2,500-4,999 kWh) instead of DD: median ratio 2.95; cheaper at SPF 2.8 58.4%, at 3.4 87.5%
+   without flagged prices (891 half-years): cheaper at SPF 2.8 73.4%, at 3.4 90.5%
+   without Sweden: cheaper at SPF 2.8 71.9%, at 3.4 89.6%
+   only the 22 countries with every half-year from 2008-S1: cheaper at SPF 2.8 73.3%
+   each country counted once: median of the country shares cheaper at SPF 2.8 84.2%
