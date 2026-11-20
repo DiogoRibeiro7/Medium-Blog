@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-217 top-level folders: 77 belong to 24 series, 83 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material.
+218 top-level folders: 77 belong to 24 series, 83 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -383,6 +383,12 @@ Repository checks, shared assets and data-source records.
 Notebooks, scripts and data behind older articles, kept at their original paths. Not guaranteed to run unchanged today.
 
 [`ab_testing/`](ab_testing/), [`anova_analysis/`](anova_analysis/), [`Barabasi-Albert_Network/`](Barabasi-Albert_Network/), [`Bayestheorem/`](Bayestheorem/), [`BhattacharyyaMetrics/`](BhattacharyyaMetrics/), [`causal inference in marketing analytics/`](causal%20inference%20in%20marketing%20analytics/), [`change_point/`](change_point/), [`clima_portugal/`](clima_portugal/), [`compare tests statistics/`](compare%20tests%20statistics/), [`conformal_prediction/`](conformal_prediction/), [`customer_life_value/`](customer_life_value/), [`customer_segmentation/`](customer_segmentation/), [`Data_Is_Not_Decision/`](Data_Is_Not_Decision/), [`data_vs_sampling_dist/`](data_vs_sampling_dist/), [`Deep Learning with Caffe and Python/`](Deep%20Learning%20with%20Caffe%20and%C2%A0Python/), [`DimensionReduction/`](DimensionReduction/), [`Django-Charts/`](Django-Charts/), [`earthmover/`](earthmover/), [`elliptic-curves/`](elliptic-curves/), [`feature_discretization/`](feature_discretization/), [`feature_importance_in_python/`](feature_importance_in_python/), [`Featuring Engineering/`](Featuring%20Engineering/), [`Finance/`](Finance/), [`Graph Algorithms/`](Graph%20Algorithms/), [`income_inequaility/`](income_inequaility/), [`intermittent_time_series-main/`](intermittent_time_series-main/), [`introduction_to_batch_processing_mapreduce/`](introduction_to_batch_processing_mapreduce/), [`just_fun/`](just_fun/), [`Levenshtein Distance/`](Levenshtein%20Distance/), [`manufacturing_data_science/`](manufacturing_data_science/), [`mapreduce/`](mapreduce/), [`Mongo DB/`](Mongo%20DB/), [`Neural Network/`](Neural%20Network/), [`portugal_data/`](portugal_data/), [`Predicting House Prices/`](Predicting%20House%20Prices/), [`preprocessing/`](preprocessing/), [`pseudo_labeling_a_simple_semi_supervised_learning_method/`](pseudo_labeling_a_simple_semi_supervised_learning_method/), [`python-missing-data/`](python-missing-data/), [`python-telegram-tutorial/`](python-telegram-tutorial/), [`R_code/`](R_code/), [`real_data_science/`](real_data_science/), [`short_time_series/`](short_time_series/), [`spectral_methods/`](spectral_methods/), [`stocks_under_10/`](stocks_under_10/), [`survival_analysis/`](survival_analysis/), [`Twitter_Analytics/`](Twitter_Analytics/), [`Walmart-Sales-Prediction/`](Walmart-Sales-Prediction/), [`Web Scrapper/`](Web%20Scrapper/), [`work force model/`](work%20force%20model/), [`Yelp rating in Las Vegas/`](Yelp%20rating%20in%20Las%C2%A0Vegas/), [`Zipf/`](Zipf/), [`zipf_law/`](zipf_law/)
+
+### Not yet sorted
+
+Add these folders to `projects.yml`.
+
+- [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
 
 <!-- projects:end -->
 
