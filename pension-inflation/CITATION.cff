@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Pension inflation: fixed and indexed pensions replayed on 23 countries' prices, 1955-2025"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-20
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/pension-inflation"
+references:
+  - type: data
+    title: "Consumer price indices (DF_PRICES_ALL)"
+    authors:
+      - name: OECD
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Financial market statistics: long-term interest rates (DF_FINMARK)"
+    authors:
+      - name: OECD
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Average annual wages (AV_AN_WAGE)"
+    authors:
+      - name: OECD
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Life table by age and sex (demo_mlifetable)"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/databrowser/view/demo_mlifetable/default/table"
+  - type: data
+    title: "HICP, annual data (prc_hicp_aind)"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_aind/default/table"
