@@ -12,6 +12,7 @@ import heat_core as hc
 HERE = Path(__file__).resolve().parent
 RES = HERE / "results"
 SPFS = (2.5, 2.8, 3.0, 3.4, 4.0)
+NEAR = 0.3  # distance from the break-even ratio counted as close
 
 
 def pct(x, digits=1):
@@ -328,6 +329,7 @@ def main():
         for spf in (2.8, 3.4):
             agree = total = yes_no = no_yes = 0
             changes = []
+            near = {True: [0, 0], False: [0, 0]}
             for c, s in by_country.items():
                 for start in sorted(s):
                     out = hc.lifetime(s, start, n_h, spf)
@@ -339,6 +341,9 @@ def main():
                     agree += decide == realised
                     yes_no += decide and not realised
                     no_yes += realised and not decide
+                    close = abs(s[start].ratio - spf / hc.ETA) < NEAR
+                    near[close][0] += decide == realised
+                    near[close][1] += 1
                     if spf == 2.8:
                         changes.append(abs(hc.mean(s[h].ratio for h in range(start, start + n_h)) - s[start].ratio))
                     rows.append((years, spf, c, hc.label(start), int(decide), f"{out:.1f}"))
@@ -350,6 +355,11 @@ def main():
                 gap = hc.quantile(changes, 0.5)
                 line += f"; median gap between the starting ratio and the mean ratio over the period {gap:.2f}"
             print(line)
+            print(
+                f"      starting ratio within {NEAR} of the break-even ratio: right in "
+                f"{pct(near[True][0] / near[True][1])} of {near[True][1]}; further away: right in "
+                f"{pct(near[False][0] / near[False][1])} of {near[False][1]}"
+            )
     write(
         "persistence.csv",
         ["years", "spf", "country", "start", "cheaper_at_start", "saving_over_period"],
