@@ -1,0 +1,75 @@
+(a) S5 with a stability allowance d: admissible if S3 <= incumbent and S4 <= (1 + d) x incumbent
+  from d = 0.000: ma28, S2 0.1816, S4 0.1215
+  from d = 0.195: lgb_tweedie, S2 0.1611, S4 0.1452
+  from d = 0.240: lgbw_tweedie, S2 0.1588, S4 0.1505
+  snaive        S4 / incumbent S4 = 3.177; S3 > incumbent
+  ma28          S4 / incumbent S4 = 1.000; S3 <= incumbent
+  dow4          S4 / incumbent S4 = 1.000; S3 <= incumbent
+  ses           S4 / incumbent S4 = 1.543; S3 > incumbent
+  lgb_l2        S4 / incumbent S4 = 1.230; S3 <= incumbent
+  lgb_l1        S4 / incumbent S4 = 1.092; S3 > incumbent
+  lgb_tweedie   S4 / incumbent S4 = 1.195; S3 <= incumbent
+  lgbw_tweedie  S4 / incumbent S4 = 1.239; S3 <= incumbent
+  lgbw_q80      S4 / incumbent S4 = 1.471; S3 > incumbent
+
+(b) Week B bias and daily WAPE by share of zero days in the year before the first origin
+  zeros 0%-25%: 2055 series, 45.3% of week B sales; lgb_l1 -0.159 lgb_tweedie -0.045 ma28 -0.009 lgbw_tweedie -0.046
+  zeros 25%-50%: 3331 series, 28.3% of week B sales; lgb_l1 -0.291 lgb_tweedie -0.052 ma28 -0.011 lgbw_tweedie -0.041
+  zeros 50%-75%: 4632 series, 18.3% of week B sales; lgb_l1 -0.467 lgb_tweedie -0.029 ma28 -0.019 lgbw_tweedie -0.021
+  zeros 75%-100%: 3759 series, 8.1% of week B sales; lgb_l1 -0.620 lgb_tweedie +0.001 ma28 -0.029 lgbw_tweedie +0.009
+  zeros 0%-25%: lgb_l1 daily forecasts below 0.5 units 9.8% (median 2.75); daily sales of zero 20.9%
+  zeros 25%-50%: lgb_l1 daily forecasts below 0.5 units 29.2% (median 1.00); daily sales of zero 38.8%
+  zeros 50%-75%: lgb_l1 daily forecasts below 0.5 units 67.2% (median 0.03); daily sales of zero 56.9%
+  zeros 75%-100%: lgb_l1 daily forecasts below 0.5 units 87.1% (median 0.00); daily sales of zero 71.8%
+
+(c) Captured share of the S2 gain over the incumbent, (I - D) / (I - W2), for each daily model as the pick
+  snaive        S2 0.1855; captured -0.118 [-0.205, -0.036]
+  ma28          S2 0.1816; captured 0.000 [0.000, 0.000]
+  dow4          S2 0.1816; captured -0.000 [-0.000, 0.000]
+  ses           S2 0.1719; captured 0.287 [0.237, 0.335]
+  lgb_l2        S2 0.1638; captured 0.528 [0.493, 0.565]
+  lgb_l1        S2 0.1698; captured 0.349 [0.308, 0.392]
+  lgb_tweedie   S2 0.1611; captured 0.606 [0.579, 0.635]
+  lgbw_tweedie  S2 0.1588; captured 0.674 [0.650, 0.698]
+
+(d) Two numbers: lgbw_tweedie shown and judged, lgbw_q80 ordered
+  S1 0.3685; S2 0.1479; S3 0.4130; S4 0.1505; bias -0.0354
+  S4 / incumbent S4 = 1.239
+
+(e) Blends w x lgbw_tweedie + (1 - w) x ma28 (week totals), each converted to its own 0.8 order
+  w 0.0: S1 0.4028; S2 0.1816; S3 0.4676; S4 0.1215; bias -0.0129; admissible True
+  w 0.1: S1 0.3956; S2 0.1776; S3 0.4725; S4 0.1194; bias -0.0151; admissible False
+  w 0.2: S1 0.3891; S2 0.1739; S3 0.4624; S4 0.1185; bias -0.0174; admissible True
+  w 0.3: S1 0.3835; S2 0.1706; S3 0.4524; S4 0.1189; bias -0.0196; admissible True
+  w 0.4: S1 0.3787; S2 0.1676; S3 0.4426; S4 0.1204; bias -0.0219; admissible True
+  w 0.5: S1 0.3747; S2 0.1650; S3 0.4335; S4 0.1230; bias -0.0241; admissible False
+  w 0.6: S1 0.3716; S2 0.1629; S3 0.4264; S4 0.1266; bias -0.0264; admissible False
+  w 0.7: S1 0.3694; S2 0.1612; S3 0.4207; S4 0.1312; bias -0.0286; admissible False
+  w 0.8: S1 0.3682; S2 0.1600; S3 0.4166; S4 0.1368; bias -0.0309; admissible False
+  w 0.9: S1 0.3679; S2 0.1592; S3 0.4136; S4 0.1433; bias -0.0331; admissible False
+  w 1.0: S1 0.3685; S2 0.1588; S3 0.4130; S4 0.1505; bias -0.0354; admissible False
+  best admissible blend: w 0.4, S2 0.1676 (captured share of the S2 gain over the incumbent 0.415)
+
+(f) Bad weeks per series-quarter, best S3 model (lgbw_tweedie) and the incumbent
+  lgbw_tweedie  0: 0.380, 1: 0.207, 2: 0.150, 3: 0.104, 4+: 0.159; mean 1.65 bad weeks per quarter
+  ma28          0: 0.341, 1: 0.191, 2: 0.145, 3: 0.107, 4+: 0.216; mean 1.96 bad weeks per quarter
+  lgb_l1        0: 0.229, 1: 0.150, 2: 0.150, 3: 0.147, 4+: 0.324; mean 2.59 bad weeks per quarter
+  mean weekly sales 0-5: 5591 series, 0.147 of series-quarters with more than one bad week, 0.047 of weeks bad
+  mean weekly sales 5-10: 3660 series, 0.529 of series-quarters with more than one bad week, 0.153 of weeks bad
+  mean weekly sales 10-20: 2441 series, 0.689 of series-quarters with more than one bad week, 0.210 of weeks bad
+  mean weekly sales 20-50: 1511 series, 0.632 of series-quarters with more than one bad week, 0.210 of weeks bad
+  mean weekly sales 50-up: 574 series, 0.515 of series-quarters with more than one bad week, 0.178 of weeks bad
+  weeks B with an event day: 0.462 of test weeks; 0.468 of lgbw_tweedie's bad weeks; bad-week rate 0.129 in event weeks, 0.126 otherwise
+
+(h) Poisson floor: sales drawn as Poisson around lgbw_tweedie's week B forecast, judged against it
+  bad-week rate 0.026 (model: 0.127); series-quarters with more than one bad week 0.061 (model: 0.413)
+  mean weekly sales 0-5: floor 0.009 of weeks bad, 0.009 of series-quarters with more than one
+  mean weekly sales 5-10: floor 0.030 of weeks bad, 0.063 of series-quarters with more than one
+  mean weekly sales 10-20: floor 0.058 of weeks bad, 0.176 of series-quarters with more than one
+  mean weekly sales 20-50: floor 0.034 of weeks bad, 0.082 of series-quarters with more than one
+  mean weekly sales 50-up: floor 0.006 of weeks bad, 0.005 of series-quarters with more than one
+
+(g) lgbw_tweedie feature gain, share of total over the five fits
+  m14 0.43, m28 0.25, m7 0.17, m112 0.03, sd28 0.02, m56 0.02, since 0.02, ly 0.01
+  lgb_l1: m28 0.21, sd28 0.13, m56 0.12, m14 0.10, since 0.09, zero28 0.09, m112 0.06, m7 0.05
+  SES alpha chosen (share of series per value, test refits): 0.02: 0.35, 0.05: 0.26, 0.1: 0.21, 0.2: 0.11, 0.3: 0.07
