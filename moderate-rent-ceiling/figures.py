@@ -115,7 +115,7 @@ def fig02_rule_over_time() -> None:
     ax.set_xlim(2016.6, 2026.6)
     ax.set_ylim(0, 540)
     ax.set_xticks(range(2017, 2026))
-    finish(fig, "fig02_rule_over_time.png", INE + "; minimum wage, DGERT")
+    finish(fig, "fig05_rule_over_time.png", INE + "; minimum wage, DGERT")
 
 
 def fig03_share_above() -> None:
@@ -195,7 +195,7 @@ def fig05_income() -> None:
     thousands = FuncFormatter(lambda v, _: f"{v:,.0f}")
     ax.xaxis.set_major_formatter(thousands)
     ax.yaxis.set_major_formatter(thousands)
-    finish(fig, "fig05_income.png", "INE, Estatísticas do Rendimento ao nível local (AT data)")
+    finish(fig, "fig06_income.png", "INE, Estatísticas do Rendimento ao nível local (AT data)")
 
 
 def fig06_by_type() -> None:
@@ -224,7 +224,7 @@ def fig06_by_type() -> None:
     ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:,.0f}"))
     ax.set_xlabel("EUR a month (median rent per m² x Census median floor area of the type)")
     ax.legend(loc="lower right", bbox_to_anchor=(0.80, 0.02), ncol=2, fontsize=8.5, handletextpad=0.3, columnspacing=1.0)
-    finish(fig, "fig06_by_type.png", INE)
+    finish(fig, "fig02_by_type.png", INE)
 
 
 def main() -> None:

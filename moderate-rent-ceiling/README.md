@@ -16,14 +16,14 @@ python figures.py
 python -m pytest -q tests
 ```
 
-`results/summary.txt` has every number; the CSVs behind it are in `results/`. Six figures in `figures/`:
+`results/summary.txt` has every number; the CSVs behind it are in `results/`. Six figures in `figures/`, numbered as in the article:
 
 - `fig01_area_needed.png` floor area needed to reach EUR 2,300, three municipalities over time and every municipality in 2025
-- `fig02_rule_over_time.png` square metres the ceiling rule buys at the median rent per m², 2017-2025
+- `fig02_by_type.png` monthly rent of a typical new lease by dwelling type, large municipalities, 2025
 - `fig03_share_above.png` modelled share of new leases above EUR 2,300, with the sensitivity band and the UTAO figure
 - `fig04_distribution.png` modelled national distribution of monthly rents of new leases, 2020 and 2025
-- `fig05_income.png` median and 80th-percentile household income by municipality, 2024, against the ceiling
-- `fig06_by_type.png` monthly rent of a typical new lease by dwelling type, large municipalities, 2025
+- `fig05_rule_over_time.png` square metres the ceiling rule buys at the median rent per m², 2017-2025
+- `fig06_income.png` median and 80th-percentile household income by municipality, 2024, against the ceiling
 
 ## Data
 
