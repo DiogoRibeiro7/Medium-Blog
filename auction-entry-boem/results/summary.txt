@@ -1,0 +1,91 @@
+==============================================================================
+1. THE DATA
+==============================================================================
+Sales 21, from 28 August 2013 to 12 August 2026; bids 3,511; tracts receiving bids 3,098; companies bidding alone or in a group 96
+Tracts whose high bid is below the minimum bid (BOEM's 'invalid bid'), left out below: 1
+Tracts by number of bids: 1: 2,768, 2: 269, 3: 43, 4: 11, 5: 5, 6: 1
+Single-bid tracts: 89.4%; shallow 95.8%, deep 87.2%
+  August 2013 to March 2017 (8 sales): 87.7% of 976 tracts; August 2017 to August 2026 (13 sales): 90.1% of 2,121
+Single-bid share by sale: from 81.7% to 100.0%
+Companies per sale: median 27, range 3 to 50
+Sum of high bids $4,382.6 million; on single-bid tracts $2,550.2 million (58.2%)
+
+==============================================================================
+2. CONTESTED AND UNCONTESTED TRACTS SIDE BY SIDE
+==============================================================================
+1 bid(s): 2,768 tracts, median high bid / minimum 1.24, mean 2.04
+2 bid(s): 269 tracts, median high bid / minimum 3.13, mean 7.71
+3+ bid(s): 60 tracts, median high bid / minimum 8.83, mean 21.05
+two bids vs one, same sale and depth band: high bid x2.49 [95% 2.21, 2.82], tracts 3,097
+three or more vs one, same sale and depth band: high bid x6.23 [95% 4.66, 8.32], tracts 3,097
+two or more vs one, same sale and depth band: high bid x2.94 [95% 2.61, 3.31], tracts 3,097
+
+==============================================================================
+3. THE SAME BLOCK IN DIFFERENT SALES
+==============================================================================
+Blocks bid on in two or more sales: 402 (852 tract-sales); with one bid in one sale and two or more in another: 108
+same tracts, cross-section comparison (sale x depth band): x2.54 [2.13, 3.04]
+same block, two or more bids vs one (block and sale x depth band effects): x2.41 [1.96, 2.95], tract-sales 852
+  without appearances that follow a rejected high bid: x2.72 [2.12, 3.50], tract-sales 709
+  years between consecutive appearances of a block: median 5.7
+
+==============================================================================
+4. THE SAME COMPANY IN THE SAME SALE
+==============================================================================
+bids by companies that bid on both contested and uncontested tracts in a sale: 2,596 bids, 215 company-sales
+same company, same sale: bid on a contested tract / bid on an uncontested tract x1.74 [1.60, 1.89]
+losing bids: 413
+
+==============================================================================
+5. THE LOSING BID ON A CONTESTED TRACT
+==============================================================================
+contested tracts whose second-highest bid exceeds the median winning bid of single-bid tracts in the same sale and depth band: 62.6% of 329; median ratio x1.18
+
+==============================================================================
+6. A SECOND BIDDER AS A SECOND DRAW
+==============================================================================
+two bids: E[higher of two draws] / E[one draw] from single-bid tracts in the cell x1.36; observed mean ratio of two-bid tracts over single-bid tracts x3.37
+three or more: E[highest of three draws] / E[one draw] x1.66; observed x8.04
+one more bid on every single-bid tract, drawn from the single-bid tracts of the same sale and depth band: +38.5% of their high bids [bootstrap 95% 34.3%, 41.0%]
+one more bid as far from the first as the two bids on a two-bid tract: +53.7% [46.1%, 60.2%] (269 two-bid tracts)
+  two-bid tracts: median high / mean of the two bids 1.26; median high / second 1.72
+share of the observed log gap between two-bid and single-bid tracts that a second draw explains: 25%
+
+==============================================================================
+7. DO BIDDERS KNOW THEY ARE ALONE?
+==============================================================================
+single-bid tracts won at exactly the minimum bid: 53 of 2,768 (1.9%); within 5% of it 20.8%; median ratio 1.24
+  leaving out standard bids: 1,460 tracts, exactly at the minimum 2.3%, median ratio 1.40
+amount bid above the minimum on single-bid tracts: $1,303.9 million (51.1% of their high bids)
+
+==============================================================================
+8. ONE MORE BIDDER OR A HIGHER MINIMUM BID (single-bid tracts)
+==============================================================================
+single-bid tracts: 2,768, high bids $2,550.2 million
+  deep minimum $125/acre: 49.6% of 2,017 tracts bid below it; if all raise to it +4.2%, if none do -26.0%, break-even share 86%
+  deep minimum $150/acre: 67.9% of 2,017 tracts bid below it; if all raise to it +11.5%, if none do -37.9%, break-even share 77%
+  deep minimum $200/acre: 80.7% of 2,017 tracts bid below it; if all raise to it +29.8%, if none do -48.4%, break-even share 62%
+  deep minimum $300/acre: 89.0% of 2,017 tracts bid below it; if all raise to it +71.4%, if none do -58.1%, break-even share 45%
+  shallow minimum $30/acre: 47.8% of 751 tracts bid below it; if all raise to it +3.6%, if none do -28.7%, break-even share 89%
+  shallow minimum $40/acre: 75.4% of 751 tracts bid below it; if all raise to it +18.7%, if none do -47.8%, break-even share 72%
+  shallow minimum $50/acre: 83.2% of 751 tracts bid below it; if all raise to it +36.3%, if none do -55.1%, break-even share 60%
+deep: one more bid on every single-bid tract, drawn from the cell +38.9%; at contested-tract dispersion +53.9% (238 two-bid tracts)
+shallow: one more bid on every single-bid tract, drawn from the cell +32.1%; at contested-tract dispersion +44.2% (31 two-bid tracts)
+share of single-bid tracts that would need one more bidder to match a minimum's best case:
+    deep $125/acre (best case +4.2%, worst -26.0%): 11% (drawn from the cell), 8% (contested-tract dispersion)
+    deep $150/acre (best case +11.5%, worst -37.9%): 30% (drawn from the cell), 21% (contested-tract dispersion)
+    deep $200/acre (best case +29.8%, worst -48.4%): 77% (drawn from the cell), 55% (contested-tract dispersion)
+    deep $300/acre (best case +71.4%, worst -58.1%): 184% (drawn from the cell), 132% (contested-tract dispersion)
+    shallow $30/acre (best case +3.6%, worst -28.7%): 11% (drawn from the cell), 8% (contested-tract dispersion)
+    shallow $40/acre (best case +18.7%, worst -47.8%): 58% (drawn from the cell), 42% (contested-tract dispersion)
+    shallow $50/acre (best case +36.3%, worst -55.1%): 113% (drawn from the cell), 82% (contested-tract dispersion)
+value of one more bid on an average single-bid tract: $0.35 million (second draw from the cell); $0.49 million (contested-tract dispersion)
+
+==============================================================================
+9. ROBUSTNESS
+==============================================================================
+deep water: cross-section x3.09 [2.72, 3.51]; second draw x1.37 vs observed x3.47; two-bid tracts 238
+shallow water: cross-section x1.92 [1.44, 2.57]; second draw x1.31 vs observed x2.49; two-bid tracts 31
+August 2013 to March 2017: cross-section x3.58 [2.84, 4.52]; second draw x1.44 vs observed x3.85; two-bid tracts 102
+August 2017 to August 2026: cross-section x2.64 [2.31, 3.01]; second draw x1.31 vs observed x3.08; two-bid tracts 167
+without standard bids: cross-section x3.08 [2.70, 3.52]; second draw x1.42 vs observed x3.25; two-bid tracts 212

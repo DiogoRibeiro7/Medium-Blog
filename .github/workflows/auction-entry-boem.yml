@@ -1,0 +1,58 @@
+name: Reproduce auction-entry-boem
+
+on:
+  pull_request:
+    paths:
+      - 'auction-entry-boem/**'
+      - '.github/workflows/auction-entry-boem.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'auction-entry-boem/**'
+      - '.github/workflows/auction-entry-boem.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: auction-entry-boem
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: auction-entry-boem/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rebuild the bid table from BOEM's files and rerun the analysis
+        run: |
+          python build_dataset.py > /dev/null
+          python entry.py > /dev/null
+
+      - name: Check the data and the numbers match the committed run
+        run: git diff --exit-code -- data/bids.csv data/build_check.txt results/summary.txt
+
+      - name: Draw the figures
+        run: |
+          python figures.py
+          for f in fig1_bids_by_competition fig2_what_a_second_bidder_is_worth fig3_bidder_or_reserve; do
+            test -s "figures/$f.png"
+          done
