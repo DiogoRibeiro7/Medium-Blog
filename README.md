@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-222 top-level folders: 77 belong to 24 series, 87 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
+225 top-level folders: 77 belong to 24 series, 87 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 4 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -332,7 +332,7 @@ Housing supply, prices and affordability.
 - [`france-repeat-sales-floor/`](france-repeat-sales-floor/) — Is the purchase price a floor in France too? Repeat sales in the DVF files, 2021–2025
 - [`housing-losses-inflation/`](housing-losses-inflation/) — Housing losses and inflation: how much of the loss never shows in the price
 - [`housing-supply-counterfactual/`](housing-supply-counterfactual/) — Construction, House Prices and the Missing Counterfactual
-- [`housing-vacancy-tax/`](housing-vacancy-tax/) — Empty homes and the state's bargaining power: Portugal vacancy tax
+- [`housing-vacancy-tax/`](housing-vacancy-tax/) — Taxing empty homes in Portugal: statutory rates, detection and expected cost
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — The EUR 2,300 moderate-rent ceiling against the rents of new leases and local incomes, Portugal 2017–2025
 - [`portugal-building-ecosystem/`](portugal-building-ecosystem/) — Who builds Portugal's houses? The housebuilding sector measured layer by layer
 - [`portugal-housing-generations/`](portugal-housing-generations/) — Portugal's housing market, 2008–2025 (moved to its own repository)
@@ -393,7 +393,10 @@ Notebooks, scripts and data behind older articles, kept at their original paths.
 
 Add these folders to `projects.yml`.
 
+- [`auction-entry-boem/`](auction-entry-boem/) — One more bidder or a higher minimum bid: BOEM's Gulf lease sales, 2013–2026
+- [`bid-rigging-screens/`](bid-rigging-screens/) — Screens for bid rigging on firms and countries a model has not seen
 - [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
+- [`productivity-hours-denominator/`](productivity-hours-denominator/) — The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009–2026
 
 <!-- projects:end -->
 

@@ -1,0 +1,296 @@
+1. Data
+   national accounts: 1995-Q1 to 2026-Q2; LFS: 2009-Q1 to 2026-Q2; snapshot of 21 November 2026
+   EU27_2020 EU-27        GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   AT        Austria      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   BE        Belgium      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2017-Q1, 2021-Q1
+   BG        Bulgaria     GVA 1996-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2010-Q1, 2011-Q1, 2019-Q1, 2021-Q1, 2024-Q3
+   CY        Cyprus       GVA 1996-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   CZ        Czechia      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2011-Q1, 2021-Q1
+   DE        Germany      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 66 quarters, missing 2020-Q1, 2020-Q2, 2020-Q3, 2020-Q4, breaks 2010-Q1, 2011-Q1, 2021-Q1
+   DK        Denmark      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2016-Q1, 2017-Q1, 2021-Q1, 2023-Q4
+   EE        Estonia      GVA 1995-Q1..2026-Q2  hours NA 1998-Q2..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   EL        Greece       GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   ES        Spain        GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   FI        Finland      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   FR        France       GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   HR        Croatia      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   HU        Hungary      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2018-Q1, 2021-Q1
+   IE        Ireland      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   IT        Italy        GVA 1996-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2018-Q1, 2021-Q1
+   LT        Lithuania    GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   LU        Luxembourg   GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2015-Q1, 2021-Q1
+   LV        Latvia       GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   MT        Malta        GVA 2000-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   NL        Netherlands  GVA 1996-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   PL        Poland       GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2010-Q1, 2019-Q1, 2021-Q1
+   PT        Portugal     GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2011-Q1, 2021-Q1
+   RO        Romania      GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2010-Q1, 2021-Q1
+   SE        Sweden       GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   SI        Slovenia     GVA 1996-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2021-Q1
+   SK        Slovakia     GVA 1995-Q1..2026-Q2  hours NA 1995-Q1..2026-Q2  LFS 70 quarters, breaks 2011-Q1, 2021-Q1
+
+2. EU-27: output per hour under the two denominators (real GVA per hour, 2009 = 100)
+   level in 2026-Q2: national accounts 118.4, LFS 123.1, 1997-2007 trend 143.7
+   trend growth 1997-Q1..2007-Q4 (national accounts): 1.82% a year
+   growth 1997-2007: national accounts +1.79% a year, LFS n/a% a year
+   growth 2009-2019: national accounts +1.24% a year, LFS +1.38% a year
+   growth 2019-2025: national accounts +0.64% a year, LFS +1.07% a year
+   growth 2009-2025: national accounts +1.01% a year, LFS +1.26% a year
+   last two years (four quarters to 2026-Q2 vs four quarters to 2024-Q2): national accounts +0.90% a year, LFS +0.82% a year
+   distance to the 1997-2007 trend in 2025 (annual means): national accounts -16.9%, LFS -13.5%
+   cumulative 2019-2025: real GVA +8.1%, hours NA +4.1%, hours LFS +1.4%
+   cumulative 2009-2025: hours NA +8.3%, hours LFS +4.1%
+   identity check: log productivity gap 2.5892 = log hours gap 2.5892 (log points)
+   Eurostat's own series (real GDP per hour, namq_10_lp_ulc): 2009-2019 +1.21%, 2019-2025 +0.56% a year
+   LFS hours for ages 20-64 instead of 15-74: 2019-2025 growth +1.20% a year
+
+3. Countries: growth of output per hour 2019-2025, % a year
+   EU27_2020 NA +0.64  LFS +1.07  gap +0.44 | hours NA +4.1%  LFS +1.4% | 2009-2019 NA +1.24 LFS +1.38 | trend 1997-2007 +1.82
+   AT        NA +0.86  LFS +1.20  gap +0.34 | hours NA -1.1%  LFS -3.0% | 2009-2019 NA +0.86 LFS +1.16 | trend 1997-2007 +2.06
+   BE        NA +0.63  LFS +0.29  gap -0.35 | hours NA +5.1%  LFS +7.3% | 2009-2019 NA +0.52 LFS +1.42 | trend 1997-2007 +1.20
+   BG        NA +2.24  LFS +3.67  gap +1.43 | hours NA +1.3%  LFS -6.8% | 2009-2019 NA +2.54 LFS +2.26 | trend 1997-2007 +3.36
+   CY        NA +2.87  LFS +2.78  gap -0.09 | hours NA +17.6%  LFS +18.2% | 2009-2019 NA +0.84 LFS +0.89 | trend 1997-2007 +2.17
+   CZ        NA +0.31  LFS +2.14  gap +1.84 | hours NA +3.7%  LFS -7.0% | 2009-2019 NA +2.06 LFS +2.41 | trend 1997-2007 +4.24
+   DE        NA +0.44  LFS +0.78  gap +0.35 | hours NA -1.4%  LFS -3.4% | 2009-2019 NA +1.29 LFS +1.59 | trend 1997-2007 +1.64
+   DK        NA +1.43  LFS +2.10  gap +0.67 | hours NA +7.1%  LFS +2.9% | 2009-2019 NA +1.50 LFS +1.22 | trend 1997-2007 +1.23
+   EE        NA +0.74  LFS +1.26  gap +0.52 | hours NA -0.4%  LFS -3.4% | 2009-2019 NA +2.63 LFS +2.78 | trend 1997-2007 +6.00
+   EL        NA +0.21  LFS +0.71  gap +0.51 | hours NA +7.5%  LFS +4.3% | 2009-2019 NA -1.37 LFS -0.39 | trend 1997-2007 +2.80
+   ES        NA +0.40  LFS +0.34  gap -0.06 | hours NA +7.9%  LFS +8.3% | 2009-2019 NA +0.96 LFS +1.05 | trend 1997-2007 +0.13
+   FI        NA +0.34  LFS +1.47  gap +1.13 | hours NA +0.4%  LFS -6.1% | 2009-2019 NA +0.73 LFS +0.60 | trend 1997-2007 +2.39
+   FR        NA +0.03  LFS +0.03  gap -0.00 | hours NA +6.6%  LFS +6.6% | 2009-2019 NA +0.85 LFS +0.78 | trend 1997-2007 +1.65
+   HR        NA +2.60  LFS +3.04  gap +0.44 | hours NA +7.0%  LFS +4.3% | 2009-2019 NA +1.43 LFS +2.49 | trend 1997-2007 +2.98
+   HU        NA +1.35  LFS +1.61  gap +0.27 | hours NA -0.3%  LFS -1.9% | 2009-2019 NA +1.51 LFS +1.54 | trend 1997-2007 +4.60
+   IE        NA +5.10  LFS +4.88  gap -0.22 | hours NA +12.1%  LFS +13.5% | 2009-2019 NA +3.58 LFS +4.02 | trend 1997-2007 +2.85
+   IT        NA -0.14  LFS +0.17  gap +0.31 | hours NA +8.3%  LFS +6.3% | 2009-2019 NA +0.53 LFS +0.31 | trend 1997-2007 +0.47
+   LT        NA +1.47  LFS +1.59  gap +0.12 | hours NA +7.5%  LFS +6.7% | 2009-2019 NA +3.36 LFS +3.45 | trend 1997-2007 +6.07
+   LU        NA -0.41  LFS +1.52  gap +1.93 | hours NA +10.0%  LFS -2.0% | 2009-2019 NA -0.13 LFS -0.61 | trend 1997-2007 +1.02
+   LV        NA +1.74  LFS +2.32  gap +0.57 | hours NA -3.3%  LFS -6.6% | 2009-2019 NA +2.18 LFS +2.75 | trend 1997-2007 +7.64
+   MT        NA +2.36  LFS +2.08  gap -0.28 | hours NA +21.0%  LFS +23.1% | 2009-2019 NA +2.32 LFS +1.74 | trend 1997-2007 +1.77
+   NL        NA +0.61  LFS +1.12  gap +0.52 | hours NA +6.7%  LFS +3.5% | 2009-2019 NA +0.65 LFS +0.85 | trend 1997-2007 +1.73
+   PL        NA +2.30  LFS +2.44  gap +0.13 | hours NA +2.6%  LFS +1.8% | 2009-2019 NA +3.30 LFS +3.46 | trend 1997-2007 +4.34
+   PT        NA +0.23  LFS +1.51  gap +1.28 | hours NA +10.3%  LFS +2.2% | 2009-2019 NA +0.84 LFS +1.39 | trend 1997-2007 +1.17
+   RO        NA +1.86  LFS +4.07  gap +2.21 | hours NA -1.9%  LFS -13.8% | 2009-2019 NA +3.31 LFS +3.54 | trend 1997-2007 +6.97
+   SE        NA +1.00  LFS +1.22  gap +0.22 | hours NA +2.3%  LFS +1.0% | 2009-2019 NA +1.09 LFS +1.15 | trend 1997-2007 +2.75
+   SI        NA +1.45  LFS +2.38  gap +0.94 | hours NA +5.1%  LFS -0.6% | 2009-2019 NA +1.82 LFS +2.09 | trend 1997-2007 +3.58
+   SK        NA +2.58  LFS +2.48  gap -0.10 | hours NA -5.2%  LFS -4.6% | 2009-2019 NA +2.34 LFS +2.19 | trend 1997-2007 +4.61
+   LFS growth above national accounts growth in 20 of 27 countries
+   median gap +0.35 points a year
+   largest gaps: RO +2.21, LU +1.93, CZ +1.84, BG +1.43, PT +1.28, FI +1.13
+   gaps below zero: FR -0.00, ES -0.06, CY -0.09, SK -0.10, IE -0.22, MT -0.28, BE -0.35
+   below 0.5% a year: 9 countries with NA hours (CZ, DE, EL, ES, FI, FR, IT, LU, PT), 4 with LFS hours (BE, ES, FR, IT)
+   classified differently: BE, CZ, DE, EL, FI, LU, PT
+   negative growth: NA ['IT', 'LU'], LFS []
+   Spearman rank correlation NA vs LFS ranking: 0.801
+   largest rank moves (NA rank -> LFS rank): CZ 22->10, LU 27->15, BE 17->25, MT 5->12, PT 23->16, RO 8->2, AT 15->20, SE 14->19
+   countries moving five or more places: 8
+
+4. Drift in ln(LFS hours / NA hours), per cent a year, Newey-West standard errors with 4 lags
+   pre-pandemic window 2009-Q1..2019-Q4; post-break window 2021-Q2..2026-Q2
+   EU27_2020 2009-2019 -0.11 (se 0.04, t -3.0, n 44)   2021-2026 -0.27 (se 0.09, t -2.9, n 21)
+   AT        2009-2019 -0.33 (se 0.04, t -8.7, n 44)   2021-2026 -0.23 (se 0.11, t -2.2, n 21)
+   BE        2009-2019 -1.03 (se 0.34, t -3.1, n 44)   2021-2026 -0.42 (se 0.13, t -3.2, n 21)
+   BG        2009-2019 +0.33 (se 0.09, t +3.6, n 44)   2021-2026 -1.70 (se 0.14, t -12.0, n 21)
+   CY        2009-2019 -0.35 (se 0.17, t -2.0, n 44)   2021-2026 +0.27 (se 0.26, t +1.0, n 21)
+   CZ        2009-2019 -0.29 (se 0.05, t -6.2, n 44)   2021-2026 -2.56 (se 0.57, t -4.5, n 21)
+   DE        2009-2019 -0.17 (se 0.10, t -1.8, n 44)   2021-2026 -0.01 (se 0.06, t -0.2, n 21)
+   DK        2009-2019 +0.26 (se 0.07, t +3.8, n 44)   2021-2026 -1.09 (se 0.21, t -5.3, n 21)
+   EE        2009-2019 -0.23 (se 0.05, t -4.9, n 44)   2021-2026 +0.09 (se 0.41, t +0.2, n 21)
+   EL        2009-2019 -1.12 (se 0.30, t -3.7, n 44)   2021-2026 +0.47 (se 0.29, t +1.6, n 21)
+   ES        2009-2019 -0.15 (se 0.04, t -3.6, n 44)   2021-2026 -0.39 (se 0.07, t -5.5, n 21)
+   FI        2009-2019 +0.10 (se 0.06, t +1.6, n 44)   2021-2026 -0.54 (se 0.32, t -1.7, n 21)
+   FR        2009-2019 +0.11 (se 0.08, t +1.4, n 44)   2021-2026 -0.10 (se 0.19, t -0.5, n 21)
+   HR        2009-2019 -1.23 (se 0.15, t -8.1, n 44)   2021-2026 -0.33 (se 0.16, t -2.1, n 21)
+   HU        2009-2019 -0.03 (se 0.10, t -0.3, n 44)   2021-2026 -0.55 (se 0.09, t -5.9, n 21)
+   IE        2009-2019 -0.35 (se 0.12, t -2.8, n 44)   2021-2026 +0.33 (se 0.15, t +2.2, n 21)
+   IT        2009-2019 +0.23 (se 0.06, t +3.8, n 44)   2021-2026 -0.19 (se 0.26, t -0.7, n 21)
+   LT        2009-2019 -0.07 (se 0.02, t -2.9, n 44)   2021-2026 +0.20 (se 0.21, t +0.9, n 21)
+   LU        2009-2019 +0.86 (se 0.15, t +5.6, n 44)   2021-2026 -0.52 (se 0.32, t -1.6, n 21)
+   LV        2009-2019 -0.32 (se 0.16, t -2.0, n 44)   2021-2026 -0.49 (se 0.30, t -1.6, n 21)
+   MT        2009-2019 +0.58 (se 0.10, t +5.8, n 44)   2021-2026 +0.54 (se 0.15, t +3.5, n 21)
+   NL        2009-2019 -0.17 (se 0.03, t -5.1, n 44)   2021-2026 -0.89 (se 0.07, t -12.0, n 21)
+   PL        2009-2019 -0.17 (se 0.04, t -4.1, n 44)   2021-2026 +0.76 (se 0.14, t +5.3, n 21)
+   PT        2009-2019 -0.58 (se 0.07, t -8.0, n 44)   2021-2026 -0.47 (se 0.35, t -1.3, n 21)
+   RO        2009-2019 +0.11 (se 0.12, t +0.9, n 44)   2021-2026 -0.95 (se 0.18, t -5.1, n 21)
+   SE        2009-2019 -0.15 (se 0.05, t -2.7, n 44)   2021-2026 -0.33 (se 0.12, t -2.7, n 21)
+   SI        2009-2019 -0.34 (se 0.06, t -5.9, n 44)   2021-2026 -1.43 (se 0.48, t -3.0, n 21)
+   SK        2009-2019 +0.17 (se 0.09, t +1.9, n 44)   2021-2026 -0.08 (se 0.35, t -0.2, n 21)
+   EU-27 log ratio, annual mean: 2019 -1.41, 2025 -4.00
+   t below -2 (LFS hours falling behind): 2009-2019 16 ['AT', 'BE', 'CY', 'CZ', 'EE', 'EL', 'ES', 'HR', 'IE', 'LT', 'LV', 'NL', 'PL', 'PT', 'SE', 'SI']; 2021-2026 12 ['AT', 'BE', 'BG', 'CZ', 'DK', 'ES', 'HR', 'HU', 'NL', 'RO', 'SE', 'SI']
+   t above +2 (LFS hours pulling ahead): 2009-2019 5 ['BG', 'DK', 'IT', 'LU', 'MT']; 2021-2026 3 ['IE', 'MT', 'PL']
+
+5. The 2021-Q1 break: step in ln(LFS hours / NA hours) and what removing it does to 2019-2025
+   step = change from the last observed quarter before the break to the break quarter;
+   noise = standard deviation of quarterly changes 2009-Q2..2019-Q4
+   EU27_2020 step -0.55 log points from 2020-Q4 (noise sd 0.73, ratio -0.7) | 2019-2025: NA +0.64, LFS +1.07, LFS without the step +0.98
+   AT        step +0.16 log points from 2020-Q4 (noise sd 0.76, ratio +0.2) | 2019-2025: NA +0.86, LFS +1.20, LFS without the step +1.22
+   BE        step +8.17 log points from 2020-Q4 (noise sd 2.58, ratio +3.2) | 2019-2025: NA +0.63, LFS +0.29, LFS without the step +1.66
+   BG        step -1.01 log points from 2020-Q4 (noise sd 0.92, ratio -1.1) | 2019-2025: NA +2.24, LFS +3.67, LFS without the step +3.49
+   CY        step -2.77 log points from 2020-Q4 (noise sd 1.16, ratio -2.4) | 2019-2025: NA +2.87, LFS +2.78, LFS without the step +2.30
+   CZ        step +2.51 log points from 2020-Q4 (noise sd 1.19, ratio +2.1) | 2019-2025: NA +0.31, LFS +2.14, LFS without the step +2.57
+   DE        step -5.45 log points from 2019-Q4 (noise sd 1.31, ratio -4.1) | 2019-2025: NA +0.44, LFS +0.78, LFS without the step -0.13
+   DK        step -5.02 log points from 2020-Q4 (noise sd 2.48, ratio -2.0) | 2019-2025: NA +1.43, LFS +2.10, LFS without the step +1.25
+   EE        step -5.57 log points from 2020-Q4 (noise sd 1.61, ratio -3.4) | 2019-2025: NA +0.74, LFS +1.26, LFS without the step +0.32
+   EL        step -3.35 log points from 2020-Q4 (noise sd 1.84, ratio -1.8) | 2019-2025: NA +0.21, LFS +0.71, LFS without the step +0.15
+   ES        step +0.86 log points from 2020-Q4 (noise sd 1.48, ratio +0.6) | 2019-2025: NA +0.40, LFS +0.34, LFS without the step +0.48
+   FI        step -3.68 log points from 2020-Q4 (noise sd 1.77, ratio -2.1) | 2019-2025: NA +0.34, LFS +1.47, LFS without the step +0.85
+   FR        step -0.79 log points from 2020-Q4 (noise sd 1.83, ratio -0.4) | 2019-2025: NA +0.03, LFS +0.03, LFS without the step -0.11
+   HR        step -0.66 log points from 2020-Q4 (noise sd 1.51, ratio -0.4) | 2019-2025: NA +2.60, LFS +3.04, LFS without the step +2.93
+   HU        step -2.14 log points from 2020-Q4 (noise sd 1.92, ratio -1.1) | 2019-2025: NA +1.35, LFS +1.61, LFS without the step +1.25
+   IE        step +2.99 log points from 2020-Q4 (noise sd 1.60, ratio +1.9) | 2019-2025: NA +5.10, LFS +4.88, LFS without the step +5.40
+   IT        step +0.36 log points from 2020-Q4 (noise sd 1.22, ratio +0.3) | 2019-2025: NA -0.14, LFS +0.17, LFS without the step +0.23
+   LT        step +0.20 log points from 2020-Q4 (noise sd 0.77, ratio +0.3) | 2019-2025: NA +1.47, LFS +1.59, LFS without the step +1.62
+   LU        step -8.94 log points from 2020-Q4 (noise sd 2.98, ratio -3.0) | 2019-2025: NA -0.41, LFS +1.52, LFS without the step +0.02
+   LV        step +2.96 log points from 2020-Q4 (noise sd 1.04, ratio +2.9) | 2019-2025: NA +1.74, LFS +2.32, LFS without the step +2.82
+   MT        step +0.04 log points from 2020-Q4 (noise sd 1.09, ratio +0.0) | 2019-2025: NA +2.36, LFS +2.08, LFS without the step +2.09
+   NL        step +1.56 log points from 2020-Q4 (noise sd 1.63, ratio +1.0) | 2019-2025: NA +0.61, LFS +1.12, LFS without the step +1.39
+   PL        step -1.18 log points from 2020-Q4 (noise sd 1.06, ratio -1.1) | 2019-2025: NA +2.30, LFS +2.44, LFS without the step +2.24
+   PT        step -2.98 log points from 2020-Q4 (noise sd 1.70, ratio -1.7) | 2019-2025: NA +0.23, LFS +1.51, LFS without the step +1.01
+   RO        step -6.38 log points from 2020-Q4 (noise sd 1.48, ratio -4.3) | 2019-2025: NA +1.86, LFS +4.07, LFS without the step +2.97
+   SE        step +1.67 log points from 2020-Q4 (noise sd 1.74, ratio +1.0) | 2019-2025: NA +1.00, LFS +1.22, LFS without the step +1.50
+   SI        step -2.72 log points from 2020-Q4 (noise sd 1.65, ratio -1.7) | 2019-2025: NA +1.45, LFS +2.38, LFS without the step +1.92
+   SK        step -0.80 log points from 2020-Q4 (noise sd 2.03, ratio -0.4) | 2019-2025: NA +2.58, LFS +2.48, LFS without the step +2.35
+   with the step removed, LFS growth still above NA growth in 17 of 27 countries
+   EU-27 without the step: LFS +0.98% a year against NA +0.64%
+
+6. Decomposing the change in ln(LFS hours / NA hours) from 2019 to 2025 (annual means, log points)
+   persons part: ln(LFS employment / NA employment); hours-per-worker part: the rest
+   EU27_2020 total  -2.59 = persons  +0.00 + hours per worker  -2.59 | national minus domestic employment  +nan
+   AT        total  -2.01 = persons  -0.56 + hours per worker  -1.45 | national minus domestic employment -0.84
+   BE        total  +2.06 = persons  +1.50 + hours per worker  +0.56 | national minus domestic employment -0.11
+   BG        total  -8.33 = persons  -6.87 + hours per worker  -1.46 | national minus domestic employment +0.00
+   CY        total  +0.52 = persons  +3.31 + hours per worker  -2.79 | national minus domestic employment -0.21
+   CZ        total -10.89 = persons  -4.27 + hours per worker  -6.63 | national minus domestic employment +0.32
+   DE        total  -2.08 = persons  +1.39 + hours per worker  -3.47 | national minus domestic employment -0.04
+   DK        total  -3.97 = persons  -1.16 + hours per worker  -2.81 | national minus domestic employment -0.34
+   EE        total  -3.08 = persons  -0.99 + hours per worker  -2.10 | national minus domestic employment -0.21
+   EL        total  -3.03 = persons  +1.27 + hours per worker  -4.30 | national minus domestic employment +0.15
+   ES        total  +0.34 = persons  +1.28 + hours per worker  -0.94 | national minus domestic employment +0.10
+   FI        total  -6.70 = persons  -0.77 + hours per worker  -5.93 | national minus domestic employment +0.00
+   FR        total  +0.01 = persons  -0.15 + hours per worker  +0.16 | national minus domestic employment +0.29
+   HR        total  -2.59 = persons  -2.31 + hours per worker  -0.28 | national minus domestic employment +0.16
+   HU        total  -1.59 = persons  -1.63 + hours per worker  +0.04 | national minus domestic employment +0.51
+   IE        total  +1.27 = persons  +0.57 + hours per worker  +0.69 | national minus domestic employment -0.10
+   IT        total  -1.86 = persons  -1.18 + hours per worker  -0.68 | national minus domestic employment -0.12
+   LT        total  -0.72 = persons  -0.67 + hours per worker  -0.04 | national minus domestic employment +0.25
+   LU        total -11.53 = persons  +0.69 + hours per worker -12.23 | national minus domestic employment -2.18
+   LV        total  -3.37 = persons  -2.27 + hours per worker  -1.10 | national minus domestic employment +0.57
+   MT        total  +1.65 = persons  +0.36 + hours per worker  +1.29 | national minus domestic employment +0.00
+   NL        total  -3.06 = persons  -0.41 + hours per worker  -2.66 | national minus domestic employment -0.02
+   PL        total  -0.79 = persons  -1.07 + hours per worker  +0.28 | national minus domestic employment -1.14
+   PT        total  -7.64 = persons  +1.63 + hours per worker  -9.27 | national minus domestic employment -0.02
+   RO        total -12.88 = persons  +2.40 + hours per worker -15.28 | national minus domestic employment +1.60
+   SE        total  -1.30 = persons  -0.91 + hours per worker  -0.38 | national minus domestic employment -0.92
+   SI        total  -5.52 = persons  -3.18 + hours per worker  -2.34 | national minus domestic employment -0.18
+   SK        total  +0.59 = persons  -1.07 + hours per worker  +1.66 | national minus domestic employment -0.47
+
+   the same change by source: growth from 2019 to 2025 in log points
+   EU27_2020 employed persons NA  +4.97 LFS  +4.97 | hours per worker NA  -0.99 LFS  -3.58
+   AT        employed persons NA  +3.97 LFS  +3.41 | hours per worker NA  -5.03 LFS  -6.49
+   BE        employed persons NA  +4.92 LFS  +6.42 | hours per worker NA  +0.10 LFS  +0.66
+   BG        employed persons NA  +3.62 LFS  -3.25 | hours per worker NA  -2.31 LFS  -3.78
+   CY        employed persons NA +13.93 LFS +17.24 | hours per worker NA  +2.26 LFS  -0.53
+   CZ        employed persons NA  +3.16 LFS  -1.11 | hours per worker NA  +0.46 LFS  -6.17
+   DE        employed persons NA  +1.29 LFS  +2.68 | hours per worker NA  -2.68 LFS  -6.14
+   DK        employed persons NA  +7.71 LFS  +6.55 | hours per worker NA  -0.87 LFS  -3.68
+   EE        employed persons NA  +4.73 LFS  +3.75 | hours per worker NA  -5.08 LFS  -7.18
+   EL        employed persons NA  +9.51 LFS +10.78 | hours per worker NA  -2.29 LFS  -6.59
+   ES        employed persons NA +10.36 LFS +11.64 | hours per worker NA  -2.76 LFS  -3.70
+   FI        employed persons NA  +2.97 LFS  +2.21 | hours per worker NA  -2.53 LFS  -8.46
+   FR        employed persons NA  +6.67 LFS  +6.52 | hours per worker NA  -0.31 LFS  -0.16
+   HR        employed persons NA  +9.37 LFS  +7.06 | hours per worker NA  -2.57 LFS  -2.85
+   HU        employed persons NA  +2.64 LFS  +1.01 | hours per worker NA  -2.91 LFS  -2.88
+   IE        employed persons NA +18.65 LFS +19.23 | hours per worker NA  -7.21 LFS  -6.52
+   IT        employed persons NA  +5.55 LFS  +4.38 | hours per worker NA  +2.43 LFS  +1.75
+   LT        employed persons NA  +6.77 LFS  +6.09 | hours per worker NA  +0.44 LFS  +0.40
+   LU        employed persons NA +11.91 LFS +12.60 | hours per worker NA  -2.37 LFS -14.60
+   LV        employed persons NA  -0.60 LFS  -2.87 | hours per worker NA  -2.81 LFS  -3.91
+   MT        employed persons NA +26.37 LFS +26.73 | hours per worker NA  -7.27 LFS  -5.98
+   NL        employed persons NA  +7.92 LFS  +7.51 | hours per worker NA  -1.42 LFS  -4.07
+   PL        employed persons NA  +3.84 LFS  +2.78 | hours per worker NA  -1.30 LFS  -1.02
+   PT        employed persons NA  +8.02 LFS  +9.65 | hours per worker NA  +1.76 LFS  -7.51
+   RO        employed persons NA  -3.78 LFS  -1.38 | hours per worker NA  +1.81 LFS -13.46
+   SE        employed persons NA  +4.22 LFS  +3.30 | hours per worker NA  -1.92 LFS  -2.30
+   SI        employed persons NA  +5.23 LFS  +2.06 | hours per worker NA  -0.27 LFS  -2.61
+   SK        employed persons NA  -0.74 LFS  -1.82 | hours per worker NA  -4.58 LFS  -2.91
+   persons part larger in absolute value than hours-per-worker part in 12 of 27
+   correlation across countries between the total and the persons part: 0.25
+   national minus domestic employment, largest: LU -2.18, RO +1.60, PL -1.14, SE -0.92
+
+7. Inside the survey: LFS hours per worker = (1 - share absent) x hours per person at work, 2019 to 2025
+   EU27_2020 absent  9.7% -> 10.1% | hours per worker  -3.58 = absence -0.42 + hours at work  -3.16
+   AT        absent 12.1% -> 14.0% | hours per worker  -6.49 = absence -2.27 + hours at work  -4.21
+   BE        absent 10.5% -> 11.4% | hours per worker  +0.66 = absence -1.01 + hours at work  +1.67
+   BG        absent  2.3% ->  2.9% | hours per worker  -3.78 = absence -0.56 + hours at work  -3.21
+   CY        absent  7.3% ->  7.7% | hours per worker  -0.53 = absence -0.46 + hours at work  -0.07
+   CZ        absent  8.6% -> 12.6% | hours per worker  -6.17 = absence -4.48 + hours at work  -1.69
+   DE        absent 12.2% -> 12.1% | hours per worker  -6.14 = absence +0.14 + hours at work  -6.29
+   DK        absent 12.8% -> 15.2% | hours per worker  -3.68 = absence -2.79 + hours at work  -0.89
+   EE        absent  9.2% -> 10.9% | hours per worker  -7.18 = absence -1.95 + hours at work  -5.24
+   EL        absent  4.5% ->  4.7% | hours per worker  -6.59 = absence -0.21 + hours at work  -6.38
+   ES        absent  8.7% -> 11.8% | hours per worker  -3.70 = absence -3.40 + hours at work  -0.30
+   FI        absent 13.9% -> 15.0% | hours per worker  -8.46 = absence -1.32 + hours at work  -7.14
+   FR        absent 13.7% -> 13.5% | hours per worker  -0.16 = absence +0.32 + hours at work  -0.47
+   HR        absent  9.9% ->  9.6% | hours per worker  -2.85 = absence +0.42 + hours at work  -3.27
+   HU        absent  3.9% ->  6.5% | hours per worker  -2.88 = absence -2.69 + hours at work  -0.19
+   IE        absent  7.5% ->  9.8% | hours per worker  -6.52 = absence -2.46 + hours at work  -4.06
+   IT        absent  7.6% ->  3.9% | hours per worker  +1.75 = absence +3.98 + hours at work  -2.23
+   LT        absent  6.5% ->  6.0% | hours per worker  +0.40 = absence +0.56 + hours at work  -0.16
+   LU        absent  8.7% ->  8.4% | hours per worker -14.60 = absence +0.30 + hours at work -14.90
+   LV        absent  7.3% ->  6.9% | hours per worker  -3.91 = absence +0.46 + hours at work  -4.36
+   NL        absent 10.9% -> 14.0% | hours per worker  -4.07 = absence -3.51 + hours at work  -0.56
+   PL        absent  6.8% ->  6.1% | hours per worker  -1.02 = absence +0.80 + hours at work  -1.83
+   PT        absent  8.8% -> 10.5% | hours per worker  -7.51 = absence -1.85 + hours at work  -5.65
+   RO        absent  1.6% ->  2.4% | hours per worker -13.46 = absence -0.77 + hours at work -12.70
+   SE        absent 15.6% -> 15.9% | hours per worker  -2.30 = absence -0.47 + hours at work  -1.83
+   SI        absent 11.0% -> 13.2% | hours per worker  -2.61 = absence -2.50 + hours at work  -0.11
+   SK        absent  6.8% ->  8.4% | hours per worker  -2.91 = absence -1.68 + hours at work  -1.24
+   share absent higher in 2025 than in 2019 in 18 of 26 countries
+
+8. Population behind the survey: LFS population aged 15-74 against Eurostat's demographic estimate
+   LFS: first-quarter population in private households; demographic: population on 1 January; 2019 to 2025
+   EU27_2020 LFS +1.06  demographic +1.09  difference -0.04 log points | foreign citizens in LFS employment 7.8% -> 9.7%
+   AT        LFS +3.46  demographic +3.43  difference +0.03 log points | foreign citizens in LFS employment 15.8% -> 20.8%
+   BE        LFS +3.30  demographic +3.81  difference -0.51 log points | foreign citizens in LFS employment 10.6% -> 12.4%
+   BG        LFS -5.40  demographic -5.45  difference +0.05 log points | foreign citizens in LFS employment n/a% -> 0.3%
+   CY        LFS +10.33  demographic +8.81  difference +1.52 log points | foreign citizens in LFS employment 19.3% -> 27.1%
+   CZ        LFS -3.24  demographic +0.61  difference -3.85 log points | foreign citizens in LFS employment 2.5% -> 4.9%
+   DE        LFS +0.99  demographic +0.76  difference +0.23 log points | foreign citizens in LFS employment 12.3% -> 14.7%
+   DK        LFS +1.49  demographic +1.70  difference -0.21 log points | foreign citizens in LFS employment 6.6% -> n/a%
+   EE        LFS +4.18  demographic +4.22  difference -0.04 log points | foreign citizens in LFS employment 14.2% -> 16.7%
+   EL        LFS -2.40  demographic -1.95  difference -0.45 log points | foreign citizens in LFS employment 5.2% -> 4.0%
+   ES        LFS +6.16  demographic +5.99  difference +0.17 log points | foreign citizens in LFS employment 11.9% -> 15.5%
+   FI        LFS +0.82  demographic +0.94  difference -0.12 log points | foreign citizens in LFS employment 3.5% -> 7.1%
+   FR        LFS +2.45  demographic +2.28  difference +0.18 log points | foreign citizens in LFS employment 6.3% -> 7.5%
+   HR        LFS -1.71  demographic -1.96  difference +0.25 log points | foreign citizens in LFS employment 0.6% -> 0.8%
+   HU        LFS -2.66  demographic -2.58  difference -0.08 log points | foreign citizens in LFS employment 0.8% -> 1.1%
+   IE        LFS +11.71  demographic +10.98  difference +0.73 log points | foreign citizens in LFS employment 16.4% -> 20.9%
+   IT        LFS -1.31  demographic -1.31  difference +0.00 log points | foreign citizens in LFS employment 10.2% -> 10.5%
+   LT        LFS +5.49  demographic +4.10  difference +1.39 log points | foreign citizens in LFS employment 0.9% -> 3.1%
+   LU        LFS +10.84  demographic +10.74  difference +0.10 log points | foreign citizens in LFS employment 53.7% -> 54.2%
+   LV        LFS -2.15  demographic -2.12  difference -0.04 log points | foreign citizens in LFS employment 12.8% -> 9.8%
+   MT        LFS +14.83  demographic +14.95  difference -0.12 log points | foreign citizens in LFS employment 24.0% -> n/a%
+   NL        LFS +3.40  demographic +3.34  difference +0.06 log points | foreign citizens in LFS employment 5.0% -> 6.4%
+   PL        LFS -2.25  demographic -4.75  difference +2.49 log points | foreign citizens in LFS employment 0.7% -> 2.7%
+   PT        LFS +3.70  demographic +10.03  difference -6.33 log points | foreign citizens in LFS employment 3.0% -> 6.8%
+   RO        LFS -3.40  demographic -1.90  difference -1.50 log points | foreign citizens in LFS employment 0.1% -> 0.3%
+   SE        LFS +1.70  demographic +2.25  difference -0.56 log points | foreign citizens in LFS employment 7.1% -> 7.2%
+   SI        LFS +0.33  demographic +2.21  difference -1.88 log points | foreign citizens in LFS employment 4.4% -> 11.0%
+   SK        LFS -2.81  demographic -2.07  difference -0.74 log points | foreign citizens in LFS employment 0.3% -> 0.7%
+   countries with both: 27; LFS population below demographic in 14
+   correlation between the population difference and the persons part: 0.06
+   least-squares slope of persons part on population difference: 0.08 (intercept -0.53)
+
+9. Check against Eurostat's published productivity per hour (real GDP per hour), % a year
+   EU27_2020 ours (GVA) 2009-2019 +1.24, 2019-2025 +0.64 | Eurostat (GDP) +1.21, +0.56
+   DE        ours (GVA) 2009-2019 +1.29, 2019-2025 +0.44 | Eurostat (GDP) +1.24, +0.37
+   FR        ours (GVA) 2009-2019 +0.85, 2019-2025 +0.03 | Eurostat (GDP) +0.86, -0.14
+   IT        ours (GVA) 2009-2019 +0.53, 2019-2025 -0.14 | Eurostat (GDP) +0.44, -0.15
+   ES        ours (GVA) 2009-2019 +0.96, 2019-2025 +0.40 | Eurostat (GDP) +1.02, +0.33
+   NL        ours (GVA) 2009-2019 +0.65, 2019-2025 +0.61 | Eurostat (GDP) +0.55, +0.42
+   PL        ours (GVA) 2009-2019 +3.30, 2019-2025 +2.30 | Eurostat (GDP) +3.37, +2.42
+   PT        ours (GVA) 2009-2019 +0.84, 2019-2025 +0.23 | Eurostat (GDP) +0.79, +0.23
+   CZ        ours (GVA) 2009-2019 +2.06, 2019-2025 +0.31 | Eurostat (GDP) +1.98, +0.27
+
+10. Index levels quoted for Portugal and Czechia (annual means of quarterly GVA per hour, 2009 = 100)
+   PT: national accounts 2014 107.5, 2015 107.0, 2016 106.6, 2019 108.7, 2021 110.3, 2025 110.2 | LFS 2019 114.8, 2021 122.7, 2025 125.7
+   CZ: national accounts 2014 107.9, 2015 112.4, 2016 112.6, 2019 122.6, 2021 127.3, 2025 124.8 | LFS 2019 126.9, 2021 129.7, 2025 144.1
