@@ -2,120 +2,60 @@
   "IndicadorCod" : "0012522",
   "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
   "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
-  "DataExtracao" : "2026-11-20T23:20:38.411Z",
+  "DataExtracao" : "2026-11-21T11:35:06.645Z",
   "DataUltimoAtualizacao" : "2024-03-19",
   "UltimoPref" : "2021",
   "Dados" : {
     "2021" : [ {
-      "geocod" : "1711",
-      "geodsg" : "Santa Marta de Penaguião",
-      "ind_string" : "158,06",
-      "valor" : "158.06"
-    }, {
-      "geocod" : "1701",
-      "geodsg" : "Alijó",
-      "ind_string" : "166,86",
-      "valor" : "166.86"
-    }, {
-      "geocod" : "1710",
-      "geodsg" : "Sabrosa",
-      "ind_string" : "172,52",
-      "valor" : "172.52"
-    }, {
-      "geocod" : "1822",
-      "geodsg" : "Vila Nova de Paiva",
-      "ind_string" : "174,14",
-      "valor" : "174.14"
-    }, {
-      "geocod" : "1704",
-      "geodsg" : "Mesão Frio",
-      "ind_string" : "179,52",
-      "valor" : "179.52"
-    }, {
-      "geocod" : "1819",
-      "geodsg" : "Tabuaço",
-      "ind_string" : "180,15",
-      "valor" : "180.15"
-    }, {
-      "geocod" : "1706",
-      "geodsg" : "Montalegre",
-      "ind_string" : "184,17",
-      "valor" : "184.17"
-    }, {
-      "geocod" : "1707",
-      "geodsg" : "Murça",
-      "ind_string" : "187,04",
-      "valor" : "187.04"
-    }, {
-      "geocod" : "1818",
-      "geodsg" : "Sernancelhe",
-      "ind_string" : "188,82",
-      "valor" : "188.82"
-    }, {
-      "geocod" : "1815",
-      "geodsg" : "São João da Pesqueira",
-      "ind_string" : "190,82",
-      "valor" : "190.82"
-    }, {
-      "geocod" : "1804",
-      "geodsg" : "Cinfães",
-      "ind_string" : "196,08",
-      "valor" : "196.08"
-    }, {
-      "geocod" : "1814",
-      "geodsg" : "Santa Comba Dão",
-      "ind_string" : "198,42",
-      "valor" : "198.42"
-    }, {
-      "geocod" : "1801",
-      "geodsg" : "Armamar",
-      "ind_string" : "199,61",
-      "valor" : "199.61"
-    }, {
-      "geocod" : "1811",
-      "geodsg" : "Penalva do Castelo",
-      "ind_string" : "203,04",
-      "valor" : "203.04"
-    }, {
-      "geocod" : "1708",
-      "geodsg" : "Peso da Régua",
-      "ind_string" : "205,75",
-      "valor" : "205.75"
-    }, {
-      "geocod" : "1712",
-      "geodsg" : "Valpaços",
-      "ind_string" : "207,86",
-      "valor" : "207.86"
-    }, {
-      "geocod" : "1807",
-      "geodsg" : "Moimenta da Beira",
-      "ind_string" : "211,24",
-      "valor" : "211.24"
+      "geocod" : "1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "227,71",
+      "valor" : "227.71"
     }, {
       "geocod" : "1709",
       "geodsg" : "Ribeira de Pena",
       "ind_string" : "214,29",
       "valor" : "214.29"
     }, {
-      "geocod" : "1802",
-      "geodsg" : "Carregal do Sal",
-      "ind_string" : "217,87",
-      "valor" : "217.87"
+      "geocod" : "1714",
+      "geodsg" : "Vila Real",
+      "ind_string" : "299,85",
+      "valor" : "299.85"
     }, {
-      "geocod" : "1705",
-      "geodsg" : "Mondim de Basto",
-      "ind_string" : "218,26",
-      "valor" : "218.26"
+      "geocod" : "1706",
+      "geodsg" : "Montalegre",
+      "ind_string" : "184,17",
+      "valor" : "184.17"
     }, {
-      "geocod" : "1813",
-      "geodsg" : "Resende",
-      "ind_string" : "220,08",
-      "valor" : "220.08"
+      "geocod" : "1821",
+      "geodsg" : "Tondela",
+      "ind_string" : "270,34",
+      "valor" : "270.34"
     }, {
-      "geocod" : "1803",
-      "geodsg" : "Castro Daire",
-      "ind_string" : "221,64",
-      "valor" : "221.64"
+      "geocod" : "1711",
+      "geodsg" : "Santa Marta de Penaguião",
+      "ind_string" : "158,06",
+      "valor" : "158.06"
+    }, {
+      "geocod" : "1808",
+      "geodsg" : "Mortágua",
+      "ind_string" : "243,52",
+      "valor" : "243.52"
+    }, {
+      "geocod" : "1811",
+      "geodsg" : "Penalva do Castelo",
+      "ind_string" : "203,04",
+      "valor" : "203.04"
+    }, {
+      "geocod" : "1817",
+      "geodsg" : "Sátão",
+      "ind_string" : "231,15",
+      "valor" : "231.15"
+    }, {
+      "geocod" : "1703",
+      "geodsg" : "Chaves",
+      "ind_string" : "244,68",
+      "valor" : "244.68"
     }, {
       "geocod" : "1812",
       "geodsg" : "Penedono",
@@ -127,85 +67,145 @@
       "ind_string" : "226,00",
       "valor" : "226"
     }, {
-      "geocod" : "1805",
-      "geodsg" : "Lamego",
-      "ind_string" : "227,08",
-      "valor" : "227.08"
+      "geocod" : "1816",
+      "geodsg" : "São Pedro do Sul",
+      "ind_string" : "253,26",
+      "valor" : "253.26"
     }, {
-      "geocod" : "1820",
-      "geodsg" : "Tarouca",
-      "ind_string" : "227,71",
-      "valor" : "227.71"
+      "geocod" : "1701",
+      "geodsg" : "Alijó",
+      "ind_string" : "166,86",
+      "valor" : "166.86"
     }, {
-      "geocod" : "1713",
-      "geodsg" : "Vila Pouca de Aguiar",
-      "ind_string" : "230,49",
-      "valor" : "230.49"
-    }, {
-      "geocod" : "1806",
-      "geodsg" : "Mangualde",
-      "ind_string" : "230,71",
-      "valor" : "230.71"
-    }, {
-      "geocod" : "1817",
-      "geodsg" : "Sátão",
-      "ind_string" : "231,15",
-      "valor" : "231.15"
+      "geocod" : "1823",
+      "geodsg" : "Viseu",
+      "ind_string" : "332,70",
+      "valor" : "332.7"
     }, {
       "geocod" : "1702",
       "geodsg" : "Boticas",
       "ind_string" : "241,65",
       "valor" : "241.65"
     }, {
-      "geocod" : "1808",
-      "geodsg" : "Mortágua",
-      "ind_string" : "243,52",
-      "valor" : "243.52"
-    }, {
-      "geocod" : "1703",
-      "geodsg" : "Chaves",
-      "ind_string" : "244,68",
-      "valor" : "244.68"
-    }, {
-      "geocod" : "1809",
-      "geodsg" : "Nelas",
-      "ind_string" : "245,78",
-      "valor" : "245.78"
-    }, {
-      "geocod" : "1816",
-      "geodsg" : "São Pedro do Sul",
-      "ind_string" : "253,26",
-      "valor" : "253.26"
-    }, {
-      "geocod" : "1821",
-      "geodsg" : "Tondela",
-      "ind_string" : "270,34",
-      "valor" : "270.34"
+      "geocod" : "1814",
+      "geodsg" : "Santa Comba Dão",
+      "ind_string" : "198,42",
+      "valor" : "198.42"
     }, {
       "geocod" : "1810",
       "geodsg" : "Oliveira de Frades",
       "ind_string" : "284,13",
       "valor" : "284.13"
     }, {
+      "geocod" : "1802",
+      "geodsg" : "Carregal do Sal",
+      "ind_string" : "217,87",
+      "valor" : "217.87"
+    }, {
       "geocod" : "1610",
       "geodsg" : "Vila Nova de Cerveira",
       "ind_string" : "286,08",
       "valor" : "286.08"
     }, {
-      "geocod" : "1714",
-      "geodsg" : "Vila Real",
-      "ind_string" : "299,85",
-      "valor" : "299.85"
+      "geocod" : "1705",
+      "geodsg" : "Mondim de Basto",
+      "ind_string" : "218,26",
+      "valor" : "218.26"
+    }, {
+      "geocod" : "1809",
+      "geodsg" : "Nelas",
+      "ind_string" : "245,78",
+      "valor" : "245.78"
+    }, {
+      "geocod" : "1805",
+      "geodsg" : "Lamego",
+      "ind_string" : "227,08",
+      "valor" : "227.08"
+    }, {
+      "geocod" : "1806",
+      "geodsg" : "Mangualde",
+      "ind_string" : "230,71",
+      "valor" : "230.71"
     }, {
       "geocod" : "3101",
       "geodsg" : "Calheta (R.A.M.)",
       "ind_string" : "311,62",
       "valor" : "311.62"
     }, {
-      "geocod" : "1823",
-      "geodsg" : "Viseu",
-      "ind_string" : "332,70",
-      "valor" : "332.7"
+      "geocod" : "1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "188,82",
+      "valor" : "188.82"
+    }, {
+      "geocod" : "1710",
+      "geodsg" : "Sabrosa",
+      "ind_string" : "172,52",
+      "valor" : "172.52"
+    }, {
+      "geocod" : "1707",
+      "geodsg" : "Murça",
+      "ind_string" : "187,04",
+      "valor" : "187.04"
+    }, {
+      "geocod" : "1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "180,15",
+      "valor" : "180.15"
+    }, {
+      "geocod" : "1822",
+      "geodsg" : "Vila Nova de Paiva",
+      "ind_string" : "174,14",
+      "valor" : "174.14"
+    }, {
+      "geocod" : "1712",
+      "geodsg" : "Valpaços",
+      "ind_string" : "207,86",
+      "valor" : "207.86"
+    }, {
+      "geocod" : "1804",
+      "geodsg" : "Cinfães",
+      "ind_string" : "196,08",
+      "valor" : "196.08"
+    }, {
+      "geocod" : "1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "211,24",
+      "valor" : "211.24"
+    }, {
+      "geocod" : "1713",
+      "geodsg" : "Vila Pouca de Aguiar",
+      "ind_string" : "230,49",
+      "valor" : "230.49"
+    }, {
+      "geocod" : "1704",
+      "geodsg" : "Mesão Frio",
+      "ind_string" : "179,52",
+      "valor" : "179.52"
+    }, {
+      "geocod" : "1801",
+      "geodsg" : "Armamar",
+      "ind_string" : "199,61",
+      "valor" : "199.61"
+    }, {
+      "geocod" : "1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "190,82",
+      "valor" : "190.82"
+    }, {
+      "geocod" : "1803",
+      "geodsg" : "Castro Daire",
+      "ind_string" : "221,64",
+      "valor" : "221.64"
+    }, {
+      "geocod" : "1813",
+      "geodsg" : "Resende",
+      "ind_string" : "220,08",
+      "valor" : "220.08"
+    }, {
+      "geocod" : "1708",
+      "geodsg" : "Peso da Régua",
+      "ind_string" : "205,75",
+      "valor" : "205.75"
     } ]
   },
   "Sucesso" : {

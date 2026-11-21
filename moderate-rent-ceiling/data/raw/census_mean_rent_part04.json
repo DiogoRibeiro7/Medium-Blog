@@ -2,11 +2,151 @@
   "IndicadorCod" : "0012522",
   "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
   "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
-  "DataExtracao" : "2026-11-20T23:20:13.899Z",
+  "DataExtracao" : "2026-11-21T11:35:04.494Z",
   "DataUltimoAtualizacao" : "2024-03-19",
   "UltimoPref" : "2021",
   "Dados" : {
     "2021" : [ {
+      "geocod" : "1116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "380,23",
+      "valor" : "380.23"
+    }, {
+      "geocod" : "1308",
+      "geodsg" : "Matosinhos",
+      "ind_string" : "322,45",
+      "valor" : "322.45"
+    }, {
+      "geocod" : "1310",
+      "geodsg" : "Paredes",
+      "ind_string" : "237,82",
+      "valor" : "237.82"
+    }, {
+      "geocod" : "1317",
+      "geodsg" : "Vila Nova de Gaia",
+      "ind_string" : "311,39",
+      "valor" : "311.39"
+    }, {
+      "geocod" : "1402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "216,64",
+      "valor" : "216.64"
+    }, {
+      "geocod" : "1213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "231,34",
+      "valor" : "231.34"
+    }, {
+      "geocod" : "1203",
+      "geodsg" : "Avis",
+      "ind_string" : "175,94",
+      "valor" : "175.94"
+    }, {
+      "geocod" : "1302",
+      "geodsg" : "Baião",
+      "ind_string" : "194,94",
+      "valor" : "194.94"
+    }, {
+      "geocod" : "1206",
+      "geodsg" : "Crato",
+      "ind_string" : "199,28",
+      "valor" : "199.28"
+    }, {
+      "geocod" : "1316",
+      "geodsg" : "Vila do Conde",
+      "ind_string" : "314,46",
+      "valor" : "314.46"
+    }, {
+      "geocod" : "1210",
+      "geodsg" : "Marvão",
+      "ind_string" : "167,26",
+      "valor" : "167.26"
+    }, {
+      "geocod" : "1304",
+      "geodsg" : "Gondomar",
+      "ind_string" : "253,21",
+      "valor" : "253.21"
+    }, {
+      "geocod" : "1306",
+      "geodsg" : "Maia",
+      "ind_string" : "336,07",
+      "valor" : "336.07"
+    }, {
+      "geocod" : "1211",
+      "geodsg" : "Monforte",
+      "ind_string" : "152,13",
+      "valor" : "152.13"
+    }, {
+      "geocod" : "1214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "222,42",
+      "valor" : "222.42"
+    }, {
+      "geocod" : "1401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "229,13",
+      "valor" : "229.13"
+    }, {
+      "geocod" : "1314",
+      "geodsg" : "Santo Tirso",
+      "ind_string" : "226,89",
+      "valor" : "226.89"
+    }, {
+      "geocod" : "1207",
+      "geodsg" : "Elvas",
+      "ind_string" : "218,40",
+      "valor" : "218.4"
+    }, {
+      "geocod" : "1204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "190,46",
+      "valor" : "190.46"
+    }, {
+      "geocod" : "1303",
+      "geodsg" : "Felgueiras",
+      "ind_string" : "214,10",
+      "valor" : "214.1"
+    }, {
+      "geocod" : "1312",
+      "geodsg" : "Porto",
+      "ind_string" : "317,76",
+      "valor" : "317.76"
+    }, {
+      "geocod" : "1315",
+      "geodsg" : "Valongo",
+      "ind_string" : "286,68",
+      "valor" : "286.68"
+    }, {
+      "geocod" : "1208",
+      "geodsg" : "Fronteira",
+      "ind_string" : "168,10",
+      "valor" : "168.1"
+    }, {
+      "geocod" : "1309",
+      "geodsg" : "Paços de Ferreira",
+      "ind_string" : "219,77",
+      "valor" : "219.77"
+    }, {
+      "geocod" : "1318",
+      "geodsg" : "Trofa",
+      "ind_string" : "289,14",
+      "valor" : "289.14"
+    }, {
+      "geocod" : "1307",
+      "geodsg" : "Marco de Canaveses",
+      "ind_string" : "196,75",
+      "valor" : "196.75"
+    }, {
+      "geocod" : "1403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "289,79",
+      "valor" : "289.79"
+    }, {
+      "geocod" : "1305",
+      "geodsg" : "Lousada",
+      "ind_string" : "213,88",
+      "valor" : "213.88"
+    }, {
       "geocod" : "1201",
       "geodsg" : "Alter do Chão",
       "ind_string" : "136,42",
@@ -17,195 +157,55 @@
       "ind_string" : "140,51",
       "valor" : "140.51"
     }, {
-      "geocod" : "1211",
-      "geodsg" : "Monforte",
-      "ind_string" : "152,13",
-      "valor" : "152.13"
-    }, {
-      "geocod" : "1210",
-      "geodsg" : "Marvão",
-      "ind_string" : "167,26",
-      "valor" : "167.26"
-    }, {
-      "geocod" : "1208",
-      "geodsg" : "Fronteira",
-      "ind_string" : "168,10",
-      "valor" : "168.1"
-    }, {
-      "geocod" : "1215",
-      "geodsg" : "Sousel",
-      "ind_string" : "175,07",
-      "valor" : "175.07"
-    }, {
-      "geocod" : "1203",
-      "geodsg" : "Avis",
-      "ind_string" : "175,94",
-      "valor" : "175.94"
-    }, {
-      "geocod" : "1204",
-      "geodsg" : "Campo Maior",
-      "ind_string" : "190,46",
-      "valor" : "190.46"
-    }, {
-      "geocod" : "1302",
-      "geodsg" : "Baião",
-      "ind_string" : "194,94",
-      "valor" : "194.94"
-    }, {
-      "geocod" : "1307",
-      "geodsg" : "Marco de Canaveses",
-      "ind_string" : "196,75",
-      "valor" : "196.75"
-    }, {
-      "geocod" : "1206",
-      "geodsg" : "Crato",
-      "ind_string" : "199,28",
-      "valor" : "199.28"
-    }, {
-      "geocod" : "1301",
-      "geodsg" : "Amarante",
-      "ind_string" : "201,01",
-      "valor" : "201.01"
-    }, {
-      "geocod" : "1212",
-      "geodsg" : "Nisa",
-      "ind_string" : "207,06",
-      "valor" : "207.06"
-    }, {
-      "geocod" : "1305",
-      "geodsg" : "Lousada",
-      "ind_string" : "213,88",
-      "valor" : "213.88"
-    }, {
-      "geocod" : "1303",
-      "geodsg" : "Felgueiras",
-      "ind_string" : "214,10",
-      "valor" : "214.1"
-    }, {
-      "geocod" : "1311",
-      "geodsg" : "Penafiel",
-      "ind_string" : "215,32",
-      "valor" : "215.32"
-    }, {
       "geocod" : "1205",
       "geodsg" : "Castelo de Vide",
       "ind_string" : "216,14",
       "valor" : "216.14"
-    }, {
-      "geocod" : "1402",
-      "geodsg" : "Alcanena",
-      "ind_string" : "216,64",
-      "valor" : "216.64"
-    }, {
-      "geocod" : "1207",
-      "geodsg" : "Elvas",
-      "ind_string" : "218,40",
-      "valor" : "218.4"
-    }, {
-      "geocod" : "1309",
-      "geodsg" : "Paços de Ferreira",
-      "ind_string" : "219,77",
-      "valor" : "219.77"
-    }, {
-      "geocod" : "1214",
-      "geodsg" : "Portalegre",
-      "ind_string" : "222,42",
-      "valor" : "222.42"
-    }, {
-      "geocod" : "1314",
-      "geodsg" : "Santo Tirso",
-      "ind_string" : "226,89",
-      "valor" : "226.89"
-    }, {
-      "geocod" : "1209",
-      "geodsg" : "Gavião",
-      "ind_string" : "228,56",
-      "valor" : "228.56"
-    }, {
-      "geocod" : "1401",
-      "geodsg" : "Abrantes",
-      "ind_string" : "229,13",
-      "valor" : "229.13"
-    }, {
-      "geocod" : "1213",
-      "geodsg" : "Ponte de Sor",
-      "ind_string" : "231,34",
-      "valor" : "231.34"
-    }, {
-      "geocod" : "1310",
-      "geodsg" : "Paredes",
-      "ind_string" : "237,82",
-      "valor" : "237.82"
-    }, {
-      "geocod" : "1304",
-      "geodsg" : "Gondomar",
-      "ind_string" : "253,21",
-      "valor" : "253.21"
-    }, {
-      "geocod" : "1315",
-      "geodsg" : "Valongo",
-      "ind_string" : "286,68",
-      "valor" : "286.68"
-    }, {
-      "geocod" : "1318",
-      "geodsg" : "Trofa",
-      "ind_string" : "289,14",
-      "valor" : "289.14"
-    }, {
-      "geocod" : "1403",
-      "geodsg" : "Almeirim",
-      "ind_string" : "289,79",
-      "valor" : "289.79"
-    }, {
-      "geocod" : "1317",
-      "geodsg" : "Vila Nova de Gaia",
-      "ind_string" : "311,39",
-      "valor" : "311.39"
-    }, {
-      "geocod" : "1316",
-      "geodsg" : "Vila do Conde",
-      "ind_string" : "314,46",
-      "valor" : "314.46"
-    }, {
-      "geocod" : "1312",
-      "geodsg" : "Porto",
-      "ind_string" : "317,76",
-      "valor" : "317.76"
-    }, {
-      "geocod" : "1308",
-      "geodsg" : "Matosinhos",
-      "ind_string" : "322,45",
-      "valor" : "322.45"
-    }, {
-      "geocod" : "1114",
-      "geodsg" : "Vila Franca de Xira",
-      "ind_string" : "330,48",
-      "valor" : "330.48"
     }, {
       "geocod" : "1313",
       "geodsg" : "Póvoa de Varzim",
       "ind_string" : "333,33",
       "valor" : "333.33"
     }, {
-      "geocod" : "1306",
-      "geodsg" : "Maia",
-      "ind_string" : "336,07",
-      "valor" : "336.07"
+      "geocod" : "1301",
+      "geodsg" : "Amarante",
+      "ind_string" : "201,01",
+      "valor" : "201.01"
     }, {
-      "geocod" : "1115",
-      "geodsg" : "Amadora",
-      "ind_string" : "348,49",
-      "valor" : "348.49"
+      "geocod" : "1209",
+      "geodsg" : "Gavião",
+      "ind_string" : "228,56",
+      "valor" : "228.56"
+    }, {
+      "geocod" : "1311",
+      "geodsg" : "Penafiel",
+      "ind_string" : "215,32",
+      "valor" : "215.32"
+    }, {
+      "geocod" : "1114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "330,48",
+      "valor" : "330.48"
     }, {
       "geocod" : "1113",
       "geodsg" : "Torres Vedras",
       "ind_string" : "353,28",
       "valor" : "353.28"
     }, {
-      "geocod" : "1116",
-      "geodsg" : "Odivelas",
-      "ind_string" : "380,23",
-      "valor" : "380.23"
+      "geocod" : "1212",
+      "geodsg" : "Nisa",
+      "ind_string" : "207,06",
+      "valor" : "207.06"
+    }, {
+      "geocod" : "1215",
+      "geodsg" : "Sousel",
+      "ind_string" : "175,07",
+      "valor" : "175.07"
+    }, {
+      "geocod" : "1115",
+      "geodsg" : "Amadora",
+      "ind_string" : "348,49",
+      "valor" : "348.49"
     } ]
   },
   "Sucesso" : {
