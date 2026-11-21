@@ -127,4 +127,5 @@ through `scipy.optimize.milp`, and its linear relaxation with `linprog`. Seven d
 
 ## Changes after registration
 
-None yet.
+- 21 November 2026, before any incident record was downloaded: the dataset has no field `cad_incident_id`; its
+  incident identifier is `incident_id`, which `fetch.py` now uses (the run stopped at the column check, as designed).

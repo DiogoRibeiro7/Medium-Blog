@@ -26,7 +26,7 @@ import pandas as pd
 
 DATASET = "76xm-jjuj"
 BASE = "https://data.cityofnewyork.us"
-FIELDS = ("cad_incident_id", "incident_datetime", "first_assignment_datetime", "incident_close_datetime", "borough")
+FIELDS = ("incident_id", "incident_datetime", "first_assignment_datetime", "incident_close_datetime", "borough")
 FROM = "2018-12-30T00:00:00"
 TO = "2019-12-30T00:00:00"
 GRID_START = pd.Timestamp("2018-12-31 00:00")
@@ -129,7 +129,7 @@ def main() -> None:
             {
                 "$select": ",".join(FIELDS),
                 "$where": where(),
-                "$order": "cad_incident_id",
+                "$order": "incident_id",
                 "$limit": str(PAGE),
                 "$offset": str(offset),
             }
@@ -142,8 +142,8 @@ def main() -> None:
         offset += PAGE
     df = pd.concat(frames, ignore_index=True)
     rows = len(df)
-    dup = int(df["cad_incident_id"].duplicated().sum())
-    df = df.drop_duplicates("cad_incident_id")
+    dup = int(df["incident_id"].duplicated().sum())
+    df = df.drop_duplicates("incident_id")
     assign = pd.to_datetime(df["first_assignment_datetime"], errors="coerce")
     close = pd.to_datetime(df["incident_close_datetime"], errors="coerce")
     dur_h = (close - assign).dt.total_seconds() / 3600
