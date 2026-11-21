@@ -1,0 +1,133 @@
+{
+  "source": "IHRU/OHARU (2024), Table 11, Portugal Census 2021",
+  "observation_year": 2021,
+  "source_report_url": "https://www.portaldahabitacao.pt/documents/20126/58203/1_Estudo%2BPNH-_VFinal.pdf/9ed08595-a9d2-0708-d845-ec3a93d56c3e",
+  "census": {
+    "total_classic_dwellings": 5970677,
+    "habitual_residences": 4142581,
+    "secondary_residences": 1104881,
+    "total_vacant": 723215,
+    "vacant_for_sale_or_rent": 348097,
+    "vacant_for_other_reasons": 375118,
+    "vacant_no_or_minor_repairs": 485461,
+    "vacant_other_reasons_no_or_minor_repairs": 248534
+  },
+  "hypothetical_parameters": {
+    "taxable_property_value_eur": "150000",
+    "imi_rate": "0.0035",
+    "monthly_rent_eur": "900",
+    "occupied_fraction": "0.90",
+    "gross_rent_retained_fraction": "0.70",
+    "additional_annual_rental_cost_eur": "1200"
+  },
+  "net_rental_flow_before_imi_eur": "5604.0000",
+  "tax_scenarios": [
+    {
+      "multiplier": "1",
+      "annual_imi_eur": "525.0000",
+      "incremental_vs_ordinary_eur": "0.0000",
+      "option_value_threshold_eur": "5604.0000"
+    },
+    {
+      "multiplier": "3",
+      "annual_imi_eur": "1575.0000",
+      "incremental_vs_ordinary_eur": "1050.0000",
+      "option_value_threshold_eur": "6654.0000"
+    },
+    {
+      "multiplier": "10",
+      "annual_imi_eur": "5250.0000",
+      "incremental_vs_ordinary_eur": "4725.0000",
+      "option_value_threshold_eur": "10329.0000"
+    },
+    {
+      "multiplier": "20",
+      "annual_imi_eur": "10500.0000",
+      "incremental_vs_ordinary_eur": "9975.0000",
+      "option_value_threshold_eur": "15579.0000"
+    }
+  ],
+  "sensitivity_scenarios": [
+    {
+      "eligible_share": "0.05",
+      "response_share": "0.05",
+      "hypothetically_released_dwellings": "621.3350"
+    },
+    {
+      "eligible_share": "0.05",
+      "response_share": "0.10",
+      "hypothetically_released_dwellings": "1242.6700"
+    },
+    {
+      "eligible_share": "0.05",
+      "response_share": "0.20",
+      "hypothetically_released_dwellings": "2485.3400"
+    },
+    {
+      "eligible_share": "0.05",
+      "response_share": "0.40",
+      "hypothetically_released_dwellings": "4970.6800"
+    },
+    {
+      "eligible_share": "0.10",
+      "response_share": "0.05",
+      "hypothetically_released_dwellings": "1242.6700"
+    },
+    {
+      "eligible_share": "0.10",
+      "response_share": "0.10",
+      "hypothetically_released_dwellings": "2485.3400"
+    },
+    {
+      "eligible_share": "0.10",
+      "response_share": "0.20",
+      "hypothetically_released_dwellings": "4970.6800"
+    },
+    {
+      "eligible_share": "0.10",
+      "response_share": "0.40",
+      "hypothetically_released_dwellings": "9941.3600"
+    },
+    {
+      "eligible_share": "0.25",
+      "response_share": "0.05",
+      "hypothetically_released_dwellings": "3106.6750"
+    },
+    {
+      "eligible_share": "0.25",
+      "response_share": "0.10",
+      "hypothetically_released_dwellings": "6213.3500"
+    },
+    {
+      "eligible_share": "0.25",
+      "response_share": "0.20",
+      "hypothetically_released_dwellings": "12426.7000"
+    },
+    {
+      "eligible_share": "0.25",
+      "response_share": "0.40",
+      "hypothetically_released_dwellings": "24853.4000"
+    },
+    {
+      "eligible_share": "0.50",
+      "response_share": "0.05",
+      "hypothetically_released_dwellings": "6213.3500"
+    },
+    {
+      "eligible_share": "0.50",
+      "response_share": "0.10",
+      "hypothetically_released_dwellings": "12426.7000"
+    },
+    {
+      "eligible_share": "0.50",
+      "response_share": "0.20",
+      "hypothetically_released_dwellings": "24853.4000"
+    },
+    {
+      "eligible_share": "0.50",
+      "response_share": "0.40",
+      "hypothetically_released_dwellings": "49706.8000"
+    }
+  ],
+  "interpretation": "Census is 2021 observed stock; tax liabilities are arithmetic; owner-choice thresholds and mobilisations are illustrative, not causal forecasts."
+}
