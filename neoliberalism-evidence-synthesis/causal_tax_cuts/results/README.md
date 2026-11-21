@@ -161,3 +161,14 @@ for **17/20** treated reforms, **206/239** initial donor pairs and
 **143/174** year-five donor pairs. None of these counts is an adjusted
 causal estimate; the `tax-cut-political-institutions` artifact has the
 year-by-year controls and event/donor completeness details.
+
+
+The [political comparability audit](../POLITICAL_COMPARABILITY.md) and
+[21 November frozen JSON](political_comparability_2026-11-21.json) use the
+same 20 reforms and unchanged donor exclusions. At the pre-censor stage,
+80/206 complete pairs have the same executive-party orientation at t-1;
+at year five, 54/143 do. Only 20/143 have identical five-year orientation
+histories. Almost all have the same EIEC code (142/143 at year five), so
+that field offers little discrimination. **These are descriptive comparisons,
+not causal estimates.** The live source workflow publishes event-level
+records and verifies the frozen snapshot on matching hashes.

@@ -190,6 +190,42 @@ jobs:
             ${{ runner.temp }}/tax-study/political-institutions/political_coverage_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit DPI executive orientation and institutional donor comparability
+        id: political_comparability
+        if: steps.political_institutions.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.political_comparability \
+            --controls "$RUNNER_TEMP/tax-study/political-institutions/dpi_political_controls.csv" \
+            --donors "$RUNNER_TEMP/tax-study/political-institutions/political_donor_coverage.csv" \
+            --source-audit "$RUNNER_TEMP/tax-study/political-institutions/political_coverage_audit.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/political-comparability"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ["RUNNER_TEMP"])
+          actual = json.loads((root / "tax-study/political-comparability/political_comparability_audit.json").read_text())
+          frozen = json.loads(Path("causal_tax_cuts/results/political_comparability_2026-11-21.json").read_text())
+          keys = ("political_controls_sha256", "donor_exposures_sha256", "source_audit_sha256")
+          if all(actual[key] == frozen[key] for key in keys):
+              if actual != frozen:
+                  raise ValueError("Same-source political comparability does not reproduce frozen results")
+              print("Verified exact political comparability snapshot")
+          else:
+              print("Source vintage changed: report new hashes, do not claim reproduction")
+          PY
+      - name: Publish source-verifiable political donor comparisons
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-political-comparability
+          path: |
+            ${{ runner.temp }}/tax-study/political-comparability/political_comparability_pairs.csv
+            ${{ runner.temp }}/tax-study/political-comparability/political_comparability_event_horizons.csv
+            ${{ runner.temp }}/tax-study/political-comparability/political_comparability_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
