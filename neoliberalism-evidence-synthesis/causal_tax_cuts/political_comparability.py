@@ -101,24 +101,33 @@ def _numeric(raw: str, name: str) -> float | None:
 
 def load_political_years(path: Path) -> dict[tuple[str, int], PoliticalYear]:
     """Load the exact DPI-derived panel; do not treat unknown as observed."""
-    required = frozenset({
-        "country", "year", "executive_orientation", "orientation_status",
-        "checks", "electoral_competitiveness",
-    })
+    required = frozenset(
+        {
+            "country",
+            "year",
+            "executive_orientation",
+            "orientation_status",
+            "checks",
+            "electoral_competitiveness",
+        }
+    )
     records: dict[tuple[str, int], PoliticalYear] = {}
     for row in _read_rows(path, required):
         country = row["country"]
         year = int(row["year"])
         orientation = row["executive_orientation"] or None
         status = row["orientation_status"]
-        if (
-            (orientation is not None and orientation not in ORIENTATIONS)
-            or ((status == "known") != (orientation is not None))
+        if (orientation is not None and orientation not in ORIENTATIONS) or (
+            (status == "known") != (orientation is not None)
         ):
             raise ValueError(f"Inconsistent DPI orientation {country} {year}")
         if status not in {
-            "known", "unknown", "not_applicable", "missing",
-            "out_of_source_period", "not_in_source",
+            "known",
+            "unknown",
+            "not_applicable",
+            "missing",
+            "out_of_source_period",
+            "not_in_source",
         }:
             raise ValueError(f"Unknown DPI missingness status {status}")
         key = (country, year)
@@ -136,9 +145,14 @@ def load_political_years(path: Path) -> dict[tuple[str, int], PoliticalYear]:
 
 def load_donor_exposures(path: Path) -> list[DonorExposure]:
     """Load existing donor-event IDs and unchanged censoring horizons."""
-    required = frozenset({
-        "country", "reform_year", "donor", "first_censored_horizon",
-    })
+    required = frozenset(
+        {
+            "country",
+            "reform_year",
+            "donor",
+            "first_censored_horizon",
+        }
+    )
     items: list[DonorExposure] = []
     seen: set[tuple[str, int, str]] = set()
     for row in _read_rows(path, required):
@@ -199,8 +213,15 @@ def audit_comparability(
         if treated is None or control is None:
             comparisons.append(
                 PairComparison(
-                    pair.country, pair.reform_year, pair.donor,
-                    pair.first_censored_horizon, False, None, None, None, None,
+                    pair.country,
+                    pair.reform_year,
+                    pair.donor,
+                    pair.first_censored_horizon,
+                    False,
+                    None,
+                    None,
+                    None,
+                    None,
                 )
             )
             continue
@@ -211,8 +232,7 @@ def audit_comparability(
                 pair.donor,
                 pair.first_censored_horizon,
                 True,
-                treated[-1].executive_orientation
-                == control[-1].executive_orientation,
+                treated[-1].executive_orientation == control[-1].executive_orientation,
                 all(
                     a.executive_orientation == b.executive_orientation
                     for a, b in zip(treated, control, strict=True)
@@ -234,7 +254,8 @@ def audit_comparability(
     summary: list[dict[str, int | float | None]] = []
     for horizon in range(-1, MAX_HORIZON + 1):
         subset = [
-            row for row in comparisons
+            row
+            for row in comparisons
             if row.first_censored_horizon is None
             or row.first_censored_horizon > horizon
         ]
@@ -243,7 +264,8 @@ def audit_comparability(
             groups.items(), key=lambda item: (item[0][1], item[0][0])
         ):
             at_risk = [
-                row for row in event_rows
+                row
+                for row in event_rows
                 if row.first_censored_horizon is None
                 or row.first_censored_horizon > horizon
             ]
@@ -257,14 +279,12 @@ def audit_comparability(
                     len(complete),
                     sum(row.same_orientation_t_minus_1 is True for row in complete),
                     sum(
-                        row.same_orientation_all_five_years is True
-                        for row in complete
+                        row.same_orientation_all_five_years is True for row in complete
                     ),
                     sum(row.same_eiec_t_minus_1 is True for row in complete),
                     (
                         fmean(
-                            float(row.abs_checks_five_year_mean_gap)
-                            for row in complete
+                            float(row.abs_checks_five_year_mean_gap) for row in complete
                         )
                         if complete
                         else None
@@ -272,56 +292,67 @@ def audit_comparability(
                 )
             )
         events_with_coverage = [
-            row for row in event_horizons
+            row
+            for row in event_horizons
             if row.horizon == horizon and row.comparable_donors > 0
         ]
-        summary.append({
-            "horizon": horizon,
-            "events_total": len(groups),
-            "events_with_complete_pairs": len(events_with_coverage),
-            "donor_pairs_at_risk": len(subset),
-            "complete_treated_donor_pairs": len(comparable),
-            "same_orientation_at_t_minus_1": sum(
-                row.same_orientation_t_minus_1 is True for row in comparable
+        summary.append(
+            {
+                "horizon": horizon,
+                "events_total": len(groups),
+                "events_with_complete_pairs": len(events_with_coverage),
+                "donor_pairs_at_risk": len(subset),
+                "complete_treated_donor_pairs": len(comparable),
+                "same_orientation_at_t_minus_1": sum(
+                    row.same_orientation_t_minus_1 is True for row in comparable
+                ),
+                "same_orientation_all_five_years": sum(
+                    row.same_orientation_all_five_years is True for row in comparable
+                ),
+                "same_eiec_at_t_minus_1": sum(
+                    row.same_eiec_t_minus_1 is True for row in comparable
+                ),
+                "mean_abs_checks_index_gap_pair_weighted": (
+                    fmean(
+                        float(row.abs_checks_five_year_mean_gap) for row in comparable
+                    )
+                    if comparable
+                    else None
+                ),
+                "orientation_agreement_event_weighted": (
+                    fmean(
+                        row.same_orientation_count / row.comparable_donors
+                        for row in events_with_coverage
+                    )
+                    if events_with_coverage
+                    else None
+                ),
+            }
+        )
+    return (
+        comparisons,
+        event_horizons,
+        {
+            "status": "descriptive_political_comparability_only",
+            "by_horizon": summary,
+            "n_unique_treated_countries": len({row.country for row in comparisons}),
+            "n_baseline_reforms": len(groups),
+            "n_initial_pairs": len(comparisons),
+            "comparison_definition": (
+                "Use t-5 through t-1 only; require all three DPI prehistories. "
+                "Treat executive orientation and EIEC as discrete; CHECKS as an index."
             ),
-            "same_orientation_all_five_years": sum(
-                row.same_orientation_all_five_years is True for row in comparable
-            ),
-            "same_eiec_at_t_minus_1": sum(
-                row.same_eiec_t_minus_1 is True for row in comparable
-            ),
-            "mean_abs_checks_index_gap_pair_weighted": (
-                fmean(float(row.abs_checks_five_year_mean_gap) for row in comparable)
-                if comparable else None
-            ),
-            "orientation_agreement_event_weighted": (
-                fmean(
-                    row.same_orientation_count / row.comparable_donors
-                    for row in events_with_coverage
-                )
-                if events_with_coverage else None
-            ),
-        })
-    return comparisons, event_horizons, {
-        "status": "descriptive_political_comparability_only",
-        "by_horizon": summary,
-        "n_unique_treated_countries": len({row.country for row in comparisons}),
-        "n_baseline_reforms": len(groups),
-        "n_initial_pairs": len(comparisons),
-        "comparison_definition": (
-            "Use t-5 through t-1 only; require all three DPI prehistories. "
-            "Treat executive orientation and EIEC as discrete; CHECKS as an index."
-        ),
-        "limitations": [
-            "Donor-event pairs reuse the same countries and are not independent.",
-            "Future donor reform exclusions are inherited, not newly justified.",
-            "Completeness restriction reduces the descriptive comparison sample.",
-            "DPI electoral competitiveness can be nearly constant in OECD democracies.",
-            "Agreement on politics does not establish exchangeability or causality.",
-            "Only two of twenty reforms had joint WDI donor-hull support at year five.",
-        ],
-        "inference": "none; no p-values, ATT, causal weights or confidence intervals",
-    }
+            "limitations": [
+                "Donor-event pairs reuse the same countries and are not independent.",
+                "Future donor reform exclusions are inherited, not newly justified.",
+                "Completeness restriction reduces the descriptive comparison sample.",
+                "DPI electoral competitiveness can be nearly constant in OECD democracies.",
+                "Agreement on politics does not establish exchangeability or causality.",
+                "Only two of twenty reforms had joint WDI donor-hull support at year five.",
+            ],
+            "inference": "none; no p-values, ATT, causal weights or confidence intervals",
+        },
+    )
 
 
 def save_comparability(
@@ -345,9 +376,11 @@ def save_comparability(
         raise ValueError("Political comparability does not match prior donor risk sets")
     for horizon in report["by_horizon"]:
         expected = (
-            prior["n_pre_censor_donor_pairs"] if horizon["horizon"] == -1
+            prior["n_pre_censor_donor_pairs"]
+            if horizon["horizon"] == -1
             else prior["n_horizon_five_donor_pairs"]
-            if horizon["horizon"] == MAX_HORIZON else None
+            if horizon["horizon"] == MAX_HORIZON
+            else None
         )
         if expected is not None and horizon["donor_pairs_at_risk"] != expected:
             raise ValueError("Censoring changed inherited donor risk sets")
@@ -361,9 +394,7 @@ def save_comparability(
         "donor_exposures_sha256": hashlib.sha256(
             donor_exposures.read_bytes()
         ).hexdigest(),
-        "source_audit_sha256": hashlib.sha256(
-            source_audit.read_bytes()
-        ).hexdigest(),
+        "source_audit_sha256": hashlib.sha256(source_audit.read_bytes()).hexdigest(),
         "license": "DPI2023 CC BY 4.0 — Cruz et al., DOI 10.60966/8tx1xs4i",
     }
     directory.mkdir(parents=True, exist_ok=True)
@@ -371,9 +402,7 @@ def save_comparability(
         ("political_comparability_pairs.csv", comparisons, PairComparison),
         ("political_comparability_event_horizons.csv", horizons, EventHorizon),
     ):
-        with (directory / filename).open(
-            "w", encoding="utf-8", newline=""
-        ) as handle:
+        with (directory / filename).open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(
                 handle, fieldnames=list(row_type.__dataclass_fields__)
             )
