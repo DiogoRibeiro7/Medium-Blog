@@ -102,15 +102,24 @@ def drive(key: str, file_id: str, sheet: bool, raw: Path) -> bool:
         if status != 200 or not body:
             continue
         if is_html(body):
-            # a confirmation page for large files: follow its form if there is one
-            m = re.search(rb'name="uuid" value="([^"]+)"', body)
-            if m:
-                url2 = (f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
-                        f"&confirm=t&uuid={m.group(1).decode()}")
-                status, body, headers = get(url2)
-                if status != 200 or is_html(body):
-                    continue
-            else:
+            # keep the page for diagnosis, then follow a confirmation form or a download link in it
+            (raw / "html").mkdir(parents=True, exist_ok=True)
+            (raw / "html" / f"{key}_{len(urls)}_{urls.index(url)}.html").write_bytes(body)
+            text = body.decode("utf-8", "replace").replace("\\u003d", "=").replace("\\u0026", "&")
+            inputs = dict(re.findall(r'name="([a-z_]+)" value="([^"]*)"', text))
+            links = re.findall(r'https://drive\.usercontent\.google\.com/download\?[^"\'\s<>]+', text)
+            followed = False
+            candidates = []
+            if "uuid" in inputs or "confirm" in inputs:
+                q = "&".join(f"{k}={v}" for k, v in inputs.items() if k in ("id", "export", "confirm", "uuid", "at"))
+                candidates.append("https://drive.usercontent.google.com/download?" + (q or f"id={file_id}&export=download"))
+            candidates += links[:3]
+            for url2 in candidates:
+                status, body, headers = get(url2.replace("&amp;", "&"))
+                if status == 200 and body and not is_html(body):
+                    followed = True
+                    break
+            if not followed:
                 continue
         name = original_name(headers)
         path = raw / f"{key}{extension(body, headers)}"
