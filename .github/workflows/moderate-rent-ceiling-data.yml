@@ -50,7 +50,7 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Refresh INE snapshot for moderate-rent-ceiling ($(date -u +%Y-%m-%d))"
-            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
             git push
           fi
 
