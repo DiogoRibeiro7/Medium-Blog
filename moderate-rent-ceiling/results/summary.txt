@@ -1,0 +1,108 @@
+# Where the EUR 2,300 moderate-rent ceiling sat against real rents, 2017-2025
+Ceiling EUR 2,300 a month (2.5 x the 2026 minimum wage of EUR 920); rule ceiling by year 2017 EUR 1,392.5, 2018 EUR 1,450.0, 2019 EUR 1,500.0, 2020 EUR 1,587.5, 2021 EUR 1,662.5, 2022 EUR 1,762.5, 2023 EUR 1,900.0, 2024 EUR 2,050.0, 2025 EUR 2,175.0, 2026 EUR 2,300.0
+
+## 1. Floor area a new lease needed to reach the ceiling
+Portugal 2020: rent per m2 Q1 3.73, median 5.79, Q3 8.72; floor area to reach EUR 2,300: 617 / 397 / 264 m2; to reach the rule ceiling of that year (EUR 1,587.5): 274 m2 at the median, 182 at Q3
+Portugal 2025: rent per m2 Q1 5.78, median 9.29, Q3 13.87; floor area to reach EUR 2,300: 398 / 248 / 166 m2; to reach the rule ceiling of that year (EUR 2,175.0): 234 m2 at the median, 157 at Q3
+2020: 222 municipalities with quartiles; lease-weighted median of the Q3 floor area 294 m2 (10th percentile 160); Q3 area below 100 m2 in 0, below 120 m2 in 0, below 150 m2 in 0; median area below 150 m2 in 0
+2021: 227 municipalities with quartiles; lease-weighted median of the Q3 floor area 273 m2 (10th percentile 164); Q3 area below 100 m2 in 0, below 120 m2 in 0, below 150 m2 in 0; median area below 150 m2 in 0
+2022: 229 municipalities with quartiles; lease-weighted median of the Q3 floor area 243 m2 (10th percentile 138); Q3 area below 100 m2 in 0, below 120 m2 in 0, below 150 m2 in 2; median area below 150 m2 in 0
+2023: 241 municipalities with quartiles; lease-weighted median of the Q3 floor area 212 m2 (10th percentile 114); Q3 area below 100 m2 in 0, below 120 m2 in 2, below 150 m2 in 4; median area below 150 m2 in 1
+2024: 244 municipalities with quartiles; lease-weighted median of the Q3 floor area 195 m2 (10th percentile 110); Q3 area below 100 m2 in 0, below 120 m2 in 2, below 150 m2 in 7; median area below 150 m2 in 2
+2025: 247 municipalities with quartiles; lease-weighted median of the Q3 floor area 181 m2 (10th percentile 108); Q3 area below 100 m2 in 0, below 120 m2 in 2, below 150 m2 in 11; median area below 150 m2 in 2
+2025, municipalities where Q3 needs less than 150 m2: Lisboa 108 (median 136); Cascais 110 (median 142); Oeiras 123 (median 153); Porto 127 (median 163); Funchal 134 (median 174); Sines 136 (median 178); Loulé 140 (median 192); Lagos 141 (median 186); Almada 142 (median 177); Amadora 144 (median 180); Matosinhos 144 (median 190)
+Census 2021, rented homes of 100 m2 or more: Portugal 23.8%; 120 m2 or more 10.8%; 150 m2 or more 4.3%
+  Lisboa 2025: Q1/median/Q3 13.11/16.88/21.29 EUR/m2; area to EUR 2,300 175/136/108 m2; rented homes >=100 m2 18.5%, >=120 9.3%, >=150 3.8%
+  Cascais 2025: Q1/median/Q3 11.78/16.20/20.88 EUR/m2; area to EUR 2,300 195/142/110 m2; rented homes >=100 m2 24.1%, >=120 12.8%, >=150 6.2%
+  Oeiras 2025: Q1/median/Q3 11.90/15.03/18.73 EUR/m2; area to EUR 2,300 193/153/123 m2; rented homes >=100 m2 17.6%, >=120 8.1%, >=150 3.1%
+  Porto 2025: Q1/median/Q3 10.61/14.13/18.18 EUR/m2; area to EUR 2,300 217/163/127 m2; rented homes >=100 m2 18.5%, >=120 8.8%, >=150 3.8%
+  Funchal 2025: Q1/median/Q3 9.26/13.20/17.14 EUR/m2; area to EUR 2,300 248/174/134 m2; rented homes >=100 m2 23.2%, >=120 10.2%, >=150 4.2%
+  Almada 2025: Q1/median/Q3 9.58/12.98/16.24 EUR/m2; area to EUR 2,300 240/177/142 m2; rented homes >=100 m2 13.2%, >=120 5.2%, >=150 2.1%
+  Sintra 2025: Q1/median/Q3 8.29/11.07/13.85 EUR/m2; area to EUR 2,300 277/208/166 m2; rented homes >=100 m2 15.5%, >=120 6.5%, >=150 2.7%
+  Braga 2025: Q1/median/Q3 6.53/8.38/10.73 EUR/m2; area to EUR 2,300 352/274/214 m2; rented homes >=100 m2 40.5%, >=120 19.6%, >=150 5.8%
+  Coimbra 2025: Q1/median/Q3 6.62/9.18/11.67 EUR/m2; area to EUR 2,300 347/251/197 m2; rented homes >=100 m2 23.9%, >=120 10.8%, >=150 3.9%
+
+## 2. Modelled share of new leases with a monthly rent above the ceiling
+Elasticity of rent per m2 with respect to floor area, INE medians by dwelling type, municipalities over 100,000 inhabitants, 2020-2025: -0.427 (s.e. 0.031)
+2020: municipalities 220, covering 98.6% of new leases; share above EUR 2,300: main 0.06%, beta0 0.74%, beta_lo 0.02%, beta_hi 0.11%, area90 0.03%, area110 0.11%, sigma120 0.19%
+      above the rule ceiling of 2020 (EUR 1,587.5): 0.66%; above EUR 1,000: 6.1%; above EUR 1,500: 0.9%; leases above EUR 2,300 (main): 69
+2021: municipalities 224, covering 98.8% of new leases; share above EUR 2,300: main 0.05%, beta0 0.78%, beta_lo 0.02%, beta_hi 0.10%, area90 0.02%, area110 0.10%, sigma120 0.17%
+      above the rule ceiling of 2021 (EUR 1,662.5): 0.47%; above EUR 1,000: 6.4%; above EUR 1,500: 0.9%; leases above EUR 2,300 (main): 66
+2022: municipalities 225, covering 98.7% of new leases; share above EUR 2,300: main 0.25%, beta0 1.46%, beta_lo 0.14%, beta_hi 0.37%, area90 0.13%, area110 0.43%, sigma120 0.61%
+      above the rule ceiling of 2022 (EUR 1,762.5): 1.08%; above EUR 1,000: 10.9%; above EUR 1,500: 2.3%; leases above EUR 2,300 (main): 338
+2023: municipalities 237, covering 98.9% of new leases; share above EUR 2,300: main 0.93%, beta0 2.77%, beta_lo 0.70%, beta_hi 1.17%, area90 0.56%, area110 1.42%, sigma120 1.78%
+      above the rule ceiling of 2023 (EUR 1,900.0): 2.13%; above EUR 1,000: 17.3%; above EUR 1,500: 5.2%; leases above EUR 2,300 (main): 1,279
+2024: municipalities 239, covering 98.8% of new leases; share above EUR 2,300: main 1.05%, beta0 3.35%, beta_lo 0.76%, beta_hi 1.36%, area90 0.61%, area110 1.66%, sigma120 2.04%
+      above the rule ceiling of 2024 (EUR 2,050.0): 1.82%; above EUR 1,000: 21.7%; above EUR 1,500: 6.5%; leases above EUR 2,300 (main): 1,475
+2025: municipalities 245, covering 99.0% of new leases; share above EUR 2,300: main 1.08%, beta0 3.80%, beta_lo 0.74%, beta_hi 1.45%, area90 0.61%, area110 1.76%, sigma120 2.14%
+      above the rule ceiling of 2025 (EUR 2,175.0): 1.45%; above EUR 1,000: 25.6%; above EUR 1,500: 7.5%; leases above EUR 2,300 (main): 1,604
+2025, municipalities with most modelled leases above EUR 2,300: Lisboa 3.7% (642); Cascais 6.8% (278); Porto 1.8% (132); Loulé 3.4% (55); Oeiras 1.5% (47); Matosinhos 1.4% (39); Funchal 2.9% (33); Almada 0.8% (25)
+2025, share of those leases in Lisboa, Cascais and Oeiras: 60.3%; municipalities with a modelled share below 1%: 223 of 245, below 0.1%: 151
+National distribution of monthly rents of new leases (model, main elasticity):
+2020: modelled monthly rent of new leases: P25 EUR 299, median 436, P75 631, P90 870, P95 1,049, P99 1,474; EUR 2,300 at percentile 99.94, the rule ceiling at 99.34; EUR 2,300 = 5.3 x the median
+2021: modelled monthly rent of new leases: P25 EUR 323, median 467, P75 662, P90 892, P95 1,062, P99 1,465; EUR 2,300 at percentile 99.95, the rule ceiling at 99.53; EUR 2,300 = 4.9 x the median
+2022: modelled monthly rent of new leases: P25 EUR 347, median 512, P75 741, P90 1,028, P95 1,249, P99 1,788; EUR 2,300 at percentile 99.75, the rule ceiling at 98.92; EUR 2,300 = 4.5 x the median
+2023: modelled monthly rent of new leases: P25 EUR 380, median 573, P75 853, P90 1,222, P95 1,515, P99 2,261; EUR 2,300 at percentile 99.07, the rule ceiling at 97.87; EUR 2,300 = 4.0 x the median
+2024: modelled monthly rent of new leases: P25 EUR 425, median 639, P75 940, P90 1,318, P95 1,608, P99 2,323; EUR 2,300 at percentile 98.95, the rule ceiling at 98.18; EUR 2,300 = 3.6 x the median
+2025: modelled monthly rent of new leases: P25 EUR 469, median 698, P75 1,009, P90 1,382, P95 1,661, P99 2,335; EUR 2,300 at percentile 98.92, the rule ceiling at 98.55; EUR 2,300 = 3.3 x the median
+
+## 2b. Log-normal tail check on the Census 2021 rent distribution (rented homes, Portugal)
+  log-normal through the 25% and 75% quantiles (EUR 165, 436): share at or above EUR 650 fitted 10.9%, Census 8.5%
+  log-normal through the 25% and 75% quantiles (EUR 165, 436): share at or above EUR 1,000 fitted 3.4%, Census 2.2%
+  log-normal through the 50% and 90% quantiles (EUR 298, 622): share at or above EUR 650 fitted 8.7%, Census 8.5%
+  log-normal through the 50% and 90% quantiles (EUR 298, 622): share at or above EUR 1,000 fitted 1.8%, Census 2.2%
+
+## 3. The ceiling against the declared incomes of fiscal households
+Portugal 2018: median gross declared income per fiscal household EUR 12,015 (EUR 1,001 a month); twelve months at EUR 2,300 = 230% of it; at the rule ceiling of 2018 (EUR 1,450): 145%; rent at a 35% burden: EUR 350 a month
+Portugal 2024: median gross declared income per fiscal household EUR 15,573 (EUR 1,298 a month); twelve months at EUR 2,300 = 177% of it; at the rule ceiling of 2024 (EUR 2,050): 158%; rent at a 35% burden: EUR 454 a month
+Portugal 2024 quintile boundaries (gross, fiscal households): P20 9,010, P40 12,957, P60 19,374, P80 32,144; EUR 2,300 a month = 86% of P80 income; the government's reference household (EUR 5,750 a month, EUR 69,000 a year) = 2.15 x P80
+2024, 299 municipalities: twelve months at EUR 2,300 exceed the median household's gross income in 299; the smallest ratio is 1.27 (Oeiras), the largest 2.62 (Odemira)
+2024, 299 municipalities with quintiles: EUR 27,600 a year exceeds the gross income at P80 in 141; the highest P80 is EUR 50,197 (Oeiras); the reference household's EUR 69,000 exceeds P80 in 299 of 299
+  Lisboa 2024: median EUR 17,692, P80 EUR 45,841; rent at 35% of the median EUR 516, at 35% of P80 EUR 1,337; ceiling = 1.56 x median income
+  Cascais 2024: median EUR 18,245, P80 EUR 43,218; rent at 35% of the median EUR 532, at 35% of P80 EUR 1,261; ceiling = 1.51 x median income
+  Oeiras 2024: median EUR 21,700, P80 EUR 50,197; rent at 35% of the median EUR 633, at 35% of P80 EUR 1,464; ceiling = 1.27 x median income
+  Porto 2024: median EUR 15,523, P80 EUR 39,551; rent at 35% of the median EUR 453, at 35% of P80 EUR 1,154; ceiling = 1.78 x median income
+  Funchal 2024: median EUR 16,270, P80 EUR 35,878; rent at 35% of the median EUR 475, at 35% of P80 EUR 1,046; ceiling = 1.70 x median income
+  Almada 2024: median EUR 16,298, P80 EUR 35,689; rent at 35% of the median EUR 475, at 35% of P80 EUR 1,041; ceiling = 1.69 x median income
+  Sintra 2024: median EUR 15,293, P80 EUR 31,505; rent at 35% of the median EUR 446, at 35% of P80 EUR 919; ceiling = 1.80 x median income
+  Braga 2024: median EUR 17,086, P80 EUR 35,602; rent at 35% of the median EUR 498, at 35% of P80 EUR 1,038; ceiling = 1.62 x median income
+  Coimbra 2024: median EUR 19,044, P80 EUR 43,029; rent at 35% of the median EUR 555, at 35% of P80 EUR 1,255; ceiling = 1.45 x median income
+
+## 4. The ceiling and rents over time, 2017-2025
+Portugal, median rent per m2, 2026 methodology over 2021 methodology: 2020 1.032, 2021 1.045, 2022 1.055, 2023 1.057
+2017: median EUR 4.53/m2 (spliced); rule ceiling EUR 1,392.5 buys 307 m2, EUR 2,300 buys 508 m2; an 80 m2 home at the median costs EUR 362 = 26% of the rule ceiling
+2018: median EUR 4.95/m2 (spliced); rule ceiling EUR 1,450.0 buys 293 m2, EUR 2,300 buys 464 m2; an 80 m2 home at the median costs EUR 396 = 27% of the rule ceiling
+2019: median EUR 5.49/m2 (spliced); rule ceiling EUR 1,500.0 buys 273 m2, EUR 2,300 buys 419 m2; an 80 m2 home at the median costs EUR 439 = 29% of the rule ceiling
+2020: median EUR 5.79/m2; rule ceiling EUR 1,587.5 buys 274 m2, EUR 2,300 buys 397 m2; an 80 m2 home at the median costs EUR 463 = 29% of the rule ceiling
+2021: median EUR 6.31/m2; rule ceiling EUR 1,662.5 buys 263 m2, EUR 2,300 buys 365 m2; an 80 m2 home at the median costs EUR 505 = 30% of the rule ceiling
+2022: median EUR 6.88/m2; rule ceiling EUR 1,762.5 buys 256 m2, EUR 2,300 buys 334 m2; an 80 m2 home at the median costs EUR 550 = 31% of the rule ceiling
+2023: median EUR 7.62/m2; rule ceiling EUR 1,900.0 buys 249 m2, EUR 2,300 buys 302 m2; an 80 m2 home at the median costs EUR 610 = 32% of the rule ceiling
+2024: median EUR 8.47/m2; rule ceiling EUR 2,050.0 buys 242 m2, EUR 2,300 buys 272 m2; an 80 m2 home at the median costs EUR 678 = 33% of the rule ceiling
+2025: median EUR 9.29/m2; rule ceiling EUR 2,175.0 buys 234 m2, EUR 2,300 buys 248 m2; an 80 m2 home at the median costs EUR 743 = 34% of the rule ceiling
+2017 to 2025: median rent per m2 x2.05; rule ceiling x1.56; (2017 to 2026 rule ceiling x1.65)
+Municipal splice ratios in 2020 (199 municipalities): median 1.000, interquartile range 0.984 to 1.030
+  2017: 187 municipalities; lease-weighted median of m2 bought by the rule ceiling 301, by EUR 2,300 496; smallest 144 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.368
+  2018: 192 municipalities; lease-weighted median of m2 bought by the rule ceiling 277, by EUR 2,300 440; smallest 129 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.409
+  2019: 187 municipalities; lease-weighted median of m2 bought by the rule ceiling 249, by EUR 2,300 382; smallest 125 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.425
+  2020: 220 municipalities; lease-weighted median of m2 bought by the rule ceiling 260, by EUR 2,300 376; smallest 138 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.420
+  2021: 224 municipalities; lease-weighted median of m2 bought by the rule ceiling 244, by EUR 2,300 338; smallest 147 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.405
+  2022: 225 municipalities; lease-weighted median of m2 bought by the rule ceiling 235, by EUR 2,300 307; smallest 136 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.423
+  2023: 237 municipalities; lease-weighted median of m2 bought by the rule ceiling 235, by EUR 2,300 285; smallest 124 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.436
+  2024: 239 municipalities; lease-weighted median of m2 bought by the rule ceiling 228, by EUR 2,300 256; smallest 126 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.424
+  2025: 245 municipalities; lease-weighted median of m2 bought by the rule ceiling 225, by EUR 2,300 238; smallest 129 (Lisboa); municipalities where the rule ceiling buys under 120 m2: 0; lease-weighted s.d. of log median rent 0.410
+Rank correlation of municipal median rent per m2, 2017 and 2025: 0.901 (191 municipalities); median growth x1.97, interquartile x1.74 to x2.11; rule ceiling x1.56; municipalities where rents grew faster than the rule: 174 of 191
+
+## 5. Monthly rent at the median rent per m2, by dwelling type, 2025 (municipalities over 100,000)
+Typical floor area used (Census 2021 median by rooms): T0 ou T1 39 m2, T2 62 m2, T3 86 m2, T4 ou mais 122 m2
+  Portugal: T0 ou T1 EUR 478, T2 EUR 574, T3 EUR 619, T4 ou mais EUR 739
+  Lisboa: T0 ou T1 EUR 785, T2 EUR 1,038, T3 EUR 1,341, T4 ou mais EUR 1,691
+  Cascais: T0 ou T1 EUR 697, T2 EUR 985, T3 EUR 1,321, T4 ou mais EUR 1,808
+  Oeiras: T0 ou T1 EUR 699, T2 EUR 902, T3 EUR 1,173, T4 ou mais EUR 1,513
+  Porto: T0 ou T1 EUR 637, T2 EUR 770, T3 EUR 949, T4 ou mais EUR 1,108
+  Funchal: T0 ou T1 EUR 599, T2 EUR 796, T3 EUR 918
+  Almada: T0 ou T1 EUR 618, T2 EUR 809, T3 EUR 961, T4 ou mais EUR 1,309
+  Sintra: T0 ou T1 EUR 478, T2 EUR 683, T3 EUR 879, T4 ou mais EUR 1,070
+  Braga: T0 ou T1 EUR 426, T2 EUR 512, T3 EUR 613, T4 ou mais EUR 798
+  Coimbra: T0 ou T1 EUR 445, T2 EUR 564, T3 EUR 636, T4 ou mais EUR 667
+Highest typical monthly rent of any type in any of these municipalities in 2025: EUR 1,808 (T4 ou mais, Cascais) = 79% of the ceiling
+

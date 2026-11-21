@@ -333,6 +333,7 @@ Housing supply, prices and affordability.
 - [`housing-losses-inflation/`](housing-losses-inflation/) — Housing losses and inflation: how much of the loss never shows in the price
 - [`housing-supply-counterfactual/`](housing-supply-counterfactual/) — Construction, House Prices and the Missing Counterfactual
 - [`housing-vacancy-tax/`](housing-vacancy-tax/) — Empty homes and the state's bargaining power: Portugal vacancy tax
+- [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — The EUR 2,300 moderate-rent ceiling against the rents of new leases and local incomes, Portugal 2017–2025
 - [`portugal-building-ecosystem/`](portugal-building-ecosystem/) — Who builds Portugal's houses? The housebuilding sector measured layer by layer
 - [`portugal-housing-generations/`](portugal-housing-generations/) — Portugal's housing market, 2008–2025 (moved to its own repository)
 - [`uk-repeat-sales-rigidity/`](uk-repeat-sales-rigidity/) — Do sellers refuse nominal losses? Repeat sales in England and Wales, 1995–2026

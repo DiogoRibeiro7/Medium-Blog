@@ -1,0 +1,1300 @@
+[ {
+  "IndicadorCod" : "0014697",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2026 - N.º) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0014697&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:16:09.477Z",
+  "DataUltimoAtualizacao" : "2026-09-29",
+  "UltimoPref" : "2025",
+  "Dados" : {
+    "2020" : [ {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "72",
+      "valor" : "72"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "78",
+      "valor" : "78"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "87",
+      "valor" : "87"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "99",
+      "valor" : "99"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "102",
+      "valor" : "102"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "131",
+      "valor" : "131"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "144",
+      "valor" : "144"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "155",
+      "valor" : "155"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "210",
+      "valor" : "210"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "214",
+      "valor" : "214"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "281",
+      "valor" : "281"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "312",
+      "valor" : "312"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "344",
+      "valor" : "344"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "566",
+      "valor" : "566"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "741",
+      "valor" : "741"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "878",
+      "valor" : "878"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 070",
+      "valor" : "1070"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 714",
+      "valor" : "1714"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 271",
+      "valor" : "4271"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "9 056",
+      "valor" : "9056"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "52",
+      "valor" : "52"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "54",
+      "valor" : "54"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "73",
+      "valor" : "73"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "92",
+      "valor" : "92"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "93",
+      "valor" : "93"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "103",
+      "valor" : "103"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "143",
+      "valor" : "143"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "149",
+      "valor" : "149"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "149",
+      "valor" : "149"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "157",
+      "valor" : "157"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "216",
+      "valor" : "216"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "239",
+      "valor" : "239"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "272",
+      "valor" : "272"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "272",
+      "valor" : "272"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "345",
+      "valor" : "345"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "607",
+      "valor" : "607"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "724",
+      "valor" : "724"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "931",
+      "valor" : "931"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 025",
+      "valor" : "1025"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 663",
+      "valor" : "1663"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 318",
+      "valor" : "4318"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "9 204",
+      "valor" : "9204"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "55",
+      "valor" : "55"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "59",
+      "valor" : "59"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "67",
+      "valor" : "67"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "70",
+      "valor" : "70"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "101",
+      "valor" : "101"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "102",
+      "valor" : "102"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "124",
+      "valor" : "124"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "147",
+      "valor" : "147"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "158",
+      "valor" : "158"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "210",
+      "valor" : "210"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "269",
+      "valor" : "269"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "286",
+      "valor" : "286"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "319",
+      "valor" : "319"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "348",
+      "valor" : "348"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "606",
+      "valor" : "606"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "743",
+      "valor" : "743"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "1 038",
+      "valor" : "1038"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 101",
+      "valor" : "1101"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 652",
+      "valor" : "1652"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 523",
+      "valor" : "4523"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "9 709",
+      "valor" : "9709"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "55",
+      "valor" : "55"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "59",
+      "valor" : "59"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "83",
+      "valor" : "83"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "93",
+      "valor" : "93"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "109",
+      "valor" : "109"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "132",
+      "valor" : "132"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "151",
+      "valor" : "151"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "165",
+      "valor" : "165"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "184",
+      "valor" : "184"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "190",
+      "valor" : "190"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "196",
+      "valor" : "196"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "259",
+      "valor" : "259"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "324",
+      "valor" : "324"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "347",
+      "valor" : "347"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "390",
+      "valor" : "390"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "643",
+      "valor" : "643"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "787",
+      "valor" : "787"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "1 020",
+      "valor" : "1020"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 252",
+      "valor" : "1252"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 801",
+      "valor" : "1801"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 751",
+      "valor" : "4751"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "9 828",
+      "valor" : "9828"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "65",
+      "valor" : "65"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "69",
+      "valor" : "69"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "80",
+      "valor" : "80"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "88",
+      "valor" : "88"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "134",
+      "valor" : "134"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "138",
+      "valor" : "138"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "180",
+      "valor" : "180"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "185",
+      "valor" : "185"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "192",
+      "valor" : "192"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "238",
+      "valor" : "238"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "306",
+      "valor" : "306"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "308",
+      "valor" : "308"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "322",
+      "valor" : "322"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "384",
+      "valor" : "384"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "662",
+      "valor" : "662"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "764",
+      "valor" : "764"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "971",
+      "valor" : "971"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 201",
+      "valor" : "1201"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 791",
+      "valor" : "1791"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 816",
+      "valor" : "4816"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "9 951",
+      "valor" : "9951"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2025" : [ {
+      "geocod" : "1C40707",
+      "geodsg" : "Mora",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "1C40713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "1C31202",
+      "geodsg" : "Arronches",
+      "ind_string" : "38",
+      "valor" : "38"
+    }, {
+      "geocod" : "1C31210",
+      "geodsg" : "Marvão",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1C31215",
+      "geodsg" : "Sousel",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "1C40710",
+      "geodsg" : "Redondo",
+      "ind_string" : "51",
+      "valor" : "51"
+    }, {
+      "geocod" : "1C40703",
+      "geodsg" : "Borba",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "1C40702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "66",
+      "valor" : "66"
+    }, {
+      "geocod" : "1C40714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "74",
+      "valor" : "74"
+    }, {
+      "geocod" : "1C40711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "89",
+      "valor" : "89"
+    }, {
+      "geocod" : "1C31204",
+      "geodsg" : "Campo Maior",
+      "ind_string" : "104",
+      "valor" : "104"
+    }, {
+      "geocod" : "1C40712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "135",
+      "valor" : "135"
+    }, {
+      "geocod" : "1D11012",
+      "geodsg" : "Óbidos",
+      "ind_string" : "146",
+      "valor" : "146"
+    }, {
+      "geocod" : "1C31213",
+      "geodsg" : "Ponte de Sor",
+      "ind_string" : "174",
+      "valor" : "174"
+    }, {
+      "geocod" : "1C40704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "195",
+      "valor" : "195"
+    }, {
+      "geocod" : "1D11005",
+      "geodsg" : "Bombarral",
+      "ind_string" : "195",
+      "valor" : "195"
+    }, {
+      "geocod" : "1C40706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "236",
+      "valor" : "236"
+    }, {
+      "geocod" : "1C31207",
+      "geodsg" : "Elvas",
+      "ind_string" : "280",
+      "valor" : "280"
+    }, {
+      "geocod" : "1C31214",
+      "geodsg" : "Portalegre",
+      "ind_string" : "326",
+      "valor" : "326"
+    }, {
+      "geocod" : "1D11011",
+      "geodsg" : "Nazaré",
+      "ind_string" : "346",
+      "valor" : "346"
+    }, {
+      "geocod" : "1D11014",
+      "geodsg" : "Peniche",
+      "ind_string" : "405",
+      "valor" : "405"
+    }, {
+      "geocod" : "1D11001",
+      "geodsg" : "Alcobaça",
+      "ind_string" : "662",
+      "valor" : "662"
+    }, {
+      "geocod" : "1C40705",
+      "geodsg" : "Évora",
+      "ind_string" : "830",
+      "valor" : "830"
+    }, {
+      "geocod" : "1D11006",
+      "geodsg" : "Caldas da Rainha",
+      "ind_string" : "1 055",
+      "valor" : "1055"
+    }, {
+      "geocod" : "1C3",
+      "geodsg" : "Alto Alentejo",
+      "ind_string" : "1 192",
+      "valor" : "1192"
+    }, {
+      "geocod" : "1C4",
+      "geodsg" : "Alentejo Central",
+      "ind_string" : "1 872",
+      "valor" : "1872"
+    }, {
+      "geocod" : "1D1",
+      "geodsg" : "Oeste",
+      "ind_string" : "4 958",
+      "valor" : "4958"
+    }, {
+      "geocod" : "1D",
+      "geodsg" : "Oeste e Vale do Tejo",
+      "ind_string" : "10 256",
+      "valor" : "10256"
+    }, {
+      "geocod" : "1C20214",
+      "geodsg" : "Vidigueira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31201",
+      "geodsg" : "Alter do Chão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31203",
+      "geodsg" : "Avis",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31205",
+      "geodsg" : "Castelo de Vide",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31206",
+      "geodsg" : "Crato",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31208",
+      "geodsg" : "Fronteira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31209",
+      "geodsg" : "Gavião",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31211",
+      "geodsg" : "Monforte",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C31212",
+      "geodsg" : "Nisa",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40701",
+      "geodsg" : "Alandroal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40708",
+      "geodsg" : "Mourão",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1C40709",
+      "geodsg" : "Portel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

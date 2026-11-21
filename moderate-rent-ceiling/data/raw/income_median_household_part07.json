@@ -1,0 +1,1422 @@
+[ {
+  "IndicadorCod" : "0012712",
+  "IndicadorDsg" : "Valor mediano do rendimento bruto declarado por agregado fiscal (€) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012712&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:27:20.967Z",
+  "DataUltimoAtualizacao" : "2026-07-24",
+  "UltimoPref" : "2024",
+  "Dados" : {
+    "2018" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "9 024",
+      "valor" : "9024"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "9 183",
+      "valor" : "9183"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "9 265",
+      "valor" : "9265"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "10 009",
+      "valor" : "10009"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "10 327",
+      "valor" : "10327"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "10 391",
+      "valor" : "10391"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "10 422",
+      "valor" : "10422"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "10 521",
+      "valor" : "10521"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "10 645",
+      "valor" : "10645"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "10 676",
+      "valor" : "10676"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "10 777",
+      "valor" : "10777"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "10 816",
+      "valor" : "10816"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "10 827",
+      "valor" : "10827"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "10 889",
+      "valor" : "10889"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "10 983",
+      "valor" : "10983"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "11 130",
+      "valor" : "11130"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "11 170",
+      "valor" : "11170"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "11 187",
+      "valor" : "11187"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "11 380",
+      "valor" : "11380"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "11 415",
+      "valor" : "11415"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 432",
+      "valor" : "11432"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 432",
+      "valor" : "11432"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 432",
+      "valor" : "11432"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "11 480",
+      "valor" : "11480"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "11 515",
+      "valor" : "11515"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "11 639",
+      "valor" : "11639"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "11 689",
+      "valor" : "11689"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "11 755",
+      "valor" : "11755"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "11 766",
+      "valor" : "11766"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "11 781",
+      "valor" : "11781"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "12 072",
+      "valor" : "12072"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "12 100",
+      "valor" : "12100"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "12 249",
+      "valor" : "12249"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "12 277",
+      "valor" : "12277"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "12 402",
+      "valor" : "12402"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "12 788",
+      "valor" : "12788"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "13 059",
+      "valor" : "13059"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "13 480",
+      "valor" : "13480"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "14 007",
+      "valor" : "14007"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "15 173",
+      "valor" : "15173"
+    } ],
+    "2019" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "9 541",
+      "valor" : "9541"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "9 778",
+      "valor" : "9778"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "9 904",
+      "valor" : "9904"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "10 484",
+      "valor" : "10484"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "10 738",
+      "valor" : "10738"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "10 900",
+      "valor" : "10900"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "11 044",
+      "valor" : "11044"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "11 105",
+      "valor" : "11105"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "11 139",
+      "valor" : "11139"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "11 165",
+      "valor" : "11165"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "11 182",
+      "valor" : "11182"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "11 267",
+      "valor" : "11267"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "11 404",
+      "valor" : "11404"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "11 405",
+      "valor" : "11405"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "11 406",
+      "valor" : "11406"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "11 635",
+      "valor" : "11635"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "11 760",
+      "valor" : "11760"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "11 807",
+      "valor" : "11807"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "11 878",
+      "valor" : "11878"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 890",
+      "valor" : "11890"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 890",
+      "valor" : "11890"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "11 890",
+      "valor" : "11890"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "11 965",
+      "valor" : "11965"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "12 087",
+      "valor" : "12087"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "12 094",
+      "valor" : "12094"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "12 237",
+      "valor" : "12237"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "12 266",
+      "valor" : "12266"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "12 279",
+      "valor" : "12279"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "12 398",
+      "valor" : "12398"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "12 439",
+      "valor" : "12439"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "12 514",
+      "valor" : "12514"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "12 784",
+      "valor" : "12784"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "12 804",
+      "valor" : "12804"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "12 818",
+      "valor" : "12818"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "12 917",
+      "valor" : "12917"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "13 282",
+      "valor" : "13282"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "13 607",
+      "valor" : "13607"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "14 236",
+      "valor" : "14236"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "14 554",
+      "valor" : "14554"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "15 712",
+      "valor" : "15712"
+    } ],
+    "2020" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "9 844",
+      "valor" : "9844"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "9 999",
+      "valor" : "9999"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "10 133",
+      "valor" : "10133"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "10 826",
+      "valor" : "10826"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "10 986",
+      "valor" : "10986"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "11 163",
+      "valor" : "11163"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "11 218",
+      "valor" : "11218"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "11 332",
+      "valor" : "11332"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "11 366",
+      "valor" : "11366"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "11 400",
+      "valor" : "11400"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "11 419",
+      "valor" : "11419"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "11 436",
+      "valor" : "11436"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "11 500",
+      "valor" : "11500"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "11 563",
+      "valor" : "11563"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "11 660",
+      "valor" : "11660"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "11 746",
+      "valor" : "11746"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "11 969",
+      "valor" : "11969"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "12 027",
+      "valor" : "12027"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "12 148",
+      "valor" : "12148"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "12 150",
+      "valor" : "12150"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 167",
+      "valor" : "12167"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 167",
+      "valor" : "12167"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 167",
+      "valor" : "12167"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "12 284",
+      "valor" : "12284"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "12 325",
+      "valor" : "12325"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "12 430",
+      "valor" : "12430"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "12 466",
+      "valor" : "12466"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "12 567",
+      "valor" : "12567"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "12 572",
+      "valor" : "12572"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "12 676",
+      "valor" : "12676"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "12 727",
+      "valor" : "12727"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "12 903",
+      "valor" : "12903"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "12 990",
+      "valor" : "12990"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "13 136",
+      "valor" : "13136"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "13 178",
+      "valor" : "13178"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "13 200",
+      "valor" : "13200"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "13 740",
+      "valor" : "13740"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "14 569",
+      "valor" : "14569"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "14 613",
+      "valor" : "14613"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "15 807",
+      "valor" : "15807"
+    } ],
+    "2021" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "10 147",
+      "valor" : "10147"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "10 411",
+      "valor" : "10411"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "10 432",
+      "valor" : "10432"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "11 215",
+      "valor" : "11215"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "11 389",
+      "valor" : "11389"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "11 595",
+      "valor" : "11595"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "11 662",
+      "valor" : "11662"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "11 734",
+      "valor" : "11734"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "11 849",
+      "valor" : "11849"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "11 894",
+      "valor" : "11894"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "11 947",
+      "valor" : "11947"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "11 992",
+      "valor" : "11992"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "12 041",
+      "valor" : "12041"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "12 132",
+      "valor" : "12132"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "12 182",
+      "valor" : "12182"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "12 412",
+      "valor" : "12412"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "12 472",
+      "valor" : "12472"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "12 527",
+      "valor" : "12527"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 550",
+      "valor" : "12550"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 550",
+      "valor" : "12550"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "12 550",
+      "valor" : "12550"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "12 581",
+      "valor" : "12581"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "12 706",
+      "valor" : "12706"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "12 759",
+      "valor" : "12759"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "12 760",
+      "valor" : "12760"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "12 866",
+      "valor" : "12866"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "12 925",
+      "valor" : "12925"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "13 228",
+      "valor" : "13228"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "13 232",
+      "valor" : "13232"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "13 248",
+      "valor" : "13248"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "13 394",
+      "valor" : "13394"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "13 426",
+      "valor" : "13426"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "13 583",
+      "valor" : "13583"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "13 616",
+      "valor" : "13616"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "13 650",
+      "valor" : "13650"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "13 981",
+      "valor" : "13981"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "14 185",
+      "valor" : "14185"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "14 944",
+      "valor" : "14944"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "15 135",
+      "valor" : "15135"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "16 096",
+      "valor" : "16096"
+    } ],
+    "2022" : [ {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "10 998",
+      "valor" : "10998"
+    }, {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "11 098",
+      "valor" : "11098"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "11 150",
+      "valor" : "11150"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "12 226",
+      "valor" : "12226"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "12 279",
+      "valor" : "12279"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "12 490",
+      "valor" : "12490"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "12 510",
+      "valor" : "12510"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "12 530",
+      "valor" : "12530"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "12 585",
+      "valor" : "12585"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "12 632",
+      "valor" : "12632"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "12 700",
+      "valor" : "12700"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "12 707",
+      "valor" : "12707"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "12 765",
+      "valor" : "12765"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "12 830",
+      "valor" : "12830"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "12 947",
+      "valor" : "12947"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "13 127",
+      "valor" : "13127"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "13 245",
+      "valor" : "13245"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "13 284",
+      "valor" : "13284"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "13 441",
+      "valor" : "13441"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "13 480",
+      "valor" : "13480"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "13 480",
+      "valor" : "13480"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "13 480",
+      "valor" : "13480"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "13 484",
+      "valor" : "13484"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "13 539",
+      "valor" : "13539"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "13 586",
+      "valor" : "13586"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "13 715",
+      "valor" : "13715"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "13 821",
+      "valor" : "13821"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "13 825",
+      "valor" : "13825"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "13 909",
+      "valor" : "13909"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "14 000",
+      "valor" : "14000"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "14 112",
+      "valor" : "14112"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "14 237",
+      "valor" : "14237"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "14 347",
+      "valor" : "14347"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "14 414",
+      "valor" : "14414"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "14 489",
+      "valor" : "14489"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "14 893",
+      "valor" : "14893"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "15 171",
+      "valor" : "15171"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "16 026",
+      "valor" : "16026"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "16 138",
+      "valor" : "16138"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "16 468",
+      "valor" : "16468"
+    } ],
+    "2023" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "11 895",
+      "valor" : "11895"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "11 936",
+      "valor" : "11936"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "12 218",
+      "valor" : "12218"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "13 001",
+      "valor" : "13001"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "13 163",
+      "valor" : "13163"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "13 168",
+      "valor" : "13168"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "13 342",
+      "valor" : "13342"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "13 343",
+      "valor" : "13343"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "13 361",
+      "valor" : "13361"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "13 364",
+      "valor" : "13364"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "13 409",
+      "valor" : "13409"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "13 553",
+      "valor" : "13553"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "13 606",
+      "valor" : "13606"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "13 695",
+      "valor" : "13695"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "13 747",
+      "valor" : "13747"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "13 914",
+      "valor" : "13914"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "13 935",
+      "valor" : "13935"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "14 056",
+      "valor" : "14056"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "14 260",
+      "valor" : "14260"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "14 275",
+      "valor" : "14275"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "14 297",
+      "valor" : "14297"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "14 337",
+      "valor" : "14337"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "14 421",
+      "valor" : "14421"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "14 490",
+      "valor" : "14490"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "14 508",
+      "valor" : "14508"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "14 508",
+      "valor" : "14508"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "14 508",
+      "valor" : "14508"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "14 540",
+      "valor" : "14540"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "14 595",
+      "valor" : "14595"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "14 836",
+      "valor" : "14836"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "14 900",
+      "valor" : "14900"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "15 201",
+      "valor" : "15201"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "15 248",
+      "valor" : "15248"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "15 435",
+      "valor" : "15435"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "15 449",
+      "valor" : "15449"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "15 892",
+      "valor" : "15892"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "16 137",
+      "valor" : "16137"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "16 990",
+      "valor" : "16990"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "17 011",
+      "valor" : "17011"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "17 360",
+      "valor" : "17360"
+    } ],
+    "2024" : [ {
+      "geocod" : "2004204",
+      "geodsg" : "Povoação",
+      "ind_string" : "12 797",
+      "valor" : "12797"
+    }, {
+      "geocod" : "2004206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "12 996",
+      "valor" : "12996"
+    }, {
+      "geocod" : "2004202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "13 113",
+      "valor" : "13113"
+    }, {
+      "geocod" : "1D21417",
+      "geodsg" : "Sardoal",
+      "ind_string" : "14 066",
+      "valor" : "14066"
+    }, {
+      "geocod" : "1D31414",
+      "geodsg" : "Rio Maior",
+      "ind_string" : "14 083",
+      "valor" : "14083"
+    }, {
+      "geocod" : "1D21413",
+      "geodsg" : "Mação",
+      "ind_string" : "14 251",
+      "valor" : "14251"
+    }, {
+      "geocod" : "2004205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "14 297",
+      "valor" : "14297"
+    }, {
+      "geocod" : "1D21411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "14 407",
+      "valor" : "14407"
+    }, {
+      "geocod" : "2004201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "14 472",
+      "valor" : "14472"
+    }, {
+      "geocod" : "1D21402",
+      "geodsg" : "Alcanena",
+      "ind_string" : "14 506",
+      "valor" : "14506"
+    }, {
+      "geocod" : "1D31407",
+      "geodsg" : "Chamusca",
+      "ind_string" : "14 568",
+      "valor" : "14568"
+    }, {
+      "geocod" : "1D31404",
+      "geodsg" : "Alpiarça",
+      "ind_string" : "14 620",
+      "valor" : "14620"
+    }, {
+      "geocod" : "1D11108",
+      "geodsg" : "Lourinhã",
+      "ind_string" : "14 655",
+      "valor" : "14655"
+    }, {
+      "geocod" : "1D11104",
+      "geodsg" : "Cadaval",
+      "ind_string" : "14 660",
+      "valor" : "14660"
+    }, {
+      "geocod" : "1D31403",
+      "geodsg" : "Almeirim",
+      "ind_string" : "14 752",
+      "valor" : "14752"
+    }, {
+      "geocod" : "1D21421",
+      "geodsg" : "Ourém",
+      "ind_string" : "14 826",
+      "valor" : "14826"
+    }, {
+      "geocod" : "1D11113",
+      "geodsg" : "Torres Vedras",
+      "ind_string" : "14 836",
+      "valor" : "14836"
+    }, {
+      "geocod" : "1D31416",
+      "geodsg" : "Santarém",
+      "ind_string" : "15 083",
+      "valor" : "15083"
+    }, {
+      "geocod" : "1D31409",
+      "geodsg" : "Coruche",
+      "ind_string" : "15 097",
+      "valor" : "15097"
+    }, {
+      "geocod" : "1D21401",
+      "geodsg" : "Abrantes",
+      "ind_string" : "15 275",
+      "valor" : "15275"
+    }, {
+      "geocod" : "1D3",
+      "geodsg" : "Lezíria do Tejo",
+      "ind_string" : "15 300",
+      "valor" : "15300"
+    }, {
+      "geocod" : "1D21418",
+      "geodsg" : "Tomar",
+      "ind_string" : "15 352",
+      "valor" : "15352"
+    }, {
+      "geocod" : "1D2",
+      "geodsg" : "Médio Tejo",
+      "ind_string" : "15 502",
+      "valor" : "15502"
+    }, {
+      "geocod" : "2",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "15 515",
+      "valor" : "15515"
+    }, {
+      "geocod" : "20",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "15 515",
+      "valor" : "15515"
+    }, {
+      "geocod" : "200",
+      "geodsg" : "Região Autónoma dos Açores",
+      "ind_string" : "15 515",
+      "valor" : "15515"
+    }, {
+      "geocod" : "1D31415",
+      "geodsg" : "Salvaterra de Magos",
+      "ind_string" : "15 520",
+      "valor" : "15520"
+    }, {
+      "geocod" : "1D11112",
+      "geodsg" : "Sobral de Monte Agraço",
+      "ind_string" : "15 574",
+      "valor" : "15574"
+    }, {
+      "geocod" : "1D31412",
+      "geodsg" : "Golegã",
+      "ind_string" : "15 709",
+      "valor" : "15709"
+    }, {
+      "geocod" : "1D31103",
+      "geodsg" : "Azambuja",
+      "ind_string" : "15 982",
+      "valor" : "15982"
+    }, {
+      "geocod" : "1D31405",
+      "geodsg" : "Benavente",
+      "ind_string" : "15 983",
+      "valor" : "15983"
+    }, {
+      "geocod" : "1D11101",
+      "geodsg" : "Alenquer",
+      "ind_string" : "16 219",
+      "valor" : "16219"
+    }, {
+      "geocod" : "1D21419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "16 479",
+      "valor" : "16479"
+    }, {
+      "geocod" : "1D31406",
+      "geodsg" : "Cartaxo",
+      "ind_string" : "16 519",
+      "valor" : "16519"
+    }, {
+      "geocod" : "2004101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "16 790",
+      "valor" : "16790"
+    }, {
+      "geocod" : "1D21410",
+      "geodsg" : "Entroncamento",
+      "ind_string" : "17 198",
+      "valor" : "17198"
+    }, {
+      "geocod" : "2004203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "17 236",
+      "valor" : "17236"
+    }, {
+      "geocod" : "1D21408",
+      "geodsg" : "Constância",
+      "ind_string" : "17 639",
+      "valor" : "17639"
+    }, {
+      "geocod" : "1D11102",
+      "geodsg" : "Arruda dos Vinhos",
+      "ind_string" : "18 078",
+      "valor" : "18078"
+    }, {
+      "geocod" : "1D21420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "18 774",
+      "valor" : "18774"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

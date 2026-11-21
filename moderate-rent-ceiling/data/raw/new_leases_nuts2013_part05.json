@@ -1,0 +1,1500 @@
+[ {
+  "IndicadorCod" : "0009632",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2021 - N.º) por Localização geográfica (NUTS - 2013); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0009632&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:06:15.779Z",
+  "DataUltimoAtualizacao" : "2024-03-28",
+  "UltimoPref" : "2023",
+  "Dados" : {
+    "2017" : [ {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "40",
+      "valor" : "40"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "42",
+      "valor" : "42"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "126",
+      "valor" : "126"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "149",
+      "valor" : "149"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "154",
+      "valor" : "154"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "202",
+      "valor" : "202"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "307",
+      "valor" : "307"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "322",
+      "valor" : "322"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "383",
+      "valor" : "383"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "471",
+      "valor" : "471"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "534",
+      "valor" : "534"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "543",
+      "valor" : "543"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "589",
+      "valor" : "589"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "830",
+      "valor" : "830"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "835",
+      "valor" : "835"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "1 170",
+      "valor" : "1170"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 299",
+      "valor" : "1299"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 413",
+      "valor" : "1413"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 659",
+      "valor" : "1659"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 674",
+      "valor" : "1674"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 678",
+      "valor" : "1678"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 863",
+      "valor" : "1863"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "2 025",
+      "valor" : "2025"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "3 516",
+      "valor" : "3516"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "6 980",
+      "valor" : "6980"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "28 305",
+      "valor" : "28305"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "28 305",
+      "valor" : "28305"
+    }, {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2018" : [ {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "48",
+      "valor" : "48"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "48",
+      "valor" : "48"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "90",
+      "valor" : "90"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "125",
+      "valor" : "125"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "150",
+      "valor" : "150"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "225",
+      "valor" : "225"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "292",
+      "valor" : "292"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "306",
+      "valor" : "306"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "410",
+      "valor" : "410"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "430",
+      "valor" : "430"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "498",
+      "valor" : "498"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "511",
+      "valor" : "511"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "517",
+      "valor" : "517"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "670",
+      "valor" : "670"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "726",
+      "valor" : "726"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "997",
+      "valor" : "997"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 220",
+      "valor" : "1220"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 307",
+      "valor" : "1307"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 538",
+      "valor" : "1538"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 562",
+      "valor" : "1562"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 604",
+      "valor" : "1604"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 614",
+      "valor" : "1614"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "1 992",
+      "valor" : "1992"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "3 116",
+      "valor" : "3116"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "6 643",
+      "valor" : "6643"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "25 916",
+      "valor" : "25916"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "25 916",
+      "valor" : "25916"
+    }, {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "30",
+      "valor" : "30"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "56",
+      "valor" : "56"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "87",
+      "valor" : "87"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "108",
+      "valor" : "108"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "116",
+      "valor" : "116"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "224",
+      "valor" : "224"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "270",
+      "valor" : "270"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "285",
+      "valor" : "285"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "401",
+      "valor" : "401"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "422",
+      "valor" : "422"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "476",
+      "valor" : "476"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "492",
+      "valor" : "492"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "508",
+      "valor" : "508"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "613",
+      "valor" : "613"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "702",
+      "valor" : "702"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "854",
+      "valor" : "854"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 118",
+      "valor" : "1118"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 143",
+      "valor" : "1143"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 379",
+      "valor" : "1379"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 415",
+      "valor" : "1415"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 461",
+      "valor" : "1461"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 494",
+      "valor" : "1494"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "1 881",
+      "valor" : "1881"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "2 808",
+      "valor" : "2808"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "6 721",
+      "valor" : "6721"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "24 129",
+      "valor" : "24129"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "24 129",
+      "valor" : "24129"
+    }, {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "31",
+      "valor" : "31"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "36",
+      "valor" : "36"
+    }, {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "43",
+      "valor" : "43"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "62",
+      "valor" : "62"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "112",
+      "valor" : "112"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "114",
+      "valor" : "114"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "118",
+      "valor" : "118"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "212",
+      "valor" : "212"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "277",
+      "valor" : "277"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "302",
+      "valor" : "302"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "419",
+      "valor" : "419"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "449",
+      "valor" : "449"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "449",
+      "valor" : "449"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "476",
+      "valor" : "476"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "592",
+      "valor" : "592"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "636",
+      "valor" : "636"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "700",
+      "valor" : "700"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "925",
+      "valor" : "925"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 284",
+      "valor" : "1284"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 325",
+      "valor" : "1325"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 475",
+      "valor" : "1475"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 500",
+      "valor" : "1500"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 529",
+      "valor" : "1529"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 646",
+      "valor" : "1646"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "2 119",
+      "valor" : "2119"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "2 822",
+      "valor" : "2822"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "7 968",
+      "valor" : "7968"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "26 461",
+      "valor" : "26461"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "26 461",
+      "valor" : "26461"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "54",
+      "valor" : "54"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "128",
+      "valor" : "128"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "131",
+      "valor" : "131"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "136",
+      "valor" : "136"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "202",
+      "valor" : "202"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "297",
+      "valor" : "297"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "309",
+      "valor" : "309"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "419",
+      "valor" : "419"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "445",
+      "valor" : "445"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "457",
+      "valor" : "457"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "495",
+      "valor" : "495"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "637",
+      "valor" : "637"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "676",
+      "valor" : "676"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "787",
+      "valor" : "787"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "999",
+      "valor" : "999"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 439",
+      "valor" : "1439"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 451",
+      "valor" : "1451"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 693",
+      "valor" : "1693"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 727",
+      "valor" : "1727"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 859",
+      "valor" : "1859"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 902",
+      "valor" : "1902"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "2 304",
+      "valor" : "2304"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "3 032",
+      "valor" : "3032"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "9 548",
+      "valor" : "9548"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "29 919",
+      "valor" : "29919"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "29 919",
+      "valor" : "29919"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "55",
+      "valor" : "55"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "125",
+      "valor" : "125"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "140",
+      "valor" : "140"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "151",
+      "valor" : "151"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "207",
+      "valor" : "207"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "323",
+      "valor" : "323"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "326",
+      "valor" : "326"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "383",
+      "valor" : "383"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "479",
+      "valor" : "479"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "528",
+      "valor" : "528"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "539",
+      "valor" : "539"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "699",
+      "valor" : "699"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "740",
+      "valor" : "740"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "827",
+      "valor" : "827"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "1 068",
+      "valor" : "1068"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 485",
+      "valor" : "1485"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 621",
+      "valor" : "1621"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 807",
+      "valor" : "1807"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 886",
+      "valor" : "1886"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 935",
+      "valor" : "1935"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 956",
+      "valor" : "1956"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "2 375",
+      "valor" : "2375"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "3 149",
+      "valor" : "3149"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "9 956",
+      "valor" : "9956"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "31 123",
+      "valor" : "31123"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "31 123",
+      "valor" : "31123"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "16J0913",
+      "geodsg" : "Trancoso",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "16J0911",
+      "geodsg" : "Sabugal",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "16I1420",
+      "geodsg" : "Vila Nova da Barquinha",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "16I1411",
+      "geodsg" : "Ferreira do Zêzere",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "16J0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "16J0906",
+      "geodsg" : "Gouveia",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "1701502",
+      "geodsg" : "Alcochete",
+      "ind_string" : "126",
+      "valor" : "126"
+    }, {
+      "geocod" : "16J0912",
+      "geodsg" : "Seia",
+      "ind_string" : "150",
+      "valor" : "150"
+    }, {
+      "geocod" : "16J0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "180",
+      "valor" : "180"
+    }, {
+      "geocod" : "16I1419",
+      "geodsg" : "Torres Novas",
+      "ind_string" : "252",
+      "valor" : "252"
+    }, {
+      "geocod" : "16J0907",
+      "geodsg" : "Guarda",
+      "ind_string" : "336",
+      "valor" : "336"
+    }, {
+      "geocod" : "16I1418",
+      "geodsg" : "Tomar",
+      "ind_string" : "354",
+      "valor" : "354"
+    }, {
+      "geocod" : "1701508",
+      "geodsg" : "Palmela",
+      "ind_string" : "430",
+      "valor" : "430"
+    }, {
+      "geocod" : "16I1421",
+      "geodsg" : "Ourém",
+      "ind_string" : "494",
+      "valor" : "494"
+    }, {
+      "geocod" : "1701507",
+      "geodsg" : "Montijo",
+      "ind_string" : "504",
+      "valor" : "504"
+    }, {
+      "geocod" : "1701506",
+      "geodsg" : "Moita",
+      "ind_string" : "516",
+      "valor" : "516"
+    }, {
+      "geocod" : "16J0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "762",
+      "valor" : "762"
+    }, {
+      "geocod" : "1701504",
+      "geodsg" : "Barreiro",
+      "ind_string" : "773",
+      "valor" : "773"
+    }, {
+      "geocod" : "1701109",
+      "geodsg" : "Mafra",
+      "ind_string" : "775",
+      "valor" : "775"
+    }, {
+      "geocod" : "1701114",
+      "geodsg" : "Vila Franca de Xira",
+      "ind_string" : "1 047",
+      "valor" : "1047"
+    }, {
+      "geocod" : "1701116",
+      "geodsg" : "Odivelas",
+      "ind_string" : "1 482",
+      "valor" : "1482"
+    }, {
+      "geocod" : "16J",
+      "geodsg" : "Beiras e Serra da Estrela",
+      "ind_string" : "1 748",
+      "valor" : "1748"
+    }, {
+      "geocod" : "1701503",
+      "geodsg" : "Almada",
+      "ind_string" : "1 775",
+      "valor" : "1775"
+    }, {
+      "geocod" : "1701110",
+      "geodsg" : "Oeiras",
+      "ind_string" : "1 848",
+      "valor" : "1848"
+    }, {
+      "geocod" : "1701107",
+      "geodsg" : "Loures",
+      "ind_string" : "1 861",
+      "valor" : "1861"
+    }, {
+      "geocod" : "1701115",
+      "geodsg" : "Amadora",
+      "ind_string" : "1 872",
+      "valor" : "1872"
+    }, {
+      "geocod" : "1701105",
+      "geodsg" : "Cascais",
+      "ind_string" : "2 368",
+      "valor" : "2368"
+    }, {
+      "geocod" : "1701111",
+      "geodsg" : "Sintra",
+      "ind_string" : "3 114",
+      "valor" : "3114"
+    }, {
+      "geocod" : "1701106",
+      "geodsg" : "Lisboa",
+      "ind_string" : "9 048",
+      "valor" : "9048"
+    }, {
+      "geocod" : "17",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "30 235",
+      "valor" : "30235"
+    }, {
+      "geocod" : "170",
+      "geodsg" : "Área Metropolitana de Lisboa",
+      "ind_string" : "30 235",
+      "valor" : "30235"
+    }, {
+      "geocod" : "16I1413",
+      "geodsg" : "Mação",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16I1417",
+      "geodsg" : "Sardoal",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0902",
+      "geodsg" : "Almeida",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0903",
+      "geodsg" : "Celorico da Beira",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0904",
+      "geodsg" : "Figueira de Castelo Rodrigo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0905",
+      "geodsg" : "Fornos de Algodres",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0908",
+      "geodsg" : "Manteigas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0909",
+      "geodsg" : "Mêda",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "16J0910",
+      "geodsg" : "Pinhel",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

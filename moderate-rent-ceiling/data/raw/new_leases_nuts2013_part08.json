@@ -1,0 +1,958 @@
+[ {
+  "IndicadorCod" : "0009632",
+  "IndicadorDsg" : "Novos contratos de arrendamento de alojamentos familiares (Metodologia 2021 - N.º) por Localização geográfica (NUTS - 2013); Anual - INE, Estatísticas de Rendas da Habitação ao nível local",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0009632&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:08:37.036Z",
+  "DataUltimoAtualizacao" : "2024-03-28",
+  "UltimoPref" : "2023",
+  "Dados" : {
+    "2017" : [ {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "65",
+      "valor" : "65"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "169",
+      "valor" : "169"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "750",
+      "valor" : "750"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 091",
+      "valor" : "1091"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 091",
+      "valor" : "1091"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 091",
+      "valor" : "1091"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "84 383",
+      "valor" : "84383"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2018" : [ {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "34",
+      "valor" : "34"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "35",
+      "valor" : "35"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "65",
+      "valor" : "65"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "78",
+      "valor" : "78"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "167",
+      "valor" : "167"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "733",
+      "valor" : "733"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 081",
+      "valor" : "1081"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 081",
+      "valor" : "1081"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 081",
+      "valor" : "1081"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "77 723",
+      "valor" : "77723"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "30",
+      "valor" : "30"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "47",
+      "valor" : "47"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "67",
+      "valor" : "67"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "155",
+      "valor" : "155"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "722",
+      "valor" : "722"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 039",
+      "valor" : "1039"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 039",
+      "valor" : "1039"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 039",
+      "valor" : "1039"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "72 788",
+      "valor" : "72788"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "30",
+      "valor" : "30"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "30",
+      "valor" : "30"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "41",
+      "valor" : "41"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "ind_string" : "44",
+      "valor" : "44"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "57",
+      "valor" : "57"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "200",
+      "valor" : "200"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "864",
+      "valor" : "864"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 287",
+      "valor" : "1287"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 287",
+      "valor" : "1287"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 287",
+      "valor" : "1287"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "79 878",
+      "valor" : "79878"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "ind_string" : "48",
+      "valor" : "48"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "56",
+      "valor" : "56"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "56",
+      "valor" : "56"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "177",
+      "valor" : "177"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "818",
+      "valor" : "818"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 221",
+      "valor" : "1221"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 221",
+      "valor" : "1221"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 221",
+      "valor" : "1221"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "87 349",
+      "valor" : "87349"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "37",
+      "valor" : "37"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "ind_string" : "39",
+      "valor" : "39"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "55",
+      "valor" : "55"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "61",
+      "valor" : "61"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "213",
+      "valor" : "213"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "903",
+      "valor" : "903"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 353",
+      "valor" : "1353"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 353",
+      "valor" : "1353"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 353",
+      "valor" : "1353"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "92 664",
+      "valor" : "92664"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "33",
+      "valor" : "33"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "46",
+      "valor" : "46"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta",
+      "ind_string" : "53",
+      "valor" : "53"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "60",
+      "valor" : "60"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "78",
+      "valor" : "78"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "193",
+      "valor" : "193"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "801",
+      "valor" : "801"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 261",
+      "valor" : "1261"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 261",
+      "valor" : "1261"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "1 261",
+      "valor" : "1261"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "94 617",
+      "valor" : "94617"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
