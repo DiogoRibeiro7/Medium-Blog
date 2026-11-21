@@ -1,0 +1,55 @@
+name: Refresh auction-entry-boem data
+
+on:
+  push:
+    branches:
+      - auction-entry-boem
+    paths:
+      - 'auction-entry-boem/fetch.py'
+      - '.github/workflows/auction-entry-boem-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: auction-entry-boem
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Copy the series case study and download older BOEM sales
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh data snapshot for auction-entry-boem ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Fail if the download failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1
