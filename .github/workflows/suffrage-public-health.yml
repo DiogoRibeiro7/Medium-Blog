@@ -51,6 +51,6 @@ jobs:
       - name: Draw the figures
         run: |
           python figures.py
-          for f in fig1_estimators_by_age fig2_estimate_by_last_year fig3_gap_around_1920 fig4_event_study_clean; do
+          for f in fig1_estimate_by_last_year fig2_gap_around_1920 fig3_estimators_by_age fig4_event_study_clean; do
             test -s "figures/$f.png"
           done

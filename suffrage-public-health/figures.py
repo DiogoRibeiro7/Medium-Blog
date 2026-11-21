@@ -82,7 +82,7 @@ def fig1() -> None:
     fig.suptitle("The fall in child deaths is large only in the specification that runs to 1936",
                  x=0.01, ha="left", fontsize=12.5, fontweight="bold")
     fig.tight_layout(rect=(0, 0.17, 1, 0.95))
-    finish(fig, "fig1_estimators_by_age",
+    finish(fig, "fig3_estimators_by_age",
            "Bars: 95% intervals, standard errors clustered by state. Shaded band: the 8-15% range reported by Miller.")
 
 
@@ -108,7 +108,7 @@ def fig2() -> None:
     fig.suptitle("Most of the estimate arrives with 1920 and 1921, years in which no state lacked suffrage",
                  x=0.01, ha="left", fontsize=12.5, fontweight="bold")
     fig.tight_layout(rect=(0, 0.06, 1, 0.95))
-    finish(fig, "fig2_estimate_by_last_year", "Bands: 95% intervals, standard errors clustered by state.")
+    finish(fig, "fig1_estimate_by_last_year", "Bands: 95% intervals, standard errors clustered by state.")
 
 
 def fig3() -> None:
@@ -135,7 +135,7 @@ def fig3() -> None:
     ax.legend(frameon=False, fontsize=9, loc="lower left")
     ax.set_title("States enfranchised in 1920 minus states enfranchised by 1914", loc="left")
     fig.tight_layout(rect=(0, 0.07, 1, 1))
-    finish(fig, "fig3_gap_around_1920",
+    finish(fig, "fig2_gap_around_1920",
            "Same states in every year (1910-1925): by 1914 CA CO MT UT WA; in 1920 CT MA MD NC NH NJ PA VT.")
 
 
@@ -168,7 +168,8 @@ def fig4() -> None:
 
 
 if __name__ == "__main__":
-    fig1()
+    # numbered in the order the article shows them
     fig2()
     fig3()
+    fig1()
     fig4()
