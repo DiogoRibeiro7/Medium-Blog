@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009-2026"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-21
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/productivity-hours-denominator"
+references:
+  - type: data
+    title: "Quarterly national accounts (namq_10_a10, namq_10_a10_e, namq_10_pe, namq_10_lp_ulc); EU-LFS main indicators (lfsi_ahw_q, lfsi_emp_q, lfsi_abt_q); LFS population (lfsq_pganws); Population on 1 January (demo_pjangroup)"
+    authors:
+      - name: Eurostat
+    year: 2026
+    url: "https://ec.europa.eu/eurostat/data/database"
