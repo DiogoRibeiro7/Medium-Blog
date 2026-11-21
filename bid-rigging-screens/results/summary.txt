@@ -1,0 +1,109 @@
+==============================================================================
+1. DATA
+==============================================================================
+Switzerland: 1,542 coalition-periods, 896 cartel and 646 competitive (cartel share 58.1%)
+  median tenders per coalition: cartel 23, competitive 10
+  median of the median CV: cartel 3.32, competitive 5.88
+  rows with firm identifiers: 745, firms 17
+Okinawa: 2,000 coalition-periods, 207 cartel and 1,793 competitive (cartel share 10.3%)
+  median tenders per coalition: cartel 3, competitive 3
+  median of the median CV: cartel 0.42, competitive 2.11
+  rows with firm identifiers: 2,000, firms 74
+Turin: 20,251 coalition-periods, 1,474 cartel and 18,777 competitive (cartel share 7.3%)
+  median tenders per coalition: cartel 29, competitive 20
+  median of the median CV: cartel 3.83, competitive 27.69
+Swiss market with firm identifiers: 476 coalitions, 269 seen in both periods
+Okinawa: 1,978 coalitions, 22 seen in both periods
+
+==============================================================================
+2. THE PUBLISHED PROTOCOL (balanced, random 75/25 split, 100 repetitions)
+==============================================================================
+Okinawa: correct classification 94.8% (cartel 96.9%, competitive 92.9%), AUC 0.986; published random forest 94.9% (96.9%, 92.8%); training rows 310
+Switzerland: correct classification 89.9% (cartel 88.3%, competitive 91.6%), AUC 0.965; published random forest 89.7% (88.3%, 91.1%); training rows 969
+Turin: correct classification 89.8% (cartel 88.0%, competitive 91.6%), AUC 0.962; published random forest 89.1% (87.6%, 90.6%); training rows 2,211
+
+==============================================================================
+3. SINGLE SCREENS, NO TRAINING (AUC of the median across tenders)
+==============================================================================
+Switzerland: cvbid 0.911 (lower in cartel); Spread 0.911 (lower in cartel); Kolmo_stat 0.907 (higher in cartel); Diffperc 0.790 (lower in cartel); RDnorm 0.690 (higher in cartel); skew1 0.690 (lower in cartel); RD1 0.683 (higher in cartel); RDalter 0.683 (higher in cartel)
+Okinawa: Kolmo_stat 0.867 (higher in cartel); cvbid 0.864 (lower in cartel); Spread 0.859 (lower in cartel); Diffperc 0.693 (lower in cartel); skew1 0.593 (lower in cartel); RDnorm 0.593 (higher in cartel); RD1 0.577 (higher in cartel); RDalter 0.577 (higher in cartel)
+Turin: Kolmo_stat 0.867 (higher in cartel); cvbid 0.862 (lower in cartel); Spread 0.862 (lower in cartel); Diffperc 0.849 (lower in cartel); RDnorm 0.546 (lower in cartel); skew1 0.546 (higher in cartel); RD1 0.545 (lower in cartel); RDalter 0.545 (lower in cartel)
+screens whose direction differs between countries: RD1 (CH higher in cartel, IT lower in cartel, JP higher in cartel), RDalter (CH higher in cartel, IT lower in cartel, JP higher in cartel), RDnorm (CH higher in cartel, IT lower in cartel, JP higher in cartel), skew1 (CH lower in cartel, IT higher in cartel, JP lower in cartel)
+
+==============================================================================
+4. FIRMS THE MODEL HAS NOT SEEN (30% of firms held out, 50 draws)
+==============================================================================
+Okinawa (all coalitions): draws 50, training rows 702, test rows 1298 (means)
+  forest, random split of the same training size: AUC 0.987 [0.981, 0.992]
+  forest, test coalitions with at least one unseen firm: AUC 0.955 [0.908, 0.984]
+  median CV, same test coalitions, no training: AUC 0.871 [0.844, 0.892]
+  1 unseen firm(s): forest 0.966, median CV 0.867 (50 draws, 892 test rows on average)
+  2 unseen firm(s): forest 0.935, median CV 0.878 (50 draws, 361 test rows on average)
+  3 unseen firm(s): forest 0.884, median CV 0.880 (43 draws, 48 test rows on average)
+  draws in which the median CV beats the forest on unseen firms: 4%
+Switzerland (market with firm identifiers): draws 50, training rows 244, test rows 501 (means)
+  forest, random split of the same training size: AUC 0.997 [0.995, 0.999]
+  forest, test coalitions with at least one unseen firm: AUC 0.995 [0.991, 0.999]
+  median CV, same test coalitions, no training: AUC 0.967 [0.959, 0.976]
+  1 unseen firm(s): forest 0.996, median CV 0.967 (50 draws, 363 test rows on average)
+  2 unseen firm(s): forest 0.994, median CV 0.963 (50 draws, 128 test rows on average)
+  draws in which the median CV beats the forest on unseen firms: 0%
+
+==============================================================================
+5. NUMBER OF TENDERS A COALITION SHARES
+==============================================================================
+Switzerland: AUC of the number of tenders alone 0.686
+  min3cvbid: pooled AUC 0.840, within tenders-count strata 0.809; Spearman with log tenders: competitive -0.64, cartel -0.44
+  max3cvbid: pooled AUC 0.692, within tenders-count strata 0.858; Spearman with log tenders: competitive 0.11, cartel 0.62
+  median3cvbid: pooled AUC 0.911, within tenders-count strata 0.902; Spearman with log tenders: competitive -0.26, cartel 0.22
+  forest on minima and maxima only 0.916, on means and medians only 0.942
+Okinawa: AUC of the number of tenders alone 0.508
+  min3cvbid: pooled AUC 0.638, within tenders-count strata 0.685; Spearman with log tenders: competitive -0.23, cartel 0.16
+  max3cvbid: pooled AUC 0.667, within tenders-count strata 0.644; Spearman with log tenders: competitive 0.17, cartel -0.04
+  median3cvbid: pooled AUC 0.864, within tenders-count strata 0.850; Spearman with log tenders: competitive 0.03, cartel 0.04
+  forest on minima and maxima only 0.993, on means and medians only 0.980
+Turin: AUC of the number of tenders alone 0.617
+  min3cvbid: pooled AUC 0.861, within tenders-count strata 0.832; Spearman with log tenders: competitive -0.37, cartel -0.54
+  max3cvbid: pooled AUC 0.647, within tenders-count strata 0.708; Spearman with log tenders: competitive 0.40, cartel 0.42
+  median3cvbid: pooled AUC 0.862, within tenders-count strata 0.816; Spearman with log tenders: competitive 0.02, cartel 0.01
+  forest on minima and maxima only 0.944, on means and medians only 0.947
+
+==============================================================================
+6. ANOTHER COUNTRY (scale-free screens; D left out)
+==============================================================================
+forest trained on Switzerland, tested on Okinawa: AUC 0.654
+forest trained on Switzerland, tested on Turin: AUC 0.825
+forest trained on Okinawa, tested on Switzerland: AUC 0.539
+forest trained on Okinawa, tested on Turin: AUC 0.240
+forest trained on Turin, tested on Switzerland: AUC 0.870
+forest trained on Turin, tested on Okinawa: AUC 0.737
+Switzerland held out (trained on JP+IT): forest 0.760, forest on within-country ranks 0.697, forest on ranks of the variance and uniformity screens 0.704, forest on ranks of four medians 0.700, logit on ranks of all screens 0.905, logit on ranks of four medians 0.904, median CV alone 0.911
+  logit coefficients on the four ranked medians: CV -1.31, spread +0.76, percentage difference -1.33, KS +5.09
+Okinawa held out (trained on CH+IT): forest 0.551, forest on within-country ranks 0.812, forest on ranks of the variance and uniformity screens 0.797, forest on ranks of four medians 0.787, logit on ranks of all screens 0.778, logit on ranks of four medians 0.868, median CV alone 0.864
+  logit coefficients on the four ranked medians: CV -0.98, spread +0.32, percentage difference -0.55, KS +3.68
+Turin held out (trained on CH+JP): forest 0.694, forest on within-country ranks 0.764, forest on ranks of the variance and uniformity screens 0.769, forest on ranks of four medians 0.812, logit on ranks of all screens 0.817, logit on ranks of four medians 0.865, median CV alone 0.862
+  logit coefficients on the four ranked medians: CV -1.54, spread -0.75, percentage difference -0.68, KS +1.60
+rank correlation of median CV and median spread, all coalitions (within-country ranks): 1.00
+
+==============================================================================
+7. THRESHOLDS AND INVESTIGATION LISTS
+==============================================================================
+Swiss threshold that flags 80% of Swiss cartel coalitions: median CV <= 4.17
+Switzerland, median CV <= 4.17 (Swiss 80% rule): flags 51.6% of coalitions, 80.0% of cartel ones, 12.1% of competitive ones; precision 90.2%
+Switzerland, lowest 10% of median CV within the country: flags 10.0% of coalitions, 17.1% of cartel ones, 0.2% of competitive ones; precision 99.4%
+Okinawa, median CV <= 4.17 (Swiss 80% rule): flags 74.3% of coalitions, 93.7% of cartel ones, 72.1% of competitive ones; precision 13.1%
+Okinawa, lowest 10% of median CV within the country: flags 10.0% of coalitions, 48.3% of cartel ones, 5.6% of competitive ones; precision 50.0%
+Turin, median CV <= 4.17 (Swiss 80% rule): flags 6.6% of coalitions, 54.5% of cartel ones, 2.9% of competitive ones; precision 59.7%
+Turin, lowest 10% of median CV within the country: flags 10.0% of coalitions, 66.8% of cartel ones, 5.5% of competitive ones; precision 48.6%
+Switzerland (cartel share 58.1%), top 5% (77 coalitions) by median CV: precision 100.0%, recall 8.6%
+Switzerland (cartel share 58.1%), top 5% (77 coalitions) by forest, other countries: precision 90.9%, recall 7.8%
+Switzerland (cartel share 58.1%), top 10% (154 coalitions) by median CV: precision 99.4%, recall 17.1%
+Switzerland (cartel share 58.1%), top 10% (154 coalitions) by forest, other countries: precision 90.3%, recall 15.5%
+Okinawa (cartel share 10.3%), top 5% (100 coalitions) by median CV: precision 46.0%, recall 22.2%
+Okinawa (cartel share 10.3%), top 5% (100 coalitions) by forest, other countries: precision 41.0%, recall 19.8%
+Okinawa (cartel share 10.3%), top 10% (200 coalitions) by median CV: precision 50.0%, recall 48.3%
+Okinawa (cartel share 10.3%), top 10% (200 coalitions) by forest, other countries: precision 37.5%, recall 36.2%
+Turin (cartel share 7.3%), top 5% (1,013 coalitions) by median CV: precision 63.6%, recall 43.7%
+Turin (cartel share 7.3%), top 5% (1,013 coalitions) by forest, other countries: precision 23.6%, recall 16.2%
+Turin (cartel share 7.3%), top 10% (2,025 coalitions) by median CV: precision 48.6%, recall 66.8%
+Turin (cartel share 7.3%), top 10% (2,025 coalitions) by forest, other countries: precision 23.3%, recall 32.0%
