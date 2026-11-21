@@ -8,7 +8,9 @@ level are requested only for Portugal, its NUTS regions and its 308 municipaliti
 geography codes (the API rejects long ``Dim2`` lists); the codes come from the first table.
 
 Raw responses go to ``data/raw/`` unchanged (except the Census cross-tab, about 12 MB, whose raw
-responses are not kept), tidy long tables to ``data/<name>.csv``, and ``data/fetch_log.txt``
+responses are not kept); the API returns records in a varying order, so raw files differ from one
+refresh to the next even when no value changes. Tidy long tables go to ``data/<name>.csv`` sorted by
+period, geography and category, so their diffs show only real changes. ``data/fetch_log.txt``
 records the time, HTTP status, SHA-256 and URL of every response.
 
 INE indicators:
@@ -116,6 +118,16 @@ def tidy(doc: list) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+SORT_KEYS = ["period", "geocod", "dim_3", "dim_4", "dim_5"]
+
+
+def write_csv(df: pd.DataFrame, path: Path) -> None:
+    """Write a tidy table in a fixed row order: the API returns records in a varying order, and
+    sorting keeps refreshed snapshots comparable line by line."""
+    keys = [k for k in SORT_KEYS if k in df.columns]
+    df.astype({k: str for k in keys}).sort_values(keys, kind="mergesort").to_csv(path, index=False)
+
+
 class Fetcher:
     def __init__(self, out: Path):
         self.out = out
@@ -172,7 +184,7 @@ def main() -> None:
     if quart is None:
         f.write_log()
         raise SystemExit("the quartile table failed; the other requests depend on its geography codes")
-    quart.to_csv(out / "rent_quartiles_2026.csv", index=False)
+    write_csv(quart, out / "rent_quartiles_2026.csv")
     print(f"rent_quartiles_2026: {len(quart):,} rows")
 
     # The NUTS 2013 median table goes down to parishes: its full response (about 0.7 MB) also gives
@@ -180,7 +192,7 @@ def main() -> None:
     old = f.one("median_nuts2013", "0009631", {})
     if old is not None:
         old = old[old["geocod"].astype(str).str.len() <= 7].reset_index(drop=True)
-        old.to_csv(out / "median_nuts2013.csv", index=False)
+        write_csv(old, out / "median_nuts2013.csv")
         print(f"median_nuts2013: {len(old):,} rows")
 
     codes = sorted(set(quart["geocod"].astype(str)))
@@ -197,7 +209,7 @@ def main() -> None:
         else:
             df = f.chunked(name, indicator, scopes[scope], extra, keep_raw)
         if df is not None:
-            df.to_csv(out / f"{name}.csv", index=False)
+            write_csv(df, out / f"{name}.csv")
             print(f"{name}: {len(df):,} rows")
 
     f.write_log()

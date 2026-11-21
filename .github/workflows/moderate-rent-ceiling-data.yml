@@ -50,8 +50,9 @@ jobs:
             echo "Snapshot unchanged."
           else
             git commit -m "Refresh INE snapshot for moderate-rent-ceiling ($(date -u +%Y-%m-%d))"
-            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
-            git push
+            # Other folders show line-ending changes right after checkout, so no rebase here: if the
+            # branch moved during the run, the push is rejected and the workflow can be run again.
+            git push || { echo "::error::The branch moved during the run; run this workflow again."; exit 1; }
           fi
 
       - name: Fail if any request failed
