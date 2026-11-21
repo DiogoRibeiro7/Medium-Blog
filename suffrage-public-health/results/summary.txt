@@ -1,0 +1,147 @@
+== Data
+states: 48; suffrage before 1920: 29 (full 15, presidential 12, primary 2)
+  1910: WA
+  1911: CA
+  1912: AZ KS OR
+  1913: IL
+  1914: MT NV
+  1917: AR IN ND NE NY OH RI
+  1918: MI OK SD TX
+  1919: IA ME MN MO TN WI
+mortality: 1109 state-years, 48 states, 1900-1936; states reporting in 1900: 10, in 1919: 33, in 1936: 48
+state-years up to 1919: 382; of them treated: 78; states always treated in the data: AL AR AZ CO GA IA ID IL KS ND NE NM NV OK OR TX UT WV WY
+cohorts with a pre-suffrage year in the mortality data: 1910 1911 1914 1917 1918 1919
+  1910: WA
+  1911: CA
+  1914: MT
+  1917: IN NY OH RI
+  1918: MI SD
+  1919: ME MN MO TN WI
+share of state-years in 1920-1936, when every state has suffrage: 0.656
+municipal finance: 5152 city-years, 319 cities in 46 states, 1905-1930 (no 1914, no 1920)
+median health-and-sanitation share of total spending: 1905 1.012, 1906 0.080, 1919 0.099, 1930 0.081  (1905 total spending is not total spending; it is dropped below)
+
+== Mortality: seven estimators per outcome (log deaths; effect of a suffrage law)
+  A Miller: TWFE + state trends, 1900-1936  [SE clustered by state]
+  B TWFE, no trends, 1900-1936  [SE clustered by state]
+  C TWFE + state trends, 1900-1919  [SE clustered by state]
+  D TWFE, no trends, 1900-1919  [SE clustered by state]
+  E imputation (unit and year effects fitted on untreated state-years), 1900-1919
+  F imputation with a linear trend per state fitted on untreated state-years, 1900-1919
+  G Callaway-Sant'Anna, not-yet-treated controls, base year g-1, 1900-1919
+ln under 1 A -0.050 (0.035)  B -0.137 (0.064)  C +0.035 (0.019)  D +0.019 (0.071)  E +0.071  F -0.191  G +0.063
+ln 1-4     A -0.079 (0.032)  B -0.198 (0.058)  C +0.004 (0.035)  D +0.005 (0.071)  E +0.020  F -0.317  G -0.014
+ln 5-9     A -0.132 (0.040)  B -0.180 (0.043)  C -0.033 (0.034)  D -0.025 (0.068)  E -0.027  F -0.347  G -0.022
+ln 10-14   A -0.129 (0.032)  B -0.185 (0.034)  C -0.034 (0.028)  D -0.053 (0.064)  E -0.036  F -0.084  G -0.022
+ln 15-19   A -0.090 (0.029)  B -0.160 (0.039)  C -0.032 (0.031)  D -0.061 (0.061)  E -0.023  F -0.180  G -0.028
+ln 1-19    A -0.099 (0.031)  B -0.195 (0.043)  C -0.019 (0.031)  D -0.024 (0.066)  E -0.000  F -0.243  G -0.014
+ln 20-24   A -0.058 (0.039)  B -0.062 (0.051)  C -0.011 (0.035)  D -0.037 (0.057)  E -0.031  F -0.159  G -0.018
+ln 25-64   A -0.033 (0.030)  B -0.012 (0.044)  C -0.010 (0.014)  D +0.001 (0.054)  E +0.032  F -0.156  G +0.015
+dd under 1 A -0.018 (0.018)  B -0.124 (0.061)  C +0.045 (0.017)  D +0.017 (0.022)  E +0.039  F -0.035  G +0.048
+dd 1-4     A -0.046 (0.021)  B -0.186 (0.060)  C +0.013 (0.033)  D +0.003 (0.030)  E -0.012  F -0.161  G -0.029
+dd 5-9     A -0.099 (0.032)  B -0.168 (0.037)  C -0.023 (0.030)  D -0.027 (0.030)  E -0.059  F -0.191  G -0.038
+dd 10-14   A -0.097 (0.027)  B -0.172 (0.033)  C -0.024 (0.025)  D -0.054 (0.023)  E -0.068  F +0.072  G -0.037
+dd 15-19   A -0.057 (0.018)  B -0.148 (0.026)  C -0.022 (0.025)  D -0.063 (0.017)  E -0.055  F -0.024  G -0.043
+dd 1-19    A -0.066 (0.020)  B -0.182 (0.040)  C -0.009 (0.027)  D -0.025 (0.023)  E -0.032  F -0.086  G -0.029
+(ln = log deaths; dd = log deaths at that age minus log deaths at 25-64 in the same state-year)
+spec A, ages 1-4 to 15-19: -7.6% to -12.3% (Miller reports 8-15%)
+
+== Causes of death, all ages (ln: log deaths; dd: relative to deaths at 25-64)
+diarrhoea under 2        A -0.118 (0.051)  B -0.232 (0.136)  E -0.047  G -0.055
+diphtheria               A -0.232 (0.121)  B -0.177 (0.149)  E -0.166  G -0.118
+meningitis               A -0.211 (0.090)  B -0.488 (0.120)  E -0.021  G -0.042
+scarlet fever            A +0.167 (0.146)  B +0.117 (0.112)  E -0.117  G -0.366
+measles                  A -0.109 (0.133)  B -0.165 (0.093)  E -0.024  G -0.101
+whooping cough           A -0.054 (0.088)  B -0.138 (0.114)  E +0.192  G +0.083
+typhoid                  A -0.051 (0.053)  B -0.058 (0.083)  E -0.073  G -0.102
+cancer                   A -0.012 (0.021)  B -0.077 (0.030)  E +0.094  G +0.081
+heart and circulation    A -0.001 (0.021)  B -0.059 (0.038)  E +0.061  G +0.012
+accidents and violence   A -0.015 (0.033)  B +0.022 (0.048)  E +0.007  G +0.006
+relative to adult deaths, with 499 bootstrap draws:
+  diarrhoea under 2      A -0.086 (0.035)  CS -0.071 [-0.293, +0.147]  imputation -0.078 [-0.265, +0.109]
+  diphtheria             A -0.200 (0.111)  CS -0.133 [-0.512, +0.213]  imputation -0.197 [-0.562, +0.213]
+  meningitis             A -0.179 (0.089)  CS -0.057 [-0.153, +0.103]  imputation -0.053 [-0.198, +0.135]
+  scarlet fever          A +0.200 (0.149)  CS -0.381 [-0.879, +0.133]  imputation -0.149 [-0.508, +0.193]
+  cancer                 A +0.021 (0.022)  CS +0.066 [+0.004, +0.116]  imputation +0.062 [-0.006, +0.112]
+  heart and circulation  A +0.031 (0.024)  CS -0.003 [-0.164, +0.076]  imputation +0.029 [-0.053, +0.095]
+
+== Where the two-way fixed-effects estimate comes from (ln 1-19)
+estimate = sum of w_it * effect_it over treated state-years; the w sum to one
+A Miller: TWFE + state trends, 1900-1936: treated state-years 805 (727 of them in 1920-1936)
+   net weight on 1920-1936 +0.000 (zero by construction: every state is treated, so year effects absorb the dummy); share of absolute weight on 1920-1936 0.583
+   negative weights: 313 state-years, total -0.708; before 1920 2 state-years, total -0.004
+   weight on pre-1920 treated cells by event time: e0 +0.289 e1 +0.168 e2 +0.138 e3 +0.060 e4 +0.059 e5 +0.067 e6 +0.062 e7 +0.037 e8 +0.018 e9 +0.005 e13 -0.003 e14 +0.002 e15 +0.005 e16 +0.008 e17 +0.009 e18 +0.009 e19 +0.012 e20 +0.015 e21 +0.010 e22 +0.011 e23 +0.009 e24 +0.005 e25 +0.004 e26 +0.001
+B TWFE, no trends, 1900-1936: treated state-years 805 (727 of them in 1920-1936)
+   net weight on 1920-1936 -0.000 (zero by construction: every state is treated, so year effects absorb the dummy); share of absolute weight on 1920-1936 0.567
+   negative weights: 248 state-years, total -0.655; before 1920 0 state-years, total +0.000
+   weight on pre-1920 treated cells by event time: e0 +0.197 e1 +0.121 e2 +0.112 e3 +0.059 e4 +0.055 e5 +0.062 e6 +0.059 e7 +0.037 e8 +0.015 e9 +0.005 e13 +0.015 e14 +0.030 e15 +0.030 e16 +0.030 e17 +0.028 e18 +0.025 e19 +0.025 e20 +0.025 e21 +0.020 e22 +0.018 e23 +0.016 e24 +0.007 e25 +0.006 e26 +0.003
+
+== Miller's specification as the sample is extended past 1919 (every added year is fully treated)
+ln 1-19, A: 1919 -0.019 1921 -0.085 1923 -0.101 1925 -0.116 1927 -0.116 1929 -0.113 1931 -0.112 1933 -0.111 1936 -0.099
+ln 1-19, B: 1919 -0.024 1921 -0.083 1923 -0.103 1925 -0.123 1927 -0.139 1929 -0.154 1931 -0.164 1933 -0.173 1936 -0.195
+dd 1-19, A: 1919 -0.009 1921 -0.066 1923 -0.078 1925 -0.087 1927 -0.081 1929 -0.075 1931 -0.074 1933 -0.073 1936 -0.066
+dd 1-19, B: 1919 -0.025 1921 -0.066 1923 -0.083 1925 -0.105 1927 -0.124 1929 -0.140 1931 -0.152 1933 -0.162 1936 -0.182
+
+== The 1920 switch seen directly: states enfranchised in 1920 minus states enfranchised by 1914
+states reporting every year 1910-1925: by 1914 CA CO MT UT WA; in 1920 CT MA MD NC NH NJ PA VT
+ln 1-19: 1910 +0.04 1911 +0.07 1912 +0.12 1913 +0.01 1914 +0.04 1915 +0.08 1916 +0.31 1917 +0.15 1918 +0.22 1919 +0.00 1920 -0.06 1921 -0.13 1922 -0.11 1923 -0.04 1924 -0.26 1925 -0.16
+   year-to-year changes 1911-1919: sd 0.136, largest 0.226; 1919 to 1920 -0.060; 1919 to 1921 -0.129
+dd 1-19: 1910 +0.00 1911 +0.01 1912 +0.09 1913 +0.03 1914 +0.01 1915 +0.10 1916 +0.14 1917 -0.01 1918 +0.12 1919 +0.00 1920 -0.06 1921 -0.16 1922 -0.10 1923 -0.11 1924 -0.28 1925 -0.22
+   year-to-year changes 1911-1919: sd 0.097, largest 0.150; 1919 to 1920 -0.061; 1919 to 1921 -0.162
+ln 25-64: 1910 +0.04 1911 +0.06 1912 +0.03 1913 -0.02 1914 +0.03 1915 -0.02 1916 +0.17 1917 +0.16 1918 +0.10 1919 +0.00 1920 +0.00 1921 +0.03 1922 -0.00 1923 +0.08 1924 +0.03 1925 +0.06
+   year-to-year changes 1911-1919: sd 0.086, largest 0.189; 1919 to 1920 +0.001; 1919 to 1921 +0.033
+
+== Deaths are counts, not rates: growth after a state joins the registration area
+excess annual growth over the ten states reporting since 1900, first ten years after entry: ln 25-64 +0.0146 per year (n=354); ln 1-19 +0.0161 per year (n=354); dd 1-19 +0.0015 per year (n=354)
+
+== Clean comparisons with 499 state-cluster bootstrap draws (percentile 95% intervals)
+ln 1-19: CS overall -0.014 [-0.109, +0.099]; CS mean pre (e<=-2) +0.057 [-0.038, +0.171]; imputation -0.000 [-0.157, +0.135]; imputation + trends -0.243 [-0.651, +0.074]
+dd 1-19: CS overall -0.029 [-0.098, +0.039]; CS mean pre (e<=-2) +0.008 [-0.026, +0.041]; imputation -0.032 [-0.086, +0.023]; imputation + trends -0.086 [-0.317, +0.084]
+ln 25-64: CS overall +0.015 [-0.041, +0.078]; CS mean pre (e<=-2) +0.049 [-0.028, +0.136]; imputation +0.032 [-0.111, +0.123]; imputation + trends -0.156 [-0.348, +0.035]
+ln 1-4: CS overall -0.014 [-0.109, +0.103]; CS mean pre (e<=-2) +0.062 [-0.043, +0.183]; imputation +0.020 [-0.141, +0.165]; imputation + trends -0.317 [-0.793, +0.092]
+dd 1-4: CS overall -0.029 [-0.097, +0.066]; CS mean pre (e<=-2) +0.013 [-0.025, +0.059]; imputation -0.012 [-0.086, +0.059]; imputation + trends -0.161 [-0.450, +0.066]
+event study, ages 1-19 (CS, base e=-1):
+  ln 1-19: e-6 +0.092 e-5 +0.127 e-4 +0.061 e-3 +0.003 e-2 +0.001 e-1 +0.000 e0 +0.008 e1 -0.033 e2 -0.038 e3 +0.010 e4 +0.010 e5 -0.030
+  dd 1-19: e-6 +0.001 e-5 +0.053 e-4 +0.012 e-3 -0.015 e-2 -0.011 e-1 +0.000 e0 -0.018 e1 -0.008 e2 -0.032 e3 -0.048 e4 -0.093 e5 -0.015
+  treated states per event time: e-6 9 e-5 10 e-4 11 e-3 11 e-2 13 e-1 0 e0 13 e1 8 e2 7 e3 3 e4 3 e5 3
+
+== The 1918 influenza: stop the clean window in 1917
+ln 1-19: CS overall -0.030 [-0.164, +0.139]; imputation +0.021 [-0.155, +0.154]
+dd 1-19: CS overall -0.044 [-0.141, +0.065]; imputation -0.041 [-0.125, +0.039]
+influenza + pneumonia deaths in reporting states: 1916 108,649, 1917 114,448, 1918 441,410, 1919 184,464
+
+== Coding the suffrage dates (ages 1-19)
+miller    ln 1-19: A -0.099 (0.031) imputation -0.000 CS -0.014; dd 1-19: A -0.066 (0.020) imputation -0.032 CS -0.029
+full_only ln 1-19: A -0.101 (0.037) imputation +0.053 CS -0.025; dd 1-19: A -0.081 (0.020) imputation -0.033 CS -0.047
+lag       ln 1-19: A -0.094 (0.036) imputation +0.021 CS +0.003; dd 1-19: A -0.064 (0.022) imputation -0.021 CS -0.001
+
+== Leave one early-suffrage state out (ages 1-19)
+ln 1-19: spec A ranges -0.119 to -0.090; CS ranges -0.055 to +0.027 (largest CS when dropping CA, largest A when dropping MT)
+dd 1-19: spec A ranges -0.073 to -0.059; CS ranges -0.054 to +0.005 (largest CS when dropping CA, largest A when dropping RI)
+
+== Municipal spending (city fixed effects, year fixed effects, state trends; SE clustered by state)
+Miller, Online Appendix Table 8, column 1: total +0.077 (0.031), health and sanitation +0.063 (0.036), charities, hospitals and corrections +0.451 (0.115)
+total                              A +0.062 (0.025) n=5152 [Miller +0.077 (0.031)]
+                                   A from 1906 +0.059 (0.024); B from 1906 +0.076 (0.034); A with the rank column as city id +0.077 (0.085)
+health and sanitation              A +0.059 (0.028) n=5152 [Miller +0.063 (0.036)]
+                                   A from 1906 +0.055 (0.025); B from 1906 +0.094 (0.042); A with the rank column as city id -0.184 (0.109)
+health                             A +0.049 (0.059) n=4887
+                                   A from 1906 +0.047 (0.056); B from 1906 +0.088 (0.063); A with the rank column as city id -0.119 (0.175)
+sanitation                         A +0.073 (0.032) n=4889
+                                   A from 1906 +0.068 (0.029); B from 1906 +0.111 (0.044); A with the rank column as city id -0.214 (0.106)
+charities, hospitals, corrections  A +0.193 (0.090) n=4818 [Miller +0.451 (0.115)]
+                                   A from 1906 +0.173 (0.081); B from 1906 +0.091 (0.115); A with the rank column as city id -0.771 (0.354)
+the column 'id' is the population rank of the city in that year: New York is 1 in every year; rank 4 is St. Louis in 1905 and Detroit in 1930; cities are identified here by state and place FIPS codes (319 cities)
+clean comparisons 1906-1919 (bootstrap over states):
+  total                  CS +0.041 [-0.019, +0.112]  imputation +0.089 [+0.018, +0.165]  CS mean pre (e<=-2) -0.032 [-0.062, -0.010]
+  health and sanitation  CS -0.001 [-0.064, +0.063]  imputation +0.047 [-0.018, +0.121]  CS mean pre (e<=-2) -0.035 [-0.090, +0.019]
+  event study, health and sanitation (cohorts in brackets): e-6 -0.043(6) e-5 -0.027(6) e-4 -0.013(7) e-3 -0.051(7) e-2 -0.042(8) e0 -0.009(7) e1 +0.017(6) e2 -0.004(5) e3 +0.052(4) e4 +0.075(4) e5 -0.007(5)
+  health                 CS +0.066 [-0.133, +0.226]  imputation +0.112 [-0.052, +0.260]  CS mean pre (e<=-2) -0.080 [-0.169, +0.039]
+  sanitation             CS -0.011 [-0.078, +0.052]  imputation +0.044 [-0.032, +0.130]  CS mean pre (e<=-2) -0.032 [-0.088, +0.020]
+
+== Allowing one year of anticipation (base year g-2; controls not treated by t+1)
+ln 1-19: CS -0.014; with anticipation +0.029
+dd 1-19: CS -0.029; with anticipation -0.008
+spending, total: CS +0.041; with anticipation +0.071
+spending, health and sanitation: CS -0.001; with anticipation +0.059
+

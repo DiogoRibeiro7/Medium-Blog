@@ -9,6 +9,9 @@ the online appendix, and the coded Voteview, digitized municipal public finance 
 mortality data, raw and harmonized, stored on Google Drive. Each file is saved unchanged under
 ``data/raw/`` (archives are also unpacked there), and ``data/fetch_log.txt`` records the URL,
 HTTP status, size and SHA-256 of every response.
+
+The two Voteview files are not shared publicly: Google Drive answers every request for them with
+its sign-in page. They are tried and logged as restricted, and the run does not fail on them.
 """
 
 from __future__ import annotations
@@ -38,6 +41,8 @@ FILES = {
     "mortality_raw": ("1Dw_KQKJQfyUz5mmVgi3jqP6rrGypAQ2N", True),
     "mortality_harmonized": ("1ubiSqKHZYhCbVkKaqS_lM7gZXERQyw5v", False),
 }
+# files the analysis can do without (both need a Google sign-in)
+OPTIONAL = {"voteview_raw", "voteview_harmonized"}
 UA = "Mozilla/5.0 (X11; Linux x86_64) research-download (dfr@esmad.ipp.pt)"
 LOG: list[str] = []
 JAR = http.cookiejar.CookieJar()
@@ -102,10 +107,11 @@ def drive(key: str, file_id: str, sheet: bool, raw: Path) -> bool:
         if status != 200 or not body:
             continue
         if is_html(body):
-            # keep the page for diagnosis, then follow a confirmation form or a download link in it
-            (raw / "html").mkdir(parents=True, exist_ok=True)
-            (raw / "html" / f"{key}_{len(urls)}_{urls.index(url)}.html").write_bytes(body)
             text = body.decode("utf-8", "replace").replace("\\u003d", "=").replace("\\u0026", "&")
+            if "accounts.google.com" in text[:2000]:
+                LOG.append(f"  {key}: Google Drive asks for a sign-in (file not shared publicly)")
+                break
+            # a virus-scan or confirmation page: follow its form or a download link in it
             inputs = dict(re.findall(r'name="([a-z_]+)" value="([^"]*)"', text))
             links = re.findall(r'https://drive\.usercontent\.google\.com/download\?[^"\'\s<>]+', text)
             followed = False
@@ -136,7 +142,7 @@ def drive(key: str, file_id: str, sheet: bool, raw: Path) -> bool:
                     out.write_bytes(z.read(info))
                     LOG.append(f"    unpacked {out.relative_to(raw)}\t{info.file_size}")
         return True
-    LOG.append(f"  FAILED {key}")
+    LOG.append(f"  FAILED {key}" + (" (optional, restricted)" if key in OPTIONAL else ""))
     return False
 
 
@@ -160,7 +166,8 @@ def main() -> int:
     LOG.append(f"# appendix saved: {ok}; files saved: {sum(results.values())} of {len(results)}")
     (out / "fetch_log.txt").write_text("\n".join(LOG) + "\n")
     print("\n".join(LOG))
-    return 0 if all(results.values()) else 1
+    needed = [k for k in FILES if k not in OPTIONAL]
+    return 0 if ok and all(results[k] for k in needed) else 1
 
 
 if __name__ == "__main__":
