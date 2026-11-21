@@ -1,0 +1,23 @@
+{
+ "rowsUpdatedAt": 1791384138,
+ "window_first_assignment": [
+  "2018-12-30T00:00:00",
+  "2019-12-30T00:00:00"
+ ],
+ "count_query": 1525569,
+ "rows_downloaded": 1525569,
+ "duplicate_ids_dropped": 0,
+ "excluded_missing_time": 475,
+ "excluded_close_not_after_assignment": 32,
+ "excluded_longer_than_8h": 971,
+ "kept": 1524091,
+ "boroughs": {
+  "BRONX": 354397,
+  "BROOKLYN": 423495,
+  "MANHATTAN": 389052,
+  "QUEENS": 293415,
+  "RICHMOND / STATEN ISLAND": 63722,
+  "UNKNOWN": 10
+ },
+ "median_busy_minutes": 68.11666666666667
+}

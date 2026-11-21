@@ -1,0 +1,89 @@
+name: Tour length and binding hours
+
+# Companion of the article on tour length and the hours that size an ambulance roster. Pull requests: lint and tests.
+# Pushes to the branch: also download the EMS incidents once (hourly aggregates are then committed), run the registered
+# test and commit the sources, results and figures.
+
+on:
+  push:
+    branches:
+      - ambulance-tour-length
+    paths:
+      - 'ambulance-tour-length/**'
+      - '!ambulance-tour-length/sources/**'
+      - '!ambulance-tour-length/results/**'
+      - '!ambulance-tour-length/figures/**'
+      - '.github/workflows/ambulance-tour-length.yml'
+  pull_request:
+    paths:
+      - 'ambulance-tour-length/**'
+      - '.github/workflows/ambulance-tour-length.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: ambulance-tour-length-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: ambulance-tour-length
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: ambulance-tour-length/requirements.txt
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Lint
+        run: ruff check . && ruff format --check .
+      - name: Unit tests
+        run: python -m pytest -q
+      - name: Download the EMS incidents and write hourly busy time (only if not committed yet)
+        if: github.event_name != 'pull_request'
+        run: python fetch.py --sources sources
+      - name: Commit the downloaded sources before the long run
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources
+          if ! git diff --cached --quiet; then
+            git commit -m "ambulance-tour-length: EMS hourly busy time from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
+      - name: The registered test (skipped when results/INPUTS matches the code and the sources)
+        if: github.event_name != 'pull_request'
+        run: python inputs_digest.py --check || python evaluate.py --sources sources --out results
+      - name: Descriptive numbers quoted in the article
+        if: github.event_name != 'pull_request' && hashFiles('ambulance-tour-length/details.py') != ''
+        run: python details.py --sources sources --results results --out results/details.txt
+      - name: Figures
+        if: github.event_name != 'pull_request' && hashFiles('ambulance-tour-length/figures.py') != ''
+        run: python figures.py --sources sources --results results --out figures
+      - name: Commit sources, results and figures
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources results
+          if [ -d figures ]; then git add figures; fi
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "ambulance-tour-length: sources and results from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi

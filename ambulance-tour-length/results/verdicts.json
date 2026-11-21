@@ -1,0 +1,240 @@
+{
+ "H1": {
+  "cells": 1092,
+  "tight_share": 0.9835164835164835,
+  "largest_shortfall": 0.006220839813374806,
+  "binding_in_comb": 0.9869867340492735,
+  "comb_binding": 0.9930508474576272,
+  "supported": true
+ },
+ "H2": {
+  "matches": {
+   "comb": 21,
+   "climb": 2,
+   "peak": 0
+  },
+  "cases": [
+   {
+    "dataset": "ems_city",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_city",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_city",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_bronx",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_bronx",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_bronx",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_brooklyn",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_brooklyn",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_brooklyn",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_manhattan",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_manhattan",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_manhattan",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_queens",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_queens",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_queens",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_staten_island",
+    "L": 6,
+    "observed": 4,
+    "comb": 4,
+    "climb": 3,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_staten_island",
+    "L": 8,
+    "observed": 2,
+    "comb": 2,
+    "climb": 1,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "ems_staten_island",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 1,
+    "climb_hour": 9,
+    "peak_hour": 13
+   },
+   {
+    "dataset": "nyc311",
+    "L": 6,
+    "observed": 3,
+    "comb": 3,
+    "climb": 3,
+    "peak": 5,
+    "climb_hour": 9,
+    "peak_hour": 11
+   },
+   {
+    "dataset": "nyc311",
+    "L": 8,
+    "observed": 1,
+    "comb": 1,
+    "climb": 1,
+    "peak": 3,
+    "climb_hour": 9,
+    "peak_hour": 11
+   },
+   {
+    "dataset": "nyc311",
+    "L": 12,
+    "observed": 10,
+    "comb": 10,
+    "climb": 9,
+    "peak": 11,
+    "climb_hour": 9,
+    "peak_hour": 11
+   }
+  ],
+  "supported": true
+ },
+ "H3": {
+  "datasets_on_predicted_side": {
+   "6": 3,
+   "8": 2,
+   "9": 6,
+   "10": 7,
+   "12": 4
+  },
+  "supported": false
+ }
+}

@@ -1,0 +1,72 @@
+== 2% chance of no free ambulance
+H1 (L in 6, 8, 12; 936 cells): comb bound equals the integer optimum in 0.9797; largest shortfall 0.8499%; binding hours that are comb hours 0.9868; comb hours that are binding 0.9862
+  L  6: comb bound tight in 0.9904; largest shortfall 0.2151%; binding hours that are comb hours 0.993; comb hours that are binding 0.992; relaxation = integer optimum in 0.994
+  L  8: comb bound tight in 0.9679; largest shortfall 0.4301%; binding hours that are comb hours 0.983; comb hours that are binding 0.979; relaxation = integer optimum in 0.981
+  L  9: comb bound tight in 0.9968; largest shortfall 0.1164%; binding hours that are comb hours 1.000; comb hours that are binding 0.997; relaxation = integer optimum in 0.997
+  L 10: comb bound tight in 0.9968; largest shortfall 0.0885%; binding hours that are comb hours 1.000; comb hours that are binding 0.997; relaxation = integer optimum in 0.997
+  L 12: comb bound tight in 0.9808; largest shortfall 0.8499%; binding hours that are comb hours 0.981; comb hours that are binding 0.986; relaxation = integer optimum in 0.990
+  H1 supported: True
+
+H2 ems_city           L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_city           L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_city           L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_bronx          L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_brooklyn       L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 0 (hour 12)
+H2 ems_brooklyn       L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 4 (hour 12)
+H2 ems_brooklyn       L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 0 (hour 12)
+H2 ems_manhattan      L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_manhattan      L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_manhattan      L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_queens         L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_staten_island  L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_staten_island  L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_staten_island  L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2: matches out of 18: comb 18, steepest climb 0, peak 0; supported: True
+
+H3 L  6: largest binding share by dataset: ems_city 0.90, ems_bronx 0.59, ems_brooklyn 0.48, ems_manhattan 0.35, ems_queens 0.41, ems_staten_island 0.25; datasets on the predicted side of 0.5: 2 of 6
+H3 L  8: largest binding share by dataset: ems_city 0.59, ems_bronx 0.42, ems_brooklyn 0.30, ems_manhattan 0.45, ems_queens 0.24, ems_staten_island 0.21; datasets on the predicted side of 0.5: 1 of 6
+H3 L  9: largest binding share by dataset: ems_city 0.22, ems_bronx 0.19, ems_brooklyn 0.18, ems_manhattan 0.19, ems_queens 0.19, ems_staten_island 0.20; datasets on the predicted side of 0.5: 6 of 6
+H3 L 10: largest binding share by dataset: ems_city 0.26, ems_bronx 0.21, ems_brooklyn 0.24, ems_manhattan 0.22, ems_queens 0.20, ems_staten_island 0.22; datasets on the predicted side of 0.5: 6 of 6
+H3 L 12: largest binding share by dataset: ems_city 0.71, ems_bronx 0.60, ems_brooklyn 0.74, ems_manhattan 0.51, ems_queens 0.49, ems_staten_island 0.26; datasets on the predicted side of 0.5: 4 of 6
+H3 supported: False
+
+== load rounded up, no margin
+H1 (L in 6, 8, 12; 936 cells): comb bound equals the integer optimum in 0.9829; largest shortfall 0.7722%; binding hours that are comb hours 0.9913; comb hours that are binding 0.9894
+  L  6: comb bound tight in 0.9968; largest shortfall 0.0979%; binding hours that are comb hours 0.993; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L  8: comb bound tight in 0.9776; largest shortfall 0.2796%; binding hours that are comb hours 0.993; comb hours that are binding 0.981; relaxation = integer optimum in 0.984
+  L  9: comb bound tight in 0.9968; largest shortfall 0.1429%; binding hours that are comb hours 0.997; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L 10: comb bound tight in 1.0000; largest shortfall 0.0000%; binding hours that are comb hours 1.000; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L 12: comb bound tight in 0.9744; largest shortfall 0.7722%; binding hours that are comb hours 0.985; comb hours that are binding 0.981; relaxation = integer optimum in 0.984
+  H1 supported: True
+
+H2 ems_city           L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_city           L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_city           L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_bronx          L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_brooklyn       L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_brooklyn       L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_brooklyn       L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_manhattan      L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_manhattan      L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_manhattan      L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_queens         L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_staten_island  L  6: observed phase 4; comb 4, climb 4 (hour 10), peak 1 (hour 13)
+H2 ems_staten_island  L  8: observed phase 2; comb 3, climb 2 (hour 10), peak 5 (hour 13)
+H2 ems_staten_island  L 12: observed phase 10; comb 10, climb 10 (hour 10), peak 1 (hour 13)
+H2: matches out of 18: comb 17, steepest climb 3, peak 0; supported: True
+
+H3 L  6: largest binding share by dataset: ems_city 0.87, ems_bronx 0.56, ems_brooklyn 0.45, ems_manhattan 0.34, ems_queens 0.36, ems_staten_island 0.24; datasets on the predicted side of 0.5: 2 of 6
+H3 L  8: largest binding share by dataset: ems_city 0.55, ems_bronx 0.42, ems_brooklyn 0.29, ems_manhattan 0.40, ems_queens 0.21, ems_staten_island 0.22; datasets on the predicted side of 0.5: 1 of 6
+H3 L  9: largest binding share by dataset: ems_city 0.25, ems_bronx 0.19, ems_brooklyn 0.18, ems_manhattan 0.22, ems_queens 0.21, ems_staten_island 0.20; datasets on the predicted side of 0.5: 6 of 6
+H3 L 10: largest binding share by dataset: ems_city 0.27, ems_bronx 0.27, ems_brooklyn 0.26, ems_manhattan 0.24, ems_queens 0.23, ems_staten_island 0.24; datasets on the predicted side of 0.5: 6 of 6
+H3 L 12: largest binding share by dataset: ems_city 0.71, ems_bronx 0.56, ems_brooklyn 0.74, ems_manhattan 0.44, ems_queens 0.47, ems_staten_island 0.27; datasets on the predicted side of 0.5: 3 of 6
+H3 supported: False
+
