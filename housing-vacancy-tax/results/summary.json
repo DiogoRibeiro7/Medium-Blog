@@ -1,8 +1,5 @@
 {
-  "source": "IHRU/OHARU (2024), Table 11, Portugal Census 2021",
-  "observation_year": 2021,
-  "source_report_url": "https://www.portaldahabitacao.pt/documents/20126/58203/1_Estudo%2BPNH-_VFinal.pdf/9ed08595-a9d2-0708-d845-ec3a93d56c3e",
-  "census": {
+  "census_2021": {
     "total_classic_dwellings": 5970677,
     "habitual_residences": 4142581,
     "secondary_residences": 1104881,
@@ -12,6 +9,17 @@
     "vacant_no_or_minor_repairs": 485461,
     "vacant_other_reasons_no_or_minor_repairs": 248534
   },
+  "detection_tax_year_2023": {
+    "flagged_vacant_2023": 12776,
+    "flagged_general_rule": 5729,
+    "flagged_pressure_zones": 7047,
+    "flagged_ruins": 4305,
+    "municipalities_applying": 64,
+    "oecd_identified_2023": 12803,
+    "share_of_census_vacant": 0.0177,
+    "share_of_other_reasons_good_condition": 0.0514,
+    "share_of_vacant_other_reasons": 0.0341
+  },
   "hypothetical_parameters": {
     "taxable_property_value_eur": "150000",
     "imi_rate": "0.0035",
@@ -20,114 +28,160 @@
     "gross_rent_retained_fraction": "0.70",
     "additional_annual_rental_cost_eur": "1200"
   },
-  "net_rental_flow_before_imi_eur": "5604.0000",
+  "net_rental_flow_before_imi_eur": "5604.00",
+  "rent_received_eur": "9720.00",
+  "rate_cut_gain_upper_bound_eur": "1458.00",
   "tax_scenarios": [
     {
       "multiplier": "1",
-      "annual_imi_eur": "525.0000",
-      "incremental_vs_ordinary_eur": "0.0000",
-      "option_value_threshold_eur": "5604.0000"
+      "annual_imi_eur": "525.00",
+      "surcharge_eur": "0.00",
+      "option_value_threshold_eur": "5604.00",
+      "option_value_threshold_with_rate_cut_eur": "7062.00"
     },
     {
       "multiplier": "3",
-      "annual_imi_eur": "1575.0000",
-      "incremental_vs_ordinary_eur": "1050.0000",
-      "option_value_threshold_eur": "6654.0000"
+      "annual_imi_eur": "1575.00",
+      "surcharge_eur": "1050.00",
+      "option_value_threshold_eur": "6654.00",
+      "option_value_threshold_with_rate_cut_eur": "8112.00"
     },
     {
       "multiplier": "10",
-      "annual_imi_eur": "5250.0000",
-      "incremental_vs_ordinary_eur": "4725.0000",
-      "option_value_threshold_eur": "10329.0000"
+      "annual_imi_eur": "5250.00",
+      "surcharge_eur": "4725.00",
+      "option_value_threshold_eur": "10329.00",
+      "option_value_threshold_with_rate_cut_eur": "11787.00"
     },
     {
       "multiplier": "20",
-      "annual_imi_eur": "10500.0000",
-      "incremental_vs_ordinary_eur": "9975.0000",
-      "option_value_threshold_eur": "15579.0000"
+      "annual_imi_eur": "10500.00",
+      "surcharge_eur": "9975.00",
+      "option_value_threshold_eur": "15579.00",
+      "option_value_threshold_with_rate_cut_eur": "17037.00"
     }
   ],
-  "sensitivity_scenarios": [
+  "detection_probability_matching_rate_cut": {
+    "3x": "1.389",
+    "10x": "0.309",
+    "20x": "0.146"
+  },
+  "scale_detection_ratio": "0.0514",
+  "expected_surcharge_at_scale_ratio_eur": {
+    "3x": "53.98",
+    "10x": "242.89",
+    "20x": "512.77"
+  },
+  "rate_cut_annual_cost_eur": {
+    "irs": "279100000.00",
+    "irs_and_irc": "308900000.00"
+  },
+  "break_even_additional_leases": {
+    "benchmark_annual_contract_rent_eur": "10800.00",
+    "irs_only": "25843",
+    "irs_and_irc": "28602"
+  },
+  "cost_per_additional_lease": [
     {
-      "eligible_share": "0.05",
-      "response_share": "0.05",
-      "hypothetically_released_dwellings": "621.3350"
+      "additional_leases": "1000",
+      "cost_per_additional_lease_irs_eur": "279100.00",
+      "cost_per_additional_lease_irs_irc_eur": "308900.00"
     },
     {
-      "eligible_share": "0.05",
-      "response_share": "0.10",
-      "hypothetically_released_dwellings": "1242.6700"
+      "additional_leases": "2500",
+      "cost_per_additional_lease_irs_eur": "111640.00",
+      "cost_per_additional_lease_irs_irc_eur": "123560.00"
     },
     {
-      "eligible_share": "0.05",
-      "response_share": "0.20",
-      "hypothetically_released_dwellings": "2485.3400"
+      "additional_leases": "5000",
+      "cost_per_additional_lease_irs_eur": "55820.00",
+      "cost_per_additional_lease_irs_irc_eur": "61780.00"
     },
     {
-      "eligible_share": "0.05",
-      "response_share": "0.40",
-      "hypothetically_released_dwellings": "4970.6800"
+      "additional_leases": "10000",
+      "cost_per_additional_lease_irs_eur": "27910.00",
+      "cost_per_additional_lease_irs_irc_eur": "30890.00"
     },
     {
-      "eligible_share": "0.10",
-      "response_share": "0.05",
-      "hypothetically_released_dwellings": "1242.6700"
+      "additional_leases": "20000",
+      "cost_per_additional_lease_irs_eur": "13955.00",
+      "cost_per_additional_lease_irs_irc_eur": "15445.00"
     },
     {
-      "eligible_share": "0.10",
-      "response_share": "0.10",
-      "hypothetically_released_dwellings": "2485.3400"
+      "additional_leases": "25000",
+      "cost_per_additional_lease_irs_eur": "11164.00",
+      "cost_per_additional_lease_irs_irc_eur": "12356.00"
     },
     {
-      "eligible_share": "0.10",
-      "response_share": "0.20",
-      "hypothetically_released_dwellings": "4970.6800"
+      "additional_leases": "50000",
+      "cost_per_additional_lease_irs_eur": "5582.00",
+      "cost_per_additional_lease_irs_irc_eur": "6178.00"
     },
     {
-      "eligible_share": "0.10",
-      "response_share": "0.40",
-      "hypothetically_released_dwellings": "9941.3600"
+      "additional_leases": "100000",
+      "cost_per_additional_lease_irs_eur": "2791.00",
+      "cost_per_additional_lease_irs_irc_eur": "3089.00"
     },
     {
-      "eligible_share": "0.25",
-      "response_share": "0.05",
-      "hypothetically_released_dwellings": "3106.6750"
-    },
-    {
-      "eligible_share": "0.25",
-      "response_share": "0.10",
-      "hypothetically_released_dwellings": "6213.3500"
-    },
-    {
-      "eligible_share": "0.25",
-      "response_share": "0.20",
-      "hypothetically_released_dwellings": "12426.7000"
-    },
-    {
-      "eligible_share": "0.25",
-      "response_share": "0.40",
-      "hypothetically_released_dwellings": "24853.4000"
-    },
-    {
-      "eligible_share": "0.50",
-      "response_share": "0.05",
-      "hypothetically_released_dwellings": "6213.3500"
-    },
-    {
-      "eligible_share": "0.50",
-      "response_share": "0.10",
-      "hypothetically_released_dwellings": "12426.7000"
-    },
-    {
-      "eligible_share": "0.50",
-      "response_share": "0.20",
-      "hypothetically_released_dwellings": "24853.4000"
-    },
-    {
-      "eligible_share": "0.50",
-      "response_share": "0.40",
-      "hypothetically_released_dwellings": "49706.8000"
+      "additional_leases": "200000",
+      "cost_per_additional_lease_irs_eur": "1395.50",
+      "cost_per_additional_lease_irs_irc_eur": "1544.50"
     }
   ],
-  "interpretation": "Census is 2021 observed stock; tax liabilities are arithmetic; owner-choice thresholds and mobilisations are illustrative, not causal forecasts."
+  "audit_sample_sizes": [
+    {
+      "population": "248534",
+      "margin": "0.01",
+      "sample_size": "9247"
+    },
+    {
+      "population": "248534",
+      "margin": "0.02",
+      "sample_size": "2378"
+    },
+    {
+      "population": "248534",
+      "margin": "0.03",
+      "sample_size": "1063"
+    },
+    {
+      "population": "248534",
+      "margin": "0.05",
+      "sample_size": "384"
+    },
+    {
+      "population": "723215",
+      "margin": "0.01",
+      "sample_size": "9478"
+    },
+    {
+      "population": "723215",
+      "margin": "0.02",
+      "sample_size": "2393"
+    },
+    {
+      "population": "723215",
+      "margin": "0.03",
+      "sample_size": "1066"
+    },
+    {
+      "population": "723215",
+      "margin": "0.05",
+      "sample_size": "384"
+    }
+  ],
+  "viseu_back_of_envelope": {
+    "surcharge_per_building_eur": "563.11",
+    "implied_ordinary_imi_eur_if_first_year_10x": "62.57",
+    "implied_vpt_eur_at_0.45pct": "13903.87",
+    "implied_vpt_eur_at_0.30pct": "20855.81"
+  },
+  "vancouver": {
+    "declared_vacancy_rate_2017_pct": "1.18",
+    "declared_vacancy_rate_2024_pct": "0.49",
+    "relative_fall_in_rate": 0.585,
+    "vacant_properties_2024": 979,
+    "required_to_declare_2024": 201739
+  },
+  "interpretation": "Census and tax-administration counts are observed; tax amounts are arithmetic on a hypothetical dwelling; detection ratios compare different units and years and are given for scale only; nothing here is a causal estimate."
 }

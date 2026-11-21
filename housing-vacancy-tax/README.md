@@ -1,61 +1,49 @@
-# Empty homes and the state's bargaining power: Portugal vacancy tax
+# Taxing empty homes in Portugal: statutory rates, detection and expected cost
 
-Reproducible companion for the standalone Medium article **Empty Homes Are a Policy Choice: The Economics of Taxing Housing Left Unused**, written 21 November 2026.
+Reproducible companion for the standalone Medium article **Taxing Empty Homes in Portugal: Statutory Rates, Detection and the Expected Cost of Vacancy** (November 2026).
 
-## Research question
+## Question
 
-How does Portugal's *existing* vacancy tax alter the private incentives to hold an otherwise usable dwelling idle? What can the 2021 Census establish about the size of the vacant stock, and what does it **not** establish about legal eligibility, response and affordability?
+Portugal's IMI code already triples the property-tax rate on dwellings vacant for more than a year and multiplies it by ten in designated housing-pressure zones. In 2026 the government instead cut the income tax on rents from 25% to 10% for almost every residential lease. This companion puts both levers into the same owner decision and prices them in euros, then asks what the surcharge is worth once the probability of being found is counted, and what the rate cut costs per lease it adds.
 
-This project **does not claim to estimate a causal tax effect for Portugal**. It separates three layers:
+Nothing here estimates a causal effect of either measure in Portugal. Four layers are kept apart:
 
-1. **Observed descriptive data:** INE Census 2021, transcribed from IHRU/OHARU (2024) Table 11, in `data/census_2021_ihru_table11.csv`.
-2. **Statutory tax arithmetic:** ordinary IMI; 3× for buildings legally classified as vacant outside pressure zones; 10× in the first year and an ordinary-rate 20× standard cap in designated pressure zones, with qualifications and exceptions in law. The assumed VPT and municipal rate are **not observed**.
-3. **Hypothetical owner decisions and mobilisation:** a one-period opportunity-cost identity and two-way sensitivity grid, **not a forecast**.
+1. **Observed counts.** Census 2021 vacant stock (IHRU Table 11); vacant properties flagged by municipalities for tax year 2023; Vancouver's Empty Homes Tax monitoring series; UTAO's annual cost of the 2026 rate cut. Sources and caveats in [`data/SOURCES.md`](data/SOURCES.md).
+2. **Statutory arithmetic.** IMI at 1×, 3×, 10× and 20× for one dwelling with an assumed taxable value of €150,000 and an assumed rate of 0.35%.
+3. **A decision identity.** The owner lets when the private value of keeping the home empty, *U*, satisfies *U* ≤ *F* + *π*·*ρ*·(*m* − 1)·*B*, where *F* is the net rental flow, *π* the probability of being classified vacant and assessed, *ρ* the probability that the surcharge survives legal challenge, *m* the multiplier and *B* ordinary IMI. The rate cut raises *F* by at most 15% of the rent received.
+4. **Scenario grids.** Expected surcharge against *π*; cost per additional lease against the unknown number of additional leases; audit sample sizes; the old eligibility × response grid. None is a forecast.
 
 ## Reproduce
 
-Python 3.10 or later. From the `housing-vacancy-tax/` directory:
+Python 3.10 or later, from this folder:
 
 ```bash
 python -m pip install -r requirements.txt
-python run.py
-python figures.py
+python run.py          # standard library only; writes results/
+python figures.py      # matplotlib; writes figures/*.png
 python -m unittest discover -s tests -v
 ```
 
-`run.py` needs only the standard library. `figures.py` uses matplotlib and produces three PNG figures. Everything operates offline from the pinned source table.
+Everything runs offline from the transcribed files in `data/`. Each loader checks its file against the cited values and stops if anything differs.
 
-Outputs:
+## Outputs
 
-- `results/summary.json`: observed counts, assumptions and outputs.
-- `results/tax_scenarios.csv`: annual hypothetical IMI and option-value thresholds.
-- `results/sensitivity.csv`: hypothetical two-stage filtering of the 248,534 dwellings.
-- `figures/fig01_vacant_stock_2021.png`: observed vacant stock by market status and repairs.
-- `figures/fig02_imi_scenarios.png`: illustrated tax outcomes for VPT €150,000 and IMI 0.35%.
-- `figures/fig03_sensitivity.png`: scenario grid, **not a causal prediction**.
+- `results/summary.txt`: every number the article quotes, in plain text; `results/summary.json`: the same, machine-readable.
+- `results/tax_scenarios.csv`: IMI, surcharge and the largest *U* consistent with letting, with and without the rate cut.
+- `results/expected_surcharge.csv`: expected surcharge for *π* from 0 to 1 at 3×, 10× and 20×.
+- `results/cost_per_additional_lease.csv`: UTAO's annual cost divided by a range of additional leases.
+- `results/audit_sample_sizes.csv`: random-audit sizes needed to estimate the legally vacant share.
+- `results/sensitivity.csv`: the 248,534-dwelling eligibility × response grid (arithmetic only).
+- `figures/fig01_census_to_flagged.png` to `figures/fig05_vancouver_declared_vacancy.png`.
 
-## Data provenance
+## What the numbers say, and do not
 
-IHRU/OHARU, *Territórios com falta ou desadequação da oferta habitacional em Portugal*, September 2024, **Table 11, printed page 32** ([official report](https://www.portaldahabitacao.pt/documents/20126/58203/1_Estudo%2BPNH-_VFinal.pdf/9ed08595-a9d2-0708-d845-ec3a93d56c3e)), using INE Census 2021.
+- 12,776 vacant properties were flagged in 64 municipalities for tax year 2023, against 723,215 vacant dwellings in the 2021 Census and 248,534 vacant for reasons other than sale or rent in buildings in good condition. The ratios (1.8% and 5.1%) divide counts with different units (property vs dwelling) and years, and are given for scale.
+- For the illustrative flat the 3×, 10× and 20× surcharges are €1,050, €4,725 and €9,975 a year; the rate cut adds at most €1,458. At *π* = 5.1% the expected 10× surcharge is €243. The 10× surcharge matches the cut's bound at *π* ≈ 31%; the 3× surcharge never does.
+- UTAO puts the cut at €279.1 million a year in IRS (€308.9 million with the IRC measure). It costs more per additional lease than the €10,800 annual rent of the illustrative flat unless it brings about 25,843 leases (28,602 with IRC) that would not otherwise exist.
+- A simple random audit of about 2,400 addresses estimates the legally vacant share of the 248,534 group to ±2 points at 95%.
+- Vancouver's declared vacancy rate fell from 1.18% (2017) to 0.49% (2024). These are the tax's own monitoring data, not an estimate of its effect.
 
-The 5,970,677 classic dwellings comprised 4,142,581 habitual residences, 1,104,881 secondary residences and 723,215 vacant dwellings. Of the vacant stock, 348,097 were offered for sale or rent and 375,118 were vacant for other reasons. The repair-status cross-tabulation is in `data/`. Buildings requiring no or only minor repairs account for 485,461 vacant dwellings, of which 248,534 were vacant for other reasons.
-
-**Do not interpret 248,534 as the number of legally taxable, immediately lettable, or deliberately withheld dwellings.** The Census categories do not identify a legal vacancy classification, the property's condition inside, inheritance disputes, municipal housing pressure, or property location relative to demand.
-
-Sources for tax law: [Article 112, CIMI](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimi/Pages/cimi112.aspx), [Article 112-B, CIMI](https://info.portaldasfinancas.gov.pt/pt/informacao_fiscal/codigos_tributarios/cimi/Pages/cimi112b.aspx), and [Decree-Law 159/2006](https://diariodarepublica.pt/dr/detalhe/decreto-lei/159-2006-538621). These rules include safeguards, exemptions and possible municipal rate variations; this is not legal advice.
-
-Further evidence: [OECD Economic Survey Portugal 2026](https://www.oecd.org/en/publications/oecd-economic-surveys-portugal-2026_025b3445-en.html) discusses outdated property assessments and limited enforcement of vacancy surcharges; [Caracciolo and Miglino (2024)](https://cdhowe.org/publication/ripple-effects-impact-empty-homes-tax-housing-market/) find reduced vacancy in Vancouver, but no statistically significant decline in average rent.
-
-## One-period model
-
-`Expected net cashflow from letting before IMI` is calculated as 12 × monthly rent × occupancy × fraction of rent retained after variable expenses and income tax − additional annual rental cost. Ordinary IMI is paid under both choices; a legally applicable vacant-property multiplier creates an extra annual charge `(multiplier − 1) × VPT × municipal_rate` on the empty choice. Renting becomes more attractive if the owner's option value of continued vacancy is lower than cashflow plus the additional vacant-property tax.
-
-In the example, monthly rent (€900), occupancy (90%), retained fraction (70%), extra fixed rental costs (€1,200), VPT (€150,000) and tax rate (0.35%) are *hypothetical*, not estimates. Capital appreciation common to both choices cancels out. These are comparative-static assumptions, not estimates of landlord behaviour.
-
-## Identification and further work
-
-The census snapshot does not tell us what municipalities actually assess and collect, which dwellings qualify for Article 112-B, how rental contracts change, or how much of any tax is shifted onto tenants. A causal study for Portugal needs property-linked data on legal vacancy classifications, VPT, municipal rates, occupancy, lease registrations, property quality and location; ideally variation in actual enforcement with a credible comparison design. Housing availability, housing affordability and tax receipts are distinct outcomes.
-
-## License
+## Licence
 
 Apache-2.0, matching the surrounding repository.

@@ -1,5 +1,5 @@
-multiplier,annual_imi_eur,incremental_vs_ordinary_eur,option_value_threshold_eur
-1,525.0000,0.0000,5604.0000
-3,1575.0000,1050.0000,6654.0000
-10,5250.0000,4725.0000,10329.0000
-20,10500.0000,9975.0000,15579.0000
+multiplier,annual_imi_eur,surcharge_eur,option_value_threshold_eur,option_value_threshold_with_rate_cut_eur
+1,525.00,0.00,5604.00,7062.00
+3,1575.00,1050.00,6654.00,8112.00
+10,5250.00,4725.00,10329.00,11787.00
+20,10500.00,9975.00,15579.00,17037.00
