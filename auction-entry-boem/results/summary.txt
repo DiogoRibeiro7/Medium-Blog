@@ -8,6 +8,7 @@ Single-bid tracts: 89.4%; shallow 95.8%, deep 87.2%
   August 2013 to March 2017 (8 sales): 87.7% of 976 tracts; August 2017 to August 2026 (13 sales): 90.1% of 2,121
 Single-bid share by sale: from 81.7% to 100.0%
 Companies per sale: median 27, range 3 to 50
+High bids rejected by BOEM, sales with a known review outcome: August 2013 to March 2017 23 (sales without a final recap: 247, BBG3); August 2017 onward 85
 Sum of high bids $4,382.6 million; on single-bid tracts $2,550.2 million (58.2%)
 
 ==============================================================================
@@ -47,7 +48,7 @@ contested tracts whose second-highest bid exceeds the median winning bid of sing
 two bids: E[higher of two draws] / E[one draw] from single-bid tracts in the cell x1.36; observed mean ratio of two-bid tracts over single-bid tracts x3.37
 three or more: E[highest of three draws] / E[one draw] x1.66; observed x8.04
 one more bid on every single-bid tract, drawn from the single-bid tracts of the same sale and depth band: +38.5% of their high bids [bootstrap 95% 34.3%, 41.0%]
-one more bid as far from the first as the two bids on a two-bid tract: +53.7% [46.1%, 60.2%] (269 two-bid tracts)
+one more bid as far from the first as the two bids on a two-bid tract: +53.7% [46.1%, 60.2%] (269 two-bid tracts; ratio 1.537)
   two-bid tracts: median high / mean of the two bids 1.26; median high / second 1.72
 share of the observed log gap between two-bid and single-bid tracts that a second draw explains: 25%
 

@@ -177,6 +177,11 @@ def main() -> None:
         print(f"Single-bid share by sale: from {100 * bysale.single.min():.1f}% to {100 * bysale.single.max():.1f}%")
         comp = b.assign(c=b.companies.str.split(";")).explode("c").groupby("sale").c.nunique()
         print(f"Companies per sale: median {comp.median():.0f}, range {comp.min()} to {comp.max()}")
+        rk = t[t.review_known]
+        print(f"High bids rejected by BOEM, sales with a known review outcome: August 2013 to March 2017 "
+              f"{int(rk[rk.sale_date < '2017-08-01'].tract_rejected.sum())} (sales without a final recap: "
+              f"{', '.join(sorted(t[~t.review_known].sale.unique()))}); August 2017 onward "
+              f"{int(rk[rk.sale_date >= '2017-08-01'].tract_rejected.sum())}")
         print(f"Sum of high bids ${t.high.sum() / 1e6:,.1f} million; on single-bid tracts ${t[t.n == 1].high.sum() / 1e6:,.1f} million "
               f"({100 * t[t.n == 1].high.sum() / t.high.sum():.1f}%)")
         bysale.to_csv(RES / "single_bid_share_by_sale.csv")
@@ -257,7 +262,7 @@ def main() -> None:
               f"{100 * (np.quantile(boot_cell, .975) - 1):.1f}%]")
         print(f"one more bid as far from the first as the two bids on a two-bid tract: +{100 * (u_pair - 1):.1f}% "
               f"[{100 * (np.quantile(boot_pair, .025) - 1):.1f}%, {100 * (np.quantile(boot_pair, .975) - 1):.1f}%] "
-              f"({n2} two-bid tracts)")
+              f"({n2} two-bid tracts; ratio {u_pair:.3f})")
         two = t[t.n == 2]
         print(f"  two-bid tracts: median high / mean of the two bids {(two.high / ((two.high + two.second) / 2)).median():.2f}; "
               f"median high / second {(two.high / two.second).median():.2f}")
