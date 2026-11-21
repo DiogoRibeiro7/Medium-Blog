@@ -171,3 +171,4 @@ pension-inflation/**/*.csv -filter -diff -merge text
 forecast-success-specification/**/*.csv -filter -diff -merge text
 housing-vacancy-tax/**/*.csv -filter -diff -merge text
 productivity-hours-denominator/**/*.csv -filter -diff -merge text
+growth-finite-world/**/*.csv -filter -diff -merge text
