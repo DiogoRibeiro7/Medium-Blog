@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-222 top-level folders: 77 belong to 24 series, 87 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
+223 top-level folders: 77 belong to 24 series, 87 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 2 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -392,6 +392,7 @@ Notebooks, scripts and data behind older articles, kept at their original paths.
 
 Add these folders to `projects.yml`.
 
+- [`bid-rigging-screens/`](bid-rigging-screens/) — Screens for bid rigging on firms and countries a model has not seen
 - [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
 
 <!-- projects:end -->
