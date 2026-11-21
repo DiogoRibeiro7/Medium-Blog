@@ -65,9 +65,9 @@ jobs:
             git commit -m "ambulance-tour-length: EMS hourly busy time from the workflow ($(date -u +%Y-%m-%d))"
             git push || (git pull --rebase --autostash && git push)
           fi
-      - name: The registered test
+      - name: The registered test (skipped when results/INPUTS matches the code and the sources)
         if: github.event_name != 'pull_request'
-        run: python evaluate.py --sources sources --out results
+        run: python inputs_digest.py --check || python evaluate.py --sources sources --out results
       - name: Descriptive numbers quoted in the article
         if: github.event_name != 'pull_request' && hashFiles('ambulance-tour-length/details.py') != ''
         run: python details.py --sources sources --results results --out results/details.txt

@@ -18,6 +18,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from inputs_digest import digest
 from staff import comb, data, schedule
 
 WEEK = data.WEEK
@@ -198,6 +199,7 @@ def main() -> None:
     workers = min(4, os.cpu_count() or 1)
     cells, masks, _ = solve_all(needs, workers)
     cells.to_csv(a.out / "cells.csv", index=False)
+    np.savez_compressed(a.out / "binding.npz", **{f"{d}__{L}": mk for (d, L), mk in masks.items()})
     v, hl = hypotheses(needs, cells, masks)
     lines += hl
     lines.append("")
@@ -294,6 +296,7 @@ def main() -> None:
         sens.append("")
         c2.to_csv(a.out / f"cells_{'a02' if alpha else 'ceil'}.csv", index=False)
     (a.out / "sensitivity.txt").write_text("\n".join(sens) + "\n")
+    (a.out / "INPUTS").write_text(digest() + "\n")
     print("\n".join(lines))
     log("done")
 

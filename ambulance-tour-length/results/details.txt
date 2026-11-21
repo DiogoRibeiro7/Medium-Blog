@@ -1,0 +1,82 @@
+1. Week-by-week phase of the binding chain, L in 6, 8, 12: share of weeks at the comb-rule phase of the
+   mean profile, and within one hour of it; with the dataset's mean requirement (pool size)
+   ems_city           mean need  209.4; L 6: at 0.88, within 1 h 1.00; L 8: at 0.60, within 1 h 0.96; L 12: at 0.71, within 1 h 1.00
+   ems_bronx          mean need   58.4; L 6: at 0.62, within 1 h 0.96; L 8: at 0.44, within 1 h 0.81; L 12: at 0.58, within 1 h 0.96
+   ems_brooklyn       mean need   64.4; L 6: at 0.52, within 1 h 0.92; L 8: at 0.31, within 1 h 0.69; L 12: at 0.79, within 1 h 0.98
+   ems_manhattan      mean need   55.3; L 6: at 0.35, within 1 h 0.81; L 8: at 0.50, within 1 h 0.94; L 12: at 0.52, within 1 h 0.85
+   ems_queens         mean need   45.5; L 6: at 0.44, within 1 h 0.88; L 8: at 0.25, within 1 h 0.56; L 12: at 0.52, within 1 h 0.90
+   ems_staten_island  mean need   12.0; L 6: at 0.21, within 1 h 0.52; L 8: at 0.15, within 1 h 0.44; L 12: at 0.27, within 1 h 0.54
+   nyc311             mean need   58.4; L 6: at 0.98, within 1 h 1.00; L 8: at 0.94, within 1 h 1.00; L 12: at 0.44, within 1 h 1.00
+
+2. Comb sums of the mean daily profile by phase, as a share of the best phase (L = 8 and 12)
+   ems_city   L  8: 0: 0.937, 1: 0.981, 2: 1.000, 3: 0.994, 4: 0.974, 5: 0.954, 6: 0.930, 7: 0.917
+   ems_city   L 12: 0: 0.948, 1: 0.918, 2: 0.871, 3: 0.834, 4: 0.811, 5: 0.796, 6: 0.781, 7: 0.804, 8: 0.868, 9: 0.946, 10: 1.000, 11: 0.989
+   nyc311     L  8: 0: 0.933, 1: 1.000, 2: 0.952, 3: 0.907, 4: 0.849, 5: 0.808, 6: 0.837, 7: 0.863
+   nyc311     L 12: 0: 0.879, 1: 0.818, 2: 0.808, 3: 0.765, 4: 0.682, 5: 0.506, 6: 0.491, 7: 0.554, 8: 0.729, 9: 0.999, 10: 1.000, 11: 0.956
+
+3. Harmonic view: peak hours of the mean profile's harmonic with period L (n = 24 / L), and its teeth
+   ems_city   L  6: harmonic 4, amplitude 0.026 of the mean, peaks at 4.0, 10.0, 16.0, 22.0; comb-rule phase 4
+   ems_city   L  8: harmonic 3, amplitude 0.042 of the mean, peaks at 2.6, 10.6, 18.6; comb-rule phase 2
+   ems_city   L 12: harmonic 2, amplitude 0.116 of the mean, peaks at 11.0, 23.0; comb-rule phase 10
+   nyc311     L  6: harmonic 4, amplitude 0.135 of the mean, peaks at 3.3, 9.3, 15.3, 21.3; comb-rule phase 3
+   nyc311     L  8: harmonic 3, amplitude 0.095 of the mean, peaks at 1.2, 9.2, 17.2; comb-rule phase 1
+   nyc311     L 12: harmonic 2, amplitude 0.287 of the mean, peaks at 11.2, 23.2; comb-rule phase 10
+
+4. Where the idle hours sit, EMS citywide and 311: mean ambulances (agents) on duty above the requirement,
+   by clock hour, over the 52 weeks, for 8- and 12-hour tours
+   ems_city   L  8: 0.6 6.8 0.6 2.5 5.6 10.9 32.2 16.8 20.9 7.3 1.1 2.9 8.5 17.2 4.1 19.7 22.1 0.8 0.7 1.1 5.1 4.2 12.1 20.0
+   ems_city   L 12: 13.6 9.8 28.5 72.9 71.8 82.4 77.1 68.5 37.6 19.5 0.7 2.7 12.3 30.5 33.9 7.3 19.3 16.0 28.2 26.1 26.4 7.4 0.6 3.8
+   nyc311     L  8: 0.6 0.3 1.6 4.2 11.9 13.2 22.0 11.7 7.8 0.6 5.0 7.4 8.8 19.5 3.0 9.6 5.9 0.2 4.0 7.7 10.0 6.0 7.9 6.7
+   nyc311     L 12: 10.4 8.0 12.3 24.9 38.4 48.2 55.4 39.4 22.3 2.2 1.9 4.5 10.9 22.6 20.0 13.9 13.1 30.1 25.2 31.6 22.0 0.8 1.0 5.1
+
+5. Scale check, EMS citywide: tours per day in the cheapest 8-hour roster
+   656 eight-hour tours per day on average; mean requirement 209.4
+
+6. Paid hours relative to 8-hour tours, by dataset and L (from cells.csv)
+   ems_city           6: 0.985, 8: 1.000, 9: 0.987, 10: 1.000, 12: 1.090
+   ems_bronx          6: 0.984, 8: 1.000, 9: 0.996, 10: 1.011, 12: 1.083
+   ems_brooklyn       6: 0.982, 8: 1.000, 9: 1.002, 10: 1.021, 12: 1.092
+   ems_manhattan      6: 0.971, 8: 1.000, 9: 0.990, 10: 1.003, 12: 1.051
+   ems_queens         6: 0.985, 8: 1.000, 9: 1.008, 10: 1.024, 12: 1.068
+   ems_staten_island  6: 0.969, 8: 1.000, 9: 1.015, 10: 1.031, 12: 1.059
+   nyc311             6: 1.028, 8: 1.000, 9: 1.010, 10: 1.073, 12: 1.183
+
+7. Binding hours per day on weekdays and at weekends, L = 8 (mean)
+   ems_city           weekdays 3.04, weekends 3.06
+   ems_bronx          weekdays 2.91, weekends 3.01
+   ems_brooklyn       weekdays 3.08, weekends 3.16
+   ems_manhattan      weekdays 3.04, weekends 3.21
+   ems_queens         weekdays 3.10, weekends 3.19
+   ems_staten_island  weekdays 3.30, weekends 3.20
+   nyc311             weekdays 2.93, weekends 3.04
+
+8. A worked week: EMS citywide, the week with the median total requirement, 8- and 12-hour tours
+   week 51 starting 2019-12-23: total requirement 35354 ambulance-hours
+   L 8: cheapest roster 36928 paid hours (4616 tours); comb bound 36928; 20 teeth, 20 binding hours
+     teeth: Mon 02:00 (131), Mon 11:00 (277), Mon 19:00 (304), Tue 03:00 (127), Tue 11:00 (277), Tue 19:00 (262), Wed 03:00 (177), Wed 13:00 (233), Wed 21:00 (239) ...
+     binding hours that are not teeth of this comb: none
+   L 12: cheapest roster 39180 paid hours (3265 tours); comb bound 39180; 14 teeth, 14 binding hours
+     teeth: Mon 11:00 (277), Mon 23:00 (215), Tue 11:00 (277), Tue 23:00 (212), Wed 11:00 (177), Wed 23:00 (211), Thu 11:00 (252), Thu 23:00 (237), Fri 11:00 (277) ...
+     binding hours that are not teeth of this comb: none
+
+9. Signal and noise of the comb's position, L in 6, 8, 12: weekly comb sums of the best and the second-best
+   phase of the mean profile; mean weekly difference, its standard deviation over weeks, and their ratio
+   ems_city           L 6: 88 +/- 70 (ratio 1.27; at phase 0.88); L 8: 28 +/- 65 (ratio 0.43; at phase 0.60); L 12: 37 +/- 58 (ratio 0.63; at phase 0.71)
+   ems_bronx          L 6: 27 +/- 32 (ratio 0.85; at phase 0.62); L 8: 4 +/- 29 (ratio 0.12; at phase 0.44); L 12: 1 +/- 26 (ratio 0.04; at phase 0.58)
+   ems_brooklyn       L 6: 25 +/- 33 (ratio 0.74; at phase 0.52); L 8: 12 +/- 30 (ratio 0.39; at phase 0.31); L 12: 22 +/- 31 (ratio 0.70; at phase 0.79)
+   ems_manhattan      L 6: 16 +/- 34 (ratio 0.47; at phase 0.35); L 8: 11 +/- 32 (ratio 0.36; at phase 0.50); L 12: 6 +/- 24 (ratio 0.26; at phase 0.52)
+   ems_queens         L 6: 16 +/- 35 (ratio 0.46; at phase 0.44); L 8: 5 +/- 30 (ratio 0.15; at phase 0.25); L 12: 7 +/- 25 (ratio 0.27; at phase 0.52)
+   ems_staten_island  L 6: 2 +/- 15 (ratio 0.16; at phase 0.21); L 8: 0 +/- 15 (ratio 0.01; at phase 0.15); L 12: 4 +/- 11 (ratio 0.33; at phase 0.27)
+   nyc311             L 6: 88 +/- 50 (ratio 1.77; at phase 0.98); L 8: 67 +/- 37 (ratio 1.82; at phase 0.94); L 12: 1 +/- 40 (ratio 0.02; at phase 0.44)
+   Spearman correlation of the ratio with the share of weeks at the phase, 21 cases: 0.72
+
+10. The year as one continuous roster: comb bound L x V over all 8,736 hours in sequence (tours may run
+    across week boundaries; at most one tooth of leftover a year), relative to 8-hour tours, against the
+    registered ratio of the 52 cyclic weeks
+   ems_city           6: 0.986 (weeks 0.985), 8: 1.000 (weeks 1.000), 9: 0.987 (weeks 0.987), 10: 1.001 (weeks 1.000), 12: 1.089 (weeks 1.090); idle at 8 h 0.044, at 12 h 0.137
+   ems_bronx          6: 0.983 (weeks 0.984), 8: 1.000 (weeks 1.000), 9: 0.995 (weeks 0.996), 10: 1.010 (weeks 1.011), 12: 1.080 (weeks 1.083); idle at 8 h 0.058, at 12 h 0.142
+   ems_brooklyn       6: 0.982 (weeks 0.982), 8: 1.000 (weeks 1.000), 9: 1.001 (weeks 1.002), 10: 1.021 (weeks 1.021), 12: 1.092 (weeks 1.092); idle at 8 h 0.056, at 12 h 0.153
+   ems_manhattan      6: 0.971 (weeks 0.971), 8: 1.000 (weeks 1.000), 9: 0.991 (weeks 0.990), 10: 1.002 (weeks 1.003), 12: 1.050 (weeks 1.051); idle at 8 h 0.068, at 12 h 0.121
+   ems_queens         6: 0.987 (weeks 0.985), 8: 1.000 (weeks 1.000), 9: 1.007 (weeks 1.008), 10: 1.024 (weeks 1.024), 12: 1.069 (weeks 1.068); idle at 8 h 0.067, at 12 h 0.140
+   ems_staten_island  6: 0.968 (weeks 0.969), 8: 1.000 (weeks 1.000), 9: 1.016 (weeks 1.015), 10: 1.032 (weeks 1.031), 12: 1.059 (weeks 1.059); idle at 8 h 0.150, at 12 h 0.218
+   nyc311             6: 1.028 (weeks 1.028), 8: 1.000 (weeks 1.000), 9: 1.011 (weeks 1.010), 10: 1.074 (weeks 1.073), 12: 1.182 (weeks 1.183); idle at 8 h 0.125, at 12 h 0.330

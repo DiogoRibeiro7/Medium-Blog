@@ -129,3 +129,22 @@ through `scipy.optimize.milp`, and its linear relaxation with `linprog`. Seven d
 
 - 21 November 2026, before any incident record was downloaded: the dataset has no field `cad_incident_id`; its
   incident identifier is `incident_id`, which `fetch.py` now uses (the run stopped at the column check, as designed).
+
+## Descriptive analyses added after the results (21 November 2026)
+
+Not part of the registered test, and labelled as such in the article; `details.py`, from the binding hours saved by
+`evaluate.py` (`results/binding.npz`).
+
+- **Week-by-week phase of the chain** for 6-, 8- and 12-hour tours: the share of weeks whose binding hours sit at the
+  comb rule's phase, and within one hour of it, by series.
+- **Comb sums of the average day by phase**, and the peaks of the profile's harmonic at period L.
+- **Where the idle hours sit:** ambulances (agents) on duty above the requirement, by clock hour, for 8- and 12-hour
+  tours, EMS citywide and 311.
+- **Scale check:** tours per day in the cheapest 8-hour citywide roster.
+- **A worked week:** the week with the median total requirement (it is Christmas week), its teeth and binding hours.
+- **Signal and noise of the comb's position:** for each series and L, the weekly lead of the best comb of the average
+  day over the runner-up, its week-to-week standard deviation, their ratio, and the rank correlation of that ratio
+  with the share of weeks at the comb rule's phase.
+- **The year as one continuous roster:** the comb bound over all 8,736 hours in sequence, by tour length, to check
+  that rostering each week as a closed cycle does not flatter 9- and 10-hour tours.
+- Binding hours per day on weekdays and at weekends.

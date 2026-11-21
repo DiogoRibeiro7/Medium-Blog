@@ -12,6 +12,17 @@ the conjecture, and the peak hour.
 
 `PLAN.md` is the pre-registration, written before any EMS record was downloaded.
 
+## Results in one paragraph
+
+With tours of one length L, the size of the cheapest roster is L times the requirement summed over a comb of hours
+L apart: exact in 98.4% of the 6-, 8- and 12-hour rosters, with 98.7% of binding hours on the comb's teeth (H1
+supported). The comb rule, computed from the average day, predicts where the teeth fall in all 21 cases, against 2
+for the steepest-climb rule of the conjecture and none for the peak (H2 supported); for ambulances the teeth sit at
+10:00, one hour after the steepest climb. Fixed binding clock hours on most days hold only for the large pools (EMS
+citywide, 311); in the boroughs the comb keeps its spacing but moves by about an hour from week to week (H3 not
+supported). With perfect knowledge of the workload, 12-hour tours need 9.0% more paid hours than 8-hour tours
+citywide, and 18.3% more for 311. The sensitivity analyses give the same verdicts.
+
 ## Files
 
 - `PLAN.md`: the pre-registration.
@@ -21,8 +32,12 @@ the conjecture, and the peak hour.
 - `staff/data.py`: the grid of test weeks, the loaders and the requirement per hour (Erlang C).
 - `staff/comb.py`: combs, the comb bound, comb hours and the comb-rule phase.
 - `staff/schedule.py`: rosters of L-hour tours as integer programmes, their relaxation and the binding hours.
-- `evaluate.py`: the registered test (`results/summary.txt`, `results/verdicts.json`, tables) and the sensitivity of
-  the EMS requirement (`results/sensitivity.txt`).
+- `evaluate.py`: the registered test (`results/summary.txt`, `results/verdicts.json`, tables, the binding hours of
+  every roster in `results/binding.npz`) and the sensitivity of the EMS requirement (`results/sensitivity.txt`).
+- `inputs_digest.py`: a digest of the evaluation code and the sources, stored in `results/INPUTS`; the workflow
+  re-runs the registered test only when it changes.
+- `details.py`: descriptive analyses added after the results (`results/details.txt`); not part of the registered test.
+- `figures.py`, `figures/`: the article's three figures.
 - `tests/`: unit tests on synthetic data.
 
 ## Run
@@ -32,6 +47,8 @@ python -m pip install -r requirements.txt
 python -m pytest -q
 python fetch.py --sources sources      # downloads only if sources/ems_hourly.csv is not committed
 python evaluate.py --sources sources --out results
+python details.py --sources sources --results results --out results/details.txt
+python figures.py --sources sources --results results --out figures
 ```
 
 The workflow `.github/workflows/ambulance-tour-length.yml` runs the same steps on pushes to the branch and commits
