@@ -1,0 +1,55 @@
+name: Refresh bid-rigging-screens data
+
+on:
+  push:
+    branches:
+      - bid-rigging-screens
+    paths:
+      - 'bid-rigging-screens/fetch.py'
+      - '.github/workflows/bid-rigging-screens-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: bid-rigging-screens
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Download the Mendeley Data files
+        id: fetch
+        continue-on-error: true
+        run: python fetch.py --out data
+
+      - name: Commit the snapshot and its log if they changed
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged."
+          else
+            git commit -m "Refresh data snapshot for bid-rigging-screens ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Fail if the download failed
+        if: steps.fetch.outcome == 'failure'
+        run: |
+          cat data/fetch_log.txt
+          exit 1
