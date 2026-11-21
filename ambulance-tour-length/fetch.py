@@ -116,6 +116,7 @@ def main() -> None:
     )
     missing = [f for f in FIELDS if f not in cols]
     if missing:
+        print("columns of the dataset:", cols)
         raise SystemExit(f"fields missing from the dataset: {missing}")
 
     counted = get(resource({"$select": "count(*) AS n", "$where": where()})).decode()
