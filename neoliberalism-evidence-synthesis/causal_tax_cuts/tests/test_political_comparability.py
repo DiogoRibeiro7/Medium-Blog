@@ -18,9 +18,7 @@ from causal_tax_cuts.political_comparability import (
 )
 
 
-def fixture() -> tuple[
-    dict[tuple[str, int], PoliticalYear], list[DonorExposure]
-]:
+def fixture() -> tuple[dict[tuple[str, int], PoliticalYear], list[DonorExposure]]:
     """Build synthetic countries with known histories and donor censoring."""
     data: dict[tuple[str, int], PoliticalYear] = {}
     for country, orientation, checks, election in (
@@ -31,16 +29,10 @@ def fixture() -> tuple[
         ("EEE", "right", 2.0, 7.0),
     ):
         for year in range(2004, 2015):
-            actual = (
-                "left"
-                if country == "DDD" and year == 2009
-                else orientation
-            )
+            actual = "left" if country == "DDD" and year == 2009 else orientation
             if country == "EEE" and year == 2007:
                 actual = None
-            data[country, year] = PoliticalYear(
-                country, year, actual, checks, election
-            )
+            data[country, year] = PoliticalYear(country, year, actual, checks, election)
     donors = [
         DonorExposure("AAA", 2010, "BBB", 3),
         DonorExposure("AAA", 2010, "CCC", None),
@@ -78,9 +70,7 @@ class ComparabilityTests(unittest.TestCase):
         before = audit_comparability(years, donors)
         for country, year in list(years):
             if year >= 2010:
-                years[country, year] = PoliticalYear(
-                    country, year, None, None, None
-                )
+                years[country, year] = PoliticalYear(country, year, None, None, None)
         self.assertEqual(before, audit_comparability(years, donors))
 
     def test_empty_donor_pool_is_rejected(self) -> None:
@@ -92,17 +82,26 @@ class ComparabilityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             source = Path(temp) / "controls.csv"
             header = [
-                "country", "year", "executive_orientation",
-                "orientation_status", "checks", "electoral_competitiveness",
+                "country",
+                "year",
+                "executive_orientation",
+                "orientation_status",
+                "checks",
+                "electoral_competitiveness",
             ]
             with source.open("w", encoding="utf-8", newline="") as handle:
                 writer = csv.DictWriter(handle, fieldnames=header)
                 writer.writeheader()
-                writer.writerow({
-                    "country": "AAA", "year": "2007",
-                    "executive_orientation": "", "orientation_status": "unknown",
-                    "checks": "2.5", "electoral_competitiveness": "6.5",
-                })
+                writer.writerow(
+                    {
+                        "country": "AAA",
+                        "year": "2007",
+                        "executive_orientation": "",
+                        "orientation_status": "unknown",
+                        "checks": "2.5",
+                        "electoral_competitiveness": "6.5",
+                    }
+                )
             self.assertIsNone(
                 load_political_years(source)["AAA", 2007].executive_orientation
             )
@@ -115,12 +114,10 @@ class ComparabilityTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             source = Path(temp) / "donors.csv"
             source.write_text(
-                "country,reform_year,donor,first_censored_horizon\n"
-                "AAA,2010,BBB,3\n", encoding="utf-8"
+                "country,reform_year,donor,first_censored_horizon\nAAA,2010,BBB,3\n",
+                encoding="utf-8",
             )
-            self.assertEqual(
-                load_donor_exposures(source)[0].first_censored_horizon, 3
-            )
+            self.assertEqual(load_donor_exposures(source)[0].first_censored_horizon, 3)
             with source.open("a", encoding="utf-8") as handle:
                 handle.write("AAA,2010,BBB,5\n")
             with self.assertRaisesRegex(ValueError, "duplicate"):
@@ -144,13 +141,15 @@ class ComparabilityTests(unittest.TestCase):
                 "source_csv_sha256": "a" * 64,
                 "joined_panel_sha256": "b" * 64,
             }
-            source_audit.write_text(
-                json.dumps(manifest), encoding="utf-8"
-            )
+            source_audit.write_text(json.dumps(manifest), encoding="utf-8")
             output = root / "output"
             save_comparability(
-                output, pairs, horizons, audit,
-                political_controls=controls, donor_exposures=donors_csv,
+                output,
+                pairs,
+                horizons,
+                audit,
+                political_controls=controls,
+                donor_exposures=donors_csv,
                 source_audit=source_audit,
             )
             actual = json.loads(
@@ -158,17 +157,17 @@ class ComparabilityTests(unittest.TestCase):
             )
             self.assertEqual(actual["n_initial_pairs"], 4)
             self.assertEqual(actual["source_dpi_csv_sha256"], "a" * 64)
-            self.assertTrue(
-                (output / "political_comparability_pairs.csv").exists()
-            )
+            self.assertTrue((output / "political_comparability_pairs.csv").exists())
             manifest["n_pre_censor_donor_pairs"] = 5
-            source_audit.write_text(
-                json.dumps(manifest), encoding="utf-8"
-            )
+            source_audit.write_text(json.dumps(manifest), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "does not match"):
                 save_comparability(
-                    output, pairs, horizons, audit,
-                    political_controls=controls, donor_exposures=donors_csv,
+                    output,
+                    pairs,
+                    horizons,
+                    audit,
+                    political_controls=controls,
+                    donor_exposures=donors_csv,
                     source_audit=source_audit,
                 )
 
