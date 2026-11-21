@@ -34,10 +34,10 @@ def _cell_job(args: tuple[str, int, np.ndarray]) -> tuple[str, int, list[dict], 
     combh = np.zeros((data.WEEKS, WEEK), dtype=bool)
     for w in range(data.WEEKS):
         need = nd[w].astype(np.float64)
-        ip, _ = schedule.roster(need, L)
+        ip, x = schedule.roster(need, L)
         lp = schedule.relaxation(need, L)
         v = comb.comb_value(need, L)
-        bind[w] = schedule.binding_by_resolve(need, L, ip)
+        bind[w] = schedule.binding_by_resolve(need, L, ip, x)
         combh[w] = comb.binding(need, L)
         rows.append(
             {

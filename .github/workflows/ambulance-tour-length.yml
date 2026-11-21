@@ -55,6 +55,16 @@ jobs:
       - name: Download the EMS incidents and write hourly busy time (only if not committed yet)
         if: github.event_name != 'pull_request'
         run: python fetch.py --sources sources
+      - name: Commit the downloaded sources before the long run
+        if: github.event_name != 'pull_request'
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add sources
+          if ! git diff --cached --quiet; then
+            git commit -m "ambulance-tour-length: EMS hourly busy time from the workflow ($(date -u +%Y-%m-%d))"
+            git push || (git pull --rebase --autostash && git push)
+          fi
       - name: The registered test
         if: github.event_name != 'pull_request'
         run: python evaluate.py --sources sources --out results

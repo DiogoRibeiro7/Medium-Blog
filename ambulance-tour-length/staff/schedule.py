@@ -65,13 +65,18 @@ def binding_by_relaxation(need: np.ndarray, L: int, base: float | None = None) -
     return out
 
 
-def binding_by_resolve(need: np.ndarray, L: int, base: float | None = None) -> np.ndarray:
-    """Hours where one more required tour raises the integer optimum."""
+def binding_by_resolve(need: np.ndarray, L: int, base: float | None = None, x: np.ndarray | None = None) -> np.ndarray:
+    """Hours where one more required tour raises the integer optimum.
+
+    Only hours covered exactly by an optimal roster x can bind: where coverage exceeds the requirement, x stays
+    feasible after adding one, so the optimum cannot rise. The other hours are re-solved one at a time.
+    """
     need = np.asarray(need, dtype=np.float64)
-    if base is None:
-        base = roster(need, L)[0]
+    if base is None or x is None:
+        base, x = roster(need, L)
+    tight = cover(L) @ x <= need + 1e-9
     out = np.zeros(WEEK, dtype=bool)
-    for h in range(WEEK):
+    for h in np.flatnonzero(tight):
         bumped = need.copy()
         bumped[h] += 1
         out[h] = roster(bumped, L)[0] > base + 1e-6

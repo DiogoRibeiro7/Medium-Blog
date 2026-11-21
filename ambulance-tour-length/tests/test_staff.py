@@ -112,3 +112,15 @@ def test_loaders_on_the_grid(tmp_path):
     (tmp_path / "c.csv").write_text("hour,calls\n2018-12-31 01,10\n2016-01-01 00,5\n")
     c = data.load_311(tmp_path / "c.csv")
     assert c[1] == 10 and c.sum() == 10
+
+
+def test_fast_resolve_equals_full_resolve():
+    need = synthetic_need(4)
+    for L in (8, 9):
+        base, x = schedule.roster(need, L)
+        full = np.zeros(168, dtype=bool)
+        for h in range(168):
+            b = need.copy()
+            b[h] += 1
+            full[h] = schedule.roster(b, L)[0] > base + 1e-6
+        assert (schedule.binding_by_resolve(need, L, base, x) == full).all()
