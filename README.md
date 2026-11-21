@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-221 top-level folders: 77 belong to 24 series, 86 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
+222 top-level folders: 77 belong to 24 series, 87 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 1 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -332,6 +332,7 @@ Housing supply, prices and affordability.
 - [`france-repeat-sales-floor/`](france-repeat-sales-floor/) — Is the purchase price a floor in France too? Repeat sales in the DVF files, 2021–2025
 - [`housing-losses-inflation/`](housing-losses-inflation/) — Housing losses and inflation: how much of the loss never shows in the price
 - [`housing-supply-counterfactual/`](housing-supply-counterfactual/) — Construction, House Prices and the Missing Counterfactual
+- [`housing-vacancy-tax/`](housing-vacancy-tax/) — Empty homes and the state's bargaining power: Portugal vacancy tax
 - [`portugal-building-ecosystem/`](portugal-building-ecosystem/) — Who builds Portugal's houses? The housebuilding sector measured layer by layer
 - [`portugal-housing-generations/`](portugal-housing-generations/) — Portugal's housing market, 2008–2025 (moved to its own repository)
 - [`uk-repeat-sales-rigidity/`](uk-repeat-sales-rigidity/) — Do sellers refuse nominal losses? Repeat sales in England and Wales, 1995–2026
