@@ -306,6 +306,18 @@ and its machine-readable frozen JSON. The networked source-probe Action
 publishes `tax-cut-joint-macro-support` for seven days, including all
 event/horizon certificate witnesses and full source checksums.
 
+
+### Audit of annual reform flags versus legislative timing
+
+[TAX_TIMING.md](TAX_TIMING.md) separates the 30 author-coded annual 2-SD
+tax-cut flags from independently dated legislative events. The module
+groups consecutive flags as **descriptive runs**, not unique laws,
+reconciles missing WID outcome years, and records official UK and US
+statutes for three flag-years as *context without verified flag-to-law
+attribution*. It neither shifts policy years nor changes exploratory
+estimates. The live workflow publishes all 30 flag-year observations
+and the audit of missingness and timing uncertainty.
+
 ### Official political and institutional covariates (coverage only)
 
 [`POLITICAL_INSTITUTIONS.md`](POLITICAL_INSTITUTIONS.md) documents the
