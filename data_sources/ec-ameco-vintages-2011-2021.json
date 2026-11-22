@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "dataset": "ec-ameco-vintages-2011-2021",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "5ff267d7eb2b052a5f211eba19fbc5ee60464e94",
+  "record": "external/ec-ameco-vintages-2011-2021/metadata.yaml",
+  "folder": "portugal-realtime-output-gap",
+  "target": "portugal-realtime-output-gap",
+  "retrieved": "2026-11-22",
+  "note": "Archived AMECO releases; the files do not change, so a hash mismatch is an error.",
+  "files": [
+    {
+      "path": "raw/vintages/ameco_spring2011.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2011.zip",
+      "bytes": 5078758,
+      "sha256": "a3c04f46a58beff366659f05a37bb1196593f55be6bfe47e61de329968b79818",
+      "release": "Spring 2011 economic forecast (members dated 2011-07-14)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2011.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2011.zip",
+      "bytes": 5171013,
+      "sha256": "2a4bdcc3430453f07c5a81eb10cccc6ba03ad0ddcd847f1f60c40faa18a0fae8",
+      "release": "Autumn 2011 economic forecast (members dated 2011-11-08)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2012.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2012.zip",
+      "bytes": 5208320,
+      "sha256": "c5567af270bb65729aaee3a69d008bce2bf9f48ffb49748c3a582d67db84ce84",
+      "release": "Spring 2012 economic forecast (members dated 2012-05-08)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2012.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2012.zip",
+      "bytes": 5231128,
+      "sha256": "9810b8227d847d9f5ff527c2c1e7b16fae4a809b054b5624e3b7058a2e287658",
+      "release": "Autumn 2012 economic forecast (members dated 2012-11-27)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2013.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2013.zip",
+      "bytes": 5495723,
+      "sha256": "188d54561d89bd91691f08a8526bd390f1fbf1ac2cdfc0fad7b9412a1ef94aa2",
+      "release": "Spring 2013 economic forecast (members dated 2013-06-13)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2013.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2013.zip",
+      "bytes": 5683548,
+      "sha256": "1afe46cf40864fc0147a8c09d54b99fe6068574b68b0c077f0976a1826d79083",
+      "release": "Autumn 2013 economic forecast (members dated 2013-11-07)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2014.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2014.zip",
+      "bytes": 5190164,
+      "sha256": "9c1a8ec7a0dbd4e61e98b788a22c3d3c768150ee5df067acaa7047bbe018e178",
+      "release": "Spring 2014 economic forecast (members dated 2014-05-15)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2014.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2014.zip",
+      "bytes": 5608368,
+      "sha256": "d6240e7545d1dd33d67f91eb03da529e89eecd00772415047c1b28ca43e8c3a0",
+      "release": "Autumn 2014 economic forecast (members dated 2014-11-25)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2015.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2015.zip",
+      "bytes": 5003489,
+      "sha256": "813c08145901b297e3d7196e220af4cd989d8662dbf7a063f524f72c7583dfe6",
+      "release": "Spring 2015 economic forecast (members dated 2015-04-29)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2015.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2015.zip",
+      "bytes": 5146059,
+      "sha256": "ebc86f182571231e9c089bd82f8db73763fc1005ddb570625385bd8131ac3960",
+      "release": "Autumn 2015 economic forecast (members dated 2015-11-05)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2016.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2016.zip",
+      "bytes": 5262595,
+      "sha256": "a6202701533a52cfbb7369b5b43c04671321e8087f52a0355091f4049dab7acc",
+      "release": "Spring 2016 economic forecast (members dated 2016-04-28)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2016.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2016.zip",
+      "bytes": 5369664,
+      "sha256": "fe343fbe32fbf4dd4ed024058ca1ec34e1b20b35aab9e2534426c16a2171c7a4",
+      "release": "Autumn 2016 economic forecast (members dated 2016-11-08)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2017.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2017.zip",
+      "bytes": 5424725,
+      "sha256": "4e87a8045840e755cc7154265f91cd02117865e6ce47fd2ce89acb178342f15f",
+      "release": "Spring 2017 economic forecast (members dated 2017-05-03)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2017.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2017.zip",
+      "bytes": 5548454,
+      "sha256": "8c464d53f2c9c2a97c4f996db2d6b3bdaac7a1707f2b4e01eef80f48d2c9f80f",
+      "release": "Autumn 2017 economic forecast (members dated 2017-11-06)"
+    },
+    {
+      "path": "raw/vintages/ameco_spring2018.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_spring2018.zip",
+      "bytes": 5609104,
+      "sha256": "7c4ed9a2706ec96e4a60e92a959258fdf6ad2c363556ecafb74140ee47a3f675",
+      "release": "Spring 2018 economic forecast (members dated 2018-06-12)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2018.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2018.zip",
+      "bytes": 5800941,
+      "sha256": "5e0d81de7a068492d857b5f5a8b7f3affae089cbc561d5c5ba252b5c60fe68e8",
+      "release": "Autumn 2018 economic forecast (members dated 2018-11-06)"
+    },
+    {
+      "path": "raw/vintages/ameco_autumn2021.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco_autumn2021.zip",
+      "bytes": 12012412,
+      "sha256": "1fc02a304cde8f2641403e59ea84f48fd2841d6b2bf420e45b3f7c05a0553e57",
+      "release": "Autumn 2021 economic forecast (members dated 2021-11-11)"
+    }
+  ],
+  "consumers": [
+    "portugal-realtime-output-gap/fetch_data.py",
+    "portugal-realtime-output-gap/build_data.py"
+  ]
+}
