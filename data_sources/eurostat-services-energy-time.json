@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-services-energy-time",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "6911646f783bad0475e5942b1e043169e4e5cb02",
+  "record": "datasets/eurostat-services-energy-time/metadata.yaml",
+  "folder": "services-energy-time",
+  "target": "services-energy-time/data",
+  "files": [
+    {
+      "path": "raw/nama_10_a10.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/nama_10_a10.json",
+      "bytes": 506067,
+      "sha256": "6a100cf6bbe75ca4d0e88203bc12a35088c740bc48491b037cca0b4f2816a652"
+    },
+    {
+      "path": "raw/nama_10_a10_e.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/nama_10_a10_e.json",
+      "bytes": 475622,
+      "sha256": "6dc6ddbdcd9054101f4df1f7fe86044b6786f2feda6beeabc5ea5d0c49bce425"
+    },
+    {
+      "path": "raw/nrg_bal_c.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/nrg_bal_c.json",
+      "bytes": 187819,
+      "sha256": "fc2249d35669f7f4f65bc4aa7608b53c4096ccf3e2bae9713e98115b7073b2ac"
+    },
+    {
+      "path": "raw/tus_00age.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/tus_00age.json",
+      "bytes": 30160,
+      "sha256": "fddd5c9b429426f63ad2aea85fdaca53d8e2eb6077b7385bd961f8bb3b723805"
+    },
+    {
+      "path": "raw/nama_10_pc.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/nama_10_pc.json",
+      "bytes": 113495,
+      "sha256": "03811a0d57751b88dd24005689e98e29776d949121011dc711369d51cdba25f8"
+    },
+    {
+      "path": "raw/nama_10_pe.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/nama_10_pe.json",
+      "bytes": 25614,
+      "sha256": "72f9cb832d04789ea347d057d49b6dd41fd1405e883fc6c50df09f1a1d1429dc"
+    },
+    {
+      "path": "raw/prc_hicp_aind.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/6911646f783bad0475e5942b1e043169e4e5cb02/datasets/eurostat-services-energy-time/raw/prc_hicp_aind.json",
+      "bytes": 6285,
+      "sha256": "9d8b275f4149b15365f3412f35c086f5762136ef624887a63717aef60914b7eb"
+    }
+  ],
+  "consumers": [
+    "services-energy-time/fetch.py",
+    "services-energy-time/services_numbers.py",
+    "services-energy-time/figures.py"
+  ]
+}
