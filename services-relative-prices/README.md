@@ -27,7 +27,7 @@ All numbers are from `output.txt`. A log point is 100 times a log change; log po
 - **Across countries (2024).**
   - The services price level ranges 3.90-fold across member states and the goods price level 1.55-fold.
   - Elasticity to GDP per head: services 1.00, goods 0.30.
-  - The services price level follows services hourly pay with an elasticity of 0.64 (R² 0.89).
+  - The services price level follows services hourly pay with an elasticity of 0.67 (R² 0.90).
 - **Portugal.**
   - HICP services against non-energy industrial goods ×1.74, 2001–2025.
   - Value added, services against manufacturing, +19.0 log points, with a wage gap of −21.6.
