@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Why services get dearer: productivity, wages, margins and measurement in the EU, 1995-2025"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-22
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/services-relative-prices"
+references:
+  - type: data
+    title: "Eurostat: industry prices, wages, hours and margins, consumer prices of services and goods, and price levels, EU 1995-2025"
+    authors:
+      - name: "Eurostat"
+    repository-code: "https://github.com/DiogoRibeiro7/data/tree/main/datasets/eurostat-services-relative-prices"
