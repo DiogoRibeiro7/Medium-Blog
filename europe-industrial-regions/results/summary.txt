@@ -36,6 +36,19 @@ log GDP per head:
   2010  n=173  countries 0.303 | random contiguous mean 0.320 [5-95%: 0.226, 0.413], share >= countries 0.636 | relabelled mean 0.142
   2015  n=173  countries 0.329 | random contiguous mean 0.345 [5-95%: 0.236, 0.433], share >= countries 0.650 | relabelled mean 0.145
   2021  n=169  countries 0.371 | random contiguous mean 0.348 [5-95%: 0.237, 0.438], share >= countries 0.372 | relabelled mean 0.147
+log GDP per head in 1990 international dollars instead of 2011 PPP:
+  1900  n=172  countries 0.676 | random contiguous mean 0.596 [5-95%: 0.498, 0.670], share >= countries 0.031 | relabelled mean 0.172
+  1910  n=172  countries 0.666 | random contiguous mean 0.570 [5-95%: 0.455, 0.649], share >= countries 0.014 | relabelled mean 0.157
+  1925  n=172  countries 0.589 | random contiguous mean 0.511 [5-95%: 0.335, 0.601], share >= countries 0.097 | relabelled mean 0.157
+  1938  n=172  countries 0.687 | random contiguous mean 0.632 [5-95%: 0.448, 0.718], share >= countries 0.223 | relabelled mean 0.154
+  1950  n=172  countries 0.679 | random contiguous mean 0.604 [5-95%: 0.456, 0.692], share >= countries 0.107 | relabelled mean 0.155
+  1960  n=172  countries 0.643 | random contiguous mean 0.595 [5-95%: 0.388, 0.689], share >= countries 0.361 | relabelled mean 0.148
+  1970  n=173  countries 0.475 | random contiguous mean 0.462 [5-95%: 0.275, 0.558], share >= countries 0.554 | relabelled mean 0.140
+  1980  n=173  countries 0.411 | random contiguous mean 0.442 [5-95%: 0.257, 0.552], share >= countries 0.712 | relabelled mean 0.149
+  1990  n=173  countries 0.209 | random contiguous mean 0.354 [5-95%: 0.231, 0.501], share >= countries 0.965 | relabelled mean 0.146
+  2000  n=173  countries 0.205 | random contiguous mean 0.332 [5-95%: 0.210, 0.434], share >= countries 0.956 | relabelled mean 0.161
+  2010  n=173  countries 0.175 | random contiguous mean 0.291 [5-95%: 0.186, 0.395], share >= countries 0.964 | relabelled mean 0.162
+  2015  n=173  countries 0.279 | random contiguous mean 0.371 [5-95%: 0.258, 0.466], share >= countries 0.912 | relabelled mean 0.165
 
 == 2. Border premium: |difference| between neighbours across a border minus within a country, holding centroid distance fixed (dyadic-robust SE; null from random contiguous partitions)
 median centroid distance: within-country pairs 123 km, cross-border pairs 141 km
@@ -67,6 +80,19 @@ log GDP per head x 100:
   2010  pairs=386  within 17.73  across 25.92  premium +8.62 (SE 3.87) | random lines mean -1.38 [5-95%: -4.73, +2.25], share >= observed 0.000
   2015  pairs=386  within 18.54  across 28.70  premium +10.62 (SE 4.38) | random lines mean -1.01 [5-95%: -4.42, +3.04], share >= observed 0.000
   2021  pairs=375  within 17.36  across 28.98  premium +11.99 (SE 4.24) | random lines mean -0.45 [5-95%: -3.71, +3.49], share >= observed 0.000
+log GDP per head x 100, 1990 international dollars instead of 2011 PPP:
+  1900  pairs=381  within 21.60  across 31.97  premium +10.25 (SE 3.77) | random lines mean -1.85 [5-95%: -5.66, +2.13], share >= observed 0.000
+  1910  pairs=381  within 21.19  across 29.33  premium +8.12 (SE 3.11) | random lines mean -1.16 [5-95%: -4.33, +2.19], share >= observed 0.000
+  1925  pairs=381  within 22.11  across 28.35  premium +6.23 (SE 3.75) | random lines mean -3.05 [5-95%: -6.50, +0.66], share >= observed 0.000
+  1938  pairs=381  within 22.76  across 29.68  premium +6.87 (SE 3.32) | random lines mean -1.99 [5-95%: -5.49, +1.66], share >= observed 0.000
+  1950  pairs=381  within 19.23  across 35.45  premium +16.32 (SE 4.50) | random lines mean -0.22 [5-95%: -4.14, +4.05], share >= observed 0.000
+  1960  pairs=381  within 20.10  across 29.31  premium +9.46 (SE 3.54) | random lines mean +0.15 [5-95%: -3.40, +3.89], share >= observed 0.000
+  1970  pairs=386  within 18.78  across 25.74  premium +7.51 (SE 2.82) | random lines mean -0.03 [5-95%: -2.95, +3.04], share >= observed 0.000
+  1980  pairs=386  within 16.53  across 19.75  premium +3.63 (SE 2.35) | random lines mean -0.63 [5-95%: -3.11, +2.01], share >= observed 0.008
+  1990  pairs=386  within 18.77  across 17.02  premium -1.37 (SE 2.76) | random lines mean -0.21 [5-95%: -4.05, +3.57], share >= observed 0.685
+  2000  pairs=386  within 17.75  across 18.26  premium +1.11 (SE 3.27) | random lines mean -1.04 [5-95%: -4.11, +1.93], share >= observed 0.113
+  2010  pairs=386  within 17.73  across 20.44  premium +3.27 (SE 3.64) | random lines mean -1.29 [5-95%: -4.28, +1.82], share >= observed 0.009
+  2015  pairs=386  within 18.54  across 18.44  premium +0.68 (SE 3.63) | random lines mean -0.93 [5-95%: -3.90, +2.27], share >= observed 0.195
 
 == 3. The industrial core of 1900: the 35 regions with the highest industry share
 threshold: industry share >= 0.393 in 1900; median of all regions 0.271
@@ -84,6 +110,13 @@ land-connected clusters among them: 13; spanning more than one country: 4, holdi
    1 regions, Germany: Karlsruhe, Regierungsbezirk (DE12)
    1 regions, Austria: Lower Austria (AT12+AT13)
    1 regions, Germany: Hamburg (DE60)
+industry share in 1900, 1960 and 2015 (%), regions of the clusters that cross a border:
+  Liege 55.9, 53.1, 19.6; Düsseldorf, Regierungsbezirk 61.3, 58.3, 20.9; Köln, Regierungsbezirk 45.7, 50.8, 18.6; Münster, Regierungsbezirk 44.3, 55.8, 23.9; Arnsberg, Regierungsbezirk 63.2, 60.4, 27.5; Overijssel 39.5, 50.7, 18.8
+  Hainaut 57.1, 54.8, 18.7; Île de France 46.7, 43.2, 12.0; Picardie 40.8, 41.8, 21.5; Haute-Normandie 43.1, 40.2, 23.0; Nord - Pas-de-Calais 55.6, 53.6, 18.6
+  Vorarlberg 46.1, 56.3, 30.3; Espace Mittelland 43.5, 52.0, nan; Nordwestschweiz 51.0, 57.2, nan; Zürich 52.9, 49.5, nan; Ostschweiz 51.3, 54.4, nan
+  Saarland 56.1, 54.2, 27.6; Lorraine 41.6, 43.4, 21.3
+highest industry shares in 1900 (%): Dresden, NUTS 2-Region 70.0; Arnsberg, Regierungsbezirk 63.2; Düsseldorf, Regierungsbezirk 61.3; West Midlands 58.7; Yorks  & Humberside 57.9
+highest industry shares in 2015 (%): Oberpfalz, Regierungsbezirk 33.9; Tübingen, Regierungsbezirk 33.6; Norte 33.6; Niederbayern, Regierungsbezirk 33.1; Stuttgart, Regierungsbezirk 32.7
 population-weighted industry share, core vs the other regions, and the rank correlation of each year with 1900:
   1900  core 0.502  rest 0.255  gap +0.248  Spearman with 1900 +1.00  (n=171)
   1910  core 0.529  rest 0.274  gap +0.256  Spearman with 1900 +0.97  (n=171)
@@ -101,4 +134,44 @@ population-weighted industry share, core vs the other regions, and the rank corr
 year of the highest industry share, core regions: 1900 2 1910 10 1925 6 1938 2 1950 1 1960 10 1970 4
 year of the highest industry share, other regions: 1900 1 1910 4 1925 3 1938 2 1950 2 1960 27 1970 65 1980 20 1990 6 2000 8
 core regions' GDP per head relative to their own country (log points x 100, mean): 1900 +10.8; 1960 +5.8; 2015 -5.0
+
+== 4. Steps at national borders: income levels by country and the land borders one by one
+1900 GDP per head by country, 2011 PPP, % of the 16-country level: Belgium 151, United Kingdom 147, Switzerland 130, Luxembourg 129, Netherlands 111, Denmark 109, France 107, Spain 97, Norway 96, Germany 91, Sweden 87, Ireland 86, Austria 79, Italy 54, Finland 46, Portugal 44
+1900 GDP per head by country, 1990 international dollars, % of the 16-country level: Luxembourg 184, United Kingdom 157, Switzerland 130, Belgium 126, Netherlands 117, France 101, Germany 101, Denmark 98, Austria 97, Ireland 92, Sweden 75, Finland 62, Italy 61, Spain 61, Norway 59, Portugal 51
+2015 GDP per head by country, 2011 PPP, % of the 16-country level: Norway 185, Luxembourg 165, Switzerland 153, Ireland 130, Netherlands 118, Germany 114, Austria 110, Denmark 109, Sweden 106, Belgium 98, France 97, United Kingdom 95, Finland 92, Italy 84, Spain 82, Portugal 69
+2015 GDP per head by country, 1990 international dollars, % of the 16-country level: Luxembourg 177, Norway 128, Ireland 125, Sweden 120, Switzerland 118, Netherlands 116, Denmark 116, Austria 111, United Kingdom 110, Belgium 109, Finland 106, France 104, Germany 102, Italy 83, Spain 79, Portugal 67
+2021 GDP per head by country, 2011 PPP, % of the 16-country level: Norway 196, Ireland 180, Switzerland 155, Luxembourg 137, Denmark 122, Netherlands 119, Sweden 115, Germany 114, Austria 105, Belgium 102, Finland 99, France 95, United Kingdom 92, Italy 86, Spain 81, Portugal 67
+1900 largest income steps across a border, 2011 PPP (richer side / poorer side, GDP per head): Övre Norrland (Sweden) / Pohjois-ja Itä-Soumi (Finland) 2.80; Ostschweiz (Switzerland) / Provincia Autonoma di Bolzano/Bozen-Provincia Autonoma di Trento (Italy) 2.74; Andalucía (Spain) / Algarve (Portugal) 2.49; Cataluña (Spain) / Midi-Pyrénées (France) 2.30; Ostschweiz (Switzerland) / Tyrol (Austria) 2.28; Castilla y León (Spain) / Centro (Portugal) 2.19
+1900 largest income steps across a border, 1990 international dollars (richer side / poorer side, GDP per head): Mellersta Norrland (Sweden) / Nord-Norge (Norway) 2.42; Ostschweiz (Switzerland) / Provincia Autonoma di Bolzano/Bozen-Provincia Autonoma di Trento (Italy) 2.42; Luxembourg (state) (Luxembourg) / Lorraine (France) 2.39; Övre Norrland (Sweden) / Nord-Norge (Norway) 2.36; Luxembourg (state) (Luxembourg) / Statistische Region Trier (Germany) 1.93; Mellersta Norrland (Sweden) / Hedmark og Oppland (Norway) 1.93
+2021 largest income steps across a border, 2011 PPP (richer side / poorer side, GDP per head): Ireland (Ireland) / Northern Ireland (United Kingdom) 2.41; Nord-Norge (Norway) / Pohjois-ja Itä-Soumi (Finland) 2.39; Région lémanique (Switzerland) / Franche-Comté (France) 2.20; Luxembourg (state) (Luxembourg) / Luxembourg (region) (Belgium) 2.20; Trøndelag (Norway) / Mellersta Norrland (Sweden) 2.06; Espace Mittelland (Switzerland) / Franche-Comté (France) 2.05
+land borders one by one: pairs of neighbouring regions; mean gap in log GDP per head x 100, 2011 PPP (first country minus second; in brackets the same in 1990 international dollars), and mean absolute gap in the industry share (percentage points)
+  Austria-Germany (6 pairs): 1900 income -33 (1990 $ -22), industry 10.2 | 2015 income -14 (1990 $ -1), industry 4.0
+  Austria-Italy (5 pairs): 1900 income +20 (1990 $ +28), industry 4.7 | 2015 income +5 (1990 $ +7), industry 4.5
+  Austria-Switzerland (2 pairs): 1900 income -68 (1990 $ -47), industry 19.9 | 2015 income -13 (1990 $ +14), industry n/a
+  Belgium-France (7 pairs): 1900 income +36 (1990 $ +24), industry 15.1 | 2015 income -13 (1990 $ -9), industry 3.4
+  Belgium-Germany (2 pairs): 1900 income +62 (1990 $ +34), industry 23.2 | 2015 income -36 (1990 $ -14), industry 3.9
+  Belgium-Luxembourg (2 pairs): 1900 income +22 (1990 $ -31), industry 17.6 | 2015 income -91 (1990 $ -87), industry 0.4
+  Belgium-Netherlands (7 pairs): 1900 income +23 (1990 $ +1), industry 13.4 | 2015 income -10 (1990 $ +3), industry 3.7
+  Denmark-Germany (1 pairs): 1900 income -30 (1990 $ -50), industry 4.1 | 2015 income +9 (1990 $ +26), industry 1.7
+  Finland-Norway (1 pairs): 1900 income -52 (1990 $ +28), industry 3.4 | 2015 income -74 (1990 $ -23), industry 5.1
+  Finland-Sweden (1 pairs): 1900 income -103 (1990 $ -58), industry 10.1 | 2015 income -23 (1990 $ -22), industry 0.4
+  France-Germany (5 pairs): 1900 income -2 (1990 $ -17), industry 5.9 | 2015 income -30 (1990 $ -12), industry 5.4
+  France-Italy (4 pairs): 1900 income +45 (1990 $ +27), industry 13.3 | 2015 income -3 (1990 $ +6), industry 5.8
+  France-Luxembourg (1 pairs): 1900 income -46 (1990 $ -87), industry 3.3 | 2015 income -82 (1990 $ -82), industry 1.9
+  France-Spain (6 pairs): 1900 income -35 (1990 $ +7), industry 7.2 | 2015 income -18 (1990 $ -6), industry 5.2
+  France-Switzerland (5 pairs): 1900 income -32 (1990 $ -37), industry 8.4 | 2015 income -56 (1990 $ -23), industry n/a
+  Germany-Luxembourg (2 pairs): 1900 income -38 (1990 $ -64), industry 18.2 | 2015 income -54 (1990 $ -72), industry 7.6
+  Germany-Netherlands (8 pairs): 1900 income -1 (1990 $ +4), industry 14.2 | 2015 income +5 (1990 $ -5), industry 6.2
+  Germany-Switzerland (5 pairs): 1900 income -38 (1990 $ -28), industry 21.7 | 2015 income -27 (1990 $ -13), industry n/a
+  Ireland-United Kingdom (1 pairs): 1900 income -14 (1990 $ -13), industry 18.7 | 2015 income +63 (1990 $ +44), industry 1.4
+  Italy-Switzerland (6 pairs): 1900 income -65 (1990 $ -53), industry 18.0 | 2015 income -34 (1990 $ -9), industry n/a
+  Norway-Sweden (9 pairs): 1900 income -9 (1990 $ -44), industry 8.9 | 2015 income +57 (1990 $ +6), industry 3.7
+  Portugal-Spain (7 pairs): 1900 income -63 (1990 $ -0), industry 6.5 | 2015 income -6 (1990 $ -5), industry 7.1
+
+== 5. The same border test with the borders of 1900 for 1900 and 1910 (Alsace in Germany, Ireland in the United Kingdom, Trentino-South Tyrol in Austria)
+regions split by a border of the time keep their present country: FR41 (Moselle German), DK03 (North Schleswig German), ITH4 (Gorizia and Trieste Austrian), BE33 (Eupen-Malmedy German); Norway and Sweden (in union until 1905) and Finland (a grand duchy of the Russian Empire with its own customs and currency) stay separate
+pairs across a border: 91 with the borders of 1900, 93 with today's
+  industry share, percentage points: 1900 premium +3.52 (SE 1.22), random lines share >= observed 0.000 | 1910 premium +3.10 (SE 1.32), random lines share >= observed 0.011
+  log GDP per head x 100: 1900 premium +15.19 (SE 3.65), random lines share >= observed 0.000 | 1910 premium +13.24 (SE 3.46), random lines share >= observed 0.000
+  log GDP per head x 100, 1990 international dollars: 1900 premium +10.07 (SE 3.74), random lines share >= observed 0.000 | 1910 premium +8.26 (SE 3.15), random lines share >= observed 0.000
 

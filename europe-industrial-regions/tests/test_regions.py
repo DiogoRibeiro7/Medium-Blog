@@ -110,3 +110,14 @@ def test_workbook_regions_all_have_polygons_and_neighbours():
     assert df[df.year == 1900].ind.notna().sum() == 171
     assert R.benchmark_years(df) == [1900, 1910, 1925, 1938, 1950, 1960, 1970, 1980, 1990, 2000,
                                      2010, 2015, 2021]
+
+
+@needs_data
+def test_price_bases_differ_by_one_national_factor():
+    """The 1990-dollar and 2011-PPP GDP series give the same regional ratios inside a country and
+    year, so the choice of base can move only national levels (and therefore border gaps)."""
+    df = R.load_panel()
+    r = (df.lgdppc - df.lgdppc90).dropna()
+    spread = r.groupby([df.country, df.year]).agg(lambda x: x.max() - x.min())
+    assert spread.max() < 1e-9
+    assert r.groupby(df.country).mean().std() > 0.05
