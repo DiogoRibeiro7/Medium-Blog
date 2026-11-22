@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "dataset": "bls-cpi-rent-us-metros",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "547c25d42b5607c6c29fc60918b8fb74b42d5b2e",
+  "record": "datasets/bls-cpi-rent-us-metros/metadata.yaml",
+  "folder": "rent-or-buy-us",
+  "target": "rent-or-buy-us/data/bls-cpi-rent-us-metros",
+  "files": [
+    {
+      "path": "raw/CPIAUCNS.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CPIAUCNS.csv",
+      "bytes": 24922,
+      "sha256": "2f72ee1766c487a1ab631bfcf161ef6743858e59a331b57da36d89c5496f7fa0"
+    },
+    {
+      "path": "raw/CUUR0000SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUR0000SEHA.csv",
+      "bytes": 22961,
+      "sha256": "62795a0ad3241321ea98ce53732950e2ba35551ff044699749f2ef088f6376ba"
+    },
+    {
+      "path": "raw/CUURS35ASEHA.dbnomics.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUURS35ASEHA.dbnomics.json",
+      "bytes": 28479,
+      "sha256": "2166c29c5e0002d0705f6e223063af5984d7a3850624a2206f94ed91861498cc"
+    },
+    {
+      "path": "raw/CUUSA101SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA101SEHA.csv",
+      "bytes": 1626,
+      "sha256": "68b99324e239ecb947d5f943cb7e0dd51630683460ff2f1c306cc2ca5d4dbfb9"
+    },
+    {
+      "path": "raw/CUUSA103SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA103SEHA.csv",
+      "bytes": 828,
+      "sha256": "74ac2970a5985f3d9d79d3786ab0721b7ceebe09821e01ff3812acb37f8e66b9"
+    },
+    {
+      "path": "raw/CUUSA207SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA207SEHA.csv",
+      "bytes": 1626,
+      "sha256": "029b7c4ae128659a5808f7d6ca30a8fba5d334c721fc8aab0f03ad5f259dc983"
+    },
+    {
+      "path": "raw/CUUSA208SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA208SEHA.csv",
+      "bytes": 1626,
+      "sha256": "9829b6db8abbdc4b59e17c6973d5c446f354e3824717f007d602378188f022f3"
+    },
+    {
+      "path": "raw/CUUSA211SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA211SEHA.csv",
+      "bytes": 828,
+      "sha256": "ef6d38308d569f26fe9e512d3bdfc088c366f02a119433fd170bd997e3b54957"
+    },
+    {
+      "path": "raw/CUUSA316SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA316SEHA.csv",
+      "bytes": 828,
+      "sha256": "b3485b36100c4d58058780f5dbcea208a58da5f044c95967792d4c7ce61755ed"
+    },
+    {
+      "path": "raw/CUUSA319SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA319SEHA.csv",
+      "bytes": 1626,
+      "sha256": "5c1b64f96531f5ac62da29ee22308c80ffae432c334d0f5e253c8494cc8006e2"
+    },
+    {
+      "path": "raw/CUUSA320SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA320SEHA.csv",
+      "bytes": 1626,
+      "sha256": "100caed017b8d8374b3b75f337b49d3b9a50ccfe416de88bc0706f747c7b26e3"
+    },
+    {
+      "path": "raw/CUUSA321SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA321SEHA.csv",
+      "bytes": 771,
+      "sha256": "f31b79d12cab2f4d8c275a42dc4c0dfdbbae7cdef7e12f99a3922c54003304b5"
+    },
+    {
+      "path": "raw/CUUSA422SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA422SEHA.csv",
+      "bytes": 1626,
+      "sha256": "b24494606a4f34cf582174a581c8001ceec1245428fca182e556ae13a95113d9"
+    },
+    {
+      "path": "raw/CUUSA423SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA423SEHA.csv",
+      "bytes": 1626,
+      "sha256": "0f35f4003e460e99491600821234142f1d3f56f2c01d8fd1a098914234b64677"
+    },
+    {
+      "path": "raw/CUUSA424SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA424SEHA.csv",
+      "bytes": 828,
+      "sha256": "d3052a9b518addb597bec545b90305f48b76fdae9abaf90302317d6d5c956808"
+    },
+    {
+      "path": "raw/CUUSA429SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA429SEHA.csv",
+      "bytes": 486,
+      "sha256": "10f4408cc69566ce83d3883369fcb43e67b05c0b3c8cdb15d25c698191459d62"
+    },
+    {
+      "path": "raw/CUUSA433SEHA.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSA433SEHA.csv",
+      "bytes": 828,
+      "sha256": "7c7822e0c7c9278b0f08ea93e6fe59fd6bb421de147bbbf708e57fe4fbd01357"
+    },
+    {
+      "path": "raw/CUUSS49ASEHA.dbnomics.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/bls-cpi-rent-us-metros/raw/CUUSS49ASEHA.dbnomics.json",
+      "bytes": 21091,
+      "sha256": "df46ac6c201f5efbd5bdab9b11bee98dc13d5d7f36fd5187a3d29fc9e188ecdd"
+    }
+  ]
+}
