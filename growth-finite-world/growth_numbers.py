@@ -2,7 +2,8 @@
 
     python growth_numbers.py > output.txt
 
-Reads only data/ (built by build_data.py) and writes the tables behind the figures to results/.
+Reads only data/ (built by build_data.py) and writes the tables behind the figures to results/;
+neither folder is committed.
 """
 
 from pathlib import Path

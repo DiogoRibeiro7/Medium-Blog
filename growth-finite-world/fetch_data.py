@@ -9,8 +9,10 @@ Three public sources, each read from one fixed commit:
 * owid/energy-data (CC BY 4.0): primary energy consumption (Energy Institute Statistical Review)
   and GDP by country and year.
 
-Every file is checked against a SHA-256 digest, so the inputs cannot drift. build_data.py turns them
-into the compact tables in data/, which are committed; the analysis reads only data/.
+Every file is checked against a SHA-256 digest, so the inputs cannot drift. The same pins are recorded in
+the data registry (DiogoRibeiro7/data, external/shiller-sp-composite-monthly, external/owid-co2-data and
+external/owid-energy-data). build_data.py turns the files into the compact tables in data/; neither the
+cache nor the tables are committed, so no CSV is stored in this repository.
 
     python fetch_data.py            # download what is missing, then verify everything
     python fetch_data.py --check    # verify only; exit 1 if a file is missing or altered

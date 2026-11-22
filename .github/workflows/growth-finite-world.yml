@@ -46,11 +46,10 @@ jobs:
       - name: Test the core functions
         run: python -m unittest discover -s tests -v
 
-      - name: Rebuild the committed tables from the pinned sources
+      - name: Fetch the pinned sources and build the tables
         run: |
           python fetch_data.py
           python build_data.py
-          git diff --exit-code -- data
 
       - name: Rerun the analysis and compare with the committed output
         run: |
