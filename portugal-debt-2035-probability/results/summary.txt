@@ -1,0 +1,36 @@
+identity residual below 1e-9 pp: True
+episode 2009-2010: d_debt=24.39, c_growth=-0.58, c_interest=5.90, c_primary=15.39, c_sfa=3.68, start=75.49, end=99.88
+episode 2009-2013: d_debt=55.35, c_growth=5.08, c_interest=19.76, c_primary=20.67, c_sfa=9.83, start=75.49, end=130.84
+episode 2020: d_debt=17.99, c_growth=7.77, c_interest=2.83, c_primary=2.92, c_sfa=4.46, start=116.11, end=134.10
+episode 2021-2025: d_debt=-44.94, c_growth=-46.54, c_interest=10.32, c_primary=-9.69, c_sfa=0.97, start=134.10, end=89.15
+episode 2016-2019: d_debt=-14.91, c_growth=-22.23, c_interest=14.05, c_primary=-8.80, c_sfa=2.06, start=131.02, end=116.11
+primary balance: max 3.17 (2023), years >= 3 [2019, 2023], best 8-yr avg 1.59 (to 2025), mean 2023-25 2.86
+budget elasticity: all 0.50 (se 0.14), excl. 0.84 (se 0.21)
+A: debt 2027 84.5 2028 81.1 2030 75.3 2035 63.8 2040 54.0; first<=60 2037; peak deficit -0.30 (2032); required pb 2.98
+B: debt 2027 84.5 2028 81.4 2030 77.0 2035 69.0 2040 62.8; first<=60 2043; peak deficit 0.50 (2034); required pb 2.98
+R1: debt 2027 88.7 2028 85.5 2030 79.8 2035 68.5 2040 58.7; first<=60 2040; peak deficit 0.72 (2027); required pb 3.57
+R2: debt 2027 94.5 2028 92.1 2030 86.8 2035 76.0 2040 66.6; first<=60 2044; peak deficit 2.79 (2027); required pb 4.51
+R3: debt 2027 95.2 2028 98.0 2030 94.3 2035 85.7 2040 77.5; first<=60 None; peak deficit 2.98 (2027); required pb 5.69
+sensitivity A as_specified: debt 2035 63.8, peak deficit -0.30, edp False
+sensitivity A elasticity_0.84: debt 2035 63.8, peak deficit -0.30, edp False
+sensitivity A elasticity_0.84_and_2009_size_support: debt 2035 66.7, peak deficit 1.59, edp False
+sensitivity A start_from_commission_86.5: debt 2035 62.9, peak deficit -0.33, edp False
+sensitivity A marginal_rate_plus_50bp: debt 2035 65.4, peak deficit -0.06, edp False
+sensitivity A more_scarring_h0.5: debt 2035 63.8, peak deficit -0.30, edp False
+sensitivity A slower_repricing_0.10: debt 2035 63.0, peak deficit -0.43, edp False
+sensitivity R2 as_specified: debt 2035 76.0, peak deficit 2.79, edp False
+sensitivity R2 elasticity_0.84: debt 2035 75.2, peak deficit 4.10, edp True
+sensitivity R2 elasticity_0.84_and_2009_size_support: debt 2035 76.6, peak deficit 5.10, edp True
+sensitivity R2 start_from_commission_86.5: debt 2035 75.0, peak deficit 2.76, edp False
+sensitivity R2 marginal_rate_plus_50bp: debt 2035 77.8, peak deficit 2.85, edp False
+sensitivity R2 more_scarring_h0.5: debt 2035 74.9, peak deficit 2.23, edp False
+sensitivity R2 slower_repricing_0.10: debt 2035 74.8, peak deficit 2.72, edp False
+recession timing (2035 debt): 2027 76.0, 2030 75.5, 2033 74.4, baseline_2035 63.8
+monte carlo A: p_at_or_below_60_in_2035=0.368, p_at_or_below_70_in_2035=0.598, p_above_2027_level_in_2035=0.145, p_deficit_above_3_by_2035=0.391, median_2035=65.236, p10_2035=48.193, p90_2035=90.475, median_first_year_at_or_below_60=2037.000, p_not_at_60_by_2045=0.211
+monte carlo A without 2020: p_at_or_below_60_in_2035=0.408, p_at_or_below_70_in_2035=0.641, p_above_2027_level_in_2035=0.146, p_deficit_above_3_by_2035=0.193, median_2035=63.208, p10_2035=49.185, p90_2035=89.821, median_first_year_at_or_below_60=2036.000, p_not_at_60_by_2045=0.218
+monte carlo A p(<=60) by year: 2027=0.000, 2028=0.000, 2029=0.000, 2030=0.022, 2031=0.081, 2032=0.164, 2033=0.244, 2034=0.317, 2035=0.368, 2036=0.423, 2037=0.472, 2038=0.508, 2039=0.549, 2040=0.579, 2041=0.612, 2042=0.641, 2043=0.660, 2044=0.681, 2045=0.708
+monte carlo B: p_at_or_below_60_in_2035=0.244, p_at_or_below_70_in_2035=0.493, p_above_2027_level_in_2035=0.212, p_deficit_above_3_by_2035=0.472, median_2035=70.388, p10_2035=53.275, p90_2035=95.359, median_first_year_at_or_below_60=2040.000, p_not_at_60_by_2045=0.341
+monte carlo B without 2020: p_at_or_below_60_in_2035=0.247, p_at_or_below_70_in_2035=0.536, p_above_2027_level_in_2035=0.211, p_deficit_above_3_by_2035=0.258, median_2035=68.399, p10_2035=54.272, p90_2035=94.685, median_first_year_at_or_below_60=2040.000, p_not_at_60_by_2045=0.352
+monte carlo B p(<=60) by year: 2027=0.000, 2028=0.000, 2029=0.000, 2030=0.013, 2031=0.035, 2032=0.098, 2033=0.144, 2034=0.201, 2035=0.244, 2036=0.282, 2037=0.320, 2038=0.350, 2039=0.388, 2040=0.416, 2041=0.446, 2042=0.478, 2043=0.505, 2044=0.524, 2045=0.547
+policy dial p(<=60 in 2035): 1.0=0.105, 1.25=0.141, 1.5=0.177, 1.75=0.222, 2.0=0.275, 2.25=0.333, 2.5=0.378, 2.75=0.427, 3.0=0.476, 3.25=0.515, 3.5=0.556, 3.75=0.600, 4.0=0.641
+policy dial p(2035 > 2027): 1.0=0.305, 1.25=0.274, 1.5=0.238, 1.75=0.207, 2.0=0.179, 2.25=0.155, 2.5=0.134, 2.75=0.114, 3.0=0.106, 3.25=0.091, 3.5=0.074, 3.75=0.061, 4.0=0.052

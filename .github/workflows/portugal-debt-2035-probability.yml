@@ -1,0 +1,71 @@
+name: Reproduce portugal-debt-2035-probability
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-debt-2035-probability/**'
+      - 'data_sources/eurostat-portugal-government-finance.json'
+      - '.github/workflows/portugal-debt-2035-probability.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-debt-2035-probability/**'
+      - 'data_sources/eurostat-portugal-government-finance.json'
+      - '.github/workflows/portugal-debt-2035-probability.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: portugal-debt-2035-probability
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-debt-2035-probability/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Download the Eurostat series and check them against the pinned digests
+        run: python fetch_data.py
+
+      - name: Rebuild the panel
+        run: python build_data.py
+
+      - name: Test the model, the parser and the debt identity
+        run: python -m unittest discover -s tests -v
+
+      - name: Rerun the analysis and compare with the committed summary
+        run: |
+          cp results/summary.txt "$RUNNER_TEMP/summary.txt"
+          python run_analysis.py > /dev/null
+          if ! diff -u "$RUNNER_TEMP/summary.txt" results/summary.txt > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=portugal-debt-2035-probability/results/summary.txt::run_analysis.py output differs from the committed summary.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          for f in fig1_what_moved_debt fig2_scenarios fig3_fan_charts fig4_probability_by_year fig5_policy_dial; do
+            test -s "figures/$f.png"
+          done
