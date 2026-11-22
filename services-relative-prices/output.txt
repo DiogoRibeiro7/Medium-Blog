@@ -1,0 +1,320 @@
+services-relative-prices: why services get dearer, EU27 and member states
+Data: Eurostat snapshot eurostat-services-relative-prices in DiogoRibeiro7/data (see ../data_sources).
+
+====================================================================================================
+1. What households pay: HICP, EU27, 2001-2025
+====================================================================================================
+All items                                       +56.2 log points   +75.4%  +2.34 lp a year
+Services                                        +57.4 log points   +77.5%  +2.39 lp a year
+Goods                                           +54.7 log points   +72.8%  +2.28 lp a year
+Non-energy industrial goods                     +25.0 log points   +28.4%  +1.04 lp a year
+Energy                                          +91.3 log points  +149.1%  +3.80 lp a year
+Food, alcohol and tobacco                       +75.4 log points  +112.6%  +3.14 lp a year
+Services related to housing                     +55.5 log points   +74.3%  +2.31 lp a year
+Services related to transport                   +67.1 log points   +95.7%  +2.80 lp a year
+Recreation, repairs and personal care           +69.3 log points  +100.0%  +2.89 lp a year
+Miscellaneous services                          +62.4 log points   +86.6%  +2.60 lp a year
+Communication services                          -22.0 log points   -19.8%  -0.92 lp a year
+Education, health and social protection         +54.9 log points   +73.2%  +2.29 lp a year
+Services minus non-energy industrial goods: +32.4 log points; relative price x1.38
+Services minus all goods: +2.7 log points
+Weight of services in the HICP: 37.8% in 2001, 43.2% in 2025
+Weight of non-energy industrial goods: 30.5% in 2001, 26.4% in 2025
+
+Items with an EU27 index from 2001 (log change 2001-2025, percent change, lp a year):
+  CP0441       services    +85.7   +135.5%   +3.57  Water supply
+  CP0432       services    +83.7   +131.0%   +3.49  Services for the maintenance and repair of the dwelling
+  CP0723       services    +80.3   +123.3%   +3.35  Maintenance and repair of personal transport equipment
+  CP0733       services    +77.9   +118.0%   +3.25  Passenger transport by air
+  CP081        services    +77.8   +117.6%   +3.24  Postal services
+  CP0442       services    +77.7   +117.6%   +3.24  Refuse collection
+  CP1111       services    +72.1   +105.7%   +3.01  Restaurants, cafés and the like
+  CP0941       services    +69.8   +100.9%   +2.91  Recreational and sporting services
+  CP01         goods       +68.9    +99.1%   +2.87  Food and non-alcoholic beverages
+  CP063        services    +66.8    +95.0%   +2.78  Hospital services
+  CP1211       services    +64.2    +90.1%   +2.68  Hairdressing salons and personal grooming establishments
+  CP0731       services    +60.4    +82.9%   +2.52  Passenger transport by railway
+  CP125        services    +60.3    +82.8%   +2.51  Insurance
+  CP10         services    +59.0    +80.5%   +2.46  Education
+  CP0314       services    +57.8    +78.2%   +2.41  Cleaning, repair and hire of clothing
+  CP0622       services    +55.8    +74.6%   +2.32  Dental services
+  CP041        services    +44.3    +55.7%   +1.84  Actual rentals for housing
+  CP0611       goods       +43.4    +54.3%   +1.81  Pharmaceutical products
+  CP0721       goods       +41.3    +51.2%   +1.72  Spare parts and accessories for personal transport equipment
+  CP0511       goods       +37.9    +46.0%   +1.58  Furniture and furnishings
+  CP03         goods       +18.5    +20.3%   +0.77  Clothing and footwear
+  CP0931       goods        -7.4     -7.2%   -0.31  Games, toys and hobbies
+  CP0531_0532  goods        -9.7     -9.3%   -0.41  Major household appliances whether electric or not and small electric household appliances
+  CP0911       goods      -154.1    -78.6%   -6.42  Equipment for the reception, recording and reproduction of sound and picture
+  CP0913       goods      -188.1    -84.8%   -7.84  Information processing equipment
+
+Items with an EU27 index only from 2017 (log change 2017-2025):
+  CP00            +26.7    +30.6%  All items
+  CP11201         +36.1    +43.5%  Hotels, motels, inns and similar accommodation services
+  CP12621         +32.8    +38.9%  Charges by banks and post offices
+  CP12402         +30.5    +35.6%  Retirement homes for elderly persons and residences for disabled persons
+  CP0935          +29.3    +34.1%  Veterinary and other services for pets
+  CP12703         +27.7    +31.9%  Funeral services
+  CP07322         +25.5    +29.0%  Passenger transport by taxi and hired car with driver
+  CP05621         +24.5    +27.8%  Domestic services by paid staff
+  CP07111         +23.2    +26.1%  New motor cars
+  CP09421         +21.9    +24.4%  Cinemas, theatres, concerts
+  CP0621          +19.6    +21.6%  Medical services
+  CP12401         +18.2    +20.0%  Child care services
+  CP12702         +10.9    +11.5%  Legal services and accountancy
+  CP0830           -0.6     -0.6%  Telephone and telefax services
+  CP0820          -59.1    -44.6%  Telephone and telefax equipment
+
+Administered prices, EU27, 2002-2025 (first year with all five indices):
+  Administered prices                             +67.6  +2.94 lp a year
+  Administered prices, non-energy                 +55.9  +2.43 lp a year
+  All items excluding administered prices         +51.3  +2.23 lp a year
+  Services                                        +54.0  +2.35 lp a year
+  Non-energy industrial goods                     +23.2  +1.01 lp a year
+  Weight of non-energy administered prices, EU27_2020, 2025: 10.0%
+  Weight of non-energy administered prices, PT, 2025: 11.3%
+
+Portugal, 2001-2025:
+  All items                                       +49.1   +63.4%
+  Services                                        +63.0   +87.7%
+  Goods                                           +38.8   +47.4%
+  Non-energy industrial goods                      +7.4    +7.7%
+  Energy                                          +75.9  +113.6%
+  Food, alcohol and tobacco                       +55.0   +73.3%
+  Services related to housing                     +76.4  +114.7%
+  Services related to transport                   +64.4   +90.5%
+  Recreation, repairs and personal care           +73.9  +109.4%
+  Miscellaneous services                          +55.2   +73.7%
+  Communication services                          +14.3   +15.4%
+  Services minus non-energy industrial goods: +55.6 log points; relative price x1.74
+  CP1111     2001-2025   +76.9  +115.8%  Restaurants, cafés and the like
+  CP11201    2015-2025   +59.9   +82.1%  Hotels, motels, inns and similar accommodation services
+  CP1211     2001-2025   +55.5   +74.1%  Hairdressing salons and personal grooming establishments
+  CP0432     2001-2025   +80.4  +123.5%  Services for the maintenance and repair of the dwelling
+  CP0622     2001-2025   +41.0   +50.7%  Dental services
+  CP10       2001-2025   +66.6   +94.6%  Education
+  Weight of services in Portugal's HICP: 35.1% in 2001, 44.8% in 2025
+  Weight of restaurants and hotels (CP1111 + CP11201), 2025: 14.0%
+  Same weight in the EU27, 2025: 9.1%
+
+====================================================================================================
+2. What producers charge: the identity for services, EU27, 1995-2024
+====================================================================================================
+Services are sections G to T without real estate (L); goods are A to F; the economy is A to T without L.
+Cumulative log change 1995-2024:            price    wage    prod  lshare
+  Services                                 +56.4   +78.3   +23.2    -1.3
+  Manufacturing                            +33.4   +87.2   +68.9   -15.1
+  Goods                                    +56.2   +85.0   +52.4   -23.5
+  Economy                                  +56.0   +81.5   +33.9    -8.5
+Real value added per hour, lp a year: services 0.80, manufacturing 2.38, goods 1.81, economy 1.17
+Adjusted labour share of the economy: -8.5 log points over the period
+
+Price gap = wage gap + productivity contribution + margins contribution (log points):
+  Services vs manufacturing    price  +22.9 (= +25.8%)  wage   -8.9  productivity  +45.8  margins  -13.9  check 0.0e+00
+  Services vs goods            price   +0.2 (= +0.2%)  wage   -6.8  productivity  +29.2  margins  -22.3  check 0.0e+00
+  Services vs economy          price   +0.3 (= +0.3%)  wage   -3.2  productivity  +10.7  margins   -7.2  check 0.0e+00
+  Share of the productivity contribution offset by wages and margins: 50%
+  Wages alone offset 20%, margins alone 30%
+
+Services vs manufacturing by year (price gap, log points):
+  2000:+5.2  2005:+15.6  2008:+18.6  2010:+21.1  2015:+19.0  2019:+21.5  2020:+23.2  2021:+25.1  2022:+23.2  2023:+20.4  2024:+22.9
+  Peak 2021 at +25.1
+
+Subperiods, services vs manufacturing:
+  1995-2010: price +21.1  wage -5.6  productivity +31.9  margins -5.2  | productivity lp a year: manufacturing 3.02, services 0.89
+  2010-2024: price +1.8  wage -3.4  productivity +13.8  margins -8.6  | productivity lp a year: manufacturing 1.69, services 0.70
+  2010-2019: price +0.4  wage -2.9  productivity +8.6  margins -5.3  | productivity lp a year: manufacturing 1.76, services 0.81
+
+Pre-pandemic window, 1995-2019, services vs manufacturing:
+  price +21.5  wage -8.4  productivity +40.5  margins -10.5
+
+Composition of value added at current prices (percent):
+  Services       1995: compensation 60.9, net operating surplus and mixed income 24.9, depreciation 13.9, taxes less subsidies 0.3 | 2024: compensation 62.8, net operating surplus and mixed income 20.7, depreciation 15.4, taxes less subsidies 1.1
+  Manufacturing  1995: compensation 61.5, net operating surplus and mixed income 20.4, depreciation 17.1, taxes less subsidies 1.0 | 2024: compensation 53.6, net operating surplus and mixed income 23.7, depreciation 21.4, taxes less subsidies 1.2
+  Goods          1995: compensation 56.2, net operating surplus and mixed income 26.0, depreciation 17.5, taxes less subsidies 0.3 | 2024: compensation 49.0, net operating surplus and mixed income 30.2, depreciation 21.2, taxes less subsidies -0.4
+  Economy        1995: compensation 59.2, net operating surplus and mixed income 25.3, depreciation 15.2, taxes less subsidies 0.3 | 2024: compensation 58.7, net operating surplus and mixed income 23.6, depreciation 17.2, taxes less subsidies 0.6
+  Employees' share of hours, Services: 81.0% -> 84.6%
+  Employees' share of hours, Manufacturing: 91.7% -> 92.9%
+  Employees' share of hours, Goods: 70.1% -> 77.4%
+  Employees' share of hours, Economy: 76.6% -> 82.5%
+
+Consumer against producer prices, 2001-2024:
+  HICP services minus non-energy industrial goods +29.5; value added prices, services minus manufacturing +16.1
+  (HICP gap 2001-2025: +32.4)
+
+====================================================================================================
+3. Industry by industry against the economy, EU27, 1995-2024 (log points)
+====================================================================================================
+          industry                             price    wage   prod. margins VA share
+  J61     Telecommunications                  -162.7   -18.3  -146.7    +2.3         
+  J       Information and communication        -69.4    -4.9   -46.2   -18.2     5.4%
+  C       Manufacturing                        -22.6    +5.8   -35.0    +6.7    19.3%
+  G       Trade                                -15.5    -5.1   -11.7    +1.4    12.8%
+  A       Agriculture                          -13.5   +32.9   -54.5    +8.1     2.2%
+  M       Professional services                 -1.5    -1.7   +38.8   -38.6     7.3%
+  H       Transport                             +1.8   -12.2    -2.5   +16.5     5.5%
+  K       Finance and insurance                 +2.8    -7.3    +0.0   +10.1     5.4%
+  R       Arts and recreation                   +6.9    -2.4   +21.1   -11.8     1.4%
+  S       Other services                        +7.7   -13.1   +44.4   -23.7     1.9%
+  O       Public administration                 +9.9    +7.2    +9.5    -6.9     7.4%
+  N       Administrative services              +11.5   -10.8   +45.1   -22.8     4.7%
+  Q86     Health care                          +12.4   +11.5   +19.4   -18.6         
+  T       Households as employers              +12.6   -11.9   +35.6   -11.2     0.4%
+  Q       Health and social work               +18.3    +5.4   +27.2   -14.4     8.0%
+  P       Education                            +31.7    -2.5   +42.0    -7.8     5.6%
+  Q87_Q88 Residential care and social work     +32.7    -1.8   +39.3    -4.8         
+  I       Hotels and restaurants               +36.3   -13.2   +51.2    -1.8     2.9%
+  E       Water and waste                      +40.8    +5.4   +43.0    -7.5     1.0%
+  F       Construction                         +41.3   -13.1   +51.2    +3.2     6.2%
+  B       Mining                               +66.8   +15.0   +44.5    +7.3     0.5%
+  D       Electricity and gas                  +71.4   +15.0   +28.8   +27.6     2.1%
+Covariance shares across the 19 sections (sum to 1):
+  unweighted: wage 0.05, productivity 0.79, margins 0.17
+  weighted by value added: wage -0.03, productivity 0.99, margins 0.04
+  Slope of the price on the productivity contribution: 0.73 (HC1 s.e. 0.17), R2 0.57
+  Standard deviations across sections: price 31.5, wage 11.9, productivity 32.8, margins 15.4
+  Sections whose price rose relative to the economy: B, D, E, F, H, I, K, N, O, P, Q, R, S, T (14 of 19)
+  Goods sections that got dearer: B, D, E, F; services sections that got cheaper: G, J, M
+
+====================================================================================================
+4. The same identity in every member state, 1995-2024: 18 sections (A to S without L)
+====================================================================================================
+Countries with every series for every year: 25; left out: EE, MT (no hours or value added by section for 1995)
+Country-industry cells: 450
+Covariance shares (sum to 1):
+  unweighted: wage -0.00, productivity 0.84, margins 0.17
+  weighted by the section's share of its country's value added: wage 0.01, productivity 0.88, margins 0.11
+Slope of the price on the productivity contribution: 0.61 (HC1 s.e. 0.04), R2 0.51
+  with country means removed: 0.62 (s.e. 0.04), R2 0.52
+Cells where the price moved in the direction of the productivity contribution: 81%
+Standard deviations: price 48.9, wage 30.0, productivity 57.1, margins 36.7
+Correlations with the productivity contribution: wage -0.36, margins -0.31
+Productivity's covariance share country by country (weighted): median 0.92, lowest HR 0.56, highest IE 1.78, above 0.5 in 25 of 25
+  Portugal: 1.10
+
+====================================================================================================
+5. Baumol's wage assumption: do wages grow alike across industries?
+====================================================================================================
+EU27 sections, wage gap against the economy (log points, 1995-2024), lowest and highest:
+  I   Hotels and restaurants               -13.2
+  F   Construction                         -13.1
+  S   Other services                       -13.1
+  H   Transport                            -12.2
+  T   Households as employers              -11.9
+  C   Manufacturing                         +5.8
+  O   Public administration                 +7.2
+  B   Mining                               +15.0
+  D   Electricity and gas                  +15.0
+  A   Agriculture                          +32.9
+Across the 450 country-industry cells, the wage gap's standard deviation is 30.0 log points against 57.1 for the productivity contribution (ratio 0.53)
+Slope of the wage gap on the productivity contribution: -0.19 (s.e. 0.03), R2 0.13
+Wage gaps in trade, transport, hotels and restaurants, administrative, other and household services: G -5.1, H -12.2, I -13.2, N -10.8, S -13.1, T -11.9
+Wage gaps in public administration, health, energy, mining and agriculture: O +7.2, Q +5.4, D +15.0, B +15.0, A +32.9
+
+====================================================================================================
+6. Margins: the labour-share term
+====================================================================================================
+EU27 sections, margins contribution (log points, 1995-2024), lowest and highest:
+  M   Professional services                -38.6
+  S   Other services                       -23.7
+  N   Administrative services              -22.8
+  J   Information and communication        -18.2
+  Q   Health and social work               -14.4
+  C   Manufacturing                         +6.7
+  B   Mining                                +7.3
+  A   Agriculture                           +8.1
+  K   Finance and insurance                +10.1
+  H   Transport                            +16.5
+  D   Electricity and gas                  +27.6
+  Services: adjusted labour share -1.3 log points
+  Manufacturing: adjusted labour share -15.1 log points
+  Goods: adjusted labour share -23.5 log points
+  D Electricity and gas: net operating surplus and mixed income 33.1% -> 45.7% of value added
+  K Finance and insurance: net operating surplus and mixed income 29.8% -> 35.7% of value added
+  H Transport: net operating surplus and mixed income 11.7% -> 17.4% of value added
+  B Mining: net operating surplus and mixed income 29.4% -> 16.7% of value added
+  F Construction: net operating surplus and mixed income 27.3% -> 36.7% of value added
+  C Manufacturing: net operating surplus and mixed income 20.4% -> 23.7% of value added
+
+====================================================================================================
+7. Measurement: market and non-market services against manufacturing, EU27, 1995-2024
+====================================================================================================
+  Market services (G-N, R, S)        price  +14.5 wage  -12.6 productivity  +39.1 margins  -12.0 | own productivity +1.03 lp a year | 69.5% of services value added in 2024
+  Non-market services (O, P, Q)      price  +41.5 wage   -2.7 productivity  +61.4 margins  -17.2 | own productivity +0.26 lp a year | 30.0% of services value added in 2024
+  Public administration (O)          price  +32.5 wage   +1.4 productivity  +44.6 margins  -13.5 | own productivity +0.84 lp a year | 10.1% of services value added in 2024
+  Education (P)                      price  +54.3 wage   -8.2 productivity  +77.0 margins  -14.5 | own productivity -0.28 lp a year | 7.9% of services value added in 2024
+  Health and social work (Q)         price  +40.9 wage   -0.4 productivity  +62.3 margins  -21.0 | own productivity +0.23 lp a year | 12.1% of services value added in 2024
+  Households as employers (T)        price  +35.1 wage  -17.7 productivity  +70.7 margins  -17.8 | own productivity -0.06 lp a year | 0.5% of services value added in 2024
+
+If the output of education and health (P, Q) per hour had grown like market services' (1.03 lp a year):
+  services vs manufacturing price gap +17.1 instead of +22.9; the difference is 5.8 log points, 25% of the gap
+If the output of public administration, education and health (O, P, Q) per hour had grown like market services' (1.03 lp a year):
+  services vs manufacturing price gap +16.5 instead of +22.9; the difference is 6.4 log points, 28% of the gap
+If it had grown like manufacturing's (2.38 lp a year): gap +4.4
+
+Telecommunications (J61) against the economy: price -162.7 (-80%), productivity -146.7, wage -18.3, margins +2.3; own productivity 6.23 lp a year
+
+====================================================================================================
+8. Across countries: price levels of goods and services (EU27 = 100)
+====================================================================================================
+2003: 27 member states
+  Goods                            lowest   54.7 (BG)  highest  134.0 (DK)  ratio 2.45  elasticity to GDP per head 0.45 (s.e. 0.06; 0.52 without LU and IE)  PT 87.0
+  Consumer goods                   lowest   55.9 (RO)  highest  138.4 (DK)  ratio 2.48  elasticity to GDP per head 0.44 (s.e. 0.07; 0.51 without LU and IE)  PT 96.2
+  Services                         lowest   23.3 (BG)  highest  156.8 (DK)  ratio 6.73  elasticity to GDP per head 1.09 (s.e. 0.10; 1.20 without LU and IE)  PT 78.5
+  Consumer services                lowest   26.4 (BG)  highest  154.3 (DK)  ratio 5.84  elasticity to GDP per head 0.97 (s.e. 0.10; 1.07 without LU and IE)  PT 76.4
+  Government services              lowest   19.7 (BG)  highest  163.0 (LU)  ratio 8.27  elasticity to GDP per head 1.26 (s.e. 0.10; 1.38 without LU and IE)  PT 85.1
+  Restaurants and hotels           lowest   35.2 (BG)  highest  157.9 (DK)  ratio 4.49  elasticity to GDP per head 0.69 (s.e. 0.10; 0.79 without LU and IE)  PT 80.1
+  Health                           lowest   24.2 (BG)  highest  160.2 (DK)  ratio 6.62  elasticity to GDP per head 1.11 (s.e. 0.11; 1.24 without LU and IE)  PT 92.4
+  Education                        lowest   11.6 (RO)  highest  290.5 (LU)  ratio 25.04  elasticity to GDP per head 1.72 (s.e. 0.11; 1.83 without LU and IE)  PT 97.0
+  Clothing and footwear            lowest   53.1 (RO)  highest  113.8 (SE)  ratio 2.14  elasticity to GDP per head 0.30 (s.e. 0.07; 0.35 without LU and IE)  PT 93.2
+  Audio-visual and IT equipment    lowest   81.4 (EE)  highest  126.6 (SE)  ratio 1.56  elasticity to GDP per head 0.10 (s.e. 0.04; 0.13 without LU and IE)  PT 99.0
+  GDP per head in PPS, Portugal: 84
+2024: 27 member states
+  Goods                            lowest   75.4 (RO)  highest  116.6 (DK)  ratio 1.55  elasticity to GDP per head 0.30 (s.e. 0.07; 0.51 without LU and IE)  PT 88.8
+  Consumer goods                   lowest   78.4 (BG)  highest  119.4 (DK)  ratio 1.52  elasticity to GDP per head 0.25 (s.e. 0.07; 0.40 without LU and IE)  PT 99.6
+  Services                         lowest   45.7 (RO)  highest  178.1 (LU)  ratio 3.90  elasticity to GDP per head 1.00 (s.e. 0.15; 1.46 without LU and IE)  PT 77.0
+  Consumer services                lowest   44.0 (BG)  highest  165.9 (LU)  ratio 3.77  elasticity to GDP per head 0.98 (s.e. 0.16; 1.43 without LU and IE)  PT 78.0
+  Government services              lowest   42.3 (RO)  highest  191.7 (LU)  ratio 4.53  elasticity to GDP per head 1.06 (s.e. 0.16; 1.55 without LU and IE)  PT 77.6
+  Restaurants and hotels           lowest   53.2 (BG)  highest  147.6 (DK)  ratio 2.77  elasticity to GDP per head 0.54 (s.e. 0.13; 0.87 without LU and IE)  PT 75.5
+  Health                           lowest   34.2 (RO)  highest  178.7 (IE)  ratio 5.23  elasticity to GDP per head 1.13 (s.e. 0.19; 1.65 without LU and IE)  PT 86.6
+  Education                        lowest   39.1 (RO)  highest  350.5 (LU)  ratio 8.96  elasticity to GDP per head 1.27 (s.e. 0.26; 1.78 without LU and IE)  PT 72.0
+  Clothing and footwear            lowest   79.1 (BG)  highest  132.7 (DK)  ratio 1.68  elasticity to GDP per head 0.14 (s.e. 0.07; 0.29 without LU and IE)  PT 93.5
+  Audio-visual and IT equipment    lowest   88.9 (IT)  highest  115.4 (FI)  ratio 1.30  elasticity to GDP per head 0.01 (s.e. 0.04; 0.06 without LU and IE)  PT 98.9
+  GDP per head in PPS, Portugal: 82
+2024, 26 member states: compensation per employee hour in services, euro: lowest 11.8 (EL), highest 62.9 (LU), PT 16.6
+  Elasticity of the services price level to services hourly pay: 0.64 (s.e. 0.05), R2 0.89
+  Elasticity of the goods price level to services hourly pay: 0.21 (s.e. 0.03), R2 0.77
+  Ratio of highest to lowest hourly pay: 5.3
+
+====================================================================================================
+9. Portugal, 1995-2024
+====================================================================================================
+  Services vs manufacturing  price  +19.0  wage  -21.6  productivity  +53.4  margins  -12.8
+  Services vs goods          price   +6.0  wage  -24.9  productivity  +43.5  margins  -12.6
+  Services vs the economy    price   +2.7  wage  -11.0  productivity  +18.8  margins   -5.1
+  Real value added per hour, lp a year: services 0.34, manufacturing 2.18
+  Hotels and restaurants (I) against the economy: price +56.9, wage +4.4, productivity +57.5, margins -5.1
+  Education (P) against the economy: price +9.9, wage -34.6, productivity +45.9, margins -1.5
+  DE, services vs manufacturing: price +15.3  wage -4.3  productivity +33.3  margins -13.7
+  FR, services vs manufacturing: price +30.9  wage -6.4  productivity +52.5  margins -15.1
+  ES, services vs manufacturing: price +10.0  wage +0.0  productivity +32.7  margins -22.8
+  IT, services vs manufacturing: price +0.0  wage -19.1  productivity +15.6  margins +3.5
+  PL, services vs manufacturing: price +51.8  wage +4.5  productivity +47.1  margins +0.1
+
+====================================================================================================
+10. Can past drift forecast future drift? Country-industry cells, 1995-2010 against 2010-2024
+====================================================================================================
+Cells: 450. Drift = relative price change against the country's economy, lp a year.
+Correlation of the two periods' drift: 0.15
+Slope of later drift on earlier drift: 0.13 (s.e. 0.06), R2 0.02
+Mean absolute drift: 1.89 (1995-2010), 1.41 (2010-2024) lp a year
+Forecast error (RMSE, lp a year) for 2010-2024 drift:
+  no drift (zero):                 2.05
+  0.25 x the 1995-2010 drift:       2.03
+  0.50 x the 1995-2010 drift:       2.18
+  1.00 x the 1995-2010 drift:       2.90
+Correlation of the productivity contribution across the two periods: 0.11
+Correlation of the two periods' drift, weighted by value added: 0.22
+EU27 sections (19): correlation 0.30; RMSE zero 1.34, persistence 1.61, half 1.28
+  sections whose drift kept its sign: 63%
+  but within 2010-2024 the productivity term still carries 0.79 of the cross-section variance (weighted)
