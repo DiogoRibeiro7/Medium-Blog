@@ -465,9 +465,8 @@ def report_price_levels(p, na):
     print(f"  Elasticity of the services price level to services hourly pay: {b:.2f} (s.e. {se:.2f}), R2 {r2:.2f}")
     a0 = np.log(r.services).mean() - b * np.log(r.services_pay_per_hour).mean()
     fit_pt = math.exp(a0 + b * math.log(hp["PT"]))
-    print(
-        f"  Portugal: services price level {r.services['PT']:.1f}, fitted from its hourly pay {fit_pt:.1f} ({100 * (r.services['PT'] / fit_pt - 1):+.0f}%)"
-    )
+    above = 100 * (r.services["PT"] / fit_pt - 1)
+    print(f"  Portugal: services price level {r.services['PT']:.1f}, fitted from its hourly pay {fit_pt:.1f} ({above:+.0f}%)")
     b, se, r2 = ols_slope(np.log(r.services_pay_per_hour), np.log(r.goods))
     print(f"  Elasticity of the goods price level to services hourly pay: {b:.2f} (s.e. {se:.2f}), R2 {r2:.2f}")
     print(f"  Ratio of highest to lowest hourly pay: {ratio_range(r.services_pay_per_hour):.1f}")
