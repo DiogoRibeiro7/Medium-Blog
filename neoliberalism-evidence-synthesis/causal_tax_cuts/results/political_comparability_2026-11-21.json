@@ -1,0 +1,108 @@
+{
+  "by_horizon": [
+    {
+      "complete_treated_donor_pairs": 206,
+      "donor_pairs_at_risk": 239,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": -1,
+      "mean_abs_checks_index_gap_pair_weighted": 1.2970873786407766,
+      "orientation_agreement_event_weighted": 0.38006111535523296,
+      "same_eiec_at_t_minus_1": 205,
+      "same_orientation_all_five_years": 25,
+      "same_orientation_at_t_minus_1": 80
+    },
+    {
+      "complete_treated_donor_pairs": 194,
+      "donor_pairs_at_risk": 227,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 0,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3051546391752578,
+      "orientation_agreement_event_weighted": 0.3880090497737556,
+      "same_eiec_at_t_minus_1": 193,
+      "same_orientation_all_five_years": 25,
+      "same_orientation_at_t_minus_1": 76
+    },
+    {
+      "complete_treated_donor_pairs": 180,
+      "donor_pairs_at_risk": 212,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 1,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3066666666666666,
+      "orientation_agreement_event_weighted": 0.39213172448466566,
+      "same_eiec_at_t_minus_1": 179,
+      "same_orientation_all_five_years": 22,
+      "same_orientation_at_t_minus_1": 71
+    },
+    {
+      "complete_treated_donor_pairs": 165,
+      "donor_pairs_at_risk": 197,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 2,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3187878787878788,
+      "orientation_agreement_event_weighted": 0.3785570638511815,
+      "same_eiec_at_t_minus_1": 164,
+      "same_orientation_all_five_years": 21,
+      "same_orientation_at_t_minus_1": 62
+    },
+    {
+      "complete_treated_donor_pairs": 153,
+      "donor_pairs_at_risk": 184,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 3,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3555555555555556,
+      "orientation_agreement_event_weighted": 0.36268404797816567,
+      "same_eiec_at_t_minus_1": 152,
+      "same_orientation_all_five_years": 20,
+      "same_orientation_at_t_minus_1": 57
+    },
+    {
+      "complete_treated_donor_pairs": 148,
+      "donor_pairs_at_risk": 179,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 4,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3689189189189188,
+      "orientation_agreement_event_weighted": 0.3703781512605042,
+      "same_eiec_at_t_minus_1": 147,
+      "same_orientation_all_five_years": 20,
+      "same_orientation_at_t_minus_1": 56
+    },
+    {
+      "complete_treated_donor_pairs": 143,
+      "donor_pairs_at_risk": 174,
+      "events_total": 20,
+      "events_with_complete_pairs": 17,
+      "horizon": 5,
+      "mean_abs_checks_index_gap_pair_weighted": 1.3972027972027974,
+      "orientation_agreement_event_weighted": 0.3609243697478992,
+      "same_eiec_at_t_minus_1": 142,
+      "same_orientation_all_five_years": 20,
+      "same_orientation_at_t_minus_1": 54
+    }
+  ],
+  "comparison_definition": "Use t-5 through t-1 only; require all three DPI prehistories. Treat executive orientation and EIEC as discrete; CHECKS as an index.",
+  "donor_exposures_sha256": "0c7dd5e2300895a1e76410a0dda185bd0af2134121cc3e7110b6942b306f02ef",
+  "inference": "none; no p-values, ATT, causal weights or confidence intervals",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "license": "DPI2023 CC BY 4.0 — Cruz et al., DOI 10.60966/8tx1xs4i",
+  "limitations": [
+    "Donor-event pairs reuse the same countries and are not independent.",
+    "Future donor reform exclusions are inherited, not newly justified.",
+    "Completeness restriction reduces the descriptive comparison sample.",
+    "DPI electoral competitiveness can be nearly constant in OECD democracies.",
+    "Agreement on politics does not establish exchangeability or causality.",
+    "Only two of twenty reforms had joint WDI donor-hull support at year five."
+  ],
+  "n_baseline_reforms": 20,
+  "n_initial_pairs": 239,
+  "n_unique_treated_countries": 14,
+  "political_controls_sha256": "cef6654ddeb5283c42b11bd836c99e322c7f97c54424da78a980bebf853d4bcb",
+  "source_audit_sha256": "c5b1c6195eeecf9245e16cb95564baa2a2ee2ebcf22c4aa9c025bc5ffe42f5dd",
+  "source_dpi_csv_sha256": "5b5b047b88bdb659fefc73a36764de0fc8ca9f74cbeb20a8d06d74445881d1a2",
+  "status": "descriptive_political_comparability_only"
+}

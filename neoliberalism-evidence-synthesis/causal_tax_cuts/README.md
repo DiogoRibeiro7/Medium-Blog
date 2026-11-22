@@ -331,6 +331,20 @@ See [`results/POLITICAL_INSTITUTIONS_RESULTS_2026-11-18.md`](results/POLITICAL_I
 and the frozen manifest. The live Action publishes a seven-day
 `tax-cut-political-institutions` artifact, not a politically adjusted ATT.
 
+
+### Political donor comparability (descriptive; no new matching)
+
+The [political comparability audit](POLITICAL_COMPARABILITY.md) compares
+DPI2023 executive orientation, EIEC and the CHECKS index for the existing
+20 reforms and their 239 pre-censor donor pairs. It requires all three
+variables during the **five years before** treatment for both countries;
+no new tax-cut estimates or weights are fitted. At year five, 143 of 174
+pairs have complete political histories; only 54 of those 143 agree on
+executive orientation in the year before reform. See
+[results/political_comparability_2026-11-21.json](results/political_comparability_2026-11-21.json).
+The official source workflow regenerates the diagnostic and checks the
+entire frozen JSON whenever the input hashes match.
+
 1. Download the authors' file via the link above. Inspect the true headings:
 
    ```bash
