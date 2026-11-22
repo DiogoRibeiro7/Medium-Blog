@@ -130,7 +130,11 @@ def report_headline(t):
     print(f"DMC without fossil energy materials: {nf[Y0]:.2f} Gt ({Y0}), {nf[2007]:.2f} (2007), {nf[2013]:.2f} (2013), {nf[Y1]:.2f} ({Y1}); "
           f"change {lp(log_change(nf[Y0], nf[Y1]))}")  # fmt: skip
     mins = dmc(t, EU, "MF3") / 1e6
-    print(f"Non-metallic minerals 2007-2013 {lp(log_change(mins[2007], mins[2013]))}, 2013-{Y1} {lp(log_change(mins[2013], mins[Y1]))}")
+    print(f"Non-metallic minerals 2000-2007 {lp(log_change(mins[2000], mins[2007]))} ({pct(log_change(mins[2000], mins[2007])):+.0f}%), "
+          f"2007-2013 {lp(log_change(mins[2007], mins[2013]))}, 2013-{Y1} {lp(log_change(mins[2013], mins[Y1]))}")  # fmt: skip
+    fos = dmc(t, EU, "MF4") / 1e6
+    print(f"2019-{Y1}: DMC {d[2019]:.2f} -> {d[Y1]:.2f} Gt ({d[Y1] - d[2019]:+.2f}); fossil energy materials {fos[2019]:.2f} -> {fos[Y1]:.2f} "
+          f"({fos[Y1] - fos[2019]:+.2f}), {100 * (fos[Y1] - fos[2019]) / (d[Y1] - d[2019]):.0f}% of the change")  # fmt: skip
     idx = pd.DataFrame(
         {
             "year": range(Y0, Y1 + 1),
@@ -317,6 +321,8 @@ def report_targets(t):
     print(f"Member states that ever added {need:.1f} points or more in six years: {sum(1 for _, _, b in rows if b[0] >= need)} of {len(rows)}")
     lev = sorted(((g, v) for g, v, _ in rows), key=lambda r: r[1])
     print(f"Rates in 2024: highest {lev[-1][0]} {lev[-1][1]:.1f}%, lowest {lev[0][0]} {lev[0][1]:.1f}%, Portugal {dict(lev)['PT']:.1f}%")
+    rank = [g for g, _ in lev].index("PT") + 1
+    print(f"  Portugal ranks {rank} from the bottom of {len(lev)}; below it: {', '.join(f'{g} {v:.1f}%' for g, v in lev[: rank - 1])}")
 
     w = t["env_wastrt"]
 
@@ -331,8 +337,8 @@ def report_targets(t):
             "W12B": "Other mineral waste (mostly mining)",
             "W126": "Soils", "W127": "Dredging spoils", "W124": "Combustion wastes", "W128_13": "Mineral waste from waste treatment"}  # fmt: skip
     for code, name in cats.items():
-        tr, rc = wt(EU, code, "TRT"), wt(EU, code, "RCV_R")
-        print(f"  {name:45s} treated {tr:6.0f}  recycled {rc:5.0f} ({100 * rc / tr:.0f}%)")
+        tr, rc, lf = wt(EU, code, "TRT"), wt(EU, code, "RCV_R"), wt(EU, code, "DSP_L")
+        print(f"  {name:45s} treated {tr:6.0f}  recycled {rc:5.0f} ({100 * rc / tr:.0f}%)  landfilled {lf:5.0f} ({100 * lf / tr:.0f}%)")
     base = u[yy]
     steps = [
         ("Every tonne of non-mineral waste recycled", wt(EU, "TOT_X_MIN", "TRT") - wt(EU, "TOT_X_MIN", "RCV_R")),
