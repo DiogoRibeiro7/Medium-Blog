@@ -1,0 +1,255 @@
+
+====================================================================================================
+1. The snapshot
+====================================================================================================
+source: https://www.eurotoptech.com/research/happiness-taxes-europe, read 2026-11-22
+canonical SHA-256 of the transcribed table: 7bb9db9c13991e50adeb860a8e2f8403fe0ff85687f1862e582dbcdc64707140
+countries listed: 29; rated reports in them: 744 of 782 rated, 1673 approved
+rated reports per country: min 5, median 13, max 112
+thin countries (5-9 reports): 12 of 29 (41% of countries)
+reports in thin countries: 84 of 744 (11.3%)
+countries with 30+ reports: 9, holding 534 reports (71.8%)
+thin countries: Kosovo (5), Lithuania (5), Bulgaria (9), Croatia (9), Norway (6), Estonia (9), Greece (8), Cyprus (6), Luxembourg (5), Slovakia (7), Finland (9), Slovenia (6)
+services: report-weighted mean 6.82; unweighted mean 6.75; SD of country means 1.08; range 4.63 to 8.40
+  SD of country means, thin countries 1.24; 10-29 reports 1.07; 30+ reports 0.89
+happiness: report-weighted mean 7.39; unweighted mean 7.48; SD of country means 0.59; range 6.50 to 8.80
+  SD of country means, thin countries 0.77; 10-29 reports 0.55; 30+ reports 0.29
+
+====================================================================================================
+2. Who sits at the ends of the published rankings
+====================================================================================================
+services:
+  top 3:    Luxembourg 8.40 (n=5); Switzerland 8.37 (n=46); Czechia 8.08 (n=13)
+  bottom 3: Slovakia 5.14 (n=7); Ireland 4.99 (n=17); Greece 4.63 (n=8)
+  thin countries among the six end positions: 3
+happiness:
+  top 3:    Kosovo 8.80 (n=5); Lithuania 8.60 (n=5); Czechia 8.31 (n=13)
+  bottom 3: Slovakia 6.71 (n=7); Finland 6.56 (n=9); Slovenia 6.50 (n=6)
+  thin countries among the six end positions: 5
+expected number if the six positions were filled at random: 2.48
+both rankings together: 8 of 12 end positions go to thin countries
+
+====================================================================================================
+3. How much of the spread is countries and how much is sampling noise
+====================================================================================================
+services (uniform priors: sigma on 0.5-4, tau on 0-3):
+  sigma, SD of single ratings within a country: 2.50 (90%: 0.80 to 3.82)
+  tau, SD of true country means:                 0.83 (90%: 0.36 to 1.24)
+  mu, mean of true country means:                6.78 (90%: 6.45 to 7.11)
+  P(tau < 0.25) = 0.023; P(tau < 0.5) = 0.116
+  standard error of a country mean: n=5 1.12 (90%: 0.36 to 1.71); n=112 0.24 (90%: 0.08 to 0.36)
+  share of the variance of published country means that is sampling noise: 0.44 (90%: 0.04 to 0.90)
+  same, among thin countries only: 0.57 (90%: 0.07 to 0.94)
+happiness (uniform priors: sigma on 0.5-4, tau on 0-3):
+  sigma, SD of single ratings within a country: 1.80 (90%: 1.04 to 2.51)
+  tau, SD of true country means:                 0.25 (90%: 0.04 to 0.51)
+  mu, mean of true country means:                7.42 (90%: 7.27 to 7.59)
+  P(tau < 0.25) = 0.504; P(tau < 0.5) = 0.943
+  standard error of a country mean: n=5 0.80 (90%: 0.47 to 1.12); n=112 0.17 (90%: 0.10 to 0.24)
+  share of the variance of published country means that is sampling noise: 0.83 (90%: 0.30 to 1.00)
+  same, among thin countries only: 0.89 (90%: 0.42 to 1.00)
+
+cross-check, services: the page reports 39% (remote, 304) and 42% (on-site, 478) of ratings at 8+, so 40.8% overall;
+  with mean 6.82 and a rounded normal, the total SD of single ratings is 2.91, and the within-country SD sqrt(total^2 - tau^2) = 2.79
+  happiness: 54.6% of ratings at 8+ with a mean of 7.39: more than half above a mean below 7.5, so the distribution is skewed to the left and the normal shortcut does not apply
+
+====================================================================================================
+4. Funnel plots: limits around the report-weighted mean at the posterior median of sigma
+====================================================================================================
+services: centre 6.82, sigma 2.50
+  half-width of the 95% limits: n=5 2.19, n=112 0.46
+  outside the 95% limits (7): Poland (n=67, above), Switzerland (n=46, above), Greece (n=8, below), Romania (n=31, below), Ireland (n=17, below), Italy (n=71, below), Portugal (n=31, below)
+  outside the 99.8% limits (1): Switzerland (n=46, above)
+  thin countries outside the 95% limits: 1 of 12
+  Luxembourg: z = +1.41
+  Greece: z = -2.48
+happiness: centre 7.39, sigma 1.80
+  half-width of the 95% limits: n=5 1.58, n=112 0.33
+  outside the 95% limits (3): Serbia (n=20, above), Poland (n=67, above), Germany (n=112, below)
+  outside the 99.8% limits (0): 
+  thin countries outside the 95% limits: 0 of 12
+  Kosovo: z = +1.76
+  Slovenia: z = -1.21
+
+====================================================================================================
+5. Shrinkage and rank intervals
+====================================================================================================
+services: weight on a country's own mean at the posterior medians: n=5 0.36, n=9 0.50, n=31 0.77, n=112 0.93
+  country            n   raw rank shrunk rank  90% rank  P(1st)  P(last)  P(top3)  P(bottom3)
+  Switzerland       46  8.37    2   8.01    1   1 to  8   0.382    0.000    0.772       0.000
+  Austria           14  8.07    4   7.54    2   1 to 20   0.077    0.002    0.291       0.007
+  Czechia           13  8.08    3   7.54    3   1 to 20   0.081    0.002    0.294       0.008
+  Poland            67  7.70    8   7.53    4   2 to 12   0.037    0.000    0.194       0.001
+  Luxembourg         5  8.40    1   7.45    5   1 to 23   0.124    0.005    0.295       0.019
+  Netherlands       35  7.57   10   7.36    6   2 to 17   0.023    0.000    0.117       0.004
+  Estonia            9  7.89    6   7.35    7   2 to 22   0.046    0.003    0.177       0.014
+  Finland            9  7.89    7   7.35    8   1 to 23   0.050    0.004    0.182       0.016
+  Norway             6  8.00    5   7.32    9   1 to 24   0.059    0.005    0.191       0.021
+  Sweden            13  7.62    9   7.27   10   2 to 22   0.031    0.003    0.120       0.012
+  Denmark           10  7.30   11   7.06   11   3 to 24   0.017    0.005    0.069       0.022
+  Belgium           11  7.27   12   7.06   12   3 to 24   0.016    0.006    0.068       0.022
+  France            28  6.89   13   6.86   13   5 to 24   0.005    0.004    0.024       0.016
+  Germany          112  6.77   14   6.77   14   8 to 22   0.001    0.001    0.005       0.008
+  Spain            110  6.71   15   6.72   15   9 to 23   0.001    0.001    0.004       0.010
+  United Kingdom    31  6.65   16   6.69   16   7 to 25   0.002    0.005    0.011       0.026
+  Cyprus             6  6.33   17   6.59   17   5 to 27   0.009    0.021    0.034       0.076
+  Kosovo             5  6.20   19   6.54   18   5 to 28   0.008    0.024    0.034       0.088
+  Croatia            9  6.22   18   6.51   19   6 to 27   0.005    0.021    0.022       0.079
+  Bulgaria           9  6.00   21   6.38   20   6 to 28   0.004    0.032    0.019       0.107
+  Lithuania          5  5.60   26   6.30   21   6 to 28   0.005    0.046    0.023       0.167
+  Slovenia           6  5.67   25   6.30   22   6 to 28   0.005    0.044    0.019       0.157
+  Serbia            20  5.95   22   6.25   23  10 to 28   0.001    0.031    0.006       0.126
+  Italy             71  6.13   20   6.25   24  15 to 28   0.000    0.019    0.001       0.095
+  Romania           31  5.90   23   6.15   25  13 to 28   0.001    0.036    0.004       0.157
+  Portugal          31  5.74   24   6.04   26  14 to 29   0.001    0.055    0.003       0.229
+  Slovakia           7  5.14   27   6.02   27   8 to 29   0.003    0.100    0.012       0.361
+  Greece             8  4.63   29   5.73   28  11 to 29   0.002    0.289    0.006       0.538
+  Ireland           17  4.99   28   5.68   29  15 to 29   0.001    0.234    0.003       0.615
+  width of the 90% rank interval: median 20 places; thin 23; 30+ reports 15
+  90% rank interval inside the top 10: Switzerland
+  90% rank interval inside the bottom 10: none
+  most likely first: Switzerland (0.382); most likely last: Greece (0.289)
+  P(a thin country is truly first) = 0.322; truly last = 0.595
+  countries whose place moves 5 or more from the raw table: 1
+  Spearman correlation of raw and shrunk order: 0.966
+happiness: weight on a country's own mean at the posterior medians: n=5 0.09, n=9 0.15, n=31 0.37, n=112 0.68
+  country            n   raw rank shrunk rank  90% rank  P(1st)  P(last)  P(top3)  P(bottom3)
+  Serbia            20  8.30    4   7.70    1   1 to 23   0.149    0.006    0.371       0.019
+  Czechia           13  8.31    3   7.65    2   1 to 25   0.106    0.008    0.288       0.028
+  Poland            67  7.83    8   7.63    3   1 to 21   0.070    0.003    0.233       0.011
+  Kosovo             5  8.80    1   7.62    4   1 to 26   0.108    0.012    0.255       0.041
+  Lithuania          5  8.60    2   7.59    5   1 to 26   0.081    0.014    0.220       0.046
+  Switzerland       46  7.73   11   7.56    6   2 to 23   0.039    0.005    0.140       0.019
+  Bulgaria           9  8.00    5   7.54    7   2 to 26   0.050    0.014    0.155       0.047
+  Croatia            9  7.89    6   7.51    8   2 to 27   0.042    0.016    0.132       0.050
+  Belgium           11  7.82    9   7.51    9   2 to 26   0.038    0.014    0.129       0.049
+  Estonia            9  7.78   10   7.49   10   2 to 27   0.035    0.017    0.115       0.060
+  Norway             6  7.83    7   7.49   11   2 to 27   0.038    0.019    0.116       0.065
+  Sweden            13  7.62   13   7.47   12   2 to 27   0.028    0.016    0.094       0.058
+  Greece             8  7.63   12   7.46   13   2 to 27   0.030    0.021    0.097       0.072
+  Romania           31  7.52   14   7.45   14   3 to 26   0.018    0.012    0.066       0.045
+  Spain            110  7.39   15   7.40   15   5 to 26   0.008    0.009    0.030       0.036
+  Austria           14  7.29   16   7.38   16   3 to 28   0.017    0.029    0.058       0.092
+  Cyprus             6  7.17   20   7.38   17   3 to 28   0.020    0.035    0.069       0.112
+  Ireland           17  7.26   17   7.37   18   3 to 28   0.015    0.029    0.052       0.096
+  Portugal          31  7.23   19   7.34   19   4 to 28   0.009    0.029    0.036       0.102
+  Luxembourg         5  6.80   26   7.33   20   3 to 29   0.017    0.059    0.058       0.156
+  Denmark           10  7.00   24   7.32   21   4 to 28   0.015    0.050    0.049       0.150
+  Italy             71  7.23   18   7.32   22   6 to 28   0.006    0.024    0.022       0.096
+  United Kingdom    31  7.16   21   7.32   23   5 to 28   0.009    0.038    0.033       0.123
+  Slovakia           7  6.71   27   7.29   24   4 to 29   0.014    0.072    0.049       0.191
+  Netherlands       35  7.09   22   7.28   25   6 to 28   0.006    0.047    0.024       0.153
+  Slovenia           6  6.50   29   7.27   26   4 to 29   0.013    0.091    0.046       0.222
+  Finland            9  6.56   28   7.24   27   4 to 29   0.011    0.109    0.036       0.258
+  France            28  6.89   25   7.22   28   6 to 29   0.007    0.090    0.023       0.260
+  Germany          112  7.01   23   7.17   29  12 to 29   0.002    0.111    0.008       0.340
+  width of the 90% rank interval: median 25 places; thin 26; 30+ reports 23
+  90% rank interval inside the top 10: none
+  90% rank interval inside the bottom 10: none
+  most likely first: Serbia (0.149); most likely last: Germany (0.111)
+  P(a thin country is truly first) = 0.459; truly last = 0.479
+  countries whose place moves 5 or more from the raw table: 4
+  Spearman correlation of raw and shrunk order: 0.941
+
+services: P(Luxembourg > Switzerland) = 0.208
+services: P(Greece < Ireland) = 0.490
+services: P(Portugal below the mean of true country means) = 0.939
+happiness: P(Kosovo > Germany) = 0.877
+happiness: P(Slovenia < Germany) = 0.343
+happiness: P(Germany below the mean of true country means) = 0.913
+
+====================================================================================================
+6. Would sampling noise alone put the small countries at the ends? Simulation, 20,000 tables each
+====================================================================================================
+services (observed: 3 of 6 end positions thin):
+  (a) no country differences: mean 4.20 thin at the ends; P(>= observed) = 0.952; P(first is thin) = 0.813; P(last is thin) = 0.808
+  (b) countries differ as estimated: mean 3.28; P(>= observed) = 0.744; P(first is thin) = 0.622; P(last is thin) = 0.617
+      in the same tables, the truly best country is thin with P = 0.421 and the truly worst with P = 0.415
+      the published first is the true first in 37.3% of tables; last is the true last in 37.5%
+happiness (observed: 5 of 6 end positions thin):
+  (a) no country differences: mean 4.19 thin at the ends; P(>= observed) = 0.396; P(first is thin) = 0.809; P(last is thin) = 0.812
+  (b) countries differ as estimated: mean 3.80; P(>= observed) = 0.275; P(first is thin) = 0.734; P(last is thin) = 0.737
+      in the same tables, the truly best country is thin with P = 0.414 and the truly worst with P = 0.415
+      the published first is the true first in 16.4% of tables; last is the true last in 16.0%
+share of thin countries among all 29: 0.414 (what a position would get if size did not matter)
+
+====================================================================================================
+7. Sensitivity to sigma, fixed instead of estimated
+====================================================================================================
+services:
+  sigma 1.5: tau 0.99; outside 95% funnel 15 (thin 5); raw first Luxembourg -> shrunk place 4, P(1st) 0.182; raw last Greece -> 29, P(last) 0.456; median rank-interval width 11
+  sigma 2.0: tau 0.91; outside 95% funnel 11 (thin 2); raw first Luxembourg -> shrunk place 5, P(1st) 0.120; raw last Greece -> 28, P(last) 0.320; median rank-interval width 14
+  sigma 2.5: tau 0.82; outside 95% funnel 7 (thin 1); raw first Luxembourg -> shrunk place 6, P(1st) 0.085; raw last Greece -> 28, P(last) 0.223; median rank-interval width 18
+  sigma 3.0: tau 0.71; outside 95% funnel 5 (thin 1); raw first Luxembourg -> shrunk place 9, P(1st) 0.067; raw last Greece -> 28, P(last) 0.159; median rank-interval width 22
+happiness:
+  sigma 1.5: tau 0.31; outside 95% funnel 5 (thin 1); raw first Kosovo -> shrunk place 4, P(1st) 0.121; raw last Slovenia -> 25, P(last) 0.102; median rank-interval width 24
+  sigma 2.0: tau 0.19; outside 95% funnel 2 (thin 0); raw first Kosovo -> shrunk place 5, P(1st) 0.068; raw last Slovenia -> 24, P(last) 0.059; median rank-interval width 26
+  sigma 2.5: tau 0.13; outside 95% funnel 0 (thin 0); raw first Kosovo -> shrunk place 5, P(1st) 0.051; raw last Slovenia -> 23, P(last) 0.047; median rank-interval width 27
+  sigma 3.0: tau 0.12; outside 95% funnel 0 (thin 0); raw first Kosovo -> shrunk place 5, P(1st) 0.046; raw last Slovenia -> 23, P(last) 0.043; median rank-interval width 27
+
+====================================================================================================
+8. The tax question, with sampling noise in the model
+====================================================================================================
+services:
+  Pearson r of published country means with tax: +0.073 (page quotes +0.06)
+  same, thin countries excluded: -0.271
+  slope per 10 points of effective tax: -0.02 (90%: -0.60 to 0.56); P(slope < 0) = 0.525
+  tau without tax 0.83 (90%: 0.36 to 1.24); with tax 0.85 (90%: 0.34 to 1.27)
+  1 - (tau with / tau without)^2 at the medians: -3%
+  correlation of true country means with tax (draws of the model without tax): 0.02 (90%: -0.24 to 0.21)
+happiness:
+  Pearson r of published country means with tax: -0.465 (page quotes -0.46)
+  same, thin countries excluded: -0.740
+  slope per 10 points of effective tax: -0.49 (90%: -0.70 to -0.29); P(slope < 0) = 1.000
+  tau without tax 0.25 (90%: 0.04 to 0.51); with tax 0.09 (90%: 0.01 to 0.28)
+  1 - (tau with / tau without)^2 at the medians: +87%
+  correlation of true country means with tax (draws of the model without tax): -0.27 (90%: -0.54 to 0.10)
+
+====================================================================================================
+9. Do the engineers' service ratings agree with a population survey? OECD 2023
+====================================================================================================
+countries in both: 20 (7 thin): Czechia, Norway, Belgium, Estonia, Switzerland, Greece, Sweden, Spain, Ireland, Italy, Portugal, United Kingdom, Netherlands, Germany, Denmark, France, Luxembourg, Slovakia, Finland, Slovenia
+OECD measures: percent satisfied with healthcare, education, administrative services; composite = their mean
+  healthcare      range 25.9 to 80.7; Pearson with published services +0.889; Spearman +0.826
+  education       range 37.1 to 80.8; Pearson with published services +0.423; Spearman +0.354
+  administration  range 42.7 to 84.4; Pearson with published services +0.748; Spearman +0.705
+  composite       range 40.5 to 76.9; Pearson with published services +0.832; Spearman +0.780
+  composite vs shrunk means (model without OECD): Pearson +0.853; Spearman +0.807
+  distance from the least-squares line: thin countries 0.60 points; others 0.48
+  hierarchical slope per 10 points of OECD composite: 0.72 (90%: 0.51 to 0.95); P(slope > 0) = 1.000
+  tau on these 20 countries without OECD 0.83 (90%: 0.27 to 1.39); with OECD 0.36 (90%: 0.05 to 0.74)
+  1 - (tau with / tau without)^2 at the medians: +81%
+  correlation of true country means with the composite (draws of the model with OECD): 0.93 (90%: 0.82 to 1.00)
+
+====================================================================================================
+10. A forecast the page can check: each thin country at the ends doubles its number of reports
+====================================================================================================
+updated mean = (published mean + mean of n new reports) / 2; new reports drawn from the posterior
+services:
+  Luxembourg  n=5 -> 10: published 8.40; updated median 8.00 (80%: 7.00 to 8.71); P(closer to the middle) = 0.76
+  Slovakia    n=7 -> 14: published 5.14; updated median 5.51 (80%: 4.88 to 6.40); P(closer to the middle) = 0.76
+  Greece      n=8 -> 16: published 4.63; updated median 5.11 (80%: 4.48 to 6.02); P(closer to the middle) = 0.82
+happiness:
+  Kosovo      n=5 -> 10: published 8.80; updated median 8.22 (80%: 7.63 to 8.77); P(closer to the middle) = 0.91
+  Lithuania   n=5 -> 10: published 8.60; updated median 8.11 (80%: 7.52 to 8.64); P(closer to the middle) = 0.88
+  Slovakia    n=7 -> 14: published 6.71; updated median 6.99 (80%: 6.53 to 7.48); P(closer to the middle) = 0.78
+  Finland     n=9 -> 18: published 6.56; updated median 6.89 (80%: 6.48 to 7.34); P(closer to the middle) = 0.85
+  Slovenia    n=6 -> 12: published 6.50; updated median 6.88 (80%: 6.39 to 7.40); P(closer to the middle) = 0.84
+
+====================================================================================================
+11. Does the method work on ratings like these? 300 simulated tables of whole-number 0-10 ratings
+====================================================================================================
+services-like: latent SD 2.5, between-country SD 0.85, mean rating 6.8; skewed, rounded, clipped to 0-10; SD of single ratings about 2.35
+  coverage of the 90% intervals for true country means: 0.865
+  coverage of the 90% rank intervals: 0.930; median width 20.0 places
+  published first is the true first: raw 27.3%, shrunk 34.0%
+  Spearman with the true order: raw 0.715, shrunk 0.734
+  mean absolute rank error: raw 4.66, shrunk 4.55
+  thin countries at the six end positions of the raw table: mean 3.29
+happiness-like: latent SD 1.8, between-country SD 0.25, mean rating 7.4; skewed, rounded, clipped to 0-10; SD of single ratings about 1.80
+  coverage of the 90% intervals for true country means: 0.883
+  coverage of the 90% rank intervals: 0.924; median width 24.7 places
+  published first is the true first: raw 12.3%, shrunk 19.7%
+  Spearman with the true order: raw 0.405, shrunk 0.446
+  mean absolute rank error: raw 7.05, shrunk 6.82
+  thin countries at the six end positions of the raw table: mean 3.96
