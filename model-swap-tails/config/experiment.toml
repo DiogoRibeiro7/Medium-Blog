@@ -1,0 +1,331 @@
+# Experiment definition. Every number in results/ comes from this file, the data the
+# fetch step downloads, and the code in src/swaptails.
+#
+# One pipeline, two model slots:
+#   1. a language model reads a calendar note for each day and labels the day
+#      (workday, saturday_like, sunday_like);
+#   2. a time-series foundation model forecasts tomorrow's load, optionally with that label
+#      (and the temperature forecast) as known future covariates.
+# Each slot is filled in turn by European, US and Chinese models, and the result is scored
+# on average and on the days that carry the risk.
+
+[data]
+load_endpoint = "https://api.energy-charts.info/public_power"
+load_series = "Load"
+tso_endpoint = "https://api.energy-charts.info/public_power_forecast"
+weather_endpoint = "https://previous-runs-api.open-meteo.com/v1/forecast"
+# Forecast made two days earlier: for every hour from the 18:00 cutoff to the end of the
+# target day, the run that produced it started before the cutoff.
+weather_variable = "temperature_2m_previous_day2"
+first_day = "2023-10-01"
+last_day = "2025-12-31"
+# Energy-Charts allows 2 requests per minute.
+pause_seconds = 35
+cache_dir = "data/cache"
+manifest = "data/manifest.json"
+attribution_load = "Load and day-ahead load forecasts: energy-charts.info (Fraunhofer ISE), CC BY 4.0"
+attribution_weather = "Temperature forecasts: Open-Meteo.com, CC BY 4.0"
+# More missing hours than this in a country's evaluation year stops the run.
+max_missing_hours = 336
+
+# Hours that are not a forecasting problem. Never scored; inside a context window they are
+# replaced by the same hour one week earlier.
+[[data.masks]]
+name = "iberian-blackout-pt"
+countries = ["pt"]
+start = "2025-04-28T10:00:00Z"
+end = "2025-04-28T22:00:00Z"
+reason = "Iberian blackout at 12:33 CEST; Portuguese load near zero until the evening"
+
+[[data.masks]]
+name = "iberian-blackout-es"
+countries = ["es"]
+start = "2025-04-28T10:00:00Z"
+end = "2025-04-29T06:00:00Z"
+reason = "Iberian blackout at 12:33 CEST; Spanish load restored overnight"
+
+[design]
+forecast_first_day = "2025-01-01"
+forecast_last_day = "2025-12-31"
+# Years in which the language models' labels are scored. 2024 is also needed for the
+# covariates inside the forecasting context windows.
+label_years = [2024, 2025]
+# Forecasts are issued at this local hour on the day before; the last observed hour is the
+# one that ends at the cutoff.
+cutoff_local_hour = 18
+# Longest context any model gets, in hours. Each model may cap it lower (max_context).
+context_hours = 8760
+quantiles = [0.1, 0.5, 0.9]
+seed = 20261122
+
+[labels]
+# Ex-post day type: a day's mean load is compared with ordinary days in this many days on
+# either side.
+truth_window_days = 28
+# Days within this many days of a holiday are sent to the language model (one catches every
+# bridge day: Friday after a Thursday holiday, Monday before a Tuesday one).
+candidate_margin_days = 1
+# The year-end period is sent to the language model whether or not it holds a holiday.
+year_end_from = "12-20"
+year_end_to = "01-06"
+# Ordinary days per country and year also sent to the language model, as controls.
+control_days_per_year = 12
+# Subdivisions with more holidays than this are listed by count only in the note.
+max_regions_named = 8
+prompt_version = "v1"
+
+[evaluation]
+# A day is in the tail when its daily WAPE is at or above this quantile.
+tail_quantile = 0.95
+# A day has extreme temperature when its mean forecast temperature is outside these
+# quantiles of the country's evaluation year.
+extreme_temperature_quantiles = [0.05, 0.95]
+bootstrap_replications = 2000
+bootstrap_block_days = 7
+# The variant that stands for a model with covariates in the headline comparison: the
+# national holiday flag plus temperature, the set-up of the LinkedIn benchmark. Models
+# without covariates are always run on the load history alone.
+headline_variant = "flag"
+# The operator's forecast enters comparisons only in countries where it covers at least
+# this share of the scored days.
+reference_min_coverage = 0.9
+# Weeks drawn in the example figure: [country, first day].
+examples = [["de", "2025-06-16"], ["be", "2025-05-26"], ["pt", "2025-03-03"]]
+
+# ------------------------------------------------------------------------------ countries
+# ec: Energy-Charts country code; holidays: code in the `holidays` package;
+# exclude_subdivisions: subdivisions outside the grid the load series covers (islands,
+# overseas territories) or below regional level; include_subdivisions, when given, keeps only
+# those; subdivision_term: what the note calls them. Cities: equal-weight temperature proxy.
+
+[countries.pt]
+name = "Portugal"
+tz = "Europe/Lisbon"
+ec = "pt"
+holidays = "PT"
+exclude_subdivisions = ["20", "30"]
+subdivision_term = "districts, holiday of the district capital"
+cities = [["Lisboa", 38.72, -9.14], ["Porto", 41.15, -8.61], ["Coimbra", 40.21, -8.43]]
+
+[countries.es]
+name = "Spain"
+tz = "Europe/Madrid"
+ec = "es"
+holidays = "ES"
+exclude_subdivisions = ["CN", "CE", "ML"]
+subdivision_term = "autonomous communities"
+cities = [["Madrid", 40.42, -3.70], ["Barcelona", 41.39, 2.17], ["Valencia", 39.47, -0.38], ["Sevilla", 37.39, -5.98]]
+
+[countries.fr]
+name = "France"
+tz = "Europe/Paris"
+ec = "fr"
+holidays = "FR"
+exclude_subdivisions = ["971", "972", "973", "974", "976", "BL", "MF", "NC", "PF", "PM", "TF", "WF"]
+subdivision_term = "departments"
+cities = [["Paris", 48.86, 2.35], ["Lyon", 45.76, 4.84], ["Marseille", 43.30, 5.37], ["Lille", 50.63, 3.06], ["Toulouse", 43.60, 1.44]]
+
+[countries.be]
+name = "Belgium"
+tz = "Europe/Brussels"
+ec = "be"
+holidays = "BE"
+exclude_subdivisions = []
+subdivision_term = "regions"
+cities = [["Bruxelles", 50.85, 4.35], ["Antwerpen", 51.22, 4.40], ["Liège", 50.63, 5.57]]
+
+[countries.nl]
+name = "Netherlands"
+tz = "Europe/Amsterdam"
+ec = "nl"
+holidays = "NL"
+exclude_subdivisions = []
+subdivision_term = "provinces"
+cities = [["Amsterdam", 52.37, 4.90], ["Rotterdam", 51.92, 4.48], ["Eindhoven", 51.44, 5.47]]
+
+[countries.de]
+name = "Germany"
+tz = "Europe/Berlin"
+ec = "de"
+holidays = "DE"
+exclude_subdivisions = ["Augsburg"]
+subdivision_term = "states"
+cities = [["Berlin", 52.52, 13.40], ["Hamburg", 53.55, 9.99], ["München", 48.14, 11.58], ["Köln", 50.94, 6.96], ["Frankfurt", 50.11, 8.68], ["Stuttgart", 48.78, 9.18]]
+
+[countries.at]
+name = "Austria"
+tz = "Europe/Vienna"
+ec = "at"
+holidays = "AT"
+exclude_subdivisions = []
+subdivision_term = "states"
+cities = [["Wien", 48.21, 16.37], ["Graz", 47.07, 15.44], ["Linz", 48.31, 14.29]]
+
+[countries.it]
+name = "Italy"
+tz = "Europe/Rome"
+ec = "it"
+holidays = "IT"
+exclude_subdivisions = []
+subdivision_term = "large provinces tracked, holiday of the provincial capital"
+include_subdivisions = ["RM", "MI", "NA", "TO", "PA", "BA", "FI", "BO", "GE", "VE"]
+cities = [["Milano", 45.46, 9.19], ["Roma", 41.90, 12.50], ["Napoli", 40.85, 14.27], ["Torino", 45.07, 7.69], ["Bologna", 44.49, 11.34]]
+
+[countries.pl]
+name = "Poland"
+tz = "Europe/Warsaw"
+ec = "pl"
+holidays = "PL"
+exclude_subdivisions = []
+subdivision_term = "voivodeships"
+cities = [["Warszawa", 52.23, 21.01], ["Kraków", 50.06, 19.94], ["Łódź", 51.76, 19.46], ["Wrocław", 51.11, 17.03], ["Gdańsk", 54.35, 18.65]]
+
+# ------------------------------------------------------------------------------ language models
+# Served locally by Ollama, quantised to 4 bits, on CPU. `think = false` switches off the
+# reasoning trace of models that have one. Any OpenAI-compatible server can be used instead
+# with backend = "openai" and base_url.
+
+[llms.ministral3_8b]
+label = "Ministral 3 8B"
+bloc = "Europe"
+developer = "Mistral AI (France)"
+licence = "Apache-2.0"
+backend = "ollama"
+model = "ministral-3:8b"
+
+[llms.eurollm_9b]
+label = "EuroLLM 9B Instruct"
+bloc = "Europe"
+developer = "EuroLLM consortium (EU research universities and companies)"
+licence = "Apache-2.0"
+backend = "ollama"
+model = "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M"
+
+[llms.gemma4_12b]
+label = "Gemma 4 12B"
+bloc = "United States"
+developer = "Google"
+licence = "see model card (recorded from Ollama in labels/*.provenance.json)"
+backend = "ollama"
+model = "gemma4:12b"
+think = false
+
+[llms.llama31_8b]
+label = "Llama 3.1 8B"
+bloc = "United States"
+developer = "Meta"
+licence = "Llama 3.1 Community License"
+backend = "ollama"
+model = "llama3.1:8b"
+
+[llms.qwen35_9b]
+label = "Qwen3.5 9B"
+bloc = "China"
+developer = "Alibaba (Qwen team)"
+licence = "see model card (recorded from Ollama in labels/*.provenance.json)"
+backend = "ollama"
+model = "qwen3.5:9b"
+think = false
+
+[llms.qwen3_8b]
+label = "Qwen3 8B"
+bloc = "China"
+developer = "Alibaba (Qwen team)"
+licence = "Apache-2.0"
+backend = "ollama"
+model = "qwen3:8b"
+think = false
+
+# ------------------------------------------------------------------------------ forecasters
+# covariates = true: the model takes known future covariates, so it is run with each
+# covariate variant; otherwise it is run on the load history alone.
+
+[forecasters.timestral_209m]
+label = "Timestral 209M"
+bloc = "Europe"
+developer = "Mistral AI (France)"
+kind = "timestral"
+repo = "mistralai/Timestral-209M"
+revision = ""
+covariates = true
+max_context = 32768
+batch_size = 32
+
+[forecasters.t0_gamma]
+label = "t0-gamma"
+bloc = "Europe"
+developer = "The Forecasting Company (Paris; Y Combinator-backed)"
+kind = "t0"
+repo = "theforecastingcompany/t0-gamma"
+revision = ""
+covariates = true
+max_context = 8760
+batch_size = 16
+
+[forecasters.tirex]
+label = "TiRex"
+bloc = "Europe"
+developer = "NXAI (Austria)"
+kind = "tirex"
+repo = "NX-AI/TiRex"
+revision = ""
+covariates = false
+# The context length TiRex was trained with.
+max_context = 2048
+batch_size = 64
+
+[forecasters.chronos2]
+label = "Chronos-2"
+bloc = "United States"
+developer = "Amazon"
+kind = "chronos2"
+repo = "amazon/chronos-2"
+revision = ""
+covariates = true
+max_context = 8192
+batch_size = 32
+
+[forecasters.timesfm25]
+label = "TimesFM 2.5"
+bloc = "United States"
+developer = "Google"
+kind = "timesfm25"
+repo = "google/timesfm-2.5-200m-pytorch"
+revision = ""
+covariates = false
+max_context = 8760
+batch_size = 32
+
+[forecasters.sundial]
+label = "Sundial"
+bloc = "China"
+developer = "Tsinghua University"
+kind = "sundial"
+repo = "thuml/sundial-base-128m"
+revision = ""
+covariates = false
+# The longest lookback the model card documents.
+max_context = 2880
+batch_size = 16
+num_samples = 100
+
+[forecasters.seasonal_naive]
+label = "Seasonal naive (week)"
+bloc = "Reference"
+developer = "-"
+kind = "seasonal_naive"
+covariates = false
+max_context = 336
+
+[forecasters.similar_day]
+label = "Similar day"
+bloc = "Reference"
+developer = "-"
+kind = "similar_day"
+covariates = true
+max_context = 8760
+
+# Covariate variants run for every model with covariates = true. "llm" expands to one
+# variant per language model above.
+[variants]
+names = ["none", "temp", "flag", "llm", "oracle"]

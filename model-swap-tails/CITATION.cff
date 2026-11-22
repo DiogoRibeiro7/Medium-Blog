@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Swappable models, scored where the risk is: European, US and Chinese models in one day-ahead load pipeline"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-22
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/model-swap-tails"
+references:
+  - type: data
+    title: "Energy-Charts API: public net electricity production and load, day-ahead load forecasts"
+    authors:
+      - name: "Fraunhofer Institute for Solar Energy Systems ISE"
+    year: 2026
+    url: "https://api.energy-charts.info"
+  - type: data
+    title: "Open-Meteo Previous Runs API"
+    authors:
+      - name: "Open-Meteo"
+    year: 2026
+    url: "https://open-meteo.com/en/docs/previous-runs-api"
