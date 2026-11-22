@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-231 top-level folders: 77 belong to 24 series, 89 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 8 not yet sorted.
+232 top-level folders: 77 belong to 24 series, 89 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 9 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -401,6 +401,7 @@ Add these folders to `projects.yml`.
 - [`growth-finite-world/`](growth-finite-world/) — Corporate growth on a finite planet: valuation, earnings and energy, 1871–2024
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — Where the EUR 2,300 "moderate rent" ceiling sat against real rents, Portugal 2017-2025
 - [`productivity-hours-denominator/`](productivity-hours-denominator/) — The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009–2026
+- [`services-energy-time/`](services-energy-time/) — The energy and the hours behind Europe's service economy, 1995–2024
 - [`suffrage-public-health/`](suffrage-public-health/) — Suffrage laws and child mortality: a staggered difference-in-differences reanalysis
 
 <!-- projects:end -->
