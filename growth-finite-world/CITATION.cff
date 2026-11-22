@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Corporate growth on a finite planet: valuation, S&P earnings and world energy, 1871-2024"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-21
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/growth-finite-world"
+references:
+  - type: data
+    title: "S&P 500 (mirror of Robert Shiller's online data)"
+    authors:
+      - name: "Datahub and contributors"
+    repository-code: "https://github.com/datasets/s-and-p-500"
+    license: PDDL-1.0
+  - type: data
+    title: "Data on CO2 and greenhouse gas emissions by Our World in Data"
+    authors:
+      - name: "Our World in Data"
+    repository-code: "https://github.com/owid/co2-data"
+    license: CC-BY-4.0
+  - type: data
+    title: "Data on energy by Our World in Data"
+    authors:
+      - name: "Our World in Data"
+    repository-code: "https://github.com/owid/energy-data"
+    license: CC-BY-4.0

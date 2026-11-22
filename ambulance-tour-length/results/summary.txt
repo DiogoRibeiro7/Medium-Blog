@@ -1,0 +1,114 @@
+Tour length and the hours that size a roster: EMS and 311, test weeks 31 Dec 2018 to 29 Dec 2019
+
+EMS download: {"rowsUpdatedAt": 1791384138, "window_first_assignment": ["2018-12-30T00:00:00", "2019-12-30T00:00:00"], "count_query": 1525569, "rows_downloaded": 1525569, "duplicate_ids_dropped": 0, "excluded_missing_time": 475, "excluded_close_not_after_assignment": 32, "excluded_longer_than_8h": 971, "kept": 1524091, "boroughs": {"BRONX": 354397, "BROOKLYN": 423495, "MANHATTAN": 389052, "QUEENS": 293415, "RICHMOND / STATEN ISLAND": 63722, "UNKNOWN": 10}, "median_busy_minutes": 68.11666666666667}
+ems_city           mean requirement    209.4, min    9, max  361, hours with zero requirement 0
+ems_bronx          mean requirement     58.4, min    3, max  101, hours with zero requirement 0
+ems_brooklyn       mean requirement     64.4, min    6, max  120, hours with zero requirement 0
+ems_manhattan      mean requirement     55.3, min    5, max  105, hours with zero requirement 0
+ems_queens         mean requirement     45.5, min    1, max   84, hours with zero requirement 0
+ems_staten_island  mean requirement     12.0, min    0, max   27, hours with zero requirement 1
+nyc311             mean requirement     58.4, min    0, max  217, hours with zero requirement 7
+
+H1 (L in 6, 8, 12; 1092 cells): comb bound equals the integer optimum in 0.9835; largest shortfall 0.6221%; binding hours that are comb hours 0.9870; comb hours that are binding 0.9931
+  L  6: comb bound tight in 0.9945; largest shortfall 0.0788%; binding hours that are comb hours 0.988; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L  8: comb bound tight in 0.9753; largest shortfall 0.3120%; binding hours that are comb hours 0.987; comb hours that are binding 0.987; relaxation = integer optimum in 0.989
+  L  9: comb bound tight in 0.9973; largest shortfall 0.0243%; binding hours that are comb hours 0.997; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L 10: comb bound tight in 1.0000; largest shortfall 0.0000%; binding hours that are comb hours 1.000; comb hours that are binding 1.000; relaxation = integer optimum in 1.000
+  L 12: comb bound tight in 0.9808; largest shortfall 0.6221%; binding hours that are comb hours 0.985; comb hours that are binding 0.989; relaxation = integer optimum in 0.992
+  H1 supported: True
+
+H2 ems_city           L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_city           L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_city           L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_bronx          L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_bronx          L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_brooklyn       L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_brooklyn       L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_brooklyn       L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_manhattan      L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_manhattan      L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_manhattan      L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_queens         L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_queens         L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 ems_staten_island  L  6: observed phase 4; comb 4, climb 3 (hour 9), peak 1 (hour 13)
+H2 ems_staten_island  L  8: observed phase 2; comb 2, climb 1 (hour 9), peak 5 (hour 13)
+H2 ems_staten_island  L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 1 (hour 13)
+H2 nyc311             L  6: observed phase 3; comb 3, climb 3 (hour 9), peak 5 (hour 11)
+H2 nyc311             L  8: observed phase 1; comb 1, climb 1 (hour 9), peak 3 (hour 11)
+H2 nyc311             L 12: observed phase 10; comb 10, climb 9 (hour 9), peak 11 (hour 11)
+H2: matches out of 21: comb 21, steepest climb 2, peak 0; supported: True
+
+H3 L  6: largest binding share by dataset: ems_city 0.88, ems_bronx 0.60, ems_brooklyn 0.47, ems_manhattan 0.34, ems_queens 0.38, ems_staten_island 0.26, nyc311 0.84; datasets on the predicted side of 0.5: 3 of 7
+H3 L  8: largest binding share by dataset: ems_city 0.60, ems_bronx 0.43, ems_brooklyn 0.30, ems_manhattan 0.44, ems_queens 0.21, ems_staten_island 0.20, nyc311 0.78; datasets on the predicted side of 0.5: 2 of 7
+H3 L  9: largest binding share by dataset: ems_city 0.22, ems_bronx 0.19, ems_brooklyn 0.18, ems_manhattan 0.20, ems_queens 0.21, ems_staten_island 0.18, nyc311 0.51; datasets on the predicted side of 0.5: 6 of 7
+H3 L 10: largest binding share by dataset: ems_city 0.26, ems_bronx 0.21, ems_brooklyn 0.25, ems_manhattan 0.23, ems_queens 0.21, ems_staten_island 0.21, nyc311 0.41; datasets on the predicted side of 0.5: 7 of 7
+H3 L 12: largest binding share by dataset: ems_city 0.71, ems_bronx 0.58, ems_brooklyn 0.77, ems_manhattan 0.51, ems_queens 0.50, ems_staten_island 0.29, nyc311 0.44; datasets on the predicted side of 0.5: 4 of 7
+H3 supported: False
+
+Idle share (paid hours over required hours, minus one) and paid hours relative to 8-hour tours
+  ems_city           L 6: idle 0.029, x0.985; L 8: idle 0.045, x1.000; L 9: idle 0.031, x0.987; L 10: idle 0.044, x1.000; L 12: idle 0.139, x1.090
+  ems_bronx          L 6: idle 0.039, x0.984; L 8: idle 0.057, x1.000; L 9: idle 0.053, x0.996; L 10: idle 0.068, x1.011; L 12: idle 0.144, x1.083
+  ems_brooklyn       L 6: idle 0.037, x0.982; L 8: idle 0.056, x1.000; L 9: idle 0.058, x1.002; L 10: idle 0.079, x1.021; L 12: idle 0.154, x1.092
+  ems_manhattan      L 6: idle 0.037, x0.971; L 8: idle 0.067, x1.000; L 9: idle 0.057, x0.990; L 10: idle 0.071, x1.003; L 12: idle 0.121, x1.051
+  ems_queens         L 6: idle 0.051, x0.985; L 8: idle 0.067, x1.000; L 9: idle 0.075, x1.008; L 10: idle 0.092, x1.024; L 12: idle 0.139, x1.068
+  ems_staten_island  L 6: idle 0.114, x0.969; L 8: idle 0.150, x1.000; L 9: idle 0.167, x1.015; L 10: idle 0.185, x1.031; L 12: idle 0.218, x1.059
+  nyc311             L 6: idle 0.156, x1.028; L 8: idle 0.125, x1.000; L 9: idle 0.137, x1.010; L 10: idle 0.208, x1.073; L 12: idle 0.331, x1.183
+Binding hours per week (mean) against the most a comb can hold, floor(168 / L)
+  ems_city           L 6: binding 28.0, teeth 28.0 of 28; L 8: binding 21.3, teeth 20.9 of 21; L 9: binding 18.5, teeth 17.9 of 18; L 10: binding 15.7, teeth 15.3 of 16; L 12: binding 14.3, teeth 14.0 of 14
+  ems_bronx          L 6: binding 30.1, teeth 27.4 of 28; L 8: binding 20.6, teeth 20.5 of 21; L 9: binding 20.4, teeth 17.9 of 18; L 10: binding 16.7, teeth 15.6 of 16; L 12: binding 14.0, teeth 14.0 of 14
+  ems_brooklyn       L 6: binding 28.1, teeth 27.4 of 28; L 8: binding 21.7, teeth 20.3 of 21; L 9: binding 18.9, teeth 17.8 of 18; L 10: binding 16.7, teeth 15.2 of 16; L 12: binding 14.8, teeth 14.0 of 14
+  ems_manhattan      L 6: binding 28.9, teeth 27.2 of 28; L 8: binding 21.6, teeth 20.4 of 21; L 9: binding 19.5, teeth 17.9 of 18; L 10: binding 16.6, teeth 15.4 of 16; L 12: binding 14.6, teeth 13.7 of 14
+  ems_queens         L 6: binding 28.9, teeth 27.0 of 28; L 8: binding 21.9, teeth 20.1 of 21; L 9: binding 18.9, teeth 17.6 of 18; L 10: binding 16.9, teeth 15.4 of 16; L 12: binding 14.6, teeth 13.6 of 14
+  ems_staten_island  L 6: binding 31.5, teeth 26.2 of 28; L 8: binding 22.9, teeth 19.4 of 21; L 9: binding 21.4, teeth 17.0 of 18; L 10: binding 18.4, teeth 15.1 of 16; L 12: binding 16.3, teeth 13.0 of 14
+  nyc311             L 6: binding 28.0, teeth 27.3 of 28; L 8: binding 20.7, teeth 20.3 of 21; L 9: binding 16.2, teeth 15.1 of 18; L 10: binding 15.1, teeth 14.0 of 16; L 12: binding 13.9, teeth 13.7 of 14
+Harmonics of the mean daily profile: amplitude (share of the mean) and peak hour, harmonics 1 to 6
+  ems_city           1: 0.395 at 15.9h; 2: 0.116 at 11.0h; 3: 0.042 at 2.6h; 4: 0.026 at 4.0h; 5: 0.008 at 4.3h; 6: 0.008 at 1.4h
+  ems_bronx          1: 0.359 at 16.0h; 2: 0.113 at 11.1h; 3: 0.041 at 2.5h; 4: 0.030 at 4.1h; 5: 0.007 at 4.7h; 6: 0.003 at 2.0h
+  ems_brooklyn       1: 0.359 at 16.0h; 2: 0.125 at 10.9h; 3: 0.037 at 2.7h; 4: 0.027 at 3.9h; 5: 0.004 at 4.3h; 6: 0.011 at 1.4h
+  ems_manhattan      1: 0.402 at 16.0h; 2: 0.100 at 11.3h; 3: 0.053 at 2.5h; 4: 0.019 at 3.8h; 5: 0.012 at 4.2h; 6: 0.010 at 1.4h
+  ems_queens         1: 0.375 at 15.9h; 2: 0.104 at 10.7h; 3: 0.027 at 2.6h; 4: 0.023 at 4.1h; 5: 0.010 at 4.3h; 6: 0.006 at 1.1h
+  ems_staten_island  1: 0.372 at 15.3h; 2: 0.102 at 10.6h; 3: 0.027 at 2.7h; 4: 0.012 at 4.2h; 5: 0.007 at 3.5h; 6: 0.008 at 1.8h
+  nyc311             1: 0.944 at 13.0h; 2: 0.287 at 11.2h; 3: 0.095 at 1.2h; 4: 0.135 at 3.3h; 5: 0.065 at 0.1h; 6: 0.011 at 1.1h
+Binding share by clock hour, three most frequent hours, all days | weekdays | weekends
+  ems_city           L  6: 22:00 0.88, 16:00 0.88, 04:00 0.88 | 22:00 0.88, 16:00 0.88, 04:00 0.88 | 22:00 0.88, 16:00 0.88, 04:00 0.88
+  ems_city           L  8: 18:00 0.60, 10:00 0.60, 02:00 0.60 | 18:00 0.60, 10:00 0.60, 02:00 0.60 | 02:00 0.61, 18:00 0.60, 10:00 0.60
+  ems_city           L  9: 10:00 0.22, 22:00 0.22, 19:00 0.22 | 19:00 0.25, 10:00 0.25, 22:00 0.23 | 04:00 0.21, 13:00 0.20, 22:00 0.19
+  ems_city           L 10: 11:00 0.26, 21:00 0.24, 10:00 0.21 | 11:00 0.30, 10:00 0.29, 20:00 0.28 | 22:00 0.21, 12:00 0.19, 05:00 0.18
+  ems_city           L 12: 22:00 0.71, 10:00 0.71, 11:00 0.31 | 22:00 0.71, 10:00 0.71, 11:00 0.31 | 22:00 0.71, 10:00 0.71, 11:00 0.31
+  ems_bronx          L  6: 22:00 0.60, 10:00 0.60, 16:00 0.59 | 10:00 0.62, 22:00 0.60, 16:00 0.60 | 22:00 0.58, 04:00 0.56, 10:00 0.55
+  ems_bronx          L  8: 10:00 0.43, 18:00 0.42, 02:00 0.42 | 10:00 0.47, 18:00 0.46, 02:00 0.43 | 02:00 0.39, 10:00 0.35, 18:00 0.34
+  ems_bronx          L  9: 19:00 0.19, 10:00 0.19, 22:00 0.18 | 19:00 0.23, 10:00 0.23, 22:00 0.20 | 11:00 0.19, 20:00 0.17, 16:00 0.16
+  ems_bronx          L 10: 11:00 0.21, 10:00 0.19, 21:00 0.19 | 10:00 0.23, 11:00 0.22, 21:00 0.20 | 11:00 0.19, 23:00 0.15, 21:00 0.15
+  ems_bronx          L 12: 22:00 0.58, 10:00 0.58, 11:00 0.39 | 22:00 0.58, 10:00 0.58, 11:00 0.39 | 22:00 0.58, 10:00 0.58, 11:00 0.38
+  ems_brooklyn       L  6: 10:00 0.47, 16:00 0.47, 22:00 0.46 | 22:00 0.47, 16:00 0.47, 10:00 0.47 | 04:00 0.50, 10:00 0.46, 16:00 0.45
+  ems_brooklyn       L  8: 18:00 0.30, 10:00 0.30, 02:00 0.29 | 10:00 0.31, 18:00 0.30, 02:00 0.27 | 02:00 0.34, 18:00 0.29, 10:00 0.28
+  ems_brooklyn       L  9: 22:00 0.18, 10:00 0.18, 13:00 0.17 | 10:00 0.20, 19:00 0.19, 22:00 0.18 | 22:00 0.18, 04:00 0.16, 13:00 0.16
+  ems_brooklyn       L 10: 22:00 0.25, 11:00 0.24, 10:00 0.23 | 10:00 0.29, 11:00 0.27, 22:00 0.26 | 22:00 0.23, 12:00 0.19, 11:00 0.16
+  ems_brooklyn       L 12: 22:00 0.77, 10:00 0.77, 11:00 0.24 | 22:00 0.78, 10:00 0.78, 11:00 0.24 | 22:00 0.77, 10:00 0.77, 11:00 0.23
+  ems_manhattan      L  6: 10:00 0.34, 16:00 0.33, 22:00 0.32 | 10:00 0.35, 16:00 0.34, 22:00 0.33 | 11:00 0.35, 23:00 0.34, 04:00 0.34
+  ems_manhattan      L  8: 10:00 0.44, 18:00 0.43, 02:00 0.43 | 10:00 0.48, 18:00 0.48, 02:00 0.43 | 02:00 0.42, 03:00 0.35, 11:00 0.34
+  ems_manhattan      L  9: 10:00 0.20, 13:00 0.20, 19:00 0.20 | 10:00 0.22, 19:00 0.21, 13:00 0.20 | 13:00 0.22, 04:00 0.20, 23:00 0.18
+  ems_manhattan      L 10: 10:00 0.23, 20:00 0.19, 11:00 0.18 | 10:00 0.29, 20:00 0.24, 11:00 0.20 | 13:00 0.23, 23:00 0.19, 22:00 0.15
+  ems_manhattan      L 12: 10:00 0.51, 22:00 0.51, 11:00 0.31 | 10:00 0.53, 22:00 0.52, 11:00 0.31 | 22:00 0.47, 10:00 0.47, 11:00 0.31
+  ems_queens         L  6: 22:00 0.38, 16:00 0.38, 10:00 0.37 | 22:00 0.38, 16:00 0.38, 10:00 0.37 | 10:00 0.39, 16:00 0.38, 04:00 0.38
+  ems_queens         L  8: 10:00 0.21, 11:00 0.21, 18:00 0.21 | 10:00 0.25, 18:00 0.24, 19:00 0.21 | 21:00 0.26, 13:00 0.26, 11:00 0.22
+  ems_queens         L  9: 10:00 0.21, 19:00 0.20, 13:00 0.19 | 10:00 0.21, 19:00 0.20, 04:00 0.18 | 23:00 0.22, 13:00 0.21, 10:00 0.19
+  ems_queens         L 10: 11:00 0.21, 22:00 0.20, 21:00 0.18 | 11:00 0.22, 10:00 0.22, 22:00 0.20 | 22:00 0.19, 14:00 0.17, 13:00 0.16
+  ems_queens         L 12: 10:00 0.50, 22:00 0.50, 11:00 0.36 | 10:00 0.53, 22:00 0.53, 23:00 0.36 | 22:00 0.41, 10:00 0.41, 11:00 0.38
+  ems_staten_island  L  6: 22:00 0.26, 10:00 0.25, 11:00 0.24 | 22:00 0.26, 10:00 0.25, 11:00 0.23 | 11:00 0.26, 10:00 0.26, 23:00 0.25
+  ems_staten_island  L  8: 10:00 0.20, 19:00 0.19, 22:00 0.18 | 10:00 0.20, 22:00 0.19, 19:00 0.18 | 02:00 0.26, 12:00 0.24, 11:00 0.20
+  ems_staten_island  L  9: 10:00 0.18, 22:00 0.17, 13:00 0.16 | 10:00 0.21, 19:00 0.18, 22:00 0.17 | 13:00 0.19, 22:00 0.18, 14:00 0.17
+  ems_staten_island  L 10: 22:00 0.21, 10:00 0.19, 12:00 0.18 | 11:00 0.20, 22:00 0.20, 21:00 0.18 | 22:00 0.25, 12:00 0.25, 10:00 0.23
+  ems_staten_island  L 12: 22:00 0.29, 10:00 0.28, 11:00 0.15 | 22:00 0.31, 10:00 0.30, 11:00 0.15 | 22:00 0.23, 10:00 0.23, 12:00 0.21
+  nyc311             L  6: 09:00 0.84, 15:00 0.84, 21:00 0.83 | 09:00 0.95, 15:00 0.95, 21:00 0.94 | 03:00 0.75, 15:00 0.57, 09:00 0.57
+  nyc311             L  8: 17:00 0.78, 09:00 0.78, 01:00 0.77 | 17:00 0.84, 09:00 0.84, 01:00 0.78 | 01:00 0.75, 17:00 0.63, 09:00 0.63
+  nyc311             L  9: 09:00 0.51, 18:00 0.51, 10:00 0.27 | 09:00 0.61, 18:00 0.60, 10:00 0.32 | 03:00 0.42, 12:00 0.37, 09:00 0.27
+  nyc311             L 10: 09:00 0.41, 10:00 0.40, 20:00 0.39 | 09:00 0.50, 19:00 0.46, 20:00 0.44 | 11:00 0.45, 10:00 0.36, 22:00 0.35
+  nyc311             L 12: 22:00 0.44, 10:00 0.44, 09:00 0.41 | 22:00 0.45, 10:00 0.45, 09:00 0.44 | 10:00 0.41, 22:00 0.40, 09:00 0.33
+Short tours: share of 4-hour tours covering at least one binding hour of the L-only roster, vs 4 / L
+  ems_city           L  8: 115424 short tours, 0.579 cover a binding hour (random 0.500)
+  ems_city           L 12: 112609 short tours, 0.521 cover a binding hour (random 0.333)
+  nyc311             L  8: 32692 short tours, 0.709 cover a binding hour (random 0.500)
+  nyc311             L 12: 34179 short tours, 0.667 cover a binding hour (random 0.333)
