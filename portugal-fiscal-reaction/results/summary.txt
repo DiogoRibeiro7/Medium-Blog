@@ -1,0 +1,36 @@
+portugal rule 1996-2025: const=-3.384 (se 0.930), debt_l=0.037 (se 0.009), gap=0.518 (se 0.209), pb_l=0.525 (se 0.142), y2020=-1.884 (se 1.602), y2021=1.365 (se 0.735); n=30, r2=0.657
+long-run slope 0.078 (90%: 0.043 to 0.158)
+long-run pb at debt 60: -2.47 (90%: -5.61 to -0.82)
+long-run pb at debt 85: -0.53 (90%: -2.08 to 0.64)
+long-run pb at debt 100: 0.63 (90%: -0.45 to 2.00)
+long-run pb at debt 130: 2.96 (90%: 1.50 to 6.10)
+anchor: 101.8 (90%: 85.9 to 118.0); p(anchor > 60) 0.999; i_lr 3.60, g_lr 3.12
+one-step 2026 from 2025 actuals: 1.28
+residuals 2016-2025: 2016=1.21, 2017=-2.24, 2018=0.22, 2019=-1.12, 2020=-0.00, 2021=0.00, 2022=0.29, 2023=1.12, 2024=0.51, 2025=1.04
+residual mean 2016-2025 ex 2020-21: 0.13
+robustness hac_lags_1: se_rho=0.010
+robustness hac_lags_3: se_rho=0.009
+robustness huber: rho=0.037, phi=0.446, gamma=0.476, lr=0.066
+robustness drop_2020_2021: rho=0.035, se=0.008, phi=0.509
+robustness cyclically_adjusted: rho=0.027, se=0.007, phi=0.569, lr=0.062, lr_pb_at_85=-0.784
+robustness level_shift_from_2012: shift=5.185, se=1.758, rho=-0.037, rho_se=0.022, lr_pb_at_85=3.368
+robustness level_shift_from_2015: shift=1.491, se=0.868, rho=0.019, rho_se=0.016, lr_pb_at_85=1.369
+robustness level_shift_from_2016: shift=0.744, se=0.805, rho=0.029, rho_se=0.014, lr_pb_at_85=0.496
+robustness pre_post_2008: rho_pre=0.096, rho_post=0.071, diff=-0.024, diff_se=0.040
+rolling15 rho: 2010=-0.068, 2011=-0.022, 2012=0.060, 2013=0.070, 2014=0.044, 2015=0.051, 2016=0.056, 2017=0.048, 2018=0.053, 2019=0.054, 2020=0.058, 2021=0.071, 2022=0.092, 2023=0.126, 2024=0.049, 2025=-0.006
+eu: re mean 0.0405 (se 0.0088), tau 0.0364, positive&sig 13, negative 4, portugal rank 17/27, median lr 0.110
+eu portugal: rho 0.0369 (se 0.0087), eb 0.0371 (se 0.0085)
+pooled fe: debt_l=0.0335 (se 0.0049), gap=0.2019 (se 0.0307), pb_l=0.6169 (se 0.0359), y2020=-4.8605 (se 0.3519), y2021=-0.0548 (se 0.3725)
+deterministic fixed: debt 2030 75.3 2035 63.8 2045 44.3; pb 2028 2.50 2030 2.50 2035 2.50; first<=60 2037
+deterministic anch: debt 2030 75.7 2035 68.2 2045 63.3; pb 2028 2.50 2030 2.20 2035 1.45; first<=60 None
+deterministic hist: debt 2030 81.8 2035 83.7 2045 85.9; pb 2028 1.04 2030 -0.26 2035 0.25; first<=60 None
+monte carlo fixed: p_at_or_below_60_in_2035=0.365, p_at_or_below_70_in_2035=0.607, p_above_2027_in_2035=0.145, p_deficit_above_3_by_2035=0.273, median_2035=65.495, p10_2035=48.126, p90_2035=90.815, median_2045=47.605, median_pb_2030=2.705, median_pb_2035=2.609, median_first_year_at_or_below_60=2037.000, p_not_at_60_by_2045=0.239
+monte carlo fixed p by year: 2027=0.000, 2028=0.000, 2029=0.000, 2030=0.030, 2031=0.089, 2032=0.156, 2033=0.233, 2034=0.306, 2035=0.365, 2036=0.422, 2037=0.468, 2038=0.495, 2039=0.538, 2040=0.566, 2041=0.589, 2042=0.621, 2043=0.640, 2044=0.661, 2045=0.685
+monte carlo anch: p_at_or_below_60_in_2035=0.325, p_at_or_below_70_in_2035=0.549, p_above_2027_in_2035=0.198, p_deficit_above_3_by_2035=0.543, median_2035=67.665, p10_2035=48.245, p90_2035=94.334, median_2045=53.690, median_pb_2030=2.728, median_pb_2035=2.536, median_first_year_at_or_below_60=2037.000, p_not_at_60_by_2045=0.196
+monte carlo anch p by year: 2027=0.000, 2028=0.000, 2029=0.011, 2030=0.069, 2031=0.126, 2032=0.182, 2033=0.237, 2034=0.288, 2035=0.325, 2036=0.355, 2037=0.388, 2038=0.419, 2039=0.447, 2040=0.480, 2041=0.512, 2042=0.542, 2043=0.570, 2044=0.594, 2045=0.627
+monte carlo hist: p_at_or_below_60_in_2035=0.064, p_at_or_below_70_in_2035=0.226, p_above_2027_in_2035=0.442, p_deficit_above_3_by_2035=0.884, median_2035=81.869, p10_2035=63.260, p90_2035=108.935, median_2045=70.506, median_pb_2030=0.453, median_pb_2035=1.342, median_first_year_at_or_below_60=9999.000, p_not_at_60_by_2045=0.572
+monte carlo hist p by year: 2027=0.000, 2028=0.000, 2029=0.000, 2030=0.014, 2031=0.028, 2032=0.038, 2033=0.045, 2034=0.054, 2035=0.064, 2036=0.071, 2037=0.088, 2038=0.105, 2039=0.128, 2040=0.151, 2041=0.174, 2042=0.198, 2043=0.230, 2044=0.262, 2045=0.297
+dial (pb at 60% debt -> p<=60 in 2035): -2.5=0.052, -2.0=0.075, -1.5=0.112, -1.0=0.155, -0.5=0.203, 0.0=0.249, 0.5=0.310, 1.0=0.363, 1.5=0.416, 2.0=0.485, 2.5=0.544, 3.0=0.598, 3.5=0.650, 4.0=0.697
+dial marks: -2.470=Portugal's average rule, 0.599=Today's surplus, same response, 2.124=Even chance by 2035
+dial first level reaching 50%: 2.5
+dial even chance at pb 2.12 at 60% debt, 4.02 at 84.5% debt
