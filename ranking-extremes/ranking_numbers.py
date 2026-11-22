@@ -419,7 +419,29 @@ def main():
     ).to_csv(RESULTS / "oecd.csv", index=False)
 
     # ------------------------------------------------------------------------------------------------
-    section("10. Does the method work on ratings like these? 300 simulated tables of whole-number 0-10 ratings")
+    section("10. A forecast the page can check: each thin country at the ends doubles its number of reports")
+    print("updated mean = (published mean + mean of n new reports) / 2; new reports drawn from the posterior")
+    for k, v in enumerate(RATINGS):
+        y = d[v].to_numpy()
+        f = fits[v]
+        rng = np.random.default_rng(700 + k)
+        top, bottom = rc.extreme_positions(y, 3)
+        ends = [i for i in np.concatenate([top, bottom]) if thin[i]]
+        print(f"{v}:")
+        for i in ends:
+            new = f["theta"][:, i] + f["sigma"] / np.sqrt(n[i]) * rng.standard_normal(len(f["sigma"]))
+            upd = (y[i] + new) / 2
+            mu = f["beta"][:, 0]
+            closer = np.mean(np.abs(upd - mu) < np.abs(y[i] - mu))
+            lo, hi = np.quantile(upd, [0.1, 0.9])
+            print(
+                f"  {d.country[i]:11s} n={n[i]} -> {2 * n[i]}: published {y[i]:.2f}; updated median "
+                f"{np.median(upd):.2f} "
+                f"(80%: {lo:.2f} to {hi:.2f}); P(closer to the middle) = {closer:.2f}"
+            )
+
+    # ------------------------------------------------------------------------------------------------
+    section("11. Does the method work on ratings like these? 300 simulated tables of whole-number 0-10 ratings")
     for k, (v, s_lat, t_lat, target) in enumerate((("services", 2.5, 0.85, 6.8), ("happiness", 1.8, 0.25, 7.4))):
         rng = np.random.default_rng(500 + k)
         locs = np.arange(0.0, 13.0, 0.01)

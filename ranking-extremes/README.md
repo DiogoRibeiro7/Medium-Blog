@@ -16,6 +16,8 @@ All numbers below are from `output.txt`.
 
 **Simulation.** In 20,000 tables drawn from the fitted model with the same sample sizes, the published first place goes to a small country 62% of the time on services and 73% on happiness, against 42% for the truly best country. The published first is the true first in 37% of tables on services and 16% on happiness.
 
+**A forecast the page can check.** If each thin country at the ends doubled its reports, the model expects every one of them to move toward the middle: Luxembourg's services mean from 8.40 to about 8.00, Greece's from 4.63 to about 5.11, Kosovo's happiness mean from 8.80 to about 8.22, with probabilities of moving inward between 0.76 and 0.91.
+
 **Validity check.** For the 20 countries also in the OECD Trust Survey 2023, the engineers' services ratings correlate 0.83 with the share of the population satisfied with healthcare, education and administrative services (0.89 with healthcare alone). In the hierarchical model the composite tracks most of the real between-country variation.
 
 **On ratings like these.** On 300 simulated tables of skewed, whole-number 0-10 ratings, the 90% intervals for country means cover 86.5% and 88.3% of true means and the 90% rank intervals 93.0% and 92.4% of true ranks; shrinkage picks the true first more often than the raw table (34% against 27%, 20% against 12%).

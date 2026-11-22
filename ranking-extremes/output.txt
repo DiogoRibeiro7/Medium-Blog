@@ -222,7 +222,22 @@ OECD measures: percent satisfied with healthcare, education, administrative serv
   correlation of true country means with the composite (draws of the model with OECD): 0.93 (90%: 0.82 to 1.00)
 
 ====================================================================================================
-10. Does the method work on ratings like these? 300 simulated tables of whole-number 0-10 ratings
+10. A forecast the page can check: each thin country at the ends doubles its number of reports
+====================================================================================================
+updated mean = (published mean + mean of n new reports) / 2; new reports drawn from the posterior
+services:
+  Luxembourg  n=5 -> 10: published 8.40; updated median 8.00 (80%: 7.00 to 8.71); P(closer to the middle) = 0.76
+  Slovakia    n=7 -> 14: published 5.14; updated median 5.51 (80%: 4.88 to 6.40); P(closer to the middle) = 0.76
+  Greece      n=8 -> 16: published 4.63; updated median 5.11 (80%: 4.48 to 6.02); P(closer to the middle) = 0.82
+happiness:
+  Kosovo      n=5 -> 10: published 8.80; updated median 8.22 (80%: 7.63 to 8.77); P(closer to the middle) = 0.91
+  Lithuania   n=5 -> 10: published 8.60; updated median 8.11 (80%: 7.52 to 8.64); P(closer to the middle) = 0.88
+  Slovakia    n=7 -> 14: published 6.71; updated median 6.99 (80%: 6.53 to 7.48); P(closer to the middle) = 0.78
+  Finland     n=9 -> 18: published 6.56; updated median 6.89 (80%: 6.48 to 7.34); P(closer to the middle) = 0.85
+  Slovenia    n=6 -> 12: published 6.50; updated median 6.88 (80%: 6.39 to 7.40); P(closer to the middle) = 0.84
+
+====================================================================================================
+11. Does the method work on ratings like these? 300 simulated tables of whole-number 0-10 ratings
 ====================================================================================================
 services-like: latent SD 2.5, between-country SD 0.85, mean rating 6.8; skewed, rounded, clipped to 0-10; SD of single ratings about 2.35
   coverage of the 90% intervals for true country means: 0.865
