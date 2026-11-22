@@ -447,14 +447,12 @@ def report_price_levels(p, na):
         print(f"  GDP per head in PPS, Portugal: {gdp['PT']:.0f}")
         if y == 2024:
             res = pd.DataFrame({"gdp_pc": gdp, "goods": pli["P01"], "services": pli["P02"], "consumer_services": pli["P0201"]})
-    # services price level and hourly pay
+    # services price level and hourly pay; households as employers (T) left out, as several countries lack it
     pay = {}
+    cols = [s for s in SERVICES if s != "T"]
     for g in MS:
         t = na[g]
-        try:
-            pay[g] = t["d1"].loc[2024, SERVICES].sum() / t["emp_hours"].loc[2024, SERVICES].sum() * 1000
-        except KeyError:
-            continue
+        pay[g] = t["d1"].loc[2024, cols].sum(min_count=len(cols)) / t["emp_hours"].loc[2024, cols].sum(min_count=len(cols)) * 1000
     pay = pd.Series(pay).dropna()
     res["services_pay_per_hour"] = pay
     res.index.name = "geo"
@@ -462,7 +460,7 @@ def report_price_levels(p, na):
     r = res.dropna()
     b, se, r2 = ols_slope(np.log(r.services_pay_per_hour), np.log(r.services))
     hp = r.services_pay_per_hour
-    print(f"2024, {len(r)} member states: compensation per employee hour in services, euro: lowest {hp.min():.1f} "
+    print(f"2024, {len(r)} member states: compensation per employee hour in services (G to S without L), euro: lowest {hp.min():.1f} "
           f"({hp.idxmin()}), highest {hp.max():.1f} ({hp.idxmax()}), PT {hp['PT']:.1f}")  # fmt: skip
     print(f"  Elasticity of the services price level to services hourly pay: {b:.2f} (s.e. {se:.2f}), R2 {r2:.2f}")
     b, se, r2 = ols_slope(np.log(r.services_pay_per_hour), np.log(r.goods))
