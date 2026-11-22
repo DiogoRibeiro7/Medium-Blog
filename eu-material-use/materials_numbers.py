@@ -7,6 +7,7 @@ Changes are log points (100 times the natural log of a ratio) unless a percentag
 """
 
 import json
+import math
 from pathlib import Path
 
 import numpy as np
@@ -194,6 +195,39 @@ def report_drift(t):
         print(f"  GDP growth {gr:.2f}%: {100 * a_all + b_all * gr:+.2f}% a year")
 
 
+def report_countries(t):
+    section("3b. Member states: the construction boom and bust, and material use per person")
+    rows = []
+    for g in MS:
+        d = dmc(t, g).loc[Y0:Y1] / 1e3
+        m3 = dmc(t, g, "MF3").loc[Y0:Y1] / 1e3
+        f = construction(t, g).loc[Y0:Y1]
+        peak = int(d.loc[:2012].idxmax())
+        trough = int(d.loc[peak:].idxmin())
+        fall = log_change(d[peak], d[trough])
+        share3 = (m3[peak] - m3[trough]) / (d[peak] - d[trough]) if d[peak] > d[trough] else np.nan
+        rows.append({"geo": g, "peak": peak, "trough": trough, "fall": fall, "minerals_share": share3,
+                     "construction_fall": log_change(f[peak], f[trough]), "pc": dmc(t, g, unit="T_HAB")[Y1]})  # fmt: skip
+    c = pd.DataFrame(rows).set_index("geo").sort_values("fall")
+    print("Largest falls in DMC from a peak before 2013 to the following low (log points), share of the fall in non-metallic minerals:")
+    for g, r in c.head(8).iterrows():
+        print(f"  {g}: {int(r.peak)}-{int(r.trough)} {lp(r.fall)}; minerals {100 * r.minerals_share:.0f}% of the fall; "
+              f"construction value added {lp(r.construction_fall)}")  # fmt: skip
+    r = c.loc["PT"]
+    print(f"  Portugal: {int(r.peak)}-{int(r.trough)} {lp(r.fall)}; minerals {100 * r.minerals_share:.0f}% of the fall; "
+          f"rank {list(c.index).index('PT') + 1} of {len(c)} by size of fall")  # fmt: skip
+    big = c[c.fall < -0.3]
+    print(f"Countries whose DMC fell more than 30 log points from its pre-2013 peak: {len(big)}; median share of non-metallic minerals in the fall "
+          f"{100 * big.minerals_share.median():.0f}%")  # fmt: skip
+    pc = c.pc.sort_values()
+    print(f"DMC per person {Y1}: lowest " + ", ".join(f"{g} {v:.1f} t" for g, v in pc.head(4).items())
+          + "; highest " + ", ".join(f"{g} {v:.1f} t" for g, v in pc.tail(4)[::-1].items()))  # fmt: skip
+    print(f"  ratio highest to lowest {pc.iloc[-1] / pc.iloc[0]:.1f}; EU27 {dmc(t, EU, unit='T_HAB')[Y1]:.1f} t")
+    for g in ("FI", "EE"):
+        sh = {code: dmc(t, g, code)[Y1] / dmc(t, g)[Y1] for code in GROUPS}
+        print(f"  {g}: " + ", ".join(f"{GROUPS[k]} {100 * v:.0f}%" for k, v in sh.items()))
+
+
 def report_footprint(t):
     section("4. The footprint: raw material consumption (imports counted in the raw materials behind them)")
     d = dmc(t, EU) / 1e6
@@ -324,6 +358,20 @@ def report_targets(t):
     rank = [g for g, _ in lev].index("PT") + 1
     print(f"  Portugal ranks {rank} from the bottom of {len(lev)}; below it: {', '.join(f'{g} {v:.1f}%' for g, v in lev[: rank - 1])}")
 
+    y = gdp(t, EU).loc[Y0:Y1]
+    dy = np.log(y).diff().dropna()
+    dm = np.log(d.loc[Y0:Y1]).diff().dropna()
+    resp, _, _, drift = ols_slope(dy, dm)
+    ug = log_change(u[2010], u[yy]) / (yy - 2010)
+    print(f"Projection to 2030 on the EU fit (drift {100 * drift:+.2f}%, response {resp:.2f}) "
+          f"and recycling growing {100 * ug:.2f}% a year as in 2010-{yy}:")  # fmt: skip
+    for g in (0.01, 0.015, 0.02):
+        d30 = d[yy] * math.exp(6 * (drift + resp * g))
+        u30 = u[yy] * math.exp(6 * ug)
+        need = double * d30 / (1 - double)  # rate = U / (DMC + U)
+        print(f"  GDP growth {100 * g:.1f}%: DMC {d30:.2f} Gt, recycled {u30:.2f} Gt, rate {100 * circular_rate(u30, d30):.1f}%; "
+              f"recycled needed for {100 * double:.1f}% at that DMC {need:.2f} Gt (x{need / u30:.2f})")  # fmt: skip
+
     w = t["env_wastrt"]
 
     def wt(geo, waste, oper):
@@ -401,6 +449,7 @@ def main():
     t = load()
     report_headline(t)
     report_drift(t)
+    report_countries(t)
     report_footprint(t)
     report_loop(t)
     report_targets(t)
