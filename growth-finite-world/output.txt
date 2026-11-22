@@ -1,0 +1,161 @@
+
+====================================================================================================
+1. A company that does not grow
+====================================================================================================
+Flat $3B a year for ever at r = 8%: value = $37.5B
+Price $75B, cash flow $3B, r = 8%: implied perpetual growth = 4.00%
+Cash yield at $75B: 4.00%
+If growth expectations fall to zero, price moves from $75B to $37.5B: -50.0%
+Inflation 2%: real value of a flat nominal $3B halves in 35.0 years
+Inflation 3%: real value of a flat nominal $3B halves in 23.4 years
+Real value of flat nominal $3B after 20 years at 2% inflation: $2.02B (in today's dollars)
+Nominal growth needed just to stand still in real terms at 2% inflation: 2%; flat-real value at r = 8% nominal and g = 2%: $50.0B
+
+====================================================================================================
+2. Where the value of a perpetuity sits in time
+====================================================================================================
+flat, r=8%         half of the value arrives after year   9.0; the last 10% after year   29.9
+    share of value beyond year  10: 46.3%
+    share of value beyond year  30: 9.9%
+    share of value beyond year  50: 2.1%
+    share of value beyond year 100: 0.0%
+    share of value beyond year 200: 0.0%
+4% growth, r=8%    half of the value arrives after year  18.4; the last 10% after year   61.0
+    share of value beyond year  10: 68.6%
+    share of value beyond year  30: 32.2%
+    share of value beyond year  50: 15.2%
+    share of value beyond year 100: 2.3%
+    share of value beyond year 200: 0.1%
+6% growth, r=8%    half of the value arrives after year  37.1; the last 10% after year  123.2
+    share of value beyond year  10: 83.0%
+    share of value beyond year  30: 57.1%
+    share of value beyond year  50: 39.3%
+    share of value beyond year 100: 15.4%
+    share of value beyond year 200: 2.4%
+
+====================================================================================================
+3. A firm inside its market
+====================================================================================================
+share 5%, firm 10%/yr, market 3%/yr: 100% of the market after 45.6 years
+share 1%, firm 15%/yr, market 3%/yr: 100% of the market after 41.8 years
+share 20%, firm 8%/yr, market 4%/yr: 100% of the market after 42.6 years
+firm at 1% of the economy growing 7%/yr in an economy growing 4%/yr (nominal): equals the economy in 162 years
+Logistic share from 5% at rate k = 0.12, market growth 3%:
+    year  1: share   5.6%, firm growth 15.40%
+    year 10: share  14.9%, firm growth 14.18%
+    year 20: share  36.7%, firm growth 11.31%
+    year 30: share  65.8%, firm growth 7.49%
+    year 40: share  86.5%, firm growth 4.78%
+    year 60: share  98.6%, firm growth 3.18%
+    year 80: share  99.9%, firm growth 3.02%
+    years with firm growth more than 1 point above the market: 45
+
+====================================================================================================
+4. Earnings per share against the economy (United States)
+====================================================================================================
+S&P monthly data: 1871-01 to 2023-06; complete calendar years 1871-2022 used here
+1871-1880 to 2013-2022: real EPS 1.83%, real DPS 1.47%, real GDP 3.08%, real GDP per person 1.64%; EPS minus GDP -1.24 points
+1871-1880 to 1941-1950: real EPS 0.98%, real DPS 0.69%, real GDP 3.18%, real GDP per person 1.53%; EPS minus GDP -2.20 points
+1941-1950 to 2013-2022: real EPS 2.67%, real DPS 2.24%, real GDP 2.98%, real GDP per person 1.74%; EPS minus GDP -0.31 points
+1981-1990 to 2013-2022: real EPS 3.51%, real DPS 3.01%, real GDP 2.53%, real GDP per person 1.53%; EPS minus GDP +0.98 points
+Index (1871-1880 average = 1) in 2013-2022: real EPS 13.2, real GDP 73.8, real GDP per person 10.1
+Trend in log(real EPS / real GDP per person), 1871-2022: -0.04% per year (HC1 se 0.06)
+Trend in log(real EPS / real GDP), 1871-2022: -1.42% per year (HC1 se 0.06)
+
+====================================================================================================
+5. What the index price implies
+====================================================================================================
+Real total return of the S&P Composite, 1871-01 to 2023-06: 6.90% per year
+    from 1950-01: 7.46% per year
+    from 1990-01: 7.28% per year
+CAPE: median 16.5 (1881-2023), last value 29.9 in 2023-06
+    maximum 44.2 in 1999-12
+median CAPE 16.5: earnings yield 6.07%; minimum implied perpetual real growth at r = 6.90%: 0.83%
+last CAPE 29.9: earnings yield 3.34%; minimum implied perpetual real growth at r = 6.90%: 3.56%
+Minimum implied real growth at the last CAPE for other required real returns:
+    r = 4%: g >= 0.66%
+    r = 5%: g >= 1.66%
+    r = 6%: g >= 2.66%
+    r = 7%: g >= 3.66%
+External figure, not in the pinned data: CAPE 40 in autumn 2026 (Shiller data as reported by CFA Institute, Enterprising Investor, 18 November 2026)
+    earnings yield 2.50%; minimum implied perpetual real growth at r = 6.90%: 4.40%
+    r = 5%: g >= 2.50%
+    r = 6%: g >= 3.50%
+    r = 7%: g >= 4.50%
+    share of value beyond 50 years 30.6%, beyond 100 years 9.4%, half the value after year 29
+    lag-adjusted (earnings grow 1.83% a year, 1871-2022 real EPS growth): earnings yield 2.74%, minimum implied growth 4.17%
+    lag-adjusted (earnings grow 3.51% a year, 1990-2022 real EPS growth): earnings yield 2.97%, minimum implied growth 3.93%
+Trailing twelve-month earnings yield at 2023-06: 4.17% (price 4,345)
+    minimum implied perpetual real growth on trailing earnings at r = 6.90%: 2.73%
+median CAPE: share of value beyond 50 years 5.4%, beyond 100 years 0.3%, half the value after year 12
+last CAPE: share of value beyond 50 years 20.5%, beyond 100 years 4.2%, half the value after year 22
+Years 1890-2002 (n = 122): implied minimum growth exceeded the next 20 years' realised real EPS growth in 30 years; mean gap -2.12 points
+    in the fifth of years with the highest CAPE (CAPE >= 19.5, n = 25): exceeded in 16, mean gap +0.20 points
+    years with CAPE >= 25 and 20 years of later data: 1929, 1996, 1997, 1998, 1999, 2000, 2001, 2002; implied 3.73% vs realised 3.24% on average
+    slope of realised 20-year real EPS growth on CAPE: +0.102 points per CAPE unit (se 0.017)
+
+====================================================================================================
+6. The world economy and its energy
+====================================================================================================
+World primary energy: 43,360 TWh in 1965, 176,737 TWh in 2024
+    growth 1965-2024: 2.41% per year; doubling time 29 years
+World GDP (Maddison) benchmark years available: 1970, 1980, 1990, 2000, 2010, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022
+1970-2022: GDP 3.48%/yr, energy 2.11%/yr, GDP per unit of energy 1.35%/yr
+    GDP multiplied by 5.93, energy by 2.96
+    1970-1980: GDP 3.77%/yr = energy 3.11 + energy productivity 0.66; energy accounts for 82% of growth
+    1980-1990: GDP 2.97%/yr = energy 2.06 + energy productivity 0.91; energy accounts for 69% of growth
+    1990-2000: GDP 3.31%/yr = energy 1.41 + energy productivity 1.89; energy accounts for 43% of growth
+    2000-2010: GDP 4.05%/yr = energy 2.49 + energy productivity 1.56; energy accounts for 61% of growth
+    2010-2019: GDP 3.42%/yr = energy 1.61 + energy productivity 1.81; energy accounts for 47% of growth
+    2019-2022: GDP 2.11%/yr = energy 1.08 + energy productivity 1.03; energy accounts for 51% of growth
+    1970-2022: GDP 3.42%/yr = energy 2.08 + energy productivity 1.34; energy accounts for 61% of growth
+Years 1966-2024 in which world primary energy fell: 5 (1980, 1981, 1982, 2009, 2020)
+    largest fall -3.48% in 2020
+World energy per person: 13.0 MWh in 1965, 21.7 MWh in 2024
+    per-person energy growth 1965-2024: 0.87% per year
+Fastest decade-scale gain in GDP per unit of energy: 1.89% per year
+GDP growth 2% with energy flat needs energy productivity +2.00% per year for ever; energy per unit of GDP falls tenfold in 116 years, a hundredfold in 233
+GDP growth 3% with energy flat needs energy productivity +3.00% per year for ever; energy per unit of GDP falls tenfold in 78 years, a hundredfold in 156
+At the 1970-2022 energy growth rate (2.11%): energy x2.8 in 50 years, x8.0 in 100
+At the 1970-2022 productivity rate (1.35%), energy per unit of GDP falls tenfold in 172 years
+World CO2 (fossil and industry): 14,693 Mt in 1970, 38,647 Mt in 2024
+
+====================================================================================================
+7. Countries: growth with less energy, and where the energy went
+====================================================================================================
+Countries with population >= 1 million and GDP and energy in 2000 and 2022: 152
+    absolute : 31
+    relative : 87
+    none     : 34
+    share of the sample's 2022 GDP in absolute decouplers: 32.6%
+    share of the sample's 2022 population in absolute decouplers: 12.8%
+    absolute decouplers' energy change 2000-2022: -5,355 TWh
+    everyone else's energy change: +63,200 TWh
+    median 2022 GDP per person: absolute decouplers $32,133, others $9,634
+    median 2022 energy per person: absolute decouplers 30.2 MWh, others 9.9 MWh
+Absolute decouplers with consumption-based CO2: 24
+    median change 2000-2022: territorial CO2 -26.5%, consumption CO2 -10.7%
+    consumption CO2 fell less than territorial (or rose) in 21 of 24
+    consumption CO2 rose in 7 of 24
+    summed over them: territorial -21.6%, consumption -15.2%
+    their net CO2 imported in goods: 1,248 Mt in 2000, 1,756 Mt in 2022
+Cross-section 2022 (n = 152): elasticity of energy per person to GDP per person 1.18 (se 0.04), R2 0.89
+    median energy per person: richest fifth 56.2 MWh, poorest fifth 1.0 MWh, ratio 56x
+    world energy per person 2022: 21.1 MWh; richest fifth median / world: 2.7x
+    countries with GDP per person >= $15,000 (n = 66): elasticity 1.07 (se 0.10), R2 0.58
+    fossil-fuel net exporters (production > 1.2 x consumption) in 2022: 29
+    without them (n = 123): elasticity 1.14 (se 0.04), R2 0.90
+    without them, GDP per person >= $15,000 (n = 53): elasticity 1.01 (se 0.14), R2 0.58
+Within-country long difference 2000-2022 (n = 152): energy elasticity to GDP 0.88 (se 0.09)
+    richest half: 0.79 (se 0.07), n = 76
+    poorest half: 0.88 (se 0.12), n = 76
+Robustness 2005-2019 (n = 152): absolute 36, relative 80, none 36
+Largest absolute decouplers by 2022 GDP: United States, Japan, Germany, France, United Kingdom, Italy, Netherlands, Switzerland, Romania, Sweden, Belgium, Norway
+
+====================================================================================================
+8. Time
+====================================================================================================
+World population 2024: 8.16 billion; hours lived per year: 7.15e+13
+With hours fixed, output per hour lived must grow 2%/yr; it doubles every 35 years
+With hours fixed, output per hour lived must grow 3%/yr; it doubles every 23 years
+Over 100 years at 2%: x7.2; at 3%: x19.2
