@@ -1,0 +1,71 @@
+name: Reproduce portugal-fiscal-rules
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-fiscal-rules/**'
+      - 'data_sources/ec-ameco-autumn-2026.json'
+      - '.github/workflows/portugal-fiscal-rules.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-fiscal-rules/**'
+      - 'data_sources/ec-ameco-autumn-2026.json'
+      - '.github/workflows/portugal-fiscal-rules.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: portugal-fiscal-rules
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-fiscal-rules/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Download AMECO and check it against the pinned digest
+        run: python fetch_data.py
+
+      - name: Rebuild the Portugal series
+        run: python build_data.py
+
+      - name: Test the simulator, the calibration and the comparison
+        run: python -m unittest discover -s tests -v
+
+      - name: Rerun the analysis and compare with the committed summary
+        run: |
+          cp results/summary.txt "$RUNNER_TEMP/summary.txt"
+          python run_analysis.py > /dev/null
+          if ! diff -u "$RUNNER_TEMP/summary.txt" results/summary.txt > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=portugal-fiscal-rules/results/summary.txt::run_analysis.py output differs from the committed summary.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          for f in fig1_one_bad_future fig2_scorecard fig3_tradeoff fig4_weights fig5_sensitivity; do
+            test -s "figures/$f.png"
+          done

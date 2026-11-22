@@ -1,0 +1,42 @@
+target effort 2.5 over 2028-2035; n=10000, block 3, mu 0.5, gap miss 0.5, rho_gap 0.467, surprise sd 1.65
+fixed             level=  2.404 effort=2.500 p60=0.366 med=65.9 p10=47.9 p90=91.9 breach=0.384 byrs=0.70 forced=0.326 absdsp=0.46 gap=-0.12 worst=-3.39
+rigid             level=  2.373 effort=2.500 p60=0.336 med=65.8 p10=50.6 p90=89.0 breach=0.364 byrs=0.62 forced=0.760 absdsp=0.85 gap=-0.12 worst=-3.45
+debt_pt           level=  3.072 effort=2.500 p60=0.310 med=65.9 p10=52.5 p90=86.2 breach=0.378 byrs=0.61 forced=0.581 absdsp=0.58 gap=-0.09 worst=-3.38
+debt_strong       level=  4.401 effort=2.500 p60=0.218 med=66.0 p10=56.7 p90=82.2 breach=0.440 byrs=0.57 forced=0.754 absdsp=1.13 gap=-0.02 worst=-3.50
+spending          level=  2.974 effort=2.500 p60=0.419 med=65.7 p10=36.8 p90=102.4 breach=0.622 byrs=1.40 forced=0.169 absdsp=0.66 gap=-0.12 worst=-3.26
+structural        level= -0.003 effort=2.500 p60=0.296 med=66.9 p10=51.4 p90=86.8 breach=0.405 byrs=0.61 forced=0.597 absdsp=0.66 gap=-0.14 worst=-3.50
+structural_plain  level=  0.120 effort=2.500 p60=0.312 med=66.8 p10=50.8 p90=87.5 breach=0.378 byrs=0.62 forced=0.560 absdsp=0.60 gap=-0.13 worst=-3.48
+fixed_repaid      level=  2.283 effort=2.500 p60=0.355 med=65.9 p10=48.6 p90=90.9 breach=0.390 byrs=0.68 forced=0.438 absdsp=0.53 gap=-0.13 worst=-3.41
+spending_unanchored level=  0.348 effort=2.500 p60=0.430 med=65.6 p10=32.4 p90=106.0 breach=0.601 byrs=1.54 forced=0.027 absdsp=0.60 gap=-0.11 worst=-3.29
+spending_indexed  level=  2.852 effort=2.500 p60=0.390 med=65.8 p10=44.9 p90=94.9 breach=0.572 byrs=1.04 forced=0.108 absdsp=0.30 gap=-0.12 worst=-3.34
+spending_1y       level=  2.556 effort=2.500 p60=0.389 med=65.4 p10=44.6 p90=95.3 breach=0.613 byrs=1.07 forced=0.504 absdsp=0.80 gap=-0.13 worst=-3.26
+spending_6y       level=  3.152 effort=2.500 p60=0.426 med=65.6 p10=34.0 p90=105.0 breach=0.585 byrs=1.46 forced=0.121 absdsp=0.62 gap=-0.10 worst=-3.27
+deterministic fixed: debt 2030 75.5 2035 64.5 2045 46.0; pb 2028 2.40 2035 2.40
+deterministic rigid: debt 2030 75.6 2035 64.8 2045 46.6; pb 2028 2.37 2035 2.37
+deterministic debt_pt: debt 2030 74.6 2035 65.2 2045 58.0; pb 2028 3.07 2035 1.74
+deterministic debt_strong: debt 2030 72.9 2035 65.9 2045 65.7; pb 2028 4.40 2035 0.92
+deterministic spending: debt 2030 74.4 2035 60.7 2045 36.2; pb 2028 2.78 2035 2.97
+deterministic structural: debt 2030 76.1 2035 66.1 2045 51.1; pb 2028 2.13 2035 2.21
+dominated by: fixed=-; rigid=-; debt_pt=-; debt_strong=-; spending=-; structural=debt_pt
+weight share (bad tail): fixed=0.482, rigid=0.043, debt_pt=0.208, debt_strong=0.186, spending=0.081, structural=0.000
+weight share (chance of 60%): fixed=0.551, rigid=0.038, debt_pt=0.000, debt_strong=0.000, spending=0.410, structural=0.000
+effort 2.0: fixed=(96.1,0.419,0.341), rigid=(93.2,0.394,0.762), debt_pt=(90.3,0.441,0.530), debt_strong=(86.7,0.571,0.730), spending=(106.3,0.690,0.185), structural=(91.1,0.538,0.580)
+effort 2.5: fixed=(91.9,0.384,0.326), rigid=(89.0,0.364,0.760), debt_pt=(86.2,0.378,0.581), debt_strong=(82.2,0.440,0.754), spending=(102.4,0.622,0.169), structural=(86.8,0.405,0.597)
+effort 3.0: fixed=(87.8,0.350,0.399), rigid=(84.8,0.343,0.821), debt_pt=(82.4,0.325,0.665), debt_strong=(77.8,0.357,0.731), spending=(98.6,0.555,0.197), structural=(82.8,0.351,0.602)
+mu 0.0: fixed=(91.5,0.381,0.317), rigid=(88.6,0.364,0.758), debt_pt=(85.4,0.378,0.574), debt_strong=(81.5,0.443,0.747), spending=(103.4,0.647,0.172), structural=(85.8,0.395,0.578)
+mu 0.5: fixed=(91.9,0.384,0.326), rigid=(89.0,0.364,0.760), debt_pt=(86.2,0.378,0.581), debt_strong=(82.2,0.440,0.754), spending=(102.4,0.622,0.169), structural=(86.8,0.405,0.597)
+mu 1.0: fixed=(92.7,0.386,0.327), rigid=(89.5,0.364,0.772), debt_pt=(87.2,0.384,0.598), debt_strong=(83.2,0.474,0.760), spending=(101.3,0.603,0.167), structural=(87.9,0.426,0.610)
+gap miss 0.0: fixed=(92.9,0.471,0.000), rigid=(89.0,0.364,0.760), debt_pt=(87.2,0.494,0.401), debt_strong=(82.8,0.588,0.727), spending=(102.8,0.640,0.161), structural=(88.0,0.561,0.284)
+gap miss 0.5: fixed=(91.9,0.384,0.326), rigid=(89.0,0.364,0.760), debt_pt=(86.2,0.378,0.581), debt_strong=(82.2,0.440,0.754), spending=(102.4,0.622,0.169), structural=(86.8,0.405,0.597)
+gap miss 1.0: fixed=(90.7,0.388,0.736), rigid=(89.0,0.364,0.760), debt_pt=(85.2,0.386,0.768), debt_strong=(81.5,0.419,0.787), spending=(102.6,0.624,0.221), structural=(85.6,0.389,0.730)
+block 1: fixed=(85.9,0.483,0.373), rigid=(83.4,0.463,0.719), debt_pt=(81.5,0.478,0.430), debt_strong=(77.4,0.532,0.605), spending=(93.8,0.611,0.150), structural=(82.4,0.469,0.491)
+block 5: fixed=(92.2,0.457,0.328), rigid=(90.3,0.366,0.851), debt_pt=(87.7,0.386,0.665), debt_strong=(84.0,0.465,0.826), spending=(104.0,0.685,0.260), structural=(87.6,0.470,0.615)
+other seed: fixed=(91.5,0.390,0.343), rigid=(89.2,0.368,0.767), debt_pt=(86.2,0.381,0.584), debt_strong=(82.1,0.452,0.753), spending=(102.8,0.630,0.179), structural=(86.5,0.400,0.600)
+kappa sweep: 0.000=(lvl 2.40, p90 91.9, breach 0.384, forced 0.326, p60 0.366), 0.020=(lvl 2.57, p90 90.4, breach 0.382, forced 0.409, p60 0.354), 0.040=(lvl 2.73, p90 88.9, breach 0.376, forced 0.496, p60 0.339), 0.078=(lvl 3.07, p90 86.2, breach 0.378, forced 0.581, p60 0.310), 0.120=(lvl 3.51, p90 84.5, breach 0.384, forced 0.689, p60 0.279), 0.200=(lvl 4.40, p90 82.2, breach 0.440, forced 0.754, p60 0.218), 0.300=(lvl 5.67, p90 80.6, breach 0.607, forced 0.787, p60 0.145), 0.400=(lvl 7.09, p90 80.1, breach 0.770, forced 0.810, p60 0.094)
+one future draws: 2008,2009,2010,2005,2006,2007,2004,2005,2006
+one future fixed: debt 2029 95.1 2035 70.7; pb 2028 -2.66; min bal -4.94; max dsp 0.75
+one future rigid: debt 2029 94.6 2035 70.6; pb 2028 -2.25; min bal -4.52; max dsp 0.88
+one future debt_pt: debt 2029 93.7 2035 66.3; pb 2028 -1.97; min bal -4.25; max dsp 1.16
+one future debt_strong: debt 2029 92.1 2035 66.2; pb 2028 -0.61; min bal -2.88; max dsp 2.52
+one future spending: debt 2029 96.4 2035 74.0; pb 2028 -3.95; min bal -6.22; max dsp 0.82
+one future structural: debt 2029 94.1 2035 63.7; pb 2028 -2.80; min bal -5.07; max dsp 1.85
