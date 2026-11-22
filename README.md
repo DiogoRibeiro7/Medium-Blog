@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-234 top-level folders: 77 belong to 24 series, 90 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 10 not yet sorted.
+235 top-level folders: 77 belong to 24 series, 91 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 10 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -356,6 +356,7 @@ Prices, labour, taxes, growth and elections.
 - [`neoliberalism-evidence-synthesis/`](neoliberalism-evidence-synthesis/) — Neoliberalism, work, distribution and housing: an evidence audit
 - [`pension-inflation/`](pension-inflation/) — Pension inflation: fixed and indexed pensions replayed on 23 countries' prices
 - [`portugal-debt-2035-probability/`](portugal-debt-2035-probability/) — Portugal's 2035 debt target as a probability
+- [`portugal-fiscal-reaction/`](portugal-fiscal-reaction/) — How Portugal's Budget Responds to Its Debt: A Fiscal Reaction Function and the 2035 Target
 - [`portugal-iva-zero/`](portugal-iva-zero/) — Pass-through of Portugal's zero VAT on 46 food products (IVA Zero) in official prices
 - [`portugal-labour-share/`](portugal-labour-share/) — Portugal's labour share under eighteen definitions
 - [`portugal-labour-share-industries/`](portugal-labour-share-industries/) — Portugal's labour share by industry, 1995–2024
