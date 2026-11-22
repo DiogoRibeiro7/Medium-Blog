@@ -1,0 +1,34 @@
+name: Probe rent-or-buy-us sources
+
+on:
+  push:
+    branches:
+      - rent-or-buy-us
+    paths:
+      - 'rent-or-buy-us/probe_sources.py'
+      - '.github/workflows/rent-or-buy-us-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: rent-or-buy-us
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Probe the upstream sources
+        run: python probe_sources.py --out probe && cut -f1,3,4,6 probe/log.tsv
+      - name: Upload what came back
+        uses: actions/upload-artifact@v4
+        with:
+          name: rent-or-buy-us-probe
+          path: rent-or-buy-us/probe
+          retention-days: 7
