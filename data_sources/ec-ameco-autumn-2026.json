@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "dataset": "ec-ameco-autumn-2026",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "3f65fb591fe819369291178944788cb82c1da7a7",
+  "record": "external/ec-ameco-autumn-2026/metadata.yaml",
+  "folder": "portugal-fiscal-reaction",
+  "target": "portugal-fiscal-reaction",
+  "retrieved": "2026-11-22",
+  "note": "AMECO is replaced at every Commission forecast; a hash mismatch means a newer release.",
+  "files": [
+    {
+      "path": "raw/ameco0.zip",
+      "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco0.zip",
+      "bytes": 7275181,
+      "sha256": "5641705ee6af8854f193c1fe1815f6bdd4d9eb3a2871efa653056774b8d45a41",
+      "release": "Autumn 2026 economic forecast (members dated 2026-11-16)"
+    }
+  ],
+  "consumers": [
+    "portugal-fiscal-reaction/fetch_data.py",
+    "portugal-fiscal-reaction/build_data.py"
+  ]
+}
