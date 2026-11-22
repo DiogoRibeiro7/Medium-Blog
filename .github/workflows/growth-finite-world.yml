@@ -1,0 +1,68 @@
+name: Reproduce growth-finite-world
+
+on:
+  pull_request:
+    paths:
+      - 'growth-finite-world/**'
+      - '.github/workflows/growth-finite-world.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'growth-finite-world/**'
+      - '.github/workflows/growth-finite-world.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: growth-finite-world
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: growth-finite-world/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the core functions
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch the pinned sources and build the tables
+        run: |
+          python fetch_data.py
+          python build_data.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python growth_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=growth-finite-world/output.txt::output of growth_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_value_in_time fig2_firm_in_market fig3_eps_vs_economy fig4_implied_growth fig5_energy; do
+            test -s "figures/$f.png"
+          done
