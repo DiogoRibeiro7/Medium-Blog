@@ -110,6 +110,13 @@ land-connected clusters among them: 13; spanning more than one country: 4, holdi
    1 regions, Germany: Karlsruhe, Regierungsbezirk (DE12)
    1 regions, Austria: Lower Austria (AT12+AT13)
    1 regions, Germany: Hamburg (DE60)
+industry share in 1900, 1960 and 2015 (%), regions of the clusters that cross a border:
+  Liege 55.9, 53.1, 19.6; Düsseldorf, Regierungsbezirk 61.3, 58.3, 20.9; Köln, Regierungsbezirk 45.7, 50.8, 18.6; Münster, Regierungsbezirk 44.3, 55.8, 23.9; Arnsberg, Regierungsbezirk 63.2, 60.4, 27.5; Overijssel 39.5, 50.7, 18.8
+  Hainaut 57.1, 54.8, 18.7; Île de France 46.7, 43.2, 12.0; Picardie 40.8, 41.8, 21.5; Haute-Normandie 43.1, 40.2, 23.0; Nord - Pas-de-Calais 55.6, 53.6, 18.6
+  Vorarlberg 46.1, 56.3, 30.3; Espace Mittelland 43.5, 52.0, nan; Nordwestschweiz 51.0, 57.2, nan; Zürich 52.9, 49.5, nan; Ostschweiz 51.3, 54.4, nan
+  Saarland 56.1, 54.2, 27.6; Lorraine 41.6, 43.4, 21.3
+highest industry shares in 1900 (%): Dresden, NUTS 2-Region 70.0; Arnsberg, Regierungsbezirk 63.2; Düsseldorf, Regierungsbezirk 61.3; West Midlands 58.7; Yorks  & Humberside 57.9
+highest industry shares in 2015 (%): Oberpfalz, Regierungsbezirk 33.9; Tübingen, Regierungsbezirk 33.6; Norte 33.6; Niederbayern, Regierungsbezirk 33.1; Stuttgart, Regierungsbezirk 32.7
 population-weighted industry share, core vs the other regions, and the rank correlation of each year with 1900:
   1900  core 0.502  rest 0.255  gap +0.248  Spearman with 1900 +1.00  (n=171)
   1910  core 0.529  rest 0.274  gap +0.256  Spearman with 1900 +0.97  (n=171)

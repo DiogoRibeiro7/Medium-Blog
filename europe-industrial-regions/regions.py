@@ -371,6 +371,14 @@ def section_core(df, g, pairs):
         say(f"  {size:2d} regions, {', '.join(cs)}: " + "; ".join(f"{names[m]} ({m})" for m in ms))
     pd.DataFrame([dict(code=m, cluster=i, countries="+".join(cs)) for i, (_, cs, ms) in enumerate(info)
                   for m in ms]).to_csv(RES / "core_1900.csv", index=False)
+    ind = df.pivot(index="code", columns="year", values="ind")
+    say("industry share in 1900, 1960 and 2015 (%), regions of the clusters that cross a border:")
+    for size, cs, ms in multi:
+        say("  " + "; ".join(f"{names[m]} {100 * ind.loc[m, 1900]:.1f}, {100 * ind.loc[m, 1960]:.1f}, "
+                             f"{100 * ind.loc[m, 2015]:.1f}" for m in ms))
+    for y in [1900, 2015]:
+        top = ind[y].dropna().sort_values(ascending=False).head(5)
+        say(f"highest industry shares in {y} (%): " + "; ".join(f"{names[c]} {100 * v:.1f}" for c, v in top.items()))
 
     w = df.pivot(index="code", columns="year", values="ind")
     w = w.loc[:, w.notna().sum() >= 100]
