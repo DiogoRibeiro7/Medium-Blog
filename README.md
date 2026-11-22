@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-238 top-level folders: 77 belong to 24 series, 93 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 11 not yet sorted.
+239 top-level folders: 77 belong to 24 series, 94 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 11 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -362,6 +362,7 @@ Prices, labour, taxes, growth and elections.
 - [`portugal-iva-zero/`](portugal-iva-zero/) — Pass-through of Portugal's zero VAT on 46 food products (IVA Zero) in official prices
 - [`portugal-labour-share/`](portugal-labour-share/) — Portugal's labour share under eighteen definitions
 - [`portugal-labour-share-industries/`](portugal-labour-share-industries/) — Portugal's labour share by industry, 1995–2024
+- [`portugal-realtime-output-gap/`](portugal-realtime-output-gap/) — Real-Time Output Gaps and Fiscal Rules: Portugal and the EU, 2011–2022
 
 #### History, Measured
 
