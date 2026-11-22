@@ -14,6 +14,9 @@ Three tests, each against a null model built from random contiguous partitions o
    neighbouring regions inside one country (the border premium)?
 3. Where was industry concentrated in 1900, do those clusters cross borders, and what became of
    them by 2015?
+
+A last section lists income levels by country and, border by border, how far apart neighbouring
+regions are in income and in industry, in 1900 and 2021.
 """
 
 from __future__ import annotations
@@ -36,7 +39,7 @@ CORE_N = 35  # the top fifth of the 173 regions by industrial share in 1900
 MERGED = {"AT12+AT13": "AT123", "DE71+DE72": "DE712", "DE91+DE92": "DE912"}
 SHEETS = {"ind": "A5 Employment Share Industry", "agr": "A4 Employment Share Agriculture",
           "srv": "A6 Employment Share Services", "pop": "A3 Population",
-          "gdp": "A1b Regional GDP (2011PPP)"}
+          "gdp": "A1b Regional GDP (2011PPP)", "gdp90": "A1 Regional GDP"}
 OUT: list[str] = []
 
 
@@ -75,6 +78,9 @@ def load_panel() -> pd.DataFrame:
     df["country"] = df.groupby("code").country.transform("first")
     df["region"] = df.groupby("code").region.transform("first")
     df["lgdppc"] = np.log(df.gdp / df["pop"])  # GDP in millions, population in thousands
+    # the same regional GDP in 1990 international dollars (to 2015): within a country and year it
+    # differs from the 2011 series by one factor, so only the national levels change
+    df["lgdppc90"] = np.log(df.gdp90 / df["pop"])
     return df.sort_values(["code", "year"]).reset_index(drop=True)
 
 
@@ -266,7 +272,7 @@ def section_variance(df, parts, codes, sizes):
         f"and {N_PARTITIONS} random relabellings ignoring geography)")
     rng = np.random.default_rng(SEED + 1)
     rows = []
-    for var in ["ind", "lgdppc"]:
+    for var in ["ind", "lgdppc", "lgdppc90"]:
         for year in sorted(df.year.unique()):
             d = df[(df.year == year) & df[var].notna() & df["pop"].notna()].set_index("code")
             if len(d) < 100:
@@ -283,7 +289,8 @@ def section_variance(df, parts, codes, sizes):
                              shuffled_mean=shuffled.mean(), shuffled_p95=np.percentile(shuffled, 95)))
     t = pd.DataFrame(rows)
     t.to_csv(RES / "variance_between_countries.csv", index=False, float_format="%.4f")
-    for var, label in [("ind", "industry share"), ("lgdppc", "log GDP per head")]:
+    for var, label in [("ind", "industry share"), ("lgdppc", "log GDP per head"),
+                       ("lgdppc90", "log GDP per head in 1990 international dollars instead of 2011 PPP")]:
         say(f"{label}:")
         for r in t[t["var"] == var].itertuples():
             say(f"  {r.year}  n={r.n}  countries {r.country:.3f} | random contiguous mean {r.contiguous_mean:.3f} "
@@ -306,7 +313,7 @@ def section_border(df, g, pairs, parts):
     say(f"median centroid distance: within-country pairs {np.median(dist[~cross]):.0f} km, "
         f"cross-border pairs {np.median(dist[cross]):.0f} km")
     rows = []
-    for var, scale in [("ind", 100.0), ("lgdppc", 100.0)]:
+    for var, scale in [("ind", 100.0), ("lgdppc", 100.0), ("lgdppc90", 100.0)]:
         for year in sorted(df.year.unique()):
             v = df[df.year == year].set_index("code")[var]
             ok = np.array([np.isfinite(v.get(i, np.nan)) and np.isfinite(v.get(j, np.nan)) for i, j in pairs])
@@ -322,7 +329,8 @@ def section_border(df, g, pairs, parts):
                              null_p95=np.percentile(null, 95), p_null=(null >= prem).mean()))
     t = pd.DataFrame(rows)
     t.to_csv(RES / "border_premium.csv", index=False, float_format="%.4f")
-    for var, label in [("ind", "industry share, percentage points"), ("lgdppc", "log GDP per head x 100")]:
+    for var, label in [("ind", "industry share, percentage points"), ("lgdppc", "log GDP per head x 100"),
+                       ("lgdppc90", "log GDP per head x 100, 1990 international dollars instead of 2011 PPP")]:
         say(f"{label}:")
         for r in t[t["var"] == var].itertuples():
             say(f"  {r.year}  pairs={r.pairs}  within {r.within_mean:.2f}  across {r.cross_mean:.2f}  "
@@ -396,6 +404,50 @@ def section_core(df, g, pairs):
     say()
 
 
+def section_steps(df, g, pairs):
+    say("== 4. Steps at national borders: income levels by country and the land borders one by one")
+    names = df.drop_duplicates("code").set_index("code").region
+    for y, col, base in [(1900, "gdp", "2011 PPP"), (1900, "gdp90", "1990 international dollars"),
+                         (2015, "gdp", "2011 PPP"), (2015, "gdp90", "1990 international dollars"),
+                         (2021, "gdp", "2011 PPP")]:
+        d = df[df.year == y].dropna(subset=[col, "pop"])
+        europe = d[col].sum() / d["pop"].sum()
+        nat = d.groupby("country").apply(lambda x: x[col].sum() / x["pop"].sum(), include_groups=False) / europe
+        say(f"{y} GDP per head by country, {base}, % of the 16-country level: " +
+            ", ".join(f"{c} {100 * v:.0f}" for c, v in nat.sort_values(ascending=False).items()))
+    for y, col, base in [(1900, "lgdppc", "2011 PPP"), (1900, "lgdppc90", "1990 international dollars"),
+                         (2021, "lgdppc", "2011 PPP")]:
+        v = df[df.year == y].set_index("code")[col]
+        rows = []
+        for a, b in pairs:
+            if g.country[a] == g.country[b] or not (np.isfinite(v.get(a, np.nan)) and np.isfinite(v.get(b, np.nan))):
+                continue
+            hi, lo = (a, b) if v[a] >= v[b] else (b, a)
+            rows.append((np.exp(v[hi] - v[lo]), hi, lo))
+        rows.sort(reverse=True)
+        say(f"{y} largest income steps across a border, {base} (richer side / poorer side, GDP per head): " +
+            "; ".join(f"{names[h]} ({g.country[h]}) / {names[l]} ({g.country[l]}) {r:.2f}" for r, h, l in rows[:6]))
+    say("land borders one by one: pairs of neighbouring regions; mean gap in log GDP per head x 100, 2011 PPP "
+        "(first country minus second; in brackets the same in 1990 international dollars), and mean absolute gap "
+        "in the industry share (percentage points)")
+    cp = {}
+    for a, b in pairs:
+        ca, cb = g.country[a], g.country[b]
+        if ca != cb:
+            cp.setdefault(tuple(sorted((ca, cb))), []).append((a, b) if ca < cb else (b, a))
+    for (ca, cb), ps in sorted(cp.items()):
+        parts = []
+        for y in [1900, 2015]:
+            v = df[df.year == y].set_index("code")
+            inc = [100 * (v.lgdppc.get(a, np.nan) - v.lgdppc.get(b, np.nan)) for a, b in ps]
+            inc90 = [100 * (v.lgdppc90.get(a, np.nan) - v.lgdppc90.get(b, np.nan)) for a, b in ps]
+            ind = [100 * abs(v.ind.get(a, np.nan) - v.ind.get(b, np.nan)) for a, b in ps]
+            parts.append(f"{y} income {np.nanmean(inc):+.0f} (1990 $ {np.nanmean(inc90):+.0f}), industry " +
+                         (f"{np.nanmean(ind):.1f}" if np.isfinite(ind).any() else "n/a"))
+        say(f"  {ca}-{cb} ({len(ps)} pairs): " + " | ".join(parts))
+    say()
+
+
 def benchmark_years(df: pd.DataFrame) -> list[int]:
     """Years in which at least 100 regions report an industry share: the benchmark years
     1900-2015 and 2021."""
@@ -437,6 +489,7 @@ def main() -> int:
     section_variance(df, parts, list(g.index), sizes)
     section_border(df, g, pairs, parts)
     section_core(df, g, pairs)
+    section_steps(df, g, pairs)
     (RES / "summary.txt").write_text("\n".join(OUT) + "\n")
     print("\n".join(OUT))
     return 0

@@ -18,7 +18,7 @@ pip install -r requirements.txt
 python check_data.py      # both files present and matching the registry
 python -m pytest -q tests
 python regions.py         # results/summary.txt and the CSVs figures.py reads; about a minute
-python figures.py         # figures/fig1-fig4
+python figures.py         # figures/fig1-fig5
 ```
 
 `python regions.py 50` uses 50 random partitions instead of 1,000. CI runs the tests on synthetic maps only (the data tests skip without the files); `results/summary.txt` is the output of a full run with the files above.
@@ -28,6 +28,7 @@ python figures.py         # figures/fig1-fig4
 - **Countries against random lines.** For each benchmark year, the population-weighted share of regional variation that lies between the 16 countries, against 1,000 random partitions of the map into 16 contiguous groups of about the countries' sizes (each the best of 50 draws by size match), and against random groupings that ignore geography.
 - **Border premium.** For the 386 pairs of regions that share a land boundary, the absolute difference in the industry share (or log GDP per head) regressed on a cross-border dummy and log centroid distance, with Fafchamps-Gubert dyadic-robust standard errors; the same regression with the lines of each random partition gives the null distribution.
 - **The 1900 core.** The 35 regions with the highest industry share in 1900, the land-connected clusters among them, and what happened to them by 2021.
+- **Price base.** The workbook gives regional GDP in 2011 PPP dollars (to 2022) and in 1990 international dollars (to 2015). Inside a country and year the two differ by one factor, so regional ratios within a country are the same and only national levels move. The income tests are repeated in 1990 dollars, and section 4 of `results/summary.txt` lists national levels and every land border in both bases.
 
 Islands and the three separate land masses are joined to the nearest region by straight links only to draw random partitions; the border test uses land neighbours alone.
 
