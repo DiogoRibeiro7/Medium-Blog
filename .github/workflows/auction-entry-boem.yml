@@ -39,16 +39,20 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
 
+      - name: Download the pinned source files and check their SHA-256
+        run: python fetch.py
+
+      - name: Rebuild the bid table from BOEM's files
+        run: python build_dataset.py > /dev/null
+
       - name: Run the tests
         run: python -m pytest -q tests
 
-      - name: Rebuild the bid table from BOEM's files and rerun the analysis
-        run: |
-          python build_dataset.py > /dev/null
-          python entry.py > /dev/null
+      - name: Rerun the analysis
+        run: python entry.py > /dev/null
 
-      - name: Check the data and the numbers match the committed run
-        run: git diff --exit-code -- data/bids.csv data/build_check.txt results/summary.txt
+      - name: Check the bid table and the numbers match the committed run
+        run: git diff --exit-code -- results/build_check.txt results/summary.txt
 
       - name: Draw the figures
         run: |

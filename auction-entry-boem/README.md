@@ -8,21 +8,21 @@ The analysis separates two things the raw comparison mixes: the mechanical gain 
 
 ```bash
 python -m pip install -r requirements.txt
-python fetch.py --out data   # downloads (run by the data workflow; see below)
-python build_dataset.py      # data/bids.csv and data/build_check.txt
+python fetch.py              # downloads the pinned BOEM and case-study files, checks SHA-256
+python build_dataset.py      # data/bids.csv and results/build_check.txt
 python entry.py              # results/summary.txt and results/*.csv
 python figures.py            # figures/fig1_*.png ... fig3_*.png
 python -m pytest -q tests
 ```
 
-`results/summary.txt` holds every number used in the article. The workflow `.github/workflows/auction-entry-boem.yml` rebuilds the bid table from BOEM's files, reruns the analysis and checks that `data/bids.csv`, `data/build_check.txt` and `results/summary.txt` are unchanged.
+`results/summary.txt` holds every number used in the article. The workflow `.github/workflows/auction-entry-boem.yml` rebuilds the bid table from BOEM's files, reruns the analysis and checks that `results/build_check.txt` (which ends with the SHA-256 of the rebuilt `data/bids.csv`) and `results/summary.txt` are unchanged.
 
-## Data (`fetch.py`, `build_dataset.py`, `data/`)
+## Data (`fetch.py`, `build_dataset.py`, `data/`, not tracked)
 
-- **Sales 249 (August 2017) to BBG3 (August 2026):** the parsed table and BOEM files of the case study in the game- and auction-theory series, copied from [gitlab.com/DiogoRibeiro7/game-auction-theory-ds](https://gitlab.com/DiogoRibeiro7/game-auction-theory-ds) (folder `case-study`; the commit is in `data/case_study/SOURCE`). That table was checked there against BOEM's published totals for every sale.
+- **Sales 249 (August 2017) to BBG3 (August 2026):** the parsed table and BOEM files of the case study in the game- and auction-theory series, downloaded from [gitlab.com/DiogoRibeiro7/game-auction-theory-ds](https://gitlab.com/DiogoRibeiro7/game-auction-theory-ds/-/tree/d03cdf890ee1b2ab40919317d63875c872ee0add/case-study) at commit `d03cdf8` (`case-study/data/bids.csv`). That table was checked there against BOEM's published totals for every sale.
 - **Sales 231, 233, 235, 238, 241, 246, 247 and 248 (August 2013 to March 2017):** BOEM's own files for each sale (`https://www.boem.gov/Sale-<n>/`): the archive of fixed-format ASCII files (`PREBID`, `BID`, `MAPS`), the sale statistics and the final bid recap, in `data/boem/<n>/`. The ASCII files are read with the record layout of the case study's parser. Every sale's tracts, bids, sum of high bids and sum of all bids match BOEM's sale statistics exactly; Sale 233, which has no statistics file, matches BOEM's press release of 28 August 2013. Rejected high bids are read from the `R` marks of each final recap and checked against the recap's own count. Sale 247 has no final recap on its page, so its review outcome is unknown.
 
-The workspace where the analysis was written cannot reach gitlab.com or boem.gov, so `.github/workflows/auction-entry-boem-data.yml` runs `fetch.py` on GitHub's runners and commits the files with `data/fetch_log.txt` (URL, status and SHA-256 of every response). BOEM states that material produced by federal agencies is generally in the public domain (https://www.boem.gov/copyright).
+The files are not stored in this repository. They are registered in the data registry as [`external/boem-gulf-of-mexico-lease-sale-bids`](https://github.com/DiogoRibeiro7/data/tree/2cd5ea3859afac626ce5900797cba468a079104f/external/boem-gulf-of-mexico-lease-sale-bids), with BOEM's final URL, size and SHA-256 of each of the 22 BOEM files and of the case-study table; [`data_sources/boem-gulf-of-mexico-lease-sale-bids.json`](../data_sources/boem-gulf-of-mexico-lease-sale-bids.json) copies that contract at registry commit `2cd5ea3859af`. `fetch.py` downloads them into `data/`, stops if a checksum differs, and `build_dataset.py` rebuilds the bid table at each run. BOEM states that material produced by federal agencies is generally in the public domain (https://www.boem.gov/copyright).
 
 The minimum bid is $25 per acre, or fraction of an acre, in water shallower than 400 m and $100 per acre at 400 m or deeper in every sale here; BOEM raised the deep-water figure from $37.50 in Sale 218 (December 2011).
 

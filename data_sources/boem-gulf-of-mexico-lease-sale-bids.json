@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "dataset": "boem-gulf-of-mexico-lease-sale-bids",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "2cd5ea3859afac626ce5900797cba468a079104f",
+  "record": "external/boem-gulf-of-mexico-lease-sale-bids/metadata.yaml",
+  "folder": "auction-entry-boem",
+  "target": "auction-entry-boem/data",
+  "files": [
+    {
+      "path": "boem/231/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/231/sale231.zip",
+      "bytes": 8448,
+      "sha256": "46921e1b73c2f8c5b42a2a4e8e2d0815d5f8de001b915a7e7822ec0ecec2914c"
+    },
+    {
+      "path": "boem/231/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/231/Sale-231-Stats.pdf",
+      "bytes": 13069,
+      "sha256": "63ab69e80ff6b68552aefaee146a699e79bb8f9bfb15f70ec12e255b190287dc"
+    },
+    {
+      "path": "boem/231/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/231/Sale-231-Final-Bid-Recap.pdf",
+      "bytes": 234379,
+      "sha256": "9137e07078838ced0154eb802953c72712e76519efd242ebe26a2566f01c2ff0"
+    },
+    {
+      "path": "boem/233/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/233/Sale-233-ZIP-File.zip",
+      "bytes": 3535,
+      "sha256": "be9b3b4e0d200ef0792c2769a6842a7c10d0208ecc8895774b974f91dead0230"
+    },
+    {
+      "path": "boem/233/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/233/Sale-233-Final-Bid-Recap.pdf",
+      "bytes": 151341,
+      "sha256": "6d8aa86b9eacbe9af18fe19c32a5889650649307eb2ae16f1708f446057c99a3"
+    },
+    {
+      "path": "boem/235/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/235/Sale-235-ZIP-File.zip",
+      "bytes": 5790,
+      "sha256": "91724ba7609531b154e2463375f2a625c469138f435bf53deaf12509c56ee6a3"
+    },
+    {
+      "path": "boem/235/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/235/Sale-235-Stats.pdf",
+      "bytes": 9452,
+      "sha256": "d58b128496daaba6155cd5536222ee24dd995b3917c66e7f84e5c56cc24d78f1"
+    },
+    {
+      "path": "boem/235/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/235/Sale-235-Final-Bid-Recap.pdf",
+      "bytes": 123810,
+      "sha256": "2d79a5d7d1ef586bcb95eba830688b3ebdcaed5c6dec4575faabc4446f2a22af"
+    },
+    {
+      "path": "boem/238/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/238/Sale-238-ZIP-File.zip",
+      "bytes": 14916,
+      "sha256": "ae9ae40a47801a43652291c25530b5c8a7fc569397af7645162c8c410af38c77"
+    },
+    {
+      "path": "boem/238/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/238/Sale-238-Stats.pdf",
+      "bytes": 10025,
+      "sha256": "c0723053984737d4c6c210f84b101dad0e79931085a29fe5034b1969b85e223f"
+    },
+    {
+      "path": "boem/238/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/238/Sale-238-Final-Bid-Recap.pdf",
+      "bytes": 164724,
+      "sha256": "737bdf919e409e552036039d0014ef9d722cc25e6bb031756f6478f5ed7cfc91"
+    },
+    {
+      "path": "boem/241/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/241/Sale-241-ZIP-File.zip",
+      "bytes": 5336,
+      "sha256": "fc693963267b0c2e0072c614a896d54c6fc95d383dac43eb5b83410973ba3196"
+    },
+    {
+      "path": "boem/241/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/241/Sale-241-Stats.pdf",
+      "bytes": 10336,
+      "sha256": "edae7db808acbb5453087ec5bdbccba7299ca21e77b02d4fce9ef802953b51a8"
+    },
+    {
+      "path": "boem/241/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/241/Sale-241-Final-Bid-Recap.pdf",
+      "bytes": 328690,
+      "sha256": "36e0a94d2ad6d959d6efb5600d6a531ef5914df87f1eb3bb793c159f8c9a1988"
+    },
+    {
+      "path": "boem/246/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/246/Sale-246-ZIP-File.zip",
+      "bytes": 14015,
+      "sha256": "9a08db00b3c166b4a7780dfa8da23270039ec631304cd8b8f1aa0f65b9495f2f"
+    },
+    {
+      "path": "boem/246/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/246/Sale-246-Stats.pdf",
+      "bytes": 10438,
+      "sha256": "dc6a954e708ba9ab6f83a31e5142b19385c03af59430887e4de7ec6a72431cc9"
+    },
+    {
+      "path": "boem/246/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/246/Sale-246-Final-Bid-Recap-11092015.pdf",
+      "bytes": 87191,
+      "sha256": "c2ecfa03f366751584c8332fa9031bfacf380c0108c53c8336860ffe569c4fd1"
+    },
+    {
+      "path": "boem/247/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/247/Sale-247-ZIP-File.zip",
+      "bytes": 16630,
+      "sha256": "f21e1f0604aebd6f0f191554745bc5b202d9049ed4162dac7f051f3e93d34002"
+    },
+    {
+      "path": "boem/247/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/247/Sale-247-Stats.pdf",
+      "bytes": 10276,
+      "sha256": "fd05ec5ae1e5dcac3959e6613aa2227e93d5434399be1145bd57165c6772a583"
+    },
+    {
+      "path": "boem/248/data.zip",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/248/Sale-248-ZIP-File.zip",
+      "bytes": 13820,
+      "sha256": "ffe8f96bf9771dbd8a9474ae76162865a3fe60d12567b00d4efe4ba4c364681f"
+    },
+    {
+      "path": "boem/248/stats.html",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/248/Sale-248-Stats.pdf",
+      "bytes": 10495,
+      "sha256": "5f42e7d5d2b21d1eb887760618dbeedac8d793de4963656ae098c6decc9922ad"
+    },
+    {
+      "path": "boem/248/final_bid_recap.pdf",
+      "url": "https://www.boem.gov/sites/default/files/oil-and-gas-energy-program/Leasing/Regional-Leasing/Gulf-of-Mexico-Region/Lease-Sales/248/Sale-248-Final-Bid-Recap-11-30-2016.pdf",
+      "bytes": 113491,
+      "sha256": "9d1f6046106b55a6a6660247f5da6cedb679ee446b1e71a065717e5e4cbe8e33"
+    },
+    {
+      "path": "case_study/data/bids.csv",
+      "url": "https://gitlab.com/DiogoRibeiro7/game-auction-theory-ds/-/raw/d03cdf890ee1b2ab40919317d63875c872ee0add/case-study/data/bids.csv",
+      "bytes": 445930,
+      "sha256": "bf321ff0b21c4e6a9051563a2d9851d818cdd1da435b2d4553224fcbc3e1d494"
+    }
+  ],
+  "consumers": [
+    "auction-entry-boem/build_dataset.py"
+  ]
+}

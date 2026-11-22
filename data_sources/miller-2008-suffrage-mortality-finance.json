@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "dataset": "miller-2008-suffrage-mortality-finance",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "2cd5ea3859afac626ce5900797cba468a079104f",
+  "record": "external/miller-2008-suffrage-mortality-finance/metadata.yaml",
+  "folder": "suffrage-public-health",
+  "target": "suffrage-public-health/data",
+  "files": [
+    {
+      "path": "raw/mortality_harmonized.dta",
+      "url": "https://drive.usercontent.google.com/download?id=1ubiSqKHZYhCbVkKaqS_lM7gZXERQyw5v&export=download&confirm=t",
+      "bytes": 354109,
+      "sha256": "8f2ad1a33e2570045f6d38430bac21538a7748b92bbb7a204b1f39025b20da3c"
+    },
+    {
+      "path": "raw/public_finance.dta",
+      "url": "https://drive.usercontent.google.com/download?id=1btRcnnJuHJljMRUrGCGdRNbdLrEUFTWU&export=download&confirm=t",
+      "bytes": 1754759,
+      "sha256": "79472b30b99e308bcd3969cb729bda108c053255cdf9ea5901cab1bc0601f380"
+    }
+  ],
+  "consumers": [
+    "suffrage-public-health/suffrage.py",
+    "suffrage-public-health/tests/test_data.py"
+  ]
+}

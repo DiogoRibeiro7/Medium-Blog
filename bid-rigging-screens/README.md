@@ -6,7 +6,7 @@ Computational companion to a Medium article. Question: statistical screens for b
 
 ```bash
 python -m pip install -r requirements.txt
-python fetch.py --out data   # Mendeley Data download (run by the data workflow; see below)
+python fetch.py              # downloads the three Mendeley files and checks their SHA-256
 python screens.py            # results/summary.txt and results/*.csv (about 15 minutes on two cores)
 python figures.py            # figures/fig1_*.png ... fig5_*.png
 python -m pytest -q tests
@@ -14,7 +14,7 @@ python -m pytest -q tests
 
 `results/summary.txt` holds every number used in the article. The workflow `.github/workflows/bid-rigging-screens.yml` reruns the analysis and checks that it is unchanged.
 
-## Data (`fetch.py`, `data/raw/`)
+## Data (`fetch.py`, `data/raw/`, not tracked)
 
 Wallimann, H. (2021). *Detecting bid-rigging coalitions in different countries and auction formats*, Version 1. Mendeley Data, [doi:10.17632/x8jwmbcpgn.1](https://doi.org/10.17632/x8jwmbcpgn.1), licence CC BY 4.0. The files were prepared for Imhof and Wallimann (2021), *International Review of Law and Economics* 68, 106016, which asks users of the data to cite that paper.
 
@@ -24,7 +24,7 @@ Wallimann, H. (2021). *Detecting bid-rigging coalitions in different countries a
 
 A row is a coalition of three firms that bid together in at least three tenders, in one period (cartel or competitive). In each shared tender nine screens are computed from the three firms' bids, and each screen is summarised across tenders by its minimum, maximum, mean and median, giving 36 features. The screens are: coefficient of variation (`cvbid`), skewness (`skew1`), absolute difference between the two lowest bids (`D`, in the currency of the bids), relative distance (`RD1`), normalised distance (`RDnorm`), alternative distance (`RDalter`), percentage difference (`Diffperc`), spread (`Spread`) and the Kolmogorov-Smirnov statistic against a uniform distribution (`Kolmo_stat`). `number_project` is the number of tenders the coalition shares.
 
-The workspace where the analysis was written cannot reach Mendeley Data, so `.github/workflows/bid-rigging-screens-data.yml` runs `fetch.py` on GitHub's runners and commits the files with `data/fetch_log.txt` (URL, status and SHA-256 of every response).
+The data are not stored in this repository. They are registered in the data registry as [`external/imhof-wallimann-bid-rigging-tenders`](https://github.com/DiogoRibeiro7/data/tree/2cd5ea3859afac626ce5900797cba468a079104f/external/imhof-wallimann-bid-rigging-tenders), with the URL, size and SHA-256 that Mendeley Data publishes for each file; [`data_sources/imhof-wallimann-bid-rigging-tenders.json`](../data_sources/imhof-wallimann-bid-rigging-tenders.json) copies that contract at registry commit `2cd5ea3859af`. `fetch.py` downloads `Swissdata_addpred.csv`, `Japanesedata.csv` and `Italiandata.csv` into `data/raw/`, stops if a checksum differs, and every table is rebuilt from them at each run. The upstream files use CRLF line endings; the checksums are of the upstream bytes.
 
 ## Analyses (`screens.py`)
 

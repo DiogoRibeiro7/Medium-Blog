@@ -1,7 +1,7 @@
 """Reanalysis of Miller (2008), "Women's Suffrage, Political Responsiveness, and Child Survival
 in American History", with the data Miller published.
 
-    python fetch.py --out data      # once; GitHub Actions keeps the snapshot in data/raw
+    python fetch.py                 # downloads the pinned source files and checks them
     python suffrage.py              # writes results/summary.txt and the CSVs figures.py reads
 
 Question: Miller's design compares states before and after their suffrage laws with state and
