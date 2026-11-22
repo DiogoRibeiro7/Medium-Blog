@@ -177,8 +177,8 @@ records and verifies the frozen snapshot on matching hashes.
 The [annual policy timing audit](../TAX_TIMING.md) distinguishes
 Hope–Limberg's **30 coded country-year tax-cut flags** from independently
 verified legislative enactment or implementation dates. Its
-[22 November source-verified summary](TAX_TIMING_RESULTS_2026-11-22.md)
-includes the complete annual-flag register and documented country-year
-sequences. The source-probe publishes a short-lived
+[22 November preliminary archived-panel summary](TAX_TIMING_RESULTS_2026-11-22.md)
+documents the 29 WID-observed flag-years; the full 30-year original
+author-file run remains pending. The source-probe will publish a short-lived
 `tax-cut-annual-timing` artifact. This audit does not shift
 treatment years or estimate new policy effects.

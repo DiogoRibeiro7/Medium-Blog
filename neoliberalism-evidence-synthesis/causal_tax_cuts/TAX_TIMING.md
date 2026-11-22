@@ -72,10 +72,10 @@ rebuilds the panel. This additional step produces:
 - author_consecutive_flag_runs.csv — descriptive contiguous country-year runs;
 - author_timing_audit.json — exact counts, missing cases, source hashes and caveats.
 
-The first live summary is in
-[results/TAX_TIMING_RESULTS_2026-11-22.md](results/TAX_TIMING_RESULTS_2026-11-22.md).
-Its machine-readable provenance is in
-[results/author_timing_2026-11-22.json](results/author_timing_2026-11-22.json).
+The [preliminary joined-panel results note](results/TAX_TIMING_RESULTS_2026-11-22.md)
+reports 29 WID-observed flags and their descriptive runs. The new
+live workflow will publish an all-30-flag JSON artifact once it runs.
+No frozen full-author result is claimed before that validation.
 
 ## Identification implications
 
