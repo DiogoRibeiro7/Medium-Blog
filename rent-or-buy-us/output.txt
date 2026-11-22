@@ -1,0 +1,85 @@
+== Data
+areas: 16 metropolitan areas with both a Case-Shiller index and a BLS rent index, plus the United States
+anchor year 2023 (ACS 1-year): median value, median contract rent, rooms owner/renter, comparable rent at e=0.5, price-to-rent, property tax rate; first and last purchase year for a 10-year hold
+  New York: value 610,200; contract rent 1,630/month; rooms ratio 1.70; comparable rent 2,127/month; price-to-rent 23.9; tax 1.58%; 10-year cohorts 1987-2015 (29)
+  Boston: value 646,600; contract rent 1,831/month; rooms ratio 1.74; comparable rent 2,413/month; price-to-rent 22.3; tax 1.02%; 10-year cohorts 1987-2015 (29)
+  Chicago: value 316,500; contract rent 1,237/month; rooms ratio 1.60; comparable rent 1,565/month; price-to-rent 16.9; tax 1.93%; 10-year cohorts 1987-2015 (29)
+  Detroit: value 251,200; contract rent 991/month; rooms ratio 1.51; comparable rent 1,218/month; price-to-rent 17.2; tax 1.31%; 10-year cohorts 1991-2015 (25)
+  Minneapolis: value 369,500; contract rent 1,303/month; rooms ratio 1.95; comparable rent 1,818/month; price-to-rent 16.9; tax 1.06%; 10-year cohorts 1989-2015 (27)
+  Washington: value 574,000; contract rent 1,829/month; rooms ratio 2.00; comparable rent 2,587/month; price-to-rent 18.5; tax 0.90%; 10-year cohorts 1998-2015 (18)
+  Dallas: value 373,900; contract rent 1,438/month; rooms ratio 1.69; comparable rent 1,871/month; price-to-rent 16.7; tax 1.55%; 10-year cohorts 2000-2015 (16)
+  Atlanta: value 383,600; contract rent 1,521/month; rooms ratio 1.65; comparable rent 1,954/month; price-to-rent 16.4; tax 0.79%; 10-year cohorts 1991-2015 (25)
+  Miami: value 474,000; contract rent 1,789/month; rooms ratio 1.42; comparable rent 2,133/month; price-to-rent 18.5; tax 0.82%; 10-year cohorts 1987-2015 (29)
+  Tampa: value 372,100; contract rent 1,558/month; rooms ratio 1.44; comparable rent 1,869/month; price-to-rent 16.6; tax 0.72%; 10-year cohorts 1987-2015 (29)
+  Los Angeles: value 867,200; contract rent 1,845/month; rooms ratio 1.59; comparable rent 2,330/month; price-to-rent 31.0; tax 0.67% (Prop 13 rule used); 10-year cohorts 1987-2015 (29)
+  San Francisco: value 1,105,100; contract rent 2,246/month; rooms ratio 1.62; comparable rent 2,860/month; price-to-rent 32.2; tax 0.76% (Prop 13 rule used); 10-year cohorts 1987-2015 (29)
+  Seattle: value 712,200; contract rent 1,822/month; rooms ratio 1.76; comparable rent 2,415/month; price-to-rent 24.6; tax 0.84%; 10-year cohorts 1990-2015 (26)
+  San Diego: value 864,900; contract rent 2,139/month; rooms ratio 1.54; comparable rent 2,653/month; price-to-rent 27.2; tax 0.67% (Prop 13 rule used); 10-year cohorts 1987-2015 (29)
+  Phoenix: value 457,400; contract rent 1,605/month; rooms ratio 1.51; comparable rent 1,974/month; price-to-rent 19.3; tax 0.41%; 10-year cohorts 2002-2015 (14)
+  Denver: value 611,300; contract rent 1,775/month; rooms ratio 1.89; comparable rent 2,441/month; price-to-rent 20.9; tax 0.50%; 10-year cohorts 1987-2015 (29)
+  United States: value 340,200; contract rent 1,220/month; rooms ratio 1.56; comparable rent 1,524/month; price-to-rent 18.6; tax 0.90%; 10-year cohorts 1987-2015 (29)
+30-year fixed rate (yearly average of weekly PMMS): 1987 10.21%, 1995 7.93%, 2006 6.41%, 2012 3.66%, 2021 2.96%, 2023 6.81%
+annual total returns 1987-2025, geometric mean: S&P 500 11.20%, 10-year Treasury 4.93%, 3-month bills 3.09%
+
+== 1. Who ends richer: central case (comparable rent e=0.5, S&P 500, refinancing, 6% selling cost)
+   5 years, 16 metros: n=492; renting wins either way 42%, saving decides 10%, owning wins either way 48%, saving favours the owner 0%; owner beats the disciplined renter 48%, owner beats the renter who spends the difference 58%
+   5 years, United States: n=34; renting wins either way 47%, saving decides 0%, owning wins either way 53%, saving favours the owner 0%; owner beats the disciplined renter 53%, owner beats the renter who spends the difference 53%
+  10 years, 16 metros: n=412; renting wins either way 35%, saving decides 19%, owning wins either way 46%, saving favours the owner 0%; owner beats the disciplined renter 47%, owner beats the renter who spends the difference 65%
+  10 years, United States: n=29; renting wins either way 41%, saving decides 3%, owning wins either way 55%, saving favours the owner 0%; owner beats the disciplined renter 55%, owner beats the renter who spends the difference 59%
+  20 years, 16 metros: n=252; renting wins either way 19%, saving decides 41%, owning wins either way 40%, saving favours the owner 0%; owner beats the disciplined renter 40%, owner beats the renter who spends the difference 81%
+  20 years, United States: n=19; renting wins either way 5%, saving decides 32%, owning wins either way 63%, saving favours the owner 0%; owner beats the disciplined renter 63%, owner beats the renter who spends the difference 95%
+
+== 2. The comparable rent: median renter's contract rent scaled by rooms ** e (16 metros)
+  e=0.0, 10 years: renting wins either way 35%, saving decides 33%, owning wins either way 32%, saving favours the owner 0%; owner beats the disciplined renter 32%
+  e=0.0, 20 years: renting wins either way 19%, saving decides 69%, owning wins either way 12%, saving favours the owner 0%; owner beats the disciplined renter 12%
+  e=0.5, 10 years: renting wins either way 35%, saving decides 19%, owning wins either way 46%, saving favours the owner 0%; owner beats the disciplined renter 47%
+  e=0.5, 20 years: renting wins either way 19%, saving decides 41%, owning wins either way 40%, saving favours the owner 0%; owner beats the disciplined renter 40%
+  e=1.0, 10 years: renting wins either way 28%, saving decides 6%, owning wins either way 59%, saving favours the owner 7%; owner beats the disciplined renter 66%
+  e=1.0, 20 years: renting wins either way 14%, saving decides 18%, owning wins either way 63%, saving favours the owner 5%; owner beats the disciplined renter 68%
+
+== 3. Purchase year against city: share of the variance of log(owner / disciplined renter) explained (16 metros)
+   5 years: purchase year 0.66, city 0.07, both 0.71; correlation with log price-to-rent at purchase -0.29; saving decides in 11%
+  10 years: purchase year 0.68, city 0.11, both 0.79; correlation with log price-to-rent at purchase -0.63; saving decides in 19%
+  20 years: purchase year 0.30, city 0.52, both 0.84; correlation with log price-to-rent at purchase -0.74; saving decides in 41%
+  10 years, share of the 16 metros where owning beat the disciplined renter, by purchase year: 1987 0 1988 0 1989 0 1990 9 1991 8 1992 54 1993 92 1994 77 1995 85 1996 92 1997 92 1998 93 1999 86 2000 67 2001 20 2002 6 2003 0 2004 0 2005 0 2006 6 2007 12 2008 12 2009 56 2010 56 2011 69 2012 88 2013 94 2014 75 2015 75
+
+== 4. What the owner's wealth is made of (central case)
+  10 years, 16 metros, medians of shares of the owner's home equity at sale: down payment 25%, principal repaid 17%, price gain 71%, selling cost -12%; median interest paid / principal repaid 2.79
+     saving decides in 77 of 412: median share of the difference the renter must invest to tie 48% (quartiles 21%-74%)
+  20 years, 16 metros, medians of shares of the owner's home equity at sale: down payment 12%, principal repaid 23%, price gain 73%, selling cost -8%; median interest paid / principal repaid 2.12
+     saving decides in 104 of 252: median share of the difference the renter must invest to tie 28% (quartiles 15%-57%)
+  United States, bought 1990, sold 2000 (2025 dollars): owner 93,027 (+0 if he invests his savings); renter 179,271 (+85,972 if he invests the difference); category: renting wins either way; refinances 2; price-to-rent at purchase 13.5
+  United States, bought 1995, sold 2005 (2025 dollars): owner 193,135 (+1,165 if he invests his savings); renter 88,327 (+15,735 if he invests the difference); category: owning wins either way; refinances 1; price-to-rent at purchase 12.5
+  United States, bought 2000, sold 2010 (2025 dollars): owner 107,599 (+2,122 if he invests his savings); renter 38,657 (+19,325 if he invests the difference); category: owning wins either way; refinances 2; price-to-rent at purchase 13.8
+  United States, bought 2006, sold 2016 (2025 dollars): owner 76,981 (+0 if he invests his savings); renter 119,258 (+88,037 if he invests the difference); category: renting wins either way; refinances 2; price-to-rent at purchase 19.8
+  United States, bought 2012, sold 2022 (2025 dollars): owner 235,734 (+46,499 if he invests his savings); renter 145,748 (+0 if he invests the difference); category: owning wins either way; refinances 0; price-to-rent at purchase 13.2
+
+== 5. Sensitivity (16 metros): category shares at 10 and 20 years
+  60% stocks, 40% Treasuries: 10y: renting wins either way 32%, saving decides 16%, owning wins either way 52%, saving favours the owner 0%; owner beats disciplined renter 52% | 20y: renting wins either way 8%, saving decides 43%, owning wins either way 48%, saving favours the owner 0%; owner beats disciplined renter 49%
+  3-month Treasury bills: 10y: renting wins either way 12%, saving decides 22%, owning wins either way 66%, saving favours the owner 0%; owner beats disciplined renter 66% | 20y: renting wins either way 0%, saving decides 10%, owning wins either way 90%, saving favours the owner 0%; owner beats disciplined renter 90%
+  no refinancing: 10y: renting wins either way 38%, saving decides 18%, owning wins either way 43%, saving favours the owner 0%; owner beats disciplined renter 44% | 20y: renting wins either way 22%, saving decides 50%, owning wins either way 28%, saving favours the owner 0%; owner beats disciplined renter 28%
+  selling cost 3%: 10y: renting wins either way 33%, saving decides 17%, owning wins either way 49%, saving favours the owner 0%; owner beats disciplined renter 49% | 20y: renting wins either way 17%, saving decides 41%, owning wins either way 41%, saving favours the owner 0%; owner beats disciplined renter 42%
+  maintenance 1.5%: 10y: renting wins either way 35%, saving decides 24%, owning wins either way 41%, saving favours the owner 0%; owner beats disciplined renter 41% | 20y: renting wins either way 19%, saving decides 52%, owning wins either way 29%, saving favours the owner 0%; owner beats disciplined renter 29%
+  insurance 0.6%: 10y: renting wins either way 35%, saving decides 19%, owning wins either way 46%, saving favours the owner 0%; owner beats disciplined renter 46% | 20y: renting wins either way 19%, saving decides 46%, owning wins either way 35%, saving favours the owner 0%; owner beats disciplined renter 35%
+  tax drag 0.75 points on the invested account: 10y: renting wins either way 33%, saving decides 17%, owning wins either way 50%, saving favours the owner 0%; owner beats disciplined renter 50% | 20y: renting wins either way 13%, saving decides 38%, owning wins either way 48%, saving favours the owner 0%; owner beats disciplined renter 48%
+  anchor year 2022: 10y: renting wins either way 35%, saving decides 18%, owning wins either way 47%, saving favours the owner 0%; owner beats disciplined renter 47% | 20y: renting wins either way 19%, saving decides 37%, owning wins either way 44%, saving favours the owner 0%; owner beats disciplined renter 44%
+
+== 6. By area, 10 years: share of purchase years where owning beat the disciplined renter / the renter who spends the difference
+  New York: 29 years; 28% / 52%; saving decides 24%; median price-to-rent at purchase 19.2
+  Boston: 29 years; 45% / 66%; saving decides 21%; median price-to-rent at purchase 16.3
+  Chicago: 29 years; 14% / 48%; saving decides 34%; median price-to-rent at purchase 17.1
+  Detroit: 25 years; 36% / 64%; saving decides 28%; median price-to-rent at purchase 15.2
+  Minneapolis: 27 years; 56% / 63%; saving decides 7%; median price-to-rent at purchase 13.9
+  Washington: 18 years; 50% / 56%; saving decides 6%; median price-to-rent at purchase 15.2
+  Dallas: 16 years; 69% / 88%; saving decides 19%; median price-to-rent at purchase 13.1
+  Atlanta: 25 years; 56% / 60%; saving decides 8%; median price-to-rent at purchase 13.9
+  Miami: 29 years; 59% / 62%; saving decides 3%; median price-to-rent at purchase 12.9
+  Tampa: 29 years; 59% / 59%; saving decides 0%; median price-to-rent at purchase 12.1
+  Los Angeles: 29 years; 34% / 69%; saving decides 34%; median price-to-rent at purchase 20.5
+  San Francisco: 29 years; 38% / 69%; saving decides 31%; median price-to-rent at purchase 21.8
+  Seattle: 26 years; 54% / 88%; saving decides 35%; median price-to-rent at purchase 17.2
+  San Diego: 29 years; 45% / 66%; saving decides 21%; median price-to-rent at purchase 17.7
+  Phoenix: 14 years; 50% / 50%; saving decides 0%; median price-to-rent at purchase 16.7
+  Denver: 29 years; 69% / 83%; saving decides 14%; median price-to-rent at purchase 15.4
+  United States: 29 years; 55% / 59%; saving decides 3%; median price-to-rent at purchase 13.8
+
