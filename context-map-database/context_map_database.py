@@ -25,6 +25,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import numpy as np
+
 import agreement
 import deploy_example as D
 import drift
@@ -165,7 +167,9 @@ def main() -> None:
 
     # ------------------------------------------------------------------------------
     header("6  Learned transports")
-    print(f"written maps: max |B A - I| = {drift.strict_drift(SEED):.1e}")
+    eps = float(np.finfo(float).eps)
+    print(f"written maps: max |B A - I| within ten machine epsilons ({10 * eps:.1e}): "
+          f"{drift.strict_drift(SEED) < 10 * eps}")  # the exact residual depends on the BLAS
     chk = drift.sampler_check(SEED)
     print("exact sampler vs brute-force least squares:", {k: (round(v, 6) if isinstance(v, float) else v) for k, v in chk.items()})
     curve = drift.drift_curve(SEED)

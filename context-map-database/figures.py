@@ -109,7 +109,7 @@ def figure_drift(curve: list[dict], power: dict, path_out: str = "fig2_learned_l
     ax1.set_xlabel("pairs used to fit each adapter, n")
     ax1.set_ylabel("RMS relative loop drift, |B̂Âx − x| / |x|")
     ax1.set_title("(a) A loop that should return exactly never does", loc="left")
-    ax1.text(0.03, 0.05, "points: simulation   lines: σ√(d(1/(n−d−1) + 1/(n−m−1)))\nσ = 0.1, m = 2d; written maps give 8e−16",
+    ax1.text(0.03, 0.05, "points: simulation   lines: σ√(d(1/(n−d−1) + 1/(n−m−1)))\nσ = 0.1, m = 2d; written maps close to machine precision",
              transform=ax1.transAxes, fontsize=8.6, color=INK2)
 
     ks = np.array(power["multiples"])

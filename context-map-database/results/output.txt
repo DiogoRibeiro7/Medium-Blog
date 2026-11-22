@@ -154,7 +154,7 @@ profunctor composition over a diamond-shaped category (coend by union-find vs SQ
 ==============================================================================
 6  Learned transports
 ==============================================================================
-written maps: max |B A - I| = 7.8e-16
+written maps: max |B A - I| within ten machine epsilons (2.2e-15): True
 exact sampler vs brute-force least squares: {'d': 16, 'n': 400, 'reps': 3000, 'rms_ols': 0.02921, 'rms_exact': 0.029203, 'q95_ols': 0.031397, 'q95_exact': 0.031361, 'ks_p': 0.522693}
 
    d    m      n  reps   RMS sim   formula  ratio       5%      95%      min
