@@ -142,6 +142,34 @@ def eu_shares(gva, hours, energy):
         f"total final energy {pct(en.loc[LAST, 'FC_E'] / en.loc[FIRST, 'FC_E'] - 1)}; "
         f"industry {pct(en.loc[LAST, 'FC_IND_E'] / en.loc[FIRST, 'FC_IND_E'] - 1)}"
     )
+    print(
+        f"    services' final energy in {LAST} against its {en['FC_OTH_CP_E'].idxmax()} peak: "
+        f"{pct(en.loc[LAST, 'FC_OTH_CP_E'] / en['FC_OTH_CP_E'].max() - 1)}"
+    )
+    for code, label in (
+        ("FC_IND_E", "industry"),
+        ("FC_TRA_E", "transport"),
+        ("FC_OTH_HH_E", "households"),
+        ("FC_OTH_CP_E", "commercial and public services"),
+    ):
+        print(f"    final energy {FIRST}-{LAST}, {label}: {pct(en.loc[LAST, code] / en.loc[FIRST, code] - 1)}")
+    print(
+        f"    change in hours worked {FIRST}-{LAST}: services {(hw.loc[LAST, SERVICES].sum() - hw.loc[FIRST, SERVICES].sum()) / 1e6:+.1f} billion, "
+        f"industry {(hw.loc[LAST, 'B-E'] - hw.loc[FIRST, 'B-E']) / 1e6:+.1f} billion"
+    )
+    for y in (FIRST, LAST):
+        s_int = en.loc[y, "FC_OTH_CP_E"] * 1e3 / cp.loc[y, SERVICES].sum()
+        i_int = en.loc[y, "FC_IND_E"] * 1e3 / cp.loc[y, "B-E"]
+        print(
+            f"    {y}: final energy per EUR 1 million of value added (current prices): "
+            f"services {s_int:.1f} toe, industry {i_int:.1f} toe; ratio {i_int / s_int:.1f}"
+        )
+    for y in (FIRST, LAST):
+        kwh = en.loc[y, "FC_OTH_CP_E"] * 1e3 * 11630 / (hw.loc[y, SERVICES].sum() * 1e3)
+        print(f"    {y}: services' final energy per hour worked in services: {kwh:.2f} kWh")
+    e0 = en.loc[FIRST, "FC_OTH_CP_E"] / hw.loc[FIRST, SERVICES].sum()
+    e1 = en.loc[LAST, "FC_OTH_CP_E"] / hw.loc[LAST, SERVICES].sum()
+    print(f"    change in services' energy per hour worked {FIRST}-{LAST}: {pct(e1 / e0 - 1)}")
     el = panel(energy, "EU27_2020", None, col="nrg_bal", siec="E7000")
     for y in (FIRST, LAST):
         print(f"    electricity share of services' final energy in {y}: {pct(el.loc[y, 'FC_OTH_CP_E'] / en.loc[y, 'FC_OTH_CP_E'])}")
@@ -186,6 +214,10 @@ def eu_decomposition(gva, hours, energy):
                     f"{'' if not np.isfinite(share) else f'  (input share of growth {100 * share:.0f}%)'}"
                 )
     pd.DataFrame(rows).to_csv(RESULTS / "eu_decomposition.csv", index=False, float_format="%.6g")
+    e, h, eph = sc.decompose(
+        s.services_energy.loc[FIRST], s.services_energy.loc[LAST], s.services_hours.loc[FIRST], s.services_hours.loc[LAST], LAST - FIRST
+    )
+    print(f"Services' energy {FIRST}-{LAST}: {e:+.2f}%/yr = hours {h:+.2f} + energy per hour {eph:+.2f}")
     return s
 
 
@@ -209,16 +241,36 @@ def productivity_by_industry(gva, hours):
             }
         )
         print(
-            f"{code:5s} {label:45s} output per hour {pct(g, 2)}/yr; hours {pct(h, 2)}/yr; "
+            f"{code:5s} {label:45s} output per hour {pct(g, 2)}/yr (x{p1 / p0:.2f}); hours {pct(h, 2)}/yr, "
+            f"{(hw.loc[LAST, code] - hw.loc[FIRST, code]) / 1e6:+.1f} billion; "
             f"{pct(hw.loc[LAST, code] / hw.loc[LAST, 'TOTAL'])} of hours in {LAST}"
         )
     d = pd.DataFrame(rows)
     d.to_csv(RESULTS / "productivity_by_industry.csv", index=False, float_format="%.6g")
+    added = (hw.loc[LAST, SERVICES] - hw.loc[FIRST, SERVICES]).sum()
+    slow = d[d.code.isin(SERVICES) & (d.output_per_hour_growth < 0.005)]
+    slow_added = (hw.loc[LAST, slow.code] - hw.loc[FIRST, slow.code]).sum()
+    print(
+        f"Services hours added {FIRST}-{LAST}: {added / 1e6:.1f} billion; of which in sections with output per hour below 0.5%/yr "
+        f"({', '.join(slow.code)}): {slow_added / 1e6:.1f} billion, {pct(slow_added / added)}"
+    )
     serv = d[d.code.isin(SERVICES_EX_L)]
     print(
         "Hours-weighted mean output-per-hour growth, services excluding real estate: "
         f"{pct((serv.output_per_hour_growth * serv.hours_share_last).sum() / serv.hours_share_last.sum(), 2)}"
     )
+
+
+def pandemic_year(gva, hours):
+    section("3b. 2019 to 2020: real value added and hours by industry (EU27)")
+    clv = panel(gva, "EU27_2020", "CLV20_MEUR")
+    hw = panel(hours, "EU27_2020", "THS_HW")
+    for code, label in INDUSTRY_LABELS.items():
+        print(
+            f"{code:5s} {label:45s} real value added {pct(clv.loc[2020, code] / clv.loc[2019, code] - 1)}, "
+            f"hours {pct(hw.loc[2020, code] / hw.loc[2019, code] - 1)}; first year back at or above the 2019 level: "
+            f"{next((y for y in range(2021, LAST + 1) if clv.loc[y, code] >= clv.loc[2019, code]), 'none up to ' + str(LAST))}"
+        )
 
 
 def required_rates(s):
@@ -264,10 +316,12 @@ def time_per_person(hours, pop):
         f"Hours in a year: {sc.HOURS_PER_YEAR:,.0f}; "
         f"hours worked per resident in {LAST} = {pct(d.loc[LAST, 'hours_per_person'] / sc.HOURS_PER_YEAR)} of them"
     )
+    for y in (FIRST, LAST):
+        print(f"    {y}: persons employed per resident {pct(persons.loc[y, 'TOTAL'] / p.loc[y])}")
     print(f"EU27 population {LAST}: {p.loc[LAST] / 1e3:,.1f} million; hours lived per year {p.loc[LAST] * 1e3 * sc.HOURS_PER_YEAR:.3g}")
 
 
-def countries(gva, hours, energy):
+def countries(gva, hours, energy, pop):
     section(f"6. Member states, {C_FIRST} to {C_LAST}: services output, hours and energy")
     rows = []
     for geo in EU27:
@@ -303,6 +357,13 @@ def countries(gva, hours, energy):
     for k in ("hours", "energy"):
         b, se, r2 = sc.ols_slope(np.log(d.output_ratio), np.log(d[f"{k}_ratio"]))
         print(f"    elasticity of {k} to services output across member states: {b:.2f} (HC1 se {se:.2f}), R2 {r2:.2f}")
+    for geo in ("LV", "EL", "LU"):
+        pg = pop[(pop.geo == geo) & (pop.na_item == "POP_NC")].set_index("time")["value"]
+        r = d.set_index("geo").loc[geo]
+        print(
+            f"    {geo}: services output x{r.output_ratio:.2f}, hours x{r.hours_ratio:.2f}, energy x{r.energy_ratio:.2f}; "
+            f"population {pct(pg.loc[C_LAST] / pg.loc[C_FIRST] - 1)}"
+        )
     for k in ("hours", "energy"):
         for cls in ("absolute", "none"):
             names = ", ".join(d[d[f"{k}_class"] == cls].geo)
@@ -390,6 +451,14 @@ def time_use(tus, pc):
         f"Sleep median {full.sleep_min.median():.0f} min/day; "
         f"personal care (incl. sleep and eating) median {full.personal_care_min.median():.0f} min/day"
     )
+    tt = tus.pivot_table(index=["geo", "time"], columns="acl00", values="value")
+    tt = tt.loc[list(zip(full.geo, full.time, strict=True))]
+    print(
+        f"Travel (all purposes except travel as part of work): median {tt['AC9A'].median():.0f} min/day; "
+        f"to and from work {tt['AC913'].median():.0f}; related to leisure, social and associative life {tt['AC9D'].median():.0f}; "
+        f"related to shopping and services {tt['AC936'].median():.0f}"
+    )
+    print(f"    leisure-related travel as a share of free time: median {pct((tt['AC9D'] / tt['AC4-8']).median())}")
 
 
 def prices(hicp):
@@ -412,9 +481,10 @@ def main():
     eu_shares(gva, hours, energy)
     s = eu_decomposition(gva, hours, energy)
     productivity_by_industry(gva, hours)
+    pandemic_year(gva, hours)
     required_rates(s)
     time_per_person(hours, pop)
-    countries(gva, hours, energy)
+    countries(gva, hours, energy, pop)
     time_use(tus, pc)
     prices(hicp)
 

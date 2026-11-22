@@ -10,6 +10,17 @@
 Hours worked, EU27: services 183.5 billion in 1995, 254.2 billion in 2024; industry 67.5 -> 56.3 billion
 Final energy of commercial and public services, EU27 (ktoe): 1995 95,377, peak 139,956 in 2010, 2024 118,722
     change 1995-2024: 24.5%; total final energy -1.6%; industry -20.7%
+    services' final energy in 2024 against its 2010 peak: -15.2%
+    final energy 1995-2024, industry: -20.7%
+    final energy 1995-2024, transport: 20.3%
+    final energy 1995-2024, households: -8.6%
+    final energy 1995-2024, commercial and public services: 24.5%
+    change in hours worked 1995-2024: services +70.7 billion, industry -11.2 billion
+    1995: final energy per EUR 1 million of value added (current prices): services 24.7 toe, industry 204.0 toe; ratio 8.3
+    2024: final energy per EUR 1 million of value added (current prices): services 9.9 toe, industry 68.1 toe; ratio 6.9
+    1995: services' final energy per hour worked in services: 6.04 kWh
+    2024: services' final energy per hour worked in services: 5.43 kWh
+    change in services' energy per hour worked 1995-2024: -10.1%
     electricity share of services' final energy in 1995: 39.6%
     electricity share of services' final energy in 2024: 52.0%
     services' electricity use 1995-2024: 63.5%
@@ -52,23 +63,41 @@ industry (B-E)              energy 1995-2008: output +2.17%/yr = energy -0.19 + 
 industry (B-E)              energy 2008-2019: output +0.96%/yr = energy -0.88 + output per unit +1.84  (input share of growth -91%)
 industry (B-E)              energy 2019-2024: output +0.49%/yr = energy -2.22 + output per unit +2.71  (input share of growth -454%)
 industry (B-E)              energy 1995-2024: output +1.42%/yr = energy -0.80 + output per unit +2.22  (input share of growth -56%)
+Services' energy 1995-2024: +0.75%/yr = hours +1.12 + energy per hour -0.37
 
 ====================================================================================================
 3. Real value added per hour worked by industry (EU27)
 ====================================================================================================
-TOTAL All industries                                output per hour 1.20%/yr; hours 0.48%/yr; 100.0% of hours in 2024
-A     Agriculture, forestry and fishing             output per hour 3.10%/yr; hours -2.44%/yr; 4.7% of hours in 2024
-B-E   Industry except construction                  output per hour 2.07%/yr; hours -0.63%/yr; 15.9% of hours in 2024
-C     Manufacturing                                 output per hour 2.41%/yr; hours -0.65%/yr; 14.2% of hours in 2024
-F     Construction                                  output per hour -0.59%/yr; hours 0.50%/yr; 7.5% of hours in 2024
-G-I   Trade, transport, accommodation and food      output per hour 1.15%/yr; hours 0.65%/yr; 24.7% of hours in 2024
-J     Information and communication                 output per hour 2.80%/yr; hours 2.56%/yr; 3.7% of hours in 2024
-K     Finance and insurance                         output per hour 1.18%/yr; hours 0.24%/yr; 2.3% of hours in 2024
-L     Real estate                                   output per hour 0.46%/yr; hours 1.35%/yr; 1.1% of hours in 2024
-M_N   Professional, scientific, administrative      output per hour -0.29%/yr; hours 2.89%/yr; 12.8% of hours in 2024
-O-Q   Public administration, education, health      output per hour 0.26%/yr; hours 0.85%/yr; 21.8% of hours in 2024
-R-U   Arts, recreation and other services           output per hour 0.06%/yr; hours 1.03%/yr; 5.4% of hours in 2024
+TOTAL All industries                                output per hour 1.20%/yr (x1.41); hours 0.48%/yr, +45.6 billion; 100.0% of hours in 2024
+A     Agriculture, forestry and fishing             output per hour 3.10%/yr (x2.42); hours -2.44%/yr, -17.4 billion; 4.7% of hours in 2024
+B-E   Industry except construction                  output per hour 2.07%/yr (x1.81); hours -0.63%/yr, -11.2 billion; 15.9% of hours in 2024
+C     Manufacturing                                 output per hour 2.41%/yr (x1.99); hours -0.65%/yr, -10.4 billion; 14.2% of hours in 2024
+F     Construction                                  output per hour -0.59%/yr (x0.84); hours 0.50%/yr, +3.6 billion; 7.5% of hours in 2024
+G-I   Trade, transport, accommodation and food      output per hour 1.15%/yr (x1.40); hours 0.65%/yr, +14.9 billion; 24.7% of hours in 2024
+J     Information and communication                 output per hour 2.80%/yr (x2.23); hours 2.56%/yr, +6.8 billion; 3.7% of hours in 2024
+K     Finance and insurance                         output per hour 1.18%/yr (x1.40); hours 0.24%/yr, +0.5 billion; 2.3% of hours in 2024
+L     Real estate                                   output per hour 0.46%/yr (x1.14); hours 1.35%/yr, +1.2 billion; 1.1% of hours in 2024
+M_N   Professional, scientific, administrative      output per hour -0.29%/yr (x0.92); hours 2.89%/yr, +25.5 billion; 12.8% of hours in 2024
+O-Q   Public administration, education, health      output per hour 0.26%/yr (x1.08); hours 0.85%/yr, +16.8 billion; 21.8% of hours in 2024
+R-U   Arts, recreation and other services           output per hour 0.06%/yr (x1.02); hours 1.03%/yr, +4.9 billion; 5.4% of hours in 2024
+Services hours added 1995-2024: 70.7 billion; of which in sections with output per hour below 0.5%/yr (L, M_N, O-Q, R-U): 48.5 billion, 68.6%
 Hours-weighted mean output-per-hour growth, services excluding real estate: 0.62%
+
+====================================================================================================
+3b. 2019 to 2020: real value added and hours by industry (EU27)
+====================================================================================================
+TOTAL All industries                                real value added -5.4%, hours -6.8%; first year back at or above the 2019 level: 2021
+A     Agriculture, forestry and fishing             real value added -1.9%, hours -2.2%; first year back at or above the 2019 level: 2021
+B-E   Industry except construction                  real value added -6.1%, hours -7.0%; first year back at or above the 2019 level: 2021
+C     Manufacturing                                 real value added -7.0%, hours -7.7%; first year back at or above the 2019 level: 2021
+F     Construction                                  real value added -4.7%, hours -4.4%; first year back at or above the 2019 level: none up to 2024
+G-I   Trade, transport, accommodation and food      real value added -12.9%, hours -12.6%; first year back at or above the 2019 level: 2022
+J     Information and communication                 real value added 2.3%, hours -0.2%; first year back at or above the 2019 level: 2021
+K     Finance and insurance                         real value added 1.1%, hours -1.7%; first year back at or above the 2019 level: 2021
+L     Real estate                                   real value added -0.4%, hours -6.3%; first year back at or above the 2019 level: 2021
+M_N   Professional, scientific, administrative      real value added -4.8%, hours -7.7%; first year back at or above the 2019 level: 2021
+O-Q   Public administration, education, health      real value added -2.4%, hours -1.8%; first year back at or above the 2019 level: 2021
+R-U   Arts, recreation and other services           real value added -18.4%, hours -11.0%; first year back at or above the 2019 level: 2023
 
 ====================================================================================================
 4. What flat inputs would require
@@ -86,6 +115,8 @@ Services excluding real estate, 1995-2024: real output 1.94%/yr; output per hour
 2019: hours worked per resident 764; in services 540; in industry 129; hours per person employed 1,621
 2024: hours worked per resident 784; in services 564; in industry 125; hours per person employed 1,611
 Hours in a year: 8,766; hours worked per resident in 2024 = 8.9% of them
+    1995: persons employed per resident 41.9%
+    2024: persons employed per resident 48.7%
 EU27 population 2024: 451.1 million; hours lived per year 3.95e+12
 
 ====================================================================================================
@@ -99,6 +130,9 @@ Member states with complete data: 27 (services excluding real estate; energy of 
     median ratios: output x1.83, hours x1.29, energy x1.25
     elasticity of hours to services output across member states: 0.27 (HC1 se 0.11), R2 0.21
     elasticity of energy to services output across member states: 0.65 (HC1 se 0.26), R2 0.19
+    LV: services output x2.22, hours x0.98, energy x1.14; population -20.3%
+    EL: services output x1.14, hours x1.27, energy x1.62; population -3.9%
+    LU: services output x1.84, hours x2.00, energy x1.24; population 52.8%
     hours absolute: LV
     hours none: EL, LU
     energy absolute: AT, CZ, DE, FR, HU, NL, SE, SI, SK
@@ -129,6 +163,8 @@ Television and video as a share of free time: median 42.3%, range 32.4% to 57.6%
     slope of the TV share on log consumption: -0.083 (se 0.016)
 Entertainment and culture: median 5 min/day; shopping and services median 26 min/day
 Sleep median 512 min/day; personal care (incl. sleep and eating) median 669 min/day
+Travel (all purposes except travel as part of work): median 70 min/day; to and from work 20; related to leisure, social and associative life 25; related to shopping and services 13
+    leisure-related travel as a share of free time: median 8.4%
 
 ====================================================================================================
 8. Prices: services against all items (HICP)
