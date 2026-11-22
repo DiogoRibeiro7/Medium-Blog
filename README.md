@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-230 top-level folders: 77 belong to 24 series, 88 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 8 not yet sorted.
+231 top-level folders: 77 belong to 24 series, 89 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 8 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -295,6 +295,7 @@ Method studies on public and simulated data.
 - [`large-data-short-history/`](large-data-short-history/) — Selection, dependence, historical coverage and measurement
 - [`mc-dropout-posterior/`](mc-dropout-posterior/) — Testing MC dropout as a posterior
 - [`model-collapse-genesis/`](model-collapse-genesis/) — Model collapse measured on six translations of Genesis
+- [`model-swap-tails/`](model-swap-tails/) — Swappable models, scored where the risk is: European, US and Chinese models in one day-ahead load pipeline
 - [`org-chart-agents/`](org-chart-agents/) — Org charts for language-model agents
 - [`org-chart-task-fit/`](org-chart-task-fit/) — What stays fixed when an agent organisation changes tasks
 - [`pinn-crossover-dimension/`](pinn-crossover-dimension/) — PINNs against classical ground-state solvers, one to eight dimensions
