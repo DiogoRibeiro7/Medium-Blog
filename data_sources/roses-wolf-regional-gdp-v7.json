@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "dataset": "roses-wolf-regional-gdp-v7",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "476fcef9fde3131168e7af1e2843cde2018bcdbe",
+  "record": "external/roses-wolf-regional-gdp-v7/metadata.yaml",
+  "folder": "europe-industrial-regions",
+  "target": "europe-industrial-regions/data",
+  "supply": "manual: the host refuses automated downloads; download each file in a browser from its URL and place it at target/path",
+  "files": [
+    {
+      "path": "raw/RosesWolf_RegionalGDP_v7.xlsx",
+      "url": "https://cepr.org/system/files/2025-10/RosesWolf_RegionalGDP_v7.xlsx",
+      "bytes": 258083,
+      "sha256": "5250483c36866737914df281363e0fca05febc57957f3737d8194250d7952fa9"
+    },
+    {
+      "path": "raw/RosesWolf_RegionalGDP_shapefile.zip",
+      "url": "https://cepr.org/system/files/2022-11/RosesWolf_RegionalGDP_shapefile.zip",
+      "bytes": 2506562,
+      "sha256": "a0f3bdc31b7034144bf3a3a59a7a1c34101fc1561d5e6acbec9a319c553160cd"
+    }
+  ],
+  "consumers": [
+    "europe-industrial-regions/regions.py"
+  ]
+}

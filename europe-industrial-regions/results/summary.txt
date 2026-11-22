@@ -1,0 +1,104 @@
+== Data
+regions 173, countries 16: Austria 8, Belgium 9, Denmark 5, Finland 5, France 22, Germany 36, Ireland 1, Italy 20, Luxembourg 1, Netherlands 12, Norway 7, Portugal 5, Spain 17, Sweden 8, Switzerland 7, United Kingdom 10
+regions with an industry share, by year: 1900 171 1910 171 1925 171 1938 171 1950 172 1960 173 1970 173 1980 173 1990 173 2000 173 2010 173 2015 166 2021 139
+pairs of regions sharing a land boundary: 386; across a national border: 93; regions with no land neighbour: ES53 ES70 FI20 FR83 ITG1 ITG2
+links added to connect the map for random partitions: DK02-DK03, DK01-SE22, FI20-SE11, FR83-ITI1, BE25-UKI, FR83-ITG2, ITF6-ITG1, ES51-ES53, UKC+UKD-UKN, ES70-PT15
+population-weighted share of industry in employment: 1900 0.326 1960 0.410 2015 0.200
+
+random contiguous partitions: 1000, each the best of 50 draws; mean absolute drift from the country sizes 1.06 regions per group (country sizes average 10.8); number of groups always 16
+
+== 1. Share of regional variation that lies between countries (population-weighted; null: 1000 random contiguous partitions of the same sizes, and 1000 random relabellings ignoring geography)
+industry share:
+  1900  n=171  countries 0.527 | random contiguous mean 0.492 [5-95%: 0.407, 0.563], share >= countries 0.239 | relabelled mean 0.151
+  1910  n=171  countries 0.494 | random contiguous mean 0.459 [5-95%: 0.366, 0.538], share >= countries 0.243 | relabelled mean 0.147
+  1925  n=171  countries 0.459 | random contiguous mean 0.456 [5-95%: 0.376, 0.532], share >= countries 0.483 | relabelled mean 0.153
+  1938  n=171  countries 0.452 | random contiguous mean 0.452 [5-95%: 0.368, 0.526], share >= countries 0.511 | relabelled mean 0.135
+  1950  n=172  countries 0.506 | random contiguous mean 0.557 [5-95%: 0.466, 0.633], share >= countries 0.847 | relabelled mean 0.143
+  1960  n=172  countries 0.501 | random contiguous mean 0.537 [5-95%: 0.443, 0.610], share >= countries 0.773 | relabelled mean 0.136
+  1970  n=173  countries 0.363 | random contiguous mean 0.468 [5-95%: 0.351, 0.553], share >= countries 0.921 | relabelled mean 0.134
+  1980  n=173  countries 0.232 | random contiguous mean 0.328 [5-95%: 0.206, 0.437], share >= countries 0.915 | relabelled mean 0.132
+  1990  n=173  countries 0.259 | random contiguous mean 0.329 [5-95%: 0.208, 0.444], share >= countries 0.843 | relabelled mean 0.132
+  2000  n=173  countries 0.228 | random contiguous mean 0.270 [5-95%: 0.174, 0.365], share >= countries 0.751 | relabelled mean 0.146
+  2010  n=173  countries 0.254 | random contiguous mean 0.304 [5-95%: 0.216, 0.388], share >= countries 0.824 | relabelled mean 0.146
+  2015  n=166  countries 0.296 | random contiguous mean 0.351 [5-95%: 0.254, 0.445], share >= countries 0.808 | relabelled mean 0.140
+  2021  n=139  countries 0.305 | random contiguous mean 0.333 [5-95%: 0.220, 0.436], share >= countries 0.680 | relabelled mean 0.134
+log GDP per head:
+  1900  n=172  countries 0.671 | random contiguous mean 0.535 [5-95%: 0.443, 0.610], share >= countries 0.002 | relabelled mean 0.162
+  1910  n=172  countries 0.668 | random contiguous mean 0.491 [5-95%: 0.407, 0.569], share >= countries 0.000 | relabelled mean 0.151
+  1925  n=172  countries 0.649 | random contiguous mean 0.485 [5-95%: 0.385, 0.570], share >= countries 0.000 | relabelled mean 0.162
+  1938  n=172  countries 0.676 | random contiguous mean 0.620 [5-95%: 0.522, 0.692], share >= countries 0.117 | relabelled mean 0.161
+  1950  n=172  countries 0.664 | random contiguous mean 0.611 [5-95%: 0.497, 0.693], share >= countries 0.193 | relabelled mean 0.161
+  1960  n=172  countries 0.628 | random contiguous mean 0.592 [5-95%: 0.429, 0.680], share >= countries 0.365 | relabelled mean 0.148
+  1970  n=173  countries 0.539 | random contiguous mean 0.515 [5-95%: 0.316, 0.610], share >= countries 0.492 | relabelled mean 0.143
+  1980  n=173  countries 0.504 | random contiguous mean 0.488 [5-95%: 0.274, 0.595], share >= countries 0.533 | relabelled mean 0.147
+  1990  n=173  countries 0.267 | random contiguous mean 0.387 [5-95%: 0.270, 0.514], share >= countries 0.953 | relabelled mean 0.141
+  2000  n=173  countries 0.269 | random contiguous mean 0.336 [5-95%: 0.242, 0.429], share >= countries 0.874 | relabelled mean 0.143
+  2010  n=173  countries 0.303 | random contiguous mean 0.320 [5-95%: 0.226, 0.413], share >= countries 0.636 | relabelled mean 0.142
+  2015  n=173  countries 0.329 | random contiguous mean 0.345 [5-95%: 0.236, 0.433], share >= countries 0.650 | relabelled mean 0.145
+  2021  n=169  countries 0.371 | random contiguous mean 0.348 [5-95%: 0.237, 0.438], share >= countries 0.372 | relabelled mean 0.147
+
+== 2. Border premium: |difference| between neighbours across a border minus within a country, holding centroid distance fixed (dyadic-robust SE; null from random contiguous partitions)
+median centroid distance: within-country pairs 123 km, cross-border pairs 141 km
+industry share, percentage points:
+  1900  pairs=381  within 8.93  across 11.88  premium +3.23 (SE 1.17) | random lines mean +0.60 [5-95%: -1.08, +2.23], share >= observed 0.002
+  1910  pairs=381  within 9.67  across 12.19  premium +2.77 (SE 1.26) | random lines mean +0.87 [5-95%: -0.88, +2.50], share >= observed 0.022
+  1925  pairs=381  within 9.09  across 10.51  premium +1.64 (SE 0.91) | random lines mean +0.56 [5-95%: -0.96, +2.09], share >= observed 0.128
+  1938  pairs=381  within 8.79  across 9.69  premium +1.04 (SE 0.79) | random lines mean +0.32 [5-95%: -1.03, +1.72], share >= observed 0.191
+  1950  pairs=381  within 8.06  across 9.04  premium +1.08 (SE 0.87) | random lines mean +0.27 [5-95%: -0.99, +1.49], share >= observed 0.156
+  1960  pairs=386  within 7.81  across 8.17  premium +0.38 (SE 0.75) | random lines mean +0.03 [5-95%: -1.14, +1.21], share >= observed 0.310
+  1970  pairs=386  within 6.63  across 7.47  premium +0.78 (SE 0.54) | random lines mean +0.25 [5-95%: -0.65, +1.18], share >= observed 0.178
+  1980  pairs=386  within 6.25  across 6.86  premium +0.61 (SE 0.72) | random lines mean +0.41 [5-95%: -0.46, +1.37], share >= observed 0.349
+  1990  pairs=386  within 5.66  across 7.05  premium +1.38 (SE 0.70) | random lines mean +0.36 [5-95%: -0.45, +1.17], share >= observed 0.024
+  2000  pairs=386  within 4.95  across 6.78  premium +1.82 (SE 0.77) | random lines mean -0.07 [5-95%: -0.88, +0.75], share >= observed 0.000
+  2010  pairs=386  within 4.48  across 4.74  premium +0.27 (SE 0.57) | random lines mean -0.14 [5-95%: -0.79, +0.58], share >= observed 0.164
+  2015  pairs=356  within 4.14  across 4.60  premium +0.52 (SE 0.56) | random lines mean -0.12 [5-95%: -0.83, +0.57], share >= observed 0.062
+  2021  pairs=294  within 4.38  across 4.70  premium +0.33 (SE 0.76) | random lines mean -0.22 [5-95%: -0.95, +0.57], share >= observed 0.130
+log GDP per head x 100:
+  1900  pairs=381  within 21.60  across 36.84  premium +14.98 (SE 3.59) | random lines mean -1.51 [5-95%: -5.65, +3.11], share >= observed 0.000
+  1910  pairs=381  within 21.19  across 34.13  premium +12.78 (SE 3.48) | random lines mean -1.04 [5-95%: -4.87, +2.89], share >= observed 0.000
+  1925  pairs=381  within 22.11  across 36.32  premium +14.17 (SE 3.95) | random lines mean -2.62 [5-95%: -6.83, +2.02], share >= observed 0.000
+  1938  pairs=381  within 22.76  across 27.79  premium +5.23 (SE 3.63) | random lines mean -1.53 [5-95%: -4.94, +1.87], share >= observed 0.000
+  1950  pairs=381  within 19.23  across 29.81  premium +10.68 (SE 3.97) | random lines mean -0.79 [5-95%: -4.37, +2.99], share >= observed 0.000
+  1960  pairs=381  within 20.10  across 27.58  premium +7.90 (SE 2.83) | random lines mean +0.35 [5-95%: -3.05, +3.90], share >= observed 0.000
+  1970  pairs=386  within 18.78  across 25.64  premium +7.45 (SE 2.66) | random lines mean -0.04 [5-95%: -3.00, +2.96], share >= observed 0.000
+  1980  pairs=386  within 16.53  across 19.88  premium +3.86 (SE 2.05) | random lines mean -0.21 [5-95%: -2.82, +2.51], share >= observed 0.006
+  1990  pairs=386  within 18.77  across 20.46  premium +2.22 (SE 2.81) | random lines mean +0.64 [5-95%: -3.14, +4.39], share >= observed 0.262
+  2000  pairs=386  within 17.75  across 23.87  premium +6.66 (SE 4.11) | random lines mean -1.01 [5-95%: -4.25, +2.32], share >= observed 0.000
+  2010  pairs=386  within 17.73  across 25.92  premium +8.62 (SE 3.87) | random lines mean -1.38 [5-95%: -4.73, +2.25], share >= observed 0.000
+  2015  pairs=386  within 18.54  across 28.70  premium +10.62 (SE 4.38) | random lines mean -1.01 [5-95%: -4.42, +3.04], share >= observed 0.000
+  2021  pairs=375  within 17.36  across 28.98  premium +11.99 (SE 4.24) | random lines mean -0.45 [5-95%: -3.71, +3.49], share >= observed 0.000
+
+== 3. The industrial core of 1900: the 35 regions with the highest industry share
+threshold: industry share >= 0.393 in 1900; median of all regions 0.271
+land-connected clusters among them: 13; spanning more than one country: 4, holding 18 of the 35 regions and 0.391 of their 1900 population
+   6 regions, Belgium, Germany, Netherlands: Liege (BE33); Düsseldorf, Regierungsbezirk (DEA1); Köln, Regierungsbezirk (DEA2); Münster, Regierungsbezirk (DEA3); Arnsberg, Regierungsbezirk (DEA5); Overijssel (NL21)
+   6 regions, United Kingdom: North (UKC+UKD); Yorks  & Humberside (UKE); East  Midlands (UKF); West Midlands (UKG); Wales (UKL); Scotland (UKM)
+   5 regions, Belgium, France: Hainaut (BE32); Île de France (FR10); Picardie (FR22); Haute-Normandie (FR23); Nord - Pas-de-Calais (FR30)
+   5 regions, Austria, Switzerland: Vorarlberg (AT34); Espace Mittelland (CH02); Nordwestschweiz (CH03); Zürich (CH04); Ostschweiz (CH05)
+   4 regions, Germany: Dresden, NUTS 2-Region (DED2); Chemnitz, NUTS 2-Region (DED4); Leipzig, NUTS 2-Region (DED5); Thüringen (DEG0)
+   2 regions, France, Germany: Saarland (DEC0); Lorraine (FR41)
+   1 regions, Germany: Berlin (DE30)
+   1 regions, Norway: Oslo og Akershus (NO01)
+   1 regions, Germany: Bremen (DE50)
+   1 regions, Denmark: Hovedstaden (DK01)
+   1 regions, Germany: Karlsruhe, Regierungsbezirk (DE12)
+   1 regions, Austria: Lower Austria (AT12+AT13)
+   1 regions, Germany: Hamburg (DE60)
+population-weighted industry share, core vs the other regions, and the rank correlation of each year with 1900:
+  1900  core 0.502  rest 0.255  gap +0.248  Spearman with 1900 +1.00  (n=171)
+  1910  core 0.529  rest 0.274  gap +0.256  Spearman with 1900 +0.97  (n=171)
+  1925  core 0.529  rest 0.286  gap +0.243  Spearman with 1900 +0.92  (n=171)
+  1938  core 0.477  rest 0.298  gap +0.179  Spearman with 1900 +0.89  (n=171)
+  1950  core 0.514  rest 0.312  gap +0.202  Spearman with 1900 +0.85  (n=172)
+  1960  core 0.524  rest 0.365  gap +0.159  Spearman with 1900 +0.82  (n=172)
+  1970  core 0.487  rest 0.390  gap +0.097  Spearman with 1900 +0.67  (n=173)
+  1980  core 0.410  rest 0.360  gap +0.050  Spearman with 1900 +0.41  (n=173)
+  1990  core 0.349  rest 0.313  gap +0.036  Spearman with 1900 +0.23  (n=173)
+  2000  core 0.254  rest 0.271  gap -0.017  Spearman with 1900 -0.12  (n=173)
+  2010  core 0.210  rest 0.231  gap -0.021  Spearman with 1900 -0.14  (n=173)
+  2015  core 0.186  rest 0.205  gap -0.018  Spearman with 1900 -0.08  (n=166)
+  2021  core 0.179  rest 0.209  gap -0.030  Spearman with 1900 -0.15  (n=139)
+year of the highest industry share, core regions: 1900 2 1910 10 1925 6 1938 2 1950 1 1960 10 1970 4
+year of the highest industry share, other regions: 1900 1 1910 4 1925 3 1938 2 1950 2 1960 27 1970 65 1980 20 1990 6 2000 8
+core regions' GDP per head relative to their own country (log points x 100, mean): 1900 +10.8; 1960 +5.8; 2015 -5.0
+
