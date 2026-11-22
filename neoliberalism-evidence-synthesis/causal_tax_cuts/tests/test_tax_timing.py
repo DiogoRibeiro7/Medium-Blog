@@ -35,9 +35,7 @@ def fixture(root: Path) -> tuple[Path, Path, Path]:
             "iso3": country,
             "year": str(year),
             "taxcut_2SD": str(
-                int((country, year) in {
-                    ("AAA", 2001), ("AAA", 2002), ("BBB", 2004)
-                })
+                int((country, year) in {("AAA", 2001), ("AAA", 2002), ("BBB", 2004)})
             ),
         }
         for country in ("AAA", "BBB")
@@ -53,7 +51,8 @@ def fixture(root: Path) -> tuple[Path, Path, Path]:
                 "year": row["year"],
                 "treated": row["taxcut_2SD"],
             }
-            for row in data if (row["iso3"], row["year"]) != ("AAA", "2002")
+            for row in data
+            if (row["iso3"], row["year"]) != ("AAA", "2002")
         ],
     )
     ledger = root / "ledger.csv"
@@ -76,15 +75,22 @@ def fixture(root: Path) -> tuple[Path, Path, Path]:
     return events, joined, ledger
 
 
-def load_fixture(root: Path) -> tuple[
-    dict[tuple[str, int], int], set[tuple[str, int]],
-    dict[tuple[str, int], object], tuple[Path, Path, Path]
+def load_fixture(
+    root: Path,
+) -> tuple[
+    dict[tuple[str, int], int],
+    set[tuple[str, int]],
+    dict[tuple[str, int], object],
+    tuple[Path, Path, Path],
 ]:
     """Construct full data in the test's synthetic rectangle."""
     files = fixture(root)
     author = load_author_flags(
-        files[0], countries=frozenset({"AAA", "BBB"}),
-        start_year=2000, end_year=2004, expected_flags=3,
+        files[0],
+        countries=frozenset({"AAA", "BBB"}),
+        start_year=2000,
+        end_year=2004,
+        expected_flags=3,
     )
     observed = load_joined_outcomes(files[1], author)
     context = load_statute_contexts(files[2], author)
@@ -137,13 +143,21 @@ class TaxTimingTests(unittest.TestCase):
             author, _, _, files = load_fixture(Path(directory))
             source = files[0]
             records = list(csv.DictReader(source.open(encoding="utf-8")))
-            write_csv(source, [r for r in records if not (
-                r["iso3"] == "AAA" and r["year"] == "2000"
-            )])
+            write_csv(
+                source,
+                [
+                    r
+                    for r in records
+                    if not (r["iso3"] == "AAA" and r["year"] == "2000")
+                ],
+            )
             with self.assertRaisesRegex(ValueError, "Unobserved author policy"):
                 load_author_flags(
-                    source, countries=frozenset({"AAA", "BBB"}),
-                    start_year=2000, end_year=2004, expected_flags=3,
+                    source,
+                    countries=frozenset({"AAA", "BBB"}),
+                    start_year=2000,
+                    end_year=2004,
+                    expected_flags=3,
                 )
             self.assertEqual(author["AAA", 2000], 0)
 
@@ -154,8 +168,11 @@ class TaxTimingTests(unittest.TestCase):
                 handle.write("AAA,2001,1\n")
             with self.assertRaisesRegex(ValueError, "Duplicate author"):
                 load_author_flags(
-                    files[0], countries=frozenset({"AAA", "BBB"}),
-                    start_year=2000, end_year=2004, expected_flags=3,
+                    files[0],
+                    countries=frozenset({"AAA", "BBB"}),
+                    start_year=2000,
+                    end_year=2004,
+                    expected_flags=3,
                 )
 
     def test_legislative_context_must_be_primary_and_noncausal(self) -> None:
@@ -188,27 +205,47 @@ class TaxTimingTests(unittest.TestCase):
             author, observed, context, files = load_fixture(root)
             flags, runs, report = audit_annual_timing(author, observed, context)
             previous = root / "prior.json"
-            previous.write_text(json.dumps({
-                "joined_panel_sha256": hashlib.sha256(files[1].read_bytes()).hexdigest(),
-                "n_original_observed_reform_events": 2,
-            }))
+            previous.write_text(
+                json.dumps(
+                    {
+                        "joined_panel_sha256": hashlib.sha256(
+                            files[1].read_bytes()
+                        ).hexdigest(),
+                        "n_original_observed_reform_events": 2,
+                    }
+                )
+            )
             save_timing_audit(
-                root / "out", flags, runs, report,
-                author_path=files[0], joined_path=files[1],
-                ledger_path=files[2], prior_reference=previous,
+                root / "out",
+                flags,
+                runs,
+                report,
+                author_path=files[0],
+                joined_path=files[1],
+                ledger_path=files[2],
+                prior_reference=previous,
             )
             result = json.loads((root / "out/author_timing_audit.json").read_text())
             self.assertEqual(result["frozen_reference_status"], "same_source_validated")
             self.assertEqual(result["n_descriptive_consecutive_runs"], 2)
-            previous.write_text(json.dumps({
-                "joined_panel_sha256": result["joined_panel_sha256"],
-                "n_original_observed_reform_events": 3,
-            }))
+            previous.write_text(
+                json.dumps(
+                    {
+                        "joined_panel_sha256": result["joined_panel_sha256"],
+                        "n_original_observed_reform_events": 3,
+                    }
+                )
+            )
             with self.assertRaisesRegex(ValueError, "Same-vintage reform count"):
                 save_timing_audit(
-                    root / "out", flags, runs, report,
-                    author_path=files[0], joined_path=files[1],
-                    ledger_path=files[2], prior_reference=previous,
+                    root / "out",
+                    flags,
+                    runs,
+                    report,
+                    author_path=files[0],
+                    joined_path=files[1],
+                    ledger_path=files[2],
+                    prior_reference=previous,
                 )
 
 
