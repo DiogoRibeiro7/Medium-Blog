@@ -146,7 +146,9 @@ def load_joined_outcomes(
         if key not in author or key in observed:
             raise ValueError(f"Invalid joined outcome country-year: {key}")
         if row["treated"] != str(author[key]):
-            raise ValueError(f"Policy flag disagrees between WID join and author: {key}")
+            raise ValueError(
+                f"Policy flag disagrees between WID join and author: {key}"
+            )
         observed.add(key)
     return observed
 
@@ -159,10 +161,17 @@ def load_statute_contexts(
     Only dated public primary-legislation records are permitted.
     Context entries cannot be used as event timing or re-coding evidence.
     """
-    fields = frozenset({
-        "country", "author_year", "title", "enacted_on",
-        "primary_source_url", "tax_period_text", "evidence_scope",
-    })
+    fields = frozenset(
+        {
+            "country",
+            "author_year",
+            "title",
+            "enacted_on",
+            "primary_source_url",
+            "tax_period_text",
+            "evidence_scope",
+        }
+    )
     result: dict[tuple[str, int], StatuteContext] = {}
     for raw in _rows(path, fields):
         country = raw["country"]
@@ -187,8 +196,12 @@ def load_statute_contexts(
         if not raw["title"].strip():
             raise ValueError("Missing statute title")
         result[key] = StatuteContext(
-            country, year, raw["title"].strip(),
-            enacted.isoformat(), source_url, raw["tax_period_text"].strip(),
+            country,
+            year,
+            raw["title"].strip(),
+            enacted.isoformat(),
+            source_url,
+            raw["tax_period_text"].strip(),
             raw["evidence_scope"],
         )
     return result
@@ -228,7 +241,10 @@ def audit_annual_timing(
             first, last = group[0], group[-1]
             runs.append(
                 ConsecutiveRun(
-                    country, first, last, len(group),
+                    country,
+                    first,
+                    last,
+                    len(group),
                     sum((country, year) in observed for year in group),
                 )
             )
@@ -269,14 +285,12 @@ def audit_annual_timing(
         "n_flag_years_with_joined_wid_outcome": with_outcome,
         "n_flag_years_missing_joined_wid_outcome": len(flags) - with_outcome,
         "missing_flag_year_ids": [
-            f"{country}-{year}"
-            for country, year in sorted(flagged - observed)
+            f"{country}-{year}" for country, year in sorted(flagged - observed)
         ],
         "n_flags_with_primary_statute_context": len(context),
-        "n_primary_statutes_distinct_by_title_and_enactment": len({
-            (row.country, row.title, row.enacted_on)
-            for row in context.values()
-        }),
+        "n_primary_statutes_distinct_by_title_and_enactment": len(
+            {(row.country, row.title, row.enacted_on) for row in context.values()}
+        ),
         "n_flags_with_verified_implementation_date": 0,
         "treatment_semantics": (
             "The binary 2-SD variable denotes author-coded annual changes "
@@ -331,7 +345,9 @@ def save_timing_audit(
                 audit["n_flag_years_with_joined_wid_outcome"]
                 != reference["n_original_observed_reform_events"]
             ):
-                raise ValueError("Same-vintage reform count differs from previous audit")
+                raise ValueError(
+                    "Same-vintage reform count differs from previous audit"
+                )
             output["frozen_reference_status"] = "same_source_validated"
         else:
             output["frozen_reference_status"] = "source_vintage_changed"
@@ -340,9 +356,7 @@ def save_timing_audit(
         ("author_flag_years.csv", flags, FlaggedYear),
         ("author_consecutive_flag_runs.csv", runs, ConsecutiveRun),
     ):
-        with (destination / filename).open(
-            "w", encoding="utf-8", newline=""
-        ) as handle:
+        with (destination / filename).open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(handle, fieldnames=list(kind.__dataclass_fields__))
             writer.writeheader()
             writer.writerows(asdict(item) for item in records)
@@ -366,9 +380,14 @@ def main() -> None:
     context = load_statute_contexts(args.statute_ledger, panel)
     flags, runs, report = audit_annual_timing(panel, observed, context)
     save_timing_audit(
-        args.output_dir, flags, runs, report,
-        author_path=args.author_csv, joined_path=args.joined_panel,
-        ledger_path=args.statute_ledger, prior_reference=args.frozen_reference,
+        args.output_dir,
+        flags,
+        runs,
+        report,
+        author_path=args.author_csv,
+        joined_path=args.joined_panel,
+        ledger_path=args.statute_ledger,
+        prior_reference=args.frozen_reference,
     )
     print(
         f"{report['n_author_flag_years']} author flag years, "
