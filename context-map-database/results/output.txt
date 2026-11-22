@@ -1,0 +1,246 @@
+
+==============================================================================
+1  The deploy schema as a finitely presented category
+==============================================================================
+
+first schema: 4 objects, 4 generating arrows, 1 equation(s); rewriting confluent: True
+  morphisms in all: 10
+  Hom(Cloud, Cloud) = {id_Cloud}
+  Hom(Staging, Cloud) = {s}
+  Hom(Staging, Staging) = {id_Staging}
+  Hom(Production, Cloud) = {p}
+  Hom(Production, Production) = {id_Production}
+  Hom(Production, Incident) = {u}
+  Hom(Incident, Cloud) = {i;p}
+  Hom(Incident, Production) = {i}
+  Hom(Incident, Incident) = {id_Incident, i;u}
+  Hom(Staging, Production) empty: True
+  SQL recursive query, Staging reaches Production: False
+
+with w: Cloud -> Production: 4 objects, 5 generating arrows, 2 equation(s); rewriting confluent: True
+  morphisms in all: 18
+  Hom(Cloud, Cloud) = {id_Cloud}
+  Hom(Cloud, Production) = {w}
+  Hom(Cloud, Incident) = {w;u}
+  Hom(Staging, Cloud) = {s}
+  Hom(Staging, Staging) = {id_Staging}
+  Hom(Staging, Production) = {s;w}
+  Hom(Staging, Incident) = {s;w;u}
+  Hom(Production, Cloud) = {p}
+  Hom(Production, Production) = {id_Production, p;w}
+  Hom(Production, Incident) = {u, p;w;u}
+  Hom(Incident, Cloud) = {i;p}
+  Hom(Incident, Production) = {i, i;p;w}
+  Hom(Incident, Incident) = {id_Incident, i;u, i;p;w;u}
+  Hom(Staging, Production) empty: False
+  SQL recursive query, Staging reaches Production: True
+
+==============================================================================
+2  The instance as a functor; the category of elements as one table
+==============================================================================
+rows per table: {'Cloud': 3, 'Staging': 3, 'Production': 4, 'Incident': 6} total 16
+typing errors: 0
+path-equation violations: {'u;i = id_Production': []}
+is a functor: True
+
+The path equation as SQL:
+  SELECT x.id FROM "Production" x JOIN "Incident" l0 ON l0.id = x."u" JOIN "Production" l1 ON l1.id = l0."i" WHERE l1.id IS NOT x.id ORDER BY x.id
+SQL violations: {'u;i = id_Production': []}
+
+The loop Incident -> Production -> Incident (i;u), row by row:
+  i_deploy     -> i_deploy      (apply an approved hotfix)
+  i_suspended  -> i_suspended   (release authorisation, suspended for the incident)
+  i_hotfix_42  -> i_note        (an approval recorded in an earlier incident)
+  i_hotfix_43  -> i_note        (an approval recorded in an earlier incident)
+  i_note       -> i_note        (an approval recorded in an earlier incident)
+  i_revoked    -> i_revoked     (an approval was revoked)
+  rows that do not come back as themselves: 2 of 6: ['i_hotfix_42', 'i_hotfix_43']
+The loop Production -> Incident -> Production (u;i) moves 0 rows.
+
+flat table: 16 rows, columns ['eid', 'context', 'token', 'meaning', 'grants', 'fk_s', 'fk_p', 'fk_i', 'fk_u']
+round trip flat -> instance identical: True
+flat-table conditions broken (python, sql): 0 0
+
+CREATE TABLE element (eid TEXT PRIMARY KEY, context TEXT NOT NULL, token TEXT, meaning TEXT, grants TEXT, fk_s TEXT REFERENCES element(eid), fk_p TEXT REFERENCES element(eid), fk_i TEXT REFERENCES element(eid), fk_u TEXT REFERENCES element(eid), CHECK ((context = 'Staging') = (fk_s IS NOT NULL)), CHECK ((context = 'Production') = (fk_p IS NOT NULL)), CHECK ((context = 'Incident') = (fk_i IS NOT NULL)), CHECK ((context = 'Production') = (fk_u IS NOT NULL)))
+  insert a Staging row that also fills the Incident column: rejected (CHECK constraint failed: (context = 'Incident') = (fk_i IS NOT NULL))
+  insert a Staging row with no s column: rejected (CHECK constraint failed: (context = 'Staging') = (fk_s IS NOT NULL))
+  insert a Staging row whose s column points at a Production row: accepted
+  cross-row query after the inserts: [('bad3', 'fk_s')]
+
+==============================================================================
+3  The conversation
+==============================================================================
+  turn  1  Production  We are shipping v2.3 this week.           
+  turn  2  Staging     The test procedure is approved.           records s_approve
+  turn  3  Staging     Run the integration tests.                
+  turn  4  Incident    Incident opened: payment latency.         
+  turn  5  Incident    Hotfix 42 is approved.                    records i_hotfix_42
+  turn  6  Incident    Deploy?                                   
+  turn  7  Production  Incident closed.                          
+  turn  8  Production  Deploy?                                   
+  turn  9  Incident    New incident opened: cache errors.        
+  turn 10  Incident    Deploy?                                   
+
+first schema: functor True
+  turn  6 in Incident   asks hotfix    context-aware: carry out  context-blind: carry out  evidence: i_hotfix_42 via id_Incident -> i_hotfix_42
+  turn  8 in Production asks release   context-aware: refuse     context-blind: carry out  evidence: none
+           state at turn 8: [('Staging', 's_approve'), ('Production', 'p_note')]
+  turn 10 in Incident   asks hotfix    context-aware: refuse     context-blind: carry out  evidence: none
+
+with w, sending the generic approval to 'release authorised': functor True
+  turn  6 in Incident   asks hotfix    context-aware: carry out  context-blind: carry out  evidence: i_hotfix_42 via id_Incident -> i_hotfix_42
+  turn  8 in Production asks release   context-aware: carry out  context-blind: carry out  evidence: s_approve via s;w -> p_approve; p_note via p;w -> p_approve
+           state at turn 8: [('Staging', 's_approve'), ('Production', 'p_note')]
+  turn 10 in Incident   asks hotfix    context-aware: refuse     context-blind: carry out  evidence: none
+
+with w, sending it to the note that grants nothing: functor True
+  turn  6 in Incident   asks hotfix    context-aware: carry out  context-blind: carry out  evidence: i_hotfix_42 via id_Incident -> i_hotfix_42
+  turn  8 in Production asks release   context-aware: refuse     context-blind: carry out  evidence: none
+           state at turn 8: [('Staging', 's_approve'), ('Production', 'p_note')]
+  turn 10 in Incident   asks hotfix    context-aware: refuse     context-blind: carry out  evidence: none
+
+==============================================================================
+4  The three checks as queries
+==============================================================================
+Declared law: a release authorisation in Production can only be the image of one that
+was already there (rows carried to one along a morphism without being such an image).
+  first schema: 0 violating rows (python) / 0 (sql), same: True
+  with w, leak: 5 violating rows (python) / 5 (sql), same: True
+     ('Incident', 'i_hotfix_42', 'i;p;w', 'p_approve')
+     ('Incident', 'i_hotfix_43', 'i;p;w', 'p_approve')
+     ('Incident', 'i_note', 'i;p;w', 'p_approve')
+     ('Production', 'p_note', 'p;w', 'p_approve')
+     ('Staging', 's_approve', 's;w', 'p_approve')
+  with w, safe: 0 violating rows (python) / 0 (sql), same: True
+
+Commuting squares: an update is natural when it commutes with every foreign key.
+  revoke every approval: 0 failing squares, sql agrees: True
+  revoke approvals inside the incident only: 6 failing squares, sql agrees: True
+     arrow i, row i_hotfix_42: move then update -> p_note; update then move -> p_revoked
+     arrow i, row i_hotfix_43: move then update -> p_note; update then move -> p_revoked
+     arrow i, row i_note: move then update -> p_note; update then move -> p_revoked
+     arrow i, row i_suspended: move then update -> p_approve; update then move -> p_revoked
+     arrow u, row p_approve: move then update -> i_revoked; update then move -> i_suspended
+     arrow u, row p_note: move then update -> i_revoked; update then move -> i_note
+
+Loops: the path equation u;i = id holds on every Production row (section 2); the loop i;u
+legitimately moves the specific hotfix approvals to the generic note.
+
+==============================================================================
+5  The same checks in SQL on random instances
+==============================================================================
+  instances: 800
+  functors: 459
+  equation_rows_flagged: 850
+  equation_mismatches: 0
+  naturality_squares_flagged: 9059
+  naturality_mismatches: 0
+  law_rows_flagged: 530
+  law_mismatches: 0
+  flat_roundtrip_failures: 0
+  flat_condition_failures: 0
+random schemas, reachability (python BFS vs recursive SQL): {'schemas': 300, 'pairs': 8690, 'reachable': 3439, 'mismatches': 0}
+profunctor composition over a diamond-shaped category (coend by union-find vs SQL):
+  pairs_of_profunctors: 200
+  python_sql_mismatches: 0
+  cells: 800
+  cells_where_join_overcounts: 800
+  join_total: 12526
+  coend_total: 2984
+  discrete_middle_equal: 50
+  discrete_trials: 50
+  join overcounts the composite by a factor of 4.20
+
+==============================================================================
+6  Learned transports
+==============================================================================
+written maps: max |B A - I| = 7.8e-16
+exact sampler vs brute-force least squares: {'d': 16, 'n': 400, 'reps': 3000, 'rms_ols': 0.02921, 'rms_exact': 0.029203, 'q95_ols': 0.031397, 'q95_exact': 0.031361, 'ks_p': 0.522693}
+
+   d    m      n  reps   RMS sim   formula  ratio       5%      95%      min
+   8   16     48   400   0.06866   0.06806  1.009  0.05785  0.07974  0.05365
+   8   16    512   400   0.01784   0.01791  0.996  0.01500  0.02041  0.01317
+   8   16   1024   400   0.01257   0.01258  0.999  0.01067  0.01445  0.00932
+   8   16   2048   400   0.00887   0.00887  1.000  0.00751  0.01017  0.00660
+   8   16   4096   400   0.00627   0.00626  1.002  0.00537  0.00714  0.00486
+   8   16   8192   400   0.00443   0.00442  1.001  0.00381  0.00505  0.00318
+   8   16  16384   400   0.00314   0.00313  1.006  0.00266  0.00360  0.00218
+  32   64    144   200   0.08341   0.08327  1.002  0.07934  0.08786  0.07670
+  32   64    512   200   0.03723   0.03720  1.001  0.03608  0.03844  0.03520
+  32   64   1024   200   0.02565   0.02562  1.001  0.02480  0.02661  0.02407
+  32   64   2048   200   0.01794   0.01789  1.002  0.01731  0.01871  0.01671
+  32   64   4096   200   0.01258   0.01258  1.000  0.01204  0.01305  0.01160
+  32   64   8192   200   0.00886   0.00887  0.999  0.00855  0.00915  0.00841
+  32   64  16384   200   0.00626   0.00626  1.000  0.00601  0.00649  0.00581
+ 128  256    528    60   0.08923   0.08906  1.002  0.08821  0.09002  0.08730
+ 128  256   1024    60   0.05575   0.05567  1.001  0.05522  0.05624  0.05508
+ 128  256   2048    60   0.03720   0.03717  1.001  0.03686  0.03753  0.03667
+ 128  256   4096    60   0.02561   0.02561  1.000  0.02539  0.02585  0.02527
+ 128  256   8192    60   0.01790   0.01789  1.001  0.01775  0.01804  0.01762
+ 128  256  16384    60   0.01259   0.01257  1.001  0.01246  0.01271  0.01243
+largest relative gap between simulation and formula: 0.88%
+
+loop check as a test: d = 32, m = 64, sigma = 0.1, alpha = 0.05
+violation multiples of the null RMS drift: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  n =    256: null RMS 0.05582 (formula 0.05577), threshold 0.05799, size 0.050, null CV 2.39%
+     power: [0.052, 0.086, 0.202, 0.553, 0.934, 0.998, 1.0, 1.0, 1.0, 1.0, 1.0]
+     80% power at 0.365 x null drift = 0.02037
+     noise overstated by 10%: power [0.0, 0.0, 0.0, 0.0, 0.004, 0.179, 0.801, 0.998, 1.0, 1.0, 1.0]; 80% power at 0.600 x null drift
+     false alarms when the noise is misjudged: {'-10%': 0.997, '-5%': 0.69775, '+5%': 0.0, '+10%': 0.0}
+  n =   1024: null RMS 0.02562 (formula 0.02562), threshold 0.02660, size 0.050, null CV 2.29%
+     power: [0.055, 0.079, 0.202, 0.597, 0.945, 0.999, 1.0, 1.0, 1.0, 1.0, 1.0]
+     80% power at 0.358 x null drift = 0.00918
+     noise overstated by 10%: power [0.0, 0.0, 0.0, 0.0, 0.004, 0.152, 0.838, 0.999, 1.0, 1.0, 1.0]; 80% power at 0.594 x null drift
+     false alarms when the noise is misjudged: {'-10%': 0.99875, '-5%': 0.70725, '+5%': 0.00025, '+10%': 0.0}
+  n =   4096: null RMS 0.01257 (formula 0.01258), threshold 0.01303, size 0.050, null CV 2.23%
+     power: [0.059, 0.078, 0.225, 0.645, 0.963, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+     80% power at 0.349 x null drift = 0.00438
+     noise overstated by 10%: power [0.0, 0.0, 0.0, 0.0, 0.004, 0.183, 0.848, 0.999, 1.0, 1.0, 1.0]; 80% power at 0.593 x null drift
+     false alarms when the noise is misjudged: {'-10%': 0.9995, '-5%': 0.752, '+5%': 0.0, '+10%': 0.0}
+  n =  16384: null RMS 0.00626 (formula 0.00626), threshold 0.00648, size 0.050, null CV 2.19%
+     power: [0.066, 0.083, 0.228, 0.622, 0.96, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+     80% power at 0.353 x null drift = 0.00221
+     noise overstated by 10%: power [0.0, 0.0, 0.0, 0.0, 0.004, 0.185, 0.859, 0.999, 1.0, 1.0, 1.0]; 80% power at 0.591 x null drift
+     false alarms when the noise is misjudged: {'-10%': 0.99825, '-5%': 0.7575, '+5%': 0.0, '+10%': 0.0}
+
+==============================================================================
+7  Grounding
+==============================================================================
+cost rule threshold t = 0.90 (unpermitted action costs 9 refusals)
+
+context accuracy 80.10% (scale 2.290); mean top posterior 0.800, overconfident 0.894
+  argmax               unpermitted carried out   6.63%   permitted refused  20.01%
+  bayes_calibrated     unpermitted carried out   0.42%   permitted refused  66.66%
+  bayes_overconfident  unpermitted carried out   2.17%   permitted refused  41.94%
+  identity from the confusion matrix: 6.63%
+  sources (argmax): {'Incident read as Production': '35.5%', 'Production read as Incident': '22.1%', 'Cloud read as Production': '14.4%', 'Cloud read as Staging': '12.4%', 'Staging read as Cloud': '7.4%', 'Production read as Cloud': '7.4%', 'Production read as Staging': '0.4%', 'Staging read as Production': '0.3%', 'Incident read as Cloud': '0.1%', 'Cloud read as Incident': '0.1%'}
+
+context accuracy 90.17% (scale 3.345); mean top posterior 0.901, overconfident 0.953
+  argmax               unpermitted carried out   3.28%   permitted refused   9.92%
+  bayes_calibrated     unpermitted carried out   0.56%   permitted refused  33.40%
+  bayes_overconfident  unpermitted carried out   1.48%   permitted refused  19.31%
+  identity from the confusion matrix: 3.27%
+  sources (argmax): {'Incident read as Production': '37.7%', 'Production read as Incident': '28.8%', 'Cloud read as Production': '10.3%', 'Cloud read as Staging': '8.9%', 'Production read as Cloud': '7.3%', 'Staging read as Cloud': '6.9%', 'Incident read as Cloud': '0.0%'}
+
+context accuracy 95.08% (scale 4.236); mean top posterior 0.950, overconfident 0.978
+  argmax               unpermitted carried out   1.64%   permitted refused   4.96%
+  bayes_calibrated     unpermitted carried out   0.36%   permitted refused  16.33%
+  bayes_overconfident  unpermitted carried out   0.81%   permitted refused   9.47%
+  identity from the confusion matrix: 1.64%
+  sources (argmax): {'Incident read as Production': '41.4%', 'Production read as Incident': '34.5%', 'Cloud read as Production': '6.6%', 'Cloud read as Staging': '6.5%', 'Production read as Cloud': '5.7%', 'Staging read as Cloud': '5.3%'}
+
+context accuracy 99.03% (scale 6.075); mean top posterior 0.990, overconfident 0.996
+  argmax               unpermitted carried out   0.35%   permitted refused   0.97%
+  bayes_calibrated     unpermitted carried out   0.09%   permitted refused   3.06%
+  bayes_overconfident  unpermitted carried out   0.19%   permitted refused   1.75%
+  identity from the confusion matrix: 0.32%
+  sources (argmax): {'Production read as Incident': '46.6%', 'Incident read as Production': '42.2%', 'Cloud read as Production': '3.4%', 'Cloud read as Staging': '3.1%', 'Production read as Cloud': '2.4%', 'Staging read as Cloud': '2.3%'}
+
+database audit of argmax decisions: {'turns': 20000, 'accuracy': 0.95445, 'executed': 9589, 'unauthorised_executed': 158, 'foreign_key_violations': 0, 'grant_mismatches': 0}
+
+==============================================================================
+Figures
+==============================================================================
+  wrote figures/fig1_schema.png
+  wrote figures/fig2_learned_loops.png
+  wrote figures/fig3_grounding.png
