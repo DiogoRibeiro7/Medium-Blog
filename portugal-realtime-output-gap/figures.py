@@ -118,7 +118,7 @@ def fig_ages(res: dict, path: Path):
     ax.legend(loc="lower right", fontsize=9)
     title(fig, "Output-gap errors shrink slowly: the budget-time forecast is off by 1.3 points on average")
     fig.subplots_adjust(left=0.08, right=0.98, top=0.9, bottom=0.15)
-    note(fig, "27 EU countries, target years 2010–2022, autumn releases 2011–2018 and 2021, against autumn 2026. "
+    note(fig, "27 EU countries, target years 2006–2022, autumn releases 2011–2018 and 2021, against autumn 2026. "
               "Source: European Commission, AMECO; author's calculations.")  # fmt: skip
     fig.savefig(path / "fig2_errors_by_age.png", dpi=160)
     plt.close(fig)
