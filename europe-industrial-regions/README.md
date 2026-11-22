@@ -29,6 +29,7 @@ python figures.py         # figures/fig1-fig5
 - **Border premium.** For the 386 pairs of regions that share a land boundary, the absolute difference in the industry share (or log GDP per head) regressed on a cross-border dummy and log centroid distance, with Fafchamps-Gubert dyadic-robust standard errors; the same regression with the lines of each random partition gives the null distribution.
 - **The 1900 core.** The 35 regions with the highest industry share in 1900, the land-connected clusters among them, and what happened to them by 2021.
 - **Price base.** The workbook gives regional GDP in 2011 PPP dollars (to 2022) and in 1990 international dollars (to 2015). Inside a country and year the two differ by one factor, so regional ratios within a country are the same and only national levels move. The income tests are repeated in 1990 dollars, and section 4 of `results/summary.txt` lists national levels and every land border in both bases.
+- **Borders of 1900.** The data use today's borders. Section 5 repeats the border test for 1900 and 1910 with Alsace in Germany, Ireland in the United Kingdom and Trentino-South Tyrol in Austria; regions split by a border of the time (Lorraine, Southern Denmark, Friuli-Venezia Giulia, Liège) keep their present country.
 
 Islands and the three separate land masses are joined to the nearest region by straight links only to draw random partitions; the border test uses land neighbours alone.
 

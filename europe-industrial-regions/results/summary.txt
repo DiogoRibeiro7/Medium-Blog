@@ -161,3 +161,10 @@ land borders one by one: pairs of neighbouring regions; mean gap in log GDP per 
   Norway-Sweden (9 pairs): 1900 income -9 (1990 $ -44), industry 8.9 | 2015 income +57 (1990 $ +6), industry 3.7
   Portugal-Spain (7 pairs): 1900 income -63 (1990 $ -0), industry 6.5 | 2015 income -6 (1990 $ -5), industry 7.1
 
+== 5. The same border test with the borders of 1900 for 1900 and 1910 (Alsace in Germany, Ireland in the United Kingdom, Trentino-South Tyrol in Austria)
+regions split by a border of the time keep their present country: FR41 (Moselle German), DK03 (North Schleswig German), ITH4 (Gorizia and Trieste Austrian), BE33 (Eupen-Malmedy German); Norway and Sweden (in union until 1905) and Finland (a grand duchy of the Russian Empire with its own customs and currency) stay separate
+pairs across a border: 91 with the borders of 1900, 93 with today's
+  industry share, percentage points: 1900 premium +3.52 (SE 1.22), random lines share >= observed 0.000 | 1910 premium +3.10 (SE 1.32), random lines share >= observed 0.011
+  log GDP per head x 100: 1900 premium +15.19 (SE 3.65), random lines share >= observed 0.000 | 1910 premium +13.24 (SE 3.46), random lines share >= observed 0.000
+  log GDP per head x 100, 1990 international dollars: 1900 premium +10.07 (SE 3.74), random lines share >= observed 0.000 | 1910 premium +8.26 (SE 3.15), random lines share >= observed 0.000
+

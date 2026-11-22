@@ -40,6 +40,11 @@ MERGED = {"AT12+AT13": "AT123", "DE71+DE72": "DE712", "DE91+DE92": "DE912"}
 SHEETS = {"ind": "A5 Employment Share Industry", "agr": "A4 Employment Share Agriculture",
           "srv": "A6 Employment Share Services", "pop": "A3 Population",
           "gdp": "A1b Regional GDP (2011PPP)", "gdp90": "A1 Regional GDP"}
+# whole regions that sat in another state in 1900 and 1910; regions split by a border of the time
+# (Lorraine, Southern Denmark, Friuli-Venezia Giulia, Liège) keep their present country
+BORDERS_1900 = {"FR42": "Germany", "IE0": "United Kingdom", "ITH1+ITH2": "Austria"}
+SPLIT_1900 = {"FR41": "Moselle German", "DK03": "North Schleswig German",
+              "ITH4": "Gorizia and Trieste Austrian", "BE33": "Eupen-Malmedy German"}
 OUT: list[str] = []
 
 
@@ -448,6 +453,40 @@ def section_steps(df, g, pairs):
     say()
 
 
+def section_borders_1900(df, g, pairs, parts):
+    say("== 5. The same border test with the borders of 1900 for 1900 and 1910 (Alsace in Germany, "
+        "Ireland in the United Kingdom, Trentino-South Tyrol in Austria)")
+    say("regions split by a border of the time keep their present country: " +
+        ", ".join(f"{c} ({why})" for c, why in SPLIT_1900.items()) +
+        "; Norway and Sweden (in union until 1905) and Finland (a grand duchy of the Russian Empire with "
+        "its own customs and currency) stay separate")
+    c1900 = g.country.copy()
+    for code, country in BORDERS_1900.items():
+        c1900[code] = country
+    a = np.array([p[0] for p in pairs])
+    b = np.array([p[1] for p in pairs])
+    xy = np.column_stack([g.geometry.centroid.x, g.geometry.centroid.y])
+    pos = {c: i for i, c in enumerate(g.index)}
+    logd = np.log(np.array([np.hypot(*(xy[pos[i]] - xy[pos[j]])) / 1000 for i, j in pairs]))
+    cross = np.array([c1900[i] != c1900[j] for i, j in pairs])
+    now = np.array([g.country[i] != g.country[j] for i, j in pairs])
+    say(f"pairs across a border: {cross.sum()} with the borders of 1900, {now.sum()} with today's")
+    for var, label in [("ind", "industry share, percentage points"), ("lgdppc", "log GDP per head x 100"),
+                       ("lgdppc90", "log GDP per head x 100, 1990 international dollars")]:
+        out = []
+        for year in [1900, 1910]:
+            v = df[df.year == year].set_index("code")[var]
+            ok = np.array([np.isfinite(v.get(i, np.nan)) and np.isfinite(v.get(j, np.nan)) for i, j in pairs])
+            diff = 100 * np.abs(v.reindex(a[ok]).to_numpy() - v.reindex(b[ok]).to_numpy())
+            prem, se, _ = border_premium(diff, cross[ok], logd[ok], a[ok], b[ok])
+            null = np.array([border_premium(diff, np.array([p[i] != p[j] for i, j in zip(a[ok], b[ok])]),
+                                            logd[ok], a[ok], b[ok], se=False) for p in parts])
+            out.append(f"{year} premium {prem:+.2f} (SE {se:.2f}), random lines share >= observed "
+                       f"{(null >= prem).mean():.3f}")
+        say(f"  {label}: " + " | ".join(out))
+    say()
+
+
 def benchmark_years(df: pd.DataFrame) -> list[int]:
     """Years in which at least 100 regions report an industry share: the benchmark years
     1900-2015 and 2021."""
@@ -490,6 +529,7 @@ def main() -> int:
     section_border(df, g, pairs, parts)
     section_core(df, g, pairs)
     section_steps(df, g, pairs)
+    section_borders_1900(df, g, pairs, parts)
     (RES / "summary.txt").write_text("\n".join(OUT) + "\n")
     print("\n".join(OUT))
     return 0
