@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Small samples at both ends of a country ranking: shrinkage, funnel plots and rank intervals for a crowdsourced survey"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-22
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/ranking-extremes"
+references:
+  - type: website
+    title: "Happiness and taxes in Europe"
+    authors:
+      - name: "Euro Top Tech"
+    year: 2026
+    url: "https://www.eurotoptech.com/research/happiness-taxes-europe"
+  - type: data
+    title: "Government at a Glance 2025: satisfaction with public services"
+    authors:
+      - name: "OECD"
+    year: 2025
+    url: "https://data-explorer.oecd.org/"
+  - type: article
+    title: "Funnel plots for comparing institutional performance"
+    authors:
+      - family-names: Spiegelhalter
+        given-names: David J.
+    journal: "Statistics in Medicine"
+    volume: 24
+    issue: 8
+    start: 1185
+    end: 1202
+    year: 2005
