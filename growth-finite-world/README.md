@@ -24,13 +24,13 @@ All numbers below are from `output.txt`.
 
 ## Data
 
-Three public sources, each pinned to a commit and checked by SHA-256 in `fetch_data.py`:
+Three public sources, each pinned to a commit and checked by SHA-256 in `fetch_data.py`. The same pins are recorded as external references in the data registry, [DiogoRibeiro7/data](https://github.com/DiogoRibeiro7/data) (`external/shiller-sp-composite-monthly`, `external/owid-co2-data`, `external/owid-energy-data`), which also lists this folder as a consumer of the Maddison Project Database 2023 record:
 
 - [datasets/s-and-p-500](https://github.com/datasets/s-and-p-500), commit `87a2284`, a mirror of Robert Shiller's monthly S&P Composite data (licence PDDL). Earnings and dividends end in June 2023.
 - [owid/co2-data](https://github.com/owid/co2-data), commit `22d9a01` (CC BY 4.0): GDP from the Maddison Project Database 2023, population, territorial and consumption-based CO2 from the Global Carbon Budget.
 - [owid/energy-data](https://github.com/owid/energy-data), commit `f8de88a` (CC BY 4.0): primary energy from the Energy Institute Statistical Review and the US EIA.
 
-`build_data.py` turns them into the compact tables in `data/`, which are committed. The analysis reads only `data/`.
+No CSV is committed here. `build_data.py` turns the sources into the compact tables in `data/`, and `growth_numbers.py` writes the tables behind the figures to `results/`; both folders are rebuilt on every run and ignored by git. What is committed is the code, `output.txt` and the figures.
 
 One number is not in the pinned data: the CAPE of about 40 in autumn 2026, as reported by the CFA Institute's Enterprising Investor blog on 18 November 2026. It is set as `CAPE_NOW` in `growth_numbers.py` and labelled as external in `output.txt`.
 
@@ -39,19 +39,20 @@ One number is not in the pinned data: the CAPE of about 40 in autumn 2026, as re
 ```
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v    # the functions against closed-form and brute-force answers
-python growth_numbers.py > output.txt      # every number in the article
+python fetch_data.py                       # download the pinned sources to .cache/ and verify them
+python build_data.py                       # data/
+python growth_numbers.py > output.txt      # every number in the article; also writes results/
 python figures.py                          # figures/
-python fetch_data.py --check               # .cache/ matches the pinned sources
 ```
 
-The workflow `.github/workflows/growth-finite-world.yml` runs all of this and fails if `output.txt` changes.
+The workflow `.github/workflows/growth-finite-world.yml` runs all of this from a clean checkout and fails if `output.txt` changes.
 
 ## Files
 
 - **`growth_core.py`**: perpetuities, implied growth, the share of value beyond a horizon, saturation of a market, logistic share paths, growth decomposition, decoupling classes, OLS with HC1 errors, and the real total-return index.
 - **`growth_numbers.py`**: all numbers, printed in order, and the tables in `results/`.
 - **`figures.py`**: the five figures.
-- **`fetch_data.py`**, **`build_data.py`**: download, verify and compact the sources.
+- **`fetch_data.py`**, **`build_data.py`**: download and verify the sources, then build the compact tables.
 - **`tests/test_core.py`**: 19 checks of the core functions.
 
 ## Licence

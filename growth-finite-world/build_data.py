@@ -2,6 +2,8 @@
 
     python fetch_data.py && python build_data.py
 
+The tables are rebuilt from the pinned sources on every run and are not committed.
+
 data/sp500_monthly.csv   S&P Composite, monthly, January 1871 to the last month with earnings
 data/us_gdp.csv          United States real GDP (2011 international dollars) and population, 1870-2022
 data/world.csv           World real GDP, primary energy (TWh), population and CO2, 1965-2024
