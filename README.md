@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-232 top-level folders: 77 belong to 24 series, 89 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 9 not yet sorted.
+233 top-level folders: 77 belong to 24 series, 89 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 10 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -397,6 +397,7 @@ Add these folders to `projects.yml`.
 - [`ambulance-tour-length/`](ambulance-tour-length/) — Tour length and the hours that size an ambulance roster
 - [`auction-entry-boem/`](auction-entry-boem/) — One more bidder or a higher minimum bid: BOEM's Gulf lease sales, 2013–2026
 - [`bid-rigging-screens/`](bid-rigging-screens/) — Screens for bid rigging on firms and countries a model has not seen
+- [`europe-industrial-regions/`](europe-industrial-regions/) — Regions, not countries? Industrialisation on the map of Europe, 1900-2021
 - [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
 - [`growth-finite-world/`](growth-finite-world/) — Corporate growth on a finite planet: valuation, earnings and energy, 1871–2024
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — Where the EUR 2,300 "moderate rent" ceiling sat against real rents, Portugal 2017-2025
