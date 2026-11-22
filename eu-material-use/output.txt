@@ -1,0 +1,131 @@
+eu-material-use: decoupling, footprint and the loop, EU27 and member states
+Data: Eurostat snapshot eurostat-material-use in DiogoRibeiro7/data (see ../data_sources).
+
+====================================================================================================
+1. EU material use and GDP, 2000-2024
+====================================================================================================
+DMC 6.61 Gt in 2000, 5.99 Gt in 2024 (-9.9 log points, -9.4%); peak 2007 at 7.59 Gt
+GDP in volume +33.1 log points (+39.3%); material per unit of GDP -43.0 (-1.79% a year)
+DMC per person 15.4 t in 2000, 13.3 t in 2024
+2025 early estimate: 6.19 Gt (+3.4 on 2024), flag 'i' (value imputed by Eurostat)
+By period (log points):
+  2000-2007: DMC +13.8  GDP +15.0  intensity -1.2 (-0.17% a year)  construction value added +11.5
+  2007-2013: DMC -22.7  GDP -0.5  intensity -22.2 (-3.71% a year)  construction value added -23.9
+  2013-2024: DMC -1.0  GDP +18.6  intensity -19.6 (-1.78% a year)  construction value added +7.3
+
+====================================================================================================
+2. Which materials moved
+====================================================================================================
+  Biomass                   1.52 Gt (2000)  1.52 (2007)  1.49 (2013)  1.53 (2024)  share 2024 25.5%  change 2000-2024 +0.3
+  Metal ores                0.30 Gt (2000)  0.32 (2007)  0.29 (2013)  0.32 (2024)  share 2024 5.4%  change 2000-2024 +6.4
+  Non-metallic minerals     3.17 Gt (2000)  4.08 (2007)  2.80 (2013)  3.13 (2024)  share 2024 52.3%  change 2000-2024 -1.2
+  Fossil energy materials   1.62 Gt (2000)  1.67 (2007)  1.47 (2013)  1.00 (2024)  share 2024 16.7%  change 2000-2024 -48.5
+  Other products and waste  -0.01 Gt (2000)  0.01 (2024)
+Contribution to the 2000-2024 change of -0.62 Gt: Biomass -1%, Metal ores -3%, Non-metallic minerals 6%, Fossil energy materials 100%, other -2%
+DMC without fossil energy materials: 4.99 Gt (2000), 5.92 (2007), 4.58 (2013), 4.99 (2024); change +0.0
+Non-metallic minerals 2007-2013 -37.6, 2013-2024 +11.1
+
+====================================================================================================
+3. Drift and growth: yearly changes in material use against yearly changes in GDP
+====================================================================================================
+EU27, 2001-2024, 24 yearly changes; average GDP growth 1.38% a year
+  All materials                    response 1.31 (s.e. 0.40), R2 0.57, drift at zero growth -2.22% a year, flat at 1.70% growth
+  Without fossil energy materials  response 1.29 (s.e. 0.56), R2 0.43, drift at zero growth -1.78% a year, flat at 1.38% growth
+  Fossil energy materials          response 1.54 (s.e. 0.25), R2 0.51, drift at zero growth -4.14% a year, flat at 2.69% growth
+Member states: 27 countries, 648 country-years; country intercepts, errors clustered by country
+  All materials             response 1.33 (s.e. 0.15), drift at zero growth: mean -2.74%, median -2.54% a year, flat at 2.06% growth (648 country-years)
+  Non-metallic minerals     response 1.95 (s.e. 0.17), drift at zero growth: mean -3.47%, median -3.33% a year, flat at 1.78% growth (648 country-years)
+  Fossil energy materials   response 0.86 (s.e. 0.12), drift at zero growth: mean -3.93%, median -3.69% a year, flat at 4.55% growth (644 country-years)
+  Non-metallic minerals on construction value added: response 0.64 (s.e. 0.09)
+  Construction value added on GDP: response 1.68 (s.e. 0.17)
+EU material use implied by the EU fit, change per year:
+  GDP growth 0.00%: -2.22% a year
+  GDP growth 1.00%: -0.91% a year
+  GDP growth 1.38%: -0.41% a year
+  GDP growth 2.00%: +0.40% a year
+  GDP growth 3.00%: +1.70% a year
+
+====================================================================================================
+4. The footprint: raw material consumption (imports counted in the raw materials behind them)
+====================================================================================================
+EU27 RMC 6.91 Gt (2000), 8.13 (2008), 6.17 (2024); change 2000-2024 -11.3 against DMC -9.9
+RMC / DMC: 1.045 (2000), 1.030 (2024); per person RMC 13.7 t, DMC 13.3 t (2024)
+EU27 footprint years flagged 'i' (value imputed by Eurostat): 26 of 26; 2025 early estimate 6.45 Gt
+  Biomass                   RMC 1.48 -> 1.46 Gt (-0.8); DMC +0.3; RMC/DMC 2024 0.96
+  Metal ores                RMC 0.55 -> 0.61 Gt (+10.5); DMC +6.4; RMC/DMC 2024 1.87
+  Non-metallic minerals     RMC 3.13 -> 3.14 Gt (+0.3); DMC -1.2; RMC/DMC 2024 1.00
+  Fossil energy materials   RMC 1.75 -> 0.96 Gt (-60.6); DMC -48.5; RMC/DMC 2024 0.96
+Imports 2023: 1.51 Gt as traded, 2.83 Gt in raw material equivalents (x1.87)
+Member states, 2008-2024: footprint fell less than (or rose more than) DMC in 8 of 27: CZ, DK, DE, IE, CY, HU, NL, SK
+  mean change DMC -17.7, RMC -24.8; correlation 0.79
+  Portugal: DMC -45.7, RMC -51.1; per person 2024: DMC 14.4 t, RMC 14.2 t
+  2023 footprint by final use, final consumption                        3.31 Gt (53.9%)
+  2023 footprint by final use,   of which households                    2.82 Gt (45.9%)
+  2023 footprint by final use,   of which government                    0.47 Gt (7.6%)
+  2023 footprint by final use, gross capital formation                  2.83 Gt (46.1%)
+  2023 footprint by final use,   of which gross fixed capital formation 2.76 Gt (44.9%)
+  2023 footprint of construction products: 2.34 Gt (38.1%) of 6.14 Gt
+
+====================================================================================================
+5. The loop: where processed material goes, and how much comes back
+====================================================================================================
+EU27 2024: processed material 7.70 Gt; material use 4.62 (60.0%); not material use (exported or used for energy) 3.08 (40.0%), of which exports 0.66 Gt
+  material accumulation 2.92 Gt (37.9% of processed, 63.2% of material use); emissions 2.29 Gt; dissipative flows 0.25 Gt
+  material use not accumulated: 1.70 Gt (22.1% of processed)
+  2023 All materials             processed 7.76 Gt: not material use 39.5%, accumulated 38.6%, other material use 21.9%
+  2023 Biomass                   processed 1.84 Gt: not material use 74.2%, accumulated 12.8%, other material use 13.0%
+  2023 Metal ores                processed 0.53 Gt: not material use 49.5%, accumulated 32.0%, other material use 18.4%
+  2023 Non-metallic minerals     processed 4.00 Gt: not material use 2.9%, accumulated 64.7%, other material use 32.5%
+  2023 Fossil energy materials   processed 1.33 Gt: not material use 95.2%, accumulated 0.1%, other material use 4.7%
+Circular material use rate, EU27: 8.2% (2004), 10.7% (2010), 11.2% (2020), 12.2% (2024)
+  Biomass                   8.6% (2010), 9.9% (2024)
+  Metal ores                24.0% (2010), 23.4% (2024)
+  Non-metallic minerals     14.1% (2010), 14.3% (2024)
+  Fossil energy materials   2.0% (2010), 3.8% (2024)
+Recycled tonnage implied by the rate and DMC (U = rate x DMC / (1 - rate)):
+  2010-2024: U 0.768 -> 0.832 Gt (+8.0), DMC 6.41 -> 5.99 Gt; rate 10.7% -> 12.2%; with only U changing 11.49%, with only DMC changing 11.37%
+  2010-2019: U 0.768 -> 0.800 Gt (+4.1), DMC 6.41 -> 6.41 Gt; rate 10.7% -> 11.1%; with only U changing 11.10%, with only DMC changing 10.70%
+  2019-2024: U 0.800 -> 0.832 Gt (+3.9), DMC 6.41 -> 5.99 Gt; rate 11.1% -> 12.2%; with only U changing 11.49%, with only DMC changing 11.79%
+
+====================================================================================================
+6. What a target needs: recycling, less material, or both
+====================================================================================================
+Material use (DMC + recycled) 2024: 6.82 Gt; recycled 0.832 Gt; rate 12.2%
+Targets for 2030: double the 2020 rate = 22.4%; Clean Industrial Deal = 24.0%
+  double 2020: recycled 1.53 Gt at 2024 material use (x1.84, +0.70 Gt); or material use 3.72 Gt at 2024 recycling (-60.8, -46%); 1.70 points a year from 2024
+  24%: recycled 1.64 Gt at 2024 material use (x1.97, +0.80 Gt); or material use 3.47 Gt at 2024 recycling (-67.7, -49%); 1.97 points a year from 2024
+Observed change 2010-2024: +1.5 points, +0.11 a year; at that pace 2030 gives 12.8%
+EU27's largest increase over any six years: +2.5 points (2004-2010)
+Largest six-year increase by member state (top five): MT +16.2 (2016-2022), EE +9.9 (2016-2022), SK +7.5 (2018-2024), IT +6.4 (2011-2017), CY +5.9 (2016-2022)
+Member states that ever added 10.2 points or more in six years: 1 of 27
+Rates in 2024: highest NL 32.7%, lowest RO 1.3%, Portugal 3.0%
+Waste treatment, EU27 2024 (Mt): total 1956; recycling 822, backfilling 260, energy recovery 127, landfill 585, incineration 8, other disposal 155
+  Waste excluding major mineral wastes          treated    647  recycled   386 (60%)
+  Construction and demolition mineral waste     treated    248  recycled   198 (80%)
+  Other mineral waste (mostly mining)           treated    570  recycled    64 (11%)
+  Soils                                         treated    447  recycled   169 (38%)
+  Dredging spoils                               treated     45  recycled     5 (12%)
+  Combustion wastes                             treated     54  recycled    16 (30%)
+  Mineral waste from waste treatment            treated     52  recycled    38 (73%)
+Ceilings, recycled material substituting one for one so that material use stays 6.82 Gt (rate now 12.2% on this basis):
+  Every tonne of non-mineral waste recycled               +  261 Mt -> recycled 1.09 Gt, rate 16.0%
+  plus all construction and demolition mineral waste      +   49 Mt -> recycled 1.14 Gt, rate 16.7%
+  plus combustion and treatment mineral wastes            +   52 Mt -> recycled 1.19 Gt, rate 17.5%
+  plus soils and dredging spoils                          +  318 Mt -> recycled 1.51 Gt, rate 22.2%
+  plus mining and other mineral waste: all treated waste  +  506 Mt -> recycled 2.02 Gt, rate 29.6%
+
+====================================================================================================
+7. Portugal
+====================================================================================================
+DMC 204 Mt (2000), 242 (2008), 143 (2013), 154 (2024); peak 2008
+  2000-2024: DMC -28.3, GDP +22.9, intensity -51.2; 2008-2013 DMC -52.9, construction value added -48.6
+  DMC per person 19.8 t (2000), 23.0 (2008), 14.4 (2024); EU27 13.3 t
+  Biomass                   40 Mt in 2024 (26.0%)
+  Metal ores                12 Mt in 2024 (7.6%)
+  Non-metallic minerals     88 Mt in 2024 (57.6%)
+  Fossil energy materials   11 Mt in 2024 (7.1%)
+  RMC 267 Mt (2008), 160 (2024); RMC/DMC 1.04
+  Circular material use rate 2010 1.8%, 2024 3.0%
+  Waste treated 2024, all waste: 15.3 Mt, recycled 6.6 (43%), landfilled 4.0 (26%)
+  Waste treated 2024, non-mineral waste: 10.6 Mt, recycled 5.3 (50%), landfilled 3.6 (34%)
+  Waste treated 2024, construction and demolition mineral waste: 1.3 Mt, recycled 0.6 (43%), landfilled 0.1 (5%)
