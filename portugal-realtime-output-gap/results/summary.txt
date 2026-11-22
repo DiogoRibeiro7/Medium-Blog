@@ -1,0 +1,96 @@
+pooled rho 0.658; Portugal rho (shocks) 0.467; Portugal own rho (vintage latest) 0.468
+age -1: EU n=242 bias 0.08 sd 1.99 mae 1.30 iqr -0.97..0.64 | PT n=9 bias -0.69 sd 0.51 mae 0.69
+age 0: EU n=242 bias 0.07 sd 1.78 mae 1.23 iqr -0.85..0.72 | PT n=9 bias -0.43 sd 0.62 mae 0.55
+age 1: EU n=242 bias 0.35 sd 1.60 mae 1.15 iqr -0.53..1.11 | PT n=9 bias -0.28 sd 0.96 mae 0.74
+age 2: EU n=242 bias 0.45 sd 1.38 mae 1.02 iqr -0.37..1.12 | PT n=9 bias -0.26 sd 0.90 mae 0.72
+age 3: EU n=242 bias 0.40 sd 1.27 mae 0.93 iqr -0.31..0.90 | PT n=9 bias -0.38 sd 0.79 mae 0.65
+age 4: EU n=242 bias 0.32 sd 1.22 mae 0.88 iqr -0.35..0.78 | PT n=9 bias -0.27 sd 0.55 mae 0.45
+age 5: EU n=242 bias 0.27 sd 1.20 mae 0.84 iqr -0.29..0.71 | PT n=9 bias -0.12 sd 0.39 mae 0.28
+process eu_age-1: n=242 bias 0.17 c 0.68 (se 0.06) ci90 0.55..0.80 noise sd 1.60 rho 0.82 lam 0.54
+process pt_age-1: n=9 bias -0.69 c 0.14 (se 0.08) noise sd 0.46 rho 0.00 lam 0.87
+process eu_age0: n=242 bias 0.14 c 0.48 (se 0.05) ci90 0.40..0.58 noise sd 1.52 rho 0.80 lam 0.61
+process pt_age0: n=9 bias -0.42 c -0.01 (se 0.15) noise sd 0.66 rho 0.00 lam 0.98
+robust age-1: without_2021_release c 0.69 (se 0.07, n=215), without_ireland c 0.62 (se 0.06, n=233), pooled_rho c 0.81 (se 0.04, n=242)
+robust age0: without_2021_release c 0.51 (se 0.06, n=215), without_ireland c 0.48 (se 0.05, n=233), pooled_rho c 0.57 (se 0.04, n=242)
+Portugal age-0 MAE rank 4 of 27 (1 = smallest); PT mae 0.55, median country 0.96
+decomposition n=242: share growth 0.96, potential 0.11; level rev on growth 0.65, on potential -0.62; growth rev median 0.34 iqr -0.25..1.14
+  PT 2011: growth rt -1.87 now -1.71; potential rt -0.50 now -0.64; gap rt -2.61 now -1.64
+  PT 2012: growth rt -2.96 now -4.05; potential rt -1.32 now -1.48; gap rt -4.27 now -4.20
+  PT 2013: growth rt -1.76 now -0.98; potential rt -0.78 now -1.01; gap rt -4.59 now -4.18
+  PT 2014: growth rt 0.94 now 0.74; potential rt -0.61 now -0.17; gap rt -4.96 now -3.30
+  PT 2015: growth rt 1.74 now 1.59; potential rt 0.09 now 0.36; gap rt -2.32 now -2.12
+  PT 2016: growth rt 0.93 now 2.00; potential rt 0.19 now 0.87; gap rt -0.75 now -1.02
+  PT 2017: growth rt 2.63 now 3.31; potential rt 1.27 now 1.49; gap rt 0.43 now 0.76
+  PT 2018: growth rt 2.17 now 2.95; potential rt 1.65 now 1.69; gap rt 1.22 now 2.00
+  PT 2021: growth rt 4.54 now 5.56; potential rt 1.58 now 2.05; gap rt -3.32 now -3.57
+effort sb: n=184 error sd 1.43 mae 0.84 flip share 0.228; PT flip share 0.286
+  PT 2013: real time 0.46, now 0.64, flip True
+  PT 2014: real time 0.59, now 1.48, flip False
+  PT 2015: real time -0.45, now -0.35, flip False
+  PT 2016: real time -0.05, now 0.31, flip False
+  PT 2017: real time 0.14, now 0.41, flip False
+  PT 2018: real time 0.36, now 0.55, flip True
+  PT 2021: real time -1.13, now 0.19, flip False
+effort cab: n=241 error sd 1.73 mae 0.96 flip share 0.216; PT flip share 0.222
+  PT 2011: real time 4.54, now 4.27, flip False
+  PT 2012: real time 0.13, now 2.90, flip True
+  PT 2013: real time 0.98, now 0.98, flip False
+  PT 2014: real time -0.80, now -2.62, flip False
+  PT 2015: real time 3.40, now 2.25, flip False
+  PT 2016: real time 1.33, now 1.94, flip False
+  PT 2017: real time -0.14, now -2.02, flip False
+  PT 2018: real time 1.96, now 1.91, flip False
+  PT 2021: real time -0.13, now 1.20, flip True
+scenario perfect: miss 0.00 bias 0.00 noise 0.00 rho 0.00
+  fixed        level   2.398 p60 0.370 p90 92.7 breach 0.472 forced 0.000 absdsp 0.06 worst gap -3.42
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.067 p60 0.328 p90 87.1 breach 0.500 forced 0.409 absdsp 0.46 worst gap -3.41
+  debt_strong  level   4.357 p60 0.254 p90 82.8 breach 0.594 forced 0.725 absdsp 1.16 worst gap -3.52
+  spending     level   2.994 p60 0.417 p90 102.5 breach 0.647 forced 0.164 absdsp 0.66 worst gap -3.33
+  structural   level  -0.014 p60 0.315 p90 87.8 breach 0.564 forced 0.277 absdsp 0.34 worst gap -3.51
+scenario assumed: miss 0.50 bias 0.00 noise 0.00 rho 0.00
+  fixed        level   2.410 p60 0.362 p90 91.7 breach 0.383 forced 0.341 absdsp 0.47 worst gap -3.46
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.077 p60 0.312 p90 86.1 breach 0.376 forced 0.583 absdsp 0.58 worst gap -3.45
+  debt_strong  level   4.402 p60 0.222 p90 82.2 breach 0.449 forced 0.751 absdsp 1.13 worst gap -3.57
+  spending     level   2.999 p60 0.417 p90 102.7 breach 0.627 forced 0.173 absdsp 0.66 worst gap -3.33
+  structural   level   0.017 p60 0.301 p90 86.7 breach 0.395 forced 0.594 absdsp 0.67 worst gap -3.56
+scenario eu_now: miss 0.48 bias 0.14 noise 1.52 rho 0.80
+  fixed        level   2.354 p60 0.362 p90 92.4 breach 0.406 forced 0.525 absdsp 0.64 worst gap -3.48
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.032 p60 0.318 p90 86.9 breach 0.398 forced 0.630 absdsp 0.71 worst gap -3.47
+  debt_strong  level   4.337 p60 0.237 p90 82.4 breach 0.486 forced 0.746 absdsp 1.20 worst gap -3.59
+  spending     level   2.951 p60 0.413 p90 103.1 breach 0.624 forced 0.185 absdsp 0.68 worst gap -3.33
+  structural   level  -0.050 p60 0.306 p90 87.2 breach 0.446 forced 0.636 absdsp 0.79 worst gap -3.58
+scenario eu_budget: miss 0.68 bias 0.17 noise 1.60 rho 0.82
+  fixed        level   2.329 p60 0.361 p90 92.1 breach 0.404 forced 0.627 absdsp 0.78 worst gap -3.51
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.010 p60 0.311 p90 86.7 breach 0.390 forced 0.694 absdsp 0.84 worst gap -3.50
+  debt_strong  level   4.324 p60 0.227 p90 82.2 breach 0.463 forced 0.763 absdsp 1.26 worst gap -3.62
+  spending     level   2.936 p60 0.415 p90 103.2 breach 0.622 forced 0.204 absdsp 0.68 worst gap -3.33
+  structural   level  -0.078 p60 0.300 p90 86.8 breach 0.443 forced 0.691 absdsp 0.94 worst gap -3.61
+scenario pt_budget: miss 0.14 bias -0.69 noise 0.46 rho 0.00
+  fixed        level   2.768 p60 0.369 p90 92.4 breach 0.412 forced 0.081 absdsp 0.30 worst gap -3.44
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.430 p60 0.326 p90 86.8 breach 0.448 forced 0.358 absdsp 0.50 worst gap -3.42
+  debt_strong  level   4.718 p60 0.244 p90 82.6 breach 0.558 forced 0.735 absdsp 1.14 worst gap -3.54
+  spending     level   3.281 p60 0.416 p90 102.8 breach 0.631 forced 0.168 absdsp 0.66 worst gap -3.33
+  structural   level   0.364 p60 0.314 p90 87.5 breach 0.469 forced 0.407 absdsp 0.49 worst gap -3.53
+scenario eu_half: miss 0.34 bias 0.17 noise 0.80 rho 0.82
+  fixed        level   2.338 p60 0.363 p90 92.2 breach 0.391 forced 0.328 absdsp 0.39 worst gap -3.45
+  rigid        level   2.371 p60 0.334 p90 89.3 breach 0.360 forced 0.761 absdsp 0.86 worst gap -3.51
+  debt_pt      level   3.007 p60 0.320 p90 86.7 breach 0.396 forced 0.532 absdsp 0.53 worst gap -3.44
+  debt_strong  level   4.310 p60 0.236 p90 82.2 breach 0.501 forced 0.745 absdsp 1.13 worst gap -3.55
+  spending     level   2.935 p60 0.415 p90 102.8 breach 0.628 forced 0.173 absdsp 0.66 worst gap -3.33
+  structural   level  -0.066 p60 0.308 p90 87.2 breach 0.437 forced 0.557 absdsp 0.59 worst gap -3.55
+unknown PT bias fixed        effort 2.167 p60 0.307 p90 95.1 breach 0.461 forced 0.083
+unknown PT bias rigid        effort 2.500 p60 0.334 p90 89.3 breach 0.360 forced 0.761
+unknown PT bias debt_pt      effort 2.239 p60 0.265 p90 89.0 breach 0.498 forced 0.325
+unknown PT bias debt_strong  effort 2.314 p60 0.182 p90 84.2 breach 0.600 forced 0.737
+unknown PT bias spending     effort 2.312 p60 0.392 p90 104.0 breach 0.661 forced 0.173
+unknown PT bias structural   effort 2.213 p60 0.254 p90 90.0 breach 0.576 forced 0.392
+miss 0.00: fixed=(93.6,0.485,0.165), rigid=(89.3,0.360,0.761), debt_pt=(87.8,0.509,0.493), debt_strong=(83.0,0.598,0.713), spending=(103.3,0.632,0.171), structural=(88.2,0.550,0.373)
+miss 0.25: fixed=(93.2,0.425,0.358), rigid=(89.3,0.360,0.761), debt_pt=(87.4,0.432,0.501), debt_strong=(82.8,0.535,0.731), spending=(103.2,0.627,0.177), structural=(87.8,0.473,0.538)
+miss 0.50: fixed=(92.6,0.408,0.536), rigid=(89.3,0.360,0.761), debt_pt=(87.0,0.399,0.636), debt_strong=(82.4,0.484,0.747), spending=(103.1,0.623,0.188), structural=(87.2,0.449,0.642)
+miss 0.75: fixed=(91.9,0.404,0.658), rigid=(89.3,0.360,0.761), debt_pt=(86.6,0.390,0.713), debt_strong=(82.1,0.458,0.770), spending=(103.2,0.621,0.210), structural=(86.6,0.443,0.708)
+miss 1.00: fixed=(91.4,0.401,0.746), rigid=(89.3,0.360,0.761), debt_pt=(86.1,0.396,0.774), debt_strong=(81.7,0.453,0.799), spending=(103.2,0.619,0.225), structural=(86.0,0.443,0.757)
