@@ -37,6 +37,18 @@ HERE = Path(__file__).resolve().parent
 SEED = 20261122
 
 
+def rounded(obj, sig: int = 10):
+    """Floats to `sig` significant digits, so the JSON does not depend on the last bits that
+    BLAS libraries are free to differ in from one machine to another."""
+    if isinstance(obj, float):
+        return float(f"{obj:.{sig}g}")
+    if isinstance(obj, dict):
+        return {k: rounded(v, sig) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [rounded(v, sig) for v in obj]
+    return obj
+
+
 def header(title: str) -> None:
     print("\n" + "=" * 78 + f"\n{title}\n" + "=" * 78)
 
@@ -197,11 +209,11 @@ def main() -> None:
     for p in (figures.figure_schema(), figures.figure_drift(curve, pw), figures.figure_grounding(gs)):
         print("  wrote", Path(p).relative_to(HERE))
     (HERE / "results").mkdir(exist_ok=True)
-    (HERE / "results" / "summary.json").write_text(json.dumps(
+    (HERE / "results" / "summary.json").write_text(json.dumps(rounded(
         {"agreement": ag, "reachability": rc, "coend": co,
          "drift": {"curve": curve, "power": pw},
          "grounding": {"t_cost": gs["t_cost"], "levels": [{k: v for k, v in L.items() if k not in ("curve", "thresholds")} for L in gs["levels"]]},
-         "audit": audit}, indent=1) + "\n")
+         "audit": audit}), indent=1) + "\n")
 
 
 if __name__ == "__main__":
