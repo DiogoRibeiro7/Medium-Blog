@@ -5,6 +5,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import entry as E  # noqa: E402
@@ -48,6 +49,7 @@ def test_reserve_change_bounds():
     assert abs(r["none_pay"] - 200 / 420 + 1) < 1e-12
 
 
+@pytest.mark.skipif(not (HERE / "data" / "bids.csv").exists(), reason="run fetch.py and build_dataset.py first")
 def test_bid_table_is_consistent():
     b = pd.read_csv(HERE / "data" / "bids.csv", dtype={"sale": str})
     g = b.groupby(["sale", "lease"])

@@ -1,8 +1,8 @@
 """Build one bid-level table of BOEM Gulf lease sales from March 2014 to August 2026.
 
-    python build_dataset.py      # writes data/bids.csv and data/build_check.txt
+    python build_dataset.py      # writes data/bids.csv and results/build_check.txt
 
-Two inputs, both written by fetch.py:
+Two inputs, both downloaded and checked by fetch.py:
 
 - ``data/case_study/data/bids.csv``: sales 249 (August 2017) to BBG3 (August 2026), parsed
   and checked against BOEM's totals in the case study of the game- and auction-theory series.
@@ -19,6 +19,7 @@ in Sale 218 (December 2011), before every sale here.
 
 from __future__ import annotations
 
+import hashlib
 import re
 import zipfile
 from pathlib import Path
@@ -179,5 +180,8 @@ def build() -> tuple[pd.DataFrame, list[str]]:
 if __name__ == "__main__":
     df, log = build()
     df.to_csv(DATA / "bids.csv", index=False)
-    (DATA / "build_check.txt").write_text("\n".join(log) + "\n")
+    # the table is rebuilt at every run, so its checksum is what CI compares with the committed run
+    log.append(f"sha256 of data/bids.csv: {hashlib.sha256((DATA / 'bids.csv').read_bytes()).hexdigest()}")
+    (HERE / "results").mkdir(exist_ok=True)
+    (HERE / "results" / "build_check.txt").write_text("\n".join(log) + "\n")
     print("\n".join(log))

@@ -15,7 +15,7 @@ estimators that use only clean comparisons (states that had not yet enfranchised
 
 ```
 pip install -r requirements.txt
-python fetch.py --out data      # GitHub Actions keeps the snapshot in data/raw
+python fetch.py                 # downloads the two Stata files and checks their SHA-256
 python -m pytest -q tests
 python suffrage.py              # results/summary.txt and CSVs; about 8 minutes (bootstrap)
 python figures.py               # figures/fig1-fig4
@@ -25,8 +25,13 @@ python figures.py               # figures/fig1-fig4
 
 ## Files
 
-- `fetch.py` downloads the online appendix and the Google Drive files linked from the paper's
-  page, and logs URL, status, size and SHA-256 of every response in `data/fetch_log.txt`.
+- `fetch.py` downloads the two harmonized Stata files linked from the paper's page into
+  `data/raw/` (not tracked) and stops if a checksum differs. The URLs, sizes and SHA-256 are
+  registered in the data registry as
+  [`external/miller-2008-suffrage-mortality-finance`](https://github.com/DiogoRibeiro7/data/tree/2cd5ea3859afac626ce5900797cba468a079104f/external/miller-2008-suffrage-mortality-finance)
+  and copied in
+  [`data_sources/miller-2008-suffrage-mortality-finance.json`](../data_sources/miller-2008-suffrage-mortality-finance.json)
+  at registry commit `2cd5ea3859af`. Every table is rebuilt from them at each run.
 - `dates.py` codes the year of the first suffrage law (full, presidential or primary) by state,
   from CAWP (2014). The coding reproduces Miller's Online Appendix Table 2 exactly
   (`tests/test_data.py`).
@@ -59,7 +64,7 @@ python figures.py               # figures/fig1-fig4
 - Quincy, Massachusetts appears twice in 1923; the first row is kept.
 - The two Voteview files on the page need a Google sign-in, so the roll-call analysis is not
   reproduced.
-- The data carry no licence statement. They are kept here as published, for reproduction, with
-  credit to Miller (2008).
+- The data carry no licence statement, so they are not stored here: each run downloads them from
+  the author's links and checks them against the registry, with credit to Miller (2008).
 
 Contact: dfr@esmad.ipp.pt

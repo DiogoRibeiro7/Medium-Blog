@@ -39,6 +39,9 @@ jobs:
       - name: Install pinned dependencies
         run: python -m pip install -r requirements.txt
 
+      - name: Download the pinned source files and check their SHA-256
+        run: python fetch.py
+
       - name: Run the tests
         run: python -m pytest -q tests
 

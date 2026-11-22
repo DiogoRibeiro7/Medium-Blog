@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "dataset": "imhof-wallimann-bid-rigging-tenders",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "2cd5ea3859afac626ce5900797cba468a079104f",
+  "record": "external/imhof-wallimann-bid-rigging-tenders/metadata.yaml",
+  "folder": "bid-rigging-screens",
+  "target": "bid-rigging-screens/data",
+  "files": [
+    {
+      "path": "raw/Italiandata.csv",
+      "url": "https://data.mendeley.com/public-files/datasets/x8jwmbcpgn/files/4e40bd38-b1dc-4e42-8565-a9c37c07844f/file_downloaded",
+      "bytes": 7452588,
+      "sha256": "58b1d0f2960c6439c5bbe6e7c1eeb2d246866c52db15af5ea73a580f76b0c038"
+    },
+    {
+      "path": "raw/Japanesedata.csv",
+      "url": "https://data.mendeley.com/public-files/datasets/x8jwmbcpgn/files/0d5d30f4-0e02-4a83-a42d-c01d155e1950/file_downloaded",
+      "bytes": 867017,
+      "sha256": "8dd425f53cef56be290396dea59ec89cf7fbeee9ca37b43ac3a9c18678885766"
+    },
+    {
+      "path": "raw/Swissdata_addpred.csv",
+      "url": "https://data.mendeley.com/public-files/datasets/x8jwmbcpgn/files/7e571d20-97a0-4100-bcbd-3d3d4d8dc013/file_downloaded",
+      "bytes": 2365451,
+      "sha256": "1424122753de9fbdf9e1a0f481ae9d75edaf5db73a396d136ec068122c5dd71e"
+    }
+  ],
+  "consumers": [
+    "bid-rigging-screens/screens.py"
+  ]
+}
