@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "swaptails"
+version = "0.1.0"
+description = "One day-ahead load forecasting pipeline with swappable language and time-series models (European, US, Chinese), scored on average and in the tail"
+readme = "README.md"
+license = "Apache-2.0"
+requires-python = ">=3.11"
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+dependencies = [
+    "numpy>=2.0,<2.4",
+    "pandas>=2.2,<3",
+    "pyarrow>=17",
+    "holidays==0.106",
+    "matplotlib>=3.9",
+    "requests>=2.32",
+]
+
+[project.optional-dependencies]
+# torch is installed separately from the CPU wheel index; see README.md. Each model has its
+# own extra so that it can be installed in an environment of its own: Sundial needs an
+# older transformers than the others.
+hub = ["huggingface-hub>=0.28"]
+timestral = ["timestral @ git+https://github.com/mistralai/timestral.git", "huggingface-hub>=0.28"]
+t0 = ["tfc-t0[torch]==0.6.1", "huggingface-hub>=0.28"]
+tirex = ["tirex-ts==1.4.2", "huggingface-hub>=0.28"]
+chronos2 = ["chronos-forecasting==2.3.2", "huggingface-hub>=0.28"]
+timesfm25 = ["timesfm==2.0.2", "huggingface-hub>=0.28"]
+sundial = ["transformers==4.40.1", "huggingface-hub>=0.28"]
+dev = ["pytest>=8", "ruff==0.17.0"]
+
+[project.scripts]
+swaptails = "swaptails.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]

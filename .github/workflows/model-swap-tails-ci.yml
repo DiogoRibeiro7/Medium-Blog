@@ -1,0 +1,49 @@
+name: Model swap tails CI
+
+# Lint and tests on synthetic data, on every change to the folder.
+
+on:
+  pull_request:
+    paths:
+      - 'model-swap-tails/**'
+      - '.github/workflows/model-swap-tails-ci.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'model-swap-tails/**'
+      - '.github/workflows/model-swap-tails-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: model-swap-tails/pyproject.toml
+
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+
+      - name: Lint
+        run: ruff check src tests && ruff format --check src tests
+
+      - name: Tests on synthetic data
+        run: python -m pytest
+
+      - name: The committed configuration loads and plans
+        run: swaptails plan > /dev/null

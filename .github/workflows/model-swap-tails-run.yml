@@ -1,0 +1,291 @@
+name: Model swap tails run
+
+# The full experiment on GitHub-hosted CPU runners:
+#   plan -> data (downloads) and labels (one job per language model and year, served by Ollama)
+#        -> forecast (one job per forecaster and country, each model in its own environment)
+#        -> summarize (tables, figures, checks) -> push results to a branch.
+# Started by hand from the Actions tab. Every job can be restricted with the inputs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      llms:
+        description: "Language models to run (config keys, space-separated); empty for all"
+        type: string
+        default: ""
+      forecasters:
+        description: "Forecasters to run (config keys, space-separated); empty for all"
+        type: string
+        default: ""
+      countries:
+        description: "Countries (config keys, space-separated); empty for all"
+        type: string
+        default: ""
+      refresh_labels:
+        description: "Ask the language models again, ignoring labels already committed"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: model-swap-tails-run
+  cancel-in-progress: false
+
+env:
+  TORCH_VERSION: "2.14.1"
+  MPLBACKEND: Agg
+  COUNTRIES: ${{ inputs.countries }}
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      labels: ${{ steps.plan.outputs.labels }}
+      forecast: ${{ steps.plan.outputs.forecast }}
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - id: plan
+        env:
+          LLMS: ${{ inputs.llms }}
+          FORECASTERS: ${{ inputs.forecasters }}
+        run: |
+          plan="$(swaptails plan --llms "$LLMS" --forecasters "$FORECASTERS" --countries "$COUNTRIES")"
+          echo "labels=$(echo "$plan" | jq -c .labels)" >> "$GITHUB_OUTPUT"
+          echo "forecast=$(echo "$plan" | jq -c .forecast)" >> "$GITHUB_OUTPUT"
+          echo "$plan" | jq .
+
+  data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - name: Download load, operator forecasts and temperature forecasts
+        run: swaptails fetch ${COUNTRIES:+--countries $COUNTRIES}
+      - name: Missing and anomalous hours
+        run: swaptails validate ${COUNTRIES:+--countries $COUNTRIES}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: msw-data
+          path: |
+            model-swap-tails/data/
+            model-swap-tails/results/validation.json
+          retention-days: 90
+
+  labels:
+    needs: plan
+    if: ${{ needs.plan.outputs.labels != '[]' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.labels) }}
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - name: Install and start Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          if ! curl -sf http://localhost:11434/api/version > /dev/null; then
+            nohup ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
+          fi
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:11434/api/version && break
+            sleep 2
+          done
+      - name: Pull the model
+        env:
+          MODEL: ${{ matrix.model }}
+        run: ollama pull "$MODEL"
+      - name: Start from scratch when asked
+        if: ${{ inputs.refresh_labels }}
+        env:
+          LLM: ${{ matrix.llm }}
+        run: rm -f "labels/$LLM.jsonl"
+      - name: Ask about every candidate day
+        env:
+          LLM: ${{ matrix.llm }}
+          YEAR: ${{ matrix.year }}
+        run: swaptails labels --llm "$LLM" --years "$YEAR" ${COUNTRIES:+--countries $COUNTRIES}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: labels-${{ matrix.llm }}-${{ matrix.year }}
+          path: model-swap-tails/labels/
+          retention-days: 90
+
+  labels-merge:
+    needs: labels
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: labels-*
+          path: shards
+      - name: Merge the shards with the labels already committed
+        run: swaptails merge-labels labels "$GITHUB_WORKSPACE/shards"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: labels-all
+          path: model-swap-tails/labels/
+          retention-days: 90
+
+  forecast:
+    needs: [plan, data, labels-merge]
+    if: ${{ !cancelled() && needs.data.result == 'success' && needs.labels-merge.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      max-parallel: 18
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.forecast) }}
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PyTorch (CPU build)
+        if: ${{ matrix.extra != '' }}
+        run: python -m pip install "torch==$TORCH_VERSION" --index-url https://download.pytorch.org/whl/cpu
+      - name: Install the project with this model's package only
+        env:
+          EXTRA: ${{ matrix.extra }}
+        run: |
+          echo "torch==$TORCH_VERSION" > "$RUNNER_TEMP/constraints.txt"
+          if [ -n "$EXTRA" ]; then
+            python -m pip install -e ".[$EXTRA]" -c "$RUNNER_TEMP/constraints.txt"
+          else
+            python -m pip install -e .
+          fi
+      - name: Use a Hugging Face token if one is configured
+        env:
+          HF_TOKEN_SECRET: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -n "$HF_TOKEN_SECRET" ]; then echo "HF_TOKEN=$HF_TOKEN_SECRET" >> "$GITHUB_ENV"; fi
+      - uses: actions/download-artifact@v4
+        with:
+          name: msw-data
+          path: model-swap-tails
+      - uses: actions/download-artifact@v4
+        with:
+          name: labels-all
+          path: model-swap-tails/labels
+      - name: Smoke test on three days
+        env:
+          FORECASTER: ${{ matrix.forecaster }}
+          COUNTRY: ${{ matrix.country }}
+        run: swaptails smoke --models "$FORECASTER" --countries "$COUNTRY"
+      - name: Forecast every day and every covariate variant
+        env:
+          FORECASTER: ${{ matrix.forecaster }}
+          COUNTRY: ${{ matrix.country }}
+        run: swaptails forecast --model "$FORECASTER" --countries "$COUNTRY" --skip-incomplete-labels
+      - name: Record the environment
+        if: ${{ always() }}
+        env:
+          FORECASTER: ${{ matrix.forecaster }}
+        run: |
+          mkdir -p forecasts
+          python -m pip freeze --exclude-editable > "forecasts/env_$FORECASTER.txt"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: forecasts-${{ matrix.forecaster }}-${{ matrix.country }}
+          path: model-swap-tails/forecasts/
+          retention-days: 90
+
+  summarize:
+    needs: [data, labels-merge, forecast]
+    if: ${{ !cancelled() && needs.data.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: model-swap-tails
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          name: msw-data
+          path: model-swap-tails
+      - uses: actions/download-artifact@v4
+        with:
+          name: labels-all
+          path: model-swap-tails/labels
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: forecasts-*
+          path: model-swap-tails/forecasts
+          merge-multiple: true
+      - name: Scores, intervals, tables and figures
+        run: |
+          swaptails summarize
+          swaptails figures
+          mkdir -p results/environments
+          cp forecasts/env_*.txt results/environments/ 2>/dev/null || true
+      - name: Consistency checks
+        id: check
+        continue-on-error: true
+        run: swaptails check
+      - name: Push the results to a branch
+        working-directory: .
+        env:
+          RUN_ID: ${{ github.run_id }}
+          CHECK: ${{ steps.check.outcome }}
+        run: |
+          branch="automation/model-swap-tails-run"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -B "$branch"
+          git add model-swap-tails/results model-swap-tails/figures model-swap-tails/labels
+          if git diff --cached --quiet; then
+            echo "No changes to commit." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          git commit -m "Model swap tails: results of run $RUN_ID (checks: $CHECK)"
+          git push --force origin HEAD:"$branch"
+          {
+            echo "Results pushed to branch \`$branch\` (checks: $CHECK)."
+            echo
+            cat model-swap-tails/results/RESULTS.md
+          } >> "$GITHUB_STEP_SUMMARY"
