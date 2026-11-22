@@ -26,9 +26,10 @@ sets the primary balance:
 
 where x, the growth of nominal primary spending, is fixed for each plan of plan_years years. At the
 start of each plan (anchor=True) x is set so that, with no further shocks, the structural primary
-balance reaches `level` by the plan's last year; within the plan nothing is revised except, if
-indexed, for realised inflation. With anchor=False, x is expected nominal potential growth minus
-`level` and the level of spending is never re-anchored.
+balance reaches `level` + kappa_d * (d - d_ref) by the plan's last year, with d the debt ratio when
+the plan is set; within the plan nothing is revised except, if indexed, for realised inflation.
+With anchor=False, x is expected nominal potential growth minus `level` and the level of spending
+is never re-anchored.
 
 Every rule then adds the year's fiscal surprise e_t (one-off operations, bank support and other
 misses), optionally repays past shortfalls over `amortise` years (each negative surprise in equal
@@ -92,7 +93,7 @@ class Rule:
     kind: str  # fixed | debt | structural | spending
     level: float = 2.5  # fixed: pb; debt: pb at d_ref; structural: headline balance; spending: margin x below growth
     eps: float = SEMI_ELASTICITY  # room left to the cycle (fixed, debt, structural)
-    kappa: float = 0.0  # debt rule: pp of primary balance per point of debt
+    kappa: float = 0.0  # debt rule, or spending plans: pp of primary balance per point of debt
     plan_years: int = 4  # spending rule: length of each nominal plan
     indexed: bool = False  # spending rule: index the path to realised inflation each year
     anchor: bool = True  # spending rule: re-anchor the level of spending at the start of each plan
@@ -153,8 +154,9 @@ def simulate(rule: Rule, macro: Macro, draws: np.ndarray) -> dict[str, np.ndarra
                     span = range(y, y + rule.plan_years)
                     growth = np.prod([1 + expected_nominal_growth(z) / 100 for z in span])
                     if rule.anchor:
+                        target = rule.level + rule.kappa * (d - rule.d_ref)
                         structural_exp = expo * (1 + gap_rt_prev / 100)
-                        x = 100 * (((REVENUE - rule.level) / structural_exp * growth) ** (1 / rule.plan_years) - 1)
+                        x = 100 * (((REVENUE - target) / structural_exp * growth) ** (1 / rule.plan_years) - 1)
                     else:
                         x = 100 * (growth ** (1 / rule.plan_years) - 1) - rule.level
                 xt = x + (pi - base_deflator(y)) if rule.indexed else x

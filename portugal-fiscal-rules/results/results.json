@@ -21796,6 +21796,27 @@
       "p_gap_below_minus_4": 0.3174,
       "p_edp": 0.3857
     },
+    "spending_debt": {
+      "label": "Spending path re-anchored to debt at each plan",
+      "level": 3.2485599517822266,
+      "effort": 2.499999520485415,
+      "p_at_or_below_60_2035": 0.4076,
+      "p10_2035": 39.47496942809813,
+      "median_2035": 65.75899796526637,
+      "p90_2035": 99.68223595380168,
+      "sd_2035": 23.81464378389613,
+      "p_above_90_2035": 0.1667,
+      "median_2045": 54.09282418571209,
+      "p_breach": 0.6423,
+      "breach_years": 1.3637,
+      "p_forced_tightening": 0.2172,
+      "mean_abs_discretionary_change": 0.7329222505884935,
+      "p90_largest_tightening": 2.033576337778582,
+      "mean_gap": -0.10099295007884354,
+      "mean_worst_gap": -3.218984377231395,
+      "p_gap_below_minus_4": 0.2833,
+      "p_edp": 0.5904
+    },
     "spending_unanchored": {
       "label": "Spending path never re-anchored",
       "level": 0.34758520126342773,

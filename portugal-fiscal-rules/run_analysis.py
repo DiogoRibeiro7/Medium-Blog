@@ -37,6 +37,7 @@ MAIN = [
 VARIANTS = [
     R.Rule("structural_plain", "Structural balance, surprises not repaid", "structural", level=0.0),
     R.Rule("fixed_repaid", "Fixed surplus, surprises repaid in 6 years", "fixed", amortise=6),
+    R.Rule("spending_debt", "Spending path re-anchored to debt at each plan", "spending", kappa=PT_KAPPA),
     R.Rule("spending_unanchored", "Spending path never re-anchored", "spending", level=0.0, anchor=False),
     R.Rule("spending_indexed", "Spending path indexed to inflation", "spending", level=0.0, indexed=True),
     R.Rule("spending_1y", "Spending path reset every year", "spending", level=0.0, plan_years=1),
@@ -240,7 +241,7 @@ def write_summary(res: dict, keys: list[str]) -> None:
 
     def row(name, r):
         return (
-            f"{name:<17} level={r['level']:7.3f} effort={r['effort']:.3f} p60={r['p_at_or_below_60_2035']:.3f} "
+            f"{name:<19} level={r['level']:7.3f} effort={r['effort']:.3f} p60={r['p_at_or_below_60_2035']:.3f} "
             f"med={r['median_2035']:.1f} p10={r['p10_2035']:.1f} p90={r['p90_2035']:.1f} "
             f"breach={r['p_breach']:.3f} byrs={r['breach_years']:.2f} forced={r['p_forced_tightening']:.3f} "
             f"absdsp={r['mean_abs_discretionary_change']:.2f} gap={r['mean_gap']:.2f} worst={r['mean_worst_gap']:.2f}"
