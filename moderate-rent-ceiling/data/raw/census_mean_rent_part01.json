@@ -1,0 +1,216 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:35:01.026Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0506",
+      "geodsg" : "Oleiros",
+      "ind_string" : "220,37",
+      "valor" : "220.37"
+    }, {
+      "geocod" : "0503",
+      "geodsg" : "Covilhã",
+      "ind_string" : "222,10",
+      "valor" : "222.1"
+    }, {
+      "geocod" : "0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "206,07",
+      "valor" : "206.07"
+    }, {
+      "geocod" : "0602",
+      "geodsg" : "Cantanhede",
+      "ind_string" : "300,56",
+      "valor" : "300.56"
+    }, {
+      "geocod" : "0508",
+      "geodsg" : "Proença-a-Nova",
+      "ind_string" : "211,27",
+      "valor" : "211.27"
+    }, {
+      "geocod" : "0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "172,81",
+      "valor" : "172.81"
+    }, {
+      "geocod" : "0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "217,84",
+      "valor" : "217.84"
+    }, {
+      "geocod" : "0311",
+      "geodsg" : "Vieira do Minho",
+      "ind_string" : "175,39",
+      "valor" : "175.39"
+    }, {
+      "geocod" : "0504",
+      "geodsg" : "Fundão",
+      "ind_string" : "237,19",
+      "valor" : "237.19"
+    }, {
+      "geocod" : "0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "263,16",
+      "valor" : "263.16"
+    }, {
+      "geocod" : "0608",
+      "geodsg" : "Mira",
+      "ind_string" : "296,70",
+      "valor" : "296.7"
+    }, {
+      "geocod" : "0409",
+      "geodsg" : "Torre de Moncorvo",
+      "ind_string" : "187,14",
+      "valor" : "187.14"
+    }, {
+      "geocod" : "0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "161,81",
+      "valor" : "161.81"
+    }, {
+      "geocod" : "0502",
+      "geodsg" : "Castelo Branco",
+      "ind_string" : "260,90",
+      "valor" : "260.9"
+    }, {
+      "geocod" : "0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "249,70",
+      "valor" : "249.7"
+    }, {
+      "geocod" : "0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "169,10",
+      "valor" : "169.1"
+    }, {
+      "geocod" : "0404",
+      "geodsg" : "Freixo de Espada à Cinta",
+      "ind_string" : "177,00",
+      "valor" : "177"
+    }, {
+      "geocod" : "0312",
+      "geodsg" : "Vila Nova de Famalicão",
+      "ind_string" : "267,32",
+      "valor" : "267.32"
+    }, {
+      "geocod" : "0314",
+      "geodsg" : "Vizela",
+      "ind_string" : "221,35",
+      "valor" : "221.35"
+    }, {
+      "geocod" : "0603",
+      "geodsg" : "Coimbra",
+      "ind_string" : "352,14",
+      "valor" : "352.14"
+    }, {
+      "geocod" : "0511",
+      "geodsg" : "Vila Velha de Ródão",
+      "ind_string" : "270,33",
+      "valor" : "270.33"
+    }, {
+      "geocod" : "0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "213,48",
+      "valor" : "213.48"
+    }, {
+      "geocod" : "0309",
+      "geodsg" : "Póvoa de Lanhoso",
+      "ind_string" : "238,42",
+      "valor" : "238.42"
+    }, {
+      "geocod" : "0310",
+      "geodsg" : "Terras de Bouro",
+      "ind_string" : "213,88",
+      "valor" : "213.88"
+    }, {
+      "geocod" : "0403",
+      "geodsg" : "Carrazeda de Ansiães",
+      "ind_string" : "206,17",
+      "valor" : "206.17"
+    }, {
+      "geocod" : "0313",
+      "geodsg" : "Vila Verde",
+      "ind_string" : "285,51",
+      "valor" : "285.51"
+    }, {
+      "geocod" : "0604",
+      "geodsg" : "Condeixa-a-Nova",
+      "ind_string" : "337,27",
+      "valor" : "337.27"
+    }, {
+      "geocod" : "0605",
+      "geodsg" : "Figueira da Foz",
+      "ind_string" : "297,07",
+      "valor" : "297.07"
+    }, {
+      "geocod" : "0609",
+      "geodsg" : "Miranda do Corvo",
+      "ind_string" : "246,40",
+      "valor" : "246.4"
+    }, {
+      "geocod" : "0607",
+      "geodsg" : "Lousã",
+      "ind_string" : "255,22",
+      "valor" : "255.22"
+    }, {
+      "geocod" : "0307",
+      "geodsg" : "Fafe",
+      "ind_string" : "221,83",
+      "valor" : "221.83"
+    }, {
+      "geocod" : "0606",
+      "geodsg" : "Góis",
+      "ind_string" : "198,13",
+      "valor" : "198.13"
+    }, {
+      "geocod" : "0308",
+      "geodsg" : "Guimarães",
+      "ind_string" : "229,82",
+      "valor" : "229.82"
+    }, {
+      "geocod" : "0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "193,90",
+      "valor" : "193.9"
+    }, {
+      "geocod" : "0510",
+      "geodsg" : "Vila de Rei",
+      "ind_string" : "232,07",
+      "valor" : "232.07"
+    }, {
+      "geocod" : "0601",
+      "geodsg" : "Arganil",
+      "ind_string" : "228,57",
+      "valor" : "228.57"
+    }, {
+      "geocod" : "0509",
+      "geodsg" : "Sertã",
+      "ind_string" : "238,58",
+      "valor" : "238.58"
+    }, {
+      "geocod" : "0507",
+      "geodsg" : "Penamacor",
+      "ind_string" : "200,16",
+      "valor" : "200.16"
+    }, {
+      "geocod" : "0505",
+      "geodsg" : "Idanha-a-Nova",
+      "ind_string" : "211,17",
+      "valor" : "211.17"
+    }, {
+      "geocod" : "0501",
+      "geodsg" : "Belmonte",
+      "ind_string" : "191,64",
+      "valor" : "191.64"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

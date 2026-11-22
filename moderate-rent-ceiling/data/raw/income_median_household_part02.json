@@ -1,0 +1,1436 @@
+[ {
+  "IndicadorCod" : "0012712",
+  "IndicadorDsg" : "Valor mediano do rendimento bruto declarado por agregado fiscal (€) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012712&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:20:58.844Z",
+  "DataUltimoAtualizacao" : "2026-07-24",
+  "UltimoPref" : "2024",
+  "Dados" : {
+    "2018" : [ {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "8 998",
+      "valor" : "8998"
+    }, {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "9 010",
+      "valor" : "9010"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "9 100",
+      "valor" : "9100"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "9 210",
+      "valor" : "9210"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "9 221",
+      "valor" : "9221"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "9 374",
+      "valor" : "9374"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "9 464",
+      "valor" : "9464"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "9 535",
+      "valor" : "9535"
+    }, {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "9 719",
+      "valor" : "9719"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "9 756",
+      "valor" : "9756"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "9 794",
+      "valor" : "9794"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "9 960",
+      "valor" : "9960"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "10 092",
+      "valor" : "10092"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "10 262",
+      "valor" : "10262"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "10 413",
+      "valor" : "10413"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "10 447",
+      "valor" : "10447"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "10 461",
+      "valor" : "10461"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "10 473",
+      "valor" : "10473"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "10 500",
+      "valor" : "10500"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "10 652",
+      "valor" : "10652"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "10 769",
+      "valor" : "10769"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "10 810",
+      "valor" : "10810"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "10 819",
+      "valor" : "10819"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "10 843",
+      "valor" : "10843"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "10 877",
+      "valor" : "10877"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "10 883",
+      "valor" : "10883"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "10 971",
+      "valor" : "10971"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "10 971",
+      "valor" : "10971"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "11 068",
+      "valor" : "11068"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "11 197",
+      "valor" : "11197"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "11 376",
+      "valor" : "11376"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "11 613",
+      "valor" : "11613"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "11 901",
+      "valor" : "11901"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "11 967",
+      "valor" : "11967"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "12 051",
+      "valor" : "12051"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "12 423",
+      "valor" : "12423"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "12 628",
+      "valor" : "12628"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "13 886",
+      "valor" : "13886"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "9 487",
+      "valor" : "9487"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "9 586",
+      "valor" : "9586"
+    }, {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "9 675",
+      "valor" : "9675"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "9 682",
+      "valor" : "9682"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "9 723",
+      "valor" : "9723"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "9 754",
+      "valor" : "9754"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "9 793",
+      "valor" : "9793"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "9 882",
+      "valor" : "9882"
+    }, {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "9 975",
+      "valor" : "9975"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "10 088",
+      "valor" : "10088"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "10 147",
+      "valor" : "10147"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "10 441",
+      "valor" : "10441"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "10 530",
+      "valor" : "10530"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "10 635",
+      "valor" : "10635"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "10 739",
+      "valor" : "10739"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "10 770",
+      "valor" : "10770"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "10 800",
+      "valor" : "10800"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "10 967",
+      "valor" : "10967"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "11 023",
+      "valor" : "11023"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "11 070",
+      "valor" : "11070"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "11 142",
+      "valor" : "11142"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "11 163",
+      "valor" : "11163"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "11 182",
+      "valor" : "11182"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "11 227",
+      "valor" : "11227"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 311",
+      "valor" : "11311"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 311",
+      "valor" : "11311"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "11 330",
+      "valor" : "11330"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "11 389",
+      "valor" : "11389"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "11 395",
+      "valor" : "11395"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "11 547",
+      "valor" : "11547"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "11 799",
+      "valor" : "11799"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "12 034",
+      "valor" : "12034"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "12 488",
+      "valor" : "12488"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "12 547",
+      "valor" : "12547"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "12 578",
+      "valor" : "12578"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "12 934",
+      "valor" : "12934"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "12 976",
+      "valor" : "12976"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "14 355",
+      "valor" : "14355"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "9 678",
+      "valor" : "9678"
+    }, {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "9 798",
+      "valor" : "9798"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "9 824",
+      "valor" : "9824"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "9 935",
+      "valor" : "9935"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "10 090",
+      "valor" : "10090"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "10 106",
+      "valor" : "10106"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "10 115",
+      "valor" : "10115"
+    }, {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "10 127",
+      "valor" : "10127"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "10 179",
+      "valor" : "10179"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "10 346",
+      "valor" : "10346"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "10 347",
+      "valor" : "10347"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "10 362",
+      "valor" : "10362"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "10 367",
+      "valor" : "10367"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "10 531",
+      "valor" : "10531"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "10 760",
+      "valor" : "10760"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "10 836",
+      "valor" : "10836"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "10 893",
+      "valor" : "10893"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "10 917",
+      "valor" : "10917"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "11 033",
+      "valor" : "11033"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "11 036",
+      "valor" : "11036"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "11 087",
+      "valor" : "11087"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "11 134",
+      "valor" : "11134"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 150",
+      "valor" : "11150"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 150",
+      "valor" : "11150"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "11 247",
+      "valor" : "11247"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "11 270",
+      "valor" : "11270"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "11 283",
+      "valor" : "11283"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "11 455",
+      "valor" : "11455"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "11 752",
+      "valor" : "11752"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "11 843",
+      "valor" : "11843"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "11 873",
+      "valor" : "11873"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "12 064",
+      "valor" : "12064"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "12 640",
+      "valor" : "12640"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "12 651",
+      "valor" : "12651"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "12 652",
+      "valor" : "12652"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "12 666",
+      "valor" : "12666"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "13 156",
+      "valor" : "13156"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "14 402",
+      "valor" : "14402"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "10 019",
+      "valor" : "10019"
+    }, {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "10 202",
+      "valor" : "10202"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "10 221",
+      "valor" : "10221"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "10 476",
+      "valor" : "10476"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "10 511",
+      "valor" : "10511"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "10 528",
+      "valor" : "10528"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "10 563",
+      "valor" : "10563"
+    }, {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "10 583",
+      "valor" : "10583"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "10 702",
+      "valor" : "10702"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "10 846",
+      "valor" : "10846"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "10 866",
+      "valor" : "10866"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "10 866",
+      "valor" : "10866"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "10 983",
+      "valor" : "10983"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "10 992",
+      "valor" : "10992"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "11 267",
+      "valor" : "11267"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "11 283",
+      "valor" : "11283"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "11 332",
+      "valor" : "11332"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "11 352",
+      "valor" : "11352"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "11 405",
+      "valor" : "11405"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "11 494",
+      "valor" : "11494"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "11 631",
+      "valor" : "11631"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "11 642",
+      "valor" : "11642"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 666",
+      "valor" : "11666"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "11 666",
+      "valor" : "11666"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "11 707",
+      "valor" : "11707"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "11 724",
+      "valor" : "11724"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "11 735",
+      "valor" : "11735"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "11 900",
+      "valor" : "11900"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "12 268",
+      "valor" : "12268"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "12 396",
+      "valor" : "12396"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "12 574",
+      "valor" : "12574"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "12 736",
+      "valor" : "12736"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "13 199",
+      "valor" : "13199"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "13 222",
+      "valor" : "13222"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "13 301",
+      "valor" : "13301"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "13 378",
+      "valor" : "13378"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "13 636",
+      "valor" : "13636"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "15 075",
+      "valor" : "15075"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "10 964",
+      "valor" : "10964"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "10 977",
+      "valor" : "10977"
+    }, {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "11 098",
+      "valor" : "11098"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "11 112",
+      "valor" : "11112"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "11 219",
+      "valor" : "11219"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "11 224",
+      "valor" : "11224"
+    }, {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "11 322",
+      "valor" : "11322"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "11 328",
+      "valor" : "11328"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "11 417",
+      "valor" : "11417"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "11 424",
+      "valor" : "11424"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "11 482",
+      "valor" : "11482"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "11 672",
+      "valor" : "11672"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "11 697",
+      "valor" : "11697"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "11 742",
+      "valor" : "11742"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "11 982",
+      "valor" : "11982"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "12 135",
+      "valor" : "12135"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "12 170",
+      "valor" : "12170"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "12 172",
+      "valor" : "12172"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "12 225",
+      "valor" : "12225"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "12 400",
+      "valor" : "12400"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "12 407",
+      "valor" : "12407"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "12 414",
+      "valor" : "12414"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "12 479",
+      "valor" : "12479"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "12 482",
+      "valor" : "12482"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "12 482",
+      "valor" : "12482"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "12 565",
+      "valor" : "12565"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "12 582",
+      "valor" : "12582"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "12 617",
+      "valor" : "12617"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "12 958",
+      "valor" : "12958"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "13 237",
+      "valor" : "13237"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "13 366",
+      "valor" : "13366"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "13 596",
+      "valor" : "13596"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "13 863",
+      "valor" : "13863"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "14 025",
+      "valor" : "14025"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "14 122",
+      "valor" : "14122"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "14 122",
+      "valor" : "14122"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "14 153",
+      "valor" : "14153"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "15 676",
+      "valor" : "15676"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "11 273",
+      "valor" : "11273"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "11 504",
+      "valor" : "11504"
+    }, {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "11 674",
+      "valor" : "11674"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "11 741",
+      "valor" : "11741"
+    }, {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "11 853",
+      "valor" : "11853"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "12 016",
+      "valor" : "12016"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "12 016",
+      "valor" : "12016"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "12 053",
+      "valor" : "12053"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "12 120",
+      "valor" : "12120"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "12 195",
+      "valor" : "12195"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "12 269",
+      "valor" : "12269"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "12 271",
+      "valor" : "12271"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "12 281",
+      "valor" : "12281"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "12 325",
+      "valor" : "12325"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "12 511",
+      "valor" : "12511"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "12 523",
+      "valor" : "12523"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "12 842",
+      "valor" : "12842"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "12 866",
+      "valor" : "12866"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "12 877",
+      "valor" : "12877"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "12 984",
+      "valor" : "12984"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "13 011",
+      "valor" : "13011"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "13 109",
+      "valor" : "13109"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "13 109",
+      "valor" : "13109"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "13 192",
+      "valor" : "13192"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "13 236",
+      "valor" : "13236"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "13 242",
+      "valor" : "13242"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "13 286",
+      "valor" : "13286"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "13 422",
+      "valor" : "13422"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "13 620",
+      "valor" : "13620"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "14 049",
+      "valor" : "14049"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "14 250",
+      "valor" : "14250"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "14 393",
+      "valor" : "14393"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "14 553",
+      "valor" : "14553"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "14 910",
+      "valor" : "14910"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "14 998",
+      "valor" : "14998"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "15 106",
+      "valor" : "15106"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "15 110",
+      "valor" : "15110"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "16 682",
+      "valor" : "16682"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "1500803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "12 054",
+      "valor" : "12054"
+    }, {
+      "geocod" : "11D1815",
+      "geodsg" : "São João da Pesqueira",
+      "ind_string" : "12 432",
+      "valor" : "12432"
+    }, {
+      "geocod" : "1500801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "12 716",
+      "valor" : "12716"
+    }, {
+      "geocod" : "1500815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "12 805",
+      "valor" : "12805"
+    }, {
+      "geocod" : "11D1819",
+      "geodsg" : "Tabuaço",
+      "ind_string" : "12 842",
+      "valor" : "12842"
+    }, {
+      "geocod" : "11E0412",
+      "geodsg" : "Vinhais",
+      "ind_string" : "12 859",
+      "valor" : "12859"
+    }, {
+      "geocod" : "1500809",
+      "geodsg" : "Monchique",
+      "ind_string" : "12 901",
+      "valor" : "12901"
+    }, {
+      "geocod" : "11E0411",
+      "geodsg" : "Vimioso",
+      "ind_string" : "12 977",
+      "valor" : "12977"
+    }, {
+      "geocod" : "11E0405",
+      "geodsg" : "Macedo de Cavaleiros",
+      "ind_string" : "13 039",
+      "valor" : "13039"
+    }, {
+      "geocod" : "1500814",
+      "geodsg" : "Tavira",
+      "ind_string" : "13 053",
+      "valor" : "13053"
+    }, {
+      "geocod" : "11D1818",
+      "geodsg" : "Sernancelhe",
+      "ind_string" : "13 148",
+      "valor" : "13148"
+    }, {
+      "geocod" : "11E0410",
+      "geodsg" : "Vila Flor",
+      "ind_string" : "13 194",
+      "valor" : "13194"
+    }, {
+      "geocod" : "11E0401",
+      "geodsg" : "Alfândega da Fé",
+      "ind_string" : "13 304",
+      "valor" : "13304"
+    }, {
+      "geocod" : "11D1807",
+      "geodsg" : "Moimenta da Beira",
+      "ind_string" : "13 460",
+      "valor" : "13460"
+    }, {
+      "geocod" : "11D1820",
+      "geodsg" : "Tarouca",
+      "ind_string" : "13 532",
+      "valor" : "13532"
+    }, {
+      "geocod" : "11E0408",
+      "geodsg" : "Mogadouro",
+      "ind_string" : "13 551",
+      "valor" : "13551"
+    }, {
+      "geocod" : "1500804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "13 596",
+      "valor" : "13596"
+    }, {
+      "geocod" : "1500811",
+      "geodsg" : "Portimão",
+      "ind_string" : "13 692",
+      "valor" : "13692"
+    }, {
+      "geocod" : "1500807",
+      "geodsg" : "Lagos",
+      "ind_string" : "13 713",
+      "valor" : "13713"
+    }, {
+      "geocod" : "1500816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "13 783",
+      "valor" : "13783"
+    }, {
+      "geocod" : "1500813",
+      "geodsg" : "Silves",
+      "ind_string" : "13 794",
+      "valor" : "13794"
+    }, {
+      "geocod" : "15",
+      "geodsg" : "Algarve",
+      "ind_string" : "13 844",
+      "valor" : "13844"
+    }, {
+      "geocod" : "150",
+      "geodsg" : "Algarve",
+      "ind_string" : "13 844",
+      "valor" : "13844"
+    }, {
+      "geocod" : "1500808",
+      "geodsg" : "Loulé",
+      "ind_string" : "13 980",
+      "valor" : "13980"
+    }, {
+      "geocod" : "1500806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "14 162",
+      "valor" : "14162"
+    }, {
+      "geocod" : "1500810",
+      "geodsg" : "Olhão",
+      "ind_string" : "14 222",
+      "valor" : "14222"
+    }, {
+      "geocod" : "11E",
+      "geodsg" : "Terras de Trás-os-Montes",
+      "ind_string" : "14 273",
+      "valor" : "14273"
+    }, {
+      "geocod" : "11E0407",
+      "geodsg" : "Mirandela",
+      "ind_string" : "14 374",
+      "valor" : "14374"
+    }, {
+      "geocod" : "11E0406",
+      "geodsg" : "Miranda do Douro",
+      "ind_string" : "14 733",
+      "valor" : "14733"
+    }, {
+      "geocod" : "1500812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "15 196",
+      "valor" : "15196"
+    }, {
+      "geocod" : "1910103",
+      "geodsg" : "Anadia",
+      "ind_string" : "15 228",
+      "valor" : "15228"
+    }, {
+      "geocod" : "1500805",
+      "geodsg" : "Faro",
+      "ind_string" : "15 236",
+      "valor" : "15236"
+    }, {
+      "geocod" : "1910101",
+      "geodsg" : "Águeda",
+      "ind_string" : "15 653",
+      "valor" : "15653"
+    }, {
+      "geocod" : "11E0402",
+      "geodsg" : "Bragança",
+      "ind_string" : "15 943",
+      "valor" : "15943"
+    }, {
+      "geocod" : "19",
+      "geodsg" : "Centro",
+      "ind_string" : "15 987",
+      "valor" : "15987"
+    }, {
+      "geocod" : "1910102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "16 098",
+      "valor" : "16098"
+    }, {
+      "geocod" : "191",
+      "geodsg" : "Região de Aveiro",
+      "ind_string" : "16 257",
+      "valor" : "16257"
+    }, {
+      "geocod" : "1910105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "17 903",
+      "valor" : "17903"
+    }, {
+      "geocod" : "11D1812",
+      "geodsg" : "Penedono",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "1500802",
+      "geodsg" : "Alcoutim",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

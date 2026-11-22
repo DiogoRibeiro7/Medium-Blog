@@ -1,0 +1,161 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:35:08.083Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "4501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "246,45",
+      "valor" : "246.45"
+    }, {
+      "geocod" : "3102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "193,88",
+      "valor" : "193.88"
+    }, {
+      "geocod" : "4202",
+      "geodsg" : "Nordeste",
+      "ind_string" : "163,20",
+      "valor" : "163.2"
+    }, {
+      "geocod" : "3107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "337,74",
+      "valor" : "337.74"
+    }, {
+      "geocod" : "3109",
+      "geodsg" : "Santana",
+      "ind_string" : "167,33",
+      "valor" : "167.33"
+    }, {
+      "geocod" : "4204",
+      "geodsg" : "Povoação",
+      "ind_string" : "199,57",
+      "valor" : "199.57"
+    }, {
+      "geocod" : "3201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "277,20",
+      "valor" : "277.2"
+    }, {
+      "geocod" : "4203",
+      "geodsg" : "Ponta Delgada",
+      "ind_string" : "349,39",
+      "valor" : "349.39"
+    }, {
+      "geocod" : "4401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "201,76",
+      "valor" : "201.76"
+    }, {
+      "geocod" : "4601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "248,26",
+      "valor" : "248.26"
+    }, {
+      "geocod" : "3106",
+      "geodsg" : "Porto Moniz",
+      "ind_string" : "180,95",
+      "valor" : "180.95"
+    }, {
+      "geocod" : "4802",
+      "geodsg" : "Santa Cruz das Flores",
+      "ind_string" : "287,96",
+      "valor" : "287.96"
+    }, {
+      "geocod" : "4101",
+      "geodsg" : "Vila do Porto",
+      "ind_string" : "247,85",
+      "valor" : "247.85"
+    }, {
+      "geocod" : "4201",
+      "geodsg" : "Lagoa (R.A.A.)",
+      "ind_string" : "266,15",
+      "valor" : "266.15"
+    }, {
+      "geocod" : "3105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "327,89",
+      "valor" : "327.89"
+    }, {
+      "geocod" : "4302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "245,75",
+      "valor" : "245.75"
+    }, {
+      "geocod" : "4603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "273,23",
+      "valor" : "273.23"
+    }, {
+      "geocod" : "4301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "262,49",
+      "valor" : "262.49"
+    }, {
+      "geocod" : "3108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "325,77",
+      "valor" : "325.77"
+    }, {
+      "geocod" : "3103",
+      "geodsg" : "Funchal",
+      "ind_string" : "308,55",
+      "valor" : "308.55"
+    }, {
+      "geocod" : "4602",
+      "geodsg" : "Madalena",
+      "ind_string" : "303,89",
+      "valor" : "303.89"
+    }, {
+      "geocod" : "3110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "277,62",
+      "valor" : "277.62"
+    }, {
+      "geocod" : "4206",
+      "geodsg" : "Vila Franca do Campo",
+      "ind_string" : "209,95",
+      "valor" : "209.95"
+    }, {
+      "geocod" : "4901",
+      "geodsg" : "Corvo",
+      "ind_string" : "300,81",
+      "valor" : "300.81"
+    }, {
+      "geocod" : "4205",
+      "geodsg" : "Ribeira Grande",
+      "ind_string" : "209,66",
+      "valor" : "209.66"
+    }, {
+      "geocod" : "4701",
+      "geodsg" : "Horta",
+      "ind_string" : "296,52",
+      "valor" : "296.52"
+    }, {
+      "geocod" : "4502",
+      "geodsg" : "Velas",
+      "ind_string" : "272,48",
+      "valor" : "272.48"
+    }, {
+      "geocod" : "3104",
+      "geodsg" : "Machico",
+      "ind_string" : "225,69",
+      "valor" : "225.69"
+    }, {
+      "geocod" : "4801",
+      "geodsg" : "Lajes das Flores",
+      "ind_string" : "229,73",
+      "valor" : "229.73"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

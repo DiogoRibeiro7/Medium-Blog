@@ -1,0 +1,216 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:34:59.952Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0205",
+      "geodsg" : "Beja",
+      "ind_string" : "265,78",
+      "valor" : "265.78"
+    }, {
+      "geocod" : "0206",
+      "geodsg" : "Castro Verde",
+      "ind_string" : "266,70",
+      "valor" : "266.7"
+    }, {
+      "geocod" : "0112",
+      "geodsg" : "Murtosa",
+      "ind_string" : "260,22",
+      "valor" : "260.22"
+    }, {
+      "geocod" : "0117",
+      "geodsg" : "Sever do Vouga",
+      "ind_string" : "247,00",
+      "valor" : "247"
+    }, {
+      "geocod" : "0115",
+      "geodsg" : "Ovar",
+      "ind_string" : "296,95",
+      "valor" : "296.95"
+    }, {
+      "geocod" : "0207",
+      "geodsg" : "Cuba",
+      "ind_string" : "198,36",
+      "valor" : "198.36"
+    }, {
+      "geocod" : "0203",
+      "geodsg" : "Alvito",
+      "ind_string" : "203,28",
+      "valor" : "203.28"
+    }, {
+      "geocod" : "0306",
+      "geodsg" : "Esposende",
+      "ind_string" : "363,94",
+      "valor" : "363.94"
+    }, {
+      "geocod" : "0202",
+      "geodsg" : "Almodôvar",
+      "ind_string" : "250,37",
+      "valor" : "250.37"
+    }, {
+      "geocod" : "0106",
+      "geodsg" : "Castelo de Paiva",
+      "ind_string" : "188,68",
+      "valor" : "188.68"
+    }, {
+      "geocod" : "0303",
+      "geodsg" : "Braga",
+      "ind_string" : "341,56",
+      "valor" : "341.56"
+    }, {
+      "geocod" : "0110",
+      "geodsg" : "Ílhavo",
+      "ind_string" : "331,56",
+      "valor" : "331.56"
+    }, {
+      "geocod" : "0107",
+      "geodsg" : "Espinho",
+      "ind_string" : "285,16",
+      "valor" : "285.16"
+    }, {
+      "geocod" : "0210",
+      "geodsg" : "Moura",
+      "ind_string" : "212,17",
+      "valor" : "212.17"
+    }, {
+      "geocod" : "0302",
+      "geodsg" : "Barcelos",
+      "ind_string" : "287,37",
+      "valor" : "287.37"
+    }, {
+      "geocod" : "0119",
+      "geodsg" : "Vale de Cambra",
+      "ind_string" : "259,48",
+      "valor" : "259.48"
+    }, {
+      "geocod" : "0116",
+      "geodsg" : "São João da Madeira",
+      "ind_string" : "264,45",
+      "valor" : "264.45"
+    }, {
+      "geocod" : "0208",
+      "geodsg" : "Ferreira do Alentejo",
+      "ind_string" : "237,35",
+      "valor" : "237.35"
+    }, {
+      "geocod" : "0108",
+      "geodsg" : "Estarreja",
+      "ind_string" : "282,08",
+      "valor" : "282.08"
+    }, {
+      "geocod" : "0101",
+      "geodsg" : "Águeda",
+      "ind_string" : "278,43",
+      "valor" : "278.43"
+    }, {
+      "geocod" : "0204",
+      "geodsg" : "Barrancos",
+      "ind_string" : "196,08",
+      "valor" : "196.08"
+    }, {
+      "geocod" : "0114",
+      "geodsg" : "Oliveira do Bairro",
+      "ind_string" : "306,68",
+      "valor" : "306.68"
+    }, {
+      "geocod" : "0109",
+      "geodsg" : "Santa Maria da Feira",
+      "ind_string" : "264,52",
+      "valor" : "264.52"
+    }, {
+      "geocod" : "0211",
+      "geodsg" : "Odemira",
+      "ind_string" : "345,71",
+      "valor" : "345.71"
+    }, {
+      "geocod" : "0301",
+      "geodsg" : "Amares",
+      "ind_string" : "270,83",
+      "valor" : "270.83"
+    }, {
+      "geocod" : "0304",
+      "geodsg" : "Cabeceiras de Basto",
+      "ind_string" : "217,61",
+      "valor" : "217.61"
+    }, {
+      "geocod" : "0102",
+      "geodsg" : "Albergaria-a-Velha",
+      "ind_string" : "282,75",
+      "valor" : "282.75"
+    }, {
+      "geocod" : "0104",
+      "geodsg" : "Arouca",
+      "ind_string" : "246,34",
+      "valor" : "246.34"
+    }, {
+      "geocod" : "0113",
+      "geodsg" : "Oliveira de Azeméis",
+      "ind_string" : "252,42",
+      "valor" : "252.42"
+    }, {
+      "geocod" : "0214",
+      "geodsg" : "Vidigueira",
+      "ind_string" : "261,29",
+      "valor" : "261.29"
+    }, {
+      "geocod" : "0103",
+      "geodsg" : "Anadia",
+      "ind_string" : "282,94",
+      "valor" : "282.94"
+    }, {
+      "geocod" : "0111",
+      "geodsg" : "Mealhada",
+      "ind_string" : "293,39",
+      "valor" : "293.39"
+    }, {
+      "geocod" : "0201",
+      "geodsg" : "Aljustrel",
+      "ind_string" : "260,00",
+      "valor" : "260"
+    }, {
+      "geocod" : "0212",
+      "geodsg" : "Ourique",
+      "ind_string" : "220,87",
+      "valor" : "220.87"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "334,18",
+      "valor" : "334.18"
+    }, {
+      "geocod" : "0209",
+      "geodsg" : "Mértola",
+      "ind_string" : "212,28",
+      "valor" : "212.28"
+    }, {
+      "geocod" : "0105",
+      "geodsg" : "Aveiro",
+      "ind_string" : "368,73",
+      "valor" : "368.73"
+    }, {
+      "geocod" : "0213",
+      "geodsg" : "Serpa",
+      "ind_string" : "245,40",
+      "valor" : "245.4"
+    }, {
+      "geocod" : "0305",
+      "geodsg" : "Celorico de Basto",
+      "ind_string" : "188,04",
+      "valor" : "188.04"
+    }, {
+      "geocod" : "0118",
+      "geodsg" : "Vagos",
+      "ind_string" : "319,49",
+      "valor" : "319.49"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

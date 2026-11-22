@@ -1,0 +1,995 @@
+[ {
+  "IndicadorCod" : "0012712",
+  "IndicadorDsg" : "Valor mediano do rendimento bruto declarado por agregado fiscal (€) por Localização geográfica (NUTS - 2024); Anual - INE, Estatísticas do Rendimento ao nível local com base na informação produzida pelo Ministério das Finanças - Autoridade Tributária e Aduaneira.",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012712&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:28:30.780Z",
+  "DataUltimoAtualizacao" : "2026-07-24",
+  "UltimoPref" : "2024",
+  "Dados" : {
+    "2018" : [ {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "9 479",
+      "valor" : "9479"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "9 686",
+      "valor" : "9686"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "9 852",
+      "valor" : "9852"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "9 964",
+      "valor" : "9964"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "10 016",
+      "valor" : "10016"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "10 030",
+      "valor" : "10030"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "10 333",
+      "valor" : "10333"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "10 614",
+      "valor" : "10614"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "10 736",
+      "valor" : "10736"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "10 790",
+      "valor" : "10790"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "10 897",
+      "valor" : "10897"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "10 952",
+      "valor" : "10952"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "11 375",
+      "valor" : "11375"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "11 551",
+      "valor" : "11551"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "11 551",
+      "valor" : "11551"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "11 551",
+      "valor" : "11551"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "12 000",
+      "valor" : "12000"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "12 015",
+      "valor" : "12015"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "12 223",
+      "valor" : "12223"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "12 364",
+      "valor" : "12364"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "12 709",
+      "valor" : "12709"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "12 748",
+      "valor" : "12748"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "13 122",
+      "valor" : "13122"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2019" : [ {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "9 958",
+      "valor" : "9958"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "10 056",
+      "valor" : "10056"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "10 260",
+      "valor" : "10260"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "10 286",
+      "valor" : "10286"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "10 355",
+      "valor" : "10355"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "10 430",
+      "valor" : "10430"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "10 830",
+      "valor" : "10830"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "10 880",
+      "valor" : "10880"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "11 216",
+      "valor" : "11216"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "11 359",
+      "valor" : "11359"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "11 410",
+      "valor" : "11410"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "11 464",
+      "valor" : "11464"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "11 555",
+      "valor" : "11555"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 000",
+      "valor" : "12000"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 000",
+      "valor" : "12000"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 000",
+      "valor" : "12000"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "12 499",
+      "valor" : "12499"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "12 523",
+      "valor" : "12523"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "12 555",
+      "valor" : "12555"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "12 930",
+      "valor" : "12930"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "13 132",
+      "valor" : "13132"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "13 194",
+      "valor" : "13194"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "13 617",
+      "valor" : "13617"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2020" : [ {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "10 158",
+      "valor" : "10158"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "10 210",
+      "valor" : "10210"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "10 299",
+      "valor" : "10299"
+    }, {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "10 409",
+      "valor" : "10409"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "10 511",
+      "valor" : "10511"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "10 763",
+      "valor" : "10763"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "10 836",
+      "valor" : "10836"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "11 279",
+      "valor" : "11279"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "11 321",
+      "valor" : "11321"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "11 435",
+      "valor" : "11435"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "11 576",
+      "valor" : "11576"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "11 766",
+      "valor" : "11766"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "11 946",
+      "valor" : "11946"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 011",
+      "valor" : "12011"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 011",
+      "valor" : "12011"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 011",
+      "valor" : "12011"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "12 568",
+      "valor" : "12568"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "12 837",
+      "valor" : "12837"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "13 005",
+      "valor" : "13005"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "13 115",
+      "valor" : "13115"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "13 188",
+      "valor" : "13188"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "13 231",
+      "valor" : "13231"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "13 959",
+      "valor" : "13959"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2021" : [ {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "10 694",
+      "valor" : "10694"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "10 726",
+      "valor" : "10726"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "10 760",
+      "valor" : "10760"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "10 806",
+      "valor" : "10806"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "10 828",
+      "valor" : "10828"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "11 362",
+      "valor" : "11362"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "11 379",
+      "valor" : "11379"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "11 443",
+      "valor" : "11443"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "11 865",
+      "valor" : "11865"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "11 899",
+      "valor" : "11899"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "11 910",
+      "valor" : "11910"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "12 059",
+      "valor" : "12059"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 558",
+      "valor" : "12558"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 558",
+      "valor" : "12558"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "12 558",
+      "valor" : "12558"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "12 560",
+      "valor" : "12560"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "13 096",
+      "valor" : "13096"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "13 146",
+      "valor" : "13146"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "13 243",
+      "valor" : "13243"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "13 671",
+      "valor" : "13671"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "13 682",
+      "valor" : "13682"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "13 902",
+      "valor" : "13902"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "14 503",
+      "valor" : "14503"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2022" : [ {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "11 309",
+      "valor" : "11309"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "11 484",
+      "valor" : "11484"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "11 490",
+      "valor" : "11490"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "11 554",
+      "valor" : "11554"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "11 571",
+      "valor" : "11571"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "12 005",
+      "valor" : "12005"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "12 050",
+      "valor" : "12050"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "12 574",
+      "valor" : "12574"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "12 606",
+      "valor" : "12606"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "12 701",
+      "valor" : "12701"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "12 865",
+      "valor" : "12865"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "12 934",
+      "valor" : "12934"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "13 259",
+      "valor" : "13259"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "13 352",
+      "valor" : "13352"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "13 352",
+      "valor" : "13352"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "13 352",
+      "valor" : "13352"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "13 897",
+      "valor" : "13897"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "13 988",
+      "valor" : "13988"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "14 123",
+      "valor" : "14123"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "14 387",
+      "valor" : "14387"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "14 542",
+      "valor" : "14542"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "14 819",
+      "valor" : "14819"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "15 097",
+      "valor" : "15097"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2023" : [ {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "12 162",
+      "valor" : "12162"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "12 300",
+      "valor" : "12300"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "12 356",
+      "valor" : "12356"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "12 440",
+      "valor" : "12440"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "12 564",
+      "valor" : "12564"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "12 857",
+      "valor" : "12857"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "13 107",
+      "valor" : "13107"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "13 471",
+      "valor" : "13471"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "13 621",
+      "valor" : "13621"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "13 708",
+      "valor" : "13708"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "13 812",
+      "valor" : "13812"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "13 840",
+      "valor" : "13840"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "14 346",
+      "valor" : "14346"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "14 346",
+      "valor" : "14346"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "14 346",
+      "valor" : "14346"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "14 380",
+      "valor" : "14380"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "14 660",
+      "valor" : "14660"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "15 027",
+      "valor" : "15027"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "15 174",
+      "valor" : "15174"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "15 321",
+      "valor" : "15321"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "15 519",
+      "valor" : "15519"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "16 096",
+      "valor" : "16096"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "16 766",
+      "valor" : "16766"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ],
+    "2024" : [ {
+      "geocod" : "3003110",
+      "geodsg" : "São Vicente",
+      "ind_string" : "13 043",
+      "valor" : "13043"
+    }, {
+      "geocod" : "3003101",
+      "geodsg" : "Calheta (R.A.M.)",
+      "ind_string" : "13 072",
+      "valor" : "13072"
+    }, {
+      "geocod" : "3003105",
+      "geodsg" : "Ponta do Sol",
+      "ind_string" : "13 294",
+      "valor" : "13294"
+    }, {
+      "geocod" : "3003109",
+      "geodsg" : "Santana",
+      "ind_string" : "13 531",
+      "valor" : "13531"
+    }, {
+      "geocod" : "3003107",
+      "geodsg" : "Ribeira Brava",
+      "ind_string" : "13 580",
+      "valor" : "13580"
+    }, {
+      "geocod" : "3003102",
+      "geodsg" : "Câmara de Lobos",
+      "ind_string" : "13 595",
+      "valor" : "13595"
+    }, {
+      "geocod" : "2004501",
+      "geodsg" : "Calheta (R.A.A.)",
+      "ind_string" : "13 741",
+      "valor" : "13741"
+    }, {
+      "geocod" : "2004502",
+      "geodsg" : "Velas",
+      "ind_string" : "14 191",
+      "valor" : "14191"
+    }, {
+      "geocod" : "3003104",
+      "geodsg" : "Machico",
+      "ind_string" : "14 544",
+      "valor" : "14544"
+    }, {
+      "geocod" : "2004401",
+      "geodsg" : "Santa Cruz da Graciosa",
+      "ind_string" : "14 822",
+      "valor" : "14822"
+    }, {
+      "geocod" : "2004601",
+      "geodsg" : "Lajes do Pico",
+      "ind_string" : "14 902",
+      "valor" : "14902"
+    }, {
+      "geocod" : "2004603",
+      "geodsg" : "São Roque do Pico",
+      "ind_string" : "14 961",
+      "valor" : "14961"
+    }, {
+      "geocod" : "3",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "15 279",
+      "valor" : "15279"
+    }, {
+      "geocod" : "30",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "15 279",
+      "valor" : "15279"
+    }, {
+      "geocod" : "300",
+      "geodsg" : "Região Autónoma da Madeira",
+      "ind_string" : "15 279",
+      "valor" : "15279"
+    }, {
+      "geocod" : "2004602",
+      "geodsg" : "Madalena",
+      "ind_string" : "15 309",
+      "valor" : "15309"
+    }, {
+      "geocod" : "PT",
+      "geodsg" : "Portugal",
+      "ind_string" : "15 573",
+      "valor" : "15573"
+    }, {
+      "geocod" : "2004301",
+      "geodsg" : "Angra do Heroísmo",
+      "ind_string" : "16 044",
+      "valor" : "16044"
+    }, {
+      "geocod" : "2004302",
+      "geodsg" : "Vila da Praia da Vitória",
+      "ind_string" : "16 244",
+      "valor" : "16244"
+    }, {
+      "geocod" : "3003103",
+      "geodsg" : "Funchal",
+      "ind_string" : "16 270",
+      "valor" : "16270"
+    }, {
+      "geocod" : "2004701",
+      "geodsg" : "Horta",
+      "ind_string" : "16 559",
+      "valor" : "16559"
+    }, {
+      "geocod" : "3003108",
+      "geodsg" : "Santa Cruz",
+      "ind_string" : "17 174",
+      "valor" : "17174"
+    }, {
+      "geocod" : "3003201",
+      "geodsg" : "Porto Santo",
+      "ind_string" : "17 572",
+      "valor" : "17572"
+    }, {
+      "geocod" : "2004801",
+      "geodsg" : "Lajes das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004802",
+      "geodsg" : "Santa Cruz das Flores",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "2004901",
+      "geodsg" : "Corvo",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    }, {
+      "geocod" : "3003106",
+      "geodsg" : "Porto Moniz",
+      "sinal_conv" : "-",
+      "sinal_conv_desc" : "Dado nulo ou não aplicável",
+      "ind_string" : "-"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]

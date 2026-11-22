@@ -1,0 +1,216 @@
+[ {
+  "IndicadorCod" : "0012522",
+  "IndicadorDsg" : "Valor médio mensal das rendas dos alojamentos familiares clássicos arrendados (€) por Localização geográfica à data dos Censos [2021] (NUTS - 2024); Decenal - INE, Recenseamento da população e habitação - Censos 2021",
+  "MetaInfUrl" : "https://www.ine.pt/bddXplorer/htdocs/minfo.jsp?var_cd=0012522&lingua=PT",
+  "DataExtracao" : "2026-11-21T11:35:01.836Z",
+  "DataUltimoAtualizacao" : "2024-03-19",
+  "UltimoPref" : "2021",
+  "Dados" : {
+    "2021" : [ {
+      "geocod" : "0613",
+      "geodsg" : "Penacova",
+      "ind_string" : "237,77",
+      "valor" : "237.77"
+    }, {
+      "geocod" : "0801",
+      "geodsg" : "Albufeira",
+      "ind_string" : "439,99",
+      "valor" : "439.99"
+    }, {
+      "geocod" : "0704",
+      "geodsg" : "Estremoz",
+      "ind_string" : "220,93",
+      "valor" : "220.93"
+    }, {
+      "geocod" : "0809",
+      "geodsg" : "Monchique",
+      "ind_string" : "250,17",
+      "valor" : "250.17"
+    }, {
+      "geocod" : "0807",
+      "geodsg" : "Lagos",
+      "ind_string" : "406,36",
+      "valor" : "406.36"
+    }, {
+      "geocod" : "0811",
+      "geodsg" : "Portimão",
+      "ind_string" : "384,89",
+      "valor" : "384.89"
+    }, {
+      "geocod" : "0814",
+      "geodsg" : "Tavira",
+      "ind_string" : "354,35",
+      "valor" : "354.35"
+    }, {
+      "geocod" : "0705",
+      "geodsg" : "Évora",
+      "ind_string" : "303,97",
+      "valor" : "303.97"
+    }, {
+      "geocod" : "0806",
+      "geodsg" : "Lagoa",
+      "ind_string" : "364,14",
+      "valor" : "364.14"
+    }, {
+      "geocod" : "0703",
+      "geodsg" : "Borba",
+      "ind_string" : "191,00",
+      "valor" : "191"
+    }, {
+      "geocod" : "0805",
+      "geodsg" : "Faro",
+      "ind_string" : "372,72",
+      "valor" : "372.72"
+    }, {
+      "geocod" : "0901",
+      "geodsg" : "Aguiar da Beira",
+      "ind_string" : "190,92",
+      "valor" : "190.92"
+    }, {
+      "geocod" : "0815",
+      "geodsg" : "Vila do Bispo",
+      "ind_string" : "381,69",
+      "valor" : "381.69"
+    }, {
+      "geocod" : "0816",
+      "geodsg" : "Vila Real de Santo António",
+      "ind_string" : "283,70",
+      "valor" : "283.7"
+    }, {
+      "geocod" : "0612",
+      "geodsg" : "Pampilhosa da Serra",
+      "ind_string" : "214,82",
+      "valor" : "214.82"
+    }, {
+      "geocod" : "0713",
+      "geodsg" : "Viana do Alentejo",
+      "ind_string" : "240,09",
+      "valor" : "240.09"
+    }, {
+      "geocod" : "0812",
+      "geodsg" : "São Brás de Alportel",
+      "ind_string" : "350,21",
+      "valor" : "350.21"
+    }, {
+      "geocod" : "0709",
+      "geodsg" : "Portel",
+      "ind_string" : "207,07",
+      "valor" : "207.07"
+    }, {
+      "geocod" : "0614",
+      "geodsg" : "Penela",
+      "ind_string" : "248,48",
+      "valor" : "248.48"
+    }, {
+      "geocod" : "0706",
+      "geodsg" : "Montemor-o-Novo",
+      "ind_string" : "243,95",
+      "valor" : "243.95"
+    }, {
+      "geocod" : "0707",
+      "geodsg" : "Mora",
+      "ind_string" : "195,80",
+      "valor" : "195.8"
+    }, {
+      "geocod" : "0702",
+      "geodsg" : "Arraiolos",
+      "ind_string" : "227,72",
+      "valor" : "227.72"
+    }, {
+      "geocod" : "0710",
+      "geodsg" : "Redondo",
+      "ind_string" : "210,64",
+      "valor" : "210.64"
+    }, {
+      "geocod" : "0701",
+      "geodsg" : "Alandroal",
+      "ind_string" : "208,67",
+      "valor" : "208.67"
+    }, {
+      "geocod" : "0714",
+      "geodsg" : "Vila Viçosa",
+      "ind_string" : "185,39",
+      "valor" : "185.39"
+    }, {
+      "geocod" : "0810",
+      "geodsg" : "Olhão",
+      "ind_string" : "284,42",
+      "valor" : "284.42"
+    }, {
+      "geocod" : "0902",
+      "geodsg" : "Almeida",
+      "ind_string" : "201,12",
+      "valor" : "201.12"
+    }, {
+      "geocod" : "0617",
+      "geodsg" : "Vila Nova de Poiares",
+      "ind_string" : "255,16",
+      "valor" : "255.16"
+    }, {
+      "geocod" : "0813",
+      "geodsg" : "Silves",
+      "ind_string" : "359,75",
+      "valor" : "359.75"
+    }, {
+      "geocod" : "0611",
+      "geodsg" : "Oliveira do Hospital",
+      "ind_string" : "209,71",
+      "valor" : "209.71"
+    }, {
+      "geocod" : "0615",
+      "geodsg" : "Soure",
+      "ind_string" : "268,08",
+      "valor" : "268.08"
+    }, {
+      "geocod" : "0610",
+      "geodsg" : "Montemor-o-Velho",
+      "ind_string" : "296,08",
+      "valor" : "296.08"
+    }, {
+      "geocod" : "0802",
+      "geodsg" : "Alcoutim",
+      "ind_string" : "212,94",
+      "valor" : "212.94"
+    }, {
+      "geocod" : "0804",
+      "geodsg" : "Castro Marim",
+      "ind_string" : "296,34",
+      "valor" : "296.34"
+    }, {
+      "geocod" : "0708",
+      "geodsg" : "Mourão",
+      "ind_string" : "224,59",
+      "valor" : "224.59"
+    }, {
+      "geocod" : "0616",
+      "geodsg" : "Tábua",
+      "ind_string" : "232,25",
+      "valor" : "232.25"
+    }, {
+      "geocod" : "0808",
+      "geodsg" : "Loulé",
+      "ind_string" : "418,26",
+      "valor" : "418.26"
+    }, {
+      "geocod" : "0711",
+      "geodsg" : "Reguengos de Monsaraz",
+      "ind_string" : "256,77",
+      "valor" : "256.77"
+    }, {
+      "geocod" : "0803",
+      "geodsg" : "Aljezur",
+      "ind_string" : "374,54",
+      "valor" : "374.54"
+    }, {
+      "geocod" : "0712",
+      "geodsg" : "Vendas Novas",
+      "ind_string" : "238,35",
+      "valor" : "238.35"
+    } ]
+  },
+  "Sucesso" : {
+    "Verdadeiro" : [ {
+      "Msg" : "OK"
+    } ]
+  }
+} ]
