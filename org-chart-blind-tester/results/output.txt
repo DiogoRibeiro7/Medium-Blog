@@ -1,0 +1,98 @@
+
+==============================================================================
+1. Coverage
+==============================================================================
+Questions: {'repo_id': 'cais/mmlu', 'filename': 'all/test-00000-of-00001.parquet', 'revision': 'c30699e8356da336a370243923dbaf21066bb9fe', 'sha256': '74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7', 'rows': 14042}
+Sampled order: 400 questions, seed 20261123; check set share 0.2
+  llama3.1-8b     Meta, llama3.1:8b; digest 46e0c10c039e0191193; Ollama 0.40.17
+                  6 questions complete; 16 responses (coder 6, blind 6, anchored 2, warned 2); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 14.3 s per call
+  qwen3-8b        Alibaba (Qwen team), qwen3:8b; digest 500a1f067a9f782620b; Ollama 0.40.17
+                  6 questions complete; 14 responses (coder 6, blind 6, anchored 1, warned 1); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 18.7 s per call
+  qwen3.5-9b      Alibaba (Qwen team), qwen3.5:9b; digest 56671c2ab9385f9cfcb; Ollama 0.40.17
+                  6 questions complete; 14 responses (coder 6, blind 6, anchored 1, warned 1); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 35.1 s per call
+  ministral-3-8b  Mistral AI, ministral-3:8b; digest 1922accd5827ebe6829; Ollama 0.40.17
+                  6 questions complete; 14 responses (coder 6, blind 6, anchored 1, warned 1); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 26.6 s per call
+  gemma4-12b      Google, gemma4:12b; digest 6114515d63c17436a7c; Ollama 0.40.17
+                  6 questions complete; 14 responses (coder 6, blind 6, anchored 1, warned 1); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 34.1 s per call
+  eurollm-9b      EuroLLM consortium, hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M; digest e867a753c03179f57c5; Ollama 0.40.17
+                  6 questions complete; 18 responses (coder 6, blind 6, anchored 3, warned 3); no answer found 0, answer read from 'the answer is X' 2, cut at max_tokens 0; median 19.4 s per call
+
+==============================================================================
+2. Error rates, on the answers that parsed (missing answers are counted separately)
+==============================================================================
+  llama3.1-8b     n=   6  coder 33.3% [9.7, 70.0] (no answer 0)   blind tester 50.0% [18.8, 81.2] (no answer 0)
+  qwen3-8b        n=   6  coder 0.0% [0.0, 39.0] (no answer 0)   blind tester 0.0% [0.0, 39.0] (no answer 0)
+  qwen3.5-9b      n=   6  coder 0.0% [0.0, 39.0] (no answer 0)   blind tester 0.0% [0.0, 39.0] (no answer 0)
+  ministral-3-8b  n=   6  coder 0.0% [0.0, 39.0] (no answer 0)   blind tester 0.0% [0.0, 39.0] (no answer 0)
+  gemma4-12b      n=   6  coder 0.0% [0.0, 39.0] (no answer 0)   blind tester 0.0% [0.0, 39.0] (no answer 0)
+  eurollm-9b      n=   6  coder 16.7% [3.0, 56.4] (no answer 0)   blind tester 33.3% [9.7, 70.0] (no answer 0)
+
+==============================================================================
+3. Error correlation between a coder and a blind tester (tetrachoric, 95% bootstrap interval)
+==============================================================================
+Rows: the coder's model. Columns: the blind tester's model, on the questions both completed.
+Average correlation by relation (coder against blind tester):
+
+==============================================================================
+4. Anchoring: the tester has read the coder's answer
+==============================================================================
+  llama3.1-8b     blind tester disagreed with the coder on 1 questions.
+                  anchored tester adopted the coder's answer on 1 (100.0% [20.7, 100.0]); warned tester on 1 (100.0% [20.7, 100.0])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 1
+  qwen3-8b        blind tester disagreed with the coder on 0 questions.
+                  anchored tester adopted the coder's answer on 0 (nan% [nan, nan]); warned tester on 0 (nan% [nan, nan])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 0
+  qwen3.5-9b      blind tester disagreed with the coder on 0 questions.
+                  anchored tester adopted the coder's answer on 0 (nan% [nan, nan]); warned tester on 0 (nan% [nan, nan])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 0
+  ministral-3-8b  blind tester disagreed with the coder on 0 questions.
+                  anchored tester adopted the coder's answer on 0 (nan% [nan, nan]); warned tester on 0 (nan% [nan, nan])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 0
+  gemma4-12b      blind tester disagreed with the coder on 0 questions.
+                  anchored tester adopted the coder's answer on 0 (nan% [nan, nan]); warned tester on 0 (nan% [nan, nan])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 0
+  eurollm-9b      blind tester disagreed with the coder on 1 questions.
+                  anchored tester adopted the coder's answer on 1 (100.0% [20.7, 100.0]); warned tester on 1 (100.0% [20.7, 100.0])
+                  check set: of 1 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 0
+
+==============================================================================
+5. Errors that pass the test: the coder is wrong and the test expects the coder's answer
+==============================================================================
+Anchored and warned testers were asked on every disagreement and on the check set; on the other
+questions (blind tester agreed with the coder) they are taken to agree too, which section 4 checks.
+  coder llama3.1-8b (6 questions; rates below are shares of all 6):
+    anchored               33.3% [0.0, 66.7]
+    warned                 16.7% [0.0, 50.0]
+    blind (same model)     33.3% [0.0, 66.7]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+  coder qwen3-8b (6 questions; rates below are shares of all 6):
+    anchored               0.0% [0.0, 0.0]
+    warned                 0.0% [0.0, 0.0]
+    blind (same model)     0.0% [0.0, 0.0]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+  coder qwen3.5-9b (6 questions; rates below are shares of all 6):
+    anchored               0.0% [0.0, 0.0]
+    warned                 0.0% [0.0, 0.0]
+    blind (same model)     0.0% [0.0, 0.0]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+  coder ministral-3-8b (6 questions; rates below are shares of all 6):
+    anchored               0.0% [0.0, 0.0]
+    warned                 0.0% [0.0, 0.0]
+    blind (same model)     0.0% [0.0, 0.0]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+  coder gemma4-12b (6 questions; rates below are shares of all 6):
+    anchored               0.0% [0.0, 0.0]
+    warned                 0.0% [0.0, 0.0]
+    blind (same model)     0.0% [0.0, 0.0]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+  coder eurollm-9b (6 questions; rates below are shares of all 6):
+    anchored               16.7% [0.0, 50.0]
+    warned                 16.7% [0.0, 50.0]
+    blind (same model)     16.7% [0.0, 50.0]
+    reordering (anchored minus blind, same model): 0.0% [0.0%, 0.0%]
+
+==============================================================================
+6. The org-chart article's Model 1, fed the measured rates
+==============================================================================
+Model 1 counts an error as caught only if the reviewer is right; on multiple choice a reviewer that is
+wrong in a different way also flags it. 'Both wrong' is Model 1's residual; 'passes' is what a test lets through.

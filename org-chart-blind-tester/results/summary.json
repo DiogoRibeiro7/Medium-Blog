@@ -1,0 +1,456 @@
+{
+  "questions_source": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7",
+    "rows": 14042
+  },
+  "models": {
+    "llama3.1-8b": {
+      "ids": [
+        "llama3.1:8b"
+      ],
+      "digests": [
+        "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e"
+      ],
+      "complete": 6,
+      "responses": 16,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.3333333333333333,
+      "q_blind": 0.5,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 1,
+          "adopted": 1,
+          "a": 1.0,
+          "a_ci": [
+            0.2065493117918027,
+            1.0
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 1
+        },
+        "warned": {
+          "disagreements": 1,
+          "adopted": 1,
+          "a": 1.0,
+          "a_ci": [
+            0.2065493117918027,
+            1.0
+          ],
+          "check_agreements": 1,
+          "check_broken": 1,
+          "right_after": 1
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.3333333333333333,
+          "ci": [
+            0.0,
+            0.6666666666666666
+          ]
+        },
+        "warned": {
+          "pass": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.3333333333333333,
+          "ci": [
+            0.0,
+            0.6666666666666666
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "qwen3-8b": {
+      "ids": [
+        "qwen3:8b"
+      ],
+      "digests": [
+        "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+      ],
+      "complete": 6,
+      "responses": 14,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.0,
+      "q_blind": 0.0,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        },
+        "warned": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "warned": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "qwen3.5-9b": {
+      "ids": [
+        "qwen3.5:9b"
+      ],
+      "digests": [
+        "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90"
+      ],
+      "complete": 6,
+      "responses": 14,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.0,
+      "q_blind": 0.0,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        },
+        "warned": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "warned": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "ministral-3-8b": {
+      "ids": [
+        "ministral-3:8b"
+      ],
+      "digests": [
+        "1922accd5827ebe6829e536369195db25eaf664528dc66206d646ea3bb386b71"
+      ],
+      "complete": 6,
+      "responses": 14,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.0,
+      "q_blind": 0.0,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        },
+        "warned": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "warned": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "gemma4-12b": {
+      "ids": [
+        "gemma4:12b"
+      ],
+      "digests": [
+        "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b"
+      ],
+      "complete": 6,
+      "responses": 14,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.0,
+      "q_blind": 0.0,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        },
+        "warned": {
+          "disagreements": 0,
+          "adopted": 0,
+          "a": NaN,
+          "a_ci": [
+            NaN,
+            NaN
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 0
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "warned": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "eurollm-9b": {
+      "ids": [
+        "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M"
+      ],
+      "digests": [
+        "e867a753c03179f57c58d4352e3ea12229906f635ba3895e26f0a4e323fe1509"
+      ],
+      "complete": 6,
+      "responses": 18,
+      "unparseable": 0,
+      "fallback_parse": 2,
+      "truncated": 0,
+      "q_coder": 0.16666666666666666,
+      "q_blind": 0.3333333333333333,
+      "n": 6,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 1,
+          "adopted": 1,
+          "a": 1.0,
+          "a_ci": [
+            0.2065493117918027,
+            1.0
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 1
+        },
+        "warned": {
+          "disagreements": 1,
+          "adopted": 1,
+          "a": 1.0,
+          "a_ci": [
+            0.2065493117918027,
+            1.0
+          ],
+          "check_agreements": 1,
+          "check_broken": 0,
+          "right_after": 1
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "warned": {
+          "pass": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.16666666666666666,
+          "ci": [
+            0.0,
+            0.5
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "pairs": {}
+}
