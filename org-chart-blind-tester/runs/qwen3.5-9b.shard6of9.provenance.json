@@ -1,0 +1,21 @@
+{
+  "model": "qwen3.5:9b",
+  "base_url": "http://localhost:11434",
+  "server_version": "0.40.17",
+  "digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+  "size": 6550825550,
+  "details": {
+    "parent_model": "model.gguf",
+    "format": "gguf",
+    "family": "qwen35",
+    "families": [
+      "qwen35"
+    ],
+    "parameter_size": "9.0B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 262144,
+    "embedding_length": 4096,
+    "runner": "llamacpp"
+  },
+  "licence_start": "Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distr"
+}

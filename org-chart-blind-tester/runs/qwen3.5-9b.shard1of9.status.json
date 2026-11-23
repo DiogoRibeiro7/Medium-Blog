@@ -1,5 +1,5 @@
 {
-  "finished_at": "2026-11-23T10:21:42+00:00",
+  "finished_at": "2026-11-23T12:18:18+00:00",
   "questions_source": {
     "repo_id": "cais/mmlu",
     "filename": "all/test-00000-of-00001.parquet",
@@ -13,12 +13,12 @@
       "model": "qwen3.5:9b",
       "shard": 1,
       "shards": 9,
-      "calls": 114,
+      "calls": 0,
       "questions_complete": 45,
       "questions": 45,
       "stopped": "complete",
       "complete": true,
-      "seconds": 4139
+      "seconds": 0
     }
   ],
   "all_complete": true
