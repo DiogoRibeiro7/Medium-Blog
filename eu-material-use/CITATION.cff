@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Material use in the EU: decoupling, footprint and the recycling loop, 2000-2024"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-22
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/eu-material-use"
+references:
+  - type: data
+    title: "Eurostat: EU material use, material footprint, circularity and waste treatment, with GDP, construction and population, 2000-2025"
+    authors:
+      - name: "Eurostat"
+    repository-code: "https://github.com/DiogoRibeiro7/data/tree/main/datasets/eurostat-material-use"

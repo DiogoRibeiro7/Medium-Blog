@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-material-use",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "4b79d15530674d62c7fee0935509c88f0555e8f6",
+  "record": "datasets/eurostat-material-use/metadata.yaml",
+  "folder": "eu-material-use",
+  "target": "eu-material-use/data",
+  "files": [
+    {
+      "path": "raw/env_ac_mfa.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_mfa.json",
+      "bytes": 639762,
+      "sha256": "bf8404fac88be14279c658d508316476b3ff2050a4a267e953f770e761f431db"
+    },
+    {
+      "path": "raw/env_ac_rme.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_rme.json",
+      "bytes": 236273,
+      "sha256": "77197e35a2deadcfab40645bc74b6a1b1303cd0d8a5dc78ca3c8046b7776052d"
+    },
+    {
+      "path": "raw/env_ac_rmefd.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_rmefd.json",
+      "bytes": 18102,
+      "sha256": "8371fe7440b236cea684087d06761c2627e452ededf38c747f541d25da94813b"
+    },
+    {
+      "path": "raw/env_ac_cur.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_cur.json",
+      "bytes": 8158,
+      "sha256": "1a59492dd813862dfe279fe850074e71a226828e8acb13066e76bae988e8a579"
+    },
+    {
+      "path": "raw/env_ac_curm.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_curm.json",
+      "bytes": 4084,
+      "sha256": "985b1fb43365ee4c430493d7ce4d49d124eed615a61df78871a122a1a7f8369f"
+    },
+    {
+      "path": "raw/env_ac_sd.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_ac_sd.json",
+      "bytes": 21517,
+      "sha256": "d3b041c9a803323c4928320ed79d4a26a5a76ef43c3a13e01e11cce2f66f4f5c"
+    },
+    {
+      "path": "raw/env_wastrt.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/env_wastrt.json",
+      "bytes": 22341,
+      "sha256": "fc316d295993afe4fd199140cefd5f3d04da15e3aac5e00b5c907ae36c1bbb35"
+    },
+    {
+      "path": "raw/nama_10_gdp.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/nama_10_gdp.json",
+      "bytes": 26626,
+      "sha256": "8adaef8903d9b0838d2e615e75142e1007ec43eab615dd9aa3e57f95c5fd3956"
+    },
+    {
+      "path": "raw/nama_10_a10.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/nama_10_a10.json",
+      "bytes": 25877,
+      "sha256": "583636ab65823ab8873a58ad10aaa4096431ee8bda16c2bfcdba5e2932045c57"
+    },
+    {
+      "path": "raw/nama_10_pe.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4b79d15530674d62c7fee0935509c88f0555e8f6/datasets/eurostat-material-use/raw/nama_10_pe.json",
+      "bytes": 14821,
+      "sha256": "6c722147372159582cc925a295c4b8c1ac508cd7f5ff11eb5b27824244626490"
+    }
+  ]
+}
