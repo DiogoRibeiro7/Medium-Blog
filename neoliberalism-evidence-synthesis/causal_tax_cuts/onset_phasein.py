@@ -17,7 +17,6 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
-
 MAX_FOLLOW_UP = 5
 TIMING_STATUS = "author_flag_onsets_and_provision_periods_only"
 ATTRIBUTION = "provision_period_verified_author_flag_attribution_unverified"
