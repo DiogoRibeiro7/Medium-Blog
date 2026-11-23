@@ -52,8 +52,23 @@ jobs:
       - name: Test the core functions
         run: python -m unittest discover -s tests -v
 
+      # A verified copy from an earlier run skips the download; fetch.py still checks every hash.
+      - name: Restore responses downloaded by an earlier run
+        uses: actions/cache@v4
+        with:
+          path: centres-users-residents/data/raw
+          key: centres-users-residents-raw-${{ hashFiles('centres-users-residents/sources.py', 'data_sources/eurostat-urban-audit-cities-fuas.json', 'data_sources/ine-portugal-centre-users-homes.json', 'data_sources/ine-portugal-municipal-infrastructure.json') }}
+
+      # INE's API sometimes stops answering runners for several minutes. fetch.py keeps the files it
+      # has already verified, so each new attempt only asks for the ones still missing.
       - name: Download the Eurostat and INE responses and check their hashes
-        run: python fetch.py
+        run: |
+          for attempt in 1 2 3; do
+            python -u fetch.py && exit 0
+            echo "::warning::fetch.py attempt $attempt failed; trying again for the responses still missing"
+            sleep 60
+          done
+          exit 1
 
       - name: Build the European and metro panels
         run: python panel.py
