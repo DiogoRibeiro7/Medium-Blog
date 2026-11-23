@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import csv
-import hashlib
 import json
 import tempfile
 import unittest
@@ -139,14 +138,8 @@ class IdentificationFeasibilityTests(unittest.TestCase):
     def test_early_support_does_not_imply_five_year_support(self) -> None:
         rows = synthetic()
         events, horizons, summary = evaluate_identification(
-            **{
-                "legal_rows": rows["legal"],
-                "hull_rows": rows["hull"],
-                "dynamic_rows": rows["dynamic"],
-                "political_rows": rows["political"],
-                "macro_rows": rows["macro"],
-                "expected_reforms": 2,
-            }
+            rows["legal"], rows["hull"], rows["dynamic"],
+            rows["political"], rows["macro"], expected_reforms=2
         )
         documented = next(row for row in events if row.country == "AAA")
         undocumented = next(row for row in events if row.country == "BBB")
