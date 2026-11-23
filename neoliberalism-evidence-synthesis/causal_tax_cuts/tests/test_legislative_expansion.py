@@ -88,8 +88,16 @@ def fixture(root: Path) -> tuple[Path, Path, Path, Path, Path]:
             ("CCC", "2003", "False"),
         ],
     )
-    write_csv(old, FIELDS, [case("AAA", 2000, enacted="2000-07-01", period_start="2000-01-01")])
-    write_csv(new, FIELDS, [case("BBB", 2002, enacted="2001-12-01", period_start="2002-01-01")])
+    write_csv(
+        old,
+        FIELDS,
+        [case("AAA", 2000, enacted="2000-07-01", period_start="2000-01-01")],
+    )
+    write_csv(
+        new,
+        FIELDS,
+        [case("BBB", 2002, enacted="2001-12-01", period_start="2002-01-01")],
+    )
     audit.write_text(
         json.dumps(
             {
@@ -102,7 +110,9 @@ def fixture(root: Path) -> tuple[Path, Path, Path, Path, Path]:
                 "joined_panel_sha256": "b" * 64,
                 "source_sha256": {
                     "author_flag_years": hashlib.sha256(flags.read_bytes()).hexdigest(),
-                    "tax_provision_ledger": hashlib.sha256(old.read_bytes()).hexdigest(),
+                    "tax_provision_ledger": hashlib.sha256(
+                        old.read_bytes()
+                    ).hexdigest(),
                 },
             }
         ),
@@ -131,7 +141,9 @@ class LegislativeExpansionTests(unittest.TestCase):
             ) as handle:
                 rows = list(csv.DictReader(handle))
             self.assertEqual(len(rows), 4)
-            self.assertTrue(all(row["causal_estimand_identified"] == "False" for row in rows))
+            self.assertTrue(
+                all(row["causal_estimand_identified"] == "False" for row in rows)
+            )
             self.assertEqual(
                 next(row for row in rows if row["author_year"] == "2001")[
                     "legal_context_status"
@@ -147,14 +159,20 @@ class LegislativeExpansionTests(unittest.TestCase):
             run(*files, output)
             before = (output / "legislative_coverage_audit.json").read_bytes()
             run(*files, output)
-            self.assertEqual(before, (output / "legislative_coverage_audit.json").read_bytes())
+            self.assertEqual(
+                before, (output / "legislative_coverage_audit.json").read_bytes()
+            )
             self.assertNotIn(b"measured_at_utc", before)
 
     def test_duplicate_evidence_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             _, _, old, new, _ = fixture(root)
-            write_csv(new, FIELDS, [case("AAA", 2000, enacted="2000-07-01", period_start="2000-01-01")])
+            write_csv(
+                new,
+                FIELDS,
+                [case("AAA", 2000, enacted="2000-07-01", period_start="2000-01-01")],
+            )
             with self.assertRaisesRegex(ValueError, "Duplicate legal evidence"):
                 read_evidence(old, new)
 
@@ -162,7 +180,11 @@ class LegislativeExpansionTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             flags, onsets, old, new, previous = fixture(root)
-            write_csv(new, FIELDS, [case("ZZZ", 2002, enacted="2001-12-01", period_start="2002-01-01")])
+            write_csv(
+                new,
+                FIELDS,
+                [case("ZZZ", 2002, enacted="2001-12-01", period_start="2002-01-01")],
+            )
             evidence, old_count, new_count = read_evidence(old, new)
             with flags.open(newline="", encoding="utf-8") as handle:
                 flag_rows = list(csv.DictReader(handle))
@@ -183,8 +205,20 @@ class LegislativeExpansionTests(unittest.TestCase):
             root = Path(temporary)
             _, _, old, new, _ = fixture(root)
             for invalid in (
-                case("BBB", 2002, enacted="2001-12-01", period_start="2002-01-01", host="evil.example"),
-                case("BBB", 2002, enacted="2001-12-01", period_start="2002-01-01", status="verified_causal_mapping"),
+                case(
+                    "BBB",
+                    2002,
+                    enacted="2001-12-01",
+                    period_start="2002-01-01",
+                    host="evil.example",
+                ),
+                case(
+                    "BBB",
+                    2002,
+                    enacted="2001-12-01",
+                    period_start="2002-01-01",
+                    status="verified_causal_mapping",
+                ),
             ):
                 with self.subTest(invalid=invalid[-1]):
                     write_csv(new, FIELDS, [invalid])
