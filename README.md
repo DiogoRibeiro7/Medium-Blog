@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-244 top-level folders: 77 belong to 24 series, 96 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
+245 top-level folders: 77 belong to 24 series, 97 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -332,6 +332,7 @@ Decision problems with data: orders, rosters, routing, prices and storms.
 
 Housing supply, prices and affordability.
 
+- [`centres-users-residents/`](centres-users-residents/) — Users and residents of Lisbon and Porto: commuters, employees, hospital and tourist beds against dwellings, with a centre–ring comparison across 248 European urban areas
 - [`france-repeat-sales-floor/`](france-repeat-sales-floor/) — Is the purchase price a floor in France too? Repeat sales in the DVF files, 2021–2025
 - [`housing-losses-inflation/`](housing-losses-inflation/) — Housing losses and inflation: how much of the loss never shows in the price
 - [`housing-supply-counterfactual/`](housing-supply-counterfactual/) — Construction, House Prices and the Missing Counterfactual
