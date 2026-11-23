@@ -1,0 +1,26 @@
+{
+  "probed_at": "2026-11-23T08:35:28+00:00",
+  "catalog_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')",
+  "questions": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7",
+    "rows": 14042,
+    "subjects": 57,
+    "sampled": 300,
+    "sampled_subjects": 56,
+    "keyed_answers": {
+      "A": 63,
+      "D": 85,
+      "B": 78,
+      "C": 74
+    }
+  },
+  "calls": {},
+  "calls_question": {
+    "qid": 10306,
+    "subject": "prehistory",
+    "keyed": "A"
+  }
+}
