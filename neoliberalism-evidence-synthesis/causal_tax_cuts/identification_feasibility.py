@@ -73,7 +73,6 @@ def _read_rows(path: Path, required: set[str]) -> list[dict[str, str]]:
     return rows
 
 
-
 def normalized_scientific_csv_digest(path: Path, field: str) -> str:
     """Hash a complete derived CSV after rounding one numerical-only field.
 
@@ -491,10 +490,7 @@ def run(
     return output
 
 
-
-def verify_frozen_reference(
-    actual: dict[str, Any], frozen: dict[str, Any]
-) -> str:
+def verify_frozen_reference(actual: dict[str, Any], frozen: dict[str, Any]) -> str:
     """Distinguish original-source changes from numerical serialization drift.
 
     A raw-hash difference is tolerated *only* for the two specified
@@ -503,10 +499,9 @@ def verify_frozen_reference(
     feasibility result agree. This is not a claim that all raw files are
     byte-identical.
     """
-    if (
-        actual.get("joined_panel_sha256") != frozen.get("joined_panel_sha256")
-        or actual.get("author_source_sha256") != frozen.get("author_source_sha256")
-    ):
+    if actual.get("joined_panel_sha256") != frozen.get(
+        "joined_panel_sha256"
+    ) or actual.get("author_source_sha256") != frozen.get("author_source_sha256"):
         return "original_source_vintage_changed"
     first = actual.get("input_sha256")
     second = frozen.get("input_sha256")
