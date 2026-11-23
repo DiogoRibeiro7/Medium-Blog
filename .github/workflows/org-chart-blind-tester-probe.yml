@@ -44,6 +44,28 @@ jobs:
       - name: Test the runner and the analysis against simulated models
         run: python -m unittest discover -s tests -v
 
+      - name: Diagnose the connection to GitHub Models
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          env | grep -i -E '^(https?|no|all)_proxy=' | sed 's/=.*@/=***@/' || echo "no proxy variables"
+          getent hosts models.github.ai || true
+          getent hosts models.inference.ai.azure.com || true
+          for url in https://models.github.ai/catalog/models; do
+            curl -sS -D /tmp/h.txt -o /tmp/b.txt -w "GET $url -> %{http_code} from %{remote_ip}, %{size_download} bytes\n" \
+              -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "X-GitHub-Api-Version: 2026-03-10" "$url" || true
+            cat /tmp/h.txt; head -c 300 /tmp/b.txt; echo
+          done
+          body='{"model":"openai/gpt-4o-mini","messages":[{"role":"user","content":"Reply with the word ready."}],"max_tokens":5}'
+          for url in https://models.github.ai/inference/chat/completions https://models.inference.ai.azure.com/chat/completions; do
+            curl -sS -D /tmp/h.txt -o /tmp/b.txt -w "POST $url -> %{http_code} from %{remote_ip}, %{size_download} bytes\n" \
+              -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "X-GitHub-Api-Version: 2026-03-10" -H "Content-Type: application/json" -d "$body" "$url" || true
+            cat /tmp/h.txt; head -c 300 /tmp/b.txt; echo
+          done
+
       - name: Probe the catalog, MMLU and one call per model
         id: probe
         continue-on-error: true
