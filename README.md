@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-241 top-level folders: 77 belong to 24 series, 94 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 13 not yet sorted.
+242 top-level folders: 77 belong to 24 series, 95 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 13 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -289,6 +289,7 @@ Method studies on public and simulated data.
 - [`agreement-regimes/`](agreement-regimes/) — The p95 rule after a change of regime, and forward in time
 - [`Blood_Pressure_Missingness/`](Blood_Pressure_Missingness/) — Missing Data Is Not Empty Space: Statistical Analysis of an Irregular Blood-Pressure Tracker
 - [`context-map-database/`](context-map-database/) — A category-theoretic context map for LLM agents, built as a database
+- [`curvature-prior/`](curvature-prior/) — Curvature as a prior: flat and hyperbolic embeddings of hierarchies
 - [`deliberate-overfitting-diagnostics/`](deliberate-overfitting-diagnostics/) — Deliberate overfitting as a diagnostic
 - [`edge-of-stability/`](edge-of-stability/) — Gradient descent at the edge of stability
 - [`hansard-classifier-drift/`](hansard-classifier-drift/) — Classifier drift in Hansard
