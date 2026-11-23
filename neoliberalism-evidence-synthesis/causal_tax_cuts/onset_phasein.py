@@ -150,9 +150,7 @@ def load_flags(path: Path) -> list[Flag]:
 
 def load_support(path: Path) -> dict[tuple[str, int], Support]:
     """Load exactly the previously published event statuses (no re-matching)."""
-    required = frozenset(
-        {"country", "reform_year", "status", "n_horizon_five_donors"}
-    )
+    required = frozenset({"country", "reform_year", "status", "n_horizon_five_donors"})
     result: dict[tuple[str, int], Support] = {}
     for row in _read_csv(path, required):
         year = int(row["reform_year"])
@@ -160,9 +158,7 @@ def load_support(path: Path) -> dict[tuple[str, int], Support]:
         if key in result:
             raise ValueError(f"Duplicate eligibility record: {key}")
         donors = int(row["n_horizon_five_donors"])
-        if donors < 0 or (
-            row["status"] != "baseline_donors_available" and donors != 0
-        ):
+        if donors < 0 or (row["status"] != "baseline_donors_available" and donors != 0):
             raise ValueError(f"Invalid inherited donor status: {key}")
         result[key] = Support(key[0], year, row["status"], donors)
     return result
@@ -192,7 +188,9 @@ def load_provisions(
         year = int(row["author_year"])
         country = row["country"]
         if (country, year) not in flagged:
-            raise ValueError(f"Uncoded author year in provision ledger: {country}-{year}")
+            raise ValueError(
+                f"Uncoded author year in provision ledger: {country}-{year}"
+            )
         if row["attribution_status"] != ATTRIBUTION:
             raise ValueError("Provision dates cannot certify author-flag attribution")
         url = urlsplit(row["official_source_url"])
@@ -207,7 +205,14 @@ def load_provisions(
         )
         if period_end is not None and period_end < period_start:
             raise ValueError("Statutory tax period ends before it begins")
-        if not all(row[field].strip() for field in ("statute_title", "provision_identifier", "taxable_period_kind")):
+        if not all(
+            row[field].strip()
+            for field in (
+                "statute_title",
+                "provision_identifier",
+                "taxable_period_kind",
+            )
+        ):
             raise ValueError("Missing statutory evidence description")
         key = (country, year, row["provision_identifier"])
         if key in unique:
@@ -241,7 +246,9 @@ def audit_onsets(
     flagged = {(row.country, row.year): row for row in flags}
     observed = {key for key, row in flagged.items() if row.wid_observed}
     if set(support) != observed:
-        raise ValueError("Inherited donor eligibility does not cover each observed flag")
+        raise ValueError(
+            "Inherited donor eligibility does not cover each observed flag"
+        )
     starts = [row for row in flags if row.run_position == 1]
     if not starts:
         raise ValueError("No policy-onset records found")
@@ -253,15 +260,21 @@ def audit_onsets(
         if previous is None and row.wid_observed:
             raise ValueError(f"WID-observed onset missing eligibility: {key}")
         following = sorted(
-            (other for other in flags if other.country == row.country
-             and row.year < other.year <= row.year + MAX_FOLLOW_UP),
+            (
+                other
+                for other in flags
+                if other.country == row.country
+                and row.year < other.year <= row.year + MAX_FOLLOW_UP
+            ),
             key=lambda item: item.year,
         )
         next_year = following[0].year if following else None
         relation = (
             "same_contiguous_flag_run"
             if following and following[0].run_start == row.year
-            else "separate_later_flag_run" if following else "none"
+            else "separate_later_flag_run"
+            if following
+            else "none"
         )
         records.append(
             Onset(
@@ -282,7 +295,10 @@ def audit_onsets(
     eligible_followup = [
         row for row in eligible if row.next_flag_within_five_years is not None
     ]
-    if any(row.first_flag_year != row.run_end_year and row.flags_in_run == 1 for row in records):
+    if any(
+        row.first_flag_year != row.run_end_year and row.flags_in_run == 1
+        for row in records
+    ):
         raise ValueError("Inconsistent onset sequence")
     if any((row.country, row.author_year) not in flagged for row in provisions):
         raise ValueError("Unmatched legislative context")
@@ -292,10 +308,20 @@ def audit_onsets(
         "n_author_flag_runs": len(records),
         "n_continuation_flags": len(flags) - len(records),
         "n_flag_years_with_wid": len(observed),
-        "n_first_year_flags_with_wid": sum(row.wid_observed_at_onset for row in records),
-        "n_missing_outcome_first_year_flags": sum(not row.wid_observed_at_onset for row in records),
+        "n_first_year_flags_with_wid": sum(
+            row.wid_observed_at_onset for row in records
+        ),
+        "n_missing_outcome_first_year_flags": sum(
+            not row.wid_observed_at_onset for row in records
+        ),
         "n_baseline_donor_eligible_onsets": len(eligible),
-        "onset_support_status_counts": dict(sorted(Counter(row.previously_reported_support_status for row in records).items())),
+        "onset_support_status_counts": dict(
+            sorted(
+                Counter(
+                    row.previously_reported_support_status for row in records
+                ).items()
+            )
+        ),
         "n_eligible_onsets_with_repeat_by_five_years": len(eligible_followup),
         "n_repeat_next_year_same_run": sum(
             row.next_flag_relation == "same_contiguous_flag_run"
@@ -318,7 +344,9 @@ def audit_onsets(
             for row in eligible_followup
         ],
         "n_provision_context_rows": len(provisions),
-        "n_flag_years_with_provision_context": len({(p.country, p.author_year) for p in provisions}),
+        "n_flag_years_with_provision_context": len(
+            {(p.country, p.author_year) for p in provisions}
+        ),
         "n_provision_periods_starting_before_enactment": sum(
             p.period_starts_before_enactment for p in provisions
         ),
@@ -355,9 +383,21 @@ def save_audit(
         raise ValueError("Prior timing and donor audits use different source panels")
     for current, expected, label in (
         (report["n_author_flag_years"], old_timing["n_author_flag_years"], "flags"),
-        (report["n_author_flag_runs"], old_timing["n_descriptive_consecutive_runs"], "runs"),
-        (report["n_flag_years_with_wid"], old_timing["n_flag_years_with_joined_wid_outcome"], "WID flags"),
-        (report["n_baseline_donor_eligible_onsets"], old_support["n_eligible_reforms_before_future_censoring"], "eligible onsets"),
+        (
+            report["n_author_flag_runs"],
+            old_timing["n_descriptive_consecutive_runs"],
+            "runs",
+        ),
+        (
+            report["n_flag_years_with_wid"],
+            old_timing["n_flag_years_with_joined_wid_outcome"],
+            "WID flags",
+        ),
+        (
+            report["n_baseline_donor_eligible_onsets"],
+            old_support["n_eligible_reforms_before_future_censoring"],
+            "eligible onsets",
+        ),
     ):
         if current != expected:
             raise ValueError(f"Original source and onset audit disagree on {label}")
@@ -376,8 +416,12 @@ def save_audit(
         "joined_panel_sha256": old_timing["joined_panel_sha256"],
         "source_sha256": {
             "author_flag_years": hashlib.sha256(flags_path.read_bytes()).hexdigest(),
-            "support_eligibility": hashlib.sha256(support_path.read_bytes()).hexdigest(),
-            "tax_provision_ledger": hashlib.sha256(provision_path.read_bytes()).hexdigest(),
+            "support_eligibility": hashlib.sha256(
+                support_path.read_bytes()
+            ).hexdigest(),
+            "tax_provision_ledger": hashlib.sha256(
+                provision_path.read_bytes()
+            ).hexdigest(),
             "timing_audit": hashlib.sha256(timing_audit_path.read_bytes()).hexdigest(),
             "donor_audit": hashlib.sha256(donor_audit_path.read_bytes()).hexdigest(),
         },
