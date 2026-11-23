@@ -183,7 +183,7 @@ class Client:
 
     def headers(self) -> dict:
         h = {"Accept": "application/vnd.github+json", "Authorization": f"Bearer {self.token}",
-             "Content-Type": "application/json"}
+             "Content-Type": "application/json", "Accept-Encoding": "identity"}
         if self.api_version:
             h["X-GitHub-Api-Version"] = self.api_version
         return h
@@ -192,12 +192,7 @@ class Client:
         data = None if payload is None else json.dumps(payload).encode()
         req = urllib.request.Request(self.endpoint + path, data=data, method=method, headers=self.headers())
         with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-            raw = resp.read()
-            try:
-                return json.loads(raw.decode())
-            except (UnicodeDecodeError, json.JSONDecodeError):
-                raise RuntimeError(f"{method} {path}: HTTP {resp.status}, content-type "
-                                   f"{resp.headers.get('Content-Type')!r}, not JSON: {raw[:300]!r}") from None
+            return decode_json(resp, f"{method} {path}")
 
     def catalog(self) -> list[dict]:
         return self._request("GET", "/catalog/models")
@@ -234,6 +229,28 @@ class Client:
                     continue
                 raise RuntimeError(f"network error calling {model}: {e}") from None
         raise RuntimeError(f"{model}: still rate limited after {attempts} attempts")
+
+
+def read_body(resp) -> bytes:
+    raw = resp.read()
+    enc = (resp.headers.get("Content-Encoding") or "").lower()
+    if enc == "gzip" or raw[:2] == b"\x1f\x8b":
+        import gzip
+        raw = gzip.decompress(raw)
+    elif enc == "deflate":
+        import zlib
+        raw = zlib.decompress(raw)
+    return raw
+
+
+def decode_json(resp, what: str):
+    raw = read_body(resp)
+    try:
+        return json.loads(raw.decode())
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        raise RuntimeError(f"{what}: HTTP {resp.status}, content-type {resp.headers.get('Content-Type')!r}, "
+                           f"encoding {resp.headers.get('Content-Encoding')!r}, url {resp.geturl()}, "
+                           f"not JSON ({len(raw)} bytes): {raw[:300]!r}") from None
 
 
 def _retry_after(headers, body: str) -> float | None:

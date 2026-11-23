@@ -17,7 +17,8 @@ import urllib.request
 from collections import Counter
 from pathlib import Path
 
-from common import Client, load_config, load_questions, messages, parse_answer, resolve_models, sample_order
+from common import (Client, decode_json, load_config, load_questions, messages, parse_answer, read_body,
+                    resolve_models, sample_order)
 
 
 def raw_get(client: Client, path: str) -> dict:
@@ -25,9 +26,11 @@ def raw_get(client: Client, path: str) -> dict:
     req = urllib.request.Request(client.endpoint + path, method="GET", headers=client.headers())
     try:
         with urllib.request.urlopen(req, timeout=60) as resp:
-            body = resp.read()
+            body = read_body(resp)
             return {"status": resp.status, "content_type": resp.headers.get("Content-Type"),
-                    "final_url": resp.geturl(), "bytes": len(body), "head": body[:300].decode(errors="replace")}
+                    "content_encoding": resp.headers.get("Content-Encoding"), "final_url": resp.geturl(),
+                    "bytes": len(body), "head": body[:300].decode(errors="replace"),
+                    "headers": dict(resp.headers.items())}
     except urllib.error.HTTPError as e:
         return {"status": e.code, "content_type": e.headers.get("Content-Type"),
                 "head": e.read()[:300].decode(errors="replace")}
@@ -41,8 +44,12 @@ def call_with_headers(client: Client, model: str, msgs, cfg) -> dict:
                                  data=json.dumps(payload).encode(), method="POST", headers=client.headers())
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
-            body = json.loads(resp.read().decode())
             headers = {k.lower(): v for k, v in resp.headers.items() if "ratelimit" in k.lower() or k.lower() == "retry-after"}
+            try:
+                body = decode_json(resp, "chat")
+            except RuntimeError as e:
+                return {"status": resp.status, "error": str(e)[:1500], "rate_headers": headers,
+                        "all_headers": dict(resp.headers.items())}
             text = body["choices"][0]["message"]["content"]
             return {"status": resp.status, "model_reported": body.get("model"), "text": text,
                     "answer": parse_answer(text), "finish_reason": body["choices"][0].get("finish_reason"),
@@ -50,6 +57,8 @@ def call_with_headers(client: Client, model: str, msgs, cfg) -> dict:
     except urllib.error.HTTPError as e:
         headers = {k.lower(): v for k, v in e.headers.items() if "ratelimit" in k.lower() or k.lower() == "retry-after"}
         return {"status": e.code, "error": e.read().decode(errors="replace")[:1000], "rate_headers": headers}
+    except Exception as e:  # noqa: BLE001 - the probe reports whatever went wrong
+        return {"error": repr(e)[:1000]}
 
 
 def main(argv=None) -> int:
