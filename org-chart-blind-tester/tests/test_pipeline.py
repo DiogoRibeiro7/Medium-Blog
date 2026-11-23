@@ -1,6 +1,7 @@
-"""End-to-end test against the simulated models: the runner survives daily quotas, short rate limits,
-refusals and restarts without duplicating or losing a response, and the analysis recovers the
-simulation's error correlations and anchoring rates.
+"""End-to-end test against simulated models behind a stand-in Ollama server: the runner survives
+interrupted jobs, restarts and a server error without duplicating or losing a response, shards cover
+every question exactly once, and the analysis recovers the simulation's error correlations (within a
+model, within a family, across families) and anchoring rates.
 
     python -m unittest discover -s tests -v
 """
@@ -23,9 +24,10 @@ sys.path.insert(0, str(HERE))
 os.environ["BLIND_TESTER_CONFIG"] = str(HERE / "config_test.json")
 
 import common  # noqa: E402
-from fake_models import MODELS, FakeModels  # noqa: E402
+from fake_models import MODELS, RHO_CROSS, FakeOllama  # noqa: E402
 
 N_SYNTH = 3000
+MAX_CALLS = 700   # each job stops early, as a timed-out Actions job would, and the next one resumes
 
 
 def synthetic_questions(path: Path) -> list[dict]:
@@ -44,87 +46,85 @@ class PipelineTest(unittest.TestCase):
         cls.tmp = Path(tempfile.mkdtemp())
         cls.qfile = cls.tmp / "questions.json"
         rows = synthetic_questions(cls.qfile)
-        cls.fake = FakeModels(rows, common.SYSTEM, quota=1300)
+        cls.fake = FakeOllama(rows, common.SYSTEM)
         cls.url = cls.fake.start()
         cls.runs = cls.tmp / "runs"
-        env = dict(os.environ, GITHUB_TOKEN="test-token")
-        cls.statuses = []
-        for day in range(8):
-            out = subprocess.run([sys.executable, "run.py", "--runs-dir", str(cls.runs), "--questions-file",
-                                  str(cls.qfile), "--endpoint", cls.url, "--status", str(cls.tmp / "status.json")],
-                                 cwd=ROOT, env=env, capture_output=True, text=True, timeout=900)
-            if out.returncode != 0:
-                raise AssertionError(out.stdout[-3000:] + out.stderr[-3000:])
-            st = json.loads((cls.tmp / "status.json").read_text())
-            cls.statuses.append(st)
-            cls.fake.new_day()
-            if all(m["complete"] for m in st["models"]):
-                break
-        cls.summary_path = cls.tmp / "summary.json"
+        cls.cfg = common.load_config()
+        cls.jobs = []
+        for spec in common.model_specs(cls.cfg):
+            for shard in range(spec["shards"]):
+                for attempt in range(10):
+                    st_path = cls.tmp / f"status-{spec['key']}-{shard}.json"
+                    out = subprocess.run([sys.executable, "run.py", "--runs-dir", str(cls.runs), "--models",
+                                          spec["key"], "--shard", str(shard), "--questions-file", str(cls.qfile),
+                                          "--base-url", cls.url, "--max-calls", str(MAX_CALLS),
+                                          "--status", str(st_path)],
+                                         cwd=ROOT, capture_output=True, text=True, timeout=900)
+                    if out.returncode != 0:
+                        raise AssertionError(out.stdout[-3000:] + out.stderr[-3000:])
+                    st = json.loads(st_path.read_text())["shards"][0]
+                    cls.jobs.append(st)
+                    if st["complete"]:
+                        break
         out = subprocess.run([sys.executable, "analyse.py", "--runs-dir", str(cls.runs), "--questions-file",
-                              str(cls.qfile), "--fig-dir", str(cls.tmp / "figs"), "--summary", str(cls.summary_path)],
-                             cwd=ROOT, env=env, capture_output=True, text=True, timeout=900)
+                              str(cls.qfile), "--fig-dir", str(cls.tmp / "figs"), "--summary",
+                              str(cls.tmp / "summary.json")],
+                             cwd=ROOT, capture_output=True, text=True, timeout=900)
         if out.returncode != 0:
             raise AssertionError(out.stdout[-3000:] + out.stderr[-3000:])
         cls.report = out.stdout
-        cls.summary = json.loads(cls.summary_path.read_text())
+        cls.summary = json.loads((cls.tmp / "summary.json").read_text())
 
     @classmethod
     def tearDownClass(cls):
         cls.fake.stop()
 
-    def test_quota_stops_and_resumes(self):
-        first = {m["key"]: m for m in self.statuses[0]["models"]}
-        self.assertEqual(first["gpt-4o-mini"]["stopped"], "quota")
-        self.assertGreater(len(self.statuses), 1)
-        last = {m["key"]: m for m in self.statuses[-1]["models"]}
-        self.assertTrue(all(m["complete"] for m in last.values()), last)
-        self.assertEqual(self.statuses[-1]["missing_models"], ["phi-4"])
+    def test_interrupted_jobs_resume_to_completion(self):
+        self.assertTrue(any(j["stopped"] == "max_calls" for j in self.jobs))
+        last = {}
+        for j in self.jobs:
+            last[(j["key"], j["shard"])] = j
+        self.assertTrue(all(j["complete"] for j in last.values()), last)
+        self.assertTrue(self.fake.flaked)
 
-    def test_no_duplicates_and_followups_where_needed(self):
-        cfg = common.load_config()
-        for key in ("gpt-4o-mini", "gpt-4o", "llama", "mistral-small"):
-            recs = common.read_runs(self.runs / f"{key}.jsonl")
+    def test_shards_cover_each_question_once_without_duplicates(self):
+        n = self.cfg["n_questions"]
+        for spec in common.model_specs(self.cfg):
+            recs = common.read_model_runs(self.runs, spec["key"])
             pairs = [(r["qid"], r["role"]) for r in recs]
-            self.assertEqual(len(pairs), len(set(pairs)), key)
+            self.assertEqual(len(pairs), len(set(pairs)), spec["key"])
+            coder = {r["qid"] for r in recs if r["role"] == "coder"}
+            self.assertEqual(len(coder), n, spec["key"])
             done = {(r["qid"], r["role"]): r for r in recs}
-            for (qid, role), r in done.items():
-                if role != "coder":
-                    continue
-                b = done[(qid, "blind")]
-                need = common.in_check_set(qid, cfg) or r["answer"] is None or b["answer"] != r["answer"]
-                self.assertEqual((qid, "anchored") in done, need, (key, qid))
-                self.assertEqual((qid, "warned") in done, need, (key, qid))
-        n_low = cfg["tiers"]["low"]["n_questions"]
-        n_high = cfg["tiers"]["high"]["n_questions"]
-        self.assertEqual(self.summary["models"]["gpt-4o-mini"]["complete"], n_low)
-        self.assertEqual(self.summary["models"]["gpt-4o"]["complete"], n_high)
-
-    def test_refusals_recorded(self):
-        recs = common.read_runs(self.runs / "gpt-4o-mini.jsonl")
-        refused = [r for r in recs if r.get("error")]
-        self.assertTrue(refused)
-        self.assertTrue(all(r["qid"] % 97 == 0 and r["role"] == "coder" for r in refused))
+            for qid in coder:
+                c, b = done[(qid, "coder")], done[(qid, "blind")]
+                need = common.in_check_set(qid, self.cfg) or c["answer"] is None or b["answer"] != c["answer"]
+                self.assertEqual((qid, "anchored") in done, need, (spec["key"], qid))
+                self.assertEqual((qid, "warned") in done, need, (spec["key"], qid))
+            self.assertEqual(self.summary["models"][spec["key"]]["complete"], n)
+            prov = sorted(self.runs.glob(f"{spec['key']}.shard*.provenance.json"))
+            self.assertEqual(len(prov), spec["shards"])
 
     def test_recovers_error_correlation(self):
-        for key, mid in (("gpt-4o-mini", "openai/gpt-4o-mini"), ("llama", "meta/Llama-3.3-70B-Instruct")):
-            same = self.summary["pairs"][f"{key}|{key}"]["rho"]
-            self.assertAlmostEqual(same, MODELS[mid][2], delta=0.1, msg=key)
-        cross = self.summary["pairs"]["gpt-4o-mini|llama"]["rho"]
-        self.assertAlmostEqual(cross, 0.40, delta=0.15)
+        for key, tag in (("llama3.1-8b", "llama3.1:8b"), ("ministral-3-8b", "ministral-3:8b")):
+            self.assertAlmostEqual(self.summary["pairs"][f"{key}|{key}"]["rho"], MODELS[tag][2], delta=0.1, msg=key)
+        self.assertAlmostEqual(self.summary["pairs"]["qwen3-8b|qwen3.5-9b"]["rho"], MODELS["qwen3:8b"][3], delta=0.12)
+        self.assertAlmostEqual(self.summary["pairs"]["llama3.1-8b|ministral-3-8b"]["rho"], RHO_CROSS, delta=0.12)
+        self.assertEqual(self.summary["pairs"]["qwen3-8b|qwen3.5-9b"]["relation"], "same family")
+        self.assertEqual(self.summary["pairs"]["qwen3-8b|llama3.1-8b"]["relation"], "other family")
 
     def test_recovers_anchoring(self):
-        for key, mid in (("gpt-4o-mini", "openai/gpt-4o-mini"), ("mistral-small", "mistral-ai/mistral-small-2503")):
+        for key, tag in (("llama3.1-8b", "llama3.1:8b"), ("qwen3.5-9b", "qwen3.5:9b")):
             an = self.summary["models"][key]["anchoring"]
-            self.assertAlmostEqual(an["anchored"]["a"], MODELS[mid][4], delta=0.06, msg=key)
-            self.assertAlmostEqual(an["warned"]["a"], MODELS[mid][5], delta=0.08, msg=key)
+            self.assertAlmostEqual(an["anchored"]["a"], MODELS[tag][4], delta=0.06, msg=key)
+            self.assertAlmostEqual(an["warned"]["a"], MODELS[tag][5], delta=0.08, msg=key)
             # reading the answer never turns an agreement into a disagreement, up to unparseable replies
             self.assertLessEqual(an["anchored"]["check_broken"], 0.03 * an["anchored"]["check_agreements"] + 2)
 
     def test_designs_order(self):
-        d = self.summary["models"]["gpt-4o-mini"]["designs"]
+        d = self.summary["models"]["llama3.1-8b"]["designs"]
         self.assertGreater(d["anchored"]["pass"], d["blind (same model)"]["pass"])
-        self.assertGreater(d["blind (same model)"]["pass"], d["blind llama"]["pass"])
+        self.assertGreater(d["blind (same model)"]["pass"], d["blind ministral-3-8b"]["pass"])
 
     def test_figures_drawn(self):
         for f in ("fig1_designs", "fig2_error_correlation", "fig3_anchoring"):

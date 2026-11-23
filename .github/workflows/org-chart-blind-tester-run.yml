@@ -1,40 +1,173 @@
 name: Run org-chart-blind-tester
 
-# The experiment itself, on the free GitHub Models quota. Each run asks every model as many questions as
-# its daily quota allows, resumes where the last run stopped, and commits the responses to the
-# org-chart-blind-tester-runs branch (outputs never land on main). Runs daily until every model is done;
-# disable the schedule afterwards.
+# The experiment on GitHub-hosted CPU runners, with open-weight models served by Ollama:
+#   plan -> ask (one job per model and shard; resumes from responses already on the runs branch)
+#        -> collect (pushes every response file to the runs branch; outputs never land on main).
+# Started by a change to org-chart-blind-tester/run_request.json on the org-chart-blind-tester branch,
+# or by hand from the Actions tab once the workflow is on main.
 
 on:
-  schedule:
-    - cron: '23 1 * * *'
+  push:
+    branches:
+      - org-chart-blind-tester
+    paths:
+      - 'org-chart-blind-tester/run_request.json'
   workflow_dispatch:
     inputs:
+      runs_branch:
+        description: "Branch that holds the responses"
+        type: string
+        default: "org-chart-blind-tester-runs"
       models:
         description: "Model keys from config.json, space-separated; empty for all"
         type: string
         default: ""
+      n_questions:
+        description: "Ask only the first N sampled questions (0 for all)"
+        type: string
+        default: "0"
 
 permissions:
   contents: write
-  models: read
 
 concurrency:
   group: org-chart-blind-tester-run
   cancel-in-progress: false
 
-env:
-  RUNS_BRANCH: org-chart-blind-tester-runs
-
 jobs:
-  run:
+  plan:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      runs_branch: ${{ steps.plan.outputs.runs_branch }}
+      n_questions: ${{ steps.plan.outputs.n_questions }}
+    defaults:
+      run:
+        working-directory: org-chart-blind-tester
     steps:
-      - name: Check out the code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - id: plan
+        env:
+          EVENT: ${{ github.event_name }}
+          IN_BRANCH: ${{ inputs.runs_branch }}
+          IN_MODELS: ${{ inputs.models }}
+          IN_N: ${{ inputs.n_questions }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          cfg = json.load(open("config.json"))
+          if os.environ["EVENT"] == "workflow_dispatch":
+              req = {"runs_branch": os.environ["IN_BRANCH"], "models": os.environ["IN_MODELS"].split(),
+                     "n_questions": int(os.environ["IN_N"] or 0), "shards": None}
+          else:
+              req = json.load(open("run_request.json"))
+          keys = req.get("models") or [m["key"] for m in cfg["models"]]
+          jobs = []
+          for m in cfg["models"]:
+              if m["key"] not in keys:
+                  continue
+              k = req.get("shards") or m.get("shards", cfg["shards"])
+              jobs += [{"key": m["key"], "model": m["model"], "shard": i, "shards": k} for i in range(k)]
+          print("matrix=" + json.dumps({"include": jobs}))
+          print("runs_branch=" + req["runs_branch"])
+          print("n_questions=" + str(req.get("n_questions") or 0))
+          PY
+          cat "$GITHUB_OUTPUT"
 
-      - name: Check out the runs branch, or start it
+  ask:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    defaults:
+      run:
+        working-directory: org-chart-blind-tester
+    env:
+      RUNS_BRANCH: ${{ needs.plan.outputs.runs_branch }}
+      N_QUESTIONS: ${{ needs.plan.outputs.n_questions }}
+      KEY: ${{ matrix.key }}
+      SHARD: ${{ matrix.shard }}
+      SHARDS: ${{ matrix.shards }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: org-chart-blind-tester/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Install and start Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          if ! curl -sf http://localhost:11434/api/version > /dev/null; then
+            nohup ollama serve > "$RUNNER_TEMP/ollama.log" 2>&1 &
+          fi
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:11434/api/version && break
+            sleep 2
+          done
+
+      - name: Pull the model
+        env:
+          MODEL: ${{ matrix.model }}
+        run: |
+          for i in 1 2 3; do ollama pull "$MODEL" && break; sleep 20; done
+          ollama list
+
+      - name: Resume from responses already on the runs branch
+        run: |
+          mkdir -p runs
+          f="runs/${KEY}.shard${SHARD}of${SHARDS}.jsonl"
+          if git fetch --quiet --depth 1 origin "$RUNS_BRANCH" 2>/dev/null; then
+            git show "FETCH_HEAD:org-chart-blind-tester/$f" > "$f" 2>/dev/null || rm -f "$f"
+          fi
+          if [ -f "$f" ]; then echo "resuming from $(wc -l < "$f") responses"; else echo "starting fresh"; fi
+
+      - name: Ask the questions
+        id: ask
+        continue-on-error: true
+        run: |
+          python run.py --runs-dir runs --models "$KEY" --shard "$SHARD" --shards "$SHARDS" \
+            --status "runs/${KEY}.shard${SHARD}of${SHARDS}.status.json" \
+            $( [ "$N_QUESTIONS" != "0" ] && echo --n-questions "$N_QUESTIONS" )
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: runs-${{ matrix.key }}-${{ matrix.shard }}of${{ matrix.shards }}
+          path: org-chart-blind-tester/runs/
+          retention-days: 30
+
+      - name: Fail if the shard stopped on an error
+        if: steps.ask.outcome == 'failure'
+        run: |
+          tail -n 50 "$RUNNER_TEMP/ollama.log" 2>/dev/null || true
+          exit 1
+
+  collect:
+    needs: [plan, ask]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RUNS_BRANCH: ${{ needs.plan.outputs.runs_branch }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: runs-*
+          merge-multiple: true
+          path: new-runs
+
+      - name: Push the responses to the runs branch
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -45,51 +178,24 @@ jobs:
             mkdir runs-branch
             git -C runs-branch init --quiet -b "$RUNS_BRANCH"
             git -C runs-branch remote add origin "$url"
-            printf '# org-chart-blind-tester runs\n\nResponses written by the scheduled workflow `org-chart-blind-tester-run.yml`, one JSON line per model call. The code is in `org-chart-blind-tester/` on main.\n' > runs-branch/README.md
+            printf '# org-chart-blind-tester responses\n\nWritten by `.github/workflows/org-chart-blind-tester-run.yml`: one JSON line per model call, plus the Ollama provenance and status of every shard. The code is in `org-chart-blind-tester/`.\n' > runs-branch/README.md
           fi
           mkdir -p runs-branch/org-chart-blind-tester/runs
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-          cache: pip
-          cache-dependency-path: org-chart-blind-tester/requirements.txt
-
-      - name: Install pinned dependencies
-        working-directory: org-chart-blind-tester
-        run: python -m pip install -r requirements.txt
-
-      - name: Ask the models
-        id: ask
-        continue-on-error: true
-        working-directory: org-chart-blind-tester
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MODELS: ${{ inputs.models }}
-        run: |
-          python run.py \
-            --runs-dir ../runs-branch/org-chart-blind-tester/runs \
-            --status ../runs-branch/org-chart-blind-tester/status.json \
-            ${MODELS:+--models $MODELS}
-
-      - name: Commit the responses
-        if: always()
-        working-directory: runs-branch
-        run: |
+          cp -v new-runs/* runs-branch/org-chart-blind-tester/runs/ 2>/dev/null || echo "no files from the ask jobs"
+          cd runs-branch
           git config user.name "Diogo Ribeiro"
           git config user.email "diogo_dj@hotmail.com"
           git add -A
           if git diff --cached --quiet; then
             echo "No new responses."
           else
-            git commit --quiet -m "org-chart-blind-tester responses ($(date -u +%Y-%m-%d))"
+            git commit --quiet -m "org-chart-blind-tester responses ($(date -u +%Y-%m-%dT%H:%MZ))"
             git push --quiet origin "$RUNS_BRANCH"
           fi
-          if [ -f org-chart-blind-tester/status.json ] && python -c "import json,sys; sys.exit(0 if json.load(open('org-chart-blind-tester/status.json'))['all_complete'] else 1)"; then
-            echo "::notice::Every model has answered every question; the schedule can be disabled."
-          fi
-
-      - name: Fail if a model stopped on an error
-        if: steps.ask.outcome == 'failure'
-        run: exit 1
+          python3 - <<'PY'
+          import glob, json
+          rows = [json.load(open(p))["shards"][0] for p in sorted(glob.glob("org-chart-blind-tester/runs/*.status.json"))]
+          for r in rows:
+              print(f"{r['key']:<16} shard {r['shard']}/{r['shards']}: {r['questions_complete']}/{r['questions']} complete, "
+                    f"stopped {r['stopped']}, {r['calls']} calls, {r['seconds']} s")
+          PY

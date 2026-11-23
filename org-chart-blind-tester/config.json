@@ -8,67 +8,18 @@
     "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7"
   },
   "seed": 20261123,
-  "n_questions": 300,
+  "n_questions": 400,
   "check_share": 0.2,
   "temperature": 0,
-  "max_tokens": 400,
-  "endpoint": "https://models.github.ai",
-  "tiers": {
-    "low": {
-      "rpm": 15,
-      "per_day": 150,
-      "n_questions": 300
-    },
-    "high": {
-      "rpm": 10,
-      "per_day": 50,
-      "n_questions": 100
-    }
-  },
+  "max_tokens": 300,
+  "num_ctx": 4096,
+  "shards": 4,
   "models": [
-    {
-      "key": "gpt-4o-mini",
-      "family": "OpenAI",
-      "candidates": [
-        "openai/gpt-4o-mini"
-      ],
-      "tier": "low"
-    },
-    {
-      "key": "gpt-4o",
-      "family": "OpenAI",
-      "candidates": [
-        "openai/gpt-4o"
-      ],
-      "tier": "high"
-    },
-    {
-      "key": "llama",
-      "family": "Meta",
-      "candidates": [
-        "meta/Llama-3.3-70B-Instruct",
-        "meta/Meta-Llama-3.1-8B-Instruct"
-      ],
-      "tier": "low"
-    },
-    {
-      "key": "mistral-small",
-      "family": "Mistral AI",
-      "candidates": [
-        "mistral-ai/mistral-small-2503",
-        "mistral-ai/Mistral-small"
-      ],
-      "tier": "low"
-    },
-    {
-      "key": "phi-4",
-      "family": "Microsoft",
-      "candidates": [
-        "microsoft/Phi-4",
-        "microsoft/phi-4"
-      ],
-      "tier": "low"
-    }
-  ],
-  "api_version": "2026-03-10"
+    {"key": "llama3.1-8b", "family": "Llama", "developer": "Meta", "model": "llama3.1:8b"},
+    {"key": "qwen3-8b", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3:8b", "think": false},
+    {"key": "qwen3.5-9b", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3.5:9b", "think": false},
+    {"key": "ministral-3-8b", "family": "Ministral", "developer": "Mistral AI", "model": "ministral-3:8b"},
+    {"key": "gemma4-12b", "family": "Gemma", "developer": "Google", "model": "gemma4:12b", "think": false, "shards": 6},
+    {"key": "eurollm-9b", "family": "EuroLLM", "developer": "EuroLLM consortium", "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M"}
+  ]
 }

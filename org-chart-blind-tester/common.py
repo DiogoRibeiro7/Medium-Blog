@@ -1,5 +1,5 @@
 """Shared pieces of the blind-tester experiment: configuration, questions, prompts, answer parsing and
-the client for the GitHub Models inference API.
+the client for a local Ollama server.
 
 The experiment puts the same multiple-choice question to a model in four roles:
 
@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 import time
 import urllib.error
@@ -34,10 +35,14 @@ ROLES = ("coder", "blind", "anchored", "warned")
 
 
 def load_config(path: Path | None = None) -> dict:
-    """config.json, or the file named by BLIND_TESTER_CONFIG (the tests use a fast synthetic one)."""
-    import os
+    """config.json, or the file named by BLIND_TESTER_CONFIG (the tests use a small synthetic one)."""
     path = path or Path(os.environ.get("BLIND_TESTER_CONFIG", HERE / "config.json"))
     return json.loads(Path(path).read_text())
+
+
+def model_specs(cfg: dict, keys=None) -> list[dict]:
+    specs = [dict(m, shards=m.get("shards", cfg["shards"])) for m in cfg["models"]]
+    return [s for s in specs if not keys or s["key"] in keys]
 
 
 # ---------------------------------------------------------------------------------------------------
@@ -54,15 +59,13 @@ class Question:
 
 
 def fetch_mmlu(cfg: dict, cache: Path = HERE / "data") -> tuple[list[Question], dict]:
-    """Download the MMLU test split at the configured revision and return every row in file order,
-    with provenance (resolved commit, file SHA-256). The file is cached in data/, never committed."""
+    """Download the MMLU test split at the pinned revision, check its digest, and return every row in
+    file order. The file is cached in data/, never committed."""
     import pyarrow.parquet as pq
-    from huggingface_hub import HfApi, hf_hub_download
+    from huggingface_hub import hf_hub_download
 
     m = cfg["mmlu"]
-    info = HfApi().dataset_info(m["repo_id"], revision=m["revision"])
-    sha = info.sha
-    path = Path(hf_hub_download(m["repo_id"], m["filename"], repo_type="dataset", revision=sha,
+    path = Path(hf_hub_download(m["repo_id"], m["filename"], repo_type="dataset", revision=m["revision"],
                                 cache_dir=str(cache)))
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     if m.get("sha256") and digest != m["sha256"]:
@@ -70,7 +73,7 @@ def fetch_mmlu(cfg: dict, cache: Path = HERE / "data") -> tuple[list[Question], 
     table = pq.read_table(path).to_pylist()
     rows = [Question(i, r["subject"], r["question"], tuple(r["choices"]), int(r["answer"]))
             for i, r in enumerate(table)]
-    return rows, {"repo_id": m["repo_id"], "filename": m["filename"], "revision": sha,
+    return rows, {"repo_id": m["repo_id"], "filename": m["filename"], "revision": m["revision"],
                   "sha256": digest, "rows": len(rows)}
 
 
@@ -85,9 +88,7 @@ def load_questions(cfg: dict, questions_file: Path | None = None) -> tuple[list[
 
 
 def sample_order(rows: list[Question], cfg: dict) -> list[Question]:
-    """The questions in the order in which every model works through them: a seeded random draw
-    without replacement. A model with a smaller quota answers a prefix of the same order, so its
-    questions are a random subset of the larger models' questions."""
+    """The sampled questions in a fixed order: a seeded random draw without replacement."""
     rng = np.random.default_rng(cfg["seed"])
     idx = rng.permutation(len(rows))[: cfg["n_questions"]]
     return [rows[i] for i in idx]
@@ -95,7 +96,7 @@ def sample_order(rows: list[Question], cfg: dict) -> list[Question]:
 
 def in_check_set(qid: int, cfg: dict) -> bool:
     """A fixed, seed-dependent share of questions gets the anchored and warned roles whatever the
-    blind tester said. Hash-based so that it does not depend on run order."""
+    blind tester said. Hash-based so that it does not depend on run order or sharding."""
     h = hashlib.sha256(f"{cfg['seed']}:{qid}".encode()).digest()
     return int.from_bytes(h[:8], "big") / 2 ** 64 < cfg["check_share"]
 
@@ -161,131 +162,85 @@ def parse_answer(text: str | None) -> str | None:
 
 
 # ---------------------------------------------------------------------------------------------------
-# GitHub Models client
+# Ollama client (native /api/chat, which honours `think` and a fixed seed)
 # ---------------------------------------------------------------------------------------------------
 
-class QuotaExhausted(Exception):
-    """The model's daily request limit is used up; try again in a later run."""
-
-
-class Rejected(Exception):
-    """The service refused this prompt for good (e.g. a content filter). Recorded, not retried."""
-
-
-class Client:
-    def __init__(self, endpoint: str, token: str, api_version: str | None = "2026-03-10",
-                 timeout: float = 120.0, sleep=time.sleep):
-        self.endpoint = endpoint.rstrip("/")
-        self.token = token
-        self.api_version = api_version
+class Ollama:
+    def __init__(self, base_url: str = "http://localhost:11434", timeout: float = 900.0, sleep=time.sleep):
+        self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.sleep = sleep
 
-    def headers(self) -> dict:
-        h = {"Accept": "application/vnd.github+json", "Authorization": f"Bearer {self.token}",
-             "Content-Type": "application/json", "Accept-Encoding": "identity"}
-        if self.api_version:
-            h["X-GitHub-Api-Version"] = self.api_version
-        return h
-
     def _request(self, method: str, path: str, payload: dict | None = None):
         data = None if payload is None else json.dumps(payload).encode()
-        req = urllib.request.Request(self.endpoint + path, data=data, method=method, headers=self.headers())
+        req = urllib.request.Request(self.base_url + path, data=data, method=method,
+                                     headers={"Content-Type": "application/json"})
         with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-            return decode_json(resp, f"{method} {path}")
+            return json.loads(resp.read().decode())
 
-    def catalog(self) -> list[dict]:
-        return self._request("GET", "/catalog/models")
-
-    def chat(self, model: str, msgs: list[dict], temperature: float, max_tokens: int,
-             long_wait: float = 300.0, attempts: int = 6) -> dict:
-        """One chat completion. Short 429s (per-minute limits) and transient errors are retried;
-        a 429 asking to wait longer than `long_wait` seconds means the daily quota is gone."""
-        payload = {"model": model, "messages": msgs, "temperature": temperature, "max_tokens": max_tokens}
+    def chat(self, spec: dict, msgs: list[dict], cfg: dict, attempts: int = 4) -> dict:
+        body = {"model": spec["model"], "messages": msgs, "stream": False, "keep_alive": "60m",
+                "options": {"temperature": cfg["temperature"], "seed": cfg["seed"],
+                            "num_predict": cfg["max_tokens"], "num_ctx": cfg["num_ctx"]}}
+        if spec.get("think") is not None:
+            body["think"] = spec["think"]
         delay = 5.0
         for attempt in range(attempts):
             try:
-                return self._request("POST", "/inference/chat/completions", payload)
+                r = self._request("POST", "/api/chat", body)
+                return {"text": (r.get("message") or {}).get("content") or "",
+                        "finish_reason": r.get("done_reason"), "model_reported": r.get("model"),
+                        "usage": {"prompt_tokens": r.get("prompt_eval_count"),
+                                  "completion_tokens": r.get("eval_count"),
+                                  "seconds": round((r.get("total_duration") or 0) / 1e9, 2)}}
             except urllib.error.HTTPError as e:
-                body = e.read().decode(errors="replace")
-                if e.code == 429:
-                    wait = _retry_after(e.headers, body)
-                    if wait is not None and wait > long_wait:
-                        raise QuotaExhausted(f"{model}: wait {wait:.0f}s: {body[:300]}") from None
-                    self.sleep((wait or delay) + 1)
-                    delay = min(delay * 2, 120)
-                    continue
-                if e.code == 400 and ("content_filter" in body or "content management policy" in body):
-                    raise Rejected(f"content_filter: {body[:300]}") from None
-                if e.code in (500, 502, 503, 504) and attempt < attempts - 1:
+                msg = e.read().decode(errors="replace")[:500]
+                if e.code >= 500 and attempt < attempts - 1:
                     self.sleep(delay)
-                    delay = min(delay * 2, 120)
+                    delay *= 2
                     continue
-                raise RuntimeError(f"HTTP {e.code} from {model}: {body[:500]}") from None
+                raise RuntimeError(f"HTTP {e.code} from Ollama for {spec['model']}: {msg}") from None
             except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
                 if attempt < attempts - 1:
                     self.sleep(delay)
-                    delay = min(delay * 2, 120)
+                    delay *= 2
                     continue
-                raise RuntimeError(f"network error calling {model}: {e}") from None
-        raise RuntimeError(f"{model}: still rate limited after {attempts} attempts")
+                raise RuntimeError(f"cannot reach Ollama for {spec['model']}: {e}") from None
+        raise RuntimeError("unreachable")
+
+    def provenance(self, spec: dict) -> dict:
+        out = {"model": spec["model"], "base_url": self.base_url}
+        try:
+            out["server_version"] = self._request("GET", "/api/version").get("version")
+            tags = self._request("GET", "/api/tags").get("models", [])
+            hit = [m for m in tags if spec["model"] in (m.get("name"), m.get("model"))]
+            if hit:
+                out["digest"] = hit[0].get("digest")
+                out["size"] = hit[0].get("size")
+                out["details"] = hit[0].get("details")
+            show = self._request("POST", "/api/show", {"model": spec["model"]})
+            out["licence_start"] = (show.get("license") or "").strip()[:300]
+        except Exception as e:  # noqa: BLE001 - provenance is best effort; the answers are what is scored
+            out["provenance_error"] = repr(e)[:300]
+        return out
 
 
-def read_body(resp) -> bytes:
-    raw = resp.read()
-    enc = (resp.headers.get("Content-Encoding") or "").lower()
-    if enc == "gzip" or raw[:2] == b"\x1f\x8b":
-        import gzip
-        raw = gzip.decompress(raw)
-    elif enc == "deflate":
-        import zlib
-        raw = zlib.decompress(raw)
-    return raw
+# ---------------------------------------------------------------------------------------------------
+# Runs on disk: runs/<key>.shard<i>of<k>.jsonl, one JSON line per call
+# ---------------------------------------------------------------------------------------------------
+
+def shard_path(runs_dir: Path, key: str, shard: int, shards: int) -> Path:
+    return runs_dir / f"{key}.shard{shard}of{shards}.jsonl"
 
 
-def decode_json(resp, what: str):
-    raw = read_body(resp)
-    try:
-        return json.loads(raw.decode())
-    except (UnicodeDecodeError, json.JSONDecodeError):
-        raise RuntimeError(f"{what}: HTTP {resp.status}, content-type {resp.headers.get('Content-Type')!r}, "
-                           f"encoding {resp.headers.get('Content-Encoding')!r}, url {resp.geturl()}, "
-                           f"not JSON ({len(raw)} bytes): {raw[:300]!r}") from None
-
-
-def _retry_after(headers, body: str) -> float | None:
-    for name in ("retry-after", "x-ratelimit-reset-requests", "x-ratelimit-timeremaining"):
-        v = headers.get(name) if headers is not None else None
-        if v:
-            try:
-                return float(v)
-            except ValueError:
-                pass
-    m = re.search(r"wait (\d+) seconds", body)
-    return float(m.group(1)) if m else None
-
-
-def resolve_models(cfg: dict, catalog: list[dict] | None) -> list[dict]:
-    """Match each configured model to the first candidate present in the catalog (case-insensitive)
-    and attach its rate-limit tier. Models with no candidate in the catalog are returned with id None.
-    Without a catalog (None), the first candidate and the tier written in config.json are used."""
-    by_id = {m["id"].lower(): m for m in (catalog or [])}
-    out = []
-    for spec in cfg["models"]:
-        if catalog is None:
-            hit = {"id": spec["candidates"][0], "rate_limit_tier": spec.get("tier", "high")}
-        else:
-            hit = next((by_id[c.lower()] for c in spec["candidates"] if c.lower() in by_id), None)
-        tier = (hit or {}).get("rate_limit_tier") or spec.get("tier", "high")
-        tier = tier if tier in cfg["tiers"] else "high"
-        out.append({**spec, "id": hit["id"] if hit else None, "tier": tier,
-                    "resolved_from": "config" if catalog is None else "catalog",
-                    "n_questions": cfg["tiers"][tier]["n_questions"],
-                    "rpm": cfg["tiers"][tier]["rpm"], "per_day": cfg["tiers"][tier]["per_day"]})
-    return out
-
-
-def read_runs(path: Path) -> list[dict]:
+def read_jsonl(path: Path) -> list[dict]:
     if not path.exists():
         return []
     return [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
+
+
+def read_model_runs(runs_dir: Path, key: str) -> list[dict]:
+    recs = []
+    for p in sorted(runs_dir.glob(f"{key}.shard*.jsonl")):
+        recs.extend(read_jsonl(p))
+    return recs

@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import special, stats
 
-from common import HERE, LETTERS, in_check_set, load_config, load_questions, read_runs, sample_order
+from common import HERE, LETTERS, in_check_set, load_config, load_questions, read_model_runs, sample_order
 from run import question_complete
 
 B_BOOT = 2000
@@ -122,9 +122,11 @@ def load(cfg, runs_dir: Path, questions_file: Path | None):
     key = {q.qid: LETTERS[q.answer] for q in order}
     models = {}
     for spec in cfg["models"]:
-        recs = read_runs(runs_dir / f"{spec['key']}.jsonl")
+        recs = read_model_runs(runs_dir, spec["key"])
         if not recs:
             continue
+        prov = [json.loads(p.read_text())
+                for p in sorted(runs_dir.glob(f"{spec['key']}.shard*.provenance.json"))]
         done = {(r["qid"], r["role"]): r for r in recs}
         n_target = max((r["position"] for r in recs), default=-1) + 1
         qs = [q for q in order if question_complete(q, done, cfg)]
@@ -132,9 +134,10 @@ def load(cfg, runs_dir: Path, questions_file: Path | None):
         for q in qs:
             tab[q.qid] = {role: done[(q.qid, role)] for role in ("coder", "blind", "anchored", "warned")
                           if (q.qid, role) in done}
-        ids = sorted({r["model_id"] for r in recs})
-        reported = sorted({r.get("model_reported") or "" for r in recs} - {""})
-        models[spec["key"]] = {"spec": spec, "tab": tab, "ids": ids, "reported": reported,
+        ids = sorted({r["model"] for r in recs})
+        digests = sorted({p.get("digest") or "?" for p in prov})
+        versions = sorted({p.get("server_version") or "?" for p in prov})
+        models[spec["key"]] = {"spec": spec, "tab": tab, "ids": ids, "digests": digests, "versions": versions,
                                "records": recs, "positions_started": n_target}
     return order, key, source, models
 
@@ -218,17 +221,21 @@ def main(argv=None) -> int:
         m = models[k]
         recs = m["records"]
         n_complete = len(m["tab"])
-        unparsed = sum(r["answer"] is None and not r.get("error") for r in recs)
-        refused = sum(bool(r.get("error")) for r in recs)
+        unparsed = sum(r["answer"] is None for r in recs)
         truncated = sum(r.get("finish_reason") == "length" for r in recs)
+        secs = [r["usage"]["seconds"] for r in recs if (r.get("usage") or {}).get("seconds")]
         by_role = {role: sum(r["role"] == role for r in recs) for role in ("coder", "blind", "anchored", "warned")}
-        print(f"  {k:<14} id {', '.join(m['ids'])}; reported {', '.join(m['reported']) or '-'}")
-        print(f"  {'':<14} {n_complete} questions complete; "
+        spec = m["spec"]
+        print(f"  {k:<15} {spec.get('developer', '')}, {', '.join(m['ids'])}; digest {', '.join(d[:19] for d in m['digests'])}; "
+              f"Ollama {', '.join(m['versions'])}")
+        print(f"  {'':<15} {n_complete} questions complete; "
               f"{len(recs)} responses ({', '.join(f'{r} {n}' for r, n in by_role.items())}); "
-              f"unparseable {unparsed}, refused {refused}, cut at max_tokens {truncated}")
-        summary["models"][k] = {"ids": m["ids"], "reported": m["reported"], "complete": n_complete,
-                                "responses": len(recs), "unparseable": unparsed, "refused": refused,
-                                "truncated": truncated}
+              f"no ANSWER line {unparsed}, cut at max_tokens {truncated}"
+              + (f"; median {np.median(secs):.1f} s per call" if secs else ""))
+        if len(m["digests"]) > 1:
+            print(f"  {'':<15} WARNING: shards ran different weights")
+        summary["models"][k] = {"ids": m["ids"], "digests": m["digests"], "complete": n_complete,
+                                "responses": len(recs), "unparseable": unparsed, "truncated": truncated}
 
     # 2. Error rates ------------------------------------------------------------------------------
     header("2. Error rates, on the answers that parsed (missing answers are counted separately)")
@@ -244,7 +251,7 @@ def main(argv=None) -> int:
             e = wrong(a[role], a["key"]) & v
             out[role] = (int(e.sum()), int(v.sum()), n - int(v.sum()))
         (ec, nc, mc), (eb, nb, mb) = out["coder"], out["blind"]
-        print(f"  {k:<14} n={n:4d}  coder {pct(ec / nc)} {ci(wilson(ec, nc))} (no answer {mc})   "
+        print(f"  {k:<15} n={n:4d}  coder {pct(ec / nc)} {ci(wilson(ec, nc))} (no answer {mc})   "
               f"blind tester {pct(eb / nb)} {ci(wilson(eb, nb))} (no answer {mb})")
         summary["models"][k].update(q_coder=ec / nc, q_blind=eb / nb, n=n, missing_coder=mc, missing_blind=mb)
 
@@ -270,17 +277,28 @@ def main(argv=None) -> int:
             both = ec & et
             same_opt = both & (ac["coder"][ok] == at["blind"][ok])
             R[i, j] = rho
-            pair_stats[(kc, kt)] = {"n": int(ok.sum()), "n_common": len(common), "rho": rho, "rho_ci": rho_ci,
+            relation = ("same model" if kc == kt else "same family"
+                        if models[kc]["spec"].get("family") == models[kt]["spec"].get("family") else "other family")
+            pair_stats[(kc, kt)] = {"relation": relation, "n": int(ok.sum()), "n_common": len(common),
+                                    "rho": rho, "rho_ci": rho_ci,
                                     "q_coder": float(ec.mean()), "q_tester": float(et.mean()),
                                     "both_wrong": float(both.mean()), "pass": float(ps_all.mean()),
                                     "pass_ci": boot_mean(ps_all, idx_all),
                                     "same_option_share": float(same_opt.sum() / both.sum()) if both.sum() else float("nan")}
     for (kc, kt), s in pair_stats.items():
-        tag = "same model " if kc == kt else "other model"
-        print(f"  coder {kc:<14} tester {kt:<14} [{tag}] n={s['n']:4d}  rho {s['rho']:+.2f} "
+        tag = f"{s['relation']:<12}"
+        print(f"  coder {kc:<15} tester {kt:<15} [{tag}] n={s['n']:4d}  rho {s['rho']:+.2f} "
               f"[{s['rho_ci'][0]:+.2f}, {s['rho_ci'][1]:+.2f}]  both wrong {pct(s['both_wrong'])}  "
               f"same wrong option {pct(s['same_option_share'], 0) if np.isfinite(s['same_option_share']) else '-'} of those")
         summary["pairs"][f"{kc}|{kt}"] = {kk: (list(v) if isinstance(v, tuple) else v) for kk, v in s.items()}
+
+    print("Average correlation by relation (coder against blind tester):")
+    for rel in ("same model", "same family", "other family"):
+        v = [s["rho"] for s in pair_stats.values() if s["relation"] == rel and np.isfinite(s["rho"])]
+        if v:
+            print(f"  {rel:<12} {np.mean(v):+.2f} over {len(v)} pairs (range {min(v):+.2f} to {max(v):+.2f})")
+            summary.setdefault("relations", {})[rel] = {"mean_rho": float(np.mean(v)), "pairs": len(v),
+                                                        "min": float(min(v)), "max": float(max(v))}
 
     # 4. Anchoring --------------------------------------------------------------------------------
     header("4. Anchoring: the tester has read the coder's answer")
@@ -306,10 +324,10 @@ def main(argv=None) -> int:
                          "right_after": int(right_after.sum())}
         anch[k] = res
         r1, r2 = res["anchored"], res["warned"]
-        print(f"  {k:<14} blind tester disagreed with the coder on {r1['disagreements']} questions.")
-        print(f"  {'':<14} anchored tester adopted the coder's answer on {r1['adopted']} "
+        print(f"  {k:<15} blind tester disagreed with the coder on {r1['disagreements']} questions.")
+        print(f"  {'':<15} anchored tester adopted the coder's answer on {r1['adopted']} "
               f"({pct(r1['a'])} {ci(r1['a_ci'])}); warned tester on {r2['adopted']} ({pct(r2['a'])} {ci(r2['a_ci'])})")
-        print(f"  {'':<14} check set: of {r1['check_agreements']} questions where blind tester and coder agreed, "
+        print(f"  {'':<15} check set: of {r1['check_agreements']} questions where blind tester and coder agreed, "
               f"reading the answer changed the anchored tester's answer in {r1['check_broken']} "
               f"and the warned tester's in {r2['check_broken']}")
         summary["models"][k].update(anchoring={kk: {k2: (list(v2) if isinstance(v2, tuple) else v2)
@@ -362,7 +380,8 @@ def main(argv=None) -> int:
                   f"(same-model blind on these {len(common)}: {pct(p_same.mean())}; difference "
                   f"{pct(d2.mean())} [{pct(np.quantile(dv2, 0.025))}, {pct(np.quantile(dv2, 0.975))}]; "
                   f"tester wrong on {pct(s['q_tester'])})")
-            dk[f"blind {kt}"] = {"pass": float(p_other.mean()), "ci": list(boot_mean(p_other, idx2)),
+            dk[f"blind {kt}"] = {"relation": s["relation"], "pass": float(p_other.mean()),
+                                 "ci": list(boot_mean(p_other, idx2)),
                                  "n": len(common), "same_model_on_common": float(p_same.mean()),
                                  "minus_same": float(d2.mean()),
                                  "minus_same_ci": [float(np.quantile(dv2, 0.025)), float(np.quantile(dv2, 0.975))],
@@ -380,7 +399,7 @@ def main(argv=None) -> int:
             continue
         a_hat = anch[k]["anchored"]["a"]
         pred_anch = a_hat * s["q_coder"] + (1 - a_hat) * s["both_wrong"] if np.isfinite(a_hat) else float("nan")
-        print(f"  {k:<14} q={pct(s['q_coder'])}, rho={s['rho']:+.2f}, a={pct(a_hat)}: Model 1 blind residual "
+        print(f"  {k:<15} q={pct(s['q_coder'])}, rho={s['rho']:+.2f}, a={pct(a_hat)}: Model 1 blind residual "
               f"{pct(s['both_wrong'])} (passes {pct(s['pass'])}); anchored residual {pct(pred_anch)} "
               f"(measured passes {pct(designs[k]['anchored']['pass'])})")
 
@@ -409,13 +428,16 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
                 continue
             ax.errorbar(100 * d["pass"], yi + off, xerr=[[100 * (d["pass"] - d["ci"][0])], [100 * (d["ci"][1] - d["pass"])]],
                         fmt=mk, color=col, ms=6, capsize=0, lw=1.4, label=lab if yi == y[0] else None)
-    first = True
+    seen = set()
     for yi, k in zip(y, keys):
         for name, d in designs[k].items():
             if name.startswith("blind ") and name != "blind (same model)":
-                ax.plot(100 * d["pass"], yi - 0.2, "^", color=AQUA, ms=6, alpha=0.9,
-                        label="Blind tester, another model" if first else None)
-                first = False
+                rel = d.get("relation", "other family")
+                col, lab = (AQUA, "Blind tester, another family") if rel == "other family" else \
+                    (BLUE_RAMP[0], "Blind tester, same family, other model")
+                ax.plot(100 * d["pass"], yi - 0.2, "^", color=col, ms=6, alpha=0.9,
+                        label=lab if rel not in seen else None)
+                seen.add(rel)
     ax.set_yticks(y)
     ax.set_yticklabels(labels)
     ax.set_xlabel("Questions on which the coder was wrong and the test passed (%)")
