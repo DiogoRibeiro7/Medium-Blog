@@ -319,6 +319,34 @@ primary-legislation tax-period evidence for USA 1987/1988 and GBR 1988,
 without claiming those dates identify the composite tax-cut treatment.
 It does not estimate any new ATT or change the existing causal analysis.
 
+
+### Extended primary-legislation review (source and design feasibility)
+
+[LEGISLATIVE_EXPANSION.md](LEGISLATIVE_EXPANSION.md) adds four independently
+sourced statute/provision contexts: UK 1979, US 1982, Germany 2001 and
+Netherlands 2001. Together with the original UK 1988 and US 1987/1988
+contexts, this gives **7/30 author flag-years with provision-level
+evidence** and **5/20 previously eligible run onsets** with reviewed legal
+context. The original 30 treatment flags, outcome panel, donor eligibility
+and three-case source-provenance snapshot are unchanged. This source
+documentation does **not** verify that the named statute caused the
+latent composite threshold crossing or establish a causal ATT.
+
+~~~bash
+python -m causal_tax_cuts.legislative_expansion \
+  --flags data/tax-study/timing/author_flag_years.csv \
+  --onsets data/tax-study/onset-phasein/tax_cut_onset_eligibility.csv \
+  --legacy causal_tax_cuts/provision_periods.csv \
+  --expansion causal_tax_cuts/legislative_expansion.csv \
+  --previous data/tax-study/onset-phasein/tax_cut_onset_audit.json \
+  --output-dir data/tax-study/legislative-expansion
+~~~
+
+See [the 23 November results](results/LEGISLATIVE_EXPANSION_RESULTS_2026-11-23.md)
+and [frozen source manifest](results/legislative_coverage_2026-11-23.json).
+The official-source workflow uploads `tax-cut-legislative-expansion`
+for seven days and checks exact reproduction on matching hashes.
+
 ### Audit of annual reform flags versus legislative timing
 
 [TAX_TIMING.md](TAX_TIMING.md) separates the 30 author-coded annual 2-SD
