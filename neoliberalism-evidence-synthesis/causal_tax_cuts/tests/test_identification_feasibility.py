@@ -13,7 +13,9 @@ from causal_tax_cuts.identification_feasibility import (
     HORIZONS,
     NOT_IDENTIFIED,
     evaluate_identification,
+    normalized_scientific_csv_digest,
     run,
+    verify_frozen_reference,
 )
 
 
@@ -326,6 +328,81 @@ class IdentificationFeasibilityTests(unittest.TestCase):
                 rows["macro"],
                 expected_reforms=2,
             )
+
+
+    def test_normalized_csv_hash_only_ignores_machine_roundoff(self) -> None:
+        """Distinguish 1e-16 binary-float noise from meaningful changes."""
+        with tempfile.TemporaryDirectory() as tmp:
+            sample = Path(tmp) / "derived.csv"
+            sample.write_text(
+                "country,mean_selected_distance\nAAA,2.1461024177280827\n",
+                encoding="utf-8",
+            )
+            expected = normalized_scientific_csv_digest(
+                sample, "mean_selected_distance"
+            )
+            sample.write_text(
+                "country,mean_selected_distance\nAAA,2.146102417728083\n",
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                normalized_scientific_csv_digest(sample, "mean_selected_distance"),
+                expected,
+            )
+            sample.write_text(
+                "country,mean_selected_distance\nAAA,2.146103417728083\n",
+                encoding="utf-8",
+            )
+            self.assertNotEqual(
+                normalized_scientific_csv_digest(sample, "mean_selected_distance"),
+                expected,
+            )
+
+    def test_frozen_verification_requires_same_scientific_data(self) -> None:
+        """Keep changed original sources or substantive results distinguishable."""
+        baseline = {
+            "joined_panel_sha256": "a" * 64,
+            "author_source_sha256": "b" * 64,
+            "status": "policy_specific_identification_feasibility_only",
+            "n_original_eligible_reform_onsets": 2,
+            "input_sha256": {
+                "joint_wdi_hull": "1" * 64,
+                "macro_matching_pretrends": "2" * 64,
+                "legal_register": "3" * 64,
+            },
+            "normalized_input_sha256": {
+                "joint_wdi_hull": "4" * 64,
+                "macro_matching_pretrends": "5" * 64,
+            },
+        }
+        self.assertEqual(
+            verify_frozen_reference(baseline, deepcopy(baseline)),
+            "exact_raw_input_reproduction",
+        )
+        drift = deepcopy(baseline)
+        drift["input_sha256"]["joint_wdi_hull"] = "0" * 64
+        self.assertEqual(
+            verify_frozen_reference(drift, baseline),
+            "same_original_data_and_scientific_inputs_derived_roundoff_only",
+        )
+        bad_science = deepcopy(drift)
+        bad_science["normalized_input_sha256"]["joint_wdi_hull"] = "9" * 64
+        with self.assertRaisesRegex(ValueError, "normalized scientific inputs"):
+            verify_frozen_reference(bad_science, baseline)
+        bad_summary = deepcopy(drift)
+        bad_summary["n_original_eligible_reform_onsets"] = 3
+        with self.assertRaisesRegex(ValueError, "results or normalized"):
+            verify_frozen_reference(bad_summary, baseline)
+        unexpected = deepcopy(drift)
+        unexpected["input_sha256"]["legal_register"] = "8" * 64
+        with self.assertRaisesRegex(ValueError, "Unexpected raw input"):
+            verify_frozen_reference(unexpected, baseline)
+        new_vintage = deepcopy(drift)
+        new_vintage["joined_panel_sha256"] = "9" * 64
+        self.assertEqual(
+            verify_frozen_reference(new_vintage, baseline),
+            "original_source_vintage_changed",
+        )
 
 
 if __name__ == "__main__":
