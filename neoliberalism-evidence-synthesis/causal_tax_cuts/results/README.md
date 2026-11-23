@@ -215,3 +215,14 @@ donor-hull support at h=5. The only two with h=5 support are Finland
 The result does **not** identify causal effects. The live CI
 `tax-cut-identification-feasibility` artifact contains the
 20-event and 140 event–horizon matrices and reproducible source hashes.
+
+
+The [Finland 1986 and Germany 2008 component study](../POLICY_COMPONENT_CASE_STUDIES.md)
+and its [source-linked 23 November results](POLICY_COMPONENT_RESULTS_2026-11-23.md)
+document eight statutory tax instruments, including corporate 43→33%
+and 25→15% cuts, Finnish advance-payment lags and the German 2009
+capital-income stage. These are the two h=5 WDI-hull-supported onsets
+identified in the prior feasibility audit, but neither has a verified
+component-to-composite-flag treatment mapping. No historical effect or
+donor cohort was changed. The separate CI artifact includes eight
+components and both original event-level gates.

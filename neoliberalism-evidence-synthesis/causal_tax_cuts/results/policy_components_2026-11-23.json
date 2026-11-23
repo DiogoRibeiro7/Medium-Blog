@@ -1,0 +1,44 @@
+{
+  "component_change_kinds": {
+    "advance_payment_transition": 1,
+    "capital_gains_base_broadening": 1,
+    "interest_deduction_restriction": 1,
+    "later_capital_income_withholding": 1,
+    "rate_reduction": 2,
+    "trade_tax_assessment_reform": 1,
+    "wealth_threshold_increase": 1
+  },
+  "inference": "none; no updated ATT, model, weights, CI or p-value",
+  "interpretation": "Legally documented component changes exist for both previously unreviewed h5-supported events, but neither has a proven source-component-to-composite flag mapping, clean policy dose, or justified causal counterfactual.",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "known_limitations": [
+    "Finland's exact promulgation date for its annual 1986 rate law is not recorded here.",
+    "Finnish 1986 corporate advances retained 43 percent despite the 33 percent statutory rate; refunds occurred later.",
+    "Finnish 1986 capital-gains base broadening offsets some tax relief.",
+    "Germany's 2008 law had multiple components and a private capital-income stage in 2009.",
+    "The German 2008 reform intersects major global macroeconomic shocks.",
+    "Pretrend slope differences remain observed and are not parallel-trend tests.",
+    "Finite-sample WDI donor-hull support is not causal positivity or exchangeability.",
+    "Original donor censoring, full WID future-outcome selection and country dependence are unchanged."
+  ],
+  "n_candidate_cases_with_original_h5_joint_wdi_support": 2,
+  "n_candidate_components_with_later_tax_year": 1,
+  "n_candidates_with_collection_lag": 1,
+  "n_candidates_with_countervailing_tax_base_measures": 2,
+  "n_candidates_with_no_additional_author_flag_through_h5": 2,
+  "n_candidates_with_verified_complete_statute_enactment_dates": 1,
+  "n_component_records": 8,
+  "n_composite_flag_to_statute_attributions_verified": 0,
+  "n_eligible_onsets_with_statutory_or_contemporaneous_context": 7,
+  "n_new_candidate_onsets": 2,
+  "n_original_author_flag_years": 30,
+  "n_original_eligible_reform_onsets": 20,
+  "n_policy_specific_causal_estimands_identified": 0,
+  "n_prior_documented_eligible_onsets": 5,
+  "source_sha256": {
+    "official_component_ledger": "6617ca0d44c517a69044ab2c0d6347566d2a2754a2443b6ebd8e44a4212a8d03",
+    "prior_event_gates": "cd9b0717f31aeb62a8ae270b6f08d79663d68e3c770b228c1ad3cc0a8c37544e",
+    "prior_identification_audit": "33a9ddaa33e3a3f0edf9cb061af608e5f2490bd75bc4cbc26df34b19c520e3b7"
+  },
+  "status": "finland_1986_germany_2008_tax_component_evidence_only"
+}
