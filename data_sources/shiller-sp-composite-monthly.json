@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "shiller-sp-composite-monthly",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "954b3d3d60a6f74894df8eccdded9db0134a3f06",
+  "record": "external/shiller-sp-composite-monthly/metadata.yaml",
+  "folder": "long-horizon-stock-risk",
+  "target": "long-horizon-stock-risk/data/shiller-sp-composite-monthly",
+  "supply": "download from the pinned mirror commit at each run; the bytes are not stored in the registry or here",
+  "files": [
+    {
+      "path": "raw/data.csv",
+      "url": "https://raw.githubusercontent.com/datasets/s-and-p-500/87a2284276f79d75041c71c8f6d9f2aa1c965e84/data/data.csv",
+      "bytes": 123851,
+      "sha256": "b797a3c8de4586af837b86a156b05f49be11ffab99e13171dae763b2a11bdf79"
+    }
+  ]
+}
