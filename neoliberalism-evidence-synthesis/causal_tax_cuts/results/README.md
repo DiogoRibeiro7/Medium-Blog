@@ -177,8 +177,18 @@ records and verifies the frozen snapshot on matching hashes.
 The [annual policy timing audit](../TAX_TIMING.md) distinguishes
 Hope–Limberg's **30 coded country-year tax-cut flags** from independently
 verified legislative enactment or implementation dates. Its
-[22 November preliminary archived-panel summary](TAX_TIMING_RESULTS_2026-11-22.md)
-documents the 29 WID-observed flag-years; the full 30-year original
-author-file run remains pending. The source-probe will publish a short-lived
+[22 November archived-panel summary](TAX_TIMING_RESULTS_2026-11-22.md)
+documents the 29 WID-observed flag-years. The subsequent live source run
+verified all 30 author flag-years across 25 consecutive runs, with
+Italy 1972 the only WID-missing flag. The source-probe publishes a short-lived
 `tax-cut-annual-timing` artifact. This audit does not shift
 treatment years or estimate new policy effects.
+
+
+The [reform onset and statutory-period audit](../ONSET_PHASEIN.md) and
+[23 November frozen result](ONSET_PHASEIN_RESULTS_2026-11-23.md)
+reconcile 30 author flags, 25 run starts, 20 previously donor-eligible
+onsets and 5 additional five-year follow-up flags. Four are contiguous
+extensions; the fifth is USA 1982 followed by USA 1987 in a different
+flagged run. The three provision-period examples are **not** verified
+dates for the composite tax-cut indicator. No original estimate changes.
