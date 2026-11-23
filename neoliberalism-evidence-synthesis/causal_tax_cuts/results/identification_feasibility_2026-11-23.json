@@ -52,6 +52,10 @@
   "n_policy_specific_causal_designs_supported": 0,
   "n_policy_specific_effective_dates_validated": 0,
   "n_policy_specific_interventions_attributed_to_source_law": 0,
+  "normalized_input_sha256": {
+    "joint_wdi_hull": "fd388397a6d67cd0588d359c5036fc651dbecc38525e35f5e950d94eb6f2f3f1",
+    "macro_matching_pretrends": "e07ee51bcfebf1be4772796f0ce6856ed5b0e618c607b34febf772b076a4e969"
+  },
   "pretrend_definition": "Observed pre-period income-share slope gap for macro-selected donors under the earlier reference selection; not a proof of parallel trends.",
   "status": "policy_specific_identification_feasibility_only"
 }
