@@ -22,7 +22,7 @@ All numbers below are from `output.txt`.
 
 **Decision 1.**
 - **The claim.** Under the defensible models, the chance that prevalence reached the bottom of the published range is 38% to 44%.
-- **The best number to act on.** It depends on which error costs more. With the hierarchical model at scale 0.3, it runs from 0.53% (10th percentile) to 1.86% (90th).
+- **The best number to act on.** It depends on which error costs more. With the hierarchical model at scale 0.3, it runs from 0.52% (10th percentile) to 1.86% (90th).
 
 **Decision 2.** The budget is 3,853 tests, with specificity 99.5% and sensitivity 83% in the survey's own lab.
 - **The best split.** 800 to 1,300 known negatives (21% to 34% of tests), against Santa Clara's 401, gives a 90% interval 6% to 19% narrower.
