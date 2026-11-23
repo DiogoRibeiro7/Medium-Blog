@@ -1,0 +1,25 @@
+{
+  "finished_at": "2026-11-23T12:09:49+00:00",
+  "questions_source": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7",
+    "rows": 14042
+  },
+  "shards": [
+    {
+      "key": "eurollm-9b",
+      "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M",
+      "shard": 5,
+      "shards": 6,
+      "calls": 188,
+      "questions_complete": 66,
+      "questions": 66,
+      "stopped": "complete",
+      "complete": true,
+      "seconds": 10634
+    }
+  ],
+  "all_complete": true
+}

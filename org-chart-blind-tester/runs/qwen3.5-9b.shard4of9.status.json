@@ -1,0 +1,25 @@
+{
+  "finished_at": "2026-11-23T09:55:14+00:00",
+  "questions_source": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7",
+    "rows": 14042
+  },
+  "shards": [
+    {
+      "key": "qwen3.5-9b",
+      "model": "qwen3.5:9b",
+      "shard": 4,
+      "shards": 9,
+      "calls": 110,
+      "questions_complete": 44,
+      "questions": 44,
+      "stopped": "complete",
+      "complete": true,
+      "seconds": 2580
+    }
+  ],
+  "all_complete": true
+}

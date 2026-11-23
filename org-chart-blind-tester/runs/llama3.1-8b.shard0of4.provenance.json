@@ -1,0 +1,21 @@
+{
+  "model": "llama3.1:8b",
+  "base_url": "http://localhost:11434",
+  "server_version": "0.40.17",
+  "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+  "size": 4920753328,
+  "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+      "llama"
+    ],
+    "parameter_size": "8.0B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 131072,
+    "embedding_length": 4096,
+    "runner": "ggml"
+  },
+  "licence_start": "LLAMA 3.1 COMMUNITY LICENSE AGREEMENT\nLlama 3.1 Version Release Date: July 23, 2024\n\n\u201cAgreement\u201d means the terms and conditions for use, reproduction, distribution and modification of the\nLlama Materials set forth herein.\n\n\u201cDocumentation\u201d means the specifications, manuals and documentation accompany"
+}

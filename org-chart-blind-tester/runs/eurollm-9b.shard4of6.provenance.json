@@ -1,0 +1,21 @@
+{
+  "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M",
+  "base_url": "http://localhost:11434",
+  "server_version": "0.40.17",
+  "digest": "e867a753c03179f57c58d4352e3ea12229906f635ba3895e26f0a4e323fe1509",
+  "size": 5582839268,
+  "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "llama",
+    "families": [
+      "llama"
+    ],
+    "parameter_size": "9.15B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 4096,
+    "embedding_length": 4096,
+    "runner": "ggml"
+  },
+  "licence_start": ""
+}

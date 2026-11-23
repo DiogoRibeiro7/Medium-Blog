@@ -1,0 +1,21 @@
+{
+  "model": "gemma4:12b",
+  "base_url": "http://localhost:11434",
+  "server_version": "0.40.17",
+  "digest": "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b",
+  "size": 8021618941,
+  "details": {
+    "parent_model": "imatrix-20260927-12b/model-q4_K_M.gguf",
+    "format": "gguf",
+    "family": "gemma4",
+    "families": [
+      "gemma4"
+    ],
+    "parameter_size": "11.9B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 262144,
+    "embedding_length": 3840,
+    "runner": "llamacpp"
+  },
+  "licence_start": "Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distr"
+}
