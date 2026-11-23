@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-urban-audit-cities-fuas",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "bc73980e7af892ac07ebbfcf9a950a5977790128",
+  "record": "external/eurostat-urban-audit-cities-fuas/metadata.yaml",
+  "folder": "centres-users-residents",
+  "target": "centres-users-residents",
+  "retrieved": "2026-11-23",
+  "note": "Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of each response; a mismatch means a revision.",
+  "files": [
+    {
+      "path": "data/raw/eu_pop_city.json",
+      "dataset": "urb_cpop1",
+      "query": "indic_ur=DE1001V",
+      "about": "Population on 1 January, cities",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_cpop1?format=JSON&lang=EN&indic_ur=DE1001V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 326061,
+      "sha256": "53d488ccb020160d67fa972c49860fcfa810e6bc0253dde31ad303e7dfdcd089"
+    },
+    {
+      "path": "data/raw/eu_pop_fua.json",
+      "dataset": "urb_lpop1",
+      "query": "indic_ur=DE1001V",
+      "about": "Population on 1 January, functional urban areas",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_lpop1?format=JSON&lang=EN&indic_ur=DE1001V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 217226,
+      "sha256": "6950454ca45dde3c0bbe5fd9d6929af922c7d0e3be87c18633541be956c12b7c"
+    },
+    {
+      "path": "data/raw/eu_jobs_city.json",
+      "dataset": "urb_clma",
+      "query": "indic_ur=EC2020V",
+      "about": "Total employment (jobs), workplace based, cities",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_clma?format=JSON&lang=EN&indic_ur=EC2020V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 299781,
+      "sha256": "ca3d3a38173b441cdc5012946a1a0a856db815984fd084a8cdd222c75c35c41c"
+    },
+    {
+      "path": "data/raw/eu_jobs_fua.json",
+      "dataset": "urb_llma",
+      "query": "indic_ur=EC2020V",
+      "about": "Total employment (jobs), workplace based, functional urban areas",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_llma?format=JSON&lang=EN&indic_ur=EC2020V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 203695,
+      "sha256": "24740c0f4bad8eb980a55cd85d6fd9fda8222e77e2a71ca2ea15ceb853624d81"
+    },
+    {
+      "path": "data/raw/eu_dwellings_city.json",
+      "dataset": "urb_clivcon",
+      "query": "indic_ur=SA1001V",
+      "about": "Number of conventional dwellings, cities",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_clivcon?format=JSON&lang=EN&indic_ur=SA1001V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 263472,
+      "sha256": "633d19ad53bcce937f0240c8d48c49f4305c543cf19d7c4fa5aa4f493a42020b"
+    },
+    {
+      "path": "data/raw/eu_dwellings_fua.json",
+      "dataset": "urb_llivcon",
+      "query": "indic_ur=SA1001V",
+      "about": "Number of conventional dwellings, functional urban areas",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/urb_llivcon?format=JSON&lang=EN&indic_ur=SA1001V",
+      "eurostat_updated": "2026-11-12T23:00:00+0100",
+      "bytes": 182162,
+      "sha256": "c28d5bcb3db1d957dc76431f0b1f105198b00470cb77374439ce97d9ffbcbeb8"
+    },
+    {
+      "path": "data/raw/eu_employment_national.json",
+      "dataset": "nama_10_pe",
+      "query": "na_item=EMP_DC&unit=THS_PER",
+      "about": "Total employment, domestic concept, thousand persons (national accounts)",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_pe?format=JSON&lang=EN&na_item=EMP_DC&unit=THS_PER",
+      "eurostat_updated": "2026-10-21T23:00:00+0200",
+      "bytes": 26105,
+      "sha256": "5dc1686f325a5b785c695e190900e09a45862a1c4edf147a5b366bea3898feff"
+    }
+  ]
+}
