@@ -1,0 +1,75 @@
+name: Reproduce rent-or-buy-us
+
+on:
+  pull_request:
+    paths:
+      - 'rent-or-buy-us/**'
+      - 'data_sources/bls-cpi-rent-us-metros.json'
+      - 'data_sources/census-acs-housing-costs-msa.json'
+      - 'data_sources/sp-corelogic-case-shiller-datahub.json'
+      - 'data_sources/freddie-mac-pmms-fred.json'
+      - 'data_sources/damodaran-historical-returns.json'
+      - '.github/workflows/rent-or-buy-us.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'rent-or-buy-us/**'
+      - 'data_sources/bls-cpi-rent-us-metros.json'
+      - 'data_sources/census-acs-housing-costs-msa.json'
+      - 'data_sources/sp-corelogic-case-shiller-datahub.json'
+      - 'data_sources/freddie-mac-pmms-fred.json'
+      - 'data_sources/damodaran-historical-returns.json'
+      - '.github/workflows/rent-or-buy-us.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: rent-or-buy-us
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: rent-or-buy-us/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the readers and the replay on cases with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch every input and check it against the registry contracts
+        run: python fetch.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python rentbuy_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=rent-or-buy-us/output.txt::output of rentbuy_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_us_by_purchase_year fig2_metros_by_purchase_year fig3_when_saving_decides; do
+            test -s "figures/$f.png"
+          done

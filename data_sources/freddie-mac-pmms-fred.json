@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "freddie-mac-pmms-fred",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "547c25d42b5607c6c29fc60918b8fb74b42d5b2e",
+  "record": "external/freddie-mac-pmms-fred/metadata.yaml",
+  "folder": "rent-or-buy-us",
+  "target": "rent-or-buy-us/data/freddie-mac-pmms-fred",
+  "supply": "download from the upstream URL at each run; the bytes are not stored in the registry or here",
+  "files": [
+    {
+      "path": "raw/MORTGAGE30US.csv",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US&cosd=1971-04-02&coed=2025-12-31",
+      "bytes": 46323,
+      "sha256": "6de0c8cd63d892bc9671daeb03f7584d1aa2e6e1fe7f2221df61c6c693d87c0f"
+    }
+  ]
+}

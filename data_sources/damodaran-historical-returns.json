@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "damodaran-historical-returns",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "547c25d42b5607c6c29fc60918b8fb74b42d5b2e",
+  "record": "external/damodaran-historical-returns/metadata.yaml",
+  "folder": "rent-or-buy-us",
+  "target": "rent-or-buy-us/data/damodaran-historical-returns",
+  "supply": "download from the upstream URL at each run; the bytes are not stored in the registry or here",
+  "files": [
+    {
+      "path": "raw/histretSP.xls",
+      "url": "https://web.archive.org/web/20261111163602id_/https://pages.stern.nyu.edu/~adamodar/pc/datasets/histretSP.xls",
+      "bytes": 527872,
+      "sha256": "28b8110916a15a4dcc11c87c6422510704608ddedcdfa67a1298abdc22e49c69"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "dataset": "census-acs-housing-costs-msa",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "547c25d42b5607c6c29fc60918b8fb74b42d5b2e",
+  "record": "datasets/census-acs-housing-costs-msa/metadata.yaml",
+  "folder": "rent-or-buy-us",
+  "target": "rent-or-buy-us/data/census-acs-housing-costs-msa",
+  "files": [
+    {
+      "path": "raw/acsdt1y2022-b25003.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25003.dat",
+      "bytes": 404058,
+      "sha256": "22c09f45723ed43180f25b10981af810ffc987620cc45ca876f92f39631c948b"
+    },
+    {
+      "path": "raw/acsdt1y2022-b25021.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25021.dat",
+      "bytes": 325767,
+      "sha256": "49e159e4b33bd3a64df57d2b668d6d20b9a45cbd7e09ffb6b74f60162f54dc6f"
+    },
+    {
+      "path": "raw/acsdt1y2022-b25058.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25058.dat",
+      "bytes": 193615,
+      "sha256": "266fb607162c54b779962f9b749c5aff3c4819cd8dbb5a85c282e351b7901fed"
+    },
+    {
+      "path": "raw/acsdt1y2022-b25064.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25064.dat",
+      "bytes": 195396,
+      "sha256": "be6ade6aec499d220158c9e6d15d0b51e46b825e469b6178169ca00aa0cfb911"
+    },
+    {
+      "path": "raw/acsdt1y2022-b25077.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25077.dat",
+      "bytes": 234051,
+      "sha256": "2ce7a81314c8290186972e1675f3fbea3bfd19dab53cd8f206c2964130a40eb5"
+    },
+    {
+      "path": "raw/acsdt1y2022-b25103.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2022-b25103.dat",
+      "bytes": 348022,
+      "sha256": "4b618086bbed7027b8528c106f5db653cdcee4da9831e94f93ccf54fde6f826a"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25003.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25003.dat",
+      "bytes": 404176,
+      "sha256": "92fcc05c45c28592796fcbb17a935dac383ab1cd62e0bbd6a7595a48afe209ed"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25021.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25021.dat",
+      "bytes": 325778,
+      "sha256": "bd082617acd8fafd2bdde3a162745abb2e8b3fe960118734ba9327f7d6b01f9d"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25058.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25058.dat",
+      "bytes": 194401,
+      "sha256": "f7edc919db8537508185a682744e7d83f5a0c9b28e7c2ee9d42ee71b4701cc1f"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25064.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25064.dat",
+      "bytes": 196335,
+      "sha256": "f45d5674900b087021e00a4c728ae52ff16d5fbeb856ef9198240d45887d376f"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25077.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25077.dat",
+      "bytes": 234323,
+      "sha256": "c39987ce683bc4ac8d5831ac9fb67cbcdfaa9bbb81193bc3af4582ad97353723"
+    },
+    {
+      "path": "raw/acsdt1y2023-b25103.dat",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/547c25d42b5607c6c29fc60918b8fb74b42d5b2e/datasets/census-acs-housing-costs-msa/raw/acsdt1y2023-b25103.dat",
+      "bytes": 349456,
+      "sha256": "d0ddc93d6a790afa95b0e8660e0620b09117be7bcf0a857ea1e03e38a3fbcd82"
+    }
+  ]
+}
