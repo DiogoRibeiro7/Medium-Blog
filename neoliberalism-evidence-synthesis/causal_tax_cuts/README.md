@@ -320,6 +320,28 @@ without claiming those dates identify the composite tax-cut treatment.
 It does not estimate any new ATT or change the existing causal analysis.
 
 
+
+### Identification feasibility for individual documented tax reforms (no ATT)
+
+[IDENTIFICATION_FEASIBILITY.md](IDENTIFICATION_FEASIBILITY.md) joins
+the unchanged 20 baseline reform events with five documentary legal
+contexts, horizon-by-horizon WDI donor-hull checks, dynamic repeat cuts,
+DPI political coverage and earlier observed pretrend slope gaps.
+Only **one of the five legally reviewed eligible reforms** passes strict
+joint three-variable WDI donor-hull support at h=0 or h=3, and
+**none** passes at h=5. The only two events with joint hull support
+at h=5—**Finland 1986 and Germany 2008**—lack reviewed statute
+contexts. No source proves the causal assignment of the composite flag
+to a specific provision or policy-effective day.
+
+The [frozen results](results/IDENTIFICATION_FEASIBILITY_RESULTS_2026-11-23.md)
+and [source manifest](results/identification_feasibility_2026-11-23.json)
+are generated from the previous, source-hashed audit files; no treatment
+or matching rule changes and no new causal effect is estimated. The live
+workflow publishes an independently reproducible
+`tax-cut-identification-feasibility` artifact with 20 event
+rows and 140 event–horizon rows.
+
 ### Extended primary-legislation review (source and design feasibility)
 
 [LEGISLATIVE_EXPANSION.md](LEGISLATIVE_EXPANSION.md) adds four independently

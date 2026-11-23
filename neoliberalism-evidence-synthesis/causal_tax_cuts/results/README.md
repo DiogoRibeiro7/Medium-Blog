@@ -203,3 +203,15 @@ No author composite-index effective date or flag-to-statute attribution
 is verified. The independent CI artifact `tax-cut-legislative-expansion`
 contains a complete all-30 flag-year register, frozen source hashes and
 explicitly unreviewed cases. No causal treatment effects are calculated.
+
+
+The [policy-specific identification feasibility report](IDENTIFICATION_FEASIBILITY_RESULTS_2026-11-23.md)
+and [frozen source manifest](identification_feasibility_2026-11-23.json)
+join the previous legal, WDI joint-hull, dynamic-treatment, DPI
+and macro-matching audits on the **unchanged 20-event cohort**. None
+of the five legally documented eligible reforms has strict WDI joint
+donor-hull support at h=5. The only two with h=5 support are Finland
+1986 and Germany 2008, whose statute contexts remain unreviewed.
+The result does **not** identify causal effects. The live CI
+`tax-cut-identification-feasibility` artifact contains the
+20-event and 140 event–horizon matrices and reproducible source hashes.

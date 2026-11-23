@@ -1,0 +1,61 @@
+{
+  "author_source_sha256": "3f1bc22a526d3beff2409de30e5644c6dc696b78614b46bede148cb80f7ad653",
+  "design_rule": "Policy-specific treatment requires documented source-component attribution, relevant decision/implementation timing, and a justified counterfactual design. These are not established here; diagnostic support is assessed separately.",
+  "h5_support_without_legal_context": [
+    "FIN-1986",
+    "DEU-2008"
+  ],
+  "horizons_audited": [
+    -1,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "inference": "none; no new counterfactual, adjusted effect, SE, CI or p-value",
+  "input_sha256": {
+    "dynamic_source_audit": "ea82afc0c89ea2ef21b77beadcba387409f7449248be5892d0adc2a767378113",
+    "dynamic_tax_cut_paths": "ed13d131aa9f59605ca76b625fa24e2d7902da5c1a8dca18265d238c6cfe2b1b",
+    "joint_wdi_hull": "5f11c508e649a92fb929eb530a79d4e1d3f5a0adebaaf1e30f90975ef801073d",
+    "joint_wdi_source_audit": "4c987b12312e29aa4387d29abd8d95587aa09ee17d4ef52abfd5f683e73652d3",
+    "legal_register": "7819ca66057f47254fdefaea5e44463aa79e9c0c37f5d6b70a8ed833aa4898e9",
+    "legal_source_audit": "2efc26b38367e9ce9f8aae68d534888c7e150e5edf053a3d408fe2b301784c42",
+    "macro_matching_pretrends": "8ad3758cb98efb2e3269703533fb3ea987e0b4517ac5812e49d5e65cbf540e9f",
+    "macro_source_audit": "e62af10fd095e173a0ee4d324ea5d36452609c88a441dcdac9ba7e1085491208",
+    "political_history_coverage": "bf3a23784852aa9a77e69d6159ac1fa6c54b0e0a94fb82bbb24822319cf7bab9",
+    "political_source_audit": "c5b1c6195eeecf9245e16cb95564baa2a2ee2ebcf22c4aa9c025bc5ffe42f5dd"
+  },
+  "interpretation": "NOT identified with currently assembled evidence. Convex-hull failure limits this particular interpolation design, not every possible method.",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "limitations": [
+    "A legal provision's tax-period rule does not attribute the author's composite flag.",
+    "The three-variable WDI donor-hull check is not formal positivity or full covariate support.",
+    "The matching risk sets condition on donor future tax cuts and full follow-up WID outcomes.",
+    "DPI political history completeness does not imply political covariate balance.",
+    "Pre-period slope diagnostics cannot establish parallel counterfactual trends.",
+    "Events reuse treated and donor countries; pair counts are not independent units."
+  ],
+  "n_documented_eligible_with_full_political_pre5": 4,
+  "n_documented_eligible_with_h0_strict_joint_wdi_support": 1,
+  "n_documented_eligible_with_h3_strict_joint_wdi_support": 1,
+  "n_documented_eligible_with_h5_strict_joint_wdi_support": 0,
+  "n_documented_eligible_with_repeat_cut_by_h5": 1,
+  "n_eligible_onsets_with_statute_provision_context": 5,
+  "n_eligible_onsets_without_statute_provision_context": 15,
+  "n_eligible_with_h5_strict_joint_wdi_support": 2,
+  "n_eligible_with_repeat_cut_by_h5": 5,
+  "n_horizon_rows": 140,
+  "n_original_author_flag_years": 30,
+  "n_original_eligible_reform_onsets": 20,
+  "n_policy_specific_causal_designs_supported": 0,
+  "n_policy_specific_effective_dates_validated": 0,
+  "n_policy_specific_interventions_attributed_to_source_law": 0,
+  "normalized_input_sha256": {
+    "joint_wdi_hull": "fd388397a6d67cd0588d359c5036fc651dbecc38525e35f5e950d94eb6f2f3f1",
+    "macro_matching_pretrends": "e07ee51bcfebf1be4772796f0ce6856ed5b0e618c607b34febf772b076a4e969"
+  },
+  "pretrend_definition": "Observed pre-period income-share slope gap for macro-selected donors under the earlier reference selection; not a proof of parallel trends.",
+  "status": "policy_specific_identification_feasibility_only"
+}

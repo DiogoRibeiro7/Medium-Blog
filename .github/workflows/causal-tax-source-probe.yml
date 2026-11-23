@@ -320,6 +320,55 @@ jobs:
             ${{ runner.temp }}/tax-study/legislative-expansion/legislative_coverage_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Assess documented policies against identification support gates
+        id: identification_feasibility
+        if: steps.legislative_expansion.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.identification_feasibility \
+            --legal "$RUNNER_TEMP/tax-study/legislative-expansion/legislative_review_all_flag_years.csv" \
+            --hull "$RUNNER_TEMP/tax-study/joint-support/joint_support_event_horizons.csv" \
+            --dynamic "$RUNNER_TEMP/tax-study/dynamic-exposure/dynamic_event_horizons.csv" \
+            --political "$RUNNER_TEMP/tax-study/political-institutions/political_reform_coverage.csv" \
+            --macro "$RUNNER_TEMP/tax-study/macro-balance/macro_event_eligibility.csv" \
+            --legal-audit "$RUNNER_TEMP/tax-study/legislative-expansion/legislative_coverage_audit.json" \
+            --hull-audit "$RUNNER_TEMP/tax-study/joint-support/joint_support_audit.json" \
+            --dynamic-audit "$RUNNER_TEMP/tax-study/dynamic-exposure/dynamic_exposure_audit.json" \
+            --political-audit "$RUNNER_TEMP/tax-study/political-institutions/political_coverage_audit.json" \
+            --macro-audit "$RUNNER_TEMP/tax-study/macro-balance/macro_balance_audit.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/identification-feasibility"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          from causal_tax_cuts.identification_feasibility import verify_frozen_reference
+
+          root = Path(os.environ["RUNNER_TEMP"])
+          actual = json.loads(
+              (root / "tax-study/identification-feasibility/policy_identification_audit.json").read_text()
+          )
+          frozen = json.loads(
+              Path("causal_tax_cuts/results/identification_feasibility_2026-11-23.json").read_text()
+          )
+          result = verify_frozen_reference(actual, frozen)
+          if result == "exact_raw_input_reproduction":
+              print("Verified byte-level input-hash and substantive result reproduction")
+          elif result == "same_original_data_and_scientific_inputs_derived_roundoff_only":
+              print("Same WID/WDI panel and scientific results; permitted derived numerical roundoff differences")
+          else:
+              print("Original study source vintage changed; no exact reproduction claimed")
+          PY
+      - name: Publish per-policy identification gates and source manifest
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-identification-feasibility
+          path: |
+            ${{ runner.temp }}/tax-study/identification-feasibility/policy_identification_events.csv
+            ${{ runner.temp }}/tax-study/identification-feasibility/policy_identification_event_horizons.csv
+            ${{ runner.temp }}/tax-study/identification-feasibility/policy_identification_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
