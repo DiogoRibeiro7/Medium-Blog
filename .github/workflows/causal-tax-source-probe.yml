@@ -247,6 +247,43 @@ jobs:
             ${{ runner.temp }}/tax-study/timing/author_timing_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Reconcile tax-cut run onsets and sourced statutory period rules
+        id: onset_phasein
+        if: steps.tax_timing.outcome == 'success' && steps.donor_support.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.onset_phasein \
+            --flags "$RUNNER_TEMP/tax-study/timing/author_flag_years.csv" \
+            --support "$RUNNER_TEMP/tax-study/donor-support/support_reform_eligibility.csv" \
+            --provisions causal_tax_cuts/provision_periods.csv \
+            --timing-audit "$RUNNER_TEMP/tax-study/timing/author_timing_audit.json" \
+            --donor-audit "$RUNNER_TEMP/tax-study/donor-support/donor_support_audit.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/onset-phasein"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          generated = Path(os.environ["RUNNER_TEMP"]) / "tax-study/onset-phasein/tax_cut_onset_audit.json"
+          frozen = Path("causal_tax_cuts/results/onset_phasein_2026-11-23.json")
+          actual, baseline = (json.loads(path.read_text(encoding="utf-8")) for path in (generated, frozen))
+          if actual["source_sha256"] == baseline["source_sha256"]:
+              if actual != baseline:
+                  raise ValueError("Same-source onset and phase-in audit drifted")
+              print("Exact tax-cut onset and legal-period source snapshot verified")
+          else:
+              print("Upstream source vintage changed: do not claim frozen reproduction")
+          PY
+      - name: Publish onset eligibility and statute-period audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-onset-phasein
+          path: |
+            ${{ runner.temp }}/tax-study/onset-phasein/tax_cut_onset_eligibility.csv
+            ${{ runner.temp }}/tax-study/onset-phasein/tax_provision_periods.csv
+            ${{ runner.temp }}/tax-study/onset-phasein/tax_cut_onset_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'

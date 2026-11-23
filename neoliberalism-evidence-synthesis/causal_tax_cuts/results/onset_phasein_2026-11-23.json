@@ -1,0 +1,71 @@
+{
+  "author_source_sha256": "3f1bc22a526d3beff2409de30e5644c6dc696b78614b46bede148cb80f7ad653",
+  "inference": "none; no counterfactual weights, adjusted ATT, p-values or inference",
+  "joined_panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "legislative_scope": "Statute provisions and their tax-period scopes are documented, but their attribution to the author's composite threshold is not.",
+  "n_author_flag_runs": 25,
+  "n_author_flag_years": 30,
+  "n_author_flags_with_identified_composite_effective_day": 0,
+  "n_baseline_donor_eligible_onsets": 20,
+  "n_continuation_flags": 5,
+  "n_eligible_onsets_with_repeat_by_five_years": 5,
+  "n_eligible_onsets_without_repeat_by_five": 15,
+  "n_first_year_flags_with_wid": 24,
+  "n_flag_years_with_provision_context": 3,
+  "n_flag_years_with_wid": 29,
+  "n_missing_outcome_first_year_flags": 1,
+  "n_provision_context_rows": 3,
+  "n_provision_periods_starting_before_enactment": 1,
+  "n_repeat_new_run_within_five_years": 1,
+  "n_repeat_next_year_same_run": 4,
+  "onset_support_status_counts": {
+    "baseline_donors_available": 20,
+    "incomplete_treated_pre_macro": 1,
+    "invalid_treatment_history": 2,
+    "missing_wid_outcome": 1,
+    "no_pre_reform_macro_donors": 1
+  },
+  "repeating_eligible_events": [
+    {
+      "country": "AUS",
+      "next_flag_year": 1988,
+      "onset_year": 1987,
+      "relation": "same_contiguous_flag_run"
+    },
+    {
+      "country": "CAN",
+      "next_flag_year": 1973,
+      "onset_year": 1972,
+      "relation": "same_contiguous_flag_run"
+    },
+    {
+      "country": "NZL",
+      "next_flag_year": 1988,
+      "onset_year": 1987,
+      "relation": "same_contiguous_flag_run"
+    },
+    {
+      "country": "SWE",
+      "next_flag_year": 1991,
+      "onset_year": 1990,
+      "relation": "same_contiguous_flag_run"
+    },
+    {
+      "country": "USA",
+      "next_flag_year": 1987,
+      "onset_year": 1982,
+      "relation": "separate_later_flag_run"
+    }
+  ],
+  "source_sha256": {
+    "author_flag_years": "4f0baf1afaabe39f6461ec7ac1cb5ae1f00e8d32c7e1dd84eb50a9ad3dc89c61",
+    "donor_audit": "84be797a87d0884b5ce07a7d62b2315af9cb10c7c17acd75f488e2be4b8f6b6c",
+    "support_eligibility": "a338900e2c2de76568bf37704fba75010f9df1c3a9c4a651be5dcc3ce0d55623",
+    "tax_provision_ledger": "8e7ea8f9c71c653bbf92c7e8d930bd7db586a8eb6e29f70814c77a956f6f3386",
+    "timing_audit": "ec5e8e6e468cd3b69097ebaa2c76ab650bad381b0fd04ec21d177ad6cc47dbb0"
+  },
+  "source_vintage": "unmodified Hope-Limberg policy flags and WID/WDI donor selection",
+  "status": "author_flag_onsets_and_provision_periods_only",
+  "statutory_context_license": "public legal text; cited primary legislation",
+  "treatment_version": "Original author binary annual 2-SD flag-years retained. Run starts, repeat flags and statute provision periods are diagnostic only."
+}

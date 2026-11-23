@@ -307,6 +307,18 @@ publishes `tax-cut-joint-macro-support` for seven days, including all
 event/horizon certificate witnesses and full source checksums.
 
 
+
+### Distinguishing coded reform onsets from statutory tax periods
+
+[ONSET_PHASEIN.md](ONSET_PHASEIN.md) verifies which original 2-SD author
+flag-years start a consecutive run (25 of 30) and reconciles them to the
+**unchanged** 20 donor-eligible reform episodes. Of those 20, five have
+another major-cut flag within five years: four immediate continuations
+and one later separate flagged run. The module also validates narrow
+primary-legislation tax-period evidence for USA 1987/1988 and GBR 1988,
+without claiming those dates identify the composite tax-cut treatment.
+It does not estimate any new ATT or change the existing causal analysis.
+
 ### Audit of annual reform flags versus legislative timing
 
 [TAX_TIMING.md](TAX_TIMING.md) separates the 30 author-coded annual 2-SD
