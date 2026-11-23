@@ -111,7 +111,7 @@ def _audit_manifest(path: Path, required_status: str) -> dict[str, Any]:
     if not isinstance(data, dict) or data.get("status") != required_status:
         raise ValueError(f"Unexpected source audit status in {path.name}")
     if not isinstance(data.get("joined_panel_sha256"), str):
-        raise ValueError(f"Missing joined-panel provenance in {path.name}")
+        raise TypeError(f"Missing joined-panel provenance in {path.name}")
     return data
 
 
