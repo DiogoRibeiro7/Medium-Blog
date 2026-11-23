@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-242 top-level folders: 77 belong to 24 series, 95 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 13 not yet sorted.
+243 top-level folders: 77 belong to 24 series, 96 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 13 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -338,6 +338,7 @@ Housing supply, prices and affordability.
 - [`housing-vacancy-tax/`](housing-vacancy-tax/) — Taxing empty homes in Portugal: statutory rates, detection and expected cost
 - [`portugal-building-ecosystem/`](portugal-building-ecosystem/) — Who builds Portugal's houses? The housebuilding sector measured layer by layer
 - [`portugal-housing-generations/`](portugal-housing-generations/) — Portugal's housing market, 2008–2025 (moved to its own repository)
+- [`portugal-infrastructure-saturation/`](portugal-infrastructure-saturation/) — Saturated rings and the polycentric alternative: population growth against housing, schools, transport and hospitals in Portugal's 308 municipalities, 2011–2025
 - [`uk-repeat-sales-rigidity/`](uk-repeat-sales-rigidity/) — Do sellers refuse nominal losses? Repeat sales in England and Wales, 1995–2026
 - [`uk-sales-under-water/`](uk-sales-under-water/) — Owners under water and the fall in house sales: postcode districts in England and Wales
 - [`uk-valuation-purchase-price/`](uk-valuation-purchase-price/) — Does a valuation model need the price the owner paid? Repeat sales in England and Wales
