@@ -1,9 +1,9 @@
 {
   "note": "Changing this file on the org-chart-blind-tester branch starts .github/workflows/org-chart-blind-tester-run.yml. 'ask': false only reanalyses the responses already on the runs branch.",
-  "request": 2,
-  "runs_branch": "org-chart-blind-tester-smoke",
-  "n_questions": 6,
-  "shards": 1,
+  "request": 3,
+  "runs_branch": "org-chart-blind-tester-runs",
+  "n_questions": 0,
+  "shards": null,
   "models": [],
-  "ask": false
+  "ask": true
 }
