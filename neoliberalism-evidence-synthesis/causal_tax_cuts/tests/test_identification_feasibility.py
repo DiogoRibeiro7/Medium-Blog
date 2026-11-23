@@ -329,7 +329,6 @@ class IdentificationFeasibilityTests(unittest.TestCase):
                 expected_reforms=2,
             )
 
-
     def test_normalized_csv_hash_only_ignores_machine_roundoff(self) -> None:
         """Distinguish 1e-16 binary-float noise from meaningful changes."""
         with tempfile.TemporaryDirectory() as tmp:
