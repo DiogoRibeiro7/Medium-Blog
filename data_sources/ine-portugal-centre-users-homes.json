@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "dataset": "ine-portugal-centre-users-homes",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "2d6f1b61403e020a6ac34af2f0f5cb08c0b58bf2",
+  "record": "external/ine-portugal-centre-users-homes/metadata.yaml",
+  "folder": "centres-users-residents",
+  "target": "centres-users-residents",
+  "retrieved": "2026-11-23",
+  "note": "INE stamps each response with its extraction time, so the pin is a content hash of IndicadorCod, DataUltimoAtualizacao and Dados (sorted-key JSON); a mismatch means a revision.",
+  "files": [
+    {
+      "path": "data/raw/commute_in_share.json",
+      "indicator": "0011654",
+      "about": "Census 2021 people entering the municipality to work or study, % of residents",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011654&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2022-11-23",
+      "content_sha256": "3203d292b7adb5481cfb28c61345c512ec60986574bd9ea5e4e4b33a7c82b57d"
+    },
+    {
+      "path": "data/raw/employees_2021.json",
+      "indicator": "0012650",
+      "about": "Full-time employees on full pay by place of work and size of establishment, 2021 (Quadros de Pessoal)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012650&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2026-03-27",
+      "content_sha256": "d088629025b9143df0e59c403b1dae3d47d9d50bcb0b6d2f48e8ea313f21d502"
+    },
+    {
+      "path": "data/raw/employees_2024.json",
+      "indicator": "0012650",
+      "about": "Full-time employees on full pay by place of work and size of establishment, 2024 (Quadros de Pessoal)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012650&Dim1=S7A2024&lang=PT",
+      "ine_last_updated": "2026-03-27",
+      "content_sha256": "f92412d34bae943797140941652e7fd5330664d935a51e2e2c0c36c1dfe28944"
+    },
+    {
+      "path": "data/raw/tourist_beds_2023.json",
+      "indicator": "0013366",
+      "about": "Bed capacity in tourist accommodation establishments, 2023",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013366&Dim1=S7A2023&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-09",
+      "content_sha256": "e8c631f2f84f789c4e6c777ddd44a1d4acfc6f04cff50fccb5d46cfc57266848"
+    },
+    {
+      "path": "data/raw/tourist_beds_2025.json",
+      "indicator": "0013366",
+      "about": "Bed capacity in tourist accommodation establishments, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013366&Dim1=S7A2025&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-09",
+      "content_sha256": "762cd03320cdaffaba46f9d85d3f93701c8cd1ef591f2758e657f539d837ac14"
+    },
+    {
+      "path": "data/raw/completions_2022.json",
+      "indicator": "0013249",
+      "about": "Dwellings completed in new construction for family housing, 2022",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013249&Dim1=S7A2022&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "832f96a98fabb0acf7bc16961e8bae8861b2adef962c493c6f319951c786593f"
+    },
+    {
+      "path": "data/raw/completions_2023.json",
+      "indicator": "0013249",
+      "about": "Dwellings completed in new construction for family housing, 2023",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013249&Dim1=S7A2023&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "4cb0439123e5b3d36120909f167ed658ff7e2ec3f7a2db1d66429d7f0d267e7e"
+    },
+    {
+      "path": "data/raw/completions_2024.json",
+      "indicator": "0013249",
+      "about": "Dwellings completed in new construction for family housing, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013249&Dim1=S7A2024&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "56a88a2889aa47a5b24827bd90a0421983c1bd585246b7d52fcf59e1a6fe3a64"
+    },
+    {
+      "path": "data/raw/completions_2025.json",
+      "indicator": "0013249",
+      "about": "Dwellings completed in new construction for family housing, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0013249&Dim1=S7A2025&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "acf08849ea162484461cac585abb3ab3830449ccf1ed2928957e0b9a426c1430"
+    }
+  ]
+}

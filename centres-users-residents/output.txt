@@ -1,0 +1,196 @@
+Centres that attract users and lose residents: Lisbon and Porto against Europe. Every number in the article.
+Sources: Eurostat city statistics (Urban Audit); INE, Statistics Portugal (see sources.py)
+
+==============================================================================
+1. WHAT COUNTS AS THE CENTRE
+==============================================================================
+Lisboa municipality: 545,796 residents in the 2021 census, 19.0% of its metro area (18 municipalities, 2,870,208); 19.6% at the end of 2025
+Porto municipality: 231,800 residents in the 2021 census, 13.4% of its metro area (17 municipalities, 1,736,228); 14.7% at the end of 2025
+Eurostat Lisboa (greater city): 1,883,529 residents in 2021, 62.2% of its functional urban area (3,027,280); 72.6% of the area's jobs
+Eurostat Porto (greater city): 971,023 residents in 2021, 75.1% of its functional urban area (1,292,263); 74.2% of the area's jobs
+
+==============================================================================
+2. LISBON AND PORTO: USERS AND RESIDENTS (municipalities of the two metro areas)
+==============================================================================
+Census 2021: people entering and leaving each municipality to work or study, % of its residents
+  Lisboa: in 74.98%, out 10.00%; users per resident 1.650; daytime population about 900,454 for 545,796 residents
+  Porto: in 74.60%, out 14.53%; users per resident 1.601; daytime population about 371,042 for 231,800 residents
+  Ring municipalities: users per resident from 0.752 (Moita) to 1.280 (São João da Madeira); 29 of 33 below 1
+  Lisbon ring, population-weighted: in 14.71%, out 28.26%, users per resident 0.865
+  Porto ring, population-weighted: in 16.66%, out 25.54%, users per resident 0.911
+
+Full-time employees on full pay by place of work (Quadros de Pessoal, October) against residents (revised INE estimates, 31 December)
+  Withheld size bands in the 35 municipalities: 2021 4 (in Arouca, Espinho); 2024 0
+             residents_2021  residents_2024  residents_2025  employees_2021  employees_2024  employees_per_1000_2021  employees_per_1000_2024  employees_change_pct  residents_change_pct  employees_added  residents_added  employees_per_resident_added
+group                                                                                                                                                                                                                                                    
+Lisboa               605447          665141          658236        312671.0        384324.0                   516.43                   577.81                 22.92                  9.86          71653.0            59694                          1.20
+Lisbon ring         2410221         2681812         2694703        396277.0        461093.0                   164.42                   171.93                 16.36                 11.27          64816.0           271591                          0.24
+Porto                244174          273979          273476         96637.0        122175.0                   395.77                   445.93                 26.43                 12.21          25538.0            29805                          0.86
+Porto ring          1518903         1582241         1588251        315825.0        343021.0                   207.93                   216.79                  8.61                  4.17          27196.0            63338                          0.43
+  Lisboa: 44.1% of the metro area's employees in 2021, 45.5% in 2024; 52.5% of the employees added; 20.1% of residents in 2021, 18.0% of residents added to 2024
+  Porto: 23.4% of the metro area's employees in 2021, 26.3% in 2024; 48.4% of the employees added; 13.8% of residents in 2021, 32.0% of residents added to 2024
+
+Dwellings completed in new construction for family housing, 2022-2025 (rehabilitation and conversions are not included)
+             completions_2022  completions_2023  completions_2024  completions_2025  completions_2224  completions_2225  per_1000_residents_a_year_2225  per_100_employees_added_2224  per_100_residents_added_2224  per_1000_dwellings_2021_a_year_2225
+group                                                                                                                                                                                                                                                   
+Lisboa                  535.0             391.0             149.0             219.0            1075.0            1294.0                            0.53                          1.50                          1.80                                 1.01
+Lisbon ring            4241.0            4008.0            4619.0            5658.0           12868.0           18526.0                            1.92                         19.85                          4.74                                 3.93
+Porto                   926.0            1223.0            1379.0            1306.0            3528.0            4834.0                            4.95                         13.81                         11.84                                 9.06
+Porto ring             2817.0            3804.0            4425.0            4878.0           11046.0           15924.0                            2.62                         40.62                         17.44                                 5.66
+  Lisboa: 6.5% of the metro area's completions 2022-2025, against 20.1% of its residents and 52.5% of the employees added
+  Porto: 23.3% of the metro area's completions 2022-2025, against 13.8% of its residents and 48.4% of the employees added
+
+Visitors: bed capacity in tourist accommodation establishments (hotels, local accommodation, rural tourism)
+  Lisboa: 71,156 beds in 2023, 74,970 in 2025 (+5.4%); 114 per 1,000 residents (ring 11); 71.5% of the metro area's beds; beds added 2023-2025 3,814 against 759 dwellings completed 2023-2025
+  Porto: 28,656 beds in 2023, 32,653 in 2025 (+13.9%); 119 per 1,000 residents (ring 13); 61.6% of the metro area's beds; beds added 2023-2025 3,997 against 3,908 dwellings completed 2023-2025
+
+Services used by the metro area
+  Lisboa: 53.3% of the metro area's SNS/PPP hospital beds (2024) with 19.9% of its residents; pre-school enrolment rate 112.1, basic 124.6 (2024/25)
+  Porto: 58.2% of the metro area's SNS/PPP hospital beds (2024) with 14.8% of its residents; pre-school enrolment rate 118.8, basic 140.0 (2024/25)
+
+Housing in the cores and the rings (census 2021; prices are INE municipal medians, EUR/m2)
+             households_change_1121  dwellings_change_1121  vacant_market_pct  vacant_other_pct  secondary_pct  crowded_pct  rented_pct  price_2019  price_2025  rent_2021  rent_2025  price_change_1925  rent_change_2125
+Lisboa                        -1.35                  -1.89               6.80              8.13           9.34        14.80       42.27     3286.00     4875.00      11.34      16.88              48.36             48.85
+Lisbon ring                    5.47                   1.58               4.10              5.41           9.85        15.31       25.88     1506.69     3058.23       7.96      12.03             102.98             51.12
+Porto                          1.38                  -2.92               7.21              7.99           8.24        15.74       44.17     1856.00     3347.00       9.17      14.13              80.33             54.09
+Porto ring                     5.02                   2.04               3.92              5.12           8.55        13.72       24.33     1034.54     2162.68       5.67       8.72             109.05             53.82
+  (sale prices EUR/m2; rents of new leases EUR/m2 a month; ring values are population-weighted means of the municipal medians)
+  Lisboa rent relative to its ring: 1.42 in 2021, 1.40 in 2025
+  Porto rent relative to its ring: 1.62 in 2021, 1.62 in 2025
+  Lisboa price relative to its ring: 2.18 in 2019, 1.59 in 2025
+  Porto price relative to its ring: 1.79 in 2019, 1.55 in 2025
+  Lisboa: 319,640 classic dwellings in 2021; vacant for sale or rent 21,749, vacant for other reasons 25,999, secondary or seasonal use 29,848
+  Porto: 133,352 classic dwellings in 2021; vacant for sale or rent 9,610, vacant for other reasons 10,660, secondary or seasonal use 10,989
+
+The cores' share of their metro area (%)
+                                      Lisboa  Porto
+Dwellings, 2021 census                  21.4   15.9
+Residents, end 2021                     20.1   13.8
+Full-time employees, 2021               44.1   23.4
+Full-time employees added, 2021-2024    52.5   48.4
+Public hospital beds, 2024              53.3   58.2
+Tourist beds, 2025                      71.5   61.6
+Dwellings completed, 2022-2025           6.5   23.3
+
+Residents of the cores over time
+  Lisboa: +0.59% from Dec 2011 to the 2021 census (ring +1.91%); +8.72% Dec 2021 to Dec 2025 (ring +11.80%); share of metro residents 19.2% (end 2011) -> 19.0% (2021 census); 20.1% (end 2021, revised) -> 19.6% (end 2025); 2024 to 2025 -1.04% (ring +0.48%); revised end-2021 estimate +10.9% above the census (ring +3.7%)
+  Porto: -1.73% from Dec 2011 to the 2021 census (ring -1.32%); +12.00% Dec 2021 to Dec 2025 (ring +4.57%); share of metro residents 13.4% (end 2011) -> 13.4% (2021 census); 13.8% (end 2021, revised) -> 14.7% (end 2025); 2024 to 2025 -0.18% (ring +0.38%); revised end-2021 estimate +5.3% above the census (ring +1.0%)
+
+Across the 35 municipalities (Spearman)
+  users per resident vs change in dwellings 2011-2021: -0.272
+  users per resident vs change in households 2011-2021: -0.296
+  users per resident vs sale price 2025: -0.028
+  users per resident vs price change 2019-2025: -0.394
+  users per resident vs dwellings completed 2022-2025 per 1,000 residents: +0.257
+  users per resident vs residents' growth 2021-2025: -0.365
+  dwellings completed per 1,000 residents vs residents' growth 2021-2025: -0.120
+
+==============================================================================
+3. EUROPE: CENTRES AND RINGS IN THE FUNCTIONAL URBAN AREAS (Eurostat city statistics)
+==============================================================================
+FUAs with population, jobs and dwellings for city and FUA in a start year 2014-2016 and an end year 2020-2022: 356
+  dropped because the city is (almost) the whole FUA in some series: 27
+  dropped as signs of a boundary change (people moving more than 3.5% a year, jobs more than 8.0%, dwellings outside -0.5% to 3.5%): 81, of which German: 65
+  kept: 248 FUAs in 13 countries: FR 68, ES 64, PL 50, DE 14, BG 10, PT 10, CH 9, SK 8, FI 7, LV 3, LT 2, SI 2, EE 1
+  years: start {2015: 190, 2014: 50, 2016: 8}, end {2021: 240, 2020: 8}
+
+Median annual growth, % (centre = Eurostat city; ring = rest of the FUA)
+gP                         0.055
+gPr                        0.388
+gJ                         0.913
+gJr                        1.290
+gD                         0.635
+gDr                        0.871
+res_centre_minus_ring     -0.367
+jobs_centre_minus_ring    -0.099
+homes_centre_minus_ring   -0.239
+jobs_minus_homes_centre   -0.021
+jobs_minus_homes_ring      0.046
+Centres whose share of FUA residents fell: 189 of 248 (76.2%); whose share of FUA jobs fell: 136 (54.8%)
+Centres that gained a share of jobs and lost a share of residents (both sides at once): 78 (31.5%)
+Centres where dwellings grew more slowly than in their ring: 174 (70.2%)
+
+Lisbon and Porto (Eurostat greater cities) and their percentile among the kept FUAs
+  Lisboa (greater city) (2015-2021):
+     gP                          +0.259   percentile  61.7
+     gPr                         +0.571   percentile  60.1
+     gJ                          +3.366   percentile  94.8
+     gJr                         +3.301   percentile  89.1
+     gD                          +0.150   percentile   9.7
+     gDr                         +0.207   percentile  10.9
+     res_centre_minus_ring       -0.312   percentile  53.2
+     jobs_centre_minus_ring      +0.065   percentile  56.5
+     homes_centre_minus_ring     -0.057   percentile  65.3
+     jobs_minus_homes_centre     +3.216   percentile  96.0
+     jobs_minus_homes_ring       +3.094   percentile  94.4
+     res_share_change            -0.073   percentile  51.2
+     jobs_share_change           +0.013   percentile  56.9
+  Porto (greater city) (2015-2021):
+     gP                          +0.055   percentile  50.0
+     gPr                         -0.029   percentile  23.0
+     gJ                          +3.125   percentile  93.1
+     gJr                         +3.046   percentile  85.9
+     gD                          +0.247   percentile  19.8
+     gDr                         +0.291   percentile  15.3
+     res_centre_minus_ring       +0.084   percentile  79.4
+     jobs_centre_minus_ring      +0.079   percentile  56.9
+     homes_centre_minus_ring     -0.044   percentile  67.3
+     jobs_minus_homes_centre     +2.878   percentile  94.0
+     jobs_minus_homes_ring       +2.755   percentile  91.1
+     res_share_change            +0.016   percentile  79.4
+     jobs_share_change           +0.015   percentile  57.7
+
+By country (countries with at least 5 FUAs): medians, % a year
+          n  jobs_centre  homes_centre  residents_centre  jobs_minus_homes_centre  res_centre_minus_ring  homes_centre_minus_ring
+country                                                                                                                          
+PT       10         3.25          0.31              0.13                     2.99                   0.13                    -0.00
+DE       14         1.99          0.77              0.77                     1.05                   0.29                     0.09
+ES       64         1.30          0.25              0.08                     1.01                  -0.38                    -0.21
+FR       68         0.83          0.82              0.27                     0.00                  -0.25                    -0.27
+CH        9         0.63          0.98              0.54                    -0.16                  -0.23                    -0.40
+PL       50         0.46          0.92             -0.95                    -0.58                  -1.07                    -0.56
+BG       10         0.09          1.40             -0.94                    -0.91                  -0.25                     0.97
+FI        7         0.86          1.67              0.94                    -1.16                   0.91                     0.61
+SK        8        -2.12          0.76             -0.18                    -2.83                  -1.12                    -0.68
+Portuguese centres: jobs grew faster than dwellings in 10 of 10; median gap 2.99 points a year against -0.07 elsewhere
+
+What goes with a centre keeping its residents? Within-country relationships across FUAs
+  Spearman, centre-minus-ring growth of dwellings vs of residents (within country): +0.540
+  Spearman, centre-minus-ring growth of jobs vs of residents (within country): +0.245
+  Country fixed effects, residents (centre minus ring) on jobs and dwellings (centre minus ring), all: n 248, countries 13; jobs +0.049 (0.020), dwellings +0.699 (0.063); within R2 0.409
+  Country fixed effects, residents (centre minus ring) on jobs and dwellings (centre minus ring), without Portugal: n 238, countries 12; jobs +0.050 (0.021), dwellings +0.695 (0.064); within R2 0.414
+  Country fixed effects, residents (centre minus ring) on jobs and dwellings (centre minus ring), FUAs over 500,000: n 54, countries 13; jobs +0.045 (0.046), dwellings +0.743 (0.094); within R2 0.665
+  Country fixed effects, residents (centre minus ring) on jobs and dwellings (centre minus ring), without Germany: n 234, countries 12; jobs +0.053 (0.024), dwellings +0.649 (0.078); within R2 0.331
+  Country fixed effects, residents (centre minus ring) on jobs and dwellings (centre minus ring), all series within 2% a year (jobs 5%): n 210, countries 13; jobs +0.033 (0.025), dwellings +0.627 (0.082); within R2 0.285
+  Leaving out one country at a time: dwellings coefficient from +0.649 (without DE) to +0.797 (without ES); jobs coefficient from +0.039 to +0.053
+
+Accounting: residents = dwellings x residents per dwelling, so the centre-minus-ring gap in residents' growth is the
+dwellings gap plus the gap in residents per dwelling. Share of the cross-FUA variance carried by each (within country):
+  dwellings: 0.532
+  residents per dwelling: 0.468
+  Country fixed effects, dwellings (centre minus ring) on jobs (centre minus ring): +0.084 (0.026), within R2 0.069
+  Country fixed effects, residents per dwelling (centre minus ring) on jobs (centre minus ring): +0.024 (0.021), within R2 0.006
+  Country fixed effects, residents (centre minus ring) on jobs (centre minus ring): +0.107 (0.029), within R2 0.082
+  Lisboa (greater city): residents gap -0.312 = dwellings gap -0.057 + residents-per-dwelling gap -0.256
+  Porto (greater city): residents gap +0.084 = dwellings gap -0.044 + residents-per-dwelling gap +0.128
+  Residents, centre minus ring (% a year), by quarter of the dwellings gap (slowest to fastest centre building):  -1.11, -0.36, -0.24, -0.17
+
+Capitals and the largest FUAs in the sample (FUA population at the end year over 1.5 million)
+                           city    y0    y1         PF1    gP   gPr    gJ   gJr    gD   gDr  jobs_minus_homes_centre
+stem                                                                                                                
+FR001      Paris (greater city)  2015  2021  13171056.0  0.27  0.43  0.75  0.23  0.92  1.01                    -0.18
+ES001     Madrid (greater city)  2015  2021   6980646.0  0.68  1.20  2.74  3.38  0.48  0.57                     2.26
+ES002  Barcelona (greater city)  2015  2021   5082355.0  0.49  0.75  2.01  2.17  0.40  0.23                     1.61
+DE002                   Hamburg  2015  2021   3421692.0  0.83  1.44  1.19  2.50  0.92  1.86                     0.27
+PL001                  Warszawa  2014  2021   3374742.0  1.01  1.45  2.73  2.38  2.16  2.35                     0.57
+PT001     Lisboa (greater city)  2015  2021   3027280.0  0.26  0.57  3.37  3.30  0.15  0.21                     3.22
+DE003                   München  2015  2021   3016834.0  0.67  1.77  2.36  1.24  0.89  1.95                     1.48
+DE005         Frankfurt am Main  2015  2021   2678557.0  1.05  0.22  2.09 -0.25  1.08  0.20                     1.01
+PL010                  Katowice  2014  2021   2417386.0 -0.93 -0.82  0.77  0.18  1.41  0.61                    -0.64
+FR002       Lyon (greater city)  2015  2021   2308818.0  0.63  0.88  1.55  1.37  1.33  1.44                     0.22
+CH002     Zurich (greater city)  2015  2021   1936563.0  1.31  1.08  1.08  0.78  1.15  1.29                    -0.07
+FR004  Marseille (greater city)  2015  2021   1888788.0  0.27  0.55  1.03  1.53  1.02  1.22                     0.01
+ES003   Valencia (greater city)  2015  2021   1763704.0  0.29  1.07  4.38  3.25  0.10  0.30                     4.28
+ES004                   Sevilla  2015  2021   1555472.0 -0.05  0.40  3.82  2.82  0.28  0.61                     3.55
+FI001      Helsinki/Helsingfors  2015  2021   1540002.0  0.94  1.34  0.81  0.47  1.45  2.50                    -0.64
+FR003      Lille (greater city)  2015  2021   1521660.0  0.32  0.39  1.28  1.25  1.05  1.10                     0.23

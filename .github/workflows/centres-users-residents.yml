@@ -1,0 +1,75 @@
+name: Reproduce centres-users-residents
+
+on:
+  pull_request:
+    paths:
+      - 'centres-users-residents/**'
+      - 'data_sources/eurostat-urban-audit-cities-fuas.json'
+      - 'data_sources/ine-portugal-centre-users-homes.json'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/centres-users-residents.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'centres-users-residents/**'
+      - 'data_sources/eurostat-urban-audit-cities-fuas.json'
+      - 'data_sources/ine-portugal-centre-users-homes.json'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/centres-users-residents.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: centres-users-residents
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: centres-users-residents/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the core functions
+        run: python -m unittest discover -s tests -v
+
+      - name: Download the Eurostat and INE responses and check their hashes
+        run: python fetch.py
+
+      - name: Build the European and metro panels
+        run: python panel.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python run_analysis.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=centres-users-residents/output.txt::output of run_analysis.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_core_shares fig2_homes_and_residents fig3_jobs_and_homes; do
+            test -s "figures/$f.png"
+          done
