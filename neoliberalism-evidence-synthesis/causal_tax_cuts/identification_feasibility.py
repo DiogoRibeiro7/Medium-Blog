@@ -73,6 +73,32 @@ def _read_rows(path: Path, required: set[str]) -> list[dict[str, str]]:
     return rows
 
 
+
+def normalized_scientific_csv_digest(path: Path, field: str) -> str:
+    """Hash a complete derived CSV after rounding one numerical-only field.
+
+    Keep every row and all other columns unchanged. Round Mahalanobis
+    distances or simplex reconstruction residuals to 12 decimal places;
+    this is a *reproducibility identity*, not an analysis transformation.
+    Differences above the rounding threshold must still change the hash.
+    """
+    records = _read_rows(path, {field})
+    normalized: list[dict[str, str]] = []
+    for row in records:
+        record = dict(row)
+        raw = record[field]
+        if raw:
+            value = float(raw)
+            if not math.isfinite(value):
+                raise ValueError(f"Nonfinite derived diagnostic in {field}")
+            record[field] = format(round(value, 12), ".12f")
+        normalized.append(record)
+    payload = json.dumps(
+        normalized, sort_keys=True, separators=(",", ":"), allow_nan=False
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 def _bool(value: str) -> bool:
     """Reject implicit truthiness of CSV strings such as 'False'."""
     if value not in ("True", "False"):
@@ -438,6 +464,14 @@ def run(
             name: hashlib.sha256(path.read_bytes()).hexdigest()
             for name, path in sorted(raw_files.items())
         },
+        "normalized_input_sha256": {
+            "joint_wdi_hull": normalized_scientific_csv_digest(
+                hull_file, "witness_max_scaled_residual"
+            ),
+            "macro_matching_pretrends": normalized_scientific_csv_digest(
+                macro_file, "mean_selected_distance"
+            ),
+        },
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     for filename, values, rowtype in (
@@ -455,6 +489,48 @@ def run(
         encoding="utf-8",
     )
     return output
+
+
+
+def verify_frozen_reference(
+    actual: dict[str, Any], frozen: dict[str, Any]
+) -> str:
+    """Distinguish original-source changes from numerical serialization drift.
+
+    A raw-hash difference is tolerated *only* for the two specified
+    derived numerical diagnostics, and only when the original joined
+    panel, all scientifically used columns and the entire substantive
+    feasibility result agree. This is not a claim that all raw files are
+    byte-identical.
+    """
+    if (
+        actual.get("joined_panel_sha256") != frozen.get("joined_panel_sha256")
+        or actual.get("author_source_sha256") != frozen.get("author_source_sha256")
+    ):
+        return "original_source_vintage_changed"
+    first = actual.get("input_sha256")
+    second = frozen.get("input_sha256")
+    if not isinstance(first, dict) or not isinstance(second, dict):
+        raise TypeError("Expected complete source hash dictionaries")
+    if first.keys() != second.keys():
+        raise ValueError("Source input set changed on identical original panel")
+    substantive_actual = {k: v for k, v in actual.items() if k != "input_sha256"}
+    substantive_frozen = {k: v for k, v in frozen.items() if k != "input_sha256"}
+    if substantive_actual != substantive_frozen:
+        raise ValueError(
+            "Original panel is unchanged but identification results or "
+            "normalized scientific inputs have drifted"
+        )
+    changed = {key for key in first if first[key] != second[key]}
+    if not changed:
+        return "exact_raw_input_reproduction"
+    allowed = {"joint_wdi_hull", "macro_matching_pretrends"}
+    if not changed.issubset(allowed):
+        raise ValueError(
+            "Unexpected raw input differences on unchanged original data: "
+            f"{sorted(changed)}"
+        )
+    return "same_original_data_and_scientific_inputs_derived_roundoff_only"
 
 
 def main() -> None:
