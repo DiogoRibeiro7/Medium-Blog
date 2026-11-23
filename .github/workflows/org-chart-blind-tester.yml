@@ -45,7 +45,7 @@ jobs:
           commit=$(python -c "import json; print(json.load(open('config.json'))['runs_commit'])")
           git fetch --quiet --depth 1 origin "$commit"
           mkdir -p "$RUNNER_TEMP/runs"
-          git archive FETCH_HEAD org-chart-blind-tester/runs | tar -x -C "$RUNNER_TEMP/runs"
+          git -C "$GITHUB_WORKSPACE" archive FETCH_HEAD org-chart-blind-tester/runs | tar -x -C "$RUNNER_TEMP/runs"
 
       - name: Rerun the analysis
         run: python analyse.py --runs-dir "$RUNNER_TEMP/runs/org-chart-blind-tester/runs" > results/output.txt
