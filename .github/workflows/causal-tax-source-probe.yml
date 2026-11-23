@@ -226,6 +226,27 @@ jobs:
             ${{ runner.temp }}/tax-study/political-comparability/political_comparability_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit annual author tax-cut flags versus statutory dates
+        id: tax_timing
+        if: steps.wdi_probe.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.tax_timing \
+            --author-csv "$RUNNER_TEMP/tax-events/hope_limberg_reforms_11_2020.csv" \
+            --joined-panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" \
+            --statute-ledger causal_tax_cuts/statute_context.csv \
+            --frozen-reference causal_tax_cuts/results/dynamic_exposure_2026-11-16.json \
+            --output-dir "$RUNNER_TEMP/tax-study/timing"
+      - name: Publish author flag-year and statutory timing audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-annual-timing
+          path: |
+            ${{ runner.temp }}/tax-study/timing/author_flag_years.csv
+            ${{ runner.temp }}/tax-study/timing/author_consecutive_flag_runs.csv
+            ${{ runner.temp }}/tax-study/timing/author_timing_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
