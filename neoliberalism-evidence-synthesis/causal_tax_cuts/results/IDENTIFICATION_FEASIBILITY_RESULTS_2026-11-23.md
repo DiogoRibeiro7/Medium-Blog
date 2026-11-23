@@ -82,5 +82,13 @@ plus a frozen deterministic source-hash manifest:
 See [the methods and explicit decision criteria](../IDENTIFICATION_FEASIBILITY.md).
 The live WID/WDI/DPI source workflow uploads the complete event-level
 audit as a seven-day `tax-cut-identification-feasibility`
-artifact. It verifies the archived manifest when its input SHA-256
-hashes match; no stale source-vintage result is silently reused.
+artifact. It records all raw input SHA-256 hashes and checks two
+derived numeric-column fingerprints rounded solely **for source
+identity**, preserving the full-precision inputs for analysis.
+Across two live CI runs, the final event and horizon CSVs were
+byte-identical; only seven Mahalanobis distances (up to 4.44e-16) and
+nineteen donor-hull reconstruction residuals (up to 4.63e-16)
+varied in binary floating-point serialization. Scientific classifications,
+donor sets, cohort and source WID/WDI SHA-256 were unchanged.
+Any substantive result difference on the same original panel fails
+the new reproducibility check.
