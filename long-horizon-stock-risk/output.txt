@@ -1,0 +1,319 @@
+DATA
+  Shiller: 1871-01 to 2023-06, 1830 months, 0 gaps;
+    year ends 1871 to 2022; bonds 1871 to 2022
+  OECD: 23 markets with a share price index and consumer prices
+    AUS Australia       stocks 1958-2025  bonds 1969-2025  CPI quarterly
+    AUT Austria         stocks 1958-2025  bonds 1990-2025  CPI monthly
+    BEL Belgium         stocks 1985-2025  bonds 1955-2025  CPI monthly
+    CAN Canada          stocks 1956-2025  bonds 1955-2025  CPI monthly
+    CHE Switzerland     stocks 1955-2025  bonds 1955-2025  CPI monthly
+    DEU Germany         stocks 1960-2025  bonds 1956-2025  CPI monthly
+    DNK Denmark         stocks 1983-2025  bonds 1987-2025  CPI monthly
+    ESP Spain           stocks 1985-2025  bonds 1980-2025  CPI monthly
+    FIN Finland         stocks 1957-2025  bonds 1988-2025  CPI monthly
+    FRA France          stocks 1955-2025  bonds 1960-2025  CPI monthly
+    GBR United Kingdom  stocks 1957-2025  bonds 1960-2025  CPI monthly
+    GRC Greece          stocks 1985-2025  bonds 1997-2025  CPI monthly
+    IRL Ireland         stocks 1955-2025  bonds 1970-2025  CPI monthly
+    ISL Iceland         stocks 1993-2025  bonds 1993-2021  CPI monthly
+    ITA Italy           stocks 1957-2025  bonds 1991-2025  CPI monthly
+    JPN Japan           stocks 1959-2020  bonds 1989-2020  CPI monthly
+    LUX Luxembourg      stocks 1999-2025  bonds 1993-2025  CPI monthly
+    NLD Netherlands     stocks 1960-2025  bonds 1960-2025  CPI monthly
+    NOR Norway          stocks 1986-2025  bonds 1985-2025  CPI monthly
+    NZL New Zealand     stocks 1967-2025  bonds 1970-2025  CPI quarterly
+    PRT Portugal        stocks 1988-2025  bonds 1993-2025  CPI monthly
+    SWE Sweden          stocks 1955-2025  bonds 1986-2025  CPI monthly
+    USA United States   stocks 1957-2025  bonds 1955-2025  CPI monthly
+  markets with at least one 30-year window: 22
+
+DIVIDENDS (the United States, where Shiller's actual dividends can be compared)
+  Shiller's average December dividend yield, 1871-2022: 4.29%
+  Shiller's average December dividend yield, 1957-2022: 2.91%
+  Shiller's average December dividend yield, 1957-1989: 3.80%
+  Shiller's average December dividend yield, 1990-2022: 2.01%
+  OECD US index + 0% against Shiller with dividends,  1 y, 65 common starts: median gap -3.89% a year (OECD minus Shiller); real loss 33.8% against 30.8%
+  OECD US index + 0% against Shiller with dividends, 10 y, 56 common starts: median gap -3.79% a year (OECD minus Shiller); real loss 26.8% against 17.9%
+  OECD US index + 0% against Shiller with dividends, 20 y, 46 common starts: median gap -3.60% a year (OECD minus Shiller); real loss 23.9% against 0.0%
+  OECD US index + 0% against Shiller with dividends, 30 y, 36 common starts: median gap -3.48% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+  OECD US index + 2% against Shiller with dividends,  1 y, 65 common starts: median gap -1.99% a year (OECD minus Shiller); real loss 33.8% against 30.8%
+  OECD US index + 2% against Shiller with dividends, 10 y, 56 common starts: median gap -1.75% a year (OECD minus Shiller); real loss 17.9% against 17.9%
+  OECD US index + 2% against Shiller with dividends, 20 y, 46 common starts: median gap -1.63% a year (OECD minus Shiller); real loss 6.5% against 0.0%
+  OECD US index + 2% against Shiller with dividends, 30 y, 36 common starts: median gap -1.39% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+  OECD US index + 3% against Shiller with dividends,  1 y, 65 common starts: median gap -1.05% a year (OECD minus Shiller); real loss 32.3% against 30.8%
+  OECD US index + 3% against Shiller with dividends, 10 y, 56 common starts: median gap -0.80% a year (OECD minus Shiller); real loss 17.9% against 17.9%
+  OECD US index + 3% against Shiller with dividends, 20 y, 46 common starts: median gap -0.64% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+  OECD US index + 3% against Shiller with dividends, 30 y, 36 common starts: median gap -0.35% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+  OECD US index + 4% against Shiller with dividends,  1 y, 65 common starts: median gap -0.12% a year (OECD minus Shiller); real loss 32.3% against 30.8%
+  OECD US index + 4% against Shiller with dividends, 10 y, 56 common starts: median gap 0.17% a year (OECD minus Shiller); real loss 12.5% against 17.9%
+  OECD US index + 4% against Shiller with dividends, 20 y, 46 common starts: median gap 0.37% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+  OECD US index + 4% against Shiller with dividends, 30 y, 36 common starts: median gap 0.69% a year (OECD minus Shiller); real loss 0.0% against 0.0%
+
+UNITED STATES, SHILLER, 1871-2022: real stock wealth
+   1 y  windows   151  markets  1  loss  31.1% (equal-weight  31.1%)  median loss when losing  10.2%  mean  12.3%  average shortfall  3.84%  p5 0.775  median 1.100  worst 0.607 (United States, from 2007)  episodes  34  independent  151
+   2 y  windows   150  markets  1  loss  23.3% (equal-weight  23.3%)  median loss when losing  15.1%  mean  18.0%  average shortfall  4.21%  p5 0.730  median 1.153  worst 0.503 (United States, from 1972)  episodes  20  independent   75
+   3 y  windows   149  markets  1  loss  18.8% (equal-weight  18.8%)  median loss when losing  16.7%  mean  19.9%  average shortfall  3.73%  p5 0.715  median 1.249  worst 0.496 (United States, from 1928)  episodes  12  independent   50
+   5 y  windows   147  markets  1  loss  20.4% (equal-weight  20.4%)  median loss when losing  13.6%  mean  17.0%  average shortfall  3.47%  p5 0.755  median 1.445  worst 0.535 (United States, from 1915)  episodes  11  independent   30
+  10 y  windows   142  markets  1  loss   9.9% (equal-weight   9.9%)  median loss when losing  21.9%  mean  22.6%  average shortfall  2.23%  p5 0.783  median 1.962  worst 0.654 (United States, from 1910)  episodes   5  independent   15
+  15 y  windows   137  markets  1  loss   4.4% (equal-weight   4.4%)  median loss when losing   6.8%  mean   9.7%  average shortfall  0.42%  p5 1.016  median 2.707  worst 0.724 (United States, from 1905)  episodes   2  independent   10
+  20 y  windows   132  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 1.485  median 3.720  worst 1.113 (United States, from 1900)  episodes   0  independent    7
+  25 y  windows   127  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 2.264  median 5.010  worst 1.914 (United States, from 1895)  episodes   0  independent    6
+  30 y  windows   122  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 3.168  median 7.020  worst 2.652 (United States, from 1890)  episodes   0  independent    5
+UNITED STATES, SHILLER: stocks against bonds
+   1 y  windows   151  markets  1  loss  35.8% (equal-weight  35.8%)  median loss when losing  10.6%  mean  13.0%  average shortfall  4.66%  p5 0.761  median 1.066  worst 0.517 (United States, from 2007)  episodes  36  independent  151
+   2 y  windows   150  markets  1  loss  33.3% (equal-weight  33.3%)  median loss when losing  12.2%  mean  15.8%  average shortfall  5.28%  p5 0.722  median 1.095  worst 0.425 (United States, from 1929)  episodes  26  independent   75
+   3 y  windows   149  markets  1  loss  30.2% (equal-weight  30.2%)  median loss when losing  11.7%  mean  16.2%  average shortfall  4.90%  p5 0.723  median 1.136  worst 0.356 (United States, from 1929)  episodes  19  independent   50
+   5 y  windows   147  markets  1  loss  27.9% (equal-weight  27.9%)  median loss when losing  18.6%  mean  20.1%  average shortfall  5.60%  p5 0.668  median 1.285  worst 0.440 (United States, from 1927)  episodes  16  independent   30
+  10 y  windows   142  markets  1  loss  14.1% (equal-weight  14.1%)  median loss when losing  18.3%  mean  20.0%  average shortfall  2.81%  p5 0.783  median 1.466  worst 0.471 (United States, from 1998)  episodes   9  independent   15
+  15 y  windows   137  markets  1  loss   9.5% (equal-weight   9.5%)  median loss when losing  12.6%  mean  13.2%  average shortfall  1.25%  p5 0.890  median 1.736  worst 0.698 (United States, from 1928)  episodes   4  independent   10
+  20 y  windows   132  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 1.250  median 1.961  worst 1.001 (United States, from 1912)  episodes   0  independent    7
+  25 y  windows   127  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 1.519  median 2.584  worst 1.109 (United States, from 1871)  episodes   0  independent    6
+  30 y  windows   122  markets  1  loss   0.0% (equal-weight   0.0%)  median loss when losing    n/a  mean    n/a  average shortfall  0.00%  p5 1.745  median 3.139  worst 1.412 (United States, from 1902)  episodes   0  independent    5
+UNITED STATES, SHILLER: the same rule on two halves of the record (start years)
+  starts 1871-1945: real loss 1 y 33.3% (n 75, worst 0.633 (United States, from 1916)); 10 y 5.3% (n 75, worst 0.654 (United States, from 1910)); 20 y 0.0% (n 75, worst 1.113 (United States, from 1900)); 30 y 0.0% (n 75, worst 2.652 (United States, from 1890))
+  starts 1946-2022: real loss 1 y 28.9% (n 76, worst 0.607 (United States, from 2007)); 10 y 14.9% (n 67, worst 0.667 (United States, from 1964)); 20 y 0.0% (n 57, worst 1.167 (United States, from 1961)); 30 y 0.0% (n 47, worst 3.493 (United States, from 1964))
+
+OECD, 23 MARKETS, DIVIDEND YIELD 3%: real stock wealth
+   1 y  windows  1300  markets 23  loss  35.8% (equal-weight  36.1%)  median loss when losing  11.9%  mean  15.5%  average shortfall  5.53%  p5 0.718  median 1.087  worst 0.099 (Iceland, from 2007)  episodes 299  independent 1300
+   2 y  windows  1277  markets 23  loss  33.0% (equal-weight  32.9%)  median loss when losing  17.1%  mean  20.2%  average shortfall  6.66%  p5 0.637  median 1.135  worst 0.069 (Iceland, from 2007)  episodes 205  independent  646
+   3 y  windows  1254  markets 23  loss  31.6% (equal-weight  31.9%)  median loss when losing  18.2%  mean  21.6%  average shortfall  6.82%  p5 0.627  median 1.175  worst 0.068 (Iceland, from 2006)  episodes 154  independent  424
+   5 y  windows  1208  markets 23  loss  26.5% (equal-weight  26.6%)  median loss when losing  19.9%  mean  24.4%  average shortfall  6.46%  p5 0.588  median 1.305  worst 0.080 (Iceland, from 2006)  episodes 111  independent  253
+  10 y  windows  1093  markets 23  loss  20.4% (equal-weight  20.9%)  median loss when losing  26.8%  mean  28.9%  average shortfall  5.89%  p5 0.595  median 1.751  worst 0.171 (Iceland, from 2006)  episodes  56  independent  120
+  15 y  windows   978  markets 23  loss  15.0% (equal-weight  18.2%)  median loss when losing  24.9%  mean  29.9%  average shortfall  4.49%  p5 0.656  median 2.110  worst 0.156 (Italy, from 1962)  episodes  44  independent   74
+  20 y  windows   863  markets 23  loss   7.9% (equal-weight  10.5%)  median loss when losing  30.3%  mean  34.2%  average shortfall  2.69%  p5 0.752  median 2.730  worst 0.204 (Greece, from 1999)  episodes  18  independent   56
+  25 y  windows   748  markets 23  loss   3.5% (equal-weight   6.0%)  median loss when losing  26.1%  mean  27.7%  average shortfall  0.96%  p5 1.082  median 3.762  worst 0.329 (Greece, from 1999)  episodes  13  independent   38
+  30 y  windows   636  markets 22  loss   0.9% (equal-weight   1.3%)  median loss when losing  35.1%  mean  28.1%  average shortfall  0.27%  p5 1.709  median 5.858  worst 0.569 (Italy, from 1961)  episodes   2  independent   36
+OECD, DIVIDEND YIELD 3%: stocks against bonds
+   1 y  windows  1080  markets 23  loss  38.2% (equal-weight  38.5%)  median loss when losing  13.2%  mean  16.4%  average shortfall  6.27%  p5 0.685  median 1.064  worst 0.110 (Iceland, from 2007)  episodes 257  independent 1080
+   2 y  windows  1057  markets 23  loss  39.5% (equal-weight  40.0%)  median loss when losing  16.8%  mean  20.7%  average shortfall  8.19%  p5 0.579  median 1.085  worst 0.063 (Iceland, from 2007)  episodes 189  independent  534
+   3 y  windows  1034  markets 23  loss  37.8% (equal-weight  39.2%)  median loss when losing  19.6%  mean  23.0%  average shortfall  8.69%  p5 0.577  median 1.100  worst 0.060 (Iceland, from 2007)  episodes 131  independent  350
+   5 y  windows   988  markets 23  loss  37.6% (equal-weight  39.5%)  median loss when losing  23.2%  mean  25.6%  average shortfall  9.63%  p5 0.552  median 1.163  worst 0.065 (Iceland, from 2006)  episodes 110  independent  209
+  10 y  windows   873  markets 23  loss  34.4% (equal-weight  36.7%)  median loss when losing  25.4%  mean  28.5%  average shortfall  9.79%  p5 0.496  median 1.281  worst 0.091 (Greece, from 2007)  episodes  69  independent   96
+  15 y  windows   758  markets 23  loss  30.2% (equal-weight  36.2%)  median loss when losing  26.2%  mean  30.7%  average shortfall  9.28%  p5 0.450  median 1.260  worst 0.102 (Greece, from 2006)  episodes  72  independent   60
+  20 y  windows   643  markets 23  loss  23.6% (equal-weight  31.1%)  median loss when losing  21.9%  mean  29.2%  average shortfall  6.91%  p5 0.521  median 1.417  worst 0.061 (Greece, from 1999)  episodes  48  independent   42
+  25 y  windows   528  markets 23  loss  16.1% (equal-weight  26.6%)  median loss when losing  14.0%  mean  23.4%  average shortfall  3.76%  p5 0.775  median 1.584  worst 0.086 (New Zealand, from 1986)  episodes  36  independent   33
+  30 y  windows   418  markets 20  loss  11.2% (equal-weight  15.6%)  median loss when losing  19.3%  mean  27.0%  average shortfall  3.04%  p5 0.783  median 1.886  worst 0.139 (New Zealand, from 1986)  episodes  17  independent   27
+
+OECD: THE DIVIDEND ASSUMPTION (real loss; median loss when losing; 5th percentile)
+  0%: 1 y 39.5%; 13.3%; p5 0.697; vs bonds 43.8%, 13.4% | 10 y 33.7%; 32.4%; p5 0.442; vs bonds 53.7%, 33.1% | 20 y 27.6%; 29.3%; p5 0.416; vs bonds 67.5%, 33.9% | 30 y 9.9%; 30.4%; p5 0.704; vs bonds 64.6%, 39.6%
+  2%: 1 y 37.0%; 12.4%; p5 0.711; vs bonds 40.2%, 13.3% | 10 y 24.3%; 27.8%; p5 0.539; vs bonds 39.7%, 27.7% | 20 y 12.1%; 31.5%; p5 0.618; vs bonds 35.8%, 27.2% | 30 y 2.8%; 18.6%; p5 1.275; vs bonds 27.5%, 21.4%
+  3%: 1 y 35.8%; 11.9%; p5 0.718; vs bonds 38.2%, 13.2% | 10 y 20.4%; 26.8%; p5 0.595; vs bonds 34.4%, 25.4% | 20 y 7.9%; 30.3%; p5 0.752; vs bonds 23.6%, 21.9% | 30 y 0.9%; 35.1%; p5 1.709; vs bonds 11.2%, 19.3%
+  4%: 1 y 34.0%; 12.2%; p5 0.725; vs bonds 37.0%, 12.6% | 10 y 16.8%; 23.3%; p5 0.655; vs bonds 27.5%, 24.0% | 20 y 5.9%; 28.6%; p5 0.912; vs bonds 14.2%, 23.8% | 30 y 0.6%; 20.8%; p5 2.283; vs bonds 4.5%, 27.9%
+
+OECD, 3%: THE SAME START YEARS FOR EVERY HORIZON (1955-1995)
+   1 y  windows   636  markets 22  loss  40.9% (equal-weight  39.8%)  median loss when losing  11.4%  mean  14.1%  average shortfall  5.77%  p5 0.742  median 1.060  worst 0.398 (United Kingdom, from 1973)  episodes 157  independent  636
+     against bonds: windows 421, lag 46.1%, median lag when lagging 12.9%
+   2 y  windows   636  markets 22  loss  35.4% (equal-weight  32.7%)  median loss when losing  15.7%  mean  18.8%  average shortfall  6.63%  p5 0.669  median 1.120  worst 0.246 (United Kingdom, from 1972)  episodes 106  independent  325
+   3 y  windows   636  markets 22  loss  33.2% (equal-weight  29.9%)  median loss when losing  16.6%  mean  20.0%  average shortfall  6.64%  p5 0.647  median 1.179  worst 0.271 (United Kingdom, from 1971)  episodes  74  independent  218
+   5 y  windows   636  markets 22  loss  26.4% (equal-weight  23.1%)  median loss when losing  21.5%  mean  25.1%  average shortfall  6.64%  p5 0.592  median 1.340  worst 0.284 (Italy, from 1972)  episodes  46  independent  138
+  10 y  windows   636  markets 22  loss  21.7% (equal-weight  16.7%)  median loss when losing  25.8%  mean  26.6%  average shortfall  5.78%  p5 0.616  median 1.954  worst 0.226 (Italy, from 1967)  episodes  31  independent   74
+     against bonds: windows 421, lag 29.7%, median lag when lagging 18.1%
+  15 y  windows   636  markets 22  loss  14.2% (equal-weight  13.7%)  median loss when losing  22.1%  mean  27.4%  average shortfall  3.87%  p5 0.684  median 2.519  worst 0.156 (Italy, from 1962)  episodes  29  independent   51
+  20 y  windows   636  markets 22  loss   7.5% (equal-weight   7.4%)  median loss when losing  29.8%  mean  32.6%  average shortfall  2.46%  p5 0.808  median 3.059  worst 0.235 (Italy, from 1959)  episodes  14  independent   41
+     against bonds: windows 421, lag 21.9%, median lag when lagging 18.2%
+  25 y  windows   636  markets 22  loss   3.1% (equal-weight   3.4%)  median loss when losing  24.0%  mean  26.3%  average shortfall  0.83%  p5 1.093  median 4.149  worst 0.404 (Italy, from 1959)  episodes  10  independent   37
+  30 y  windows   636  markets 22  loss   0.9% (equal-weight   1.3%)  median loss when losing  35.1%  mean  28.1%  average shortfall  0.27%  p5 1.709  median 5.858  worst 0.569 (Italy, from 1961)  episodes   2  independent   36
+     against bonds: windows 418, lag 11.2%, median lag when lagging 19.3%
+
+OECD, 3%: ANNUAL RATE AGAINST WEALTH (5th, 50th and 95th percentiles)
+   1 y  annual rate -28.2% / 8.7% / 48.1% (spread 76.3%)  wealth 0.718 / 1.087 / 1.481 (95th over 5th 2.06x)
+   2 y  annual rate -20.2% / 6.5% / 36.2% (spread 56.5%)  wealth 0.637 / 1.135 / 1.856 (95th over 5th 2.92x)
+   3 y  annual rate -14.4% / 5.5% / 30.1% (spread 44.5%)  wealth 0.627 / 1.175 / 2.202 (95th over 5th 3.51x)
+   5 y  annual rate -10.1% / 5.5% / 23.4% (spread 33.4%)  wealth 0.588 / 1.305 / 2.857 (95th over 5th 4.86x)
+  10 y  annual rate -5.1% / 5.8% / 15.2% (spread 20.2%)  wealth 0.595 / 1.751 / 4.106 (95th over 5th 6.91x)
+  15 y  annual rate -2.8% / 5.1% / 13.5% (spread 16.3%)  wealth 0.656 / 2.110 / 6.677 (95th over 5th 10.18x)
+  20 y  annual rate -1.4% / 5.1% / 12.1% (spread 13.5%)  wealth 0.752 / 2.730 / 9.810 (95th over 5th 13.05x)
+  25 y  annual rate 0.3% / 5.4% / 11.6% (spread 11.3%)  wealth 1.082 / 3.762 / 15.707 (95th over 5th 14.52x)
+  30 y  annual rate 1.8% / 6.1% / 10.9% (spread 9.1%)  wealth 1.709 / 5.858 / 22.388 (95th over 5th 13.10x)
+
+SHUFFLE TEST: the same years in random order (2000 shuffles per market, seed 20261123)
+
+OECD, 3%: real stock wealth
+   1 y  windows  1300  loss: history 35.8%, shuffled median 35.8% [5-95%: 35.8% to 35.8%], shuffles at or below history 100.0% | median loss when losing: history 11.9%, shuffled median 11.9% [5-95%: 11.9% to 11.9%] | variance ratio over 23 markets: history 1.00, shuffled median 1.00 [5-95%: 1.00 to 1.00], shuffles at or below history 100.0%
+   2 y  windows  1277  loss: history 33.0%, shuffled median 33.0% [5-95%: 31.7% to 34.3%], shuffles at or below history 52.3% | median loss when losing: history 17.1%, shuffled median 16.2% [5-95%: 14.8% to 17.5%] | variance ratio over 23 markets: history 0.97, shuffled median 0.98 [5-95%: 0.93 to 1.02], shuffles at or below history 43.2%
+   3 y  windows  1254  loss: history 31.6%, shuffled median 30.7% [5-95%: 29.3% to 32.2%], shuffles at or below history 84.8% | median loss when losing: history 18.2%, shuffled median 19.4% [5-95%: 17.6% to 21.4%] | variance ratio over 23 markets: history 0.87, shuffled median 0.96 [5-95%: 0.88 to 1.03], shuffles at or below history 1.5%
+   5 y  windows  1208  loss: history 26.5%, shuffled median 27.2% [5-95%: 25.3% to 29.1%], shuffles at or below history 28.0% | median loss when losing: history 19.9%, shuffled median 23.3% [5-95%: 20.6% to 26.2%] | variance ratio over 23 markets: history 0.76, shuffled median 0.91 [5-95%: 0.82 to 1.02], shuffles at or below history 0.5%
+  10 y  windows  1093  loss: history 20.4%, shuffled median 20.5% [5-95%: 17.7% to 23.3%], shuffles at or below history 49.1% | median loss when losing: history 26.8%, shuffled median 28.1% [5-95%: 23.3% to 33.4%] | variance ratio over 22 markets: history 0.57, shuffled median 0.79 [5-95%: 0.67 to 0.94], shuffles at or below history 0.0%
+  15 y  windows   978  loss: history 15.0%, shuffled median 15.2% [5-95%: 12.1% to 18.7%], shuffles at or below history 46.9% | median loss when losing: history 24.9%, shuffled median 29.3% [5-95%: 22.7% to 37.2%] | variance ratio over 15 markets: history 0.57, shuffled median 0.73 [5-95%: 0.57 to 0.93], shuffles at or below history 4.5%
+  20 y  windows   863  loss: history 7.9%, shuffled median 10.8% [5-95%: 7.4% to 14.7%], shuffles at or below history 8.6% | median loss when losing: history 30.3%, shuffled median 28.2% [5-95%: 20.1% to 38.4%] | variance ratio over 14 markets: history 0.52, shuffled median 0.63 [5-95%: 0.46 to 0.85], shuffles at or below history 14.5%
+  25 y  windows   748  loss: history 3.5%, shuffled median 7.1% [5-95%: 3.7% to 11.2%], shuffles at or below history 4.2% | median loss when losing: history 26.1%, shuffled median 26.6% [5-95%: 16.0% to 40.4%]
+  30 y  windows   636  loss: history 0.9%, shuffled median 4.4% [5-95%: 1.4% to 8.6%], shuffles at or below history 1.9% | median loss when losing: history 35.1%, shuffled median 25.4% [5-95%: 11.4% to 44.4%]
+
+OECD, 3%: stocks against bonds
+   1 y  windows  1080  loss: history 38.2%, shuffled median 38.2% [5-95%: 38.2% to 38.2%], shuffles at or below history 100.0% | median loss when losing: history 13.2%, shuffled median 13.2% [5-95%: 13.2% to 13.2%] | variance ratio over 23 markets: history 1.00, shuffled median 1.00 [5-95%: 1.00 to 1.00], shuffles at or below history 100.0%
+   2 y  windows  1057  loss: history 39.5%, shuffled median 38.4% [5-95%: 37.0% to 39.8%], shuffles at or below history 89.1% | median loss when losing: history 16.8%, shuffled median 17.1% [5-95%: 15.7% to 18.5%] | variance ratio over 23 markets: history 0.96, shuffled median 0.97 [5-95%: 0.92 to 1.03], shuffles at or below history 36.0%
+   3 y  windows  1034  loss: history 37.8%, shuffled median 37.4% [5-95%: 35.8% to 39.2%], shuffles at or below history 64.5% | median loss when losing: history 19.6%, shuffled median 20.7% [5-95%: 18.8% to 22.7%] | variance ratio over 23 markets: history 0.83, shuffled median 0.95 [5-95%: 0.88 to 1.04], shuffles at or below history 0.0%
+   5 y  windows   988  loss: history 37.6%, shuffled median 36.0% [5-95%: 34.0% to 38.2%], shuffles at or below history 89.2% | median loss when losing: history 23.2%, shuffled median 25.6% [5-95%: 22.8% to 28.6%] | variance ratio over 23 markets: history 0.71, shuffled median 0.89 [5-95%: 0.80 to 1.01], shuffles at or below history 0.0%
+  10 y  windows   873  loss: history 34.4%, shuffled median 32.9% [5-95%: 29.4% to 36.1%], shuffles at or below history 79.0% | median loss when losing: history 25.4%, shuffled median 31.6% [5-95%: 26.9% to 36.6%] | variance ratio over 20 markets: history 0.42, shuffled median 0.76 [5-95%: 0.63 to 0.92], shuffles at or below history 0.0%
+  15 y  windows   758  loss: history 30.2%, shuffled median 29.3% [5-95%: 24.5% to 33.8%], shuffles at or below history 63.3% | median loss when losing: history 26.2%, shuffled median 33.6% [5-95%: 27.5% to 40.7%] | variance ratio over 10 markets: history 0.34, shuffled median 0.72 [5-95%: 0.54 to 0.95], shuffles at or below history 0.0%
+  20 y  windows   643  loss: history 23.6%, shuffled median 25.3% [5-95%: 20.1% to 30.9%], shuffles at or below history 31.7% | median loss when losing: history 21.9%, shuffled median 33.5% [5-95%: 26.1% to 42.6%] | variance ratio over 7 markets: history 0.24, shuffled median 0.62 [5-95%: 0.41 to 0.93], shuffles at or below history 0.2%
+  25 y  windows   528  loss: history 16.1%, shuffled median 20.8% [5-95%: 14.6% to 27.5%], shuffles at or below history 11.3% | median loss when losing: history 14.0%, shuffled median 32.4% [5-95%: 23.0% to 43.2%]
+  30 y  windows   418  loss: history 11.2%, shuffled median 16.5% [5-95%: 9.3% to 24.6%], shuffles at or below history 13.5% | median loss when losing: history 19.3%, shuffled median 31.0% [5-95%: 19.7% to 45.6%]
+
+UNITED STATES, SHILLER: real stock wealth
+   1 y  windows   151  loss: history 31.1%, shuffled median 31.1% [5-95%: 31.1% to 31.1%], shuffles at or below history 100.0% | median loss when losing: history 10.2%, shuffled median 10.2% [5-95%: 10.2% to 10.2%] | variance ratio over 1 markets: history 1.00, shuffled median 1.00 [5-95%: 1.00 to 1.00], shuffles at or below history 100.0%
+   2 y  windows   150  loss: history 23.3%, shuffled median 26.7% [5-95%: 23.3% to 30.7%], shuffles at or below history 7.0% | median loss when losing: history 15.1%, shuffled median 13.6% [5-95%: 10.2% to 17.9%] | variance ratio over 1 markets: history 1.00, shuffled median 0.99 [5-95%: 0.87 to 1.12], shuffles at or below history 54.8%
+   3 y  windows   149  loss: history 18.8%, shuffled median 24.2% [5-95%: 20.1% to 28.2%], shuffles at or below history 1.6% | median loss when losing: history 16.7%, shuffled median 15.4% [5-95%: 11.0% to 21.0%] | variance ratio over 1 markets: history 0.87, shuffled median 0.99 [5-95%: 0.81 to 1.18], shuffles at or below history 14.8%
+   5 y  windows   147  loss: history 20.4%, shuffled median 19.0% [5-95%: 14.3% to 23.8%], shuffles at or below history 68.8% | median loss when losing: history 13.6%, shuffled median 17.5% [5-95%: 10.8% to 26.6%] | variance ratio over 1 markets: history 0.84, shuffled median 0.98 [5-95%: 0.70 to 1.28], shuffles at or below history 22.5%
+  10 y  windows   142  loss: history 9.9%, shuffled median 11.3% [5-95%: 4.9% to 17.6%], shuffles at or below history 38.6% | median loss when losing: history 21.9%, shuffled median 19.3% [5-95%: 7.8% to 37.7%] | variance ratio over 1 markets: history 0.74, shuffled median 0.93 [5-95%: 0.55 to 1.42], shuffles at or below history 23.2%
+  15 y  windows   137  loss: history 4.4%, shuffled median 6.6% [5-95%: 0.7% to 14.6%], shuffles at or below history 36.8% | median loss when losing: history 6.8%, shuffled median 17.5% [5-95%: 4.3% to 43.9%] | variance ratio over 1 markets: history 0.65, shuffled median 0.89 [5-95%: 0.44 to 1.54], shuffles at or below history 19.5%
+  20 y  windows   132  loss: history 0.0%, shuffled median 2.3% [5-95%: 0.0% to 12.9%], shuffles at or below history 25.8% | median loss when losing: history n/a, shuffled median 16.1% [5-95%: 3.0% to 44.0%] | variance ratio over 1 markets: history 0.49, shuffled median 0.85 [5-95%: 0.38 to 1.59], shuffles at or below history 12.8%
+  25 y  windows   127  loss: history 0.0%, shuffled median 0.0% [5-95%: 0.0% to 11.0%], shuffles at or below history 50.3% | median loss when losing: history n/a, shuffled median 14.8% [5-95%: 1.8% to 42.5%] | variance ratio over 1 markets: history 0.34, shuffled median 0.79 [5-95%: 0.32 to 1.56], shuffles at or below history 6.2%
+  30 y  windows   122  loss: history 0.0%, shuffled median 0.0% [5-95%: 0.0% to 8.2%], shuffles at or below history 71.7% | median loss when losing: history n/a, shuffled median 13.8% [5-95%: 1.7% to 45.2%] | variance ratio over 1 markets: history 0.24, shuffled median 0.73 [5-95%: 0.27 to 1.55], shuffles at or below history 2.5%
+
+UNITED STATES, SHILLER: stocks against bonds
+   1 y  windows   151  loss: history 35.8%, shuffled median 35.8% [5-95%: 35.8% to 35.8%], shuffles at or below history 100.0% | median loss when losing: history 10.6%, shuffled median 10.6% [5-95%: 10.6% to 10.6%] | variance ratio over 1 markets: history 1.00, shuffled median 1.00 [5-95%: 1.00 to 1.00], shuffles at or below history 100.0%
+   2 y  windows   150  loss: history 33.3%, shuffled median 34.0% [5-95%: 30.0% to 37.3%], shuffles at or below history 47.2% | median loss when losing: history 12.2%, shuffled median 13.5% [5-95%: 10.3% to 17.3%] | variance ratio over 1 markets: history 1.01, shuffled median 0.99 [5-95%: 0.86 to 1.13], shuffles at or below history 56.2%
+   3 y  windows   149  loss: history 30.2%, shuffled median 31.5% [5-95%: 26.8% to 35.6%], shuffles at or below history 37.1% | median loss when losing: history 11.7%, shuffled median 16.2% [5-95%: 12.1% to 21.2%] | variance ratio over 1 markets: history 0.88, shuffled median 0.98 [5-95%: 0.79 to 1.18], shuffles at or below history 16.5%
+   5 y  windows   147  loss: history 27.9%, shuffled median 27.9% [5-95%: 23.1% to 33.3%], shuffles at or below history 55.2% | median loss when losing: history 18.6%, shuffled median 19.4% [5-95%: 13.4% to 27.0%] | variance ratio over 1 markets: history 0.83, shuffled median 0.96 [5-95%: 0.69 to 1.24], shuffles at or below history 21.0%
+  10 y  windows   142  loss: history 14.1%, shuffled median 21.1% [5-95%: 14.1% to 28.9%], shuffles at or below history 6.2% | median loss when losing: history 18.3%, shuffled median 23.3% [5-95%: 13.4% to 37.8%] | variance ratio over 1 markets: history 0.66, shuffled median 0.91 [5-95%: 0.55 to 1.35], shuffles at or below history 14.5%
+  15 y  windows   137  loss: history 9.5%, shuffled median 16.8% [5-95%: 7.3% to 26.3%], shuffles at or below history 12.7% | median loss when losing: history 12.6%, shuffled median 24.4% [5-95%: 11.2% to 46.9%] | variance ratio over 1 markets: history 0.62, shuffled median 0.85 [5-95%: 0.46 to 1.43], shuffles at or below history 22.0%
+  20 y  windows   132  loss: history 0.0%, shuffled median 12.1% [5-95%: 2.3% to 23.5%], shuffles at or below history 0.3% | median loss when losing: history n/a, shuffled median 23.2% [5-95%: 7.0% to 50.5%] | variance ratio over 1 markets: history 0.56, shuffled median 0.77 [5-95%: 0.39 to 1.51], shuffles at or below history 21.8%
+  25 y  windows   127  loss: history 0.0%, shuffled median 8.7% [5-95%: 0.0% to 21.3%], shuffles at or below history 5.5% | median loss when losing: history n/a, shuffled median 21.2% [5-95%: 5.1% to 51.2%] | variance ratio over 1 markets: history 0.50, shuffled median 0.70 [5-95%: 0.32 to 1.52], shuffles at or below history 22.8%
+  30 y  windows   122  loss: history 0.0%, shuffled median 4.9% [5-95%: 0.0% to 21.3%], shuffles at or below history 17.9% | median loss when losing: history n/a, shuffled median 20.3% [5-95%: 3.7% to 50.6%] | variance ratio over 1 markets: history 0.45, shuffled median 0.63 [5-95%: 0.26 to 1.53], shuffles at or below history 24.5%
+
+EQUAL-WEIGHT MIX OF THE MARKETS, 3%: local real returns, rebalanced yearly, no currencies
+  year ends 1956-2025
+   1 y  windows  69  loss 30.4%  median loss when losing 9.3%  p5 0.830  worst 0.505 from 2007 | single markets, same start years: loss 35.7%, median loss when losing 11.9%, p5 0.718
+   2 y  windows  68  loss 27.9%  median loss when losing 10.6%  p5 0.737  worst 0.532 from 2006 | single markets, same start years: loss 32.8%, median loss when losing 17.2%, p5 0.636
+   3 y  windows  67  loss 17.9%  median loss when losing 24.7%  p5 0.701  worst 0.649 from 2005 | single markets, same start years: loss 31.6%, median loss when losing 18.3%, p5 0.627
+   5 y  windows  65  loss 15.4%  median loss when losing 16.9%  p5 0.702  worst 0.612 from 2006 | single markets, same start years: loss 26.6%, median loss when losing 19.9%, p5 0.588
+  10 y  windows  60  loss 8.3%  median loss when losing 14.1%  p5 0.879  worst 0.799 from 1972 | single markets, same start years: loss 20.5%, median loss when losing 26.8%, p5 0.594
+  15 y  windows  55  loss 1.8%  median loss when losing 3.5%  p5 1.096  worst 0.965 from 1961 | single markets, same start years: loss 15.1%, median loss when losing 24.9%, p5 0.655
+  20 y  windows  50  loss 0.0%  median loss when losing n/a  p5 1.405  worst 1.190 from 1961 | single markets, same start years: loss 7.9%, median loss when losing 30.3%, p5 0.751
+  25 y  windows  45  loss 0.0%  median loss when losing n/a  p5 2.498  worst 2.229 from 1959 | single markets, same start years: loss 3.5%, median loss when losing 26.1%, p5 1.081
+  30 y  windows  40  loss 0.0%  median loss when losing n/a  p5 4.564  worst 4.099 from 1961 | single markets, same start years: loss 0.9%, median loss when losing 35.1%, p5 1.703
+
+BY MARKET, 3%: 20- and 30-year real stock wealth (worst at 0% and 4% in brackets)
+  Australia       20 y n 48, loss   0%, worst 1.02 from 1962 [0.57, 1.24], median 2.56 | 30 y n 38, loss   0%, worst 2.20 from 1960 [0.91, 2.94], median 4.34
+  Austria         20 y n 48, loss  10%, worst 0.47 from 1961 [0.26, 0.57], median 2.85 | 30 y n 38, loss   0%, worst 1.79 from 1962 [0.74, 2.40], median 4.29
+  Belgium         20 y n 21, loss   0%, worst 1.44 from 1998 [0.80, 1.75], median 2.42 | 30 y n 11, loss   0%, worst 4.12 from 1988 [1.70, 5.50], median 4.92
+  Canada          20 y n 50, loss   0%, worst 1.30 from 1972 [0.72, 1.58], median 3.04 | 30 y n 40, loss   0%, worst 2.30 from 1961 [0.95, 3.08], median 5.58
+  Switzerland     20 y n 51, loss   4%, worst 0.75 from 1961 [0.42, 0.91], median 3.44 | 30 y n 41, loss   0%, worst 1.51 from 1961 [0.62, 2.02], median 8.26
+  Germany         20 y n 46, loss   4%, worst 0.69 from 1960 [0.38, 0.84], median 2.99 | 30 y n 36, loss   0%, worst 2.11 from 1960 [0.87, 2.82], median 5.65
+  Denmark         20 y n 23, loss   0%, worst 3.67 from 1988 [2.03, 4.45], median 6.24 | 30 y n 13, loss   0%, worst 9.97 from 1983 [4.11, 13.32], median 17.67
+  Spain           20 y n 21, loss   0%, worst 1.14 from 2000 [0.63, 1.38], median 2.99 | 30 y n 11, loss   0%, worst 3.25 from 1988 [1.34, 4.34], median 4.36
+  Finland         20 y n 49, loss   0%, worst 1.00 from 1999 [0.56, 1.22], median 4.26 | 30 y n 39, loss   0%, worst 3.32 from 1961 [1.37, 4.43], median 14.44
+  France          20 y n 51, loss  16%, worst 0.44 from 1962 [0.24, 0.53], median 2.73 | 30 y n 41, loss   0%, worst 1.54 from 1957 [0.63, 2.06], median 6.46
+  United Kingdom  20 y n 49, loss   2%, worst 0.90 from 1959 [0.50, 1.10], median 2.20 | 30 y n 39, loss   0%, worst 2.74 from 1993 [1.13, 3.66], median 4.57
+  Greece          20 y n 21, loss  71%, worst 0.20 from 1999 [0.11, 0.25], median 0.75 | 30 y n 11, loss  18%, worst 0.61 from 1990 [0.25, 0.82], median 1.37
+  Ireland         20 y n 51, loss   6%, worst 0.75 from 1962 [0.42, 0.91], median 2.29 | 30 y n 41, loss   0%, worst 2.53 from 1962 [1.04, 3.38], median 6.40
+  Iceland         20 y n 13, loss  46%, worst 0.29 from 2005 [0.16, 0.35], median 1.01 | 30 y n  3, loss   0%, worst 2.48 from 1995 [1.02, 3.31], median 3.72
+  Italy           20 y n 49, loss  20%, worst 0.23 from 1959 [0.13, 0.28], median 1.66 | 30 y n 39, loss  10%, worst 0.57 from 1961 [0.23, 0.76], median 2.82
+  Japan           20 y n 42, loss  10%, worst 0.52 from 1989 [0.29, 0.63], median 2.54 | 30 y n 32, loss   0%, worst 1.28 from 1989 [0.53, 1.71], median 4.82
+  Luxembourg      20 y n  7, loss  29%, worst 0.61 from 1999 [0.34, 0.74], median 1.13 | 30 y none
+  Netherlands     20 y n 46, loss   9%, worst 0.49 from 1961 [0.27, 0.59], median 2.62 | 30 y n 36, loss   0%, worst 1.68 from 1960 [0.69, 2.24], median 7.06
+  Norway          20 y n 20, loss   0%, worst 5.50 from 2005 [3.04, 6.67], median 8.45 | 30 y n 10, loss   0%, worst 18.06 from 1989 [7.44, 24.14], median 22.22
+  New Zealand     20 y n 39, loss  15%, worst 0.57 from 1970 [0.32, 0.70], median 1.74 | 30 y n 29, loss   0%, worst 1.04 from 1986 [0.43, 1.39], median 2.45
+  Portugal        20 y n 18, loss   0%, worst 1.45 from 1998 [0.81, 1.76], median 2.65 | 30 y n  8, loss   0%, worst 3.34 from 1988 [1.37, 4.46], median 6.62
+  Sweden          20 y n 51, loss   0%, worst 1.06 from 1959 [0.59, 1.28], median 5.54 | 30 y n 41, loss   0%, worst 5.47 from 1961 [2.25, 7.31], median 16.67
+  United States   20 y n 49, loss   0%, worst 1.08 from 1961 [0.60, 1.31], median 3.12 | 30 y n 39, loss   0%, worst 2.78 from 1964 [1.14, 3.71], median 7.31
+  US (Shiller, 1871-2022): 20 y worst 1.11 from 1900, 30 y worst 2.65 from 1890
+  markets with at least one real loss over 10 years: 21 (AUS, AUT, BEL, CAN, CHE, DEU, ESP, FIN, FRA, GBR, GRC, IRL, ISL, ITA, JPN, LUX, NLD, NZL, PRT, SWE, USA)
+  markets with at least one real loss over 20 years: 13 (AUT, CHE, DEU, FRA, GBR, GRC, IRL, ISL, ITA, JPN, LUX, NLD, NZL)
+  markets with at least one real loss over 30 years: 2 (GRC, ITA)
+
+LOSS EPISODES, 3%: runs of consecutive start years with a real loss
+  10 years: 56 episodes, 223 start years
+    Australia       1964-1969  worst 0.51
+    Australia       1971-1972  worst 0.53
+    Austria         1961-1962  worst 0.67
+    Austria         1964-1964  worst 0.98
+    Austria         1967-1974  worst 0.55
+    Austria         1990-1990  worst 0.91
+    Austria         2005-2007  worst 0.69
+    Belgium         1998-1998  worst 0.73
+    Canada          1964-1968  worst 0.79
+    Canada          1972-1972  worst 0.85
+    Switzerland     1964-1964  worst 0.73
+    Switzerland     1968-1972  worst 0.67
+    Germany         1960-1961  worst 0.73
+    Germany         1963-1964  worst 0.75
+    Germany         1968-1972  worst 0.70
+    Germany         1998-1999  worst 0.87
+    Spain           2005-2007  worst 0.69
+    Spain           2009-2010  worst 0.91
+    Finland         1957-1957  worst 0.92
+    Finland         1970-1973  worst 0.69
+    Finland         1999-2001  worst 0.55
+    Finland         2007-2007  worst 0.95
+    France          1957-1957  worst 0.87
+    France          1960-1973  worst 0.54
+    France          1999-2001  worst 0.85
+    United Kingdom  1963-1972  worst 0.41
+    United Kingdom  1998-1999  worst 0.83
+    Greece          1998-2010  worst 0.17
+    Ireland         1964-1973  worst 0.35
+    Ireland         1998-2002  worst 0.49
+    Ireland         2004-2004  worst 1.00
+    Ireland         2006-2006  worst 0.90
+    Iceland         1998-2007  worst 0.17
+    Italy           1959-1974  worst 0.23
+    Italy           1986-1986  worst 0.77
+    Italy           1998-2007  worst 0.59
+    Japan           1972-1972  worst 0.93
+    Japan           1987-1994  worst 0.56
+    Japan           1999-2001  worst 0.75
+    Luxembourg      1999-1999  worst 0.92
+    Luxembourg      2005-2007  worst 0.55
+    Luxembourg      2009-2010  worst 0.63
+    Luxembourg      2013-2014  worst 0.91
+    Netherlands     1960-1961  worst 0.72
+    Netherlands     1963-1972  worst 0.53
+    Netherlands     1998-2001  worst 0.60
+    New Zealand     1967-1972  worst 0.41
+    New Zealand     1980-1980  worst 0.89
+    New Zealand     1984-1986  worst 0.55
+    New Zealand     1998-1999  worst 0.98
+    Portugal        1998-1998  worst 0.89
+    Portugal        2006-2007  worst 0.86
+    Sweden          1964-1964  worst 0.89
+    Sweden          1967-1969  worst 0.74
+    United States   1964-1972  worst 0.63
+    United States   1998-1998  worst 0.95
+  10 years against bonds: 69 episodes, 300 start years
+  20 years: 18 episodes, 68 start years
+    Austria         1960-1964  worst 0.47
+    Switzerland     1961-1962  worst 0.75
+    Germany         1960-1961  worst 0.69
+    France          1956-1957  worst 0.56
+    France          1959-1964  worst 0.44
+    United Kingdom  1959-1959  worst 0.90
+    Greece          1990-1992  worst 0.53
+    Greece          1994-2005  worst 0.20
+    Ireland         1962-1964  worst 0.75
+    Iceland         1997-1999  worst 0.78
+    Iceland         2003-2005  worst 0.29
+    Italy           1957-1965  worst 0.23
+    Italy           2000-2000  worst 0.90
+    Japan           1988-1991  worst 0.52
+    Luxembourg      1999-2000  worst 0.61
+    Netherlands     1960-1963  worst 0.49
+    New Zealand     1968-1972  worst 0.57
+    New Zealand     1986-1986  worst 0.82
+  20 years against bonds: 48 episodes, 152 start years
+  30 years: 2 episodes, 6 start years
+    Greece          1990-1991  worst 0.61
+    Italy           1960-1963  worst 0.57
+  30 years against bonds: 17 episodes, 47 start years
+  20-year losses by decade of the start: 1950s 7, 1960s 29, 1970s 3, 1980s 3, 1990s 15, 2000s 11
+
+START CONDITIONS: real share price against its average over the ten year-ends to the start
+  10 y: 886 windows in 23 markets, Spearman correlation -0.16
+    quintile 1: ratio 0.13-0.79, real loss 11.8%, median wealth 2.01, worst 0.23
+    quintile 2: ratio 0.79-0.97, real loss 19.8%, median wealth 1.70, worst 0.25
+    quintile 3: ratio 0.97-1.14, real loss 18.6%, median wealth 1.78, worst 0.25
+    quintile 4: ratio 1.14-1.36, real loss 16.4%, median wealth 1.71, worst 0.17
+    quintile 5: ratio 1.36-3.97, real loss 29.9%, median wealth 1.51, worst 0.17
+  20 y: 658 windows in 22 markets, Spearman correlation -0.25
+    quintile 1: ratio 0.27-0.83, real loss 0.8%, median wealth 4.31, worst 0.64
+    quintile 2: ratio 0.83-0.99, real loss 3.8%, median wealth 3.23, worst 0.67
+    quintile 3: ratio 0.99-1.18, real loss 3.8%, median wealth 2.99, worst 0.44
+    quintile 4: ratio 1.18-1.44, real loss 0.8%, median wealth 3.02, worst 0.58
+    quintile 5: ratio 1.44-3.97, real loss 8.3%, median wealth 2.39, worst 0.20
+  US, Shiller's CAPE in December and the next 20 years: 122 starts, Spearman -0.73
+    quintile 1: CAPE 4.8-10.5, median wealth 6.01 (9.4% a year), worst 3.08
+    quintile 2: CAPE 10.7-13.7, median wealth 4.90 (8.3% a year), worst 1.77
+    quintile 3: CAPE 13.7-16.3, median wealth 3.79 (6.9% a year), worst 1.80
+    quintile 4: CAPE 16.5-19.6, median wealth 2.36 (4.4% a year), worst 1.43
+    quintile 5: CAPE 19.6-44.2, median wealth 2.04 (3.6% a year), worst 1.11

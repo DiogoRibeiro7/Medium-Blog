@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Holding stocks for 20 or 30 years: real losses in 23 OECD markets since the 1950s and the United States since 1871"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-23
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/long-horizon-stock-risk"
+references:
+  - type: data
+    title: "Financial market statistics (DSD_STES@DF_FINMARK) and consumer prices (DSD_PRICES@DF_PRICES_ALL)"
+    authors:
+      - name: OECD
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "S&P 500 (monthly prices, dividends, earnings, CPI, long rate), from Robert Shiller's online data"
+    authors:
+      - name: "Datasets (datasets/s-and-p-500)"
+    year: 2026
+    url: "https://github.com/datasets/s-and-p-500"

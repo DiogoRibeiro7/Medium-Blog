@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "dataset": "oecd-share-prices-bond-yields-cpi",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "4a7bae8f116aea0831bd8f58e5fe993d74b667ce",
+  "record": "datasets/oecd-share-prices-bond-yields-cpi/metadata.yaml",
+  "folder": "long-horizon-stock-risk",
+  "target": "long-horizon-stock-risk/data/oecd-share-prices-bond-yields-cpi",
+  "files": [
+    {
+      "path": "raw/finmark_share.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4a7bae8f116aea0831bd8f58e5fe993d74b667ce/datasets/oecd-share-prices-bond-yields-cpi/raw/finmark_share.csv",
+      "bytes": 1553774,
+      "sha256": "fe8d95a1b4e513a2ece424e5089a605f0c7d2df03f4efecfe3b107c3f2642efa"
+    },
+    {
+      "path": "raw/finmark_irlt.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4a7bae8f116aea0831bd8f58e5fe993d74b667ce/datasets/oecd-share-prices-bond-yields-cpi/raw/finmark_irlt.csv",
+      "bytes": 1230857,
+      "sha256": "4307f2d3cafdf5d2664fdd12ebba430d2e2a6679b1c54eb724e37eebd23786f3"
+    },
+    {
+      "path": "raw/prices_cpi.csv",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/4a7bae8f116aea0831bd8f58e5fe993d74b667ce/datasets/oecd-share-prices-bond-yields-cpi/raw/prices_cpi.csv",
+      "bytes": 2483687,
+      "sha256": "4102c7d14b927160ae646aba06a342b50e50844db98a4edc910602114ecaac36"
+    }
+  ]
+}
