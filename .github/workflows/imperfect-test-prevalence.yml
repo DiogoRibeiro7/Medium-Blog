@@ -1,0 +1,64 @@
+name: Reproduce imperfect-test-prevalence
+
+on:
+  pull_request:
+    paths:
+      - 'imperfect-test-prevalence/**'
+      - '.github/workflows/imperfect-test-prevalence.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'imperfect-test-prevalence/**'
+      - '.github/workflows/imperfect-test-prevalence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: imperfect-test-prevalence
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: imperfect-test-prevalence/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on cases with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python prevalence_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=imperfect-test-prevalence/output.txt::output of prevalence_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_false_alarms fig2_posteriors fig3_joint fig4_design fig5_validation_floor; do
+            test -s "figures/$f.png"
+          done
