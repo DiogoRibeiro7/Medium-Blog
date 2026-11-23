@@ -127,7 +127,7 @@ class PipelineTest(unittest.TestCase):
         self.assertGreater(d["blind (same model)"]["pass"], d["blind ministral-3-8b"]["pass"])
 
     def test_figures_drawn(self):
-        for f in ("fig1_designs", "fig2_error_correlation", "fig3_anchoring"):
+        for f in ("fig1_designs", "fig2_error_correlation", "fig3_anchoring", "fig4_tradeoff"):
             self.assertGreater((self.tmp / "figs" / f"{f}.png").stat().st_size, 10_000, f)
 
     def test_parse_answer(self):

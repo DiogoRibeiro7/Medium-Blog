@@ -398,9 +398,12 @@ def main(argv=None) -> int:
         print(f"  coder {k} ({n} questions; coder wrong on {pct(cwrong.mean())}):")
         print(f"    {'tester':<24} {'misses':<22} false alarms")
         dk = {}
+        q_w, q_r = cwrong.mean(), cright.mean()
         for name, (mi, fa, _, _) in rows.items():
-            print(f"    {name:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1])}")
-            dk[name] = {"pass": mi[0], "ci": list(mi[1]), "false_alarm": fa[0], "false_alarm_ci": list(fa[1])}
+            print(f"    {name:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1]):<15} "
+                  f"= {pct(mi[0] / q_w, 0)} of the coder's errors pass, {pct(fa[0] / q_r, 0)} of its right answers fail")
+            dk[name] = {"pass": mi[0], "ci": list(mi[1]), "false_alarm": fa[0], "false_alarm_ci": list(fa[1]),
+                        "pass_share_of_errors": mi[0] / q_w, "alarm_share_of_right": fa[0] / q_r}
         # what reordering buys: anchored minus blind, same model, paired over the same bootstrap draws
         d_point = rows["anchored"][0][0] - rows["blind (same model)"][0][0]
         d_reps = rows["anchored"][0][2] - rows["blind (same model)"][0][2]
@@ -419,18 +422,23 @@ def main(argv=None) -> int:
             om = (cw & (at["blind"] == ac["coder"])).astype(float)
             of = (cr & (at["blind"] != ac["coder"])).astype(float)
             sm = (cw & (ac["blind"] == ac["coder"])).astype(float)
+            sf = (cr & (ac["blind"] != ac["coder"])).astype(float)
             idx2 = boot_idx(len(common), rng)
             mi, fa = plain(om, idx2), plain(of, idx2)
             diff = sm[idx2].mean(1) - om[idx2].mean(1)
             lo, hi = np.quantile(diff, [0.025, 0.975])
             label = f"blind {kt}" + (" (same family)" if s["relation"] == "same family" else "")
-            print(f"    {label:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1])}   "
-                  f"misses vs same-model blind: {pct(sm.mean() - om.mean(), 1)} fewer [{pct(lo)}, {pct(hi)}]; "
-                  f"tester wrong on {pct(s['q_tester'])}")
+            d_miss, d_fa = sm.mean() - om.mean(), of.mean() - sf.mean()
+            ratio = d_fa / d_miss if d_miss > 0 and d_fa > 0 else float("nan")
+            print(f"    {label:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1]):<15} "
+                  f"vs same-model blind: {pct(d_miss)} fewer misses [{pct(lo)}, {pct(hi)}], "
+                  f"{pct(d_fa)} more false alarms; break-even cost ratio {ratio:.2f}; tester wrong on {pct(s['q_tester'])}")
             dk[f"blind {kt}"] = {"relation": s["relation"], "pass": mi[0], "ci": list(mi[1]),
                                  "false_alarm": fa[0], "false_alarm_ci": list(fa[1]), "n": len(common),
                                  "same_model_on_common": float(sm.mean()), "minus_same": float(sm.mean() - om.mean()),
-                                 "minus_same_ci": [float(lo), float(hi)], "q_tester": s["q_tester"]}
+                                 "minus_same_ci": [float(lo), float(hi)], "q_tester": s["q_tester"],
+                                 "more_false_alarms": float(d_fa), "break_even_ratio": float(ratio),
+                                 "pass_share_of_errors": float(om.sum() / cw.sum()) if cw.sum() else float("nan")}
         designs[k] = dk
         summary["models"][k]["designs"] = dk
 
@@ -442,6 +450,15 @@ def main(argv=None) -> int:
     for rel in ("same family", "other family"):
         pooled[f"blind, {rel}"] = [d for k in keys for nm, d in designs[k].items()
                                    if nm.startswith("blind ") and isinstance(d, dict) and d.get("relation") == rel]
+    ratios = [d["break_even_ratio"] for k in keys for nm, d in designs[k].items()
+              if nm.startswith("blind ") and isinstance(d, dict) and d.get("relation") == "other family"
+              and np.isfinite(d.get("break_even_ratio", np.nan))]
+    if ratios:
+        print(f"Break-even cost ratio, other-family blind tester against same-model blind tester: median "
+              f"{np.median(ratios):.2f} (range {min(ratios):.2f} to {max(ratios):.2f}, {len(ratios)} pairs). The\n"
+              "other-family tester costs less whenever a missed error costs more than this many false alarms.")
+        summary["break_even_ratio"] = {"median": float(np.median(ratios)), "min": float(min(ratios)),
+                                       "max": float(max(ratios)), "pairs": len(ratios)}
     for name, v in pooled.items():
         if v:
             mi = np.mean([d["pass"] for d in v])
@@ -560,6 +577,36 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
                  fontweight="bold", fontsize=11.5)
     fig.tight_layout(rect=(0, 0.09, 1, 0.95))
     fig.savefig(fig_dir / "fig1_designs.png")
+    plt.close(fig)
+
+    # Figure 4: misses against false alarms, every design and pair
+    fig, ax = plt.subplots(figsize=(7.6, 5.4))
+    seen = set()
+    for k in keys:
+        for name, d in designs[k].items():
+            if not isinstance(d, dict) or "false_alarm" not in d:
+                continue
+            if name == "anchored":
+                col, mk, lab = ORANGE, "o", "Read the coder's answer first"
+            elif name == "warned":
+                col, mk, lab = PURPLE, "D", "Read it, told the coder may be wrong"
+            elif name == "blind (same model)":
+                col, mk, lab = BLUE, "s", "Blind, same model"
+            elif d.get("relation") == "same family":
+                col, mk, lab = BLUE_RAMP[0], "^", "Blind, same family, other model"
+            else:
+                col, mk, lab = AQUA, "^", "Blind, another family"
+            ax.plot(100 * d["false_alarm"], 100 * d["pass"], mk, color=col, ms=6, alpha=0.85,
+                    label=lab if lab not in seen else None)
+            seen.add(lab)
+    ax.set_xlabel("False alarms: coder right, test fails (% of questions)")
+    ax.set_ylabel("Misses: coder wrong, test passes (% of questions)")
+    ax.set_xlim(left=0)
+    ax.set_ylim(bottom=0)
+    ax.legend(fontsize=9, loc="upper right")
+    ax.set_title("Every coder and tester pairing: what passes against what is blocked", loc="left")
+    fig.tight_layout()
+    fig.savefig(fig_dir / "fig4_tradeoff.png")
     plt.close(fig)
 
     # Figure 2: error-correlation matrix
