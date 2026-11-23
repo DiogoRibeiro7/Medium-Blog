@@ -115,7 +115,10 @@ def read_evidence(
 ) -> tuple[dict[tuple[str, int], ProvisionEvidence], int, int]:
     """Combine the previous 3 cases and 4 new cases, without mutation."""
     evidence: dict[tuple[str, int], ProvisionEvidence] = {}
-    for ledger, path in (("previously_reviewed", legacy_file), ("new_review", expansion_file)):
+    for ledger, path in (
+        ("previously_reviewed", legacy_file),
+        ("new_review", expansion_file),
+    ):
         for row in _rows(path, EVIDENCE_FIELDS):
             key = row["country"], int(row["author_year"])
             if key in evidence:
@@ -124,14 +127,23 @@ def read_evidence(
                 raise ValueError("The composite-index attribution is not verified")
             enacted = _date(row["enacted_on"])
             start = _date(row["first_applicable_period_start"])
-            end = _date(row["last_applicable_period_day"]) if row["last_applicable_period_day"] else None
+            end = (
+                _date(row["last_applicable_period_day"])
+                if row["last_applicable_period_day"]
+                else None
+            )
             if end is not None and end < start:
                 raise ValueError("Tax-period end precedes its beginning")
             if enacted.year > key[1]:
                 raise ValueError("Legislation postdates the author flag-year")
             if start.year != key[1]:
-                raise ValueError("This audit records a provision-year context, not a re-dated flag")
-            if not row["statute_title"].strip() or not row["provision_identifier"].strip():
+                raise ValueError(
+                    "This audit records a provision-year context, not a re-dated flag"
+                )
+            if (
+                not row["statute_title"].strip()
+                or not row["provision_identifier"].strip()
+            ):
                 raise ValueError("Statute and individual provision must be named")
             if not row["taxable_period_kind"].strip():
                 raise ValueError("Explicit tax-period scope is mandatory")
@@ -175,7 +187,9 @@ def audit_legislative_coverage(
         if first == key[1]:
             onset_keys.add(key)
     if set(evidence) - set(flags):
-        raise ValueError("A legislative record refers to a nonexistent 2-SD author flag")
+        raise ValueError(
+            "A legislative record refers to a nonexistent 2-SD author flag"
+        )
 
     onsets: dict[tuple[str, int], bool] = {}
     for row in onset_rows:
@@ -207,11 +221,15 @@ def audit_legislative_coverage(
                 run_start=flags[key],
                 is_onset=is_onset,
                 baseline_donor_eligible_onset=onsets.get(key, False),
-                legal_context_status="provision_period_context_only" if record else "unreviewed",
+                legal_context_status="provision_period_context_only"
+                if record
+                else "unreviewed",
                 statute_title=record.statute_title if record else "",
                 enacted_on=record.enacted_on if record else "",
                 provision_period_start=record.period_start if record else "",
-                provision_precedes_enactment=record.period_precedes_enactment if record else None,
+                provision_precedes_enactment=record.period_precedes_enactment
+                if record
+                else None,
                 author_composite_effective_date_verified=False,
                 causal_estimand_identified=False,
             )
@@ -220,7 +238,9 @@ def audit_legislative_coverage(
     reviewed = [row for row in register if row.legal_context_status != "unreviewed"]
     legal_onsets = [row for row in reviewed if row.is_onset]
     eligible_legal = [row for row in legal_onsets if row.baseline_donor_eligible_onset]
-    statute_ids = {(row.country, row.statute_title, row.enacted_on) for row in evidence.values()}
+    statute_ids = {
+        (row.country, row.statute_title, row.enacted_on) for row in evidence.values()
+    }
     report: dict[str, Any] = {
         "status": "legislation_context_coverage_and_nonidentification_only",
         "n_author_flag_years": len(register),
@@ -243,7 +263,9 @@ def audit_legislative_coverage(
         "n_eligible_onsets_causal_identified": 0,
         "new_legal_case_ids": [
             f"{item.country}-{item.author_year}"
-            for item in sorted(evidence.values(), key=lambda x: (x.author_year, x.country))
+            for item in sorted(
+                evidence.values(), key=lambda x: (x.author_year, x.country)
+            )
             if item.ledger == "new_review"
         ],
         "legal_scope": (
@@ -278,20 +300,33 @@ def run(
     hashes = {
         "author_flag_years": hashlib.sha256(flags_file.read_bytes()).hexdigest(),
         "onset_eligibility": hashlib.sha256(onsets_file.read_bytes()).hexdigest(),
-        "previous_provision_periods": hashlib.sha256(legacy_file.read_bytes()).hexdigest(),
+        "previous_provision_periods": hashlib.sha256(
+            legacy_file.read_bytes()
+        ).hexdigest(),
         "new_legal_context": hashlib.sha256(expansion_file.read_bytes()).hexdigest(),
         "previous_onset_audit": hashlib.sha256(previous_file.read_bytes()).hexdigest(),
     }
     if (
         hashes["author_flag_years"] != previous["source_sha256"]["author_flag_years"]
-        or hashes["previous_provision_periods"] != previous["source_sha256"]["tax_provision_ledger"]
+        or hashes["previous_provision_periods"]
+        != previous["source_sha256"]["tax_provision_ledger"]
     ):
-        raise ValueError("Previous author flags or legal context no longer match their original audit")
+        raise ValueError(
+            "Previous author flags or legal context no longer match their original audit"
+        )
     evidence, old_count, new_count = read_evidence(legacy_file, expansion_file)
     flags = _rows(flags_file, frozenset({"country", "author_year", "run_start"}))
-    onsets = _rows(onsets_file, frozenset({"country", "first_flag_year", "baseline_donor_eligible"}))
+    onsets = _rows(
+        onsets_file,
+        frozenset({"country", "first_flag_year", "baseline_donor_eligible"}),
+    )
     register, summary = audit_legislative_coverage(
-        flags, onsets, evidence, previous, legacy_count=old_count, expansion_count=new_count
+        flags,
+        onsets,
+        evidence,
+        previous,
+        legacy_count=old_count,
+        expansion_count=new_count,
     )
     report: dict[str, Any] = {
         **summary,
@@ -313,18 +348,25 @@ def run(
                 "tax_period_rule": item.tax_period_rule,
                 "attribution": ATTRIBUTION,
             }
-            for item in sorted(evidence.values(), key=lambda x: (x.author_year, x.country))
+            for item in sorted(
+                evidence.values(), key=lambda x: (x.author_year, x.country)
+            )
         ],
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     with (output_dir / "legislative_review_all_flag_years.csv").open(
         "w", encoding="utf-8", newline=""
     ) as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(CoverageFlag.__dataclass_fields__))
+        writer = csv.DictWriter(
+            handle, fieldnames=list(CoverageFlag.__dataclass_fields__)
+        )
         writer.writeheader()
         writer.writerows(asdict(row) for row in register)
     (output_dir / "legislative_coverage_audit.json").write_text(
-        json.dumps(report, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False) + "\n",
+        json.dumps(
+            report, indent=2, sort_keys=True, ensure_ascii=False, allow_nan=False
+        )
+        + "\n",
         encoding="utf-8",
     )
     return report
