@@ -65,6 +65,8 @@ def fetch_mmlu(cfg: dict, cache: Path = HERE / "data") -> tuple[list[Question], 
     path = Path(hf_hub_download(m["repo_id"], m["filename"], repo_type="dataset", revision=sha,
                                 cache_dir=str(cache)))
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    if m.get("sha256") and digest != m["sha256"]:
+        raise RuntimeError(f"MMLU file digest {digest} differs from the pinned {m['sha256']}")
     table = pq.read_table(path).to_pylist()
     rows = [Question(i, r["subject"], r["question"], tuple(r["choices"]), int(r["answer"]))
             for i, r in enumerate(table)]
@@ -171,22 +173,31 @@ class Rejected(Exception):
 
 
 class Client:
-    def __init__(self, endpoint: str, token: str, timeout: float = 120.0, sleep=time.sleep):
+    def __init__(self, endpoint: str, token: str, api_version: str | None = "2026-03-10",
+                 timeout: float = 120.0, sleep=time.sleep):
         self.endpoint = endpoint.rstrip("/")
         self.token = token
+        self.api_version = api_version
         self.timeout = timeout
         self.sleep = sleep
 
+    def headers(self) -> dict:
+        h = {"Accept": "application/vnd.github+json", "Authorization": f"Bearer {self.token}",
+             "Content-Type": "application/json"}
+        if self.api_version:
+            h["X-GitHub-Api-Version"] = self.api_version
+        return h
+
     def _request(self, method: str, path: str, payload: dict | None = None):
         data = None if payload is None else json.dumps(payload).encode()
-        req = urllib.request.Request(self.endpoint + path, data=data, method=method, headers={
-            "Accept": "application/vnd.github+json",
-            "Authorization": f"Bearer {self.token}",
-            "X-GitHub-Api-Version": "2022-11-28",
-            "Content-Type": "application/json",
-        })
+        req = urllib.request.Request(self.endpoint + path, data=data, method=method, headers=self.headers())
         with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-            return json.loads(resp.read().decode())
+            raw = resp.read()
+            try:
+                return json.loads(raw.decode())
+            except (UnicodeDecodeError, json.JSONDecodeError):
+                raise RuntimeError(f"{method} {path}: HTTP {resp.status}, content-type "
+                                   f"{resp.headers.get('Content-Type')!r}, not JSON: {raw[:300]!r}") from None
 
     def catalog(self) -> list[dict]:
         return self._request("GET", "/catalog/models")
@@ -237,16 +248,21 @@ def _retry_after(headers, body: str) -> float | None:
     return float(m.group(1)) if m else None
 
 
-def resolve_models(cfg: dict, catalog: list[dict]) -> list[dict]:
+def resolve_models(cfg: dict, catalog: list[dict] | None) -> list[dict]:
     """Match each configured model to the first candidate present in the catalog (case-insensitive)
-    and attach its rate-limit tier. Models with no candidate in the catalog are returned with id None."""
-    by_id = {m["id"].lower(): m for m in catalog}
+    and attach its rate-limit tier. Models with no candidate in the catalog are returned with id None.
+    Without a catalog (None), the first candidate and the tier written in config.json are used."""
+    by_id = {m["id"].lower(): m for m in (catalog or [])}
     out = []
     for spec in cfg["models"]:
-        hit = next((by_id[c.lower()] for c in spec["candidates"] if c.lower() in by_id), None)
-        tier = (hit or {}).get("rate_limit_tier", "low")
+        if catalog is None:
+            hit = {"id": spec["candidates"][0], "rate_limit_tier": spec.get("tier", "high")}
+        else:
+            hit = next((by_id[c.lower()] for c in spec["candidates"] if c.lower() in by_id), None)
+        tier = (hit or {}).get("rate_limit_tier") or spec.get("tier", "high")
         tier = tier if tier in cfg["tiers"] else "high"
         out.append({**spec, "id": hit["id"] if hit else None, "tier": tier,
+                    "resolved_from": "config" if catalog is None else "catalog",
                     "n_questions": cfg["tiers"][tier]["n_questions"],
                     "rpm": cfg["tiers"][tier]["rpm"], "per_day": cfg["tiers"][tier]["per_day"]})
     return out

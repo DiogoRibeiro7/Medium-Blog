@@ -131,10 +131,15 @@ def main(argv=None) -> int:
     if not token:
         print("GITHUB_TOKEN is not set", file=sys.stderr)
         return 2
-    client = Client(args.endpoint or cfg["endpoint"], token)
+    client = Client(args.endpoint or cfg["endpoint"], token, cfg.get("api_version"))
     rows, source = load_questions(cfg, args.questions_file)
     order = sample_order(rows, cfg)
-    specs = resolve_models(cfg, client.catalog())
+    try:
+        catalog = client.catalog()
+    except Exception as e:  # noqa: BLE001 - the inference calls are what matter; fall back to config
+        print(f"catalog unavailable ({e}); using the first candidate and tier in config.json", file=sys.stderr)
+        catalog = None
+    specs = resolve_models(cfg, catalog)
     if args.models:
         specs = [s for s in specs if s["key"] in args.models]
     missing = [s["key"] for s in specs if s["id"] is None]

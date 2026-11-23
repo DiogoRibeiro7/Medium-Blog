@@ -30,11 +30,11 @@ Intervals: Wilson for proportions, and a bootstrap over questions (2,000 replica
 
 ## Questions
 
-MMLU (Hendrycks et al., 2021), test split, from `cais/mmlu` on Hugging Face (`all/test-00000-of-00001.parquet`), downloaded on every run. The resolved revision and the file's SHA-256 are recorded by `probe.py` and pinned in `config.json` after the first probe. 300 questions drawn at random (seed 20261123). Models with a smaller quota answer the first 100 of the same order, so their questions are a random subset of everyone else's. MMLU is MIT-licensed. Neither the questions nor the key are redistributed here.
+MMLU (Hendrycks et al., 2021), test split, from `cais/mmlu` on Hugging Face (`all/test-00000-of-00001.parquet`), downloaded on every run. Pinned in `config.json` at revision `c30699e` with the file's SHA-256, which every run checks: 14,042 questions in 57 subjects. 300 questions drawn at random (seed 20261123). Models with a smaller quota answer the first 100 of the same order, so their questions are a random subset of everyone else's. MMLU is MIT-licensed. Neither the questions nor the key are redistributed here.
 
 ## Models and quota
 
-Served by [GitHub Models](https://docs.github.com/en/github-models) through the workflow's own token (`permissions: models: read`), at temperature 0 with up to 400 output tokens:
+Served by [GitHub Models](https://docs.github.com/en/github-models) through the workflow's own token (`permissions: models: read`), at temperature 0 with up to 400 output tokens. The tier comes from the catalog when it answers, otherwise from `config.json`:
 
 | Key | Candidates (first one in the catalog is used) | Family |
 |---|---|---|

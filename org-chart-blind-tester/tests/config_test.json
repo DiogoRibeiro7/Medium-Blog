@@ -1,7 +1,11 @@
 {
   "experiment": "org-chart-blind-tester",
   "prompt_version": "v1",
-  "mmlu": {"repo_id": "synthetic", "filename": "-", "revision": "-"},
+  "mmlu": {
+    "repo_id": "synthetic",
+    "filename": "-",
+    "revision": "-"
+  },
   "seed": 20261123,
   "n_questions": 1500,
   "check_share": 0.2,
@@ -9,14 +13,59 @@
   "max_tokens": 400,
   "endpoint": "http://127.0.0.1:1",
   "tiers": {
-    "low": {"rpm": 1000000, "per_day": 1000000, "n_questions": 1500},
-    "high": {"rpm": 1000000, "per_day": 1000000, "n_questions": 600}
+    "low": {
+      "rpm": 1000000,
+      "per_day": 1000000,
+      "n_questions": 1500
+    },
+    "high": {
+      "rpm": 1000000,
+      "per_day": 1000000,
+      "n_questions": 600
+    }
   },
   "models": [
-    {"key": "gpt-4o-mini", "family": "OpenAI", "candidates": ["openai/gpt-4o-mini"]},
-    {"key": "gpt-4o", "family": "OpenAI", "candidates": ["openai/gpt-4o"]},
-    {"key": "llama", "family": "Meta", "candidates": ["meta/Llama-3.3-70B-Instruct", "meta/Meta-Llama-3.1-8B-Instruct"]},
-    {"key": "mistral-small", "family": "Mistral AI", "candidates": ["mistral-ai/mistral-small-2503"]},
-    {"key": "phi-4", "family": "Microsoft", "candidates": ["microsoft/Phi-4"]}
-  ]
+    {
+      "key": "gpt-4o-mini",
+      "family": "OpenAI",
+      "candidates": [
+        "openai/gpt-4o-mini"
+      ],
+      "tier": "low"
+    },
+    {
+      "key": "gpt-4o",
+      "family": "OpenAI",
+      "candidates": [
+        "openai/gpt-4o"
+      ],
+      "tier": "high"
+    },
+    {
+      "key": "llama",
+      "family": "Meta",
+      "candidates": [
+        "meta/Llama-3.3-70B-Instruct",
+        "meta/Meta-Llama-3.1-8B-Instruct"
+      ],
+      "tier": "low"
+    },
+    {
+      "key": "mistral-small",
+      "family": "Mistral AI",
+      "candidates": [
+        "mistral-ai/mistral-small-2503"
+      ],
+      "tier": "low"
+    },
+    {
+      "key": "phi-4",
+      "family": "Microsoft",
+      "candidates": [
+        "microsoft/Phi-4"
+      ],
+      "tier": "low"
+    }
+  ],
+  "api_version": "2026-03-10"
 }

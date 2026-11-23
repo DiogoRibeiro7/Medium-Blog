@@ -20,14 +20,25 @@ from pathlib import Path
 from common import Client, load_config, load_questions, messages, parse_answer, resolve_models, sample_order
 
 
-def call_with_headers(endpoint: str, token: str, model: str, msgs, cfg) -> dict:
+def raw_get(client: Client, path: str) -> dict:
+    """Status, content type and the start of the body, whatever comes back."""
+    req = urllib.request.Request(client.endpoint + path, method="GET", headers=client.headers())
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            body = resp.read()
+            return {"status": resp.status, "content_type": resp.headers.get("Content-Type"),
+                    "final_url": resp.geturl(), "bytes": len(body), "head": body[:300].decode(errors="replace")}
+    except urllib.error.HTTPError as e:
+        return {"status": e.code, "content_type": e.headers.get("Content-Type"),
+                "head": e.read()[:300].decode(errors="replace")}
+    except Exception as e:  # noqa: BLE001
+        return {"error": repr(e)}
+
+
+def call_with_headers(client: Client, model: str, msgs, cfg) -> dict:
     payload = {"model": model, "messages": msgs, "temperature": cfg["temperature"], "max_tokens": cfg["max_tokens"]}
-    req = urllib.request.Request(endpoint.rstrip("/") + "/inference/chat/completions",
-                                 data=json.dumps(payload).encode(), method="POST", headers={
-                                     "Accept": "application/vnd.github+json",
-                                     "Authorization": f"Bearer {token}",
-                                     "X-GitHub-Api-Version": "2022-11-28",
-                                     "Content-Type": "application/json"})
+    req = urllib.request.Request(client.endpoint + "/inference/chat/completions",
+                                 data=json.dumps(payload).encode(), method="POST", headers=client.headers())
     try:
         with urllib.request.urlopen(req, timeout=120) as resp:
             body = json.loads(resp.read().decode())
@@ -52,18 +63,26 @@ def main(argv=None) -> int:
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("MODELS_TOKEN")
     report = {"probed_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")}
     endpoint = args.endpoint or cfg["endpoint"]
-    client = Client(endpoint, token or "")
-    try:
-        catalog = client.catalog()
+    client = Client(endpoint, token or "", cfg.get("api_version"))
+    catalog = None
+    for version in (cfg.get("api_version"), "2022-11-28", None):
+        c = Client(endpoint, token or "", version)
+        attempt = raw_get(c, "/catalog/models")
+        report.setdefault("catalog_attempts", []).append({"api_version": version, **attempt})
+        try:
+            catalog = c.catalog()
+            report["catalog_api_version"] = version
+            break
+        except Exception as e:  # noqa: BLE001 - the probe reports whatever went wrong
+            report["catalog_error"] = repr(e)[:500]
+    if catalog is not None:
+        report.pop("catalog_error", None)
         report["catalog_size"] = len(catalog)
         report["catalog"] = sorted(({"id": m.get("id"), "tier": m.get("rate_limit_tier"),
                                      "publisher": m.get("publisher")} for m in catalog), key=lambda m: m["id"] or "")
-        specs = resolve_models(cfg, catalog)
-        report["resolved"] = [{k: s[k] for k in ("key", "family", "id", "tier", "n_questions", "rpm", "per_day")}
-                              for s in specs]
-    except Exception as e:  # noqa: BLE001 - the probe reports whatever went wrong
-        report["catalog_error"] = repr(e)
-        specs = []
+    specs = resolve_models(cfg, catalog)
+    report["resolved"] = [{k: s[k] for k in ("key", "family", "id", "tier", "resolved_from", "n_questions",
+                                             "rpm", "per_day")} for s in specs]
     try:
         rows, source = load_questions(cfg, args.questions_file)
         order = sample_order(rows, cfg)
@@ -78,13 +97,13 @@ def main(argv=None) -> int:
         report["calls"] = {}
         for s in specs:
             if s["id"]:
-                report["calls"][s["key"]] = call_with_headers(endpoint, token, s["id"],
-                                                              messages("coder", q), cfg)
+                report["calls"][s["key"]] = call_with_headers(client, s["id"], messages("coder", q), cfg)
         report["calls_question"] = {"qid": q.qid, "subject": q.subject, "keyed": "ABCD"[q.answer]}
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     print(json.dumps({k: v for k, v in report.items() if k != "catalog"}, indent=2, ensure_ascii=False))
-    ok = "catalog_error" not in report and "questions_error" not in report
+    calls_ok = all(c.get("status") == 200 and c.get("answer") for c in report.get("calls", {}).values())
+    ok = "questions_error" not in report and bool(report.get("calls")) and calls_ok
     return 0 if ok else 1
 
 
