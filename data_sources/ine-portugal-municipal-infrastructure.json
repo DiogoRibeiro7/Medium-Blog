@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "dataset": "ine-portugal-municipal-infrastructure",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "0618920e36dc9da24c2d1814c09d6007b793351f",
+  "record": "external/ine-portugal-municipal-infrastructure/metadata.yaml",
+  "folder": "portugal-infrastructure-saturation",
+  "target": "portugal-infrastructure-saturation",
+  "retrieved": "2026-11-23",
+  "note": "INE stamps each response with its extraction time, so the pin is a content hash of IndicadorCod, DataUltimoAtualizacao and Dados (sorted-key JSON); a mismatch means a revision.",
+  "files": [
+    {
+      "path": "data/raw/pop_est_2011.json",
+      "indicator": "0008273",
+      "about": "Resident population, 31 Dec 2011 (NUTS 2013)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0008273&Dim1=S7A2011&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "66930de6ba4510282837f0ab429bf733b7e6c8dafc2db5702f0f67b52c8ad394"
+    },
+    {
+      "path": "data/raw/pop_est_2021_n13.json",
+      "indicator": "0008273",
+      "about": "Resident population, 31 Dec 2021 (NUTS 2013)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0008273&Dim1=S7A2021&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-07-17",
+      "content_sha256": "461b344ba84b4f8c685194d6b725e7ae0e97ff9fa8465796a8540a0677a58fc2"
+    },
+    {
+      "path": "data/raw/pop_est_2021.json",
+      "indicator": "0012918",
+      "about": "Resident population, 31 Dec 2021 (NUTS 2024)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&Dim1=S7A2021&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-06-22",
+      "content_sha256": "1d6d68946df1447afbdd5a7242ddf79188436e80d96f25d7d8cd550c880eb5f1"
+    },
+    {
+      "path": "data/raw/pop_est_2022.json",
+      "indicator": "0012918",
+      "about": "Resident population, 31 Dec 2022 (NUTS 2024)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&Dim1=S7A2022&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-06-22",
+      "content_sha256": "0465367b3a7bad10baf39645d37498a044d66ebcebe0ba1a1ed8fd03a60b8ebf"
+    },
+    {
+      "path": "data/raw/pop_est_2023.json",
+      "indicator": "0012918",
+      "about": "Resident population, 31 Dec 2023 (NUTS 2024)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&Dim1=S7A2023&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-06-22",
+      "content_sha256": "db4924b9c6e9196c8b18c2383e4218f225cf3bbf38bb172b59658f82764a3f99"
+    },
+    {
+      "path": "data/raw/pop_est_2024.json",
+      "indicator": "0012918",
+      "about": "Resident population, 31 Dec 2024 (NUTS 2024)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&Dim1=S7A2024&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-06-22",
+      "content_sha256": "59a30fe5844330678bb536fd08e73951f6cf9c117cc366fcf820f9d4dd23d5a3"
+    },
+    {
+      "path": "data/raw/pop_est_2025.json",
+      "indicator": "0012918",
+      "about": "Resident population, 31 Dec 2025 (NUTS 2024)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012918&Dim1=S7A2025&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-06-22",
+      "content_sha256": "fe13e84f2ed3d6e85ec5bfab04d5ce28014424f1c5fa62d6c12c7c8ca035c1b7"
+    },
+    {
+      "path": "data/raw/births_2022.json",
+      "indicator": "0012450",
+      "about": "Live births by mother's residence, 2022",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012450&Dim1=S7A2022&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "b6cf34fe2be5bb1ff6822875ddac3c0bc366d629db51e59f3715db136e4be474"
+    },
+    {
+      "path": "data/raw/births_2023.json",
+      "indicator": "0012450",
+      "about": "Live births by mother's residence, 2023",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012450&Dim1=S7A2023&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "e46e62275b1cc9afc872f78c81c489eccadf834455e630fe54c32a0c205c8b73"
+    },
+    {
+      "path": "data/raw/births_2024.json",
+      "indicator": "0012450",
+      "about": "Live births by mother's residence, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012450&Dim1=S7A2024&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "a26eea6c8ede80692d1cdf9e2ff43020b55a336428188a335fa14a7c545663f5"
+    },
+    {
+      "path": "data/raw/births_2025.json",
+      "indicator": "0012450",
+      "about": "Live births by mother's residence, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012450&Dim1=S7A2025&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "b07bb9572e1023a7fb0c0262c3ded16812531189d705eb554015d8565ad78c9e"
+    },
+    {
+      "path": "data/raw/deaths_2022.json",
+      "indicator": "0012538",
+      "about": "Deaths by residence, 2022",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012538&Dim1=S7A2022&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "36140521c9c8d3e3f3eae3146b3d6e2987a3743a7112df52483ede883ca80d9b"
+    },
+    {
+      "path": "data/raw/deaths_2023.json",
+      "indicator": "0012538",
+      "about": "Deaths by residence, 2023",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012538&Dim1=S7A2023&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "fae56765994863f3f8270117445c9d0330266c35ac323ad48706bf04cc3df61b"
+    },
+    {
+      "path": "data/raw/deaths_2024.json",
+      "indicator": "0012538",
+      "about": "Deaths by residence, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012538&Dim1=S7A2024&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "6c61878b203b347756dd5e7347d070f9a6a8eb9ee6170fe2d2c3b26f0cf5a968"
+    },
+    {
+      "path": "data/raw/deaths_2025.json",
+      "indicator": "0012538",
+      "about": "Deaths by residence, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012538&Dim1=S7A2025&Dim3=T&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-04-30",
+      "content_sha256": "bddc7e7ab3e60ba559cf20dd1ad2bf05cfbac51645af0822bda1a18a834771f2"
+    },
+    {
+      "path": "data/raw/census21_pop_age.json",
+      "indicator": "0014630",
+      "about": "Census 2021 residents by life-cycle age group",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014630&Dim1=S7A2021&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-02-05",
+      "content_sha256": "1255a61a09483cce0fb0d7da01da230b2f132803a268217e5a5824362d122dd6"
+    },
+    {
+      "path": "data/raw/census21_migration.json",
+      "indicator": "0011631",
+      "about": "Census 2021 residents by place of residence one year before",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011631&Dim1=S7A2021&Dim3=T&lang=PT",
+      "ine_last_updated": "2022-11-23",
+      "content_sha256": "83cf966730f5976f2b9aff32eb5f5b8310c37799f9aea047b272f581037db183"
+    },
+    {
+      "path": "data/raw/census21_density.json",
+      "indicator": "0011613",
+      "about": "Census 2021 population density (per km2)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011613&Dim1=S7A2021&Dim3=T&lang=PT",
+      "ine_last_updated": "2025-04-08",
+      "content_sha256": "f25a1cf3776389af1d74e54670a4104cf2f893df4150a54c47170e2a3a9e7c73"
+    },
+    {
+      "path": "data/raw/census21_dwellings_occupancy.json",
+      "indicator": "0014624",
+      "about": "Census 2021 classic dwellings by form of occupancy",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014624&Dim1=S7A2021&Dim4=T&lang=PT",
+      "ine_last_updated": "2026-02-05",
+      "content_sha256": "54112b6ec44c5abecb4223fd28c3de4e7aee065a81ee19568594fa87edc9812d"
+    },
+    {
+      "path": "data/raw/census21_households_tenure.json",
+      "indicator": "0014622",
+      "about": "Census 2021 main-residence classic dwellings by tenure",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014622&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2026-02-05",
+      "content_sha256": "5ff7f09df5cc366c800aee1d14beb79b47610e5c62b08e8c314d8d9f94541c97"
+    },
+    {
+      "path": "data/raw/census21_crowding.json",
+      "indicator": "0012507",
+      "about": "Census 2021 main-residence classic dwellings by crowding level",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012507&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2024-03-19",
+      "content_sha256": "0b142e147fcc81dcd3556ba1bbf39fea48cc6dc5146682cb3be765e91b31297c"
+    },
+    {
+      "path": "data/raw/census_dwellings_change.json",
+      "indicator": "0012534",
+      "about": "Change in family dwellings, 2011-2021 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012534&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2024-03-19",
+      "content_sha256": "bfb522c0b650e3f2c33924dc624d7895e34f0f87d79607a4911260e06fb00bca"
+    },
+    {
+      "path": "data/raw/census_households_change.json",
+      "indicator": "0012488",
+      "about": "Change in private households, 2011-2021 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012488&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2024-03-19",
+      "content_sha256": "de7563878e33c906e318ec87caaa1947e634781c773e35deef9d300238e125b9"
+    },
+    {
+      "path": "data/raw/sale_price_2019.json",
+      "indicator": "0012255",
+      "about": "Median sale price of dwellings, EUR/m2, 2019",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012255&Dim1=S7A2019&Dim3=H1&lang=PT",
+      "ine_last_updated": "2026-04-24",
+      "content_sha256": "d7d8a2e97ca25c1543d95b369ca45a4005a64a7382ed4bead7bb96988eabe34a"
+    },
+    {
+      "path": "data/raw/sale_price_2021.json",
+      "indicator": "0012255",
+      "about": "Median sale price of dwellings, EUR/m2, 2021",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012255&Dim1=S7A2021&Dim3=H1&lang=PT",
+      "ine_last_updated": "2026-04-24",
+      "content_sha256": "eb7b64922bf2f0cc2d151c89ee5f3159477fb1a5271e707d2d0744852365cd02"
+    },
+    {
+      "path": "data/raw/sale_price_2024.json",
+      "indicator": "0012255",
+      "about": "Median sale price of dwellings, EUR/m2, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012255&Dim1=S7A2024&Dim3=H1&lang=PT",
+      "ine_last_updated": "2026-04-24",
+      "content_sha256": "8a9a59390b3251bf2cc43a4511a9578c8a8aaf7dd540ac1589a003978877ff6d"
+    },
+    {
+      "path": "data/raw/sale_price_2025.json",
+      "indicator": "0012255",
+      "about": "Median sale price of dwellings, EUR/m2, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012255&Dim1=S7A2025&Dim3=H1&lang=PT",
+      "ine_last_updated": "2026-04-24",
+      "content_sha256": "d1d1ed8a8465c68004ff2432108092e3012fc4d6380ec0eed637ef3815639a4d"
+    },
+    {
+      "path": "data/raw/new_rent_2021.json",
+      "indicator": "0014698",
+      "about": "Median rent of new leases, EUR/m2/month, 2021",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014698&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2026-09-29",
+      "content_sha256": "cca939a15fca14ebabc22e78b5d1413eb0c5f9abcd177002e6c40dc53f4dd25d"
+    },
+    {
+      "path": "data/raw/new_rent_2025.json",
+      "indicator": "0014698",
+      "about": "Median rent of new leases, EUR/m2/month, 2025",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0014698&Dim1=S7A2025&lang=PT",
+      "ine_last_updated": "2026-09-29",
+      "content_sha256": "f7420fc3a51d92d391fbf55d4cfabfadcbe5c8f0f254142562e7fa12d6e3889a"
+    },
+    {
+      "path": "data/raw/income_2019.json",
+      "indicator": "0012741",
+      "about": "Median declared income net of IRS per tax household, EUR, 2019",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012741&Dim1=S7A2019&lang=PT",
+      "ine_last_updated": "2026-07-24",
+      "content_sha256": "c0f5630301db31d022af32a2f436520738c22ac4f394c08e928326056c017454"
+    },
+    {
+      "path": "data/raw/income_2021.json",
+      "indicator": "0012741",
+      "about": "Median declared income net of IRS per tax household, EUR, 2021",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012741&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2026-07-24",
+      "content_sha256": "f72feed0309b4f7e8d182dafd0b58fdb65f0f44a690990bd7b044db4356b3952"
+    },
+    {
+      "path": "data/raw/income_2024.json",
+      "indicator": "0012741",
+      "about": "Median declared income net of IRS per tax household, EUR, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012741&Dim1=S7A2024&lang=PT",
+      "ine_last_updated": "2026-07-24",
+      "content_sha256": "2541911f20dfa9ed35b1fd5d41dc774b39a02b2882abc320cb1710a40fe0e1b9"
+    },
+    {
+      "path": "data/raw/commute_time_collective.json",
+      "indicator": "0011794",
+      "about": "Census 2021 mean commute (min), public transport users",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011794&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2023-03-30",
+      "content_sha256": "1076b42aa0bd152a9690007ec0621f4b44a27c2226a95174b0f69b824a190a6f"
+    },
+    {
+      "path": "data/raw/commute_time_individual.json",
+      "indicator": "0011795",
+      "about": "Census 2021 mean commute (min), private transport users",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011795&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2023-03-30",
+      "content_sha256": "e25f4ddfef86cd15e94c963a067edd376053215523cabed73aff0731c2994d5b"
+    },
+    {
+      "path": "data/raw/commute_out_share.json",
+      "indicator": "0011655",
+      "about": "Census 2021 share of residents commuting out of the municipality (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0011655&Dim1=S7A2021&lang=PT",
+      "ine_last_updated": "2022-11-23",
+      "content_sha256": "843d08ccfbd1c7b964703a294ec945a6d652c2df71eab136fdda47452392ca87"
+    },
+    {
+      "path": "data/raw/commute_pairs_lisboa.json",
+      "indicator": "0012340",
+      "about": "Census 2021 work/study interactions with Lisboa",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1106&lang=PT",
+      "ine_last_updated": "2024-03-19",
+      "content_sha256": "251240ddd0aacde871df2a33b6cbdd6d35bff8687e38f553abc64d17cace48ec"
+    },
+    {
+      "path": "data/raw/commute_pairs_porto.json",
+      "indicator": "0012340",
+      "about": "Census 2021 work/study interactions with Porto",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012340&Dim1=S7A2021&Dim2=1312&lang=PT",
+      "ine_last_updated": "2024-03-19",
+      "content_sha256": "3912eeab4d3531ab8e37e175484b047113f89756c574c66c6c1ff08f2b26b82d"
+    },
+    {
+      "path": "data/raw/school_pre_2012.json",
+      "indicator": "0009550",
+      "about": "Gross pre-school enrolment rate, 2011/12 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0009550&Dim1=7A2012_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "832300cc25a05755cb3071d9fc6ad154818167ac7a1f80c0540d698a745e43ed"
+    },
+    {
+      "path": "data/raw/school_basic_2012.json",
+      "indicator": "0009552",
+      "about": "Gross basic-education enrolment rate, 2011/12 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0009552&Dim1=7A2012_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "2064f1863e80659d3f8b6d7f2e4b065cca3adad59b2eb21f3910fd35f5d99112"
+    },
+    {
+      "path": "data/raw/school_sec_2012.json",
+      "indicator": "0009555",
+      "about": "Gross secondary enrolment rate, 2011/12 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0009555&Dim1=7A2012_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "3e5c93b2720b93c3396e30bb549f240e3efabf322cffa73be25aebf5156100b6"
+    },
+    {
+      "path": "data/raw/school_pre_2025.json",
+      "indicator": "0012616",
+      "about": "Gross pre-school enrolment rate, 2024/25 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012616&Dim1=7A2025_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "ee4fb1c682d86a39b158ab77130056ac541ada6d591880f834b057492246f5e7"
+    },
+    {
+      "path": "data/raw/school_basic_2025.json",
+      "indicator": "0012614",
+      "about": "Gross basic-education enrolment rate, 2024/25 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012614&Dim1=7A2025_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "90f6e2c1b0daef9dbeaec0e1e312c317d61e72c84ae00e3fe4b4b9cff4ff3612"
+    },
+    {
+      "path": "data/raw/school_sec_2025.json",
+      "indicator": "0012615",
+      "about": "Gross secondary enrolment rate, 2024/25 (%)",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012615&Dim1=7A2025_3&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-07-14",
+      "content_sha256": "ee6f582fbb2065c24c96459537f1e595c1101cf864ae2f956214ce35f33af435"
+    },
+    {
+      "path": "data/raw/hospitals_2024.json",
+      "indicator": "0012885",
+      "about": "Hospitals, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012885&Dim1=S7A2024&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-02",
+      "content_sha256": "8578ceef9b249a101d507514e817735dc10aa5999b110a4885851ba30b965b33"
+    },
+    {
+      "path": "data/raw/hospital_beds_sns_2024.json",
+      "indicator": "0012893",
+      "about": "Beds in public universal-access and PPP hospitals, 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012893&Dim1=S7A2024&Dim3=T&lang=PT",
+      "ine_last_updated": "2026-04-02",
+      "content_sha256": "64c32f1aa4c120e279dccd277c179bd87b4e427e795a329cce36344d531b62b8"
+    },
+    {
+      "path": "data/raw/hospital_bed_occupancy_2024.json",
+      "indicator": "0012892",
+      "about": "Hospital bed occupancy rate (%), 2024",
+      "url": "https://www.ine.pt/ine/json_indicador/pindica.jsp?op=2&varcd=0012892&Dim1=S7A2024&lang=PT",
+      "ine_last_updated": "2026-04-02",
+      "content_sha256": "aac2ad329dbbba9147ace7aee676dbb59747f893fc9396cbbbd1a57c06f9e59a"
+    }
+  ]
+}

@@ -1,0 +1,317 @@
+Portugal's saturated metro areas and the polycentric alternative: every number in the article
+Source: INE, Statistics Portugal (see sources.py); municipalities in NUTS 2024 geography
+
+==============================================================================
+1. WHERE THE PEOPLE WENT
+==============================================================================
+Residents, 31 Dec 2011 estimate:     10,558,950
+Residents, census 19 Apr 2021:       10,343,066  (-2.04%)
+Residents, 31 Dec 2021 estimate:     10,599,117  (revised series)
+Residents, 31 Dec 2025 estimate:     11,424,031  (+7.78% since Dec 2021)
+Revised Dec 2021 estimate minus 2021 census: 256,051 (2.48% of the census)
+
+By group (Lisboa and Porto are the two core municipalities; rings are the rest of each metro area)
+                   municipalities  census_2021  change_1121_pct  est_2025  change_2125_pct  share_of_pop_2021  share_of_growth_2125  revision_pct_of_census  share_of_revision
+group                                                                                                                                                                         
+Lisboa                          1       545796             0.59    658236             8.72               5.71                  6.40                   10.93              23.30
+Porto                           1       231800            -1.73    273476            12.00               2.30                  3.55                    5.34               4.83
+Lisbon metro ring              17      2324412             1.91   2694703            11.80              22.74                 34.49                    3.69              33.51
+Porto metro ring               16      1504428            -1.32   1588251             4.57              14.33                  8.41                    0.96               5.65
+Medium cities                  25      2087661            -0.85   2312076             8.19              20.16                 21.23                    2.36              19.25
+Rest of mainland              218      3161812            -5.76   3385831             6.16              30.09                 23.83                    0.87              10.72
+Islands                        30       487157            -5.31    511458             3.50               4.66                  2.10                    1.44               2.73
+Lisbon metro area: +1.66% 2011-2021; +11.18% 2021-2025 (337,271 residents, 40.9% of national growth); 28.5% of residents in 2021
+Porto metro area: -1.37% 2011-2021; +5.60% 2021-2025 (98,650 residents, 12.0% of national growth); 16.6% of residents in 2021
+Both metro areas: 52.8% of national growth 2021-2025, 45.1% of residents in 2021, 67.3% of the census-to-estimate revision
+
+Change Dec 2021-Dec 2025 split into natural change (births minus deaths, 2022-2025) and the rest (net migration)
+  Lisboa             change    52,789; natural    -4,340; net migration    57,129
+  Porto              change    29,302; natural    -4,155; net migration    33,457
+  Lisbon metro ring  change   284,482; natural       378; net migration   284,104
+  Porto metro ring   change    69,348; natural   -14,076; net migration    83,424
+  Medium cities      change   175,117; natural   -20,598; net migration   195,715
+  Rest of mainland   change   196,573; natural   -91,980; net migration   288,553
+  Islands            change    17,303; natural    -6,324; net migration    23,627
+  Portugal           change   824,914; natural  -141,095; net migration   966,009
+Municipalities that grew: 46 of 308 between 2011 and the 2021 census; 258 of 308 between Dec 2021 and Dec 2025
+
+Five largest municipalities in 2025
+                   name  pop_census_2021  pop_est_2021  pop_est_2025  revision_pct  change_2125_pct
+dico                                                                                               
+1106             Lisboa           545796        605447        658236         10.93             8.72
+1111             Sintra           385606        400216        449956          3.79            12.43
+1317  Vila Nova de Gaia           303824        306649        323202          0.93             5.40
+1312              Porto           231800        244174        273476          5.34            12.00
+1105            Cascais           214124        226392        242619          5.73             7.17
+
+Rank-size (Zipf) exponent zeta, Gabaix-Ibragimov estimator, standard error in brackets
+  2011 estimate  top 50: 1.733 (0.347); top 100: 1.413 (0.200); top 308: 0.817 (0.066)
+  2021 census    top 50: 1.718 (0.344); top 100: 1.386 (0.196); top 308: 0.789 (0.064)
+  2025 estimate  top 50: 1.712 (0.342); top 100: 1.367 (0.193); top 308: 0.764 (0.062)
+
+Gibrat test on mainland municipalities: growth (% a year) on log initial size, HC1 errors
+  2011-2021: slope 0.411 (s.e. 0.025) points a year per log point of size, R2 0.436
+     mean growth by size decile, smallest to largest: -1.51, -1.12, -1.25, -0.83, -0.88, -0.70, -0.41, -0.27, -0.17, 0.01
+  2021-2025: slope 0.557 (s.e. 0.052) points a year per log point of size, R2 0.283
+     mean growth by size decile, smallest to largest: 0.23, 0.21, 0.76, 0.74, 1.19, 1.24, 1.49, 1.94, 2.20, 2.04
+  Correlation of 2011-2021 and 2021-2025 growth across mainland municipalities: 0.772
+
+==============================================================================
+2. DID THE INFRASTRUCTURE FOLLOW?
+==============================================================================
+Housing (census 2021; prices are population-weighted medians of municipal medians, EUR/m2)
+                   households_change_pct  dwellings_change_pct  vacant_market_pct  vacant_other_pct  crowded_pct  rented_pct  price_2019  price_2025  price_change_1925_pct  price_to_income_2024
+Lisboa                             -1.35                 -1.89               6.80              8.13        14.80       42.27      3286.0      4875.0                  48.36                 23.67
+Porto                               1.38                 -2.92               7.21              7.99        15.74       44.17      1856.0      3347.0                  80.33                 18.26
+Lisbon metro ring                   5.47                  1.58               4.10              5.41        15.31       25.88      1354.0      2860.0                 111.23                 13.78
+Porto metro ring                    5.02                  2.04               3.92              5.12        13.72       24.33      1096.0      2163.0                  97.35                 10.51
+Medium cities                       5.23                  3.52               5.77              6.09        11.31       21.51       922.0      1750.0                  89.80                  8.57
+Rest of mainland                   -0.75                  1.98               7.05              6.82         9.58       14.29       679.0      1195.0                  75.99                  5.93
+Islands                             3.32                  2.44               6.70              6.40        20.52       17.44      1050.0      1912.0                  82.10                  9.01
+(price-to-income: median sale price of a 90 m2 dwelling in 2024 over the median declared income net of IRS of a tax household)
+
+Schools: gross enrolment rate, pupils enrolled in the municipality per 100 resident children of that age (child-weighted)
+                   pre_2012  pre_2025  basic_2012  basic_2025
+Lisboa                114.3     112.1       160.6       124.6
+Porto                 142.5     118.8       176.2       140.0
+Lisbon metro ring      75.9      89.2       113.2       100.2
+Porto metro ring       84.3      97.0       111.6       100.2
+Medium cities          92.6     102.2       118.5       105.6
+Rest of mainland       96.6     100.0       114.5       104.5
+Islands                91.8     100.2       112.5       106.0
+Ring municipalities with fewer pre-school places than resident children (rate < 100): 29 of 33 in 2011/12, 22 in 2024/25
+Lisbon ring municipalities with rate < 100 in 2024/25: 12 of 17; lowest: Odivelas 71.6, Moita 74.3, Sintra 78.9, Montijo 79.8
+
+Transport (census 2021, population-weighted) and health (SNS and PPP hospital beds, 2024)
+                   commute_collective_min  commute_individual_min  commute_out_pct  links_per_1000  sns_beds_per_1000  pop_without_hospital_pct
+Lisboa                              34.97                   19.64            10.00            1.73               5.45                      0.00
+Porto                               32.49                   18.84            14.53            4.07               9.77                      0.00
+Lisbon metro ring                   46.00                   21.28            28.26          170.62               1.19                     23.69
+Porto metro ring                    37.80                   17.77            25.54          109.30               1.22                     10.35
+Medium cities                       31.01                   16.18            14.06           20.95               3.58                      2.48
+Rest of mainland                    30.68                   17.07            17.36           16.62               0.77                     56.72
+Islands                             26.36                   14.86            14.86            8.96               3.26                     51.00
+Longest mean public-transport commutes:
+               name              group  commute_min_collective  commute_out_share
+dico                                                                             
+0204      Barrancos   Rest of mainland                    58.8               12.5
+1504       Barreiro  Lisbon metro ring                    58.1               28.0
+1410  Entroncamento   Rest of mainland                    56.9               30.6
+1506          Moita  Lisbon metro ring                    55.7               32.2
+1511       Sesimbra  Lisbon metro ring                    52.5               28.5
+SNS beds per 1000 residents across mainland NUTS III regions: min 0.00, median 1.79, max 4.50; Grande Lisboa 2.25, Peninsula de Setubal 1.46, Area Metropolitana do Porto 2.48
+Beds are counted where INE locates each hospital entity; a centre with several sites can appear under one municipality.
+Municipalities with a hospital (public or private) but no SNS/PPP beds recorded there: Arouca, São João da Madeira, Espinho, Trofa, Amarante, Pombal, Felgueiras, Ovar, Alcobaça, Montijo, Oliveira de Azeméis, Palmela, Portimão, Vila do Conde, Paredes, Loulé, Torres Vedras, Valongo, Vila Nova de Famalicão, Gondomar, Oeiras, Sintra (and 40 in the rest of the mainland)
+  SNS/PPP beds per 1000 residents (2024), Lisbon metro area: 2.03; residents per bed 492
+  SNS/PPP beds per 1000 residents (2024), Porto metro area: 2.48; residents per bed 404
+  SNS/PPP beds per 1000 residents (2024), Medium cities: 3.58; residents per bed 279
+  SNS/PPP beds per 1000 residents (2024), Rest of mainland: 0.77; residents per bed 1299
+
+==============================================================================
+3. A SATURATION INDEX AND HOW MUCH IT DEPENDS ON ITS WEIGHTS
+==============================================================================
+Mainland municipalities: 278; indicators missing: log_price_to_income_2024 5
+
+Mean dimension scores and composite by group (z units; higher = more pressure)
+                   housing  schools  transport  health  saturation
+group                                                             
+Lisboa                1.29    -1.77      -0.36   -0.15       -0.25
+Porto                 1.27    -2.42      -0.18   -0.39       -0.43
+Lisbon metro ring     1.30     0.60       1.91    0.31        1.03
+Porto metro ring      1.00     0.08       0.99   -0.39        0.42
+Medium cities         0.57    -0.13      -0.26    0.44        0.16
+Rest of mainland     -0.26    -0.02      -0.19   -0.04       -0.13
+
+Thirty most saturated municipalities (equal weights), with the 5-95% rank range over 5000 random weightings
+                        name              group  saturation  housing  schools  transport  health  rank_p05  rank_median  rank_p95  p_top30    binding
+dico                                                                                                                                                 
+1506                   Moita  Lisbon metro ring        1.49     1.21     1.58       2.44    0.71       1.0          2.0     11.00     1.00  transport
+1510                  Seixal  Lisbon metro ring        1.41     1.26     1.31       2.36    0.71       2.0          3.0     13.00     0.99  transport
+1101                Alenquer   Rest of mainland        1.31     0.68     1.84       1.21    1.50       1.0          6.0     29.00     0.96    schools
+1116                Odivelas  Lisbon metro ring        1.29     1.72     1.66       1.93   -0.15       1.0          4.0     61.00     0.89  transport
+1115                 Amadora  Lisbon metro ring        1.26     1.78     1.55       1.85   -0.15       1.0          6.0     63.00     0.88  transport
+1111                  Sintra  Lisbon metro ring        1.25     1.68     1.56       1.89   -0.15       3.0          6.0     65.00     0.88  transport
+1507                 Montijo  Lisbon metro ring        1.23     0.78     1.48       1.93    0.71       4.0          8.0     29.00     0.96  transport
+1102       Arruda dos Vinhos   Rest of mainland        1.18     0.92     0.19       2.11    1.50       1.0          9.0     44.00     0.88  transport
+1511                Sesimbra  Lisbon metro ring        1.15     1.20     0.53       2.16    0.71       4.0         10.0     35.00     0.92  transport
+1112  Sobral de Monte Agraço   Rest of mainland        1.10     0.51     0.90       1.50    1.50       2.0         14.0     39.00     0.89  transport
+1107                  Loures  Lisbon metro ring        1.08     1.70     0.90       1.87   -0.15       4.0         13.5     82.00     0.81  transport
+1508                 Palmela  Lisbon metro ring        1.07     1.08     0.66       1.84    0.71       9.0         15.0     32.05     0.94  transport
+0110                  Ílhavo   Rest of mainland        1.04     0.88     0.98       1.26    1.04       9.0         16.0     28.00     0.98  transport
+1406                 Cartaxo   Rest of mainland        0.96     0.47     0.70       1.96    0.72      10.0         22.0     58.00     0.67  transport
+1304                Gondomar   Porto metro ring        0.96     1.30     1.31       1.63   -0.39       8.0         19.0    109.00     0.71  transport
+0112                 Murtosa   Rest of mainland        0.95     0.77     0.68       1.33    1.04      14.0         22.0     36.00     0.84  transport
+0115                    Ovar      Medium cities        0.94     0.87     0.71       1.13    1.04      15.0         23.0     35.00     0.79  transport
+1012                  Óbidos   Rest of mainland        0.91     0.51     0.67       0.98    1.50       5.0         27.0     50.00     0.56     health
+1315                 Valongo   Porto metro ring        0.91     1.42     0.80       1.81   -0.39       9.0         21.0    116.00     0.65  transport
+1404                Alpiarça   Rest of mainland        0.91    -0.28     1.41       1.79    0.72       8.0         23.0    101.00     0.61  transport
+1110                  Oeiras  Lisbon metro ring        0.91     1.47     0.35       1.96   -0.15       8.0         23.0    103.00     0.62  transport
+1410           Entroncamento   Rest of mainland        0.89     0.16     0.93       2.33    0.15       6.0         28.0    100.00     0.54  transport
+1114     Vila Franca de Xira  Lisbon metro ring        0.88     1.25     0.33       2.07   -0.15      10.0         27.0    106.00     0.56  transport
+1104                 Cadaval   Rest of mainland        0.87     0.30     1.05       0.65    1.50       4.0         28.5     65.00     0.53     health
+1405               Benavente   Rest of mainland        0.87     0.71     0.83       1.23    0.72      22.0         29.0     46.00     0.65  transport
+1005               Bombarral   Rest of mainland        0.87     0.41     0.67       0.90    1.50       6.0         31.0     59.00     0.49     health
+1503                  Almada  Lisbon metro ring        0.87     1.47    -0.33       1.62    0.71       7.0         25.0     99.00     0.60  transport
+0301                  Amares   Rest of mainland        0.84     0.71     1.78       0.57    0.32       7.0         35.0     73.00     0.44    schools
+1109                   Mafra  Lisbon metro ring        0.78     1.16     0.63       1.49   -0.15      19.0         33.0    105.00     0.44  transport
+1108                Lourinhã   Rest of mainland        0.77     0.53     0.26       0.80    1.50       8.0         38.0     66.00     0.36     health
+Groups among the 30 most saturated: {'Rest of mainland': 14, 'Lisbon metro ring': 13, 'Porto metro ring': 2, 'Medium cities': 1}
+Municipalities in the top 30 under at least 90% of weightings: 7: Moita, Seixal, Alenquer, Montijo, Sesimbra, Palmela, Ílhavo
+Lisboa: rank 174 (range 68-264); Porto: rank 210 (range 75-273)
+
+Robustness of the ranking
+  Spearman, z-score index vs percentile-rank index: 0.979
+  Spearman with the index that drops housing  : 0.948
+  Spearman with the index that drops schools  : 0.928
+  Spearman with the index that drops transport: 0.946
+  Spearman with the index that drops health   : 0.891
+  Dimension correlations (Spearman): housing-schools 0.10; housing-transport 0.46; housing-health 0.41; schools-transport 0.22; schools-health 0.05; transport-health 0.24
+
+Saturation and growth (mainland)
+  Spearman, saturation index vs growth 2021-2025: 0.518
+  Spearman, saturation index vs growth 2011-2021: 0.627
+  Growth 2021-2025 (%) by saturation quintile, least to most saturated: 4.18, 7.50, 6.39, 7.83, 9.47
+  Share of mainland growth 2021-2025 by quintile (%): 4.5, 14.0, 10.7, 19.3, 51.6
+
+Beyond the official boundary: municipalities outside both metro areas with 50+ census work/study links
+to Lisboa or Porto per 1000 residents
+                        name             group  links_per_1000  growth_2125  saturation  rank    binding
+dico                                                                                                    
+1102       Arruda dos Vinhos  Rest of mainland          115.92         1.85        1.18     8  transport
+1112  Sobral de Monte Agraço  Rest of mainland           81.21         3.03        1.10    10  transport
+1103                Azambuja  Rest of mainland           78.19         1.82        0.29    84  transport
+1101                Alenquer  Rest of mainland           74.50         2.74        1.31     3    schools
+1405               Benavente  Rest of mainland           72.23         2.73        0.87    25  transport
+1311                Penafiel     Medium cities           55.21         0.85        0.66    42     health
+1113           Torres Vedras     Medium cities           54.03         2.82        0.57    53     health
+  7 municipalities; mean saturation 0.85 against -0.00 for the mainland; growth Dec 2021-Dec 2025 9.17%
+
+==============================================================================
+4. WHAT PREDICTS WHERE PEOPLE WENT AFTER 2021
+==============================================================================
+Outcome: growth of residents, Dec 2021 to Dec 2025 (% a year). Mainland municipalities with prices and incomes: 267
+Continuous predictors are standardised; coefficients are % a year per standard deviation. HC1 standard errors.
+Out-of-sample R2: each NUTS III region is predicted from a model fitted on the other 22 (no region dummies in those models).
+
+  [A size]  R2 0.241; leave-one-NUTS-III-out R2 0.183
+     log_pop        +0.593 (0.063)
+
+  [B size + pressure in 2021]  R2 0.380; leave-one-NUTS-III-out R2 0.179
+     log_pop        +0.185 (0.100)
+     housing        +0.450 (0.122)
+     schools        +0.073 (0.062)
+     transport      +0.092 (0.083)
+     health         +0.184 (0.064)
+
+  [C B + prices and incomes]  R2 0.494; leave-one-NUTS-III-out R2 0.354
+     log_pop        -0.059 (0.090)
+     housing        +0.015 (0.131)
+     schools        +0.112 (0.057)
+     transport      -0.014 (0.072)
+     health         +0.188 (0.056)
+     log_price      +0.712 (0.135)
+     log_income     +0.161 (0.091)
+
+  [D C + metro and medium-city dummies]  R2 0.518 (in-sample only)
+     log_pop        +0.030 (0.107)
+     housing        +0.124 (0.138)
+     schools        +0.091 (0.058)
+     transport      +0.043 (0.083)
+     health         +0.135 (0.058)
+     log_price      +0.637 (0.138)
+     log_income     +0.160 (0.093)
+     lisbon_metro   -0.316 (0.344)
+     porto_metro    -0.963 (0.230)
+     medium_city    -0.119 (0.226)
+
+Simple correlations with growth 2021-2025 (Pearson, same municipalities):
+     log_pop                  +0.491
+     links_per_1000           +0.306
+     vacancy_market           -0.135
+     crowded_share_2021       +0.579
+     log_price                +0.676
+     price_to_income_2024     +0.688
+     commute_min_collective   +0.380
+     school_pre_2025          -0.197
+     saturation               +0.539
+
+==============================================================================
+5. CANDIDATE NODES FOR A POLYCENTRIC NETWORK
+==============================================================================
+Average household size, census 2021: 2.497
+Growth of the two metro areas, Dec 2021-Dec 2025: 435,921 residents, about 174,594 households at that size
+Medium cities, census 2021: 66,641 dwellings vacant for sale or rent, 70,331 vacant for other reasons; 1,154,134 classic dwellings in all
+Vacant-for-market dwellings in medium cities per metro household added 2021-2025: 0.38
+Medium cities: 20.2% of residents in 2021, growth 2021-2025 8.19% against 7.78% nationally
+
+Medium cities (outside the metro areas, 50,000+ residents in 2021), least saturated first; rank 1 = most saturated of 278
+                        name  pop_est_2025  growth_2125  saturation  rank  rank_p05  rank_p95  housing  schools  transport  health    binding  dw_vacant_market_2021  links_per_1000  has_hospital
+dico                                                                                                                                                                                              
+0603                 Coimbra        156359         1.71       -0.98   269     173.0    276.00     0.23    -0.80      -0.76   -2.59    housing                   5317           12.90           1.0
+0605         Figueira da Foz         65852         2.07       -0.63   242     123.0    270.00     0.13     0.10      -0.17   -2.59    housing                   3301           10.52           1.0
+0502          Castelo Branco         58197         1.80       -0.34   192     171.0    231.00    -0.47    -0.12      -0.88    0.09     health                   2631           13.47           1.0
+1823                   Viseu        109166         2.05       -0.29   181     140.0    232.00     0.09    -0.10      -0.95   -0.18    housing                   3397           13.51           1.0
+0705                   Évora         58567         1.25       -0.16   164     113.0    223.00     0.38    -0.56      -0.78    0.30    housing                   2095           19.86           1.0
+1015                  Pombal         54992         1.71       -0.12   154     125.0    205.00     0.12    -0.48      -0.49    0.38     health                   1388            9.71           1.0
+0303                   Braga        212635         2.10       -0.04   137      84.0    221.00     0.79    -0.76      -0.49    0.32    housing                   3935           19.59           1.0
+1609        Viana do Castelo         92860         1.67        0.01   131      95.0    191.00     0.53    -0.25      -0.67    0.41    housing                   2402           17.85           1.0
+1009                  Leiria        145861         2.37        0.09   115     100.0    145.00     0.30     0.12      -0.45    0.38     health                   3857           13.01           1.0
+0808                   Loulé         94447         3.78        0.12   111      51.0    212.00     1.18    -0.30      -0.95    0.54    housing                   6239            6.64           1.0
+1303              Felgueiras         57432         0.71        0.13   110      60.0    191.00     0.58    -0.29      -0.73    0.96     health                   1477           19.39           1.0
+1416                Santarém         69392         3.44        0.21    97      68.0    152.00    -0.07    -0.30       0.48    0.72     health                   2670           40.76           1.0
+0105                  Aveiro         91397         2.21        0.21    96      43.0    222.00     0.78    -1.09       0.11    1.04     health                   2209           20.86           1.0
+0302                Barcelos        122487         1.41        0.26    88      58.0    133.00     0.96     0.18      -0.41    0.32    housing                   1725           15.17           1.0
+1001                Alcobaça         60881         2.27        0.27    86      22.0    150.00     0.12    -0.23      -0.29    1.50     health                   2594           18.12           1.0
+0308               Guimarães        165554         1.17        0.29    82      56.0    137.00     0.88     0.12      -0.53    0.70    housing                   2981           16.69           1.0
+0805                    Faro         80256         2.37        0.30    81      45.0    160.00     1.00     0.40      -0.76    0.54    housing                   3033           10.44           1.0
+1309       Paços de Ferreira         57467         1.07        0.37    72      26.0    174.00     1.24    -0.61      -0.12    0.96    housing                    853           29.25           0.0
+1006        Caldas da Rainha         58983         2.73        0.39    70      19.0    178.05     0.20    -0.70       0.57    1.50     health                   2611           29.46           1.0
+1301                Amarante         52669         0.56        0.46    65      43.0     87.00     0.29     0.34       0.26    0.96     health                   1749           29.78           1.0
+0312  Vila Nova de Famalicão        143801         1.60        0.47    64      48.0     89.00     0.82     0.40      -0.03    0.70    housing                   2198           26.14           1.0
+1113           Torres Vedras         94886         2.82        0.57    53       9.0    139.00     1.04    -0.52       0.28    1.50     health                   2056           54.03           1.0
+1311                Penafiel         71719         0.85        0.66    42      28.0     76.00     0.84     0.10       0.72    0.96     health                   1768           55.21           1.0
+0811                Portimão         78125         4.26        0.70    38       7.0    111.00     1.51     1.33      -0.58    0.54    housing                   3027            8.96           1.0
+0115                    Ovar         58091         1.10        0.94    17      15.0     35.00     0.87     0.71       1.13    1.04  transport                   1128           34.94           1.0
+Binding constraint (dimension with the highest score) among medium cities: {'housing': 13, 'health': 11, 'transport': 1}
+
+Metro ring municipalities, most saturated first
+                  group                  name  pop_est_2025  growth_2125  saturation  rank  rank_p05  rank_p95  housing  schools  transport  health    binding  dw_vacant_market_2021  links_per_1000  has_hospital
+dico                                                                                                                                                                                                               
+1506  Lisbon metro ring                 Moita         78541         3.55        1.49     1       1.0     11.00     1.21     1.58       2.44    0.71  transport                   1902          107.36           0.0
+1510  Lisbon metro ring                Seixal        198254         3.68        1.41     2       2.0     13.00     1.26     1.31       2.36    0.71  transport                   3064          156.01           0.0
+1116  Lisbon metro ring              Odivelas        185736         3.65        1.29     4       1.0     61.00     1.72     1.66       1.93   -0.15  transport                   2896          229.22           0.0
+1115  Lisbon metro ring               Amadora        205517         3.55        1.26     5       1.0     63.00     1.78     1.55       1.85   -0.15  transport                   3191          239.78           1.0
+1111  Lisbon metro ring                Sintra        449956         2.93        1.25     6       3.0     65.00     1.68     1.56       1.89   -0.15  transport                   6866          156.40           1.0
+1507  Lisbon metro ring               Montijo         68064         4.25        1.23     7       4.0     29.00     0.78     1.48       1.93    0.71  transport                   1886          126.63           1.0
+1511  Lisbon metro ring              Sesimbra         59440         1.98        1.15     9       4.0     35.00     1.20     0.53       2.16    0.71  transport                   1210          107.48           0.0
+1107  Lisbon metro ring                Loures        236988         3.23        1.08    11       4.0     82.00     1.70     0.90       1.87   -0.15  transport                   4073          232.79           1.0
+1508  Lisbon metro ring               Palmela         77044         3.15        1.07    12       9.0     32.05     1.08     0.66       1.84    0.71  transport                   1494           98.46           1.0
+1304   Porto metro ring              Gondomar        170597         0.80        0.96    15       8.0    109.00     1.30     1.31       1.63   -0.39  transport                   2968          163.27           1.0
+1315   Porto metro ring               Valongo         98930         0.83        0.91    19       9.0    116.00     1.42     0.80       1.81   -0.39  transport                   1152          124.20           1.0
+1110  Lisbon metro ring                Oeiras        188056         1.48        0.91    21       8.0    103.00     1.47     0.35       1.96   -0.15  transport                   2801          256.99           1.0
+1114  Lisbon metro ring   Vila Franca de Xira        152007         2.01        0.88    23      10.0    106.00     1.25     0.33       2.07   -0.15  transport                   2579          185.52           1.0
+1503  Lisbon metro ring                Almada        202896         2.53        0.87    27       7.0     99.00     1.47    -0.33       1.62    0.71  transport                   3921          173.27           1.0
+1109  Lisbon metro ring                 Mafra         96146         2.24        0.78    29      19.0    105.00     1.16     0.63       1.49   -0.15  transport                   1889          122.15           0.0
+1512  Lisbon metro ring               Setúbal        141266         2.47        0.75    31      26.0     62.00     1.04     0.22       1.01    0.71    housing                   2865           70.88           1.0
+1504  Lisbon metro ring              Barreiro         91766         3.11        0.75    32       8.0    164.00     1.03    -0.88       2.12    0.71  transport                   1919          148.61           1.0
+1105  Lisbon metro ring               Cascais        242619         1.73        0.75    33      11.0    125.00     1.54     0.06       1.53   -0.15    housing                   5281          127.62           1.0
+1318   Porto metro ring                 Trofa         41512         1.60        0.71    35      20.0    132.05     1.19     0.86       1.19   -0.39  transport                    461           55.71           1.0
+1310   Porto metro ring               Paredes         88858         1.29        0.71    36      17.0    132.00     1.20     1.05       0.98   -0.39    housing                   1712           67.60           1.0
+1316   Porto metro ring         Vila do Conde         86245         1.34        0.71    37      17.0    133.00     1.25     0.95       1.02   -0.39    housing                   1149           64.58           1.0
+1317   Porto metro ring     Vila Nova de Gaia        323202         1.31        0.65    43      18.0    140.00     1.38     0.69       0.93   -0.39    housing                   6093          133.38           1.0
+1308   Porto metro ring            Matosinhos        181930         1.01        0.62    46      19.0    145.00     1.41     0.52       0.93   -0.39    housing                   3071          182.80           1.0
+1502  Lisbon metro ring             Alcochete         20407         1.49        0.59    49       7.0    217.00     0.74    -1.39       2.31    0.71  transport                    462          163.30           0.0
+1306   Porto metro ring                  Maia        142129         1.02        0.58    51      23.0    158.00     1.06     0.04       1.63   -0.39  transport                   2430          167.42           0.0
+1313   Porto metro ring       Póvoa de Varzim         72364         2.35        0.49    58      30.0    164.05     1.21    -0.01       1.17   -0.39    housing                   1380           45.80           1.0
+0109   Porto metro ring  Santa Maria da Feira        142676         0.90        0.48    62      38.0    156.00     1.02     0.51       0.79   -0.39    housing                   1810           46.68           1.0
+0113   Porto metro ring   Oliveira de Azeméis         70027         1.14        0.32    77      45.0    168.00     0.40     0.89       0.38   -0.39    schools                   1509           26.17           1.0
+0104   Porto metro ring                Arouca         21459         0.49        0.09   116      83.0    185.00     0.55     0.16       0.03   -0.39    housing                    582           25.58           1.0
+0107   Porto metro ring               Espinho         32455         0.63       -0.05   142      31.0    270.00     1.24    -2.49       1.44   -0.39  transport                    715           62.30           1.0
+1314   Porto metro ring           Santo Tirso         69810         0.74       -0.09   149      79.0    232.00     0.53    -1.02       0.52   -0.39    housing                   1540           45.59           1.0
+0119   Porto metro ring        Vale de Cambra         22066         0.75       -0.13   158     111.0    202.00     0.32    -0.30      -0.14   -0.39    housing                    473           31.69           0.0
+0116   Porto metro ring   São João da Madeira         23991         1.20       -0.26   177      40.0    274.00     0.55    -2.76       1.56   -0.39  transport                    531           37.75           1.0
+Binding constraint among ring municipalities: {'transport': 21, 'housing': 11, 'schools': 1}
+
+Headroom with a link: medium cities below the mainland median saturation
+  6 of 25: Coimbra (rank 269, binding housing), Figueira da Foz (rank 242, binding housing), Castelo Branco (rank 192, binding health), Viseu (rank 181, binding housing), Évora (rank 164, binding housing), Pombal (rank 154, binding health)
+  They held 468,463 residents in 2021, grew 7.40% to 2025, and had 18,129 dwellings vacant for sale or rent
