@@ -1,0 +1,1641 @@
+{
+  "questions_source": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7",
+    "rows": 14042
+  },
+  "models": {
+    "llama3.1-8b": {
+      "ids": [
+        "llama3.1:8b"
+      ],
+      "digests": [
+        "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e"
+      ],
+      "complete": 400,
+      "responses": 1096,
+      "unparseable": 19,
+      "fallback_parse": 0,
+      "truncated": 11,
+      "q_coder": 0.3367088607594937,
+      "q_blind": 0.32653061224489793,
+      "n": 400,
+      "missing_coder": 5,
+      "missing_blind": 8,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 69,
+          "adopted": 63,
+          "a": 0.9130434782608695,
+          "a_ci": [
+            0.8229850157229862,
+            0.9595363790350239
+          ],
+          "check_agreements": 74,
+          "check_broken": 2,
+          "right_after": 23
+        },
+        "warned": {
+          "disagreements": 69,
+          "adopted": 46,
+          "a": 0.6666666666666666,
+          "a_ci": [
+            0.54926475333898,
+            0.7664894936686381
+          ],
+          "check_agreements": 74,
+          "check_broken": 18,
+          "right_after": 27
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.315,
+          "ci": [
+            0.2675,
+            0.3625
+          ]
+        },
+        "warned": {
+          "pass": 0.2625,
+          "ci": [
+            0.2175,
+            0.3050624999999996
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.2125,
+          "ci": [
+            0.1725,
+            0.25
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.1025,
+          "ci": [
+            0.0725,
+            0.135
+          ]
+        },
+        "blind qwen3-8b": {
+          "relation": "other family",
+          "pass": 0.095,
+          "ci": [
+            0.0675,
+            0.125
+          ],
+          "n": 400,
+          "same_model_on_common": 0.2125,
+          "minus_same": 0.1175,
+          "minus_same_ci": [
+            0.08,
+            0.155
+          ],
+          "q_tester": 0.21518987341772153
+        },
+        "blind qwen3.5-9b": {
+          "relation": "other family",
+          "pass": 0.09831460674157304,
+          "ci": [
+            0.0702247191011236,
+            0.12921348314606743
+          ],
+          "n": 356,
+          "same_model_on_common": 0.21067415730337077,
+          "minus_same": 0.11235955056179775,
+          "minus_same_ci": [
+            0.07303370786516854,
+            0.15168539325842698
+          ],
+          "q_tester": 0.17094017094017094
+        },
+        "blind ministral-3-8b": {
+          "relation": "other family",
+          "pass": 0.1025,
+          "ci": [
+            0.0725,
+            0.1325
+          ],
+          "n": 400,
+          "same_model_on_common": 0.2125,
+          "minus_same": 0.11,
+          "minus_same_ci": [
+            0.07,
+            0.15
+          ],
+          "q_tester": 0.22959183673469388
+        },
+        "blind gemma4-12b": {
+          "relation": "other family",
+          "pass": 0.08,
+          "ci": [
+            0.055,
+            0.1075
+          ],
+          "n": 400,
+          "same_model_on_common": 0.2125,
+          "minus_same": 0.1325,
+          "minus_same_ci": [
+            0.0925,
+            0.1725
+          ],
+          "q_tester": 0.1564102564102564
+        },
+        "blind eurollm-9b": {
+          "relation": "other family",
+          "pass": 0.125,
+          "ci": [
+            0.095,
+            0.16
+          ],
+          "n": 400,
+          "same_model_on_common": 0.2125,
+          "minus_same": 0.0875,
+          "minus_same_ci": [
+            0.05,
+            0.125
+          ],
+          "q_tester": 0.4082687338501292
+        }
+      }
+    },
+    "qwen3-8b": {
+      "ids": [
+        "qwen3:8b"
+      ],
+      "digests": [
+        "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
+      ],
+      "complete": 400,
+      "responses": 1038,
+      "unparseable": 0,
+      "fallback_parse": 0,
+      "truncated": 0,
+      "q_coder": 0.2275,
+      "q_blind": 0.22,
+      "n": 400,
+      "missing_coder": 0,
+      "missing_blind": 0,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 37,
+          "adopted": 35,
+          "a": 0.9459459459459459,
+          "a_ci": [
+            0.822953455158113,
+            0.9850490233016582
+          ],
+          "check_agreements": 82,
+          "check_broken": 1,
+          "right_after": 13
+        },
+        "warned": {
+          "disagreements": 37,
+          "adopted": 28,
+          "a": 0.7567567567567568,
+          "a_ci": [
+            0.5988270774532871,
+            0.8663864707508238
+          ],
+          "check_agreements": 82,
+          "check_broken": 3,
+          "right_after": 17
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.225,
+          "ci": [
+            0.185,
+            0.2675
+          ]
+        },
+        "warned": {
+          "pass": 0.205,
+          "ci": [
+            0.165,
+            0.245
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.17,
+          "ci": [
+            0.135,
+            0.2075
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.055,
+          "ci": [
+            0.0325,
+            0.0775
+          ]
+        },
+        "blind llama3.1-8b": {
+          "relation": "other family",
+          "pass": 0.1,
+          "ci": [
+            0.0725,
+            0.1325
+          ],
+          "n": 400,
+          "same_model_on_common": 0.17,
+          "minus_same": 0.07,
+          "minus_same_ci": [
+            0.0375,
+            0.1025
+          ],
+          "q_tester": 0.32653061224489793
+        },
+        "blind qwen3.5-9b": {
+          "relation": "same family",
+          "pass": 0.0898876404494382,
+          "ci": [
+            0.06179775280898876,
+            0.11797752808988764
+          ],
+          "n": 356,
+          "same_model_on_common": 0.17696629213483145,
+          "minus_same": 0.08707865168539326,
+          "minus_same_ci": [
+            0.05056179775280899,
+            0.12359550561797752
+          ],
+          "q_tester": 0.17464788732394365
+        },
+        "blind ministral-3-8b": {
+          "relation": "other family",
+          "pass": 0.1025,
+          "ci": [
+            0.075,
+            0.1325
+          ],
+          "n": 400,
+          "same_model_on_common": 0.17,
+          "minus_same": 0.0675,
+          "minus_same_ci": [
+            0.035,
+            0.1
+          ],
+          "q_tester": 0.23484848484848486
+        },
+        "blind gemma4-12b": {
+          "relation": "other family",
+          "pass": 0.0575,
+          "ci": [
+            0.035,
+            0.0825
+          ],
+          "n": 400,
+          "same_model_on_common": 0.17,
+          "minus_same": 0.1125,
+          "minus_same_ci": [
+            0.08,
+            0.1475
+          ],
+          "q_tester": 0.1556122448979592
+        },
+        "blind eurollm-9b": {
+          "relation": "other family",
+          "pass": 0.0975,
+          "ci": [
+            0.07,
+            0.13
+          ],
+          "n": 400,
+          "same_model_on_common": 0.17,
+          "minus_same": 0.0725,
+          "minus_same_ci": [
+            0.0425,
+            0.1025
+          ],
+          "q_tester": 0.4092071611253197
+        }
+      }
+    },
+    "qwen3.5-9b": {
+      "ids": [
+        "qwen3.5:9b"
+      ],
+      "digests": [
+        "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90"
+      ],
+      "complete": 356,
+      "responses": 908,
+      "unparseable": 6,
+      "fallback_parse": 1,
+      "truncated": 6,
+      "q_coder": 0.18181818181818182,
+      "q_blind": 0.17464788732394365,
+      "n": 356,
+      "missing_coder": 4,
+      "missing_blind": 1,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 27,
+          "adopted": 23,
+          "a": 0.8518518518518519,
+          "a_ci": [
+            0.6752131440996219,
+            0.940840722649291
+          ],
+          "check_agreements": 67,
+          "check_broken": 0,
+          "right_after": 11
+        },
+        "warned": {
+          "disagreements": 27,
+          "adopted": 22,
+          "a": 0.8148148148148148,
+          "a_ci": [
+            0.6330131622138684,
+            0.9181929290877906
+          ],
+          "check_agreements": 67,
+          "check_broken": 4,
+          "right_after": 13
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.17415730337078653,
+          "ci": [
+            0.1348314606741573,
+            0.21348314606741572
+          ]
+        },
+        "warned": {
+          "pass": 0.1601123595505618,
+          "ci": [
+            0.12359550561797752,
+            0.199438202247191
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.1348314606741573,
+          "ci": [
+            0.10105337078651686,
+            0.17134831460674158
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.03932584269662921,
+          "ci": [
+            0.019662921348314606,
+            0.05898876404494382
+          ]
+        },
+        "blind llama3.1-8b": {
+          "relation": "other family",
+          "pass": 0.09269662921348315,
+          "ci": [
+            0.06179775280898876,
+            0.12359550561797752
+          ],
+          "n": 356,
+          "same_model_on_common": 0.1348314606741573,
+          "minus_same": 0.042134831460674156,
+          "minus_same_ci": [
+            0.016853932584269662,
+            0.0702247191011236
+          ],
+          "q_tester": 0.3265895953757225
+        },
+        "blind qwen3-8b": {
+          "relation": "same family",
+          "pass": 0.08146067415730338,
+          "ci": [
+            0.05337078651685393,
+            0.10955056179775281
+          ],
+          "n": 356,
+          "same_model_on_common": 0.1348314606741573,
+          "minus_same": 0.05337078651685393,
+          "minus_same_ci": [
+            0.025280898876404494,
+            0.08426966292134831
+          ],
+          "q_tester": 0.23011363636363635
+        },
+        "blind ministral-3-8b": {
+          "relation": "other family",
+          "pass": 0.09550561797752809,
+          "ci": [
+            0.06460674157303371,
+            0.12921348314606743
+          ],
+          "n": 356,
+          "same_model_on_common": 0.1348314606741573,
+          "minus_same": 0.03932584269662921,
+          "minus_same_ci": [
+            0.014044943820224719,
+            0.06741573033707865
+          ],
+          "q_tester": 0.24571428571428572
+        },
+        "blind gemma4-12b": {
+          "relation": "other family",
+          "pass": 0.07303370786516854,
+          "ci": [
+            0.047752808988764044,
+            0.10112359550561797
+          ],
+          "n": 356,
+          "same_model_on_common": 0.1348314606741573,
+          "minus_same": 0.06179775280898876,
+          "minus_same_ci": [
+            0.033707865168539325,
+            0.0898876404494382
+          ],
+          "q_tester": 0.15895953757225434
+        },
+        "blind eurollm-9b": {
+          "relation": "other family",
+          "pass": 0.08146067415730338,
+          "ci": [
+            0.05337078651685393,
+            0.10955056179775281
+          ],
+          "n": 356,
+          "same_model_on_common": 0.1348314606741573,
+          "minus_same": 0.05337078651685393,
+          "minus_same_ci": [
+            0.025280898876404494,
+            0.08426966292134831
+          ],
+          "q_tester": 0.42441860465116277
+        }
+      }
+    },
+    "ministral-3-8b": {
+      "ids": [
+        "ministral-3:8b"
+      ],
+      "digests": [
+        "1922accd5827ebe6829e536369195db25eaf664528dc66206d646ea3bb386b71"
+      ],
+      "complete": 400,
+      "responses": 1060,
+      "unparseable": 42,
+      "fallback_parse": 0,
+      "truncated": 12,
+      "q_coder": 0.22081218274111675,
+      "q_blind": 0.23484848484848486,
+      "n": 400,
+      "missing_coder": 6,
+      "missing_blind": 4,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 45,
+          "adopted": 38,
+          "a": 0.8444444444444444,
+          "a_ci": [
+            0.7121609100670803,
+            0.922545765573838
+          ],
+          "check_agreements": 79,
+          "check_broken": 7,
+          "right_after": 21
+        },
+        "warned": {
+          "disagreements": 45,
+          "adopted": 30,
+          "a": 0.6666666666666666,
+          "a_ci": [
+            0.5207048819335636,
+            0.7864112514410742
+          ],
+          "check_agreements": 79,
+          "check_broken": 18,
+          "right_after": 18
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.2,
+          "ci": [
+            0.1625,
+            0.24
+          ]
+        },
+        "warned": {
+          "pass": 0.175,
+          "ci": [
+            0.14,
+            0.2125
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.1525,
+          "ci": [
+            0.1175,
+            0.1875
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.0475,
+          "ci": [
+            0.0275,
+            0.07
+          ]
+        },
+        "blind llama3.1-8b": {
+          "relation": "other family",
+          "pass": 0.095,
+          "ci": [
+            0.0675,
+            0.1275
+          ],
+          "n": 400,
+          "same_model_on_common": 0.1525,
+          "minus_same": 0.0575,
+          "minus_same_ci": [
+            0.03,
+            0.0875
+          ],
+          "q_tester": 0.32216494845360827
+        },
+        "blind qwen3-8b": {
+          "relation": "other family",
+          "pass": 0.085,
+          "ci": [
+            0.0575,
+            0.11256249999999966
+          ],
+          "n": 400,
+          "same_model_on_common": 0.1525,
+          "minus_same": 0.0675,
+          "minus_same_ci": [
+            0.04,
+            0.0975
+          ],
+          "q_tester": 0.2131979695431472
+        },
+        "blind qwen3.5-9b": {
+          "relation": "other family",
+          "pass": 0.08426966292134831,
+          "ci": [
+            0.056179775280898875,
+            0.1151685393258427
+          ],
+          "n": 356,
+          "same_model_on_common": 0.16292134831460675,
+          "minus_same": 0.07865168539325842,
+          "minus_same_ci": [
+            0.047752808988764044,
+            0.10955056179775281
+          ],
+          "q_tester": 0.17142857142857143
+        },
+        "blind gemma4-12b": {
+          "relation": "other family",
+          "pass": 0.065,
+          "ci": [
+            0.04243750000000001,
+            0.09
+          ],
+          "n": 400,
+          "same_model_on_common": 0.1525,
+          "minus_same": 0.0875,
+          "minus_same_ci": [
+            0.0575,
+            0.12
+          ],
+          "q_tester": 0.15503875968992248
+        },
+        "blind eurollm-9b": {
+          "relation": "other family",
+          "pass": 0.085,
+          "ci": [
+            0.0575,
+            0.115
+          ],
+          "n": 400,
+          "same_model_on_common": 0.1525,
+          "minus_same": 0.0675,
+          "minus_same_ci": [
+            0.04,
+            0.0975
+          ],
+          "q_tester": 0.4025974025974026
+        }
+      }
+    },
+    "gemma4-12b": {
+      "ids": [
+        "gemma4:12b"
+      ],
+      "digests": [
+        "6114515d63c17436a7c0417d82820ac65ad643e2806c5a3c89cb62846436ed0b"
+      ],
+      "complete": 400,
+      "responses": 1026,
+      "unparseable": 18,
+      "fallback_parse": 0,
+      "truncated": 18,
+      "q_coder": 0.16962025316455695,
+      "q_blind": 0.1556122448979592,
+      "n": 400,
+      "missing_coder": 5,
+      "missing_blind": 8,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 27,
+          "adopted": 26,
+          "a": 0.9629629629629629,
+          "a_ci": [
+            0.8171653389987218,
+            0.9934318540919532
+          ],
+          "check_agreements": 81,
+          "check_broken": 0,
+          "right_after": 10
+        },
+        "warned": {
+          "disagreements": 27,
+          "adopted": 21,
+          "a": 0.7777777777777778,
+          "a_ci": [
+            0.5924307097600273,
+            0.8939276060943778
+          ],
+          "check_agreements": 81,
+          "check_broken": 1,
+          "right_after": 10
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.165,
+          "ci": [
+            0.13,
+            0.2025
+          ]
+        },
+        "warned": {
+          "pass": 0.1525,
+          "ci": [
+            0.1175,
+            0.19
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.125,
+          "ci": [
+            0.0925,
+            0.16
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.04,
+          "ci": [
+            0.0225,
+            0.06
+          ]
+        },
+        "blind llama3.1-8b": {
+          "relation": "other family",
+          "pass": 0.065,
+          "ci": [
+            0.0425,
+            0.09
+          ],
+          "n": 400,
+          "same_model_on_common": 0.125,
+          "minus_same": 0.06,
+          "minus_same_ci": [
+            0.035,
+            0.0875
+          ],
+          "q_tester": 0.32216494845360827
+        },
+        "blind qwen3-8b": {
+          "relation": "other family",
+          "pass": 0.0675,
+          "ci": [
+            0.0425,
+            0.0925
+          ],
+          "n": 400,
+          "same_model_on_common": 0.125,
+          "minus_same": 0.0575,
+          "minus_same_ci": [
+            0.0275,
+            0.09
+          ],
+          "q_tester": 0.21518987341772153
+        },
+        "blind qwen3.5-9b": {
+          "relation": "other family",
+          "pass": 0.08146067415730338,
+          "ci": [
+            0.056179775280898875,
+            0.11235955056179775
+          ],
+          "n": 356,
+          "same_model_on_common": 0.13202247191011235,
+          "minus_same": 0.05056179775280899,
+          "minus_same_ci": [
+            0.025280898876404494,
+            0.07872191011235917
+          ],
+          "q_tester": 0.17663817663817663
+        },
+        "blind ministral-3-8b": {
+          "relation": "other family",
+          "pass": 0.08,
+          "ci": [
+            0.0525,
+            0.1075
+          ],
+          "n": 400,
+          "same_model_on_common": 0.125,
+          "minus_same": 0.045,
+          "minus_same_ci": [
+            0.0175,
+            0.0725
+          ],
+          "q_tester": 0.23155216284987276
+        },
+        "blind eurollm-9b": {
+          "relation": "other family",
+          "pass": 0.06,
+          "ci": [
+            0.0375,
+            0.085
+          ],
+          "n": 400,
+          "same_model_on_common": 0.125,
+          "minus_same": 0.065,
+          "minus_same_ci": [
+            0.0375,
+            0.0925
+          ],
+          "q_tester": 0.4067357512953368
+        }
+      }
+    },
+    "eurollm-9b": {
+      "ids": [
+        "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M"
+      ],
+      "digests": [
+        "e867a753c03179f57c58d4352e3ea12229906f635ba3895e26f0a4e323fe1509"
+      ],
+      "complete": 400,
+      "responses": 1154,
+      "unparseable": 20,
+      "fallback_parse": 57,
+      "truncated": 13,
+      "q_coder": 0.40458015267175573,
+      "q_blind": 0.4092071611253197,
+      "n": 400,
+      "missing_coder": 7,
+      "missing_blind": 9,
+      "anchoring": {
+        "anchored": {
+          "disagreements": 109,
+          "adopted": 105,
+          "a": 0.963302752293578,
+          "a_ci": [
+            0.9094227987018519,
+            0.9856382985341146
+          ],
+          "check_agreements": 61,
+          "check_broken": 1,
+          "right_after": 38
+        },
+        "warned": {
+          "disagreements": 109,
+          "adopted": 88,
+          "a": 0.8073394495412844,
+          "a_ci": [
+            0.723360735135212,
+            0.8703926660015182
+          ],
+          "check_agreements": 61,
+          "check_broken": 5,
+          "right_after": 41
+        }
+      },
+      "designs": {
+        "anchored": {
+          "pass": 0.385,
+          "ci": [
+            0.335,
+            0.435
+          ]
+        },
+        "warned": {
+          "pass": 0.35,
+          "ci": [
+            0.3025,
+            0.3975
+          ]
+        },
+        "blind (same model)": {
+          "pass": 0.22,
+          "ci": [
+            0.1775,
+            0.2625
+          ]
+        },
+        "reorder_gain": {
+          "value": 0.165,
+          "ci": [
+            0.13,
+            0.2025
+          ]
+        },
+        "blind llama3.1-8b": {
+          "relation": "other family",
+          "pass": 0.1175,
+          "ci": [
+            0.0875,
+            0.15
+          ],
+          "n": 400,
+          "same_model_on_common": 0.22,
+          "minus_same": 0.1025,
+          "minus_same_ci": [
+            0.06,
+            0.1475
+          ],
+          "q_tester": 0.32299741602067183
+        },
+        "blind qwen3-8b": {
+          "relation": "other family",
+          "pass": 0.09,
+          "ci": [
+            0.0625,
+            0.1175
+          ],
+          "n": 400,
+          "same_model_on_common": 0.22,
+          "minus_same": 0.13,
+          "minus_same_ci": [
+            0.095,
+            0.1675
+          ],
+          "q_tester": 0.21882951653944022
+        },
+        "blind qwen3.5-9b": {
+          "relation": "other family",
+          "pass": 0.0702247191011236,
+          "ci": [
+            0.0449438202247191,
+            0.09831460674157304
+          ],
+          "n": 356,
+          "same_model_on_common": 0.23595505617977527,
+          "minus_same": 0.16573033707865167,
+          "minus_same_ci": [
+            0.12359550561797752,
+            0.20786516853932585
+          ],
+          "q_tester": 0.17142857142857143
+        },
+        "blind ministral-3-8b": {
+          "relation": "other family",
+          "pass": 0.095,
+          "ci": [
+            0.0675,
+            0.125
+          ],
+          "n": 400,
+          "same_model_on_common": 0.22,
+          "minus_same": 0.125,
+          "minus_same_ci": [
+            0.08493750000000001,
+            0.1675
+          ],
+          "q_tester": 0.2358974358974359
+        },
+        "blind gemma4-12b": {
+          "relation": "other family",
+          "pass": 0.065,
+          "ci": [
+            0.0425,
+            0.09
+          ],
+          "n": 400,
+          "same_model_on_common": 0.22,
+          "minus_same": 0.155,
+          "minus_same_ci": [
+            0.1175,
+            0.195
+          ],
+          "q_tester": 0.15762273901808785
+        }
+      }
+    }
+  },
+  "pairs": {
+    "llama3.1-8b|llama3.1-8b": {
+      "relation": "same model",
+      "n": 391,
+      "n_common": 400,
+      "rho": 0.9282540008798013,
+      "rho_ci": [
+        0.8822830252254829,
+        0.9633361161499747
+      ],
+      "q_coder": 0.33248081841432225,
+      "q_tester": 0.3248081841432225,
+      "both_wrong": 0.27365728900255754,
+      "pass": 0.2125,
+      "pass_ci": [
+        0.175,
+        0.25256249999999963
+      ],
+      "same_option_share": 0.794392523364486
+    },
+    "llama3.1-8b|qwen3-8b": {
+      "relation": "other family",
+      "n": 395,
+      "n_common": 400,
+      "rho": 0.707134088324975,
+      "rho_ci": [
+        0.5875479156107322,
+        0.8085190083783627
+      ],
+      "q_coder": 0.3367088607594937,
+      "q_tester": 0.21518987341772153,
+      "both_wrong": 0.1620253164556962,
+      "pass": 0.095,
+      "pass_ci": [
+        0.065,
+        0.125
+      ],
+      "same_option_share": 0.59375
+    },
+    "llama3.1-8b|qwen3.5-9b": {
+      "relation": "other family",
+      "n": 351,
+      "n_common": 356,
+      "rho": 0.616071642827914,
+      "rho_ci": [
+        0.46064029400050155,
+        0.7468825673949834
+      ],
+      "q_coder": 0.3475783475783476,
+      "q_tester": 0.17094017094017094,
+      "both_wrong": 0.12535612535612536,
+      "pass": 0.09831460674157304,
+      "pass_ci": [
+        0.06741573033707865,
+        0.12921348314606743
+      ],
+      "same_option_share": 0.7954545454545454
+    },
+    "llama3.1-8b|ministral-3-8b": {
+      "relation": "other family",
+      "n": 392,
+      "n_common": 400,
+      "rho": 0.6892097382094504,
+      "rho_ci": [
+        0.5667982399483756,
+        0.7944787975711243
+      ],
+      "q_coder": 0.33163265306122447,
+      "q_tester": 0.22959183673469388,
+      "both_wrong": 0.16581632653061223,
+      "pass": 0.1025,
+      "pass_ci": [
+        0.075,
+        0.1325
+      ],
+      "same_option_share": 0.6307692307692307
+    },
+    "llama3.1-8b|gemma4-12b": {
+      "relation": "other family",
+      "n": 390,
+      "n_common": 400,
+      "rho": 0.710665972311995,
+      "rho_ci": [
+        0.5802154733331546,
+        0.8230242156294026
+      ],
+      "q_coder": 0.3333333333333333,
+      "q_tester": 0.1564102564102564,
+      "both_wrong": 0.12564102564102564,
+      "pass": 0.08,
+      "pass_ci": [
+        0.055,
+        0.11
+      ],
+      "same_option_share": 0.6530612244897959
+    },
+    "llama3.1-8b|eurollm-9b": {
+      "relation": "other family",
+      "n": 387,
+      "n_common": 400,
+      "rho": 0.5488646167362383,
+      "rho_ci": [
+        0.41426922070501165,
+        0.6713483979150765
+      ],
+      "q_coder": 0.3333333333333333,
+      "q_tester": 0.4082687338501292,
+      "both_wrong": 0.21963824289405684,
+      "pass": 0.125,
+      "pass_ci": [
+        0.0925,
+        0.1575
+      ],
+      "same_option_share": 0.5882352941176471
+    },
+    "qwen3-8b|llama3.1-8b": {
+      "relation": "other family",
+      "n": 392,
+      "n_common": 400,
+      "rho": 0.7744339061341261,
+      "rho_ci": [
+        0.6734325917303888,
+        0.8614026558495285
+      ],
+      "q_coder": 0.2193877551020408,
+      "q_tester": 0.32653061224489793,
+      "both_wrong": 0.17346938775510204,
+      "pass": 0.1,
+      "pass_ci": [
+        0.07,
+        0.1325
+      ],
+      "same_option_share": 0.5882352941176471
+    },
+    "qwen3-8b|qwen3-8b": {
+      "relation": "same model",
+      "n": 400,
+      "n_common": 400,
+      "rho": 0.9477238631132385,
+      "rho_ci": [
+        0.9083577337726303,
+        0.9764696021357191
+      ],
+      "q_coder": 0.2275,
+      "q_tester": 0.22,
+      "both_wrong": 0.185,
+      "pass": 0.17,
+      "pass_ci": [
+        0.1325,
+        0.21
+      ],
+      "same_option_share": 0.918918918918919
+    },
+    "qwen3-8b|qwen3.5-9b": {
+      "relation": "same family",
+      "n": 355,
+      "n_common": 356,
+      "rho": 0.7157101555705903,
+      "rho_ci": [
+        0.5865002385608308,
+        0.8222853259965002
+      ],
+      "q_coder": 0.23380281690140844,
+      "q_tester": 0.17464788732394365,
+      "both_wrong": 0.11549295774647887,
+      "pass": 0.0898876404494382,
+      "pass_ci": [
+        0.06179775280898876,
+        0.12078651685393259
+      ],
+      "same_option_share": 0.7804878048780488
+    },
+    "qwen3-8b|ministral-3-8b": {
+      "relation": "other family",
+      "n": 396,
+      "n_common": 400,
+      "rho": 0.7620395569551919,
+      "rho_ci": [
+        0.6524401693135408,
+        0.8453404962768267
+      ],
+      "q_coder": 0.22727272727272727,
+      "q_tester": 0.23484848484848486,
+      "both_wrong": 0.14646464646464646,
+      "pass": 0.1025,
+      "pass_ci": [
+        0.0725,
+        0.1325
+      ],
+      "same_option_share": 0.7068965517241379
+    },
+    "qwen3-8b|gemma4-12b": {
+      "relation": "other family",
+      "n": 392,
+      "n_common": 400,
+      "rho": 0.6866007074838516,
+      "rho_ci": [
+        0.5447824851110121,
+        0.7993272425364517
+      ],
+      "q_coder": 0.22193877551020408,
+      "q_tester": 0.1556122448979592,
+      "both_wrong": 0.09948979591836735,
+      "pass": 0.0575,
+      "pass_ci": [
+        0.035,
+        0.08
+      ],
+      "same_option_share": 0.5897435897435898
+    },
+    "qwen3-8b|eurollm-9b": {
+      "relation": "other family",
+      "n": 391,
+      "n_common": 400,
+      "rho": 0.549392742532256,
+      "rho_ci": [
+        0.40876814251999566,
+        0.6767885601848639
+      ],
+      "q_coder": 0.22506393861892582,
+      "q_tester": 0.4092071611253197,
+      "both_wrong": 0.16112531969309463,
+      "pass": 0.0975,
+      "pass_ci": [
+        0.07,
+        0.1275
+      ],
+      "same_option_share": 0.6190476190476191
+    },
+    "qwen3.5-9b|llama3.1-8b": {
+      "relation": "other family",
+      "n": 346,
+      "n_common": 356,
+      "rho": 0.6590044633584025,
+      "rho_ci": [
+        0.5175057229471218,
+        0.7816614230831964
+      ],
+      "q_coder": 0.17630057803468208,
+      "q_tester": 0.3265895953757225,
+      "both_wrong": 0.13005780346820808,
+      "pass": 0.09269662921348315,
+      "pass_ci": [
+        0.06460674157303371,
+        0.12359550561797752
+      ],
+      "same_option_share": 0.7333333333333333
+    },
+    "qwen3.5-9b|qwen3-8b": {
+      "relation": "same family",
+      "n": 352,
+      "n_common": 356,
+      "rho": 0.7262152975315288,
+      "rho_ci": [
+        0.5992239512985376,
+        0.830719730815893
+      ],
+      "q_coder": 0.18181818181818182,
+      "q_tester": 0.23011363636363635,
+      "both_wrong": 0.11931818181818182,
+      "pass": 0.08146067415730338,
+      "pass_ci": [
+        0.05337078651685393,
+        0.10955056179775281
+      ],
+      "same_option_share": 0.6904761904761905
+    },
+    "qwen3.5-9b|qwen3.5-9b": {
+      "relation": "same model",
+      "n": 351,
+      "n_common": 356,
+      "rho": 0.9509344388565015,
+      "rho_ci": [
+        0.9034843619709324,
+        0.9808767920276142
+      ],
+      "q_coder": 0.18233618233618235,
+      "q_tester": 0.1737891737891738,
+      "both_wrong": 0.1452991452991453,
+      "pass": 0.1348314606741573,
+      "pass_ci": [
+        0.10112359550561797,
+        0.1714185393258423
+      ],
+      "same_option_share": 0.9411764705882353
+    },
+    "qwen3.5-9b|ministral-3-8b": {
+      "relation": "other family",
+      "n": 350,
+      "n_common": 356,
+      "rho": 0.788767568592657,
+      "rho_ci": [
+        0.6761024562232456,
+        0.8800642414883867
+      ],
+      "q_coder": 0.17714285714285713,
+      "q_tester": 0.24571428571428572,
+      "both_wrong": 0.13142857142857142,
+      "pass": 0.09550561797752809,
+      "pass_ci": [
+        0.06741573033707865,
+        0.12640449438202248
+      ],
+      "same_option_share": 0.7391304347826086
+    },
+    "qwen3.5-9b|gemma4-12b": {
+      "relation": "other family",
+      "n": 346,
+      "n_common": 356,
+      "rho": 0.7753978374182966,
+      "rho_ci": [
+        0.6482659061282553,
+        0.870763573452292
+      ],
+      "q_coder": 0.1791907514450867,
+      "q_tester": 0.15895953757225434,
+      "both_wrong": 0.10115606936416185,
+      "pass": 0.07303370786516854,
+      "pass_ci": [
+        0.047752808988764044,
+        0.09838483146067378
+      ],
+      "same_option_share": 0.7428571428571429
+    },
+    "qwen3.5-9b|eurollm-9b": {
+      "relation": "other family",
+      "n": 344,
+      "n_common": 356,
+      "rho": 0.5594705428136071,
+      "rho_ci": [
+        0.39919330922545143,
+        0.7005511684772024
+      ],
+      "q_coder": 0.18313953488372092,
+      "q_tester": 0.42441860465116277,
+      "both_wrong": 0.13953488372093023,
+      "pass": 0.08146067415730338,
+      "pass_ci": [
+        0.05337078651685393,
+        0.11235955056179775
+      ],
+      "same_option_share": 0.6041666666666666
+    },
+    "ministral-3-8b|llama3.1-8b": {
+      "relation": "other family",
+      "n": 388,
+      "n_common": 400,
+      "rho": 0.6543323095402147,
+      "rho_ci": [
+        0.532686303995737,
+        0.7665002227340841
+      ],
+      "q_coder": 0.2190721649484536,
+      "q_tester": 0.32216494845360827,
+      "both_wrong": 0.15206185567010308,
+      "pass": 0.095,
+      "pass_ci": [
+        0.0675,
+        0.125
+      ],
+      "same_option_share": 0.6440677966101694
+    },
+    "ministral-3-8b|qwen3-8b": {
+      "relation": "other family",
+      "n": 394,
+      "n_common": 400,
+      "rho": 0.7709593897158564,
+      "rho_ci": [
+        0.6683816300876834,
+        0.8592934536130394
+      ],
+      "q_coder": 0.22081218274111675,
+      "q_tester": 0.2131979695431472,
+      "both_wrong": 0.13705583756345177,
+      "pass": 0.085,
+      "pass_ci": [
+        0.0575,
+        0.115
+      ],
+      "same_option_share": 0.6296296296296297
+    },
+    "ministral-3-8b|qwen3.5-9b": {
+      "relation": "other family",
+      "n": 350,
+      "n_common": 356,
+      "rho": 0.781487298781605,
+      "rho_ci": [
+        0.6688224865831909,
+        0.8736567907630366
+      ],
+      "q_coder": 0.24,
+      "q_tester": 0.17142857142857143,
+      "both_wrong": 0.12571428571428572,
+      "pass": 0.08426966292134831,
+      "pass_ci": [
+        0.056179775280898875,
+        0.11235955056179775
+      ],
+      "same_option_share": 0.6818181818181818
+    },
+    "ministral-3-8b|ministral-3-8b": {
+      "relation": "same model",
+      "n": 393,
+      "n_common": 400,
+      "rho": 0.9433261863991707,
+      "rho_ci": [
+        0.9030966324431404,
+        0.9741655985815517
+      ],
+      "q_coder": 0.22137404580152673,
+      "q_tester": 0.23155216284987276,
+      "both_wrong": 0.18575063613231552,
+      "pass": 0.1525,
+      "pass_ci": [
+        0.1175,
+        0.1875
+      ],
+      "same_option_share": 0.8356164383561644
+    },
+    "ministral-3-8b|gemma4-12b": {
+      "relation": "other family",
+      "n": 387,
+      "n_common": 400,
+      "rho": 0.7219010296278536,
+      "rho_ci": [
+        0.5907006448553203,
+        0.8276818343844
+      ],
+      "q_coder": 0.21963824289405684,
+      "q_tester": 0.15503875968992248,
+      "both_wrong": 0.10335917312661498,
+      "pass": 0.065,
+      "pass_ci": [
+        0.0425,
+        0.09
+      ],
+      "same_option_share": 0.65
+    },
+    "ministral-3-8b|eurollm-9b": {
+      "relation": "other family",
+      "n": 385,
+      "n_common": 400,
+      "rho": 0.46318672011382034,
+      "rho_ci": [
+        0.3165972923978019,
+        0.5964249048613541
+      ],
+      "q_coder": 0.22077922077922077,
+      "q_tester": 0.4025974025974026,
+      "both_wrong": 0.14545454545454545,
+      "pass": 0.085,
+      "pass_ci": [
+        0.06,
+        0.1125
+      ],
+      "same_option_share": 0.6071428571428571
+    },
+    "gemma4-12b|llama3.1-8b": {
+      "relation": "other family",
+      "n": 388,
+      "n_common": 400,
+      "rho": 0.7149487704009496,
+      "rho_ci": [
+        0.59054006028997,
+        0.8166956071700309
+      ],
+      "q_coder": 0.16752577319587628,
+      "q_tester": 0.32216494845360827,
+      "both_wrong": 0.13144329896907217,
+      "pass": 0.065,
+      "pass_ci": [
+        0.0425,
+        0.0925
+      ],
+      "same_option_share": 0.5098039215686274
+    },
+    "gemma4-12b|qwen3-8b": {
+      "relation": "other family",
+      "n": 395,
+      "n_common": 400,
+      "rho": 0.7219294530341667,
+      "rho_ci": [
+        0.598174649081438,
+        0.8192295825102118
+      ],
+      "q_coder": 0.16962025316455695,
+      "q_tester": 0.21518987341772153,
+      "both_wrong": 0.10886075949367088,
+      "pass": 0.0675,
+      "pass_ci": [
+        0.045,
+        0.0925
+      ],
+      "same_option_share": 0.627906976744186
+    },
+    "gemma4-12b|qwen3.5-9b": {
+      "relation": "other family",
+      "n": 351,
+      "n_common": 356,
+      "rho": 0.7824354733790744,
+      "rho_ci": [
+        0.6613330723455177,
+        0.873417137244347
+      ],
+      "q_coder": 0.17663817663817663,
+      "q_tester": 0.17663817663817663,
+      "both_wrong": 0.10826210826210826,
+      "pass": 0.08146067415730338,
+      "pass_ci": [
+        0.05337078651685393,
+        0.10955056179775281
+      ],
+      "same_option_share": 0.7631578947368421
+    },
+    "gemma4-12b|ministral-3-8b": {
+      "relation": "other family",
+      "n": 393,
+      "n_common": 400,
+      "rho": 0.7602139645594932,
+      "rho_ci": [
+        0.6436569496216743,
+        0.8522394660789693
+      ],
+      "q_coder": 0.17048346055979643,
+      "q_tester": 0.23155216284987276,
+      "both_wrong": 0.11959287531806616,
+      "pass": 0.08,
+      "pass_ci": [
+        0.055,
+        0.1075
+      ],
+      "same_option_share": 0.6808510638297872
+    },
+    "gemma4-12b|gemma4-12b": {
+      "relation": "same model",
+      "n": 390,
+      "n_common": 400,
+      "rho": 0.9767175963010621,
+      "rho_ci": [
+        0.9509986514594582,
+        0.9931595182313818
+      ],
+      "q_coder": 0.16923076923076924,
+      "q_tester": 0.1564102564102564,
+      "both_wrong": 0.14102564102564102,
+      "pass": 0.125,
+      "pass_ci": [
+        0.0925,
+        0.16
+      ],
+      "same_option_share": 0.9090909090909091
+    },
+    "gemma4-12b|eurollm-9b": {
+      "relation": "other family",
+      "n": 386,
+      "n_common": 400,
+      "rho": 0.4176693461153971,
+      "rho_ci": [
+        0.2548534651982933,
+        0.5726789645258025
+      ],
+      "q_coder": 0.16839378238341968,
+      "q_tester": 0.4067357512953368,
+      "both_wrong": 0.11139896373056994,
+      "pass": 0.06,
+      "pass_ci": [
+        0.0375,
+        0.085
+      ],
+      "same_option_share": 0.5581395348837209
+    },
+    "eurollm-9b|llama3.1-8b": {
+      "relation": "other family",
+      "n": 387,
+      "n_common": 400,
+      "rho": 0.5993514845717836,
+      "rho_ci": [
+        0.47105822954405235,
+        0.7136819291554031
+      ],
+      "q_coder": 0.3979328165374677,
+      "q_tester": 0.32299741602067183,
+      "both_wrong": 0.21963824289405684,
+      "pass": 0.1175,
+      "pass_ci": [
+        0.085,
+        0.1525
+      ],
+      "same_option_share": 0.5529411764705883
+    },
+    "eurollm-9b|qwen3-8b": {
+      "relation": "other family",
+      "n": 393,
+      "n_common": 400,
+      "rho": 0.5954834047821178,
+      "rho_ci": [
+        0.4550734397240294,
+        0.7184206025193096
+      ],
+      "q_coder": 0.40458015267175573,
+      "q_tester": 0.21882951653944022,
+      "both_wrong": 0.1628498727735369,
+      "pass": 0.09,
+      "pass_ci": [
+        0.0625,
+        0.12
+      ],
+      "same_option_share": 0.5625
+    },
+    "eurollm-9b|qwen3.5-9b": {
+      "relation": "other family",
+      "n": 350,
+      "n_common": 356,
+      "rho": 0.48090620777488124,
+      "rho_ci": [
+        0.3040159135584396,
+        0.6399275007452445
+      ],
+      "q_coder": 0.4228571428571429,
+      "q_tester": 0.17142857142857143,
+      "both_wrong": 0.12285714285714286,
+      "pass": 0.0702247191011236,
+      "pass_ci": [
+        0.0449438202247191,
+        0.09831460674157304
+      ],
+      "same_option_share": 0.5813953488372093
+    },
+    "eurollm-9b|ministral-3-8b": {
+      "relation": "other family",
+      "n": 390,
+      "n_common": 400,
+      "rho": 0.5768141523320283,
+      "rho_ci": [
+        0.43521591739695265,
+        0.6959508482370027
+      ],
+      "q_coder": 0.4,
+      "q_tester": 0.2358974358974359,
+      "both_wrong": 0.16923076923076924,
+      "pass": 0.095,
+      "pass_ci": [
+        0.0675,
+        0.125
+      ],
+      "same_option_share": 0.5757575757575758
+    },
+    "eurollm-9b|gemma4-12b": {
+      "relation": "other family",
+      "n": 387,
+      "n_common": 400,
+      "rho": 0.47970430212979775,
+      "rho_ci": [
+        0.30869238019361683,
+        0.6276522474901142
+      ],
+      "q_coder": 0.40310077519379844,
+      "q_tester": 0.15762273901808785,
+      "both_wrong": 0.1111111111111111,
+      "pass": 0.065,
+      "pass_ci": [
+        0.04,
+        0.09
+      ],
+      "same_option_share": 0.6046511627906976
+    },
+    "eurollm-9b|eurollm-9b": {
+      "relation": "same model",
+      "n": 385,
+      "n_common": 400,
+      "rho": 0.8500549845860734,
+      "rho_ci": [
+        0.7789343704511945,
+        0.9074359338207377
+      ],
+      "q_coder": 0.4051948051948052,
+      "q_tester": 0.4051948051948052,
+      "both_wrong": 0.3194805194805195,
+      "pass": 0.22,
+      "pass_ci": [
+        0.18,
+        0.26
+      ],
+      "same_option_share": 0.7154471544715447
+    }
+  },
+  "relations": {
+    "same model": {
+      "mean_rho": 0.9328351783559746,
+      "pairs": 6,
+      "min": 0.8500549845860734,
+      "max": 0.9767175963010621
+    },
+    "same family": {
+      "mean_rho": 0.7209627265510595,
+      "pairs": 2,
+      "min": 0.7157101555705903,
+      "max": 0.7262152975315288
+    },
+    "other family": {
+      "mean_rho": 0.6552991675199286,
+      "pairs": 28,
+      "min": 0.4176693461153971,
+      "max": 0.788767568592657
+    }
+  }
+}
