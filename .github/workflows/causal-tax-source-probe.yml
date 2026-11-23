@@ -284,6 +284,42 @@ jobs:
             ${{ runner.temp }}/tax-study/onset-phasein/tax_cut_onset_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit four additional historical primary-law provision contexts
+        id: legislative_expansion
+        if: steps.onset_phasein.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.legislative_expansion \
+            --flags "$RUNNER_TEMP/tax-study/timing/author_flag_years.csv" \
+            --onsets "$RUNNER_TEMP/tax-study/onset-phasein/tax_cut_onset_eligibility.csv" \
+            --legacy causal_tax_cuts/provision_periods.csv \
+            --expansion causal_tax_cuts/legislative_expansion.csv \
+            --previous "$RUNNER_TEMP/tax-study/onset-phasein/tax_cut_onset_audit.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/legislative-expansion"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "tax-study/legislative-expansion/legislative_coverage_audit.json"
+          frozen = Path("causal_tax_cuts/results/legislative_coverage_2026-11-23.json")
+          actual, reference = (json.loads(path.read_text(encoding="utf-8")) for path in (output, frozen))
+          if actual["source_sha256"] == reference["source_sha256"]:
+              if actual != reference:
+                  raise ValueError("Same-source legal coverage did not reproduce the frozen result")
+              print("Verified exact documentary-coverage snapshot")
+          else:
+              print("Source vintage changed: no claim of exact snapshot reproduction")
+          PY
+      - name: Publish four-case primary-law evidence expansion and coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-legislative-expansion
+          path: |
+            ${{ runner.temp }}/tax-study/legislative-expansion/legislative_review_all_flag_years.csv
+            ${{ runner.temp }}/tax-study/legislative-expansion/legislative_coverage_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'

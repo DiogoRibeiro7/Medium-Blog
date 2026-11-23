@@ -192,3 +192,14 @@ onsets and 5 additional five-year follow-up flags. Four are contiguous
 extensions; the fifth is USA 1982 followed by USA 1987 in a different
 flagged run. The three provision-period examples are **not** verified
 dates for the composite tax-cut indicator. No original estimate changes.
+
+
+The [extended statute review](../LEGISLATIVE_EXPANSION.md) and
+[23 November evidence coverage results](LEGISLATIVE_EXPANSION_RESULTS_2026-11-23.md)
+add four official primary-law contexts without changing the previous
+three-case legal ledger. **7 of 30** flag-years and **5 of 20**
+baseline donor-eligible onsets now have provision-level legal context.
+No author composite-index effective date or flag-to-statute attribution
+is verified. The independent CI artifact `tax-cut-legislative-expansion`
+contains a complete all-30 flag-year register, frozen source hashes and
+explicitly unreviewed cases. No causal treatment effects are calculated.
