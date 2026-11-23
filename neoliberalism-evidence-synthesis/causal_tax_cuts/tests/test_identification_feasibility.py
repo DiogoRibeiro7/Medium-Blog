@@ -138,8 +138,12 @@ class IdentificationFeasibilityTests(unittest.TestCase):
     def test_early_support_does_not_imply_five_year_support(self) -> None:
         rows = synthetic()
         events, horizons, summary = evaluate_identification(
-            rows["legal"], rows["hull"], rows["dynamic"],
-            rows["political"], rows["macro"], expected_reforms=2
+            rows["legal"],
+            rows["hull"],
+            rows["dynamic"],
+            rows["political"],
+            rows["macro"],
+            expected_reforms=2,
         )
         documented = next(row for row in events if row.country == "AAA")
         undocumented = next(row for row in events if row.country == "BBB")
@@ -151,7 +155,9 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         self.assertTrue(undocumented.strict_joint_wdi_support_at_h5)
         self.assertFalse(undocumented.provision_context_reviewed)
         self.assertEqual(summary["h5_support_without_legal_context"], ["BBB-2003"])
-        self.assertEqual(summary["n_documented_eligible_with_h5_strict_joint_wdi_support"], 0)
+        self.assertEqual(
+            summary["n_documented_eligible_with_h5_strict_joint_wdi_support"], 0
+        )
         self.assertEqual(summary["n_eligible_with_repeat_cut_by_h5"], 1)
         self.assertEqual(summary["n_policy_specific_causal_designs_supported"], 0)
         self.assertTrue(all(row.feasibility_status == NOT_IDENTIFIED for row in events))
@@ -163,8 +169,12 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         rows["legal"][0]["author_composite_effective_date_verified"] = "True"
         with self.assertRaisesRegex(ValueError, "does not identify"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
 
     def test_donor_counts_must_agree_across_horizon_sources(self) -> None:
@@ -174,8 +184,12 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         ] = "999"
         with self.assertRaisesRegex(ValueError, "Contradictory dynamic"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
 
     def test_no_missing_horizon_or_duplicate_source_key(self) -> None:
@@ -183,15 +197,23 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         rows["hull"].pop()
         with self.assertRaisesRegex(ValueError, "Missing joint-support horizon"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
         rows = synthetic()
         rows["hull"].append(deepcopy(rows["hull"][0]))
         with self.assertRaisesRegex(ValueError, "Duplicate source"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
 
     def test_political_coverage_is_not_equivalent_to_causal_balance(self) -> None:
@@ -199,27 +221,41 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         rows["political"][0]["treated_all_three_pre5_complete"] = "True"
         rows["political"][0]["n_horizon_five_donors_all_three_complete"] = "2"
         events, _, summary = evaluate_identification(
-            rows["legal"], rows["hull"], rows["dynamic"],
-            rows["political"], rows["macro"], expected_reforms=2
+            rows["legal"],
+            rows["hull"],
+            rows["dynamic"],
+            rows["political"],
+            rows["macro"],
+            expected_reforms=2,
         )
         self.assertTrue(events[0].political_pre5_history_complete)
         self.assertFalse(events[0].policy_specific_causal_design_supported)
-        self.assertEqual(summary["n_policy_specific_interventions_attributed_to_source_law"], 0)
+        self.assertEqual(
+            summary["n_policy_specific_interventions_attributed_to_source_law"], 0
+        )
 
     def test_macro_slope_is_diagnostic_not_a_screening_threshold(self) -> None:
         rows = synthetic()
         rows["macro"][0]["pretrend_slope_gap_selected"] = "20.5"
         result, _, _ = evaluate_identification(
-            rows["legal"], rows["hull"], rows["dynamic"],
-            rows["political"], rows["macro"], expected_reforms=2
+            rows["legal"],
+            rows["hull"],
+            rows["dynamic"],
+            rows["political"],
+            rows["macro"],
+            expected_reforms=2,
         )
         self.assertEqual(result[0].pretrend_slope_gap_selected_pp_per_year, 20.5)
         self.assertEqual(result[0].feasibility_status, NOT_IDENTIFIED)
         rows["macro"][0]["pretrend_slope_gap_selected"] = "nan"
         with self.assertRaisesRegex(ValueError, "Nonfinite"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
 
     def test_source_vintage_mismatch_fails_closed(self) -> None:
@@ -243,10 +279,14 @@ class IdentificationFeasibilityTests(unittest.TestCase):
                 path = root / f"{key}.json"
                 manifest(path, status)
                 audits[key] = path
-            audits["political"].write_text(json.dumps({
-                "status": status_map["political"],
-                "joined_panel_sha256": "b" * 64,
-            }))
+            audits["political"].write_text(
+                json.dumps(
+                    {
+                        "status": status_map["political"],
+                        "joined_panel_sha256": "b" * 64,
+                    }
+                )
+            )
             with self.assertRaisesRegex(ValueError, "Incompatible WID/WDI"):
                 run(
                     legal_file=data_paths["legal"],
@@ -266,8 +306,12 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         rows = synthetic()
         with self.assertRaisesRegex(ValueError, "Eligible cohort changed"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=20
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=20,
             )
 
     def test_bool_parser_rejects_implicit_truthiness(self) -> None:
@@ -275,8 +319,12 @@ class IdentificationFeasibilityTests(unittest.TestCase):
         rows["legal"][0]["is_onset"] = "false"
         with self.assertRaisesRegex(ValueError, "explicit boolean"):
             evaluate_identification(
-                rows["legal"], rows["hull"], rows["dynamic"],
-                rows["political"], rows["macro"], expected_reforms=2
+                rows["legal"],
+                rows["hull"],
+                rows["dynamic"],
+                rows["political"],
+                rows["macro"],
+                expected_reforms=2,
             )
 
 
