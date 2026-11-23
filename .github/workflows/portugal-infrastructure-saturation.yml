@@ -1,0 +1,71 @@
+name: Reproduce portugal-infrastructure-saturation
+
+on:
+  pull_request:
+    paths:
+      - 'portugal-infrastructure-saturation/**'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/portugal-infrastructure-saturation.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'portugal-infrastructure-saturation/**'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/portugal-infrastructure-saturation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: portugal-infrastructure-saturation
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: portugal-infrastructure-saturation/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the core functions
+        run: python -m unittest discover -s tests -v
+
+      - name: Download the INE responses and check their content hashes
+        run: python fetch.py
+
+      - name: Build the municipal panel
+        run: python panel.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python run_analysis.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=portugal-infrastructure-saturation/output.txt::output of run_analysis.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_where_growth_went fig2_infrastructure_by_group fig3_saturation_vs_growth fig4_rank_uncertainty fig5_what_to_build_where; do
+            test -s "figures/$f.png"
+          done
