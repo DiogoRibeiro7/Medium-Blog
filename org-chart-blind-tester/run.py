@@ -15,7 +15,7 @@ import sys
 import time
 from pathlib import Path
 
-from common import (Ollama, in_check_set, load_config, load_questions, messages, model_specs, parse_answer,
+from common import (Ollama, in_check_set, load_config, load_questions, messages, model_specs, parse_answer_how,
                     read_jsonl, sample_order, shard_path)
 
 
@@ -77,7 +77,8 @@ def run_shard(spec: dict, order, shard: int, shards: int, cfg: dict, client: Oll
                 stopped = "error"
                 log(f"[{spec['key']} shard {shard}] stopping on error: {e}")
                 break
-            rec.update(out, answer=parse_answer(out["text"]),
+            answer, how = parse_answer_how(out["text"])
+            rec.update(out, answer=answer, parsed_by=how,
                        created=dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"))
             fh.write(json.dumps(rec, ensure_ascii=False) + "\n")
             fh.flush()

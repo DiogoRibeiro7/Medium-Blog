@@ -40,6 +40,7 @@ jobs:
     timeout-minutes: 5
     outputs:
       matrix: ${{ steps.plan.outputs.matrix }}
+      ask: ${{ steps.plan.outputs.ask }}
       runs_branch: ${{ steps.plan.outputs.runs_branch }}
       n_questions: ${{ steps.plan.outputs.n_questions }}
     defaults:
@@ -69,7 +70,9 @@ jobs:
                   continue
               k = req.get("shards") or m.get("shards", cfg["shards"])
               jobs += [{"key": m["key"], "model": m["model"], "shard": i, "shards": k} for i in range(k)]
-          print("matrix=" + json.dumps({"include": jobs}))
+          ask = bool(jobs) and req.get("ask", True)
+          print("matrix=" + json.dumps({"include": jobs or [{"key": "none"}]}))
+          print("ask=" + ("true" if ask else "false"))
           print("runs_branch=" + req["runs_branch"])
           print("n_questions=" + str(req.get("n_questions") or 0))
           PY
@@ -77,6 +80,7 @@ jobs:
 
   ask:
     needs: plan
+    if: ${{ needs.plan.outputs.ask == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 350
     strategy:
@@ -162,6 +166,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           pattern: runs-*
           merge-multiple: true
@@ -199,3 +204,47 @@ jobs:
               print(f"{r['key']:<16} shard {r['shard']}/{r['shards']}: {r['questions_complete']}/{r['questions']} complete, "
                     f"stopped {r['stopped']}, {r['calls']} calls, {r['seconds']} s")
           PY
+
+  analyse:
+    needs: [plan, collect]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RUNS_BRANCH: ${{ needs.plan.outputs.runs_branch }}
+      MPLBACKEND: Agg
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: org-chart-blind-tester/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r org-chart-blind-tester/requirements.txt
+
+      - name: Analyse the responses and push the numbers and figures to the runs branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          url="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git clone --quiet --depth 1 --branch "$RUNS_BRANCH" "$url" runs-branch
+          out=runs-branch/org-chart-blind-tester
+          mkdir -p "$out/results" "$out/figures"
+          (cd org-chart-blind-tester && python analyse.py --runs-dir "../$out/runs" --fig-dir "../$out/figures" \
+              --summary "../$out/results/summary.json" > "../$out/results/output.txt")
+          echo "analysed responses at $(git -C runs-branch rev-parse HEAD)" > "$out/results/analysed_commit.txt"
+          git -C runs-branch rev-parse HEAD >> "$out/results/analysed_commit.txt"
+          cat "$out/results/output.txt"
+          cd runs-branch
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Analysis unchanged."
+          else
+            git commit --quiet -m "org-chart-blind-tester analysis ($(date -u +%Y-%m-%dT%H:%MZ))"
+            git push --quiet origin "$RUNS_BRANCH"
+          fi

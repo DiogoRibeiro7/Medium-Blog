@@ -1,8 +1,9 @@
 {
-  "note": "Changing this file on the org-chart-blind-tester branch starts .github/workflows/org-chart-blind-tester-run.yml. A smoke run asks the first few questions of the sampled order, in one shard per model, and writes to its own branch.",
-  "request": 1,
+  "note": "Changing this file on the org-chart-blind-tester branch starts .github/workflows/org-chart-blind-tester-run.yml. 'ask': false only reanalyses the responses already on the runs branch.",
+  "request": 2,
   "runs_branch": "org-chart-blind-tester-smoke",
   "n_questions": 6,
   "shards": 1,
-  "models": []
+  "models": [],
+  "ask": false
 }

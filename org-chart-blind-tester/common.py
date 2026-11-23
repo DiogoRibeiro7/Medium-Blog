@@ -151,14 +151,25 @@ def messages(role: str, q: Question, coder_text: str | None = None) -> list[dict
 
 
 _ANSWER = re.compile(r"ANSWER\s*[:\-]\s*\**\s*\(?\s*([ABCD])\b", re.I)
+_FALLBACK = re.compile(r"\banswer is\s*:?\s*\**\s*(?:option\s*)?\(?([ABCD])\b", re.I)
+
+
+def parse_answer_how(text: str | None) -> tuple[str | None, str | None]:
+    """The letter on the last 'ANSWER: X' line ('line'); failing that, the last 'the answer is X'
+    ('fallback'), which some models write instead of the requested line; otherwise (None, None)."""
+    if not text:
+        return None, None
+    found = _ANSWER.findall(text)
+    if found:
+        return found[-1].upper(), "line"
+    found = _FALLBACK.findall(text)
+    if found:
+        return found[-1].upper(), "fallback"
+    return None, None
 
 
 def parse_answer(text: str | None) -> str | None:
-    """The letter on the last 'ANSWER: X' line, or None if there is none."""
-    if not text:
-        return None
-    found = _ANSWER.findall(text)
-    return found[-1].upper() if found else None
+    return parse_answer_how(text)[0]
 
 
 # ---------------------------------------------------------------------------------------------------

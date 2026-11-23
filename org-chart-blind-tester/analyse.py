@@ -34,7 +34,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import special, stats
 
-from common import HERE, LETTERS, in_check_set, load_config, load_questions, read_model_runs, sample_order
+from common import HERE, LETTERS, in_check_set, load_config, load_questions, parse_answer_how, read_model_runs, sample_order
 from run import question_complete
 
 B_BOOT = 2000
@@ -125,6 +125,8 @@ def load(cfg, runs_dir: Path, questions_file: Path | None):
         recs = read_model_runs(runs_dir, spec["key"])
         if not recs:
             continue
+        for r in recs:  # score with the current parser, whatever the run recorded
+            r["answer"], r["parsed_by"] = parse_answer_how(r.get("text"))
         prov = [json.loads(p.read_text())
                 for p in sorted(runs_dir.glob(f"{spec['key']}.shard*.provenance.json"))]
         done = {(r["qid"], r["role"]): r for r in recs}
@@ -222,6 +224,7 @@ def main(argv=None) -> int:
         recs = m["records"]
         n_complete = len(m["tab"])
         unparsed = sum(r["answer"] is None for r in recs)
+        fallback = sum(r["parsed_by"] == "fallback" for r in recs)
         truncated = sum(r.get("finish_reason") == "length" for r in recs)
         secs = [r["usage"]["seconds"] for r in recs if (r.get("usage") or {}).get("seconds")]
         by_role = {role: sum(r["role"] == role for r in recs) for role in ("coder", "blind", "anchored", "warned")}
@@ -230,12 +233,13 @@ def main(argv=None) -> int:
               f"Ollama {', '.join(m['versions'])}")
         print(f"  {'':<15} {n_complete} questions complete; "
               f"{len(recs)} responses ({', '.join(f'{r} {n}' for r, n in by_role.items())}); "
-              f"no ANSWER line {unparsed}, cut at max_tokens {truncated}"
+              f"no answer found {unparsed}, answer read from 'the answer is X' {fallback}, cut at max_tokens {truncated}"
               + (f"; median {np.median(secs):.1f} s per call" if secs else ""))
         if len(m["digests"]) > 1:
             print(f"  {'':<15} WARNING: shards ran different weights")
         summary["models"][k] = {"ids": m["ids"], "digests": m["digests"], "complete": n_complete,
-                                "responses": len(recs), "unparseable": unparsed, "truncated": truncated}
+                                "responses": len(recs), "unparseable": unparsed, "fallback_parse": fallback,
+                                "truncated": truncated}
 
     # 2. Error rates ------------------------------------------------------------------------------
     header("2. Error rates, on the answers that parsed (missing answers are counted separately)")

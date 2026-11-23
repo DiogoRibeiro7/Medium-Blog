@@ -137,6 +137,10 @@ class PipelineTest(unittest.TestCase):
         self.assertEqual(p("**ANSWER:** D"), "D")
         self.assertEqual(p("Answer - A\nmore\nANSWER: B"), "B")
         self.assertIsNone(p("I would pick the second one"))
+        self.assertEqual(p("so the correct answer is D. Pulmonary veins."), "D")
+        self.assertEqual(p("The answer is (b)."), "B")
+        self.assertEqual(p("the answer is B, not C.\nANSWER: C"), "C")
+        self.assertEqual(common.parse_answer_how("the answer is A")[1], "fallback")
         self.assertIsNone(p(None))
 
 
