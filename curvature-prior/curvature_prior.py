@@ -11,11 +11,12 @@ Sections
      size, diameter and Gromov four-point delta of each.
   2  Dimension sweep: each graph embedded in flat and in hyperbolic space with 2 to 200
      dimensions; average and worst-case distortion and neighbour-ranking MAP.
-  3  What the sweep says: the flat/hyperbolic distortion ratio by dimension, and how many
-     flat dimensions match a few hyperbolic ones.
+  3  What the sweep says: the flat/hyperbolic distortion ratio by dimension, how many
+     flat dimensions match a few hyperbolic ones, and the curvature each hyperbolic fit learned.
   4  The dial: random cross-links added to the mammal tree, from 0.5% to 50% of its size;
      the hyperbolic advantage at 5 and 50 dimensions against tree-likeness.
-  5  Checks: longer training, other initialisations.
+  5  Checks: longer training, other initialisations, and where the leaves of the complete
+     tree put their parent in the flat embeddings.
 
 Run:  python curvature_prior.py > results/output.txt
 """
@@ -135,6 +136,12 @@ def main() -> None:
         best_e = min(s[d]["euclidean"]["D_avg"] for d in DIMS)
         best_h = min(s[d]["hyperbolic"]["D_avg"] for d in DIMS)
         print(f"  best D_avg over all dimensions: flat {best_e:.4f}, hyperbolic {best_h:.4f}")
+        us = [float(np.exp(s[d]["hyperbolic"]["log_u"])) for d in DIMS]
+        diam = float(g.dist.max())
+        print("  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u "
+              + ", ".join(f"{d}: {u:.2f}" for d, u in zip(DIMS, us)))
+        print("    curvature in graph units, -1/u^2: " + ", ".join(f"{d}: {-1 / u ** 2:.3g}" for d, u in zip(DIMS, us)))
+        print("    diameter in radii of curvature, diameter/u: " + ", ".join(f"{d}: {diam / u:.1f}" for d, u in zip(DIMS, us)))
 
     # ------------------------------------------------------------------------------
     header("4  The dial: cross-links added to the mammal tree")
@@ -180,7 +187,35 @@ def main() -> None:
         seeds[geo] = [{"D_avg": v["D_avg"], "MAP": v["MAP"]} for v in vals]
         print(f"mammals, {geo}, d=10, initialisations 0, 1, 2: D_avg "
               + ", ".join(f"{v['D_avg']:.4f}" for v in vals) + "; MAP " + ", ".join(f"{v['MAP']:.4f}" for v in vals))
-    summary["checks"] = {"convergence": conv, "seeds": seeds}
+    leaves = {}
+    nb = tree.neighbours()
+    deg = np.array([len(x) for x in nb])
+    for d in (20, 200):
+        D = E.all_distances(E.fit(tree, "euclidean", d, seed=0))
+        ranks, internal, ratio = [], [], []
+        for u in range(tree.n):
+            row = D[u].copy()
+            row[u] = np.inf
+            rank = np.empty(tree.n, dtype=np.int64)
+            rank[np.argsort(row, kind="stable")] = np.arange(1, tree.n + 1)
+            rk = np.sort(rank[nb[u]])
+            if deg[u] == 1:
+                p = nb[u][0]
+                sib = [v for v in nb[p] if deg[v] == 1 and v != u]
+                ranks.append(int(rk[0]))
+                ratio.append(float(np.mean(D[u, sib]) / D[u, p]))
+            else:
+                internal.append(float(np.mean(np.arange(1, len(rk) + 1) / rk)))
+        counts = {str(k): int(c) for k, c in zip(*np.unique(ranks, return_counts=True))}
+        leaves[f"d{d}"] = {"leaves": len(ranks), "parent_rank_counts": counts, "MAP": float(np.mean(internal)),
+                           "sibling_over_parent": float(np.median(ratio)),
+                           "sibling_over_parent_min": float(min(ratio)), "sibling_over_parent_max": float(max(ratio))}
+        print(f"complete tree, euclidean, d={d}: rank of the parent among a leaf's nearest points "
+              + ", ".join(f"{k}: {c} leaves" for k, c in counts.items())
+              + f" (of {len(ranks)}); internal nodes' mean AP {np.mean(internal):.4f}; "
+              f"distance to a sibling / distance to the parent, median {np.median(ratio):.2f} "
+              f"({min(ratio):.2f} to {max(ratio):.2f}; 2 in the tree)")
+    summary["checks"] = {"convergence": conv, "seeds": seeds, "leaves": leaves}
 
     # ------------------------------------------------------------------------------
     header("Figures")

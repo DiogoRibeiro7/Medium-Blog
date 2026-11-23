@@ -30,6 +30,7 @@ Each graph's metric is its shortest-path distance. Tree-likeness is Gromov's fou
   - Average distortion: the mean of `|c * d_embedded / d_graph - 1|`, with the best scale `c`.
   - Worst-case distortion: the ratio of the largest to the smallest `d_embedded / d_graph`.
   - Mean average precision (MAP): how well each node's graph neighbours are recovered by ranking all other nodes by embedded distance, the reconstruction score of Nickel and Kiela (2017).
+- **Learned curvature.** For each hyperbolic fit the output reports `u` as graph steps per unit of hyperbolic distance, the curvature in graph units, `-1/u^2`, and the graph's diameter in radii of curvature, `diameter / u`.
 
 ## Files
 
@@ -58,13 +59,15 @@ Every random draw is seeded, and a rerun on the same machine reproduces `summary
 
 - graph statistics exactly;
 - average distortion and MAP within 0.003 or 3%;
-- worst-case distortion and radii within 25%.
+- worst-case distortion and radii within 25%;
+- the learned scale within 0.1 on the log scale, and sibling-to-parent distance ratios within 0.03.
 
-Two checks in the output bound the optimisation's own effect. Three times the training steps, and three different initialisations, change the results the article quotes by less than the gaps it discusses.
+Two checks in the output bound the optimisation's own effect. Three times the training steps, and three different initialisations, change the results the article quotes by less than the gaps it discusses. A third explains the flat plateau on the complete tree: in the flat fits at 20 and 200 dimensions, every leaf has its two siblings nearer than its parent.
 
 ## Limits
 
 - **Simple ingredients.** The fits use one loss, one optimiser, a learned scale and a fixed curvature of -1. They are not the best embeddings either geometry can reach. Combinatorial constructions reach far lower hyperbolic distortion in two dimensions (Sala et al., 2018), and other losses suit ranking better.
+- **Optimisation, not only geometry.** A hyperbolic fit can imitate a flat one by shrinking towards the origin, so its best possible distortion is never worse than the flat one. On the grid (5% to 10% above flat) and at the top of the dial (4% to 6%) the hyperbolic fits stop short of that.
 - **Lower-bound delta.** The four-point delta is sampled, so its maximum is a lower bound.
 - **Random cross-links.** The dial's cross-links are random. Real extra structure in a taxonomy (multiple inheritance, part-of links) is not random, and may hurt hyperbolic geometry less or more.
 - **Precision.** Hyperbolic embeddings need more numerical precision as radii grow. These fits stay within radius 12 in float64; the precision cost of larger radii is not studied here.

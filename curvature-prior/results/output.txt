@@ -75,26 +75,41 @@ WordNet mammals: flat/hyperbolic distortion ratio by dimension 2: 2.24, 5: 3.01,
   hyperbolic d= 5: D_avg 0.0399, MAP 0.8596; flat dimensions to match the distortion: 50; to match the MAP: 50
   hyperbolic d=10: D_avg 0.0211, MAP 0.9865; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
   best D_avg over all dimensions: flat 0.0308, hyperbolic 0.0061
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.95, 5: 1.34, 10: 1.60, 20: 1.69, 50: 1.70, 100: 1.76, 200: 1.89
+    curvature in graph units, -1/u^2: 2: -1.1, 5: -0.558, 10: -0.392, 20: -0.351, 50: -0.348, 100: -0.323, 200: -0.281
+    diameter in radii of curvature, diameter/u: 2: 16.8, 5: 12.0, 10: 10.0, 20: 9.5, 50: 9.4, 100: 9.1, 200: 8.5
 
 WordNet food: flat/hyperbolic distortion ratio by dimension 2: 1.98, 5: 2.38, 10: 2.08, 20: 1.89, 50: 1.76, 100: 1.75, 200: 1.76
   hyperbolic d= 5: D_avg 0.0428, MAP 0.5788; flat dimensions to match the distortion: 20; to match the MAP: 20
   hyperbolic d=10: D_avg 0.0282, MAP 0.8908; flat dimensions to match the distortion: 50; to match the MAP: 50
   best D_avg over all dimensions: flat 0.0249, hyperbolic 0.0142
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.90, 5: 1.41, 10: 1.68, 20: 1.79, 50: 1.74, 100: 1.77, 200: 1.79
+    curvature in graph units, -1/u^2: 2: -1.24, 5: -0.503, 10: -0.356, 20: -0.314, 50: -0.33, 100: -0.32, 200: -0.313
+    diameter in radii of curvature, diameter/u: 2: 17.8, 5: 11.3, 10: 9.5, 20: 9.0, 50: 9.2, 100: 9.1, 200: 9.0
 
 WordNet mammals, transitive closure: flat/hyperbolic distortion ratio by dimension 2: 2.78, 5: 2.84, 10: 2.50, 20: 2.15, 50: 1.74, 100: 1.54, 200: 1.42
   hyperbolic d= 5: D_avg 0.0676, MAP 0.3874; flat dimensions to match the distortion: 50; to match the MAP: 20
   hyperbolic d=10: D_avg 0.0521, MAP 0.7554; flat dimensions to match the distortion: 100; to match the MAP: 50
   best D_avg over all dimensions: flat 0.0266, hyperbolic 0.0187
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.20, 5: 0.28, 10: 0.35, 20: 0.42, 50: 0.54, 100: 0.60, 200: 0.55
+    curvature in graph units, -1/u^2: 2: -24.6, 5: -12.9, 10: -8.35, 20: -5.64, 50: -3.39, 100: -2.76, 200: -3.28
+    diameter in radii of curvature, diameter/u: 2: 9.9, 5: 7.2, 10: 5.8, 20: 4.7, 50: 3.7, 100: 3.3, 200: 3.6
 
 tree (branching 3, depth 6): flat/hyperbolic distortion ratio by dimension 2: 2.06, 5: 4.91, 10: 5.12, 20: 5.29, 50: 5.64, 100: 5.68, 200: 5.22
   hyperbolic d= 5: D_avg 0.0279, MAP 1.0000; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
   hyperbolic d=10: D_avg 0.0154, MAP 1.0000; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
   best D_avg over all dimensions: flat 0.0308, hyperbolic 0.0055
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.90, 5: 1.54, 10: 1.84, 20: 1.86, 50: 1.65, 100: 1.63, 200: 1.77
+    curvature in graph units, -1/u^2: 2: -1.23, 5: -0.422, 10: -0.297, 20: -0.288, 50: -0.369, 100: -0.377, 200: -0.317
+    diameter in radii of curvature, diameter/u: 2: 13.3, 5: 7.8, 10: 6.5, 20: 6.4, 50: 7.3, 100: 7.4, 200: 6.8
 
 grid (33 x 33): flat/hyperbolic distortion ratio by dimension 2: 0.95, 5: 0.95, 10: 0.94, 20: 0.94, 50: 0.93, 100: 0.92, 200: 0.91
   hyperbolic d= 5: D_avg 0.0973, MAP 1.0000; flat dimensions to match the distortion: 2; to match the MAP: 2
   hyperbolic d=10: D_avg 0.0977, MAP 1.0000; flat dimensions to match the distortion: 2; to match the MAP: 2
   best D_avg over all dimensions: flat 0.0921, hyperbolic 0.0973
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 27.80, 5: 27.02, 10: 25.82, 20: 24.52, 50: 22.34, 100: 20.92, 200: 19.06
+    curvature in graph units, -1/u^2: 2: -0.00129, 5: -0.00137, 10: -0.0015, 20: -0.00166, 50: -0.002, 100: -0.00228, 200: -0.00275
+    diameter in radii of curvature, diameter/u: 2: 2.3, 5: 2.4, 10: 2.5, 20: 2.6, 50: 2.9, 100: 3.1, 200: 3.4
 
 ==============================================================================
 4  The dial: cross-links added to the mammal tree
@@ -139,6 +154,8 @@ mammals, euclidean, d=200: three times the steps moves D_avg 0.0308 -> 0.0307, M
 mammals, hyperbolic, d=50: three times the steps moves D_avg 0.0066 -> 0.0054, MAP 0.9993 -> 0.9993
 mammals, euclidean, d=10, initialisations 0, 1, 2: D_avg 0.0695, 0.0696, 0.0696; MAP 0.6020, 0.5956, 0.5985
 mammals, hyperbolic, d=10, initialisations 0, 1, 2: D_avg 0.0211, 0.0211, 0.0214; MAP 0.9865, 0.9877, 0.9831
+complete tree, euclidean, d=20: rank of the parent among a leaf's nearest points 3: 729 leaves (of 729); internal nodes' mean AP 1.0000; distance to a sibling / distance to the parent, median 0.95 (0.93 to 0.96; 2 in the tree)
+complete tree, euclidean, d=200: rank of the parent among a leaf's nearest points 3: 729 leaves (of 729); internal nodes' mean AP 1.0000; distance to a sibling / distance to the parent, median 0.97 (0.97 to 0.97; 2 in the tree)
 
 ==============================================================================
 Figures

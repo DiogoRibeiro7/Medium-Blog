@@ -143,7 +143,7 @@ def figure_dial(dial, fractions, path_out="fig4_cross_links.png") -> str:
         if d == 50:
             ax1.fill_between(xs_plot, lo, hi, color=col, alpha=0.15, lw=0)
     ax1.axhline(1.0, color=INK2, lw=1.0, ls=":")
-    ax1.text(xs_plot[-1], 0.82, "no advantage", ha="right", va="top", fontsize=8.5, color=INK2)
+    ax1.text(xs_plot[0], 1.06, "no advantage", ha="left", va="bottom", fontsize=8.5, color=INK2)
     ax1.set_xscale("log")
     ax1.set_xticks(xs_plot)
     ax1.set_xticklabels(["0"] + [f"{x:g}" for x in xs[1:]])

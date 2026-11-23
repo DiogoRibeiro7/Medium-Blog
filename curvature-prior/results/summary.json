@@ -1444,6 +1444,28 @@
      "MAP": 0.98307718
     }
    ]
+  },
+  "leaves": {
+   "d20": {
+    "leaves": 729,
+    "parent_rank_counts": {
+     "3": 729
+    },
+    "MAP": 1.0,
+    "sibling_over_parent": 0.94832807,
+    "sibling_over_parent_min": 0.93450011,
+    "sibling_over_parent_max": 0.96215082
+   },
+   "d200": {
+    "leaves": 729,
+    "parent_rank_counts": {
+     "3": 729
+    },
+    "MAP": 1.0,
+    "sibling_over_parent": 0.96903814,
+    "sibling_over_parent_min": 0.96538539,
+    "sibling_over_parent_max": 0.97242505
+   }
   }
  }
 }

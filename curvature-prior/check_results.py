@@ -18,7 +18,8 @@ import sys
 
 TOL = {"D_avg": (0.003, 0.03), "MAP": (0.003, 0.03), "D_avg_1500": (0.003, 0.03), "D_avg_4500": (0.003, 0.03),
        "MAP_1500": (0.003, 0.03), "MAP_4500": (0.003, 0.03), "worst": (0.0, 0.25), "radius_max": (0.0, 0.25),
-       "loss": (0.0, 0.10), "log_u": (0.1, 0.0)}
+       "loss": (0.0, 0.10), "log_u": (0.1, 0.0),
+       "sibling_over_parent": (0.03, 0.0), "sibling_over_parent_min": (0.03, 0.0), "sibling_over_parent_max": (0.03, 0.0)}
 
 
 def walk(a, b, path, bad):
