@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-243 top-level folders: 77 belong to 24 series, 96 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 13 not yet sorted.
+244 top-level folders: 77 belong to 24 series, 96 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -409,6 +409,7 @@ Add these folders to `projects.yml`.
 - [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
 - [`growth-finite-world/`](growth-finite-world/) — Corporate growth on a finite planet: valuation, earnings and energy, 1871–2024
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — Where the EUR 2,300 "moderate rent" ceiling sat against real rents, Portugal 2017-2025
+- [`org-chart-blind-tester/`](org-chart-blind-tester/) — Blind testers, anchored testers and testers from another model family
 - [`productivity-hours-denominator/`](productivity-hours-denominator/) — The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009–2026
 - [`rent-or-buy-us/`](rent-or-buy-us/) — Rent or buy in sixteen US metropolitan areas, 1987-2025: does forced saving decide?
 - [`services-energy-time/`](services-energy-time/) — The energy and the hours behind Europe's service economy, 1995–2024
