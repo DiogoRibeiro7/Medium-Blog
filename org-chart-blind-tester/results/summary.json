@@ -122,6 +122,7 @@
           "q_tester": 0.21518987341772153,
           "more_false_alarms": 0.0,
           "break_even_ratio": NaN,
+          "q_coder": 0.3367088607594937,
           "pass_share_of_errors": 0.2857142857142857
         },
         "blind qwen3.5-9b": {
@@ -146,6 +147,7 @@
           "q_tester": 0.1598984771573604,
           "more_false_alarms": -0.009999999999999995,
           "break_even_ratio": NaN,
+          "q_coder": 0.3367088607594937,
           "pass_share_of_errors": 0.2631578947368421
         },
         "blind ministral-3-8b": {
@@ -170,6 +172,7 @@
           "q_tester": 0.22959183673469388,
           "more_false_alarms": 0.010000000000000002,
           "break_even_ratio": 0.09090909090909093,
+          "q_coder": 0.3367088607594937,
           "pass_share_of_errors": 0.3082706766917293
         },
         "blind gemma4-12b": {
@@ -194,6 +197,7 @@
           "q_tester": 0.1564102564102564,
           "more_false_alarms": -0.017499999999999995,
           "break_even_ratio": NaN,
+          "q_coder": 0.3367088607594937,
           "pass_share_of_errors": 0.24060150375939848
         },
         "blind eurollm-9b": {
@@ -218,6 +222,7 @@
           "q_tester": 0.4082687338501292,
           "more_false_alarms": 0.14,
           "break_even_ratio": 1.6000000000000003,
+          "q_coder": 0.3367088607594937,
           "pass_share_of_errors": 0.37593984962406013
         }
       },
@@ -372,6 +377,7 @@
           "q_tester": 0.32653061224489793,
           "more_false_alarms": 0.1225,
           "break_even_ratio": 1.7499999999999998,
+          "q_coder": 0.2275,
           "pass_share_of_errors": 0.43956043956043955
         },
         "blind qwen3.5-9b": {
@@ -396,6 +402,7 @@
           "q_tester": 0.16331658291457288,
           "more_false_alarms": 0.0225,
           "break_even_ratio": 0.2571428571428571,
+          "q_coder": 0.2275,
           "pass_share_of_errors": 0.3626373626373626
         },
         "blind ministral-3-8b": {
@@ -420,6 +427,7 @@
           "q_tester": 0.23484848484848486,
           "more_false_alarms": 0.06,
           "break_even_ratio": 0.8888888888888886,
+          "q_coder": 0.2275,
           "pass_share_of_errors": 0.45054945054945056
         },
         "blind gemma4-12b": {
@@ -444,6 +452,7 @@
           "q_tester": 0.1556122448979592,
           "more_false_alarms": 0.03,
           "break_even_ratio": 0.2666666666666666,
+          "q_coder": 0.2275,
           "pass_share_of_errors": 0.25274725274725274
         },
         "blind eurollm-9b": {
@@ -468,6 +477,7 @@
           "q_tester": 0.4092071611253197,
           "more_false_alarms": 0.2225,
           "break_even_ratio": 3.068965517241379,
+          "q_coder": 0.2275,
           "pass_share_of_errors": 0.42857142857142855
         }
       },
@@ -622,6 +632,7 @@
           "q_tester": 0.32390745501285345,
           "more_false_alarms": 0.175,
           "break_even_ratio": 4.375,
+          "q_coder": 0.16666666666666666,
           "pass_share_of_errors": 0.5
         },
         "blind qwen3-8b": {
@@ -646,6 +657,7 @@
           "q_tester": 0.2196969696969697,
           "more_false_alarms": 0.075,
           "break_even_ratio": 1.4999999999999998,
+          "q_coder": 0.16666666666666666,
           "pass_share_of_errors": 0.4393939393939394
         },
         "blind ministral-3-8b": {
@@ -670,6 +682,7 @@
           "q_tester": 0.22900763358778625,
           "more_false_alarms": 0.075,
           "break_even_ratio": 2.142857142857143,
+          "q_coder": 0.16666666666666666,
           "pass_share_of_errors": 0.5303030303030303
         },
         "blind gemma4-12b": {
@@ -694,6 +707,7 @@
           "q_tester": 0.15424164524421594,
           "more_false_alarms": 0.039999999999999994,
           "break_even_ratio": 0.6956521739130435,
+          "q_coder": 0.16666666666666666,
           "pass_share_of_errors": 0.3939393939393939
         },
         "blind eurollm-9b": {
@@ -718,6 +732,7 @@
           "q_tester": 0.40310077519379844,
           "more_false_alarms": 0.255,
           "break_even_ratio": 5.1,
+          "q_coder": 0.16666666666666666,
           "pass_share_of_errors": 0.4393939393939394
         }
       },
@@ -872,6 +887,7 @@
           "q_tester": 0.32216494845360827,
           "more_false_alarms": 0.1275,
           "break_even_ratio": 2.217391304347826,
+          "q_coder": 0.22081218274111675,
           "pass_share_of_errors": 0.4367816091954023
         },
         "blind qwen3-8b": {
@@ -896,6 +912,7 @@
           "q_tester": 0.2131979695431472,
           "more_false_alarms": 0.027499999999999997,
           "break_even_ratio": 0.40740740740740744,
+          "q_coder": 0.22081218274111675,
           "pass_share_of_errors": 0.39080459770114945
         },
         "blind qwen3.5-9b": {
@@ -920,6 +937,7 @@
           "q_tester": 0.16030534351145037,
           "more_false_alarms": -0.0025000000000000022,
           "break_even_ratio": NaN,
+          "q_coder": 0.22081218274111675,
           "pass_share_of_errors": 0.367816091954023
         },
         "blind gemma4-12b": {
@@ -944,6 +962,7 @@
           "q_tester": 0.15503875968992248,
           "more_false_alarms": 0.015,
           "break_even_ratio": 0.17142857142857143,
+          "q_coder": 0.22081218274111675,
           "pass_share_of_errors": 0.2988505747126437
         },
         "blind eurollm-9b": {
@@ -968,6 +987,7 @@
           "q_tester": 0.4025974025974026,
           "more_false_alarms": 0.21750000000000003,
           "break_even_ratio": 3.222222222222223,
+          "q_coder": 0.22081218274111675,
           "pass_share_of_errors": 0.39080459770114945
         }
       },
@@ -1122,6 +1142,7 @@
           "q_tester": 0.32216494845360827,
           "more_false_alarms": 0.17250000000000001,
           "break_even_ratio": 2.8750000000000004,
+          "q_coder": 0.16962025316455695,
           "pass_share_of_errors": 0.3880597014925373
         },
         "blind qwen3-8b": {
@@ -1146,6 +1167,7 @@
           "q_tester": 0.21518987341772153,
           "more_false_alarms": 0.07999999999999999,
           "break_even_ratio": 1.391304347826087,
+          "q_coder": 0.16962025316455695,
           "pass_share_of_errors": 0.40298507462686567
         },
         "blind qwen3.5-9b": {
@@ -1170,6 +1192,7 @@
           "q_tester": 0.1649746192893401,
           "more_false_alarms": 0.0375,
           "break_even_ratio": 0.8333333333333334,
+          "q_coder": 0.16962025316455695,
           "pass_share_of_errors": 0.47761194029850745
         },
         "blind ministral-3-8b": {
@@ -1194,6 +1217,7 @@
           "q_tester": 0.23155216284987276,
           "more_false_alarms": 0.09,
           "break_even_ratio": 2.0,
+          "q_coder": 0.16962025316455695,
           "pass_share_of_errors": 0.47761194029850745
         },
         "blind eurollm-9b": {
@@ -1218,6 +1242,7 @@
           "q_tester": 0.4067357512953368,
           "more_false_alarms": 0.27749999999999997,
           "break_even_ratio": 4.269230769230768,
+          "q_coder": 0.16962025316455695,
           "pass_share_of_errors": 0.3582089552238806
         }
       },
@@ -1372,6 +1397,7 @@
           "q_tester": 0.32299741602067183,
           "more_false_alarms": 0.007499999999999993,
           "break_even_ratio": 0.073170731707317,
+          "q_coder": 0.40458015267175573,
           "pass_share_of_errors": 0.29559748427672955
         },
         "blind qwen3-8b": {
@@ -1396,6 +1422,7 @@
           "q_tester": 0.21882951653944022,
           "more_false_alarms": -0.04,
           "break_even_ratio": NaN,
+          "q_coder": 0.40458015267175573,
           "pass_share_of_errors": 0.22641509433962265
         },
         "blind qwen3.5-9b": {
@@ -1420,6 +1447,7 @@
           "q_tester": 0.16112531969309463,
           "more_false_alarms": -0.045,
           "break_even_ratio": NaN,
+          "q_coder": 0.40458015267175573,
           "pass_share_of_errors": 0.16352201257861634
         },
         "blind ministral-3-8b": {
@@ -1444,6 +1472,7 @@
           "q_tester": 0.2358974358974359,
           "more_false_alarms": -0.03,
           "break_even_ratio": NaN,
+          "q_coder": 0.40458015267175573,
           "pass_share_of_errors": 0.2389937106918239
         },
         "blind gemma4-12b": {
@@ -1468,6 +1497,7 @@
           "q_tester": 0.15762273901808785,
           "more_false_alarms": -0.0425,
           "break_even_ratio": NaN,
+          "q_coder": 0.40458015267175573,
           "pass_share_of_errors": 0.16352201257861634
         }
       },
@@ -2220,6 +2250,48 @@
     "max": 5.1,
     "pairs": 20
   },
+  "dominating_pairs": {
+    "count": 8,
+    "of": 28
+  },
+  "as_tester": {
+    "llama3.1-8b": {
+      "q": 0.32653061224489793,
+      "pass": 0.092,
+      "false_alarm": 0.168,
+      "coders": 5
+    },
+    "qwen3-8b": {
+      "q": 0.21518987341772153,
+      "pass": 0.084375,
+      "false_alarm": 0.071875,
+      "coders": 4
+    },
+    "qwen3.5-9b": {
+      "q": 0.1598984771573604,
+      "pass": 0.078125,
+      "false_alarm": 0.05,
+      "coders": 4
+    },
+    "ministral-3-8b": {
+      "q": 0.22959183673469388,
+      "pass": 0.0935,
+      "false_alarm": 0.089,
+      "coders": 5
+    },
+    "gemma4-12b": {
+      "q": 0.1564102564102564,
+      "pass": 0.0665,
+      "false_alarm": 0.057499999999999996,
+      "coders": 5
+    },
+    "eurollm-9b": {
+      "q": 0.4082687338501292,
+      "pass": 0.088,
+      "false_alarm": 0.261,
+      "coders": 5
+    }
+  },
   "pooled_designs": {
     "anchored": {
       "pass": 0.2358205409356725,
@@ -2246,5 +2318,23 @@
       "false_alarm": 0.12017857142857143,
       "pairs": 28
     }
+  },
+  "sensitivity": {
+    "same model": {
+      "mean_rho": 0.9245711104066757,
+      "min": 0.8425767564417792,
+      "max": 0.974607030913982
+    },
+    "other family": {
+      "mean_rho": 0.585285972847431,
+      "min": 0.35184182405270803,
+      "max": 0.7456421075894599
+    },
+    "same family": {
+      "mean_rho": 0.6471523699216799,
+      "min": 0.6175117513926085,
+      "max": 0.6767929884507513
+    },
+    "set_aside": 20
   }
 }
