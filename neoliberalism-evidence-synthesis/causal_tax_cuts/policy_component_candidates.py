@@ -179,7 +179,9 @@ def load_components(
         key = country, year
         component_key = country, year, row["component_id"]
         if key not in expected_cases or component_key in seen:
-            raise ValueError(f"Unexpected or duplicate policy component {component_key}")
+            raise ValueError(
+                f"Unexpected or duplicate policy component {component_key}"
+            )
         seen.add(component_key)
         if row["change_kind"] not in CHANGE_KINDS:
             raise ValueError(f"Unknown tax-policy component kind: {row['change_kind']}")
@@ -303,12 +305,14 @@ def assess_candidates(
                     int(row.period_start[:4]) == year + 1 for row in groups
                 ),
                 has_advance_payment_transition=any(
-                    row.change_kind == "advance_payment_transition"
-                    for row in groups
+                    row.change_kind == "advance_payment_transition" for row in groups
                 ),
                 has_countervailing_tax_base_or_deduction_change=any(
                     row.change_kind
-                    in {"capital_gains_base_broadening", "interest_deduction_restriction"}
+                    in {
+                        "capital_gains_base_broadening",
+                        "interest_deduction_restriction",
+                    }
                     for row in groups
                 ),
                 original_h5_donors=int(prior["n_surviving_donors_at_h5"]),
@@ -356,8 +360,7 @@ def assess_candidates(
             row.has_advance_payment_transition for row in candidates
         ),
         "n_candidates_with_countervailing_tax_base_measures": sum(
-            row.has_countervailing_tax_base_or_deduction_change
-            for row in candidates
+            row.has_countervailing_tax_base_or_deduction_change for row in candidates
         ),
         "n_candidates_with_no_additional_author_flag_through_h5": sum(
             not row.original_repeat_major_cut_h5 for row in candidates
@@ -406,18 +409,16 @@ def save_audit(
                 ("prior_identification_audit", previous_json),
             )
         },
-        "joined_panel_sha256": json.loads(
-            previous_json.read_text(encoding="utf-8")
-        )["joined_panel_sha256"],
+        "joined_panel_sha256": json.loads(previous_json.read_text(encoding="utf-8"))[
+            "joined_panel_sha256"
+        ],
     }
     output_dir.mkdir(parents=True, exist_ok=True)
     for filename, rows, kind in (
         ("policy_component_evidence.csv", components, Component),
         ("supported_reform_candidate_gates.csv", candidates, Candidate),
     ):
-        with (output_dir / filename).open(
-            "w", encoding="utf-8", newline=""
-        ) as handle:
+        with (output_dir / filename).open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(handle, fieldnames=list(kind.__dataclass_fields__))
             writer.writeheader()
             writer.writerows(asdict(row) for row in rows)
