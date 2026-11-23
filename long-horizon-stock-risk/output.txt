@@ -134,7 +134,7 @@ OECD, 3%: ANNUAL RATE AGAINST WEALTH (5th, 50th and 95th percentiles)
   25 y  annual rate 0.3% / 5.4% / 11.6% (spread 11.3%)  wealth 1.082 / 3.762 / 15.707 (95th over 5th 14.52x)
   30 y  annual rate 1.8% / 6.1% / 10.9% (spread 9.1%)  wealth 1.709 / 5.858 / 22.388 (95th over 5th 13.10x)
 
-SHUFFLE TEST: the same years in random order (2000 shuffles per market, seed 20261123)
+SHUFFLE TEST: the same years in random order (2000 shuffles per market, seed 20261123; variance ratios on the first 400)
 
 OECD, 3%: real stock wealth
    1 y  windows  1300  loss: history 35.8%, shuffled median 35.8% [5-95%: 35.8% to 35.8%], shuffles at or below history 100.0% | median loss when losing: history 11.9%, shuffled median 11.9% [5-95%: 11.9% to 11.9%] | variance ratio over 23 markets: history 1.00, shuffled median 1.00 [5-95%: 1.00 to 1.00], shuffles at or below history 100.0%
@@ -305,6 +305,18 @@ LOSS EPISODES, 3%: runs of consecutive start years with a real loss
     Italy           1960-1963  worst 0.57
   30 years against bonds: 17 episodes, 47 start years
   20-year losses by decade of the start: 1950s 7, 1960s 29, 1970s 3, 1980s 3, 1990s 15, 2000s 11
+
+THREE EPISODES: real stock wealth after each horizon, and the first year-end back at break-even
+  Japan: highest real share price at a year-end, 1974-2004: 1989
+  Japan from 1989, 0%: 5 y 0.49, 10 y 0.52, 15 y 0.36, 20 y 0.29, 25 y 0.44, 30 y 0.53; lowest 0.24 in 2011; not back to break-even by 2020
+  Japan from 1989, 3%: 5 y 0.56, 10 y 0.69, 15 y 0.56, 20 y 0.52, 25 y 0.93, 30 y 1.28; lowest 0.40 in 2002; back to break-even in 2015
+  Italy: highest real share price at a year-end, 1957-1976: 1961
+  Italy from 1961, 0%: 5 y 0.54, 10 y 0.32, 15 y 0.12, 20 y 0.19, 25 y 0.44, 30 y 0.23; lowest 0.08 in 1977; not back to break-even by 2025
+  Italy from 1961, 3%: 5 y 0.63, 10 y 0.44, 15 y 0.19, 20 y 0.35, 25 y 0.92, 30 y 0.57; lowest 0.13 in 1977; back to break-even in 1997
+  Greece: highest real share price at a year-end, 1985-2014: 1999
+  Greece from 1999, 0%: 5 y 0.42, 10 y 0.30, 15 y 0.11, 20 y 0.11, 25 y 0.16; lowest 0.08 in 2015; not back to break-even by 2025
+  Greece from 1999, 3%: 5 y 0.49, 10 y 0.40, 15 y 0.18, 20 y 0.20, 25 y 0.33; lowest 0.12 in 2011; not back to break-even by 2025
+  Italy, consumer price inflation December to December: 1970 5.4%, 1971 4.6%, 1972 7.4%, 1973 12.5%, 1974 24.5%, 1975 11.2%, 1976 20.5%, 1977 14.1%, 1978 11.6%, 1979 18.8%, 1980 19.6%
 
 START CONDITIONS: real share price against its average over the ten year-ends to the start
   10 y: 886 windows in 23 markets, Spearman correlation -0.16

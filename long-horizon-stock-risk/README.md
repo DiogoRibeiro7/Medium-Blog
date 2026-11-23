@@ -79,7 +79,7 @@ The workflow `.github/workflows/long-horizon-stock-risk.yml` runs all of this an
 - **Shuffle test.**
   - For each market, the yearly real log returns are permuted 2,000 times (seed 20261123), keeping the same years in a random order.
   - Pooled loss shares and median losses are recomputed for each shuffle.
-  - Variance ratios use overlapping *H*-year sums, in markets with at least 3*H* years.
+  - Variance ratios use overlapping *H*-year sums, in markets with at least 3*H* years, against the first 400 shuffles of each market.
 - **Start conditions.** The real share price against its average over the ten year-ends up to the start, and, for the United States, Shiller's CAPE in December.
 
 ## Limits

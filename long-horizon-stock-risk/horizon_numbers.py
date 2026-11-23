@@ -35,6 +35,7 @@ YIELDS = (0.0, 0.02, 0.03, 0.04)
 BASE = 0.03
 SEED = 20261123
 DRAWS = 2000
+VR_DRAWS = 400  # the first 400 shuffles of each market are used for the variance ratios
 COMMON_FIRST, COMMON_LAST = 1955, 1995  # start years for which a 30-year window can end by 2025
 
 
@@ -118,7 +119,7 @@ def shuffle_test(series: dict[str, list[float]], horizons, rng, draws=DRAWS):
             perm_blocks[h].append(plv[:, h:] - plv[:, :-h])
             if n >= 3 * h:
                 vr_hist[h].append(C.variance_ratio(list(r), h))
-                vr_perm[h].append(np.array([C.variance_ratio(list(row), h) for row in perm[:400]]))
+                vr_perm[h].append(np.array([C.variance_ratio(list(row), h) for row in perm[:VR_DRAWS]]))
     for h in horizons:
         if not hist_blocks[h]:
             continue
@@ -343,7 +344,10 @@ def main() -> None:
     pd.DataFrame(funnel).to_csv(RES / "funnel.csv", index=False)
 
     # ------------------------------------------------------------------ shuffles
-    print(f"\nSHUFFLE TEST: the same years in random order ({DRAWS} shuffles per market, seed {SEED})")
+    print(
+        f"\nSHUFFLE TEST: the same years in random order ({DRAWS} shuffles per market, seed {SEED};"
+        f" variance ratios on the first {VR_DRAWS})"
+    )
     stock_logs = {a: C.log_returns(m.stocks) for a, m in base.items()}
     sh_panel = shuffle_test(stock_logs, HORIZONS, rng)
     shuffle_lines(sh_panel, f"OECD, {pct(BASE, 0)}: real stock wealth")
@@ -454,6 +458,33 @@ def main() -> None:
         if w.multiple < 1:
             loss_starts[(w.start // 10) * 10] += 1
     print("  20-year losses by decade of the start: " + ", ".join(f"{k}s {v}" for k, v in sorted(loss_starts.items())))
+
+    # ------------------------------------------------------------------ three episodes
+    print("\nTHREE EPISODES: real stock wealth after each horizon, and the first year-end back at break-even")
+    for a, s in (("JPN", 1989), ("ITA", 1961), ("GRC", 1999)):
+        for d, mk in ((0.0, zero), (BASE, base)):
+            lv = mk[a].stocks
+            parts = [f"{h} y {num(lv[s + h] / lv[s], 2)}" for h in (5, 10, 15, 20, 25, 30) if s + h in lv]
+            back = next((y for y in sorted(lv) if y > s and lv[y] >= lv[s]), None)
+            low = min((lv[y] / lv[s], y) for y in lv if y > s)
+            if d == 0.0:
+                span = [y for y in lv if s - 15 <= y <= s + 15]
+                print(
+                    f"  {C.NAMES[a]}: highest real share price at a year-end, {min(span)}-{max(span)}:"
+                    f" {max(span, key=lv.get)}"
+                )
+            recovery = f"back to break-even in {back}" if back else f"not back to break-even by {max(lv)}"
+            print(
+                f"  {C.NAMES[a]} from {s}, {pct(d, 0)}: "
+                + ", ".join(parts)
+                + f"; lowest {num(low[0], 2)} in {low[1]}; {recovery}"
+            )
+
+    ita, _ = C.cpi_year_end(cpi, "ITA")
+    print(
+        "  Italy, consumer price inflation December to December: "
+        + ", ".join(f"{y} {pct(ita[y] / ita[y - 1] - 1)}" for y in range(1970, 1981))
+    )
 
     # ------------------------------------------------------------------ start conditions
     print("\nSTART CONDITIONS: real share price against its average over the ten year-ends to the start")
