@@ -1,0 +1,1449 @@
+{
+ "graphs": {
+  "mammals": {
+   "name": "WordNet mammals",
+   "n": 1182,
+   "m": 1182,
+   "extra_edges": 1,
+   "delta": 0.0,
+   "delta_mean": 0.0,
+   "diameter": 16.0,
+   "relative": 0.0,
+   "samples": 200000
+  },
+  "food": {
+   "name": "WordNet food",
+   "n": 1527,
+   "m": 1542,
+   "extra_edges": 16,
+   "delta": 2.0,
+   "delta_mean": 0.0969075,
+   "diameter": 16.0,
+   "relative": 0.25,
+   "samples": 200000
+  },
+  "closure": {
+   "name": "WordNet mammals, transitive closure",
+   "n": 1182,
+   "m": 6542,
+   "extra_edges": 5361,
+   "delta": 0.5,
+   "delta_mean": 0.001595,
+   "diameter": 2.0,
+   "relative": 0.5,
+   "samples": 200000
+  },
+  "tree": {
+   "name": "tree (branching 3, depth 6)",
+   "n": 1093,
+   "m": 1092,
+   "extra_edges": 0,
+   "delta": 0.0,
+   "delta_mean": 0.0,
+   "diameter": 12.0,
+   "relative": 0.0,
+   "samples": 200000
+  },
+  "grid": {
+   "name": "grid (33 x 33)",
+   "n": 1089,
+   "m": 2112,
+   "extra_edges": 1024,
+   "delta": 25.0,
+   "delta_mean": 2.45146,
+   "diameter": 64.0,
+   "relative": 0.78125,
+   "samples": 200000
+  }
+ },
+ "sweep": {
+  "mammals": {
+   "2": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 2,
+     "D_avg": 0.23854586,
+     "worst": 356.70779,
+     "MAP": 0.090912231,
+     "loss": 0.091512403,
+     "log_u": 1.2510716,
+     "radius_max": 3.1169566
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 2,
+     "D_avg": 0.10632963,
+     "worst": 1225.7505,
+     "MAP": 0.26391,
+     "loss": 0.033472652,
+     "log_u": -0.048537546,
+     "radius_max": 8.4467866
+    }
+   },
+   "5": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 5,
+     "D_avg": 0.12035869,
+     "worst": 17.456393,
+     "MAP": 0.35231458,
+     "loss": 0.023684266,
+     "log_u": 0.95358668,
+     "radius_max": 3.8156045
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 5,
+     "D_avg": 0.039940693,
+     "worst": 10.108408,
+     "MAP": 0.85955022,
+     "loss": 0.0033363305,
+     "log_u": 0.29134815,
+     "radius_max": 6.0291313
+    }
+   },
+   "10": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 10,
+     "D_avg": 0.069452609,
+     "worst": 9.7296359,
+     "MAP": 0.60197087,
+     "loss": 0.0087140646,
+     "log_u": 0.75798731,
+     "radius_max": 4.62581
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 10,
+     "D_avg": 0.021058615,
+     "worst": 5.30925,
+     "MAP": 0.98652472,
+     "loss": 0.0011738662,
+     "log_u": 0.46772643,
+     "radius_max": 5.1305152
+    }
+   },
+   "20": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 20,
+     "D_avg": 0.043847961,
+     "worst": 8.6538495,
+     "MAP": 0.8307441,
+     "loss": 0.0042180334,
+     "log_u": 0.55423033,
+     "radius_max": 5.6123993
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 20,
+     "D_avg": 0.011320071,
+     "worst": 4.5280581,
+     "MAP": 0.99934198,
+     "loss": 0.00057066699,
+     "log_u": 0.52347959,
+     "radius_max": 4.8754671
+    }
+   },
+   "50": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 50,
+     "D_avg": 0.032568929,
+     "worst": 7.3432976,
+     "MAP": 0.8809016,
+     "loss": 0.0029456645,
+     "log_u": 0.30861555,
+     "radius_max": 7.1596442
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 50,
+     "D_avg": 0.0066337887,
+     "worst": 4.0647092,
+     "MAP": 0.99934198,
+     "loss": 0.00041595481,
+     "log_u": 0.52789461,
+     "radius_max": 4.8591926
+    }
+   },
+   "100": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 100,
+     "D_avg": 0.031010719,
+     "worst": 6.9078736,
+     "MAP": 0.8885547,
+     "loss": 0.002788666,
+     "log_u": 0.13153818,
+     "radius_max": 8.51196
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 100,
+     "D_avg": 0.0061438527,
+     "worst": 4.0469465,
+     "MAP": 0.99934198,
+     "loss": 0.00042342562,
+     "log_u": 0.56473806,
+     "radius_max": 4.6584287
+    }
+   },
+   "200": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 200,
+     "D_avg": 0.030765055,
+     "worst": 6.8025858,
+     "MAP": 0.8963801,
+     "loss": 0.0027555307,
+     "log_u": -0.034905019,
+     "radius_max": 10.098795
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 200,
+     "D_avg": 0.0064431338,
+     "worst": 4.110016,
+     "MAP": 0.99934198,
+     "loss": 0.00046247476,
+     "log_u": 0.63479185,
+     "radius_max": 4.3759269
+    }
+   }
+  },
+  "food": {
+   "2": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 2,
+     "D_avg": 0.2300139,
+     "worst": 1373.2449,
+     "MAP": 0.062129615,
+     "loss": 0.087197411,
+     "log_u": 1.1991408,
+     "radius_max": 3.2009247
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 2,
+     "D_avg": 0.11600328,
+     "worst": 1028.9435,
+     "MAP": 0.16878762,
+     "loss": 0.034281272,
+     "log_u": -0.10740948,
+     "radius_max": 8.4195172
+    }
+   },
+   "5": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 5,
+     "D_avg": 0.10167979,
+     "worst": 21.655956,
+     "MAP": 0.23769715,
+     "loss": 0.018228535,
+     "log_u": 0.91756498,
+     "radius_max": 3.994039
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 5,
+     "D_avg": 0.042758021,
+     "worst": 11.934329,
+     "MAP": 0.57881502,
+     "loss": 0.0046190955,
+     "log_u": 0.34392022,
+     "radius_max": 5.7827222
+    }
+   },
+   "10": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 10,
+     "D_avg": 0.058486284,
+     "worst": 5.4863536,
+     "MAP": 0.38319069,
+     "loss": 0.0066141068,
+     "log_u": 0.71209809,
+     "radius_max": 4.8546864
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 10,
+     "D_avg": 0.028157469,
+     "worst": 5.3163571,
+     "MAP": 0.89083073,
+     "loss": 0.0020893285,
+     "log_u": 0.51711483,
+     "radius_max": 4.9615121
+    }
+   },
+   "20": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 20,
+     "D_avg": 0.037711471,
+     "worst": 4.1191506,
+     "MAP": 0.7990286,
+     "loss": 0.0032639264,
+     "log_u": 0.51234155,
+     "radius_max": 5.8850287
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 20,
+     "D_avg": 0.019944686,
+     "worst": 4.1988031,
+     "MAP": 0.99358865,
+     "loss": 0.0012199381,
+     "log_u": 0.5797622,
+     "radius_max": 4.6933649
+    }
+   },
+   "50": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 50,
+     "D_avg": 0.027673026,
+     "worst": 3.700733,
+     "MAP": 0.89406392,
+     "loss": 0.0021540677,
+     "log_u": 0.26284747,
+     "radius_max": 7.5270247
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 50,
+     "D_avg": 0.015743306,
+     "worst": 4.1886371,
+     "MAP": 0.99828719,
+     "loss": 0.00092168181,
+     "log_u": 0.55422489,
+     "radius_max": 4.8469746
+    }
+   },
+   "100": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 100,
+     "D_avg": 0.025544021,
+     "worst": 3.6241548,
+     "MAP": 0.91551497,
+     "loss": 0.001964334,
+     "log_u": 0.076259204,
+     "radius_max": 9.0654281
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 100,
+     "D_avg": 0.014618549,
+     "worst": 4.2004528,
+     "MAP": 0.99823262,
+     "loss": 0.00086779618,
+     "log_u": 0.56924372,
+     "radius_max": 4.8050194
+    }
+   },
+   "200": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 200,
+     "D_avg": 0.024940521,
+     "worst": 3.6322336,
+     "MAP": 0.91692327,
+     "loss": 0.0019110005,
+     "log_u": -0.094866764,
+     "radius_max": 10.764822
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 200,
+     "D_avg": 0.014195143,
+     "worst": 4.2097021,
+     "MAP": 0.99828719,
+     "loss": 0.00085227625,
+     "log_u": 0.58028714,
+     "radius_max": 4.7261065
+    }
+   }
+  },
+  "closure": {
+   "2": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 2,
+     "D_avg": 0.34566301,
+     "worst": 593.24576,
+     "MAP": 0.01783942,
+     "loss": 0.1759381,
+     "log_u": 0.43225946,
+     "radius_max": 1.0401463
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 2,
+     "D_avg": 0.12437119,
+     "worst": 364.43473,
+     "MAP": 0.033647575,
+     "loss": 0.03605801,
+     "log_u": -1.6015356,
+     "radius_max": 5.6649715
+    }
+   },
+   "5": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 5,
+     "D_avg": 0.19170024,
+     "worst": 71.245495,
+     "MAP": 0.10012016,
+     "loss": 0.057954826,
+     "log_u": 0.25146719,
+     "radius_max": 1.0795087
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 5,
+     "D_avg": 0.067566846,
+     "worst": 161.02494,
+     "MAP": 0.38736054,
+     "loss": 0.010326278,
+     "log_u": -1.2785103,
+     "radius_max": 4.0503371
+    }
+   },
+   "10": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 10,
+     "D_avg": 0.13030456,
+     "worst": 36.659546,
+     "MAP": 0.36023448,
+     "loss": 0.026473915,
+     "log_u": 0.11747573,
+     "radius_max": 1.2599813
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 10,
+     "D_avg": 0.052064834,
+     "worst": 90.96098,
+     "MAP": 0.75541458,
+     "loss": 0.0056846172,
+     "log_u": -1.061163,
+     "radius_max": 3.2969639
+    }
+   },
+   "20": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 20,
+     "D_avg": 0.090026153,
+     "worst": 31.116168,
+     "MAP": 0.62557134,
+     "loss": 0.012993209,
+     "log_u": -0.018279148,
+     "radius_max": 1.4592888
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 20,
+     "D_avg": 0.041916555,
+     "worst": 61.631646,
+     "MAP": 0.96066604,
+     "loss": 0.0037125044,
+     "log_u": -0.86477018,
+     "radius_max": 2.7522187
+    }
+   },
+   "50": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 50,
+     "D_avg": 0.055054225,
+     "worst": 31.414579,
+     "MAP": 0.89355628,
+     "loss": 0.0057280052,
+     "log_u": -0.17183399,
+     "radius_max": 1.6957943
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 50,
+     "D_avg": 0.031713424,
+     "worst": 47.753637,
+     "MAP": 0.98576728,
+     "loss": 0.002640851,
+     "log_u": -0.61068498,
+     "radius_max": 2.1926511
+    }
+   },
+   "100": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 100,
+     "D_avg": 0.037889213,
+     "worst": 32.580648,
+     "MAP": 0.94543124,
+     "loss": 0.0035669407,
+     "log_u": -0.31130183,
+     "radius_max": 1.9481127
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 100,
+     "D_avg": 0.024616963,
+     "worst": 47.378296,
+     "MAP": 0.98539688,
+     "loss": 0.0021800026,
+     "log_u": -0.50754895,
+     "radius_max": 2.0002673
+    }
+   },
+   "200": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 200,
+     "D_avg": 0.0265812,
+     "worst": 35.492397,
+     "MAP": 0.97734138,
+     "loss": 0.0026142823,
+     "log_u": -0.46666515,
+     "radius_max": 2.2674309
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 200,
+     "D_avg": 0.018714744,
+     "worst": 50.011261,
+     "MAP": 0.98352957,
+     "loss": 0.0019312041,
+     "log_u": -0.5934495,
+     "radius_max": 2.1544781
+    }
+   }
+  },
+  "tree": {
+   "2": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 2,
+     "D_avg": 0.27614088,
+     "worst": 306.91383,
+     "MAP": 0.046846591,
+     "loss": 0.12465658,
+     "log_u": 1.3046154,
+     "radius_max": 2.4304607
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 2,
+     "D_avg": 0.134164,
+     "worst": 454.19362,
+     "MAP": 0.73037299,
+     "loss": 0.046947615,
+     "log_u": -0.10401225,
+     "radius_max": 7.2668723
+    }
+   },
+   "5": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 5,
+     "D_avg": 0.13703771,
+     "worst": 5.8034841,
+     "MAP": 0.4535796,
+     "loss": 0.029740528,
+     "log_u": 1.040415,
+     "radius_max": 2.8404161
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 5,
+     "D_avg": 0.027916143,
+     "worst": 1.7593501,
+     "MAP": 1.0,
+     "loss": 0.0014693326,
+     "log_u": 0.43146994,
+     "radius_max": 4.2017614
+    }
+   },
+   "10": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 10,
+     "D_avg": 0.078842416,
+     "worst": 3.1704844,
+     "MAP": 0.55596218,
+     "loss": 0.010674738,
+     "log_u": 0.83789931,
+     "radius_max": 3.3690986
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 10,
+     "D_avg": 0.015395679,
+     "worst": 1.6863961,
+     "MAP": 1.0,
+     "loss": 0.00069694812,
+     "log_u": 0.60753572,
+     "radius_max": 3.4798526
+    }
+   },
+   "20": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 20,
+     "D_avg": 0.048702637,
+     "worst": 2.5633175,
+     "MAP": 0.55535224,
+     "loss": 0.0054224695,
+     "log_u": 0.63656896,
+     "radius_max": 4.0977716
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 20,
+     "D_avg": 0.0092057269,
+     "worst": 1.6769701,
+     "MAP": 1.0,
+     "loss": 0.00050604881,
+     "log_u": 0.62162055,
+     "radius_max": 3.4279572
+    }
+   },
+   "50": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 50,
+     "D_avg": 0.032977514,
+     "worst": 2.4690258,
+     "MAP": 0.55535224,
+     "loss": 0.0038619902,
+     "log_u": 0.38109657,
+     "radius_max": 5.2538976
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 50,
+     "D_avg": 0.0058458344,
+     "worst": 1.6399258,
+     "MAP": 1.0,
+     "loss": 0.00038123938,
+     "log_u": 0.49797088,
+     "radius_max": 3.8360239
+    }
+   },
+   "100": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 100,
+     "D_avg": 0.030981418,
+     "worst": 2.4383796,
+     "MAP": 0.55535224,
+     "loss": 0.0036798203,
+     "log_u": 0.20268238,
+     "radius_max": 6.2832694
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 100,
+     "D_avg": 0.0054569053,
+     "worst": 1.6456203,
+     "MAP": 1.0,
+     "loss": 0.00037168677,
+     "log_u": 0.4875256,
+     "radius_max": 3.8777401
+    }
+   },
+   "200": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 200,
+     "D_avg": 0.030788194,
+     "worst": 2.4312214,
+     "MAP": 0.55535224,
+     "loss": 0.0036452781,
+     "log_u": 0.035891557,
+     "radius_max": 7.4277892
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 200,
+     "D_avg": 0.0058983654,
+     "worst": 1.6844392,
+     "MAP": 1.0,
+     "loss": 0.00042553882,
+     "log_u": 0.57372963,
+     "radius_max": 3.5787806
+    }
+   }
+  },
+  "grid": {
+   "2": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 2,
+     "D_avg": 0.094134303,
+     "worst": 1.6888498,
+     "MAP": 1.0,
+     "loss": 0.012049785,
+     "log_u": 1.8977162,
+     "radius_max": 4.2973712
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 2,
+     "D_avg": 0.099341321,
+     "worst": 1.7652123,
+     "MAP": 1.0,
+     "loss": 0.013543795,
+     "log_u": 3.3249,
+     "radius_max": 1.4012054
+    }
+   },
+   "5": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 5,
+     "D_avg": 0.092091062,
+     "worst": 1.6441193,
+     "MAP": 1.0,
+     "loss": 0.011786104,
+     "log_u": 1.5824731,
+     "radius_max": 5.729035
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 5,
+     "D_avg": 0.097287608,
+     "worst": 1.7591566,
+     "MAP": 1.0,
+     "loss": 0.013127144,
+     "log_u": 3.2965584,
+     "radius_max": 1.0371551
+    }
+   },
+   "10": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 10,
+     "D_avg": 0.092089926,
+     "worst": 1.6469867,
+     "MAP": 1.0,
+     "loss": 0.011786281,
+     "log_u": 1.3638946,
+     "radius_max": 7.0804157
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 10,
+     "D_avg": 0.09768558,
+     "worst": 1.7483395,
+     "MAP": 1.0,
+     "loss": 0.013252978,
+     "log_u": 3.2510314,
+     "radius_max": 1.0664587
+    }
+   },
+   "20": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 20,
+     "D_avg": 0.092088245,
+     "worst": 1.6537279,
+     "MAP": 1.0,
+     "loss": 0.011786302,
+     "log_u": 1.127174,
+     "radius_max": 8.9908596
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 20,
+     "D_avg": 0.098166407,
+     "worst": 1.7535847,
+     "MAP": 1.0,
+     "loss": 0.013411995,
+     "log_u": 3.199551,
+     "radius_max": 1.1166836
+    }
+   },
+   "50": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 50,
+     "D_avg": 0.092088962,
+     "worst": 1.6527994,
+     "MAP": 1.0,
+     "loss": 0.011786313,
+     "log_u": 0.82688435,
+     "radius_max": 12.146425
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 50,
+     "D_avg": 0.099186662,
+     "worst": 1.7764282,
+     "MAP": 1.0,
+     "loss": 0.013753476,
+     "log_u": 3.1065402,
+     "radius_max": 1.2101738
+    }
+   },
+   "100": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 100,
+     "D_avg": 0.09208993,
+     "worst": 1.6516726,
+     "MAP": 1.0,
+     "loss": 0.011786258,
+     "log_u": 0.60626868,
+     "radius_max": 15.121071
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 100,
+     "D_avg": 0.10002935,
+     "worst": 1.8101071,
+     "MAP": 1.0,
+     "loss": 0.014042806,
+     "log_u": 3.0408605,
+     "radius_max": 1.2746849
+    }
+   },
+   "200": {
+    "euclidean": {
+     "geometry": "euclidean",
+     "d": 200,
+     "D_avg": 0.092090382,
+     "worst": 1.6585746,
+     "MAP": 1.0,
+     "loss": 0.011786324,
+     "log_u": 0.39335402,
+     "radius_max": 18.709091
+    },
+    "hyperbolic": {
+     "geometry": "hyperbolic",
+     "d": 200,
+     "D_avg": 0.10141981,
+     "worst": 1.8523942,
+     "MAP": 1.0,
+     "loss": 0.014538085,
+     "log_u": 2.9476106,
+     "radius_max": 1.397369
+    }
+   }
+  }
+ },
+ "dial": [
+  {
+   "fraction": 0.0,
+   "link_seed": 7,
+   "links": 0,
+   "delta_mean": 0.0,
+   "delta": 0.0,
+   "diameter": 16.0,
+   "relative": 0.0,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.12035869,
+     "MAP": 0.35231458,
+     "worst": 17.456393
+    },
+    "hyperbolic": {
+     "D_avg": 0.039940693,
+     "MAP": 0.85955022,
+     "worst": 10.108408
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.032568929,
+     "MAP": 0.8809016,
+     "worst": 7.3432976
+    },
+    "hyperbolic": {
+     "D_avg": 0.0066337887,
+     "MAP": 0.99934198,
+     "worst": 4.0647092
+    }
+   }
+  },
+  {
+   "fraction": 0.005,
+   "link_seed": 7,
+   "links": 6,
+   "delta_mean": 0.065555,
+   "delta": 3.0,
+   "diameter": 16.0,
+   "relative": 0.375,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.11759081,
+     "MAP": 0.35649555,
+     "worst": 16.596611
+    },
+    "hyperbolic": {
+     "D_avg": 0.042852502,
+     "MAP": 0.83773797,
+     "worst": 18.767795
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.032230199,
+     "MAP": 0.88181436,
+     "worst": 7.2591339
+    },
+    "hyperbolic": {
+     "D_avg": 0.013804539,
+     "MAP": 0.99846712,
+     "worst": 7.2290735
+    }
+   }
+  },
+  {
+   "fraction": 0.005,
+   "link_seed": 8,
+   "links": 6,
+   "delta_mean": 0.044955,
+   "delta": 3.0,
+   "diameter": 16.0,
+   "relative": 0.375,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.033102459,
+     "MAP": 0.88143731,
+     "worst": 7.4810485
+    },
+    "hyperbolic": {
+     "D_avg": 0.017570401,
+     "MAP": 0.99917214,
+     "worst": 8.7024306
+    }
+   }
+  },
+  {
+   "fraction": 0.005,
+   "link_seed": 9,
+   "links": 6,
+   "delta_mean": 0.02637,
+   "delta": 3.0,
+   "diameter": 16.0,
+   "relative": 0.375,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.032573161,
+     "MAP": 0.87899391,
+     "worst": 7.5445777
+    },
+    "hyperbolic": {
+     "D_avg": 0.014032173,
+     "MAP": 0.99905997,
+     "worst": 6.6700051
+    }
+   }
+  },
+  {
+   "fraction": 0.01,
+   "link_seed": 7,
+   "links": 12,
+   "delta_mean": 0.1107875,
+   "delta": 3.0,
+   "diameter": 16.0,
+   "relative": 0.375,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.1149006,
+     "MAP": 0.34913269,
+     "worst": 14.581052
+    },
+    "hyperbolic": {
+     "D_avg": 0.052304296,
+     "MAP": 0.8153833,
+     "worst": 19.660029
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.033108039,
+     "MAP": 0.87894836,
+     "worst": 7.8733286
+    },
+    "hyperbolic": {
+     "D_avg": 0.021776007,
+     "MAP": 0.99899588,
+     "worst": 7.2038285
+    }
+   }
+  },
+  {
+   "fraction": 0.01,
+   "link_seed": 8,
+   "links": 12,
+   "delta_mean": 0.0770575,
+   "delta": 3.0,
+   "diameter": 16.0,
+   "relative": 0.375,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.033429461,
+     "MAP": 0.8835708,
+     "worst": 7.5346912
+    },
+    "hyperbolic": {
+     "D_avg": 0.021129547,
+     "MAP": 0.99817165,
+     "worst": 8.1941952
+    }
+   }
+  },
+  {
+   "fraction": 0.01,
+   "link_seed": 9,
+   "links": 12,
+   "delta_mean": 0.0888775,
+   "delta": 3.5,
+   "diameter": 16.0,
+   "relative": 0.4375,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.03346281,
+     "MAP": 0.88311528,
+     "worst": 7.4607667
+    },
+    "hyperbolic": {
+     "D_avg": 0.019942547,
+     "MAP": 0.99903983,
+     "worst": 7.0553825
+    }
+   }
+  },
+  {
+   "fraction": 0.02,
+   "link_seed": 7,
+   "links": 24,
+   "delta_mean": 0.17582,
+   "delta": 3.5,
+   "diameter": 16.0,
+   "relative": 0.4375,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.11138443,
+     "MAP": 0.3625207,
+     "worst": 14.574796
+    },
+    "hyperbolic": {
+     "D_avg": 0.058000296,
+     "MAP": 0.7827386,
+     "worst": 25.275934
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.035804215,
+     "MAP": 0.87759959,
+     "worst": 7.4570997
+    },
+    "hyperbolic": {
+     "D_avg": 0.029308833,
+     "MAP": 0.99675087,
+     "worst": 7.6792039
+    }
+   }
+  },
+  {
+   "fraction": 0.02,
+   "link_seed": 8,
+   "links": 24,
+   "delta_mean": 0.15588,
+   "delta": 5.0,
+   "diameter": 16.0,
+   "relative": 0.625,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.03590846,
+     "MAP": 0.87556602,
+     "worst": 7.1241046
+    },
+    "hyperbolic": {
+     "D_avg": 0.030310504,
+     "MAP": 0.99602839,
+     "worst": 7.1740844
+    }
+   }
+  },
+  {
+   "fraction": 0.02,
+   "link_seed": 9,
+   "links": 24,
+   "delta_mean": 0.1623,
+   "delta": 3.5,
+   "diameter": 15.0,
+   "relative": 0.46666667,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.036599681,
+     "MAP": 0.87587693,
+     "worst": 7.6074922
+    },
+    "hyperbolic": {
+     "D_avg": 0.029954377,
+     "MAP": 0.99868732,
+     "worst": 7.287888
+    }
+   }
+  },
+  {
+   "fraction": 0.05,
+   "link_seed": 7,
+   "links": 59,
+   "delta_mean": 0.2961175,
+   "delta": 3.5,
+   "diameter": 14.0,
+   "relative": 0.5,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.11232504,
+     "MAP": 0.37425883,
+     "worst": 14.882528
+    },
+    "hyperbolic": {
+     "D_avg": 0.075581764,
+     "MAP": 0.70060646,
+     "worst": 23.322361
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.043427389,
+     "MAP": 0.85162096,
+     "worst": 7.2523221
+    },
+    "hyperbolic": {
+     "D_avg": 0.044147519,
+     "MAP": 0.97721313,
+     "worst": 6.7379324
+    }
+   }
+  },
+  {
+   "fraction": 0.05,
+   "link_seed": 8,
+   "links": 59,
+   "delta_mean": 0.331405,
+   "delta": 3.5,
+   "diameter": 15.0,
+   "relative": 0.46666667,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.044521566,
+     "MAP": 0.85961642,
+     "worst": 7.5012177
+    },
+    "hyperbolic": {
+     "D_avg": 0.045802073,
+     "MAP": 0.98912648,
+     "worst": 7.0202914
+    }
+   }
+  },
+  {
+   "fraction": 0.05,
+   "link_seed": 9,
+   "links": 59,
+   "delta_mean": 0.3331725,
+   "delta": 4.0,
+   "diameter": 15.0,
+   "relative": 0.53333333,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.045144938,
+     "MAP": 0.8571625,
+     "worst": 7.547665
+    },
+    "hyperbolic": {
+     "D_avg": 0.046194812,
+     "MAP": 0.97771768,
+     "worst": 8.1618658
+    }
+   }
+  },
+  {
+   "fraction": 0.1,
+   "link_seed": 7,
+   "links": 118,
+   "delta_mean": 0.4050725,
+   "delta": 3.0,
+   "diameter": 13.0,
+   "relative": 0.46153846,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.11882355,
+     "MAP": 0.38000307,
+     "worst": 20.453343
+    },
+    "hyperbolic": {
+     "D_avg": 0.0923685,
+     "MAP": 0.60427451,
+     "worst": 22.201895
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.053738221,
+     "MAP": 0.81129433,
+     "worst": 4.6931903
+    },
+    "hyperbolic": {
+     "D_avg": 0.057308657,
+     "MAP": 0.91730606,
+     "worst": 5.0978415
+    }
+   }
+  },
+  {
+   "fraction": 0.1,
+   "link_seed": 8,
+   "links": 118,
+   "delta_mean": 0.41476,
+   "delta": 3.0,
+   "diameter": 14.0,
+   "relative": 0.42857143,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.055340691,
+     "MAP": 0.8281127,
+     "worst": 4.4325303
+    },
+    "hyperbolic": {
+     "D_avg": 0.058704261,
+     "MAP": 0.94094261,
+     "worst": 4.9091103
+    }
+   }
+  },
+  {
+   "fraction": 0.1,
+   "link_seed": 9,
+   "links": 118,
+   "delta_mean": 0.4037475,
+   "delta": 3.0,
+   "diameter": 14.0,
+   "relative": 0.42857143,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.054050997,
+     "MAP": 0.83109215,
+     "worst": 7.5861436
+    },
+    "hyperbolic": {
+     "D_avg": 0.057213492,
+     "MAP": 0.94207743,
+     "worst": 7.3309297
+    }
+   }
+  },
+  {
+   "fraction": 0.2,
+   "link_seed": 7,
+   "links": 236,
+   "delta_mean": 0.4595125,
+   "delta": 3.0,
+   "diameter": 13.0,
+   "relative": 0.46153846,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.1317766,
+     "MAP": 0.36735225,
+     "worst": 32.245357
+    },
+    "hyperbolic": {
+     "D_avg": 0.11119001,
+     "MAP": 0.58412771,
+     "worst": 46.048778
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.068190716,
+     "MAP": 0.783747,
+     "worst": 5.4893578
+    },
+    "hyperbolic": {
+     "D_avg": 0.072233603,
+     "MAP": 0.86531208,
+     "worst": 5.7022153
+    }
+   }
+  },
+  {
+   "fraction": 0.2,
+   "link_seed": 8,
+   "links": 236,
+   "delta_mean": 0.446095,
+   "delta": 3.0,
+   "diameter": 14.0,
+   "relative": 0.42857143,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.066946636,
+     "MAP": 0.78011551,
+     "worst": 6.7822673
+    },
+    "hyperbolic": {
+     "D_avg": 0.070662529,
+     "MAP": 0.86319269,
+     "worst": 7.8582439
+    }
+   }
+  },
+  {
+   "fraction": 0.2,
+   "link_seed": 9,
+   "links": 236,
+   "delta_mean": 0.4460525,
+   "delta": 3.0,
+   "diameter": 12.0,
+   "relative": 0.5,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.065618283,
+     "MAP": 0.76512293,
+     "worst": 9.4693314
+    },
+    "hyperbolic": {
+     "D_avg": 0.069190983,
+     "MAP": 0.85582218,
+     "worst": 10.396599
+    }
+   }
+  },
+  {
+   "fraction": 0.5,
+   "link_seed": 7,
+   "links": 591,
+   "delta_mean": 0.4447175,
+   "delta": 3.0,
+   "diameter": 11.0,
+   "relative": 0.54545455,
+   "d5": {
+    "euclidean": {
+     "D_avg": 0.15823689,
+     "MAP": 0.28974595,
+     "worst": 50.072415
+    },
+    "hyperbolic": {
+     "D_avg": 0.13484162,
+     "MAP": 0.48984948,
+     "worst": 50.69099
+    }
+   },
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.086586733,
+     "MAP": 0.78486478,
+     "worst": 6.5861938
+    },
+    "hyperbolic": {
+     "D_avg": 0.090623938,
+     "MAP": 0.80482627,
+     "worst": 6.6865267
+    }
+   }
+  },
+  {
+   "fraction": 0.5,
+   "link_seed": 8,
+   "links": 591,
+   "delta_mean": 0.429675,
+   "delta": 2.5,
+   "diameter": 11.0,
+   "relative": 0.45454545,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.08400713,
+     "MAP": 0.77602266,
+     "worst": 6.2160894
+    },
+    "hyperbolic": {
+     "D_avg": 0.088122705,
+     "MAP": 0.79789371,
+     "worst": 6.2837274
+    }
+   }
+  },
+  {
+   "fraction": 0.5,
+   "link_seed": 9,
+   "links": 591,
+   "delta_mean": 0.4353425,
+   "delta": 3.0,
+   "diameter": 10.0,
+   "relative": 0.6,
+   "d50": {
+    "euclidean": {
+     "D_avg": 0.085820907,
+     "MAP": 0.78027156,
+     "worst": 6.3140618
+    },
+    "hyperbolic": {
+     "D_avg": 0.090072591,
+     "MAP": 0.79972162,
+     "worst": 6.5100518
+    }
+   }
+  }
+ ],
+ "checks": {
+  "convergence": {
+   "euclidean": {
+    "d": 200,
+    "D_avg_1500": 0.030765055,
+    "D_avg_4500": 0.030735112,
+    "MAP_1500": 0.8963801,
+    "MAP_4500": 0.89417305
+   },
+   "hyperbolic": {
+    "d": 50,
+    "D_avg_1500": 0.0066337887,
+    "D_avg_4500": 0.0054428907,
+    "MAP_1500": 0.99934198,
+    "MAP_4500": 0.99934198
+   }
+  },
+  "seeds": {
+   "euclidean": [
+    {
+     "D_avg": 0.069452609,
+     "MAP": 0.60197087
+    },
+    {
+     "D_avg": 0.069638761,
+     "MAP": 0.59564506
+    },
+    {
+     "D_avg": 0.069649274,
+     "MAP": 0.59848522
+    }
+   ],
+   "hyperbolic": [
+    {
+     "D_avg": 0.021058615,
+     "MAP": 0.98652472
+    },
+    {
+     "D_avg": 0.021135969,
+     "MAP": 0.98770916
+    },
+    {
+     "D_avg": 0.021404836,
+     "MAP": 0.98307718
+    }
+   ]
+  }
+ }
+}

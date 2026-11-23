@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "dataset": "princeton-wordnet-3-0",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "fe6ab7d396fbd3d99a60ace10eb3b2add4860e6b",
+  "record": "external/princeton-wordnet-3-0/metadata.yaml",
+  "folder": "curvature-prior",
+  "target": "curvature-prior/data",
+  "files": [
+    {
+      "path": "wordnet.zip",
+      "url": "https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/wordnet.zip",
+      "bytes": 10775600,
+      "sha256": "cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59"
+    }
+  ],
+  "consumers": [
+    "curvature-prior/wordnet.py"
+  ]
+}
