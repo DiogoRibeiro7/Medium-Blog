@@ -463,6 +463,54 @@ def main(argv=None) -> int:
               f"{pct(s['both_wrong'])} (passes {pct(s['pass'])}); anchored residual {pct(pred_anch)} "
               f"(measured passes {pct(designs[k]['anchored']['pass'])})")
 
+    # 7. Where reordering matters most ------------------------------------------------------------
+    header("7. What reordering buys, by question difficulty")
+    print("Difficulty of a question for one model: how many of the other models' coders got it wrong.\n"
+          "Misses as a share of the questions in each group; anchored minus blind is what reordering removes.")
+    groups = (("easy", lambda d, m: d <= m // 3), ("middle", lambda d, m: (d > m // 3) & (d < m - m // 3)),
+              ("hard", lambda d, m: d >= m - m // 3))
+    pooled_gain = {g: [] for g, _ in groups}
+    for k in keys:
+        a = A[k]
+        others = [kt for kt in keys if kt != k]
+        if not others:
+            continue
+        wrong_by = np.zeros(len(a["qids"]), dtype=int)
+        for kt in others:
+            tab = models[kt]["tab"]
+            for i, q in enumerate(a["qids"]):
+                r = (tab.get(int(q)) or {}).get("coder")
+                if r is not None and r.get("answer") is not None and r["answer"] != key[int(q)]:
+                    wrong_by[i] += 1
+        m = len(others)
+        cvalid = valid(a["coder"])
+        cwrong = cvalid & (a["coder"] != a["key"])
+        cright = cvalid & (a["coder"] == a["key"])
+        agree = cvalid & (a["blind"] == a["coder"])
+        check = np.array([in_check_set(int(q), cfg) for q in a["qids"]])
+        line = []
+        for g, f in groups:
+            sel = np.where(f(wrong_by, m))[0]
+            if len(sel) < 10:
+                continue
+            idx = boot_idx(len(sel), rng)
+            (am, _, ar), _ = followup_rates(cwrong[sel], cright[sel], (a["anchored"] == a["coder"])[sel],
+                                            a["has_anchored"][sel], agree[sel], check[sel], idx)
+            bm = (cwrong[sel] & (a["blind"][sel] == a["coder"][sel])).astype(float)
+            gain = am - bm.mean()
+            lo, hi = np.quantile(ar - bm[idx].mean(1), [0.025, 0.975])
+            pooled_gain[g].append(gain)
+            line.append(f"{g} n={len(sel)}: coder wrong {pct(cwrong[sel].mean(), 0)}, anchored {pct(am)}, "
+                        f"blind {pct(bm.mean())}, gain {pct(gain)} [{pct(lo)}, {pct(hi)}]")
+            summary["models"][k].setdefault("by_difficulty", {})[g] = {
+                "n": int(len(sel)), "coder_wrong": float(cwrong[sel].mean()), "anchored_miss": am,
+                "blind_miss": float(bm.mean()), "gain": gain, "gain_ci": [float(lo), float(hi)]}
+        pad = "\n  " + " " * 16
+        print(f"  {k:<15} " + pad.join(line) if line else f"  {k:<15} too few questions")
+    for g, v in pooled_gain.items():
+        if v:
+            print(f"  mean gain over models, {g}: {pct(np.mean(v))}")
+
     args.summary.write_text(json.dumps(summary, indent=2, default=float) + "\n")
     draw(keys, models, R, pair_stats, anch, designs, args.fig_dir)
     return 0
