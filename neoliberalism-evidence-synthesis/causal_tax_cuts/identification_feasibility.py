@@ -93,9 +93,7 @@ def _unique(
     rows: list[dict[str, str]], *, horizon: bool = False
 ) -> dict[tuple[str, int] | tuple[str, int, int], dict[str, str]]:
     """Index source rows and reject duplicate event/horizon observations."""
-    result: dict[
-        tuple[str, int] | tuple[str, int, int], dict[str, str]
-    ] = {}
+    result: dict[tuple[str, int] | tuple[str, int, int], dict[str, str]] = {}
     for row in rows:
         key = _key(row)
         index = (*key, int(row["horizon"])) if horizon else key
@@ -162,9 +160,7 @@ def evaluate_identification(
         raise ValueError("Official WDI/dynamic donor samples differ from legal cohort")
     if set(political) != eligible:
         raise ValueError("Political-history cohort differs from legal cohort")
-    if {
-        key for key, row in macro.items() if row["status"] == "matched"
-    } != eligible:
+    if {key for key, row in macro.items() if row["status"] == "matched"} != eligible:
         raise ValueError("Macro-matching cohort differs from legal cohort")
     for key in eligible:
         if {h for c, y, h in hull if (c, y) == key} != set(HORIZONS):
@@ -197,7 +193,9 @@ def evaluate_identification(
             if h >= 0:
                 followup = dynamic[country, year, h]
                 if survivors != int(followup["n_no_cut_comparators_through_h"]):
-                    raise ValueError(f"Contradictory dynamic and WDI donor set: {key} h={h}")
+                    raise ValueError(
+                        f"Contradictory dynamic and WDI donor set: {key} h={h}"
+                    )
                 repeated = int(followup["treated_additional_cuts_through_h"]) > 0
             strict = _bool(joint["strict_joint_hull_support"])
             marginal = _bool(joint["within_all_three_marginal_ranges"])
@@ -205,8 +203,14 @@ def evaluate_identification(
                 raise ValueError("Geometric joint support without marginal support")
             horizon_rows.append(
                 HorizonGate(
-                    country, year, h, key in reviewed, strict, marginal,
-                    survivors, repeated,
+                    country,
+                    year,
+                    h,
+                    key in reviewed,
+                    strict,
+                    marginal,
+                    survivors,
+                    repeated,
                 )
             )
         h5_donors = int(hull[country, year, 5]["n_surviving_donors"])
@@ -260,7 +264,8 @@ def evaluate_identification(
         "n_eligible_with_h5_strict_joint_wdi_support": len(h5_support),
         "h5_support_without_legal_context": [
             f"{r.country}-{r.reform_year}"
-            for r in h5_support if not r.provision_context_reviewed
+            for r in h5_support
+            if not r.provision_context_reviewed
         ],
         "n_documented_eligible_with_full_political_pre5": sum(
             r.political_pre5_history_complete for r in documented
@@ -318,11 +323,22 @@ def run(
 ) -> dict[str, Any]:
     """Reconcile source vintages and write a deterministic research-gate audit."""
     manifests = (
-        _audit_manifest(legal_audit, "legislation_context_coverage_and_nonidentification_only"),
-        _audit_manifest(hull_audit, "three_wdi_dimension_joint_convex_hull_diagnostic_only"),
-        _audit_manifest(dynamic_audit, "dynamic_policy_pathway_and_covariate_availability_audit_only"),
-        _audit_manifest(political_audit, "pre_tax_cut_political_institutional_coverage_only"),
-        _audit_manifest(macro_audit, "pre_reform_support_and_balance_only_no_adjusted_effects"),
+        _audit_manifest(
+            legal_audit, "legislation_context_coverage_and_nonidentification_only"
+        ),
+        _audit_manifest(
+            hull_audit, "three_wdi_dimension_joint_convex_hull_diagnostic_only"
+        ),
+        _audit_manifest(
+            dynamic_audit,
+            "dynamic_policy_pathway_and_covariate_availability_audit_only",
+        ),
+        _audit_manifest(
+            political_audit, "pre_tax_cut_political_institutional_coverage_only"
+        ),
+        _audit_manifest(
+            macro_audit, "pre_reform_support_and_balance_only_no_adjusted_effects"
+        ),
     )
     joined = {str(item["joined_panel_sha256"]) for item in manifests}
     if len(joined) != 1:
@@ -343,34 +359,63 @@ def run(
         key: _read_rows(path, required)
         for key, path, required in (
             (
-                "legal", legal_file,
-                {"country", "author_year", "is_onset", "baseline_donor_eligible_onset",
-                 "legal_context_status", "author_composite_effective_date_verified",
-                 "causal_estimand_identified"},
+                "legal",
+                legal_file,
+                {
+                    "country",
+                    "author_year",
+                    "is_onset",
+                    "baseline_donor_eligible_onset",
+                    "legal_context_status",
+                    "author_composite_effective_date_verified",
+                    "causal_estimand_identified",
+                },
             ),
             (
-                "hull", hull_file,
-                {"country", "reform_year", "horizon", "n_surviving_donors",
-                 "strict_joint_hull_support", "within_all_three_marginal_ranges"},
+                "hull",
+                hull_file,
+                {
+                    "country",
+                    "reform_year",
+                    "horizon",
+                    "n_surviving_donors",
+                    "strict_joint_hull_support",
+                    "within_all_three_marginal_ranges",
+                },
             ),
             (
-                "dynamic", dynamic_file,
-                {"country", "reform_year", "horizon",
-                 "n_no_cut_comparators_through_h", "treated_additional_cuts_through_h"},
+                "dynamic",
+                dynamic_file,
+                {
+                    "country",
+                    "reform_year",
+                    "horizon",
+                    "n_no_cut_comparators_through_h",
+                    "treated_additional_cuts_through_h",
+                },
             ),
             (
-                "political", political_file,
-                {"country", "reform_year", "treated_all_three_pre5_complete",
-                 "n_horizon_five_donors_all_three_complete"},
+                "political",
+                political_file,
+                {
+                    "country",
+                    "reform_year",
+                    "treated_all_three_pre5_complete",
+                    "n_horizon_five_donors_all_three_complete",
+                },
             ),
             (
-                "macro", macro_file,
+                "macro",
+                macro_file,
                 {"country", "reform_year", "status", "pretrend_slope_gap_selected"},
             ),
         )
     }
     events, horizons, report = evaluate_identification(
-        rows["legal"], rows["hull"], rows["dynamic"], rows["political"],
+        rows["legal"],
+        rows["hull"],
+        rows["dynamic"],
+        rows["political"],
         rows["macro"],
     )
     if (
@@ -399,10 +444,10 @@ def run(
         ("policy_identification_events.csv", events, ReformGate),
         ("policy_identification_event_horizons.csv", horizons, HorizonGate),
     ):
-        with (output_dir / filename).open(
-            "w", encoding="utf-8", newline=""
-        ) as handle:
-            writer = csv.DictWriter(handle, fieldnames=list(rowtype.__dataclass_fields__))
+        with (output_dir / filename).open("w", encoding="utf-8", newline="") as handle:
+            writer = csv.DictWriter(
+                handle, fieldnames=list(rowtype.__dataclass_fields__)
+            )
             writer.writeheader()
             writer.writerows(asdict(item) for item in values)
     (output_dir / "policy_identification_audit.json").write_text(
@@ -416,8 +461,15 @@ def main() -> None:
     """Build the audit from an immutable official-source CI collection."""
     parser = argparse.ArgumentParser(description=__doc__)
     for name in (
-        "legal", "hull", "dynamic", "political", "macro",
-        "legal-audit", "hull-audit", "dynamic-audit", "political-audit",
+        "legal",
+        "hull",
+        "dynamic",
+        "political",
+        "macro",
+        "legal-audit",
+        "hull-audit",
+        "dynamic-audit",
+        "political-audit",
         "macro-audit",
     ):
         parser.add_argument("--" + name, type=Path, required=True)
