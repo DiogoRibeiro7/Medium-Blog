@@ -1,0 +1,21 @@
+{
+  "model": "ministral-3:8b",
+  "base_url": "http://localhost:11434",
+  "server_version": "0.40.17",
+  "digest": "1922accd5827ebe6829e536369195db25eaf664528dc66206d646ea3bb386b71",
+  "size": 6022236616,
+  "details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "mistral3",
+    "families": [
+      "mistral3"
+    ],
+    "parameter_size": "8.9B",
+    "quantization_level": "Q4_K_M",
+    "context_length": 262144,
+    "embedding_length": 4096,
+    "runner": "ggml"
+  },
+  "licence_start": "Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distr"
+}
