@@ -173,6 +173,40 @@ def valid(ans):
     return np.array([a is not None for a in ans])
 
 
+def plain(x: np.ndarray, idx: np.ndarray):
+    """Mean, 95% bootstrap interval and the bootstrap replicates."""
+    reps = x[idx].mean(axis=1)
+    return float(x.mean()), (float(np.quantile(reps, 0.025)), float(np.quantile(reps, 0.975))), reps
+
+
+def followup_rates(cwrong, cright, stay, seen, agree, check, idx):
+    """Misses and false alarms of a tester asked on every disagreement but, among agreements, only on
+    the random check set. On disagreements both are counted directly. On agreements the coder's
+    correctness is known for every question, and the check set estimates how often the tester stays
+    with the coder's answer, separately for agreements where the coder is wrong and where it is right.
+    Returns ((miss, ci, reps), (false alarm, ci, reps))."""
+    stay = stay & seen
+
+    def est(cw, cr, st, ag, ch):
+        n = ag.shape[-1]
+        dis = ~ag
+        miss_d = (dis & cw & st).sum(-1)
+        fa_d = (dis & cr & ~st).sum(-1)
+        def retention(mask):
+            k = (ag & ch & mask & st).sum(-1)
+            m = (ag & ch & mask).sum(-1)
+            return np.where(m > 0, k / np.maximum(m, 1), 1.0)
+        r_w, r_r = retention(cw), retention(cr)
+        miss = (miss_d + r_w * (ag & cw).sum(-1)) / n
+        fa = (fa_d + (1 - r_r) * (ag & cr).sum(-1)) / n
+        return miss, fa
+
+    m0, f0 = est(cwrong[None], cright[None], stay[None], agree[None], check[None])
+    mr, fr = est(cwrong[idx], cright[idx], stay[idx], agree[idx], check[idx])
+    q = lambda r: (float(np.quantile(r, 0.025)), float(np.quantile(r, 0.975)))  # noqa: E731
+    return (float(m0[0]), q(mr), mr), (float(f0[0]), q(fr), fr)
+
+
 def boot_idx(n: int, rng) -> np.ndarray:
     return rng.integers(0, n, size=(B_BOOT, n))
 
@@ -338,60 +372,82 @@ def main(argv=None) -> int:
                                                     for k2, v2 in vv.items()} for kk, vv in res.items()})
 
     # 5. What each design lets through ------------------------------------------------------------
-    header("5. Errors that pass the test: the coder is wrong and the test expects the coder's answer")
-    print("Anchored and warned testers were asked on every disagreement and on the check set; on the other\n"
-          "questions (blind tester agreed with the coder) they are taken to agree too, which section 4 checks.")
+    header("5. Misses and false alarms of one tester after the coder")
+    print("Miss: the coder is wrong and the test expects the coder's answer, so the test passes.\n"
+          "False alarm: the coder is right and the test expects something else, so the test fails.\n"
+          "Rates are shares of all questions. Anchored and warned testers were asked on every disagreement and\n"
+          "on the random check set; on agreements outside it, the check set gives how often they stay with the\n"
+          "coder's answer (separately where the coder is wrong and where it is right).")
     designs = {}
     for k in keys:
         a = A[k]
         n = len(a["qids"])
         idx = boot_idx(n, rng)
-        cvalid = np.array([c is not None for c in a["coder"]])
-        out = {}
+        cvalid = valid(a["coder"])
+        cwrong = cvalid & (a["coder"] != a["key"])
+        cright = cvalid & (a["coder"] == a["key"])
+        agree = cvalid & (a["blind"] == a["coder"])
+        check = np.array([in_check_set(int(q), cfg) for q in a["qids"]])
+        rows = {}
         for role in ("anchored", "warned"):
-            t = np.where(a[f"has_{role}"], a[role], a["blind"])  # imputation: agreement stays agreement
-            t = np.where(a[f"has_{role}"] | (a["blind"] == a["coder"]), t, None)
-            out[role] = passes(a["coder"], t, a["key"])
-        out["blind (same model)"] = passes(a["coder"], a["blind"], a["key"])
-        others = {}
+            mi, fa = followup_rates(cwrong, cright, a[role] == a["coder"], a[f"has_{role}"], agree, check, idx)
+            rows[role] = (mi, fa, None, None)
+        bm = (cwrong & (a["blind"] == a["coder"])).astype(float)
+        bf = (cright & (a["blind"] != a["coder"])).astype(float)
+        rows["blind (same model)"] = (plain(bm, idx), plain(bf, idx), bm, bf)
+        print(f"  coder {k} ({n} questions; coder wrong on {pct(cwrong.mean())}):")
+        print(f"    {'tester':<24} {'misses':<22} false alarms")
+        dk = {}
+        for name, (mi, fa, _, _) in rows.items():
+            print(f"    {name:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1])}")
+            dk[name] = {"pass": mi[0], "ci": list(mi[1]), "false_alarm": fa[0], "false_alarm_ci": list(fa[1])}
+        # what reordering buys: anchored minus blind, same model, paired over the same bootstrap draws
+        d_point = rows["anchored"][0][0] - rows["blind (same model)"][0][0]
+        d_reps = rows["anchored"][0][2] - rows["blind (same model)"][0][2]
+        lo, hi = np.quantile(d_reps, [0.025, 0.975])
+        print(f"    reordering removes {pct(d_point)} [{pct(lo)}, {pct(hi)}] of misses "
+              f"(anchored minus blind, same model)")
+        dk["reorder_gain"] = {"value": d_point, "ci": [float(lo), float(hi)]}
         for kt in keys:
             if kt == k or (k, kt) not in pair_stats:
                 continue
-            others[kt] = pair_stats[(k, kt)]
-        print(f"  coder {k} ({n} questions; rates below are shares of all {n}):")
-        dk = {}
-        for name, x in out.items():
-            lo_hi = boot_mean(x, idx)
-            print(f"    {name:<22} {pct(x.mean())} {ci(lo_hi)}")
-            dk[name] = {"pass": float(x.mean()), "ci": list(lo_hi)}
-        # paired difference anchored - blind same model: what reordering buys
-        diff = out["anchored"].astype(float) - out["blind (same model)"].astype(float)
-        dv = diff[idx].mean(1)
-        print(f"    reordering (anchored minus blind, same model): {pct(diff.mean())} "
-              f"[{pct(np.quantile(dv, 0.025))}, {pct(np.quantile(dv, 0.975))}]")
-        dk["reorder_gain"] = {"value": float(diff.mean()),
-                              "ci": [float(np.quantile(dv, 0.025)), float(np.quantile(dv, 0.975))]}
-        for kt, s in others.items():
-            common = sorted(set(models[k]["tab"]) & set(models[kt]["tab"]),
-                            key=lambda q: [o.qid for o in order].index(q))
+            s = pair_stats[(k, kt)]
+            common = [q for q in a["qids"] if q in models[kt]["tab"]]
             ac, at = arrays(models[k], key, common), arrays(models[kt], key, common)
-            p_other = passes(ac["coder"], at["blind"], ac["key"])
-            p_same = passes(ac["coder"], ac["blind"], ac["key"])
+            cv = valid(ac["coder"])
+            cw, cr = cv & (ac["coder"] != ac["key"]), cv & (ac["coder"] == ac["key"])
+            om = (cw & (at["blind"] == ac["coder"])).astype(float)
+            of = (cr & (at["blind"] != ac["coder"])).astype(float)
+            sm = (cw & (ac["blind"] == ac["coder"])).astype(float)
             idx2 = boot_idx(len(common), rng)
-            d2 = p_same.astype(float) - p_other.astype(float)
-            dv2 = d2[idx2].mean(1)
-            print(f"    blind {kt:<16} {pct(p_other.mean())} {ci(boot_mean(p_other, idx2))}  "
-                  f"(same-model blind on these {len(common)}: {pct(p_same.mean())}; difference "
-                  f"{pct(d2.mean())} [{pct(np.quantile(dv2, 0.025))}, {pct(np.quantile(dv2, 0.975))}]; "
-                  f"tester wrong on {pct(s['q_tester'])})")
-            dk[f"blind {kt}"] = {"relation": s["relation"], "pass": float(p_other.mean()),
-                                 "ci": list(boot_mean(p_other, idx2)),
-                                 "n": len(common), "same_model_on_common": float(p_same.mean()),
-                                 "minus_same": float(d2.mean()),
-                                 "minus_same_ci": [float(np.quantile(dv2, 0.025)), float(np.quantile(dv2, 0.975))],
-                                 "q_tester": s["q_tester"]}
+            mi, fa = plain(om, idx2), plain(of, idx2)
+            diff = sm[idx2].mean(1) - om[idx2].mean(1)
+            lo, hi = np.quantile(diff, [0.025, 0.975])
+            label = f"blind {kt}" + (" (same family)" if s["relation"] == "same family" else "")
+            print(f"    {label:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1])}   "
+                  f"misses vs same-model blind: {pct(sm.mean() - om.mean(), 1)} fewer [{pct(lo)}, {pct(hi)}]; "
+                  f"tester wrong on {pct(s['q_tester'])}")
+            dk[f"blind {kt}"] = {"relation": s["relation"], "pass": mi[0], "ci": list(mi[1]),
+                                 "false_alarm": fa[0], "false_alarm_ci": list(fa[1]), "n": len(common),
+                                 "same_model_on_common": float(sm.mean()), "minus_same": float(sm.mean() - om.mean()),
+                                 "minus_same_ci": [float(lo), float(hi)], "q_tester": s["q_tester"]}
         designs[k] = dk
         summary["models"][k]["designs"] = dk
+
+    print("\nAverages over coder models (misses / false alarms):")
+    pooled = {}
+    for name in ("anchored", "warned", "blind (same model)"):
+        v = [designs[k][name] for k in keys if name in designs[k]]
+        pooled[name] = v
+    for rel in ("same family", "other family"):
+        pooled[f"blind, {rel}"] = [d for k in keys for nm, d in designs[k].items()
+                                   if nm.startswith("blind ") and isinstance(d, dict) and d.get("relation") == rel]
+    for name, v in pooled.items():
+        if v:
+            mi = np.mean([d["pass"] for d in v])
+            fa = np.mean([d["false_alarm"] for d in v])
+            print(f"  {name:<24} {pct(mi)} / {pct(fa)}  ({len(v)} coder-tester pairs)")
+            summary.setdefault("pooled_designs", {})[name] = {"pass": float(mi), "false_alarm": float(fa), "pairs": len(v)}
 
     # 6. Model 1 against the measurements --------------------------------------------------------
     header("6. The org-chart article's Model 1, fed the measured rates")
@@ -419,36 +475,42 @@ def main(argv=None) -> int:
 def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
     labels = keys
 
-    # Figure 1: what each design lets through, per coder model
-    fig, ax = plt.subplots(figsize=(8.6, 0.75 * len(keys) + 1.6))
+    # Figure 1: misses and false alarms of each design, per coder model
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 0.8 * len(keys) + 2.0), sharey=True)
     y = np.arange(len(keys))[::-1]
-    styles = [("anchored", ORANGE, "o", "Anchored tester (read the answer first)"),
-              ("warned", PURPLE, "D", "Anchored, told the coder may be wrong"),
-              ("blind (same model)", BLUE, "s", "Blind tester, same model")]
-    for off, (name, col, mk, lab) in zip((0.22, 0.08, -0.06), styles):
+    styles = [("anchored", ORANGE, "o", "Read the coder's answer first"),
+              ("warned", PURPLE, "D", "Read it, told the coder may be wrong"),
+              ("blind (same model)", BLUE, "s", "Blind, same model")]
+    for ax, metric, cikey, title in ((axes[0], "pass", "ci", "Misses: coder wrong, test passes"),
+                                     (axes[1], "false_alarm", "false_alarm_ci", "False alarms: coder right, test fails")):
+        for off, (name, col, mk, lab) in zip((0.24, 0.08, -0.08), styles):
+            for yi, k in zip(y, keys):
+                d = designs[k].get(name)
+                if not d:
+                    continue
+                v, (lo, hi) = 100 * d[metric], d[cikey]
+                ax.errorbar(v, yi + off, xerr=[[v - 100 * lo], [100 * hi - v]], fmt=mk, color=col, ms=5.5,
+                            capsize=0, lw=1.3, label=lab if (yi == y[0] and ax is axes[0]) else None)
+        seen = set()
         for yi, k in zip(y, keys):
-            d = designs[k].get(name)
-            if not d:
-                continue
-            ax.errorbar(100 * d["pass"], yi + off, xerr=[[100 * (d["pass"] - d["ci"][0])], [100 * (d["ci"][1] - d["pass"])]],
-                        fmt=mk, color=col, ms=6, capsize=0, lw=1.4, label=lab if yi == y[0] else None)
-    seen = set()
-    for yi, k in zip(y, keys):
-        for name, d in designs[k].items():
-            if name.startswith("blind ") and name != "blind (same model)":
+            for name, d in designs[k].items():
+                if not (name.startswith("blind ") and name != "blind (same model)" and isinstance(d, dict)):
+                    continue
                 rel = d.get("relation", "other family")
-                col, lab = (AQUA, "Blind tester, another family") if rel == "other family" else \
-                    (BLUE_RAMP[0], "Blind tester, same family, other model")
-                ax.plot(100 * d["pass"], yi - 0.2, "^", color=col, ms=6, alpha=0.9,
-                        label=lab if rel not in seen else None)
+                col, lab = (AQUA, "Blind, another family") if rel == "other family" else \
+                    (BLUE_RAMP[0], "Blind, same family, other model")
+                ax.plot(100 * d[metric], yi - 0.24, "^", color=col, ms=5, alpha=0.85,
+                        label=lab if (rel not in seen and ax is axes[0]) else None)
                 seen.add(rel)
-    ax.set_yticks(y)
-    ax.set_yticklabels(labels)
-    ax.set_xlabel("Questions on which the coder was wrong and the test passed (%)")
-    ax.set_xlim(left=0)
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2, fontsize=9)
-    ax.set_title("What one tester lets through, by how it was set up", loc="left")
-    fig.tight_layout()
+        ax.set_xlim(left=0)
+        ax.set_xlabel("Share of all questions (%)")
+        ax.set_title(title, loc="left", fontsize=10.5)
+    axes[0].set_yticks(y)
+    axes[0].set_yticklabels(keys)
+    fig.legend(loc="lower center", ncol=3, fontsize=9, bbox_to_anchor=(0.5, 0.0))
+    fig.suptitle("One tester after the coder, by how the tester was set up", x=0.01, ha="left",
+                 fontweight="bold", fontsize=11.5)
+    fig.tight_layout(rect=(0, 0.09, 1, 0.95))
     fig.savefig(fig_dir / "fig1_designs.png")
     plt.close(fig)
 
