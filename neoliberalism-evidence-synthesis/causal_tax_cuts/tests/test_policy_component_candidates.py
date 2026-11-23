@@ -25,8 +25,13 @@ MINISTRY = (
 
 
 def component(
-    country: str, year: int, name: str, kind: str,
-    before: str, after: str, start: str,
+    country: str,
+    year: int,
+    name: str,
+    kind: str,
+    before: str,
+    after: str,
+    start: str,
 ) -> dict[str, str]:
     """Build one fictional, fully labelled source record."""
     return {
@@ -60,16 +65,31 @@ def input_rows() -> list[dict[str, str]]:
     return [
         component("FIN", 1986, "rate", "rate_reduction", "43", "33", "1986-01-01"),
         component(
-            "FIN", 1986, "advance", "advance_payment_transition",
-            "43", "43", "1986-01-01",
+            "FIN",
+            1986,
+            "advance",
+            "advance_payment_transition",
+            "43",
+            "43",
+            "1986-01-01",
         ),
         component(
-            "DEU", 2008, "rate", "rate_reduction",
-            "25", "15", "2008-01-01",
+            "DEU",
+            2008,
+            "rate",
+            "rate_reduction",
+            "25",
+            "15",
+            "2008-01-01",
         ),
         component(
-            "DEU", 2008, "later", "later_capital_income_withholding",
-            "", "25", "2009-01-01",
+            "DEU",
+            2008,
+            "later",
+            "later_capital_income_withholding",
+            "",
+            "25",
+            "2009-01-01",
         ),
     ]
 
@@ -149,7 +169,9 @@ class PolicyComponentTests(unittest.TestCase):
                 next(r.period_start for r in deu if r.component_id == "later"),
                 "2009-01-01",
             )
-            self.assertTrue(all(r.composite_flag_attribution == "unverified" for r in records))
+            self.assertTrue(
+                all(r.composite_flag_attribution == "unverified" for r in records)
+            )
 
     def test_positive_and_negative_rate_changes_are_explicit(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -204,20 +226,27 @@ class PolicyComponentTests(unittest.TestCase):
             records, _ = self._load(root)
             old, manifest = historical()
             candidates, summary = assess_candidates(records, old, manifest)
-            self.assertEqual([(x.country, x.reform_year) for x in candidates],
-                             [("FIN", 1986), ("DEU", 2008)])
             self.assertEqual(
-                [x.original_h5_donors for x in candidates], [8, 16]
+                [(x.country, x.reform_year) for x in candidates],
+                [("FIN", 1986), ("DEU", 2008)],
             )
+            self.assertEqual([x.original_h5_donors for x in candidates], [8, 16])
             self.assertEqual(
                 [x.original_pretrend_slope_gap_pp_per_year for x in candidates],
                 [-0.135, 0.496],
             )
             self.assertTrue(candidates[0].has_advance_payment_transition)
             self.assertEqual(candidates[1].n_components_with_later_tax_year, 1)
-            self.assertEqual(summary["n_eligible_onsets_with_statutory_or_contemporaneous_context"], 7)
-            self.assertEqual(summary["n_policy_specific_causal_estimands_identified"], 0)
-            self.assertFalse(any(row.policy_specific_effect_identified for row in candidates))
+            self.assertEqual(
+                summary["n_eligible_onsets_with_statutory_or_contemporaneous_context"],
+                7,
+            )
+            self.assertEqual(
+                summary["n_policy_specific_causal_estimands_identified"], 0
+            )
+            self.assertFalse(
+                any(row.policy_specific_effect_identified for row in candidates)
+            )
 
     def test_changed_original_cohort_is_not_accepted(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
@@ -253,26 +282,38 @@ class PolicyComponentTests(unittest.TestCase):
             old_json.write_text(json.dumps(prior), encoding="utf-8")
             output = root / "results"
             a = save_audit(
-                output, records, candidates, summary,
+                output,
+                records,
+                candidates,
+                summary,
                 components_file=components_file,
-                previous_csv=old_csv, previous_json=old_json,
+                previous_csv=old_csv,
+                previous_json=old_json,
             )
             previous = (output / "policy_component_audit.json").read_bytes()
             b = save_audit(
-                output, records, candidates, summary,
+                output,
+                records,
+                candidates,
+                summary,
                 components_file=components_file,
-                previous_csv=old_csv, previous_json=old_json,
+                previous_csv=old_csv,
+                previous_json=old_json,
             )
             self.assertEqual(a, b)
             self.assertEqual(
                 (output / "policy_component_audit.json").read_bytes(), previous
             )
             self.assertEqual(
-                len(list(csv.DictReader(
-                    (output / "policy_component_evidence.csv").open(
-                        encoding="utf-8", newline=""
+                len(
+                    list(
+                        csv.DictReader(
+                            (output / "policy_component_evidence.csv").open(
+                                encoding="utf-8", newline=""
+                            )
+                        )
                     )
-                ))),
+                ),
                 4,
             )
             self.assertIn("source_sha256", a)
