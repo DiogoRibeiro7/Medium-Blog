@@ -9,7 +9,7 @@ All numbers are from `output.txt`.
 - **What counts as the centre.** Lisboa municipality held 19.0% of its metro area's residents in the 2021 census; Eurostat's "Lisboa (greater city)" held 62.2% of its FUA. Porto: 13.4% and 75.1%. The municipal comparisons use the municipalities; the European comparison has to use Eurostat's units.
 - **Users.**
   - People entering to work or study were 74.98% of Lisboa's residents in the 2021 census and people leaving 10.00%: 1.650 users per resident, a daytime population of about 900,000 for 545,796 residents. Porto: 1.601. 29 of the 33 ring municipalities are below 1.
-  - Full-time employees by place of work (Quadros de Pessoal) grew 22.9% in Lisboa and 26.4% in Porto from 2021 to 2024. Lisboa took 52.5% of the employees added in its metro area and Porto 48.4%, with 20.1% and 13.8% of the residents.
+  - Full-time employees by place of work (Quadros de Pessoal) grew 22.9% in Lisboa and 26.4% in Porto from 2021 to 2024, against 14.3% in Portugal as a whole (and 6.55% for employment in the national accounts). Lisboa took 52.5% of the employees added in its metro area and Porto 48.4%, with 20.1% and 13.8% of the residents.
   - Lisboa holds 53.3% of its metro area's public hospital beds and 71.5% of its tourist beds; Porto 58.2% and 61.6%.
 - **Residents and homes.**
   - Lisboa's share of its metro area's residents went from 19.2% to 19.0% between the end of 2011 and the 2021 census, and from 20.1% to 19.6% between the end of 2021 and the end of 2025 in INE's revised series. Its residents fell 1.04% in 2025 while its ring grew 0.48%. Porto's share was flat to 2021 and rose to 14.7% by 2025.
@@ -20,25 +20,28 @@ All numbers are from `output.txt`.
   - In the median FUA the centre's residents grew 0.055% a year and the ring's 0.388%; 76.2% of centres lost share of their FUA's residents. Only 31.5% lost residents' share while gaining jobs' share.
   - Within countries, the centre-minus-ring gap in residents' growth follows the gap in dwellings' growth (Spearman 0.540) much more than the gap in jobs' growth (0.245). With country fixed effects, residents' gap = 0.699 × dwellings' gap (s.e. 0.063) + 0.049 × jobs' gap (0.020), within R² 0.409. Leaving out one country at a time, the dwellings coefficient stays between 0.649 and 0.797.
   - Centres that gained jobs relative to their ring also tended to gain dwellings (0.084, s.e. 0.026) and residents (0.107, s.e. 0.029). Attracting jobs does not, across Europe, go with losing residents.
-  - Lisbon's greater city: jobs +3.37% a year, dwellings +0.15% (9.7th percentile); jobs minus dwellings 3.22 points, 96.0th percentile. Porto: 2.88 points, 94.0th. All ten Portuguese centres had jobs growing faster than dwellings, with a median gap of 2.99 points against −0.07 elsewhere.
+- **Lisbon and Porto in Europe, and a measurement problem.**
+  - In the city statistics, Lisbon's greater city added jobs at 3.37% a year and dwellings at 0.15% (9.7th percentile); jobs minus dwellings, 3.22 points, is at the 96.0th percentile. Porto: 2.88 points, 94.0th. All ten Portuguese centres show jobs growing faster than dwellings.
+  - But the Portuguese jobs series is not comparable in level: the median Portuguese FUA's jobs grew 3.33% a year against 1.27% for employment in Portugal's national accounts over the same years, 2.07 points ahead, the largest gap of any country with five FUAs or more (Slovakia's runs 2.85 points behind). Comparisons inside each FUA are not affected.
+  - Against national employment, centre dwellings lagged most in Spain (1.01 points a year) and Portugal (0.95). For Lisbon: national employment 1.27% a year, centre dwellings 0.15%.
 
 ## Data
 
 Two external sources in the data registry [DiogoRibeiro7/data](https://github.com/DiogoRibeiro7/data), plus one shared with `portugal-infrastructure-saturation`:
 
-- `external/eurostat-urban-audit-cities-fuas`: six Eurostat responses (`urb_cpop1`, `urb_lpop1`, `urb_clma`, `urb_llma`, `urb_clivcon`, `urb_llivcon`). Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of each response. Contract: [`../data_sources/eurostat-urban-audit-cities-fuas.json`](../data_sources/eurostat-urban-audit-cities-fuas.json).
+- `external/eurostat-urban-audit-cities-fuas`: seven Eurostat responses, six of city statistics (`urb_cpop1`, `urb_lpop1`, `urb_clma`, `urb_llma`, `urb_clivcon`, `urb_llivcon`) and national-accounts employment (`nama_10_pe`). Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of each response. Contract: [`../data_sources/eurostat-urban-audit-cities-fuas.json`](../data_sources/eurostat-urban-audit-cities-fuas.json).
 - `external/ine-portugal-centre-users-homes`: nine INE responses (`0011654` in-commuting, `0012650` employees, `0013366` tourist beds, `0013249` dwellings completed). Contract: [`../data_sources/ine-portugal-centre-users-homes.json`](../data_sources/ine-portugal-centre-users-homes.json).
 - `external/ine-portugal-municipal-infrastructure`: 18 of its INE responses (population, census housing and commuting, prices, rents, enrolment, hospital beds), checked against [`../data_sources/ine-portugal-municipal-infrastructure.json`](../data_sources/ine-portugal-municipal-infrastructure.json).
 
-INE stamps every response with its extraction time, so INE pins are content hashes (SHA-256 of the indicator code, INE's last-update date and the data block). `fetch.py` stops if any hash differs; `--accept-revision` lets a run continue on a new vintage. All 33 responses were retrieved on 23 November 2026. No data are committed here: `data/` and `results/` are rebuilt on every run and ignored by git.
+INE stamps every response with its extraction time, so INE pins are content hashes (SHA-256 of the indicator code, INE's last-update date and the data block). `fetch.py` stops if any hash differs; `--accept-revision` lets a run continue on a new vintage. All 34 responses were retrieved on 23 November 2026. No data are committed here: `data/` and `results/` are rebuilt on every run and ignored by git.
 
 ## Reproduce
 
 ```
 python -m pip install -r requirements.txt
 python -m unittest discover -s tests -v   # the tools against answers known by construction
-python fetch.py                           # 6 Eurostat and 27 INE responses
-python panel.py                           # data/europe.csv and data/metro.csv
+python fetch.py                           # 7 Eurostat and 27 INE responses
+python panel.py                           # data/europe.csv, data/metro.csv, data/national.csv
 python run_analysis.py > output.txt       # every number in the article; also writes results/
 python figures.py                         # figures/
 ```
@@ -54,17 +57,18 @@ The workflow `.github/workflows/centres-users-residents.yml` runs all of this fr
 - **Tourist beds** are the capacity of hotels, local accommodation above INE's survey threshold, and rural tourism. Small short-term rentals are not counted.
 - **Centre and ring in Europe.** The centre is Eurostat's city (the "greater city" where one exists), the ring is the FUA minus the city. Each FUA uses the year nearest 2015 within 2014–2016 and nearest 2021 within 2020–2022 in which all six series exist. Growth is 100 × log change / years.
 - **Boundary changes.** FUAs are dropped when the city is within 2% of the FUA in any series (27), or when a series moves implausibly fast: people more than 3.5% a year, jobs more than 8%, dwellings outside −0.5% to 3.5% (81, of which 65 German, where many rings lose 1–3% of their dwellings a year in the series). Robustness: without Germany, with all series within 2% a year (jobs 5%), leaving out each country.
+- **National benchmark.** For each FUA, growth of its jobs is compared with growth of its country's employment in the national accounts over the same years. Country medians of the difference show whether a country's city jobs series is comparable in level.
 - **Accounting.** Residents = dwellings × residents per dwelling, so the residents' gap is the dwellings' gap plus the gap in residents per dwelling. Within countries, the dwellings' gap carries 53.2% of the variance of the residents' gap. The regressions describe how the three gaps move together; they do not identify what causes what.
 
 ## Files
 
-- **`sources.py`**: the 33 queries.
+- **`sources.py`**: the 34 queries.
 - **`fetch.py`**: download and verify; `--record` writes the two contracts owned by this folder.
-- **`panel.py`**: the European centre–ring panel and the 35-municipality metro panel, with consistency checks.
+- **`panel.py`**: the European centre–ring panel, the 35-municipality metro panel and the national benchmarks, with consistency checks.
 - **`core.py`**: log growth, rings, within-group demeaning, OLS with HC1 errors, fixed effects, Spearman, percentiles.
 - **`run_analysis.py`**: all numbers, printed in order, and the tables in `results/`.
 - **`figures.py`**: the three figures.
-- **`tests/test_core.py`**: 11 checks.
+- **`tests/test_core.py`**: 12 checks.
 
 ## Licence
 

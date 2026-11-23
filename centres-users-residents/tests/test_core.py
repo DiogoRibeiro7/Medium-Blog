@@ -105,6 +105,24 @@ class TestPanel(unittest.TestCase):
             self.assertEqual(w.loc["PT001", 2021], 11.0)
             self.assertEqual(names["PT001"], "Lisboa")
 
+    def test_flat_jsonstat_keeps_every_dimension(self):
+        doc = {
+            "id": ["unit", "geo", "time"],
+            "size": [1, 2, 2],
+            "dimension": {
+                "unit": {"category": {"index": {"THS_PER": 0}}},
+                "geo": {"category": {"index": {"PT": 0, "ES": 1}}},
+                "time": {"category": {"index": {"2015": 0, "2021": 1}}},
+            },
+            "value": {"0": 4590.8, "1": 4952.9, "3": 20072.5},
+        }
+        with tempfile.TemporaryDirectory() as tmp, mock.patch.object(panel, "RAW", Path(tmp)):
+            (Path(tmp) / "x.json").write_text(json.dumps(doc))
+            df = panel.flat_jsonstat("x").set_index(["geo", "time"])["value"]
+        self.assertEqual(df["PT", "2021"], 4952.9)
+        self.assertEqual(df["ES", "2021"], 20072.5)
+        self.assertNotIn(("ES", "2015"), df.index)
+
     def test_common_year_prefers_the_target_then_the_later_year(self):
         a = pd.DataFrame({2014: [1.0], 2015: [np.nan], 2016: [1.0]}, index=["X"])
         self.assertEqual(panel.common_year("X", [a], (2014, 2016, 2015)), 2016)

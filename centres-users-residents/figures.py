@@ -20,7 +20,7 @@ RES = HERE / "results"
 FIG = HERE / "figures"
 
 SURFACE, INK, INK2, MUTED, GRID, AXIS = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
-BLUE, ORANGE = "#2a78d6", "#eb6834"
+BLUE, ORANGE, AQUA = "#2a78d6", "#eb6834", "#1baf7a"
 REST = "#c3c2b7"
 SOURCE_PT = "Source: INE, Statistics Portugal; author's calculations. Code: github.com/DiogoRibeiro7/Medium-Blog"
 SOURCE_EU = "Source: Eurostat city statistics (Urban Audit); author's calculations. Code: github.com/DiogoRibeiro7/Medium-Blog"
@@ -120,41 +120,53 @@ def fig2_homes_residents() -> None:
     finish(fig, "fig2_homes_and_residents", f"Across {len(e)} European urban areas, a centre's residents follow its dwellings", SOURCE_EU)
 
 
-def fig3_jobs_homes() -> None:
-    e = pd.read_csv(RES / "europe_fuas.csv", index_col=0)
-    fig, ax = plt.subplots(figsize=(9, 6.2))
-    xl, yl = (-4.5, 8.0), (-1.0, 3.4)
-    if e.gJ.min() < xl[0] or e.gJ.max() > xl[1] or e.gD.min() < yl[0] or e.gD.max() > yl[1]:
-        raise ValueError("a point falls outside the axes of figure 3")
-    ax.plot([-1.0, 3.4], [-1.0, 3.4], color=INK2, linewidth=1.0, linestyle=(0, (4, 3)), zorder=1)
-    ax.text(2.25, 2.55, "dwellings grow\nas fast as jobs", fontsize=8.5, color=INK2, ha="right", va="bottom")
-    ax.axhline(0, color=AXIS, linewidth=0.8, zorder=1)
-    ax.axvline(0, color=AXIS, linewidth=0.8, zorder=1)
-    scatter_base(ax, e, "gJ", "gD")
-    ax.scatter([e.gJ.median()], [e.gD.median()], marker="+", s=120, color=INK, linewidth=1.4, zorder=5)
+def fig3_country_benchmark() -> None:
+    b = pd.read_csv(RES / "country_benchmark.csv", index_col=0)
+    b = b[b.n >= 5].sort_values("national_employment_minus_centre_dwellings")
+    names = {
+        "ES": "Spain",
+        "PT": "Portugal",
+        "PL": "Poland",
+        "FR": "France",
+        "SK": "Slovakia",
+        "DE": "Germany",
+        "CH": "Switzerland",
+        "FI": "Finland",
+        "BG": "Bulgaria",
+    }
+    fig, ax = plt.subplots(figsize=(10, 5.6))
+    fig.subplots_adjust(top=0.9, bottom=0.15)
+    y = np.arange(len(b))
+    for yy, (_, r) in zip(y, b.iterrows(), strict=True):
+        ax.plot([r.centre_dwellings, r.national_employment], [yy, yy], color=AXIS, linewidth=2.0, zorder=1)
+    ax.scatter(b.national_employment, y, s=64, color=BLUE, edgecolor=SURFACE, linewidth=1.2, zorder=3, label="Employment, national accounts")
+    ax.scatter(b.centre_dwellings, y, s=64, color=AQUA, edgecolor=SURFACE, linewidth=1.2, zorder=3, label="Dwellings in the centres (Urban Audit)")
+    ax.scatter(b.fua_jobs, y, s=58, marker="D", facecolor=SURFACE, edgecolor=ORANGE, linewidth=1.6, zorder=4, label="Jobs in the FUAs (Urban Audit)")
+    ax.set_yticks(y, [f"{names.get(c, c)} ({int(n)})" for c, n in zip(b.index, b.n, strict=True)])
+    ax.axvline(0, color=AXIS, linewidth=0.8, zorder=0)
+    ax.set_xlabel("Median growth across the country's FUAs, % a year (about 2015 to 2021)")
+    grid(ax, "x")
+    ax.legend(loc="upper left", frameon=False, fontsize=9)
+    pt = b.loc["PT"]
     ax.annotate(
-        "median centre",
-        (e.gJ.median(), e.gD.median()),
-        xytext=(-60, -38),
+        f"Portugal's city jobs series runs\n{pt.fua_jobs - pt.national_employment:.1f} points a year ahead of\nnational employment",
+        (pt.fua_jobs, y[list(b.index).index("PT")]),
+        xytext=(-12, -30),
         textcoords="offset points",
         fontsize=8.5,
-        color=INK,
+        color=INK2,
         ha="right",
+        va="top",
         arrowprops={"arrowstyle": "-", "color": INK2, "linewidth": 0.8},
     )
-    ax.set_xlim(xl)
-    ax.set_ylim(yl)
-    ax.set_xlabel("Jobs located in the centre, growth (% a year)")
-    ax.set_ylabel("Dwellings in the centre, growth (% a year)")
-    grid(ax)
-    ax.legend(loc="upper left", frameon=False, fontsize=9)
-    finish(fig, "fig3_jobs_and_homes", "In all ten Portuguese urban areas, jobs in the centre grew far faster than dwellings", SOURCE_EU)
+    source = SOURCE_EU.replace("city statistics (Urban Audit)", "city statistics (Urban Audit) and national accounts (nama_10_pe)")
+    finish(fig, "fig3_country_benchmark", "Against national employment, centre dwellings lagged most in Spain and Portugal", source)
 
 
 def main() -> None:
     fig1_core_shares()
     fig2_homes_residents()
-    fig3_jobs_homes()
+    fig3_country_benchmark()
     print("wrote", ", ".join(sorted(p.name for p in FIG.glob("*.png"))))
 
 

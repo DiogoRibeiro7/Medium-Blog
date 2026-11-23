@@ -70,6 +70,6 @@ jobs:
       - name: Check every figure is drawn
         run: |
           python figures.py
-          for f in fig1_core_shares fig2_homes_and_residents fig3_jobs_and_homes; do
+          for f in fig1_core_shares fig2_homes_and_residents fig3_country_benchmark; do
             test -s "figures/$f.png"
           done

@@ -69,15 +69,15 @@ def plan() -> list[dict]:
     eu = {f["path"]: f for f in json.loads(EU_CONTRACT.read_text())["files"]} if EU_CONTRACT.exists() else {}
     ine = {f["path"]: f for f in json.loads(INE_CONTRACT.read_text())["files"]} if INE_CONTRACT.exists() else {}
     out = []
-    for label, dataset, indicator, about in EUROSTAT:
+    for label, dataset, query, about in EUROSTAT:
         rel = f"data/raw/{label}.json"
         out.append(
             {
                 "rel": rel,
-                "url": eurostat_url(dataset, indicator),
+                "url": eurostat_url(dataset, query),
                 "ine": False,
                 "expected": eu.get(rel, {}).get("sha256"),
-                "meta": {"dataset": dataset, "indicator": indicator, "about": about},
+                "meta": {"dataset": dataset, "query": query, "about": about},
             }
         )
     for label in INE_SHARED:

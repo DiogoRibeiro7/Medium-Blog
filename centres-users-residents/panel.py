@@ -6,6 +6,9 @@
 city and for the whole FUA at a start year near 2015 and an end year near 2021. The ring is the FUA
 minus the city.
 
+``national.csv``: national benchmarks: employment in the national accounts of each country (Eurostat) and
+the full-time employees of Portugal as a whole (Quadros de Pessoal).
+
 ``metro.csv``: one row per municipality of the Lisbon and Porto metropolitan areas (35), with the census
 2021 commuting shares, employees by place of work in 2021 and 2024, tourist beds, resident population,
 the 2021 dwelling stock, dwellings completed since, prices and rents.
@@ -23,6 +26,7 @@ HERE = Path(__file__).resolve().parent
 RAW = HERE / "data" / "raw"
 EUROPE = HERE / "data" / "europe.csv"
 METRO = HERE / "data" / "metro.csv"
+NATIONAL = HERE / "data" / "national.csv"
 
 START = (2014, 2016, 2015)  # window and preferred year
 END = (2020, 2022, 2021)
@@ -53,6 +57,36 @@ def jsonstat(label: str) -> pd.DataFrame:
     df["stem"] = df["code"].str[:5]
     df["name"] = df["code"].map(names)
     return df
+
+
+def flat_jsonstat(label: str) -> pd.DataFrame:
+    """Long table from any Eurostat JSON-stat response: one column per dimension, plus value."""
+    d = json.loads((RAW / f"{label}.json").read_text(encoding="utf-8"))
+    ids, size = d["id"], d["size"]
+    index = {k: {pos: code for code, pos in d["dimension"][k]["category"]["index"].items()} for k in ids}
+    rows = []
+    for flat, value in d["value"].items():
+        f = int(flat)
+        coord = []
+        for s in reversed(size):
+            coord.append(f % s)
+            f //= s
+        coord.reverse()
+        rows.append({**{k: index[k][c] for k, c in zip(ids, coord, strict=True)}, "value": float(value)})
+    return pd.DataFrame(rows)
+
+
+def national() -> pd.DataFrame:
+    na = flat_jsonstat("eu_employment_national")
+    na = pd.DataFrame({"series": "employment_national_accounts", "geo": na["geo"], "year": na["time"].astype(int), "value": na["value"]})
+    rows = []
+    for y in (2021, 2024):
+        df = json.loads((RAW / f"employees_{y}.json").read_text(encoding="utf-8"))
+        pt = [r for r in next(iter(df[0]["Dados"].values())) if r["geocod"] == "PT"]
+        if any("valor" not in r for r in pt):
+            raise ValueError(f"employees_{y}: a size band is withheld for Portugal")
+        rows.append({"series": "employees_quadros_de_pessoal", "geo": "PT", "year": y, "value": sum(float(r["valor"]) for r in pt)})
+    return pd.concat([na, pd.DataFrame(rows)], ignore_index=True)
 
 
 def wide(label: str) -> tuple[pd.DataFrame, pd.Series]:
@@ -187,8 +221,10 @@ def main() -> None:
     eu.to_csv(EUROPE)
     mt = metro()
     mt.to_csv(METRO)
+    national().to_csv(NATIONAL, index=False)
     print(f"wrote {EUROPE.relative_to(HERE)}: {len(eu)} FUAs with all six series at a start and an end year")
     print(f"wrote {METRO.relative_to(HERE)}: {len(mt)} metro municipalities")
+    print(f"wrote {NATIONAL.relative_to(HERE)}: national benchmarks")
 
 
 if __name__ == "__main__":

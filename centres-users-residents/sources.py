@@ -3,7 +3,8 @@
 Three groups of public responses:
 
 * Eurostat, city statistics (Urban Audit): population, jobs at the place of work and dwellings, for
-  each city and for its functional urban area (FUA). Six full-indicator downloads.
+  each city and for its functional urban area (FUA). Six full-indicator downloads. And Eurostat's
+  national-accounts employment for every country, to check the city jobs series against it.
 * INE, Statistics Portugal, already pinned in the data registry for portugal-infrastructure-saturation
   (contract ``ine-portugal-municipal-infrastructure``). They are downloaded again here and checked
   against that contract.
@@ -17,14 +18,20 @@ from __future__ import annotations
 EUROSTAT_API = "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data"
 INE_API = "https://www.ine.pt/ine/json_indicador/pindica.jsp"
 
-# (label, dataset, indicator, what it is)
+# (label, dataset, query, what it is)
 EUROSTAT: list[tuple[str, str, str, str]] = [
-    ("eu_pop_city", "urb_cpop1", "DE1001V", "Population on 1 January, cities"),
-    ("eu_pop_fua", "urb_lpop1", "DE1001V", "Population on 1 January, functional urban areas"),
-    ("eu_jobs_city", "urb_clma", "EC2020V", "Total employment (jobs), workplace based, cities"),
-    ("eu_jobs_fua", "urb_llma", "EC2020V", "Total employment (jobs), workplace based, functional urban areas"),
-    ("eu_dwellings_city", "urb_clivcon", "SA1001V", "Number of conventional dwellings, cities"),
-    ("eu_dwellings_fua", "urb_llivcon", "SA1001V", "Number of conventional dwellings, functional urban areas"),
+    ("eu_pop_city", "urb_cpop1", "indic_ur=DE1001V", "Population on 1 January, cities"),
+    ("eu_pop_fua", "urb_lpop1", "indic_ur=DE1001V", "Population on 1 January, functional urban areas"),
+    ("eu_jobs_city", "urb_clma", "indic_ur=EC2020V", "Total employment (jobs), workplace based, cities"),
+    ("eu_jobs_fua", "urb_llma", "indic_ur=EC2020V", "Total employment (jobs), workplace based, functional urban areas"),
+    ("eu_dwellings_city", "urb_clivcon", "indic_ur=SA1001V", "Number of conventional dwellings, cities"),
+    ("eu_dwellings_fua", "urb_llivcon", "indic_ur=SA1001V", "Number of conventional dwellings, functional urban areas"),
+    (
+        "eu_employment_national",
+        "nama_10_pe",
+        "na_item=EMP_DC&unit=THS_PER",
+        "Total employment, domestic concept, thousand persons (national accounts)",
+    ),
 ]
 
 # Labels of responses pinned in data_sources/ine-portugal-municipal-infrastructure.json
@@ -72,8 +79,8 @@ INE_NEW: list[tuple[str, str, dict[str, str], str]] = [
 ]
 
 
-def eurostat_url(dataset: str, indicator: str) -> str:
-    return f"{EUROSTAT_API}/{dataset}?format=JSON&lang=EN&indic_ur={indicator}"
+def eurostat_url(dataset: str, query: str) -> str:
+    return f"{EUROSTAT_API}/{dataset}?format=JSON&lang=EN&{query}"
 
 
 def ine_url(code: str, dims: dict[str, str]) -> str:

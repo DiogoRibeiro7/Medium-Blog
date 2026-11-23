@@ -29,6 +29,7 @@ Porto                244174          273979          273476         96637.0     
 Porto ring          1518903         1582241         1588251        315825.0        343021.0                   207.93                   216.79                  8.61                  4.17          27196.0            63338                          0.43
   Lisboa: 44.1% of the metro area's employees in 2021, 45.5% in 2024; 52.5% of the employees added; 20.1% of residents in 2021, 18.0% of residents added to 2024
   Porto: 23.4% of the metro area's employees in 2021, 26.3% in 2024; 48.4% of the employees added; 13.8% of residents in 2021, 32.0% of residents added to 2024
+  Portugal: full-time employees (Quadros de Pessoal) 2,287,160 in 2021, 2,613,271 in 2024 (+14.26%); employment in the national accounts 4,952.9 thousand to 5,277.6 thousand (+6.55%)
 
 Dwellings completed in new construction for family housing, 2022-2025 (rehabilitation and conversions are not included)
              completions_2022  completions_2023  completions_2024  completions_2025  completions_2224  completions_2225  per_1000_residents_a_year_2225  per_100_employees_added_2224  per_100_residents_added_2224  per_1000_dwellings_2021_a_year_2225
@@ -49,11 +50,11 @@ Services used by the metro area
   Porto: 58.2% of the metro area's SNS/PPP hospital beds (2024) with 14.8% of its residents; pre-school enrolment rate 118.8, basic 140.0 (2024/25)
 
 Housing in the cores and the rings (census 2021; prices are INE municipal medians, EUR/m2)
-             households_change_1121  dwellings_change_1121  vacant_market_pct  vacant_other_pct  secondary_pct  crowded_pct  rented_pct  price_2019  price_2025  rent_2021  rent_2025  price_change_1925  rent_change_2125
-Lisboa                        -1.35                  -1.89               6.80              8.13           9.34        14.80       42.27     3286.00     4875.00      11.34      16.88              48.36             48.85
-Lisbon ring                    5.47                   1.58               4.10              5.41           9.85        15.31       25.88     1506.69     3058.23       7.96      12.03             102.98             51.12
-Porto                          1.38                  -2.92               7.21              7.99           8.24        15.74       44.17     1856.00     3347.00       9.17      14.13              80.33             54.09
-Porto ring                     5.02                   2.04               3.92              5.12           8.55        13.72       24.33     1034.54     2162.68       5.67       8.72             109.05             53.82
+             households_change_1121  dwellings_change_1121  vacant_market_pct  vacant_other_pct  secondary_pct  crowded_pct  rented_pct  price_2019  price_2025  rent_2021  rent_2025  price_change_1925  rent_change_2125  not_main_residence_pct
+Lisboa                        -1.35                  -1.89               6.80              8.13           9.34        14.80       42.27     3286.00     4875.00      11.34      16.88              48.36             48.85                   24.28
+Lisbon ring                    5.47                   1.58               4.10              5.41           9.85        15.31       25.88     1506.69     3058.23       7.96      12.03             102.98             51.12                   19.36
+Porto                          1.38                  -2.92               7.21              7.99           8.24        15.74       44.17     1856.00     3347.00       9.17      14.13              80.33             54.09                   23.44
+Porto ring                     5.02                   2.04               3.92              5.12           8.55        13.72       24.33     1034.54     2162.68       5.67       8.72             109.05             53.82                   17.60
   (sale prices EUR/m2; rents of new leases EUR/m2 a month; ring values are population-weighted means of the municipal medians)
   Lisboa rent relative to its ring: 1.42 in 2021, 1.40 in 2025
   Porto rent relative to its ring: 1.62 in 2021, 1.62 in 2025
@@ -153,6 +154,27 @@ BG       10         0.09          1.40             -0.94                    -0.9
 FI        7         0.86          1.67              0.94                    -1.16                   0.91                     0.61
 SK        8        -2.12          0.76             -0.18                    -2.83                  -1.12                    -0.68
 Portuguese centres: jobs grew faster than dwellings in 10 of 10; median gap 2.99 points a year against -0.07 elsewhere
+
+Is the jobs series comparable across countries? FUA jobs (Urban Audit) against employment in the national accounts
+  medians across each country's FUAs, % a year (national growth over each FUA's own years)
+          n  fua_jobs  national_employment  centre_jobs  centre_dwellings  fua_jobs_minus_national  national_employment_minus_centre_dwellings
+country                                                                                                                                       
+SI        2      2.37                 1.80         2.41              0.28                     0.57                                        1.52
+ES       64      1.53                 1.26         1.30              0.25                     0.27                                        1.01
+PT       10      3.33                 1.27         3.25              0.31                     2.07                                        0.95
+PL       50      0.83                 1.37         0.46              0.92                    -0.54                                        0.45
+FR       68      0.78                 1.10         0.83              0.82                    -0.32                                        0.28
+LV        3      0.01                 0.28        -0.44              0.06                    -0.27                                        0.22
+SK        8     -2.02                 0.83        -2.12              0.76                    -2.85                                        0.06
+DE       14      0.40                 0.72         1.99              0.77                    -0.32                                       -0.05
+EE        1      0.01                 0.42        -0.35              0.51                    -0.41                                       -0.09
+CH        9      0.63                 0.70         0.63              0.98                    -0.07                                       -0.29
+FI        7      0.65                 0.85         0.86              1.67                    -0.20                                       -0.82
+LT        2     -0.79                 0.52        -0.86              1.42                    -1.31                                       -0.90
+BG       10      0.07                -0.18         0.09              1.40                     0.26                                       -1.58
+  Countries with at least 5 FUAs: FUA jobs minus national employment from -2.85 (SK) to +2.07 (PT); national employment minus centre dwellings highest in ES, PT
+  Lisboa (greater city): FUA jobs +3.35% a year against national employment +1.27% (2015-2021); national employment minus centre dwellings +1.12 points
+  Porto (greater city): FUA jobs +3.10% a year against national employment +1.27% (2015-2021); national employment minus centre dwellings +1.02 points
 
 What goes with a centre keeping its residents? Within-country relationships across FUAs
   Spearman, centre-minus-ring growth of dwellings vs of residents (within country): +0.540

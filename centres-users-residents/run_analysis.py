@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 from core import demean, fixed_effects, log_growth, percentile_of, ring, spearman
-from panel import EUROPE, LISBOA, METRO, PORTO
+from panel import EUROPE, LISBOA, METRO, NATIONAL, PORTO
 
 HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
@@ -123,6 +123,13 @@ def portugal(m: pd.DataFrame) -> pd.DataFrame:
             f"{100 * (core.pop_est_2024 - core.pop_est_2021) / (d.pop_est_2024.sum() - d.pop_est_2021.sum()):.1f}% of residents added to 2024"
         )
     t.to_csv(RESULTS / "portugal_cores_rings.csv")
+    nat = pd.read_csv(NATIONAL).set_index(["series", "geo", "year"])["value"]
+    q21, q24 = nat["employees_quadros_de_pessoal", "PT", 2021], nat["employees_quadros_de_pessoal", "PT", 2024]
+    n21, n24 = nat["employment_national_accounts", "PT", 2021], nat["employment_national_accounts", "PT", 2024]
+    print(
+        f"  Portugal: full-time employees (Quadros de Pessoal) {q21:,.0f} in 2021, {q24:,.0f} in 2024 ({pct(q24, q21):+.2f}%); "
+        f"employment in the national accounts {n21:,.1f} thousand to {n24:,.1f} thousand ({pct(n24, n21):+.2f}%)"
+    )
 
     print()
     print("Dwellings completed in new construction for family housing, 2022-2025 (rehabilitation and conversions are not included)")
@@ -193,6 +200,7 @@ def portugal(m: pd.DataFrame) -> pd.DataFrame:
     h = pd.DataFrame(rows).T
     h["price_change_1925"] = 100 * (h.price_2025 / h.price_2019 - 1)
     h["rent_change_2125"] = 100 * (h.rent_2025 / h.rent_2021 - 1)
+    h["not_main_residence_pct"] = h.vacant_market_pct + h.vacant_other_pct + h.secondary_pct
     print(h.round(2).to_string())
     print("  (sale prices EUR/m2; rents of new leases EUR/m2 a month; ring values are population-weighted means of the municipal medians)")
     for core, grp in [("Lisboa", "Lisbon ring"), ("Porto", "Porto ring")]:
@@ -364,6 +372,41 @@ def europe(eu: pd.DataFrame) -> pd.DataFrame:
         f"median gap {pt.jobs_minus_homes_centre.median():.2f} points a year "
         f"against {e[e.country != 'PT'].jobs_minus_homes_centre.median():.2f} elsewhere"
     )
+
+    print()
+    print("Is the jobs series comparable across countries? FUA jobs (Urban Audit) against employment in the national accounts")
+    na = pd.read_csv(NATIONAL)
+    na = na[na.series == "employment_national_accounts"].set_index(["geo", "year"])["value"]
+    e["gJF"] = log_growth(e.JF0, e.JF1, e.y1 - e.y0)
+    e["g_national"] = [100 * np.log(na[c, int(y1)] / na[c, int(y0)]) / (y1 - y0) for c, y0, y1 in zip(e.country, e.y0, e.y1, strict=True)]
+    by = e.groupby("country")
+    bench = pd.DataFrame(
+        {
+            "n": by.size(),
+            "fua_jobs": by.gJF.median(),
+            "national_employment": by.g_national.median(),
+            "centre_jobs": by.gJ.median(),
+            "centre_dwellings": by.gD.median(),
+        }
+    )
+    bench["fua_jobs_minus_national"] = bench.fua_jobs - bench.national_employment
+    bench["national_employment_minus_centre_dwellings"] = bench.national_employment - bench.centre_dwellings
+    bench = bench.sort_values("national_employment_minus_centre_dwellings", ascending=False)
+    print("  medians across each country's FUAs, % a year (national growth over each FUA's own years)")
+    print(bench.round(2).to_string())
+    bench.to_csv(RESULTS / "country_benchmark.csv")
+    big = bench[bench.n >= 5]
+    print(
+        f"  Countries with at least 5 FUAs: FUA jobs minus national employment from {big.fua_jobs_minus_national.min():+.2f} "
+        f"({big.fua_jobs_minus_national.idxmin()}) to {big.fua_jobs_minus_national.max():+.2f} ({big.fua_jobs_minus_national.idxmax()}); "
+        f"national employment minus centre dwellings highest in {', '.join(big.index[:2])}"
+    )
+    for stem in ("PT001", "PT002"):
+        r_ = e.loc[stem]
+        print(
+            f"  {r_.city}: FUA jobs {r_.gJF:+.2f}% a year against national employment {r_.g_national:+.2f}% ({int(r_.y0)}-{int(r_.y1)}); "
+            f"national employment minus centre dwellings {r_.g_national - r_.gD:+.2f} points"
+        )
 
     print()
     print("What goes with a centre keeping its residents? Within-country relationships across FUAs")
