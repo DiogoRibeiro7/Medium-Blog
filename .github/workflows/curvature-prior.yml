@@ -1,0 +1,61 @@
+name: Reproduce curvature-prior
+
+on:
+  pull_request:
+    paths:
+      - 'curvature-prior/**'
+      - 'data_sources/princeton-wordnet-3-0.json'
+      - '.github/workflows/curvature-prior.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'curvature-prior/**'
+      - 'data_sources/princeton-wordnet-3-0.json'
+      - '.github/workflows/curvature-prior.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: curvature-prior
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: curvature-prior/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download WordNet from the pinned commit and verify it against the registry contract
+        run: python -c "import wordnet; wordnet.fetch(verbose=True)"
+
+      - name: Run the tests
+        run: python -m pytest -q tests
+
+      - name: Rerun the analysis
+        run: |
+          cp results/summary.json /tmp/reference.json
+          python curvature_prior.py > results/output.txt
+
+      - name: Check every number against the committed run, within the stated tolerances
+        run: python check_results.py /tmp/reference.json results/summary.json
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_two_dimensions fig2_distortion_by_dimension fig3_ranking_by_dimension fig4_cross_links; do
+            test -s "figures/$f.png"
+          done

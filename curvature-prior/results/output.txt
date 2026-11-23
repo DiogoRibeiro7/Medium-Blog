@@ -1,0 +1,168 @@
+
+==============================================================================
+1  The data
+==============================================================================
+WordNet 3.0 from https://raw.githubusercontent.com/nltk/nltk_data/550b6625bcef1f2abff2ff770a5a0d272c9c6b2a/packages/corpora/wordnet.zip
+  10,775,600 bytes, SHA-256 cbda5ea6eef7f36a97a43d4a75f85e07fccbb4f23657d27b4ccbc93e2646ab59 (verified)
+  registry record external/princeton-wordnet-3-0/metadata.yaml at DiogoRibeiro7/data@fe6ab7d396fb
+  noun synsets: 82,115
+WordNet mammals                          n= 1182  edges= 1182  beyond a tree=    1  diameter=  16  delta=0.0  2*delta/diam=0.000  mean delta=0.0000
+WordNet food                             n= 1527  edges= 1542  beyond a tree=   16  diameter=  16  delta=2.0  2*delta/diam=0.250  mean delta=0.0969
+WordNet mammals, transitive closure      n= 1182  edges= 6542  beyond a tree= 5361  diameter=   2  delta=0.5  2*delta/diam=0.500  mean delta=0.0016
+tree (branching 3, depth 6)              n= 1093  edges= 1092  beyond a tree=    0  diameter=  12  delta=0.0  2*delta/diam=0.000  mean delta=0.0000
+grid (33 x 33)                           n= 1089  edges= 2112  beyond a tree= 1024  diameter=  64  delta=25.0  2*delta/diam=0.781  mean delta=2.4515
+mammal hierarchy: root 'mammal', depth 9, 6 children of the root, 6 neighbours
+
+==============================================================================
+2  Dimension sweep
+==============================================================================
+
+WordNet mammals
+     d  flat D_avg  hyp D_avg  ratio   flat worst  hyp worst   flat MAP  hyp MAP   hyp radius
+     2      0.2385     0.1063   2.24       356.71    1225.75     0.0909   0.2639         8.45
+     5      0.1204     0.0399   3.01        17.46      10.11     0.3523   0.8596         6.03
+    10      0.0695     0.0211   3.30         9.73       5.31     0.6020   0.9865         5.13
+    20      0.0438     0.0113   3.87         8.65       4.53     0.8307   0.9993         4.88
+    50      0.0326     0.0066   4.91         7.34       4.06     0.8809   0.9993         4.86
+   100      0.0310     0.0061   5.05         6.91       4.05     0.8886   0.9993         4.66
+   200      0.0308     0.0064   4.77         6.80       4.11     0.8964   0.9993         4.38
+
+WordNet food
+     d  flat D_avg  hyp D_avg  ratio   flat worst  hyp worst   flat MAP  hyp MAP   hyp radius
+     2      0.2300     0.1160   1.98      1373.24    1028.94     0.0621   0.1688         8.42
+     5      0.1017     0.0428   2.38        21.66      11.93     0.2377   0.5788         5.78
+    10      0.0585     0.0282   2.08         5.49       5.32     0.3832   0.8908         4.96
+    20      0.0377     0.0199   1.89         4.12       4.20     0.7990   0.9936         4.69
+    50      0.0277     0.0157   1.76         3.70       4.19     0.8941   0.9983         4.85
+   100      0.0255     0.0146   1.75         3.62       4.20     0.9155   0.9982         4.81
+   200      0.0249     0.0142   1.76         3.63       4.21     0.9169   0.9983         4.73
+
+WordNet mammals, transitive closure
+     d  flat D_avg  hyp D_avg  ratio   flat worst  hyp worst   flat MAP  hyp MAP   hyp radius
+     2      0.3457     0.1244   2.78       593.25     364.43     0.0178   0.0336         5.66
+     5      0.1917     0.0676   2.84        71.25     161.02     0.1001   0.3874         4.05
+    10      0.1303     0.0521   2.50        36.66      90.96     0.3602   0.7554         3.30
+    20      0.0900     0.0419   2.15        31.12      61.63     0.6256   0.9607         2.75
+    50      0.0551     0.0317   1.74        31.41      47.75     0.8936   0.9858         2.19
+   100      0.0379     0.0246   1.54        32.58      47.38     0.9454   0.9854         2.00
+   200      0.0266     0.0187   1.42        35.49      50.01     0.9773   0.9835         2.15
+
+tree (branching 3, depth 6)
+     d  flat D_avg  hyp D_avg  ratio   flat worst  hyp worst   flat MAP  hyp MAP   hyp radius
+     2      0.2761     0.1342   2.06       306.91     454.19     0.0468   0.7304         7.27
+     5      0.1370     0.0279   4.91         5.80       1.76     0.4536   1.0000         4.20
+    10      0.0788     0.0154   5.12         3.17       1.69     0.5560   1.0000         3.48
+    20      0.0487     0.0092   5.29         2.56       1.68     0.5554   1.0000         3.43
+    50      0.0330     0.0058   5.64         2.47       1.64     0.5554   1.0000         3.84
+   100      0.0310     0.0055   5.68         2.44       1.65     0.5554   1.0000         3.88
+   200      0.0308     0.0059   5.22         2.43       1.68     0.5554   1.0000         3.58
+
+grid (33 x 33)
+     d  flat D_avg  hyp D_avg  ratio   flat worst  hyp worst   flat MAP  hyp MAP   hyp radius
+     2      0.0941     0.0993   0.95         1.69       1.77     1.0000   1.0000         1.40
+     5      0.0921     0.0973   0.95         1.64       1.76     1.0000   1.0000         1.04
+    10      0.0921     0.0977   0.94         1.65       1.75     1.0000   1.0000         1.07
+    20      0.0921     0.0982   0.94         1.65       1.75     1.0000   1.0000         1.12
+    50      0.0921     0.0992   0.93         1.65       1.78     1.0000   1.0000         1.21
+   100      0.0921     0.1000   0.92         1.65       1.81     1.0000   1.0000         1.27
+   200      0.0921     0.1014   0.91         1.66       1.85     1.0000   1.0000         1.40
+
+==============================================================================
+3  What the sweep says
+==============================================================================
+
+WordNet mammals: flat/hyperbolic distortion ratio by dimension 2: 2.24, 5: 3.01, 10: 3.30, 20: 3.87, 50: 4.91, 100: 5.05, 200: 4.77
+  hyperbolic d= 5: D_avg 0.0399, MAP 0.8596; flat dimensions to match the distortion: 50; to match the MAP: 50
+  hyperbolic d=10: D_avg 0.0211, MAP 0.9865; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
+  best D_avg over all dimensions: flat 0.0308, hyperbolic 0.0061
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.95, 5: 1.34, 10: 1.60, 20: 1.69, 50: 1.70, 100: 1.76, 200: 1.89
+    curvature in graph units, -1/u^2: 2: -1.1, 5: -0.558, 10: -0.392, 20: -0.351, 50: -0.348, 100: -0.323, 200: -0.281
+    diameter in radii of curvature, diameter/u: 2: 16.8, 5: 12.0, 10: 10.0, 20: 9.5, 50: 9.4, 100: 9.1, 200: 8.5
+
+WordNet food: flat/hyperbolic distortion ratio by dimension 2: 1.98, 5: 2.38, 10: 2.08, 20: 1.89, 50: 1.76, 100: 1.75, 200: 1.76
+  hyperbolic d= 5: D_avg 0.0428, MAP 0.5788; flat dimensions to match the distortion: 20; to match the MAP: 20
+  hyperbolic d=10: D_avg 0.0282, MAP 0.8908; flat dimensions to match the distortion: 50; to match the MAP: 50
+  best D_avg over all dimensions: flat 0.0249, hyperbolic 0.0142
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.90, 5: 1.41, 10: 1.68, 20: 1.79, 50: 1.74, 100: 1.77, 200: 1.79
+    curvature in graph units, -1/u^2: 2: -1.24, 5: -0.503, 10: -0.356, 20: -0.314, 50: -0.33, 100: -0.32, 200: -0.313
+    diameter in radii of curvature, diameter/u: 2: 17.8, 5: 11.3, 10: 9.5, 20: 9.0, 50: 9.2, 100: 9.1, 200: 9.0
+
+WordNet mammals, transitive closure: flat/hyperbolic distortion ratio by dimension 2: 2.78, 5: 2.84, 10: 2.50, 20: 2.15, 50: 1.74, 100: 1.54, 200: 1.42
+  hyperbolic d= 5: D_avg 0.0676, MAP 0.3874; flat dimensions to match the distortion: 50; to match the MAP: 20
+  hyperbolic d=10: D_avg 0.0521, MAP 0.7554; flat dimensions to match the distortion: 100; to match the MAP: 50
+  best D_avg over all dimensions: flat 0.0266, hyperbolic 0.0187
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.20, 5: 0.28, 10: 0.35, 20: 0.42, 50: 0.54, 100: 0.60, 200: 0.55
+    curvature in graph units, -1/u^2: 2: -24.6, 5: -12.9, 10: -8.35, 20: -5.64, 50: -3.39, 100: -2.76, 200: -3.28
+    diameter in radii of curvature, diameter/u: 2: 9.9, 5: 7.2, 10: 5.8, 20: 4.7, 50: 3.7, 100: 3.3, 200: 3.6
+
+tree (branching 3, depth 6): flat/hyperbolic distortion ratio by dimension 2: 2.06, 5: 4.91, 10: 5.12, 20: 5.29, 50: 5.64, 100: 5.68, 200: 5.22
+  hyperbolic d= 5: D_avg 0.0279, MAP 1.0000; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
+  hyperbolic d=10: D_avg 0.0154, MAP 1.0000; flat dimensions to match the distortion: none up to 200; to match the MAP: none up to 200
+  best D_avg over all dimensions: flat 0.0308, hyperbolic 0.0055
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 0.90, 5: 1.54, 10: 1.84, 20: 1.86, 50: 1.65, 100: 1.63, 200: 1.77
+    curvature in graph units, -1/u^2: 2: -1.23, 5: -0.422, 10: -0.297, 20: -0.288, 50: -0.369, 100: -0.377, 200: -0.317
+    diameter in radii of curvature, diameter/u: 2: 13.3, 5: 7.8, 10: 6.5, 20: 6.4, 50: 7.3, 100: 7.4, 200: 6.8
+
+grid (33 x 33): flat/hyperbolic distortion ratio by dimension 2: 0.95, 5: 0.95, 10: 0.94, 20: 0.94, 50: 0.93, 100: 0.92, 200: 0.91
+  hyperbolic d= 5: D_avg 0.0973, MAP 1.0000; flat dimensions to match the distortion: 2; to match the MAP: 2
+  hyperbolic d=10: D_avg 0.0977, MAP 1.0000; flat dimensions to match the distortion: 2; to match the MAP: 2
+  best D_avg over all dimensions: flat 0.0921, hyperbolic 0.0973
+  learned curvature of the hyperbolic fit: graph steps per unit of hyperbolic distance u 2: 27.80, 5: 27.02, 10: 25.82, 20: 24.52, 50: 22.34, 100: 20.92, 200: 19.06
+    curvature in graph units, -1/u^2: 2: -0.00129, 5: -0.00137, 10: -0.0015, 20: -0.00166, 50: -0.002, 100: -0.00228, 200: -0.00275
+    diameter in radii of curvature, diameter/u: 2: 2.3, 5: 2.4, 10: 2.5, 20: 2.6, 50: 2.9, 100: 3.1, 200: 3.4
+
+==============================================================================
+4  The dial: cross-links added to the mammal tree
+==============================================================================
+  links=   0 ( 0.0%) seed 7: diameter 16, mean delta 0.000, max delta 0.0 | d=5: D_avg flat 0.1204 hyp 0.0399 ratio 3.01, MAP flat 0.352 hyp 0.860 | d=50: D_avg flat 0.0326 hyp 0.0066 ratio 4.91, MAP flat 0.881 hyp 0.999
+  links=   6 ( 0.5%) seed 7: diameter 16, mean delta 0.066, max delta 3.0 | d=5: D_avg flat 0.1176 hyp 0.0429 ratio 2.74, MAP flat 0.356 hyp 0.838 | d=50: D_avg flat 0.0322 hyp 0.0138 ratio 2.33, MAP flat 0.882 hyp 0.998
+  links=   6 ( 0.5%) seed 8: diameter 16, mean delta 0.045, max delta 3.0 | d=50: D_avg flat 0.0331 hyp 0.0176 ratio 1.88, MAP flat 0.881 hyp 0.999
+  links=   6 ( 0.5%) seed 9: diameter 16, mean delta 0.026, max delta 3.0 | d=50: D_avg flat 0.0326 hyp 0.0140 ratio 2.32, MAP flat 0.879 hyp 0.999
+  links=  12 ( 1.0%) seed 7: diameter 16, mean delta 0.111, max delta 3.0 | d=5: D_avg flat 0.1149 hyp 0.0523 ratio 2.20, MAP flat 0.349 hyp 0.815 | d=50: D_avg flat 0.0331 hyp 0.0218 ratio 1.52, MAP flat 0.879 hyp 0.999
+  links=  12 ( 1.0%) seed 8: diameter 16, mean delta 0.077, max delta 3.0 | d=50: D_avg flat 0.0334 hyp 0.0211 ratio 1.58, MAP flat 0.884 hyp 0.998
+  links=  12 ( 1.0%) seed 9: diameter 16, mean delta 0.089, max delta 3.5 | d=50: D_avg flat 0.0335 hyp 0.0199 ratio 1.68, MAP flat 0.883 hyp 0.999
+  links=  24 ( 2.0%) seed 7: diameter 16, mean delta 0.176, max delta 3.5 | d=5: D_avg flat 0.1114 hyp 0.0580 ratio 1.92, MAP flat 0.363 hyp 0.783 | d=50: D_avg flat 0.0358 hyp 0.0293 ratio 1.22, MAP flat 0.878 hyp 0.997
+  links=  24 ( 2.0%) seed 8: diameter 16, mean delta 0.156, max delta 5.0 | d=50: D_avg flat 0.0359 hyp 0.0303 ratio 1.18, MAP flat 0.876 hyp 0.996
+  links=  24 ( 2.0%) seed 9: diameter 15, mean delta 0.162, max delta 3.5 | d=50: D_avg flat 0.0366 hyp 0.0300 ratio 1.22, MAP flat 0.876 hyp 0.999
+  links=  59 ( 5.0%) seed 7: diameter 14, mean delta 0.296, max delta 3.5 | d=5: D_avg flat 0.1123 hyp 0.0756 ratio 1.49, MAP flat 0.374 hyp 0.701 | d=50: D_avg flat 0.0434 hyp 0.0441 ratio 0.98, MAP flat 0.852 hyp 0.977
+  links=  59 ( 5.0%) seed 8: diameter 15, mean delta 0.331, max delta 3.5 | d=50: D_avg flat 0.0445 hyp 0.0458 ratio 0.97, MAP flat 0.860 hyp 0.989
+  links=  59 ( 5.0%) seed 9: diameter 15, mean delta 0.333, max delta 4.0 | d=50: D_avg flat 0.0451 hyp 0.0462 ratio 0.98, MAP flat 0.857 hyp 0.978
+  links= 118 (10.0%) seed 7: diameter 13, mean delta 0.405, max delta 3.0 | d=5: D_avg flat 0.1188 hyp 0.0924 ratio 1.29, MAP flat 0.380 hyp 0.604 | d=50: D_avg flat 0.0537 hyp 0.0573 ratio 0.94, MAP flat 0.811 hyp 0.917
+  links= 118 (10.0%) seed 8: diameter 14, mean delta 0.415, max delta 3.0 | d=50: D_avg flat 0.0553 hyp 0.0587 ratio 0.94, MAP flat 0.828 hyp 0.941
+  links= 118 (10.0%) seed 9: diameter 14, mean delta 0.404, max delta 3.0 | d=50: D_avg flat 0.0541 hyp 0.0572 ratio 0.94, MAP flat 0.831 hyp 0.942
+  links= 236 (20.0%) seed 7: diameter 13, mean delta 0.460, max delta 3.0 | d=5: D_avg flat 0.1318 hyp 0.1112 ratio 1.19, MAP flat 0.367 hyp 0.584 | d=50: D_avg flat 0.0682 hyp 0.0722 ratio 0.94, MAP flat 0.784 hyp 0.865
+  links= 236 (20.0%) seed 8: diameter 14, mean delta 0.446, max delta 3.0 | d=50: D_avg flat 0.0669 hyp 0.0707 ratio 0.95, MAP flat 0.780 hyp 0.863
+  links= 236 (20.0%) seed 9: diameter 12, mean delta 0.446, max delta 3.0 | d=50: D_avg flat 0.0656 hyp 0.0692 ratio 0.95, MAP flat 0.765 hyp 0.856
+  links= 591 (50.0%) seed 7: diameter 11, mean delta 0.445, max delta 3.0 | d=5: D_avg flat 0.1582 hyp 0.1348 ratio 1.17, MAP flat 0.290 hyp 0.490 | d=50: D_avg flat 0.0866 hyp 0.0906 ratio 0.96, MAP flat 0.785 hyp 0.805
+  links= 591 (50.0%) seed 8: diameter 11, mean delta 0.430, max delta 2.5 | d=50: D_avg flat 0.0840 hyp 0.0881 ratio 0.95, MAP flat 0.776 hyp 0.798
+  links= 591 (50.0%) seed 9: diameter 10, mean delta 0.435, max delta 3.0 | d=50: D_avg flat 0.0858 hyp 0.0901 ratio 0.95, MAP flat 0.780 hyp 0.800
+
+ratio at d=50 by fraction (mean over link placements, min to max):
+   0.0%: 4.91 (4.91 to 4.91), n=1
+   0.5%: 2.18 (1.88 to 2.33), n=3
+   1.0%: 1.59 (1.52 to 1.68), n=3
+   2.0%: 1.21 (1.18 to 1.22), n=3
+   5.0%: 0.98 (0.97 to 0.98), n=3
+  10.0%: 0.94 (0.94 to 0.94), n=3
+  20.0%: 0.95 (0.94 to 0.95), n=3
+  50.0%: 0.95 (0.95 to 0.96), n=3
+
+==============================================================================
+5  Checks
+==============================================================================
+mammals, euclidean, d=200: three times the steps moves D_avg 0.0308 -> 0.0307, MAP 0.8964 -> 0.8942
+mammals, hyperbolic, d=50: three times the steps moves D_avg 0.0066 -> 0.0054, MAP 0.9993 -> 0.9993
+mammals, euclidean, d=10, initialisations 0, 1, 2: D_avg 0.0695, 0.0696, 0.0696; MAP 0.6020, 0.5956, 0.5985
+mammals, hyperbolic, d=10, initialisations 0, 1, 2: D_avg 0.0211, 0.0211, 0.0214; MAP 0.9865, 0.9877, 0.9831
+complete tree, euclidean, d=20: rank of the parent among a leaf's nearest points 3: 729 leaves (of 729); internal nodes' mean AP 1.0000; distance to a sibling / distance to the parent, median 0.95 (0.93 to 0.96; 2 in the tree)
+complete tree, euclidean, d=200: rank of the parent among a leaf's nearest points 3: 729 leaves (of 729); internal nodes' mean AP 1.0000; distance to a sibling / distance to the parent, median 0.97 (0.97 to 0.97; 2 in the tree)
+
+==============================================================================
+Figures
+==============================================================================
+  wrote figures/fig1_two_dimensions.png
+  wrote figures/fig2_distortion_by_dimension.png
+  wrote figures/fig3_ranking_by_dimension.png
+  wrote figures/fig4_cross_links.png
+
+(run time is printed to stderr)
