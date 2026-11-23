@@ -321,6 +321,29 @@ It does not estimate any new ATT or change the existing causal analysis.
 
 
 
+
+### Finnish 1986 and German 2008 source-first tax-component case studies
+
+[POLICY_COMPONENT_CASE_STUDIES.md](POLICY_COMPONENT_CASE_STUDIES.md)
+documents eight official-source-backed tax components for the two
+originally eligible onsets with strict three-WDI-mean donor-hull support
+through year five. Finland's corporate income tax fell from 43% to 33%
+but 1986 advances remained at 43%; wealth-tax thresholds rose while
+capital-gains base rules tightened. Germany's corporate rate fell from
+25% to 15% in 2008, alongside trade-tax and interest deduction changes;
+a private capital-income withholding stage followed in 2009.
+
+The new ledger [policy_component_sources.csv](policy_component_sources.csv)
+does **not** assert a cause of either Hope–Limberg composite flag.
+The original 20-event donor sample, matching and inequality outcomes are
+unchanged. Official-source coverage becomes **7/20 eligible onsets**,
+including the five previously reviewed cases, but **0/20** have
+independently identified flag-to-law attribution or policy-specific ATT.
+
+Read the [source-qualified result](results/POLICY_COMPONENT_RESULTS_2026-11-23.md).
+The live source-probe workflow generates three typed files and checks
+the frozen JSON snapshot when the source hashes match.
+
 ### Identification feasibility for individual documented tax reforms (no ATT)
 
 [IDENTIFICATION_FEASIBILITY.md](IDENTIFICATION_FEASIBILITY.md) joins

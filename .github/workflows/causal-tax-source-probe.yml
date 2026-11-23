@@ -369,6 +369,56 @@ jobs:
             ${{ runner.temp }}/tax-study/identification-feasibility/policy_identification_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit Finnish 1986 and German 2008 official tax components
+        id: policy_component_candidates
+        if: steps.identification_feasibility.outcome == 'success'
+        run: |
+          python -m causal_tax_cuts.policy_component_candidates \
+            --components causal_tax_cuts/policy_component_sources.csv \
+            --prior-events "$RUNNER_TEMP/tax-study/identification-feasibility/policy_identification_events.csv" \
+            --prior-audit "$RUNNER_TEMP/tax-study/identification-feasibility/policy_identification_audit.json" \
+            --output-dir "$RUNNER_TEMP/tax-study/policy-component-candidates"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          actual = json.loads(
+              (Path(os.environ["RUNNER_TEMP"]) / "tax-study/policy-component-candidates/policy_component_audit.json").read_text()
+          )
+          frozen_path = Path("causal_tax_cuts/results/policy_components_2026-11-23.json")
+          if frozen_path.exists():
+              reference = json.loads(frozen_path.read_text(encoding="utf-8"))
+              if actual["source_sha256"] == reference["source_sha256"]:
+                  if actual != reference:
+                      raise ValueError("Same-source Finnish/German tax-component audit drifted")
+                  print("Verified exact Finland/Germany component evidence snapshot")
+              elif (
+                  actual["joined_panel_sha256"] == reference["joined_panel_sha256"]
+                  and actual["source_sha256"]["official_component_ledger"]
+                  == reference["source_sha256"]["official_component_ledger"]
+              ):
+                  scientific_actual = {k: v for k, v in actual.items() if k != "source_sha256"}
+                  scientific_reference = {k: v for k, v in reference.items() if k != "source_sha256"}
+                  if scientific_actual != scientific_reference:
+                      raise ValueError("Original panel unchanged but component evidence or event gates drifted")
+                  print("Original data and component results agree; upstream derived audit bytes differ")
+              else:
+                  print("Official source vintage changed: do not claim frozen reproduction")
+          else:
+              print("Initial live component audit; frozen source snapshot not yet published")
+          PY
+      - name: Publish Finnish/German component source and case gates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-finland-germany-components
+          path: |
+            ${{ runner.temp }}/tax-study/policy-component-candidates/policy_component_evidence.csv
+            ${{ runner.temp }}/tax-study/policy-component-candidates/supported_reform_candidate_gates.csv
+            ${{ runner.temp }}/tax-study/policy-component-candidates/policy_component_audit.json
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
