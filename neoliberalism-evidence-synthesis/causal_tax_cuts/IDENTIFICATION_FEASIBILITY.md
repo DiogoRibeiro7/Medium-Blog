@@ -133,10 +133,24 @@ python -m causal_tax_cuts.identification_feasibility \
 ~~~
 
 The CI reproduces all event rows and both audit files using *live*
-original sources and a seven-day artifact. It checks the frozen
+original sources and a seven-day artifact. It preserves **raw SHA-256**
+checksums for every source. The frozen
 [JSON manifest](results/identification_feasibility_2026-11-23.json)
-byte-for-byte when all source hashes agree, or reports a new source
-vintage honestly.
+also holds *canonical scientific-input fingerprints* for two derived
+numeric fields: macro-selected Mahalanobis distance and donor-hull
+reconstruction residual. Those fields are rounded to **12 decimal
+places for hashing only**, not for estimation or published CSV results.
+Every other input column is retained exactly in the canonical hash.
+
+This distinction is necessary because repeated runs over identical
+original WID/WDI source bytes produced binary floating-point differences
+in seven matching distances (maximum 4.44e-16) and nineteen geometric
+residuals (maximum 4.63e-16), while both complete output CSVs remained
+**byte-identical**. The CI checks the full substantive frozen report
+and the canonical hashes before distinguishing harmless derived
+serialization variation from a real source-vintage change. Other raw
+input changes on an unchanged original panel fail closed.
+No historical source is silently relabelled as exactly byte-identical.
 
 ## Decision and next research gate
 
