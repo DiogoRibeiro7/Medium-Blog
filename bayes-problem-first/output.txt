@@ -1,0 +1,144 @@
+Companion numbers for the article on teaching Bayesian statistics problem first.
+Seed 20261123. NumPy 2.5.3.
+
+====================================================================================================
+1. The vaccine trial: what the protocol's prior says before any case is counted
+====================================================================================================
+Prior on theta (share of cases in the vaccine arm): Beta(0.700102, 1); worth a + b = 1.700102 cases
+Prior mean of theta 0.4118; VE at that theta 30.0%
+Prior median of theta 0.3716; prior median VE 40.9%
+Prior P(VE > 30%) = 53.7%
+Prior P(VE > 50%) = 46.3%
+Prior P(VE > 90%) = 18.7%
+Prior P(VE > 0%) = 61.6%
+Prior P(VE < 0%) (vaccine harmful) = 38.4%
+Prior central 95% interval for VE: -2615.6% to 99.5%
+Prior P(VE < -100%) (vaccine at least doubles the risk) = 24.7%
+Prior P(VE < -300%) (vaccine at least quadruples the risk) = 14.5%
+Prior predictive of vaccine-arm cases among 170: mean 70.0
+  P(x <= 8) = 12.6%; P(x >= 85) = 38.7%
+  central 90% interval 2 to 158
+
+====================================================================================================
+2. The posterior three ways: grid, sampler and conjugate algebra
+====================================================================================================
+Data: 8 vaccine-arm cases of 170. Conjugate posterior Beta(8.700102, 163)
+Conjugate, equal follow-up: VE median 94.86%, 95% interval 90.35% to 97.63%
+Grid of 20,000 points:      VE median 94.86%, 95% interval 90.35% to 97.63%
+Metropolis, 4 chains x 20,000:  VE median 94.86%, 95% interval 90.33% to 97.64%  (acceptance 0.55, split R-hat 1.0000)
+Largest gap from the conjugate answer: 0.02 percentage points
+Adjusted for surveillance time (2.214 vs 2.222 thousand person-years): point estimate 95.0%, posterior median 94.8%, 95% credible interval 90.3% to 97.6%
+Published (Polack et al. 2020): 95.0%, 95% credible interval 90.3% to 97.6%
+Posterior P(VE <= 30%) = 2.5e-28; P(VE > 90%) = 98.08%
+
+====================================================================================================
+3. Watching the posterior as the cases accumulate
+====================================================================================================
+Planned looks and the largest vaccine-arm count that still counts as success (design, equal follow-up):
+   32 cases: success if at most  6 in the vaccine arm (P > 0.995); VE at the boundary 76.9%
+   62 cases: success if at most 15 in the vaccine arm (P > 0.995); VE at the boundary 68.1%
+   92 cases: success if at most 25 in the vaccine arm (P > 0.995); VE at the boundary 62.7%
+  120 cases: success if at most 35 in the vaccine arm (P > 0.995); VE at the boundary 58.8%
+  164 cases: success if at most 53 in the vaccine arm (P > 0.986); VE at the boundary 52.3%
+Published VE thresholds at 32, 92 and 120 cases: 76.9%, 62.7% and 58.8%
+Three random orders updated one case at a time on the grid vs all at once: largest relative gap 1.3e-14
+Chance that a random order puts 7 or 8 of the 8 vaccine-arm cases among the first 32: 3.2e-05
+  share of 5,000 random orders that pass the 32-case look: 100.0%
+  share of 5,000 random orders that pass the 62-case look: 100.0%
+  share of 5,000 random orders that pass the 92-case look: 100.0%
+  share of 5,000 random orders that pass the 120-case look: 100.0%
+If the rule were checked after every case: first crossing at case 8 (median), range 8 to 28
+  after  10 cases: median posterior VE 96.2%; 95% interval width 32.0 points (median over orders), lower end 67.9%
+  after  32 cases: median posterior VE 95.6%; 95% interval width 16.4 points (median over orders), lower end 83.1%
+  after  62 cases: median posterior VE 94.3%; 95% interval width 13.0 points (median over orders), lower end 85.5%
+  after  94 cases: median posterior VE 95.2%; 95% interval width 9.6 points (median over orders), lower end 88.9%
+  after 170 cases: median posterior VE 94.9%; 95% interval width 7.3 points (median over orders), lower end 90.4%
+Decision rule under a vaccine that is exactly 30% effective (200,000 simulated trials):
+  protocol, five looks: 2.17% called a success
+  final look only (164 cases, 0.986): 1.21%
+  checked after every case (0.995, then 0.986 at 164): 5.98%
+  protocol, five looks, true VE 60%: 88.4% called a success
+  protocol, five looks, true VE 95%: 100.0% called a success
+
+====================================================================================================
+4. How much the prior matters, and when
+====================================================================================================
+One random order of arrival (seed 20261123); vaccine-arm cases after 10/32/62/94/170: [0, 2, 3, 4, 8]
+  protocol: Beta(0.7001, 1), worth 1.7 cases, prior VE at mean theta 30.0%
+            after  10: VE median 96.2%, 95% interval 67.9% to 100.0%
+            after  32: VE median 92.3%, 95% interval 76.4% to 98.4%
+            after  94: VE median 95.2%, 95% interval 88.9% to 98.4%
+            after 170: VE median 94.9%, 95% interval 90.4% to 97.6%
+            prior weight at 170 cases 1.0%; posterior mean theta 0.05067 = 0.0099 x 0.4118 + 0.9901 x 0.0471 = 0.05067
+      flat: Beta(1, 1), worth 2.0 cases, prior VE at mean theta 0.0%
+            after  10: VE median 93.5%, 95% interval 60.2% to 99.8%
+            after  32: VE median 91.3%, 95% interval 74.6% to 98.0%
+            after  94: VE median 94.8%, 95% interval 88.4% to 98.2%
+            after 170: VE median 94.7%, 95% interval 90.1% to 97.5%
+            prior weight at 170 cases 1.2%; posterior mean theta 0.05233 = 0.0116 x 0.5000 + 0.9884 x 0.0471 = 0.05233
+   sceptic: Beta(50, 50), worth 100.0 cases, prior VE at mean theta 0.0%
+            after  10: VE median 16.8%, 95% interval -21.1% to 43.0%
+            after  32: VE median 35.1%, 95% interval 8.3% to 54.5%
+            after  94: VE median 61.6%, 95% interval 47.7% to 72.2%
+            after 170: VE median 72.8%, 95% interval 63.8% to 79.8%
+            prior weight at 170 cases 37.0%; posterior mean theta 0.21481 = 0.3704 x 0.5000 + 0.6296 x 0.0471 = 0.21481
+enthusiast: Beta(1.818, 18.18), worth 20.0 cases, prior VE at mean theta 90.0%
+            after  10: VE median 94.6%, 95% interval 79.8% to 99.3%
+            after  32: VE median 92.7%, 95% interval 81.3% to 98.0%
+            after  94: VE median 94.9%, 95% interval 89.1% to 98.1%
+            after 170: VE median 94.7%, 95% interval 90.4% to 97.4%
+            prior weight at 170 cases 10.5%; posterior mean theta 0.05167 = 0.1053 x 0.0909 + 0.8947 x 0.0471 = 0.05167
+Spread of the four posterior medians after 32 cases: 57.6 points
+Spread of the four posterior medians after 170 cases: 22.1 points
+
+====================================================================================================
+5. The O-rings: prior predictive, posterior and extrapolation to 31 F
+====================================================================================================
+23 flights with a known count; launch temperatures 53 to 81 F
+9 distressed O-rings in all, on 7 flights
+Flights below 65 F: 4, all with distress: True
+Coldest flight in the data 53 F; Challenger at 31 F, 22 degrees colder
+Prior              vague: share of draws with chance at 70 F below 1% or above 99%: 64.6%
+Prior              vague: share of draws with chance at 31 F below 1% or above 99%: 90.8%
+Prior weakly informative: share of draws with chance at 70 F below 1% or above 99%: 14.4%
+Prior weakly informative: share of draws with chance at 31 F below 1% or above 99%: 38.5%
+Weakly informative prior, chance per ring at 70 F: median 4.7%, 90% interval 0.4% to 36.9%
+Maximum likelihood: log-odds at 70 F -3.007, slope -1.156 per 10 F (-0.1156 per F); chance per ring at 31 F 81.8%
+Posterior, weakly informative prior (grid 500 x 500, edge mass 1.4e-14):
+  slope per 10 F: median -0.96, 90% interval -1.66 to -0.26; P(slope < 0) = 98.8%
+  odds of distress per ring multiply by 2.61 (median) for every 10 F colder
+  chance per ring at 81 F: median 1.8%, 90% interval 0.5% to 5.3%
+  chance per ring at 70 F: median 4.9%, 90% interval 2.4% to 8.5%
+  chance per ring at 53 F: median 20.8%, 90% interval 7.8% to 41.4%
+  chance per ring at 31 F: median 68.7%, 90% interval 14.2% to 96.0%
+  at 31 F: expected distressed rings of 6 3.8; posterior predictive P(at least one of 6) 93.9%
+Posterior, vague prior (grid 500 x 500, edge mass 2.5e-11):
+  slope per 10 F: median -1.18, 90% interval -1.99 to -0.40; P(slope < 0) = 99.4%
+  odds of distress per ring multiply by 3.24 (median) for every 10 F colder
+  chance per ring at 81 F: median 1.3%, 90% interval 0.3% to 4.5%
+  chance per ring at 70 F: median 4.4%, 90% interval 1.9% to 8.2%
+  chance per ring at 53 F: median 25.4%, 90% interval 9.6% to 48.7%
+  chance per ring at 31 F: median 82.0%, 90% interval 22.0% to 98.5%
+  at 31 F: expected distressed rings of 6 4.4; posterior predictive P(at least one of 6) 96.6%
+Metropolis cross-check (weakly informative, 4 x 24,000): chance per ring at 31 F median 69.2%, 90% interval 14.5% to 96.2%; acceptance 0.50; split R-hat slope 1.0002, intercept 1.0002
+How the answer at 31 F depends on the prior's slope scale (intercept prior as weakly informative):
+  slope sd  0.5: at 31 F median 39.9% (90%: 6.9% to 83.7%); at 70 F median 5.5% (90%: 3.0% to 9.2%)
+  slope sd  1.0: at 31 F median 68.6% (90%: 14.3% to 96.1%); at 70 F median 4.9% (90%: 2.4% to 8.5%)
+  slope sd  2.0: at 31 F median 78.9% (90%: 19.5% to 98.0%); at 70 F median 4.5% (90%: 2.2% to 8.2%)
+  slope sd  5.0: at 31 F median 81.7% (90%: 21.8% to 98.4%); at 70 F median 4.4% (90%: 2.1% to 8.0%)
+  slope sd 10.0: at 31 F median 81.8% (90%: 21.7% to 98.5%); at 70 F median 4.4% (90%: 2.1% to 8.0%)
+Only the 7 flights with distress (weakly informative prior): slope median -0.08, 90% interval -0.84 to 0.69; P(slope < 0) = 56.8%; chance per ring at 31 F median 23.3%
+
+====================================================================================================
+6. Checking the O-ring model on fake data with a known answer
+====================================================================================================
+intercept: 400 fake datasets; 50% intervals cover 48.0%, 90% intervals cover 89.0%; uniformity of posterior quantiles, KS p = 0.29
+    slope: 400 fake datasets; 50% intervals cover 50.5%, 90% intervals cover 88.8%; uniformity of posterior quantiles, KS p = 0.92
+
+====================================================================================================
+7. Checking the sampler without algebra: simulation-based calibration
+====================================================================================================
+2,000 simulated trials: theta from the protocol prior, 170 cases, 99 posterior draws kept per trial
+             correct: acceptance 0.57; 90% intervals cover 88.9%; ranks in the outer two bins 9.7% (10.0% expected); chi-square p = 5.7e-01
+   stopped too early: acceptance 0.80; 90% intervals cover 71.5%; ranks in the outer two bins 26.8% (10.0% expected); chi-square p = 1.3e-129
+  data counted twice: acceptance 0.57; 90% intervals cover 74.9%; ranks in the outer two bins 22.9% (10.0% expected); chi-square p = 3.9e-78
