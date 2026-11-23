@@ -39,3 +39,22 @@ jobs:
 
       - name: Test the runner and the analysis against simulated models
         run: python -m unittest discover -s tests -v
+
+      - name: Fetch the responses at the pinned commit of the runs branch
+        run: |
+          commit=$(python -c "import json; print(json.load(open('config.json'))['runs_commit'])")
+          git fetch --quiet --depth 1 origin "$commit"
+          mkdir -p "$RUNNER_TEMP/runs"
+          git archive FETCH_HEAD org-chart-blind-tester/runs | tar -x -C "$RUNNER_TEMP/runs"
+
+      - name: Rerun the analysis
+        run: python analyse.py --runs-dir "$RUNNER_TEMP/runs/org-chart-blind-tester/runs" > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_designs fig2_error_correlation fig3_anchoring fig4_tradeoff; do
+            test -s "figures/$f.png"
+          done

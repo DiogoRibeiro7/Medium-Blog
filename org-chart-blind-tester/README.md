@@ -53,6 +53,19 @@ The plan was the free GitHub Models API, with GPT-4o, the model in the MAST trac
 
 `.github/workflows/org-chart-blind-tester-run.yml` starts when `run_request.json` changes on this branch, or by hand from the Actions tab once it is on main. A plan job makes one job per model and shard (positions modulo the number of shards, from 4 to 9 per model, sized so that each job takes about an hour). Each job installs Ollama, pulls the model and resumes from any responses already on the runs branch. It then asks its questions and uploads its file. A last job pushes every file to the **runs branch**, `org-chart-blind-tester/runs/<key>.shard<i>of<k>.jsonl`, one JSON line per call (prompt version, model, role, question id, response text, parsed answer, finish reason, token counts and time). The outputs never land on main. A job that hits the time limit stops cleanly, and the next run carries on from where it stopped.
 
+The responses used in the article are pinned in `config.json` (`runs_commit`, commit `510cd3e` of the runs branch): 6,406 calls, 400 questions for each of the six models, about 56 hours of model time on free runners. `results/output.txt` and `results/summary.json` hold every number and `figures/` the four figures. CI fetches the pinned responses, reruns `analyse.py` and fails if a number changes.
+
+## What the analysis covers
+
+1. Coverage: questions completed, unparsed answers, answers read from "the answer is X", replies cut at the token limit.
+2. Error rates of the coder and the blind tester.
+3. Error correlation (tetrachoric) between every coder and every blind tester: same model, same family, other family.
+4. Anchoring: how often the anchored and warned testers adopt the coder's answer where the blind tester disagreed; the check set.
+5. Misses and false alarms of each design, with paired bootstrap intervals; the cost ratio at which a tester from another family beats the same-model blind tester.
+6. The first article's Model 1 fed the measured rates.
+7. What reordering buys, by question difficulty (how many other models' coders got the question wrong).
+8. Sensitivity: the correlations without the questions on which nearly every coder chose the same wrong option, a sign of a wrongly keyed question.
+
 `run_request.json` names the runs branch, the number of questions (0 for all) and the shards. The smoke run used `org-chart-blind-tester-smoke` with 6 questions. The experiment uses `org-chart-blind-tester-runs`. Once complete, the runs branch is registered as an external, pinned reference in [DiogoRibeiro7/data](https://github.com/DiogoRibeiro7/data).
 
 Locally, with Ollama running:
