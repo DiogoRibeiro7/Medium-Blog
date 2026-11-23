@@ -1,0 +1,49 @@
+{
+  "experiment": "org-chart-blind-tester",
+  "prompt_version": "v1",
+  "mmlu": {
+    "repo_id": "synthetic",
+    "filename": "-",
+    "revision": "-"
+  },
+  "seed": 20261123,
+  "n_questions": 1200,
+  "check_share": 0.2,
+  "temperature": 0,
+  "max_tokens": 300,
+  "num_ctx": 4096,
+  "shards": 2,
+  "models": [
+    {
+      "key": "llama3.1-8b",
+      "family": "Llama",
+      "developer": "Meta",
+      "model": "llama3.1:8b",
+      "label": "Llama 3.1 8B"
+    },
+    {
+      "key": "qwen3-8b",
+      "family": "Qwen",
+      "developer": "Alibaba (Qwen team)",
+      "model": "qwen3:8b",
+      "think": false,
+      "label": "Qwen3 8B"
+    },
+    {
+      "key": "qwen3.5-9b",
+      "family": "Qwen",
+      "developer": "Alibaba (Qwen team)",
+      "model": "qwen3.5:9b",
+      "think": false,
+      "label": "Qwen3.5 9B"
+    },
+    {
+      "key": "ministral-3-8b",
+      "family": "Ministral",
+      "developer": "Mistral AI",
+      "model": "ministral-3:8b",
+      "shards": 3,
+      "label": "Ministral 3 8B"
+    }
+  ]
+}

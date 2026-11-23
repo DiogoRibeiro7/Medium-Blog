@@ -1,0 +1,60 @@
+name: Reproduce org-chart-blind-tester
+
+on:
+  pull_request:
+    paths:
+      - 'org-chart-blind-tester/**'
+      - '.github/workflows/org-chart-blind-tester.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'org-chart-blind-tester/**'
+      - '.github/workflows/org-chart-blind-tester.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: org-chart-blind-tester
+    env:
+      MPLBACKEND: Agg
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: org-chart-blind-tester/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Test the runner and the analysis against simulated models
+        run: python -m unittest discover -s tests -v
+
+      - name: Fetch the responses at the pinned commit of the runs branch
+        run: |
+          commit=$(python -c "import json; print(json.load(open('config.json'))['runs_commit'])")
+          git fetch --quiet --depth 1 origin "$commit"
+          mkdir -p "$RUNNER_TEMP/runs"
+          git -C "$GITHUB_WORKSPACE" archive FETCH_HEAD org-chart-blind-tester/runs | tar -x -C "$RUNNER_TEMP/runs"
+
+      - name: Rerun the analysis
+        run: python analyse.py --runs-dir "$RUNNER_TEMP/runs/org-chart-blind-tester/runs" > results/output.txt
+
+      - name: Check the numbers match the committed run
+        run: git diff --exit-code -- results/output.txt
+
+      - name: Check every figure was drawn
+        run: |
+          for f in fig1_designs fig2_error_correlation fig3_anchoring fig4_tradeoff; do
+            test -s "figures/$f.png"
+          done

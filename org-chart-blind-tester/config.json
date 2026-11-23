@@ -1,0 +1,27 @@
+{
+  "experiment": "org-chart-blind-tester",
+  "prompt_version": "v1",
+  "mmlu": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+    "sha256": "74a41822ce7d3def56e1682f958469c04642a5336a5ce912fa375fdb90fb25d7"
+  },
+  "seed": 20261123,
+  "n_questions": 400,
+  "check_share": 0.2,
+  "temperature": 0,
+  "max_tokens": 300,
+  "num_ctx": 4096,
+  "shards": 4,
+  "runs_branch": "org-chart-blind-tester-runs",
+  "runs_commit": "510cd3e977b5dd46e2cfeccd0f6f557a1d2a444b",
+  "models": [
+    {"key": "llama3.1-8b", "label": "Llama 3.1 8B", "family": "Llama", "developer": "Meta", "model": "llama3.1:8b", "shards": 4},
+    {"key": "qwen3-8b", "label": "Qwen3 8B", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3:8b", "think": false, "shards": 5},
+    {"key": "qwen3.5-9b", "label": "Qwen3.5 9B", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3.5:9b", "think": false, "shards": 9},
+    {"key": "ministral-3-8b", "label": "Ministral 3 8B", "family": "Ministral", "developer": "Mistral AI", "model": "ministral-3:8b", "shards": 7},
+    {"key": "gemma4-12b", "label": "Gemma 4 12B", "family": "Gemma", "developer": "Google", "model": "gemma4:12b", "think": false, "shards": 9},
+    {"key": "eurollm-9b", "label": "EuroLLM 9B", "family": "EuroLLM", "developer": "EuroLLM consortium", "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M", "shards": 6}
+  ]
+}
