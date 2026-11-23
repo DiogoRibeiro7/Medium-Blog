@@ -98,9 +98,7 @@ class OnsetAuditTests(unittest.TestCase):
             a, b, c = _fixture(Path(tmp))
             flags = load_flags(a)
             support = load_support(b)
-            periods = load_provisions(
-                c, {(row.country, row.year) for row in flags}
-            )
+            periods = load_provisions(c, {(row.country, row.year) for row in flags})
             onsets, report = audit_onsets(flags, support, periods)
             self.assertEqual(report["n_author_flag_years"], 4)
             self.assertEqual(report["n_author_flag_runs"], 3)
@@ -111,12 +109,16 @@ class OnsetAuditTests(unittest.TestCase):
             self.assertEqual(report["n_repeat_next_year_same_run"], 1)
             self.assertEqual(report["n_repeat_new_run_within_five_years"], 0)
             self.assertEqual(report["n_provision_periods_starting_before_enactment"], 1)
-            self.assertEqual(report["n_author_flags_with_identified_composite_effective_day"], 0)
+            self.assertEqual(
+                report["n_author_flags_with_identified_composite_effective_day"], 0
+            )
             aa = next(row for row in onsets if row.country == "AAA")
             self.assertEqual(aa.next_flag_within_five_years, 2001)
             self.assertEqual(aa.next_flag_relation, "same_contiguous_flag_run")
             cc = next(row for row in onsets if row.country == "CCC")
-            self.assertEqual(cc.previously_reported_support_status, "missing_wid_outcome")
+            self.assertEqual(
+                cc.previously_reported_support_status, "missing_wid_outcome"
+            )
 
     def test_reject_duplicate_and_gap_inside_contiguous_run(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -136,9 +138,7 @@ class OnsetAuditTests(unittest.TestCase):
             flags = load_flags(a)
             status = load_support(b)
             del status["AAA", 2001]
-            periods = load_provisions(
-                c, {(row.country, row.year) for row in flags}
-            )
+            periods = load_provisions(c, {(row.country, row.year) for row in flags})
             with self.assertRaisesRegex(ValueError, "does not cover each"):
                 audit_onsets(flags, status, periods)
             with b.open("a", encoding="utf-8") as handle:
@@ -177,22 +177,36 @@ class OnsetAuditTests(unittest.TestCase):
             onsets, report = audit_onsets(flags, support, periods)
             upstream = root / "timing.json"
             donor = root / "donor.json"
-            upstream.write_text(json.dumps({
-                "author_source_sha256": "a" * 64,
-                "joined_panel_sha256": "b" * 64,
-                "n_author_flag_years": 4,
-                "n_descriptive_consecutive_runs": 3,
-                "n_flag_years_with_joined_wid_outcome": 3,
-            }))
-            donor.write_text(json.dumps({
-                "joined_panel_sha256": "b" * 64,
-                "n_eligible_reforms_before_future_censoring": 2,
-            }))
+            upstream.write_text(
+                json.dumps(
+                    {
+                        "author_source_sha256": "a" * 64,
+                        "joined_panel_sha256": "b" * 64,
+                        "n_author_flag_years": 4,
+                        "n_descriptive_consecutive_runs": 3,
+                        "n_flag_years_with_joined_wid_outcome": 3,
+                    }
+                )
+            )
+            donor.write_text(
+                json.dumps(
+                    {
+                        "joined_panel_sha256": "b" * 64,
+                        "n_eligible_reforms_before_future_censoring": 2,
+                    }
+                )
+            )
             destination = root / "result"
             save_audit(
-                destination, onsets, periods, report,
-                flags_path=a, support_path=b, provision_path=c,
-                timing_audit_path=upstream, donor_audit_path=donor,
+                destination,
+                onsets,
+                periods,
+                report,
+                flags_path=a,
+                support_path=b,
+                provision_path=c,
+                timing_audit_path=upstream,
+                donor_audit_path=donor,
             )
             audit = json.loads((destination / "tax_cut_onset_audit.json").read_text())
             self.assertEqual(audit["n_baseline_donor_eligible_onsets"], 2)
@@ -200,15 +214,25 @@ class OnsetAuditTests(unittest.TestCase):
                 encoding="utf-8", newline=""
             ) as handle:
                 self.assertEqual(len(list(csv.DictReader(handle))), 3)
-            donor.write_text(json.dumps({
-                "joined_panel_sha256": "c" * 64,
-                "n_eligible_reforms_before_future_censoring": 2,
-            }))
+            donor.write_text(
+                json.dumps(
+                    {
+                        "joined_panel_sha256": "c" * 64,
+                        "n_eligible_reforms_before_future_censoring": 2,
+                    }
+                )
+            )
             with self.assertRaisesRegex(ValueError, "different source panels"):
                 save_audit(
-                    destination, onsets, periods, report,
-                    flags_path=a, support_path=b, provision_path=c,
-                    timing_audit_path=upstream, donor_audit_path=donor,
+                    destination,
+                    onsets,
+                    periods,
+                    report,
+                    flags_path=a,
+                    support_path=b,
+                    provision_path=c,
+                    timing_audit_path=upstream,
+                    donor_audit_path=donor,
                 )
 
 
