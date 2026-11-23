@@ -49,6 +49,14 @@ DIVIDENDS (the United States, where Shiller's actual dividends can be compared)
   OECD US index + 4% against Shiller with dividends, 20 y, 46 common starts: median gap 0.37% a year (OECD minus Shiller); real loss 0.0% against 0.0%
   OECD US index + 4% against Shiller with dividends, 30 y, 36 common starts: median gap 0.69% a year (OECD minus Shiller); real loss 0.0% against 0.0%
 
+TEXTBOOK CASE: independent yearly log returns with the panel's mean 5.45% and sd 23.96%
+  (1300 market-years, real, share prices plus 3%)
+   1 y: real loss 41.0%, median loss when losing 13.3%, average shortfall 5.46% (approximate)
+  10 y: real loss 23.6%, median loss when losing 29.7%, average shortfall 7.02% (approximate)
+  20 y: real loss 15.5%, median loss when losing 35.3%, average shortfall 5.46% (approximate)
+  30 y: real loss 10.7%, median loss when losing 38.4%, average shortfall 4.09% (approximate)
+   5 y: real loss 30.6%, median loss when losing 24.2%, average shortfall 7.38% (approximate)
+
 UNITED STATES, SHILLER, 1871-2022: real stock wealth
    1 y  windows   151  markets  1  loss  31.1% (equal-weight  31.1%)  median loss when losing  10.2%  mean  12.3%  average shortfall  3.84%  p5 0.775  median 1.100  worst 0.607 (United States, from 2007)  episodes  34  independent  151
    2 y  windows   150  markets  1  loss  23.3% (equal-weight  23.3%)  median loss when losing  15.1%  mean  18.0%  average shortfall  4.21%  p5 0.730  median 1.153  worst 0.503 (United States, from 1972)  episodes  20  independent   75

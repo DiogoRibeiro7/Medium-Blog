@@ -19,6 +19,7 @@ import os
 import warnings
 from collections import defaultdict
 from pathlib import Path
+from statistics import NormalDist
 
 import numpy as np
 import pandas as pd
@@ -221,6 +222,21 @@ def main() -> None:
                 f" median gap {pct(C.quantile(diff, 0.5), 2)} a year (OECD minus Shiller);"
                 f" real loss {pct(la)} against {pct(lb)}"
             )
+
+    # ------------------------------------------------------------------ the textbook case
+    logs = [x for m in base.values() for x in C.log_returns(m.stocks)]
+    mu = sum(logs) / len(logs)
+    sd = (sum((x - mu) ** 2 for x in logs) / (len(logs) - 1)) ** 0.5
+    print(f"\nTEXTBOOK CASE: independent yearly log returns with the panel's mean {pct(mu, 2)} and sd {pct(sd, 2)}")
+    print(f"  ({len(logs)} market-years, real, share prices plus {pct(BASE, 0)})")
+    for h in KEY + (5,):
+        z = NormalDist(mu * h, sd * math.sqrt(h))
+        p_loss = z.cdf(0.0)
+        median_log = z.inv_cdf(p_loss / 2)
+        print(
+            f"  {h:>2} y: real loss {pct(p_loss)}, median loss when losing {pct(1 - math.exp(median_log))},"
+            f" average shortfall {pct(p_loss * (1 - math.exp(median_log)), 2)} (approximate)"
+        )
 
     # ------------------------------------------------------------------ United States, 1871-2022
     print("\nUNITED STATES, SHILLER, 1871-2022: real stock wealth")
