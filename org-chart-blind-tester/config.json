@@ -14,6 +14,8 @@
   "max_tokens": 300,
   "num_ctx": 4096,
   "shards": 4,
+  "runs_branch": "org-chart-blind-tester-runs",
+  "runs_commit": "510cd3e977b5dd46e2cfeccd0f6f557a1d2a444b",
   "models": [
     {"key": "llama3.1-8b", "label": "Llama 3.1 8B", "family": "Llama", "developer": "Meta", "model": "llama3.1:8b", "shards": 4},
     {"key": "qwen3-8b", "label": "Qwen3 8B", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3:8b", "think": false, "shards": 5},

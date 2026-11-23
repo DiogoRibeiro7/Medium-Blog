@@ -685,7 +685,7 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
     plt.close(fig)
 
     # Figure 3: anchoring
-    fig, ax = plt.subplots(figsize=(8.0, 0.6 * len(keys) + 1.6))
+    fig, ax = plt.subplots(figsize=(8.0, 0.6 * len(keys) + 2.2))
     y = np.arange(len(keys))[::-1]
     for off, role, col, lab in ((0.15, "anchored", ORANGE, "Read the coder's answer"),
                                 (-0.15, "warned", PURPLE, "Read it, told it may be wrong")):
@@ -698,8 +698,9 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
     ax.set_yticks(y)
     ax.set_yticklabels(labels)
     ax.set_xlim(0, 100)
-    ax.set_xlabel("Of the questions where the blind tester disagreed, share where the tester adopted the coder's answer (%)")
-    ax.legend(loc="lower right", fontsize=9)
+    ax.set_xlabel("Questions on which the blind tester disagreed with the coder:\n"
+                  "share on which the tester adopted the coder's answer after reading it (%)")
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2, fontsize=9)
     ax.set_title("Reading the answer first", loc="left")
     fig.tight_layout()
     fig.savefig(fig_dir / "fig3_anchoring.png")
