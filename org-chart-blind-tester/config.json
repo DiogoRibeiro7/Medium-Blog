@@ -15,11 +15,11 @@
   "num_ctx": 4096,
   "shards": 4,
   "models": [
-    {"key": "llama3.1-8b", "family": "Llama", "developer": "Meta", "model": "llama3.1:8b", "shards": 4},
-    {"key": "qwen3-8b", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3:8b", "think": false, "shards": 5},
-    {"key": "qwen3.5-9b", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3.5:9b", "think": false, "shards": 9},
-    {"key": "ministral-3-8b", "family": "Ministral", "developer": "Mistral AI", "model": "ministral-3:8b", "shards": 7},
-    {"key": "gemma4-12b", "family": "Gemma", "developer": "Google", "model": "gemma4:12b", "think": false, "shards": 9},
-    {"key": "eurollm-9b", "family": "EuroLLM", "developer": "EuroLLM consortium", "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M", "shards": 6}
+    {"key": "llama3.1-8b", "label": "Llama 3.1 8B", "family": "Llama", "developer": "Meta", "model": "llama3.1:8b", "shards": 4},
+    {"key": "qwen3-8b", "label": "Qwen3 8B", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3:8b", "think": false, "shards": 5},
+    {"key": "qwen3.5-9b", "label": "Qwen3.5 9B", "family": "Qwen", "developer": "Alibaba (Qwen team)", "model": "qwen3.5:9b", "think": false, "shards": 9},
+    {"key": "ministral-3-8b", "label": "Ministral 3 8B", "family": "Ministral", "developer": "Mistral AI", "model": "ministral-3:8b", "shards": 7},
+    {"key": "gemma4-12b", "label": "Gemma 4 12B", "family": "Gemma", "developer": "Google", "model": "gemma4:12b", "think": false, "shards": 9},
+    {"key": "eurollm-9b", "label": "EuroLLM 9B", "family": "EuroLLM", "developer": "EuroLLM consortium", "model": "hf.co/bartowski/EuroLLM-9B-Instruct-GGUF:Q4_K_M", "shards": 6}
   ]
 }

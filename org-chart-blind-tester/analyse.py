@@ -430,14 +430,17 @@ def main(argv=None) -> int:
             label = f"blind {kt}" + (" (same family)" if s["relation"] == "same family" else "")
             d_miss, d_fa = sm.mean() - om.mean(), of.mean() - sf.mean()
             ratio = d_fa / d_miss if d_miss > 0 and d_fa > 0 else float("nan")
+            verdict = (f"break-even cost ratio {ratio:.2f}" if np.isfinite(ratio) else
+                       "fewer misses and no more false alarms" if d_miss > 0 else "no fewer misses")
             print(f"    {label:<24} {pct(mi[0])} {ci(mi[1]):<15} {pct(fa[0])} {ci(fa[1]):<15} "
                   f"vs same-model blind: {pct(d_miss)} fewer misses [{pct(lo)}, {pct(hi)}], "
-                  f"{pct(d_fa)} more false alarms; break-even cost ratio {ratio:.2f}; tester wrong on {pct(s['q_tester'])}")
+                  f"{pct(d_fa)} more false alarms; {verdict}; tester wrong on {pct(s['q_tester'])}")
             dk[f"blind {kt}"] = {"relation": s["relation"], "pass": mi[0], "ci": list(mi[1]),
                                  "false_alarm": fa[0], "false_alarm_ci": list(fa[1]), "n": len(common),
                                  "same_model_on_common": float(sm.mean()), "minus_same": float(sm.mean() - om.mean()),
                                  "minus_same_ci": [float(lo), float(hi)], "q_tester": s["q_tester"],
                                  "more_false_alarms": float(d_fa), "break_even_ratio": float(ratio),
+                                 "q_coder": float(cw.sum() / cv.sum()) if cv.sum() else float("nan"),
                                  "pass_share_of_errors": float(om.sum() / cw.sum()) if cw.sum() else float("nan")}
         designs[k] = dk
         summary["models"][k]["designs"] = dk
@@ -459,6 +462,20 @@ def main(argv=None) -> int:
               "other-family tester costs less whenever a missed error costs more than this many false alarms.")
         summary["break_even_ratio"] = {"median": float(np.median(ratios)), "min": float(min(ratios)),
                                        "max": float(max(ratios)), "pairs": len(ratios)}
+    others_all = [(k, nm[6:], d) for k in keys for nm, d in designs[k].items()
+                  if nm.startswith("blind ") and isinstance(d, dict) and d.get("relation") == "other family"]
+    dom = [x for x in others_all if x[2]["minus_same"] > 0 and x[2]["more_false_alarms"] <= 0]
+    print(f"Other-family testers with fewer misses and no more false alarms than the same-model blind tester: "
+          f"{len(dom)} of {len(others_all)} pairs")
+    summary["dominating_pairs"] = {"count": len(dom), "of": len(others_all)}
+    print("As a tester from another family, averaged over the coders it checked (misses / false alarms):")
+    for kt in keys:
+        rows_t = [d for k, t, d in others_all if t == kt]
+        if rows_t:
+            mi, fa = np.mean([d["pass"] for d in rows_t]), np.mean([d["false_alarm"] for d in rows_t])
+            print(f"  {kt:<15} wrong on {pct(rows_t[0]['q_tester'])}: {pct(mi)} / {pct(fa)} over {len(rows_t)} coders")
+            summary.setdefault("as_tester", {})[kt] = {"q": rows_t[0]["q_tester"], "pass": float(mi),
+                                                       "false_alarm": float(fa), "coders": len(rows_t)}
     for name, v in pooled.items():
         if v:
             mi = np.mean([d["pass"] for d in v])
@@ -528,6 +545,39 @@ def main(argv=None) -> int:
         if v:
             print(f"  mean gain over models, {g}: {pct(np.mean(v))}")
 
+    # 8. Sensitivity: questions whose key may be wrong ----------------------------------------------
+    header("8. Sensitivity: without questions on which almost every coder chose the same wrong option")
+    print("MMLU has some wrongly keyed questions. A wrong key makes every model 'wrong' together and inflates\n"
+          "error correlation. Questions on which at least all but one of the coders chose the same non-key\n"
+          "option are set aside here and the correlations recomputed.")
+    qids_all = [q.qid for q in order]
+    suspect = set()
+    for q in qids_all:
+        picks = [((models[k]["tab"].get(q) or {}).get("coder") or {}).get("answer") for k in keys]
+        picks = [x for x in picks if x is not None and x != key[q]]
+        if picks:
+            top = max(set(picks), key=picks.count)
+            if picks.count(top) >= len(keys) - 1:
+                suspect.add(q)
+    print(f"  {len(suspect)} of {len(qids_all)} questions set aside")
+    rel_rho = {}
+    for kc in keys:
+        for kt in keys:
+            common = [q for q in models[kc]["tab"] if q in models[kt]["tab"] and q not in suspect]
+            ac, at = arrays(models[kc], key, common), arrays(models[kt], key, common)
+            ok = valid(ac["coder"]) & valid(at["blind"])
+            ec, et = wrong(ac["coder"][ok], ac["key"][ok]), wrong(at["blind"][ok], at["key"][ok])
+            r = float(tetrachoric(ec.mean(), et.mean(), (ec & et).mean()))
+            rel = pair_stats[(kc, kt)]["relation"] if (kc, kt) in pair_stats else None
+            if rel and np.isfinite(r):
+                rel_rho.setdefault(rel, []).append(r)
+    for rel, v in rel_rho.items():
+        print(f"  {rel:<12} mean rho {np.mean(v):+.2f} (range {min(v):+.2f} to {max(v):+.2f}; with all questions "
+              f"{summary.get('relations', {}).get(rel, {}).get('mean_rho', float('nan')):+.2f})")
+        summary.setdefault("sensitivity", {})[rel] = {"mean_rho": float(np.mean(v)), "min": float(min(v)),
+                                                      "max": float(max(v))}
+    summary.setdefault("sensitivity", {})["set_aside"] = len(suspect)
+
     args.summary.write_text(json.dumps(summary, indent=2, default=float) + "\n")
     draw(keys, models, R, pair_stats, anch, designs, args.fig_dir)
     return 0
@@ -538,7 +588,7 @@ def main(argv=None) -> int:
 # ---------------------------------------------------------------------------------------------------
 
 def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
-    labels = keys
+    labels = [models[k]["spec"].get("label", k) for k in keys]
 
     # Figure 1: misses and false alarms of each design, per coder model
     fig, axes = plt.subplots(1, 2, figsize=(10.4, 0.8 * len(keys) + 2.0), sharey=True)
@@ -571,7 +621,7 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
         ax.set_xlabel("Share of all questions (%)")
         ax.set_title(title, loc="left", fontsize=10.5)
     axes[0].set_yticks(y)
-    axes[0].set_yticklabels(keys)
+    axes[0].set_yticklabels(labels)
     fig.legend(loc="lower center", ncol=3, fontsize=9, bbox_to_anchor=(0.5, 0.0))
     fig.suptitle("One tester after the coder, by how the tester was set up", x=0.01, ha="left",
                  fontweight="bold", fontsize=11.5)
@@ -594,9 +644,13 @@ def draw(keys, models, R, pair_stats, anch, designs, fig_dir: Path) -> None:
                 col, mk, lab = BLUE, "s", "Blind, same model"
             elif d.get("relation") == "same family":
                 col, mk, lab = BLUE_RAMP[0], "^", "Blind, same family, other model"
+            elif d.get("q_tester", 1) <= d.get("q_coder", 0) + 0.02:
+                col, mk, lab = AQUA, "^", "Blind, another family, tester as accurate or more"
             else:
-                col, mk, lab = AQUA, "^", "Blind, another family"
-            ax.plot(100 * d["false_alarm"], 100 * d["pass"], mk, color=col, ms=6, alpha=0.85,
+                col, mk, lab = AQUA, "v", "Blind, another family, tester less accurate"
+            filled = not lab.endswith("less accurate")
+            ax.plot(100 * d["false_alarm"], 100 * d["pass"], mk, color=col, ms=6, alpha=0.9,
+                    markerfacecolor=col if filled else "none", markeredgewidth=1.4,
                     label=lab if lab not in seen else None)
             seen.add(lab)
     ax.set_xlabel("False alarms: coder right, test fails (% of questions)")
