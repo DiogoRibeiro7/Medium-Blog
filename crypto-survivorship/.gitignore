@@ -1,0 +1,6 @@
+# Saved CoinMarketCap pages and the snapshots built from them are not redistributable; never commit them.
+data/
+results/
+*.html
+.ruff_cache/
+__pycache__/
