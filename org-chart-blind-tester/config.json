@@ -1,0 +1,26 @@
+{
+  "experiment": "org-chart-blind-tester",
+  "prompt_version": "v1",
+  "mmlu": {
+    "repo_id": "cais/mmlu",
+    "filename": "all/test-00000-of-00001.parquet",
+    "revision": "main"
+  },
+  "seed": 20261123,
+  "n_questions": 300,
+  "check_share": 0.2,
+  "temperature": 0,
+  "max_tokens": 400,
+  "endpoint": "https://models.github.ai",
+  "tiers": {
+    "low": {"rpm": 15, "per_day": 150, "n_questions": 300},
+    "high": {"rpm": 10, "per_day": 50, "n_questions": 100}
+  },
+  "models": [
+    {"key": "gpt-4o-mini", "family": "OpenAI", "candidates": ["openai/gpt-4o-mini"]},
+    {"key": "gpt-4o", "family": "OpenAI", "candidates": ["openai/gpt-4o"]},
+    {"key": "llama", "family": "Meta", "candidates": ["meta/Llama-3.3-70B-Instruct", "meta/Meta-Llama-3.1-8B-Instruct"]},
+    {"key": "mistral-small", "family": "Mistral AI", "candidates": ["mistral-ai/mistral-small-2503", "mistral-ai/Mistral-small"]},
+    {"key": "phi-4", "family": "Microsoft", "candidates": ["microsoft/Phi-4", "microsoft/phi-4"]}
+  ]
+}

@@ -1,0 +1,4 @@
+# Hugging Face download cache (MMLU is fetched on every run, never committed)
+data/
+# Local runs; the scheduled workflow keeps them on the org-chart-blind-tester-runs branch
+runs/
