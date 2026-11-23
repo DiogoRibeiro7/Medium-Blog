@@ -66,6 +66,6 @@ jobs:
       - name: Check every figure is drawn
         run: |
           python figures.py
-          for f in fig1_where_growth_went fig2_infrastructure_by_group fig3_saturation_vs_growth fig4_rank_uncertainty fig5_what_to_build_where; do
+          for f in fig1_where_growth_went fig2_infrastructure_by_group fig3_rank_uncertainty fig4_saturation_vs_growth fig5_what_to_build_where; do
             test -s "figures/$f.png"
           done

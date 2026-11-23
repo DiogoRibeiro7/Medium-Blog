@@ -144,7 +144,7 @@ def fig2_infrastructure() -> None:
     finish(fig, "fig2_infrastructure_by_group", "The metro rings (blue) grew without the schools and transport their residents need")
 
 
-def fig3_saturation_vs_growth() -> None:
+def fig4_saturation_vs_growth() -> None:
     m = pd.read_csv(RES / "saturation.csv", dtype={"dico": str}).set_index("dico")
     fig, ax = plt.subplots(figsize=(10.5, 6.4))
     rest = m[~m.group.isin(["Lisboa", "Lisbon metro ring", "Porto", "Porto metro ring", "Medium cities"])]
@@ -169,10 +169,10 @@ def fig3_saturation_vs_growth() -> None:
     hgrid(ax, "y")
     ax.legend(loc="upper left", frameon=False, fontsize=8.5)
     fig.tight_layout(rect=(0, 0.03, 1, 0.94))
-    finish(fig, "fig3_saturation_vs_growth", "After 2021, people kept moving to the places that were already under the most pressure")
+    finish(fig, "fig4_saturation_vs_growth", "After 2021, people kept moving to the places that were already under the most pressure")
 
 
-def fig4_rank_uncertainty() -> None:
+def fig3_rank_uncertainty() -> None:
     m = pd.read_csv(RES / "saturation.csv", dtype={"dico": str}).set_index("dico")
     top = m.nsmallest(30, "rank").iloc[::-1]
     fig, ax = plt.subplots(figsize=(10, 8.2))
@@ -198,7 +198,7 @@ def fig4_rank_uncertainty() -> None:
     ax.set_xlim(0, 125)
     hgrid(ax)
     fig.tight_layout(rect=(0, 0.03, 1, 0.95))
-    finish(fig, "fig4_rank_uncertainty", "Which places are most saturated depends on the weights, but the Setúbal peninsula stays near the top")
+    finish(fig, "fig3_rank_uncertainty", "Which places are most saturated depends on the weights, but the Setúbal peninsula stays near the top")
 
 
 def fig5_what_to_build() -> None:
@@ -240,8 +240,8 @@ def fig5_what_to_build() -> None:
 def main() -> None:
     fig1_where_growth_went()
     fig2_infrastructure()
-    fig3_saturation_vs_growth()
-    fig4_rank_uncertainty()
+    fig3_rank_uncertainty()
+    fig4_saturation_vs_growth()
     fig5_what_to_build()
     print("figures written to", FIG.relative_to(HERE))
 
