@@ -9,7 +9,7 @@ Sampled order: 400 questions, seed 20261123; check set share 0.2
   qwen3-8b        Alibaba (Qwen team), qwen3:8b; digest 500a1f067a9f782620b; Ollama 0.40.17
                   400 questions complete; 1038 responses (coder 400, blind 400, anchored 119, warned 119); no answer found 0, answer read from 'the answer is X' 0, cut at max_tokens 0; median 16.5 s per call
   qwen3.5-9b      Alibaba (Qwen team), qwen3.5:9b; digest 56671c2ab9385f9cfcb; Ollama 0.40.17
-                  356 questions complete; 908 responses (coder 356, blind 356, anchored 98, warned 98); no answer found 6, answer read from 'the answer is X' 1, cut at max_tokens 6; median 31.3 s per call
+                  400 questions complete; 1032 responses (coder 400, blind 400, anchored 116, warned 116); no answer found 8, answer read from 'the answer is X' 1, cut at max_tokens 8; median 31.4 s per call
   ministral-3-8b  Mistral AI, ministral-3:8b; digest 1922accd5827ebe6829; Ollama 0.40.17
                   400 questions complete; 1060 responses (coder 400, blind 400, anchored 130, warned 130); no answer found 42, answer read from 'the answer is X' 0, cut at max_tokens 12; median 28.8 s per call
   gemma4-12b      Google, gemma4:12b; digest 6114515d63c17436a7c; Ollama 0.40.17
@@ -22,7 +22,7 @@ Sampled order: 400 questions, seed 20261123; check set share 0.2
 ==============================================================================
   llama3.1-8b     n= 400  coder 33.7% [29.2, 38.5] (no answer 5)   blind tester 32.7% [28.2, 37.4] (no answer 8)
   qwen3-8b        n= 400  coder 22.8% [18.9, 27.1] (no answer 0)   blind tester 22.0% [18.2, 26.3] (no answer 0)
-  qwen3.5-9b      n= 356  coder 18.2% [14.5, 22.5] (no answer 4)   blind tester 17.5% [13.9, 21.8] (no answer 1)
+  qwen3.5-9b      n= 400  coder 16.7% [13.3, 20.7] (no answer 4)   blind tester 16.3% [13.0, 20.3] (no answer 2)
   ministral-3-8b  n= 400  coder 22.1% [18.3, 26.4] (no answer 6)   blind tester 23.5% [19.6, 27.9] (no answer 4)
   gemma4-12b      n= 400  coder 17.0% [13.6, 21.0] (no answer 5)   blind tester 15.6% [12.3, 19.5] (no answer 8)
   eurollm-9b      n= 400  coder 40.5% [35.7, 45.4] (no answer 7)   blind tester 40.9% [36.2, 45.9] (no answer 9)
@@ -33,44 +33,44 @@ Sampled order: 400 questions, seed 20261123; check set share 0.2
 Rows: the coder's model. Columns: the blind tester's model, on the questions both completed.
   coder llama3.1-8b     tester llama3.1-8b     [same model  ] n= 391  rho +0.93 [+0.88, +0.96]  both wrong 27.4%  same wrong option 79% of those
   coder llama3.1-8b     tester qwen3-8b        [other family] n= 395  rho +0.71 [+0.59, +0.81]  both wrong 16.2%  same wrong option 59% of those
-  coder llama3.1-8b     tester qwen3.5-9b      [other family] n= 351  rho +0.62 [+0.46, +0.75]  both wrong 12.5%  same wrong option 80% of those
-  coder llama3.1-8b     tester ministral-3-8b  [other family] n= 392  rho +0.69 [+0.57, +0.79]  both wrong 16.6%  same wrong option 63% of those
+  coder llama3.1-8b     tester qwen3.5-9b      [other family] n= 394  rho +0.64 [+0.50, +0.76]  both wrong 11.9%  same wrong option 74% of those
+  coder llama3.1-8b     tester ministral-3-8b  [other family] n= 392  rho +0.69 [+0.56, +0.79]  both wrong 16.6%  same wrong option 63% of those
   coder llama3.1-8b     tester gemma4-12b      [other family] n= 390  rho +0.71 [+0.58, +0.82]  both wrong 12.6%  same wrong option 65% of those
-  coder llama3.1-8b     tester eurollm-9b      [other family] n= 387  rho +0.55 [+0.41, +0.67]  both wrong 22.0%  same wrong option 59% of those
+  coder llama3.1-8b     tester eurollm-9b      [other family] n= 387  rho +0.55 [+0.42, +0.67]  both wrong 22.0%  same wrong option 59% of those
   coder qwen3-8b        tester llama3.1-8b     [other family] n= 392  rho +0.77 [+0.67, +0.86]  both wrong 17.3%  same wrong option 59% of those
   coder qwen3-8b        tester qwen3-8b        [same model  ] n= 400  rho +0.95 [+0.91, +0.98]  both wrong 18.5%  same wrong option 92% of those
-  coder qwen3-8b        tester qwen3.5-9b      [same family ] n= 355  rho +0.72 [+0.59, +0.82]  both wrong 11.5%  same wrong option 78% of those
-  coder qwen3-8b        tester ministral-3-8b  [other family] n= 396  rho +0.76 [+0.65, +0.85]  both wrong 14.6%  same wrong option 71% of those
-  coder qwen3-8b        tester gemma4-12b      [other family] n= 392  rho +0.69 [+0.54, +0.80]  both wrong 9.9%  same wrong option 59% of those
+  coder qwen3-8b        tester qwen3.5-9b      [same family ] n= 398  rho +0.72 [+0.59, +0.82]  both wrong 10.8%  same wrong option 77% of those
+  coder qwen3-8b        tester ministral-3-8b  [other family] n= 396  rho +0.76 [+0.66, +0.85]  both wrong 14.6%  same wrong option 71% of those
+  coder qwen3-8b        tester gemma4-12b      [other family] n= 392  rho +0.69 [+0.55, +0.81]  both wrong 9.9%  same wrong option 59% of those
   coder qwen3-8b        tester eurollm-9b      [other family] n= 391  rho +0.55 [+0.41, +0.68]  both wrong 16.1%  same wrong option 62% of those
-  coder qwen3.5-9b      tester llama3.1-8b     [other family] n= 346  rho +0.66 [+0.52, +0.78]  both wrong 13.0%  same wrong option 73% of those
-  coder qwen3.5-9b      tester qwen3-8b        [same family ] n= 352  rho +0.73 [+0.60, +0.83]  both wrong 11.9%  same wrong option 69% of those
-  coder qwen3.5-9b      tester qwen3.5-9b      [same model  ] n= 351  rho +0.95 [+0.90, +0.98]  both wrong 14.5%  same wrong option 94% of those
-  coder qwen3.5-9b      tester ministral-3-8b  [other family] n= 350  rho +0.79 [+0.68, +0.88]  both wrong 13.1%  same wrong option 74% of those
-  coder qwen3.5-9b      tester gemma4-12b      [other family] n= 346  rho +0.78 [+0.65, +0.87]  both wrong 10.1%  same wrong option 74% of those
-  coder qwen3.5-9b      tester eurollm-9b      [other family] n= 344  rho +0.56 [+0.40, +0.70]  both wrong 14.0%  same wrong option 60% of those
+  coder qwen3.5-9b      tester llama3.1-8b     [other family] n= 389  rho +0.66 [+0.52, +0.77]  both wrong 12.1%  same wrong option 70% of those
+  coder qwen3.5-9b      tester qwen3-8b        [same family ] n= 396  rho +0.74 [+0.61, +0.84]  both wrong 11.1%  same wrong option 66% of those
+  coder qwen3.5-9b      tester qwen3.5-9b      [same model  ] n= 394  rho +0.95 [+0.91, +0.98]  both wrong 13.5%  same wrong option 92% of those
+  coder qwen3.5-9b      tester ministral-3-8b  [other family] n= 393  rho +0.80 [+0.70, +0.89]  both wrong 12.2%  same wrong option 73% of those
+  coder qwen3.5-9b      tester gemma4-12b      [other family] n= 389  rho +0.76 [+0.63, +0.86]  both wrong 9.3%  same wrong option 72% of those
+  coder qwen3.5-9b      tester eurollm-9b      [other family] n= 387  rho +0.56 [+0.41, +0.71]  both wrong 12.7%  same wrong option 59% of those
   coder ministral-3-8b  tester llama3.1-8b     [other family] n= 388  rho +0.65 [+0.53, +0.77]  both wrong 15.2%  same wrong option 64% of those
-  coder ministral-3-8b  tester qwen3-8b        [other family] n= 394  rho +0.77 [+0.67, +0.86]  both wrong 13.7%  same wrong option 63% of those
-  coder ministral-3-8b  tester qwen3.5-9b      [other family] n= 350  rho +0.78 [+0.67, +0.87]  both wrong 12.6%  same wrong option 68% of those
+  coder ministral-3-8b  tester qwen3-8b        [other family] n= 394  rho +0.77 [+0.66, +0.85]  both wrong 13.7%  same wrong option 63% of those
+  coder ministral-3-8b  tester qwen3.5-9b      [other family] n= 393  rho +0.79 [+0.68, +0.88]  both wrong 11.7%  same wrong option 70% of those
   coder ministral-3-8b  tester ministral-3-8b  [same model  ] n= 393  rho +0.94 [+0.90, +0.97]  both wrong 18.6%  same wrong option 84% of those
-  coder ministral-3-8b  tester gemma4-12b      [other family] n= 387  rho +0.72 [+0.59, +0.83]  both wrong 10.3%  same wrong option 65% of those
-  coder ministral-3-8b  tester eurollm-9b      [other family] n= 385  rho +0.46 [+0.32, +0.60]  both wrong 14.5%  same wrong option 61% of those
+  coder ministral-3-8b  tester gemma4-12b      [other family] n= 387  rho +0.72 [+0.59, +0.82]  both wrong 10.3%  same wrong option 65% of those
+  coder ministral-3-8b  tester eurollm-9b      [other family] n= 385  rho +0.46 [+0.30, +0.60]  both wrong 14.5%  same wrong option 61% of those
   coder gemma4-12b      tester llama3.1-8b     [other family] n= 388  rho +0.71 [+0.59, +0.82]  both wrong 13.1%  same wrong option 51% of those
-  coder gemma4-12b      tester qwen3-8b        [other family] n= 395  rho +0.72 [+0.60, +0.82]  both wrong 10.9%  same wrong option 63% of those
-  coder gemma4-12b      tester qwen3.5-9b      [other family] n= 351  rho +0.78 [+0.66, +0.87]  both wrong 10.8%  same wrong option 76% of those
+  coder gemma4-12b      tester qwen3-8b        [other family] n= 395  rho +0.72 [+0.59, +0.82]  both wrong 10.9%  same wrong option 63% of those
+  coder gemma4-12b      tester qwen3.5-9b      [other family] n= 394  rho +0.80 [+0.69, +0.88]  both wrong 10.4%  same wrong option 78% of those
   coder gemma4-12b      tester ministral-3-8b  [other family] n= 393  rho +0.76 [+0.64, +0.85]  both wrong 12.0%  same wrong option 68% of those
   coder gemma4-12b      tester gemma4-12b      [same model  ] n= 390  rho +0.98 [+0.95, +0.99]  both wrong 14.1%  same wrong option 91% of those
   coder gemma4-12b      tester eurollm-9b      [other family] n= 386  rho +0.42 [+0.25, +0.57]  both wrong 11.1%  same wrong option 56% of those
-  coder eurollm-9b      tester llama3.1-8b     [other family] n= 387  rho +0.60 [+0.47, +0.71]  both wrong 22.0%  same wrong option 55% of those
-  coder eurollm-9b      tester qwen3-8b        [other family] n= 393  rho +0.60 [+0.46, +0.72]  both wrong 16.3%  same wrong option 56% of those
-  coder eurollm-9b      tester qwen3.5-9b      [other family] n= 350  rho +0.48 [+0.30, +0.64]  both wrong 12.3%  same wrong option 58% of those
+  coder eurollm-9b      tester llama3.1-8b     [other family] n= 387  rho +0.60 [+0.47, +0.72]  both wrong 22.0%  same wrong option 55% of those
+  coder eurollm-9b      tester qwen3-8b        [other family] n= 393  rho +0.60 [+0.45, +0.71]  both wrong 16.3%  same wrong option 56% of those
+  coder eurollm-9b      tester qwen3.5-9b      [other family] n= 391  rho +0.47 [+0.31, +0.62]  both wrong 11.3%  same wrong option 59% of those
   coder eurollm-9b      tester ministral-3-8b  [other family] n= 390  rho +0.58 [+0.44, +0.70]  both wrong 16.9%  same wrong option 58% of those
   coder eurollm-9b      tester gemma4-12b      [other family] n= 387  rho +0.48 [+0.31, +0.63]  both wrong 11.1%  same wrong option 60% of those
   coder eurollm-9b      tester eurollm-9b      [same model  ] n= 385  rho +0.85 [+0.78, +0.91]  both wrong 31.9%  same wrong option 72% of those
 Average correlation by relation (coder against blind tester):
   same model   +0.93 over 6 pairs (range +0.85 to +0.98)
-  same family  +0.72 over 2 pairs (range +0.72 to +0.73)
-  other family +0.66 over 28 pairs (range +0.42 to +0.79)
+  same family  +0.73 over 2 pairs (range +0.72 to +0.74)
+  other family +0.66 over 28 pairs (range +0.42 to +0.80)
 
 ==============================================================================
 4. Anchoring: the tester has read the coder's answer
@@ -81,9 +81,9 @@ Average correlation by relation (coder against blind tester):
   qwen3-8b        blind tester disagreed with the coder on 37 questions.
                   anchored tester adopted the coder's answer on 35 (94.6% [82.3, 98.5]); warned tester on 28 (75.7% [59.9, 86.6])
                   check set: of 82 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 1 and the warned tester's in 3
-  qwen3.5-9b      blind tester disagreed with the coder on 27 questions.
-                  anchored tester adopted the coder's answer on 23 (85.2% [67.5, 94.1]); warned tester on 22 (81.5% [63.3, 91.8])
-                  check set: of 67 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 4
+  qwen3.5-9b      blind tester disagreed with the coder on 30 questions.
+                  anchored tester adopted the coder's answer on 26 (86.7% [70.3, 94.7]); warned tester on 24 (80.0% [62.7, 90.5])
+                  check set: of 82 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 0 and the warned tester's in 4
   ministral-3-8b  blind tester disagreed with the coder on 45 questions.
                   anchored tester adopted the coder's answer on 38 (84.4% [71.2, 92.3]); warned tester on 30 (66.7% [52.1, 78.6])
                   check set: of 79 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 7 and the warned tester's in 18
@@ -95,79 +95,122 @@ Average correlation by relation (coder against blind tester):
                   check set: of 61 questions where blind tester and coder agreed, reading the answer changed the anchored tester's answer in 1 and the warned tester's in 5
 
 ==============================================================================
-5. Errors that pass the test: the coder is wrong and the test expects the coder's answer
+5. Misses and false alarms of one tester after the coder
 ==============================================================================
-Anchored and warned testers were asked on every disagreement and on the check set; on the other
-questions (blind tester agreed with the coder) they are taken to agree too, which section 4 checks.
-  coder llama3.1-8b (400 questions; rates below are shares of all 400):
-    anchored               31.5% [26.8, 36.2]
-    warned                 26.2% [21.8, 30.5]
-    blind (same model)     21.2% [17.2, 25.0]
-    reordering (anchored minus blind, same model): 10.2% [7.2%, 13.5%]
-    blind qwen3-8b         9.5% [6.8, 12.5]  (same-model blind on these 400: 21.2%; difference 11.8% [8.0%, 15.5%]; tester wrong on 21.5%)
-    blind qwen3.5-9b       9.8% [7.0, 12.9]  (same-model blind on these 356: 21.1%; difference 11.2% [7.3%, 15.2%]; tester wrong on 17.1%)
-    blind ministral-3-8b   10.2% [7.2, 13.2]  (same-model blind on these 400: 21.2%; difference 11.0% [7.0%, 15.0%]; tester wrong on 23.0%)
-    blind gemma4-12b       8.0% [5.5, 10.8]  (same-model blind on these 400: 21.2%; difference 13.2% [9.2%, 17.2%]; tester wrong on 15.6%)
-    blind eurollm-9b       12.5% [9.5, 16.0]  (same-model blind on these 400: 21.2%; difference 8.8% [5.0%, 12.5%]; tester wrong on 40.8%)
-  coder qwen3-8b (400 questions; rates below are shares of all 400):
-    anchored               22.5% [18.5, 26.8]
-    warned                 20.5% [16.5, 24.5]
-    blind (same model)     17.0% [13.5, 20.8]
-    reordering (anchored minus blind, same model): 5.5% [3.2%, 7.8%]
-    blind llama3.1-8b      10.0% [7.2, 13.2]  (same-model blind on these 400: 17.0%; difference 7.0% [3.8%, 10.2%]; tester wrong on 32.7%)
-    blind qwen3.5-9b       9.0% [6.2, 11.8]  (same-model blind on these 356: 17.7%; difference 8.7% [5.1%, 12.4%]; tester wrong on 17.5%)
-    blind ministral-3-8b   10.2% [7.5, 13.2]  (same-model blind on these 400: 17.0%; difference 6.8% [3.5%, 10.0%]; tester wrong on 23.5%)
-    blind gemma4-12b       5.8% [3.5, 8.2]  (same-model blind on these 400: 17.0%; difference 11.2% [8.0%, 14.8%]; tester wrong on 15.6%)
-    blind eurollm-9b       9.8% [7.0, 13.0]  (same-model blind on these 400: 17.0%; difference 7.2% [4.2%, 10.2%]; tester wrong on 40.9%)
-  coder qwen3.5-9b (356 questions; rates below are shares of all 356):
-    anchored               17.4% [13.5, 21.3]
-    warned                 16.0% [12.4, 19.9]
-    blind (same model)     13.5% [10.1, 17.1]
-    reordering (anchored minus blind, same model): 3.9% [2.0%, 5.9%]
-    blind llama3.1-8b      9.3% [6.2, 12.4]  (same-model blind on these 356: 13.5%; difference 4.2% [1.7%, 7.0%]; tester wrong on 32.7%)
-    blind qwen3-8b         8.1% [5.3, 11.0]  (same-model blind on these 356: 13.5%; difference 5.3% [2.5%, 8.4%]; tester wrong on 23.0%)
-    blind ministral-3-8b   9.6% [6.5, 12.9]  (same-model blind on these 356: 13.5%; difference 3.9% [1.4%, 6.7%]; tester wrong on 24.6%)
-    blind gemma4-12b       7.3% [4.8, 10.1]  (same-model blind on these 356: 13.5%; difference 6.2% [3.4%, 9.0%]; tester wrong on 15.9%)
-    blind eurollm-9b       8.1% [5.3, 11.0]  (same-model blind on these 356: 13.5%; difference 5.3% [2.5%, 8.4%]; tester wrong on 42.4%)
-  coder ministral-3-8b (400 questions; rates below are shares of all 400):
-    anchored               20.0% [16.2, 24.0]
-    warned                 17.5% [14.0, 21.2]
-    blind (same model)     15.2% [11.8, 18.8]
-    reordering (anchored minus blind, same model): 4.8% [2.8%, 7.0%]
-    blind llama3.1-8b      9.5% [6.8, 12.8]  (same-model blind on these 400: 15.2%; difference 5.8% [3.0%, 8.8%]; tester wrong on 32.2%)
-    blind qwen3-8b         8.5% [5.8, 11.3]  (same-model blind on these 400: 15.2%; difference 6.8% [4.0%, 9.8%]; tester wrong on 21.3%)
-    blind qwen3.5-9b       8.4% [5.6, 11.5]  (same-model blind on these 356: 16.3%; difference 7.9% [4.8%, 11.0%]; tester wrong on 17.1%)
-    blind gemma4-12b       6.5% [4.2, 9.0]  (same-model blind on these 400: 15.2%; difference 8.8% [5.8%, 12.0%]; tester wrong on 15.5%)
-    blind eurollm-9b       8.5% [5.8, 11.5]  (same-model blind on these 400: 15.2%; difference 6.8% [4.0%, 9.8%]; tester wrong on 40.3%)
-  coder gemma4-12b (400 questions; rates below are shares of all 400):
-    anchored               16.5% [13.0, 20.2]
-    warned                 15.2% [11.8, 19.0]
-    blind (same model)     12.5% [9.2, 16.0]
-    reordering (anchored minus blind, same model): 4.0% [2.2%, 6.0%]
-    blind llama3.1-8b      6.5% [4.2, 9.0]  (same-model blind on these 400: 12.5%; difference 6.0% [3.5%, 8.8%]; tester wrong on 32.2%)
-    blind qwen3-8b         6.8% [4.2, 9.2]  (same-model blind on these 400: 12.5%; difference 5.8% [2.8%, 9.0%]; tester wrong on 21.5%)
-    blind qwen3.5-9b       8.1% [5.6, 11.2]  (same-model blind on these 356: 13.2%; difference 5.1% [2.5%, 7.9%]; tester wrong on 17.7%)
-    blind ministral-3-8b   8.0% [5.2, 10.8]  (same-model blind on these 400: 12.5%; difference 4.5% [1.8%, 7.2%]; tester wrong on 23.2%)
-    blind eurollm-9b       6.0% [3.8, 8.5]  (same-model blind on these 400: 12.5%; difference 6.5% [3.8%, 9.2%]; tester wrong on 40.7%)
-  coder eurollm-9b (400 questions; rates below are shares of all 400):
-    anchored               38.5% [33.5, 43.5]
-    warned                 35.0% [30.2, 39.8]
-    blind (same model)     22.0% [17.8, 26.2]
-    reordering (anchored minus blind, same model): 16.5% [13.0%, 20.2%]
-    blind llama3.1-8b      11.8% [8.8, 15.0]  (same-model blind on these 400: 22.0%; difference 10.2% [6.0%, 14.8%]; tester wrong on 32.3%)
-    blind qwen3-8b         9.0% [6.2, 11.8]  (same-model blind on these 400: 22.0%; difference 13.0% [9.5%, 16.8%]; tester wrong on 21.9%)
-    blind qwen3.5-9b       7.0% [4.5, 9.8]  (same-model blind on these 356: 23.6%; difference 16.6% [12.4%, 20.8%]; tester wrong on 17.1%)
-    blind ministral-3-8b   9.5% [6.8, 12.5]  (same-model blind on these 400: 22.0%; difference 12.5% [8.5%, 16.8%]; tester wrong on 23.6%)
-    blind gemma4-12b       6.5% [4.2, 9.0]  (same-model blind on these 400: 22.0%; difference 15.5% [11.8%, 19.5%]; tester wrong on 15.8%)
+Miss: the coder is wrong and the test expects the coder's answer, so the test passes.
+False alarm: the coder is right and the test expects something else, so the test fails.
+Rates are shares of all questions. Anchored and warned testers were asked on every disagreement and
+on the random check set; on agreements outside it, the check set gives how often they stay with the
+coder's answer (separately where the coder is wrong and where it is right).
+  coder llama3.1-8b (400 questions; coder wrong on 33.2%):
+    tester                   misses                 false alarms
+    anchored                 29.8% [24.5, 34.7]    0.2% [0.0, 0.8]
+    warned                   18.4% [13.1, 24.0]    10.9% [5.1, 17.1]
+    blind (same model)       21.2% [17.2, 25.2]    5.2% [3.0, 7.5]
+    reordering removes 8.5% [3.6%, 12.7%] of misses (anchored minus blind, same model)
+    blind qwen3-8b           9.5% [6.8, 12.5]     5.2% [3.2, 7.5]   misses vs same-model blind: 11.8% fewer [8.0%, 16.0%]; tester wrong on 21.5%
+    blind qwen3.5-9b         8.8% [6.2, 11.5]     4.2% [2.5, 6.5]   misses vs same-model blind: 12.5% fewer [8.8%, 16.2%]; tester wrong on 16.0%
+    blind ministral-3-8b     10.2% [7.2, 13.2]     6.2% [4.0, 8.8]   misses vs same-model blind: 11.0% fewer [7.0%, 14.8%]; tester wrong on 23.0%
+    blind gemma4-12b         8.0% [5.5, 10.8]     3.5% [1.8, 5.5]   misses vs same-model blind: 13.2% fewer [9.5%, 17.2%]; tester wrong on 15.6%
+    blind eurollm-9b         12.5% [9.5, 15.5]     19.2% [15.5, 23.2]   misses vs same-model blind: 8.8% fewer [5.0%, 12.8%]; tester wrong on 40.8%
+  coder qwen3-8b (400 questions; coder wrong on 22.8%):
+    tester                   misses                 false alarms
+    anchored                 22.5% [18.5, 26.5]    1.3% [0.0, 3.9]
+    warned                   18.6% [13.8, 23.3]    1.6% [0.0, 4.2]
+    blind (same model)       17.0% [13.5, 20.8]    3.5% [1.8, 5.5]
+    reordering removes 5.5% [3.5%, 7.7%] of misses (anchored minus blind, same model)
+    blind llama3.1-8b        10.0% [7.0, 13.2]     15.8% [12.2, 19.2]   misses vs same-model blind: 7.0% fewer [3.8%, 10.5%]; tester wrong on 32.7%
+    blind qwen3.5-9b (same family) 8.2% [5.8, 11.2]     5.8% [3.8, 8.2]   misses vs same-model blind: 8.8% fewer [5.3%, 12.2%]; tester wrong on 16.3%
+    blind ministral-3-8b     10.2% [7.2, 13.2]     9.5% [6.8, 12.5]   misses vs same-model blind: 6.8% fewer [3.5%, 10.0%]; tester wrong on 23.5%
+    blind gemma4-12b         5.8% [3.5, 8.2]      6.5% [4.2, 9.0]   misses vs same-model blind: 11.3% fewer [7.8%, 14.8%]; tester wrong on 15.6%
+    blind eurollm-9b         9.8% [7.0, 12.8]     25.8% [21.8, 30.0]   misses vs same-model blind: 7.3% fewer [4.3%, 10.2%]; tester wrong on 40.9%
+  coder qwen3.5-9b (400 questions; coder wrong on 16.5%):
+    tester                   misses                 false alarms
+    anchored                 16.0% [12.8, 19.8]    0.5% [0.0, 1.2]
+    warned                   12.7% [8.5, 16.9]     1.6% [0.0, 4.4]
+    blind (same model)       12.2% [9.5, 15.5]     3.2% [1.8, 5.0]
+    reordering removes 3.8% [2.0%, 5.8%] of misses (anchored minus blind, same model)
+    blind llama3.1-8b        8.2% [5.5, 11.0]     20.8% [16.8, 24.8]   misses vs same-model blind: 4.0% fewer [1.8%, 6.5%]; tester wrong on 32.4%
+    blind qwen3-8b (same family) 7.2% [4.8, 10.0]     10.8% [7.8, 14.0]   misses vs same-model blind: 5.0% fewer [2.5%, 7.5%]; tester wrong on 22.0%
+    blind ministral-3-8b     8.8% [6.0, 11.8]     10.8% [7.8, 14.0]   misses vs same-model blind: 3.5% fewer [1.2%, 5.8%]; tester wrong on 22.9%
+    blind gemma4-12b         6.5% [4.2, 9.0]      7.2% [4.8, 10.0]   misses vs same-model blind: 5.8% fewer [3.2%, 8.2%]; tester wrong on 15.4%
+    blind eurollm-9b         7.2% [4.8, 10.0]     28.7% [24.2, 33.2]   misses vs same-model blind: 5.0% fewer [2.5%, 7.8%]; tester wrong on 40.3%
+  coder ministral-3-8b (400 questions; coder wrong on 21.8%):
+    tester                   misses                 false alarms
+    anchored                 19.0% [14.5, 23.2]    6.7% [2.3, 12.2]
+    warned                   11.4% [6.0, 16.6]     13.9% [7.8, 21.2]
+    blind (same model)       15.2% [12.0, 19.0]    4.8% [2.8, 7.0]
+    reordering removes 3.7% [-0.1%, 6.6%] of misses (anchored minus blind, same model)
+    blind llama3.1-8b        9.5% [6.8, 12.5]     17.5% [13.8, 21.2]   misses vs same-model blind: 5.8% fewer [3.0%, 8.5%]; tester wrong on 32.2%
+    blind qwen3-8b           8.5% [5.8, 11.5]     7.5% [5.0, 10.0]   misses vs same-model blind: 6.7% fewer [4.0%, 9.8%]; tester wrong on 21.3%
+    blind qwen3.5-9b         8.0% [5.5, 10.8]     4.5% [2.8, 6.5]   misses vs same-model blind: 7.2% fewer [4.8%, 10.0%]; tester wrong on 16.0%
+    blind gemma4-12b         6.5% [4.2, 9.0]      6.2% [4.0, 8.8]   misses vs same-model blind: 8.8% fewer [5.8%, 11.8%]; tester wrong on 15.5%
+    blind eurollm-9b         8.5% [6.0, 11.2]     26.5% [22.2, 31.0]   misses vs same-model blind: 6.7% fewer [4.0%, 9.8%]; tester wrong on 40.3%
+  coder gemma4-12b (400 questions; coder wrong on 16.8%):
+    tester                   misses                 false alarms
+    anchored                 16.5% [13.0, 20.2]    0.0% [0.0, 0.0]
+    warned                   14.5% [10.4, 18.5]    0.2% [0.0, 0.8]
+    blind (same model)       12.5% [9.2, 16.0]     2.5% [1.2, 4.2]
+    reordering removes 4.0% [2.2%, 6.0%] of misses (anchored minus blind, same model)
+    blind llama3.1-8b        6.5% [4.2, 9.0]      19.8% [16.0, 23.8]   misses vs same-model blind: 6.0% fewer [3.5%, 8.5%]; tester wrong on 32.2%
+    blind qwen3-8b           6.8% [4.5, 9.2]      10.5% [7.5, 13.8]   misses vs same-model blind: 5.8% fewer [2.8%, 8.8%]; tester wrong on 21.5%
+    blind qwen3.5-9b         8.0% [5.5, 10.8]     6.2% [4.0, 8.8]   misses vs same-model blind: 4.5% fewer [2.0%, 7.3%]; tester wrong on 16.5%
+    blind ministral-3-8b     8.0% [5.5, 10.8]     11.5% [8.2, 14.8]   misses vs same-model blind: 4.5% fewer [1.8%, 7.3%]; tester wrong on 23.2%
+    blind eurollm-9b         6.0% [3.8, 8.3]      30.2% [26.0, 34.8]   misses vs same-model blind: 6.5% fewer [4.0%, 9.2%]; tester wrong on 40.7%
+  coder eurollm-9b (400 questions; coder wrong on 39.8%):
+    tester                   misses                 false alarms
+    anchored                 37.8% [32.5, 42.8]    0.0% [0.0, 0.0]
+    warned                   33.5% [28.1, 38.7]    4.8% [1.0, 9.3]
+    blind (same model)       22.0% [18.0, 26.0]    9.5% [6.8, 12.5]
+    reordering removes 15.8% [11.3%, 19.8%] of misses (anchored minus blind, same model)
+    blind llama3.1-8b        11.8% [8.8, 15.0]     10.2% [7.5, 13.5]   misses vs same-model blind: 10.2% fewer [6.2%, 14.3%]; tester wrong on 32.3%
+    blind qwen3-8b           9.0% [6.2, 11.8]     5.5% [3.2, 8.0]   misses vs same-model blind: 13.0% fewer [9.2%, 16.8%]; tester wrong on 21.9%
+    blind qwen3.5-9b         6.5% [4.2, 9.0]      5.0% [3.0, 7.2]   misses vs same-model blind: 15.5% fewer [11.8%, 19.2%]; tester wrong on 16.1%
+    blind ministral-3-8b     9.5% [6.8, 12.5]     6.5% [4.2, 9.0]   misses vs same-model blind: 12.5% fewer [8.8%, 16.5%]; tester wrong on 23.6%
+    blind gemma4-12b         6.5% [4.2, 9.0]      5.2% [3.0, 7.5]   misses vs same-model blind: 15.5% fewer [11.8%, 19.5%]; tester wrong on 15.8%
+
+Averages over coder models (misses / false alarms):
+  anchored                 23.6% / 1.5%  (6 coder-tester pairs)
+  warned                   18.2% / 5.5%  (6 coder-tester pairs)
+  blind (same model)       16.7% / 4.8%  (6 coder-tester pairs)
+  blind, same family       7.8% / 8.2%  (2 coder-tester pairs)
+  blind, other family      8.4% / 12.0%  (28 coder-tester pairs)
 
 ==============================================================================
 6. The org-chart article's Model 1, fed the measured rates
 ==============================================================================
 Model 1 counts an error as caught only if the reviewer is right; on multiple choice a reviewer that is
 wrong in a different way also flags it. 'Both wrong' is Model 1's residual; 'passes' is what a test lets through.
-  llama3.1-8b     q=33.2%, rho=+0.93, a=91.3%: Model 1 blind residual 27.4% (passes 21.2%); anchored residual 32.7% (measured passes 31.5%)
+  llama3.1-8b     q=33.2%, rho=+0.93, a=91.3%: Model 1 blind residual 27.4% (passes 21.2%); anchored residual 32.7% (measured passes 29.8%)
   qwen3-8b        q=22.8%, rho=+0.95, a=94.6%: Model 1 blind residual 18.5% (passes 17.0%); anchored residual 22.5% (measured passes 22.5%)
-  qwen3.5-9b      q=18.2%, rho=+0.95, a=85.2%: Model 1 blind residual 14.5% (passes 13.5%); anchored residual 17.7% (measured passes 17.4%)
-  ministral-3-8b  q=22.1%, rho=+0.94, a=84.4%: Model 1 blind residual 18.6% (passes 15.2%); anchored residual 21.6% (measured passes 20.0%)
+  qwen3.5-9b      q=16.8%, rho=+0.95, a=86.7%: Model 1 blind residual 13.5% (passes 12.2%); anchored residual 16.3% (measured passes 16.0%)
+  ministral-3-8b  q=22.1%, rho=+0.94, a=84.4%: Model 1 blind residual 18.6% (passes 15.2%); anchored residual 21.6% (measured passes 19.0%)
   gemma4-12b      q=16.9%, rho=+0.98, a=96.3%: Model 1 blind residual 14.1% (passes 12.5%); anchored residual 16.8% (measured passes 16.5%)
-  eurollm-9b      q=40.5%, rho=+0.85, a=96.3%: Model 1 blind residual 31.9% (passes 22.0%); anchored residual 40.2% (measured passes 38.5%)
+  eurollm-9b      q=40.5%, rho=+0.85, a=96.3%: Model 1 blind residual 31.9% (passes 22.0%); anchored residual 40.2% (measured passes 37.8%)
+
+==============================================================================
+7. What reordering buys, by question difficulty
+==============================================================================
+Difficulty of a question for one model: how many of the other models' coders got it wrong.
+Misses as a share of the questions in each group; anchored minus blind is what reordering removes.
+  llama3.1-8b     easy n=281: coder wrong 18%, anchored 15.4%, blind 10.7%, gain 4.7% [0.7%, 8.3%]
+                  middle n=71: coder wrong 59%, anchored 50.4%, blind 36.6%, gain 13.8% [-5.1%, 28.4%]
+                  hard n=48: coder wrong 83%, anchored 83.3%, blind 60.4%, gain 22.9% [12.5%, 35.4%]
+  qwen3-8b        easy n=262: coder wrong 7%, anchored 6.9%, blind 3.4%, gain 3.4% [1.5%, 5.7%]
+                  middle n=92: coder wrong 40%, anchored 40.2%, blind 32.6%, gain 7.6% [2.2%, 13.0%]
+                  hard n=46: coder wrong 78%, anchored 76.1%, blind 63.0%, gain 13.0% [4.3%, 23.9%]
+  qwen3.5-9b      easy n=253: coder wrong 3%, anchored 2.4%, blind 2.0%, gain 0.4% [0.0%, 1.2%]
+                  middle n=96: coder wrong 25%, anchored 24.0%, blind 16.7%, gain 7.3% [3.1%, 12.5%]
+                  hard n=51: coder wrong 69%, anchored 68.6%, blind 54.9%, gain 13.7% [5.9%, 23.5%]
+  ministral-3-8b  easy n=260: coder wrong 7%, anchored 5.8%, blind 3.5%, gain 2.3% [0.8%, 4.2%]
+                  middle n=92: coder wrong 36%, anchored 27.2%, blind 21.7%, gain 5.4% [-6.0%, 15.2%]
+                  hard n=48: coder wrong 77%, anchored 77.1%, blind 66.7%, gain 10.4% [2.1%, 18.8%]
+  gemma4-12b      easy n=253: coder wrong 3%, anchored 2.8%, blind 2.0%, gain 0.8% [0.0%, 2.0%]
+                  middle n=94: coder wrong 26%, anchored 24.5%, blind 18.1%, gain 6.4% [2.1%, 11.7%]
+                  hard n=53: coder wrong 68%, anchored 67.9%, blind 52.8%, gain 15.1% [5.7%, 26.4%]
+  eurollm-9b      easy n=287: coder wrong 28%, anchored 26.5%, blind 12.5%, gain 13.9% [9.8%, 18.1%]
+                  middle n=69: coder wrong 65%, anchored 59.4%, blind 39.1%, gain 20.3% [6.8%, 33.3%]
+                  hard n=44: coder wrong 80%, anchored 79.5%, blind 56.8%, gain 22.7% [11.4%, 36.4%]
+  mean gain over models, easy: 4.3%
+  mean gain over models, middle: 10.1%
+  mean gain over models, hard: 16.3%
