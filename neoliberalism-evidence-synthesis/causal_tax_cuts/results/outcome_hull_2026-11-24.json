@@ -1,0 +1,270 @@
+{
+  "panel_sha256": "8dfcdd2bb7ea8c378436d5415a70ae0a83f8f1b431f4e46c70039bf578072321",
+  "status": "descriptive_geometry_only",
+  "rows": [
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 8,
+      "supported": true,
+      "supported_single_donor_deletions": 5
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 8,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "trajectory",
+      "dimensions": 8,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "trajectory",
+      "dimensions": 8,
+      "donors": 8,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 8,
+      "supported": true,
+      "supported_single_donor_deletions": 5
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 8,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "trajectory",
+      "dimensions": 7,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "FIN",
+      "year": 1986,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "trajectory",
+      "dimensions": 7,
+      "donors": 8,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 1,
+      "mode": "trajectory",
+      "dimensions": 8,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 1,
+      "mode": "trajectory",
+      "dimensions": 8,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "macro",
+      "dimensions": 3,
+      "donors": 16,
+      "supported": true,
+      "supported_single_donor_deletions": 16
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "level_slope",
+      "dimensions": 5,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 0,
+      "last_outcome_lag": 2,
+      "mode": "trajectory",
+      "dimensions": 7,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    },
+    {
+      "country": "DEU",
+      "year": 2008,
+      "horizon": 5,
+      "last_outcome_lag": 2,
+      "mode": "trajectory",
+      "dimensions": 7,
+      "donors": 16,
+      "supported": false,
+      "supported_single_donor_deletions": 0
+    }
+  ]
+}
