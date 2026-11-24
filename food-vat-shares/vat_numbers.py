@@ -179,7 +179,8 @@ def main():
         cs = [g for g in vc.complete_countries(t, "food_drink") if not (w == 2020 and g in COPIED_2020)]
         f = country_rows(t, "food_drink", cs)
         f.to_csv(RESULTS / f"food_by_country_{w}.csv")
-        print(f"wave {w}: {len(cs)} countries (2020 excludes the repriced CY, FR, MT)")
+        note = " (excluding CY, FR and MT, whose 2020 figures are their 2015 surveys repriced)" if w == 2020 else ""
+        print(f"wave {w}: {len(cs)} countries{note}")
         print(
             f"   poorest share above richest: {(f.share_ratio_q1_q5 > 1).sum()} of {len(f)}; richest saves more euros: {(f.euros_ratio_q5_q1 > 1).sum()}; both: {((f.share_ratio_q1_q5 > 1) & (f.euros_ratio_q5_q1 > 1)).sum()}"
         )
