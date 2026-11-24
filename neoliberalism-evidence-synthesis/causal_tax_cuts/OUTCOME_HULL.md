@@ -26,4 +26,6 @@ Run from neoliberalism-evidence-synthesis:
     python -m causal_tax_cuts.outcome_hull --panel PATH --output-dir OUTPUT
 
 The source workflow uploads the 24 diagnostic rows and SHA-256 manifest.
-Historical numerical results are pending the first successful live run.
+See [the first live results](results/OUTCOME_HULL_RESULTS_2026-11-24.md) and
+[frozen JSON](results/outcome_hull_2026-11-24.json). Same-panel runs verify
+exact reproduction.

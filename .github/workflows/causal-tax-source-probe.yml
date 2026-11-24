@@ -424,6 +424,24 @@ jobs:
         run: |
           python -m unittest causal_tax_cuts.tests.test_outcome_hull -v
           python -m causal_tax_cuts.outcome_hull --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" --output-dir "$RUNNER_TEMP/tax-study/outcome-hull"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          actual = json.loads(
+              (Path(os.environ["RUNNER_TEMP"]) / "tax-study/outcome-hull/outcome_hull.json").read_text()
+          )
+          reference = json.loads(
+              Path("causal_tax_cuts/results/outcome_hull_2026-11-24.json").read_text()
+          )
+          if actual["panel_sha256"] == reference["panel_sha256"]:
+              if actual != reference:
+                  raise ValueError("Same-panel outcome hull diagnostic drifted")
+              print("Verified exact outcome hull snapshot")
+          else:
+              print("Panel vintage changed; do not claim exact reproduction")
+          PY
       - name: Publish outcome-augmented support diagnostics
         if: always()
         uses: actions/upload-artifact@v4
