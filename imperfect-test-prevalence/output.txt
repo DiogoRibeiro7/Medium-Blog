@@ -1,0 +1,144 @@
+Companion numbers for the article on estimating prevalence from an imperfect test (Santa Clara, April 2020).
+Seed 20261123. NumPy 2.5.3.
+
+====================================================================================================
+1. The survey and the published claim
+====================================================================================================
+50 positives in 3,330 tests: raw rate 1.50%
+v1 published: raw 95% CI 1.11% to 1.97%; population-weighted 2.81%; weighted and test-adjusted range 2.49% to 4.16%
+Weighting factor (weighted / raw) 1.871; the bottom of the published range, unweighted: 1.33%
+2021 journal version, unweighted and test-adjusted: 1.2% (95% CI 0.7% to 1.8%)
+v1 validation: 399/401 known negatives negative (specificity 99.50%); 103/122 known positives positive (sensitivity 84.4%)
+v2 validation, pooled: 3,308/3,324 (specificity 99.52%) in 13 studies; 130/157 (sensitivity 82.8%) in 3 studies
+
+====================================================================================================
+2. Before the update: could the positives all be false?
+====================================================================================================
+If nobody were infected and specificity were 99.5%: expected false positives 16.7
+If nobody were infected and specificity were 99.0%: expected false positives 33.3
+If nobody were infected and specificity were 98.5%: expected false positives 50.0
+Specificity at which false positives alone average 50: 98.50%
+v1: specificity 95% interval 98.21% to 99.85%; with nobody infected, P(>= 50 positives) = 7.0%; expected positives 24.8 (90% range 6 to 53)
+v2 pooled: specificity 95% interval 99.22% to 99.70%; with nobody infected, P(>= 50 positives) = 0.0%; expected positives 17.0 (90% range 8 to 27)
+
+====================================================================================================
+3. The update: three routes to a posterior
+====================================================================================================
+Version 1 data, pooled (399/401, 103/122): median 1.06%; central 95% 0.13% to 1.89%; central 90% 0.24% to 1.77%; shortest 95% 0.09% to 1.84%
+    P(prevalence < 0.25%) 5.3%; P(< 0.5%) 14.0%; P(>= 1.2%) 38.3%; P(>= 1.33%) 27.8%
+    correlation of prevalence and specificity in the joint posterior: 0.82
+    posterior specificity: median 99.36%, 95% 98.59% to 99.84%
+    Gelman and Carpenter (2020), same model and data: shortest 95% interval 0 to 1.8%
+Version 2 data, pooled across studies (3308/3324, 130/157): median 1.24%; central 95% 0.67% to 1.86%; central 90% 0.76% to 1.76%; shortest 95% 0.66% to 1.85%
+    P(prevalence < 0.25%) 0.0%; P(< 0.5%) 0.5%; P(>= 1.2%) 55.1%; P(>= 1.33%) 38.1%
+    2021 journal version (pooled, unweighted, test-adjusted): 1.2%, 95% CI 0.7% to 1.8%
+
+====================================================================================================
+4. Checking the pooling assumption: do the 13 specificity studies agree?
+====================================================================================================
+  study  1: 3 false positives in 371
+  study  2: 0 false positives in 30
+  study  3: 0 false positives in 70
+  study  4: 0 false positives in 1,102
+  study  5: 0 false positives in 300
+  study  6: 0 false positives in 311
+  study  7: 0 false positives in 500
+  study  8: 2 false positives in 200
+  study  9: 0 false positives in 99
+  study 10: 2 false positives in 31
+  study 11: 4 false positives in 150
+  study 12: 3 false positives in 108
+  study 13: 2 false positives in 52
+Posterior predictive check under one shared specificity: statistic 75.5, p = 0.000
+Under pooling, chance of no false positive in the 1,102-sample study: 0.8%
+
+====================================================================================================
+5. Letting specificity and sensitivity vary between studies (hierarchical model)
+====================================================================================================
+Priors as Gelman and Carpenter: mu ~ Normal(4, 2) on the logit scale; between-study sd ~ half-Normal(0, tau)
+tau = 1.0: hyper-grid edge mass 5.4e-08 (spec), 2.9e-08 (sens)
+    prevalence, tau 1.0: median 1.58%; central 95% 0.21% to 21.48%; central 90% 0.39% to 8.70%; shortest 95% 0.00% to 8.70%
+    P(prevalence < 0.25%) 3.0%; P(< 0.5%) 6.8%; P(>= 1.2%) 73.1%; P(>= 1.33%) 66.2%
+    between-study sd of logit specificity: posterior median 1.62
+    a new lab's specificity before the survey: median 99.58%, 95% 87.31% to 99.99%; sensitivity median 83.6%, 95% 35.9% to 98.6%
+tau = 0.5: hyper-grid edge mass 1.4e-08 (spec), 1.9e-10 (sens)
+    prevalence, tau 0.5: median 1.39%; central 95% 0.17% to 3.17%; central 90% 0.32% to 2.51%; shortest 95% 0.00% to 2.51%
+    P(prevalence < 0.25%) 3.8%; P(< 0.5%) 8.9%; P(>= 1.2%) 62.9%; P(>= 1.33%) 54.1%
+    between-study sd of logit specificity: posterior median 1.11
+    a new lab's specificity before the survey: median 99.50%, 95% 94.72% to 99.96%; sensitivity median 83.0%, 95% 51.4% to 96.2%
+tau = 0.3: hyper-grid edge mass 4.5e-11 (spec), 8.0e-14 (sens)
+    prevalence, tau 0.3: median 1.26%; central 95% 0.18% to 2.26%; central 90% 0.32% to 2.06%; shortest 95% 0.08% to 2.12%
+    P(prevalence < 0.25%) 3.8%; P(< 0.5%) 9.3%; P(>= 1.2%) 54.5%; P(>= 1.33%) 43.8%
+    between-study sd of logit specificity: posterior median 0.73
+    a new lab's specificity before the survey: median 99.46%, 95% 97.18% to 99.90%; sensitivity median 82.8%, 95% 61.2% to 93.8%
+tau = 0.2: hyper-grid edge mass 4.8e-16 (spec), 2.7e-19 (sens)
+    prevalence, tau 0.2: median 1.21%; central 95% 0.28% to 2.02%; central 90% 0.44% to 1.88%; shortest 95% 0.28% to 2.02%
+    P(prevalence < 0.25%) 2.2%; P(< 0.5%) 6.3%; P(>= 1.2%) 51.5%; P(>= 1.33%) 38.5%
+    between-study sd of logit specificity: posterior median 0.42
+    a new lab's specificity before the survey: median 99.47%, 95% 98.36% to 99.82%; sensitivity median 82.8%, 95% 67.5% to 91.6%
+tau = 0.1: hyper-grid edge mass 2.0e-40 (spec), 1.2e-43 (sens)
+    prevalence, tau 0.1: median 1.24%; central 95% 0.63% to 1.89%; central 90% 0.73% to 1.78%; shortest 95% 0.62% to 1.88%
+    P(prevalence < 0.25%) 0.2%; P(< 0.5%) 1.0%; P(>= 1.2%) 55.5%; P(>= 1.33%) 39.0%
+    between-study sd of logit specificity: posterior median 0.09
+    a new lab's specificity before the survey: median 99.51%, 95% 99.15% to 99.73%; sensitivity median 83.1%, 95% 74.6% to 89.2%
+Gelman and Carpenter (2020): weak priors (tau 1) 0.3%, 1.7%, 35.4% (2.5%, median, 97.5%); stronger priors 0.3%, 1.2%, 2.1%
+
+====================================================================================================
+6. Checking the engine: does the posterior cover the truth as often as it says?
+====================================================================================================
+300 simulated surveys from the model's own priors: 90% intervals cover 90.3%, 50% cover 50.7%; uniformity of posterior quantiles, KS p = 0.88
+
+====================================================================================================
+7. Decision 1: could the survey support acting on a prevalence of 2.5% to 4.2%?
+====================================================================================================
+Claim threshold in unweighted terms (bottom of the published range / weighting factor): 1.33%
+              pooled, v2: P(prevalence >= 1.33%) 38.1%; P(< 0.5%) 0.5%; P(< 0.25%) 0.0%
+   hierarchical, tau 0.3: P(prevalence >= 1.33%) 43.8%; P(< 0.5%) 9.3%; P(< 0.25%) 3.8%
+   hierarchical, tau 0.2: P(prevalence >= 1.33%) 38.5%; P(< 0.5%) 6.3%; P(< 0.25%) 2.2%
+     hierarchical, tau 1: P(prevalence >= 1.33%) 66.2%; P(< 0.5%) 6.8%; P(< 0.25%) 3.0%
+Bayes-optimal point estimate under linear loss with under-estimates k times as costly: the k/(k+1) quantile
+              pooled, v2: 10% 0.86%, 25% 1.04%, 50% 1.24%, 75% 1.44%, 90% 1.64%; weighted (x1.87): 10% 1.61%, 50% 2.32%, 90% 3.07%
+   hierarchical, tau 0.3: 10% 0.52%, 25% 0.90%, 50% 1.26%, 75% 1.57%, 90% 1.86%; weighted (x1.87): 10% 0.98%, 50% 2.35%, 90% 3.48%
+   hierarchical, tau 0.2: 10% 0.64%, 25% 0.93%, 50% 1.21%, 75% 1.48%, 90% 1.72%; weighted (x1.87): 10% 1.19%, 50% 2.27%, 90% 3.22%
+
+====================================================================================================
+8. Decision 2: how to split a fixed number of tests between validation and the survey
+====================================================================================================
+Budget 3,853 tests (Santa Clara: 3,330 survey + 401 known negatives + 122 known positives); known positives held at 122
+Same-lab validation; true specificity 99.5%, sensitivity 83%; 300 simulated surveys per split; posterior 5% and 95% quantiles of prevalence
+  true prevalence 0.5%:
+    known negatives: 100, 200, 300, 401, 600, 800, 1000, 1300, 1600, 2000, 2500
+    median 90% width: 1.08, 1.06, 1.01, 0.99, 0.93, 0.92, 0.94, 0.95, 0.93, 1.01, 1.09 (points)
+    P(lower 5% bound above half the truth): 0%, 1%, 8%, 11%, 9%, 13%, 17%, 19%, 18%, 20%, 14%
+    narrowest at 800 known negatives (21% of the budget): 0.92 points against 0.99 at Santa Clara's 401 (6% narrower)
+  true prevalence 1.2%:
+    known negatives: 100, 200, 300, 401, 600, 800, 1000, 1300, 1600, 2000, 2500
+    median 90% width: 1.69, 1.58, 1.48, 1.45, 1.36, 1.31, 1.27, 1.25, 1.28, 1.34, 1.51 (points)
+    P(lower 5% bound above half the truth): 0%, 2%, 10%, 17%, 25%, 33%, 36%, 40%, 43%, 40%, 45%
+    narrowest at 1300 known negatives (34% of the budget): 1.25 points against 1.45 at Santa Clara's 401 (14% narrower)
+  true prevalence 3.0%:
+    known negatives: 100, 200, 300, 401, 600, 800, 1000, 1300, 1600, 2000, 2500
+    median 90% width: 3.05, 2.56, 2.25, 2.05, 1.81, 1.70, 1.68, 1.65, 1.69, 1.81, 2.06 (points)
+    P(lower 5% bound above half the truth): 0%, 33%, 46%, 56%, 78%, 86%, 89%, 91%, 91%, 88%, 84%
+    narrowest at 1300 known negatives (34% of the budget): 1.65 points against 2.05 at Santa Clara's 401 (19% narrower)
+Larger budgets at a true prevalence of 0.5% (share of tests on known negatives 10%, 25%, 40%):
+  7,706 tests: 10%: width 0.81 points, resolved 10%; 25%: width 0.71 points, resolved 20%; 40%: width 0.73 points, resolved 28%
+  15,412 tests: 10%: width 0.67 points, resolved 18%; 25%: width 0.56 points, resolved 38%; 40%: width 0.53 points, resolved 38%
+  30,824 tests: 10%: width 0.54 points, resolved 28%; 25%: width 0.41 points, resolved 52%; 40%: width 0.38 points, resolved 64%
+
+====================================================================================================
+9. Validation in other labs has a floor; validation in the survey's own lab does not
+====================================================================================================
+Between-lab sd 0.73 on the logit scale is the posterior median under tau 0.3
+  same lab,    100 known negatives: 95% interval 0.06% to 1.98% (width 1.92 points)
+  same lab,    200 known negatives: 95% interval 0.08% to 1.95% (width 1.88 points)
+  same lab,    400 known negatives: 95% interval 0.13% to 1.92% (width 1.78 points)
+  same lab,    800 known negatives: 95% interval 0.28% to 1.89% (width 1.61 points)
+  same lab,  1,600 known negatives: 95% interval 0.49% to 1.87% (width 1.37 points)
+  same lab,  3,200 known negatives: 95% interval 0.64% to 1.85% (width 1.21 points)
+  same lab,  6,400 known negatives: 95% interval 0.71% to 1.83% (width 1.12 points)
+  same lab, 12,800 known negatives: 95% interval 0.75% to 1.83% (width 1.08 points)
+  other labs only, between-lab sd 0.25 (new lab's specificity 95% 99.19% to 99.69%): 95% interval 0.65% to 1.86% (width 1.21 points), however many samples
+  other labs only, between-lab sd 0.5 (new lab's specificity 95% 98.68% to 99.81%): 95% interval 0.32% to 1.94% (width 1.63 points), however many samples
+  other labs only, between-lab sd 0.73 (new lab's specificity 95% 97.94% to 99.88%): 95% interval 0.20% to 2.02% (width 1.82 points), however many samples
+  other labs only, between-lab sd 1.0 (new lab's specificity 95% 96.56% to 99.93%): 95% interval 0.16% to 2.09% (width 1.93 points), however many samples
