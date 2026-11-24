@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Who gains from lower VAT on food: euros and budget shares by income fifth, EU 2015-2025"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-24
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/food-vat-shares"
+references:
+  - type: data
+    title: "Eurostat: household budgets, food shares and incomes by income fifth, for the incidence of VAT on food, EU 2010-2025"
+    authors:
+      - name: "Eurostat"
+    repository-code: "https://github.com/DiogoRibeiro7/data/tree/main/datasets/eurostat-food-vat-incidence"

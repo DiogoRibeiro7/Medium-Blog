@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-food-vat-incidence",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "110589357b5ff12b0430d9e1953e6e205246ea59",
+  "record": "datasets/eurostat-food-vat-incidence/metadata.yaml",
+  "folder": "food-vat-shares",
+  "target": "food-vat-shares/data",
+  "files": [
+    {
+      "path": "raw/hbs_str_t223.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/hbs_str_t223.json",
+      "bytes": 77411,
+      "sha256": "1d11c464d4f090bc478d7f8cd20b83c56eb08eea5870bafd53f238f3e3f76356"
+    },
+    {
+      "path": "raw/hbs_exp_t133.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/hbs_exp_t133.json",
+      "bytes": 15619,
+      "sha256": "8031373a8d39f9f0b246c60c5a30a5a5335e674b34e765919a97eaf253089ff3"
+    },
+    {
+      "path": "raw/hbs_exp_t111.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/hbs_exp_t111.json",
+      "bytes": 7968,
+      "sha256": "80a31967b2afc68af57042db406cb12ac69105314d34cea81502c5e45b5e6471"
+    },
+    {
+      "path": "raw/icw_aff_01.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/icw_aff_01.json",
+      "bytes": 79262,
+      "sha256": "fd4738da89fea4b0f9def505b2a8470f79b398e1f691a4643c75da9f99d1a509"
+    },
+    {
+      "path": "raw/icw_sr_10.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/icw_sr_10.json",
+      "bytes": 10437,
+      "sha256": "7028a2058c36c75d5a67e4171c1dc994b1dfed6fcf04f42176318b0386e29ac3"
+    },
+    {
+      "path": "raw/ilc_di01.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/ilc_di01.json",
+      "bytes": 22968,
+      "sha256": "a3d8dfd5426d70bfa774fac86e154fe98d33885097243c6182011a2c86a4b3f8"
+    },
+    {
+      "path": "raw/prc_hicp_aind.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/110589357b5ff12b0430d9e1953e6e205246ea59/datasets/eurostat-food-vat-incidence/raw/prc_hicp_aind.json",
+      "bytes": 22249,
+      "sha256": "a89b83729aec0ab4ea4b837191019c0a47df52f58fc7f6dc829bc7701e1aeb7d"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+line-length = 150
+target-version = "py313"
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[lint.per-file-ignores]
+# vat_numbers.py prints the article's numbers one sentence per line; splitting the f-strings would hide them.
+"vat_numbers.py" = ["E501"]
