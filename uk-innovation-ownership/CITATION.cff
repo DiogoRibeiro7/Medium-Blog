@@ -1,0 +1,73 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Who owns UK innovation: foreign ownership of inventions and ICT jobs, the UK against the EU, 1980-2021"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-24
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/uk-innovation-ownership"
+references:
+  - type: data
+    title: "Patent statistics: foreign ownership of domestic inventions"
+    authors:
+      - name: "OECD"
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Venture capital investments (market statistics)"
+    authors:
+      - name: "OECD"
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Structural and Demographic Business Statistics: high-growth enterprises"
+    authors:
+      - name: "OECD"
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Global Pension Statistics: asset-backed pensions"
+    authors:
+      - name: "OECD"
+    year: 2026
+    url: "https://data-explorer.oecd.org/"
+  - type: data
+    title: "Foreign control of enterprises by economic activity (fats_g1a_08)"
+    authors:
+      - name: "Eurostat"
+    year: 2023
+    url: "https://ec.europa.eu/eurostat/databrowser/view/fats_g1a_08/default/table"
+  - type: article
+    title: "Econometric methods for fractional response variables with an application to 401(k) plan participation rates"
+    authors:
+      - family-names: Papke
+        given-names: Leslie E.
+      - family-names: Wooldridge
+        given-names: Jeffrey M.
+    journal: "Journal of Applied Econometrics"
+    volume: 11
+    issue: 6
+    start: 619
+    end: 632
+    year: 1996
+  - type: article
+    title: "Predictive inference with the jackknife+"
+    authors:
+      - family-names: Barber
+        given-names: Rina Foygel
+      - family-names: Candès
+        given-names: Emmanuel J.
+      - family-names: Ramdas
+        given-names: Aaditya
+      - family-names: Tibshirani
+        given-names: Ryan J.
+    journal: "The Annals of Statistics"
+    volume: 49
+    issue: 1
+    start: 486
+    end: 507
+    year: 2021
