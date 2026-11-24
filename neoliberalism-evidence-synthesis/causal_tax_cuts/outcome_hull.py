@@ -87,39 +87,50 @@ def audit(
         for last_lag in (1, 2):
             for mode in ("macro", "level_slope", "trajectory"):
                 target = profile(panel, controls, country, year, last_lag, mode)
-                full = np.vstack([
-                    profile(panel, controls, c.donor, year, last_lag, mode)
-                    for c in entries
-                ])
+                full = np.vstack(
+                    [
+                        profile(panel, controls, c.donor, year, last_lag, mode)
+                        for c in entries
+                    ]
+                )
                 scales = np.std(np.vstack((target, full)), axis=0)
                 scales = np.where(scales < 1e-10, 1.0, scales)
                 matrix = (full - target) / scales
                 for horizon in (0, 5):
                     keep = [
-                        i for i, c in enumerate(entries)
+                        i
+                        for i, c in enumerate(entries)
                         if c.first_censored_horizon is None
                         or c.first_censored_horizon > horizon
                     ]
                     subset = matrix[keep]
                     supported = in_hull(subset)
                     if mode == "macro" and not supported:
-                        raise ValueError("Original strict macro support no longer reproduces")
+                        raise ValueError(
+                            "Original strict macro support no longer reproduces"
+                        )
                     # Deletion cannot turn an infeasible hull into a feasible one.
-                    deletions = sum(
-                        in_hull(np.delete(subset, i, axis=0))
-                        for i in range(len(keep))
-                    ) if supported else 0
-                    rows.append({
-                        "country": country,
-                        "year": year,
-                        "horizon": horizon,
-                        "last_outcome_lag": last_lag,
-                        "mode": mode,
-                        "dimensions": len(target),
-                        "donors": len(keep),
-                        "supported": supported,
-                        "supported_single_donor_deletions": deletions,
-                    })
+                    deletions = (
+                        sum(
+                            in_hull(np.delete(subset, i, axis=0))
+                            for i in range(len(keep))
+                        )
+                        if supported
+                        else 0
+                    )
+                    rows.append(
+                        {
+                            "country": country,
+                            "year": year,
+                            "horizon": horizon,
+                            "last_outcome_lag": last_lag,
+                            "mode": mode,
+                            "dimensions": len(target),
+                            "donors": len(keep),
+                            "supported": supported,
+                            "supported_single_donor_deletions": deletions,
+                        }
+                    )
     return rows
 
 
