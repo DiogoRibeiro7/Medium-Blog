@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-249 top-level folders: 77 belong to 24 series, 101 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
+250 top-level folders: 77 belong to 24 series, 101 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 15 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -413,6 +413,7 @@ Add these folders to `projects.yml`.
 - [`europe-industrial-regions/`](europe-industrial-regions/) — Regions, not countries? Industrialisation on the map of Europe, 1900-2021
 - [`forecast-success-specification/`](forecast-success-specification/) — The success specification decides which forecast wins: a pre-registered test on M5 food sales
 - [`growth-finite-world/`](growth-finite-world/) — Corporate growth on a finite planet: valuation, earnings and energy, 1871–2024
+- [`letter-loops/`](letter-loops/) — Greedy letter chains in 36 languages: where "follow the likeliest next letter" ends, and why
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — Where the EUR 2,300 "moderate rent" ceiling sat against real rents, Portugal 2017-2025
 - [`org-chart-blind-tester/`](org-chart-blind-tester/) — Blind testers, anchored testers and testers from another model family
 - [`productivity-hours-denominator/`](productivity-hours-denominator/) — The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009–2026
