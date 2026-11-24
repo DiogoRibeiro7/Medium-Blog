@@ -419,6 +419,19 @@ jobs:
             ${{ runner.temp }}/tax-study/policy-component-candidates/policy_component_audit.json
           retention-days: 7
           if-no-files-found: warn
+      - name: Audit outcome-augmented donor hulls for two documented cases
+        if: steps.policy_component_candidates.outcome == 'success'
+        run: |
+          python -m unittest causal_tax_cuts.tests.test_outcome_hull -v
+          python -m causal_tax_cuts.outcome_hull --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" --output-dir "$RUNNER_TEMP/tax-study/outcome-hull"
+      - name: Publish outcome-augmented support diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-outcome-hull
+          path: ${{ runner.temp }}/tax-study/outcome-hull/
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
