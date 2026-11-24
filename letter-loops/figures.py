@@ -242,12 +242,12 @@ def fig2(summary):
     )
 
 
-def fig3(summary):
+def fig4(summary):
     words = summary["words"]
     atlas(
         summary,
         True,
-        "fig3_atlas_word_boundary.png",
+        "fig4_atlas_word_boundary.png",
         "Where every letter ends once the end of a word is a symbol. Quoted: a loop through the word boundary, "
         "read as a word.\nShaded: different from the first column. In the first column, # is the word's rank "
         "by frequency in its language.",
@@ -255,7 +255,7 @@ def fig3(summary):
     )
 
 
-def fig4(summary):
+def fig3(summary):
     sh = summary["shuffle"]
     codes = list(L.LANGUAGES)
     uniform = sum(sh[f"{c}|0"]["p_uniform"] for c in codes)
@@ -282,7 +282,7 @@ def fig4(summary):
         ax.spines[side].set_visible(False)
     ax.tick_params(axis="y", length=0)
     fig.tight_layout()
-    fig.savefig(FIGURES / "fig4_baselines.png", dpi=200)
+    fig.savefig(FIGURES / "fig3_baselines.png", dpi=200)
     plt.close(fig)
 
 

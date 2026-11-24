@@ -65,6 +65,6 @@ jobs:
       - name: Check every figure is drawn
         run: |
           python figures.py
-          for f in fig1_english_maps fig2_atlas_inside_words fig3_atlas_word_boundary fig4_baselines fig5_temperature; do
+          for f in fig1_english_maps fig2_atlas_inside_words fig3_baselines fig4_atlas_word_boundary fig5_temperature; do
             test -s "figures/$f.png"
           done
