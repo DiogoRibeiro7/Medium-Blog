@@ -142,7 +142,15 @@ def main():
         print(
             f"EU27: richest fifth gets {pct(r.saving_share_q5)} of the saving and {pct(r.spend_share_q5)} of spending; poorest {pct(r.saving_share_q1)} and {pct(r.spend_share_q1)}; Kakwani {r.kakwani:.3f}"
         )
-        vc.fifth_profile(main_t, "EU27_2020", "food_drink", P).to_csv(RESULTS / f"eu27_profile_{MAIN_WAVE}.csv")
+        eu_prof = vc.fifth_profile(main_t, "EU27_2020", "food_drink", P)
+        eu_prof.to_csv(RESULTS / f"eu27_profile_{MAIN_WAVE}.csv")
+        print(
+            f"EU27, two richest fifths: {pct(eu_prof.share_of_total.iloc[-2:].sum())} of the saving, {pct(eu_prof.spend_share_of_total.iloc[-2:].sum())} of spending; "
+            f"two poorest: {pct(eu_prof.share_of_total.iloc[:2].sum())} and {pct(eu_prof.spend_share_of_total.iloc[:2].sum())}"
+        )
+        print(
+            "benchmarks for the poorest fifth's share: proportional to spending = its spending share; equal sum per household = 20%; fully targeted = 100%"
+        )
 
     section("5. Inequality of real spending: change in the richest/poorest ratio")
     print(f"per 1% fall in food prices: median {pct(food.ratio_change_1pc.median(), 3)}; falls in {(food.ratio_change_1pc < 0).sum()} of {n}")
@@ -283,6 +291,13 @@ def main():
     )
     rows.to_csv(RESULTS / "portugal_2020.csv")
     print(rows.round(2).to_string())
+    print(
+        f"two richest fifths: {rows.saving_share_of_total_pct.iloc[-2:].sum():.1f}% of the saving, {rows.spend_share_of_total_pct.iloc[-2:].sum():.1f}% of spending; "
+        f"two poorest: {rows.saving_share_of_total_pct.iloc[:2].sum():.1f}% and {rows.spend_share_of_total_pct.iloc[:2].sum():.1f}%"
+    )
+    print(
+        f"euros of saving per euro reaching the poorest fifth: {100 / rows.saving_share_of_total_pct.iloc[0]:.2f}; under an equal sum per household: 5.00"
+    )
     print(
         f"euros ratio richest/poorest (per household): {rows.food_hh_eur_month_2020.iloc[-1] / rows.food_hh_eur_month_2020.iloc[0]:.2f}; per adult equivalent: {pt.euros_ae.iloc[-1] / pt.euros_ae.iloc[0]:.2f}"
     )
