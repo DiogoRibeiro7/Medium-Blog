@@ -1,0 +1,338 @@
+
+== Inputs
+wordfreq 3.1.1, CLDR 49; 36 languages
+word lists: 18 large, 18 small
+en  English           Latin    list=large letters=26 kept=96.0% words_text=289023 words_dict=28338
+fr  French            Latin    list=large letters=42 kept=97.9% words_text=302869 words_dict=31525
+de  German            Latin    list=large letters=29 kept=97.2% words_text=622918 words_dict=39394 unseen=ß
+es  Spanish           Latin    list=large letters=33 kept=98.2% words_text=334625 words_dict=35121
+it  Italian           Latin    list=large letters=32 kept=97.4% words_text=302260 words_dict=35380
+pt  Portuguese        Latin    list=large letters=38 kept=98.1% words_text=261017 words_dict=33432
+ca  Catalan           Latin    list=large letters=36 kept=97.8% words_text=178029 words_dict=26920
+ro  Romanian          Latin    list=small letters=31 kept=97.1% words_text=43065 words_dict=43065
+nl  Dutch             Latin    list=large letters=36 kept=97.5% words_text=301616 words_dict=28971
+da  Danish            Latin    list=small letters=29 kept=97.4% words_text=29142 words_dict=29142
+nb  Norwegian Bokmål  Latin    list=large letters=34 kept=97.9% words_text=312275 words_dict=26253
+sv  Swedish           Latin    list=large letters=31 kept=98.2% words_text=333808 words_dict=30817
+is  Icelandic         Latin    list=small letters=32 kept=95.5% words_text=40349 words_dict=40349
+fi  Finnish           Latin    list=large letters=31 kept=97.0% words_text=722293 words_dict=59657
+hu  Hungarian         Latin    list=small letters=31 kept=83.2% words_text=39572 words_dict=39572
+pl  Polish            Latin    list=large letters=32 kept=97.1% words_text=434641 words_dict=49696
+cs  Czech             Latin    list=large letters=41 kept=97.3% words_text=596263 words_dict=52421
+sk  Slovak            Latin    list=small letters=43 kept=96.8% words_text=59227 words_dict=59227
+sl  Slovenian         Latin    list=small letters=25 kept=97.0% words_text=52724 words_dict=52724
+sh  Serbo-Croatian    Latin    list=small letters=27 kept=95.6% words_text=53729 words_dict=53729
+lt  Lithuanian        Latin    list=small letters=32 kept=95.9% words_text=63519 words_dict=63519
+lv  Latvian           Latin    list=small letters=33 kept=96.3% words_text=45010 words_dict=45010
+tr  Turkish           Latin    list=small letters=29 kept=94.5% words_text=60337 words_dict=60337
+id  Indonesian        Latin    list=small letters=26 kept=97.6% words_text=30739 words_dict=30739
+ms  Malay             Latin    list=small letters=26 kept=98.0% words_text=28376 words_dict=28376
+fil Filipino          Latin    list=small letters=27 kept=98.3% words_text=29880 words_dict=29880
+vi  Vietnamese        Latin    list=small letters=89 kept=97.0% words_text=9404 words_dict=9404
+el  Greek             Greek    list=small letters=34 kept=95.2% words_text=42897 words_dict=42897 unseen=ςΰ
+ru  Russian           Cyrillic list=large letters=33 kept=95.5% words_text=668309 words_dict=60477
+uk  Ukrainian         Cyrillic list=large letters=33 kept=94.6% words_text=398836 words_dict=46140 unseen=ʼ
+bg  Bulgarian         Cyrillic list=small letters=30 kept=96.1% words_text=35813 words_dict=35813
+mk  Macedonian        Cyrillic list=large letters=31 kept=97.3% words_text=229075 words_dict=33236
+he  Hebrew            Hebrew   list=large letters=27 kept=96.8% words_text=528803 words_dict=57239
+ar  Arabic            Arabic   list=large letters=36 kept=97.1% words_text=581895 words_dict=56264
+fa  Persian           Arabic   list=small letters=38 kept=95.1% words_text=25625 words_dict=25625
+ur  Urdu              Arabic   list=small letters=38 kept=84.8% words_text=18175 words_dict=18175
+
+== Norvig's table (Google Books, inside words)
+letters 3,563,505,777,820 - words 743,842,922,321 = pairs 2,819,662,855,499
+er 57.8B vs en 41.0B, es 37.8B, ed 32.9B
+re 52.3B vs ri 20.5B, ro 20.5B, ra 19.3B
+letters whose arrow Norvig's top 50 settles: 15; same arrow in wordfreq: 15
+arrows (Norvig, wordfreq): a->n/n b->e/e c->o/o d->e/e e->r/r h->e/e i->n/n l->e/e m->e/e n->d/d o->n/n r->e/e s->t/t t->h/h v->e/e
+SD of log share ratio over the 50 pairs: 0.137 (a typical factor of 1.15)
+largest differences: ou x1.47, io x0.70, of x0.76
+rank correlation of the 50 shares: 0.917
+
+== English, as in the post (standard letters, running text, inside words)
+map: an be co de er fo ge he in ju ke le me nd on pe qu re st th ur ve wa xp yo ze
+loops: er; attractors 1; longest path to the loop 4
+deepest start(s): cfwy; path c->o->n->d->e
+P(u|q) = 97.6%
+P(p|x) = 26.3%
+P(r|e) = 19.5%
+P(e|r) = 29.3%
+P(h|t) = 38.6%
+P(e|h) = 49.3%
+e: r 19.5%, next n 12.5%
+in-degree: e 11, n 3, o 3, r 2, u 2, d 1
+most frequent letters: e 12.01%, t 9.12%, a 8.29%
+
+== Baselines
+uniform random map, n=26: P(one loop) = 0.2337; sqrt(pi/2n) = 0.2458
+uniform random map, n=31: P(one loop) = 0.2149; sqrt(pi/2n) = 0.2251
+uniform random map, n=36: P(one loop) = 0.2001; sqrt(pi/2n) = 0.2089
+inside words: observed one attractor in 24 of 36; expected under shuffle 14.8; under uniform maps 7.6; shuffle P(one) median 0.43 (range 0.00-0.60); most popular target gets a median 29% of the arrows
+with boundary: observed one attractor in 31 of 36; expected under shuffle 17.2; under uniform maps 7.4; shuffle P(one) median 0.48 (range 0.39-0.58); most popular target gets a median 38% of the arrows
+English inside words: shuffle P(one) = 0.463, mean attractors 1.71
+inside words, shuffle with no letter pointing at itself: expected one attractor in 28.0 of 36; P(one) median 0.83; English 0.857
+
+== 36 languages, inside words (standard letters, running text)
+en  er                       attractors=1 basins=[26]
+fr  es                       attractors=1 basins=[42]
+de  end                      attractors=1 basins=[29]
+es  ar / ent                 attractors=2 basins=[26, 7]
+it  on / er                  attractors=2 basins=[21, 11]
+pt  ar / es                  attractors=2 basins=[27, 11]
+ca  estar                    attractors=1 basins=[36]
+ro  er                       attractors=1 basins=[31]
+nl  end / o / ó              attractors=3 basins=[34, 1, 1]
+da  er                       attractors=1 basins=[29]
+nb  er                       attractors=1 basins=[34]
+sv  ar / t / l               attractors=3 basins=[16, 14, 1]
+is  n / p                    attractors=2 basins=[31, 1]
+fi  ne / l / ä               attractors=3 basins=[29, 1, 1]
+hu  el                       attractors=1 basins=[31]
+pl  aniest                   attractors=1 basins=[32]
+cs  enal                     attractors=1 basins=[41]
+sk  alen                     attractors=1 basins=[43]
+sl  an                       attractors=1 basins=[25]
+sh  an                       attractors=1 basins=[27]
+lt  in                       attractors=1 basins=[32]
+lv  iest                     attractors=1 basins=[33]
+tr  ar                       attractors=1 basins=[29]
+id  ang                      attractors=1 basins=[26]
+ms  ang                      attractors=1 basins=[26]
+fil ang                      attractors=1 basins=[27]
+vi  ngiệ / end:ỹ / end:ỵ     attractors=3 basins=[87, 1, 1]
+el  αι / τουσ                attractors=2 basins=[21, 13]
+ru  ан / ов                  attractors=2 basins=[19, 14]
+uk  ан / овід                attractors=2 basins=[21, 12]
+bg  от                       attractors=1 basins=[30]
+mk  от                       attractors=1 basins=[31]
+he  ים                       attractors=1 basins=[27]
+ar  المن                     attractors=1 basins=[36]
+fa  اندر / end:ة             attractors=2 basins=[37, 1]
+ur  کے                       attractors=1 basins=[38]
+one attractor: 24 of 36; more than one: 12 (es, it, pt, nl, sv, is, fi, vi, el, ru, uk, fa)
+of these: with a fixed point 4, with a dead end 2, with two loops of 2+ letters 6
+English arrows by vowel (aeiou) and consonant: {'CC': 4, 'CV': 17, 'VC': 5}; CC: nd st th xp
+en l: le beats ll by a factor 1.16; ll share 16.2%
+en s: st beats se by a factor 1.31; ss share 7.3%
+en e: er beats en by a factor 1.56; ee share 4.5%
+en o: on beats or by a factor 1.24; oo share 3.6%
+en t: th beats to by a factor 2.80; tt share 2.2%
+fixed points (a letter whose likeliest successor is itself): nl:o, nl:ó, sv:t, sv:l, is:n, is:p, fi:l, fi:ä
+languages whose main loop contains their most frequent letter: 24 of 36
+fr: letters followed by another letter in under 1% of uses: àù (max 0.022%)
+it: letters followed by another letter in under 1% of uses: àèìòù (max 0.360%)
+vi: letters followed by another letter in under 1% of uses: ẽỷỹỵ (max 0.713%)
+he: letters followed by another letter in under 1% of uses: ךםןףץ (max 0.048%)
+ar: letters followed by another letter in under 1% of uses: ةى (max 0.137%)
+fa: letters followed by another letter in under 1% of uses: ة (max 0.000%)
+ur: letters followed by another letter in under 1% of uses: ے (max 0.157%)
+he: arrow from final mem ם->י rests on 0.031% of its uses
+
+== 36 languages with a word boundary (standard letters, running text)
+en  English           loops ␣the               greedy word the    rank 1     most frequent: the to and
+fr  French            loops ␣de                greedy word de     rank 1     most frequent: de la le
+de  German            loops ␣den               greedy word den    rank 10    most frequent: die der und
+es  Spanish           loops ␣e                 greedy word e      rank 83    most frequent: de la que
+it  Italian           loops ␣di                greedy word di     rank 1     most frequent: di e che
+pt  Portuguese        loops ␣de                greedy word de     rank 1     most frequent: de a o
+ca  Catalan           loops ␣de                greedy word de     rank 1     most frequent: de la a
+ro  Romanian          loops ␣de                greedy word de     rank 1     most frequent: de în și
+nl  Dutch             loops ␣den / o / ó       greedy word den    rank 308   most frequent: de van het
+da  Danish            loops ␣de                greedy word de     rank 17    most frequent: i og er
+nb  Norwegian Bokmål  loops ␣st                greedy word st     rank 1307  most frequent: i og er
+sv  Swedish           loops ␣st / l            greedy word st     rank 1135  most frequent: är det att
+is  Icelandic         loops ␣st / p            greedy word st     rank 2158  most frequent: og í á
+fi  Finnish           loops ␣ka / l            greedy word ka     rank 10075 most frequent: ja on ei
+hu  Hungarian         loops ␣a / el            greedy word a      rank 1     most frequent: a az és
+pl  Polish            loops ␣po                greedy word po     rank 19    most frequent: w i nie
+cs  Czech             loops ␣po                greedy word po     rank 24    most frequent: a se v
+sk  Slovak            loops ␣sto               greedy word sto    rank 2140  most frequent: a v sa
+sl  Slovenian         loops ␣ste               greedy word ste    rank 117   most frequent: je in v
+sh  Serbo-Croatian    loops ␣sta               greedy word sta    rank 1794  most frequent: je u i
+lt  Lithuanian        loops ␣pai               greedy word pai    rank 55206 most frequent: ir kad į
+lv  Latvian           loops ␣pa                greedy word pa     rank 61    most frequent: un ir ar
+tr  Turkish           loops ␣bi                greedy word bi     rank 549   most frequent: ve bir bu
+id  Indonesian        loops ␣dan               greedy word dan    rank 2     most frequent: yang dan di
+ms  Malay             loops ␣dan               greedy word dan    rank 2     most frequent: yang dan di
+fil Filipino          loops ␣ng                greedy word ng     rank 2     most frequent: sa ng ang
+vi  Vietnamese        loops ␣th                greedy word th     rank 2016  most frequent: là và có
+el  Greek             loops ␣το                greedy word το     rank 2     most frequent: και το να
+ru  Russian           loops ␣по                greedy word по     rank 8     most frequent: в и на
+uk  Ukrainian         loops ␣в                 greedy word в      rank 1     most frequent: в на не
+bg  Bulgarian         loops ␣сто               greedy word сто    rank 1989  most frequent: на и в
+mk  Macedonian        loops ␣на                greedy word на     rank 1     most frequent: на и во
+he  Hebrew            loops ␣ה                 greedy word ה      rank 41    most frequent: את של לא
+ar  Arabic            loops ␣ال                greedy word ال     rank 224   most frequent: في من على
+fa  Persian           loops ␣ا                 greedy word ا      rank 1310  most frequent: و به در
+ur  Urdu              loops ␣کے                greedy word کے     rank 1     most frequent: کے کی ہے
+greedy word is the most frequent word: 10 of 36; in the top 10: 16; ranked below 1,000: 10 (nb, sv, is, fi, sk, sh, lt, vi, bg, fa)
+more than one attractor with boundary: 5 (nl, sv, is, fi, hu)
+en P(t|_) = 15.1%
+en P(h|t) = 29.2%
+en P(e|h) = 43.8%
+en P(_|e) = 35.8%
+en P(r|e) = 12.5%
+es after _: e 12.1%, d 11.5%, l 9.0%
+es after e: _ 30.7%, n 16.3%, s 15.1%
+es after d: e 48.9%, o 19.1%, a 13.0%
+de after _: d 15.0%, s 8.7%, a 7.5%
+de after d: e 40.1%, _ 18.5%, i 17.5%
+de after e: n 21.7%, r 21.4%, _ 17.7%
+de after n: _ 42.4%, d 12.7%, e 10.2%
+fi after _: k 10.8%, t 9.7%, o 9.1%
+fi after k: a 21.9%, u 13.0%, i 13.0%
+fi after a: _ 32.5%, n 12.1%, a 11.0%
+he after _: ה 15.8%, א 11.2%, ל 10.7%
+he after ה: _ 40.4%, י 8.2%, ו 6.5%
+ar after _: ا 23.9%, م 10.1%, و 7.4%
+ar after ا: ل 41.4%, _ 15.9%, ن 6.0%
+ar after ل: _ 12.3%, م 10.4%, ا 8.8%
+
+== Alphabet: folding accents and positional forms
+inside words: loops change in 16 of 36
+  es: ar / ent -> ent
+  nl: end / o / ó -> end / o
+  is: n / p -> ar / n / p
+  fi: ne / l / ä -> an
+  hu: el -> esz
+  pl: aniest -> al / estowi
+  cs: enal -> en
+  sk: alen -> al
+  lt: in -> is
+  lv: iest -> as
+  tr: ar -> in
+  vi: ngiệ / end:ỹ / end:ỵ -> ngie
+  el: αι / τουσ -> αι / ουστ
+  uk: ан / овід -> ан
+  he: ים -> ימות
+  ar: المن -> ال
+with boundary: loops change in 9 of 36
+  nl: ␣den / o / ó -> ␣den / o
+  sv: ␣st / l -> ␣a / l
+  is: ␣st / p -> ␣a / p
+  fi: ␣ka / l -> ␣ka
+  hu: ␣a / el -> ␣a
+  cs: ␣po -> ␣ste
+  lt: ␣pai -> ␣pa
+  vi: ␣th -> ␣tha
+  ar: ␣ال -> ال
+vi: letters 89 standard, 22 folded
+he: letters 27 standard, 22 folded
+el: letters 34 standard, 24 folded
+fi: letters 31 standard, 26 folded
+
+== Weighting: running text against a dictionary (standard letters)
+inside words: loops change in 27 of 36
+  fr: es -> ent / end:à / end:ù
+  de: end -> eng
+  es: ar / ent -> arent
+  it: on / er -> int / er / end:à / end:ò / end:ù
+  pt: ar / es -> ar
+  ca: estar -> arest
+  nl: end / o / ó -> end / é / ó
+  sv: ar / t / l -> ar / p / end:à
+  fi: ne / l / ä -> en / l / ä
+  hu: el -> el / ni
+  pl: aniest -> ien
+  cs: enal -> al / ením
+  sk: alen -> en
+  sl: an -> in
+  sh: an -> ijen
+  tr: ar -> erind
+  fil: ang -> an
+  vi: ngiệ / end:ỹ / end:ỵ -> ngi / end:ỹ / end:ỵ
+  el: αι / τουσ -> αντ
+  ru: ан / ов -> овалитен
+  uk: ан / овід -> ан / ит
+  bg: от -> итен
+  mk: от -> атен
+  he: ים -> יםאות / end:ף / end:ץ
+  ar: المن -> الم / end:ة
+  fa: اندر / end:ة -> اند / end:ة
+  ur: کے -> ان
+with boundary: loops change in 32 of 36
+  en: ␣the -> ␣s / er
+  fr: ␣de -> ␣cont
+  de: ␣den -> ␣sten
+  es: ␣e -> ␣co
+  it: ␣di -> ␣co
+  pt: ␣de -> ␣co
+  ca: ␣de -> ␣ca
+  ro: ␣de -> ␣core
+  nl: ␣den / o / ó -> ␣ben / ó
+  da: ␣de -> ␣st
+  nb: ␣st -> ␣ster
+  sv: ␣st / l -> ␣st / p
+  hu: ␣a / el -> ␣k / el
+  pl: ␣po -> ␣powa
+  cs: ␣po -> ␣pova
+  sk: ␣sto -> ␣pova
+  sl: ␣ste -> ␣pra
+  sh: ␣sta -> ␣po
+  lt: ␣pai -> ␣pas / in
+  tr: ␣bi -> ␣kar
+  id: ␣dan -> ␣meran
+  ms: ␣dan -> ␣meran
+  fil: ␣ng -> an
+  vi: ␣th -> ␣t
+  el: ␣το -> ␣α
+  ru: ␣по -> ␣пова
+  uk: ␣в -> ␣пова
+  bg: ␣сто -> ␣пра
+  mk: ␣на -> ␣пра
+  ar: ␣ال -> ␣الم
+  fa: ␣ا -> ␣م
+  ur: ␣کے -> ␣ا
+en dictionary with boundary: ␣s / er; basins [14, 13]
+en dictionary P(s|_) = 11.0%
+en dictionary P(t|_) = 4.9%
+en dictionary P(r|e) = 15.9%
+en dictionary P(_|e) = 15.3%
+en dictionary P(_|s) = 38.1%
+rows with tied dictionary counts (broken by running text): 36
+
+== All eight choices together
+distinct sets of loops across the 8 choices: 3: 7, 4: 8, 5: 10, 6: 7, 7: 3, 8: 1
+English: 3; most: nl 8
+one attractor under all 8 choices: 14 (de, ca, da, sk, sl, sh, lv, tr, id, ms, fil, bg, mk, ur)
+
+== Robustness to the corpus
+noise: every count times exp(0.137 Z), 1000 draws per language
+inside words: loops unchanged in a median 54% of draws; at least 95% in 3 of 36; below 50% in 16
+  most fragile: ru 15%, es 16%, cs 17%, sk 18%, pl 20%
+with boundary: loops unchanged in a median 52% of draws; at least 95% in 1 of 36; below 50% in 17
+  most fragile: nl 16%, bg 30%, ms 30%, hu 34%, ru 36%
+English inside words, outcomes under noise: er 81%, er / l 18%, er / ind 0%, end / l 0%; one attractor 81%
+English with boundary, outcomes under noise: ␣the 71%, ␣t 18%, ␣an 7%, l / ␣the 3%; one attractor 96%
+English inside words: unchanged 80.6%; margins e 1.56, r 2.54
+English with boundary: unchanged 71.2%; margins _ 1.31, t 1.19, h 2.67, e 2.86
+
+== Randomness instead of the maximum (standard letters, running text, with boundary)
+every stationary solve has residual |pi P - pi| below 1e-12: True
+English, share of time on the loop _the: T=1.0 40%, T=0.7 48%, T=0.5 57%, T=0.4 63%, T=0.3 73%, T=0.25 79%, T=0.2 85%, T=0.15 91%, T=0.1 96%, T=0.07 99%, T=0.05 100%, T=0.03 100%
+English, bits per symbol: T=1.0 3.40, T=0.7 2.91, T=0.5 2.33, T=0.4 1.90, T=0.3 1.35, T=0.25 1.03, T=0.2 0.72, T=0.15 0.46, T=0.1 0.26, T=0.07 0.14, T=0.05 0.06, T=0.03 0.01
+at T=1 the word loop takes a median 33% of the time (range 21%-46%)
+at T=0.03 the loop takes a median 97%; lowest: cs 76%, ru 82%, ro 84%
+  cs: closest call on the loop _->p, margin 1.011
+  ru: closest call on the loop _->п, margin 1.011
+highest T in the grid where the loop takes half the time: median 0.45
+nl: T=1.0: ␣den 45.9%, o 5.0%, ó 0.0%; T=0.2: ␣den 87.6%, o 1.0%, ó 0.0%; T=0.05: ␣den 99.9%, o 0.0%, ó 0.0%
+sv: T=1.0: ␣st 30.5%, l 4.1%; T=0.2: ␣st 59.9%, l 0.2%; T=0.05: ␣st 97.6%, l 0.0%
+is: T=1.0: ␣st 27.4%, p 0.6%; T=0.2: ␣st 61.2%, p 0.0%; T=0.05: ␣st 97.5%, p 0.0%
+fi: T=1.0: ␣ka 28.6%, l 4.9%; T=0.2: ␣ka 57.7%, l 2.2%; T=0.05: ␣ka 93.0%, l 0.3%
+hu: T=1.0: ␣a 26.4%, el 13.5%; T=0.2: ␣a 97.9%, el 0.4%; T=0.05: ␣a 100.0%, el 0.0%
+text from the English chain:
+  T=1.0: 'wo heronjuth terr ichatarar s finered d t asopour ansthen we is isus s'
+  T=0.5: 'wo ined thin teng l n t t t t f plld alen are the anghe t we ir isthar'
+  T=0.25: 'the the the as the an t t t t in the an t an the ale the athe t the an'
+  greedy: 'the the the the the the the the the the '
+text from the French chain:
+  T=1.0: 'ux ensonsete s roimal s mbmar dengone des botépri à ste obuiais fowl p'
+  T=0.5: 'tr de pe le as pr de conons maione de den courere antions s ce aiste m'
+  T=0.25: 'pr de le le an le de de e lan de de de de de e me coure l pa de des de'
+  greedy: 'de de de de de de de de de de de de de d'
+text from the Finnish chain:
+  T=1.0: 'vä kopunkoti test lai talen sa najolka lukankonssa osuollate lo ltävan'
+  T=0.5: 'vä kistaa te talla heisen paa kin sin jaleen on sa orrillari lla tän s'
+  T=0.25: 'vi ka ta sta ta ta ja ta ka sen on ka ka ka sin sa on olla ka s kotta '
+  greedy: 'ka ka ka ka ka ka ka ka ka ka ka ka ka k'

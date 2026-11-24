@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Greedy letter chains in 36 languages: where following the likeliest next letter ends, and why"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-24
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/letter-loops"
+references:
+  - type: software
+    title: "rspeer/wordfreq: v3.0 (v3.0.2)"
+    authors:
+      - family-names: Speer
+        given-names: Robyn
+    year: 2022
+    doi: "10.5281/zenodo.7199437"
+  - type: data
+    title: "Unicode Common Locale Data Repository (CLDR) 49, exemplar characters (cldr-misc-full 49.0.0)"
+    authors:
+      - name: "Unicode Consortium"
+    year: 2026
+    url: "https://cldr.unicode.org/"
+  - type: webpage
+    title: "English Letter Frequency Counts: Mayzner Revisited or ETAOIN SRHLDCU"
+    authors:
+      - family-names: Norvig
+        given-names: Peter
+    year: 2013
+    url: "https://norvig.com/mayzner.html"
+  - type: article
+    title: "Probability of Indecomposability of a Random Mapping Function"
+    authors:
+      - family-names: Katz
+        given-names: Leo
+    year: 1955
+    journal: "The Annals of Mathematical Statistics"
+    doi: "10.1214/aoms/1177728496"
