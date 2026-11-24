@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-248 top-level folders: 77 belong to 24 series, 100 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
+249 top-level folders: 77 belong to 24 series, 101 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -367,6 +367,7 @@ Prices, labour, taxes, growth and elections.
 - [`portugal-labour-share/`](portugal-labour-share/) — Portugal's labour share under eighteen definitions
 - [`portugal-labour-share-industries/`](portugal-labour-share-industries/) — Portugal's labour share by industry, 1995–2024
 - [`portugal-realtime-output-gap/`](portugal-realtime-output-gap/) — Real-Time Output Gaps and Fiscal Rules: Portugal and the EU, 2011–2022
+- [`uk-innovation-ownership/`](uk-innovation-ownership/) — Who owns UK innovation: foreign ownership of inventions and ICT jobs, the UK against the EU, 1980–2021
 
 #### History, Measured
 
