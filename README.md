@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-247 top-level folders: 77 belong to 24 series, 99 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
+248 top-level folders: 77 belong to 24 series, 100 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 14 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -380,6 +380,7 @@ Questions from science and everyday life, checked with code.
 
 - [`bayes-problem-first/`](bayes-problem-first/) — Teaching Bayesian statistics problem first: a vaccine trial, the Challenger O-rings and a sampler check
 - [`forecast-horizon/`](forecast-horizon/) — How far ahead weather can be forecast: error growth in Lorenz's models and in the real atmosphere
+- [`imperfect-test-prevalence/`](imperfect-test-prevalence/) — Prevalence from an imperfect test: the Santa Clara serosurvey, worked through to two decisions
 - [`ranking-extremes/`](ranking-extremes/) — Small samples at both ends of a country ranking
 - [`rare-flags/`](rare-flags/) — What a flag means when the thing flagged is rare
 - [`xx-equals-49/`](xx-equals-49/) — xˣ = 49
