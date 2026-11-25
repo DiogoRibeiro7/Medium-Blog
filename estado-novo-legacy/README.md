@@ -25,7 +25,7 @@ All numbers are from `output.txt`.
 - **The age profile today (Eurostat LFS, 2025).**
   - At most lower secondary education: 59.3% of Portuguese aged 55–64 (highest in the EU) and 14.8% of those aged 25–34 (EU 13.5%).
   - In 2011, 49.0% of Portuguese managers had at most lower secondary education (EU 10.6%); in 2025, 16.2%.
-  - In 2015 the bands aged 45–64 (born 1951–1970, nearly all of whom started school before 1974) carried 67% of the gap to the EU27 in that share; in 2025, 83%.
+  - In 2015 the bands aged 45–64 (born 1951–1970, most of whom started school before 1974) carried 67% of the gap to the EU27 in that share; in 2025, 83%.
   - If every cohort keeps its attainment as it ages and new 25–34s match today's, the gap to the EU27 in the 25–64 share falls from 15.9 points to 7.6 in 2035 and 3.4 in 2045 (equal weights for the four age bands).
 - **Development accounting (Penn World Table 10.01, 2019).**
   - Output per worker is 62.9% of the reference. The log gap of −0.464 splits into capital +0.233, human capital −0.322 and productivity −0.375.
