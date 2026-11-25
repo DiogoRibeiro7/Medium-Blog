@@ -234,6 +234,15 @@ def main():
         np.mean(lc.cohort_shift([low.loc[("EU27_2020", a), last_ed] for a in bands], low.loc[("EU27_2020", "Y25-34"), last_ed], k)) for k in (0, 1, 2)
     ]
     print(f"   gap Portugal minus EU27, points: {fmt(pt[0] - eu[0], 1)}, {fmt(pt[1] - eu[1], 1)}, {fmt(pt[2] - eu[2], 1)}")
+    print("share of the Portugal-EU27 gap in the low-education share carried by each band (equal weights):")
+    for y in (2015, last_ed):
+        gaps = pd.Series({a: low.loc[("PT", a), y] - low.loc[("EU27_2020", a), y] for a in bands})
+        shares = 100 * gaps / gaps.sum()
+        print(
+            f"   {y}: "
+            + "  ".join(f"{a[1:]} {fmt(gaps[a], 1)} pts ({shares[a]:.0f}%)" for a in bands)
+            + f"; 45-64 together {shares[['Y45-54', 'Y55-64']].sum():.0f}%"
+        )
 
     section("6. Managers (ISCO-08 group 1) with at most lower secondary education, ages 20-64 (Eurostat lfsa_egised)")
     eg = eurostat("lfsa_egised")
