@@ -30,6 +30,7 @@ All numbers are from `output.txt`.
   - Output per worker is 62.9% of the reference. The log gap of −0.464 splits into capital +0.233, human capital −0.322 and productivity −0.375.
   - The human-capital term is 69% of the gap; with the reference's human capital Portugal would be at 86.8%. With half the PWT returns to schooling the term is 35% of the gap.
   - Portugal's human-capital index is the lowest of the 16 comparison countries.
+  - PWT's index covers adults of all ages. With Barro-Lee schooling of the 25–64s instead (2015), the human-capital term is −0.190, 42% of the gap, against −0.335 (74%) with PWT's index in the same year.
 - **Convergence 1995–2025 (25 members, Luxembourg and Ireland excluded).** Growth of relative GDP per head regressed on its 1995 level and 1995 schooling: 0.0375 per year of schooling (90% bootstrap interval 0.0084 to 0.0700). With the median member's schooling, Portugal's fitted 2025 level is 10.8 points higher (90% interval +2.5 to +19.1).
 
 ## Data
@@ -63,6 +64,7 @@ The workflow `.github/workflows/estado-novo-legacy.yml` runs all of this from a 
 - **Human capital.** PWT's piecewise Mincer function of years of schooling *s*: returns of 0.134 a year for the first four years, 0.101 for the next four and 0.068 after eight; the index is exp(*φ*(*s*)).
 - **Development accounting.** With output per worker *y*, capital–output ratio *K*/*Y* and human capital *h*, ln *y* = *α*/(1 − *α*) · ln(*K*/*Y*) + ln *h* + ln *A*, with *α* = 1/3. Each term is the log difference from the geometric mean of the reference countries; productivity *A* is the residual. Output and capital are PWT's output-side series at current PPPs (`cgdpo`, `cn`) over persons engaged.
 - **Convergence regression.** ln(*y*₂₀₂₅/*y*₁₉₉₅) = *a* + *b* · ln *y*₁₉₉₅ + *c* · *s*₁₉₉₅, where *y* is GDP per head in PPS relative to the EU27 and *s* adult schooling in 1995 (Barro-Lee v3). Intervals from 5,000 pairs-bootstrap draws (seed 20261125).
+- **Which human capital.** PWT's index is built from schooling of the adult population of all ages, including the over-65s, who in Portugal have very little schooling. The 2015 check replaces it with Barro-Lee v3 schooling of the 25–64s, mapped through the same Mincer function, for Portugal and each reference country.
 - **What the numbers cannot settle.** The counterfactuals hold everything else fixed; they measure how large the schooling channel is, not that schooling alone would have closed the gap.
 
 ## Files

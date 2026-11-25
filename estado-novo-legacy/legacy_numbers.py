@@ -306,6 +306,21 @@ def main():
         )
     a90 = acc[acc["year"] == 1990].set_index("country")
     print(f"change in Portugal's human-capital term 1990-2019: {a90.loc['PRT', 'human_capital']:+.3f} -> {a19.loc['PRT', 'human_capital']:+.3f}")
+    # PWT's index covers the adult population of all ages; check it against Barro-Lee schooling of the 25-64s, the working ages.
+    blall = bl.pivot_table(index="WBcode", columns="year", values="yr_sch")
+    t15 = pwt[pwt["year"] == 2015].set_index("isocode")
+    ref15 = t15.loc[[c for c in lc.W12 if c in t15.index]]
+    y_ref, ky_ref = lc.geometric_mean(ref15["y"]), lc.geometric_mean(ref15["ky"])
+    h_bl = pd.Series(np.exp(lc.mincer_phi(blall[2015].values)), index=blall.index)
+    for label, h_pt, h_ref in (
+        ("PWT human capital index", t15.loc["PRT", "hc"], lc.geometric_mean(ref15["hc"])),
+        ("Barro-Lee v3, ages 25-64", h_bl["PRT"], lc.geometric_mean(h_bl[lc.W12])),
+    ):
+        r = lc.accounting(t15.loc["PRT", "y"], t15.loc["PRT", "ky"], h_pt, y_ref, ky_ref, h_ref)
+        print(
+            f"2015 with {label}: log gap {r['total']:+.3f}; human capital {r['human_capital']:+.3f} ({100 * r['human_capital'] / r['total']:.0f}% of the gap); "
+            f"productivity {r['productivity']:+.3f}; with the reference's human capital {100 * r['relative_output_with_ref_h']:.1f}%"
+        )
 
     # ------------------------------------------------------------------------------------------------ convergence since 1995
     section("8. Convergence 1995-2025: growth of relative GDP per head on its 1995 level and 1995 adult schooling")
