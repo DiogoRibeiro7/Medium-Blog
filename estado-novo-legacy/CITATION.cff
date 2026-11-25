@@ -1,0 +1,67 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Portugal at the tail of the EU: schooling under the Estado Novo and the income gap, 1900-2025"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-25
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/estado-novo-legacy"
+references:
+  - type: data
+    title: "Eurostat: GDP per head, labour productivity and adult educational attainment in the EU member states, 1975-2025"
+    authors:
+      - name: "Eurostat"
+    repository-code: "https://github.com/DiogoRibeiro7/data/tree/main/datasets/eurostat-eu-convergence-education"
+  - type: article
+    title: "A New Data Set of Educational Attainment in the World, 1950-2010"
+    authors:
+      - family-names: Barro
+        given-names: Robert J.
+      - family-names: Lee
+        given-names: Jong-Wha
+    journal: "Journal of Development Economics"
+    volume: 104
+    start: 184
+    end: 198
+    year: 2013
+    doi: "10.1016/j.jdeveco.2012.10.001"
+  - type: book
+    title: "Education Matters: Global Schooling Gains from the 19th to the 21st Century"
+    authors:
+      - family-names: Barro
+        given-names: Robert J.
+      - family-names: Lee
+        given-names: Jong-Wha
+    publisher:
+      name: "Oxford University Press"
+    year: 2015
+  - type: article
+    title: "The Next Generation of the Penn World Table"
+    authors:
+      - family-names: Feenstra
+        given-names: Robert C.
+      - family-names: Inklaar
+        given-names: Robert
+      - family-names: Timmer
+        given-names: Marcel P.
+    journal: "American Economic Review"
+    volume: 105
+    issue: 10
+    start: 3150
+    end: 3182
+    year: 2015
+    doi: "10.1257/aer.20130954"
+  - type: article
+    title: "Maddison style estimates of the evolution of the world economy: A new 2023 update"
+    authors:
+      - family-names: Bolt
+        given-names: Jutta
+      - family-names: van Zanden
+        given-names: Jan Luiten
+    journal: "Journal of Economic Surveys"
+    year: 2024
+    doi: "10.1111/joes.12618"
