@@ -17,11 +17,15 @@ All numbers are from `output.txt`.
   - Across 22 European countries, the gain of 1925–1975 regressed on the 1925 level predicts 3.74 years for Portugal; it gained 2.18, a residual of −1.56, third lowest after Turkey and Norway. Spain's residual is −1.42.
   - Countries ruled by communist parties after 1945 have a mean residual of +0.73; Russia went from 1.20 to 6.50 years.
   - The seven countries that started between 2.0 and 3.5 years in 1925 led Portugal by 1.76 years then and by 3.52 in 1975.
+  - Had Portugal gained what the regression predicts, it would have had 4.86 years in 1975; with Russia's gain, 6.42. In PWT human capital, those paths close 48% and 89% of the 1975 gap to the seven.
 - **Persistence (Barro and Lee v3, EU members, 1950–2015).**
   - Portugal has the lowest adult schooling of the 27 in every five-year observation from 1950 to 2015.
   - Czechia and Slovakia had Portugal's 2015 level (9.41 years) in 1970; Spain, Greece and Italy in 2000.
   - Rank correlation of the members' levels between 1975 and 2015: 0.75.
-- **The age profile today (Eurostat LFS, 2025).** At most lower secondary education: 59.3% of Portuguese aged 55–64 (highest in the EU) and 14.8% of those aged 25–34 (EU 13.5%). In 2011, 49.0% of Portuguese managers had at most lower secondary education (EU 10.6%); in 2025, 16.2%.
+- **The age profile today (Eurostat LFS, 2025).**
+  - At most lower secondary education: 59.3% of Portuguese aged 55–64 (highest in the EU) and 14.8% of those aged 25–34 (EU 13.5%).
+  - In 2011, 49.0% of Portuguese managers had at most lower secondary education (EU 10.6%); in 2025, 16.2%.
+  - If every cohort keeps its attainment as it ages and new 25–34s match today's, the gap to the EU27 in the 25–64 share falls from 15.9 points to 7.6 in 2035 and 3.4 in 2045 (equal weights for the four age bands).
 - **Development accounting (Penn World Table 10.01, 2019).**
   - Output per worker is 62.9% of the reference. The log gap of −0.464 splits into capital +0.233, human capital −0.322 and productivity −0.375.
   - The human-capital term is 69% of the gap; with the reference's human capital Portugal would be at 86.8%. With half the PWT returns to schooling the term is 35% of the gap.
@@ -65,10 +69,10 @@ The workflow `.github/workflows/estado-novo-legacy.yml` runs all of this from a 
 
 - **`fetch.py`**: download and verify the eight pinned files.
 - **`jsonstat.py`**: read a JSON-stat 2.0 response into a table.
-- **`legacy_core.py`**: relative income, compound growth, catch-up residuals, the PWT human-capital function, development accounting, the convergence regression and its bootstrap.
+- **`legacy_core.py`**: relative income, compound growth, catch-up residuals, the PWT human-capital function, development accounting, the convergence regression and its bootstrap, the cohort projection.
 - **`legacy_numbers.py`**: all numbers, printed in order, and the tables in `results/`.
 - **`figures.py`**: the six figures.
-- **`tests/test_core.py`**: 8 checks.
+- **`tests/test_core.py`**: 9 checks.
 
 ## Licence
 

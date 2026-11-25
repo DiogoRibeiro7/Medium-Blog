@@ -70,6 +70,11 @@ class TestCore(unittest.TestCase):
         boot = lc.bootstrap_convergence(fit["data"], 50, 3)
         np.testing.assert_allclose(boot[:, 2], 0.05, atol=1e-8)
 
+    def test_cohort_shift(self):
+        self.assertEqual(lc.cohort_shift([10.0, 20.0, 30.0, 40.0], 5.0, 0), [10.0, 20.0, 30.0, 40.0])
+        self.assertEqual(lc.cohort_shift([10.0, 20.0, 30.0, 40.0], 5.0, 1), [5.0, 10.0, 20.0, 30.0])
+        self.assertEqual(lc.cohort_shift([10.0, 20.0, 30.0, 40.0], 5.0, 4), [5.0, 5.0, 5.0, 5.0])
+
     def test_first_year_reaching(self):
         s = pd.Series({1950: 5.0, 1960: 7.0, 1970: 9.5})
         self.assertEqual(lc.first_year_reaching(s, 7.0), 1960.0)

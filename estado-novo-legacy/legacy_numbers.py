@@ -127,6 +127,10 @@ def main():
         print(
             f"Portugal in {b} with {label} ({fmt(gain, 2)} years): {fmt(p.start + gain, 2)} years; human capital x{float(lc.human_capital_ratio(p.start + gain, p.end)):.3f}"
         )
+    peer_gap = np.log(float(lc.human_capital_ratio(peers["end"].mean(), p.end)))
+    for label, level in (("its predicted gain", p.start + p.predicted_gain), ("Russia's gain", p.start + cu.loc["RUS", "gain"])):
+        closed = np.log(float(lc.human_capital_ratio(level, p.end)))
+        print(f"   share of the {b} human-capital gap to the seven peers (log {peer_gap:.3f}) closed with {label}: {100 * closed / peer_gap:.0f}%")
     gap_a, gap_b = peers["start"].mean() - p.start, peers["end"].mean() - p.end
     print(
         f"their mean {a} level {fmt(peers['start'].mean(), 2)}; gap to Portugal {fmt(gap_a, 2)} years in {a}, {fmt(gap_b, 2)} in {b} (x{gap_b / gap_a:.2f})"
@@ -216,6 +220,20 @@ def main():
     print(
         f"Portugal 25-34 in 2000 (born 1966-1975): {fmt(low.loc[('PT', 'Y25-34'), 2000], 1)}%; the same cohort aged 45-54 in 2020: {fmt(low.loc[('PT', 'Y45-54'), 2020], 1)}%"
     )
+    bands = ["Y25-34", "Y35-44", "Y45-54", "Y55-64"]
+    print(f"cohort projection, equal weights for the four ten-year bands; each cohort keeps its {last_ed} share and new 25-34s have today's:")
+    for g in ("PT", "EU27_2020", "ES"):
+        now = [low.loc[(g, a), last_ed] for a in bands]
+        paths = [np.mean(lc.cohort_shift(now, now[0], k)) for k in (0, 1, 2)]
+        print(
+            f"   {g:10s} {last_ed} {fmt(paths[0], 1)} (published 25-64: {fmt(low.loc[(g, 'Y25-64'), last_ed], 1)}); "
+            f"{last_ed + 10} {fmt(paths[1], 1)}; {last_ed + 20} {fmt(paths[2], 1)}"
+        )
+    pt = [np.mean(lc.cohort_shift([low.loc[("PT", a), last_ed] for a in bands], low.loc[("PT", "Y25-34"), last_ed], k)) for k in (0, 1, 2)]
+    eu = [
+        np.mean(lc.cohort_shift([low.loc[("EU27_2020", a), last_ed] for a in bands], low.loc[("EU27_2020", "Y25-34"), last_ed], k)) for k in (0, 1, 2)
+    ]
+    print(f"   gap Portugal minus EU27, points: {fmt(pt[0] - eu[0], 1)}, {fmt(pt[1] - eu[1], 1)}, {fmt(pt[2] - eu[2], 1)}")
 
     section("6. Managers (ISCO-08 group 1) with at most lower secondary education, ages 20-64 (Eurostat lfsa_egised)")
     eg = eurostat("lfsa_egised")

@@ -152,3 +152,15 @@ def first_year_reaching(series: pd.Series, level: float) -> float:
     """First year in which a series reaches at least `level`; NaN if never."""
     hit = series[series >= level]
     return float(hit.index.min()) if len(hit) else float("nan")
+
+
+def cohort_shift(shares: list[float], incoming: float, decades: int) -> list[float]:
+    """Shares of four ten-year age bands (25-34 to 55-64) after `decades` decades.
+
+    Each cohort keeps its share as it ages one band per decade, the oldest band leaves, and every new
+    25-34 band has the share `incoming`. Nobody gains or loses a qualification and nobody migrates.
+    """
+    bands = list(shares)
+    for _ in range(decades):
+        bands = [incoming] + bands[:-1]
+    return bands
