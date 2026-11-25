@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-250 top-level folders: 77 belong to 24 series, 101 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 15 not yet sorted.
+251 top-level folders: 77 belong to 24 series, 102 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 15 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -374,6 +374,7 @@ Prices, labour, taxes, growth and elections.
 Questions about the past, tested on historical records.
 
 - [`battle-numbers/`](battle-numbers/) — Numbers and victory in 660 battles, 1600 to 1982
+- [`estado-novo-legacy/`](estado-novo-legacy/) — Portugal at the tail of the EU: schooling under the Estado Novo and the income gap, 1900–2025
 
 #### Science and Mathematics
 
