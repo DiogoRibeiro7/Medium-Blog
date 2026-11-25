@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-eu-convergence-education",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "c5efef4299c409cfd9881317f4166e24ffa40084",
+  "record": "datasets/eurostat-eu-convergence-education/metadata.yaml",
+  "folder": "estado-novo-legacy",
+  "target": "estado-novo-legacy/data",
+  "files": [
+    {
+      "path": "raw/nama_10_pc.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/c5efef4299c409cfd9881317f4166e24ffa40084/datasets/eurostat-eu-convergence-education/raw/nama_10_pc.json",
+      "bytes": 53748,
+      "sha256": "15b5e3f72789bbd76fa4c17f890aae40d80cd11c0a2f6acce7265d52a7b1e4ff"
+    },
+    {
+      "path": "raw/edat_lfse_03.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/c5efef4299c409cfd9881317f4166e24ffa40084/datasets/eurostat-eu-convergence-education/raw/edat_lfse_03.json",
+      "bytes": 118970,
+      "sha256": "c8babca938a802f7ae70b9ef5ca4c639bdce2042b48fb8c2cd400e0edcaee2e3"
+    },
+    {
+      "path": "raw/lfsa_egised.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/c5efef4299c409cfd9881317f4166e24ffa40084/datasets/eurostat-eu-convergence-education/raw/lfsa_egised.json",
+      "bytes": 168673,
+      "sha256": "63077f2c73e4b0511faa8d5e95091665cf525b5e155b66e959d48fe8d3417fbd"
+    },
+    {
+      "path": "raw/nama_10_lp_ulc.json",
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/c5efef4299c409cfd9881317f4166e24ffa40084/datasets/eurostat-eu-convergence-education/raw/nama_10_lp_ulc.json",
+      "bytes": 26489,
+      "sha256": "456047b0f1b71e4e659dc7104696a5feb72a3dde045995ed0a10286bc62fe071"
+    }
+  ]
+}

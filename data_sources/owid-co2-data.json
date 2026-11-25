@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "dataset": "owid-co2-data",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "c5efef4299c409cfd9881317f4166e24ffa40084",
+  "record": "external/owid-co2-data/metadata.yaml",
+  "folder": "estado-novo-legacy",
+  "target": "estado-novo-legacy/data",
+  "files": [
+    {
+      "path": "external/owid-co2-data.csv",
+      "url": "https://raw.githubusercontent.com/owid/co2-data/22d9a01321ddec951b36f2bfc66e05dc6ad50ad8/owid-co2-data.csv",
+      "bytes": 15242657,
+      "sha256": "300fb68fe6b0d514ed7f5cf773df77d7e24a495438d84b76e2f39eba1584a0f7"
+    }
+  ],
+  "consumers": [
+    "estado-novo-legacy/legacy_numbers.py"
+  ]
+}

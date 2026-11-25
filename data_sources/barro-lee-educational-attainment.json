@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "dataset": "barro-lee-educational-attainment",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "c5efef4299c409cfd9881317f4166e24ffa40084",
+  "record": "external/barro-lee-educational-attainment/metadata.yaml",
+  "folder": "estado-novo-legacy",
+  "target": "estado-novo-legacy/data",
+  "files": [
+    {
+      "path": "external/BL_v3_MF2564.csv",
+      "url": "https://raw.githubusercontent.com/barrolee/BarroLeeDataSet/ee575b42f659bad7445dfc26d19816ede8000e47/BLData/BL_v3_MF2564.csv",
+      "bytes": 274248,
+      "sha256": "14e6820e4a55bea5d1091e9e2231df21eae09d08c745fe98d02cb59f28063e14"
+    },
+    {
+      "path": "external/OUP_long_MF2564_v1.csv",
+      "url": "https://raw.githubusercontent.com/barrolee/BarroLeeDataSet/ee575b42f659bad7445dfc26d19816ede8000e47/OUP/OUP_long_MF2564_v1.csv",
+      "bytes": 302307,
+      "sha256": "25a660882253ad086afbdf3dc03c3c38d1be3a5744055295555c7d9c7354fe38"
+    }
+  ],
+  "consumers": [
+    "estado-novo-legacy/legacy_numbers.py"
+  ]
+}
