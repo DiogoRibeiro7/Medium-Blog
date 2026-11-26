@@ -175,7 +175,7 @@ def fig5_cycles(summary):
             y = [r["pre_p"], *r["cycle_p"]]
             ax.plot(range(len(y)), y, color=col, lw=2, marker="o", ms=4, label=label(key, summary))
     ax.set_xticks(range(7), ["before\nthe loop", "1st", "2nd", "3rd", "4th", "5th", "6th"])
-    ax.set_xlabel("Repetition of the block")
+    ax.set_xlabel("Pass through the repeating block (the 1st is its first appearance)")
     ax.set_ylabel("Mean probability of the chosen token")
     ax.set_ylim(0, 1)
     style(ax)
