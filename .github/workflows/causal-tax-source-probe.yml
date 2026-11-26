@@ -450,6 +450,19 @@ jobs:
           path: ${{ runner.temp }}/tax-study/outcome-hull/
           retention-days: 7
           if-no-files-found: warn
+      - name: Measure minimum pre-reform convex approximation error
+        if: steps.policy_component_candidates.outcome == 'success'
+        run: |
+          python -m unittest causal_tax_cuts.tests.test_convex_approximation -v
+          python -m causal_tax_cuts.convex_approximation --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" --output-dir "$RUNNER_TEMP/tax-study/convex-approximation"
+      - name: Publish pre-fit approximation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-convex-approximation
+          path: ${{ runner.temp }}/tax-study/convex-approximation/
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
