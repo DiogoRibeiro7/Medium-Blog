@@ -1,0 +1,62 @@
+name: GDP resilience World Bank baseline
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - '.github/workflows/gdp-economic-resilience.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - '.github/workflows/gdp-economic-resilience.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run offline accounting and integrity tests
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce from immutable registry inputs
+        run: python pipeline.py --fetch --output results
+      - name: Assert reviewed coverage and deterministic output
+        run: |
+          python pipeline.py --output "${RUNNER_TEMP}/gdp-repeat"
+          diff -r results "${RUNNER_TEMP}/gdp-repeat"
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          result = json.loads(Path("results/summary.json").read_text())
+          assert result["requested_countries"] == 33
+          assert result["wdi_non_null"] == 8116
+          assert result["cwon_non_null"] == 5821
+          assert result["comparable_wealth_countries"] == 32
+          assert result["excluded_wealth_countries"] == ["CYP"]
+          assert result["tables"]["sector_composition.csv"] == 1023
+          assert result["tables"]["gdp_rankings_2025.csv"] == 40
+          assert result["tables"]["gdp_wealth_endpoint_growth.csv"] == 132
+          assert result["tables"]["coverage.csv"] == 430
+          PY
+      - name: Upload reproducible tables
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-world-bank-baseline
+          path: research/gdp-economic-resilience/results/
+          if-no-files-found: error
