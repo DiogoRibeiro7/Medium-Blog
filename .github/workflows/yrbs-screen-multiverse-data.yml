@@ -1,0 +1,91 @@
+name: Run yrbs-screen-multiverse on the CDC files
+
+# CDC's site cannot be reached from where the analysis was written, so this workflow downloads the
+# four national YRBS waves on GitHub's runners, runs the analysis and commits only what it produces:
+# digests.txt (first run), diagnostics.txt (answer counts per item), output.txt and the figures.
+# The survey files themselves are never committed.
+
+on:
+  push:
+    branches:
+      - yrbs-screen-multiverse
+    paths:
+      - 'yrbs-screen-multiverse/**.py'
+      - 'yrbs-screen-multiverse/requirements.txt'
+      - '.github/workflows/yrbs-screen-multiverse-data.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: yrbs-screen-multiverse
+    steps:
+      - name: Check out the branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: yrbs-screen-multiverse/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Download the four waves from CDC (pin the digests on the first run)
+        run: |
+          if [ -s digests.txt ]; then python fetch_data.py; else python fetch_data.py --pin; fi
+          ls -l data
+
+      - name: Show the start of each SAS input program
+        run: for f in data/*.sas; do echo "=== $f"; head -c 2500 "$f" | tr -d '\r'; echo; done
+
+      - name: Answer counts per item
+        id: diag
+        continue-on-error: true
+        run: python diagnostics.py > diagnostics.txt; status=$?; cat diagnostics.txt; exit $status
+
+      - name: Tests, including the checks on the real files
+        id: tests
+        continue-on-error: true
+        run: python -m unittest discover -s tests -v
+
+      - name: Every number in the article
+        id: numbers
+        continue-on-error: true
+        run: python multiverse_numbers.py > output.txt; status=$?; cat output.txt; exit $status
+
+      - name: Figures
+        id: figures
+        continue-on-error: true
+        run: python figures.py
+
+      - name: Commit what the run produced
+        if: always()
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add digests.txt diagnostics.txt output.txt figures/*.png 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "yrbs-screen-multiverse: results from the CDC files ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Fail if a step failed
+        if: steps.diag.outcome == 'failure' || steps.tests.outcome == 'failure' || steps.numbers.outcome == 'failure' || steps.figures.outcome == 'failure'
+        run: exit 1
