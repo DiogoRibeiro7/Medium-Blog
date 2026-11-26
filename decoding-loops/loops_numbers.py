@@ -283,6 +283,15 @@ def main(smoke=False):
     r0 = runs[0]
     for i in [i for i, ps in enumerate(r0["passages"]) if ps["book"] == "bible-kjv"][:2]:
         print(f"{r0['model']} Bible #{i}: {r0['rules']['greedy']['text'][i][-160:]!r}")
+    for r in runs:  # a loop that only digit masking finds: the words repeat, the numbers count on
+        texts = r["rules"]["greedy"]["text"]
+        tails = stats[(r["model"], "greedy")]["tails"]
+        for i in [i for i, ps in enumerate(r["passages"]) if ps["book"] == "bible-kjv"]:
+            m = L.periodic_tail(np.frombuffer(L.mask_digits(texts[i]).encode("utf-32-le"), dtype=np.uint32),
+                                max_period=600, min_tokens=60)  # fmt: skip
+            if m.looped and not tails[i].looped:
+                print(f"{r['model']} counting loop, Bible #{i}, period {m.period} characters: {texts[i][-240:]!r}")
+                break
 
     header("Examples: the last 120 characters of greedy continuations that loop (prompts 0, 40, 80, 120 or next)")
     for r in runs:
@@ -292,6 +301,15 @@ def main(smoke=False):
             k = next((i for i in range(k0, len(tails)) if tails[i].looped), None)
             if k is not None:
                 print(f"{r['model']:13s} #{k} [{passages[k].book}] p={tails[k].period} {d['text'][k][-120:]!r}")
+
+    header("One prompt in full (#0, Emma): the prompt, the book, and the first 400 characters of each continuation")
+    print(f"prompt: {passages[0].prompt!r}")
+    print(f"book:   {passages[0].reference[:400]!r}")
+    for r in runs:
+        print(f"{r['model']:13s} greedy {r['rules']['greedy']['text'][0][:400]!r}")
+    for r in (runs[-1], *[x for x in runs if x["family"] == "Pythia"][-1:]):
+        for rule in ("T0.5", "T1", "top-p0.9"):
+            print(f"{r['model']:13s} {rule} {r['rules'][rule]['text'][0][:400]!r}")
 
     header(f"Which words loop: share of function words (the {FUNCTION_TOP} commonest words of the 18 books)")
     counts = Counter(w.lower() for w in book_words() if w.isalpha())
