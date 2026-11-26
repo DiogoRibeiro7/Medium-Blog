@@ -1,0 +1,43 @@
+name: Probe Companies House files for uk-founder-exits
+
+on:
+  push:
+    branches:
+      - uk-founder-exits
+    paths:
+      - 'uk-founder-exits/**'
+      - '.github/workflows/uk-founder-exits-probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Profile the bulk files and check the API
+        env:
+          COMPANIES_HOUSE_API_KEY: ${{ secrets.COMPANIES_HOUSE_API_KEY }}
+        run: python ch_probe.py --output-dir "$RUNNER_TEMP/probe" --work-dir "$RUNNER_TEMP/ch"
+
+      - name: Upload the aggregate profile
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: uk-founder-exits-probe
+          path: ${{ runner.temp }}/probe/ch_probe.json
+          retention-days: 14
+          if-no-files-found: warn
