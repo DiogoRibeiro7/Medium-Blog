@@ -243,7 +243,23 @@ def main(smoke=False):
         print(line)
     for rule in L.RULES:
         rates = [stats[(r["model"], rule)]["rate"] for r in runs]
-        print(f"{rule}: loop rate across the {len(runs)} models {pct(min(rates), 0)}-{pct(max(rates), 0)}")
+        k = sum(stats[(r["model"], rule)]["looped"] for r in runs)
+        n = sum(stats[(r["model"], rule)]["n"] for r in runs)
+        print(
+            f"{rule}: loop rate across the {len(runs)} models {pct(min(rates), 0)}-{pct(max(rates), 0)}; "
+            f"pooled {k}/{n} ({pct(k / n)})"
+        )
+    flags = np.array([[t.looped for t in stats[(r["model"], "greedy")]["tails"]] for r in runs])
+    print(
+        f"prompts whose greedy continuation loops under all {len(runs)} models: {int(flags.all(axis=0).sum())}; "
+        f"under none: {int((~flags).all(axis=0).sum())}; of {flags.shape[1]}"
+    )
+    onsets = np.array([t.start for r in runs for t in stats[(r["model"], "greedy")]["tails"] if t.looped])
+    q25, q50, q75 = np.percentile(onsets, [25, 50, 75])
+    print(
+        f"greedy loop onset, all models pooled: median {q50:.0f}, quartiles {q25:.0f} and {q75:.0f}; within 50 tokens "
+        f"{pct(np.mean(onsets <= 50), 0)}, within 100 {pct(np.mean(onsets <= 100), 0)}; latest {onsets.max()}"
+    )
 
     header("Repetition and probability (mean over continuations)")
     for r in runs:

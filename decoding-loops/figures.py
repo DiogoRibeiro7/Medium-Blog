@@ -90,7 +90,7 @@ def fig1_temperature(summary):
 def fig2_size(summary):
     fig, axes = plt.subplots(1, 3, figsize=(12.5, 4.2))
     panels = [
-        (lambda m: 100 * m["greedy"]["rate"], "Greedy continuations that loop (%)", (0, 103)),
+        (lambda m: 100 * m["greedy"]["rate"], "Greedy continuations that loop (%)", (-5, 103)),
         (lambda m: m["greedy"]["onset_median"], "Median token where the loop starts", None),
         (lambda m: m["greedy"]["period_median"], "Median length of the repeating block (tokens)", None),
     ]
@@ -106,7 +106,7 @@ def fig2_size(summary):
                 keys = [k for k, fm, _ in ordered(summary) if fm == fam]
                 xs = [summary["models"][k]["params_m"] for k in keys]
                 ax.plot(xs, [100 * summary["models"][k]["T1"]["rate"] for k in keys], color=col, lw=1.2, ls="--")
-            ax.text(80, 5, "sampling at T = 1 (dashed)", fontsize=8, color=INK2)
+            ax.text(75, 4, "sampling at T = 1 (dashed): 0% at every size", fontsize=8, color=INK2)
         else:
             ax.set_ylim(bottom=0)
         ax.set_xscale("log")

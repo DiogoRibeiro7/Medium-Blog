@@ -11,7 +11,30 @@ Companion code for a Medium article about the loops a language model falls into 
 
 ## What it finds
 
-Filled in from `output.txt` when the full run is analysed.
+All numbers below are from `output.txt`.
+
+**The rule against the size.** Share of the 144 continuations that end in a loop:
+- Greedy: 70% to 96% across the eight models (1,012 of 1,152 continuations in all). The smallest share is SmolLM2 1.7B's.
+- Temperature 0.25: 65% to 90%. Temperature 0.5: 23% to 65%. Temperature 0.75: 2% to 10%.
+- Temperature 1: 0 of 1,152. Nucleus sampling (*p* = 0.9): 8 of 1,152. The books themselves: 0.
+- Within Pythia, where only the size changes, greedy goes from 96% (70M) to 86% (1B and 1.4B). Within SmolLM2 it goes from 88% (135M and 360M) to 70% (1.7B).
+- Every prompt loops under at least one model; 70 of 144 loop under all eight.
+
+**Where the loops start.** Greedy loops start at a median of 18 tokens (quartiles 6 and 38); 83% start within 50 tokens.
+- The median moves from 11 tokens (Pythia 70M) to 26 (Pythia 1.4B) and 40 (SmolLM2 1.7B).
+- The repeating block grows from a median of 10 tokens to 21 and 23. Blocks of four tokens or fewer fall from 18 (Pythia 70M) to 3 (Pythia 1.4B).
+- Inside a loop the probability of the chosen token climbs with every repetition: 0.30 to 0.42 before the loop, 0.37 to 0.51 in the first cycle, 0.87 to 0.95 in the sixth.
+
+**What greedy writes when it does not loop.**
+- The Bible is the exception among the books: 21 of 64 greedy continuations end in a token loop. With every digit masked, 39 do: the model repeats a verse while its number counts on (31:14, 31:15, ...).
+- SmolLM2 1.7B recites the King James Bible for 32 tokens or more in 6 of 8 Bible prompts, four of them for (nearly) all 256 tokens. No other model reproduces 32 tokens of any book.
+- Of the 1,152 greedy continuations, 62 neither loop, count, recite nor end in a longer block repeated twice. Those still repeat 30% to 81% of their 4-grams; the books repeat 1%.
+
+**Probability.** Greedy text averages −0.25 to −0.37 nats per token under the model that wrote it. The books score −2.33 to −4.28, close to sampling at temperature 1 (−3.18 to −4.47).
+
+**Which words.** Function words (the 100 commonest words of the 18 books) make up 64% to 69% of the loop blocks and 61% to 69% of the greedy text before the loop, against 51% of the books and 48% to 51% of samples at temperature 1. The words most over-represented in loop blocks come from stock dialogue: glad (×75), afraid, going, am, sorry.
+
+**Finite memory.** Greedy word n-gram chains on the same books (memory of 0 to 3 words) loop on all 144 prompts; the loop starts at a median of 0, 0, 4 and 31 words.
 
 ## Data
 
