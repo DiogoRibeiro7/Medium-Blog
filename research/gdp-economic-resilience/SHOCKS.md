@@ -41,7 +41,9 @@ For actual level Y(t) and benchmark B(t):
 - Signed cumulative shortfall: 100 × sum[B(t) − Y(t)] / sum[B(t)] in the
   fixed three-year window. Negative shortfall means outperformance.
 - Worst trend gap and maximum drop below the anchor over that same window.
-- First observed return to the anchor after an observed drop, through 2025.
+- First observed return to the anchor after a drop within the fixed three-year
+  window, with follow-up through 2025. A later crisis cannot initiate an event
+  for an earlier episode.
   Distinguish no drop, recovered, right-censored, missing follow-up and
   missing anchor. A missing year before an apparent recovery prevents
   identification of the first return year. Duration is from episode onset,
