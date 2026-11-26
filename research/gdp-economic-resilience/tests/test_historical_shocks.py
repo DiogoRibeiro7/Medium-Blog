@@ -64,6 +64,12 @@ class TestShockBenchmarks(unittest.TestCase):
         self.assertEqual(result["first_drop_year"], 2021)
         self.assertEqual(result["level_recovery_year"], 2022)
 
+    def test_later_crisis_does_not_create_earlier_recovery_event(self) -> None:
+        data = {2019: 100, 2020: 101, 2021: 102, 2022: 103, 2023: 80, 2024: 110}
+        _, result = s.measure(data, self.shock, "flat", 2024)
+        self.assertEqual(result["level_recovery_status"], "no_drop")
+        self.assertIsNone(result["first_drop_year"])
+
     def test_energy_trend_excludes_pandemic_years(self) -> None:
         shock = s.SHOCKS[-1]
         data = {y: 100 * 1.03 ** (y - 2019) for y in range(2010, 2020)}
