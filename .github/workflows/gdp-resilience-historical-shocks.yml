@@ -1,0 +1,76 @@
+name: GDP resilience historical shocks
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - '.github/workflows/gdp-resilience-historical-shocks.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - '.github/workflows/gdp-resilience-historical-shocks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce shock tables
+        run: python historical_shocks.py --fetch
+      - name: Validate coverage and deterministic replay
+        run: |
+          python historical_shocks.py --output "$RUNNER_TEMP/shocks-repeat"
+          diff -r results/shocks "$RUNNER_TEMP/shocks-repeat"
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("results/shocks")
+          summary = json.loads((root / "summary.json").read_text())
+          assert summary["tables"] == {
+              "wdi_shock_paths.csv": 5544,
+              "wdi_shock_metrics.csv": 594,
+              "eurostat_shock_paths.csv": 28224,
+              "eurostat_shock_metrics.csv": 3024,
+              "pre_shock_structure.csv": 99,
+              "structure_loss_correlations.csv": 15,
+          }, summary["tables"]
+          assert all(n == 33 for n in summary["complete_wdi_windows"].values())
+          with (root / "wdi_shock_metrics.csv").open() as stream:
+              rows = list(csv.DictReader(stream))
+          for row in rows:
+              assert int(row["comparison_end"]) - int(row["onset"]) == 2
+              if row["complete_common_window"] == "True":
+                  assert int(row["comparable_common_years"]) == 3
+                  assert row["cumulative_shortfall_pct_benchmark"] != ""
+              else:
+                  assert row["cumulative_shortfall_pct_benchmark"] == ""
+          with (root / "structure_loss_correlations.csv").open() as stream:
+              for row in csv.DictReader(stream):
+                  assert int(row["n"]) + int(row["excluded"]) == 33
+          PY
+      - name: Upload shock results
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-historical-shocks
+          path: research/gdp-economic-resilience/results/shocks/
+          if-no-files-found: error
