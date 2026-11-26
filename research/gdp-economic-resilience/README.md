@@ -59,6 +59,7 @@ proof of a particular causal mechanism.
 The [detailed Eurostat sectoral decomposition](EUROSTAT.md) is available as a
 separate reproducible analysis, using the existing registry snapshots. The
 [historical shock analysis](SHOCKS.md) adds transparent trend benchmarks and
-recovery measures. Later changes add sector-specific simulations, figures and
-the manuscript evidence audit. IMF and OECD source access and licensing remain
+recovery measures. The [technological substitution scenarios](SUBSTITUTION.md) distinguish price
+compression, volume displacement, demand response and domestic replacement.
+Later changes add robustness analysis, figures and the manuscript evidence audit. IMF and OECD source access and licensing remain
 separate; no unverified source is assumed in this baseline.
