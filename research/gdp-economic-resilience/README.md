@@ -56,7 +56,8 @@ is a model-based stock estimate. Compare growth rates within countries, not doll
 levels across different price bases. A GDP/wealth divergence is descriptive and not
 proof of a particular causal mechanism.
 
-Later changes add detailed Eurostat industry decomposition, historical shock
-counterfactuals and recovery measures, sector-specific simulations, figures and
-the manuscript evidence audit. IMF and OECD source access and licensing remain
+The [detailed Eurostat sectoral decomposition](EUROSTAT.md) is available as a
+separate reproducible analysis, using the existing registry snapshots. Later
+changes add historical shock counterfactuals and recovery measures,
+sector-specific simulations, figures and the manuscript evidence audit. IMF and OECD source access and licensing remain
 separate; no unverified source is assumed in this baseline.

@@ -1,0 +1,71 @@
+name: GDP resilience Eurostat sectors
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-eurostat.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-eurostat.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce detailed sector analysis
+        run: python eurostat_sectors.py --fetch
+      - name: Check deterministic replay and actual coverage
+        run: |
+          python eurostat_sectors.py --output "$RUNNER_TEMP/eurostat-repeat"
+          diff -r results/eurostat "$RUNNER_TEMP/eurostat-repeat"
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("results/eurostat")
+          summary = json.loads((root / "summary.json").read_text())
+          assert summary["geographies"] == 28
+          assert summary["tables"]["eurostat_sections.csv"] == 31248
+          assert summary["tables"]["eurostat_concentration.csv"] == 1736
+          assert summary["tables"]["eurostat_groups.csv"] == 10416
+          assert summary["tables"]["eurostat_endpoint_changes.csv"] == 4760
+          with (root / "eurostat_concentration.csv").open() as stream:
+              records = list(csv.DictReader(stream))
+          eu = next(row for row in records if row["level"] == "a10"
+                    and row["geo"] == "EU27_2020" and row["year"] == "2024")
+          assert eu["complete_partition"] == "True", eu
+          assert 0.1 <= float(eu["hhi"]) <= 1
+          with (root / "eurostat_endpoint_changes.csv").open() as stream:
+              residuals = [float(row["identity_residual_log_points"])
+                           for row in csv.DictReader(stream)
+                           if row["identity_residual_log_points"]]
+          assert residuals and max(map(abs, residuals)) < 1e-9
+          PY
+      - name: Upload sector tables
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-eurostat-sectors
+          path: research/gdp-economic-resilience/results/eurostat/
+          if-no-files-found: error
