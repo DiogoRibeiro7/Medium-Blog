@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "dataset": "world-bank-cwon-2024-gdp-resilience-2026-11-26",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "ce3cc0995411c124534408e2086772275ee2c7c8",
+  "record": "datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/metadata.yaml",
+  "folder": "research/gdp-economic-resilience",
+  "target": "research/gdp-economic-resilience/data/world-bank-cwon-2024-gdp-resilience-2026-11-26",
+  "files": [
+    {
+      "path": "raw/NW.HCA.PC.metadata.json",
+      "sha256": "cfb4e11220512f0db72dc7a966f2f6b70ab94287a910edd00845695296de6ee4",
+      "bytes": 612,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.HCA.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.HCA.PC.page-1.json",
+      "sha256": "92a5d6d054dce79c7625aed916c97e2e6d37a39cfca0fc3d43abd6b17c577e47",
+      "bytes": 194371,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.HCA.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.NCA.SSOI.PC.metadata.json",
+      "sha256": "81fb179ab6685d775020777145661adcd6e732be0b1fde88078adef64d515293",
+      "bytes": 1010,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NCA.SSOI.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.NCA.SSOI.PC.page-1.json",
+      "sha256": "6b947699f545a09d926ba85e52edca14cc2fb8893d12c8b5aed9bddff3badf9a",
+      "bytes": 214979,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NCA.SSOI.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.NCA.TOTL.PC.metadata.json",
+      "sha256": "5b4533d3f9158672775cee3d629491c341186e5322c89947b4c754d16f3b4bff",
+      "bytes": 262,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NCA.TOTL.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.NCA.TOTL.PC.page-1.json",
+      "sha256": "18036744a2794429f633f357fadafc702394f74fafdc0546148ea5b4d3fe459b",
+      "bytes": 214328,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NCA.TOTL.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.NFA.PC.metadata.json",
+      "sha256": "68ba112a76f2058c7b0aa8b00681c4b219553cdf03d2cc6e09909568c7411ae9",
+      "bytes": 563,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NFA.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.NFA.PC.page-1.json",
+      "sha256": "5a3bf0e4f3fcea1c86f4f9c9c1df9053e374166f95b81a91b576604fa2d33a5d",
+      "bytes": 195210,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NFA.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.NFL.PC.metadata.json",
+      "sha256": "fb2ede5b030ecfcd2b82355f477ebc62d8f2962d7bd31978d6c3ec2ff3729e8b",
+      "bytes": 244,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NFL.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.NFL.PC.page-1.json",
+      "sha256": "537edca0afd82a3ee0faae9d881b6ff319fd878f217608d0fb6c4fa7f8f867c0",
+      "bytes": 199363,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.NFL.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.PCA.PC.metadata.json",
+      "sha256": "c94e5251733db0ae3d36717b2b437392b62bde1216ee2c92a532fa82bbea065b",
+      "bytes": 621,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.PCA.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.PCA.PC.page-1.json",
+      "sha256": "a64c1916a59bc46abb2bf230523bd09bf917597ec3fe8e1393043c7282ee5326",
+      "bytes": 196867,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.PCA.PC.page-1.json"
+    },
+    {
+      "path": "raw/NW.TOW.PC.metadata.json",
+      "sha256": "0013e4eacc351c9e8b1115a8cea693fb120234fe6c5e4f67205d4a7cdfad934e",
+      "bytes": 634,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.TOW.PC.metadata.json"
+    },
+    {
+      "path": "raw/NW.TOW.PC.page-1.json",
+      "sha256": "f27d55c56eb7a9e01b5a7d0292248d1fc4935a93848a8da5375b925e9886b7aa",
+      "bytes": 212687,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/NW.TOW.PC.page-1.json"
+    },
+    {
+      "path": "raw/source-before.json",
+      "sha256": "840bf4cad70daf67fdbd191ed5be84a6ff17ed2a898c706d1e21f4a93f7d00dc",
+      "bytes": 224,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/source-before.json"
+    },
+    {
+      "path": "raw/acquisition-manifest.json",
+      "sha256": "9c64681577f4f4bf89f4e135ec05772bfb2712e8fcde52beaa8050be7145f6be",
+      "bytes": 108439,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-cwon-2024-gdp-resilience-2026-11-26/raw/acquisition-manifest.json"
+    }
+  ],
+  "consumers": [
+    "research/gdp-economic-resilience/pipeline.py"
+  ]
+}
