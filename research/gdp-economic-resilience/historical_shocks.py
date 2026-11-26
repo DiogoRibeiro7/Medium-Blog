@@ -97,7 +97,8 @@ def recovery(series: Series, shock: Shock, anchor: Value, last: int) -> Record:
     """Identify the first return to the anchor after an observed drop.
 
     A missing year before a return makes the event timing unidentified.
-    A complete path with no drop is not a recovery event.
+    Only drops within the fixed comparison window initiate a recovery event.
+    Later crises must not create a new event for an earlier episode.
     """
     result: Record = {"level_recovery_status": "missing_anchor",
                       "first_drop_year": None, "level_recovery_year": None,
@@ -106,6 +107,9 @@ def recovery(series: Series, shock: Shock, anchor: Value, last: int) -> Record:
         return result
     drop = None
     for year in range(shock.onset, last + 1):
+        if drop is None and year > shock.end:
+            result["level_recovery_status"] = "no_drop"
+            return result
         value = series.get(year)
         if not positive(value):
             result.update(level_recovery_status="missing_followup", first_drop_year=drop)
