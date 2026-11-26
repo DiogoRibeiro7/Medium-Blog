@@ -125,6 +125,17 @@ def copied(block, source, k=4):
     return any(tuple(cyc[i : i + k]) in grams for i in range(len(block)))
 
 
+def counting_loop(text):
+    """A loop in the characters once every digit is masked (verse numbers that count on)."""
+    chars = np.frombuffer(L.mask_digits(text).encode("utf-32-le"), dtype=np.uint32)
+    return L.periodic_tail(chars, max_period=600, min_tokens=60).looped
+
+
+def repeated_twice(tokens):
+    """A weaker criterion: the continuation ends in a block of up to 128 tokens that occurs twice in a row."""
+    return L.periodic_tail(np.asarray(tokens), max_period=128, min_repeats=2, min_tokens=48).looped
+
+
 def share_in(words, top):
     return sum(w in top for w in words) / len(words) if words else float("nan")
 
@@ -250,6 +261,24 @@ def main(smoke=False):
         mem = sum(p >= MEMORISED for p in pref)
         print(
             f"{r['model']:13s} first {MEMORISED}+ tokens identical to the book: {mem}/{len(pref)}; longest {max(pref)}"
+        )
+        for i in [i for i, p in enumerate(pref) if p >= MEMORISED]:
+            print(f"    #{i} {passages[i].book}: {pref[i]} tokens; {r['rules']['greedy']['text'][i][:100]!r}")
+
+    header("Greedy continuations that do not end in a loop: what they are")
+    for r in runs:
+        d = r["rules"]["greedy"]
+        tails = stats[(r["model"], "greedy")]["tails"]
+        rest = [i for i, t in enumerate(tails) if not t.looped]
+        mem = [i for i in rest if L.common_prefix(d["tokens"][i], r["reference"]["tokens"][i]) >= MEMORISED]
+        count = [i for i in rest if i not in mem and counting_loop(d["text"][i])]
+        twice = [i for i in rest if i not in mem + count and repeated_twice(d["tokens"][i])]
+        other = [i for i in rest if i not in mem + count + twice]
+        rep = np.mean([L.repeated_ngram_share(d["tokens"][i], 4) for i in other]) if other else float("nan")
+        print(
+            f"{r['model']:13s} not looped {len(rest)}: recite the book {len(mem)}, count (digits masked) {len(count)}, "
+            f"a block of up to 128 tokens repeated twice {len(twice)}, other {len(other)} (repeated 4-grams "
+            f"{pct(rep, 0)})"
         )
 
     header("Self-reinforcement inside greedy loops: chosen-token probability and top-2 gap (nats)")
