@@ -102,17 +102,27 @@ def alpha_words(text):
 
 
 def word_loops(texts, vocab):
-    """Loops at the level of words: the repeating block (one period) and the words before it."""
-    blocks, prefixes, looped = [], [], 0
-    for t in texts:
+    """Loops at the level of words: the repeating block (one period), the words before it, and the index."""
+    blocks, prefixes, which = [], [], []
+    for i, t in enumerate(texts):
         w = alpha_words(t)
         codes = np.array([vocab.setdefault(x, len(vocab)) for x in w], dtype=np.int64)
         tail = L.periodic_tail(codes, max_period=40, min_repeats=3, min_tokens=12)
         if tail.looped:
-            looped += 1
             blocks.append(w[tail.start : tail.start + tail.period])
             prefixes.append(w[: tail.start])
-    return blocks, prefixes, looped
+            which.append(i)
+    return blocks, prefixes, which
+
+
+def copied(block, source, k=4):
+    """Does some run of k consecutive words of the repeating block (read round the cycle) occur in source?"""
+    if not block:
+        return False
+    k = min(k, len(block))
+    cyc = block + block[: k - 1]
+    grams = {tuple(source[i : i + k]) for i in range(len(source) - k + 1)}
+    return any(tuple(cyc[i : i + k]) in grams for i in range(len(block)))
 
 
 def share_in(words, top):
@@ -318,7 +328,10 @@ def main(smoke=False):
     pooled_block, pooled_human = Counter(), Counter()
     for r in runs:
         vocab = {}
-        blocks, prefixes, k = word_loops(r["rules"]["greedy"]["text"], vocab)
+        blocks, prefixes, which = word_loops(r["rules"]["greedy"]["text"], vocab)
+        k = len(which)
+        from_prompt = sum(copied(b, alpha_words(passages[i].prompt)) for b, i in zip(blocks, which, strict=True))
+        from_before = sum(copied(b, p) for b, p in zip(blocks, prefixes, strict=True))
         bw = [w for b in blocks for w in b]
         pw = [w for p in prefixes for w in p]
         hw = [w for t in r["reference"]["text"] for w in alpha_words(t)]
@@ -331,7 +344,8 @@ def main(smoke=False):
             f"{r['model']:13s} word loops {k}/{len(r['rules']['greedy']['text'])}; function-word share: loop block "
             f"{pct(share_in(bw, top), 0)}, greedy text before the loop {pct(share_in(pw, top), 0)}, sampled T1 "
             f"{pct(share_in(sw, top), 0)}, human {pct(share_in(hw, top), 0)}; blocks of function words only {only}, "
-            f"with none {none}"
+            f"with none {none}; block shares 4 consecutive words with the prompt {from_prompt}, with the greedy text "
+            f"before the loop {from_before}"
         )
     nb, nh = sum(pooled_block.values()), sum(pooled_human.values())
     ratio = {w: (c / nb) / ((pooled_human[w] + 1) / nh) for w, c in pooled_block.items() if c >= 20}
