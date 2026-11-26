@@ -275,7 +275,9 @@ def main():
         profile["error"] = f"{type(e).__name__}: {e}"
     api_checks(profile)
     (args.output_dir / "ch_probe.json").write_text(json.dumps(profile, indent=2, default=str))
-    print(json.dumps({k: v for k, v in profile.items() if k in ("files", "error", "api")}, indent=2, default=str))
+    # The runner's artifact store is not reachable from every machine, so the aggregate profile is
+    # also printed to the job log.
+    print(json.dumps(profile, indent=1, default=str))
     return 1 if "error" in profile else 0
 
 
