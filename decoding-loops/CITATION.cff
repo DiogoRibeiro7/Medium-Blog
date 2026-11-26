@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Greedy and sampled decoding with eight open language models: where repetition loops come from"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/decoding-loops"
+references:
+  - type: article
+    title: "Pythia: A Suite for Analyzing Large Language Models Across Training and Scaling"
+    authors:
+      - family-names: Biderman
+        given-names: Stella
+      - name: "et al."
+    year: 2023
+    conference:
+      name: "International Conference on Machine Learning (ICML)"
+  - type: article
+    title: "SmolLM2: When Smol Goes Big -- Data-Centric Training of a Small Language Model"
+    authors:
+      - family-names: Ben Allal
+        given-names: Loubna
+      - name: "et al."
+    year: 2025
+    identifiers:
+      - type: other
+        value: "arXiv:2502.02737"
+  - type: article
+    title: "The Curious Case of Neural Text Degeneration"
+    authors:
+      - family-names: Holtzman
+        given-names: Ari
+      - name: "et al."
+    year: 2020
+    conference:
+      name: "International Conference on Learning Representations (ICLR)"
+  - type: article
+    title: "Learning to Break the Loop: Analyzing and Mitigating Repetitions for Neural Text Generation"
+    authors:
+      - family-names: Xu
+        given-names: Jin
+      - name: "et al."
+    year: 2022
+    conference:
+      name: "Advances in Neural Information Processing Systems (NeurIPS)"
+  - type: data
+    title: "Project Gutenberg Selections (NLTK corpus gutenberg), nltk_data commit 550b662"
+    authors:
+      - name: "NLTK Project"
+    year: 2009
+    url: "https://github.com/nltk/nltk_data"
