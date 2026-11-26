@@ -7,6 +7,8 @@ python loops_numbers.py --smoke              # the smoke run's file only
 import gzip
 import json
 import sys
+from collections import Counter
+from functools import cache
 from pathlib import Path
 
 import numpy as np
@@ -17,6 +19,7 @@ HERE = Path(__file__).resolve().parent
 RESULTS = HERE / "results"
 NGRAM_STEPS = 200
 MEMORISED = 32  # a greedy continuation sharing this many leading tokens with the book is "memorised"
+FUNCTION_TOP = 100  # "function words": the 100 most frequent word types of the 18 books
 
 
 def pct(x, d=1):
@@ -86,10 +89,38 @@ def reinforcement(tokens, logprob, margin, tails, max_cycles=6):
     }
 
 
-def ngram_ladder(passages):
+@cache
+def book_words():
     words = []
     for b in L.BOOKS:
         words += L.tokenize_words(L.read_book(b))
+    return words
+
+
+def alpha_words(text):
+    return [w.lower() for w in L.tokenize_words(text) if w.isalpha()]
+
+
+def word_loops(texts, vocab):
+    """Loops at the level of words: the repeating block (one period) and the words before it."""
+    blocks, prefixes, looped = [], [], 0
+    for t in texts:
+        w = alpha_words(t)
+        codes = np.array([vocab.setdefault(x, len(vocab)) for x in w], dtype=np.int64)
+        tail = L.periodic_tail(codes, max_period=40, min_repeats=3, min_tokens=12)
+        if tail.looped:
+            looped += 1
+            blocks.append(w[tail.start : tail.start + tail.period])
+            prefixes.append(w[: tail.start])
+    return blocks, prefixes, looped
+
+
+def share_in(words, top):
+    return sum(w in top for w in words) / len(words) if words else float("nan")
+
+
+def ngram_ladder(passages):
+    words = book_words()
     out = {}
     for n in (1, 2, 3, 4):
         chain = L.NGramChain(words, n)
@@ -261,6 +292,36 @@ def main(smoke=False):
             k = next((i for i in range(k0, len(tails)) if tails[i].looped), None)
             if k is not None:
                 print(f"{r['model']:13s} #{k} [{passages[k].book}] p={tails[k].period} {d['text'][k][-120:]!r}")
+
+    header(f"Which words loop: share of function words (the {FUNCTION_TOP} commonest words of the 18 books)")
+    counts = Counter(w.lower() for w in book_words() if w.isalpha())
+    top = {w for w, _ in counts.most_common(FUNCTION_TOP)}
+    print("the commonest 20: " + " ".join(w for w, _ in counts.most_common(20)))
+    pooled_block, pooled_human = Counter(), Counter()
+    for r in runs:
+        vocab = {}
+        blocks, prefixes, k = word_loops(r["rules"]["greedy"]["text"], vocab)
+        bw = [w for b in blocks for w in b]
+        pw = [w for p in prefixes for w in p]
+        hw = [w for t in r["reference"]["text"] for w in alpha_words(t)]
+        sw = [w for t in r["rules"]["T1"]["text"] for w in alpha_words(t)]
+        only = sum(all(w in top for w in b) for b in blocks)
+        none = sum(not any(w in top for w in b) for b in blocks)
+        pooled_block.update(bw)
+        pooled_human.update(hw)
+        print(
+            f"{r['model']:13s} word loops {k}/{len(r['rules']['greedy']['text'])}; function-word share: loop block "
+            f"{pct(share_in(bw, top), 0)}, greedy text before the loop {pct(share_in(pw, top), 0)}, sampled T1 "
+            f"{pct(share_in(sw, top), 0)}, human {pct(share_in(hw, top), 0)}; blocks of function words only {only}, "
+            f"with none {none}"
+        )
+    nb, nh = sum(pooled_block.values()), sum(pooled_human.values())
+    ratio = {w: (c / nb) / ((pooled_human[w] + 1) / nh) for w, c in pooled_block.items() if c >= 20}
+    best = sorted(ratio, key=lambda w: -ratio[w])[:15]
+    print("over-represented in loop blocks against human text (all models, words seen 20+ times in blocks): "
+          + ", ".join(f"{w} x{ratio[w]:.1f}" for w in best))  # fmt: skip
+    commonest = [w for w, _ in pooled_block.most_common(15)]
+    print("commonest words in loop blocks: " + ", ".join(f"{w} {pct(pooled_block[w] / nb)}" for w in commonest))
 
     if not smoke:
         header("Word n-gram chains (memory of n - 1 words), greedy, 200 words after each prompt")
