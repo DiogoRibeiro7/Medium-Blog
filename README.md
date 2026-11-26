@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-252 top-level folders: 77 belong to 24 series, 102 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 16 not yet sorted.
+253 top-level folders: 77 belong to 24 series, 103 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 16 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -356,6 +356,7 @@ Prices, labour, taxes, growth and elections.
 - [`gdp-life-outcomes/`](gdp-life-outcomes/) — GDP per Capita, Life Expectancy and Basic Services: What Cross-Country Correlations Can and Cannot Identify
 - [`heat-pump-price-ratio/`](heat-pump-price-ratio/) — The price ratio decides heat pumps: household electricity and gas prices in 25 European countries, 2007–2026
 - [`house-votes-seats-gerrymandering/`](house-votes-seats-gerrymandering/) — Votes, seats and who drew the map: U.S. House elections, 1972–2026
+- [`lisbon-metro-ridership/`](lisbon-metro-ridership/) — The Lisbon metro's falling ridership, 2025–2026: calendar, closures, fleet and the rest of the network in the official data
 - [`long-horizon-stock-risk/`](long-horizon-stock-risk/) — Holding stocks for 20 or 30 years: losses after inflation got rarer, not smaller
 - [`lump-sum-vs-spreading/`](lump-sum-vs-spreading/) — Lump sum or monthly instalments: investing a windfall in 23 stock markets since 1955
 - [`neoliberalism-evidence-synthesis/`](neoliberalism-evidence-synthesis/) — Neoliberalism, work, distribution and housing: an evidence audit
