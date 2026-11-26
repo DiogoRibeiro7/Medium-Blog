@@ -1,12 +1,6 @@
 name: Probe Companies House files for uk-founder-exits
 
 on:
-  push:
-    branches:
-      - uk-founder-exits
-    paths:
-      - 'uk-founder-exits/**'
-      - '.github/workflows/uk-founder-exits-probe.yml'
   workflow_dispatch:
 
 permissions:

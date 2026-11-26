@@ -1,0 +1,200 @@
+name: Build and analyse uk-founder-exits
+
+# Crawls Companies House (advanced search, then filing histories) with a free API key, extracts
+# the PSC snapshot, builds the cohort and commits the aggregate results back to the branch.
+# The crawl is resumable: every job restores the newest crawl database from the Actions cache,
+# carries on, and saves it again. Re-running the workflow picks up where the last run stopped.
+
+on:
+  push:
+    branches:
+      - uk-founder-exits
+    paths:
+      - 'uk-founder-exits/*.py'
+      - 'uk-founder-exits/tests/**'
+      - 'uk-founder-exits/requirements.txt'
+      - '.github/workflows/uk-founder-exits.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: uk-founder-exits
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  CRAWL_DB: .cache/crawl.sqlite
+  CACHE_PREFIX: uk-founder-exits-crawl-v1-
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-founder-exits/requirements.txt
+      - run: pip install -r requirements.txt
+      - run: ruff check . && ruff format --check .
+      - run: python -m unittest discover -s tests -v
+
+  search:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Restore the crawl database
+        uses: actions/cache/restore@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-search
+          restore-keys: ${{ env.CACHE_PREFIX }}
+      - name: Search every technology SIC code and month
+        env:
+          COMPANIES_HOUSE_API_KEY: ${{ secrets.COMPANIES_HOUSE_API_KEY }}
+        run: |
+          mkdir -p .cache
+          python ch_api.py --db "$CRAWL_DB" --budget-minutes 100 search
+      - name: Save the crawl database
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-search
+
+  filings:
+    needs: search
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    strategy:
+      max-parallel: 1  # one key, one rate limit: the rounds run one after another
+      fail-fast: false
+      matrix:
+        round: [1, 2, 3, 4]
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Restore the crawl database
+        uses: actions/cache/restore@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-filings-${{ matrix.round }}
+          restore-keys: ${{ env.CACHE_PREFIX }}
+      - name: Fetch filing histories until done or out of time
+        env:
+          COMPANIES_HOUSE_API_KEY: ${{ secrets.COMPANIES_HOUSE_API_KEY }}
+        run: python ch_api.py --db "$CRAWL_DB" --budget-minutes 315 filings
+      - name: Save the crawl database
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-filings-${{ matrix.round }}
+
+  psc:
+    needs: search
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Restore the crawl database (for the list of companies)
+        uses: actions/cache/restore@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-psc
+          restore-keys: ${{ env.CACHE_PREFIX }}
+      - name: Extract PSC records of the cohort and of their UK corporate controllers
+        run: python ch_bulk.py --db "$CRAWL_DB" --work-dir "$RUNNER_TEMP/ch" --out "$RUNNER_TEMP/psc.json.gz"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: uk-founder-exits-psc
+          path: ${{ runner.temp }}/psc.json.gz
+          retention-days: 7
+
+  analyse:
+    needs: [filings, psc]
+    if: ${{ !cancelled() && needs.psc.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: uk-founder-exits
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: uk-founder-exits/requirements.txt
+      - run: pip install -r requirements.txt
+      - name: Restore the crawl database
+        uses: actions/cache/restore@v4
+        with:
+          path: uk-founder-exits/.cache
+          key: ${{ env.CACHE_PREFIX }}${{ github.run_id }}-${{ github.run_attempt }}-analyse
+          restore-keys: ${{ env.CACHE_PREFIX }}
+      - name: Stop unless the crawl is complete (re-run the workflow to resume it)
+        run: python ch_api.py --db "$CRAWL_DB" --require-complete progress
+      - uses: actions/download-artifact@v4
+        with:
+          name: uk-founder-exits-psc
+          path: ${{ runner.temp }}
+      - name: Build the cohort
+        run: |
+          mkdir -p "$RUNNER_TEMP/out"
+          python ch_build.py --db "$CRAWL_DB" --psc "$RUNNER_TEMP/psc.json.gz" \
+            --out "$RUNNER_TEMP/out/cohort.csv" --report build_report.json
+      - name: Compute the numbers
+        run: |
+          python exits_numbers.py --cohort "$RUNNER_TEMP/out/cohort.csv" --report build_report.json \
+            --out output.txt --figdata figdata.json
+      - name: Draw the figures
+        run: python figures.py --figdata figdata.json --out figures
+      - name: Keep the company-level table for 30 days
+        uses: actions/upload-artifact@v4
+        with:
+          name: uk-founder-exits-cohort
+          path: ${{ runner.temp }}/out/cohort.csv
+          retention-days: 30
+      - name: Commit the aggregate results to the branch
+        run: |
+          git config user.name "Diogo Ribeiro"
+          git config user.email "diogo_dj@hotmail.com"
+          git add output.txt figdata.json build_report.json figures
+          if git diff --cached --quiet; then
+            echo "Results unchanged"
+            exit 0
+          fi
+          git commit -m "Update uk-founder-exits results from Companies House"
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"

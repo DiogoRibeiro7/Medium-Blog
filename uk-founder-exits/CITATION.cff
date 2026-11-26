@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "What happens to UK technology companies after they first issue new shares, by founder nationality: Companies House, 2016-2026"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/uk-founder-exits"
+references:
+  - type: data
+    title: "Companies House public data: advanced company search, filing history and People with Significant Control snapshot"
+    authors:
+      - name: "Companies House"
+    year: 2026
+    url: "https://developer.company-information.service.gov.uk/"
+  - type: article
+    title: "A proportional hazards model for the subdistribution of a competing risk"
+    authors:
+      - family-names: Fine
+        given-names: Jason P.
+      - family-names: Gray
+        given-names: Robert J.
+    journal: "Journal of the American Statistical Association"
+    volume: 94
+    issue: 446
+    start: 496
+    end: 509
+    year: 1999
+  - type: article
+    title: "An empirical transition matrix for non-homogeneous Markov chains based on censored observations"
+    authors:
+      - family-names: Aalen
+        given-names: Odd O.
+      - family-names: Johansen
+        given-names: Søren
+    journal: "Scandinavian Journal of Statistics"
+    volume: 5
+    issue: 3
+    start: 141
+    end: 150
+    year: 1978
