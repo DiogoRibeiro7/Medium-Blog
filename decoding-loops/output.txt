@@ -1,0 +1,224 @@
+
+== Runs
+pythia-70m    EleutherAI/pythia-70m rev step143000 (de3e4e2d6cbb), 70M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+pythia-160m   EleutherAI/pythia-160m rev step143000 (b56d9bee3630), 160M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+pythia-410m   EleutherAI/pythia-410m rev step143000 (bba6a464f54b), 410M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+pythia-1b     EleutherAI/pythia-1b rev step143000 (c0fea4b91761), 1000M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+pythia-1.4b   EleutherAI/pythia-1.4b rev step143000 (9cc5c8c8148a), 1400M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+smollm2-135m  HuggingFaceTB/SmolLM2-135M rev main (93efa2f097d5), 135M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+smollm2-360m  HuggingFaceTB/SmolLM2-360M rev main (f8027fd0eaee), 360M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+smollm2-1.7b  HuggingFaceTB/SmolLM2-1.7B rev main (effd688a1292), 1700M, 144 prompts x 256 tokens, torch 2.15.0+cpu
+prompt length in tokens (pythia-70m): median 53
+
+== Loops: share of continuations ending in a repeating block (95% Wilson interval)
+pythia-70m    greedy 96% [91%-98%]; T0.25 90% [84%-94%]; T0.5 60% [52%-68%]; T0.75 10% [6%-16%]; T1 0% [0%-3%]; top-p0.9 3% [1%-7%]; human text 0%
+pythia-160m   greedy 94% [89%-97%]; T0.25 85% [79%-90%]; T0.5 65% [56%-72%]; T0.75 4% [2%-9%]; T1 0% [0%-3%]; top-p0.9 0% [0%-3%]; human text 0%
+pythia-410m   greedy 94% [89%-97%]; T0.25 85% [78%-90%]; T0.5 54% [46%-62%]; T0.75 3% [1%-7%]; T1 0% [0%-3%]; top-p0.9 1% [0%-4%]; human text 0%
+pythia-1b     greedy 86% [80%-91%]; T0.25 84% [77%-89%]; T0.5 53% [45%-61%]; T0.75 4% [2%-9%]; T1 0% [0%-3%]; top-p0.9 1% [0%-4%]; human text 0%
+pythia-1.4b   greedy 86% [80%-91%]; T0.25 80% [73%-86%]; T0.5 45% [37%-53%]; T0.75 2% [1%-6%]; T1 0% [0%-3%]; top-p0.9 0% [0%-3%]; human text 0%
+smollm2-135m  greedy 88% [82%-92%]; T0.25 85% [79%-90%]; T0.5 55% [47%-63%]; T0.75 6% [3%-11%]; T1 0% [0%-3%]; top-p0.9 1% [0%-5%]; human text 0%
+smollm2-360m  greedy 88% [82%-92%]; T0.25 84% [77%-89%]; T0.5 47% [39%-55%]; T0.75 4% [2%-9%]; T1 0% [0%-3%]; top-p0.9 0% [0%-3%]; human text 0%
+smollm2-1.7b  greedy 70% [62%-77%]; T0.25 65% [57%-73%]; T0.5 23% [17%-30%]; T0.75 3% [1%-7%]; T1 0% [0%-3%]; top-p0.9 0% [0%-3%]; human text 0%
+
+== Greedy loops: where they start and how long the repeating block is (tokens)
+pythia-70m    looped 138/144; onset median 11; period median 10; periods <= 4 tokens: 18
+pythia-160m   looped 136/144; onset median 15; period median 10; periods <= 4 tokens: 14
+pythia-410m   looped 135/144; onset median 17; period median 16; periods <= 4 tokens: 5
+pythia-1b     looped 124/144; onset median 22; period median 16; periods <= 4 tokens: 4
+pythia-1.4b   looped 124/144; onset median 26; period median 21; periods <= 4 tokens: 3
+smollm2-135m  looped 127/144; onset median 16; period median 15; periods <= 4 tokens: 9
+smollm2-360m  looped 127/144; onset median 18; period median 19; periods <= 4 tokens: 5
+smollm2-1.7b  looped 101/144; onset median 40; period median 23; periods <= 4 tokens: 6
+
+== Greedy loops: block length (tokens) and share of greedy output inside the loop
+pythia-70m    periods 1-4: 18, 5-16: 87, 17-64: 33; tokens inside a loop 90%
+pythia-160m   periods 1-4: 14, 5-16: 80, 17-64: 42; tokens inside a loop 84%
+pythia-410m   periods 1-4: 5, 5-16: 63, 17-64: 67; tokens inside a loop 85%
+pythia-1b     periods 1-4: 4, 5-16: 58, 17-64: 62; tokens inside a loop 76%
+pythia-1.4b   periods 1-4: 3, 5-16: 48, 17-64: 73; tokens inside a loop 76%
+smollm2-135m  periods 1-4: 9, 5-16: 60, 17-64: 58; tokens inside a loop 81%
+smollm2-360m  periods 1-4: 5, 5-16: 46, 17-64: 76; tokens inside a loop 79%
+smollm2-1.7b  periods 1-4: 6, 5-16: 31, 17-64: 64; tokens inside a loop 57%
+
+== Greedy loops by book (all models pooled)
+chesterton-ball      62/64 (97%)
+melville-moby_dick   62/64 (97%)
+chesterton-thursday  61/64 (95%)
+milton-paradise      61/64 (95%)
+austen-persuasion    60/64 (94%)
+edgeworth-parents    60/64 (94%)
+shakespeare-hamlet   60/64 (94%)
+austen-emma          59/64 (92%)
+blake-poems          58/64 (91%)
+shakespeare-macbeth  58/64 (91%)
+whitman-leaves       58/64 (91%)
+chesterton-brown     57/64 (89%)
+bryant-stories       56/64 (88%)
+shakespeare-caesar   56/64 (88%)
+burgess-busterbrown  55/64 (86%)
+austen-sense         54/64 (84%)
+carroll-alice        54/64 (84%)
+bible-kjv            21/64 (33%)
+
+== The same prompts across sizes (greedy)
+Pythia (5 sizes): prompts that loop at every size 104; at no size 0; of 144
+SmolLM2 (3 sizes): prompts that loop at every size 86; at no size 3; of 144
+
+== Size against rule
+Pythia: greedy pythia-70m 96% -> pythia-1.4b 86%; T0.75 at pythia-70m 10%, at pythia-1.4b 2%; T1 at pythia-70m 0%, at pythia-1.4b 0%; top-p0.9 at pythia-70m 3%, at pythia-1.4b 0%
+SmolLM2: greedy smollm2-135m 88% -> smollm2-1.7b 70%; T0.75 at smollm2-135m 6%, at smollm2-1.7b 3%; T1 at smollm2-135m 0%, at smollm2-1.7b 0%; top-p0.9 at smollm2-135m 1%, at smollm2-1.7b 0%
+greedy: loop rate across the 8 models 70%-96%; pooled 1012/1152 (87.8%)
+T0.25: loop rate across the 8 models 65%-90%; pooled 949/1152 (82.4%)
+T0.5: loop rate across the 8 models 23%-65%; pooled 579/1152 (50.3%)
+T0.75: loop rate across the 8 models 2%-10%; pooled 51/1152 (4.4%)
+T1: loop rate across the 8 models 0%-0%; pooled 0/1152 (0.0%)
+top-p0.9: loop rate across the 8 models 0%-3%; pooled 8/1152 (0.7%)
+prompts whose greedy continuation loops under all 8 models: 70; under none: 0; of 144
+greedy loop onset, all models pooled: median 18, quartiles 6 and 38; within 50 tokens 83%, within 100 97%; latest 192
+
+== Repetition and probability (mean over continuations)
+pythia-70m    greedy rep4 91% lp -0.26; T0.25 rep4 88% lp -0.32; T0.5 rep4 71% lp -0.63; T0.75 rep4 17% lp -2.14; T1 rep4 1% lp -4.36; top-p0.9 rep4 3% lp -3.36; human rep4 1% lp -4.28
+pythia-160m   greedy rep4 89% lp -0.25; T0.25 rep4 86% lp -0.30; T0.5 rep4 69% lp -0.59; T0.75 rep4 16% lp -1.98; T1 rep4 0% lp -4.47; top-p0.9 rep4 1% lp -3.31; human rep4 1% lp -3.85
+pythia-410m   greedy rep4 84% lp -0.27; T0.25 rep4 81% lp -0.31; T0.5 rep4 60% lp -0.66; T0.75 rep4 13% lp -1.84; T1 rep4 1% lp -3.76; top-p0.9 rep4 2% lp -2.74; human rep4 1% lp -3.40
+pythia-1b     greedy rep4 80% lp -0.28; T0.25 rep4 77% lp -0.33; T0.5 rep4 54% lp -0.68; T0.75 rep4 12% lp -1.78; T1 rep4 1% lp -3.50; top-p0.9 rep4 3% lp -2.54; human rep4 1% lp -3.18
+pythia-1.4b   greedy rep4 78% lp -0.31; T0.25 rep4 72% lp -0.39; T0.5 rep4 51% lp -0.73; T0.75 rep4 12% lp -1.73; T1 rep4 1% lp -3.50; top-p0.9 rep4 2% lp -2.51; human rep4 1% lp -3.03
+smollm2-135m  greedy rep4 85% lp -0.27; T0.25 rep4 80% lp -0.32; T0.5 rep4 61% lp -0.69; T0.75 rep4 12% lp -1.97; T1 rep4 1% lp -3.96; top-p0.9 rep4 3% lp -2.94; human rep4 1% lp -3.52
+smollm2-360m  greedy rep4 83% lp -0.28; T0.25 rep4 78% lp -0.34; T0.5 rep4 55% lp -0.70; T0.75 rep4 10% lp -1.89; T1 rep4 1% lp -3.79; top-p0.9 rep4 2% lp -2.75; human rep4 1% lp -3.18
+smollm2-1.7b  greedy rep4 64% lp -0.37; T0.25 rep4 63% lp -0.41; T0.5 rep4 35% lp -0.81; T0.75 rep4 8% lp -1.64; T1 rep4 1% lp -3.18; top-p0.9 rep4 2% lp -2.29; human rep4 1% lp -2.33
+
+== Memorisation: greedy continuations that reproduce the book
+pythia-70m    first 32+ tokens identical to the book: 0/144; longest 2
+pythia-160m   first 32+ tokens identical to the book: 0/144; longest 3
+pythia-410m   first 32+ tokens identical to the book: 0/144; longest 7
+pythia-1b     first 32+ tokens identical to the book: 0/144; longest 17
+pythia-1.4b   first 32+ tokens identical to the book: 0/144; longest 6
+smollm2-135m  first 32+ tokens identical to the book: 0/144; longest 7
+smollm2-360m  first 32+ tokens identical to the book: 0/144; longest 6
+smollm2-1.7b  first 32+ tokens identical to the book: 6/144; longest 256
+    #24 bible-kjv: 55 tokens; ' that is a bondmaid, betrothed to an husband, and not at all redeemed, nor freedom given her; she sh'
+    #25 bible-kjv: 256 tokens; ' thee there: and it shall be, that of whom I say unto thee, This shall go with thee, the same shall '
+    #27 bible-kjv: 256 tokens; ' His eyes shall see his destruction, and he shall drink of the wrath of the Almighty. 21:21 For what'
+    #28 bible-kjv: 250 tokens; ' lion and the young lion roaring on his prey, when a multitude of shepherds is called forth against '
+    #29 bible-kjv: 256 tokens; ' bones; Behold, I will cause breath to enter into you, and ye shall live: 37:6 And I will lay sinews'
+    #30 bible-kjv: 59 tokens; ' the Christ, or not; 3:16 John answered, saying unto them all, I indeed baptize you with water; but '
+
+== Greedy continuations that do not end in a loop: what they are
+pythia-70m    not looped 6: recite the book 0, count (digits masked) 1, a block of up to 128 tokens repeated twice 1, other 4 (repeated 4-grams 81%)
+pythia-160m   not looped 8: recite the book 0, count (digits masked) 5, a block of up to 128 tokens repeated twice 0, other 3 (repeated 4-grams 73%)
+pythia-410m   not looped 9: recite the book 0, count (digits masked) 5, a block of up to 128 tokens repeated twice 1, other 3 (repeated 4-grams 71%)
+pythia-1b     not looped 20: recite the book 0, count (digits masked) 6, a block of up to 128 tokens repeated twice 7, other 7 (repeated 4-grams 41%)
+pythia-1.4b   not looped 20: recite the book 0, count (digits masked) 3, a block of up to 128 tokens repeated twice 6, other 11 (repeated 4-grams 34%)
+smollm2-135m  not looped 17: recite the book 0, count (digits masked) 10, a block of up to 128 tokens repeated twice 3, other 4 (repeated 4-grams 58%)
+smollm2-360m  not looped 17: recite the book 0, count (digits masked) 6, a block of up to 128 tokens repeated twice 5, other 6 (repeated 4-grams 53%)
+smollm2-1.7b  not looped 43: recite the book 6, count (digits masked) 4, a block of up to 128 tokens repeated twice 9, other 24 (repeated 4-grams 30%)
+
+== Self-reinforcement inside greedy loops: chosen-token probability and top-2 gap (nats)
+pythia-70m    before the loop 0.30/1.3; c1 0.37/1.6 (n=138), c2 0.56/2.5 (n=138), c3 0.71/3.2 (n=138), c4 0.80/3.7 (n=137), c5 0.84/4.0 (n=134), c6 0.87/4.2 (n=134)
+pythia-160m   before the loop 0.36/1.4; c1 0.45/1.9 (n=136), c2 0.60/2.7 (n=136), c3 0.76/3.5 (n=136), c4 0.84/4.0 (n=133), c5 0.88/4.3 (n=125), c6 0.89/4.5 (n=115)
+pythia-410m   before the loop 0.34/1.3; c1 0.43/1.7 (n=135), c2 0.66/3.0 (n=135), c3 0.82/4.2 (n=135), c4 0.88/4.8 (n=132), c5 0.91/5.1 (n=125), c6 0.92/5.3 (n=115)
+pythia-1b     before the loop 0.37/1.4; c1 0.50/2.0 (n=124), c2 0.70/3.2 (n=124), c3 0.85/4.4 (n=124), c4 0.90/5.1 (n=120), c5 0.92/5.3 (n=108), c6 0.94/5.6 (n=104)
+pythia-1.4b   before the loop 0.38/1.4; c1 0.50/2.0 (n=124), c2 0.72/3.4 (n=124), c3 0.87/4.7 (n=124), c4 0.91/5.3 (n=115), c5 0.94/5.7 (n=106), c6 0.95/6.0 (n=97)
+smollm2-135m  before the loop 0.32/1.1; c1 0.43/1.6 (n=127), c2 0.62/2.7 (n=127), c3 0.78/3.7 (n=127), c4 0.85/4.4 (n=127), c5 0.88/4.7 (n=119), c6 0.90/5.0 (n=112)
+smollm2-360m  before the loop 0.35/1.2; c1 0.47/1.8 (n=127), c2 0.70/3.2 (n=127), c3 0.85/4.4 (n=127), c4 0.91/5.1 (n=124), c5 0.93/5.5 (n=118), c6 0.95/5.8 (n=113)
+smollm2-1.7b  before the loop 0.42/1.5; c1 0.51/1.9 (n=101), c2 0.73/3.4 (n=101), c3 0.87/4.7 (n=101), c4 0.92/5.5 (n=90), c5 0.94/5.8 (n=80), c6 0.95/6.2 (n=75)
+
+== Probability of the chosen token by position (mean over prompts): tokens 1, 16, 64, 128, 256
+pythia-70m    greedy 0.21/0.43/0.83/0.93/0.95; T0.5 0.18/0.33/0.60/0.78/0.88; T1 0.09/0.15/0.11/0.15/0.14; human 0.08/0.17/0.13/0.12/0.14
+pythia-160m   greedy 0.25/0.42/0.84/0.94/0.96; T0.5 0.22/0.32/0.59/0.76/0.93; T1 0.11/0.16/0.13/0.17/0.17; human 0.12/0.21/0.15/0.15/0.19
+pythia-410m   greedy 0.29/0.42/0.81/0.95/0.99; T0.5 0.26/0.33/0.54/0.74/0.91; T1 0.15/0.25/0.21/0.21/0.20; human 0.17/0.24/0.19/0.18/0.25
+pythia-1b     greedy 0.31/0.40/0.80/0.95/0.98; T0.5 0.28/0.36/0.55/0.72/0.88; T1 0.18/0.21/0.21/0.23/0.23; human 0.18/0.26/0.21/0.21/0.29
+pythia-1.4b   greedy 0.32/0.40/0.76/0.93/0.99; T0.5 0.30/0.35/0.52/0.72/0.87; T1 0.20/0.24/0.19/0.21/0.17; human 0.19/0.27/0.22/0.22/0.31
+smollm2-135m  greedy 0.28/0.39/0.80/0.96/0.98; T0.5 0.25/0.34/0.55/0.73/0.93; T1 0.14/0.18/0.18/0.17/0.20; human 0.16/0.23/0.19/0.21/0.20
+smollm2-360m  greedy 0.31/0.40/0.78/0.95/0.98; T0.5 0.28/0.39/0.52/0.71/0.89; T1 0.19/0.19/0.17/0.17/0.21; human 0.19/0.28/0.23/0.24/0.24
+smollm2-1.7b  greedy 0.42/0.40/0.63/0.85/0.95; T0.5 0.38/0.37/0.57/0.62/0.78; T1 0.28/0.30/0.25/0.23/0.20; human 0.29/0.40/0.33/0.39/0.36
+
+== Loops that count: characters with every digit masked (max period 600 characters)
+pythia-70m    token loops 138/144; with digits masked 139/144; Bible prompts: tokens 7/8, masked 8/8
+pythia-160m   token loops 136/144; with digits masked 141/144; Bible prompts: tokens 3/8, masked 7/8
+pythia-410m   token loops 135/144; with digits masked 140/144; Bible prompts: tokens 3/8, masked 6/8
+pythia-1b     token loops 124/144; with digits masked 130/144; Bible prompts: tokens 2/8, masked 3/8
+pythia-1.4b   token loops 124/144; with digits masked 127/144; Bible prompts: tokens 0/8, masked 2/8
+smollm2-135m  token loops 127/144; with digits masked 137/144; Bible prompts: tokens 3/8, masked 8/8
+smollm2-360m  token loops 127/144; with digits masked 133/144; Bible prompts: tokens 3/8, masked 5/8
+smollm2-1.7b  token loops 101/144; with digits masked 105/144; Bible prompts: tokens 0/8, masked 0/8
+pythia-70m Bible #24: ' field with a woman, thou shalt not sow thy field with a woman, thou shalt not sow thy field with a woman, thou shalt not sow thy field with a woman, thou shalt'
+pythia-70m Bible #25: 'ng them down to the water, and I will bring them down to the water, and I will bring them down to the water, and I will bring them down to the water, and I will'
+pythia-70m counting loop, Bible #28, period 57 characters: 'ot be alone, but I will not be alone.\n\n31:14 And I will not be alone, but I will not be alone.\n\n31:15 And I will not be alone, but I will not be alone.\n\n31:16 And I will not be alone, but I will not be alone.\n\n31:17 And I will not be alone,'
+pythia-160m counting loop, Bible #25, period 127 characters: 'ng them down unto the water, and I will try them for a while.\n\n8:11 And the LORD said unto Gideon, The people are too many; bring them down unto the water, and I will try them for a while.\n\n8:12 And the LORD said unto Gideon, The people are'
+pythia-410m counting loop, Bible #27, period 98 characters: ' to be his seed. 21:29 He hath appointed the sons to be his seed, and hath appointed the daughters to be his seed. 21:30 He hath appointed the sons to be his seed, and hath appointed the daughters to be his seed. 21:31 He hath appointed the'
+pythia-1b counting loop, Bible #31, period 148 characters: 'servant be. 2:26 I have not called you servants, but friends: therefore if any man serve me, let him follow me; and where I am, there shall also my servant be. 2:27 I have not called you servants, but friends: therefore if any man serve me,'
+pythia-1.4b counting loop, Bible #24, period 104 characters: '\n\n25:1 Thou shalt not lie with a beast to be defiled: neither shalt thou lie with a beast to be defiled.\n\n26:1 Thou shalt not lie with a beast to be defiled: neither shalt thou lie with a beast to be defiled.\n\n27:1 Thou shalt not lie with a'
+smollm2-135m counting loop, Bible #25, period 127 characters: ' unto Gideon, The people are too many; bring them down unto the water, and I will try them for the Lord. 7:11 And the LORD said unto Gideon, The people are too many; bring them down unto the water, and I will try them for the Lord. 7:12 And'
+smollm2-360m counting loop, Bible #27, period 99 characters: 'ned into hell, and the wicked man into the fire of his own heart. 21:28 The wicked man shall be turned into hell, and the wicked man into the fire of his own heart. 21:29 The wicked man shall be turned into hell, and the wicked man into the'
+
+== Examples: the last 120 characters of greedy continuations that loop (prompts 0, 40, 80, 120 or next)
+pythia-70m    #0 [austen-emma] p=8 'e of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "'
+pythia-70m    #40 [bryant-stories] p=18 'll," said the Whale, "I will help you out."\n\n"I will," said the Whale, "I will help you out."\n\n"I will," said the Whale,'
+pythia-70m    #80 [chesterton-thursday] p=16 ' a little late," said Syme.\n\n"I am going to be a little late," said Syme.\n\n"I am going to be a little late," said Syme.\n'
+pythia-70m    #120 [shakespeare-hamlet] p=11 "'m not going to be back in a minute. I'm not going to be back in a minute. I'm not going to be back in a minute. I'm not"
+pythia-160m   #0 [austen-emma] p=11 ' read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m'
+pythia-160m   #40 [bryant-stories] p=21 'l be your guide."\n\n"I\'ll be your guide," said the Whale. "I\'ll be your guide."\n\n"I\'ll be your guide," said the Whale. "I'
+pythia-160m   #80 [chesterton-thursday] p=7 'day." "I am to be Thursday." "I am to be Thursday." "I am to be Thursday." "I am to be Thursday." "I am to be Thursday."'
+pythia-160m   #120 [shakespeare-hamlet] p=5 'good man, and a good man, and a good man, and a good man, and a good man, and a good man, and a good man, and a good man'
+pythia-410m   #0 [austen-emma] p=6 ' "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a'
+pythia-410m   #40 [bryant-stories] p=26 'e. "I want to stay here and be with you."\n\n"I don\'t want to go," said the Whale. "I want to stay here and be with you."\n'
+pythia-410m   #80 [chesterton-thursday] p=39 'Syme," said Gregory, "and I am glad to see you. I am glad to see you, Mr. Syme."\n\n"I am glad to see you, Mr. Syme," said'
+pythia-410m   #120 [shakespeare-hamlet] p=8 ' Ile beleeue you, that Ile beleeue you, that Ile beleeue you, that Ile beleeue you, that Ile beleeue you, that Ile belee'
+pythia-1b     #0 [austen-emma] p=8 'o be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man'
+pythia-1b     #42 [bryant-stories] p=23 'od tree."\n\n"It is a good tree," said the Little Fir Tree. "It is a good tree."\n\n"It is a good tree," said the Little Fir'
+pythia-1b     #80 [chesterton-thursday] p=15 'n life." "I am glad to see you have made a good start in life." "I am glad to see you have made a good start in life." "'
+pythia-1b     #120 [shakespeare-hamlet] p=6 'le watch to Night. Ile watch to Night. Ile watch to Night. Ile watch to Night. Ile watch to Night. Ile watch to Night. I'
+pythia-1.4b   #0 [austen-emma] p=6 ' "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a'
+pythia-1.4b   #41 [bryant-stories] p=27 'y-dog is a very good dog, and he will be a good dog if you take good care of him.\n\nThe puppy-dog is a very good dog, and'
+pythia-1.4b   #80 [chesterton-thursday] p=23 'd to hear it," said Syme. "I am glad to hear it," said Gregory. "I am glad to hear it," said Syme. "I am glad to hear it'
+pythia-1.4b   #120 [shakespeare-hamlet] p=34 ', Hor.\n\nHOR.\n\nI am glad to see you too, Ham.\n\nHAM.\n\nI am glad to see you too, Hor.\n\nHOR.\n\nI am glad to see you too, Ham.'
+smollm2-135m  #0 [austen-emma] p=24 '-and I am not a child,--and I am not a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am'
+smollm2-135m  #40 [bryant-stories] p=47 'I will tell you what I have to do."\n\n"I will go," said the Whale, "and I will tell you what I have to do."\n\n"I will go,"'
+smollm2-135m  #80 [chesterton-thursday] p=43 ' of the world." "I am sorry to say," said Gregory, "that I am not a man of the world." "I am sorry to say," said Syme, "'
+smollm2-135m  #120 [shakespeare-hamlet] p=5 "Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't. Ile see't."
+smollm2-360m  #0 [austen-emma] p=8 'd child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very'
+smollm2-360m  #40 [bryant-stories] p=21 '"and I will help you out."\n\n"I will go with you," said the Whale, "and I will help you out."\n\n"I will go with you," said'
+smollm2-360m  #80 [chesterton-thursday] p=35 'not sure that I am not quite sure of it," said Syme. "I am not sure that I am not quite sure of it," said Gregory. "I am'
+smollm2-360m  #120 [shakespeare-hamlet] p=29 "ance 'twill wake againe Hor. I warrant you, I haue seen it in his life. Ile watch to Night; perchance 'twill wake againe"
+smollm2-1.7b  #0 [austen-emma] p=9 "t you mean!--You don't know what you mean!--You don't know what you mean!--You don't know what you mean!--You don't know"
+smollm2-1.7b  #42 [bryant-stories] p=64 'le Fir Tree. "I am a very tall tree, and I am very strong. I can stand up straight and I can grow very tall."\n\n"Yes, but'
+smollm2-1.7b  #80 [chesterton-thursday] p=29 ' "but I am not sure that I am Thursday." "But you are Thursday," said Syme. "I am Thursday," said Gregory, "but I am not'
+smollm2-1.7b  #120 [shakespeare-hamlet] p=7 'ep his League Horatio will not keep his League Horatio will not keep his League Horatio will not keep his League Horatio'
+
+== One prompt in full (#0, Emma): the prompt, the book, and the first 400 characters of each continuation
+prompt: 'Elton is shewing your picture to his mother and sisters, telling how much more beautiful is the original, and after being asked for it five or six times, allowing them to hear your name, your own dear name." "My picture!--But'
+book:   ' he has left my picture in Bond-street." "Has he so!--Then I know nothing of Mr. Elton. No, my dear little modest Harriet, depend upon it the picture will not be in Bond-street till just before he mounts his horse to-morrow. It is his companion all this evening, his solace, his delight. It opens his designs to his family, it introduces you among them, it diffuses through the party those pleasantes'
+pythia-70m    greedy ' I have a picture of you, and I have a picture of you." "I have a picture of you, and I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture of you." "I have a picture '
+pythia-160m   greedy ' I\'m not going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going to be able to read it." "I\'m going '
+pythia-410m   greedy ' I am not a child." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I'
+pythia-1b     greedy ' I don\'t want to be a picture!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a man!" "I want to be a '
+pythia-1.4b   greedy ' I am not a woman." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I am a man." "I'
+smollm2-135m  greedy ' I am not a picture,--I am a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am not a woman,--and I am not a child,--and I am not a man,--and I am not a woman,--and I a'
+smollm2-360m  greedy ' I am not a child!" "You are a child, and you are a beautiful child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very good child, and you are a very go'
+smollm2-1.7b  greedy ' I don\'t know what you mean." "You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean!--You don\'t know what you mean'
+smollm2-1.7b  T0.5 ' what picture?" said I, in a tone of surprise. "It is a portrait of you, Miss," replied he, "which I took when you were at the theatre last week." "And how did you get it?" "I was told to wait for you at the door, and when you came out, I saw you were alone, and followed you. I was afraid you would be angry with me, so I took the picture, and brought it to my mother; and she said it was the best l'
+smollm2-1.7b  T1 ' not mine, Matilda--no--I wouldn\'t give it to one to send to me." And as they came to the locket as the last thing, "O the young people\'s mother gave that to me." Abra has left these lines prompted by a desire "to devote the few remaining days to repose and private companionship with Matilda as her companion."\n\n\nDied November, 1837, in my mother\'s house in Thurlaston Street Grove Road, Bayswater, '
+smollm2-1.7b  top-p0.9 ' I wish to live. I am dying of hunger. I was two years in the institution, and they made me pay for my lodging. It is a shame, Mrs. R--, a shame!" "Let us go and have a good look at your portrait, darling. How pretty it is, and what large eyes and mouth you have." "Yes, mother, it is very pretty; I never looked at it before." "How _well_ it looks, like its real self; and I wish, as I am dying, I c'
+pythia-1.4b   T0.5 ' what about your picture?" "I have no picture." "You have no picture?" "What do you mean?" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "My dear, I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I have no picture!" "I hav'
+pythia-1.4b   T1 ' so decent a son as you could never be rude enough to..." "To say such a thing?" "You may go to the devil!" "It was my right to that!" "It was all due to your going away!" "You might have gone whenever you like!" "For heaven\'s sake do not deny it!" "You owe it all to me." "Oh, don\'t go away, please!" "The minute you were gone, the talk died." "Lassitude crept over the place." "I swear to you, yout'
+pythia-1.4b   top-p0.9 ' I wish to meet you in your beautiful house in the country, and in the morning as you come out of your darkroom, holding the beautiful hand, your own lovely hand, and not, as now, all over the place, in a black sleeve." "I wish to come and sit by you--in your quiet house in the country, like the birds and flowers, and not at an elegant table--you are most beautiful." "I shall come and sit by you i'
+
+== Which words loop: share of function words (the 100 commonest words of the 18 books)
+the commonest 20: the and of to a in i that he it his for was with not is you be as but
+pythia-70m    word loops 133/144; function-word share: loop block 69%, greedy text before the loop 69%, sampled T1 49%, human 51%; blocks of function words only 9, with none 1; block shares 4 consecutive words with the prompt 16, with the greedy text before the loop 33
+pythia-160m   word loops 133/144; function-word share: loop block 69%, greedy text before the loop 69%, sampled T1 48%, human 51%; blocks of function words only 8, with none 2; block shares 4 consecutive words with the prompt 24, with the greedy text before the loop 57
+pythia-410m   word loops 130/144; function-word share: loop block 68%, greedy text before the loop 68%, sampled T1 50%, human 51%; blocks of function words only 4, with none 3; block shares 4 consecutive words with the prompt 16, with the greedy text before the loop 59
+pythia-1b     word loops 118/144; function-word share: loop block 69%, greedy text before the loop 66%, sampled T1 51%, human 51%; blocks of function words only 4, with none 3; block shares 4 consecutive words with the prompt 8, with the greedy text before the loop 59
+pythia-1.4b   word loops 116/144; function-word share: loop block 64%, greedy text before the loop 64%, sampled T1 50%, human 51%; blocks of function words only 2, with none 2; block shares 4 consecutive words with the prompt 11, with the greedy text before the loop 55
+smollm2-135m  word loops 126/144; function-word share: loop block 69%, greedy text before the loop 66%, sampled T1 50%, human 51%; blocks of function words only 4, with none 1; block shares 4 consecutive words with the prompt 20, with the greedy text before the loop 55
+smollm2-360m  word loops 125/144; function-word share: loop block 66%, greedy text before the loop 66%, sampled T1 49%, human 51%; blocks of function words only 4, with none 1; block shares 4 consecutive words with the prompt 14, with the greedy text before the loop 62
+smollm2-1.7b  word loops 95/144; function-word share: loop block 65%, greedy text before the loop 61%, sampled T1 50%, human 51%; blocks of function words only 0, with none 3; block shares 4 consecutive words with the prompt 10, with the greedy text before the loop 57
+over-represented in loop blocks against human text (all models, words seen 20+ times in blocks): glad x75.3, m x31.8, afraid x23.0, going x19.0, am x15.6, woman x13.7, sorry x13.5, ve x13.2, world x11.9, man x10.2, sure x7.6, re x7.1, seen x6.5, ll x5.8, been x5.3
+commonest words in loop blocks: the 7.7%, i 6.6%, and 5.2%, a 4.3%, of 3.6%, to 2.8%, said 2.2%, am 2.1%, you 2.1%, not 2.1%, man 1.5%, is 1.4%, have 1.3%, was 1.3%, he 1.3%
+
+== Word n-gram chains (memory of n - 1 words), greedy, 200 words after each prompt
+trained on the 18 books: 2,654,997 word and punctuation tokens
+n=1: loops 100%; onset median 0 words; period median 1; e.g. ', , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , ,'
+n=2: loops 100%; onset median 0 words; period median 4; e.g. 'the LORD , and the LORD , and the LORD , and the LORD , and the LORD , and the LORD , and '
+n=3: loops 100%; onset median 4 words; period median 4; e.g. 'I will not be afraid of the LORD , and the LORD , and the LORD , and the LORD , and the LO'
+n=4: loops 100%; onset median 31 words; period median 8; e.g. "I have no doubt of his being in love with her , and she was not quite a man ; but I ' m su"
