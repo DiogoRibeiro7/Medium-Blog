@@ -224,6 +224,35 @@ def main(smoke=False):
         )
         print(f"{r['model']:13s} before the loop {re_['pre_p']:.2f}/{re_['pre_m']:.1f}; {cyc}")
 
+    header("Probability of the chosen token by position (mean over prompts): tokens 1, 16, 64, 128, 256")
+    for r in runs:
+        parts = []
+        curves = {}
+        for rule in ("greedy", "T0.5", "T1", "human"):
+            lp = r["reference"]["logprob"] if rule == "human" else r["rules"][rule]["logprob"]
+            n = min(len(x) for x in lp)
+            curve = np.exp(np.array([x[:n] for x in lp])).mean(axis=0)
+            curves[rule] = [round(float(v), 4) for v in curve]
+            parts.append(f"{rule} " + "/".join(f"{curve[i - 1]:.2f}" for i in (1, 16, 64, 128, 256) if i <= n))
+        summary["models"].setdefault(r["model"], {})["position_p"] = curves
+        print(f"{r['model']:13s} " + "; ".join(parts))
+
+    header("Loops that count: characters with every digit masked (max period 600 characters)")
+    for r in runs:
+        texts = r["rules"]["greedy"]["text"]
+        masked = [L.periodic_tail(np.frombuffer(L.mask_digits(t).encode("utf-32-le"), dtype=np.uint32),
+                                  max_period=600, min_tokens=60).looped for t in texts]  # fmt: skip
+        tok = [t.looped for t in stats[(r["model"], "greedy")]["tails"]]
+        bible = [i for i, ps in enumerate(r["passages"]) if ps["book"] == "bible-kjv"]
+        bt, bm = sum(tok[i] for i in bible), sum(masked[i] for i in bible)
+        print(
+            f"{r['model']:13s} token loops {sum(tok)}/{len(tok)}; with digits masked {sum(masked)}/{len(masked)}; "
+            f"Bible prompts: tokens {bt}/{len(bible)}, masked {bm}/{len(bible)}"
+        )
+    r0 = runs[0]
+    for i in [i for i, ps in enumerate(r0["passages"]) if ps["book"] == "bible-kjv"][:2]:
+        print(f"{r0['model']} Bible #{i}: {r0['rules']['greedy']['text'][i][-160:]!r}")
+
     header("Examples: the last 120 characters of greedy continuations that loop (prompts 0, 40, 80, 120 or next)")
     for r in runs:
         d = r["rules"]["greedy"]

@@ -49,6 +49,12 @@ class TestRepetition(unittest.TestCase):
         self.assertEqual(L.repeated_ngram_share([1, 2, 3, 4, 5], 4), 0.0)
         self.assertAlmostEqual(L.repeated_ngram_share([1, 2] * 5, 2), 7 / 9)
 
+    def test_counting_loop_needs_digit_masking(self):
+        text = "".join(f"1:{v} And he said unto them, Go. " for v in range(10, 40))
+        codes = lambda t: np.frombuffer(t.encode("utf-32-le"), dtype=np.uint32)  # noqa: E731
+        self.assertFalse(L.periodic_tail(codes(text), max_period=400, min_tokens=60).looped)
+        self.assertTrue(L.periodic_tail(codes(L.mask_digits(text)), max_period=400, min_tokens=60).looped)
+
     def test_common_prefix(self):
         self.assertEqual(L.common_prefix([1, 2, 3, 9], [1, 2, 3, 4]), 3)
 

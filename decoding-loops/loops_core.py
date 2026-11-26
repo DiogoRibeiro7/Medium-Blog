@@ -215,6 +215,11 @@ def periodic_tail(x, max_period=MAX_PERIOD, min_repeats=MIN_REPEATS, min_tokens=
     return best
 
 
+def mask_digits(text):
+    """Replace every digit by 0, so that "19:20" and "19:21" read alike (counters inside a loop)."""
+    return re.sub(r"[0-9]", "0", text)
+
+
 def repeated_ngram_share(x, n=4):
     """Share of the n-grams of x that already appeared earlier in x."""
     seen, rep, total = set(), 0, 0
