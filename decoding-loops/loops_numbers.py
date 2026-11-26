@@ -1,0 +1,225 @@
+"""Every number in the article, from the generations in results/ (written by generate_runs.py).
+
+python loops_numbers.py > output.txt         # after the full run (artifacts gen-* in results/)
+python loops_numbers.py --smoke              # the smoke run's file only
+"""
+
+import gzip
+import json
+import sys
+from pathlib import Path
+
+import numpy as np
+
+import loops_core as L
+
+HERE = Path(__file__).resolve().parent
+RESULTS = HERE / "results"
+NGRAM_STEPS = 200
+MEMORISED = 32  # a greedy continuation sharing this many leading tokens with the book is "memorised"
+
+
+def pct(x, d=1):
+    return f"{100 * x:.{d}f}%"
+
+
+def header(t):
+    print(f"\n== {t}")
+
+
+def load(smoke=False):
+    files = sorted(RESULTS.glob("gen_*.json.gz"))
+    files = [f for f in files if (f.name == "gen_smoke.json.gz") == smoke]
+    runs = []
+    for f in files:
+        with gzip.open(f, "rt", encoding="utf-8") as fh:
+            runs.append(json.load(fh))
+    return sorted(runs, key=lambda r: (r["family"], r["params_m"]))
+
+
+def summarise(tokens, logprob):
+    """Loop statistics of a set of continuations."""
+    tails = [L.periodic_tail(t) for t in tokens]
+    looped = [t for t in tails if t.looped]
+    n = len(tokens)
+    k = len(looped)
+    lo, hi = L.wilson(k, n)
+    lp = np.concatenate([np.asarray(x) for x in logprob])
+    return {
+        "n": n,
+        "looped": k,
+        "rate": k / n if n else float("nan"),
+        "ci": (lo, hi),
+        "onset_median": float(np.median([t.start for t in looped])) if looped else float("nan"),
+        "period_median": float(np.median([t.period for t in looped])) if looped else float("nan"),
+        "rep4": float(np.mean([L.repeated_ngram_share(t, 4) for t in tokens])),
+        "logprob": float(lp.mean()),
+        "tails": tails,
+    }
+
+
+def reinforcement(tokens, logprob, margin, tails, max_cycles=6):
+    """Mean probability and top-2 gap of the chosen tokens before the loop and in its 1st, 2nd... cycle."""
+    pre_p, pre_m = [], []
+    cyc_p = [[] for _ in range(max_cycles)]
+    cyc_m = [[] for _ in range(max_cycles)]
+    for lp, mg, t in zip(logprob, margin, tails, strict=True):
+        if not t.looped:
+            continue
+        p = np.exp(np.asarray(lp))
+        m = np.asarray(mg)
+        if t.start > 0:
+            pre_p.append(p[: t.start].mean())
+            pre_m.append(m[: t.start].mean())
+        for c in range(max_cycles):
+            a, b = t.start + c * t.period, t.start + (c + 1) * t.period
+            if b > len(p):
+                break
+            cyc_p[c].append(p[a:b].mean())
+            cyc_m[c].append(m[a:b].mean())
+    return {
+        "pre_p": float(np.mean(pre_p)) if pre_p else float("nan"),
+        "pre_m": float(np.mean(pre_m)) if pre_m else float("nan"),
+        "cycle_p": [float(np.mean(x)) if x else float("nan") for x in cyc_p],
+        "cycle_m": [float(np.mean(x)) if x else float("nan") for x in cyc_m],
+        "cycle_n": [len(x) for x in cyc_p],
+    }
+
+
+def ngram_ladder(passages):
+    words = []
+    for b in L.BOOKS:
+        words += L.tokenize_words(L.read_book(b))
+    out = {}
+    for n in (1, 2, 3, 4):
+        chain = L.NGramChain(words, n)
+        tails = []
+        for p in passages:
+            cont = chain.continue_from(L.tokenize_words(p.prompt), NGRAM_STEPS)
+            tails.append(L.periodic_tail(np.array([chain.code[w] for w in cont])))
+        looped = [t for t in tails if t.looped]
+        example = chain.continue_from(L.tokenize_words(passages[0].prompt), 40)
+        out[n] = {
+            "rate": len(looped) / len(tails),
+            "onset": float(np.median([t.start for t in looped])) if looped else float("nan"),
+            "period": float(np.median([t.period for t in looped])) if looped else float("nan"),
+            "example": " ".join(example),
+        }
+    return out, len(words)
+
+
+def main(smoke=False):
+    runs = load(smoke)
+    if not runs:
+        sys.exit("no generations in results/")
+    passages = L.make_prompts()
+    summary = {"models": {}, "rules": list(L.RULES)}
+
+    header("Runs")
+    for r in runs:
+        print(
+            f"{r['model']:13s} {r['name']} rev {r['revision']} ({str(r['sha'])[:12]}), {r['params_m']}M, "
+            f"{len(r['prompt_tokens'])} prompts x {r['n_new']} tokens, torch {r['torch']}"
+        )
+    prompt_len = [len(p) for p in runs[0]["prompt_tokens"]]
+    print(f"prompt length in tokens ({runs[0]['model']}): median {np.median(prompt_len):.0f}")
+
+    header("Loops: share of continuations ending in a repeating block (95% Wilson interval)")
+    stats = {}
+    for r in runs:
+        rows = []
+        for rule in L.RULES:
+            d = r["rules"][rule]
+            s = summarise(d["tokens"], d["logprob"])
+            stats[(r["model"], rule)] = s
+            rows.append(f"{rule} {pct(s['rate'], 0)} [{pct(s['ci'][0], 0)}-{pct(s['ci'][1], 0)}]")
+        ref = summarise(r["reference"]["tokens"], r["reference"]["logprob"])
+        stats[(r["model"], "human")] = ref
+        print(f"{r['model']:13s} " + "; ".join(rows) + f"; human text {pct(ref['rate'], 0)}")
+
+    header("Greedy loops: where they start and how long the repeating block is (tokens)")
+    for r in runs:
+        s = stats[(r["model"], "greedy")]
+        tails = [t for t in s["tails"] if t.looped]
+        short = sum(t.period <= 4 for t in tails)
+        print(
+            f"{r['model']:13s} looped {s['looped']}/{s['n']}; onset median {s['onset_median']:.0f}; "
+            f"period median {s['period_median']:.0f}; periods <= 4 tokens: {short}"
+        )
+
+    header("Size against rule")
+    for fam in sorted({r["family"] for r in runs}):
+        fr = [r for r in runs if r["family"] == fam]
+        small, large = fr[0]["model"], fr[-1]["model"]
+        g_s, g_l = stats[(small, "greedy")]["rate"], stats[(large, "greedy")]["rate"]
+        line = f"{fam}: greedy {small} {pct(g_s, 0)} -> {large} {pct(g_l, 0)}"
+        for rule in ("T0.75", "T1", "top-p0.9"):
+            a, b = stats[(small, rule)]["rate"], stats[(large, rule)]["rate"]
+            line += f"; {rule} at {small} {pct(a, 0)}, at {large} {pct(b, 0)}"
+        print(line)
+    for rule in L.RULES:
+        rates = [stats[(r["model"], rule)]["rate"] for r in runs]
+        print(f"{rule}: loop rate across the {len(runs)} models {pct(min(rates), 0)}-{pct(max(rates), 0)}")
+
+    header("Repetition and probability (mean over continuations)")
+    for r in runs:
+        parts = []
+        for rule in [*L.RULES, "human"]:
+            s = stats[(r["model"], rule)]
+            parts.append(f"{rule} rep4 {pct(s['rep4'], 0)} lp {s['logprob']:.2f}")
+        print(f"{r['model']:13s} " + "; ".join(parts))
+
+    header("Memorisation: greedy continuations that reproduce the book")
+    for r in runs:
+        pref = [
+            L.common_prefix(g, h) for g, h in zip(r["rules"]["greedy"]["tokens"], r["reference"]["tokens"], strict=True)
+        ]
+        mem = sum(p >= MEMORISED for p in pref)
+        print(
+            f"{r['model']:13s} first {MEMORISED}+ tokens identical to the book: {mem}/{len(pref)}; longest {max(pref)}"
+        )
+
+    header("Self-reinforcement inside greedy loops: chosen-token probability and top-2 gap (nats)")
+    for r in runs:
+        s = stats[(r["model"], "greedy")]
+        d = r["rules"]["greedy"]
+        re_ = reinforcement(d["tokens"], d["logprob"], d["margin"], s["tails"])
+        summary["models"].setdefault(r["model"], {})["reinforcement"] = re_
+        cyc = ", ".join(
+            f"c{i + 1} {p:.2f}/{m:.1f} (n={k})"
+            for i, (p, m, k) in enumerate(zip(re_["cycle_p"], re_["cycle_m"], re_["cycle_n"], strict=True))
+            if k
+        )
+        print(f"{r['model']:13s} before the loop {re_['pre_p']:.2f}/{re_['pre_m']:.1f}; {cyc}")
+
+    header("Examples: greedy continuations (first 160 characters)")
+    for r in runs:
+        d = r["rules"]["greedy"]
+        s = stats[(r["model"], "greedy")]
+        k = next((i for i, t in enumerate(s["tails"]) if t.looped), 0)
+        print(f"{r['model']:13s} [{passages[k].book}] {d['text'][k][:160]!r}")
+
+    if not smoke:
+        header("Word n-gram chains (memory of n - 1 words), greedy, 200 words after each prompt")
+        ladder, n_words = ngram_ladder(passages)
+        print(f"trained on the 18 books: {n_words:,} word and punctuation tokens")
+        for n, v in ladder.items():
+            print(
+                f"n={n}: loops {pct(v['rate'], 0)}; onset median {v['onset']:.0f} words; period median "
+                f"{v['period']:.0f}; e.g. {v['example'][:90]!r}"
+            )
+        summary["ngram"] = {str(k): {kk: vv for kk, vv in v.items() if kk != "example"} for k, v in ladder.items()}
+
+    for r in runs:
+        m = summary["models"].setdefault(r["model"], {})
+        m.update({"family": r["family"], "params_m": r["params_m"]})
+        for rule in [*L.RULES, "human"]:
+            s = stats[(r["model"], rule)]
+            m[rule] = {k: v for k, v in s.items() if k != "tails"}
+            m[rule]["onsets"] = [t.start for t in s["tails"] if t.looped]
+            m[rule]["periods"] = [t.period for t in s["tails"] if t.looped]
+    (RESULTS / ("summary_smoke.json" if smoke else "summary.json")).write_text(json.dumps(summary))
+
+
+if __name__ == "__main__":
+    main(smoke="--smoke" in sys.argv)
