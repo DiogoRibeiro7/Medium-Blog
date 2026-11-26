@@ -147,6 +147,38 @@ def main(smoke=False):
             f"period median {s['period_median']:.0f}; periods <= 4 tokens: {short}"
         )
 
+    header("Greedy loops: block length (tokens) and share of greedy output inside the loop")
+    for r in runs:
+        s = stats[(r["model"], "greedy")]
+        per = [t.period for t in s["tails"] if t.looped]
+        b1 = sum(p <= 4 for p in per)
+        b2 = sum(5 <= p <= 16 for p in per)
+        b3 = sum(p >= 17 for p in per)
+        inside = sum(r["n_new"] - t.start for t in s["tails"] if t.looped) / (s["n"] * r["n_new"])
+        print(f"{r['model']:13s} periods 1-4: {b1}, 5-16: {b2}, 17-64: {b3}; tokens inside a loop {pct(inside, 0)}")
+
+    header("Greedy loops by book (all models pooled)")
+    by_book = {}
+    for r in runs:
+        for t, ps in zip(stats[(r["model"], "greedy")]["tails"], r["passages"], strict=True):
+            by_book.setdefault(ps["book"], []).append(t.looped)
+    for b, v in sorted(by_book.items(), key=lambda kv: -np.mean(kv[1])):
+        print(f"{b:20s} {sum(v)}/{len(v)} ({pct(np.mean(v), 0)})")
+
+    header("The same prompts across sizes (greedy)")
+    for fam in sorted({r["family"] for r in runs}):
+        fr = [r for r in runs if r["family"] == fam]
+        flags = np.array([[t.looped for t in stats[(r["model"], "greedy")]["tails"]] for r in fr])
+        all_ = int(flags.all(axis=0).sum())
+        none = int((~flags).all(axis=0).sum())
+        print(
+            f"{fam} ({len(fr)} sizes): prompts that loop at every size {all_}; at no size {none}; of {flags.shape[1]}"
+        )
+    summary["greedy_onset"] = {
+        r["model"]: [t.start if t.looped else -1 for t in stats[(r["model"], "greedy")]["tails"]] for r in runs
+    }
+    summary["books"] = [ps["book"] for ps in runs[0]["passages"]]
+
     header("Size against rule")
     for fam in sorted({r["family"] for r in runs}):
         fr = [r for r in runs if r["family"] == fam]
@@ -192,12 +224,14 @@ def main(smoke=False):
         )
         print(f"{r['model']:13s} before the loop {re_['pre_p']:.2f}/{re_['pre_m']:.1f}; {cyc}")
 
-    header("Examples: greedy continuations (first 160 characters)")
+    header("Examples: the last 120 characters of greedy continuations that loop (prompts 0, 40, 80, 120 or next)")
     for r in runs:
         d = r["rules"]["greedy"]
-        s = stats[(r["model"], "greedy")]
-        k = next((i for i, t in enumerate(s["tails"]) if t.looped), 0)
-        print(f"{r['model']:13s} [{passages[k].book}] {d['text'][k][:160]!r}")
+        tails = stats[(r["model"], "greedy")]["tails"]
+        for k0 in (0, 40, 80, 120):
+            k = next((i for i in range(k0, len(tails)) if tails[i].looped), None)
+            if k is not None:
+                print(f"{r['model']:13s} #{k} [{passages[k].book}] p={tails[k].period} {d['text'][k][-120:]!r}")
 
     if not smoke:
         header("Word n-gram chains (memory of n - 1 words), greedy, 200 words after each prompt")
