@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "dataset": "eurostat-regional-employment-pt",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": null,
+  "record": "external/eurostat-regional-employment-pt/metadata.yaml",
+  "folder": "lisbon-metro-ridership",
+  "target": "lisbon-metro-ridership",
+  "retrieved": "2026-11-26",
+  "note": "Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of the response. The registry record is still to be added (commit null).",
+  "files": [
+    {
+      "path": "data/raw/employment_nuts2.json",
+      "dataset": "lfst_r_lfe2emp",
+      "query": "geo=PT&geo=PT1A&geo=PT1B&sex=T&age=Y15-74&sinceTimePeriod=2019",
+      "about": "Employed persons aged 15-74 by NUTS 2 region, thousands",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfst_r_lfe2emp?format=JSON&lang=EN&geo=PT&geo=PT1A&geo=PT1B&sex=T&age=Y15-74&sinceTimePeriod=2019",
+      "eurostat_updated": "2026-10-30T23:00:00+0100",
+      "bytes": 3746,
+      "sha256": "e276499211acb7d0f790d4fd5084bbf3f0ed03f568dffbd3672c835eed1d4fd8"
+    }
+  ]
+}

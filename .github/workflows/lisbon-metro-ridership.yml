@@ -1,0 +1,75 @@
+name: Reproduce lisbon-metro-ridership
+
+on:
+  pull_request:
+    paths:
+      - 'lisbon-metro-ridership/**'
+      - 'data_sources/eurostat-regional-employment-pt.json'
+      - 'data_sources/ine-portugal-metro-ridership.json'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/lisbon-metro-ridership.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'lisbon-metro-ridership/**'
+      - 'data_sources/eurostat-regional-employment-pt.json'
+      - 'data_sources/ine-portugal-metro-ridership.json'
+      - 'data_sources/ine-portugal-municipal-infrastructure.json'
+      - '.github/workflows/lisbon-metro-ridership.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    env:
+      # One BLAS thread, so floating-point reductions run in a fixed order.
+      OPENBLAS_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: lisbon-metro-ridership
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: lisbon-metro-ridership/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the core functions
+        run: python -m unittest discover -s tests -v
+
+      - name: Download the INE and Eurostat responses and check their hashes
+        run: python fetch.py
+
+      - name: Build the monthly and annual panels
+        run: python panel.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python run_analysis.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=lisbon-metro-ridership/output.txt::output of run_analysis.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_three_systems fig2_calendar_closures fig3_quarters_fleet fig4_metro_area_2025; do
+            test -s "figures/$f.png"
+          done

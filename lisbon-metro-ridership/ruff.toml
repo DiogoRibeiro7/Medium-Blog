@@ -1,0 +1,9 @@
+line-length = 150
+target-version = "py313"
+
+[lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[lint.per-file-ignores]
+# Long f-strings that print one finding each; splitting them would only hide the format.
+"run_analysis.py" = ["E501"]
