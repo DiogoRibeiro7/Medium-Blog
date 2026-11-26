@@ -25,7 +25,7 @@ Two new external sources and one shared:
 
 Figures no API publishes are in [`transcribed.py`](transcribed.py), each with its document: the metro's reports to the regulator (AMT) for 2019, 2024 and 2025; the concession-contract indicators for 2025 (by quarter) and January–June 2026 (by month); the company's counts by ticket type (press); the other operators' totals; the calendar of closures; motorway traffic from IMT's report for Q2 2026.
 
-All responses were retrieved on 26 November 2026. No data are committed: `data/` and `results/` are rebuilt on every run and ignored by git. The data-registry records for the two new sources are still to be added (`commit: null` in both contracts).
+All responses were retrieved on 26 November 2026. No data are committed: `data/` and `results/` are rebuilt on every run and ignored by git. Both are recorded in the data registry (`DiogoRibeiro7/data`, `external/ine-portugal-metro-ridership` and `external/eurostat-regional-employment-pt`), and the shared population record lists this folder as a consumer.
 
 ## Reproduce
 

@@ -3,12 +3,12 @@
   "dataset": "eurostat-regional-employment-pt",
   "layer": "external",
   "repository": "DiogoRibeiro7/data",
-  "commit": null,
+  "commit": "89ca1fc5bd5c3ec86f84bf1d03ea5a842f273567",
   "record": "external/eurostat-regional-employment-pt/metadata.yaml",
   "folder": "lisbon-metro-ridership",
   "target": "lisbon-metro-ridership",
   "retrieved": "2026-11-26",
-  "note": "Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of the response. The registry record is still to be added (commit null).",
+  "note": "Eurostat serves identical bytes for identical data, so the pin is the SHA-256 of the response.",
   "files": [
     {
       "path": "data/raw/employment_nuts2.json",

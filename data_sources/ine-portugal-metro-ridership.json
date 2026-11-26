@@ -3,12 +3,12 @@
   "dataset": "ine-portugal-metro-ridership",
   "layer": "external",
   "repository": "DiogoRibeiro7/data",
-  "commit": null,
+  "commit": "89ca1fc5bd5c3ec86f84bf1d03ea5a842f273567",
   "record": "external/ine-portugal-metro-ridership/metadata.yaml",
   "folder": "lisbon-metro-ridership",
   "target": "lisbon-metro-ridership",
   "retrieved": "2026-11-26",
-  "note": "INE stamps each response with its extraction time and with the indicator's last-update date, which moves every month for the metro and airport series even when the requested months do not. The pin is the SHA-256 of IndicadorCod and Dados (sorted-key JSON); a mismatch means INE revised one of the requested months. The registry record is still to be added (commit null).",
+  "note": "INE stamps each response with its extraction time and with the indicator's last-update date, which moves every month for the metro and airport series even when the requested months do not. The pin is the SHA-256 of IndicadorCod and Dados (sorted-key JSON); a mismatch means INE revised one of the requested months.",
   "files": [
     {
       "path": "data/raw/metro_passengers.json",
