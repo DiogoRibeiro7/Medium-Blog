@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "dataset": "world-bank-wdi-gdp-resilience-2026-11-26",
+  "layer": "canonical",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "ce3cc0995411c124534408e2086772275ee2c7c8",
+  "record": "datasets/world-bank-wdi-gdp-resilience-2026-11-26/metadata.yaml",
+  "folder": "research/gdp-economic-resilience",
+  "target": "research/gdp-economic-resilience/data/world-bank-wdi-gdp-resilience-2026-11-26",
+  "files": [
+    {
+      "path": "raw/NV.AGR.TOTL.ZS.metadata.json",
+      "sha256": "fe7405bdb44e1600d98e44cc0edb61a4cc77b9d8d2ce534bed46309ac173a117",
+      "bytes": 1512,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.AGR.TOTL.ZS.metadata.json"
+    },
+    {
+      "path": "raw/NV.AGR.TOTL.ZS.page-1.json",
+      "sha256": "9ff2fc6feacceec5b4ff980bc6cc4d09e062a9ea6c825339434aca4ab014a05a",
+      "bytes": 248519,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.AGR.TOTL.ZS.page-1.json"
+    },
+    {
+      "path": "raw/NV.AGR.TOTL.ZS.page-2.json",
+      "sha256": "c8b7cff276a51e7002f3251eb95e5fb3366358a1c0f9f35e00cf037179cce6d2",
+      "bytes": 5915,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.AGR.TOTL.ZS.page-2.json"
+    },
+    {
+      "path": "raw/NV.IND.MANF.ZS.metadata.json",
+      "sha256": "54b1274c98563e9ffc9c80f402b8986a1433d3ca1bc9ce54b6922ce7749bb0a8",
+      "bytes": 1092,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.MANF.ZS.metadata.json"
+    },
+    {
+      "path": "raw/NV.IND.MANF.ZS.page-1.json",
+      "sha256": "9d25545e7e42ce4fd96bc624869e062537f8b7cf6400051d9f86d7ed9ddbeae5",
+      "bytes": 226893,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.MANF.ZS.page-1.json"
+    },
+    {
+      "path": "raw/NV.IND.MANF.ZS.page-2.json",
+      "sha256": "d3ec128cf28ee169bfdb5e3852e2d94f2d6155311b9ab9580b29d6793044dba2",
+      "bytes": 5430,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.MANF.ZS.page-2.json"
+    },
+    {
+      "path": "raw/NV.IND.TOTL.ZS.metadata.json",
+      "sha256": "989dfa43e4289f3b70735cd07f08fbbba8b2c76e89a6f0d19ded866027736c9b",
+      "bytes": 1104,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.TOTL.ZS.metadata.json"
+    },
+    {
+      "path": "raw/NV.IND.TOTL.ZS.page-1.json",
+      "sha256": "ce941be047710e8ed9723831a32ee2c3e3ed8dcaff75e8beef582c854f1b5dff",
+      "bytes": 247380,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.TOTL.ZS.page-1.json"
+    },
+    {
+      "path": "raw/NV.IND.TOTL.ZS.page-2.json",
+      "sha256": "06463ebff3ccc289e85fbc4333fa71ec901cba0a0e1e2e126c6bbb3c355e22e0",
+      "bytes": 5890,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.IND.TOTL.ZS.page-2.json"
+    },
+    {
+      "path": "raw/NV.SRV.TOTL.ZS.metadata.json",
+      "sha256": "55d203ff83eb44bd8a39d3fd48042f3473c75f3ce2c6364cfb44da0454661fb6",
+      "bytes": 1414,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.SRV.TOTL.ZS.metadata.json"
+    },
+    {
+      "path": "raw/NV.SRV.TOTL.ZS.page-1.json",
+      "sha256": "33719824700693dcf962e9ee1a311af7405a5f7e031c1b6286708102e25a760e",
+      "bytes": 222369,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.SRV.TOTL.ZS.page-1.json"
+    },
+    {
+      "path": "raw/NV.SRV.TOTL.ZS.page-2.json",
+      "sha256": "4a6a38a1b942fc6b02799357ae5310d51b0cc9f945f5ab70882c9c2e10498405",
+      "bytes": 5312,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NV.SRV.TOTL.ZS.page-2.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.CD.metadata.json",
+      "sha256": "51cec1e144a5bad8d92238630c0a305e20116e86d34ad95c7c315ed166255b28",
+      "bytes": 938,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.CD.metadata.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.CD.page-1.json",
+      "sha256": "50118d247bbe4e81beeffe268d096a1850b9193fcde5885dc5ff8c2ed4be37e0",
+      "bytes": 207409,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.CD.page-1.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.CD.page-2.json",
+      "sha256": "66f019bcfcb199ed15ad0b8cb090634a5adab98402adb1041d8428f133f1d831",
+      "bytes": 4943,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.CD.page-2.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.KD.metadata.json",
+      "sha256": "bc4bc0ffec1755410f52b1091c6b1f46917c7417977102350d3d1102b4659216",
+      "bytes": 994,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.KD.metadata.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.KD.page-1.json",
+      "sha256": "78a7321e45521c73b724f5f96afc2e8463cb07aa7ee42c53c4ce6b095b02423d",
+      "bytes": 213436,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.KD.page-1.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.KD.page-2.json",
+      "sha256": "b4a3be7d6e0badc482a5ff583f2b10f47396b7e4d1014164fa4fd7b56ebadcbc",
+      "bytes": 5128,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.KD.page-2.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.PP.CD.metadata.json",
+      "sha256": "e0a12d757d047f4a581238ccf5b79d606fc829fcf9b40c4808f951ec1d6b8ee1",
+      "bytes": 2624,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.PP.CD.metadata.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.PP.CD.page-1.json",
+      "sha256": "aef94649fc09f1c73c2a4be9db75b220db43e4a86dbb897f0d606faa15a64e77",
+      "bytes": 227414,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.PP.CD.page-1.json"
+    },
+    {
+      "path": "raw/NY.GDP.MKTP.PP.CD.page-2.json",
+      "sha256": "d0343c2605ae1effbf2ba39478cc42c76df178d8b2e96c509eaca1bc2cf455e4",
+      "bytes": 5403,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/NY.GDP.MKTP.PP.CD.page-2.json"
+    },
+    {
+      "path": "raw/SP.POP.TOTL.metadata.json",
+      "sha256": "2f8491efc00bf2c0995112ff8e87aba69e5e9d22d0880b22f7e3a4ec757ba05c",
+      "bytes": 1099,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/SP.POP.TOTL.metadata.json"
+    },
+    {
+      "path": "raw/SP.POP.TOTL.page-1.json",
+      "sha256": "d01d9e54556d0078c6387b0bf1cf2d66546c55178d3d783228833695c0fe9706",
+      "bytes": 196133,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/SP.POP.TOTL.page-1.json"
+    },
+    {
+      "path": "raw/SP.POP.TOTL.page-2.json",
+      "sha256": "89b1116ad1f97d930ba6ecdd92824de29d90ccb7912c168ccdd501edd1140bc6",
+      "bytes": 4764,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/SP.POP.TOTL.page-2.json"
+    },
+    {
+      "path": "raw/acquisition-manifest.json",
+      "sha256": "45807a39fe812ba771fb88812509cdd55c23b2f0cc020de799bde86cb2e1838f",
+      "bytes": 152354,
+      "url": "https://raw.githubusercontent.com/DiogoRibeiro7/data/ce3cc0995411c124534408e2086772275ee2c7c8/datasets/world-bank-wdi-gdp-resilience-2026-11-26/raw/acquisition-manifest.json"
+    }
+  ],
+  "consumers": [
+    "research/gdp-economic-resilience/pipeline.py"
+  ]
+}
