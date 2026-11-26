@@ -1,0 +1,199 @@
+
+== 1. Annual passengers, INE metro survey (millions) ==
+2004: Lisboa 180.246  Porto 9.845  MST 0.000
+2005: Lisboa 185.380  Porto 18.481  MST 0.000
+2010: Lisboa 182.781  Porto 53.549  MST 0.000
+2011: Lisboa 178.893  Porto 55.631  MST 0.000
+2012: Lisboa 149.754  Porto 54.122  MST 0.000
+2013: Lisboa 135.710  Porto 55.930  MST 0.000
+2014: Lisboa 135.012  Porto 56.924  MST 10.140
+2018: Lisboa 169.168  Porto 62.647  MST 12.309
+2019: Lisboa 183.075  Porto 71.040  MST 15.564
+2020: Lisboa 90.559  Porto 39.383  MST 10.929
+2021: Lisboa 83.686  Porto 41.704  MST 12.012
+2022: Lisboa 136.695  Porto 65.179  MST 16.134
+2023: Lisboa 165.804  Porto 78.996  MST 17.918
+2024: Lisboa 176.648  Porto 89.781  MST 20.191
+2025: Lisboa 173.451  Porto 94.725  MST 20.044
+Lisboa peak 2005 185.380; low after 2011 2014 135.012
+Lisboa 2011->2013 -24.1%; 2014->2019 +35.6%
+Lisboa 2018->2019 +8.2% (Navegante passes from April 2019)
+Metropolitano de Lisboa: 2024->2025 -1.81%; 2019->2025 -5.3%; place-km 2019->2025 +7.8% (3.534 -> 3.810 billion)
+Metro do Porto: 2024->2025 +5.51%; 2019->2025 +33.3%; place-km 2019->2025 +29.3% (1.705 -> 2.205 billion)
+Metro Sul do Tejo: 2024->2025 -0.73%; 2019->2025 +28.8%; place-km 2019->2025 -0.9% (0.314 -> 0.312 billion)
+Lisboa 2025 against 2019: -9.624 million
+Metropolitano de Lisboa passengers per 1,000 place-km: 2019 51.8, 2024 46.9, 2025 45.5
+Metro do Porto passengers per 1,000 place-km: 2019 41.7, 2024 42.7, 2025 43.0
+Metro Sul do Tejo passengers per 1,000 place-km: 2019 49.5, 2024 65.1, 2025 64.3
+
+== 2. The headline numbers ==
+INE Lisboa 2024 176.648 m, 2025 173.451 m, change -1.81%, -3.197 m
+Company 2024: valid tickets 171,898,118 + estimated evasion 4,829,166 = 176,727,284 (INE 176,648,000)
+Estimated evasion share of the 2024 total: 2.73%
+Company 2025 valid tickets 169.2 m: -1.57% on 2024; INE minus valid = 4.25 m
+INE Lisboa Jan-Aug: 2025 114.245 m, 2026 109.076 m, -4.52%, -5.169 m
+Company Jan-Sep 2026: 123.8 m, -3.9%
+Lisboa 2025 Q1: +1.7%
+Lisboa 2025 Q2: -2.1%
+Lisboa 2025 Q3: -1.3%
+Lisboa 2025 Q4: -5.2%
+Lisboa 2026 Q1: -4.0%
+Lisboa 2026 Q2: -4.4%
+Lisboa 2026 Q3 (Jul-Aug): -5.6%
+
+== 3. Calendar: day weights estimated from the monthly series ==
+Metropolitano de Lisboa: Saturday 0.60, Sunday/holiday 0.42 of a weekday (fit on 84 months, SSE 0.0629)
+Metro do Porto: Saturday 0.74, Sunday/holiday 0.30 of a weekday (fit on 84 months, SSE 0.0585)
+Metro Sul do Tejo: Saturday 0.74, Sunday/holiday 0.48 of a weekday (fit on 84 months, SSE 0.1489)
+Lisboa, wider sample 2005-2011, 2015-2019, 2023-2024: Saturday 0.52, Sunday/holiday 0.52
+
+== 3b. Weekday-equivalent days, Lisboa ==
+2024: calendar 309.06, after closures 308.36
+2025: calendar 307.48, after closures 305.18
+Jan-Aug 2025: calendar 204.06, after closures 203.46
+Jan-Aug 2026: calendar 205.26, after closures 203.26
+Closures (share of a day lost):
+  2024-12-03 0.35 partial strike, closed until 10:30 (Lusa, 3 Dec 2024)
+  2024-12-10 0.35 partial strike, closed until 10:30 (Lusa, 3 Dec 2024)
+  2025-04-28 0.60 Iberian blackout, service suspended from late morning (Lusa, 28 Apr 2025)
+  2025-09-09 0.35 partial strike, closed until 10:30 (Lusa, 9 Sep 2025)
+  2025-09-11 0.35 partial strike, closed until 10:30 (Lusa, 11 Sep 2025)
+  2025-12-11 1.00 general strike, network closed all day (Lusa, 10 Dec 2025)
+  2026-04-09 1.00 24-hour strike, network closed (Lusa, 9 Apr 2026)
+  2026-06-03 1.00 general strike, network closed all day (Lusa, 1-3 Jun 2026)
+
+== 3c. Decomposition of the change, Lisboa ==
+2025 vs 2024: raw -1.81%; per calendar day -1.31%; per day the network was open -0.79%
+   calendar accounts for -0.50 points, closures for -0.52 points, remainder -0.79
+Jan-Aug 2026 vs 2025: raw -4.52%; per calendar day -5.08%; per day the network was open -4.43%
+   calendar accounts for +0.56 points, closures for -0.65 points, remainder -4.43
+
+== 3d. Sensitivity of the remainder ==
+fitted weights: 2025 -0.79%, Jan-Aug 2026 -4.43%
+wider-sample weights: 2025 -0.83%, Jan-Aug 2026 -4.54%
+Saturday 0.50, Sunday 0.35: 2025 -0.73%, Jan-Aug 2026 -4.57%
+Saturday 0.70, Sunday 0.50: 2025 -0.84%, Jan-Aug 2026 -4.30%
+partial strikes lose 0.25 of a day and the blackout 0.4: 2025 -0.85%, Jan-Aug 2026 -4.34%
+partial strikes lose 0.45 of a day and the blackout 0.8: 2025 -0.72%, Jan-Aug 2026 -4.52%
+(2024 and 2025 each have two partial strikes, so their weight nearly cancels in the 2025 comparison)
+Jan-Jul 2026 (August works left out): -3.99%
+Jan-Aug 2026 without May and August (months with works): -3.91%
+
+== 4. Change on the same quarter a year earlier, per day the network was open ==
+2024 Q1: Lisboa +3.3 (raw +2.5, place-km -0.7) | Porto +12.0 (place-km +9.5) | MST +13.5 (place-km -3.9) | Lisboa minus MST -10.2, minus Porto -8.7
+2024 Q2: Lisboa +12.8 (raw +13.0, place-km +11.9) | Porto +11.8 (place-km +5.2) | MST +17.0 (place-km +3.6) | Lisboa minus MST -4.3, minus Porto +1.0
+2024 Q3: Lisboa +3.5 (raw +4.0, place-km -4.3) | Porto +13.7 (place-km +14.1) | MST +7.2 (place-km -1.8) | Lisboa minus MST -3.7, minus Porto -10.2
+2024 Q4: Lisboa +4.7 (raw +6.7, place-km +0.7) | Porto +13.7 (place-km +13.2) | MST +10.5 (place-km +0.2) | Lisboa minus MST -5.8, minus Porto -9.0
+2025 Q1: Lisboa +2.2 (raw +1.7, place-km +3.3) | Porto +9.1 (place-km +9.9) | MST +2.6 (place-km +3.2) | Lisboa minus MST -0.4, minus Porto -6.8
+2025 Q2: Lisboa -0.5 (raw -2.1, place-km -0.3) | Porto +8.0 (place-km +8.6) | MST +0.2 (place-km -1.6) | Lisboa minus MST -0.7, minus Porto -8.6
+2025 Q3: Lisboa -0.4 (raw -1.3, place-km +2.4) | Porto +7.0 (place-km +0.6) | MST +3.4 (place-km +0.2) | Lisboa minus MST -3.8, minus Porto -7.4
+2025 Q4: Lisboa -4.1 (raw -5.2, place-km -0.8) | Porto +2.6 (place-km +0.8) | MST -4.9 (place-km -0.2) | Lisboa minus MST +0.9, minus Porto -6.7
+2026 Q1: Lisboa -4.0 (raw -4.0, place-km -1.7) | Porto +0.8 (place-km -6.3) | MST -0.6 (place-km +0.3) | Lisboa minus MST -3.4, minus Porto -4.8
+2026 Q2: Lisboa -3.6 (raw -4.4, place-km -1.7) | Porto +4.4 (place-km +1.4) | MST +0.9 (place-km +0.9) | Lisboa minus MST -4.5, minus Porto -8.0
+2026 Q3 (Jul-Aug): Lisboa -6.4 (raw -5.6, place-km +1.8) | Porto +1.6 (place-km +0.2) | MST -2.2 (place-km -0.7) | Lisboa minus MST -4.2, minus Porto -8.0
+2025: Metropolitano de Lisboa -0.8% (raw -1.8%); Metro do Porto +6.5% (raw +5.5%); Metro Sul do Tejo +0.1% (raw -0.7%)
+Jan-Aug 2026: Metropolitano de Lisboa -4.4% (raw -4.5%); Metro do Porto +2.4% (raw +2.7%); Metro Sul do Tejo -0.4% (raw -0.2%)
+mean quarterly gap 2024: Lisboa minus Porto -6.7, Lisboa minus MST -6.0
+mean quarterly gap 2025: Lisboa minus Porto -7.4, Lisboa minus MST -1.0
+mean quarterly gap 2026: Lisboa minus Porto -6.9, Lisboa minus MST -4.0
+
+== 4b. Monthly changes, per day open (for the figure) ==
+2025-01: Lisboa +1.5 (raw +1.5), Porto +5.4, MST +2.1
+2025-02: Lisboa +5.3 (raw +1.1), Porto +13.4, MST +6.0
+2025-03: Lisboa +0.1 (raw +2.4), Porto +8.5, MST +0.0
+2025-04: Lisboa -3.1 (raw -7.6), Porto +5.1, MST -2.3
+2025-05: Lisboa +0.7 (raw +1.4), Porto +7.6, MST -1.3
+2025-06: Lisboa +0.8 (raw +0.0), Porto +11.3, MST +4.5
+2025-07: Lisboa +0.2 (raw +0.2), Porto +7.9, MST +3.2
+2025-08: Lisboa +2.9 (raw +0.7), Porto +8.6, MST +4.1
+2025-09: Lisboa -3.9 (raw -4.3), Porto +4.4, MST +2.6
+2025-10: Lisboa -4.9 (raw -4.3), Porto +3.0, MST -4.1
+2025-11: Lisboa -1.1 (raw -1.8), Porto +2.2, MST -5.2
+2025-12: Lisboa -6.5 (raw -9.8), Porto +2.0, MST -6.2
+2026-01: Lisboa -3.1 (raw -4.6), Porto +1.3, MST -4.4
+2026-02: Lisboa -9.2 (raw -9.2), Porto -6.5, MST -7.5
+2026-03: Lisboa -0.2 (raw +1.3), Porto +7.0, MST +9.4
+2026-04: Lisboa -1.6 (raw -1.6), Porto +6.6, MST +3.7
+2026-05: Lisboa -4.3 (raw -6.4), Porto +5.5, MST +2.3
+2026-06: Lisboa -4.7 (raw -4.8), Porto +1.3, MST -3.3
+2026-07: Lisboa -5.1 (raw -5.1), Porto +2.6, MST -2.3
+2026-08: Lisboa -7.7 (raw -6.3), Porto +0.5, MST -2.0
+Works months (not adjusted): 3-19 Aug 2024: sections and stations of the Green and Yellow lines closed for the Circular line works; 2-5 May 2026: Rossio-Baixa-Chiado-Cais do Sodré closed on the Green line; 8-26 Aug 2026: Cais do Sodré closed; Blue line reduced hours on August weekends for signalling tests
+
+== 5. Supply: what the metro ran ==
+Train-km (thousand): 2019 ~5100 (rounded label), 2024 5053.36, 2025 4959.97: 2025 vs 2024 -1.85%
+Circulations: 2024 473,366, 2025 458,237: -3.20%
+Place-km (million): 2019 3536, 2024 3767.71, 2025 3809.89: 2025 vs 2024 +1.12%
+Places per train-km: 2019 693, 2024 745.6, 2025 768.1
+Passengers (AMT): 2024 176,727,285, 2025 173,475,554: -1.84%
+Passengers per train-km: 2019 36.04, 2024 34.97, 2025 34.98
+Regularity index (AMT definition): 2024 97.95, 2025 95.95
+Average occupancy: 2024 24.50%, 2025 23.60%
+Fleet: 333 cars, average age 25.8 (2024) -> 26.8 (2025); network 44.459 km, unchanged since 2016
+INE place-km Lisboa 2025: +1.12%
+INE place-km Lisboa Jan-Aug 2026: -0.82%
+INE place-km Lisboa Oct 2025-May 2026 vs a year earlier: -1.50%
+INE place-km Lisboa Jul-Aug 2026 vs 2025: +1.77%
+
+== 5b. Concession-contract indicators (fleet availability DMC, regularity REG, circulations run FSC) ==
+2025 Q1: DMC 85.54 (ref 85.89), FSC 97.88 (ref 97.0), REG 86.62 (ref 80.0) | Lisboa +2.2, minus MST -0.4
+2025 Q2: DMC 90.75 (ref 85.89), FSC 97.44 (ref 97.0), REG 77.48 (ref 80.0) | Lisboa -0.5, minus MST -0.7
+2025 Q3: DMC 83.32 (ref 85.89), FSC 95.91 (ref 97.0), REG 76.48 (ref 80.0) | Lisboa -0.4, minus MST -3.8
+2025 Q4: DMC 81.05 (ref 85.89), FSC 96.74 (ref 97.0), REG 78.72 (ref 80.0) | Lisboa -4.1, minus MST +0.9
+2026 Q1: DMC 77.99 (ref 85.89), FSC 98.16 (ref 97.0), REG 77.66 (ref 80.0) | Lisboa -4.0, minus MST -3.4
+2026 Q2: DMC 78.59 (ref 85.89), FSC 96.78 (ref 97.0), REG 76.13 (ref 80.0) | Lisboa -3.6, minus MST -4.5
+2026 monthly DMC: [76.99, 79.06, 77.91, 77.43, 76.34, 82.01]; min 76.34, max 82.01
+2026 monthly REG: [78.16, 78.37, 76.44, 78.06, 75.15, 75.19]
+Correlation over the six quarters, DMC with Lisboa's change: 0.72; with Lisboa minus MST: 0.50 (six points; descriptive only)
+Correlation, REG with Lisboa's change: 0.68
+Causes given by the operator: RACC 2025 and RTECC 2026: concentrated mandatory revision of the motor bogies synchronised their maintenance cycles and recurring technical problems forced vehicles out of service; driver absenteeism; contingency measures since Q4 2025; from 2025 six-car trains all day
+
+== 6. Ticket types and visitors ==
+Occasional tickets 31.6 -> 28.5 m: -9.8%, -3.1 m
+Customer-paid passes 105.2 -> 96.0-96.9 m: -7.9% to -8.7%
+Everything else (free passes, other) by subtraction: 35.1 -> 43.8-44.7 m, +25% to +27%
+Shares of valid-ticket trips: occasional 18.4% -> 16.8%; other 20.4% -> 25.9-26.4%
+Tariff revenue 87,910 -> 82,724 thousand EUR: -5.9%
+  Carris/Metro single ticket: 16,759 -> 13,893 (-17.1%)
+  Zapping: 14,034 -> 12,310 (-12.3%)
+  Navegante Metropolitano pass: 27,546 -> 25,445 (-7.6%)
+  Navegante Lisboa pass: 8,834 -> 8,687 (-1.7%)
+Lisbon airport passengers: 2024 35.08 m, 2025 36.12 m (+2.9%)
+Lisbon airport Jan-Aug 2026: +0.8%; Jun-Aug 2026: -1.1%
+Airport change by quarter: 2024 Q1 +5.5; 2024 Q2 +5.1; 2024 Q3 +2.9; 2024 Q4 +4.1; 2025 Q1 +1.4; 2025 Q2 +4.3; 2025 Q3 +2.4; 2025 Q4 +3.4; 2026 Q1 +3.1; 2026 Q2 -0.2; 2026 Q3 (Jul-Aug) -0.5
+Correlation over 11 quarters, airport with Lisboa: 0.64; with Lisboa minus MST: -0.25
+Correlation over 32 months (2024-01 to 2026-08), monthly changes: 0.38
+Average trip length (INE pkm / passengers), Jan-Aug: 2025 5.21 km, 2026 5.14 km
+
+== 7. The rest of public transport in the Lisbon metro area ==
+Regular bus passengers (INE, thousands): Grande Lisboa 266,474.6 / 280,103.7 / 295,689.0; Península de Setúbal 53,810.7 / 59,455.1 / 73,961.5
+2025 vs 2024: Grande Lisboa +5.6% (+15.6 m); Setúbal +24.4% (+14.5 m); metro area +8.9% (+30.1 m)
+2024 vs 2023: metro area buses +6.0%
+Tagus river lines: 2019 19.36 m, 2023 19.66, 2024 21.21, 2025 20.81 (-1.9%, -0.41 m)
+CP Lisbon suburban (press, from CP): 2025 139.22 m, -2.1% -> about -2.99 m
+Sum of the six changes: +23.35 m (different counting units; indicative)
+Carris Metropolitana (press): 174.0 -> 194.0 m, +11.5%; into Lisbon 2025 69.8 m; Jan-May 2026 +7.2%
+Carris (city buses, trams, lifts): 2025 131.8 m, -1.5%; same; attributed mainly to the closure of the Santa Justa lift and the other historic lines
+Navegante: TML via Lusa/ECO, 18 Dec 2025; pass price unchanged for the 7th year in 2026
+
+== 8. Residents and jobs ==
+Lisboa municipality: 665,141 -> 658,236 (-1.04%)
+Four municipalities with metro stations: 1,293,764 -> 1,286,477 (-0.56%)
+Other 14 municipalities of the metro area: 2,053,189 -> 2,066,462 (+0.65%)
+Employed 15-74, Grande Lisboa: 2019 999.6, 2024 1057.8, 2025 1093.8 thousand (2025 +3.4%; vs 2019 +9.4%)
+Employed 15-74, Península de Setúbal: 2019 367.4, 2024 392.5, 2025 406.5 thousand (2025 +3.6%; vs 2019 +10.6%)
+Employed 15-74, Portugal: 2019 4869.2, 2024 5083.4, 2025 5245.2 thousand (2025 +3.2%; vs 2019 +7.7%)
+
+== 9. Roads ==
+A1: Apr-Jun 2025 44,901, Apr-Jun 2026 45,217 vehicles a day: +0.70%
+A2: Apr-Jun 2025 27,320, Apr-Jun 2026 27,597 vehicles a day: +1.01%
+A5: Apr-Jun 2025 100,351, Apr-Jun 2026 100,314 vehicles a day: -0.04%
+A12: Apr-Jun 2025 48,296, Apr-Jun 2026 49,222 vehicles a day: +1.92%
+Main roads, first half: 12.8 -> 13.2 bn vehicle-km (+3.1%); Zero, citing IMT, main roads, first half of the year (RTP, 22 Sep 2026)
+Metro trips lost, Apr-Jun 2026 vs 2025: 1.93 m, 21,242 a day on average (4.4% of the metro's trips)
+Sum of the four motorways' average daily traffic: 220,867 -> 222,351 (+0.67%, +1,483 vehicles a day)
+  if every lost trip became a car trip with 1.0 people: 21,242 car trips a day
+  if every lost trip became a car trip with 1.3 people: 16,340 car trips a day
+
+== 10. Other cities ==
+Madrid metro: 715,208,882 -> 736,874,012 (+3.0%); CRTM press release, 16 Jan 2026
