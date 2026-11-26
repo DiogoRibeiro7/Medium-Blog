@@ -62,6 +62,12 @@ def main() -> None:
     print(f"Lisboa peak {lis.idxmax()} {lis.max():.3f}; low after 2011 {lis.loc[2012:2019].idxmin()} {lis.loc[2012:2019].min():.3f}")
     print(f"Lisboa 2011->2013 {pct(core.change(lis[2013], lis[2011]), 1)}; 2014->2019 {pct(core.change(lis[2019], lis[2014]), 1)}")
     print(f"Lisboa 2018->2019 {pct(core.change(lis[2019], lis[2018]), 1)} (Navegante passes from April 2019)")
+    yoy = [core.change(lis[y], lis[y - 1]) for y in range(2005, 2012)]
+    print("Lisboa year-on-year 2005-2011: " + ", ".join(f"{y} {v:+.2f}%" for y, v in zip(range(2005, 2012), yoy, strict=True)))
+    print(f"  years with a movement larger than 2025's (1.81%): {sum(abs(v) > 1.81 for v in yoy)} of {len(yoy)}")
+    print(f"2025's fall as a share of the 2011-2013 fall: {core.change(lis[2025], lis[2024]) / core.change(lis[2013], lis[2011]):.3f}")
+    for k in SYSTEMS:
+        print(f"{NAMES[k]} 2023->2024: {pct(core.change(annual.loc[2024, k], annual.loc[2023, k]), 1)}")
     for k in SYSTEMS:
         a = annual[k]
         print(
