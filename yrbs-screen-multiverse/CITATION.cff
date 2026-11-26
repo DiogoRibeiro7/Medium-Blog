@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Teen screen use and mental health in the Youth Risk Behavior Survey: a specification curve across four waves"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-26
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/yrbs-screen-multiverse"
+references:
+  - type: data
+    title: "Youth Risk Behavior Survey, national high-school data files, 2017, 2019, 2021 and 2023"
+    authors:
+      - name: "Centers for Disease Control and Prevention"
+    url: "https://www.cdc.gov/yrbs/data/national-yrbs-datasets-documentation.html"
+  - type: article
+    title: "The association between adolescent well-being and digital technology use"
+    authors:
+      - family-names: Orben
+        given-names: Amy
+      - family-names: Przybylski
+        given-names: Andrew K.
+    year: 2019
+    journal: "Nature Human Behaviour"
+    doi: "10.1038/s41562-018-0506-1"
+  - type: article
+    title: "Specification curve analysis"
+    authors:
+      - family-names: Simonsohn
+        given-names: Uri
+      - family-names: Simmons
+        given-names: Joseph P.
+      - family-names: Nelson
+        given-names: Leif D.
+    year: 2020
+    journal: "Nature Human Behaviour"
+    doi: "10.1038/s41562-020-0912-z"

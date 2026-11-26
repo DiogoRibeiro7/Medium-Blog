@@ -1,0 +1,67 @@
+name: Reproduce yrbs-screen-multiverse
+
+on:
+  pull_request:
+    paths:
+      - 'yrbs-screen-multiverse/**'
+      - '.github/workflows/yrbs-screen-multiverse.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'yrbs-screen-multiverse/**'
+      - '.github/workflows/yrbs-screen-multiverse.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      MPLBACKEND: Agg
+    defaults:
+      run:
+        working-directory: yrbs-screen-multiverse
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: yrbs-screen-multiverse/requirements.txt
+
+      - name: Install pinned dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Lint
+        run: ruff check . && ruff format --check .
+
+      - name: Test the methods on cases with a known answer
+        run: python -m unittest discover -s tests -v
+
+      - name: Download the four YRBS waves from CDC and check them against digests.txt
+        run: python fetch_data.py
+
+      - name: Rerun the analysis and compare with the committed output
+        run: |
+          python multiverse_numbers.py > "$RUNNER_TEMP/output.txt"
+          if ! diff -u output.txt "$RUNNER_TEMP/output.txt" > "$RUNNER_TEMP/diff.txt"; then
+            cat "$RUNNER_TEMP/diff.txt"
+            echo "::error file=yrbs-screen-multiverse/output.txt::output of multiverse_numbers.py differs from the committed output.txt"
+            exit 1
+          fi
+
+      - name: Check every figure is drawn
+        run: |
+          python figures.py
+          for f in fig1_trend_and_questions fig2_dose_response fig3_specification_curve fig4_which_choice_matters fig5_joint_null fig6_comparators; do
+            test -s "figures/$f.png"
+          done
