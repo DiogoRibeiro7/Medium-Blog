@@ -1,0 +1,33 @@
+name: Loneliness interpretation counterexamples
+on:
+  pull_request:
+    paths:
+      - 'loneliness-gdp-interpretation/**'
+      - '.github/workflows/loneliness-gdp-interpretation.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'loneliness-gdp-interpretation/**'
+      - '.github/workflows/loneliness-gdp-interpretation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: loneliness-gdp-interpretation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest -v
+      - run: python analysis.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: loneliness-interpretation-figures-and-tables
+          path: loneliness-gdp-interpretation/outputs/
+          if-no-files-found: error
