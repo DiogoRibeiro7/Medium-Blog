@@ -80,11 +80,15 @@ def generate(output: Path) -> None:
     # Equal within-country differences; unequal pooled composition.
     fig, ax = plt.subplots(figsize=(8, 4.5), layout="constrained")
     x = range(3)
-    ax.bar([v - 0.18 for v in x], [35, 10, 32], width=0.36, label="Struggling", color="#a45a36")
-    ax.bar([v + 0.18 for v in x], [35, 10, 15], width=0.36, label="Comfortable", color="#35688e")
+    struggling = [100 * rows[0].prevalence, 100 * rows[2].prevalence, 100 * pooled(rows, "Struggling")]
+    comfortable = [100 * rows[1].prevalence, 100 * rows[3].prevalence, 100 * pooled(rows, "Comfortable")]
+    left = ax.bar([v - 0.18 for v in x], struggling, width=0.36, label="Struggling", color="#a45a36")
+    right = ax.bar([v + 0.18 for v in x], comfortable, width=0.36, label="Comfortable", color="#35688e")
+    for bars in (left, right):
+        ax.bar_label(bars, fmt="%.0f%%", padding=3, fontsize=10)
     ax.set(xticks=list(x), xticklabels=["Country A", "Country B", "Pooled"], ylabel="Yes responses (%)", ylim=(0, 42), title="An apparent income gap without a within-country gap")
     ax.legend(frameon=False)
-    fig.text(0.5, 0.01, "Synthetic counterexample — not Gallup estimates", ha="center", fontsize=9)
+    ax.set_xlabel("Synthetic counterexample — not Gallup estimates", fontsize=10, labelpad=12)
     fig.savefig(output / "composition.png", dpi=180)
     plt.close(fig)
 
@@ -95,11 +99,13 @@ def generate(output: Path) -> None:
         writer.writerow(("scenario", "latent", "sensitivity", "false_positive", "reported"))
         writer.writerows((name, *s, reported_prevalence(*s)) for name, s in zip(("A", "B"), scenarios))
     fig, ax = plt.subplots(figsize=(8, 4.5), layout="constrained")
-    ax.bar([-0.18, 0.82], [20, 20], width=0.36, label="Latent prevalence (assumed)", color="#8a929a")
-    ax.bar([0.18, 1.18], [100 * reported_prevalence(*s) for s in scenarios], width=0.36, label="Reported prevalence", color="#35688e")
+    left = ax.bar([-0.18, 0.82], [100 * s[0] for s in scenarios], width=0.36, label="Latent prevalence (assumed)", color="#8a929a")
+    right = ax.bar([0.18, 1.18], [100 * reported_prevalence(*s) for s in scenarios], width=0.36, label="Reported prevalence", color="#35688e")
+    for bars in (left, right):
+        ax.bar_label(bars, fmt="%.0f%%", padding=3, fontsize=10)
     ax.set(xticks=[0, 1], xticklabels=["Scenario A", "Scenario B"], ylabel="Prevalence (%)", ylim=(0, 35), title="Different answers need not imply different latent prevalence")
     ax.legend(frameon=False)
-    fig.text(0.5, 0.01, "Illustrative assumptions only; no reporting-error rates estimated", ha="center", fontsize=9)
+    ax.set_xlabel("Illustrative assumptions only; no reporting-error rates estimated", fontsize=10, labelpad=12)
     fig.savefig(output / "measurement.png", dpi=180)
     plt.close(fig)
 
@@ -116,7 +122,7 @@ def generate(output: Path) -> None:
                 writer.writerows((name, day, person, yes) for person, yes in enumerate(row))
             ax.imshow(matrix, aspect="auto", interpolation="none", cmap="Blues", vmin=0, vmax=1)
             ax.set(title=f"{name.title()}: {len(set().union(*groups))} people affected across seven days", ylabel="Day", yticks=range(7), yticklabels=range(1, 8))
-    axes[-1].set_xlabel("Synthetic individual")
+    axes[-1].set_xlabel("Synthetic individual (dark blue = yes response)\nSame 23% daily prevalence; no observed survey respondents", labelpad=10)
     fig.savefig(output / "daily.png", dpi=180)
     plt.close(fig)
 

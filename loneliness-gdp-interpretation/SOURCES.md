@@ -8,8 +8,8 @@
 | [WHO, Social connection, 30 June 2025](https://www.who.int/news-room/questions-and-answers/item/social-connection) | Distinguishes loneliness from objective isolation; income gradient in its own prevalence estimates | Different measures and estimand; not directly comparable to daily Gallup percentages |
 | [Leblang and Wesselbaum, 2026](https://doi.org/10.1007/s10654-026-01424-z) | 2023–24 Gallup analysis with country/year effects and covariates; heterogeneous income associations and stronger association with current well-being in richer countries | Observational; shared Gallup measurement limitations; not 2025 replication |
 | [Lykes and Kemmelmeier, 2014](https://doi.org/10.1177/0022022113509881) | Cultural context can alter which social ties matter to loneliness | European observational studies |
-| [Heu et al., 2019](https://pmc.ncbi.nlm.nih.gov/articles/PMC6449799/) | Distinguishes actual and ideal social embeddedness; tests cultural mechanisms | Small European samples; not global estimates |
-| [Loneliness across time and space, 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9640887/) | Reviews comparability, nonresponse, cultural and temporal issues | Does not identify correction factors for Gallup |
-| [Evaluating Loneliness Measurements Across the European Union, 2026](https://online.ucpress.edu/collabra/article/12/1/161255/218065/Evaluating-Loneliness-Measurements-Across-the) | Compares single and multi-item measures; tests invariance of multi-item scales | EU-specific, not Gallup validation |
+| [Heu et al., 2019](https://doi.org/10.1177/0146167218796793) | Distinguishes actual and ideal social embeddedness; tests cultural mechanisms | Small European samples; not global estimates |
+| [Luhmann, Buecker and Rüsberg, 2023 (online 2022)](https://doi.org/10.1038/s44159-022-00124-1) | Reviews comparability, nonresponse, cultural and temporal issues | Does not identify correction factors for Gallup |
+| [Evaluating Loneliness Measurements Across the European Union, 2026](https://doi.org/10.1525/collabra.161255) | Compares single and multi-item measures; tests invariance of multi-item scales | EU-specific, not Gallup validation |
 
 No proprietary data have been downloaded, reproduced or inferred. Numerical counterexamples are synthetic and are not claims about any actual population.
