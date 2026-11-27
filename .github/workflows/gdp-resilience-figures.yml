@@ -1,0 +1,120 @@
+name: GDP resilience publication figures
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-figures.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-figures.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MPLBACKEND: Agg
+      OPENBLAS_NUM_THREADS: '1'
+      TZ: UTC
+      PYTHONHASHSEED: '0'
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+          cache-dependency-path: research/gdp-economic-resilience/requirements-figures.txt
+      - name: Install pinned plotting dependencies
+        run: python -m pip install -r requirements-figures.txt
+      - name: Test data and figure helpers
+        run: |
+          python -m unittest discover -s tests -v
+          python -m unittest discover -s figure_tests -v
+      - name: Reproduce all analytical inputs from pinned snapshots
+        run: |
+          python pipeline.py --fetch
+          python eurostat_sectors.py --fetch
+          python historical_shocks.py
+          python technology_substitution.py
+          python robustness.py
+      - name: Generate publication assets and evidence
+        run: |
+          python figures.py
+          python figures.py --output "$RUNNER_TEMP/figure-repeat"
+          diff -r results/publication "$RUNNER_TEMP/figure-repeat"
+      - name: Validate assets and provenance
+        run: |
+          python - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+          from xml.etree import ElementTree
+          from PIL import Image
+
+          results = Path("results")
+          output = results / "publication"
+          manifest = json.loads((output / "figure_manifest.json").read_text())
+          expected = {
+              "fig01_nominal_ppp", "fig02_sector_composition", "fig03_volume_deflator",
+              "fig04_gdp_wealth", "fig05_shock_benchmarks", "fig06_substitution",
+              "fig07_structure_robustness", "fig08_classification_robustness",
+          }
+          assert {entry["id"] for entry in manifest["figures"]} == expected
+          assert len(manifest["figures"]) == 8
+          assert len(list(output.iterdir())) == 25
+          def sha(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          for entry in manifest["figures"]:
+              name = entry["id"]
+              source = results / entry["input_table"]
+              assert sha(source) == entry["input_sha256"]
+              assert set(entry["assets"]) == {f"{name}.{ext}" for ext in ("png", "svg", "csv")}
+              for file, expected_sha in entry["assets"].items():
+                  assert sha(output / file) == expected_sha
+              with Image.open(output / f"{name}.png") as image:
+                  assert image.format == "PNG"
+                  assert image.width >= 1600 and image.height >= 1000
+                  image.verify()
+              assert ElementTree.parse(output / f"{name}.svg").getroot().tag.endswith("}svg")
+              with (output / f"{name}.csv").open() as stream:
+                  evidence = list(csv.DictReader(stream))
+              with source.open() as stream:
+                  original = {tuple(row.items()) for row in csv.DictReader(stream)}
+              assert len(evidence) == entry["selected_rows"] > 0
+              assert all(tuple(row.items()) in original for row in evidence)
+          PY
+      - name: Upload figures with evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-publication-figures
+          path: research/gdp-economic-resilience/results/publication/
+          if-no-files-found: error
+      - name: Upload complete analytical tables for manuscript audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-manuscript-evidence
+          path: |
+            research/gdp-economic-resilience/results/**/*.csv
+            research/gdp-economic-resilience/results/**/summary.json
+            !research/gdp-economic-resilience/results/publication/**
+          if-no-files-found: error
