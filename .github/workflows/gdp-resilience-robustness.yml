@@ -1,0 +1,93 @@
+name: GDP resilience robustness
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-robustness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/world-bank-cwon-2024-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-energy-time.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-robustness.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Test accounting and robustness
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce robustness tables
+        run: python robustness.py --fetch
+      - name: Check deterministic replay and matched samples
+        run: |
+          python robustness.py --output "$RUNNER_TEMP/robustness-repeat"
+          diff -r results/robustness "$RUNNER_TEMP/robustness-repeat"
+          python - <<'PY'
+          import csv
+          import json
+          from collections import defaultdict
+          from pathlib import Path
+
+          root = Path("results/robustness")
+          summary = json.loads((root / "summary.json").read_text())
+          assert summary["tables"] == {
+              "wealth_window_sensitivity.csv": 12,
+              "wealth_country_stability.csv": 33,
+              "shock_benchmark_sensitivity.csv": 18,
+              "structure_correlation_sensitivity.csv": 90,
+              "classification_sensitivity.csv": 10,
+          }, summary["tables"]
+          assert summary["common_wealth_sample_sizes"] == [31]
+          def read(name):
+              with (root / name).open() as stream:
+                  return list(csv.DictReader(stream))
+
+          wealth = read("wealth_window_sensitivity.csv")
+          common = [row for row in wealth if row["sample"] == "common_all_windows"]
+          assert len({row["countries"] for row in common}) == 1
+          assert "BGR" not in common[0]["countries"].split(";")
+          assert "CYP" not in common[0]["countries"].split(";")
+          for name, keys in (
+              ("shock_benchmark_sensitivity.csv", ("shock", "metric")),
+              ("structure_correlation_sensitivity.csv", ("shock", "structure_feature", "sample")),
+          ):
+              groups = defaultdict(set)
+              for row in read(name):
+                  groups[tuple(row[key] for key in keys)].add(row["countries"])
+              assert all(len(samples) == 1 for samples in groups.values()), name
+          for name in ("wealth_window_sensitivity.csv", "shock_benchmark_sensitivity.csv",
+                       "structure_correlation_sensitivity.csv", "classification_sensitivity.csv"):
+              for row in read(name):
+                  countries = [country for country in row["countries"].split(";") if country]
+                  assert int(row["n"]) == len(countries) == len(set(countries))
+                  for key in ("pearson_r", "spearman_r", "loo_pearson_min", "loo_pearson_max"):
+                      if row[key]:
+                          assert -1.000000001 <= float(row[key]) <= 1.000000001
+          PY
+      - name: Upload robustness evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-robustness
+          path: research/gdp-economic-resilience/results/robustness/
+          if-no-files-found: error
