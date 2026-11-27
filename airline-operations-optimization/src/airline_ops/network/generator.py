@@ -1,15 +1,15 @@
 """Generate the synthetic hub-and-spoke schedule and its passengers.
 
-The structure copies the two patterns visible in the published Munich–Porto timetable:
-a daytime out-and-back from the hub with a short turn at the outstation, and a
-"night-stop" pair in which the aircraft leaves the hub in the evening, spends the night
-at the outstation and returns early the next morning. Spokes with two or more daily
-frequencies get one night-stop pair; the remaining frequencies are daytime
-out-and-backs departing the hub in banks.
+The structure uses two common outstation patterns: a daytime out-and-back from the
+hub with a short turn at the outstation, and a "night-stop" pair in which the aircraft
+leaves the hub in the evening, spends the night at the outstation and returns early the
+next morning. Spokes with two or more daily frequencies get one night-stop pair; the
+remaining frequencies are daytime out-and-backs departing the hub in banks.
 
 Block times come from great-circle distance with direction-dependent speeds calibrated
-to the published Munich–Porto schedule (180 minutes westbound, 170 eastbound); the
-calibration is in :func:`block_minutes`. Passengers are synthetic.
+to typical scheduled block times on the Munich–Porto sector (180 minutes westbound, 170
+eastbound); the calibration is in :func:`block_minutes`. Flights and passengers are
+synthetic.
 """
 
 from __future__ import annotations
@@ -30,8 +30,8 @@ LOG = get_logger("network.generator")
 # Calibration of the block-time model (see module docstring).
 TAXI_AND_GROUND_MIN = 30.0
 CALIBRATION_DISTANCE_KM = 1792.0  # Munich-Porto great-circle distance, rounded
-CALIBRATION_WEST_MIN = 180.0  # LH1782/LH1784 scheduled block, Munich to Porto
-CALIBRATION_EAST_MIN = 170.0  # LH1783/LH1785 scheduled block, Porto to Munich
+CALIBRATION_WEST_MIN = 180.0  # typical scheduled block, Munich to Porto
+CALIBRATION_EAST_MIN = 170.0  # typical scheduled block, Porto to Munich
 SPEED_WEST_KMH = CALIBRATION_DISTANCE_KM / ((CALIBRATION_WEST_MIN - TAXI_AND_GROUND_MIN) / 60.0)
 SPEED_EAST_KMH = CALIBRATION_DISTANCE_KM / ((CALIBRATION_EAST_MIN - TAXI_AND_GROUND_MIN) / 60.0)
 

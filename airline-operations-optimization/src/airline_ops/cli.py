@@ -36,7 +36,6 @@ def _parser() -> argparse.ArgumentParser:
     fig = sub.add_parser("figures", help="draw the figures from results")
     fig.add_argument("--results", type=Path, required=True)
     fig.add_argument("--out", type=Path, required=True)
-    fig.add_argument("--case", type=Path, default=FOLDER / "configs" / "case_muc_opo.toml")
     summ = sub.add_parser("summary", help="write the text summary of the results")
     summ.add_argument("--results", type=Path, required=True)
     det = sub.add_parser("details", help="analyses added after the results (paired re-evaluations)")
@@ -66,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "figures":
             from airline_ops.viz.figures import draw_all
 
-            draw_all(args.results, args.out, args.case)
+            draw_all(args.results, args.out)
         elif args.command == "summary":
             from airline_ops.experiments.summary import write_summary
 

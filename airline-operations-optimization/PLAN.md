@@ -16,10 +16,10 @@ conclusion.
 
 - A synthetic Munich-hub airline: 30 outstations, 142 daily flights, one fleet of 180 seats,
   one crew base, maintenance checks at the hub at least every four nights. Outstations with two
-  or more daily frequencies get one "night-stop" pair (evening out, early-morning back), the
-  pattern of Lufthansa's LH1784/LH1785 Munich-Porto rotation.
+  or more daily frequencies get one "night-stop" pair (evening out, early-morning back), a
+  common outstation pattern.
 - Observed inputs: airport coordinates and time zones (OpenFlights, ODbL, pinned commit and
-  checksum), block times calibrated to the published Munich-Porto timetable, the mean primary
+  checksum), block times calibrated to typical Munich-Porto scheduled times, the mean primary
   delay per flight from EUROCONTROL CODA (2024: 17.5 minutes all causes minus 8.0 reactionary),
   and EASA FTL Table 2 and rest rules.
 - Synthetic: the schedule, the passengers, every crew pairing and every cost parameter.
@@ -93,3 +93,8 @@ Recorded in the order they happened; none changes a parameter, a scenario or a h
    against the sequential plan), and the duty and pairing listing for Porto used by one figure.
 4. Added after the results, labelled as descriptive in the summary and the article: the break-even share
    of disrupted days at which the robust plan's extra planned cost pays for itself.
+5. 27 November 2026, after the results, at the author's request: references to a real airline's
+   flights were removed from this plan, the code comments and the article. The opening case and
+   Figure 1 now use the synthetic airline's own Porto flights and the crews of the integrated plan,
+   read from the results. The model code changed in comments only; the full experiment was rerun
+   to confirm that every result is unchanged before the inputs digest was updated.

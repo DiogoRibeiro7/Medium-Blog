@@ -12,8 +12,8 @@ aircraft and crews most efficiently is also the one that copes best when the day
 - **Robust**: the integrated model with a hub buffer and a penalty on expected propagated delay.
 
 Crew legality follows the EASA flight time limitations (Regulation (EU) No 83/2014): Table 2 of ORO.FTL.205, the
-minimum rest of ORO.FTL.235 and the commander's discretion of ORO.FTL.205(f). The opening case, Lufthansa's
-Munich–Porto rotation on 26–27 November 2026, uses the published schedule; its crew assignments are hypothetical.
+minimum rest of ORO.FTL.235 and the commander's discretion of ORO.FTL.205(f). The opening case (Figure 1) is
+the synthetic airline's own Porto rotation, with the crews the integrated plan assigns; every flight is fictional.
 
 `PLAN.md` is the pre-registration, written after the code and before the main run, with the changes made after it.
 
@@ -33,8 +33,7 @@ cost under baseline delays (−€4,325 a day against the integrated plan, for 0
 ## Files
 
 - `PLAN.md`: the pre-registration.
-- `configs/experiment.toml`: every parameter of the main run; `configs/smoke.toml` for continuous integration;
-  `configs/case_muc_opo.toml` for the published Munich–Porto schedule of the opening figure.
+- `configs/experiment.toml`: every parameter of the main run; `configs/smoke.toml` for continuous integration.
 - `src/airline_ops/regulation/ftl.py`: EASA FTL Table 2, minimum rest and commander's discretion.
 - `src/airline_ops/data/airports.py`: downloads the OpenFlights airport file at a pinned commit and checks its size
   and SHA-256 against `../data_sources/openflights-airports.json`; the bytes are cached in `.cache/`, never committed.
@@ -74,7 +73,8 @@ matches the inputs, then the summary and the figures, and commits them.
   Database License; registered as an external source in `DiogoRibeiro7/data` (`external/openflights-airports`).
 - EUROCONTROL CODA Digest, annual 2024 and November 2025: calibration targets (punctuality, mean and reactionary
   delay), quoted in the configuration.
-- Lufthansa published schedule and public flight-tracker histories for the opening case, listed in the article's
-  sources.
+- Typical scheduled block times on the Munich–Porto sector (180 minutes westbound, 170 eastbound), used only to
+  calibrate the block-time model.
 
-Everything else (timetable, passengers, pairings, costs) is synthetic and set in `configs/experiment.toml`.
+Everything else (timetable, flight numbers, passengers, pairings, costs) is synthetic and set in
+`configs/experiment.toml`.

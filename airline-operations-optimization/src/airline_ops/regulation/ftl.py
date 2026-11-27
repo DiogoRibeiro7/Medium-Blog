@@ -15,7 +15,7 @@ amended by Commission Regulation (EU) No 83/2014.
 
 Reporting time before the first departure and post-flight duty after the last
 arrival are set by the operator (``ORO.FTL.205(a)(1)``); the values here are
-assumptions of this model, not Lufthansa or EASA numbers.
+assumptions of this model, not any operator's or EASA numbers.
 
 Simplifications: every crew member is acclimatised to the home base, the reference
 time is the local time at the reporting point (valid because the network spans at

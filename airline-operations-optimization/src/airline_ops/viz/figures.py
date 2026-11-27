@@ -1,19 +1,16 @@
 """Figures of the article, drawn from the results files.
 
 Every empirical figure reads the JSON written by :mod:`airline_ops.experiments.runner`.
-The opening-case figure reads the published schedule in ``configs/case_muc_opo.toml`` and
-the EASA rules in :mod:`airline_ops.regulation.ftl`. Each figure is written as SVG and as
-a 200 dpi PNG. Colours follow one fixed assignment: a planning strategy keeps its colour
-in every figure.
+The opening-case figure also reads the EASA rules in :mod:`airline_ops.regulation.ftl`.
+Each figure is written as SVG and as a 200 dpi PNG. Colours follow one fixed assignment:
+a planning strategy keeps its colour in every figure.
 """
 
 from __future__ import annotations
 
-import datetime as dt
 import json
 import math
 import textwrap
-import tomllib
 from collections.abc import Callable, Sequence
 from pathlib import Path
 from typing import Any
@@ -150,11 +147,6 @@ def _hm(minutes: float) -> str:
     return f"{m // 60} h {m % 60:02d} min"
 
 
-def _clock(text: str) -> int:
-    h, m = text.split(":")
-    return int(h) * 60 + int(m)
-
-
 def _clip_label(ax: Axes, x: float, y: float, text: str, color: str, side: str = "right") -> None:
     ax.annotate(
         text,
@@ -172,137 +164,185 @@ def _clip_label(ax: Axes, x: float, y: float, text: str, color: str, side: str =
 # --------------------------------------------------------------------------- figure 1
 
 
-def _case_instances(case: dict[str, Any]) -> dict[tuple[str, int], tuple[int, int]]:
-    """UTC departure and arrival (minutes from 00:00 UTC on the service date) by (flight, day)."""
-    out: dict[tuple[str, int], tuple[int, int]] = {}
-    for f in case["flights"]:
-        shift = DAY if f.get("next_day") else 0
-        dep = _clock(f["dep_local"]) - int(f["utc_offset_origin"]) + shift
-        arr = _clock(f["arr_local"]) - int(f["utc_offset_destination"]) + shift
-        if arr < dep:
-            arr += DAY
-        for day in (-1, 0, 1):
-            out[(f["number"], day)] = (dep + day * DAY, arr + day * DAY)
-    return out
+def _outstation_case(results: Path, plan: str, station: str) -> dict[str, Any]:
+    """Flights, aircraft lines and crew pairings of one plan that touch one outstation."""
+    net = _load(results, "network.json")
+    rec = _load(results, "plans.json")[plan]
+    flights: list[dict[str, Any]] = net["flights"]
+    touch = {k for k, f in enumerate(flights) if station in (f["origin"], f["destination"])}
+    successor = {int(k): int(v) for k, v in rec["successor"].items()}
+    lines: list[tuple[int, int]] = []
+    for k in sorted(touch, key=lambda i: flights[i]["dep_utc"]):
+        nxt = successor.get(k)
+        if flights[k]["destination"] == station and nxt in touch and flights[nxt]["origin"] == station:
+            lines.append((k, nxt))
+    pairings = [p for p in rec["pairing_duties"] if {f for d in p["duties"] for f in d} & touch]
+    if not lines or not pairings:
+        raise DataError(f"plan {plan!r} has no aircraft line or pairing through {station}")
+    return {"flights": flights, "lines": lines, "pairings": pairings, "hub_offset": int(net["hub_utc_offset_min"])}
 
 
-def fig01_rotation(case_path: Path, out: Path) -> list[Path]:
-    """Munich-Porto rotations on the service date and a hypothetical crew pattern that is legal."""
-    case = tomllib.loads(case_path.read_text(encoding="utf-8"))
-    inst = _case_instances(case)
+def _pairing_instance(
+    pairing: dict[str, Any], flights: list[dict[str, Any]], day: int, times: OperatorTimes
+) -> list[dict[str, Any]]:
+    """Duties of one pairing started on ``day``: report, end and flight times in UTC minutes."""
+    first = flights[pairing["duties"][0][0]]
+    report0 = first["dep_utc"] + day * DAY - times.report_before_min
+    duties: list[dict[str, Any]] = []
+    for duty, start in zip(pairing["duties"], pairing["starts"], strict=True):
+        report = report0 + int(start)
+        shift = round((report + times.report_before_min - flights[duty[0]]["dep_utc"]) / DAY) * DAY
+        legs: list[tuple[str, int, int]] = []
+        for f in duty:
+            dep = flights[f]["dep_utc"] + shift
+            if legs and dep < legs[-1][2]:
+                shift += DAY
+                dep += DAY
+            legs.append((flights[f]["number"], dep, dep + int(flights[f]["block"])))
+        duties.append({"report": report, "end": legs[-1][2] + times.post_flight_min, "legs": legs})
+    return duties
+
+
+def fig01_rotation(results: Path, out: Path, plan: str = "integrated", station: str = "OPO") -> list[Path]:
+    """The synthetic airline's Porto flights over two days, with the aircraft lines and crews of one plan."""
+    case = _outstation_case(results, plan, station)
+    flights: list[dict[str, Any]] = case["flights"]
+    hub_offset = int(case["hub_offset"])
     times = OperatorTimes()
-    hub_offset = 60
-    date = dt.date.fromisoformat(case["service_date"])
-    obs = case["observed"]
-    x0, x1 = 6 * 60 - hub_offset, DAY + 20 * 60 - hub_offset  # 06:00 to 20:00 next day, Munich time
+    x0 = 12 * 60 - hub_offset  # 12:00 on day 1, Munich time
+    x1 = x0 + 2 * DAY
 
     def hx(utc: float) -> float:
         return (utc + hub_offset) / 60.0
 
-    aircraft: list[tuple[str, list[tuple[str, int]]]] = [
-        ("Aircraft 1 · day turn (assumed)", [("LH1782", 0), ("LH1783", 0), ("LH1782", 1), ("LH1783", 1)]),
-        (f"Aircraft 2 · night-stop\n(pattern flown by {obs['registration']},\n{obs['evening_date'][8:]}–"
-         f"{obs['morning_date'][8:]} Nov)", [("LH1785", -1), ("LH1784", 0), ("LH1785", 0)]),
-    ]  # fmt: skip
-    crews: list[tuple[str, list[tuple[str, int]]]] = [
-        ("Crew W (hypothetical)", [("LH1784", -1), ("LH1783", 0)]),
-        ("Crew X (hypothetical)", [("LH1782", 0), ("LH1785", 0)]),
-        ("Crew Y (hypothetical)", [("LH1784", 0), ("LH1783", 1)]),
-        ("Crew Z (hypothetical)", [("LH1782", 1), ("LH1785", 1)]),
-    ]
-    lanes = aircraft + crews
+    def fname(k: int) -> str:
+        return str(flights[k]["number"])
+
+    # Aircraft lanes: the daily line of flying out of the hub and back.
+    aircraft: list[tuple[str, list[tuple[str, int, int]]]] = []
+    for out_k, back_k in case["lines"]:
+        o, b = flights[out_k], flights[back_k]
+        o_arr = o["dep_utc"] + o["block"]
+        overnight = b["dep_utc"] < o_arr
+        legs: list[tuple[str, int, int]] = []
+        for d in range(-1, 3):
+            dep_o = o["dep_utc"] + d * DAY
+            dep_b = b["dep_utc"] + (d + 1 if overnight else d) * DAY
+            legs += [(fname(out_k), dep_o, dep_o + o["block"]), (fname(back_k), dep_b, dep_b + b["block"])]
+        kind = "night-stop" if overnight else "day turn"
+        aircraft.append((f"Aircraft · {kind}\n{fname(out_k)} out, {fname(back_k)} back", legs))
+    aircraft.sort(key=lambda a: "night-stop" in a[0])
+    # Crew lanes: every instance of each pairing that is visible in the window.
+    day_crews: list[list[dict[str, Any]]] = []
+    night_crews: list[list[dict[str, Any]]] = []
+    for pairing in case["pairings"]:
+        for d in range(-3, 3):
+            inst = _pairing_instance(pairing, flights, d, times)
+            if inst[-1]["end"] <= x0 or inst[0]["report"] >= x1:
+                continue
+            (night_crews if pairing["nights"] else day_crews).append(inst)
+    night_crews.sort(key=lambda inst: inst[0]["report"])
+    crews: list[tuple[str, list[list[dict[str, Any]]]]] = []
+    if day_crews:
+        crews.append(("Day crews\n(a new crew each day)", day_crews))
+    letters = "ABCDEFGH"
+    crews += [(f"Night crew {letters[i]}", [inst]) for i, inst in enumerate(night_crews)]
+
+    lanes: list[str] = [lab for lab, _ in aircraft] + [lab for lab, _ in crews]
+    plan_label = PLAN_LABEL.get(plan, plan).lower()
     fig, body = _figure(
         10.5,
         4.9,
-        f"Munich–Porto rotations and one legal crew pattern, {date:%-d}–{date.day + 1} November {date.year}",
-        "Published Lufthansa schedule, all times converted to Munich "
-        "time (Porto is one hour behind). The day turn on one "
-        "aircraft is an assumption; the crews are hypothetical, chosen so that every rest meets ORO.FTL.235(b).",
+        f"Porto in the synthetic airline: two aircraft lines and the crews the {plan_label} plan gives them",
+        "Fictional flights between real airports, over two days of the daily schedule; all times are Munich "
+        "time (Porto is one hour behind). An aircraft lane is the daily line of flying, which may be flown by a "
+        "different aircraft each day. Every rest meets ORO.FTL.235(b).",
     )
     ax = body.subplots()
     height = 0.52
     ys = {i: len(lanes) - 1 - i for i in range(len(lanes))}
-    for i, (_label, seq) in enumerate(aircraft):
+
+    def bar(start: float, stop: float, y: float, color: str, z: int) -> None:
+        lo, hi = max(start, x0), min(stop, x1)
+        if hi > lo:
+            ax.add_patch(Rectangle((hx(lo), y - height / 2), (hi - lo) / 60, height, color=color, lw=0, zorder=z))
+
+    def flight(name: str, dep: int, arr: int, y: float) -> None:
+        bar(dep, arr, y, BLUE, 3)
+        if x0 <= dep and arr <= x1:
+            ax.text(hx((dep + arr) / 2), y, name, ha="center", va="center", color="white", fontsize=8, zorder=4)
+
+    for i, (_lab, legs) in enumerate(aircraft):
         y = ys[i]
-        for k, key in enumerate(seq):
-            dep, arr = inst[key]
-            ax.add_patch(Rectangle((hx(dep), y - height / 2), (arr - dep) / 60, height, color=BLUE, lw=0, zorder=3))
-            vis0, vis1 = max(dep, x0), min(arr, x1)
-            if vis1 - vis0 >= 75:
-                ax.text(hx((vis0 + vis1) / 2), y, key[0], ha="center", va="center", color="white", fontsize=8,
-                        zorder=4)  # fmt: skip
-            if k + 1 < len(seq):
-                nxt = inst[seq[k + 1]][0]
-                if nxt - arr < 10 * 60:
-                    ax.add_patch(
-                        Rectangle((hx(arr), y - height / 2), (nxt - arr) / 60, height, color=NEUTRAL, lw=0, zorder=2)
-                    )
-                    label = f"{nxt - arr} min turn" if nxt - arr < 120 else f"night-stop {_hm(nxt - arr)}"
-                    if nxt - arr < 120:
-                        ax.text(hx((arr + nxt) / 2), y + 0.38, label, ha="center", va="bottom", fontsize=7.5,
-                                color=MUTED)  # fmt: skip
-                    else:
-                        ax.text(hx((arr + nxt) / 2), y, label, ha="center", va="center", fontsize=8, color=TEXT,
-                                zorder=4)  # fmt: skip
-    for j, (_label, seq) in enumerate(crews):
-        y = ys[len(aircraft) + j]
-        duty_end_prev: float | None = None
-        duty_len_prev = 0
-        for key in seq:
-            dep, arr = inst[key]
-            report, end = dep - times.report_before_min, arr + times.post_flight_min
-            ax.add_patch(Rectangle((hx(report), y - height / 2), (end - report) / 60, height, color=PALE, lw=0,
-                                   zorder=2))  # fmt: skip
-            ax.add_patch(Rectangle((hx(dep), y - height / 2), (arr - dep) / 60, height, color=BLUE, lw=0, zorder=3))
-            if x0 <= dep and arr <= x1:
-                ax.text(hx((dep + arr) / 2), y, key[0], ha="center", va="center", color="white", fontsize=8, zorder=4)
-            if duty_end_prev is not None:
-                rest = report - duty_end_prev
-                need = min_rest_minutes(duty_len_prev, at_home_base=False)
-                ax.plot([hx(duty_end_prev), hx(report)], [y, y], color=MUTED, lw=0.9, zorder=1)
-                label = f"rest {rest // 60} h {rest % 60:02d} (min {need // 60} h)"
-                if report > x1:
-                    nxt_date = date + dt.timedelta(days=key[1] + 1)
-                    ax.text(hx(duty_end_prev) + 0.3, y + 0.1, f"rest, then {key[0]} on {nxt_date:%-d %b}",
-                            ha="left", va="bottom", fontsize=8, color=TEXT)  # fmt: skip
-                elif duty_end_prev < x0:
-                    ax.text(hx(x0) + 0.2, y + 0.1, label, ha="left", va="bottom", fontsize=8, color=TEXT)
+        for k, (name, dep, arr) in enumerate(legs):
+            flight(name, dep, arr, y)
+            if k % 2 == 0:
+                nxt = legs[k + 1][1]
+                bar(arr, nxt, y, NEUTRAL, 2)
+                if not (x0 <= arr and nxt <= x1):
+                    continue
+                if nxt - arr < 120:
+                    ax.text(hx((arr + nxt) / 2), y + 0.38, f"{nxt - arr} min turn", ha="center", va="bottom",
+                            fontsize=7.5, color=MUTED)  # fmt: skip
                 else:
-                    ax.text(hx((duty_end_prev + report) / 2), y + 0.1, label, ha="center", va="bottom", fontsize=8,
-                            color=TEXT)  # fmt: skip
-            duty_end_prev, duty_len_prev = end, end - report
-    # Why crew Y cannot fly the aircraft back the next morning.
-    y_lane = ys[len(aircraft) + 2]
-    end_y = inst[("LH1784", 0)][1] + times.post_flight_min
-    report_1785 = inst[("LH1785", 0)][0] - times.report_before_min
-    gap = report_1785 - end_y
-    ax.plot([hx(report_1785)] * 2, [y_lane - 0.34, y_lane + 0.02], color=ORANGE, lw=1.4, zorder=3)
-    ax.text(hx(end_y) + 0.15, y_lane - 0.5,
-            f"Report for LH1785 would come after {gap // 60} h {gap % 60:02d} of rest: not legal",
-            ha="left", va="center", fontsize=8, color=MUTED)  # fmt: skip
-    # FDP of each first duty against its Table 2 limit (report at Munich, one sector).
-    rep_x = inst[("LH1782", 0)][0] - times.report_before_min
-    limit = max_fdp_minutes((rep_x + hub_offset) % DAY, 1)
-    fdp_x = inst[("LH1782", 0)][1] - rep_x
-    ax.annotate(
-        f"FDP {_hm(fdp_x)} (Table 2 limit {_hm(limit)})",
-        xy=(hx(rep_x), ys[len(aircraft) + 1] - height / 2),
-        xytext=(hx(rep_x) - 0.1, ys[len(aircraft) + 1] - 0.62),
-        fontsize=8,
-        color=MUTED,
-        ha="left",
-        va="center",
+                    ax.text(hx((arr + nxt) / 2), y, _hm(nxt - arr), ha="center", va="center", fontsize=8,
+                            color=TEXT, zorder=4)  # fmt: skip
+    for j, (_lab, instances) in enumerate(crews):
+        y = ys[len(aircraft) + j]
+        for duties, k, duty in ((ds, k, d) for ds in instances for k, d in enumerate(ds)):
+            bar(duty["report"], duty["end"], y, PALE, 2)
+            for name, dep, arr in duty["legs"]:
+                flight(name, dep, arr, y)
+            if k + 1 < len(duties):
+                later = duties[k + 1]
+                rest = later["report"] - duty["end"]
+                need = min_rest_minutes(duty["end"] - duty["report"], at_home_base=False)
+                lo, hi = max(duty["end"], x0), min(later["report"], x1)
+                ax.plot([hx(lo), hx(hi)], [y, y], color=MUTED, lw=0.9, zorder=1)
+                label = f"rest {rest // 60} h {rest % 60:02d} min in Porto (min {need // 60} h)"
+                if later["report"] > x1:
+                    day_no = (later["report"] + hub_offset) // DAY + 1
+                    label = f"rest in Porto, then {later['legs'][0][0]} on day {day_no}"
+                    ax.text(hx(lo) + 0.4, y + 0.1, label, ha="left", va="bottom", fontsize=8, color=TEXT)
+                elif duty["end"] < x0:
+                    ax.text(hx(x0) + 0.4, y + 0.1, label, ha="left", va="bottom", fontsize=8, color=TEXT)
+                else:
+                    ax.text(hx((lo + hi) / 2), y + 0.1, label, ha="center", va="bottom", fontsize=8, color=TEXT)
+    # Why the crew that brings the night-stop aircraft in cannot take it out the next morning.
+    night_line = next((legs for lab, legs in aircraft if "night-stop" in lab), None)
+    first_night = next(
+        (i for i, (lab, insts) in enumerate(crews) if lab.startswith("Night") and insts[0][0]["report"] >= x0), None
     )
-    midnight = DAY - hub_offset
-    ax.axvline(hx(midnight), color=AXIS, lw=0.8, ls=(0, (3, 3)), zorder=0)
+    if night_line is not None and first_night is not None:
+        duty = crews[first_night][1][0][0]
+        arr_in = duty["legs"][-1][2]
+        dep_back = next(dep for k, (_n, dep, _a) in enumerate(night_line) if k % 2 == 1 and dep > arr_in)
+        back_name = next(n for k, (n, dep, _a) in enumerate(night_line) if k % 2 == 1 and dep == dep_back)
+        report = dep_back - times.report_before_min
+        gap = report - duty["end"]
+        y_lane = ys[len(aircraft) + first_night]
+        ax.plot([hx(report)] * 2, [y_lane - 0.34, y_lane + 0.02], color=ORANGE, lw=1.4, zorder=3)
+        ax.text(hx(report) + 0.25, y_lane - 0.5,
+                f"Reporting for {back_name} next morning: {gap // 60} h {gap % 60:02d} min of rest, not legal",
+                ha="left", va="center", fontsize=8, color=MUTED)  # fmt: skip
+    # FDP of the first visible day duty against its Table 2 limit.
+    if day_crews:
+        duty = next(d for inst in day_crews for d in inst if d["report"] >= x0)
+        sectors = len(duty["legs"])
+        limit = max_fdp_minutes((duty["report"] + hub_offset) % DAY, sectors)
+        fdp = duty["legs"][-1][2] - duty["report"]
+        ax.text(hx(duty["end"]) + 0.4, ys[len(aircraft)], f"FDP {_hm(fdp)} (limit {_hm(limit)})", ha="left",
+                va="center", fontsize=8, color=MUTED)  # fmt: skip
     top_y = len(lanes) - 0.35
-    ax.text(hx(x0) + 0.1, top_y, f"{date:%a %-d %b}", ha="left", va="bottom", fontsize=9, color=TEXT)
-    nxt_day = date + dt.timedelta(days=1)
-    ax.text(hx(midnight) + 0.1, top_y, f"{nxt_day:%a %-d %b}", ha="left", va="bottom", fontsize=9, color=TEXT)
+    ax.text(hx(x0) + 0.2, top_y, "Day 1", ha="left", va="bottom", fontsize=9, color=TEXT)
+    for d in (1, 2):
+        midnight = d * DAY - hub_offset
+        ax.axvline(hx(midnight), color=AXIS, lw=0.8, ls=(0, (3, 3)), zorder=0)
+        ax.text(hx(midnight) + 0.2, top_y, f"Day {d + 1}", ha="left", va="bottom", fontsize=9, color=TEXT)
     ax.axhline(len(crews) - 0.5, color=AXIS, lw=0.6)
-    ax.set_yticks([ys[i] for i in range(len(lanes))], [lab for lab, _ in lanes], fontsize=8.5)
+    ax.set_yticks([ys[i] for i in range(len(lanes))], lanes, fontsize=8.5)
     ax.tick_params(axis="y", length=0)
-    ticks = np.arange(6, 6 + 39, 3)
+    ticks = np.arange(12, 12 + 49, 6)
     ax.set_xticks(ticks, [f"{int(t) % 24:02d}:00" for t in ticks])
     ax.set_xlim(hx(x0), hx(x1))
     ax.set_ylim(-0.9, len(lanes) - 0.1)
@@ -982,7 +1022,7 @@ def fig10_buffer_climate(results: Path, out: Path) -> list[Path]:
 # --------------------------------------------------------------------------- entry point
 
 
-def draw_all(results: Path, out: Path, case: Path) -> list[Path]:
+def draw_all(results: Path, out: Path) -> list[Path]:
     """Draw every figure of the article.
 
     Raises:
@@ -991,7 +1031,7 @@ def draw_all(results: Path, out: Path, case: Path) -> list[Path]:
     """
     _style()
     jobs: list[Callable[[], list[Path]]] = [
-        lambda: fig01_rotation(case, out),
+        lambda: fig01_rotation(results, out),
         lambda: fig02_time_space(results, out),
         lambda: fig03_pairing_network(results, out),
         lambda: fig04_column_generation(results, out),
