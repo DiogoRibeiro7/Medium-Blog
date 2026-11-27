@@ -63,6 +63,7 @@ recovery measures. The [technological substitution scenarios](SUBSTITUTION.md) d
 compression, volume displacement, demand response and domestic replacement.
 The [statistical robustness analysis](ROBUSTNESS.md) checks historical windows,
 matched country samples, benchmark sensitivity, sectoral granularity and
-leave-one-country-out influence. Later changes add figures and the manuscript
-evidence audit. IMF and OECD source access and licensing remain
+leave-one-country-out influence. The [publication figure pipeline](FIGURES.md) generates eight charts, their
+selected evidence rows and a complete analytical evidence artifact. The
+remaining manuscript evidence audit precedes publication. IMF and OECD source access and licensing remain
 separate; no unverified source is assumed in this baseline.
