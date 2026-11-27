@@ -463,6 +463,19 @@ jobs:
           path: ${{ runner.temp }}/tax-study/convex-approximation/
           retention-days: 7
           if-no-files-found: warn
+      - name: Validate chronological held-out pre-reform prediction
+        if: steps.policy_component_candidates.outcome == 'success'
+        run: |
+          python -m unittest causal_tax_cuts.tests.test_heldout_prefit -v
+          python -m causal_tax_cuts.heldout_prefit --panel "$RUNNER_TEMP/wdi-source/outcome_panel_with_macro.csv" --output-dir "$RUNNER_TEMP/tax-study/heldout-prefit"
+      - name: Publish held-out pre-reform prediction diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tax-cut-heldout-prefit
+          path: ${{ runner.temp }}/tax-study/heldout-prefit/
+          retention-days: 7
+          if-no-files-found: warn
       - name: Run exploratory treatment-history-only matching
         id: estimate
         if: steps.build_panel.outcome == 'success'
