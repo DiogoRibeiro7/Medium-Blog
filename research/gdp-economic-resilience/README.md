@@ -61,5 +61,8 @@ separate reproducible analysis, using the existing registry snapshots. The
 [historical shock analysis](SHOCKS.md) adds transparent trend benchmarks and
 recovery measures. The [technological substitution scenarios](SUBSTITUTION.md) distinguish price
 compression, volume displacement, demand response and domestic replacement.
-Later changes add robustness analysis, figures and the manuscript evidence audit. IMF and OECD source access and licensing remain
+The [statistical robustness analysis](ROBUSTNESS.md) checks historical windows,
+matched country samples, benchmark sensitivity, sectoral granularity and
+leave-one-country-out influence. Later changes add figures and the manuscript
+evidence audit. IMF and OECD source access and licensing remain
 separate; no unverified source is assumed in this baseline.
