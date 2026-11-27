@@ -1,0 +1,71 @@
+name: GDP resilience technological substitution
+
+on:
+  pull_request:
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-substitution.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/gdp-economic-resilience/**'
+      - 'data_sources/world-bank-wdi-gdp-resilience-2026-11-26.json'
+      - 'data_sources/eurostat-services-relative-prices.json'
+      - '.github/workflows/gdp-resilience-substitution.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/gdp-economic-resilience
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -v
+      - name: Reproduce substitution scenarios
+        run: python technology_substitution.py --fetch
+      - name: Verify deterministic replay and accounting
+        run: |
+          python technology_substitution.py --output "$RUNNER_TEMP/substitution-repeat"
+          diff -r results/substitution "$RUNNER_TEMP/substitution-repeat"
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          root = Path("results/substitution")
+          summary = json.loads((root / "summary.json").read_text())
+          assert summary["grid_size"] == 81
+          assert summary["available_exposures"] + summary["missing_exposures"] == 584
+          assert summary["tables"] == {
+              "exposures.csv": 584,
+              "named_scenarios.csv": 4088,
+              "sensitivity_grid.csv": 47304,
+              "reverse_stress.csv": 1752,
+          }
+          for name in ("named_scenarios.csv", "sensitivity_grid.csv"):
+              with (root / name).open() as stream:
+                  for row in csv.DictReader(stream):
+                      if row["available"] == "True":
+                          assert abs(float(row["accounting_residual_pp"])) < 1e-9
+                      else:
+                          assert row["nominal_change_pct_baseline_aggregate"] == ""
+                          assert row["base_price_change_pct_baseline_aggregate"] == ""
+          PY
+      - name: Upload substitution results
+        uses: actions/upload-artifact@v4
+        with:
+          name: gdp-resilience-technological-substitution
+          path: research/gdp-economic-resilience/results/substitution/
+          if-no-files-found: error
