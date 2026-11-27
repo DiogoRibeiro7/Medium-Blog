@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "airline-operations-optimization"
+version = "0.1.0"
+description = "Aircraft routing, crew pairing and disruption simulation on a synthetic European hub network"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "Apache-2.0"
+authors = [{ name = "Diogo Ribeiro", email = "dfr@esmad.ipp.pt" }]
+dependencies = [
+    "highspy>=1.16",
+    "numpy>=2.5",
+    "matplotlib>=3.11",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.2", "ruff>=0.17", "mypy>=2.4"]
+
+[project.scripts]
+airline-ops = "airline_ops.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF", "PT", "D"]
+ignore = ["D100", "D104", "D105", "D107", "D203", "D213", "D401", "RUF001", "RUF002", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["D"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unreachable = true
+mypy_path = "src"
+packages = ["airline_ops"]
+
+[[tool.mypy.overrides]]
+module = ["highspy", "highspy.*", "networkx", "networkx.*", "matplotlib", "matplotlib.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

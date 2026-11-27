@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "Same Aircraft, Different Crew: aircraft routing, crew pairing and disruption simulation on a synthetic hub network (companion code)"
+authors:
+  - family-names: Ribeiro
+    given-names: Diogo
+    email: dfr@esmad.ipp.pt
+    orcid: "https://orcid.org/0009-0001-2022-7072"
+version: 0.1.0
+date-released: 2026-11-27
+license: Apache-2.0
+repository-code: "https://github.com/DiogoRibeiro7/Medium-Blog/tree/main/airline-operations-optimization"
+keywords:
+  - aircraft routing
+  - crew pairing
+  - column generation
+  - robust optimisation
+  - discrete-event simulation
+  - EASA flight time limitations

@@ -1,0 +1,105 @@
+# Small configuration for continuous integration: same code paths, tiny network, few replications.
+# Main experiment of the article is configs/experiment.toml. Every parameter that drives a result is here.
+# Cost values are illustrative assumptions (sources and caveats in the README); the
+# EASA flight time limitations are in src/airline_ops/regulation/ftl.py.
+
+[experiment]
+name = "smoke"
+seed = 20261126
+replications = 8
+network_seeds = [11, 12]
+buffer_sweep = [0, 15]
+penalty_sweep = [0.0, 1.0]
+# Mean primary delay per flight (minutes) for the delay-climate sensitivity:
+# November 2025 (11.6 all-causes minus 4.8 reactionary) and the 2024 annual value
+# (17.5 minus 8.0), from EUROCONTROL CODA, and a stressed climate at twice the annual value.
+delay_climates = [6.8, 9.5, 19.0]
+calibration_replications = 4
+history_replications = 8
+
+[network]
+hub = "MUC"
+reference_date = "2026-11-26"
+spokes = [
+  { code = "OPO", frequency = 2 },
+  { code = "LIS", frequency = 2 },
+  { code = "MAD", frequency = 3 },
+  { code = "CDG", frequency = 2 },
+  { code = "HAM", frequency = 3 },
+  { code = "VIE", frequency = 2 },
+]
+banks_local = ["07:00", "09:30", "12:00", "14:30", "17:15"]
+nightstop_departure_local = "21:30"
+morning_departure_local = "06:15"
+bank_jitter_min = 25
+seats = 180
+load_factor = 0.82
+connecting_share = 0.35
+min_connection_pax_min = 35
+max_connection_pax_min = 180
+spare_aircraft = 2
+# A stylised night curfew at the hub, not Munich's actual night-flight rules.
+hub_curfew_local = ["00:00", "05:00"]
+turn_min_hub = 45
+turn_min_spoke = 40
+spoke_turn_scheduled_min = 50
+
+[crew]
+change_aircraft_min = 60
+max_sit_min = 240
+max_duties = 2
+max_rest_min = 2160
+reserve_crews_per_day = 2
+reserve_callout_min = 60
+max_sectors = 6
+
+[maintenance]
+base = "MUC"
+max_nights_between = 4
+min_ground_min = 300
+
+[costs]
+aircraft_day_eur = 12000.0          # ~US$400k/month A320neo lease (Ascend/Cirium, 2024), per day
+crew_hour_eur = 600.0               # two pilots and four cabin crew, per duty hour (assumption)
+min_duty_paid_h = 5.0               # minimum paid hours per duty (assumption)
+hotel_layover_eur = 1020.0          # six rooms and per diems per night away (assumption)
+deadhead_eur = 900.0                # six seats for positioning crew (assumption)
+reserve_callout_eur = 1500.0        # activating a standby crew (assumption)
+ferry_block_hour_eur = 4000.0       # fuel, maintenance and charges of an empty flight (assumption)
+delay_minute_eur = 25.0             # airline cost per minute of arrival delay, excluding passenger costs (assumption)
+eurocontrol_minute_eur = 166.0      # EUROCONTROL Standard Inputs, all tactical delay at gate (cross-check only)
+eu261_short_eur = 250.0             # Regulation (EC) No 261/2004, Art. 7(1)(a)
+eu261_medium_eur = 400.0            # Art. 7(1)(b), intra-EU flights over 1,500 km
+care_meal_eur = 12.0
+hotel_pax_eur = 110.0
+rebooking_eur = 20.0
+overtime_factor = 1.5
+utilization_tiebreak_eur_per_min = 0.01
+
+[delays]
+mean_primary_min = 9.5
+p_delayed = 0.45
+sigma = 1.0
+block_noise_sd = 0.04
+block_bias = -0.03
+
+[robust]
+buffer_min = 15
+penalty_weight = 1.0
+penalty_samples = 2000
+
+[planning]
+time_limit_s = 120.0
+mip_gap = 0.001
+cg_max_iterations = 300
+cg_columns_per_iteration = 400
+cg_tolerance = 1e-6
+maintenance_cut_rounds = 200
+threads = 1
+
+[simulation]
+horizon_days = 2
+max_delay_min = 300
+swap_threshold_min = 60
+allow_commander_discretion = true
+rebooking_horizon_min = 1440
