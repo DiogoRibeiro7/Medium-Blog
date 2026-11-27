@@ -1,0 +1,240 @@
+{
+ "delayed_flights": {
+  "S107": 113.79428335293547,
+  "S116": 105.89707162884552,
+  "S136": 111.22409904480358
+ },
+ "plans": {
+  "robust": {
+   "extra_delay_total": 694.9169204228225,
+   "nodes": [
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 113.79428335293545,
+     "instance": 7,
+     "number": "S107",
+     "origin": "FRA",
+     "sched_dep": 329.0
+    },
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 105.89707162884554,
+     "instance": 16,
+     "number": "S116",
+     "origin": "ZRH",
+     "sched_dep": 339.0
+    },
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 111.22409904480367,
+     "instance": 36,
+     "number": "S136",
+     "origin": "DUB",
+     "sched_dep": 397.0
+    },
+    {
+     "bind_pred": 7,
+     "bind_type": 2,
+     "cancelled": false,
+     "destination": "LHR",
+     "extra_delay": 40.61118844372413,
+     "instance": 43,
+     "number": "S143",
+     "origin": "MUC",
+     "sched_dep": 515.0
+    },
+    {
+     "bind_pred": 7,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "NCE",
+     "extra_delay": 23.61118844372413,
+     "instance": 44,
+     "number": "S144",
+     "origin": "MUC",
+     "sched_dep": 517.0
+    },
+    {
+     "bind_pred": 16,
+     "bind_type": 2,
+     "cancelled": false,
+     "destination": "FCO",
+     "extra_delay": 53.87590187501792,
+     "instance": 45,
+     "number": "S145",
+     "origin": "MUC",
+     "sched_dep": 519.0
+    },
+    {
+     "bind_pred": 16,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "OTP",
+     "extra_delay": 35.87590187501792,
+     "instance": 47,
+     "number": "S147",
+     "origin": "MUC",
+     "sched_dep": 522.0
+    },
+    {
+     "bind_pred": 44,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 3.5849592766617207,
+     "instance": 59,
+     "number": "S159",
+     "origin": "NCE",
+     "sched_dep": 662.0
+    },
+    {
+     "bind_pred": 45,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 29.760259463094712,
+     "instance": 61,
+     "number": "S161",
+     "origin": "FCO",
+     "sched_dep": 669.0
+    },
+    {
+     "bind_pred": 36,
+     "bind_type": 2,
+     "cancelled": false,
+     "destination": "MAD",
+     "extra_delay": 68.90632381402531,
+     "instance": 62,
+     "number": "S162",
+     "origin": "MUC",
+     "sched_dep": 669.0
+    },
+    {
+     "bind_pred": 43,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 23.67441356224549,
+     "instance": 67,
+     "number": "S167",
+     "origin": "LHR",
+     "sched_dep": 681.0
+    },
+    {
+     "bind_pred": 47,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 35.87590187501792,
+     "instance": 70,
+     "number": "S170",
+     "origin": "OTP",
+     "sched_dep": 699.0
+    },
+    {
+     "bind_pred": 62,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 48.22542776770865,
+     "instance": 88,
+     "number": "S188",
+     "origin": "MAD",
+     "sched_dep": 880.0
+    }
+   ]
+  },
+  "sequential": {
+   "extra_delay_total": 531.6833669464313,
+   "nodes": [
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 113.79428335293545,
+     "instance": 7,
+     "number": "S107",
+     "origin": "FRA",
+     "sched_dep": 329.0
+    },
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 105.89707162884554,
+     "instance": 16,
+     "number": "S116",
+     "origin": "ZRH",
+     "sched_dep": 339.0
+    },
+    {
+     "bind_pred": -1,
+     "bind_type": 0,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 111.22409904480367,
+     "instance": 36,
+     "number": "S136",
+     "origin": "DUB",
+     "sched_dep": 397.0
+    },
+    {
+     "bind_pred": 16,
+     "bind_type": 2,
+     "cancelled": false,
+     "destination": "FCO",
+     "extra_delay": 53.87590187501792,
+     "instance": 45,
+     "number": "S145",
+     "origin": "MUC",
+     "sched_dep": 519.0
+    },
+    {
+     "bind_pred": 45,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 29.760259463094712,
+     "instance": 61,
+     "number": "S161",
+     "origin": "FCO",
+     "sched_dep": 669.0
+    },
+    {
+     "bind_pred": 36,
+     "bind_type": 2,
+     "cancelled": false,
+     "destination": "MAD",
+     "extra_delay": 68.90632381402531,
+     "instance": 62,
+     "number": "S162",
+     "origin": "MUC",
+     "sched_dep": 669.0
+    },
+    {
+     "bind_pred": 62,
+     "bind_type": 1,
+     "cancelled": false,
+     "destination": "MUC",
+     "extra_delay": 48.22542776770865,
+     "instance": 88,
+     "number": "S188",
+     "origin": "MAD",
+     "sched_dep": 880.0
+    }
+   ]
+  }
+ },
+ "replication": 3
+}

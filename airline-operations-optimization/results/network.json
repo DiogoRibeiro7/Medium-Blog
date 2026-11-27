@@ -1,0 +1,1627 @@
+{
+ "airports": {
+  "AMS": {
+   "lat": 52.308601,
+   "lon": 4.76389,
+   "name": "Amsterdam Airport Schiphol",
+   "utc_offset_min": 60
+  },
+  "ARN": {
+   "lat": 59.651901245117,
+   "lon": 17.918600082397,
+   "name": "Stockholm-Arlanda Airport",
+   "utc_offset_min": 60
+  },
+  "ATH": {
+   "lat": 37.9364013672,
+   "lon": 23.9444999695,
+   "name": "Eleftherios Venizelos International Airport",
+   "utc_offset_min": 120
+  },
+  "BCN": {
+   "lat": 41.2971,
+   "lon": 2.07846,
+   "name": "Barcelona International Airport",
+   "utc_offset_min": 60
+  },
+  "BRU": {
+   "lat": 50.901401519800004,
+   "lon": 4.48443984985,
+   "name": "Brussels Airport",
+   "utc_offset_min": 60
+  },
+  "BUD": {
+   "lat": 47.42976,
+   "lon": 19.261093,
+   "name": "Budapest Liszt Ferenc International Airport",
+   "utc_offset_min": 60
+  },
+  "CDG": {
+   "lat": 49.012798,
+   "lon": 2.55,
+   "name": "Charles de Gaulle International Airport",
+   "utc_offset_min": 60
+  },
+  "CPH": {
+   "lat": 55.617900848389,
+   "lon": 12.656000137329,
+   "name": "Copenhagen Kastrup Airport",
+   "utc_offset_min": 60
+  },
+  "DUB": {
+   "lat": 53.421299,
+   "lon": -6.27007,
+   "name": "Dublin Airport",
+   "utc_offset_min": 0
+  },
+  "DUS": {
+   "lat": 51.289501,
+   "lon": 6.76678,
+   "name": "D\u00fcsseldorf Airport",
+   "utc_offset_min": 60
+  },
+  "FCO": {
+   "lat": 41.8002778,
+   "lon": 12.2388889,
+   "name": "Leonardo da Vinci\u2013Fiumicino Airport",
+   "utc_offset_min": 60
+  },
+  "FRA": {
+   "lat": 50.033333,
+   "lon": 8.570556,
+   "name": "Frankfurt am Main Airport",
+   "utc_offset_min": 60
+  },
+  "HAM": {
+   "lat": 53.630401611328,
+   "lon": 9.9882297515869,
+   "name": "Hamburg Airport",
+   "utc_offset_min": 60
+  },
+  "HEL": {
+   "lat": 60.317199707031,
+   "lon": 24.963300704956,
+   "name": "Helsinki Vantaa Airport",
+   "utc_offset_min": 120
+  },
+  "KRK": {
+   "lat": 50.077702,
+   "lon": 19.7848,
+   "name": "Krak\u00f3w John Paul II International Airport",
+   "utc_offset_min": 60
+  },
+  "LHR": {
+   "lat": 51.4706,
+   "lon": -0.461941,
+   "name": "London Heathrow Airport",
+   "utc_offset_min": 0
+  },
+  "LIS": {
+   "lat": 38.7813,
+   "lon": -9.13592,
+   "name": "Humberto Delgado Airport (Lisbon Portela Airport)",
+   "utc_offset_min": 0
+  },
+  "LYS": {
+   "lat": 45.725556,
+   "lon": 5.081111,
+   "name": "Lyon Saint-Exup\u00e9ry Airport",
+   "utc_offset_min": 60
+  },
+  "MAD": {
+   "lat": 40.471926,
+   "lon": -3.56264,
+   "name": "Adolfo Su\u00e1rez Madrid\u2013Barajas Airport",
+   "utc_offset_min": 60
+  },
+  "MUC": {
+   "lat": 48.353802,
+   "lon": 11.7861,
+   "name": "Munich Airport",
+   "utc_offset_min": 60
+  },
+  "MXP": {
+   "lat": 45.6306,
+   "lon": 8.72811,
+   "name": "Malpensa International Airport",
+   "utc_offset_min": 60
+  },
+  "NCE": {
+   "lat": 43.6584014893,
+   "lon": 7.215869903560001,
+   "name": "Nice-C\u00f4te d'Azur Airport",
+   "utc_offset_min": 60
+  },
+  "OPO": {
+   "lat": 41.2481002808,
+   "lon": -8.68138980865,
+   "name": "Francisco de S\u00e1 Carneiro Airport",
+   "utc_offset_min": 0
+  },
+  "OSL": {
+   "lat": 60.121,
+   "lon": 11.0502,
+   "name": "Oslo Lufthavn",
+   "utc_offset_min": 60
+  },
+  "OTP": {
+   "lat": 44.5711111,
+   "lon": 26.085,
+   "name": "Henri Coand\u0103 International Airport",
+   "utc_offset_min": 120
+  },
+  "PRG": {
+   "lat": 50.1008,
+   "lon": 14.26,
+   "name": "V\u00e1clav Havel Airport Prague",
+   "utc_offset_min": 60
+  },
+  "SOF": {
+   "lat": 42.696693420410156,
+   "lon": 23.411436080932617,
+   "name": "Sofia Airport",
+   "utc_offset_min": 120
+  },
+  "VCE": {
+   "lat": 45.505299,
+   "lon": 12.3519,
+   "name": "Venice Marco Polo Airport",
+   "utc_offset_min": 60
+  },
+  "VIE": {
+   "lat": 48.110298156738,
+   "lon": 16.569700241089,
+   "name": "Vienna International Airport",
+   "utc_offset_min": 60
+  },
+  "WAW": {
+   "lat": 52.1656990051,
+   "lon": 20.967100143399996,
+   "name": "Warsaw Chopin Airport",
+   "utc_offset_min": 60
+  },
+  "ZRH": {
+   "lat": 47.464699,
+   "lon": 8.54917,
+   "name": "Z\u00fcrich Airport",
+   "utc_offset_min": 60
+  }
+ },
+ "block_model": {
+  "ground_min": 30.0,
+  "speed_east_kmh": 768.0,
+  "speed_west_kmh": 716.8
+ },
+ "connecting_passengers_per_day": 2205,
+ "fleet": 40,
+ "flights": [
+  {
+   "arr_local": 493,
+   "block": 165,
+   "dep_local": 388,
+   "dep_utc": 268,
+   "destination": "MUC",
+   "distance_km": 1574.5,
+   "number": "S100",
+   "origin": "HEL"
+  },
+  {
+   "arr_local": 498,
+   "block": 160,
+   "dep_local": 398,
+   "dep_utc": 278,
+   "destination": "MUC",
+   "distance_km": 1517.7,
+   "number": "S101",
+   "origin": "ATH"
+  },
+  {
+   "arr_local": 455,
+   "block": 80,
+   "dep_local": 375,
+   "dep_utc": 315,
+   "destination": "MUC",
+   "distance_km": 630.0,
+   "number": "S102",
+   "origin": "NCE"
+  },
+  {
+   "arr_local": 510,
+   "block": 135,
+   "dep_local": 375,
+   "dep_utc": 315,
+   "destination": "MUC",
+   "distance_km": 1309.3,
+   "number": "S103",
+   "origin": "OSL"
+  },
+  {
+   "arr_local": 457,
+   "block": 80,
+   "dep_local": 377,
+   "dep_utc": 317,
+   "destination": "MUC",
+   "distance_km": 597.0,
+   "number": "S104",
+   "origin": "BRU"
+  },
+  {
+   "arr_local": 528,
+   "block": 150,
+   "dep_local": 378,
+   "dep_utc": 318,
+   "destination": "MUC",
+   "distance_km": 1497.0,
+   "number": "S105",
+   "origin": "MAD"
+  },
+  {
+   "arr_local": 438,
+   "block": 60,
+   "dep_local": 378,
+   "dep_utc": 318,
+   "destination": "MUC",
+   "distance_km": 355.3,
+   "number": "S106",
+   "origin": "VIE"
+  },
+  {
+   "arr_local": 444,
+   "block": 55,
+   "dep_local": 389,
+   "dep_utc": 329,
+   "destination": "MUC",
+   "distance_km": 299.1,
+   "number": "S107",
+   "origin": "FRA"
+  },
+  {
+   "arr_local": 475,
+   "block": 85,
+   "dep_local": 390,
+   "dep_utc": 330,
+   "destination": "MUC",
+   "distance_km": 664.2,
+   "number": "S108",
+   "origin": "AMS"
+  },
+  {
+   "arr_local": 475,
+   "block": 85,
+   "dep_local": 390,
+   "dep_utc": 330,
+   "destination": "MUC",
+   "distance_km": 681.6,
+   "number": "S109",
+   "origin": "CDG"
+  },
+  {
+   "arr_local": 452,
+   "block": 60,
+   "dep_local": 392,
+   "dep_utc": 332,
+   "destination": "MUC",
+   "distance_km": 381.4,
+   "number": "S110",
+   "origin": "MXP"
+  },
+  {
+   "arr_local": 464,
+   "block": 70,
+   "dep_local": 394,
+   "dep_utc": 334,
+   "destination": "MUC",
+   "distance_km": 485.8,
+   "number": "S111",
+   "origin": "DUS"
+  },
+  {
+   "arr_local": 541,
+   "block": 145,
+   "dep_local": 396,
+   "dep_utc": 336,
+   "destination": "MUC",
+   "distance_km": 1317.3,
+   "number": "S112",
+   "origin": "ARN"
+  },
+  {
+   "arr_local": 517,
+   "block": 120,
+   "dep_local": 397,
+   "dep_utc": 337,
+   "destination": "MUC",
+   "distance_km": 1094.6,
+   "number": "S113",
+   "origin": "BCN"
+  },
+  {
+   "arr_local": 478,
+   "block": 80,
+   "dep_local": 398,
+   "dep_utc": 338,
+   "destination": "MUC",
+   "distance_km": 566.5,
+   "number": "S114",
+   "origin": "BUD"
+  },
+  {
+   "arr_local": 498,
+   "block": 100,
+   "dep_local": 398,
+   "dep_utc": 338,
+   "destination": "MUC",
+   "distance_km": 809.9,
+   "number": "S115",
+   "origin": "CPH"
+  },
+  {
+   "arr_local": 454,
+   "block": 55,
+   "dep_local": 399,
+   "dep_utc": 339,
+   "destination": "MUC",
+   "distance_km": 260.7,
+   "number": "S116",
+   "origin": "ZRH"
+  },
+  {
+   "arr_local": 495,
+   "block": 95,
+   "dep_local": 400,
+   "dep_utc": 340,
+   "destination": "MUC",
+   "distance_km": 729.6,
+   "number": "S117",
+   "origin": "FCO"
+  },
+  {
+   "arr_local": 480,
+   "block": 80,
+   "dep_local": 400,
+   "dep_utc": 340,
+   "destination": "MUC",
+   "distance_km": 600.0,
+   "number": "S118",
+   "origin": "HAM"
+  },
+  {
+   "arr_local": 500,
+   "block": 100,
+   "dep_local": 400,
+   "dep_utc": 340,
+   "destination": "MUC",
+   "distance_km": 777.3,
+   "number": "S119",
+   "origin": "WAW"
+  },
+  {
+   "arr_local": 478,
+   "block": 55,
+   "dep_local": 423,
+   "dep_utc": 363,
+   "destination": "ZRH",
+   "distance_km": 260.7,
+   "number": "S120",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 637,
+   "block": 150,
+   "dep_local": 427,
+   "dep_utc": 367,
+   "destination": "ATH",
+   "distance_km": 1517.7,
+   "number": "S121",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 570,
+   "block": 200,
+   "dep_local": 430,
+   "dep_utc": 370,
+   "destination": "LIS",
+   "distance_km": 1983.6,
+   "number": "S122",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 521,
+   "block": 90,
+   "dep_local": 431,
+   "dep_utc": 371,
+   "destination": "AMS",
+   "distance_km": 664.2,
+   "number": "S123",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 556,
+   "block": 125,
+   "dep_local": 431,
+   "dep_utc": 371,
+   "destination": "BCN",
+   "distance_km": 1094.6,
+   "number": "S124",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 526,
+   "block": 95,
+   "dep_local": 431,
+   "dep_utc": 371,
+   "destination": "WAW",
+   "distance_km": 777.3,
+   "number": "S125",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 522,
+   "block": 150,
+   "dep_local": 432,
+   "dep_utc": 372,
+   "destination": "DUB",
+   "distance_km": 1381.3,
+   "number": "S126",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 522,
+   "block": 90,
+   "dep_local": 432,
+   "dep_utc": 372,
+   "destination": "FCO",
+   "distance_km": 729.6,
+   "number": "S127",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 518,
+   "block": 85,
+   "dep_local": 433,
+   "dep_utc": 373,
+   "destination": "HAM",
+   "distance_km": 600.0,
+   "number": "S128",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 570,
+   "block": 135,
+   "dep_local": 435,
+   "dep_utc": 375,
+   "destination": "ARN",
+   "distance_km": 1317.3,
+   "number": "S129",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 512,
+   "block": 75,
+   "dep_local": 437,
+   "dep_utc": 377,
+   "destination": "DUS",
+   "distance_km": 485.8,
+   "number": "S130",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 497,
+   "block": 60,
+   "dep_local": 437,
+   "dep_utc": 377,
+   "destination": "FRA",
+   "distance_km": 299.1,
+   "number": "S131",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 652,
+   "block": 155,
+   "dep_local": 437,
+   "dep_utc": 377,
+   "destination": "HEL",
+   "distance_km": 1574.5,
+   "number": "S132",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 487,
+   "block": 110,
+   "dep_local": 437,
+   "dep_utc": 377,
+   "destination": "LHR",
+   "distance_km": 941.6,
+   "number": "S133",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 608,
+   "block": 170,
+   "dep_local": 378,
+   "dep_utc": 378,
+   "destination": "MUC",
+   "distance_km": 1790.3,
+   "number": "S134",
+   "origin": "OPO"
+  },
+  {
+   "arr_local": 638,
+   "block": 185,
+   "dep_local": 393,
+   "dep_utc": 393,
+   "destination": "MUC",
+   "distance_km": 1983.6,
+   "number": "S135",
+   "origin": "LIS"
+  },
+  {
+   "arr_local": 597,
+   "block": 140,
+   "dep_local": 397,
+   "dep_utc": 397,
+   "destination": "MUC",
+   "distance_km": 1381.3,
+   "number": "S136",
+   "origin": "DUB"
+  },
+  {
+   "arr_local": 563,
+   "block": 105,
+   "dep_local": 398,
+   "dep_utc": 398,
+   "destination": "MUC",
+   "distance_km": 941.6,
+   "number": "S137",
+   "origin": "LHR"
+  },
+  {
+   "arr_local": 589,
+   "block": 55,
+   "dep_local": 534,
+   "dep_utc": 474,
+   "destination": "MUC",
+   "distance_km": 260.7,
+   "number": "S138",
+   "origin": "ZRH"
+  },
+  {
+   "arr_local": 606,
+   "block": 55,
+   "dep_local": 551,
+   "dep_utc": 491,
+   "destination": "MUC",
+   "distance_km": 299.1,
+   "number": "S139",
+   "origin": "FRA"
+  },
+  {
+   "arr_local": 641,
+   "block": 70,
+   "dep_local": 571,
+   "dep_utc": 511,
+   "destination": "MUC",
+   "distance_km": 485.8,
+   "number": "S140",
+   "origin": "DUS"
+  },
+  {
+   "arr_local": 652,
+   "block": 80,
+   "dep_local": 572,
+   "dep_utc": 512,
+   "destination": "MUC",
+   "distance_km": 600.0,
+   "number": "S141",
+   "origin": "HAM"
+  },
+  {
+   "arr_local": 659,
+   "block": 85,
+   "dep_local": 574,
+   "dep_utc": 514,
+   "destination": "MUC",
+   "distance_km": 664.2,
+   "number": "S142",
+   "origin": "AMS"
+  },
+  {
+   "arr_local": 625,
+   "block": 110,
+   "dep_local": 575,
+   "dep_utc": 515,
+   "destination": "LHR",
+   "distance_km": 941.6,
+   "number": "S143",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 662,
+   "block": 85,
+   "dep_local": 577,
+   "dep_utc": 517,
+   "destination": "NCE",
+   "distance_km": 630.0,
+   "number": "S144",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 669,
+   "block": 90,
+   "dep_local": 579,
+   "dep_utc": 519,
+   "destination": "FCO",
+   "distance_km": 729.6,
+   "number": "S145",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 677,
+   "block": 95,
+   "dep_local": 582,
+   "dep_utc": 522,
+   "destination": "MUC",
+   "distance_km": 729.6,
+   "number": "S146",
+   "origin": "FCO"
+  },
+  {
+   "arr_local": 767,
+   "block": 125,
+   "dep_local": 582,
+   "dep_utc": 522,
+   "destination": "OTP",
+   "distance_km": 1171.0,
+   "number": "S147",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 685,
+   "block": 100,
+   "dep_local": 585,
+   "dep_utc": 525,
+   "destination": "MUC",
+   "distance_km": 777.3,
+   "number": "S148",
+   "origin": "WAW"
+  },
+  {
+   "arr_local": 719,
+   "block": 125,
+   "dep_local": 594,
+   "dep_utc": 534,
+   "destination": "BCN",
+   "distance_km": 1094.6,
+   "number": "S149",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 649,
+   "block": 55,
+   "dep_local": 594,
+   "dep_utc": 534,
+   "destination": "PRG",
+   "distance_km": 264.6,
+   "number": "S150",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 702,
+   "block": 105,
+   "dep_local": 537,
+   "dep_utc": 537,
+   "destination": "MUC",
+   "distance_km": 941.6,
+   "number": "S151",
+   "origin": "LHR"
+  },
+  {
+   "arr_local": 731,
+   "block": 120,
+   "dep_local": 611,
+   "dep_utc": 551,
+   "destination": "MUC",
+   "distance_km": 1094.6,
+   "number": "S152",
+   "origin": "BCN"
+  },
+  {
+   "arr_local": 765,
+   "block": 145,
+   "dep_local": 620,
+   "dep_utc": 560,
+   "destination": "MUC",
+   "distance_km": 1317.3,
+   "number": "S153",
+   "origin": "ARN"
+  },
+  {
+   "arr_local": 788,
+   "block": 160,
+   "dep_local": 688,
+   "dep_utc": 568,
+   "destination": "MUC",
+   "distance_km": 1517.7,
+   "number": "S154",
+   "origin": "ATH"
+  },
+  {
+   "arr_local": 772,
+   "block": 140,
+   "dep_local": 572,
+   "dep_utc": 572,
+   "destination": "MUC",
+   "distance_km": 1381.3,
+   "number": "S155",
+   "origin": "DUB"
+  },
+  {
+   "arr_local": 808,
+   "block": 165,
+   "dep_local": 703,
+   "dep_utc": 583,
+   "destination": "MUC",
+   "distance_km": 1574.5,
+   "number": "S156",
+   "origin": "HEL"
+  },
+  {
+   "arr_local": 875,
+   "block": 185,
+   "dep_local": 630,
+   "dep_utc": 630,
+   "destination": "MUC",
+   "distance_km": 1983.6,
+   "number": "S157",
+   "origin": "LIS"
+  },
+  {
+   "arr_local": 757,
+   "block": 55,
+   "dep_local": 702,
+   "dep_utc": 642,
+   "destination": "MUC",
+   "distance_km": 264.6,
+   "number": "S158",
+   "origin": "PRG"
+  },
+  {
+   "arr_local": 802,
+   "block": 80,
+   "dep_local": 722,
+   "dep_utc": 662,
+   "destination": "MUC",
+   "distance_km": 630.0,
+   "number": "S159",
+   "origin": "NCE"
+  },
+  {
+   "arr_local": 792,
+   "block": 65,
+   "dep_local": 727,
+   "dep_utc": 667,
+   "destination": "MXP",
+   "distance_km": 381.4,
+   "number": "S160",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 824,
+   "block": 95,
+   "dep_local": 729,
+   "dep_utc": 669,
+   "destination": "MUC",
+   "distance_km": 729.6,
+   "number": "S161",
+   "origin": "FCO"
+  },
+  {
+   "arr_local": 889,
+   "block": 160,
+   "dep_local": 729,
+   "dep_utc": 669,
+   "destination": "MAD",
+   "distance_km": 1497.0,
+   "number": "S162",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 792,
+   "block": 60,
+   "dep_local": 732,
+   "dep_utc": 672,
+   "destination": "FRA",
+   "distance_km": 299.1,
+   "number": "S163",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 874,
+   "block": 200,
+   "dep_local": 734,
+   "dep_utc": 674,
+   "destination": "LIS",
+   "distance_km": 1983.6,
+   "number": "S164",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 830,
+   "block": 90,
+   "dep_local": 740,
+   "dep_utc": 680,
+   "destination": "CDG",
+   "distance_km": 681.6,
+   "number": "S165",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 815,
+   "block": 75,
+   "dep_local": 740,
+   "dep_utc": 680,
+   "destination": "DUS",
+   "distance_km": 485.8,
+   "number": "S166",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 846,
+   "block": 105,
+   "dep_local": 681,
+   "dep_utc": 681,
+   "destination": "MUC",
+   "distance_km": 941.6,
+   "number": "S167",
+   "origin": "LHR"
+  },
+  {
+   "arr_local": 830,
+   "block": 85,
+   "dep_local": 745,
+   "dep_utc": 685,
+   "destination": "HAM",
+   "distance_km": 600.0,
+   "number": "S168",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 925,
+   "block": 120,
+   "dep_local": 745,
+   "dep_utc": 685,
+   "destination": "SOF",
+   "distance_km": 1100.8,
+   "number": "S169",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 889,
+   "block": 130,
+   "dep_local": 819,
+   "dep_utc": 699,
+   "destination": "MUC",
+   "distance_km": 1171.0,
+   "number": "S170",
+   "origin": "OTP"
+  },
+  {
+   "arr_local": 897,
+   "block": 120,
+   "dep_local": 777,
+   "dep_utc": 717,
+   "destination": "MUC",
+   "distance_km": 1094.6,
+   "number": "S171",
+   "origin": "BCN"
+  },
+  {
+   "arr_local": 905,
+   "block": 55,
+   "dep_local": 850,
+   "dep_utc": 790,
+   "destination": "MUC",
+   "distance_km": 299.1,
+   "number": "S172",
+   "origin": "FRA"
+  },
+  {
+   "arr_local": 911,
+   "block": 60,
+   "dep_local": 851,
+   "dep_utc": 791,
+   "destination": "MUC",
+   "distance_km": 381.4,
+   "number": "S173",
+   "origin": "MXP"
+  },
+  {
+   "arr_local": 945,
+   "block": 75,
+   "dep_local": 870,
+   "dep_utc": 810,
+   "destination": "BUD",
+   "distance_km": 566.5,
+   "number": "S174",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 941,
+   "block": 70,
+   "dep_local": 871,
+   "dep_utc": 811,
+   "destination": "MUC",
+   "distance_km": 485.8,
+   "number": "S175",
+   "origin": "DUS"
+  },
+  {
+   "arr_local": 954,
+   "block": 80,
+   "dep_local": 874,
+   "dep_utc": 814,
+   "destination": "BRU",
+   "distance_km": 597.0,
+   "number": "S176",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 959,
+   "block": 85,
+   "dep_local": 874,
+   "dep_utc": 814,
+   "destination": "HAM",
+   "distance_km": 600.0,
+   "number": "S177",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 962,
+   "block": 80,
+   "dep_local": 882,
+   "dep_utc": 822,
+   "destination": "MUC",
+   "distance_km": 600.0,
+   "number": "S178",
+   "origin": "HAM"
+  },
+  {
+   "arr_local": 1002,
+   "block": 180,
+   "dep_local": 882,
+   "dep_utc": 822,
+   "destination": "OPO",
+   "distance_km": 1790.3,
+   "number": "S179",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1043,
+   "block": 160,
+   "dep_local": 883,
+   "dep_utc": 823,
+   "destination": "MAD",
+   "distance_km": 1497.0,
+   "number": "S180",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 970,
+   "block": 85,
+   "dep_local": 885,
+   "dep_utc": 825,
+   "destination": "MUC",
+   "distance_km": 681.6,
+   "number": "S181",
+   "origin": "CDG"
+  },
+  {
+   "arr_local": 975,
+   "block": 90,
+   "dep_local": 885,
+   "dep_utc": 825,
+   "destination": "FCO",
+   "distance_km": 729.6,
+   "number": "S182",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 977,
+   "block": 90,
+   "dep_local": 887,
+   "dep_utc": 827,
+   "destination": "CDG",
+   "distance_km": 681.6,
+   "number": "S183",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 983,
+   "block": 95,
+   "dep_local": 888,
+   "dep_utc": 828,
+   "destination": "CPH",
+   "distance_km": 809.9,
+   "number": "S184",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 949,
+   "block": 60,
+   "dep_local": 889,
+   "dep_utc": 829,
+   "destination": "VIE",
+   "distance_km": 355.3,
+   "number": "S185",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1016,
+   "block": 125,
+   "dep_local": 891,
+   "dep_utc": 831,
+   "destination": "BCN",
+   "distance_km": 1094.6,
+   "number": "S186",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1044,
+   "block": 125,
+   "dep_local": 979,
+   "dep_utc": 859,
+   "destination": "MUC",
+   "distance_km": 1100.8,
+   "number": "S187",
+   "origin": "SOF"
+  },
+  {
+   "arr_local": 1090,
+   "block": 150,
+   "dep_local": 940,
+   "dep_utc": 880,
+   "destination": "MUC",
+   "distance_km": 1497.0,
+   "number": "S188",
+   "origin": "MAD"
+  },
+  {
+   "arr_local": 1169,
+   "block": 185,
+   "dep_local": 924,
+   "dep_utc": 924,
+   "destination": "MUC",
+   "distance_km": 1983.6,
+   "number": "S189",
+   "origin": "LIS"
+  },
+  {
+   "arr_local": 1079,
+   "block": 80,
+   "dep_local": 999,
+   "dep_utc": 939,
+   "destination": "MUC",
+   "distance_km": 566.5,
+   "number": "S190",
+   "origin": "BUD"
+  },
+  {
+   "arr_local": 1089,
+   "block": 80,
+   "dep_local": 1009,
+   "dep_utc": 949,
+   "destination": "MUC",
+   "distance_km": 597.0,
+   "number": "S191",
+   "origin": "BRU"
+  },
+  {
+   "arr_local": 1069,
+   "block": 60,
+   "dep_local": 1009,
+   "dep_utc": 949,
+   "destination": "MUC",
+   "distance_km": 355.3,
+   "number": "S192",
+   "origin": "VIE"
+  },
+  {
+   "arr_local": 1098,
+   "block": 80,
+   "dep_local": 1018,
+   "dep_utc": 958,
+   "destination": "MUC",
+   "distance_km": 600.0,
+   "number": "S193",
+   "origin": "HAM"
+  },
+  {
+   "arr_local": 1115,
+   "block": 85,
+   "dep_local": 1030,
+   "dep_utc": 970,
+   "destination": "MUC",
+   "distance_km": 681.6,
+   "number": "S194",
+   "origin": "CDG"
+  },
+  {
+   "arr_local": 1127,
+   "block": 95,
+   "dep_local": 1032,
+   "dep_utc": 972,
+   "destination": "MUC",
+   "distance_km": 729.6,
+   "number": "S195",
+   "origin": "FCO"
+  },
+  {
+   "arr_local": 1125,
+   "block": 90,
+   "dep_local": 1035,
+   "dep_utc": 975,
+   "destination": "CDG",
+   "distance_km": 681.6,
+   "number": "S196",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1175,
+   "block": 140,
+   "dep_local": 1035,
+   "dep_utc": 975,
+   "destination": "OSL",
+   "distance_km": 1309.3,
+   "number": "S197",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1095,
+   "block": 55,
+   "dep_local": 1040,
+   "dep_utc": 980,
+   "destination": "VCE",
+   "distance_km": 319.6,
+   "number": "S198",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1141,
+   "block": 100,
+   "dep_local": 1041,
+   "dep_utc": 981,
+   "destination": "MUC",
+   "distance_km": 809.9,
+   "number": "S199",
+   "origin": "CPH"
+  },
+  {
+   "arr_local": 1126,
+   "block": 80,
+   "dep_local": 1046,
+   "dep_utc": 986,
+   "destination": "LYS",
+   "distance_km": 585.8,
+   "number": "S200",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1128,
+   "block": 80,
+   "dep_local": 1048,
+   "dep_utc": 988,
+   "destination": "KRK",
+   "distance_km": 611.4,
+   "number": "S201",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1212,
+   "block": 160,
+   "dep_local": 1052,
+   "dep_utc": 992,
+   "destination": "MAD",
+   "distance_km": 1497.0,
+   "number": "S202",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1143,
+   "block": 90,
+   "dep_local": 1053,
+   "dep_utc": 993,
+   "destination": "AMS",
+   "distance_km": 664.2,
+   "number": "S203",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1108,
+   "block": 110,
+   "dep_local": 1058,
+   "dep_utc": 998,
+   "destination": "LHR",
+   "distance_km": 941.6,
+   "number": "S204",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1134,
+   "block": 75,
+   "dep_local": 1059,
+   "dep_utc": 999,
+   "destination": "DUS",
+   "distance_km": 485.8,
+   "number": "S205",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1192,
+   "block": 120,
+   "dep_local": 1072,
+   "dep_utc": 1012,
+   "destination": "MUC",
+   "distance_km": 1094.6,
+   "number": "S206",
+   "origin": "BCN"
+  },
+  {
+   "arr_local": 1247,
+   "block": 150,
+   "dep_local": 1097,
+   "dep_utc": 1037,
+   "destination": "MUC",
+   "distance_km": 1497.0,
+   "number": "S207",
+   "origin": "MAD"
+  },
+  {
+   "arr_local": 1288,
+   "block": 170,
+   "dep_local": 1058,
+   "dep_utc": 1058,
+   "destination": "MUC",
+   "distance_km": 1790.3,
+   "number": "S208",
+   "origin": "OPO"
+  },
+  {
+   "arr_local": 1207,
+   "block": 60,
+   "dep_local": 1147,
+   "dep_utc": 1087,
+   "destination": "MUC",
+   "distance_km": 319.6,
+   "number": "S209",
+   "origin": "VCE"
+  },
+  {
+   "arr_local": 1260,
+   "block": 85,
+   "dep_local": 1175,
+   "dep_utc": 1115,
+   "destination": "MUC",
+   "distance_km": 681.6,
+   "number": "S210",
+   "origin": "CDG"
+  },
+  {
+   "arr_local": 1266,
+   "block": 85,
+   "dep_local": 1181,
+   "dep_utc": 1121,
+   "destination": "MUC",
+   "distance_km": 611.4,
+   "number": "S211",
+   "origin": "KRK"
+  },
+  {
+   "arr_local": 1264,
+   "block": 80,
+   "dep_local": 1184,
+   "dep_utc": 1124,
+   "destination": "MUC",
+   "distance_km": 585.8,
+   "number": "S212",
+   "origin": "LYS"
+  },
+  {
+   "arr_local": 1259,
+   "block": 70,
+   "dep_local": 1189,
+   "dep_utc": 1129,
+   "destination": "MUC",
+   "distance_km": 485.8,
+   "number": "S213",
+   "origin": "DUS"
+  },
+  {
+   "arr_local": 1283,
+   "block": 85,
+   "dep_local": 1198,
+   "dep_utc": 1138,
+   "destination": "MUC",
+   "distance_km": 664.2,
+   "number": "S214",
+   "origin": "AMS"
+  },
+  {
+   "arr_local": 1333,
+   "block": 105,
+   "dep_local": 1168,
+   "dep_utc": 1168,
+   "destination": "MUC",
+   "distance_km": 941.6,
+   "number": "S215",
+   "origin": "LHR"
+  },
+  {
+   "arr_local": 1365,
+   "block": 135,
+   "dep_local": 1230,
+   "dep_utc": 1170,
+   "destination": "MUC",
+   "distance_km": 1309.3,
+   "number": "S216",
+   "origin": "OSL"
+  },
+  {
+   "arr_local": 1422,
+   "block": 150,
+   "dep_local": 1272,
+   "dep_utc": 1212,
+   "destination": "MUC",
+   "distance_km": 1497.0,
+   "number": "S217",
+   "origin": "MAD"
+  },
+  {
+   "arr_local": 1430,
+   "block": 140,
+   "dep_local": 1290,
+   "dep_utc": 1230,
+   "destination": "OSL",
+   "distance_km": 1309.3,
+   "number": "S218",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1385,
+   "block": 95,
+   "dep_local": 1290,
+   "dep_utc": 1230,
+   "destination": "WAW",
+   "distance_km": 777.3,
+   "number": "S219",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1353,
+   "block": 60,
+   "dep_local": 1293,
+   "dep_utc": 1233,
+   "destination": "FRA",
+   "distance_km": 299.1,
+   "number": "S220",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1413,
+   "block": 180,
+   "dep_local": 1293,
+   "dep_utc": 1233,
+   "destination": "OPO",
+   "distance_km": 1790.3,
+   "number": "S221",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1429,
+   "block": 135,
+   "dep_local": 1294,
+   "dep_utc": 1234,
+   "destination": "ARN",
+   "distance_km": 1317.3,
+   "number": "S222",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1385,
+   "block": 90,
+   "dep_local": 1295,
+   "dep_utc": 1235,
+   "destination": "AMS",
+   "distance_km": 664.2,
+   "number": "S223",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1350,
+   "block": 55,
+   "dep_local": 1295,
+   "dep_utc": 1235,
+   "destination": "ZRH",
+   "distance_km": 260.7,
+   "number": "S224",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1386,
+   "block": 90,
+   "dep_local": 1296,
+   "dep_utc": 1236,
+   "destination": "CDG",
+   "distance_km": 681.6,
+   "number": "S225",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1422,
+   "block": 125,
+   "dep_local": 1297,
+   "dep_utc": 1237,
+   "destination": "BCN",
+   "distance_km": 1094.6,
+   "number": "S226",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1372,
+   "block": 75,
+   "dep_local": 1297,
+   "dep_utc": 1237,
+   "destination": "DUS",
+   "distance_km": 485.8,
+   "number": "S227",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 68,
+   "block": 150,
+   "dep_local": 1298,
+   "dep_utc": 1238,
+   "destination": "ATH",
+   "distance_km": 1517.7,
+   "number": "S228",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1378,
+   "block": 80,
+   "dep_local": 1298,
+   "dep_utc": 1238,
+   "destination": "BRU",
+   "distance_km": 597.0,
+   "number": "S229",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1393,
+   "block": 95,
+   "dep_local": 1298,
+   "dep_utc": 1238,
+   "destination": "CPH",
+   "distance_km": 809.9,
+   "number": "S230",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1383,
+   "block": 85,
+   "dep_local": 1298,
+   "dep_utc": 1238,
+   "destination": "HAM",
+   "distance_km": 600.0,
+   "number": "S231",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1361,
+   "block": 60,
+   "dep_local": 1301,
+   "dep_utc": 1241,
+   "destination": "VIE",
+   "distance_km": 355.3,
+   "number": "S232",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 24,
+   "block": 160,
+   "dep_local": 1304,
+   "dep_utc": 1244,
+   "destination": "MAD",
+   "distance_km": 1497.0,
+   "number": "S233",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 5,
+   "block": 200,
+   "dep_local": 1305,
+   "dep_utc": 1245,
+   "destination": "LIS",
+   "distance_km": 1983.6,
+   "number": "S234",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1397,
+   "block": 150,
+   "dep_local": 1307,
+   "dep_utc": 1247,
+   "destination": "DUB",
+   "distance_km": 1381.3,
+   "number": "S235",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1373,
+   "block": 65,
+   "dep_local": 1308,
+   "dep_utc": 1248,
+   "destination": "MXP",
+   "distance_km": 381.4,
+   "number": "S236",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1393,
+   "block": 85,
+   "dep_local": 1308,
+   "dep_utc": 1248,
+   "destination": "NCE",
+   "distance_km": 630.0,
+   "number": "S237",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 85,
+   "block": 155,
+   "dep_local": 1310,
+   "dep_utc": 1250,
+   "destination": "HEL",
+   "distance_km": 1574.5,
+   "number": "S238",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1387,
+   "block": 75,
+   "dep_local": 1312,
+   "dep_utc": 1252,
+   "destination": "BUD",
+   "distance_km": 566.5,
+   "number": "S239",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1405,
+   "block": 90,
+   "dep_local": 1315,
+   "dep_utc": 1255,
+   "destination": "FCO",
+   "distance_km": 729.6,
+   "number": "S240",
+   "origin": "MUC"
+  },
+  {
+   "arr_local": 1365,
+   "block": 110,
+   "dep_local": 1315,
+   "dep_utc": 1255,
+   "destination": "LHR",
+   "distance_km": 941.6,
+   "number": "S241",
+   "origin": "MUC"
+  }
+ ],
+ "flights_per_day": 142,
+ "hub_utc_offset_min": 60,
+ "mean_block_min": 105.17605633802818,
+ "minimum_fleet": 38,
+ "nightstop_spokes": 24,
+ "passengers_per_day": 18811,
+ "seed": 11,
+ "spokes": 30
+}

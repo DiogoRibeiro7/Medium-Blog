@@ -1,0 +1,11 @@
+{
+ "config": "configs/experiment.toml",
+ "model": {
+  "block_bias": -0.03,
+  "block_noise_sd": 0.04,
+  "mean_primary_min": 9.5,
+  "p_delayed": 0.35,
+  "sigma": 0.6
+ },
+ "seconds": 1331.9919110610003
+}

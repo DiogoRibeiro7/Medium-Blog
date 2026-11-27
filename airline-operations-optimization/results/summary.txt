@@ -1,0 +1,283 @@
+Results summary: config configs/experiment.toml, run time 22.2 min
+delay model: {'block_bias': -0.03, 'block_noise_sd': 0.04, 'mean_primary_min': 9.5, 'p_delayed': 0.35, 'sigma': 0.6}
+
+Network
+-------
+hub MUC, 30 spokes, 142 flights per day
+fleet 40 (minimum fleet 38), 24 night-stop spokes
+passengers per day 18,811, connecting 2,205
+mean block time 105 min
+
+Delay model calibration
+-----------------------
+targets: D15 0.692, mean primary 9.5 min, reactionary (validation) 0.46
+chosen: p_delayed 0.35, sigma 0.6, simulated D15 0.690, mean departure delay 11.8 min, reactionary share 0.198
+grid points 30, replications per point 200
+
+Plans
+-----
+greedy: planned €815,320/day (ownership 456,000, crew pay 310,360, hotel 48,960, deadhead 0); aircraft 38
+  pairings 63, duties 87, mean duty 4.99 h, mean FDP 4.49 h, mean pairing span 18.2 h
+  block hours per aircraft-day 6.55, rotations 6
+  FDP margin to Table 2 (min): p5 185, median 475, p95 614
+  hub aircraft-turn slack above minimum (min): p5 92, median 310, p95 488
+  crew aircraft-change slack above minimum (min): p5 4, median 23, p95 68
+  violations 5: maintenance: rotation from S100 goes 4 nights without a check; maintenance: rotation from S100 goes 4 nights without a check; maintenance: rotation from S103 goes 9 nights without a check; maintenance: rotation from S110 (4 nights) never has a check night; maintenance: rotation from S136 (1 nights) never has a check night
+  solve seconds 0.5, objective None, LP bound None
+  
+sequential: planned €797,610/day (ownership 456,000, crew pay 292,650, hotel 48,960, deadhead 0); aircraft 38
+  pairings 45, duties 69, mean duty 6.41 h, mean FDP 5.91 h, mean pairing span 25.6 h
+  block hours per aircraft-day 6.55, rotations 1
+  FDP margin to Table 2 (min): p5 30, median 415, p95 611
+  hub aircraft-turn slack above minimum (min): p5 4, median 182, p95 516
+  crew aircraft-change slack above minimum (min): p5 2, median 41, p95 133
+  violations 0
+  solve seconds 1.5, objective 797610.0, LP bound 797610.0
+  cg_iterations 11, columns_generated 3317, pairings_in_space 12880, duties 3042, gap_to_lp_bound 0.0, short_connections 44, routing_variables 20142.0
+integrated: planned €792,700/day (ownership 456,000, crew pay 287,740, hotel 48,960, deadhead 0); aircraft 38
+  pairings 43, duties 67, mean duty 6.58 h, mean FDP 6.08 h, mean pairing span 26.8 h
+  block hours per aircraft-day 6.55, rotations 3
+  FDP margin to Table 2 (min): p5 29, median 390, p95 612
+  hub aircraft-turn slack above minimum (min): p5 4, median 94, p95 532
+  crew aircraft-change slack above minimum (min): p5 5, median 56, p95 139
+  violations 0
+  solve seconds 69.4, objective 792700.0000000001, LP bound 792700.0
+  cg_iterations 10, columns_generated 3253, pairings_in_space 15157, duties 3558, gap_to_lp_bound 1.4685924287490198e-16, short_connections 100
+robust: planned €801,180/day (ownership 456,000, crew pay 296,220, hotel 48,960, deadhead 0); aircraft 38
+  pairings 51, duties 75, mean duty 6.01 h, mean FDP 5.51 h, mean pairing span 22.8 h
+  block hours per aircraft-day 6.55, rotations 2
+  FDP margin to Table 2 (min): p5 169, median 421, p95 595
+  hub aircraft-turn slack above minimum (min): p5 88, median 293, p95 488
+  crew aircraft-change slack above minimum (min): p5 42, median 69, p95 146
+  violations 0
+  solve seconds 5.8, objective 832857.0084306973, LP bound 832857.0084306973
+  cg_iterations 11, columns_generated 3500, pairings_in_space 12714, duties 3021, gap_to_lp_bound 0.0, short_connections 89, buffer_min 15, penalty_weight 1.0
+
+Evaluation (300 replications, per day, mean [95% interval])
+-----------------------------------------------------------
+S0 Baseline: stochastic delays only
+  greedy      total 932,660 [929,714, 935,605] | disruption 117,340 [114,394, 120,285] | pax delay min 360,439 [351,969, 368,910] | missed pax 160.3 [155.0, 165.6] | cancelled 0.28 [0.24, 0.31]
+              D15 0.705 A15 0.742 mean dep delay 11.1 reactionary 0.155 recovery 0 min footprint 0.0 EU261 €51,981 swaps 0.00 standby 0.00 discretion 0.02 ferries 0.25 EUROCONTROL-ref €261,341 aircraft util 6.53 h crew util 0.474
+  sequential  total 913,134 [910,008, 916,260] | disruption 115,524 [112,398, 118,650] | pax delay min 367,945 [358,704, 377,185] | missed pax 149.0 [144.3, 153.7] | cancelled 0.33 [0.29, 0.38]
+              D15 0.692 A15 0.729 mean dep delay 11.8 reactionary 0.203 recovery 0 min footprint 0.0 EU261 €50,207 swaps 0.30 standby 0.00 discretion 3.04 ferries 0.28 EUROCONTROL-ref €276,930 aircraft util 6.53 h crew util 0.502
+  integrated  total 909,235 [905,982, 912,488] | disruption 116,535 [113,282, 119,788] | pax delay min 372,503 [362,983, 382,024] | missed pax 146.8 [142.2, 151.3] | cancelled 0.35 [0.31, 0.40]
+              D15 0.689 A15 0.726 mean dep delay 11.9 reactionary 0.214 recovery 0 min footprint 0.0 EU261 €50,770 swaps 0.61 standby 0.00 discretion 3.74 ferries 0.27 EUROCONTROL-ref €280,874 aircraft util 6.53 h crew util 0.510
+  robust      total 913,495 [910,566, 916,425] | disruption 112,315 [109,386, 115,245] | pax delay min 347,920 [339,643, 356,197] | missed pax 156.8 [151.7, 161.9] | cancelled 0.28 [0.24, 0.32]
+              D15 0.712 A15 0.748 mean dep delay 10.8 reactionary 0.128 recovery 0 min footprint 0.0 EU261 €50,510 swaps 0.02 standby 0.00 discretion 0.51 ferries 0.24 EUROCONTROL-ref €253,216 aircraft util 6.53 h crew util 0.496
+S1 Delayed inbound aircraft
+  greedy      total 949,638 [946,537, 952,739] | disruption 134,318 [131,217, 137,419] | pax delay min 400,838 [392,243, 409,432] | missed pax 183.7 [178.1, 189.4] | cancelled 0.28 [0.24, 0.31]
+              D15 0.695 A15 0.731 mean dep delay 12.5 reactionary 0.148 recovery 198 min footprint 3.7 EU261 €59,625 swaps 0.13 standby 0.00 discretion 0.02 ferries 0.25 EUROCONTROL-ref €294,115 aircraft util 6.53 h crew util 0.474
+  sequential  total 932,448 [929,131, 935,764] | disruption 134,838 [131,521, 138,154] | pax delay min 417,286 [407,821, 426,752] | missed pax 175.8 [170.8, 180.8] | cancelled 0.33 [0.29, 0.38]
+              D15 0.677 A15 0.714 mean dep delay 13.7 reactionary 0.220 recovery 394 min footprint 5.5 EU261 €58,698 swaps 0.91 standby 0.00 discretion 3.13 ferries 0.28 EUROCONTROL-ref €321,245 aircraft util 6.53 h crew util 0.501
+  integrated  total 928,489 [925,109, 931,868] | disruption 135,789 [132,409, 139,168] | pax delay min 420,710 [411,089, 430,331] | missed pax 174.5 [169.7, 179.3] | cancelled 0.35 [0.31, 0.40]
+              D15 0.675 A15 0.712 mean dep delay 13.8 reactionary 0.227 recovery 380 min footprint 5.3 EU261 €59,302 swaps 1.13 standby 0.00 discretion 3.89 ferries 0.27 EUROCONTROL-ref €324,414 aircraft util 6.53 h crew util 0.509
+  robust      total 932,850 [929,726, 935,973] | disruption 131,670 [128,546, 134,793] | pax delay min 397,874 [389,436, 406,313] | missed pax 185.3 [180.0, 190.7] | cancelled 0.28 [0.24, 0.32]
+              D15 0.696 A15 0.732 mean dep delay 12.6 reactionary 0.157 recovery 392 min footprint 5.8 EU261 €59,301 swaps 0.15 standby 0.00 discretion 0.58 ferries 0.24 EUROCONTROL-ref €297,038 aircraft util 6.53 h crew util 0.495
+S2 Aircraft unavailable at an outstation (AOG)
+  greedy      total 955,153 [952,040, 958,266] | disruption 139,833 [136,720, 142,946] | pax delay min 390,686 [382,194, 399,178] | missed pax 160.4 [155.1, 165.7] | cancelled 0.78 [0.74, 0.81]
+              D15 0.702 A15 0.739 mean dep delay 11.1 reactionary 0.156 recovery 116 min footprint 1.1 EU261 €68,692 swaps 0.97 standby 0.00 discretion 0.02 ferries 1.25 EUROCONTROL-ref €260,653 aircraft util 6.51 h crew util 0.475
+  sequential  total 935,904 [932,639, 939,170] | disruption 138,294 [135,029, 141,560] | pax delay min 398,539 [389,211, 407,867] | missed pax 148.7 [144.0, 153.4] | cancelled 0.83 [0.79, 0.88]
+              D15 0.688 A15 0.726 mean dep delay 11.8 reactionary 0.205 recovery 184 min footprint 1.3 EU261 €66,919 swaps 0.79 standby 0.00 discretion 3.04 ferries 1.28 EUROCONTROL-ref €276,717 aircraft util 6.51 h crew util 0.502
+  integrated  total 931,787 [928,380, 935,193] | disruption 139,087 [135,680, 142,493] | pax delay min 402,585 [393,024, 412,146] | missed pax 146.3 [141.8, 150.9] | cancelled 0.85 [0.81, 0.90]
+              D15 0.686 A15 0.723 mean dep delay 12.0 reactionary 0.215 recovery 144 min footprint 1.2 EU261 €67,341 swaps 1.02 standby 0.00 discretion 3.76 ferries 1.27 EUROCONTROL-ref €280,273 aircraft util 6.51 h crew util 0.510
+  robust      total 936,088 [932,994, 939,181] | disruption 134,908 [131,814, 138,001] | pax delay min 377,869 [369,551, 386,187] | missed pax 156.6 [151.5, 161.7] | cancelled 0.78 [0.74, 0.82]
+              D15 0.709 A15 0.745 mean dep delay 10.8 reactionary 0.129 recovery 100 min footprint 1.0 EU261 €67,152 swaps 0.95 standby 0.00 discretion 0.51 ferries 1.24 EUROCONTROL-ref €252,365 aircraft util 6.51 h crew util 0.496
+S3 Crew unavailable
+  greedy      total 939,900 [936,950, 942,851] | disruption 124,580 [121,630, 127,531] | pax delay min 379,432 [370,970, 387,894] | missed pax 170.8 [165.5, 176.2] | cancelled 0.28 [0.24, 0.31]
+              D15 0.694 A15 0.730 mean dep delay 11.9 reactionary 0.215 recovery 395 min footprint 4.6 EU261 €54,608 swaps 0.00 standby 2.00 discretion 0.02 ferries 0.25 EUROCONTROL-ref €280,855 aircraft util 6.53 h crew util 0.475
+  sequential  total 928,644 [925,170, 932,117] | disruption 131,034 [127,560, 134,507] | pax delay min 397,651 [387,914, 407,388] | missed pax 155.6 [150.8, 160.4] | cancelled 0.64 [0.58, 0.69]
+              D15 0.682 A15 0.719 mean dep delay 12.4 reactionary 0.244 recovery 360 min footprint 4.3 EU261 €59,088 swaps 0.32 standby 1.39 discretion 2.99 ferries 0.89 EUROCONTROL-ref €291,081 aircraft util 6.52 h crew util 0.502
+  integrated  total 925,794 [922,221, 929,368] | disruption 133,094 [129,521, 136,668] | pax delay min 403,607 [393,728, 413,485] | missed pax 152.7 [148.0, 157.4] | cancelled 0.66 [0.60, 0.71]
+              D15 0.678 A15 0.715 mean dep delay 12.6 reactionary 0.256 recovery 384 min footprint 4.6 EU261 €60,480 swaps 0.71 standby 1.39 discretion 3.72 ferries 0.88 EUROCONTROL-ref €295,988 aircraft util 6.52 h crew util 0.510
+  robust      total 927,662 [924,498, 930,826] | disruption 126,482 [123,318, 129,646] | pax delay min 375,708 [367,109, 384,306] | missed pax 163.6 [158.4, 168.8] | cancelled 0.58 [0.53, 0.64]
+              D15 0.703 A15 0.739 mean dep delay 11.3 reactionary 0.169 recovery 234 min footprint 3.4 EU261 €58,725 swaps 0.02 standby 1.39 discretion 0.51 ferries 0.85 EUROCONTROL-ref €265,083 aircraft util 6.52 h crew util 0.496
+S4 Hub capacity restriction
+  greedy      total 1,284,334 [1,279,702, 1,288,967] | disruption 469,014 [464,382, 473,647] | pax delay min 937,938 [928,645, 947,231] | missed pax 333.7 [327.8, 339.7] | cancelled 3.04 [2.97, 3.12]
+              D15 0.623 A15 0.656 mean dep delay 26.4 reactionary 0.652 recovery 610 min footprint 14.4 EU261 €272,198 swaps 0.02 standby 0.00 discretion 0.66 ferries 5.76 EUROCONTROL-ref €610,110 aircraft util 6.40 h crew util 0.453
+  sequential  total 1,404,982 [1,398,548, 1,411,416] | disruption 607,372 [600,938, 613,806] | pax delay min 1,130,168 [1,119,509, 1,140,827] | missed pax 392.6 [386.9, 398.3] | cancelled 3.56 [3.48, 3.63]
+              D15 0.574 A15 0.606 mean dep delay 35.8 reactionary 0.744 recovery 670 min footprint 30.0 EU261 €367,805 swaps 5.32 standby 0.00 discretion 5.03 ferries 6.61 EUROCONTROL-ref €822,964 aircraft util 6.37 h crew util 0.473
+  integrated  total 1,391,417 [1,385,025, 1,397,809] | disruption 598,717 [592,325, 605,109] | pax delay min 1,191,346 [1,178,434, 1,204,258] | missed pax 365.5 [360.2, 370.8] | cancelled 3.97 [3.90, 4.04]
+              D15 0.560 A15 0.591 mean dep delay 35.9 reactionary 0.744 recovery 926 min footprint 34.4 EU261 €357,896 swaps 6.58 standby 0.00 discretion 5.15 ferries 7.22 EUROCONTROL-ref €822,544 aircraft util 6.35 h crew util 0.480
+  robust      total 1,298,051 [1,292,633, 1,303,470] | disruption 496,871 [491,453, 502,290] | pax delay min 996,062 [986,481, 1,005,644] | missed pax 330.1 [324.2, 336.0] | cancelled 3.49 [3.42, 3.56]
+              D15 0.604 A15 0.636 mean dep delay 29.5 reactionary 0.688 recovery 717 min footprint 24.4 EU261 €288,921 swaps 0.09 standby 0.00 discretion 1.01 ferries 6.59 EUROCONTROL-ref €678,157 aircraft util 6.37 h crew util 0.469
+S5 Cascading delays (stressed day)
+  greedy      total 1,028,722 [1,023,454, 1,033,989] | disruption 213,402 [208,134, 218,669] | pax delay min 573,269 [561,346, 585,193] | missed pax 244.5 [238.5, 250.4] | cancelled 0.80 [0.72, 0.87]
+              D15 0.649 A15 0.676 mean dep delay 17.5 reactionary 0.213 recovery 1122 min footprint 48.4 EU261 €107,588 swaps 0.07 standby 0.00 discretion 0.34 ferries 0.76 EUROCONTROL-ref €411,198 aircraft util 6.51 h crew util 0.468
+  sequential  total 1,027,439 [1,020,540, 1,034,338] | disruption 229,829 [222,930, 236,728] | pax delay min 626,891 [611,770, 642,011] | missed pax 230.6 [225.3, 235.9] | cancelled 1.34 [1.24, 1.45]
+              D15 0.629 A15 0.657 mean dep delay 18.7 reactionary 0.264 recovery 1248 min footprint 52.9 EU261 €120,720 swaps 1.51 standby 0.00 discretion 4.82 ferries 1.09 EUROCONTROL-ref €435,442 aircraft util 6.48 h crew util 0.495
+  integrated  total 1,032,337 [1,025,413, 1,039,262] | disruption 239,637 [232,713, 246,562] | pax delay min 653,792 [638,014, 669,571] | missed pax 225.2 [220.1, 230.2] | cancelled 1.57 [1.45, 1.68]
+              D15 0.623 A15 0.650 mean dep delay 19.0 reactionary 0.279 recovery 1317 min footprint 54.4 EU261 €128,442 swaps 2.83 standby 0.00 discretion 5.14 ferries 1.07 EUROCONTROL-ref €443,628 aircraft util 6.48 h crew util 0.503
+  robust      total 1,008,769 [1,003,271, 1,014,266] | disruption 207,589 [202,091, 213,086] | pax delay min 565,688 [552,704, 578,672] | missed pax 240.6 [234.8, 246.4] | cancelled 0.93 [0.85, 1.02]
+              D15 0.657 A15 0.683 mean dep delay 16.8 reactionary 0.182 recovery 1185 min footprint 47.0 EU261 €107,498 swaps 0.23 standby 0.00 discretion 1.03 ferries 0.73 EUROCONTROL-ref €393,922 aircraft util 6.50 h crew util 0.489
+S6 Evening crunch: duty limits
+  greedy      total 1,037,657 [1,033,843, 1,041,470] | disruption 222,337 [218,523, 226,150] | pax delay min 791,070 [781,186, 800,953] | missed pax 189.2 [184.3, 194.1] | cancelled 3.10 [3.03, 3.16]
+              D15 0.663 A15 0.696 mean dep delay 15.4 reactionary 0.345 recovery 441 min footprint 19.3 EU261 €96,690 swaps 1.15 standby 0.00 discretion 1.28 ferries 5.76 EUROCONTROL-ref €354,952 aircraft util 6.39 h crew util 0.462
+  sequential  total 1,011,562 [1,007,210, 1,015,913] | disruption 213,952 [209,600, 218,303] | pax delay min 834,609 [822,863, 846,355] | missed pax 164.7 [160.0, 169.4] | cancelled 4.44 [4.35, 4.53]
+              D15 0.645 A15 0.679 mean dep delay 15.2 reactionary 0.344 recovery 684 min footprint 21.8 EU261 €82,672 swaps 1.30 standby 0.00 discretion 5.76 ferries 7.29 EUROCONTROL-ref €347,804 aircraft util 6.33 h crew util 0.487
+  integrated  total 1,017,435 [1,012,735, 1,022,135] | disruption 224,735 [220,035, 229,435] | pax delay min 875,217 [861,729, 888,705] | missed pax 161.5 [157.0, 166.0] | cancelled 4.57 [4.47, 4.67]
+              D15 0.640 A15 0.674 mean dep delay 15.5 reactionary 0.355 recovery 713 min footprint 23.0 EU261 €92,308 swaps 1.73 standby 0.00 discretion 6.36 ferries 7.28 EUROCONTROL-ref €353,580 aircraft util 6.32 h crew util 0.495
+  robust      total 1,005,827 [1,002,075, 1,009,580] | disruption 204,647 [200,895, 208,400] | pax delay min 779,721 [770,032, 789,410] | missed pax 176.1 [171.1, 181.2] | cancelled 4.07 [4.00, 4.14]
+              D15 0.667 A15 0.700 mean dep delay 14.2 reactionary 0.289 recovery 678 min footprint 19.5 EU261 €79,284 swaps 0.83 standby 0.00 discretion 1.39 ferries 6.70 EUROCONTROL-ref €324,563 aircraft util 6.35 h crew util 0.481
+
+Paired differences against sequential (per day)
+-----------------------------------------------
+greedy − sequential S0: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 11.3 [9.5, 13.1] *; operational_cost 1,815.5 [599.8, 3,031.1] *; pax_delay_min -7,505.3 [-10,916.8, -4,093.7] *; recovery_min 0.0 [0.0, 0.0]; total_cost 19,525.5 [18,309.8, 20,741.1] *
+greedy − sequential S1: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 7.9 [5.6, 10.2] *; operational_cost -519.3 [-1,903.8, 865.1]; pax_delay_min -16,448.4 [-20,206.7, -12,690.0] *; recovery_min -98.4 [-115.4, -81.4] *; total_cost 17,190.7 [15,806.2, 18,575.1] *
+greedy − sequential S2: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 11.7 [9.9, 13.5] *; operational_cost 1,538.3 [348.3, 2,728.4] *; pax_delay_min -7,852.9 [-11,280.7, -4,425.1] *; recovery_min -34.3 [-48.6, -20.1] *; total_cost 19,248.3 [18,058.3, 20,438.4] *
+greedy − sequential S3: cancelled -0.4 [-0.4, -0.3] *; missed_connection_pax 15.2 [13.2, 17.3] *; operational_cost -6,453.4 [-8,318.5, -4,588.4] *; pax_delay_min -18,219.2 [-22,273.7, -14,164.7] *; recovery_min 17.3 [2.8, 31.9] *; total_cost 11,256.6 [9,391.5, 13,121.6] *
+greedy − sequential S4: cancelled -0.5 [-0.6, -0.5] *; missed_connection_pax -58.9 [-62.2, -55.6] *; operational_cost -138,357.8 [-142,469.7, -134,245.9] *; pax_delay_min -192,230.4 [-197,772.4, -186,688.4] *; recovery_min -30.1 [-38.0, -22.1] *; total_cost -120,647.8 [-124,759.7, -116,535.9] *
+greedy − sequential S5: cancelled -0.5 [-0.6, -0.5] *; missed_connection_pax 13.9 [11.3, 16.5] *; operational_cost -16,427.0 [-20,069.4, -12,784.6] *; pax_delay_min -53,621.3 [-61,007.9, -46,234.7] *; recovery_min -62.9 [-76.0, -49.9] *; total_cost 1,283.0 [-2,359.4, 4,925.4]
+greedy − sequential S6: cancelled -1.3 [-1.4, -1.3] *; missed_connection_pax 24.5 [22.7, 26.2] *; operational_cost 8,384.9 [6,151.2, 10,618.6] *; pax_delay_min -43,539.5 [-49,866.6, -37,212.4] *; recovery_min -121.3 [-136.6, -106.0] *; total_cost 26,094.9 [23,861.2, 28,328.6] *
+integrated − sequential S0: cancelled 0.0 [-0.0, 0.0]; missed_connection_pax -2.2 [-3.9, -0.6] *; operational_cost 1,010.7 [-188.8, 2,210.2]; pax_delay_min 4,559.0 [1,054.0, 8,064.0] *; recovery_min 0.0 [0.0, 0.0]; total_cost -3,899.3 [-5,098.8, -2,699.8] *
+integrated − sequential S1: cancelled 0.0 [-0.0, 0.0]; missed_connection_pax -1.3 [-3.7, 1.1]; operational_cost 951.1 [-362.7, 2,264.8]; pax_delay_min 3,424.1 [-254.8, 7,103.0]; recovery_min -7.4 [-18.4, 3.5]; total_cost -3,958.9 [-5,272.7, -2,645.2] *
+integrated − sequential S2: cancelled 0.0 [-0.0, 0.0]; missed_connection_pax -2.4 [-4.0, -0.8] *; operational_cost 792.1 [-412.3, 1,996.5]; pax_delay_min 4,046.1 [527.2, 7,564.9] *; recovery_min -20.2 [-32.7, -7.6] *; total_cost -4,117.9 [-5,322.3, -2,913.5] *
+integrated − sequential S3: cancelled 0.0 [-0.0, 0.0]; missed_connection_pax -2.9 [-4.7, -1.1] *; operational_cost 2,060.6 [402.2, 3,719.0] *; pax_delay_min 5,955.3 [2,011.9, 9,898.7] *; recovery_min 11.6 [2.8, 20.5] *; total_cost -2,849.4 [-4,507.8, -1,191.0] *
+integrated − sequential S4: cancelled 0.4 [0.4, 0.5] *; missed_connection_pax -27.2 [-30.1, -24.2] *; operational_cost -8,655.2 [-12,323.4, -4,987.0] *; pax_delay_min 61,178.1 [53,920.0, 68,436.3] *; recovery_min 128.2 [115.8, 140.6] *; total_cost -13,565.2 [-17,233.4, -9,897.0] *
+integrated − sequential S5: cancelled 0.2 [0.1, 0.3] *; missed_connection_pax -5.4 [-7.9, -2.9] *; operational_cost 9,808.6 [6,461.2, 13,155.9] *; pax_delay_min 26,901.9 [19,290.9, 34,512.9] *; recovery_min 34.6 [21.6, 47.5] *; total_cost 4,898.6 [1,551.2, 8,245.9] *
+integrated − sequential S6: cancelled 0.1 [0.1, 0.2] *; missed_connection_pax -3.2 [-4.9, -1.6] *; operational_cost 10,783.1 [8,067.3, 13,498.9] *; pax_delay_min 40,607.7 [33,757.0, 47,458.4] *; recovery_min 14.5 [0.6, 28.5] *; total_cost 5,873.1 [3,157.3, 8,588.9] *
+robust − sequential S0: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 7.8 [6.3, 9.2] *; operational_cost -3,208.6 [-4,491.4, -1,925.9] *; pax_delay_min -20,024.2 [-23,908.3, -16,140.0] *; recovery_min 0.0 [0.0, 0.0]; total_cost 361.4 [-921.4, 1,644.1]
+robust − sequential S1: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 9.5 [7.1, 11.9] *; operational_cost -3,167.8 [-4,703.3, -1,632.3] *; pax_delay_min -19,411.7 [-23,837.3, -14,986.0] *; recovery_min -1.4 [-14.5, 11.8]; total_cost 402.2 [-1,133.3, 1,937.7]
+robust − sequential S2: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 7.9 [6.4, 9.3] *; operational_cost -3,386.8 [-4,672.7, -2,100.8] *; pax_delay_min -20,670.1 [-24,577.4, -16,762.9] *; recovery_min -42.4 [-54.8, -30.0] *; total_cost 183.2 [-1,102.7, 1,469.2]
+robust − sequential S3: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 8.0 [6.5, 9.5] *; operational_cost -4,551.5 [-6,075.7, -3,027.3] *; pax_delay_min -21,943.6 [-25,873.3, -18,013.9] *; recovery_min -63.1 [-73.2, -53.0] *; total_cost -981.5 [-2,505.7, 542.7]
+robust − sequential S4: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax -62.5 [-65.6, -59.5] *; operational_cost -110,500.9 [-113,564.1, -107,437.8] *; pax_delay_min -134,105.6 [-139,159.2, -129,052.1] *; recovery_min 23.5 [12.9, 34.1] *; total_cost -106,930.9 [-109,994.1, -103,867.8] *
+robust − sequential S5: cancelled -0.4 [-0.5, -0.3] *; missed_connection_pax 10.0 [7.8, 12.3] *; operational_cost -22,240.0 [-25,911.2, -18,568.7] *; pax_delay_min -61,202.5 [-69,110.4, -53,294.6] *; recovery_min -31.5 [-44.5, -18.6] *; total_cost -18,670.0 [-22,341.2, -14,998.7] *
+robust − sequential S6: cancelled -0.4 [-0.4, -0.3] *; missed_connection_pax 11.4 [9.9, 12.8] *; operational_cost -9,304.5 [-11,575.8, -7,033.2] *; pax_delay_min -54,888.0 [-61,275.5, -48,500.6] *; recovery_min -3.1 [-16.4, 10.2]; total_cost -5,734.5 [-8,005.8, -3,463.2] *
+
+Paired differences robust − integrated (per day)
+------------------------------------------------
+S0: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 10.0 [8.3, 11.7] *; operational_cost -4,219.3 [-5,555.2, -2,883.4] *; pax_delay_min -24,583.1 [-28,878.8, -20,287.4] *; total_cost 4,260.7 [2,924.8, 5,596.6] *
+S1: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 10.8 [8.2, 13.4] *; operational_cost -4,118.9 [-5,695.3, -2,542.5] *; pax_delay_min -22,835.8 [-27,585.8, -18,085.7] *; total_cost 4,361.1 [2,784.7, 5,937.5] *
+S2: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 10.3 [8.6, 12.0] *; operational_cost -4,178.9 [-5,513.4, -2,844.4] *; pax_delay_min -24,716.2 [-29,014.7, -20,417.7] *; total_cost 4,301.1 [2,966.6, 5,635.6] *
+S3: cancelled -0.1 [-0.1, -0.0] *; missed_connection_pax 10.9 [9.1, 12.7] *; operational_cost -6,612.1 [-8,417.8, -4,806.5] *; pax_delay_min -27,898.9 [-32,413.4, -23,384.5] *; total_cost 1,867.9 [62.2, 3,673.5] *
+S4: cancelled -0.5 [-0.5, -0.4] *; missed_connection_pax -35.4 [-38.8, -32.0] *; operational_cost -101,845.7 [-105,282.0, -98,409.4] *; pax_delay_min -195,283.8 [-202,424.7, -188,142.8] *; total_cost -93,365.7 [-96,802.0, -89,929.4] *
+S5: cancelled -0.6 [-0.7, -0.5] *; missed_connection_pax 15.4 [12.7, 18.1] *; operational_cost -32,048.5 [-36,018.3, -28,078.7] *; pax_delay_min -88,104.4 [-97,374.5, -78,834.2] *; total_cost -23,568.5 [-27,538.3, -19,598.7] *
+S6: cancelled -0.5 [-0.6, -0.4] *; missed_connection_pax 14.6 [13.0, 16.3] *; operational_cost -20,087.6 [-22,860.2, -17,315.0] *; pax_delay_min -95,495.8 [-104,167.6, -86,823.9] *; total_cost -11,607.6 [-14,380.2, -8,835.0] *
+(* the 95% interval excludes zero)
+
+Hypotheses (PLAN.md)
+--------------------
+H1: integrated planned €792,700 vs sequential €797,610; saving 0.616%; holds: True
+H2: integrated − sequential disruption cost S0 1,010.7 [-188.8, 2,210.2] per day; integrated not lower: True
+H3: robust − sequential total S0 361.4 [-921.4, 1,644.1]; robust − integrated total S0 4,260.7 [2,924.8, 5,596.6]; holds: False
+H4: cost-minimising buffer by climate: 6.8 min → 0 min, 9.5 min → 0 min, 19 min → 45 min; holds: True
+    climate 6.8: b0 €865,813, b5 €868,276, b10 €870,387, b15 €873,663, b20 €873,961, b30 €875,681, b45 €876,415
+    climate 9.5: b0 €909,235, b5 €909,434, b10 €911,560, b15 €914,174, b20 €914,128, b30 €915,062, b45 €915,445
+    climate 19: b0 €1,152,539, b5 €1,139,465, b10 €1,137,333, b15 €1,126,870, b20 €1,124,068, b30 €1,115,905, b45 €1,103,194
+    climate 6.8 sequential: total 870,873 [868,703, 873,044], disruption 73,263 [71,093, 75,434]
+    climate 6.8 integrated: total 865,813 [863,625, 868,001], disruption 73,113 [70,925, 75,301]
+    climate 6.8 robust: total 874,903 [872,712, 877,094], disruption 73,723 [71,532, 75,914]
+    climate 9.5 sequential: total 913,134 [910,008, 916,260], disruption 115,524 [112,398, 118,650]
+    climate 9.5 integrated: total 909,235 [905,982, 912,488], disruption 116,535 [113,282, 119,788]
+    climate 9.5 robust: total 913,495 [910,566, 916,425], disruption 112,315 [109,386, 115,245]
+    climate 19 sequential: total 1,139,730 [1,130,804, 1,148,655], disruption 342,120 [333,194, 351,045]
+    climate 19 integrated: total 1,152,539 [1,143,350, 1,161,728], disruption 359,839 [350,650, 369,028]
+    climate 19 robust: total 1,100,701 [1,093,822, 1,107,579], disruption 299,521 [292,642, 306,399]
+H5: history replications 200, mean |forecast| 8.8 min, share of flights with mean delay > 10 min 0.33
+    distribution: planned €797,880, total S0 909,440 [906,568, 912,312], disruption S0 111,560 [108,688, 114,432], total S5 1,008,209 [1,002,517, 1,013,900], violations 0
+    no_penalty: planned €792,700, total S0 909,235 [905,982, 912,488], disruption S0 116,535 [113,282, 119,788], total S5 1,032,337 [1,025,413, 1,039,262], violations 0
+    point_forecast: planned €794,950, total S0 909,693 [906,631, 912,756], disruption S0 114,743 [111,681, 117,806], total S5 1,025,362 [1,018,826, 1,031,897], violations 0
+    primary_model: planned €794,680, total S0 905,904 [903,012, 908,796], disruption S0 111,224 [108,332, 114,116], total S5 1,009,688 [1,003,833, 1,015,544], violations 0
+    point − none +458/day, distribution − none +205/day (unpaired difference of means; see the intervals above)
+
+Break-even share of disrupted days (descriptive, added after the results)
+-------------------------------------------------------------------------
+robust vs sequential: baseline difference +361/day; S1 never (robust not cheaper on that day); S2 never (robust not cheaper on that day); S3 26.9%; S4 0.3%; S5 1.9%; S6 5.9%
+robust vs integrated: baseline difference +4,261/day; S1 never (robust not cheaper on that day); S2 never (robust not cheaper on that day); S3 never (robust not cheaper on that day); S4 4.4%; S5 15.3%; S6 26.9%
+
+Buffer and penalty sweep (S0 and S5, per day)
+---------------------------------------------
+b 0 w0.0 planned €792,700 aircraft 38 | S0 total 909,235 [905,982, 912,488] disruption 116,535 [113,282, 119,788] | S5 total 1,032,337 [1,025,413, 1,039,262] | solve 67.1s gap 1.4685924287490198e-16
+b 0 w0.5 planned €793,920 aircraft 38 | S0 total 904,909 [902,024, 907,795] disruption 110,989 [108,104, 113,875] | S5 total 1,012,422 [1,006,169, 1,018,675] | solve 5.2s gap 0.0
+b 0 w1.0 planned €794,680 aircraft 38 | S0 total 905,904 [903,012, 908,796] disruption 111,224 [108,332, 114,116] | S5 total 1,009,688 [1,003,833, 1,015,544] | solve 81.9s gap 4.366216249862517e-06
+b 0 w2.0 planned €809,930 aircraft 38 | S0 total 923,466 [920,494, 926,438] disruption 113,536 [110,564, 116,508] | S5 total 1,019,441 [1,013,975, 1,024,906] | solve 5.3s gap 0.0
+b 5 w0.0 planned €794,870 aircraft 38 | S0 total 909,434 [906,381, 912,487] disruption 114,564 [111,511, 117,617] | S5 total 1,025,062 [1,018,397, 1,031,727] | solve 4.7s gap 0.0
+b 5 w0.5 planned €796,040 aircraft 38 | S0 total 907,991 [905,090, 910,892] disruption 111,951 [109,050, 114,852] | S5 total 1,010,969 [1,004,990, 1,016,948] | solve 5.6s gap 0.0
+b 5 w1.0 planned €796,480 aircraft 38 | S0 total 908,223 [905,327, 911,119] disruption 111,743 [108,847, 114,639] | S5 total 1,009,883 [1,004,021, 1,015,745] | solve 59.2s gap 0.0
+b 5 w2.0 planned €801,380 aircraft 38 | S0 total 913,635 [910,726, 916,545] disruption 112,255 [109,346, 115,165] | S5 total 1,008,637 [1,003,162, 1,014,113] | solve 54.8s gap 0.0
+b10 w0.0 planned €796,640 aircraft 38 | S0 total 911,560 [908,501, 914,619] disruption 114,920 [111,861, 117,979] | S5 total 1,024,162 [1,017,765, 1,030,558] | solve 6.6s gap 0.0
+b10 w0.5 planned €797,360 aircraft 38 | S0 total 910,230 [907,303, 913,157] disruption 112,870 [109,943, 115,797] | S5 total 1,014,655 [1,008,648, 1,020,662] | solve 5.6s gap 0.0
+b10 w1.0 planned €798,190 aircraft 38 | S0 total 910,487 [907,511, 913,464] disruption 112,297 [109,321, 115,274] | S5 total 1,010,816 [1,005,008, 1,016,623] | solve 10.1s gap 0.0
+b10 w2.0 planned €801,570 aircraft 38 | S0 total 913,798 [910,918, 916,678] disruption 112,228 [109,348, 115,108] | S5 total 1,006,656 [1,001,342, 1,011,971] | solve 5.4s gap 0.0
+b15 w0.0 planned €799,580 aircraft 38 | S0 total 914,174 [911,142, 917,206] disruption 114,594 [111,562, 117,626] | S5 total 1,020,863 [1,014,804, 1,026,922] | solve 53.4s gap 0.0
+b15 w0.5 planned €800,180 aircraft 38 | S0 total 913,850 [910,848, 916,852] disruption 113,670 [110,668, 116,672] | S5 total 1,015,235 [1,009,306, 1,021,165] | solve 56.5s gap 1.4792704075777687e-06
+b15 w1.0 planned €801,180 aircraft 38 | S0 total 913,495 [910,566, 916,425] disruption 112,315 [109,386, 115,245] | S5 total 1,008,769 [1,003,271, 1,014,266] | solve 5.8s gap 0.0
+b15 w2.0 planned €801,570 aircraft 38 | S0 total 913,824 [910,937, 916,710] disruption 112,254 [109,367, 115,140] | S5 total 1,006,678 [1,001,354, 1,012,002] | solve 4.5s gap 0.0
+b20 w0.0 planned €799,860 aircraft 38 | S0 total 914,128 [911,109, 917,146] disruption 114,268 [111,249, 117,286] | S5 total 1,018,454 [1,012,412, 1,024,496] | solve 8.8s gap 0.0
+b20 w0.5 planned €800,290 aircraft 38 | S0 total 913,630 [910,674, 916,585] disruption 113,340 [110,384, 116,295] | S5 total 1,014,078 [1,008,217, 1,019,940] | solve 4.2s gap 1.4250827063066325e-16
+b20 w1.0 planned €801,180 aircraft 38 | S0 total 913,482 [910,555, 916,409] disruption 112,302 [109,375, 115,229] | S5 total 1,008,269 [1,002,790, 1,013,747] | solve 57.4s gap 0.0
+b20 w2.0 planned €801,570 aircraft 38 | S0 total 913,798 [910,918, 916,678] disruption 112,228 [109,348, 115,108] | S5 total 1,006,657 [1,001,343, 1,011,971] | solve 4.2s gap 0.0
+b30 w0.0 planned €801,840 aircraft 38 | S0 total 915,062 [912,142, 917,981] disruption 113,222 [110,302, 116,141] | S5 total 1,015,665 [1,009,870, 1,021,460] | solve 4.7s gap 0.0
+b30 w0.5 planned €801,910 aircraft 38 | S0 total 914,713 [911,771, 917,655] disruption 112,803 [109,861, 115,745] | S5 total 1,013,770 [1,008,047, 1,019,493] | solve 51.4s gap 1.2386516589559244e-06
+b30 w1.0 planned €802,420 aircraft 38 | S0 total 914,834 [911,949, 917,720] disruption 112,414 [109,529, 115,300] | S5 total 1,007,035 [1,001,761, 1,012,309] | solve 7.8s gap 2.1639290358351763e-05
+b30 w2.0 planned €802,850 aircraft 38 | S0 total 915,251 [912,362, 918,140] disruption 112,401 [109,512, 115,290] | S5 total 1,006,461 [1,001,290, 1,011,632] | solve 55.3s gap 0.0
+b45 w0.0 planned €802,510 aircraft 38 | S0 total 915,445 [912,539, 918,352] disruption 112,935 [110,029, 115,842] | S5 total 1,009,509 [1,004,190, 1,014,828] | solve 36.4s gap 0.0
+b45 w0.5 planned €802,540 aircraft 38 | S0 total 915,164 [912,281, 918,046] disruption 112,624 [109,741, 115,506] | S5 total 1,007,677 [1,002,424, 1,012,930] | solve 4.2s gap 0.0
+b45 w1.0 planned €802,610 aircraft 38 | S0 total 915,218 [912,335, 918,101] disruption 112,608 [109,725, 115,491] | S5 total 1,006,403 [1,001,202, 1,011,604] | solve 4.1s gap 0.0
+b45 w2.0 planned €802,780 aircraft 38 | S0 total 915,214 [912,336, 918,091] disruption 112,434 [109,556, 115,311] | S5 total 1,006,036 [1,000,903, 1,011,170] | solve 39.8s gap 3.892293046585044e-06
+Pareto front (planned cost vs S0 disruption cost): b0 w0.0, b0 w0.5
+lowest expected total cost in S0: b0 w0.5 €904,909/day
+lowest expected total cost in S5: b45 w2.0 €1,006,036/day
+
+Added after the results: paired re-evaluations (details.json, per day)
+----------------------------------------------------------------------
+integrated: planned €792,700, violations 0, hub turns 57 (median slack 94.0 min, within 5 min 8.8%), crew changes 19 (median slack 56.0 min), crew utilisation 0.510, discretion/day 1.87
+b0_w0.5: planned €793,920, violations 0, hub turns 60 (median slack 282.5 min, within 5 min 6.7%), crew changes 19 (median slack 63.0 min), crew utilisation 0.508, discretion/day 0.44
+b0_w1.0: planned €794,680, violations 0, hub turns 60 (median slack 275.5 min, within 5 min 3.3%), crew changes 18 (median slack 70.0 min), crew utilisation 0.507, discretion/day 0.26
+b15_w1.0: planned €801,180, violations 0, hub turns 61 (median slack 293.0 min, within 5 min 0.0%), crew changes 19 (median slack 69.0 min), crew utilisation 0.496, discretion/day 0.26
+b45_w2.0: planned €802,780, violations 0, hub turns 58 (median slack 248.0 min, within 5 min 0.0%), crew changes 13 (median slack 104.0 min), crew utilisation 0.494, discretion/day 0.18
+b45_w0.0: planned €802,510, violations 0, hub turns 56 (median slack 167.5 min, within 5 min 0.0%), crew changes 11 (median slack 106.0 min), crew utilisation 0.494, discretion/day 0.47
+point_forecast: planned €794,950, violations 0, hub turns 60 (median slack 176.0 min, within 5 min 0.0%), crew changes 20 (median slack 47.5 min), crew utilisation 0.507, discretion/day 1.16
+distribution: planned €797,880, violations 0, hub turns 60 (median slack 236.0 min, within 5 min 0.0%), crew changes 17 (median slack 75.0 min), crew utilisation 0.502, discretion/day 0.15
+b0_w0.5 − integrated S0: total_cost -4,325.4 [-5,662.3, -2,988.5] *; operational_cost -5,545.4 [-6,882.3, -4,208.5] *; pax_delay_min -25,080.8 [-29,429.0, -20,732.5] *; missed_connection_pax 0.1 [-1.3, 1.5]; cancelled -0.1 [-0.1, -0.0] *
+b0_w0.5 − integrated S5: total_cost -19,914.7 [-23,397.1, -16,432.4] *; operational_cost -21,134.7 [-24,617.1, -17,652.4] *; pax_delay_min -60,458.6 [-68,761.8, -52,155.4] *; missed_connection_pax 1.6 [-0.8, 3.9]; cancelled -0.3 [-0.4, -0.3] *
+b0_w1.0 − integrated S0: total_cost -3,331.0 [-4,679.0, -1,983.1] *; operational_cost -5,311.0 [-6,659.0, -3,963.1] *; pax_delay_min -24,579.5 [-28,993.7, -20,165.4] *; missed_connection_pax 2.4 [1.0, 3.9] *; cancelled -0.1 [-0.1, -0.0] *
+b0_w1.0 − integrated S5: total_cost -22,648.9 [-26,171.3, -19,126.6] *; operational_cost -24,628.9 [-28,151.3, -21,106.6] *; pax_delay_min -66,514.0 [-74,960.3, -58,067.7] *; missed_connection_pax 5.0 [2.5, 7.5] *; cancelled -0.4 [-0.5, -0.3] *
+b15_w1.0 − integrated S0: total_cost 4,260.7 [2,924.8, 5,596.6] *; operational_cost -4,219.3 [-5,555.2, -2,883.4] *; pax_delay_min -24,583.1 [-28,878.8, -20,287.4] *; missed_connection_pax 10.0 [8.3, 11.7] *; cancelled -0.1 [-0.1, -0.0] *
+b15_w1.0 − integrated S5: total_cost -23,568.5 [-27,538.3, -19,598.7] *; operational_cost -32,048.5 [-36,018.3, -28,078.7] *; pax_delay_min -88,104.4 [-97,374.5, -78,834.2] *; missed_connection_pax 15.4 [12.7, 18.1] *; cancelled -0.6 [-0.7, -0.5] *
+b45_w2.0 − integrated S0: total_cost 5,978.9 [4,643.7, 7,314.0] *; operational_cost -4,101.1 [-5,436.3, -2,766.0] *; pax_delay_min -24,717.9 [-29,054.1, -20,381.6] *; missed_connection_pax 11.1 [9.4, 12.7] *; cancelled -0.1 [-0.1, -0.0] *
+b45_w2.0 − integrated S5: total_cost -26,301.0 [-30,213.2, -22,388.8] *; operational_cost -36,381.0 [-40,293.2, -32,468.8] *; pax_delay_min -101,399.8 [-110,312.2, -92,487.5] *; missed_connection_pax 17.1 [14.4, 19.7] *; cancelled -0.7 [-0.8, -0.7] *
+b45_w0.0 − integrated S0: total_cost 6,210.5 [4,912.4, 7,508.7] *; operational_cost -3,599.5 [-4,897.6, -2,301.3] *; pax_delay_min -22,126.4 [-26,264.9, -17,988.0] *; missed_connection_pax 10.7 [9.0, 12.4] *; cancelled -0.1 [-0.1, -0.0] *
+b45_w0.0 − integrated S5: total_cost -22,828.1 [-26,664.7, -18,991.6] *; operational_cost -32,638.1 [-36,474.7, -28,801.6] *; pax_delay_min -91,784.4 [-100,326.5, -83,242.3] *; missed_connection_pax 14.2 [11.6, 16.8] *; cancelled -0.7 [-0.8, -0.6] *
+point_forecast − integrated S0: total_cost 458.3 [-764.6, 1,681.2]; operational_cost -1,791.7 [-3,014.6, -568.8] *; pax_delay_min -8,400.3 [-12,258.7, -4,541.9] *; missed_connection_pax 4.6 [3.1, 6.1] *; cancelled -0.0 [-0.1, -0.0] *
+point_forecast − integrated S5: total_cost -6,975.2 [-10,662.4, -3,288.1] *; operational_cost -9,225.2 [-12,912.4, -5,538.1] *; pax_delay_min -23,976.5 [-32,571.2, -15,381.7] *; missed_connection_pax 8.3 [5.9, 10.8] *; cancelled -0.2 [-0.3, -0.2] *
+distribution − integrated S0: total_cost 205.2 [-1,095.5, 1,506.0]; operational_cost -4,974.8 [-6,275.5, -3,674.0] *; pax_delay_min -25,098.9 [-29,380.9, -20,817.0] *; missed_connection_pax 6.4 [4.8, 7.9] *; cancelled -0.1 [-0.1, -0.0] *
+distribution − integrated S5: total_cost -24,128.6 [-27,927.8, -20,329.4] *; operational_cost -29,308.6 [-33,107.8, -25,509.4] *; pax_delay_min -79,456.8 [-88,768.7, -70,145.0] *; missed_connection_pax 9.9 [7.2, 12.5] *; cancelled -0.5 [-0.6, -0.5] *
+climate 6.8: buffer 45 − buffer 0 (both w = 0): total_cost 10,601.8 [10,126.1, 11,077.5]; operational_cost 791.8 [316.1, 1,267.5]
+climate 19: buffer 45 − buffer 0 (both w = 0): total_cost -49,345.5 [-54,408.4, -44,282.6]; operational_cost -59,155.5 [-64,218.4, -54,092.6]
+
+Structural replications (other network seeds)
+---------------------------------------------
+seed 12: 142 flights, fleet 37
+  greedy      planned €767,490 violations 1 S0 total €895,724 (vs seq +5,914) S0 disruption €128,234 S1 disruption €145,789 S5 disruption €233,608 solve 0.4s
+  sequential  planned €759,370 violations 0 S0 total €889,809 (vs seq +0) S0 disruption €130,439 S1 disruption €154,586 S5 disruption €241,199 solve 3.3s
+  integrated  planned €758,870 violations 0 S0 total €888,233 (vs seq -1,577) S0 disruption €129,363 S1 disruption €154,137 S5 disruption €243,919 solve 5.1s
+  robust      planned €759,760 violations 0 S0 total €886,279 (vs seq -3,530) S0 disruption €126,519 S1 disruption €146,555 S5 disruption €233,580 solve 98.6s
+seed 13: 142 flights, fleet 32
+  greedy      planned €718,570 violations 4 S0 total €829,417 (vs seq +3,657) S0 disruption €110,847 S1 disruption €130,992 S5 disruption €221,281 solve 0.7s
+  sequential  planned €715,440 violations 0 S0 total €825,760 (vs seq +0) S0 disruption €110,320 S1 disruption €139,654 S5 disruption €257,882 solve 3.3s
+  integrated  planned €714,180 violations 0 S0 total €826,078 (vs seq +318) S0 disruption €111,898 S1 disruption €140,850 S5 disruption €263,367 solve 5.4s
+  robust      planned €719,100 violations 0 S0 total €824,380 (vs seq -1,380) S0 disruption €105,280 S1 disruption €130,612 S5 disruption €214,268 solve 7.1s
+seed 14: 142 flights, fleet 34
+  greedy      planned €743,350 violations 3 S0 total €880,499 (vs seq +21,638) S0 disruption €137,149 S1 disruption €153,852 S5 disruption €239,071 solve 0.5s
+  sequential  planned €719,510 violations 0 S0 total €858,861 (vs seq +0) S0 disruption €139,351 S1 disruption €162,159 S5 disruption €262,707 solve 3.0s
+  integrated  planned €718,000 violations 0 S0 total €860,487 (vs seq +1,626) S0 disruption €142,487 S1 disruption €166,445 S5 disruption €266,529 solve 6.3s
+  robust      planned €748,850 violations 0 S0 total €882,539 (vs seq +23,679) S0 disruption €133,689 S1 disruption €153,758 S5 disruption €234,386 solve 7.1s
+seed 15: 142 flights, fleet 38
+  greedy      planned €792,760 violations 7 S0 total €916,183 (vs seq +23,665) S0 disruption €123,423 S1 disruption €139,686 S5 disruption €218,695 solve 0.4s
+  sequential  planned €769,940 violations 0 S0 total €892,518 (vs seq +0) S0 disruption €122,578 S1 disruption €143,366 S5 disruption €235,896 solve 1.2s
+  integrated  planned €768,990 violations 0 S0 total €892,488 (vs seq -30) S0 disruption €123,498 S1 disruption €145,942 S5 disruption €244,283 solve 4.8s
+  robust      planned €775,420 violations 0 S0 total €896,157 (vs seq +3,639) S0 disruption €120,737 S1 disruption €139,390 S5 disruption €218,215 solve 49.8s
+
+Propagation example (S1, one replication)
+-----------------------------------------
+delayed inbound flights: {'S107': 113.79428335293547, 'S116': 105.89707162884552, 'S136': 111.22409904480358}
+robust: 13 flights changed, 0 cancelled, 695 extra minutes
+sequential: 7 flights changed, 0 cancelled, 532 extra minutes
+
+Pairing network through OPO
+---------------------------
+duties into OPO 26, out of it 8, overnight links 208; network: 3558 duties, 15157 pairings
+greedy: pairings touching OPO: [[[79, 108]], [[121], [34]]]
+integrated: pairings touching OPO: [[[121], [34]], [[79, 108]]]
+robust: pairings touching OPO: [[[121], [34, 63, 72]], [[79, 108]]]
+sequential: pairings touching OPO: [[[121], [34]], [[79, 108]]]
