@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-258 top-level folders: 77 belong to 24 series, 104 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 20 not yet sorted.
+259 top-level folders: 77 belong to 24 series, 105 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 20 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -355,6 +355,7 @@ Prices, labour, taxes, growth and elections.
 - [`felt-inflation/`](felt-inflation/) — Frequent purchases, official inflation and perceived prices
 - [`fixed-or-variable/`](fixed-or-variable/) — Fixed or variable: euro-area mortgages replayed for every start month
 - [`gdp-life-outcomes/`](gdp-life-outcomes/) — GDP per Capita, Life Expectancy and Basic Services: What Cross-Country Correlations Can and Cannot Identify
+- [`government-spending-gdp-accounting/`](government-spending-gdp-accounting/) — When 60% of GDP Is Not 60% of the Economy
 - [`heat-pump-price-ratio/`](heat-pump-price-ratio/) — The price ratio decides heat pumps: household electricity and gas prices in 25 European countries, 2007–2026
 - [`house-votes-seats-gerrymandering/`](house-votes-seats-gerrymandering/) — Votes, seats and who drew the map: U.S. House elections, 1972–2026
 - [`lisbon-metro-ridership/`](lisbon-metro-ridership/) — The Lisbon metro's falling ridership, 2025–2026: calendar, closures, fleet and the rest of the network in the official data
