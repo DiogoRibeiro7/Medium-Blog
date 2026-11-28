@@ -1,0 +1,60 @@
+name: stock-buybacks-insider-sales
+
+on:
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: 'Ticker list file, relative to stock-buybacks-insider-sales'
+        default: 'config/tickers_example.txt'
+      since:
+        description: 'Earliest filing date (YYYY-MM-DD)'
+        default: '2010-01-01'
+  pull_request:
+    paths:
+      - 'stock-buybacks-insider-sales/**'
+      - '.github/workflows/stock-buybacks-insider-sales.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stock-buybacks-insider-sales
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q tests
+
+  fetch-and-analyse:
+    if: github.event_name == 'workflow_dispatch'
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    defaults:
+      run:
+        working-directory: stock-buybacks-insider-sales
+    env:
+      # Repository variable, "Name contact@email" (SEC fair-access User-Agent).
+      EDGAR_USER_AGENT: ${{ vars.EDGAR_USER_AGENT }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: stock-buybacks-insider-sales/cache
+          key: edgar-${{ github.run_id }}
+          restore-keys: edgar-
+      - run: python3 -I src/run.py --tickers "${{ inputs.tickers }}" --since "${{ inputs.since }}" --out out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: insider-sales-results
+          path: stock-buybacks-insider-sales/out
