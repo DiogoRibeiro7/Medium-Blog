@@ -63,15 +63,21 @@ def main():
     ap.add_argument("--out", default="out")
     ap.add_argument("--since", default="2010-01-01")
     ap.add_argument("--cache", default="cache")
+    ap.add_argument("--shard", default="0/1", help="K/N: process tickers whose index mod N equals K")
     a = ap.parse_args()
     ed = Edgar(a.cache)
     tmap = ed.ticker_map()
-    tickers = [t.strip().upper() for t in open(a.tickers) if t.strip() and not t.startswith("#")]
-    rows = []
+    tickers = [t.strip().upper().replace(".", "-") for t in open(a.tickers) if t.strip() and not t.startswith("#")]
+    k, n = (int(x) for x in a.shard.split("/"))
+    tickers = [t for i, t in enumerate(tickers) if i % n == k]
+    rows, seen_cik = [], set()
     for t in tickers:
         if t not in tmap:
             print("no CIK for", t, file=sys.stderr)
             continue
+        if tmap[t] in seen_cik:  # second share class of the same issuer
+            continue
+        seen_cik.add(tmap[t])
         try:
             rows += build_events(ed, t, tmap[t], a.since)
         except Exception as e:  # one bad firm must not kill the run
