@@ -102,3 +102,26 @@ def test_build_events_end_to_end_offline():
     assert set(kinds) == {"announcement", "earnings_placebo"}
     assert kinds["announcement"]["sellers_post"] == 1 and kinds["announcement"]["sellers_pre"] == 0
     assert kinds["earnings_placebo"]["sellers_post"] == 0
+
+
+def test_edgar_retries_transient_5xx(tmp_path, monkeypatch):
+    import urllib.error
+    import urllib.request
+    import edgar
+    calls = {"n": 0}
+
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def read(self): return b"ok"
+
+    def fake(req, timeout=0):
+        calls["n"] += 1
+        if calls["n"] < 3:
+            raise urllib.error.HTTPError(req.full_url, 502, "Bad Gateway", {}, None)
+        return R()
+
+    monkeypatch.setattr(urllib.request, "urlopen", fake)
+    monkeypatch.setattr(edgar.time, "sleep", lambda s: None)
+    ed = edgar.Edgar(str(tmp_path), user_agent="Test test@example.org")
+    assert ed.get("https://example.org/x") == b"ok" and calls["n"] == 3

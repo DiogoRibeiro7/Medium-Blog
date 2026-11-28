@@ -69,8 +69,12 @@ def main():
         if t not in tmap:
             print("no CIK for", t, file=sys.stderr)
             continue
-        rows += build_events(ed, t, tmap[t], a.since)
-        print(t, len(rows), "events so far", file=sys.stderr)
+        try:
+            rows += build_events(ed, t, tmap[t], a.since)
+        except Exception as e:  # one bad firm must not kill the run
+            print(f"FAILED {t}: {type(e).__name__}: {e}", file=sys.stderr)
+            continue
+        print(t, len(rows), "events so far", file=sys.stderr, flush=True)
     os.makedirs(a.out, exist_ok=True)
     ev = pd.DataFrame(rows)
     ev.to_csv(os.path.join(a.out, "events.csv"), index=False)

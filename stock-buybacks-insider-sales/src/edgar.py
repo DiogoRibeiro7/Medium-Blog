@@ -16,8 +16,10 @@ MIN_INTERVAL = 0.15  # seconds between requests (about 6 per second)
 class Edgar:
     def __init__(self, cache_dir="cache", user_agent=None):
         self.ua = user_agent or os.environ.get("EDGAR_USER_AGENT")
-        if not self.ua:
-            raise RuntimeError("Set EDGAR_USER_AGENT to 'Name contact@email' (SEC fair access).")
+        if not self.ua or "@" not in self.ua:
+            raise RuntimeError(
+                "EDGAR_USER_AGENT is empty or has no email. Set the repository VARIABLE "
+                "(not a secret) EDGAR_USER_AGENT to 'Name contact@email'.")
         self.cache = cache_dir
         os.makedirs(cache_dir, exist_ok=True)
         self._last = 0.0
@@ -25,7 +27,7 @@ class Edgar:
     def _path(self, url):
         return os.path.join(self.cache, hashlib.sha256(url.encode()).hexdigest())
 
-    def get(self, url, retries=4):
+    def get(self, url, retries=7):
         p = self._path(url)
         if os.path.exists(p):
             with open(p, "rb") as f:
@@ -43,12 +45,21 @@ class Edgar:
                     f.write(data)
                 return data
             except urllib.error.HTTPError as e:
-                if e.code in (429, 503) and attempt < retries - 1:
-                    time.sleep(2 ** attempt * 2)
+                if (e.code == 429 or e.code >= 500) and attempt < retries - 1:
+                    time.sleep(min(60, 2 ** attempt * 2))
                     continue
                 if e.code == 404:
                     return None
+                if e.code == 403:
+                    raise RuntimeError(
+                        f"SEC returned 403 for {url}. Check that EDGAR_USER_AGENT looks like "
+                        f"'Name name@example.org' (current: {self.ua!r}).") from e
                 raise
+            except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
+                if attempt < retries - 1:
+                    time.sleep(min(60, 2 ** attempt * 2))
+                    continue
+                raise RuntimeError(f"network failure for {url}: {e}") from e
         return None
 
     def json(self, url):
