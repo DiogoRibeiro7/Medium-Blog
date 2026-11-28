@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "dataset": "openflights-airports",
+  "layer": "external",
+  "repository": "DiogoRibeiro7/data",
+  "commit": "46eb873bc764b12f803fd540c4fac8defdfaaca5",
+  "record": "external/openflights-airports/metadata.yaml",
+  "folder": "airline-operations-optimization",
+  "target": "airline-operations-optimization/.cache",
+  "supply": "download from the upstream URL at each run; the bytes are not stored in the registry or here",
+  "files": [
+    {
+      "path": "data/airports.dat",
+      "url": "https://raw.githubusercontent.com/jpatokal/openflights/a438edcb869bd882506add5abdb9ff1f4aae1ae7/data/airports.dat",
+      "bytes": 1127225,
+      "sha256": "9387cdb38df5bd664da823f8ccb69fdd9b33a1888f5b7cca09c34a3cd9ff59f9"
+    }
+  ]
+}

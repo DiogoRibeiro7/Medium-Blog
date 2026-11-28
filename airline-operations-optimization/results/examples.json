@@ -1,0 +1,1733 @@
+{
+ "back_duties": [
+  {
+   "end": "MUC",
+   "fdp": 230,
+   "flight_ids": [
+    34
+   ],
+   "flights": [
+    "S134"
+   ],
+   "idx": 1048,
+   "length": 260,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 533,
+   "flight_ids": [
+    34,
+    60,
+    73
+   ],
+   "flights": [
+    "S134",
+    "S160",
+    "S173"
+   ],
+   "idx": 1050,
+   "length": 563,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 527,
+   "flight_ids": [
+    34,
+    63,
+    72
+   ],
+   "flights": [
+    "S134",
+    "S163",
+    "S172"
+   ],
+   "idx": 1053,
+   "length": 557,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 592,
+   "flight_ids": [
+    34,
+    65,
+    81
+   ],
+   "flights": [
+    "S134",
+    "S165",
+    "S181"
+   ],
+   "idx": 1056,
+   "length": 622,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 563,
+   "flight_ids": [
+    34,
+    66,
+    75
+   ],
+   "flights": [
+    "S134",
+    "S166",
+    "S175"
+   ],
+   "idx": 1058,
+   "length": 593,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 584,
+   "flight_ids": [
+    34,
+    68,
+    78
+   ],
+   "flights": [
+    "S134",
+    "S168",
+    "S178"
+   ],
+   "idx": 1060,
+   "length": 614,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 666,
+   "flight_ids": [
+    34,
+    69,
+    87
+   ],
+   "flights": [
+    "S134",
+    "S169",
+    "S187"
+   ],
+   "idx": 1062,
+   "length": 696,
+   "report_utc": 318,
+   "start": "OPO"
+  },
+  {
+   "end": "MUC",
+   "fdp": 230,
+   "flight_ids": [
+    108
+   ],
+   "flights": [
+    "S208"
+   ],
+   "idx": 3476,
+   "length": 260,
+   "report_utc": 998,
+   "start": "OPO"
+  }
+ ],
+ "chosen": {
+  "greedy": [
+   [
+    [
+     79,
+     108
+    ]
+   ],
+   [
+    [
+     121
+    ],
+    [
+     34
+    ]
+   ]
+  ],
+  "integrated": [
+   [
+    [
+     121
+    ],
+    [
+     34
+    ]
+   ],
+   [
+    [
+     79,
+     108
+    ]
+   ]
+  ],
+  "robust": [
+   [
+    [
+     121
+    ],
+    [
+     34,
+     63,
+     72
+    ]
+   ],
+   [
+    [
+     79,
+     108
+    ]
+   ]
+  ],
+  "sequential": [
+   [
+    [
+     121
+    ],
+    [
+     34
+    ]
+   ],
+   [
+    [
+     79,
+     108
+    ]
+   ]
+  ]
+ },
+ "n_duties_network": 3558,
+ "n_pairings_network": 15157,
+ "out_duties": [
+  {
+   "end": "OPO",
+   "fdp": 695,
+   "flight_ids": [
+    21,
+    54,
+    79
+   ],
+   "flights": [
+    "S121",
+    "S154",
+    "S179"
+   ],
+   "idx": 782,
+   "length": 725,
+   "report_utc": 307,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 691,
+   "flight_ids": [
+    23,
+    42,
+    79
+   ],
+   "flights": [
+    "S123",
+    "S142",
+    "S179"
+   ],
+   "idx": 815,
+   "length": 721,
+   "report_utc": 311,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 691,
+   "flight_ids": [
+    24,
+    52,
+    79
+   ],
+   "flights": [
+    "S124",
+    "S152",
+    "S179"
+   ],
+   "idx": 830,
+   "length": 721,
+   "report_utc": 311,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 691,
+   "flight_ids": [
+    25,
+    48,
+    79
+   ],
+   "flights": [
+    "S125",
+    "S148",
+    "S179"
+   ],
+   "idx": 858,
+   "length": 721,
+   "report_utc": 311,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 690,
+   "flight_ids": [
+    26,
+    55,
+    79
+   ],
+   "flights": [
+    "S126",
+    "S155",
+    "S179"
+   ],
+   "idx": 873,
+   "length": 720,
+   "report_utc": 312,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 690,
+   "flight_ids": [
+    27,
+    46,
+    79
+   ],
+   "flights": [
+    "S127",
+    "S146",
+    "S179"
+   ],
+   "idx": 903,
+   "length": 720,
+   "report_utc": 312,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 690,
+   "flight_ids": [
+    27,
+    61,
+    79
+   ],
+   "flights": [
+    "S127",
+    "S161",
+    "S179"
+   ],
+   "idx": 917,
+   "length": 720,
+   "report_utc": 312,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 689,
+   "flight_ids": [
+    28,
+    41,
+    79
+   ],
+   "flights": [
+    "S128",
+    "S141",
+    "S179"
+   ],
+   "idx": 948,
+   "length": 719,
+   "report_utc": 313,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 687,
+   "flight_ids": [
+    29,
+    53,
+    79
+   ],
+   "flights": [
+    "S129",
+    "S153",
+    "S179"
+   ],
+   "idx": 963,
+   "length": 717,
+   "report_utc": 315,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 685,
+   "flight_ids": [
+    32,
+    56,
+    79
+   ],
+   "flights": [
+    "S132",
+    "S156",
+    "S179"
+   ],
+   "idx": 1017,
+   "length": 715,
+   "report_utc": 317,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 685,
+   "flight_ids": [
+    33,
+    51,
+    79
+   ],
+   "flights": [
+    "S133",
+    "S151",
+    "S179"
+   ],
+   "idx": 1035,
+   "length": 715,
+   "report_utc": 317,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 545,
+   "flight_ids": [
+    44,
+    59,
+    79
+   ],
+   "flights": [
+    "S144",
+    "S159",
+    "S179"
+   ],
+   "idx": 1503,
+   "length": 575,
+   "report_utc": 457,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 543,
+   "flight_ids": [
+    45,
+    61,
+    79
+   ],
+   "flights": [
+    "S145",
+    "S161",
+    "S179"
+   ],
+   "idx": 1527,
+   "length": 573,
+   "report_utc": 459,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 528,
+   "flight_ids": [
+    50,
+    58,
+    79
+   ],
+   "flights": [
+    "S150",
+    "S158",
+    "S179"
+   ],
+   "idx": 1746,
+   "length": 558,
+   "report_utc": 474,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 663,
+   "flight_ids": [
+    74,
+    90,
+    121
+   ],
+   "flights": [
+    "S174",
+    "S190",
+    "S221"
+   ],
+   "idx": 2704,
+   "length": 693,
+   "report_utc": 750,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 659,
+   "flight_ids": [
+    76,
+    91,
+    121
+   ],
+   "flights": [
+    "S176",
+    "S191",
+    "S221"
+   ],
+   "idx": 2797,
+   "length": 689,
+   "report_utc": 754,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 659,
+   "flight_ids": [
+    77,
+    93,
+    121
+   ],
+   "flights": [
+    "S177",
+    "S193",
+    "S221"
+   ],
+   "idx": 2823,
+   "length": 689,
+   "report_utc": 754,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 240,
+   "flight_ids": [
+    79
+   ],
+   "flights": [
+    "S179"
+   ],
+   "idx": 2911,
+   "length": 270,
+   "report_utc": 762,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 650,
+   "flight_ids": [
+    80,
+    107,
+    121
+   ],
+   "flights": [
+    "S180",
+    "S207",
+    "S221"
+   ],
+   "idx": 2916,
+   "length": 680,
+   "report_utc": 763,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 648,
+   "flight_ids": [
+    82,
+    95,
+    121
+   ],
+   "flights": [
+    "S182",
+    "S195",
+    "S221"
+   ],
+   "idx": 3010,
+   "length": 678,
+   "report_utc": 765,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 646,
+   "flight_ids": [
+    83,
+    94,
+    121
+   ],
+   "flights": [
+    "S183",
+    "S194",
+    "S221"
+   ],
+   "idx": 3036,
+   "length": 676,
+   "report_utc": 767,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 645,
+   "flight_ids": [
+    84,
+    99,
+    121
+   ],
+   "flights": [
+    "S184",
+    "S199",
+    "S221"
+   ],
+   "idx": 3071,
+   "length": 675,
+   "report_utc": 768,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 644,
+   "flight_ids": [
+    85,
+    92,
+    121
+   ],
+   "flights": [
+    "S185",
+    "S192",
+    "S221"
+   ],
+   "idx": 3097,
+   "length": 674,
+   "report_utc": 769,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 642,
+   "flight_ids": [
+    86,
+    106,
+    121
+   ],
+   "flights": [
+    "S186",
+    "S206",
+    "S221"
+   ],
+   "idx": 3119,
+   "length": 672,
+   "report_utc": 771,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 493,
+   "flight_ids": [
+    98,
+    109,
+    121
+   ],
+   "flights": [
+    "S198",
+    "S209",
+    "S221"
+   ],
+   "idx": 3354,
+   "length": 523,
+   "report_utc": 920,
+   "start": "MUC"
+  },
+  {
+   "end": "OPO",
+   "fdp": 240,
+   "flight_ids": [
+    121
+   ],
+   "flights": [
+    "S221"
+   ],
+   "idx": 3537,
+   "length": 270,
+   "report_utc": 1173,
+   "start": "MUC"
+  }
+ ],
+ "pairs": [
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 782,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 782,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 815,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 815,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 830,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 830,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 858,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 858,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 873,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 873,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 903,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 903,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 917,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 917,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 948,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 948,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 963,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 963,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 1017,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 1017,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 1035,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 1035,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 1503,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 1503,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 1527,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 1527,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 1746,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 1746,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 2704,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 2704,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 2797,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 2797,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 2823,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 2823,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1048
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1050
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1053
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1056
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1058
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1060
+  },
+  {
+   "first": 2911,
+   "rest": 726,
+   "second": 1062
+  },
+  {
+   "first": 2911,
+   "rest": 1406,
+   "second": 3476
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 2916,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 2916,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3010,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3010,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3036,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3036,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3071,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3071,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3097,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3097,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3119,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3119,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3354,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3354,
+   "rest": 995,
+   "second": 3476
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1048
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1050
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1053
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1056
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1058
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1060
+  },
+  {
+   "first": 3537,
+   "rest": 1755,
+   "second": 1062
+  },
+  {
+   "first": 3537,
+   "rest": 995,
+   "second": 3476
+  }
+ ],
+ "single_duties_touching": [
+  {
+   "end": "MUC",
+   "fdp": 466,
+   "flight_ids": [
+    79,
+    108
+   ],
+   "flights": [
+    "S179",
+    "S208"
+   ],
+   "idx": 2912,
+   "length": 496,
+   "report_utc": 762,
+   "start": "MUC"
+  }
+ ],
+ "station": "OPO"
+}

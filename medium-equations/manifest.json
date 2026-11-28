@@ -3516,5 +3516,31 @@
    "name": "eq14",
    "tex": "65-60=5\\text{ percentage points}."
   }
+ ],
+ "operations-and-decisions/airline-fleet-crew": [
+  {
+   "name": "eq01",
+   "tex": "\\min \\sum_{(i,j)\\in A} c_{ij}\\,y_{ij}\n\\quad\\text{subject to}\\quad\n\\sum_{j:(i,j)\\in A} y_{ij} = 1,\\qquad\n\\sum_{i:(i,j)\\in A} y_{ij} = 1,\\qquad\nK_0 + \\sum_{(i,j)\\in A} \\kappa_{ij}\\,y_{ij} \\le N,\\qquad\ny_{ij}\\in\\{0,1\\}."
+  },
+  {
+   "name": "eq02",
+   "tex": "\\min \\sum_{p\\in P} c_p\\,x_p + d\\sum_{i\\in F} s_i\n\\quad\\text{subject to}\\quad\n\\sum_{p\\in P} a_{ip}\\,x_p - s_i = 1 \\quad (i\\in F),\\qquad\nx_p\\in\\{0,1\\},\\; s_i\\ge 0 ."
+  },
+  {
+   "name": "eq03",
+   "tex": "\\bar c_p = c_p - \\sum_{i\\in F} a_{ip}\\,\\pi_i ."
+  },
+  {
+   "name": "eq04",
+   "tex": "z_{\\mathrm{LP}} \\;\\ge\\; z_{\\mathrm{RMP}} + \\kappa \\min\\Big(0,\\; \\min_{p\\in P}\\bar c_p\\Big),"
+  },
+  {
+   "name": "eq05",
+   "tex": "\\sum_{p\\,\\ni\\,(i,j)} x_p \\;\\le\\; y_{ij}\\qquad \\text{for every short connection } (i,j),"
+  },
+  {
+   "name": "eq06",
+   "tex": "c_{ij}^{\\mathrm{robust}} = c_{ij} + w\\cdot 166\\cdot \\mathbb{E}\\big[(A_i-\\sigma_{ij})^{+}\\big],"
+  }
  ]
 }
