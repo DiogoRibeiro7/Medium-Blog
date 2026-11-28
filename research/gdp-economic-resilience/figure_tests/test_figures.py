@@ -64,6 +64,32 @@ class TestRendering(unittest.TestCase):
         finally:
             plt.close(fig)
 
+    def test_wealth_annotations_and_evidence(self) -> None:
+        # Synthetic endpoints: nearby labels and a negative wealth-growth case.
+        growths = {
+            "DEU": (32, 36), "PRT": (21, 21), "USA": (39, 18),
+            "IRL": (165, 26), "IND": (176, 23), "CHN": (529, 81),
+            "GRC": (9, -16), "BGR": (100, 10000), "CYP": (0, 0),
+        }
+        rows = [
+            {"country": country, "start": "1996", "end": "2020",
+             "comparable": "False" if country == "CYP" else "True",
+             "real_gdp_pc_growth_pct": str(g), "real_wealth_pc_growth_pct": str(w)}
+            for country, (g, w) in growths.items()
+        ]
+        with patch.object(f.p, "COUNTRIES", tuple(growths)):
+            fig, selected, caption = f.figure_wealth(rows)
+        try:
+            self.assertEqual(selected, rows)
+            annotations = fig.axes[0].texts
+            self.assertEqual({a.get_text() for a in annotations}, set(f.WEALTH_LABEL_OFFSETS))
+            self.assertTrue(all(a.arrow_patch is not None for a in annotations))
+            self.assertEqual(len(fig.axes[0].collections), 7)
+            self.assertIn("n=7", caption)
+            self.assertIn("BGR, CYP", caption)
+        finally:
+            plt.close(fig)
+
     def test_manifest_and_repeatable_assets(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
