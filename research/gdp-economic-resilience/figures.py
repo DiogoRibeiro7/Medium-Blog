@@ -11,6 +11,7 @@ import hashlib
 import json
 import math
 import statistics
+from itertools import combinations
 from pathlib import Path
 from typing import Any, Callable
 
@@ -19,6 +20,8 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
+from matplotlib.lines import Line2D
+from matplotlib.text import Text
 
 import pipeline as p
 import eurostat_sectors as euro
@@ -39,6 +42,12 @@ plt.rcParams.update({
 COUNTRY_NAMES = {
     "EU27": "EU-27", "USA": "United States", "CHN": "China", "IND": "India",
     "GBR": "United Kingdom", "JPN": "Japan", "CHE": "Switzerland",
+}
+# Fixed point offsets, chosen using the pinned 1996–2020 sample. Leader lines
+# distinguish adjacent countries without changing plotted coordinates.
+WEALTH_LABEL_OFFSETS: dict[str, tuple[int, int]] = {
+    "DEU": (8, 38), "PRT": (-20, -17), "USA": (28, -16),
+    "IRL": (21, 8), "IND": (22, -22), "GRC": (15, -15), "CHN": (-6, 18),
 }
 SHOCK_LABELS = {
     "financial_crisis": "Financial crisis (2008–10)",
@@ -246,13 +255,26 @@ def figure_wealth(rows: list[Row]) -> tuple[Figure, list[Row], str]:
     for country, x, y in points:
         divergent = x > 0 and y < 0
         ax.scatter(x, y, color=ORANGE if divergent else BLUE, s=46, alpha=0.85, zorder=3)
-        if divergent or country in {"USA", "DEU", "PRT", "IRL", "CHN", "IND"}:
-            ax.annotate(country, (x, y), xytext=(5, 4), textcoords="offset points", fontsize=9)
+        if divergent or country in WEALTH_LABEL_OFFSETS:
+            dx, dy = WEALTH_LABEL_OFFSETS.get(country, (12, -12))
+            ax.annotate(
+                country, (x, y), xytext=(dx, dy), textcoords="offset points",
+                ha="left" if dx >= 0 else "right", va="center",
+                fontsize=9, color=INK, zorder=4,
+                arrowprops={"arrowstyle": "-", "color": MUTED, "lw": 0.7,
+                            "shrinkA": 2, "shrinkB": 4},
+                bbox={"facecolor": "white", "edgecolor": "none", "pad": 1},
+            )
     ax.set(xlim=limits, ylim=limits, aspect="equal",
            xlabel="Real GDP per capita (annualized log growth, %)",
            ylabel="Real comprehensive wealth per capita (annualized log growth, %)")
     ax.grid()
-    ax.legend(loc="upper left")
+    handles = [
+        Line2D([0], [0], linestyle="--", color=MUTED, label="Equal growth"),
+        Line2D([0], [0], marker="o", linestyle="", color=BLUE, label="Other country outcomes"),
+        Line2D([0], [0], marker="o", linestyle="", color=ORANGE, label="GDP up, wealth down"),
+    ]
+    ax.legend(handles=handles, loc="upper left", fontsize=9)
     excluded = sorted(set(p.COUNTRIES) - {country for country, _, _ in points})
     caption = ("1996–2020, within-country annualized log growth. Orange: GDP rises while wealth falls. "
                f"n={len(points)}; excluded {', '.join(excluded)}. Bulgaria is excluded because of its "
@@ -260,6 +282,16 @@ def figure_wealth(rows: list[Row]) -> tuple[Figure, list[Row], str]:
     heading(fig, "GDP growth and national wealth need not move together",
             f"1996–2020 • {len(points)} countries • excluded {', '.join(excluded)}",
             "Source: World Bank WDI and CWON 2024 • chained wealth and GDP compared by growth, not levels.")
+    # Check text extents, not the combined text/leader-line bounding boxes.
+    # This runs against the actual pinned observations during figure CI.
+    fig.canvas.draw()
+    renderer = fig.canvas.get_renderer()
+    boxes = [(annotation.get_text(), Text.get_window_extent(annotation, renderer))
+             for annotation in ax.texts]
+    for (first, a), (second, b) in combinations(boxes, 2):
+        if a.overlaps(b):
+            plt.close(fig)
+            raise ValueError(f"Overlapping wealth labels: {first}, {second}")
     return fig, selected, caption
 
 

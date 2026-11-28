@@ -38,7 +38,8 @@ contracts, then generates all analytical inputs in a single environment.
 The GDP chart uses seven nonoverlapping entities, not an EU aggregate plus
 member states. The wealth chart shows annualized real growth, excludes the
 flagged Bulgarian baseline, retains all comparison rows in its evidence, and
-reports excluded countries. The shock chart uses matched-country medians
+reports excluded countries. The selected country annotations use explicit offsets
+and leader lines; rendering checks for overlapping label text. The shock chart uses matched-country medians
 and interquartile ranges (not confidence intervals). The substitution figure
 shows hypothetical outcomes, not AI forecasts. The correlation charts
 preserve sample sizes and undefined values. All choices were fixed in code;
@@ -61,8 +62,25 @@ and uploads two artifacts:
 - **gdp-resilience-manuscript-evidence**: complete analytical CSV tables and
   phase summaries for the numerical audit before drafting the manuscript.
 
-These generated files are ignored by Git in this code repository; the final
-selected publication assets belong in research-articles-medium after review.
+The temporary `results/` outputs remain ignored by Git. Reviewed publication
+assets belong in this public code companion, in `publication/`, as required by
+the private editorial repository's layout. Manuscripts link to the immutable
+commit containing these assets; never link to an expiring Actions artifact.
+
+## Preserve a publication candidate
+
+After a figure renderer, plotting-dependency or staging-workflow change merges
+into main, the successful figure workflow stages its exact validated artifact
+on `publication/gdp-resilience-figures-<source-commit-first-12>`. Alternatively,
+run the workflow manually on **main** with `stage_publication` enabled.
+The staging job verifies all 24 asset hashes and the exact 25-file package,
+records the source commit, run, artifact ID/digest and manifest hash in
+`publication_provenance.json`, and pushes only the review branch. It does not
+write to main, overwrite an existing review branch, run for PRs, or create a
+pull request automatically. Open a PR from that branch after verifying the
+rendered assets, then link the merged immutable revision from the manuscript.
+The separate provenance record indicates that the package is a review candidate.
+
 Visual inspection and the manuscript claim-to-evidence audit remain separate
 steps. Determinism is checked within one environment; different versions of
 fonts, dependencies, or operating systems may produce different image bytes.

@@ -19,12 +19,20 @@ on:
       - 'data_sources/eurostat-services-relative-prices.json'
       - '.github/workflows/gdp-resilience-figures.yml'
   workflow_dispatch:
+    inputs:
+      stage_publication:
+        description: Stage validated assets on a new branch (main only)
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 jobs:
   figures:
+    outputs:
+      artifact_id: ${{ steps.publication.outputs.artifact-id }}
+      artifact_digest: ${{ steps.publication.outputs.artifact-digest }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -104,6 +112,7 @@ jobs:
               assert all(tuple(row.items()) in original for row in evidence)
           PY
       - name: Upload figures with evidence
+        id: publication
         uses: actions/upload-artifact@v4
         with:
           name: gdp-resilience-publication-figures
@@ -118,3 +127,144 @@ jobs:
             research/gdp-economic-resilience/results/**/summary.json
             !research/gdp-economic-resilience/results/publication/**
           if-no-files-found: error
+
+  stage-publication:
+    # Never publish from PR code or a non-main dispatch.
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.stage_publication))
+    needs: figures
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Select a new review branch
+        id: gate
+        env:
+          BEFORE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+          echo "stage=false" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT" = "push" ]; then
+            if ! git cat-file -e "${BEFORE}^{commit}" 2>/dev/null; then
+              echo "No previous commit; dispatch from main with stage_publication enabled."
+              exit 0
+            fi
+            if git diff --quiet "$BEFORE" "$GITHUB_SHA" -- \
+              research/gdp-economic-resilience/figures.py \
+              research/gdp-economic-resilience/requirements-figures.txt \
+              .github/workflows/gdp-resilience-figures.yml; then
+              echo "No figure renderer or staging workflow change; no new publication branch."
+              exit 0
+            fi
+          fi
+          branch="publication/gdp-resilience-figures-${GITHUB_SHA:0:12}"
+          existing="$(git ls-remote --heads origin "refs/heads/$branch")"
+          if [ -n "$existing" ]; then
+            echo "Review branch already exists: $branch"
+            exit 0
+          fi
+          echo "stage=true" >> "$GITHUB_OUTPUT"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Retrieve validated figures from this exact successful run
+        if: steps.gate.outputs.stage == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: gdp-resilience-publication-figures
+          path: ${{ runner.temp }}/gdp-publication-artifact
+
+      - name: Verify the publication package and preserve provenance
+        if: steps.gate.outputs.stage == 'true'
+        env:
+          ARTIFACT_ID: ${{ needs.figures.outputs.artifact_id }}
+          ARTIFACT_DIGEST: ${{ needs.figures.outputs.artifact_digest }}
+          ARTIFACT_DIR: ${{ runner.temp }}/gdp-publication-artifact
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          import shutil
+          from pathlib import Path
+
+          def sha(path: Path) -> str:
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          source = Path(os.environ["ARTIFACT_DIR"])
+          destination = Path("research/gdp-economic-resilience/publication")
+          manifest_path = source / "figure_manifest.json"
+          manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+          ids = {
+              "fig01_nominal_ppp", "fig02_sector_composition", "fig03_volume_deflator",
+              "fig04_gdp_wealth", "fig05_shock_benchmarks", "fig06_substitution",
+              "fig07_structure_robustness", "fig08_classification_robustness",
+          }
+          entries = manifest["figures"]
+          assert len(entries) == 8 and {item["id"] for item in entries} == ids
+          expected = {"figure_manifest.json"}
+          for entry in entries:
+              name = entry["id"]
+              assets = {f"{name}.{ext}" for ext in ("png", "svg", "csv")}
+              assert set(entry["assets"]) == assets
+              expected.update(assets)
+              for filename, digest in entry["assets"].items():
+                  path = source / filename
+                  assert path.is_file() and not path.is_symlink() and sha(path) == digest
+          assert {path.name for path in source.iterdir()} == expected
+          assert len(expected) == 25
+          artifact_id = os.environ["ARTIFACT_ID"]
+          artifact_digest = os.environ["ARTIFACT_DIGEST"]
+          assert artifact_id.isdigit()
+          assert re.fullmatch(r"(sha256:)?[0-9a-f]{64}", artifact_digest)
+          destination.mkdir(parents=True, exist_ok=True)
+          # Never remove an existing unrecognised tracked publication file.
+          allowed = expected | {"publication_provenance.json"}
+          assert {path.name for path in destination.iterdir()} <= allowed
+          assert all(path.is_file() and not path.is_symlink() for path in destination.iterdir())
+          for filename in sorted(expected):
+              shutil.copyfile(source / filename, destination / filename)
+          provenance = {
+              "schema_version": 1,
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "source_commit": os.environ["GITHUB_SHA"],
+              "workflow_run_id": int(os.environ["GITHUB_RUN_ID"]),
+              "workflow_run_attempt": int(os.environ["GITHUB_RUN_ATTEMPT"]),
+              "artifact_id": int(artifact_id),
+              "artifact_digest": artifact_digest,
+              "figure_manifest_sha256": sha(manifest_path),
+              "registry_commits": manifest["registry_commits"],
+              "review_status": "candidate_for_pull_request_review",
+          }
+          (destination / "publication_provenance.json").write_text(
+              json.dumps(provenance, indent=2, sort_keys=True) + "\n",
+              encoding="utf-8",
+          )
+          print(f"Verified and staged {len(expected)} assets and provenance record")
+          PY
+
+      - name: Commit only publication files to the review branch
+        if: steps.gate.outputs.stage == 'true'
+        env:
+          BRANCH: ${{ steps.gate.outputs.branch }}
+        run: |
+          set -euo pipefail
+          git switch -c "$BRANCH"
+          git add -- research/gdp-economic-resilience/publication/
+          python - <<'PY'
+          import subprocess
+          paths = subprocess.check_output(["git", "diff", "--cached", "--name-only", "-z"]).decode().split("\0")
+          paths = [path for path in paths if path]
+          assert paths and all(path.startswith("research/gdp-economic-resilience/publication/") for path in paths)
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Preserve GDP resilience publication figures from ${GITHUB_SHA:0:12}"
+          git push origin "HEAD:refs/heads/$BRANCH"
+          echo "Open a review pull request from $BRANCH; main was not modified." >> "$GITHUB_STEP_SUMMARY"
