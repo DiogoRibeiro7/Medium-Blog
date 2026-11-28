@@ -85,7 +85,9 @@ def main():
             continue
         print(t, len(rows), "events so far", file=sys.stderr, flush=True)
     os.makedirs(a.out, exist_ok=True)
-    ev = pd.DataFrame(rows)
+    cols = ["ticker", "cik", "date", "kind", "accession", "snippet", "sellers_pre", "sellers_post",
+            "shares_pre", "shares_post", "ceo_sells_pre", "ceo_sells_post"]
+    ev = pd.DataFrame(rows, columns=cols if not rows else None)
     ev.to_csv(os.path.join(a.out, "events.csv"), index=False)
     if len(ev):
         aud = ev[ev.kind.str.startswith("announcement")]

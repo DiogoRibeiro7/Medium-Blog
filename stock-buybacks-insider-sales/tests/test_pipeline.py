@@ -146,3 +146,15 @@ def test_combine_concatenates_shards_and_dedupes(tmp_path):
     combine.main(str(tmp_path), str(tmp_path / "out"))
     out = pd.read_csv(tmp_path / "out" / "summary.json".replace("summary.json", "events.csv"))
     assert len(out) == 2 * 10 * 8
+
+
+def test_combine_survives_empty_shard(tmp_path):
+    import combine
+    (tmp_path / "s0").mkdir()
+    (tmp_path / "s0" / "events.csv").write_text("")  # a shard that found nothing writes an empty file
+    (tmp_path / "s1").mkdir()
+    _synth(0.5, n_firms=10, seed=1).assign(ticker="T", date="2024-01-01",
+                                          accession=lambda x: x.index.astype(str), snippet="").to_csv(
+        tmp_path / "s1" / "events.csv", index=False)
+    combine.main(str(tmp_path), str(tmp_path / "out"))
+    assert len(pd.read_csv(tmp_path / "out" / "events.csv")) == 10 * 8

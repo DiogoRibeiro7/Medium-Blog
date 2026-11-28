@@ -13,7 +13,18 @@ import analysis
 
 def main(shards, out):
     files = sorted(glob.glob(os.path.join(shards, "**", "events.csv"), recursive=True))
-    ev = pd.concat([pd.read_csv(f) for f in files], ignore_index=True) if files else pd.DataFrame()
+    frames, report = [], []
+    for f in files:
+        try:
+            d = pd.read_csv(f)
+        except pd.errors.EmptyDataError:
+            d = pd.DataFrame()
+        report.append((os.path.relpath(f, shards), len(d), d.cik.nunique() if len(d) else 0))
+        if len(d):
+            frames.append(d)
+    for name, n, firms in report:
+        print(f"{name}: {n} events, {firms} firms" + ("   <-- EMPTY, check this shard's log" if n == 0 else ""))
+    ev = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
     ev = ev.drop_duplicates(["cik", "accession"]) if "accession" in ev else ev
     os.makedirs(out, exist_ok=True)
     ev.to_csv(os.path.join(out, "events.csv"), index=False)
