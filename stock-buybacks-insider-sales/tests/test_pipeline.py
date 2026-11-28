@@ -26,12 +26,18 @@ def test_raw_xml_name_strips_xsl_prefix():
 
 def test_classify():
     bb = "<p>The Board of Directors authorized a new share repurchase program of up to $10 billion.</p>"
-    assert events.classify("8.01,9.01", bb) == "announcement"
-    assert events.classify("2.02,8.01", bb) == "announcement_with_earnings"
-    assert events.classify("2.02,9.01", "Quarterly results were strong.") == "earnings_placebo"
-    assert events.classify("8.01", "The company named a new director.") is None
-    # earnings release that merely mentions repurchases already done is not an authorization
-    assert events.classify("2.02", "We repurchased shares during the quarter.") == "earnings_placebo"
+    assert events.classify("8.01,9.01", bb)[0] == "announcement"
+    assert events.classify("2.02,8.01", bb)[0] == "announcement_with_earnings"
+    assert "$10 billion" in events.classify("8.01", bb)[1]
+    assert events.classify("2.02,9.01", "Quarterly results were strong.")[0] == "earnings_placebo"
+    assert events.classify("8.01", "The company named a new director.")[0] is None
+    # reporting past purchases or remaining capacity is not a new authorization
+    past = ("The company repurchased $5 billion of shares in the quarter and has $20 billion of "
+            "remaining authorization from its Board of Directors under the share repurchase program.")
+    assert events.classify("2.02", past)[0] == "earnings_placebo"
+    # exhibit text inside a full-submission file is stripped of markup before matching
+    sub = "<DOCUMENT><TYPE>EX-99.1<TEXT><html><b>The Board of Directors</b> has authorized an additional $110 billion for share repurchases.</html>"
+    assert events.classify("2.02,9.01", sub)[0] == "announcement_with_earnings"
 
 
 def test_window_stats_counts_pre_and_post():
@@ -85,9 +91,12 @@ class FakeEdgar:
              "primary_doc": "xslF345X05/f4.xml", "items": ""},
         ]
 
+    def full_submission(self, cik, accession):
+        return self.get(accession + "/bb.htm" if accession.endswith("1") else accession + "/er.htm")
+
     def get(self, url):
         if url.endswith("bb.htm"):
-            return b"<p>The Board of Directors authorized a share repurchase program.</p>"
+            return b"<p>The Board of Directors authorized a new share repurchase program of up to $10 billion.</p>"
         if url.endswith("er.htm"):
             return b"<p>Results for the quarter.</p>"
         if url.endswith("f4.xml"):

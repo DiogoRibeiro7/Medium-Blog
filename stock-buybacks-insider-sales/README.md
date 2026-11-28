@@ -30,8 +30,16 @@ On GitHub: set the repository variable `EDGAR_USER_AGENT`, then run the workflow
 `stock-buybacks-insider-sales` (Actions, workflow_dispatch). Results are uploaded as an artifact;
 nothing is committed. The EDGAR cache is kept by `actions/cache`.
 
+## First live run (10 tickers)
+
+The first run read only the 8-K cover page and found 11 announcements in 650 events: the press-release
+exhibits were missing. Even so, the placebo earnings dates show the calendar effect clearly: 0.12 insiders
+sold in the 10 trading days before an earnings filing and 1.94 in the 10 days from it. A naive
+before-and-after test around any earnings-linked announcement would read that as an announcement effect.
+
 ## Status and limits
 
+- `out/announcement_audit_sample.csv` lists up to 50 detected announcements with the matched text. Check it by hand.
 - The offline tests pass (Form 4 parsing, event classification, windows, the difference-in-differences
   on synthetic data, and an end-to-end run against a fake EDGAR). **No live EDGAR run has been done**:
   the authoring environment could not reach sec.gov. Check the first live output before trusting it.
