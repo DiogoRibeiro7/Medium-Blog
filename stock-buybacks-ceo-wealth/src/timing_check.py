@@ -3,7 +3,7 @@ import json, sys, math, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import numpy as np
 from scipy import stats
-from series import BUYBACKS, PAY_RATIO, PRICE_RETURN
+from series import BUYBACKS, PAY_RATIO, PRICE_RETURN, REAL_PAY_2024USD_K
 
 yrs = sorted(BUYBACKS)
 bb = np.array([BUYBACKS[y] for y in yrs])
@@ -53,6 +53,8 @@ out["period_means"] = {
     "2007_2014": {"buybacks": mean(BUYBACKS, 2007, 2014), "realized": mean(R, 2007, 2014), "granted": mean(G, 2007, 2014)},
     "2015_2024": {"buybacks": mean(BUYBACKS, 2015, 2024), "realized": mean(R, 2015, 2024), "granted": mean(G, 2015, 2024)},
 }
+rp = REAL_PAY_2024USD_K
+out["real_dollar_pay_change_2000_2024_pct"] = {"realized": round(100 * (rp[2024][0] / rp[2000][0] - 1), 1), "granted": round(100 * (rp[2024][1] / rp[2000][1] - 1), 1)}
 # Order of magnitude: CEO realized pay (350 firms, 2024, USD 22.98m) vs S&P 500 buybacks
 ceo_total_bn = 22.98e6 * 350 / 1e9
 out["ceo_pay_total_350_bn_2024"] = round(ceo_total_bn, 2)

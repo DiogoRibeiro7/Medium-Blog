@@ -38,6 +38,9 @@ PRICE_RETURN = {  # annual S&P 500 price return, percent
     2019: 28.88, 2020: 16.26, 2021: 26.89, 2022: -19.44, 2023: 24.23, 2024: 23.31,
 }
 
+# EPI average CEO compensation, thousands of 2024 dollars: (realized, granted); only these five years are given in dollars
+REAL_PAY_2024USD_K = {1965: (1078, 820), 1978: (1925, 1466), 2000: (25392, 25388), 2023: (21707, 15554), 2024: (22983, 16967)}
+
 SOURCES = {
     "buybacks": [
         "https://press.spglobal.com/2015-03-23-S-P-500-2014-Buybacks-Post-16-3-Increase",
