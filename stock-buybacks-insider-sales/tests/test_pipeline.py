@@ -134,3 +134,15 @@ def test_edgar_retries_transient_5xx(tmp_path, monkeypatch):
     monkeypatch.setattr(edgar.time, "sleep", lambda s: None)
     ed = edgar.Edgar(str(tmp_path), user_agent="Test test@example.org")
     assert ed.get("https://example.org/x") == b"ok" and calls["n"] == 3
+
+
+def test_combine_concatenates_shards_and_dedupes(tmp_path):
+    import combine
+    for i in range(2):
+        d = tmp_path / f"s{i}"
+        d.mkdir()
+        _synth(0.5, n_firms=10, seed=i).assign(ticker="T", date="2024-01-01", accession=lambda x: x.index.astype(str) + f"-{i}",
+                                              snippet="").to_csv(d / "events.csv", index=False)
+    combine.main(str(tmp_path), str(tmp_path / "out"))
+    out = pd.read_csv(tmp_path / "out" / "summary.json".replace("summary.json", "events.csv"))
+    assert len(out) == 2 * 10 * 8

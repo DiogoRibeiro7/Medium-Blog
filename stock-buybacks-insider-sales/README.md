@@ -26,7 +26,10 @@ python -m pytest -q tests
 EDGAR_USER_AGENT="Name contact@email" python3 -I src/run.py --tickers config/tickers_example.txt --out out
 ```
 
-On GitHub: set the repository variable `EDGAR_USER_AGENT`, then run the workflow
+On GitHub the list is split into 16 shards that run in parallel (8 at a time), then a `combine` job
+builds one `events.csv`, `summary.json` and audit sample. The full S&P 500 list is
+`config/sp500_2026-11-28.txt` (current members only, so survivorship bias). First check the 10-ticker
+list, then run the full list. On GitHub: set the repository variable `EDGAR_USER_AGENT`, then run the workflow
 `stock-buybacks-insider-sales` (Actions, workflow_dispatch). Results are uploaded as an artifact;
 nothing is committed. The EDGAR cache is kept by `actions/cache`.
 
