@@ -27,7 +27,7 @@ class Edgar:
     def _path(self, url):
         return os.path.join(self.cache, hashlib.sha256(url.encode()).hexdigest())
 
-    def get(self, url, retries=4):
+    def get(self, url, retries=7):
         p = self._path(url)
         if os.path.exists(p):
             with open(p, "rb") as f:
@@ -45,8 +45,8 @@ class Edgar:
                     f.write(data)
                 return data
             except urllib.error.HTTPError as e:
-                if e.code in (429, 503) and attempt < retries - 1:
-                    time.sleep(2 ** attempt * 2)
+                if (e.code == 429 or e.code >= 500) and attempt < retries - 1:
+                    time.sleep(min(60, 2 ** attempt * 2))
                     continue
                 if e.code == 404:
                     return None
@@ -55,6 +55,11 @@ class Edgar:
                         f"SEC returned 403 for {url}. Check that EDGAR_USER_AGENT looks like "
                         f"'Name name@example.org' (current: {self.ua!r}).") from e
                 raise
+            except (urllib.error.URLError, TimeoutError, ConnectionError, OSError) as e:
+                if attempt < retries - 1:
+                    time.sleep(min(60, 2 ** attempt * 2))
+                    continue
+                raise RuntimeError(f"network failure for {url}: {e}") from e
         return None
 
     def json(self, url):
