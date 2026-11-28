@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-259 top-level folders: 77 belong to 24 series, 105 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 20 not yet sorted.
+260 top-level folders: 77 belong to 24 series, 105 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 21 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -430,6 +430,7 @@ Add these folders to `projects.yml`.
 - [`services-relative-prices/`](services-relative-prices/) — Why services get dearer: productivity, wages, margins and measurement in the EU, 1995–2025
 - [`stock-buybacks-insider-sales/`](stock-buybacks-insider-sales/) — Insider selling around buyback announcements, from EDGAR
 - [`suffrage-public-health/`](suffrage-public-health/) — Suffrage laws and child mortality: a staggered difference-in-differences reanalysis
+- [`verifier-is-not-intelligence/`](verifier-is-not-intelligence/) — A verifier is not an intelligence
 
 <!-- projects:end -->
 
