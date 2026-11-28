@@ -16,8 +16,10 @@ MIN_INTERVAL = 0.15  # seconds between requests (about 6 per second)
 class Edgar:
     def __init__(self, cache_dir="cache", user_agent=None):
         self.ua = user_agent or os.environ.get("EDGAR_USER_AGENT")
-        if not self.ua:
-            raise RuntimeError("Set EDGAR_USER_AGENT to 'Name contact@email' (SEC fair access).")
+        if not self.ua or "@" not in self.ua:
+            raise RuntimeError(
+                "EDGAR_USER_AGENT is empty or has no email. Set the repository VARIABLE "
+                "(not a secret) EDGAR_USER_AGENT to 'Name contact@email'.")
         self.cache = cache_dir
         os.makedirs(cache_dir, exist_ok=True)
         self._last = 0.0
@@ -48,6 +50,10 @@ class Edgar:
                     continue
                 if e.code == 404:
                     return None
+                if e.code == 403:
+                    raise RuntimeError(
+                        f"SEC returned 403 for {url}. Check that EDGAR_USER_AGENT looks like "
+                        f"'Name name@example.org' (current: {self.ua!r}).") from e
                 raise
         return None
 
