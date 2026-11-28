@@ -1,0 +1,33 @@
+name: Verifier and deployment counterexamples
+on:
+  pull_request:
+    paths:
+      - 'verifier-is-not-intelligence/**'
+      - '.github/workflows/verifier-is-not-intelligence.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'verifier-is-not-intelligence/**'
+      - '.github/workflows/verifier-is-not-intelligence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: verifier-is-not-intelligence
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m unittest -v
+      - run: python analysis.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verifier-intelligence-figures-and-tables
+          path: verifier-is-not-intelligence/outputs/
+          if-no-files-found: error
