@@ -1,0 +1,106 @@
+{
+  "figures": [
+    {
+      "assets": {
+        "fig01_nominal_ppp.csv": "73d85967376a19ce69d65802cb5119e42dd5807441c0bbbe34fddf0f1debd4ac",
+        "fig01_nominal_ppp.png": "2f6ab53f5a2eeda6f082b2b71f2b8c0dee72ba4dff1303391989a56002f28108",
+        "fig01_nominal_ppp.svg": "83e98b3c2f9ff779ee2de0fa34f5e33416d11ba9129df6a95d007e2f4c93bed3"
+      },
+      "caption": "Fixed EU-27 and six non-EU comparators, 2025. Same order in both panels; PPP is not foreign-exchange purchasing power.",
+      "id": "fig01_nominal_ppp",
+      "input_sha256": "e7043c66f9423a608e11850a992e89a6ea4a7f3c3308e4592616c8ffa1ccfebe",
+      "input_table": "gdp_rankings_2025.csv",
+      "selected_rows": 7
+    },
+    {
+      "assets": {
+        "fig02_sector_composition.csv": "c5c437674db1488c94d546a00df9d8741e828e468c82a009eea59c670f0f45fa",
+        "fig02_sector_composition.png": "b1b22d4d7d5dabe740e3eb6ba2b8802c1f3d82567b536c24d88ecb8e533e9b26",
+        "fig02_sector_composition.svg": "e4f409fd919e4158fdb0f2a22e9d7492402117505c16f01b9b26da53da968062"
+      },
+      "caption": "Published EU-27 A10 groups in 2000 and 2024. Manufacturing belongs to industry; shares are nominal GVA shares, not real output contributions. Source flags are retained in evidence.",
+      "id": "fig02_sector_composition",
+      "input_sha256": "f798b5e9d3c9d6876f7939b98e4507785f6a05e0b01d60b193bcc95abe15893f",
+      "input_table": "eurostat/eurostat_sections.csv",
+      "selected_rows": 20
+    },
+    {
+      "assets": {
+        "fig03_volume_deflator.csv": "531c32649fc168adf69ae9af6c4e6488c4700fc965d11065e3c3de7df3b6681e",
+        "fig03_volume_deflator.png": "7afe7a298f6a70ec6a6bffd0a513f10094dd144c05c34ca2176e5f3e6dd22b76",
+        "fig03_volume_deflator.svg": "f5d8aee40dd6eefb02f6130140fc7aaa0df699e983871b41bd3f8bd8946d1862"
+      },
+      "caption": "Relative real volume plus relative implicit deflator equals nominal share change. Selected EU-27 sections, 2000–2024; 9/9 complete. These are log points, not percentage points.",
+      "id": "fig03_volume_deflator",
+      "input_sha256": "cbdf9d33cc562e24de367914bdf9ad20619f525ed761d5863bfbb3d8139081c6",
+      "input_table": "eurostat/eurostat_endpoint_changes.csv",
+      "selected_rows": 9
+    },
+    {
+      "assets": {
+        "fig04_gdp_wealth.csv": "3679914566bea5306041c081bd196f18642135a1901da43296e4731ec04524aa",
+        "fig04_gdp_wealth.png": "7d4dd35bab2ac4b2416c6e9b3240ca63dfb49026feb8f56072f1ba33ccb0c697",
+        "fig04_gdp_wealth.svg": "5d6f524d7c125beb6f18ba015c8fcd54af6e3dc7c5ee6e35d4569bf49eae4ebc"
+      },
+      "caption": "1996–2020, within-country annualized log growth. Orange: GDP rises while wealth falls. n=31; excluded BGR, CYP. Bulgaria is excluded because of its flagged 1996 baseline; all original rows remain in the evidence.",
+      "id": "fig04_gdp_wealth",
+      "input_sha256": "68953466dd10d989a44f3a8369f694be2e6f8e04daea7ec31e868e94a006b6d6",
+      "input_table": "gdp_wealth_endpoint_growth.csv",
+      "selected_rows": 33
+    },
+    {
+      "assets": {
+        "fig05_shock_benchmarks.csv": "1e542a476172563f352d4b976919703776c099bf9310382990bcf115888e007a",
+        "fig05_shock_benchmarks.png": "21fb567a15133260c8408970d708694cbdafe206d5d8319d40cce46a4e5e453f",
+        "fig05_shock_benchmarks.svg": "8e0d1449e7f8f5372cebcae0d8dbf7166c716e75cf3c4dac2b9c2c142f068f22"
+      },
+      "caption": "Real GDP per capita, matched countries within each episode. Points: median; bars: interquartile range across countries, not confidence intervals. Negative shortfall means outperformance. Trend benchmarks do not identify causal effects.",
+      "id": "fig05_shock_benchmarks",
+      "input_sha256": "b97992dae0a0f8a5eb5cf1cbffd67d1e850e392ae7fcc92b3639c5e0fecf2717",
+      "input_table": "shocks/wdi_shock_metrics.csv",
+      "selected_rows": 297
+    },
+    {
+      "assets": {
+        "fig06_substitution.csv": "506204c365286f6e295ce31ced1aa77cc12c3a4fc20ca7c0c32b23366ae71d31",
+        "fig06_substitution.png": "565f500d6d41b0e40b018273e0402bac7e0e7a489ac6976ec593d5b92d5406d1",
+        "fig06_substitution.svg": "0666bed975ea46b7e8a76ff70ea168100da5f51feb05e700511dc8b006e39371"
+      },
+      "caption": "Hypothetical direct effects for EU-27 selected business services (J/K/M/N), 2024 baseline share 21.8% of GVA. Assumptions are not measured AI exposure or forecasts; the base-price proxy is not a chain-linked GDP estimate.",
+      "id": "fig06_substitution",
+      "input_sha256": "acbf0f3cb9acee80b18b12e263776f76c7ec96c17c0dc4cb19b5ff154abf9011",
+      "input_table": "substitution/named_scenarios.csv",
+      "selected_rows": 6
+    },
+    {
+      "assets": {
+        "fig07_structure_robustness.csv": "db85674f7cd2bcedfbf612cf64e7e1a45c57c39333fd4f161c70c3e7476dacd6",
+        "fig07_structure_robustness.png": "c3db786d3de8f9a8070806e405b8ed1b62df9c0cd1365180928fb78f825b7735",
+        "fig07_structure_robustness.svg": "50c35199a11bad2c4d1ecfffd0294fee83b3a48840ab14c35efc1c59616fddf8"
+      },
+      "caption": "Rank correlations between pre-shock economic structure and GDP-per-capita shortfall. Samples are matched across benchmarks within each feature and episode. Cells report sample size; NA is undefined, not zero. Descriptive only.",
+      "id": "fig07_structure_robustness",
+      "input_sha256": "182fe995303e5198b4e29ddd588f0d73c9318b326612058217721e7efb97a19a",
+      "input_table": "robustness/structure_correlation_sensitivity.csv",
+      "selected_rows": 45
+    },
+    {
+      "assets": {
+        "fig08_classification_robustness.csv": "3a742add592bf12e46b07ae89d0e832f6ec37fc69703c25d46e75bdd685a4e99",
+        "fig08_classification_robustness.png": "c10c272d3dffa49dbde6c76ab9627a614e38cceaa60c056e79377def39eb0a9b",
+        "fig08_classification_robustness.svg": "9bfe4876deabb461c7df09a303ee8c7a85fd0e5f465cef7ac36fc031ab6f34df"
+      },
+      "caption": "Matched-country HHI rank agreement across classifications, not comparison of absolute HHI values. WDI and Eurostat panels have different country samples; sample sizes are annotated. Missing values produce breaks.",
+      "id": "fig08_classification_robustness",
+      "input_sha256": "b9ae068168927e795bfc7e2752387fd60f83392bda450674cd507d502b6def1a",
+      "input_table": "robustness/classification_sensitivity.csv",
+      "selected_rows": 10
+    }
+  ],
+  "registry_commits": {
+    "eurostat_a10": "6911646f783bad0475e5942b1e043169e4e5cb02",
+    "eurostat_a64": "61f630990532bd6bcf6793621d6646d50be23d5c",
+    "world_bank": "ce3cc0995411c124534408e2086772275ee2c7c8"
+  },
+  "schema_version": 1
+}
