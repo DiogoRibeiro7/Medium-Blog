@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-256 top-level folders: 77 belong to 24 series, 104 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 18 not yet sorted.
+257 top-level folders: 77 belong to 24 series, 104 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 19 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -419,6 +419,7 @@ Add these folders to `projects.yml`.
 - [`letter-loops/`](letter-loops/) — Greedy letter chains in 36 languages: where "follow the likeliest next letter" ends, and why
 - [`loneliness-gdp-interpretation/`](loneliness-gdp-interpretation/) — Loneliness, GDP and the limits of interpretation
 - [`moderate-rent-ceiling/`](moderate-rent-ceiling/) — Where the EUR 2,300 "moderate rent" ceiling sat against real rents, Portugal 2017-2025
+- [`oecd-health-austerity/`](oecd-health-austerity/) — OECD health spending cuts and mortality: an event study
 - [`oecd-health-spending-outcomes/`](oecd-health-spending-outcomes/) — OECD health spending and outcomes
 - [`org-chart-blind-tester/`](org-chart-blind-tester/) — Blind testers, anchored testers and testers from another model family
 - [`productivity-hours-denominator/`](productivity-hours-denominator/) — The denominator decides: EU labour productivity with national-accounts and Labour Force Survey hours, 2009–2026
