@@ -94,6 +94,10 @@ class Edgar:
                 })
         return rows
 
+    def full_submission(self, cik, accession):
+        """The complete submission text file: cover page plus every exhibit (e.g. EX-99.1 press release)."""
+        return self.get(f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession}.txt")
+
     @staticmethod
     def doc_url(cik, accession, primary_doc):
         return f"https://www.sec.gov/Archives/edgar/data/{cik}/{accession.replace('-', '')}/{primary_doc}"

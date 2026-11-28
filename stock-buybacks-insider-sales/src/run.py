@@ -30,9 +30,11 @@ def build_events(ed, ticker, cik, since):
             sales += form4.open_market_sales(form4.parse_form4(raw))
         except Exception:
             continue
+    n_f4 = len(f4)
     sales = pd.DataFrame(sales)
-    if sales.empty:
-        return []
+    print(f"  {ticker}: {n_f4} Form 4 filings, {len(sales)} open-market sales rows", file=sys.stderr, flush=True)
+    if sales.empty:  # no insider sales at all: events still count, with zeros
+        sales = pd.DataFrame({"tx_date": pd.to_datetime([]), "shares": [], "owner_cik": [], "ceo": [], "plan_10b5": []})
     sales["tx_date"] = pd.to_datetime(sales.tx_date)
     # keep only issuer's own insiders, exclude 10b5-1 plan sales from the main outcome
     sales = sales[~sales.plan_10b5]
@@ -43,14 +45,15 @@ def build_events(ed, ticker, cik, since):
         its = {i.strip() for i in s["items"].split(",")}
         if not its & {"2.02", "8.01", "7.01"}:
             continue
-        raw = ed.get(Edgar.doc_url(cik, s["accession"], s["primary_doc"]))
+        raw = ed.full_submission(cik, s["accession"])
         if not raw:
             continue
-        kind = events.classify(s["items"], raw.decode("utf-8", "ignore"))
+        kind, snippet = events.classify(s["items"], raw.decode("utf-8", "ignore"))
         if kind is None:
             continue
         stats = windows.window_stats(sales, s["filing_date"])
-        out.append({"ticker": ticker, "cik": cik, "date": s["filing_date"], "kind": kind, **stats})
+        out.append({"ticker": ticker, "cik": cik, "date": s["filing_date"], "kind": kind,
+                    "accession": s["accession"], "snippet": snippet[:400], **stats})
     return out
 
 
@@ -78,6 +81,11 @@ def main():
     os.makedirs(a.out, exist_ok=True)
     ev = pd.DataFrame(rows)
     ev.to_csv(os.path.join(a.out, "events.csv"), index=False)
+    if len(ev):
+        aud = ev[ev.kind.str.startswith("announcement")]
+        aud = aud.sample(min(50, len(aud)), random_state=7) if len(aud) else aud
+        aud[["ticker", "date", "kind", "accession", "snippet"]].to_csv(
+            os.path.join(a.out, "announcement_audit_sample.csv"), index=False)
     with open(os.path.join(a.out, "summary.json"), "w") as f:
         json.dump(analysis.summary(ev) if len(ev) else {}, f, indent=2)
     print("done", len(ev), "events")
