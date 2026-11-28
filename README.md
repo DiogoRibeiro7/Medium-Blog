@@ -45,7 +45,7 @@ The list below is generated from [`projects.yml`](projects.yml) and the first he
 
 <!-- projects:start -->
 
-254 top-level folders: 77 belong to 24 series, 103 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 17 not yet sorted.
+255 top-level folders: 77 belong to 24 series, 104 are standalone studies in 7 themes, 5 hold repository tooling and 52 hold older material. 17 not yet sorted.
 
 ### Series: statistics, machine learning and data engineering
 
@@ -312,6 +312,7 @@ Method studies on public and simulated data.
 
 Decision problems with data: orders, rosters, routing, prices and storms.
 
+- [`airline-operations-optimization/`](airline-operations-optimization/) — Same Aircraft, Different Crew: aircraft routing, crew pairing and disruption on a synthetic hub airline
 - [`coach-change-decision/`](coach-change-decision/) — Changing the football manager mid-season, judged as a decision
 - [`coupon-campaign-questions/`](coupon-campaign-questions/) — What a year of grocery coupon campaigns can and cannot say
 - [`extreme-weather-warning-decisions/`](extreme-weather-warning-decisions/) — Extreme weather warnings: decisions under uncertainty
